@@ -9,16 +9,20 @@ on:
 name: Parameter Check
 
 jobs:
-  R-CMD-check:
+  all:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.env.pkg }})
 
     strategy:
       fail-fast: false
       matrix:
+        env:
+          - { pkg: gbm}
+          - { pkg: randomForest}
+          - { pkg: obliqueRSF}
         config:
-          - { os: ubuntu-latest, r: "release", paramtest: "true" }
+          - { os: ubuntu-latest, r: "release", paramtest: "true" }      
 
     env:
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
@@ -36,14 +40,24 @@ jobs:
       PARAMTEST: ${{ matrix.config.paramtest }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
+      PKG: ${{ matrix.env.pkg }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.2.0
 
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
           Ncpus: 4
+
+      # LaTeX. Installation time:
+      # Linux: ~ 1 min
+      # macOS: ~ 1 min 30s
+      # Windows: never finishes
+      - uses: r-lib/actions/setup-tinytex@master
+        if: runner.os != 'Windows'
+
+      - uses: r-lib/actions/setup-pandoc@master
 
       # set date/week for use in cache creation
       # https://github.community/t5/GitHub-Actions/How-to-set-and-access-a-Workflow-variable/m-p/42970
