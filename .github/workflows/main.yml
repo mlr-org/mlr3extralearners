@@ -115,7 +115,7 @@ jobs:
     
       - name: "[Stage] Script"
         run: |
-          R CMD INSTALL .
+          Rscript -e "devtools::install()"
           Rscript -e "tic::script()"
        # run: Rscript -e 'tic::script()'
 
