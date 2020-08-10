@@ -22,6 +22,7 @@ Suggests:
     checkmate,
     gbm,
     obliqueRSF,
+    pracma,
     randomForest,
     testthat
 Encoding: UTF-8
