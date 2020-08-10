@@ -64,7 +64,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
         predict_types = c("crank", "distr"),
         param_set = ps,
         properties = c("missings", "oob_error"),
-        man = "mlr3learners.obliquersf::mlr_learners_surv.obliqueRSF"
+        man = "mlr3extralearners::mlr_learners_surv.obliqueRSF"
       )
     },
 
@@ -121,3 +121,5 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
     }
   )
 )
+
+lrns_dict$add("surv.obliqueRSF", LearnerSurvObliqueRSF)

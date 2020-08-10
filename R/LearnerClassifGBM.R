@@ -73,7 +73,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
         param_set = ps,
         properties = c(
           "weights", "twoclass", "multiclass", "importance", "missings"),
-        man = "mlr3learners.gbm::mlr_learners_regr.gbm"
+        man = "mlr3extralearners::mlr_learners_regr.gbm"
       )
     },
 
@@ -158,3 +158,5 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
     }
   )
 )
+
+lrns_dict$add("classif.gbm", LearnerClassifGBM)

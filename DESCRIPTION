@@ -28,3 +28,12 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
+Collate: 
+    'aaa.R'
+    'LearnerClassifGBM.R'
+    'LearnerClassifRandomForest.R'
+    'LearnerRegrGBM.R'
+    'LearnerRegrRandomForest.R'
+    'LearnerSurvGBM.R'
+    'LearnerSurvObliqueRSF.R'
+    'zzz.R'

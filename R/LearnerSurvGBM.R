@@ -67,6 +67,7 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
         predict_types = c("crank", "lp"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("missings", "weights", "importance"),
+        man = "mlr3extralearners::mlr_learners_surv.gbm",
         packages = "gbm"
       )
     },
@@ -119,3 +120,5 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
     }
   )
 )
+
+lrns_dict$add("surv.gbm", LearnerSurvGBM)

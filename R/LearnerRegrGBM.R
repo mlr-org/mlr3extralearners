@@ -76,7 +76,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         predict_types = "response",
         param_set = ps,
         properties = c("weights", "importance", "missings"),
-        man = "mlr3learners.gbm::mlr_learners_regr.gbm"
+        man = "mlr3extralearners::mlr_learners_regr.gbm"
       )
     },
 
@@ -135,3 +135,5 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
     }
   )
 )
+
+lrns_dict$add("regr.gbm", LearnerRegrGBM)

@@ -56,7 +56,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         predict_types = c("response"),
         param_set = ps,
         properties = c("weights", "importance", "oob_error"),
-        man = "mlr3learners.randomforest::mlr_learners_regr.randomForest"
+        man = "mlr3extralearners::mlr_learners_regr.randomForest"
       )
     },
 
@@ -123,3 +123,5 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     }
   )
 )
+
+lrns_dict$add("regr.randomForest", LearnerRegrRandomForest)

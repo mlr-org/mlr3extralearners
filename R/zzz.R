@@ -11,11 +11,9 @@
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace
   x = utils::getFromNamespace("mlr_learners", ns = "mlr3")
-
-  # add the learner to the dictionary
-  x$add("classif.gbm", LearnerClassifGBM)
-  x$add("regr.gbm", LearnerRegrGBM)
-  x$add("surv.gbm", LearnerSurvGBM)
+  for (key in lrns_dict$keys()) {
+    x$add(key, lrns_dict$get(key))
+  }
 }
 
 .onLoad = function(libname, pkgname) { # nolint
@@ -28,7 +26,7 @@ register_mlr3 = function(libname, pkgname) {
   event = packageEvent("mlr3", "onLoad")
   hooks = getHook(event)
   pkgname = vapply(hooks, function(x) environment(x)$pkgname, NA_character_)
-  setHook(event, hooks[pkgname != "mlr3learners.gbm"],
+  setHook(event, hooks[pkgname != "mlr3extralearners"],
     action = "replace")
 }
 # nocov end
