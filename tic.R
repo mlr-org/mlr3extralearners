@@ -4,7 +4,7 @@ get_stage("install") %>%
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
-    add_code_step(devtools::test(filter = "gbm",
+    add_code_step(devtools::test(filter = tic::ci_get_env("env.pkg"),
                                  stop_on_failure = TRUE))
 
 } else if (ci_has_env("PARAMTEST")) {
