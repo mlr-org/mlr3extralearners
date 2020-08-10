@@ -16,6 +16,10 @@ jobs:
 
     strategy:
       matrix:
+        env:
+          - { TYPE: gbm}
+          - { TYPE: randomForest}
+          - { TYPE: obliqueRSF}
         config:
           # comment out lines if you do not want to build on certain platforms
           - { os: windows-latest, r: "release" }
@@ -23,13 +27,9 @@ jobs:
           - { os: macOS-latest, r: "release" }
           - { os: macOS-latest, r: "3.6" }
           - { os: ubuntu-latest, r: "release" }
-          - { os: ubuntu-latest, r: "3.6" }
-            
-    env:
-      - { TYPE: gbm}
-      - { TYPE: randomForest}
-      - { TYPE: obliqueRSF}
+          - { os: ubuntu-latest, r: "3.6" }         
 
+    env: ${{ matrix.env }}
     steps:
       - uses: actions/checkout@v2.2.0
 
