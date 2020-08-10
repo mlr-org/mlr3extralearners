@@ -12,14 +12,14 @@ jobs:
   all:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.env.TYPE }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.env.pkg }})
 
     strategy:
       matrix:
         env:
-          - { TYPE: gbm}
-          - { TYPE: randomForest}
-          - { TYPE: obliqueRSF}
+          - { pkg: gbm}
+          - { pkg: randomForest}
+          - { pkg: obliqueRSF}
         config:
           # comment out lines if you do not want to build on certain platforms
           - { os: windows-latest, r: "release" }
