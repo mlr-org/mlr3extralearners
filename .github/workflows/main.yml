@@ -12,7 +12,7 @@ jobs:
   all:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.pkg }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.env.TYPE }})
 
     strategy:
       matrix:
