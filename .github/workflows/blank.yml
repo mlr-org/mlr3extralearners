@@ -8,15 +8,29 @@ on:
   push:
     branches: [ master ]
 
-runs-on: ubuntu-latest
-strategy:
-  matrix:
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      matrix:
+        config:
+          # comment out lines if you do not want to build on certain platforms
+          - { os: windows-latest, r: "release" }
+          - { os: windows-latest, r: "3.6" }
+          - { os: macOS-latest, r: "release" }
+          - { os: macOS-latest, r: "3.6" }
+          - { os: ubuntu-latest, r: "release" }
+          - { os: ubuntu-latest, r: "3.6" }
+            
     env:
-    - { TYPE: gbm}
-    - { TYPE: randomForest}
-    - { TYPE: obliqueRSF}
-  env: ${{ matrix.env }}
-  steps:
+      - { TYPE: gbm}
+      - { TYPE: randomForest}
+      - { TYPE: obliqueRSF}
+
+    steps:
       - uses: actions/checkout@v2.2.0
 
       - uses: r-lib/actions/setup-r@master
