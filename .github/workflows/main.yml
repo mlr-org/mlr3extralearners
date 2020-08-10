@@ -82,20 +82,20 @@ jobs:
           key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
           restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
 
-      - name: "[Cache] Cache ccache"
-        if: runner.os != 'Windows'
-        uses: pat-s/always-upload-cache@v2.0.0
-        with:
-          path: ${{ env.CCACHE_DIR}}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
+  #    - name: "[Cache] Cache ccache"
+  #      if: runner.os != 'Windows'
+  #      uses: pat-s/always-upload-cache@v2.0.0
+  #      with:
+  #        path: ${{ env.CCACHE_DIR}}
+  #        key: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
+  #        restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
 
       # install ccache and write config file
-      - name: "[Linux] ccache"
-        if: runner.os == 'Linux'
-        run: |
-          sudo apt install ccache libcurl4-openssl-dev
-          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
+    #  - name: "[Linux] ccache"
+    #    if: runner.os == 'Linux'
+    #    run: |
+    #      sudo apt install ccache libcurl4-openssl-dev
+    #      mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
       # for some strange Windows reason this step and the next one need to be decoupled
       - name: "[Stage] Prepare"
         run: |
@@ -111,6 +111,7 @@ jobs:
         run: |
           echo -e 'options(pkgType = "source", repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
           Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+    
       - name: "[Stage] Script"
         run: Rscript -e 'tic::script()'
 
@@ -122,12 +123,14 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@master
         with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-r${{ matrix.env.pkg }}-results
           path: check
+
       - name: "[Stage] Before Deploy"
         if: matrix.config.r != 'devel'
         run: |
           Rscript -e "tic::before_deploy()"
+          
       - name: "[Stage] Deploy"
         if: matrix.config.r != 'devel'
         run: Rscript -e "tic::deploy()"
