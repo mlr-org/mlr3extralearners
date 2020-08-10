@@ -16,7 +16,7 @@ if (!ci_has_env("PARAMTEST")) {
     add_code_step(remotes::install_dev("mlr3")) %>%
     add_code_step(testthat::test_dir(
       system.file("paramtest",
-                  filter = tic::ci_get_env("PKG"),
                   package = "mlr3extralearners"),
+      filter = tic::ci_get_env("PKG"),
       stop_on_failure = TRUE))
 }
