@@ -1,4 +1,4 @@
-library(mlr3learners.gbm)
+library(mlr3extralearners)
 
 test_that("classif.gbm", {
   learner = lrn("classif.gbm")

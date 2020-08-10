@@ -1,4 +1,4 @@
-library(mlr3learners.randomforest)
+library(mlr3extralearners)
 
 test_that("regr.randomforest", {
   learner = lrn("regr.randomForest")

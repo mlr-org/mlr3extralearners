@@ -1,4 +1,4 @@
-library(mlr3learners.obliquersf)
+library(mlr3extralearners)
 
 test_that("surv.obliqueRSF_train", {
   learner = lrn("surv.obliqueRSF")
