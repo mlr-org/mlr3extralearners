@@ -4,10 +4,8 @@ get_stage("install") %>%
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
-    add_code_step(testthat::test_check(
-      package = "mlr3extralearners",
-      filter = ci_get_env("pkg"),
-    stop_on_failure = TRUE))
+    add_code_step(devtools::test(filter = ci_get_env("pkg"),
+                                 stop_on_failure = TRUE))
 
 } else if (ci_has_env("PARAMTEST")) {
   # PARAMTEST
