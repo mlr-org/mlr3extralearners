@@ -12,7 +12,7 @@ jobs:
   all:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }}) (${{ matrix.env.pkg }})
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
 
     strategy:
       fail-fast: false
@@ -34,6 +34,7 @@ jobs:
       id_rsa: ${{ secrets.id_rsa }}
       # prevent rgl issues because no X11 display is available
       RGL_USE_NULL: true
+      LRNTABLE: true
 
     steps:
       - uses: actions/checkout@v2.2.0
