@@ -1,0 +1,36 @@
+name: Update learner table
+
+on: push
+
+jobs:
+  run:
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@master
+      with:
+        persist-credentials: false
+        fetch-depth:
+
+    - name: Set-up R
+    - uses: r-lib/actions/setup-r@master
+      with:
+        r-version: release
+        Ncpus: 4
+
+    - name: Install dependencies
+      run: Rscript -e "devtools::install()"
+
+    - name: Update table
+      run: Rscript build_learner_table.R
+
+    - name: Commit files
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "Add changes" -a
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
