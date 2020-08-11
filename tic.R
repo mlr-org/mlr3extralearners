@@ -7,6 +7,9 @@ if (!ci_has_env("PARAMTEST")) {
     add_code_step(devtools::test(filter = tic::ci_get_env("PKG"),
                                  stop_on_failure = TRUE))
 
+  get_stage("after_success") %>%
+    add_code_step(source(system.file("buildtable.R", package = "mlr3extralearners")))
+
 } else if (ci_has_env("PARAMTEST")) {
   # PARAMTEST
   get_stage("install") %>%

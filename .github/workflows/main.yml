@@ -121,7 +121,9 @@ jobs:
 
       - name: "[Stage] After Success"
         if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
-        run: Rscript -e "tic::after_success()"
+        run: |
+          Rscript -e "tic::after_success()"
+          Rscript -e "tic::after_success()"
 
       - name: "[Stage] Upload R CMD check artifacts"
         if: failure()

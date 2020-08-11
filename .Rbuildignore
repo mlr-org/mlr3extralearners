@@ -18,3 +18,4 @@
 ^clang-.*
 ^\.lintr$
 ^\.vscode$
+^buildtable\.R$
