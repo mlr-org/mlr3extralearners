@@ -13,7 +13,7 @@ jobs:
         fetch-depth: 0
 
     - name: Set-up R
-    - uses: r-lib/actions/setup-r@master
+      uses: r-lib/actions/setup-r@master
       with:
         r-version: release
         Ncpus: 4
