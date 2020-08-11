@@ -21,6 +21,7 @@ Imports:
 Suggests:
     checkmate,
     gbm,
+    mlr3learners,
     obliqueRSF,
     pracma,
     randomForest,
