@@ -10,7 +10,7 @@ jobs:
     - uses: actions/checkout@master
       with:
         persist-credentials: false
-        fetch-depth:
+        fetch-depth: 0
 
     - name: Set-up R
     - uses: r-lib/actions/setup-r@master
