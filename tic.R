@@ -8,7 +8,7 @@ if (!ci_has_env("PARAMTEST")) {
                                  stop_on_failure = TRUE))
 
   get_stage("after_success") %>%
-    add_code_step(source(system.file("buildtable.R", package = "mlr3extralearners")))
+    add_code_step(buid_learner_table())
 
 } else if (ci_has_env("PARAMTEST")) {
   # PARAMTEST
