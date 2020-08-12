@@ -99,6 +99,6 @@ jobs:
 
       - name: "[Stage] Parameter test"
         run: |
-          Rscript -e "install.packges('devtools')"
+          Rscript -e "install.packages('devtools')"
           Rscript -e "devtools::install()"
           Rscript -e "tic::script()"
