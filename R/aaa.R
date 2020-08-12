@@ -74,11 +74,14 @@ install_learners = function(.keys, ...) {
 #' @param ... `ANY` \cr Passed to [mlr3::lrn]
 #' @export
 lrn = function(.key, ...) {
+  # FIXME - currently just discards .key if not in dictionary
   pkg = as.character(unlist(list_mlr3learners(filter = list(id = .key),
                                               select = "required_package")))
-  tryCatch(require(pkg, character.only = TRUE),
-           warning = function(w)
-             mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg, .key))
+  # FIXME - may want to use another method that doesn't attach
+  x = suppressWarnings(require(pkg, character.only = TRUE))
+  if (!x) {
+    mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg, .key) # nolint
+  }
 
   mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)
 }
@@ -93,9 +96,10 @@ lrns = function(.keys, ...) {
                                               select = "required_package")))
 
   for (i in seq_along(pkg)) {
-    tryCatch(require(pkg[[i]], character.only = TRUE),
-             warning = function(w)
-               mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg[[i]], .keys[[i]]))
+    x = suppressWarnings(require(pkg[[i]], character.only = TRUE))
+    if (!x) {
+      mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg[[i]], .keys[[i]]) # nolint
+    }
   }
 
   mlr3misc::dictionary_sugar_mget(mlr_learners, .keys, ...)
