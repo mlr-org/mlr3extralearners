@@ -15,4 +15,4 @@ all_lrns = suppressWarnings(mlr3::lrns(keys))
 colnames(.mlr3learners) = c("name", "class", "id", "mlr3_package", "required_package",
                             "properties", "feature_types", "predict_types")
 .mlr3learners[, 1:4] = lapply(.mlr3learners[, 1:4], as.character)
-save(.mlr3learners, file = "inst/data/.mlr3learners.Rds")
+save(.mlr3learners, file = ".mlr3learners.Rds")
