@@ -12,7 +12,7 @@ lrns_dict = mlr3misc::Dictionary$new()
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
 
-  load(file.path(system.file("inst/table", package = "mlr3extralearners"), ".mlr3learners.rds"))
+  load(file.path(system.file("table", package = "mlr3extralearners"), ".mlr3learners.rds"))
   dt = copy(.mlr3learners)
   rm(.mlr3learners)
 
