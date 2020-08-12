@@ -1,3 +1,0 @@
-conftest.c:18:1: warning: function declaration isn't a prototype [-Wstrict-prototypes]
- main ()
- ^~~~
