@@ -4,10 +4,10 @@
 \alias{list_mlr3learners}
 \title{List Learners in mlr3verse}
 \usage{
-list_mlr3learners(hide_cols = NULL, filter = NULL)
+list_mlr3learners(select = NULL, filter = NULL)
 }
 \arguments{
-\item{hide_cols}{\code{character()} \cr Specify which, if any, columns to hide.}
+\item{select}{\code{character()} \cr Passed to \link[data.table:subset]{data.table::subset}.}
 
 \item{filter}{\code{list()} \cr Named list of conditions to filter on, names correspond to column
 names in table.}

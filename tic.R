@@ -1,4 +1,5 @@
 if (!ci_has_env("PARAMTEST")) {
+
   get_stage("install") %>%
     add_step(step_install_deps())
 
@@ -21,6 +22,8 @@ if (!ci_has_env("PARAMTEST")) {
       stop_on_failure = TRUE))
 
 } else if (ci_has_env("LRNTABLE")) {
+
   get_stage("install") %>%
     add_step(step_install_deps(dependencies = c("Depends", "Imports")))
+
 }

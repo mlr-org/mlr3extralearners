@@ -3,21 +3,28 @@ lrns_dict = mlr3misc::Dictionary$new()
 #' @title List Learners in mlr3verse
 #' @description Lists all learners, properties, and associated packages in a table that can be
 #' filtered and queried.
-#' @param hide_cols `character()` \cr Specify which, if any, columns to hide.
+#' @param select `character()` \cr Passed to [data.table::subset].
 #' @param filter `list()` \cr Named list of conditions to filter on, names correspond to column
 #' names in table.
 #' @examples
 #' list_mlr3learners(hide_cols = c("properties", "feature_types"),
 #'       filter = list(class = "surv", predict_types = "distr"))
 #' @export
-list_mlr3learners = function(hide_cols = NULL, filter = NULL) {
+list_mlr3learners = function(select = NULL, filter = NULL) {
 
-  load(file.path(system.file("inst/data", package = "mlr3extralearners"), "mlr3learners.rds"))
-  dt = copy(mlr3learners)
+  load(file.path(system.file("inst/table", package = "mlr3extralearners"), ".mlr3learners.rds"))
+  dt = copy(.mlr3learners)
+  rm(.mlr3learners)
 
   if (!is.null(filter)) {
+    if (!is.null(filter$name)) {
+      dt = subset(dt, name %in% filter$name)
+    }
     if (!is.null(filter$class)) {
       dt = subset(dt, class %in% filter$class)
+    }
+    if (!is.null(filter$id)) {
+      dt = subset(dt, id %in% filter$id)
     }
     if (!is.null(filter$mlr3_package)) {
       dt = subset(dt, mlr3_package %in% filter$mlr3_package)
@@ -39,46 +46,57 @@ list_mlr3learners = function(hide_cols = NULL, filter = NULL) {
     }
   }
 
-  if (!is.null(hide_cols)) {
-    dt = subset(dt, select = !(colnames(dt) %in% hide_cols))
+  if (!is.null(select)) {
+    dt = subset(dt, select = select)
   }
 
   return(dt)
 }
 
-# overloads lrn function to automatically detect and install learners from any packages in
-# mlr3verse. uses list_mlr3learners with filtering for the given key.
-# this should actually probably be implemented in mlr3misc::dictionary_sugar_get
-# however this would create a dependency loop unless the learners table also lives in mlr3misc.
-# a vectorised version of this for `lrns` follows naturally.
-#
-# the function filters the learner_table, searches to see if the required mlr3_package is installed
-# and if not uses usethis::ui_yeah to ask user to install, if yes then installed and learner loaded,
-# if not then errors
-#
-# args:
-#  .key `character(1)`: learner key
-#
-# examples:
-#
-# lrn("classif.ranger")
-#
-# unloadNamespace("mlr3learners.coxboost")
-# utils::remove.packages("mlr3learners.coxboost")
-# lrn("surv.coxboost")
-#
-# lrn = function(.key, ...) {
-#   pkg = unlist(subset(list_mlr3learners(), id == .key)$mlr3_package)
-#   inst = suppressWarnings(require(pkg, quietly = FALSE, character.only = TRUE))
-#   if (!inst) {
-#     mlr3misc::catf("%s is not installed but is required, do you want to install this now?\n", pkg)
-#     cat("1: Yes\n2: No")
-#     ans = readline() == 1
-#     if (ans) {
-#       install.packages(pkg, repos = "https://mlr3learners.github.io/mlr3learners.drat")
-#     } else {
-#       stop(sprintf("%s is not installed but is required.", pkg))
-#     }
-#   }
-#   mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)
-# }
+#' @title Install Learner Dependencies
+#' @description Install required dependencies for specified learners.
+#' @param .keys `character()` \cr Keys passed to [mlr_learners][mlr3::mlr_learners] specifying
+#' learners to install.
+#' @param ... `ANY` \cr Additional options to pass to [install.packages].
+#' @examples
+#' install_learners(c("regr.gbm", "classif.kknn"))
+#' @export
+install_learners = function(.keys, ...) {
+  pkg = as.character(unlist(list_mlr3learners(filter = list(id = .keys),
+                                              select = "required_package")))
+  utils::install.packages(pkg, ...)
+}
+
+#' @title Syntactic Sugar for Learner Construction
+#' @description Overloads [mlr3::lrn] to automatically detect if required packages are installed.
+#' @param .key `(character(1))` \cr Key passed to [mlr_learners][mlr3::mlr_learners] to retrieve
+#' the learner.
+#' @param ... `ANY` \cr Passed to [mlr3::lrn]
+#' @export
+lrn = function(.key, ...) {
+  pkg = as.character(unlist(list_mlr3learners(filter = list(id = .key),
+                                              select = "required_package")))
+  tryCatch(require(pkg, character.only = TRUE),
+           warning = function(w)
+             mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg, .key))
+
+  mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)
+}
+
+#' @rdname lrn
+#' @param .keys `(character())` \cr Keys passed to [mlr_learners][mlr3::mlr_learners] to retrieve
+#' the learners.
+#' @param ... `ANY` \cr Passed to [mlr3::lrns]
+#' @export
+lrns = function(.keys, ...) {
+  pkg = as.character(unlist(list_mlr3learners(filter = list(id = .keys),
+                                              select = "required_package")))
+
+  for (i in seq_along(pkg)) {
+    tryCatch(require(pkg[[i]], character.only = TRUE),
+             warning = function(w)
+               mlr3misc::stopf('%s is not installed, please run `install_learners("%s")` to install all required packages.', pkg[[i]], .keys[[i]]))
+  }
+
+  mlr3misc::dictionary_sugar_mget(mlr_learners, .keys, ...)
+}
