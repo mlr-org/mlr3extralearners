@@ -44,14 +44,15 @@ jobs:
           r-version: ${{ matrix.config.r }}
           Ncpus: 4
 
-      # LaTeX. Installation time:
-      # Linux: ~ 1 min
-      # macOS: ~ 1 min 30s
-      # Windows: never finishes
       - uses: r-lib/actions/setup-tinytex@master
-        if: runner.os != 'Windows'
 
       - uses: r-lib/actions/setup-pandoc@master
+
+      - name: "[Linux] ccache"
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt install ccache libcurl4-openssl-dev
+          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
 
       - name: "[Stage] Prepare"
         run: |
