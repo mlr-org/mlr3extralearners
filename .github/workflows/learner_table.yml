@@ -65,11 +65,11 @@ jobs:
       - name: "[Stage] Update learner table"
         run: |
           R CMD INSTALL .
-          Rscript inst/table/build_learner_table.R
+          Rscript build_learner_table.R
 
       - name: Commit files
         run: |
-          git add .
+          git add R/sysdata.rda
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Update learner table" -a
