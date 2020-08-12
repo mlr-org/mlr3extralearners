@@ -1,0 +1,3 @@
+conftest.c:10:5: warning: function declaration isn't a prototype [-Wstrict-prototypes]
+ int main(){nm_test_var='a';nm_test_func();return(0);}
+     ^~~~
