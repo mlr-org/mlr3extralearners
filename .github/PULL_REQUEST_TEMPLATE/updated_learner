@@ -24,9 +24,12 @@ I have...
 
 # Cleaning
 
-I have...
+I have run...
 
-* [ ] Run `clean_package()`
+* [ ] `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
+* [ ] `styler::style_pkg(style = styler::mlr_style)` - If needed install with `remotes::install_github('pat-s/styler@mlr-style')`
+* [ ] `usethis::use_tidy_description()`
+* [ ] `lintr::lint_package()`
 
 # Reviewer
 
