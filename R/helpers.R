@@ -61,9 +61,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
                     dens = "Density")
 
   # ADD LEARNER
-  cat(sprintf("Creating %s from template.\n", paste0("Learner", Type, classname)))
-  file_name_lrn = file.path(path, "R", paste0("Learner", Type, classname, ".R"))
-  x = file.copy(file.path(path, "templates", "LearnerTemplate.R"),
+  cat(sprintf("Creating %s from template.\n", paste(type, key, sep = "_")))
+  file_name_lrn = file.path(path, "R", paste0("learner_", type, "_", key, ".R"))
+  x = file.copy(file.path(path, "templates", "learner_template.R"),
                 to = file_name_lrn, overwrite = FALSE)
   if (!x) {
     utils::file.edit(file_name_lrn)
@@ -114,9 +114,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   cat(x, file = file_name_lrn, sep = "\n")
 
   # ADD TESTS
-  cat(sprintf("Creating %s tests from template.\n", paste0("Learner", Type, classname)))
+  cat(sprintf("Creating %s tests from template.\n", paste(type, key, sep = "_")))
   file_name_test = file.path(path, "tests", "testthat", paste0("test_", type, "_", key, ".R"))
-  x = file.copy(file.path(path, "templates", "TestTemplate.R"), to = file_name_test,
+  x = file.copy(file.path(path, "templates", "test_template.R"), to = file_name_test,
                 overwrite = FALSE)
   if (!x) {
     utils::file.edit(file_name_test)
@@ -130,10 +130,10 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   cat(x, file = file_name_test, sep = "\n")
 
   # ADD PARAM TESTS
-  cat(sprintf("Creating %s paramtests from template.\n", paste0("Learner", Type, classname)))
+  cat(sprintf("Creating %s paramtests from template.\n", paste(type, key, sep = "_")))
   file_name_ptest = file.path(path, "inst", "paramtest", paste0("test_paramtest_", type, "_",
                                                                 key, ".R"))
-  x = file.copy(file.path(path, "template", "ParamTestTemplate.R"), to = file_name_ptest,
+  x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
                 overwrite = FALSE)
   if (!x) {
     utils::file.edit(file_name_ptest)
@@ -146,8 +146,32 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = gsub("<caller>", caller, x)
   cat(x, file = file_name_ptest, sep = "\n")
 
+  # CREATE YAMLS
+  cat(sprintf("Creating %s YAML files from template.\n", paste(type, key, sep = "_")))
+  file_name = file.path(path, ".github", "workflows", paste0("test_", key, ".yml"))
+  x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
+                overwrite = FALSE)
+  if (!x) {
+    utils::file.edit(file_name)
+    stopf("File %s already exists. Manually edit the file.", file_name)
+  }
+  x = readLines(file_name)
+  x = gsub("<key>", key, x)
+  cat(x, file = file_name, sep = "\n")
+
+  file_name = file.path(path, ".github", "workflows", paste0("paramtest_", key, ".yml"))
+  x = file.copy(file.path(path, "templates", "paramtest_template.yml"), to = file_name,
+                overwrite = FALSE)
+  if (!x) {
+    utils::file.edit(file_name)
+    stopf("File %s already exists. Manually edit the file.", file_name)
+  }
+  x = readLines(file_name)
+  x = gsub("<key>", key, x)
+  cat(x, file = file_name, sep = "\n")
+
   # UPDATE DESCRIPTION
-  cat(sprintf("Updating DESCRIPTION.\n\n", paste0("Learner", Type, classname)))
+  cat(sprintf("Adding %s to DESCRIPTION Suggests.\n\n", package))
   x = readLines(file.path(path, "DESCRIPTION"))
   if (!any(grepl(package, x))) {
     x = gsub("testthat", paste0(c("testthat", package), collapse = ",\n    "), x)
