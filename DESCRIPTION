@@ -25,7 +25,8 @@ Suggests:
     obliqueRSF,
     pracma,
     randomForest,
-    testthat
+    testthat,
+    coxboost
 Remotes:
     mlr-org/mlr3proba
 Encoding: UTF-8

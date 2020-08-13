@@ -34,21 +34,29 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamFct$new(id = "distribution", levels = c("coxph"),
+          ParamFct$new(
+            id = "distribution", levels = c("coxph"),
             default = "coxph", tags = "train"),
-          ParamInt$new(id = "n.trees", default = 100L, lower = 1L,
+          ParamInt$new(
+            id = "n.trees", default = 100L, lower = 1L,
             tags = c("train", "predict")),
-          ParamInt$new(id = "cv.folds", default = 0L, lower = 0L,
+          ParamInt$new(
+            id = "cv.folds", default = 0L, lower = 0L,
             tags = "train"),
-          ParamInt$new(id = "interaction.depth", default = 1L, lower = 1L,
+          ParamInt$new(
+            id = "interaction.depth", default = 1L, lower = 1L,
             tags = "train"),
-          ParamInt$new(id = "n.minobsinnode", default = 10L, lower = 1L,
+          ParamInt$new(
+            id = "n.minobsinnode", default = 10L, lower = 1L,
             tags = "train"),
-          ParamDbl$new(id = "shrinkage", default = 0.001, lower = 0,
+          ParamDbl$new(
+            id = "shrinkage", default = 0.001, lower = 0,
             tags = "train"),
-          ParamDbl$new(id = "bag.fraction", default = 0.5, lower = 0,
+          ParamDbl$new(
+            id = "bag.fraction", default = 0.5, lower = 0,
             upper = 1, tags = "train"),
-          ParamDbl$new(id = "train.fraction", default = 1, lower = 0,
+          ParamDbl$new(
+            id = "train.fraction", default = 1, lower = 0,
             upper = 1, tags = "train"),
           ParamLgl$new(id = "keep.data", default = TRUE, tags = "train"),
           ParamLgl$new(id = "verbose", default = FALSE, tags = "train"),
@@ -57,7 +65,8 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
           ParamLgl$new(id = "single.tree", default = FALSE, tags = "predict")
         )
       )
-      ps$values = insert_named(ps$values, list(distribution = "coxph",
+      ps$values = insert_named(ps$values, list(
+        distribution = "coxph",
         keep.data = FALSE,
         n.cores = 1))
 
@@ -109,7 +118,6 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
     },
 
     .predict = function(task) {
-
       pv = self$param_set$get_values(tags = "predict")
       newdata = task$data()
 

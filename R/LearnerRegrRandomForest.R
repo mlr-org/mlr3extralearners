@@ -22,31 +22,31 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
-          params = list(
-            ParamInt$new(
-              id = "ntree", default = 500L, lower = 1L,
-              tags = c("train", "predict")),
-            ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-            ParamLgl$new(id = "replace", default = TRUE, tags = "train"),
-            ParamUty$new(id = "strata", tags = "train"),
-            ParamUty$new(id = "sampsize", tags = "train"), # lower = 1L
-            ParamInt$new(id = "nodesize", default = 5L, lower = 1L, tags = "train"),
-            ParamInt$new(id = "maxnodes", lower = 1L, tags = "train"),
-            ParamFct$new(
-              id = "importance", default = FALSE,
-              levels = c("mse", "nudepurity", "none", FALSE),
-              special_vals = list(FALSE),
-              tag = "train"),
-            ParamLgl$new(id = "localImp", default = FALSE, tags = "train"),
-            ParamLgl$new(id = "proximity", default = FALSE, tags = c("train", "predict")),
-            ParamLgl$new(id = "oob.prox", tags = "train"),
-            ParamLgl$new(id = "norm.votes", default = TRUE, tags = "train"),
-            ParamLgl$new(id = "do.trace", default = FALSE, tags = "train"),
-            ParamLgl$new(id = "keep.forest", default = TRUE, tags = "train"),
-            ParamLgl$new(id = "keep.inbag", default = FALSE, tags = "train"),
-            ParamLgl$new(id = "predict.all", default = FALSE, tags = "predict"),
-            ParamLgl$new(id = "nodes", default = FALSE, tags = "predict")
-          )
+        params = list(
+          ParamInt$new(
+            id = "ntree", default = 500L, lower = 1L,
+            tags = c("train", "predict")),
+          ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
+          ParamLgl$new(id = "replace", default = TRUE, tags = "train"),
+          ParamUty$new(id = "strata", tags = "train"),
+          ParamUty$new(id = "sampsize", tags = "train"), # lower = 1L
+          ParamInt$new(id = "nodesize", default = 5L, lower = 1L, tags = "train"),
+          ParamInt$new(id = "maxnodes", lower = 1L, tags = "train"),
+          ParamFct$new(
+            id = "importance", default = FALSE,
+            levels = c("mse", "nudepurity", "none", FALSE),
+            special_vals = list(FALSE),
+            tag = "train"),
+          ParamLgl$new(id = "localImp", default = FALSE, tags = "train"),
+          ParamLgl$new(id = "proximity", default = FALSE, tags = c("train", "predict")),
+          ParamLgl$new(id = "oob.prox", tags = "train"),
+          ParamLgl$new(id = "norm.votes", default = TRUE, tags = "train"),
+          ParamLgl$new(id = "do.trace", default = FALSE, tags = "train"),
+          ParamLgl$new(id = "keep.forest", default = TRUE, tags = "train"),
+          ParamLgl$new(id = "keep.inbag", default = FALSE, tags = "train"),
+          ParamLgl$new(id = "predict.all", default = FALSE, tags = "predict"),
+          ParamLgl$new(id = "nodes", default = FALSE, tags = "predict")
+        )
       )
 
       super$initialize(
@@ -91,7 +91,6 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
   ),
 
   private = list(
-
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
@@ -110,7 +109,6 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     },
 
     .predict = function(task) {
-
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
       type = self$predict_type

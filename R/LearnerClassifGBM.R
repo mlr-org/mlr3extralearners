@@ -90,7 +90,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
       # n.trees is required for prediction. If not set by the user, we take the
       # default (100)
       if (is.null(self$param_set$values$n.trees)) {
-        pars$n.trees = self$param_set$default$n.trees  # nolint
+        pars$n.trees = self$param_set$default$n.trees # nolint
       }
 
       imp = invoke(gbm::relative.influence, self$model, .args = pars)
@@ -122,11 +122,12 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
       # n.trees is required for prediction. If not set by the user, we take the
       # default (100)
       if (is.null(self$param_set$values$n.trees)) {
-        pars$n.trees = self$param_set$default$n.trees  # nolint
+        pars$n.trees = self$param_set$default$n.trees # nolint
       }
       newdata = task$data(cols = task$feature_names)
 
-      p = mlr3misc::invoke(predict, self$model, newdata = newdata,
+      p = mlr3misc::invoke(predict, self$model,
+        newdata = newdata,
         type = "response", .args = pars)
 
       if (self$predict_type == "response") {
