@@ -8,7 +8,7 @@ lrns_dict = mlr3misc::Dictionary$new()
 #' names in table.
 #' @examples
 #' list_mlr3learners(
-#'   hide_cols = c("properties", "feature_types"),
+#'   select = c("id", "properties", "predict_types"),
 #'   filter = list(class = "surv", predict_types = "distr"))
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
@@ -60,7 +60,9 @@ list_mlr3learners = function(select = NULL, filter = NULL) {
 #' learners to install.
 #' @param ... `ANY` \cr Additional options to pass to [install.packages].
 #' @examples
+#' \dontrun{
 #' install_learners(c("regr.gbm", "classif.kknn"))
+#' }
 #' @export
 install_learners = function(.keys, ...) {
   pkg = as.character(unlist(list_mlr3learners(
@@ -113,9 +115,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
                           caller, param_set, param_vals = list(), feature_types, predict_types,
                           properties, importance = FALSE, oob_error = FALSE, references = FALSE) {
 
-  path = devtools::as.package(pkg)$path
+  path = pkg_root(pkg)
 
-  checkmate::assert_choice(type, names(mlr_reflections$task_properties))
+  checkmate::assert_choice(type, names(mlr3::mlr_reflections$task_properties))
   Type = toproper(type)
 
   checkmate::assert_character(key, len = 1)
@@ -132,9 +134,10 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   assert_param_set(param_set)
   checkmate::assert_list(param_vals)
 
-  checkmate::assert_subset(feature_types, unname(mlr_reflections$task_feature_types))
-  checkmate::assert_subset(predict_types, names(mlr_reflections$learner_predict_types[[type]]))
-  checkmate::assert_subset(properties, mlr_reflections$learner_properties[[type]])
+  checkmate::assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
+  checkmate::assert_subset(predict_types,
+                           names(mlr3::mlr_reflections$learner_predict_types[[type]]))
+  checkmate::assert_subset(properties, mlr3::mlr_reflections$learner_properties[[type]])
   checkmate::assert_flag(importance)
   checkmate::assert_flag(oob_error)
   checkmate::assert_flag(references)
@@ -151,7 +154,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "LearnerTemplate.R"),
                 to = file_name_lrn, overwrite = FALSE)
   if (!x) {
-    file.edit(file_name_lrn)
+    utils::file.edit(file_name_lrn)
     stopf("File %s already exists. Manually edit the file.", file_name_lrn)
   }
   x = readLines(file_name_lrn)
@@ -204,7 +207,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "TestTemplate.R"), to = file_name_test,
                 overwrite = FALSE)
   if (!x) {
-    file.edit(file_name_test)
+    utils::file.edit(file_name_test)
     stopf("File %s already exists. Manually edit the file.", file_name_test)
   }
   x = readLines(file_name_test)
@@ -221,7 +224,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "template", "ParamTestTemplate.R"), to = file_name_ptest,
                           overwrite = FALSE)
   if (!x) {
-    file.edit(file_name_ptest)
+    utils::file.edit(file_name_ptest)
     stopf("File %s already exists. Manually edit the file.", file_name_ptest)
   }
   x = readLines(file_name_ptest)
@@ -263,5 +266,5 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
 
   # OPEN FILES
-  file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
+  utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
 }

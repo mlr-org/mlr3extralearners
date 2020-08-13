@@ -7,6 +7,7 @@
 #' @importFrom mlr3proba LearnerSurv
 "_PACKAGE"
 
+utils::globalVariables(c("name", "id", "mlr3_package", "required_package"))
 # nocov start
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace

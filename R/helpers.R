@@ -5,3 +5,20 @@ toproper = function(str, split = " ", fixed = TRUE) {
   })
   return(unlist(str))
 }
+
+# a less robust but faster version of devtools::as.package
+pkg_root = function(path = ".") {
+  path = normalizePath(path)
+
+  if (!grepl("mlr3extralearners", path)) {
+    stopf("Path (%s) is not in mlr3extralearners directory.")
+  }
+
+  while (TRUE) {
+    if (file.exists(file.path(path, "DESCRIPTION"))) {
+      return(path)
+    } else {
+      path = dirname(path)
+    }
+  }
+}

@@ -16,5 +16,7 @@ learners to install.}
 Install required dependencies for specified learners.
 }
 \examples{
+\dontrun{
 install_learners(c("regr.gbm", "classif.kknn"))
+}
 }

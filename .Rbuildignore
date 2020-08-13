@@ -19,3 +19,4 @@
 ^\.lintr$
 ^\.vscode$
 templates
+^build\_learner\_table\.R$
