@@ -1,4 +1,4 @@
-context("classif.randomForest")
+install_learners("classif.randomForest")
 
 test_that("autotest", {
   learner = LearnerClassifRandomForest$new()

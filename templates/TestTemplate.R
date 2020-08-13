@@ -1,4 +1,4 @@
-context("<type>.<key>")
+install_learners("<type>.<key>")
 
 test_that("autotest", {
   learner = Learner<Type><Classname>$new()

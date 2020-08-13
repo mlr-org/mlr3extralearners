@@ -1,4 +1,4 @@
-context("classif.gbm")
+install_learners("classif.gbm")
 
 test_that("autotest", {
   learner = LearnerClassifGBM$new()

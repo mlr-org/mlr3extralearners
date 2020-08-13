@@ -19,8 +19,6 @@ jobs:
     strategy:
       matrix:
         env:
-          - { pkg: gbm}
-          - { pkg: randomForest}
           - { pkg: obliqueRSF}
         config:
           # comment out lines if you do not want to build on certain platforms

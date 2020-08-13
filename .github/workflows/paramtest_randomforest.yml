@@ -20,9 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          - { pkg: gbm}
           - { pkg: randomForest}
-          - { pkg: obliqueRSF}
         config:
           - { os: ubuntu-latest, r: "release", paramtest: "true" }      
 

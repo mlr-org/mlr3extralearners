@@ -1,7 +1,8 @@
-if (!ci_has_env("PARAMTEST")) {
+get_stage("install") %>%
+  # only install packages required by all learners
+  add_step(step_install_deps(dependencies = c("Depends", "Imports")))
 
-  get_stage("install") %>%
-    add_step(step_install_deps())
+if (!ci_has_env("PARAMTEST")) {
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
@@ -9,9 +10,6 @@ if (!ci_has_env("PARAMTEST")) {
                                  stop_on_failure = TRUE))
 
 } else if (ci_has_env("PARAMTEST")) {
-  # PARAMTEST
-  get_stage("install") %>%
-    add_step(step_install_deps())
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
@@ -20,10 +18,5 @@ if (!ci_has_env("PARAMTEST")) {
                   package = "mlr3extralearners"),
       filter = tic::ci_get_env("PKG"),
       stop_on_failure = TRUE))
-
-} else if (ci_has_env("LRNTABLE")) {
-
-  get_stage("install") %>%
-    add_step(step_install_deps(dependencies = c("Depends", "Imports")))
 
 }

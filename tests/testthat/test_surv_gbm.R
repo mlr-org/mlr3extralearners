@@ -1,4 +1,4 @@
-context("surv.gbm")
+install_learners("surv.gbm")
 
 test_that("autotest", {
   set.seed(1)

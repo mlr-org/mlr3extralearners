@@ -1,4 +1,4 @@
-context("surv.obliqueRSF")
+install_learners("surv.obliqueRSF")
 
 test_that("autotest", {
   learner = lrn("surv.obliqueRSF", compute_oob_predictions = TRUE)

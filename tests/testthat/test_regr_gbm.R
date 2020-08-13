@@ -1,4 +1,4 @@
-context("regr.gbm")
+install_learners("regr.gbm")
 
 test_that("autotest", {
   learner = LearnerRegrGBM$new()

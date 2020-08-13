@@ -1,4 +1,4 @@
-context("regr.randomForest")
+install_learners("regr.randomForest")
 
 test_that("autotest", {
   learner = LearnerRegrRandomForest$new()
