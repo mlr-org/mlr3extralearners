@@ -10,7 +10,6 @@ test_that("surv.obliqueRSF_train", {
     "status", # handled internally
     "features" # handled internally
   )
-
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
     paste0("- '", ParamTest$missing, "'", collapse = "\n")))
