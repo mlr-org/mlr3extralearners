@@ -1,5 +1,6 @@
 install_learners("classif.gbm")
 
+
 test_that("autotest", {
   learner = LearnerClassifGBM$new()
   learner$param_set$values = mlr3misc::insert_named(
