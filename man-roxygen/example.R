@@ -2,7 +2,7 @@
 lrn = mlr3::lrn(id)
 %>
 #' @examples
-#' if (requireNamespace("<%= lrn$packages %>")) {
+#' if (mlr3misc::require_namespaces(c("<%=paste0(lrn$packages, collapse = '", "')%>"))) {
 #'   learner = mlr3::lrn("<%= id %>")
 #'   print(learner)
 #'

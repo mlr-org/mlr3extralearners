@@ -30,7 +30,7 @@ lrn("surv.obliqueRSF")
 }
 
 \examples{
-if (requireNamespace("obliqueRSF")) {
+if (mlr3misc::require_namespaces(c("obliqueRSF", "pracma"))) {
   learner = mlr3::lrn("surv.obliqueRSF")
   print(learner)
 

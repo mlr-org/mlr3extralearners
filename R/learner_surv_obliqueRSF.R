@@ -59,7 +59,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
 
       super$initialize(
         id = "surv.obliqueRSF",
-        packages = "obliqueRSF",
+        packages = c("obliqueRSF", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr"),
         param_set = ps,

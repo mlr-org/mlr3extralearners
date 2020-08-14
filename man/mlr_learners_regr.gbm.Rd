@@ -36,7 +36,7 @@ lrn("regr.gbm")
 }
 
 \examples{
-if (requireNamespace("gbm")) {
+if (mlr3misc::require_namespaces(c("gbm"))) {
   learner = mlr3::lrn("regr.gbm")
   print(learner)
 
