@@ -11,7 +11,6 @@ lrn = function(.key, ...) {
   pkgs = as.character(unlist(list_mlr3learners(
     filter = list(id = .key),
     select = "required_package")))
-  # FIXME - may want to use another method that doesn't attach
   tryCatch(mlr3misc::require_namespaces(pkgs),
     packageNotFoundError = function(e) {
       mlr3misc::stopf('Required packages not installed, please run `install_learners("%s")`.', .key)

@@ -23,9 +23,10 @@ pkg_root = function(path = ".") {
   }
 }
 
-create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname), package,
-                          caller, param_set, param_vals = list(), feature_types, predict_types,
-                          properties, importance = FALSE, oob_error = FALSE, references = FALSE) {
+create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
+                          package = tolower(classname), caller,
+                          feature_types, predict_types, properties = NULL,
+                          importance = FALSE, oob_error = FALSE, references = FALSE) {
 
   path = pkg_root(pkg)
 
@@ -43,9 +44,6 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   classname = toproper(checkmate::assert_character(classname, len = 1))
   checkmate::assert_character(caller, len = 1)
 
-  assert_param_set(param_set)
-  checkmate::assert_list(param_vals)
-
   checkmate::assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
   checkmate::assert_subset(predict_types,
                            names(mlr3::mlr_reflections$learner_predict_types[[type]]))
@@ -61,129 +59,136 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
                     dens = "Density")
 
   # ADD LEARNER
-  cat(sprintf("Creating %s from template.\n", paste(type, key, sep = "_")))
   file_name_lrn = file.path(path, "R", paste0("learner_", type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "learner_template.R"),
                 to = file_name_lrn, overwrite = FALSE)
-  if (!x) {
-    utils::file.edit(file_name_lrn)
-    stopf("File %s already exists. Manually edit the file.", file_name_lrn)
-  }
-  x = readLines(file_name_lrn)
-  x = gsub("<algorithm>", algorithm, x)
-  x = gsub("<Type_lng>", type_lng, x)
-  x = gsub("<type>", type, x)
-  x = gsub("<Type>", Type, x)
-  x = gsub("<key>", key, x)
-  x = gsub("<package>", package, x)
-  x = gsub("<caller>", caller, x)
-  x = gsub("<Classname>", classname, x)
-  if (length(param_vals)) {
-    x = gsub("<param_vals>", paste0(names(param_vals), " = ",
-                                    unlist(param_vals), collapse = ", "), x)
-  }
-  x = gsub("<feature_types>", paste0(feature_types, collapse = '", "'), x)
-  x = gsub("<predict_types>", paste0(predict_types, collapse = '", "'), x)
-  x = gsub("<properties>", paste0(properties, collapse = '", "'), x)
-  # fix commas
-  if (importance & !oob_error) {
-    x[which(grepl("importance = function()", x))] = "    importance = function() { }"
-  } else if (!importance & !oob_error) {
-    x[which(grepl("man =", x)) + 2] = "    }"
-  }
   add_str = c()
-  if (!importance) {
-    x = x[-seq.int(
-      which(grepl("FIXME - ADD IMPORTANCE METHOD HERE", x)),
-      which(grepl("importance = function()", x)))]
+  if (!x) {
+    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_lrn)
   } else {
-    add_str = c(add_str, "importance method")
+    mlr3misc::catf("Creating %s from template.\n", paste(type, key, sep = "_"))
+    x = readLines(file_name_lrn)
+    x = gsub("<algorithm>", algorithm, x)
+    x = gsub("<Type_lng>", type_lng, x)
+    x = gsub("<type>", type, x)
+    x = gsub("<Type>", Type, x)
+    x = gsub("<key>", key, x)
+    x = gsub("<package>", package, x)
+    x = gsub("<caller>", caller, x)
+    x = gsub("<Classname>", classname, x)
+    x = gsub("<feature_types>", paste0(feature_types, collapse = '", "'), x)
+    x = gsub("<predict_types>", paste0(predict_types, collapse = '", "'), x)
+    if (length(properties)) {
+      x = gsub("<properties>", paste0(properties, collapse = '", "'), x)
+    } else {
+      x = x[-which(grepl("<properties>", x))]
+    }
+    # fix commas
+    if (importance & !oob_error) {
+      x[which(grepl("importance = function()", x))] = "    importance = function() { }"
+    } else if (!importance & !oob_error) {
+      x[which(grepl("man =", x)) + 2] = "    }"
+    }
+    if (!importance) {
+      x = x[-seq.int(
+        which(grepl("FIXME - ADD IMPORTANCE METHOD HERE", x)),
+        which(grepl("importance = function()", x)))]
+    } else {
+      add_str = c(add_str, "importance method")
+    }
+    if (!oob_error) {
+      x = x[-seq.int(
+        which(grepl("FIXME - ADD OOB_ERROR METHOD HERE", x)),
+        which(grepl("oob_error = function()", x)))]
+    } else {
+      add_str = c(add_str, "oob_error method")
+    }
+    if (!references) {
+      x = x[-seq.int(which(grepl("@references", x)), which(grepl("@references", x)) + 1)]
+    } else {
+      add_str = c(add_str, "references")
+    }
+    cat(x, file = file_name_lrn, sep = "\n")
   }
-  if (!oob_error) {
-    x = x[-seq.int(
-      which(grepl("FIXME - ADD OOB_ERROR METHOD HERE", x)),
-      which(grepl("oob_error = function()", x)))]
-  } else {
-    add_str = c(add_str, "oob_error method")
-  }
-  if (!references) {
-    x = x[-seq.int(which(grepl("@references", x)), which(grepl("@references", x)) + 1)]
-  } else {
-    add_str = c(add_str, "references")
-  }
-  cat(x, file = file_name_lrn, sep = "\n")
+
 
   # ADD TESTS
-  cat(sprintf("Creating %s tests from template.\n", paste(type, key, sep = "_")))
   file_name_test = file.path(path, "tests", "testthat", paste0("test_", type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "test_template.R"), to = file_name_test,
                 overwrite = FALSE)
   if (!x) {
-    utils::file.edit(file_name_test)
-    stopf("File %s already exists. Manually edit the file.", file_name_test)
+    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_test)
+  } else {
+    mlr3misc::catf("Creating %s tests from template.\n", paste(type, key, sep = "_"))
+    x = readLines(file_name_test)
+    x = gsub("<type>", type, x)
+    x = gsub("<Type>", Type, x)
+    x = gsub("<key>", key, x)
+    x = gsub("<Classname>", classname, x)
+    cat(x, file = file_name_test, sep = "\n")
   }
-  x = readLines(file_name_test)
-  x = gsub("<type>", type, x)
-  x = gsub("<Type>", Type, x)
-  x = gsub("<key>", key, x)
-  x = gsub("<Classname>", classname, x)
-  cat(x, file = file_name_test, sep = "\n")
 
   # ADD PARAM TESTS
-  cat(sprintf("Creating %s paramtests from template.\n", paste(type, key, sep = "_")))
   file_name_ptest = file.path(path, "inst", "paramtest", paste0("test_paramtest_", type, "_",
                                                                 key, ".R"))
   x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
                 overwrite = FALSE)
   if (!x) {
-    utils::file.edit(file_name_ptest)
-    stopf("File %s already exists. Manually edit the file.", file_name_ptest)
+    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_ptest)
+  } else {
+    mlr3misc::catf("Creating %s paramtests from template.\n", paste(type, key, sep = "_"))
+    x = readLines(file_name_ptest)
+    x = gsub("<type>", type, x)
+    x = gsub("<key>", key, x)
+    x = gsub("<package>", package, x)
+    x = gsub("<caller>", caller, x)
+    cat(x, file = file_name_ptest, sep = "\n")
   }
-  x = readLines(file_name_ptest)
-  x = gsub("<type>", type, x)
-  x = gsub("<key>", key, x)
-  x = gsub("<package>", package, x)
-  x = gsub("<caller>", caller, x)
-  cat(x, file = file_name_ptest, sep = "\n")
+
 
   # CREATE YAMLS
-  cat(sprintf("Creating %s YAML files from template.\n", paste(type, key, sep = "_")))
   file_name = file.path(path, ".github", "workflows", paste0("test_", key, ".yml"))
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
                 overwrite = FALSE)
   if (!x) {
-    utils::file.edit(file_name)
-    stopf("File %s already exists. Manually edit the file.", file_name)
+    messagef("Learner test YAML for {%s} already exists.", package)
+  } else {
+    mlr3misc::catf("Creating {%s} learner test YAML file from template.\n", package)
+    x = readLines(file_name)
+    x = gsub("<package>", package, x)
+    cat(x, file = file_name, sep = "\n")
   }
-  x = readLines(file_name)
-  x = gsub("<key>", key, x)
-  cat(x, file = file_name, sep = "\n")
+
 
   file_name = file.path(path, ".github", "workflows", paste0("paramtest_", key, ".yml"))
   x = file.copy(file.path(path, "templates", "paramtest_template.yml"), to = file_name,
                 overwrite = FALSE)
   if (!x) {
-    utils::file.edit(file_name)
-    stopf("File %s already exists. Manually edit the file.", file_name)
+    messagef("Parameter test YAML for {%s} already exists.", package)
+  } else {
+    mlr3misc::catf("Creating {%s} parameter test YAML file from template.\n", package)
+    x = readLines(file_name)
+    x = gsub("<package>", package, x)
+    cat(x, file = file_name, sep = "\n")
   }
-  x = readLines(file_name)
-  x = gsub("<key>", key, x)
-  cat(x, file = file_name, sep = "\n")
 
   # UPDATE DESCRIPTION
-  cat(sprintf("Adding %s to DESCRIPTION Suggests.\n\n", package))
   x = readLines(file.path(path, "DESCRIPTION"))
   if (!any(grepl(package, x))) {
+    mlr3misc::catf("Adding %s to DESCRIPTION Suggests.\n\n", package)
     x = gsub("testthat", paste0(c("testthat", package), collapse = ",\n    "), x)
+    cat(x, file = file.path(path, "DESCRIPTION"), sep = "\n")
+  } else {
+    messagef("{%s} already exists in DESCRIPTION.", package)
   }
-  cat(x, file = file.path(path, "DESCRIPTION"), sep = "\n")
 
   # UPDATE USER
-  cat(sprintf(
+  mlr3misc::catf(
     "Now manually do the following:
   1) For %s:
     a) Add .train and .predict private methods.
-    b) Check generated Learner file carefully.
+    b) Add param_set and if applicable param_vals.
+    c) Check generated Learner file carefully.
     %s.
   2) For %s:
     a) Check tests pass once learner is complete.
@@ -196,13 +201,14 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     b) styler::style_pkg(style = styler::mlr_style)
     c) usethis::use_tidy_description()
     d) lintr::lint_package()
-  5) Open a pull request to ",
-    file_name_lrn, ifelse(length(add_str), paste("c) Add", paste0(add_str, collapse = ", ")), ""),
-    file_name_test, file_name_ptest))
+  5) Open a pull request to https://github.com/mlr-org/mlr3extralearners/pulls with the new learner template.", # nolint
+    file_name_lrn, ifelse(length(add_str), paste("d) Add", paste0(add_str, collapse = ", ")), ""),
+    file_name_test, file_name_ptest)
 
 
   # OPEN FILES
-  utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
+  cat(file_name_lrn)
+  file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
 }
 
 #' @title List Learners in mlr3verse

@@ -23,10 +23,11 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = param_set
+      # FIXME - MANUALLY ADD PARAM_SET BELOW AND THEN DELETE THIS LINE
+      ps = <param_set>
 
-      # If you change any defaults for mlr3 compared to the underlying learner,
-      # specify them here.
+      # FIXME - MANUALLY UPDATE PARAM VALUES BELOW IF APPLICABLE THEN DELETE THIS LINE.
+      # OTHERWISE DELETE THIS AND LINE BELOW.
       ps$values = list(<param_vals>)
 
       super$initialize(
@@ -60,12 +61,12 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
 
-      # <Create objects for the train call
+      # FIXME - <Create objects for the train call
       # <At least "data" and "formula" are required>
       formula = task$formula()
       data = task$data()
 
-      # <here is space for some custom adjustments before proceeding to the
+      # FIXME - <here is space for some custom adjustments before proceeding to the
       # train call. Check other learners for what can be done here>
 
       # use the mlr3misc::invoke function (it's similar to do.call())
