@@ -6,10 +6,12 @@ I have...
 
 * [ ] Created a learner with the create_learner template or created one manually and it follows the identical layout.
 * [ ] Added `.train` and `.predict` private methods
+* [ ] Added `ParamSet` and if applicable `param_vals`
 * [ ] Changed learner parameter defaults and clearly documented the reason for this - !!!Delete if not applicable!!!
 * [ ] Added `importance` public method and completed the documentation for this - !!!Delete if not applicable!!!
 * [ ] Added `oob_error` public method and completed the documentation for this - !!!Delete if not applicable!!!
 * [ ] Added references and not left the tag blank - !!!Delete if not applicable!!!
+* [ ] Removed all 'FIXME's
 
 # Dependencies
 
