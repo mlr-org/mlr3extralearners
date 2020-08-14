@@ -39,6 +39,16 @@ lrn("surv.gbm")
 }
 }
 
+\section{Traits}{
+
+\itemize{
+\item Packages: gbm
+\item Predict Types: crank, lp
+\item Feature Types: integer, numeric, factor, ordered
+\item Properties: importance, missings, weights
+}
+}
+
 \examples{
 if (mlr3misc::require_namespaces(c("gbm"))) {
   learner = mlr3::lrn("surv.gbm")

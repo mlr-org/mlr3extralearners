@@ -4,7 +4,10 @@
 #'
 #' @description
 #' Random forest learner.
-#' \CRANpkg{randomForest} from package {randomForest}.
+#' Calls [randomForest::randomForest()] from package \CRANpkg{randomForest}.
+#'
+#' @templateVar id classif.randomForest
+#' @template class_learner
 #'
 #' @references
 #' Breiman, L. (2001).
@@ -13,6 +16,8 @@
 #' \url{https://doi.org/10.1023/A:1010933404324}
 #'
 #' @export
+#' @template seealso_learner
+#' @template example
 LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
   inherit = LearnerClassif,
 

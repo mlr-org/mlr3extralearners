@@ -8,7 +8,7 @@
 #' Calls [<package>::<caller>()].
 #'
 #' @templateVar id <type>.<key>
-#' @template section_dictionary_learner
+#' @template class_learner
 #'
 #' @references
 #' <OPTIONAL - DELETE THIS AND LINE ABOVE IF OMITTED>

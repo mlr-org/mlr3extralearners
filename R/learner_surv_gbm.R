@@ -21,7 +21,7 @@
 #'   - Reason for change: Suppressing the automatic internal parallelization if
 #'     `cv.folds` > 0.
 #' @templateVar id surv.gbm
-#' @template section_dictionary_learner
+#' @template class_learner
 #'
 #' @export
 #' @template seealso_learner

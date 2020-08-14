@@ -18,7 +18,7 @@
 #'     `cv.folds` > 0.
 #'
 #' @templateVar id classif.gbm
-#' @template section_dictionary_learner
+#' @template class_learner
 #'
 #' @export
 #' @template seealso_learner

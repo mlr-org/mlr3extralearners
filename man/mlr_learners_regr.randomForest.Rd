@@ -6,13 +6,44 @@
 \title{Regression Random Forest Learner}
 \description{
 Random forest learner.
-\CRANpkg{randomForest} from package {randomForest}.
+Calls \code{\link[randomForest:randomForest]{randomForest::randomForest()}} from package \CRANpkg{randomForest}.
+}
+\section{Dictionary}{
+ This \link{Learner} can be instantiated via the
+\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
+sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.randomForest")
+lrn("regr.randomForest")
+}
+}
+
+\section{Traits}{
+
+\itemize{
+\item Packages: randomForest
+\item Predict Types: response
+\item Feature Types: integer, numeric, factor, ordered
+\item Properties: importance, oob_error, weights
+}
+}
+
+\examples{
+if (mlr3misc::require_namespaces(c("randomForest"))) {
+  learner = mlr3::lrn("regr.randomForest")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Breiman, L. (2001).
 Random Forests
 Machine Learning
 \url{https://doi.org/10.1023/A:1010933404324}
+}
+\seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
+\link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrRandomForest}

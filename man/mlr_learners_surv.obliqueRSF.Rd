@@ -17,6 +17,16 @@ lrn("surv.obliqueRSF")
 }
 }
 
+\section{Traits}{
+
+\itemize{
+\item Packages: obliqueRSF, pracma
+\item Predict Types: crank, distr
+\item Feature Types: integer, numeric, factor, ordered
+\item Properties: missings, oob_error
+}
+}
+
 \section{Custom mlr3 defaults}{
 
 \itemize{

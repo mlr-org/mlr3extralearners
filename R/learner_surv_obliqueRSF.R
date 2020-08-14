@@ -8,7 +8,7 @@
 #' Calls [obliqueRSF::ORSF()].
 #'
 #' @templateVar id surv.obliqueRSF
-#' @template section_dictionary_learner
+#' @template class_learner
 #'
 #' @section Custom mlr3 defaults:
 #' - `verbose`:
