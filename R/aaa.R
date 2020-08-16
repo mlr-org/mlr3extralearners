@@ -10,7 +10,7 @@ lrn = function(.key, ...) {
   # FIXME - currently just discards .key if not in dictionary
   pkgs = as.character(unlist(list_mlr3learners(
     filter = list(id = .key),
-    select = "required_package")))
+    select = "required_packages")))
   tryCatch(mlr3misc::require_namespaces(pkgs),
     packageNotFoundError = function(e) {
       mlr3misc::stopf('Required packages not installed, please run `install_learners("%s")`.', .key)
