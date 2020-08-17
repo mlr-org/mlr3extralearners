@@ -1,6 +1,7 @@
 #' @title Classification Gradient Boosting Machine Learner
 #'
 #' @name mlr_learners_classif.gbm
+#' @author be-marc
 #'
 #' @description
 #' Classification gradient boosting machine models.

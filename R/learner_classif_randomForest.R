@@ -1,4 +1,5 @@
 #' @title Classification Random Forest Learner
+#' @author pat-s
 #'
 #' @name mlr_learners_classif.randomForest
 #'

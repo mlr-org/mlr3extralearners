@@ -45,6 +45,9 @@ Machine Learning
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
 \link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
+\author{
+pat-s
+}
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrRandomForest}
 }

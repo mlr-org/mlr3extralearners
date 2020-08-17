@@ -1,4 +1,5 @@
 #' @title Regression Random Forest Learner
+#' @author pat-s
 #'
 #' @name mlr_learners_regr.randomForest
 #'

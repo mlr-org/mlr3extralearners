@@ -1,6 +1,7 @@
 #' @title Survival Oblique Random Survival Forest Learner
 #'
 #' @name mlr_learners_surv.obliqueRSF
+#' @author RaphaelS1
 #'
 #' @description
 #' A [mlr3proba::LearnerSurv] implementing obliqueRSF from package

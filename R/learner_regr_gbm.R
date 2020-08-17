@@ -1,4 +1,5 @@
 #' @title Regression Gradient Boosting Machine Learner
+#' @author be-marc
 #'
 #' @name mlr_learners_regr.gbm
 #'

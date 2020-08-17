@@ -1,4 +1,5 @@
 #' @title Survival Gradient Boosting Machine Learner
+#' @author RaphaelS1
 #'
 #' @name mlr_learners_surv.gbm
 #'

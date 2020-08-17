@@ -62,6 +62,9 @@ if (mlr3misc::require_namespaces(c("gbm"))) {
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
 \link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
+\author{
+RaphaelS1
+}
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvGBM}
 }
