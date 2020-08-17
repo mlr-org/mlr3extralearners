@@ -38,6 +38,7 @@ Suggests:
     logspline,
     mboost,
     mlr3learners,
+    mvtnorm,
     np,
     obliqueRSF,
     partykit,
