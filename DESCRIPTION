@@ -27,6 +27,7 @@ Suggests:
     gbm,
     gss,
     kerdiest,
+    kernlab,
     ks,
     locfit,
     logspline,
