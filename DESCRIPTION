@@ -39,7 +39,7 @@ Suggests:
     plugdensity,
     pracma,
     randomForest,
-    set6,
+    randomForestSRC,
     sm,
     survivalsvm,
     testthat
