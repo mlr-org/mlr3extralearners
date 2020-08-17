@@ -26,6 +26,7 @@ Suggests:
     gbm,
     gss,
     kerdiest,
+    ks,
     locfit,
     logspline,
     mboost,
