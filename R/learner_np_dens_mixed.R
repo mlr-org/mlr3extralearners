@@ -1,6 +1,7 @@
 #' @title Density Mixed Data Kernel Learner
 #' @author RaphaelS1
 #' @name mlr_learners_dens.mixed
+#'
 #' @template class_learner
 #' @templateVar id dens.mixed
 #' @templateVar caller npudens

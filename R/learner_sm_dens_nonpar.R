@@ -1,5 +1,4 @@
 #' @title Density Nonparametric Learner
-#'
 #' @name mlr_learners_dens.nonpar
 #' @author RaphaelS1
 #'
