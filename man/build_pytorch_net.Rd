@@ -46,9 +46,9 @@ to all layers.}
 \code{reticulate::py_help(torch$nn$BatchNorm1d)}.}
 
 \item{init}{\code{(character(1))}\cr Weight initialization method. See
-\link{get_init} for options.}
+\link{get_pycox_init} for options.}
 
-\item{init_pars}{\code{(list())}\cr Passed to \link{get_init}.}
+\item{init_pars}{\code{(list())}\cr Passed to \link{get_pycox_init}.}
 }
 \description{
 Utility function to build an MLP with a choice of activation function and weight

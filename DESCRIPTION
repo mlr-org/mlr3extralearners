@@ -4,8 +4,9 @@ Version: 0.0.1.9000
 Authors@R:
     person(given = "Raphael",
            family = "Sonabend",
-           role = "cre",
-           email = "raphael.sonabend.15@ucl.ac.uk")
+           role = c("aut", "cre"),
+           email = "raphael.sonabend.15@ucl.ac.uk",
+           comment = c(ORCID = "0000-0001-9225-4654"))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
@@ -17,6 +18,7 @@ Imports:
     mlr3proba (>= 0.2.0.9000),
     paradox,
     R6,
+    Rcpp (>= 1.0.4),
     survival
 Suggests:
     C50,
@@ -27,6 +29,7 @@ Suggests:
     FNN,
     gbm,
     gss,
+    keras (>= 2.3.0),
     kerdiest,
     kernlab,
     ks,
@@ -42,16 +45,20 @@ Suggests:
     pendensity,
     plugdensity,
     pracma,
+    pseudo,
     randomForest,
     randomForestSRC,
-    reticulate,
+    reticulate (>= 1.16),
     RWeka,
     sm,
     survivalsvm,
+    tensorflow (>= 2.0.0),
     testthat
+LinkingTo: 
+    Rcpp
 Remotes:
     mlr-org/mlr3proba
 Encoding: UTF-8
 NeedsCompilation: no
-Roxygen: list(markdown = TRUE)
+Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.1.0

@@ -45,7 +45,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
             default = "None", special_vals = list("None"),
             lower = 0, upper = 1, tags = c("train", "net")),
           ParamFct$new("activation",
-            default = "relu", levels = activations,
+            default = "relu", levels = pycox_activations,
             tags = c("train", "act")),
           ParamDbl$new("alpha", default = 1, lower = 0, tags = c("train", "opt")),
           ParamDbl$new("lambd", default = 0.5, lower = 0, tags = c("train", "opt")),
@@ -54,7 +54,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
           ParamUty$new("device", tags = c("train", "mod")),
           ParamUty$new("loss", tags = c("train", "mod")),
           ParamFct$new("optimizer",
-            default = "adam", levels = optimizers,
+            default = "adam", levels = pycox_optimizers,
             tags = c("train", "opt")),
           ParamDbl$new("rho", default = 0.9, tags = c("train", "opt")),
           ParamDbl$new("eps", default = 1e-8, tags = c("train", "opt")),
@@ -89,12 +89,13 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
       )
 
       ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("eps", "optimizer", CondAnyOf$new(setdiff(optimizers, c("asgd", "rprop", "sgd"))))
+      ps$add_dep("eps", "optimizer", CondAnyOf$new(setdiff(pycox_optimizers,
+                                                           c("asgd", "rprop", "sgd"))))
       ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep(
         "weight_decay", "optimizer",
-        CondAnyOf$new(setdiff(optimizers, c("rprop", "sparse_adam"))))
-      ps$add_dep("learning_rate", "optimizer", CondAnyOf$new(setdiff(optimizers, "adadelta")))
+        CondAnyOf$new(setdiff(pycox_optimizers, c("rprop", "sparse_adam"))))
+      ps$add_dep("learning_rate", "optimizer", CondAnyOf$new(setdiff(pycox_optimizers, "adadelta")))
       ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
       ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
@@ -149,7 +150,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
           torchtuples$practical$MLPVanilla,
           in_features = x_train$shape[1],
           num_nodes = reticulate::r_to_py(as.integer(pars$num_nodes)),
-          activation = mlr3misc::invoke(get_activation,
+          activation = mlr3misc::invoke(get_pycox_activation,
             construct = FALSE,
             .args = self$param_set$get_values(tags = "act")),
           out_features = data$labtrans$out_features,
@@ -167,7 +168,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
         net = net,
         duration_index = data$labtrans$cuts,
         loss = pycox$models$loss$NLLPCHazardLoss(),
-        optimizer = mlr3misc::invoke(get_optim,
+        optimizer = mlr3misc::invoke(get_pycox_optim,
           net = net,
           .args = self$param_set$get_values(tags = "opt")),
         .args = pars

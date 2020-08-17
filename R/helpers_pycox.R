@@ -152,7 +152,7 @@ prepare_train_data = function(task, frac = 0, standardize_time = FALSE, log_dura
   return(ret)
 }
 
-activations = c(
+pycox_activations = c(
   "celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
   "hardtanh", "relu6", "leakyrelu", "logsigmoid", "logsoftmax",
   "prelu", "rrelu", "relu", "selu", "sigmoid",
@@ -208,7 +208,7 @@ activations = c(
 #' * `"tanhshrink"` \cr `reticulate::py_help(torch$nn$modules$activation$Tanhshrink)`
 #' * `"threshold"` \cr `reticulate::py_help(torch$nn$modules$activation$Threshold)`
 #' @export
-get_activation = function(activation = "relu", construct = TRUE, alpha = 1, dim = NULL, lambd = 0.5,
+get_pycox_activation = function(activation = "relu", construct = TRUE, alpha = 1, dim = NULL, lambd = 0.5,
   min_val = -1, max_val = 1, negative_slope = 0.01,
   num_parameters = 1L, init = 0.25, lower = 1 / 8, upper = 1 / 3,
   beta = 1, threshold = 20, value = 20) {
@@ -275,7 +275,7 @@ get_activation = function(activation = "relu", construct = TRUE, alpha = 1, dim 
   }
 }
 
-optimizers = c(
+pycox_optimizers = c(
   "adadelta", "adagrad", "adam", "adamax", "adamw", "asgd",
   "rmsprop", "rprop", "sgd", "sparse_adam")
 
@@ -313,7 +313,7 @@ optimizers = c(
 #' * `"sparse_adam"` \cr `reticulate::py_help(torch$optim$SparseAdam)`
 #'
 #' @export
-get_optim = function(optimizer = "adam", net, rho = 0.9, eps = 1e-8, lr = 1,
+get_pycox_optim = function(optimizer = "adam", net, rho = 0.9, eps = 1e-8, lr = 1,
   weight_decay = 0, learning_rate = 1e-2, lr_decay = 0,
   betas = c(0.9, 0.999), amsgrad = FALSE,
   lambd = 1e-4, alpha = 0.75, t0 = 1e6,
@@ -340,7 +340,7 @@ get_optim = function(optimizer = "adam", net, rho = 0.9, eps = 1e-8, lr = 1,
   )
 }
 
-initializers = c(
+pycox_initializers = c(
   "uniform", "normal", "constant", "xavier_uniform", "xavier_normal",
   "kaiming_uniform", "kaiming_normal", "orthogonal")
 
@@ -372,7 +372,7 @@ initializers = c(
 #' * `"orthogonal"` \cr `reticulate::py_help(torch$nn$init$orthogonal_)`
 #'
 #' @export
-get_init = function(init = "uniform", a = 0, b = 1, mean = 0, std = 1, val, gain = 1,
+get_pycox_init = function(init = "uniform", a = 0, b = 1, mean = 0, std = 1, val, gain = 1,
   mode = c("fan_in", "fan_out"), non_linearity = c("leaky_relu", "relu")) {
   switch(init,
     uniform = paste0("torch.nn.init.uniform_(m.weight, ", a, ", ", b, ")"),
@@ -436,8 +436,8 @@ install_torch <- function(method = "auto", conda = "auto", pip = FALSE) {
 #' @param batch_pars `(list())`\cr Parameters for batch normalisation, see
 #' `reticulate::py_help(torch$nn$BatchNorm1d)`.
 #' @param init `(character(1))`\cr Weight initialization method. See
-#' [get_init] for options.
-#' @param init_pars `(list())`\cr Passed to [get_init].
+#' [get_pycox_init] for options.
+#' @param init_pars `(list())`\cr Passed to [get_pycox_init].
 #'
 #' @examples
 #' build_pytorch_net(10, 1)
@@ -517,7 +517,7 @@ build_pytorch_net = function(n_in, n_out,
     }
   }
 
-  init = mlr3misc::invoke(get_init, init = init, .args = init_pars)
+  init = mlr3misc::invoke(get_pycox_init, init = init, .args = init_pars)
   reticulate::py_run_string(
     paste0(
       "import torch
