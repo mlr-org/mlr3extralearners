@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("classif.mob")
 
 test_that("classif.mob", {
   learner = lrn("classif.mob")

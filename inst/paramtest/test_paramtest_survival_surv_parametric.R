@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("surv.parametric")
 
 test_that("surv.parametric", {
   learner = lrn("surv.parametric")

@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("classif.PART")
 
 test_that("classif.PART", {
   learner = lrn("classif.PART")

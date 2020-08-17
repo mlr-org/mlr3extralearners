@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("regr.ctree")
 
 test_that("regr.ctree", {
   learner = lrn("regr.ctree")

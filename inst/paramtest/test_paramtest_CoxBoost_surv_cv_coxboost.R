@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("surv.cv_coxboost")
 
 test_that("surv.cv_coxboost", {
   learner = lrn("surv.cv_coxboost")

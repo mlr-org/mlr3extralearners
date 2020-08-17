@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("classif.liblinearmulticlasssvc")
 
 test_that("classif.liblinearmulticlasssvc", {
   learner = lrn("classif.liblinearmulticlasssvc")

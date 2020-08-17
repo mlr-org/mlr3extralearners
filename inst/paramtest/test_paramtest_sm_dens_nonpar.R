@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("dens.nonpar")
 
 test_that("dens.nonpar", {
   learner = lrn("dens.nonpar")

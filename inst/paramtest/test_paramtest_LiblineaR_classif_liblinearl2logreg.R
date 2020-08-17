@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("classif.liblinearl2logreg")
 
 test_that("classif.liblinearl2logreg", {
   learner = lrn("classif.liblinearl2logreg")

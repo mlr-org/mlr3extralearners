@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("dens.spline")
 
 test_that("dens.spline", {
   learner = lrn("dens.spline")

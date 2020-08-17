@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("regr.IBk")
 
 test_that("regr.IBk", {
   learner = lrn("regr.IBk")

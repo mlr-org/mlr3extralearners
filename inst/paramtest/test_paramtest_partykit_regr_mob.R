@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("regr.mob")
 
 test_that("regr.mob", {
   learner = lrn("regr.mob")

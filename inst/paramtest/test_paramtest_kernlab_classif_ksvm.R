@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("classif.ksvm")
 
 test_that("classif.ksvm", {
   learner = lrn("classif.ksvm")

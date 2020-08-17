@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("regr.liblinearl2l2svr")
 
 test_that("regr.liblinearl2l2svr", {
   learner = lrn("regr.liblinearl2l2svr")

@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("dens.locfit")
 
 test_that("dens.locfit", {
   learner = lrn("dens.locfit")

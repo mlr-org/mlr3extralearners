@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install_learners("regr.ksvm")
 
 test_that("regr.ksvm", {
   learner = lrn("regr.ksvm")
