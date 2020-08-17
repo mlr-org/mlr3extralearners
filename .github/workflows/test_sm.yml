@@ -1,0 +1,137 @@
+on:
+  push:
+    branches: master
+    paths: '**/sm**'
+  pull_request:
+    branches: master
+    paths: '**/sm**'
+  # for now, CRON jobs only run on the default branch of the repo (i.e. usually on master)
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "0 4 * * *"
+
+name: sm (macOS-latest, release)
+
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.env.TEST }} Test
+
+    strategy:
+      matrix:
+        env:
+          - { test: "Learner"}
+          - { test: "Param"}
+        config:
+          - { os: macOS-latest, r: "release" }       
+
+    env:
+      PKG: sm
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      CRAN: ${{ matrix.config.cran }}
+      # prevent rgl issues because no X11 display is available
+      RGL_USE_NULL: true
+      # if you use bookdown or blogdown, replace "PKGDOWN" by the respective
+      # capitalized term. This also might need to be done in tic.R
+      BUILD_PKGDOWN: ${{ matrix.config.pkgdown }}
+      # macOS >= 10.15.4 linking
+      SDKROOT: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+      # use GITHUB_TOKEN from GitHub to workaround rate limits in {remotes}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      TEST: ${{ matrix.env.test }}
+      
+    steps:
+      - uses: actions/checkout@v2.2.0
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+          Ncpus: 4
+
+      # LaTeX. Installation time:
+      # Linux: ~ 1 min
+      # macOS: ~ 1 min 30s
+      # Windows: never finishes
+      - uses: r-lib/actions/setup-tinytex@master
+        if: runner.os != 'Windows'
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      # set date/week for use in cache creation
+      # https://github.community/t5/GitHub-Actions/How-to-set-and-access-a-Workflow-variable/m-p/42970
+      # - cache R packages daily
+      # - cache ccache weekly -> 'ccache' helps rebuilding the package cache faster
+      - name: "[Cache] Prepare daily timestamp for cache"
+        if: runner.os != 'Windows'
+        id: date
+        run: echo "::set-output name=date::$(date '+%d-%m')"
+
+      - name: "[Cache] Prepare weekly timestamp for cache"
+        if: runner.os != 'Windows'
+        id: datew
+        run: echo "::set-output name=datew::$(date '+%Y-%V')"
+
+      - name: "[Cache] Cache R packages"
+        if: runner.os != 'Windows'
+        uses: pat-s/always-upload-cache@v2.0.0
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+
+  #    - name: "[Cache] Cache ccache"
+  #      if: runner.os != 'Windows'
+  #      uses: pat-s/always-upload-cache@v2.0.0
+  #      with:
+  #        path: ${{ env.CCACHE_DIR}}
+  #        key: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
+  #        restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-ccache-${{steps.datew.outputs.datew}}
+
+      # install ccache and write config file
+    #  - name: "[Linux] ccache"
+    #    if: runner.os == 'Linux'
+    #    run: |
+    #      sudo apt install ccache libcurl4-openssl-dev
+    #      mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
+      # for some strange Windows reason this step and the next one need to be decoupled
+      - name: "[Stage] Prepare"
+        run: |
+          Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
+          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
+      - name: "[Stage] Install"
+        if: matrix.config.os != 'macOS-latest' || matrix.config.r != 'devel'
+        run: Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+
+      # macOS devel needs its own stage because we need to work with an options to suppress the usage of binaries
+      - name: "[Stage] Prepare & Install (macOS-devel)"
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'devel'
+        run: |
+          echo -e 'options(pkgType = "source", repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
+          Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+    
+      - name: "[Stage] Script"
+        run: |
+          R CMD INSTALL .
+          Rscript -e "tic::script()"
+       # run: Rscript -e 'tic::script()'
+
+      - name: "[Stage] Upload R CMD check artifacts"
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-r${{ matrix.env.pkg }}-results
+          path: check
+
+      - name: "[Stage] Before Deploy"
+        if: matrix.config.r != 'devel'
+        run: |
+          Rscript -e "tic::before_deploy()"
+          
+      - name: "[Stage] Deploy"
+        if: matrix.config.r != 'devel'
+        run: Rscript -e "tic::deploy()"
+
+      - name: "[Stage] After Deploy"
+        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
+        run: Rscript -e "tic::after_deploy()"

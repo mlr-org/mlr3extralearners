@@ -32,6 +32,7 @@ Suggests:
     pracma,
     randomForest,
     set6,
+    sm,
     testthat
 Remotes:
     mlr-org/mlr3proba
