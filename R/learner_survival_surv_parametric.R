@@ -212,7 +212,7 @@ predict_survreg = function(object, task, type = "aft") {
                      },
                      cdf = function() {
                      },
-                     parameters = ParameterSet$new()
+                     parameters = distr6::ParameterSet$new()
   ))
 
   params = rep(params, length(lp))
