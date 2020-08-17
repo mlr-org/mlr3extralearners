@@ -24,6 +24,7 @@ Suggests:
     flexsurv,
     FNN,
     gbm,
+    gss,
     locfit,
     mboost,
     mlr3learners,
