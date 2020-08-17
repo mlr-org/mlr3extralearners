@@ -21,6 +21,8 @@ Imports:
 Suggests:
     checkmate,
     gbm,
+    locfit,
+    mboost,
     mlr3learners,
     obliqueRSF,
     pracma,
