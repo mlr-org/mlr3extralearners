@@ -21,6 +21,7 @@ Imports:
 Suggests:
     C50,
     checkmate,
+    CoxBoost,
     flexsurv,
     FNN,
     gbm,
