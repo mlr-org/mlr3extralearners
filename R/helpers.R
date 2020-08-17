@@ -26,7 +26,8 @@ pkg_root = function(path = ".") {
 create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
                           package = tolower(classname), caller,
                           feature_types, predict_types, properties = NULL,
-                          importance = FALSE, oob_error = FALSE, references = FALSE) {
+                          importance = FALSE, oob_error = FALSE, references = FALSE,
+                          gh_name) {
 
   path = pkg_root(pkg)
 
@@ -43,6 +44,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   algorithm = toproper(checkmate::assert_character(algorithm, len = 1))
   classname = toproper(checkmate::assert_character(classname, len = 1))
   checkmate::assert_character(caller, len = 1)
+  checkmate::assert_character(gh_name, len = 1)
 
   checkmate::assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
   checkmate::assert_subset(predict_types,
@@ -76,6 +78,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     x = gsub("<package>", package, x)
     x = gsub("<caller>", caller, x)
     x = gsub("<Classname>", classname, x)
+    x = gsub("<gh_name>", gh_name, x)
     x = gsub("<feature_types>", paste0(feature_types, collapse = '", "'), x)
     x = gsub("<predict_types>", paste0(predict_types, collapse = '", "'), x)
     if (length(properties)) {

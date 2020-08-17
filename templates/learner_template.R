@@ -1,5 +1,5 @@
 #' @title <Type_lng> <algorithm> Learner
-#'
+#' @author <gh_name>
 #' @name mlr_learners_<type>.<key>
 #'
 #' @template class_learner
