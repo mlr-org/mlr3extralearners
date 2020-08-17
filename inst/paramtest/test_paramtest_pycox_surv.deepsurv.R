@@ -25,7 +25,7 @@ test_that("surv.deepsurv prepare_train_data", {
 
 test_that("surv.deepsurv get_activation", {
   learner = lrn("surv.deepsurv")
-  fun = get_activation
+  fun = get_pycox_activation
   exclude = c(
     "construct", # handled internally
     "dim", # unused
@@ -48,7 +48,7 @@ test_that("surv.deepsurv get_activation", {
 
 test_that("surv.deepsurv get_optim", {
   learner = lrn("surv.deepsurv")
-  fun = get_optim
+  fun = get_pycox_optim
   exclude = c(
     "net" # handled internally
   )

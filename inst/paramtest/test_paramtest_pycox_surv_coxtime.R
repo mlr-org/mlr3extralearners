@@ -21,7 +21,7 @@ test_that("surv.coxtime prepare_train_data", {
 
 test_that("surv.coxtime get_activation", {
   learner = lrn("surv.coxtime")
-  fun = get_activation
+  fun = get_pycox_activation
   exclude = c(
     "construct", # handled internally
     "dim", # unused
@@ -44,7 +44,7 @@ test_that("surv.coxtime get_activation", {
 
 test_that("surv.coxtime get_optim", {
   learner = lrn("surv.coxtime")
-  fun = get_optim
+  fun = get_pycox_optim
   exclude = c(
     "net" # handled internally
   )
