@@ -114,7 +114,7 @@ print.akritas <- function(x, ...) {
   cat("\nAkritas Estimator\n\n")
   cat("Call:\n ", deparse(x$call))
   cat("\n\nResponse:\n  Surv(", paste0(colnames(x$y), collapse = ", "), ")\n", sep = "")
-  cat("Features:\n ", setcollapse(x$xnames), "\n")
+  cat("Features:\n ", setcollapse(x$xnames), "\n") # nolint
 }
 
 #' @export
