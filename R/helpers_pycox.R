@@ -208,8 +208,8 @@ pycox_activations = c(
 #' * `"tanhshrink"` \cr `reticulate::py_help(torch$nn$modules$activation$Tanhshrink)`
 #' * `"threshold"` \cr `reticulate::py_help(torch$nn$modules$activation$Threshold)`
 #' @export
-get_pycox_activation = function(activation = "relu", construct = TRUE, alpha = 1, dim = NULL, lambd = 0.5,
-  min_val = -1, max_val = 1, negative_slope = 0.01,
+get_pycox_activation = function(activation = "relu", construct = TRUE, alpha = 1, dim = NULL,
+  lambd = 0.5, min_val = -1, max_val = 1, negative_slope = 0.01,
   num_parameters = 1L, init = 0.25, lower = 1 / 8, upper = 1 / 3,
   beta = 1, threshold = 20, value = 20) {
   act = torch$nn$modules$activation
@@ -447,12 +447,10 @@ install_torch <- function(method = "auto", conda = "auto", pip = FALSE) {
 #'   act_pars = list(alpha = 0.5), dropout = c(0.2, 0.1, 0.6),
 #'   batch_norm = TRUE, init = "kaiming_normal", init_pars = list(non_linearity = "relu"))
 #' @export
-build_pytorch_net = function(n_in, n_out,
-                             nodes = c(32, 32), activation = "relu",
-                             act_pars = list(), dropout = 0.1,
-                             bias = TRUE, batch_norm = TRUE, batch_pars = list(
-                               eps = 1e-5,
-                               momentum = 0.1, affine = TRUE), init = "uniform", init_pars = list()) {
+build_pytorch_net = function(n_in, n_out, nodes = c(32, 32), activation = "relu",
+                             act_pars = list(), dropout = 0.1,  bias = TRUE, batch_norm = TRUE,
+                             batch_pars = list(eps = 1e-5, momentum = 0.1, affine = TRUE),
+                             init = "uniform", init_pars = list()) {
 
   nodes = as.integer(nodes)
   n_in = as.integer(n_in)

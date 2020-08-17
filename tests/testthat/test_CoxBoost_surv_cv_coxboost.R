@@ -4,7 +4,7 @@ test_that("autotest", {
   set.seed(1)
   learner = lrn("surv.cv_coxboost", maxstepno = 1, K = 2)
   expect_learner(learner)
-  result = run_autotest(learner, N = 10,check_replicable = FALSE)
+  result = run_autotest(learner, N = 10, check_replicable = FALSE)
   expect_true(result, info = result$error)
 })
 
