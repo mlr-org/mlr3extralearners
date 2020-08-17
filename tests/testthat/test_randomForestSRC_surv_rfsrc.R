@@ -1,20 +1,5 @@
 install_learners("surv.rfsrc")
 
-test_that("importance/selected", {
-  set.seed(1)
-  task = tsk("rats")
-  learner = lrn("surv.rfsrc", estimator = "kaplan")
-  learner$train(task)
-  expect_error(learner$importance(), "Set 'importance'")
-  expect_error(learner$selected_features(), "Set 'var.used'")
-  learner = lrn("surv.rfsrc",
-                estimator = "nelson", var.used = "all.trees",
-                importance = "random")$train(task)
-  expect_silent(learner$selected_features())
-  expect_silent(learner$importance())
-  expect_silent(learner$oob_error())
-})
-
 test_that("autotest", {
   learner = lrn("surv.rfsrc")
   learner$param_set$values = insert_named(
@@ -24,4 +9,19 @@ test_that("autotest", {
   set.seed(1)
   result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
+})
+
+test_that("importance/selected", {
+  set.seed(1)
+  task = tsk("rats")
+  learn = LearnerSurvRandomForestSRC$new()
+  learn$param_set$values = list(estimator = "kaplan")
+  learn$train(task)
+  expect_error(learn$importance(), "Set 'importance'")
+  expect_error(learn$selected_features(), "Set 'var.used'")
+  learn$param_set$values = list(estimator = "nelson", var.used = "all.trees", importance = "random")
+  learn$train(task)
+  expect_silent(learn$selected_features())
+  expect_silent(learn$importance())
+  expect_silent(learn$oob_error())
 })
