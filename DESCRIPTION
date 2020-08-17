@@ -36,6 +36,7 @@ Suggests:
     mlr3learners,
     np,
     obliqueRSF,
+    partykit,
     penalized,
     pendensity,
     plugdensity,
