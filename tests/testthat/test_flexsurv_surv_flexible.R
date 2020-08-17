@@ -13,8 +13,8 @@ test_that("autotest", {
 
 task = tsk("rats")
 test_that("manualtest", {
-  set.seed(15)
-  learn = lrn("surv.flexible")
+  set.seed(1)
+  learn = lrn("surv.flexible", k = 1, scale = "normal", inits = c(1, 1, 1))
   learn$train(task)
   p = learn$predict(task)
   # Comparison to flexsurv
