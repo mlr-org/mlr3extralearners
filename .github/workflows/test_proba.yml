@@ -115,13 +115,13 @@ jobs:
           Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "reticulate::install_miniconda()"
           Rscript -e "remotes::install_local()"
+          Rscript -e "install.packages('keras')"
           Rscript -e "keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))"
 
       - name: "[Stage] Script"
         run: |
           R CMD INSTALL .
           Rscript -e "tic::script()"
-       # run: Rscript -e 'tic::script()'
 
       - name: "[Stage] Upload R CMD check artifacts"
         if: failure()
