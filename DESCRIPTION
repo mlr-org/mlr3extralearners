@@ -26,6 +26,7 @@ Suggests:
     gbm,
     gss,
     locfit,
+    logspline,
     mboost,
     mlr3learners,
     obliqueRSF,
