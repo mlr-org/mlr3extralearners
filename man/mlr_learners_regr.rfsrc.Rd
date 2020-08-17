@@ -36,7 +36,7 @@ if (mlr3misc::require_namespaces(c("randomForestSRC"))) {
 }
 \references{
 Breiman L (2001). “Random Forests.”
-Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: 10.1023/A:1010933404324.
+Machine Learning, 45(1), 5–32. ISSN 1573-0565, \doi{10.1023/A:1010933404324}
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
