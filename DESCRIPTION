@@ -29,6 +29,7 @@ Suggests:
     logspline,
     mboost,
     mlr3learners,
+    np,
     obliqueRSF,
     penalized,
     pendensity,
