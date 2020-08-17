@@ -19,6 +19,7 @@ Imports:
     R6,
     survival
 Suggests:
+    C50,
     checkmate,
     flexsurv,
     FNN,
