@@ -41,5 +41,3 @@ test_that("dropout", {
   expect_silent(learner$train(task))
   expect_prediction_surv(learner$predict(task))
 })
-
-
