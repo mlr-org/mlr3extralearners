@@ -38,7 +38,7 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
 
       super$initialize(
         id = "dens.pen",
-        packages = c("pendensity", "set6"),
+        packages = "pendensity",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,

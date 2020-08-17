@@ -39,7 +39,7 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
 
       super$initialize(
         id = "dens.nonpar",
-        packages = c("sm", "set6"),
+        packages = "sm",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = "pdf",
         param_set = ps,

@@ -37,7 +37,7 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
 
       super$initialize(
         id = "dens.logspline",
-        packages = c("logspline", "set6"),
+        packages = "logspline",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
