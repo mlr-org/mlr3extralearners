@@ -1,7 +1,6 @@
 #' @title Classification C5.0 Learner
 #' @author henrifnk
 #' @name mlr_learners_classif.C50
-#'
 #' @template class_learner
 #' @templateVar id classif.C50
 #' @templateVar caller C5.0

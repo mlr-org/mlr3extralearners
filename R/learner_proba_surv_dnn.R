@@ -1,7 +1,6 @@
 #' @title Survival DNNSurv Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.dnn
-#'
 #' @template class_learner_custom
 #' @templateVar id surv.dnn
 #'

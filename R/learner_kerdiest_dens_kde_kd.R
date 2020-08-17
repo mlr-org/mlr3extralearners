@@ -1,7 +1,6 @@
 #' @title Density Kerdiest Kernel Learner
 #' @author RaphaelS1
 #' @name mlr_learners_dens.kde_kd
-#'
 #' @template class_learner
 #' @templateVar id dens.kde_kd
 #' @templateVar caller kde

@@ -1,7 +1,6 @@
 #' @title Survival Cox Model with Likelihood Based Boosting Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.coxboost
-#'
 #' @template class_learner
 #' @templateVar id surv.coxboost
 #' @templateVar caller CoxBoost

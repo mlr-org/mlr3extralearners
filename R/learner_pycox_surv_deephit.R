@@ -1,7 +1,6 @@
 #' @title Survival DeepHit Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.deephit
-#'
 #' @template class_learner_reticulate
 #' @templateVar id surv.deephit
 #' @templateVar caller pycox.models.DeepHitSingle

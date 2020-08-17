@@ -1,7 +1,6 @@
 #' @title Density Logspline Learner
 #' @author RaphaelS1
 #' @name mlr_learners_dens.logspline
-#'
 #' @template class_learner
 #' @templateVar id dens.logspline
 #' @templateVar caller logspline
