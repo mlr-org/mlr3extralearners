@@ -1,5 +1,14 @@
 install_learners("classif.rfsrc")
 
+test_that("importance/selected", {
+  set.seed(1)
+  task = tsk("iris")
+  learner = lrn("classif.rfsrc")
+  learner$train(task)
+  expect_error(learner$importance(), "Set 'importance'")
+  expect_error(learner$selected_features(), "Set 'var.used'")
+})
+
 test_that("autotest", {
   learner = lrn("classif.rfsrc")
   learner$param_set$values = list(
@@ -9,13 +18,4 @@ test_that("autotest", {
   set.seed(1)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
-})
-
-test_that("importance/selected", {
-  set.seed(1)
-  task = tsk("iris")
-  learner = lrn("classif.rfsrc")
-  learner$train(task)
-  expect_error(learner$importance(), "Set 'importance'")
-  expect_error(learner$selected_features(), "Set 'var.used'")
 })
