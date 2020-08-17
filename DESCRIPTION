@@ -44,6 +44,7 @@ Suggests:
     pracma,
     randomForest,
     randomForestSRC,
+    reticulate,
     RWeka,
     sm,
     survivalsvm,

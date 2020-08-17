@@ -18,7 +18,7 @@ lrn("dens.logspline")
 \section{Traits}{
 
 \itemize{
-\item Packages: logspline, set6
+\item Packages: logspline
 \item Predict Types: pdf, cdf
 \item Feature Types: logical, integer, numeric, character, factor, ordered
 \item Properties:
@@ -26,7 +26,7 @@ lrn("dens.logspline")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("logspline", "set6"))) {
+if (mlr3misc::require_namespaces(c("logspline"))) {
   learner = mlr3::lrn("dens.logspline")
   print(learner)
 
