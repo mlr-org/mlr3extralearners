@@ -30,6 +30,7 @@ Suggests:
     mlr3learners,
     obliqueRSF,
     penalized,
+    pendensity,
     pracma,
     randomForest,
     set6,
