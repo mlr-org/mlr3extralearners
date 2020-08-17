@@ -13,6 +13,8 @@ test_that("optim", {
   learner = lrn("surv.cv_coxboost",
     penalty = "optimCoxBoostPenalty",
     maxstepno = 1, minstepno = 0, iter.max = 1, K = 2)
-  task = tgen("simsurv")$generate(10)
-  expect_prediction_surv(suppressWarnings(learner$train(task)$predict(task)))
+  task = tsk("rats")
+  expect_prediction_surv(
+    suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
+    )
 })
