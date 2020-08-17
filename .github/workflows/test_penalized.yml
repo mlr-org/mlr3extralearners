@@ -1,16 +1,16 @@
 on:
   push:
     branches: master
-    paths: '**/randomForest**'
+    paths: '**/penalized**'
   pull_request:
     branches: master
-    paths: '**/randomForest**'
+    paths: '**/penalized**'
   # for now, CRON jobs only run on the default branch of the repo (i.e. usually on master)
   schedule:
     # * is a special character in YAML so you have to quote this string
     - cron: "0 4 * * *"
 
-name: randomForest (macOS-latest, release)
+name: penalized (macOS-latest, release)
 
 jobs:
   all:
@@ -27,7 +27,7 @@ jobs:
           - { os: macOS-latest, r: "release" }       
 
     env:
-      PKG: randomForest
+      PKG: penalized
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
       # prevent rgl issues because no X11 display is available

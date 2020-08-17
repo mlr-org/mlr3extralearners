@@ -2,13 +2,9 @@
 #'
 #' @name mlr_learners_<type>.<key>
 #'
-#' @description
-#' A [mlr3::Learner<Type>] implementing <algorithm> from package
-#'   \CRANpkg{<package>}.
-#' Calls [<package>::<caller>()].
-#'
-#' @templateVar id <type>.<key>
 #' @template class_learner
+#' @templateVar id <type>.<key>
+#' @templateVar caller <caller>
 #'
 #' @references
 #' <OPTIONAL - DELETE THIS AND LINE ABOVE IF OMITTED>

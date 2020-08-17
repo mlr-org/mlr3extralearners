@@ -39,7 +39,7 @@ jobs:
       SDKROOT: /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
       # use GITHUB_TOKEN from GitHub to workaround rate limits in {remotes}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      TEST: ${{ matrix.config.test }}
+      TEST: ${{ matrix.env.test }}
       
     steps:
       - uses: actions/checkout@v2.2.0

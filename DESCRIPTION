@@ -26,6 +26,7 @@ Suggests:
     mboost,
     mlr3learners,
     obliqueRSF,
+    penalized,
     pracma,
     randomForest,
     set6,
