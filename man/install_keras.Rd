@@ -2,20 +2,18 @@
 % Please edit documentation in R/helpers_proba.R
 \name{install_keras}
 \alias{install_keras}
-\title{Install Keras and the TensorFlow backend}
+\title{Install Keras and Tensorflow}
 \usage{
 install_keras(
-  method = c("auto", "virtualenv", "conda"),
+  method = "auto",
   conda = "auto",
-  version = "default",
-  tensorflow = "default",
-  extra_packages = c("tensorflow-hub"),
-  ...
+  pip = FALSE,
+  install_tensorflow = FALSE
 )
 }
 \arguments{
 \item{method, conda, version, tensorflow, extra_packages, ...}{See \link[keras:install_keras]{keras::install_keras}.}
 }
 \description{
-See \link[keras:install_keras]{keras::install_keras} for more details.
+Stripped back version of \link[keras:install_keras]{keras::install_keras}.
 }

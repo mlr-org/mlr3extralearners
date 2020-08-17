@@ -1,4 +1,4 @@
-setcollapse <- function(x) {
+setcollapse = function(x) {
   paste0("{", paste0(x, collapse = ", "), "}")
 }
 
@@ -27,7 +27,7 @@ keras_optimizers = c("adadelta", "adagrad", "adamax", "adam", "nadam", "rmsprop"
 #' * `"sgd"` \cr [keras::optimizer_sgd]
 #'
 #' @export
-get_keras_optimizer <- function(optimizer = "adam", lr = 0.02, beta_1 = 0.9, beta_2 = 0.999,
+get_keras_optimizer = function(optimizer = "adam", lr = 0.02, beta_1 = 0.9, beta_2 = 0.999,
   epsilon = NULL, decay = 0, clipnorm = NULL, clipvalue = NULL,
   schedule_decay = 0.004, momentum = 0, nesterov = FALSE) {
   switch(optimizer,
@@ -103,7 +103,7 @@ build_keras_net = function(n_in, n_out, nodes = c(32, 32), layer_pars = list(),
     }
   }
 
-  net <- keras::keras_model_sequential()
+  net = keras::keras_model_sequential()
 
   # input layer
   add_module(net, n_in, nodes[1])
@@ -121,11 +121,18 @@ build_keras_net = function(n_in, n_out, nodes = c(32, 32), layer_pars = list(),
   return(net)
 }
 
-#' @title Install Keras and the TensorFlow backend
-#' @description See [keras::install_keras] for more details.
+#' @title Install Keras and Tensorflow
+#' @description Stripped back version of [keras::install_keras].
 #' @param method,conda,version,tensorflow,extra_packages,... See [keras::install_keras].
 #' @export
-install_keras = keras::install_keras
+install_keras = function(method = "auto", conda = "auto", pip = FALSE,
+                          install_tensorflow = FALSE) {
+  pkg = "keras"
+  if (install_tensorflow) {
+    pkg = c("tensorflow", pkg)
+  }
+  reticulate::py_install(pkg, method = method, conda = conda, pip = pip)
+}
 
 # Code originally from https://github.com/lilizhaoUM/DNNSurv with minor edits.
 # t - Survival time
