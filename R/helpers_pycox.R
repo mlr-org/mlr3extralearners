@@ -32,6 +32,9 @@ prepare_train_data = function(task, frac = 0, standardize_time = FALSE, log_dura
   cutpoints = NULL, scheme = c("equidistant", "quantiles"),
   cut_min = 0L, model) {
 
+  torchtuples = reticulate::import("torchtuples")
+  pycox = reticulate::import("pycox")
+
   x_train = task$data(cols = task$feature_names)
   y_train = task$data(cols = task$target_names)
 
@@ -212,6 +215,8 @@ get_pycox_activation = function(activation = "relu", construct = TRUE, alpha = 1
   lambd = 0.5, min_val = -1, max_val = 1, negative_slope = 0.01,
   num_parameters = 1L, init = 0.25, lower = 1 / 8, upper = 1 / 3,
   beta = 1, threshold = 20, value = 20) {
+
+  torch = reticulate::import("torch")
   act = torch$nn$modules$activation
 
   if (construct) {
@@ -321,6 +326,7 @@ get_pycox_optim = function(optimizer = "adam", net, rho = 0.9, eps = 1e-8, lr = 
   step_sizes = c(1e-6, 50), dampening = 0,
   nesterov = FALSE) {
 
+  torch = reticulate::import("torch")
   opt = torch$optim
   params = net$parameters()
 
@@ -424,8 +430,8 @@ install_torch = function(method = "auto", conda = "auto", pip = FALSE) {
 #' of hidden nodes in respective layer.
 #' @param activation `(character(1)|list())`\cr Activation function, can either be a single
 #' character and the same function is used in all layers, or a list of length `length(nodes)`. See
-#' [get_activation] for options.
-#' @param act_pars `(list())`\cr Passed to [get_activation].
+#' [get_pycox_activation] for options.
+#' @param act_pars `(list())`\cr Passed to [get_pycox_activation].
 #' @param dropout `(numeric())`\cr Optional dropout layer, if `NULL` then no dropout layer added
 #' otherwise either a single numeric which will be added to all layers or a vector of differing
 #' drop-out amounts.
@@ -452,6 +458,7 @@ build_pytorch_net = function(n_in, n_out, nodes = c(32, 32), activation = "relu"
                              batch_pars = list(eps = 1e-5, momentum = 0.1, affine = TRUE),
                              init = "uniform", init_pars = list()) {
 
+  torch = reticulate::import("torch")
   nodes = as.integer(nodes)
   n_in = as.integer(n_in)
   n_out = as.integer(n_out)
@@ -460,14 +467,14 @@ build_pytorch_net = function(n_in, n_out, nodes = c(32, 32), activation = "relu"
 
   if (length(activation) == 1) {
     checkmate::assert_character(activation)
-    activation = rep(list(mlr3misc::invoke(get_activation,
+    activation = rep(list(mlr3misc::invoke(get_pycox_activation,
                                            activation = activation,
                                            construct = TRUE,
                                            .args = act_pars)), lng)
   } else {
     checkmate::assert_character(activation, len = lng)
     activation = lapply(activation, function(x) {
-      mlr3misc::invoke(get_activation,
+      mlr3misc::invoke(get_pycox_activation,
                        activation = x,
                        construct = TRUE,
                        .args = act_pars)

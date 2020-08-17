@@ -71,11 +71,7 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
           ParamUty$new("step_sizes", default = c(1e-6, 50), tags = c("train", "opt")),
           ParamDbl$new("dampening", default = 0, tags = c("train", "opt")),
           ParamLgl$new("nesterov", default = FALSE, tags = c("train", "opt")),
-          ParamLgl$new("lr_finder", default = FALSE, tags = c("train", "lrf")),
-          ParamInt$new("batch_size", default = 256, tags = c("train", "lrf", "fit", "predict")),
-          ParamDbl$new("tolerance",
-            lower = 0, upper = Inf, default = Inf,
-            tags = c("train", "lrf")),
+          ParamInt$new("batch_size", default = 256, tags = c("train", "fit", "predict")),
           ParamInt$new("epochs", lower = 1, upper = Inf, default = 1, tags = c("train", "fit")),
           ParamLgl$new("verbose", default = TRUE, tags = c("train", "fit")),
           ParamInt$new("num_workers", default = 0L, tags = c("train", "fit", "predict")),
@@ -179,20 +175,6 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
           .args = self$param_set$get_values(tags = "opt")),
         .args = pars
       )
-
-      # Optionally internally optimise learning rate for all optimizers except Adadelta
-      pars = self$param_set$get_values(tags = "lrf")
-      if (is.null(pars$optimizer) || pars$optimizer != "adadelta") {
-        if (!is.null(pars$lr_finder) && pars$lr_finder) {
-          lrfinder = mlr3misc::invoke(
-            model$lr_finder,
-            input = x_train,
-            target = y_train,
-            .args = pars[names(pars) %nin% c("optimizer", "lr_finder")]
-          )
-          model$optimizer$set_lr(lrfinder$get_best_lr())
-        }
-      }
 
       # Optionally get callbacks
       pars = self$param_set$get_values(tags = "callbacks")
