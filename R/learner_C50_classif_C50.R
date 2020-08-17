@@ -53,7 +53,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings", "weights"),
-        man = "mlr3extralearners::mlr_learners_classif.C5.0"
+        man = "mlr3extralearners::mlr_learners_classif.C50"
       )
     }
   ),
