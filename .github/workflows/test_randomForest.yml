@@ -16,13 +16,13 @@ jobs:
   all:
     runs-on: ${{ matrix.config.os }}
 
-    name: (${{ matrix.env.TEST }})
+    name: ${{ matrix.env.TEST }} Test
 
     strategy:
       matrix:
         env:
-          - { test: "learner"}
-          - { test: "param"}
+          - { test: "Learner"}
+          - { test: "Param"}
         config:
           - { os: macOS-latest, r: "release" }       
 
