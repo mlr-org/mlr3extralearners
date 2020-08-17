@@ -19,7 +19,7 @@ test_that("surv.dnn compile", {
 
 test_that("surv.dnn get_optimizer", {
   learner = lrn("surv.dnn")
-  fun = get_optimizer
+  fun = get_keras_optimizer
   exclude = c(
 
   )
