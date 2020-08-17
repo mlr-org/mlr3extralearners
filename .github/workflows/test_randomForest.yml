@@ -10,7 +10,7 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron: "0 4 * * *"
 
-name: randomForest - macOS-latest (release)
+name: randomForest (macOS-latest, release)
 
 jobs:
   all:

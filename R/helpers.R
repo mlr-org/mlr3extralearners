@@ -59,7 +59,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
                     dens = "Density")
 
   # ADD LEARNER
-  file_name_lrn = file.path(path, "R", paste0("learner_", type, "_", key, ".R"))
+  file_name_lrn = file.path(path, "R", paste0("learner_", package, "_", type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "learner_template.R"),
                 to = file_name_lrn, overwrite = FALSE)
   add_str = c()
@@ -113,7 +113,8 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
 
   # ADD TESTS
-  file_name_test = file.path(path, "tests", "testthat", paste0("test_", type, "_", key, ".R"))
+  file_name_test = file.path(path, "tests", "testthat", paste0("test_", package, "_", type, "_",
+                                                               key, ".R"))
   x = file.copy(file.path(path, "templates", "test_template.R"), to = file_name_test,
                 overwrite = FALSE)
   if (!x) {
@@ -129,8 +130,8 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   }
 
   # ADD PARAM TESTS
-  file_name_ptest = file.path(path, "inst", "paramtest", paste0("test_paramtest_", type, "_",
-                                                                key, ".R"))
+  file_name_ptest = file.path(path, "inst", "paramtest", paste0("test_paramtest_", package, "_",
+                                                                type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
                 overwrite = FALSE)
   if (!x) {
@@ -154,19 +155,6 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     messagef("Learner test YAML for {%s} already exists.", package)
   } else {
     mlr3misc::catf("Creating {%s} learner test YAML file from template.\n", package)
-    x = readLines(file_name)
-    x = gsub("<package>", package, x)
-    cat(x, file = file_name, sep = "\n")
-  }
-
-
-  file_name = file.path(path, ".github", "workflows", paste0("paramtest_", key, ".yml"))
-  x = file.copy(file.path(path, "templates", "paramtest_template.yml"), to = file_name,
-                overwrite = FALSE)
-  if (!x) {
-    messagef("Parameter test YAML for {%s} already exists.", package)
-  } else {
-    mlr3misc::catf("Creating {%s} parameter test YAML file from template.\n", package)
     x = readLines(file_name)
     x = gsub("<package>", package, x)
     cat(x, file = file_name, sep = "\n")
