@@ -5,7 +5,8 @@
 \alias{LearnerSurvDeepsurv}
 \title{Survival DeepSurv Learner}
 \description{
-Calls \code{pycox.models.CoxPH} from Python package \verb{\\href\{pycox\}\{https://pypi.org/project/pycox/\}} via \CRANpkg{reticulate}.
+Calls \code{pycox.models.CoxPH} from Python package \href{https://pypi.org/project/pycox/}{pycox} via
+\CRANpkg{reticulate}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

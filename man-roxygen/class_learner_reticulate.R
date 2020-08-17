@@ -2,7 +2,8 @@
 lrn = mlr3::lrn(id)
 %>
 #' @description
-#' Calls `<%=caller%>` from Python package `<%=pypkg%>` via \CRANpkg{reticulate}.
+#' Calls `<%=caller%>` from Python package \href{<%=pypkgurl%>}{<%=pypkg%>} via
+#' \CRANpkg{reticulate}.
 #'
 #' @section Dictionary: This [Learner] can be instantiated via the
 #'   [dictionary][mlr3misc::Dictionary] [mlr_learners] or with the associated

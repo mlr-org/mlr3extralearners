@@ -5,7 +5,8 @@
 \alias{LearnerSurvLogisticHazard}
 \title{Survival LogisticHazard Learner}
 \description{
-Calls \code{pycox.models.LogisticHazard} from Python package \verb{\\href\{pycox\}\{https://pypi.org/project/pycox/\}} via \CRANpkg{reticulate}.
+Calls \code{pycox.models.LogisticHazard} from Python package \href{https://pypi.org/project/pycox/}{pycox} via
+\CRANpkg{reticulate}.
 }
 \details{
 Custom nets can be used in this learner either using the \link{build_pytorch_net} utility function
