@@ -1,4 +1,4 @@
-install_learners("classif.FNN")
+install_learners("classif.fnn")
 
 test_that("autotest", {
   learner = LearnerClassifFNN$new()

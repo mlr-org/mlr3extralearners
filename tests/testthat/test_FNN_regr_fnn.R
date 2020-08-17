@@ -1,4 +1,4 @@
-install_learners("regr.FNN")
+install_learners("regr.fnn")
 
 test_that("autotest", {
   learner = LearnerRegrFNN$new()
