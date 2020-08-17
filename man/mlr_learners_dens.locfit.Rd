@@ -5,9 +5,7 @@
 \alias{LearnerDensLocfit}
 \title{Density Locfit Learner}
 \description{
-A \link[mlr3proba:LearnerDens]{mlr3proba::LearnerDens} implementing locfit from package
-\CRANpkg{locfit}.
-Calls \code{\link[locfit:density.lf]{locfit::density.lf()}}.
+Calls \link[locfit:density.lf]{locfit::density.lf} from package \CRANpkg{locfit}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

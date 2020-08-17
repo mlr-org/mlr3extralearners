@@ -2,12 +2,9 @@
 #' @author be-marc
 #' @name mlr_learners_classif.glmboost
 #'
-#' @description
-#' Boosted generalized linear classification learner.
-#' Calls [mboost::glmboost()] from package \CRANpkg{mboost}.
-#'
-#' @templateVar id classif.glmboost
 #' @template class_learner
+#' @templateVar id classif.glmboost
+#' @templateVar caller glmboost
 #'
 #' @references
 #' Bühlmann P, Yu B (2003).

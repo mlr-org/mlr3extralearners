@@ -1,14 +1,10 @@
 #' @title Classification Random Forest Learner
 #' @author pat-s
-#'
 #' @name mlr_learners_classif.randomForest
 #'
-#' @description
-#' Random forest learner.
-#' Calls [randomForest::randomForest()] from package \CRANpkg{randomForest}.
-#'
-#' @templateVar id classif.randomForest
 #' @template class_learner
+#' @templateVar id classif.randomForest
+#' @templateVar caller randomForest
 #'
 #' @references
 #' Breiman, L. (2001).

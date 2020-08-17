@@ -5,8 +5,7 @@
 \alias{LearnerClassifGAMBoost}
 \title{Boosted Generalized Additive Classification Learner}
 \description{
-Boosted generalized additive classification learner.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}} from package \CRANpkg{mboost}.
+Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

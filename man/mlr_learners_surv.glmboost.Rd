@@ -5,8 +5,7 @@
 \alias{LearnerSurvGLMBoost}
 \title{Boosted Generalized Linear Survival Learner}
 \description{
-Boosted generalized linear survival learner.
-Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from package \CRANpkg{mboost}
+Calls \link[mboost:glmboost]{mboost::glmboost} from package \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.

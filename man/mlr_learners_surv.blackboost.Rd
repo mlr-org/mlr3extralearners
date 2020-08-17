@@ -5,8 +5,7 @@
 \alias{LearnerSurvBlackBoost}
 \title{Gradient Boosting with Regression Trees Survival Learner}
 \description{
-Boosted generalized additive survival learner.
-Calls \code{\link[mboost:blackboost]{mboost::blackboost()}} from package \CRANpkg{mboost}.
+Calls \link[mboost:blackboost]{mboost::blackboost} from package \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.

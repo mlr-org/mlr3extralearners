@@ -3,9 +3,9 @@
 #'
 #' @name mlr_learners_regr.gbm
 #'
-#' @description
-#' Regression gradient boosting machine models.
-#' Calls [gbm::gbm()] from package \CRANpkg{gbm}.
+#' @template class_learner
+#' @templateVar id regr.gbm
+#' @templateVar caller gbm
 #'
 #' @section Custom mlr3 defaults:
 #' - `keep_data`:
@@ -17,8 +17,6 @@
 #'   - Adjusted default: 1
 #'   - Reason for change: Suppressing the automatic internal parallelization if
 #'     `cv.folds` > 0.
-#' @templateVar id regr.gbm
-#' @template class_learner
 #'
 #' @export
 #' @template seealso_learner

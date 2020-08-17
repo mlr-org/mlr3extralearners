@@ -2,12 +2,9 @@
 #' @author be-marc
 #' @name mlr_learners_regr.gamboost
 #'
-#' @description
-#' Boosted generalized additive regression learner.
-#' Calls [mboost::gamboost()] from package \CRANpkg{mboost}.
-#'
-#' @templateVar id regr.gamboost
 #' @template class_learner
+#' @templateVar id regr.gamboost
+#' @templateVar caller gamboost
 #'
 #' @references
 #' Bühlmann P, Yu B (2003).

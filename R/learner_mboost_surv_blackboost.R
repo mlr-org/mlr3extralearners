@@ -3,15 +3,12 @@
 #'
 #' @name mlr_learners_surv.blackboost
 #'
-#' @description
-#' Boosted generalized additive survival learner.
-#' Calls [mboost::blackboost()] from package \CRANpkg{mboost}.
+#' @template class_learner
+#' @templateVar id surv.blackboost
+#' @templateVar caller blackboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].
-#'
-#' @templateVar id surv.blackboost
-#' @template class_learner
 #'
 #' @references
 #' Bühlmann P, Yu B (2003).

@@ -5,15 +5,7 @@
 \alias{LearnerSurvNelson}
 \title{Survival Nelson-Aalen Estimator Learner}
 \description{
-A \link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv} implementing \code{survfit} from package
-\CRANpkg{survival}.
-Calls \code{\link[survival:survfit]{survival::survfit()}}.
-}
-\details{
-\itemize{
-\item \code{distr} is predicted by estimating the cumulative hazard function from \code{survival::survfit()}.
-\item \code{crank} is predicted as the expectation of \code{distr}
-}
+Calls \link[survival:survfit]{survival::survfit} from package \CRANpkg{survival}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

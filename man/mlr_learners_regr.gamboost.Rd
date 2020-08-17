@@ -5,8 +5,7 @@
 \alias{LearnerRegrGAMBoost}
 \title{Boosted Generalized Additive Regression Learner}
 \description{
-Boosted generalized additive regression learner.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}} from package \CRANpkg{mboost}.
+Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

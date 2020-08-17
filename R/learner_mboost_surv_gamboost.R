@@ -3,9 +3,9 @@
 #'
 #' @name mlr_learners_surv.gamboost
 #'
-#' @description
-#' Boosted generalized additive survival learner.
-#' Calls [mboost::gamboost()] from package \CRANpkg{mboost}.
+#' @template class_learner
+#' @templateVar id surv.gamboost
+#' @templateVar caller gamboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].

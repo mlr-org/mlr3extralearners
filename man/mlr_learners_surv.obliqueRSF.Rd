@@ -5,9 +5,7 @@
 \alias{LearnerSurvObliqueRSF}
 \title{Survival Oblique Random Survival Forest Learner}
 \description{
-A \link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv} implementing obliqueRSF from package
-\CRANpkg{obliqueRSF}.
-Calls \code{\link[obliqueRSF:ORSF]{obliqueRSF::ORSF()}}.
+Calls \link[obliqueRSF:ORSF]{obliqueRSF::ORSF} from package \CRANpkg{obliqueRSF}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

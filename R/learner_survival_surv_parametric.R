@@ -2,10 +2,9 @@
 #' @name mlr_learners_surv.parametric
 #' @author RaphaelS1
 #'
-#' @description
-#' A [mlr3proba::LearnerSurv] implementing `survreg` from package
-#'   \CRANpkg{survival}.
-#' Calls [survival::survreg()].
+#' @template class_learner
+#' @templateVar id surv.parametric
+#' @templateVar caller survreg
 #'
 #' @details
 #' This learner allows you to choose a distribution and a model form to compose a predicted
@@ -27,9 +26,6 @@
 #'
 #' where \eqn{S_0}{S0} is the estimated baseline survival distribution (in this case
 #' with a given parametric form), and \eqn{lp} is the predicted linear predictor.
-#'
-#' @templateVar id surv.nelson
-#' @template class_learner
 #'
 #' @references
 #' Kalbfleisch, J. D., & Prentice, R. L. (2011).

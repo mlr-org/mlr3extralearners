@@ -2,13 +2,9 @@
 #' @name mlr_learners_dens.locfit
 #' @author RaphaelS1
 #'
-#' @description
-#' A [mlr3proba::LearnerDens] implementing locfit from package
-#'   \CRANpkg{locfit}.
-#' Calls [locfit::density.lf()].
-#'
-#' @templateVar id dens.locfit
 #' @template class_learner
+#' @templateVar id dens.locfit
+#' @templateVar caller density.lf
 #'
 #' @template seealso_learner
 #' @template example

@@ -5,8 +5,9 @@
 \alias{LearnerSurvGAMBoost}
 \title{Boosted Generalized Additive Survival Learner}
 \description{
-Boosted generalized additive survival learner.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}} from package \CRANpkg{mboost}.
+Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
+
+Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
@@ -17,9 +18,23 @@ Calls \code{\link[mboost:gamboost]{mboost::gamboost()}} from package \CRANpkg{mb
 sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gamboost")
 lrn("surv.gamboost")
 }
+
+ This \link{Learner} can be instantiated via the
+\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
+sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gamboost")
+lrn("surv.gamboost")
+}
 }
 
 \section{Traits}{
+
+\itemize{
+\item Packages: mboost
+\item Predict Types: distr, crank, lp, response
+\item Feature Types: integer, numeric, factor, logical
+\item Properties: importance, selected_features, weights
+}
+
 
 \itemize{
 \item Packages: mboost

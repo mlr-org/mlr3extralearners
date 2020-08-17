@@ -20,6 +20,7 @@ Imports:
     survival
 Suggests:
     checkmate,
+    flexsurv,
     gbm,
     locfit,
     mboost,
@@ -27,6 +28,7 @@ Suggests:
     obliqueRSF,
     pracma,
     randomForest,
+    set6,
     testthat
 Remotes:
     mlr-org/mlr3proba

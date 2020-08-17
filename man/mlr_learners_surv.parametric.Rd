@@ -5,9 +5,7 @@
 \alias{LearnerSurvParametric}
 \title{Survival Fully Parametric Learner}
 \description{
-A \link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv} implementing \code{survreg} from package
-\CRANpkg{survival}.
-Calls \code{\link[survival:survreg]{survival::survreg()}}.
+Calls \link[survival:survreg]{survival::survreg} from package \CRANpkg{survival}.
 }
 \details{
 This learner allows you to choose a distribution and a model form to compose a predicted
@@ -35,8 +33,8 @@ with a given parametric form), and \eqn{lp} is the predicted linear predictor.
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
 \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.nelson")
-lrn("surv.nelson")
+sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.parametric")
+lrn("surv.parametric")
 }
 }
 
@@ -44,15 +42,15 @@ lrn("surv.nelson")
 
 \itemize{
 \item Packages: survival, pracma
-\item Predict Types: crank, distr
-\item Feature Types: logical, integer, numeric, character, factor, ordered
-\item Properties: missings
+\item Predict Types: distr, lp, crank
+\item Feature Types: logical, integer, numeric, factor
+\item Properties: weights
 }
 }
 
 \examples{
 if (mlr3misc::require_namespaces(c("survival", "pracma"))) {
-  learner = mlr3::lrn("surv.nelson")
+  learner = mlr3::lrn("surv.parametric")
   print(learner)
 
   # available parameters:

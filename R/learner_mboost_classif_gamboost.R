@@ -2,12 +2,9 @@
 #' @author be-marc
 #' @name mlr_learners_classif.gamboost
 #'
-#' @description
-#' Boosted generalized additive classification learner.
-#' Calls [mboost::gamboost()] from package \CRANpkg{mboost}.
-#'
-#' @templateVar id classif.gamboost
 #' @template class_learner
+#' @templateVar id classif.gamboost
+#' @templateVar caller gamboost
 #'
 #' @references
 #' Bühlmann P, Yu B (2003).

@@ -2,17 +2,9 @@
 #' @name mlr_learners_surv.nelson
 #' @author RaphaelS1
 #'
-#' @description
-#' A [mlr3proba::LearnerSurv] implementing `survfit` from package
-#'   \CRANpkg{survival}.
-#' Calls [survival::survfit()].
-#'
-#' @details
-#' * `distr` is predicted by estimating the cumulative hazard function from `survival::survfit()`.
-#' * `crank` is predicted as the expectation of `distr`
-#'
-#' @templateVar id surv.nelson
 #' @template class_learner
+#' @templateVar id surv.nelson
+#' @templateVar caller survfit
 #'
 #' @references
 #' Nelson W (1969).

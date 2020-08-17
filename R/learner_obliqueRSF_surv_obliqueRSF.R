@@ -3,13 +3,9 @@
 #' @name mlr_learners_surv.obliqueRSF
 #' @author RaphaelS1
 #'
-#' @description
-#' A [mlr3proba::LearnerSurv] implementing obliqueRSF from package
-#'   \CRANpkg{obliqueRSF}.
-#' Calls [obliqueRSF::ORSF()].
-#'
-#' @templateVar id surv.obliqueRSF
 #' @template class_learner
+#' @templateVar id surv.obliqueRSF
+#' @templateVar caller ORSF
 #'
 #' @section Custom mlr3 defaults:
 #' - `verbose`:

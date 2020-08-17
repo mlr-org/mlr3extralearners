@@ -3,12 +3,9 @@
 #'
 #' @name mlr_learners_regr.randomForest
 #'
-#' @description
-#' Random forest learner.
-#' Calls [randomForest::randomForest()] from package \CRANpkg{randomForest}.
-#'
-#' @templateVar id regr.randomForest
 #' @template class_learner
+#' @templateVar id regr.randomForest
+#' @templateVar caller randomForest
 #'
 #' @references
 #' Breiman, L. (2001).

@@ -5,8 +5,7 @@
 \alias{LearnerClassifGLMBoost}
 \title{Boosted Generalized Linear Classification Learner}
 \description{
-Boosted generalized linear classification learner.
-Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from package \CRANpkg{mboost}.
+Calls \link[mboost:glmboost]{mboost::glmboost} from package \CRANpkg{mboost}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

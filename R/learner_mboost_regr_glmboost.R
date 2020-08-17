@@ -3,12 +3,9 @@
 #'
 #' @name mlr_learners_regr.glmboost
 #'
-#' @description
-#' Boosted generalized linear regression learner.
-#' Calls [mboost::glmboost()] from package \CRANpkg{mboost}.
-#'
-#' @templateVar id regr.glmboost
 #' @template class_learner
+#' @templateVar id regr.glmboost
+#' @templateVar caller glmboost
 #'
 #' @references
 #' Bühlmann P, Yu B (2003).

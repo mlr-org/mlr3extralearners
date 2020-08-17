@@ -5,8 +5,7 @@
 \alias{LearnerClassifRandomForest}
 \title{Classification Random Forest Learner}
 \description{
-Random forest learner.
-Calls \code{\link[randomForest:randomForest]{randomForest::randomForest()}} from package \CRANpkg{randomForest}.
+Calls \link[randomForest:randomForest]{randomForest::randomForest} from package \CRANpkg{randomForest}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
