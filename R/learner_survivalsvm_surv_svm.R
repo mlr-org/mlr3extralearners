@@ -86,7 +86,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
       ps$add_dep("diff.meth", "type", CondAnyOf$new(c("vanbelle1", "vanbelle2", "hybrid")))
 
-      ps$values = list(diff.meth = "makediff3", type = "regression", gamma.mu = c(0, 0))
+      ps$values = list(diff.meth = "makediff3", type = "hybrid", gamma.mu = c(0, 0))
 
       super$initialize(
         id = "surv.svm",
