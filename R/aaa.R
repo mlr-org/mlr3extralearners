@@ -1,4 +1,16 @@
-lrns_dict = mlr3misc::Dictionary$new()
+# clearly this should be a Dictionary but there's a weird bug that leads to objects
+# being handled wrong and not cloned properly when loaded from dictionary in `mlr3::lrn`
+lrns_dict = R6Class("lrns_dict",
+  public = list(
+    lrns = list(),
+    add = function(key, learn) {
+      checkmate::assert_character(key, len = 1)
+      checkmate::assert_class(learn, "R6ClassGenerator")
+      lst = list(key = learn)
+      names(lst) = key
+      self$lrns = mlr3misc::insert_named(self$lrns, lst)
+    })
+)$new()
 
 #' @title Syntactic Sugar for Learner Construction
 #' @description Overloads [mlr3::lrn] to automatically detect if required packages are installed.

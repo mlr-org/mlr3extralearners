@@ -19,8 +19,9 @@ register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace
   x = utils::getFromNamespace("mlr_learners", ns = "mlr3")
   # this prevents a very long list of extra learners
-  for (key in lrns_dict$keys()) {
-    x$add(key, lrns_dict$get(key))
+  lrns = lrns_dict$lrns
+  for (i in seq_along(lrns)) {
+    x$add(names(lrns)[[i]], lrns[[i]])
   }
 }
 
