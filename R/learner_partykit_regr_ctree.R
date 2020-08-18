@@ -75,7 +75,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
           ParamUty$new("cluster", tags = "train"),
           ParamUty$new("scores", tags = "train"),
           ParamLgl$new("doFit", default = TRUE, tags = "train"),
-          ParamUty$new("pargs", default = mvtnorm::GenzBretz, tags = "train")
+          ParamUty$new("pargs", tags = "train")
         )
       )
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))

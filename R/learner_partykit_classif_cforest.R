@@ -59,7 +59,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
         # pargs arguments as a list for GenzBretz() within ctree_control:
         # maxpts, abseps, releps
-        ParamUty$new("pargs", default = mvtnorm::GenzBretz, tags = "train"),
+        ParamUty$new("pargs", tags = "train"),
 
         ParamDbl$new("alpha", default = 0.05, lower = 0, upper = 1,
           tags = "train"),
