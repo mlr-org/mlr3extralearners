@@ -18,7 +18,7 @@ lrn("surv.ctree")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit, coin, sandwich
+\item Packages: partykit, coin, sandwich, pracma
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, ordered
 \item Properties: weights
@@ -26,7 +26,7 @@ lrn("surv.ctree")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit", "coin", "sandwich"))) {
+if (mlr3misc::require_namespaces(c("partykit", "coin", "sandwich", "pracma"))) {
   learner = mlr3::lrn("surv.ctree")
   print(learner)
 

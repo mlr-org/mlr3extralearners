@@ -117,7 +117,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         predict_types = c("distr", "crank"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
-        packages = c("partykit", "sandwich", "coin"),
+        packages = c("partykit", "sandwich", "coin", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.cforest"
       )
     }
@@ -171,7 +171,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         decorators   = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = vapply(x, function(z) sum(z[,1] * c(z[,2][1], diff(z[,2]))), numeric(1))
+      crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
       PredictionSurv$new(task = task, crank = crank, distr = distr)
     }

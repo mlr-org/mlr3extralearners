@@ -84,7 +84,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       super$initialize(
         id            = "surv.ctree",
-        packages      = c("partykit", "coin", "sandwich"),
+        packages      = c("partykit", "coin", "sandwich", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("distr", "crank"),
         param_set     = ps,
@@ -123,7 +123,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
         decorators   = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = vapply(x, function(z) sum(z[,1] * c(z[,2][1], diff(z[,2]))), numeric(1))
+      crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
       PredictionSurv$new(task = task, crank = crank, distr = distr)
     }

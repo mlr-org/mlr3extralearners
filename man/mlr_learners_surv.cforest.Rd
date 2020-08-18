@@ -18,15 +18,15 @@ lrn("surv.cforest")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit, sandwich, coin
+\item Packages: partykit, sandwich, coin, pracma
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, ordered
-\item Properties: oob_error, weights
+\item Properties: weights
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin"))) {
+if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin", "pracma"))) {
   learner = mlr3::lrn("surv.cforest")
   print(learner)
 
@@ -59,7 +59,6 @@ RaphaelS1
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{LearnerSurvCForest$new()}}
-\item \href{#method-oob_error}{\code{LearnerSurvCForest$oob_error()}}
 \item \href{#method-clone}{\code{LearnerSurvCForest$clone()}}
 }
 }
@@ -85,20 +84,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCForest$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-oob_error"></a>}}
-\if{latex}{\out{\hypertarget{method-oob_error}{}}}
-\subsection{Method \code{oob_error()}}{
-The out-of-bag error, calculated using the OOB predictions from
-\code{partykit}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCForest$oob_error()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-\code{numeric(1)}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
