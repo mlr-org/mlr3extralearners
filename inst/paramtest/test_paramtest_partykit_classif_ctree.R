@@ -16,26 +16,29 @@ test_that("classif.ctree", {
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  expect_true(ParamTest, info = paste0("Missing parameters:",
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
-# example for checking a "control" function of a learner
 test_that("classif.ctree_control", {
   learner = lrn("classif.ctree")
   fun = partykit::ctree_control
   exclude = c(
+    "pargs" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  expect_true(ParamTest, info = paste0("Missing parameters:",
+                                       paste0("- '", ParamTest$missing, "'", collapse = "")))
+})
+
+test_that("GenzBretz", {
+  learner = lrn("classif.ctree")
+  fun = mvtnorm::GenzBretz
+  exclude = c(
+  )
+
+  ParamTest = run_paramtest(learner, fun, exclude)
+  expect_true(ParamTest, info = paste0("Missing parameters:",
+                                       paste0("- '", ParamTest$missing, "'", collapse = "")))
 })

@@ -1,8 +1,8 @@
 library(mlr3extralearners)
-install_learners("regr.ctree")
+install_learners("surv.ctree")
 
-test_that("regr.ctree", {
-  learner = lrn("regr.ctree")
+test_that("surv.ctree", {
+  learner = lrn("surv.ctree")
   fun = partykit::ctree
   exclude = c(
     "formula", # handled in mlr3
@@ -17,11 +17,11 @@ test_that("regr.ctree", {
 
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0("Missing parameters:",
-  paste0("- '", ParamTest$missing, "'", collapse = "")))
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
-test_that("regr.ctree_control", {
-  learner = lrn("regr.ctree")
+test_that("surv.ctree_control", {
+  learner = lrn("surv.ctree")
   fun = partykit::ctree_control
   exclude = c(
     "pargs" # handled internally
@@ -29,11 +29,11 @@ test_that("regr.ctree_control", {
 
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0("Missing parameters:",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "")))
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
 test_that("GenzBretz", {
-  learner = lrn("regr.ctree")
+  learner = lrn("surv.ctree")
   fun = mvtnorm::GenzBretz
   exclude = c(
   )

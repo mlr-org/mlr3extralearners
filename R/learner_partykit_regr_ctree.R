@@ -75,7 +75,9 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
           ParamUty$new("cluster", tags = "train"),
           ParamUty$new("scores", tags = "train"),
           ParamLgl$new("doFit", default = TRUE, tags = "train"),
-          ParamUty$new("pargs", tags = "train")
+          ParamInt$new("maxpts", default = 25000L, tags = c("train", "pargs")),
+          ParamDbl$new("abseps", default = 0.001, lower = 0, tags = c("train", "pargs")),
+          ParamDbl$new("releps", default = 0, lower = 0, tags = c("train", "pargs"))
         )
       )
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
@@ -99,6 +101,10 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
+
+      pars_pargs = self$param_set$get_values(tags = "pargs")
+      pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
+      pars = pars[!(names(pars) %in% names(pars_pargs))]
 
       mlr3misc::invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)

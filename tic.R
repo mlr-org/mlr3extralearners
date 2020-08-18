@@ -1,8 +1,8 @@
-get_stage("install") %>%
-  # only install packages required by all learners
-  add_step(step_install_deps(dependencies = c("Depends", "Imports")))
 
 if (ci_get_env("TEST") == "Learner") {
+
+  get_stage("install") %>%
+    add_step(step_install_deps(dependencies = c("Depends", "Imports")))
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
@@ -10,6 +10,9 @@ if (ci_get_env("TEST") == "Learner") {
                                  stop_on_failure = TRUE))
 
 } else if (ci_get_env("TEST") == "Param") {
+
+  get_stage("install") %>%
+    add_step(step_install_deps(dependencies = c("Depends", "Imports")))
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
@@ -20,9 +23,22 @@ if (ci_get_env("TEST") == "Learner") {
       stop_on_failure = TRUE))
 
 } else {
-  
-get_stage("install") %>%
+
+  get_stage("install") %>%
+    add_step(step_install_deps(dependencies = c("Depends", "Imports"))) %>%
     add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
-  do_pkgdown()
-  
+
+  get_stage("before_deploy") %>%
+    add_step(step_setup_ssh()) %>%
+    add_step(step_setup_push_deploy(
+      path = "docs",
+      branch = "gh-pages",
+      orphan = FALSE,
+      remote_url = NULL,
+      checkout = TRUE
+    ))
+
+  get_stage("deploy") %>%
+    add_step(step_build_pkgdown(examples = FALSE)) %>%
+    add_step(step_do_push_deploy())
 }

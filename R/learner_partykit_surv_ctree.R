@@ -1,9 +1,9 @@
-#' @title Classification Conditional Inference Tree Learner
-#' @author sumny
-#' @name mlr_learners_classif.ctree
+#' @title Survival Conditional Inference Tree Learner
+#' @author adibender
+#' @name mlr_learners_surv.ctree
 #'
 #' @template class_learner
-#' @templateVar id classif.ctree
+#' @templateVar id surv.ctree
 #' @templateVar caller ctree
 #'
 #' @references
@@ -20,8 +20,8 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerClassifCTree = R6Class("LearnerClassifCTree",
-  inherit = LearnerClassif,
+LearnerSurvCTree = R6Class("LearnerSurvCTree",
+  inherit = LearnerSurv,
   public = list(
 
     #' @description
@@ -83,13 +83,13 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
 
       super$initialize(
-        id = "classif.ctree",
-        packages = c("partykit", "sandwich", "coin"),
+        id            = "surv.ctree",
+        packages      = c("partykit", "coin", "sandwich"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("response", "prob"),
-        param_set = ps,
-        properties = c("weights", "twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.ctree"
+        predict_types = c("distr", "crank"),
+        param_set     = ps,
+        properties    = "weights",
+        man = "mlr3extralearners::mlr_learners_surv.ctree"
       )
     }
   ),
@@ -111,19 +111,23 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
 
-      if (self$predict_type == "response") {
-        response = mlr3misc::invoke(predict, self$model, newdata = newdata,
-          type = "response")
-        PredictionClassif$new(task = task, response = response)
-      } else {
-        prob = mlr3misc::invoke(predict, self$model, newdata = newdata,
-          type = "prob")
-        PredictionClassif$new(task = task, prob = prob)
-      }
+      newdata = task$data(cols = task$feature_names)
+      p = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata)
+
+      # Define WeightedDiscrete distr6 distribution from the survival function
+      x = lapply(p, function(z) data.frame(x = z$time, cdf = 1 - z$surv))
+      distr = distr6::VectorDistribution$new(
+        distribution = "WeightedDiscrete",
+        params       = x,
+        decorators   = c("CoreStatistics", "ExoticStatistics"))
+
+      # Define crank as the mean of the survival distribution
+      crank = vapply(x, function(z) sum(z[,1] * c(z[,2][1], diff(z[,2]))), numeric(1))
+
+      PredictionSurv$new(task = task, crank = crank, distr = distr)
     }
   )
 )
 
-lrns_dict$add("classif.ctree", LearnerClassifCTree)
+lrns_dict$add("surv.ctree", LearnerSurvCTree)

@@ -1,4 +1,5 @@
-install.packages("mlr3learners")
+install.packages(c("mlr3learners", "usethis"))
+
 
 library(mlr3)
 library(mlr3learners)
