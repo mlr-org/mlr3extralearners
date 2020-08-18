@@ -201,10 +201,13 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
       # cast to distr6
       x = rep(list(list(x = round(as.numeric(rownames(surv)), 5), pdf = 0)), task$nrow)
       for (i in seq_len(task$nrow)) {
+        # fix for infinite hazards
+        surv[is.nan(surv[, i]), i] = 0
         # fix for rounding errors
         x[[i]]$pdf = round(1 - surv[, i], 6)
         x[[i]]$pdf = c(x[[i]]$pdf[1], diff(x[[i]]$pdf))
         x[[i]]$pdf[x[[i]]$pdf < 0.000001] = 0L
+        x[[i]]$pdf
       }
 
       distr = distr6::VectorDistribution$new(
