@@ -23,6 +23,7 @@ jobs:
       # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       CRAN: ${{ matrix.config.cran }}
+      TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
       # we are not allowed to write to ~/.ccache on GH Actions
       # setting some ccache options
       CCACHE_BASEDIR: ${{ GITHUB.WORKSPACE }}
