@@ -4,7 +4,7 @@ on:
     # * is a special character in YAML so you have to quote this string
     - cron: "0 4 * * *"
 
-name: Update learner table
+name: Update learner table and pkgdown deploy
 
 jobs:
   all:
