@@ -257,7 +257,7 @@ predict_survreg = function(object, task, type = "aft") {
     }
   }
 
-  distlist = lapply(params, function(.x) do.call(Distribution$new, .x))
+  distlist = lapply(params, function(.x) do.call(distr6::Distribution$new, .x))
   names(distlist) = paste0("WeibullAFT", seq_along(distlist))
 
 
