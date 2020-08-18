@@ -18,7 +18,7 @@ lrn("classif.mob")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit
+\item Packages: partykit, sandwich, coin
 \item Predict Types: response, prob
 \item Feature Types: logical, integer, numeric, character, factor, ordered
 \item Properties: multiclass, twoclass, weights
@@ -26,7 +26,7 @@ lrn("classif.mob")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit"))) {
+if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin"))) {
   learner = mlr3::lrn("classif.mob")
   print(learner)
 

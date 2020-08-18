@@ -127,7 +127,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         # FIXME: importance after bug fixes, strata?
         properties = c("weights", "twoclass", "multiclass", "oob_error"),
-        packages = "partykit",
+        packages = c("partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_classif.cforest"
       )
     },

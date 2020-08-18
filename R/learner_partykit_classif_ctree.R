@@ -82,7 +82,7 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
 
       super$initialize(
         id = "classif.ctree",
-        packages = "partykit",
+        packages = c("partykit", "sandwich", "coin"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

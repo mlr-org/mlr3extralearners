@@ -28,9 +28,9 @@ of hidden nodes in respective layer.}
 
 \item{activation}{\code{(character(1)|list())}\cr Activation function, can either be a single
 character and the same function is used in all layers, or a list of length \code{length(nodes)}. See
-\link{get_activation} for options.}
+\link{get_pycox_activation} for options.}
 
-\item{act_pars}{\code{(list())}\cr Passed to \link{get_activation}.}
+\item{act_pars}{\code{(list())}\cr Passed to \link{get_pycox_activation}.}
 
 \item{dropout}{\code{(numeric())}\cr Optional dropout layer, if \code{NULL} then no dropout layer added
 otherwise either a single numeric which will be added to all layers or a vector of differing

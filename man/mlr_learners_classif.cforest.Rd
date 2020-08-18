@@ -18,7 +18,7 @@ lrn("classif.cforest")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit
+\item Packages: partykit, sandwich, coin
 \item Predict Types: response, prob
 \item Feature Types: integer, numeric, factor, ordered
 \item Properties: multiclass, oob_error, twoclass, weights
@@ -26,7 +26,7 @@ lrn("classif.cforest")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit"))) {
+if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin"))) {
   learner = mlr3::lrn("classif.cforest")
   print(learner)
 

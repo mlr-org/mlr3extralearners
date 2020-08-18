@@ -105,7 +105,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         feature_types = c("logical", "integer", "numeric", "character",
           "factor", "ordered"),
         properties = "weights",
-        packages = "partykit",
+        packages = c("partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_regr.mob"
       )
     }
