@@ -13,6 +13,21 @@
 #' Whichever `type` is chosen determines how the `crank` predict type is calculated,
 #' but in any case all can be considered a valid continuous ranking.
 #'
+#' @section Custom mlr3 defaults:
+#'
+#' * `type`
+#'   * original: `regression`
+#'   * new: `hybrid`
+#'   * reason: `regression` is a subet of `hybrid`. Replacement allows control of other parameters
+#' * `diff.meth`
+#'   * original: none
+#'   * new: `makediff3`
+#'   * reason: Required for `hybrid` and this is in line with the Van Belle papers.
+#' * `gamma.mu`
+#'   * original: none
+#'   * new: c(0, 0))
+#'   * reason: Arbitrary choice, must be tuned.
+#'
 #' @references
 #' Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
 #' “Improved performance on high-dimensional survival data by application of Survival-SVM.”
@@ -70,6 +85,8 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
       )
 
       ps$add_dep("diff.meth", "type", CondAnyOf$new(c("vanbelle1", "vanbelle2", "hybrid")))
+
+      ps$values = list(diff.meth = "makediff3", type = "regression", gamma.mu = c(0, 0))
 
       super$initialize(
         id = "surv.svm",

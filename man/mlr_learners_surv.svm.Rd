@@ -5,7 +5,9 @@
 \alias{LearnerSurvSVM}
 \title{Survival Support Vector Machine Learner}
 \description{
-Calls \link[survivalsvm:survivalsvm]{survivalsvm::survivalsvm} from package \CRANpkg{survivalsvm}.
+Survival Support Vector Machine Learner
+
+Survival Support Vector Machine Learner
 }
 \details{
 Four possible SVMs can be implemented, dependent on the \code{type} parameter. These correspond
@@ -14,33 +16,30 @@ to predicting the survival time via regression (\code{regression}), predicting a
 Whichever \code{type} is chosen determines how the \code{crank} predict type is calculated,
 but in any case all can be considered a valid continuous ranking.
 }
-\section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.svm")
-lrn("surv.svm")
-}
-}
-
-\section{Traits}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
-\item Packages: survivalsvm
-\item Predict Types: crank, response
-\item Feature Types: integer, numeric
-\item Properties:
+\item \code{type}
+\itemize{
+\item original: \code{regression}
+\item new: \code{hybrid}
+\item reason: \code{regression} is a subet of \code{hybrid}. Replacement allows control of other parameters
+}
+\item \code{diff.meth}
+\itemize{
+\item original: none
+\item new: \code{makediff3}
+\item reason: Required for \code{hybrid} and this is in line with the Van Belle papers.
+}
+\item \code{gamma.mu}
+\itemize{
+\item original: none
+\item new: c(0, 0))
+\item reason: Arbitrary choice, must be tuned.
+}
 }
 }
 
-\examples{
-if (mlr3misc::require_namespaces(c("survivalsvm"))) {
-  learner = mlr3::lrn("surv.svm")
-  print(learner)
-
-  # available parameters:
-  learner$param_set$ids()
-}
-}
 \references{
 Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
 “Improved performance on high-dimensional survival data by application of Survival-SVM.”
