@@ -19,4 +19,10 @@ if (ci_get_env("TEST") == "Learner") {
       filter = paste0("_", tic::ci_get_env("PKG"), "_"),
       stop_on_failure = TRUE))
 
+} else {
+  
+get_stage("install") %>%
+    add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
+  do_pkgdown()
+  
 }
