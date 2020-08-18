@@ -120,7 +120,7 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::surv.deephit",
-        packages = "reticulate"
+        packages = c("reticulate", "pracma")
       )
     }
   ),
