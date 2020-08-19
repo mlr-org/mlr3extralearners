@@ -40,5 +40,6 @@ if (ci_get_env("TEST") == "Learner") {
 
   get_stage("deploy") %>%
     add_step(step_build_pkgdown(examples = FALSE)) %>%
-    add_step(step_do_push_deploy())
+    add_step(step_do_push_deploy(path = "docs", commit_message = NULL, commit_paths = ".",
+                                 force = FALSE))
 }
