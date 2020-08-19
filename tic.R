@@ -33,7 +33,7 @@ if (ci_get_env("TEST") == "Learner") {
     add_step(step_setup_push_deploy(
       path = "docs",
       branch = "gh-pages",
-      orphan = FALSE,
+      orphan = TRUE,
       remote_url = NULL,
       checkout = TRUE
     ))
