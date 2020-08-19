@@ -26,7 +26,7 @@ tbl[,Package := ifelse(is.na(Package), "mlr3", Package)]
 tbl[,Package := ifelse(Package == "reticulate", "pycox", Package)]
 tbl[,Package := ifelse(Package %in% c("keras", "pracma"), "proba", Package)]
 tbl[,Status := ifelse(mlr3_package == "mlr3extralearners",
-  sprintf("![%s](https://github.com/mlr-org/mlr3extralearners/workflows/%s%s(macOS-latest,%srelease)/badge.svg)", Package, Package, "%20", "%20"),
+  paste0("![", Package, "](https://github.com/mlr-org/mlr3extralearners/workflows/", Package, "%20(macOS-latest,%20release)/badge.svg)"),
   ifelse(mlr3_package == "mlr3",
          "![mlr3](https://github.com/mlr-org/mlr3/workflows/tic/badge.svg)",
          ifelse(mlr3_package == "mlr3learners",

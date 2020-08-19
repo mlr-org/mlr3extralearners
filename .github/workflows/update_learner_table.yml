@@ -67,17 +67,17 @@ jobs:
           R CMD INSTALL .
           Rscript build_learner_table.R
 
-  #    - name: Commit files
-  #      run: |
-  #        git add R/sysdata.rda
-  #        git config --local user.email "action@github.com"
-  #        git config --local user.name "GitHub Action"
-  #        git commit -m "Update learner table"
+      - name: Commit files
+        run: |
+          git add R/sysdata.rda
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git commit -m "Update learner table"
 
-  #    - name: Push changes
-  #      uses: ad-m/github-push-action@master
-  #      with:
-  #        github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "[Stage] Before Deploy"
         run: |
