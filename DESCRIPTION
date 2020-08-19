@@ -13,6 +13,7 @@ Depends:
     R (>= 3.1.0)
 Imports:
     data.table,
+    distr6 (>= 1.4.3),
     mlr3 (>= 0.5.0),
     mlr3misc,
     mlr3proba (>= 0.2.0.9000),
@@ -59,6 +60,7 @@ LinkingTo:
     Rcpp
 Remotes:
     mlr-org/mlr3proba
+    alan-turing-institute/distr6
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
