@@ -1,4 +1,3 @@
-
 if (ci_get_env("TEST") == "Learner") {
 
   get_stage("install") %>%
