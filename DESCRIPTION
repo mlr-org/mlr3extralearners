@@ -59,7 +59,7 @@ Suggests:
 LinkingTo: 
     Rcpp
 Remotes:
-    mlr-org/mlr3proba
+    mlr-org/mlr3proba,
     alan-turing-institute/distr6
 Encoding: UTF-8
 NeedsCompilation: no
