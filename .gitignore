@@ -122,3 +122,5 @@ docs/
 *.o
 
 *.html
+
+.ccache/
