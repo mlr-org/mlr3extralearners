@@ -120,3 +120,5 @@ docs/
 # Rcpp
 *.so
 *.o
+
+*.html

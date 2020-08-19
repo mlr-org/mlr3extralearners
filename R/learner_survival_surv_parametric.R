@@ -95,6 +95,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
 
       if (scale == 0) {
         scale = eps
+      } else if (scale == Inf) {
+        scale = .Machine$double.xmax
       }
 
       if (location < -709 & fit$dist %in% c("weibull", "exponential", "loglogistic")) {
