@@ -91,11 +91,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
       # hard to find.
       location = as.numeric(fit$coefficients[1])
       scale = fit$scale
-      eps = .Machine$double.xmin
+      eps = 1e-15
 
-      if (scale == 0) {
+      if (scale < eps) {
         scale = eps
-      } else if (scale == Inf) {
+      } else if (scale > .Machine$double.xmax) {
         scale = .Machine$double.xmax
       }
 
