@@ -28,17 +28,23 @@ if (ci_get_env("TEST") == "Learner") {
     add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
 
   get_stage("before_deploy") %>%
-    add_step(step_setup_ssh()) %>%
+    add_step(step_setup_ssh(
+      private_key_name = "TIC_DEPLOY_KEY"
+    )) %>%
     add_step(step_setup_push_deploy(
       path = "docs",
       branch = "gh-pages",
-      orphan = TRUE,
+      orphan = FALSE,
       remote_url = NULL,
       checkout = TRUE
     ))
 
   get_stage("deploy") %>%
-    add_step(step_build_pkgdown(examples = FALSE)) %>%
-    add_step(step_do_push_deploy(path = "docs", commit_message = NULL, commit_paths = ".",
-                                 force = FALSE))
+    add_step(step_build_pkgdown()) %>%
+    add_step(step_do_push_deploy(
+      path = "docs",
+      commit_message = NULL,
+      commit_paths = ".",
+      force = FALSE
+    ))
 }
