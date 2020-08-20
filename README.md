@@ -1,36 +1,52 @@
-mlr3extralearners
-================
 
-# What is mlr3extralearners?
+# mlr3extralearners
+
+Package website: [release](https://mlr3extralearners.mlr-org.com/) |
+[dev](https://mlr3extralearners.mlr-org.com/dev/)
+
+Extra Learners for
+**[mlr3](https://github.com/mlr-org/mlr3/)**.
+
+<!-- badges: start -->
+
+[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
+[![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+<!-- badges: end -->
+
+## What is mlr3extralearners?
 
 `mlr3extralearners` contains all learners from mlr3 that are not in
 `mlr3learners` or the core packages. `mlr3extralearners` contains helper
-functions to find where all these learners live and to install required
-packages to run these learners.
+functions to find where all the learners, across the mlr3verse, live and
+to install required packages to run these learners. See the [reference
+page](http://mlr3extralearners.mlr-org.com/reference/index.html) for the
+full list of learners in this package aand the [learner status
+page](http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+for the latest daily build status for all learners in the mlr3verse.
 
 ``` r
-list_mlr3learners(select = c("id", "mlr3_package", "required_package"))
+list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
+#>                      id      mlr3_package      required_packages
+#>   1: classif.AdaBoostM1 mlr3extralearners                  RWeka
+#>   2:        classif.C50 mlr3extralearners                    C50
+#>   3:    classif.cforest mlr3extralearners partykit,sandwich,coin
+#>   4:      classif.ctree mlr3extralearners partykit,sandwich,coin
+#>   5:  classif.cv_glmnet      mlr3learners                 glmnet
+#>  ---                                                            
+#>  97:      surv.pchazard mlr3extralearners      reticulate,pracma
+#>  98:     surv.penalized mlr3extralearners              penalized
+#>  99:         surv.rfsrc mlr3extralearners        randomForestSRC
+#> 100:         surv.rpart         mlr3proba  rpart,distr6,survival
+#> 101:           surv.svm mlr3extralearners            survivalsvm
 ```
 
-    ##                       id      mlr3_package      required_package
-    ##  1:        classif.debug              mlr3                      
-    ##  2:  classif.featureless              mlr3                      
-    ##  3:          classif.gbm mlr3extralearners                   gbm
-    ##  4: classif.randomForest mlr3extralearners          randomForest
-    ##  5:        classif.rpart              mlr3                 rpart
-    ##  6:            dens.hist         mlr3proba                distr6
-    ##  7:             dens.kde         mlr3proba                distr6
-    ##  8:     regr.featureless              mlr3                 stats
-    ##  9:             regr.gbm mlr3extralearners                   gbm
-    ## 10:    regr.randomForest mlr3extralearners          randomForest
-    ## 11:           regr.rpart              mlr3                 rpart
-    ## 12:           surv.coxph         mlr3proba       survival,distr6
-    ## 13:             surv.gbm mlr3extralearners                   gbm
-    ## 14:          surv.kaplan         mlr3proba       survival,distr6
-    ## 15:      surv.obliqueRSF mlr3extralearners     obliqueRSF,pracma
-    ## 16:           surv.rpart         mlr3proba rpart,distr6,survival
+mlr3extralearners lives on GitHub and will not be on CRAN. Install with:
 
-# Installing and Loading Learners
+``` r
+remotes::install_github("mlr-org/mlr3extralearners")
+```
+
+## Installing and Loading Learners
 
 The package includes functionality for detecting if you have the
 required packages installed to use a learner, and ships with the
@@ -39,9 +55,8 @@ dependencies.
 
 ``` r
 lrn("regr.gbm")
+#> Error: Required packages not installed, please run `install_learners("regr.gbm")`.
 ```
-
-    ## Error: Required packages not installed, please run `install_learners("regr.gbm")`.
 
 ``` r
 install_learners("regr.gbm")
@@ -49,17 +64,16 @@ install_learners("regr.gbm")
 
 ``` r
 lrn("regr.gbm")
+#> <LearnerRegrGBM:regr.gbm>
+#> * Model: -
+#> * Parameters: keep.data=FALSE, n.cores=1
+#> * Packages: gbm
+#> * Predict Type: response
+#> * Feature types: integer, numeric, factor, ordered
+#> * Properties: importance, missings, weights
 ```
 
-    ## <LearnerRegrGBM:regr.gbm>
-    ## * Model: -
-    ## * Parameters: keep.data=FALSE, n.cores=1
-    ## * Packages: gbm
-    ## * Predict Type: response
-    ## * Feature types: integer, numeric, factor, ordered
-    ## * Properties: importance, missings, weights
-
-# Extending mlr3extralearners
+## Extending mlr3extralearners
 
 New learners can be created with the `create_learner` function. This
 assumes you have a local copy of `mlr3extralearners`. This function will
