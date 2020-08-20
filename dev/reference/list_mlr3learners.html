@@ -167,9 +167,60 @@ names in table.</p></td>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='fu'>list_mlr3learners</span>(
+    <pre class="examples"><div class='input'><span class='fu'>list_mlr3learners</span>(
   <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"properties"</span>, <span class='st'>"predict_types"</span>),
-  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"surv"</span>, <span class='kw'>predict_types</span> <span class='kw'>=</span> <span class='st'>"distr"</span>))</pre>
+  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"surv"</span>, <span class='kw'>predict_types</span> <span class='kw'>=</span> <span class='st'>"distr"</span>))</div><div class='output co'>#&gt;                   id                                    properties
+#&gt;  1:     surv.akritas                                              
+#&gt;  2:  surv.blackboost                                       weights
+#&gt;  3:     surv.cforest                                       weights
+#&gt;  4:    surv.coxboost                                       weights
+#&gt;  5:       surv.coxph                                       weights
+#&gt;  6:     surv.coxtime                                              
+#&gt;  7:       surv.ctree                                       weights
+#&gt;  8: surv.cv_coxboost                                       weights
+#&gt;  9:     surv.deephit                                              
+#&gt; 10:    surv.deepsurv                                              
+#&gt; 11:         surv.dnn                                              
+#&gt; 12:    surv.flexible                                       weights
+#&gt; 13:    surv.gamboost          importance,selected_features,weights
+#&gt; 14:    surv.glmboost                                       weights
+#&gt; 15:      surv.kaplan                                      missings
+#&gt; 16:      surv.loghaz                                              
+#&gt; 17:      surv.mboost          importance,selected_features,weights
+#&gt; 18:      surv.nelson                                      missings
+#&gt; 19:  surv.obliqueRSF                            missings,oob_error
+#&gt; 20:  surv.parametric                                       weights
+#&gt; 21:    surv.pchazard                                              
+#&gt; 22:   surv.penalized                                              
+#&gt; 23:       surv.rfsrc         importance,missings,oob_error,weights
+#&gt; 24:       surv.rpart importance,missings,selected_features,weights
+#&gt;                   id                                    properties
+#&gt;               predict_types
+#&gt;  1:             crank,distr
+#&gt;  2: distr,crank,lp,response
+#&gt;  3:             distr,crank
+#&gt;  4:          distr,crank,lp
+#&gt;  5:          distr,crank,lp
+#&gt;  6:             crank,distr
+#&gt;  7:             distr,crank
+#&gt;  8:          distr,crank,lp
+#&gt;  9:             crank,distr
+#&gt; 10:             crank,distr
+#&gt; 11:             crank,distr
+#&gt; 12:          distr,crank,lp
+#&gt; 13: distr,crank,lp,response
+#&gt; 14: distr,crank,lp,response
+#&gt; 15:             crank,distr
+#&gt; 16:             crank,distr
+#&gt; 17: distr,crank,lp,response
+#&gt; 18:             crank,distr
+#&gt; 19:             crank,distr
+#&gt; 20:          distr,lp,crank
+#&gt; 21:             crank,distr
+#&gt; 22:             distr,crank
+#&gt; 23:             crank,distr
+#&gt; 24:             crank,distr
+#&gt;               predict_types</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
