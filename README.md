@@ -18,11 +18,12 @@ Extra Learners for
 `mlr3extralearners` contains all learners from mlr3 that are not in
 `mlr3learners` or the core packages. `mlr3extralearners` contains helper
 functions to find where all the learners, across the mlr3verse, live and
-to install required packages to run these learners. See the [reference
-page](http://mlr3extralearners.mlr-org.com/reference/index.html) for the
-full list of learners in this package and the [learner status
+to install required packages to run these learners. See the interactive
+[learner
+list](http://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
+for the full list of learners in the mlr3verse and the [learner status
 page](http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-for the latest daily build status for all learners in the mlr3verse.
+for the latest daily build status.
 
 ``` r
 list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
