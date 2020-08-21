@@ -39,8 +39,10 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
           ParamUty$new(id = "nuirange", default = c(0, 100), tags = "train"),
           ParamLgl$new(id = "center", default = TRUE, tags = "train"),
           ParamInt$new(id = "mstop", default = 100L, lower = 0L, tags = "train"),
-          ParamDbl$new(id = "nu", default = 0.1, lower = 0, upper = 1, tags = "train"),
-          ParamFct$new(id = "risk", levels = c("inbag", "oobag", "none"), tags = "train"),
+          ParamDbl$new(id = "nu", default = 0.1, lower = 0, upper = 1,
+                       tags = "train"),
+          ParamFct$new(id = "risk", levels = c("inbag", "oobag", "none"),
+                       tags = "train"),
           ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
           ParamLgl$new(id = "stopintern", default = FALSE, tags = "train"),
           ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
@@ -106,6 +108,16 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
+
+      saved_ctrl = mboost::boost_control()
+      on.exit(mlr3misc::invoke(mboost::boost_control, .args = saved_ctrl))
+      is_ctrl_pars = (names(pars) %in% names(saved_ctrl))
+
+      # ensure only relevant pars passed to fitted model
+      if (any(is_ctrl_pars)) {
+        pars$control = do.call(mboost::boost_control, pars[is_ctrl_pars])
+        pars = pars[!is_ctrl_pars]
+      }
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
