@@ -1,0 +1,24 @@
+---
+output: html_document
+title: mlr3verse learners
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  cache = FALSE,
+  collapse = TRUE,
+  comment = "#>",
+  echo = TRUE
+)
+library(mlr3extralearners)
+library(magrittr)
+```
+
+```{r,echo=FALSE}
+d = list_mlr3learners()
+DT::datatable(d, filter = "top",
+              options = list(pageLength = nrow(d)),
+              colnames = c("Name", "Class", "ID", "mlr3 Package",
+                           "Required Packages", "Properties",
+                           "Feature Types", "Predict Types"))
+```
