@@ -3,7 +3,8 @@ pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
   learner_status: learners/learner_status.html
-last_built: 2020-08-21T21:30Z
+  list_learners: learners/list_learners.html
+last_built: 2020-08-21T22:01Z
 urls:
   reference: https://mlr3extralearners.mlr-org.com/reference
   article: https://mlr3extralearners.mlr-org.com/articles
