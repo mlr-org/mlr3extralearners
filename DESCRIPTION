@@ -2,11 +2,16 @@ Package: mlr3extralearners
 Title: Extra Learners For mlr3
 Version: 0.1.0
 Authors@R:
-    person(given = "Raphael",
+    c(person(given = "Raphael",
            family = "Sonabend",
            role = c("aut", "cre"),
            email = "raphael.sonabend.15@ucl.ac.uk",
-           comment = c(ORCID = "0000-0001-9225-4654"))
+           comment = c(ORCID = "0000-0001-9225-4654")),
+      person(given = "Patrick",
+           family = "Schratz",
+           role = "aut",
+           email = "patrick.schratz@gmail.com",
+           comment = c(ORCID = "0000-0003-0748-6624")))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
