@@ -10,12 +10,11 @@ knitr::opts_chunk$set(
   comment = "#>",
   echo = TRUE
 )
-library(mlr3extralearners)
-library(magrittr)
+install.packages("DT")
 ```
 
 ```{r,echo=FALSE}
-d = list_mlr3learners()
+d = mlr3extralearners::list_mlr3learners()
 DT::datatable(d, filter = "top",
               options = list(pageLength = nrow(d)),
               colnames = c("Name", "Class", "ID", "mlr3 Package",
