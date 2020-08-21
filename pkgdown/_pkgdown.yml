@@ -29,6 +29,9 @@ navbar:
       icon: fa fa-file-alt
       text: Reference
       href: reference/index.html
+    github:
+      icon: fa fa-github
+      href: https://github.com/mlr-org/mlr3extralearners
     mattermost:
       icon: fa fa-comments
       href: https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/
