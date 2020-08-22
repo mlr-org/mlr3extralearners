@@ -15,9 +15,13 @@ install.packages("DT")
 
 ```{r,echo=FALSE}
 d = mlr3extralearners::list_mlr3learners()
+d$required_packages = sapply(d$required_packages, paste0, collapse = "\n")
+d$properties = sapply(d$properties, paste0, collapse = "\n")
+d$feature_types = sapply(d$feature_types, paste0, collapse = "\n")
+d$predict_types = sapply(d$predict_types, paste0, collapse = "\n")
 DT::datatable(d, filter = "top",
               options = list(pageLength = nrow(d)),
               colnames = c("Name", "Class", "ID", "mlr3 Package",
-                           "Required Packages", "Properties",
+                           "Packages", "Properties",
                            "Feature Types", "Predict Types"))
 ```
