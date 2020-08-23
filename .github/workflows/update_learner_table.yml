@@ -79,7 +79,7 @@ jobs:
 
       - name: Commit files
         run: |
-          git add R/sysdata.rda
+          git add .
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git commit -m "Update learner table"
