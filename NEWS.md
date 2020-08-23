@@ -1,3 +1,3 @@
-# mlr3extralearners 0.0.1.9000
+# mlr3extralearners 0.1.0
 
-- In development
+- Initial release
