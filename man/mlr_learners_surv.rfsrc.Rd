@@ -25,7 +25,7 @@ lrn("surv.rfsrc")
 \section{Traits}{
 
 \itemize{
-\item Packages: randomForestSRC
+\item Packages: randomForestSRC, pracma
 \item Predict Types: crank, distr
 \item Feature Types: logical, integer, numeric, factor
 \item Properties: importance, missings, oob_error, weights
@@ -33,7 +33,7 @@ lrn("surv.rfsrc")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("randomForestSRC"))) {
+if (mlr3misc::require_namespaces(c("randomForestSRC", "pracma"))) {
   learner = mlr3::lrn("surv.rfsrc")
   print(learner)
 

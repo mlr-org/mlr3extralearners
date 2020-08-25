@@ -30,7 +30,7 @@ lrn("surv.flexible")
 \section{Traits}{
 
 \itemize{
-\item Packages: flexsurv
+\item Packages: flexsurv, pracma
 \item Predict Types: distr, crank, lp
 \item Feature Types: logical, integer, factor, numeric
 \item Properties: weights
@@ -51,7 +51,7 @@ implementation of, \link[mlr3learners.survival:LearnerSurvParametric]{LearnerSur
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("flexsurv"))) {
+if (mlr3misc::require_namespaces(c("flexsurv", "pracma"))) {
   learner = mlr3::lrn("surv.flexible")
   print(learner)
 

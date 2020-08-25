@@ -71,7 +71,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
 
       super$initialize(
         id = "surv.flexible",
-        packages = "flexsurv",
+        packages = c("flexsurv", "pracma"),
         feature_types = c("logical", "integer", "factor", "numeric"),
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
