@@ -51,7 +51,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
       super$initialize(
         # see the mlr3book for a description: https://mlr3book.mlr-org.com/extending-mlr3.html
         id = "surv.coxboost",
-        packages = "CoxBoost",
+        packages = c("CoxBoost", "pracma"),
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,

@@ -25,7 +25,7 @@ lrn("surv.coxboost")
 \section{Traits}{
 
 \itemize{
-\item Packages: CoxBoost
+\item Packages: CoxBoost, pracma
 \item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: weights
@@ -33,7 +33,7 @@ lrn("surv.coxboost")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("CoxBoost"))) {
+if (mlr3misc::require_namespaces(c("CoxBoost", "pracma"))) {
   learner = mlr3::lrn("surv.coxboost")
   print(learner)
 

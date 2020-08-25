@@ -19,7 +19,7 @@ lrn("surv.deepsurv")
 \section{Traits}{
 
 \itemize{
-\item Packages: reticulate
+\item Packages: reticulate, pracma
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:
@@ -27,7 +27,7 @@ lrn("surv.deepsurv")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("reticulate"))) {
+if (mlr3misc::require_namespaces(c("reticulate", "pracma"))) {
   learner = mlr3::lrn("surv.deepsurv")
   print(learner)
 
