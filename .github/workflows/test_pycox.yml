@@ -112,6 +112,7 @@ jobs:
     
       - name: Install Python and Packages
         run: |
+          cwd
           Rscript -e "remotes::install_github('rstudio/reticulate')"
           Rscript -e "reticulate::install_miniconda()"
           Rscript -e "reticulate::py_install(c('torch', 'pycox'), pip = TRUE)"
