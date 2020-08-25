@@ -21,7 +21,7 @@ lrn("surv.blackboost")
 \section{Traits}{
 
 \itemize{
-\item Packages: mboost
+\item Packages: mboost, pracma
 \item Predict Types: distr, crank, lp, response
 \item Feature Types: integer, numeric, factor
 \item Properties: weights
@@ -29,7 +29,7 @@ lrn("surv.blackboost")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mboost"))) {
+if (mlr3misc::require_namespaces(c("mboost", "pracma"))) {
   learner = mlr3::lrn("surv.blackboost")
   print(learner)
 
