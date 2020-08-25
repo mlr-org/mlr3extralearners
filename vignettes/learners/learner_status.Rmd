@@ -26,12 +26,12 @@ tbl[,Package := ifelse(is.na(Package), "mlr3", Package)]
 tbl[,Package := ifelse(Package == "reticulate", "pycox", Package)]
 tbl[,Package := ifelse(Package %in% c("keras", "pracma"), "proba", Package)]
 tbl[,Status := ifelse(mlr3_package == "mlr3extralearners",
-  paste0("![", Package, "](https://github.com/mlr-org/mlr3extralearners/workflows/", Package, "%20(macOS-latest,%20release)/badge.svg)"),
+  paste0("[![", Package, "](https://github.com/mlr-org/mlr3extralearners/workflows/", Package, "%20(macOS-latest,%20release)/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions?query=workflow%3A%22", Package, "+%28macOS-latest%2C+release%29%22)"),
   ifelse(mlr3_package == "mlr3",
-         "![mlr3](https://github.com/mlr-org/mlr3/workflows/tic/badge.svg)",
+         "[![mlr3](https://github.com/mlr-org/mlr3/workflows/tic/badge.svg)](https://github.com/mlr-org/mlr3/actions)",
          ifelse(mlr3_package == "mlr3learners",
-                "![mlr3learners](https://github.com/mlr-org/mlr3learners/workflows/tic/badge.svg)",
-                "![mlr3proba](https://github.com/mlr-org/mlr3proba/workflows/tic/badge.svg)")))]
+                "[![mlr3learners](https://github.com/mlr-org/mlr3learners/workflows/tic/badge.svg)](https://github.com/mlr-org/mlr3learners/actions)",
+                "[![mlr3proba](https://github.com/mlr-org/mlr3proba/workflows/tic/badge.svg)](https://github.com/mlr-org/mlr3proba/actions)")))]
 # fix edge cases
 
 

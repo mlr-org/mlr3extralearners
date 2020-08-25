@@ -23,7 +23,7 @@ to install required packages to run these learners. See the interactive
 list](http://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
 page](http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-for the latest daily build status.
+for a live build status.
 
 ``` r
 list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
