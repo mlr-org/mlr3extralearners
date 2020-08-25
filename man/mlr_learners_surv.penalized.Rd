@@ -24,7 +24,7 @@ lrn("surv.penalized")
 \section{Traits}{
 
 \itemize{
-\item Packages: penalized
+\item Packages: penalized, pracma
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, logical
 \item Properties:
@@ -32,7 +32,7 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("penalized"))) {
+if (mlr3misc::require_namespaces(c("penalized", "pracma"))) {
   learner = mlr3::lrn("surv.penalized")
   print(learner)
 
