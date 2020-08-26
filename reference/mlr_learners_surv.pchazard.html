@@ -186,7 +186,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='n
     
 
 <ul>
-<li><p>Packages: reticulate</p></li>
+<li><p>Packages: reticulate, pracma</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: integer, numeric</p></li>
 <li><p>Properties:</p></li>
@@ -244,13 +244,13 @@ ArXiv Preprint ArXiv:1910.06724.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>mlr3misc</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3misc.mlr-org.com/reference/require_namespaces.html'>require_namespaces</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"reticulate"</span>))) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>mlr3misc</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3misc.mlr-org.com/reference/require_namespaces.html'>require_namespaces</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"reticulate"</span>, <span class='st'>"pracma"</span>))) {
   <span class='no'>learner</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"surv.pchazard"</span>)
   <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>learner</span>)
 
   <span class='co'># available parameters:</span>
   <span class='no'>learner</span>$<span class='no'>param_set</span>$<span class='fu'>ids</span>()
-}</div><div class='output co'>#&gt; <span class='error'>Error: The following packages could not be loaded: reticulate</span></div></pre>
+}</div><div class='output co'>#&gt; <span class='error'>Error: The following packages could not be loaded: reticulate,pracma</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
