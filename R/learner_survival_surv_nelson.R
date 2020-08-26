@@ -57,7 +57,7 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = LearnerSurv,
         decorators = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = as.numeric(sum(x[[1]]$x * c(x[[1]]$cdf[1], diff(x$cdf))))
+      crank = as.numeric(sum(x[[1]]$x * c(x[[1]]$cdf[1], diff(x[[1]]$cdf))))
 
       mlr3proba::PredictionSurv$new(task = task, crank = rep(crank, task$nrow), distr = distr)
     }

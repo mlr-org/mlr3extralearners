@@ -96,25 +96,24 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
     .predict = function(task) {
       fit = predict(self$model, newdata = task$data(cols = task$feature_names))
-      crank = distr = lp = response = NULL
+      crank = as.numeric(fit$predicted)
 
-      if (is.null(self$param_set$values$type)) {
-        crank = response = as.numeric(fit$predicted)
-      } else if (self$param_set$values$type == "regression") {
-        crank = response = as.numeric(fit$predicted)
-      } else if (self$param_set$values$type == "vanbelle1") {
-        crank = as.numeric(fit$predicted)
-      } else if (self$param_set$values$type == "vanbelle2") {
-        crank = as.numeric(fit$predicted)
-      } else if (self$param_set$values$type == "hybrid") {
-        crank = response = as.numeric(fit$predicted)
+      if (is.null(self$param_set$values$type) ||
+          (self$param_set$values$type %in% c("regression", "hybrid"))) {
+
+        response = crank
+
+      } else {
+
+        response = NULL
+
       }
 
       mlr3proba::PredictionSurv$new(task = task,
                                     crank = crank,
                                     response = response,
-                                    lp = lp,
-                                    distr = distr)
+                                    lp = NULL,
+                                    distr = NULL)
     }
   )
 )
