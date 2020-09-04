@@ -229,8 +229,8 @@ list_mlr3learners = function(select = NULL, filter = NULL) {
     if (!is.null(filter$mlr3_package)) {
       dt = subset(dt, mlr3_package %in% filter$mlr3_package)
     }
-    if (!is.null(filter$required_package)) {
-      dt = subset(dt, required_package %in% filter$required_package)
+    if (!is.null(filter$required_packages)) {
+      dt = subset(dt, required_packages %in% filter$required_packages)
     }
     if (!is.null(filter$properties)) {
       dt = subset(dt, mlr3misc::map_lgl(

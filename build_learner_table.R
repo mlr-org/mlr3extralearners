@@ -1,5 +1,5 @@
-install.packages(c("mlr3learners", "usethis"))
-
+install.packages(c("usethis", "remotes"))
+remotes::install_github("mlr-org/mlr3learners", upgrade = "never")
 
 library(mlr3)
 library(mlr3learners)
@@ -14,7 +14,6 @@ mlr3learners_table = data.table::data.table(t(data.table::rbindlist(list(
     list(idsplt[[2]], idsplt[[1]], .x$id, strsplit(.x$man, "::", TRUE)[[1]][1],
          .x$packages, .x$properties, .x$feature_types, .x$predict_types)
   })))))
-
 colnames(mlr3learners_table) = c("name", "class", "id", "mlr3_package", "required_packages",
                             "properties", "feature_types", "predict_types")
 mlr3learners_table[, 1:4] = lapply(mlr3learners_table[, 1:4], as.character)
