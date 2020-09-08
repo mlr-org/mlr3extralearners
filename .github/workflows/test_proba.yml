@@ -42,13 +42,14 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: "[Linux] ccache"
+      - name: "[Stage] Prepare"
         if: runner.os == 'Linux'
         run: |
+          sudo R CMD javareconf
           sudo apt install ccache libcurl4-openssl-dev
           mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
 
-      - name: "[Stage] Prepare & Install"
+      - name: "[Stage] Install"
         run: |
           Rscript -e "install.packages('remotes', type = 'source')" -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
 
@@ -59,7 +60,6 @@ jobs:
           Rscript -e "remotes::install_local()"
           Rscript -e "install.packages('keras')"
           Rscript -e "keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))"
-
 
       - name: "[Stage] Script"
         run: |
