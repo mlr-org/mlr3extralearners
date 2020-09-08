@@ -82,5 +82,3 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
     }
   )
 )
-
-lrns_dict$add("regr.extratrees", LearnerRegrExtraTrees)

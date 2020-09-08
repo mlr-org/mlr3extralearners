@@ -112,5 +112,3 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
     }
   )
 )
-
-lrns_dict$add("classif.J48", LearnerClassifJ48)

@@ -75,5 +75,3 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     }
   )
 )
-
-lrns_dict$add("dens.nonpar", LearnerDensNonparametric)

@@ -212,5 +212,3 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
     }
   )
 )
-
-lrns_dict$add("surv.dnn", LearnerSurvDNNSurv)

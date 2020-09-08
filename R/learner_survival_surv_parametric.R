@@ -270,5 +270,3 @@ predict_survreg = function(object, task, type = "aft") {
 
   return(list(lp = as.numeric(lp), distr = distr))
 }
-
-lrns_dict$add("surv.parametric", LearnerSurvParametric)

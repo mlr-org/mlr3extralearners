@@ -63,5 +63,3 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = LearnerSurv,
     }
   )
 )
-
-lrns_dict$add("surv.nelson", LearnerSurvNelson)

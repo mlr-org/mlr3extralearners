@@ -263,5 +263,3 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
     }
   )
 )
-
-lrns_dict$add("surv.loghaz", LearnerSurvLogisticHazard)

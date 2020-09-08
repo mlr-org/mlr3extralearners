@@ -123,5 +123,3 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     }
   )
 )
-
-lrns_dict$add("regr.randomForest", LearnerRegrRandomForest)

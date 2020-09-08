@@ -110,5 +110,3 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
     }
   )
 )
-
-lrns_dict$add("classif.ksvm", LearnerClassifKSVM)

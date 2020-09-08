@@ -118,5 +118,3 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
     }
   )
 )
-
-lrns_dict$add("regr.ctree", LearnerRegrCTree)

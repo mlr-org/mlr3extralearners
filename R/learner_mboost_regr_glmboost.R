@@ -117,5 +117,3 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
     }
   )
 )
-
-lrns_dict$add("regr.glmboost", LearnerRegrGLMBoost)

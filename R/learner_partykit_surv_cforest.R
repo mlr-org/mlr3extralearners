@@ -177,5 +177,3 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
     }
   )
 )
-
-lrns_dict$add("surv.cforest", LearnerSurvCForest)

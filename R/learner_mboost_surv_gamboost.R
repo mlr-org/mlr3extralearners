@@ -186,5 +186,3 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
     }
   )
 )
-
-lrns_dict$add("surv.gamboost", LearnerSurvGAMBoost)

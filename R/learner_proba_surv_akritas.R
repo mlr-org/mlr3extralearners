@@ -63,5 +63,3 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     }
   )
 )
-
-lrns_dict$add("surv.akritas", LearnerSurvAkritas)

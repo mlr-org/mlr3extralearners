@@ -217,5 +217,3 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
     }
   )
 )
-
-lrns_dict$add("surv.deepsurv", LearnerSurvDeepsurv)

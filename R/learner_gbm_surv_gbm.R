@@ -127,5 +127,3 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
     }
   )
 )
-
-lrns_dict$add("surv.gbm", LearnerSurvGBM)

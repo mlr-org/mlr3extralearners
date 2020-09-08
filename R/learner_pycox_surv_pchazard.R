@@ -244,5 +244,3 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
     }
   )
 )
-
-lrns_dict$add("surv.pchazard", LearnerSurvPCHazard)

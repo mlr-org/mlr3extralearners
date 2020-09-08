@@ -157,5 +157,3 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
     }
   )
 )
-
-lrns_dict$add("regr.mob", LearnerRegrMob)

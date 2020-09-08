@@ -91,5 +91,3 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
     }
   )
 )
-
-lrns_dict$add("classif.OneR", LearnerClassifOneR)

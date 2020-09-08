@@ -129,5 +129,3 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
     }
   )
 )
-
-lrns_dict$add("surv.ctree", LearnerSurvCTree)

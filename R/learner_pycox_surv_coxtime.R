@@ -225,5 +225,3 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
     }
   )
 )
-
-lrns_dict$add("surv.coxtime", LearnerSurvCoxtime)

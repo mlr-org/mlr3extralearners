@@ -83,5 +83,3 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
     }
   )
 )
-
-lrns_dict$add("classif.extratrees", LearnerClassifExtraTrees)

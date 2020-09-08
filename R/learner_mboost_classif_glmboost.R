@@ -130,5 +130,3 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     }
   )
 )
-
-lrns_dict$add("classif.glmboost", LearnerClassifGLMBoost)

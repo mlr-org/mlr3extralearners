@@ -60,5 +60,3 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     }
   )
 )
-
-lrns_dict$add("regr.fnn", LearnerRegrFNN)

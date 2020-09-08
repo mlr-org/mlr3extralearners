@@ -99,5 +99,3 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
     }
   )
 )
-
-lrns_dict$add("dens.mixed", LearnerDensMixed)

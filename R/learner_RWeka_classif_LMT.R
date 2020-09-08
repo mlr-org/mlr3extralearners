@@ -101,5 +101,3 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
     }
   )
 )
-
-lrns_dict$add("classif.LMT", LearnerClassifLMT)

@@ -88,7 +88,7 @@ matrix and original names can't be recovered.
 
 description
 Selected features are extracted with the function
-\code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+\code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 return \code{character()}.
 \subsection{Usage}{

@@ -99,5 +99,3 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
     }
   )
 )
-
-lrns_dict$add("classif.AdaBoostM1", LearnerClassifAdaBoostM1)

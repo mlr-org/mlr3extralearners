@@ -136,5 +136,3 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
     }
   )
 )
-
-lrns_dict$add("classif.gamboost", LearnerClassifGAMBoost)

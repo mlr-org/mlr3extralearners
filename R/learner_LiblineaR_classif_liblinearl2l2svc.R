@@ -88,5 +88,3 @@ LearnerClassifLiblineaRL2L2SVC = R6Class("LearnerClassifLiblineaRL2L2SVC", # nol
     }
   )
 )
-
-lrns_dict$add("classif.liblinearl2l2svc", LearnerClassifLiblineaRL2L2SVC)

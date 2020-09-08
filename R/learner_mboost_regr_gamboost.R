@@ -118,5 +118,3 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
     }
   )
 )
-
-lrns_dict$add("regr.gamboost", LearnerRegrGAMBoost)

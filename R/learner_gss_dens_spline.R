@@ -93,5 +93,3 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
     }
   )
 )
-
-lrns_dict$add("dens.spline", LearnerDensSpline)

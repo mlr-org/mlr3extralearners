@@ -148,5 +148,3 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
     }
   )
 )
-
-lrns_dict$add("classif.randomForest", LearnerClassifRandomForest)

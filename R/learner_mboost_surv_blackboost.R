@@ -198,5 +198,3 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
     }
   )
 )
-
-lrns_dict$add("surv.blackboost", LearnerSurvBlackBoost)

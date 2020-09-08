@@ -125,5 +125,3 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
     }
   )
 )
-
-lrns_dict$add("classif.ctree", LearnerClassifCTree)

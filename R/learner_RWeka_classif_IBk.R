@@ -99,5 +99,3 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
     }
   )
 )
-
-lrns_dict$add("classif.IBk", LearnerClassifIBk)

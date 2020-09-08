@@ -79,5 +79,3 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     }
   )
 )
-
-lrns_dict$add("dens.locfit", LearnerDensLocfit)

@@ -93,5 +93,3 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
     }
   )
 )
-
-lrns_dict$add("classif.C50", LearnerClassifC50)

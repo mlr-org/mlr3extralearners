@@ -117,5 +117,3 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
     }
   )
 )
-
-lrns_dict$add("surv.svm", LearnerSurvSVM)

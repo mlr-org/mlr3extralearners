@@ -45,7 +45,7 @@ lrn("surv.flexible")
 \item Actual default: \code{0}
 \item Adjusted default: \code{1}
 \item Reason for change: The default value of \code{0} is equivalent to, and a much less efficient
-implementation of, \link[mlr3learners.survival:LearnerSurvParametric]{LearnerSurvParametric}.
+implementation of, \link{LearnerSurvParametric}.
 }
 }
 }
