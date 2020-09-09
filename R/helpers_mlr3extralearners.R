@@ -23,11 +23,89 @@ pkg_root = function(path = ".") {
   }
 }
 
+#' @title Create a New Learner
+#' @description Helper function to generate all required files, and fill in fields, for new
+#' learners.
+#' @details This function does the following:
+#'
+#' 1. Creates a learner_package_type_key.R file for the implemented learner.
+#' 2. Creates a test_package_type_key.R file for unit testing the learner.
+#' 3. Creates a test_paramtest_package_type_key.R file for testing correct implementation of
+#' learner parameters.
+#' 4. Creates a test_package.yml file for running unit tests in GitHub actions
+#' 5. Automatically completes the test (2), and yaml files (4)
+#' 6. For the learner file all fields are automatically filled but methods must be manually added
+#' along with the parameter set, this is clearly marked up in the files.
+#'
+#' To create a learner you must follow these steps:
+#'
+#' 1. Run this function with as many arguments as possible
+#' 2. Manually add `.train`, `.predict` private methods for the learner, as well as adding the
+#' `param_set` and possibly `param_vals`. If properties include `"oob_error"` and/or `"importance"`
+#' then add these public methods manually.
+#' 3. Check the paramtests and unit tests pass locally.
+#' 4. Run:
+#'   1. `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
+#'   2. `styler::style_pkg(style = styler::mlr_style)`
+#'   3. `usethis::use_tidy_description()`
+#'   4. `lintr::lint_package()`
+#' 5. Open a pull request to \url{https://github.com/mlr-org/mlr3extralearners/pulls} with the new
+#' learner template.
+#'
+#' @param pkg `character(1)` \cr Path to the mlr3extralearners package.
+#' @param classname `character(1)` \cr Suffix for R6 class name passed to LearnerTypeclassname.
+#' @param algorithm `character(1)` \cr Brief description of algorithm for documentation title.
+#' @param type `character(1)` \cr See `mlr3::mlr_reflections$task_types$type`.
+#' @param key `character(1)` \cr id for learner, if not provided defaults to the `classname`
+#' in all lower case.
+#' @param package `character(1)` \cr Package from which the learner is implemented, defaults to
+#' the `classname` in all lower case.
+#' @param caller `character(1)` \cr Training function called from the implemented package.
+#' @param feature_types `character()` \cr Feature types that can be handled by the learner,
+#' see `mlr3::mlr_reflections$task_feature_types`.
+#' @param predict_types `character()` \cr Prediction types that can be made by the learner,
+#' see `mlr3::mlr_reflections$learner_predict_types`.
+#' @param properties `character()` \cr Properties that can be handled by the learner,
+#' see `mlr3::mlr_reflections$learner_properties`.
+#' @param references `logical(1)` \cr Set to `TRUE` if you want to add references for the learner.
+#' @param gh_name `character(1)` \cr Your GitHub handle, used to add you as the maintainer of
+#' the learner.
+#'
+#' @examples
+#' \dontrun{
+#' # Simpler linear regression example
+#' create_learner(
+#'  classname = "LM",
+#'  algorithm = "linear regression",
+#'  type = "regr",
+#'  package = "stats"
+#'  caller = "lm",
+#'  feature_types = c("logical", "integer", "numeric", "factor"),
+#'  predict_types = c("response", "se"),
+#'  properties = "weights"
+#'  gh_name = "RaphaelS1"
+#' )
+#'
+#' # Slightly more complex random forest learner
+#' create_learner(
+#'  classname = "RandomForestSRC",
+#'  algorithm = "random forest",
+#'  type = "surv",
+#'  package = "randomForestSRC"
+#'  caller = "rfsrc",
+#'  feature_types = c("logical", "integer", "numeric", "factor"),
+#'  predict_types = c("crank", "distr"),
+#'  properties = c("importance", "missings", "oob_error", "weights"),
+#'  references = TRUE
+#'  gh_name = "RaphaelS1"
+#' )
+#'
+#' }
+#' @export
 create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
                           package = tolower(classname), caller,
                           feature_types, predict_types, properties = NULL,
-                          importance = FALSE, oob_error = FALSE, references = FALSE,
-                          gh_name) {
+                          references = FALSE, gh_name) {
 
   path = pkg_root(pkg)
 
@@ -50,8 +128,8 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   checkmate::assert_subset(predict_types,
                            names(mlr3::mlr_reflections$learner_predict_types[[type]]))
   checkmate::assert_subset(properties, mlr3::mlr_reflections$learner_properties[[type]])
-  checkmate::assert_flag(importance)
-  checkmate::assert_flag(oob_error)
+  importance = "importance" %in% properties
+  oob_error = "oob_error" %in% properties
   checkmate::assert_flag(references)
 
   type_lng = switch(type,
@@ -150,7 +228,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   }
 
 
-  # CREATE YAMLS
+  # CREATE YAML
   file_name = file.path(path, ".github", "workflows", paste0("test_", key, ".yml"))
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
                 overwrite = FALSE)
