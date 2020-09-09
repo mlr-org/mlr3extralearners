@@ -74,11 +74,13 @@ To create a learner you must follow these steps:
 \code{param_set} and possibly \code{param_vals}. If properties include \code{"oob_error"} and/or \code{"importance"}
 then add these public methods manually.
 \item Check the paramtests and unit tests pass locally.
-\item Run:
+\item Run
+\enumerate{
 \item \code{devtools::document(roclets = c('rd', 'collate', 'namespace'))}
 \item \code{styler::style_pkg(style = styler::mlr_style)}
 \item \code{usethis::use_tidy_description()}
 \item \code{lintr::lint_package()}
+}
 \item Open a pull request to \url{https://github.com/mlr-org/mlr3extralearners/pulls} with the new
 learner template.
 }
@@ -94,7 +96,7 @@ create_learner(
  caller = "lm",
  feature_types = c("logical", "integer", "numeric", "factor"),
  predict_types = c("response", "se"),
- properties = "weights"
+ properties = "weights",
  gh_name = "RaphaelS1"
 )
 
@@ -103,12 +105,12 @@ create_learner(
  classname = "RandomForestSRC",
  algorithm = "random forest",
  type = "surv",
- package = "randomForestSRC"
+ package = "randomForestSRC",
  caller = "rfsrc",
  feature_types = c("logical", "integer", "numeric", "factor"),
  predict_types = c("crank", "distr"),
  properties = c("importance", "missings", "oob_error", "weights"),
- references = TRUE
+ references = TRUE,
  gh_name = "RaphaelS1"
 )
 

@@ -7,7 +7,7 @@
 #' @templateVar caller <caller>
 #'
 #' @references
-#' <OPTIONAL - DELETE THIS AND LINE ABOVE IF OMITTED>
+#' <FIXME - DELETE THIS AND LINE ABOVE IF OMITTED>
 #'
 #' @template seealso_learner
 #' @template example
@@ -38,14 +38,14 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     },
 
     # FIXME - ADD IMPORTANCE METHOD HERE AND DELETE THIS LINE.
-    # <See mlr3learners.randomForest for an example>
+    # <See LearnerRegrRandomForest for an example>
     #' @description
     #' The importance scores are extracted from the slot <FIXME>.
     #' @return Named `numeric()`.
     importance = function() { },
 
     # FIXME - ADD OOB_ERROR METHOD HERE AND DELETE THIS LINE.
-    # <See mlr3learners.randomForest for an example>
+    # <See LearnerRegrRandomForest for an example>
     #' @description
     #' OOB errors are extracted from the model slot <FIXME>.
     #' @return `numeric(1)`.

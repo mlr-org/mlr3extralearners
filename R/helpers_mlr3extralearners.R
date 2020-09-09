@@ -29,27 +29,28 @@ pkg_root = function(path = ".") {
 #' @details This function does the following:
 #'
 #' 1. Creates a learner_package_type_key.R file for the implemented learner.
-#' 2. Creates a test_package_type_key.R file for unit testing the learner.
-#' 3. Creates a test_paramtest_package_type_key.R file for testing correct implementation of
+#' 1. Creates a test_package_type_key.R file for unit testing the learner.
+#' 1. Creates a test_paramtest_package_type_key.R file for testing correct implementation of
 #' learner parameters.
-#' 4. Creates a test_package.yml file for running unit tests in GitHub actions
-#' 5. Automatically completes the test (2), and yaml files (4)
-#' 6. For the learner file all fields are automatically filled but methods must be manually added
+#' 1. Creates a test_package.yml file for running unit tests in GitHub actions
+#' 1. Automatically completes the test (2), and yaml files (4)
+#' 1. Automatically adds the learner package to the DESCRIPTION file
+#' 1. For the learner file all fields are automatically filled but methods must be manually added
 #' along with the parameter set, this is clearly marked up in the files.
 #'
 #' To create a learner you must follow these steps:
 #'
 #' 1. Run this function with as many arguments as possible
-#' 2. Manually add `.train`, `.predict` private methods for the learner, as well as adding the
+#' 1. Manually add `.train`, `.predict` private methods for the learner, as well as adding the
 #' `param_set` and possibly `param_vals`. If properties include `"oob_error"` and/or `"importance"`
 #' then add these public methods manually.
-#' 3. Check the paramtests and unit tests pass locally.
-#' 4. Run:
-#'   1. `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
-#'   2. `styler::style_pkg(style = styler::mlr_style)`
-#'   3. `usethis::use_tidy_description()`
-#'   4. `lintr::lint_package()`
-#' 5. Open a pull request to \url{https://github.com/mlr-org/mlr3extralearners/pulls} with the new
+#' 1. Check the paramtests and unit tests pass locally.
+#' 1. Run
+#'     1. `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
+#'     1. `styler::style_pkg(style = styler::mlr_style)` (you may need to first run `remotes::`)
+#'     1. `usethis::use_tidy_description()`
+#'     1. `lintr::lint_package()`
+#' 1. Open a pull request to \url{https://github.com/mlr-org/mlr3extralearners/pulls} with the new
 #' learner template.
 #'
 #' @param pkg `character(1)` \cr Path to the mlr3extralearners package.
@@ -82,7 +83,7 @@ pkg_root = function(path = ".") {
 #'  caller = "lm",
 #'  feature_types = c("logical", "integer", "numeric", "factor"),
 #'  predict_types = c("response", "se"),
-#'  properties = "weights"
+#'  properties = "weights",
 #'  gh_name = "RaphaelS1"
 #' )
 #'
@@ -91,12 +92,12 @@ pkg_root = function(path = ".") {
 #'  classname = "RandomForestSRC",
 #'  algorithm = "random forest",
 #'  type = "surv",
-#'  package = "randomForestSRC"
+#'  package = "randomForestSRC",
 #'  caller = "rfsrc",
 #'  feature_types = c("logical", "integer", "numeric", "factor"),
 #'  predict_types = c("crank", "distr"),
 #'  properties = c("importance", "missings", "oob_error", "weights"),
-#'  references = TRUE
+#'  references = TRUE,
 #'  gh_name = "RaphaelS1"
 #' )
 #'
@@ -267,7 +268,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     b) Optionally add further tests for all functions called in your .train and .predict methods.
   4) Run:
     a) devtools::document(roclets = c('rd', 'collate', 'namespace'))
-    b) styler::style_pkg(style = styler::mlr_style)
+    b) styler::style_pkg(style = styler::mlr_style) (run remotes::install_github('pat-s/styler@mlr-style') if needed). # nolint
     c) usethis::use_tidy_description()
     d) lintr::lint_package()
   5) Open a pull request to https://github.com/mlr-org/mlr3extralearners/pulls with the new learner template.", # nolint
