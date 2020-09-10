@@ -19,9 +19,9 @@ Depends:
 Imports:
     data.table,
     distr6 (>= 1.4.3),
-    mlr3 (>= 0.5.0),
+    mlr3 (>= 0.6.0),
     mlr3misc,
-    mlr3proba (>= 0.2.0.9000),
+    mlr3proba (>= 0.2.2),
     paradox,
     R6,
     Rcpp (>= 1.0.4),
@@ -64,7 +64,9 @@ Suggests:
 LinkingTo: 
     Rcpp
 Remotes:
+    mlr-org/mlr3,
     mlr-org/mlr3proba,
+    mlr-org/mlr3pipelines#499,
     alan-turing-institute/distr6
 Encoding: UTF-8
 NeedsCompilation: no
