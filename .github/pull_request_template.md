@@ -1,6 +1,6 @@
 **Select template and delete others as applicable.**
 
-# New Learner {#new}
+# New Learner
 
 This pull request adds Learner[Type][Name] with the unique key [type].[key] from package [package].
 
@@ -49,12 +49,12 @@ I have run...
 
 Delete as appropriate:
 
-This is a regression or classification learner, I have assigned pat-s to review this.
-This is a survival or density learner, I have assigned RaphaelS1 to review this.
+* This is a regression or classification learner, I have assigned pat-s to review this.
+* This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
 -------
 
-# Updated Learner {#update}
+# Updated Learner
 
 This pull request updates Learner[Type][Name].
 
@@ -91,10 +91,10 @@ I have run...
 
 Delete as appropriate:
 
-This is a regression or classification learner, I have assigned pat-s to review this.
-This is a survival or density learner, I have assigned RaphaelS1 to review this.
+* This is a regression or classification learner, I have assigned pat-s to review this.
+* This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
 ----
 
-# Other  {#other}
+# Other
 
