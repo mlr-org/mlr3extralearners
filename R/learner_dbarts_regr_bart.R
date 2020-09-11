@@ -1,21 +1,21 @@
-#' @title Regression Dbarts Learner
+#' @title Regression BART (Bayesian Additive Regression Trees) Learner
 #' @author ck37
-#' @name mlr_learners_regr.dbarts
+#' @name mlr_learners_regr.bart
 #'
 #' @template class_learner
-#' @templateVar id regr.dbarts
-#' @templateVar caller dbarts
+#' @templateVar id regr.bart
+#' @templateVar caller bart
 #'
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerRegrDbarts <- R6Class("LearnerRegrDbarts",
+LearnerRegrBart <- R6Class("LearnerRegrBart",
   inherit = LearnerRegr,
 
   public = list(
 
     #' @description
-    #' Create a `LearnerRegrDbarts` object.
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps <- ParamSet$new( # parameter set using the paradox package
         params = list(
@@ -53,7 +53,7 @@ LearnerRegrDbarts <- R6Class("LearnerRegrDbarts",
       ps$values <- list(keeptrees = TRUE)
 
       super$initialize(
-        id = "regr.dbarts",
+        id = "regr.bart",
         packages = "dbarts",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         # TODO: add "se" to the list of predict types.
@@ -117,4 +117,4 @@ LearnerRegrDbarts <- R6Class("LearnerRegrDbarts",
   )
 )
 
-lrns_dict$add("regr.dbarts", LearnerRegrDbarts)
+lrns_dict$add("regr.bart", LearnerRegrBart)

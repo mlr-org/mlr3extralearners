@@ -1,7 +1,7 @@
-install_learners("regr.dbarts")
+install_learners("regr.bart")
 
 test_that("autotest", {
-  learner = lrn("regr.dbarts")
+  learner = lrn("regr.bart")
 
   learner$param_set$values = c(
     learner$param_set$values,

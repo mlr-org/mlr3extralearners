@@ -1,7 +1,7 @@
-install_learners("classif.dbarts")
+install_learners("classif.bart")
 
 test_that("autotest", {
-  learner = lrn("classif.dbarts")
+  learner = lrn("classif.bart")
 
   learner$param_set$values <- c(
     learner$param_set$values,
@@ -9,6 +9,6 @@ test_that("autotest", {
   )
 
   expect_learner(learner)
-  result <- run_autotest(learner)
+  result = run_autotest(learner)
   expect_true(result, info = result$error)
 })

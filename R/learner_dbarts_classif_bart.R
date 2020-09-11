@@ -1,20 +1,20 @@
-#' @title Classification Dbarts Learner
+#' @title Classification BART (Bayesian Additive Regression Trees) Learner
 #' @author ck37
-#' @name mlr_learners_classif.dbarts
+#' @name mlr_learners_classif.bart
 #'
 #' @template class_learner
-#' @templateVar id classif.dbarts
-#' @templateVar caller dbarts
+#' @templateVar id classif.bart
+#' @templateVar caller bart
 #'
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifDbarts = R6Class("LearnerClassifDbarts",
+LearnerClassifBart = R6Class("LearnerClassifBart",
   inherit = LearnerClassif,
   public = list(
 
     #' @description
-    #' Create a `LearnerRegrDbarts` object.
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
       ps = ParamSet$new( # parameter set using the paradox package
@@ -44,6 +44,7 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts",
           ParamLgl$new(id = "keeptrees", default = FALSE, tags = "train"),
           ParamLgl$new(id = "keepcall", default = TRUE, tags = "train"),
           ParamLgl$new(id = "sampleronly", default = FALSE, tags = "train"),
+          ParamDbl$new(id = "offset", default = 0.0, tags = "predict"),
           ParamLgl$new(id = "offset.test", default = FALSE, tags = "predict")
         )
       )
@@ -52,7 +53,7 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts",
       ps$values = list(keeptrees = TRUE)
 
       super$initialize(
-        id = "classif.dbarts",
+        id = "classif.bart",
         packages = "dbarts",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
@@ -136,4 +137,4 @@ LearnerClassifDbarts = R6Class("LearnerClassifDbarts",
   )
 )
 
-lrns_dict$add("classif.dbarts", LearnerClassifDbarts)
+lrns_dict$add("classif.bart", LearnerClassifBart)
