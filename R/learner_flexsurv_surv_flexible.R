@@ -23,7 +23,7 @@
 #'   - Actual default: `0`
 #'   - Adjusted default: `1`
 #'   - Reason for change: The default value of `0` is equivalent to, and a much less efficient
-#'   implementation of, [LearnerSurvParametric][mlr3learners.survival::LearnerSurvParametric].
+#'   implementation of, [LearnerSurvParametric].
 #'
 #' @references
 #' Royston P, Parmar MKB (2002).
