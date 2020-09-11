@@ -45,6 +45,7 @@ Suggests:
     mboost,
     mlr3learners,
     mvtnorm,
+    nnet,
     np,
     obliqueRSF,
     partykit,
