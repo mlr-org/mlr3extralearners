@@ -5,7 +5,7 @@
 \alias{LearnerSurvNelson}
 \title{Survival Nelson-Aalen Estimator Learner}
 \description{
-Calls \link[pracma:survfit]{pracma::survfit} from package \CRANpkg{pracma}.
+Calls \link[survival:survfit]{survival::survfit} from package \CRANpkg{survival}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -18,7 +18,7 @@ lrn("surv.nelson")
 \section{Traits}{
 
 \itemize{
-\item Packages: pracma
+\item Packages: survival, pracma
 \item Predict Types: crank, distr
 \item Feature Types: logical, integer, numeric, character, factor, ordered
 \item Properties: missings
@@ -26,7 +26,7 @@ lrn("surv.nelson")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("pracma"))) {
+if (mlr3misc::require_namespaces(c("survival", "pracma"))) {
   learner = mlr3::lrn("surv.nelson")
   print(learner)
 

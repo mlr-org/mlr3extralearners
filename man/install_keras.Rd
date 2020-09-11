@@ -12,7 +12,9 @@ install_keras(
 )
 }
 \arguments{
-\item{method, conda, version, tensorflow, extra_packages, ...}{See \link[keras:install_keras]{keras::install_keras}.}
+\item{method, conda, pip}{See \link[reticulate:py_install]{reticulate::py_install}.}
+
+\item{install_tensorflow}{If \code{TRUE} installs the dependency \code{tensorflow} package as well.}
 }
 \description{
 Stripped back version of \link[keras:install_keras]{keras::install_keras}.

@@ -123,7 +123,8 @@ build_keras_net = function(n_in, n_out, nodes = c(32, 32), layer_pars = list(),
 
 #' @title Install Keras and Tensorflow
 #' @description Stripped back version of [keras::install_keras].
-#' @param method,conda,version,tensorflow,extra_packages,... See [keras::install_keras].
+#' @param method,conda,pip See [reticulate::py_install].
+#' @param install_tensorflow If `TRUE` installs the dependency `tensorflow` package as well.
 #' @export
 install_keras = function(method = "auto", conda = "auto", pip = FALSE,
                           install_tensorflow = FALSE) {

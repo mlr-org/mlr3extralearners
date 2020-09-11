@@ -12,7 +12,7 @@ NULL
 #' @importFrom mlr3proba LearnerSurv LearnerDens PredictionSurv PredictionDens
 "_PACKAGE"
 
-utils::globalVariables(c("name", "id", "mlr3_package", "required_package"))
+utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
 # nocov start
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace

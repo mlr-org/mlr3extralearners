@@ -42,8 +42,7 @@
 #' @return An object inheriting from class `akritas`.
 #'
 #' @examples
-#' if (requireNamespace("distr6", quietly = TRUE) &&
-#' if (requireNamespace("survival", quietly = TRUE))) {
+#' if (mlr3misc::require_namespaces(c("distr6", "survival"))) {
 #'   library(survival)
 #'   fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
 #'   print(fit)
@@ -75,7 +74,7 @@ akritas <- function(formula = NULL, data = NULL, reverse = FALSE,
         subset.of = colnames(data)
       )
       x <- data[, setdiff(colnames(data), c(time_variable, status_variable)), drop = FALSE]
-      y <- Surv(data[, time_variable], data[, status_variable])
+      y <- survival::Surv(data[, time_variable], data[, status_variable])
     }
   } else if (!is.null(formula)) {
     f <- stats::as.formula(formula, env = data)
@@ -169,8 +168,7 @@ summary.akritas <- function(object, ...) {
 #'
 #'
 #' @examples
-#' if (requireNamespace("distr6", quietly = TRUE) &&
-#' if (requireNamespace("survival", quietly = TRUE))) {
+#' if (mlr3misc::require_namespaces(c("distr6", "survival"))) {
 #' library(survival)
 #' train <- 1:10
 #' test <- 11:20
@@ -229,7 +227,7 @@ predict.akritas <- function(object, newdata, times = NULL,
   fx_train <- object$FX[ord]
 
   if (lambda == 1) {
-    surv <- survfit(Surv(time, status) ~ 1, data.frame(object$y))$surv
+    surv <- survival::survfit(survival::Surv(time, status) ~ 1, data.frame(object$y))$surv
     surv <- matrix(surv, nrow(newdata), length(surv),
       byrow = TRUE,
       dimnames = list(NULL, round(unique_times)))

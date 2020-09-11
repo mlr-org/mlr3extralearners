@@ -68,7 +68,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
         predict_types = c("distr", "lp", "crank"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         properties = "weights",
-        packages = "pracma",
+        packages = c("survival", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.parametric"
       )
     }

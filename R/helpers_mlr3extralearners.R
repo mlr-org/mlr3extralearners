@@ -278,7 +278,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   # OPEN FILES
   cat(file_name_lrn)
-  file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
+  utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
 }
 
 #' @title List Learners in mlr3verse
