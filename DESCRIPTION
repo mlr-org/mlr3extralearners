@@ -66,7 +66,7 @@ LinkingTo:
 Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3proba,
-    mlr-org/mlr3pipelines#499,
+    mlr-org/mlr3pipelines,
     alan-turing-institute/distr6
 Encoding: UTF-8
 NeedsCompilation: no
