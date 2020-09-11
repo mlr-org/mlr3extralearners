@@ -1,8 +1,4 @@
-Select template and delete others as applicable:
-
-* [New learner](#new)
-* [Updated learner](#update)
-* [Other](#other)
+**Select template and delete others as applicable.**
 
 # New Learner {#new}
 
@@ -27,10 +23,10 @@ I have...
 * [ ] Added no dependencies to imports.
 * [ ] Added dependencies to remotes - If ticked, explain why below.
 
-## More than one dependency
+#### More than one dependency
 
 
-## Remote dependency
+#### Remote dependency
 
 # Tests
 
@@ -72,9 +68,9 @@ I have...
 * [ ] Added no dependencies to imports.
 * [ ] Added dependencies to remotes - If ticked, explain why below.
 
-## More than one dependency
+#### More than one dependency
 
-## Remote dependency
+#### Remote dependency
 
 # Tests
 
