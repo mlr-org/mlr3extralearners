@@ -106,7 +106,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.
-      p <- invoke(predict, self$model, test = newdata, .args = pars)
+      p <- invoke(predict, self$model, newdata = newdata, .args = pars)
 
       # Transform predictions.
       # TODO: confirm that this is the correct element name.

@@ -9,6 +9,6 @@ test_that("autotest", {
   )
 
   expect_learner(learner)
-  result = run_autotest(learner)
+  result = run_autotest(learner, exclude = "sanity")
   expect_true(result, info = result$error)
 })

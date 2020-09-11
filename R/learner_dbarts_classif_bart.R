@@ -113,7 +113,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.
-      p = invoke(predict, self$model, test = newdata, .args = pars)
+      p = invoke(predict, self$model, newdata = newdata, .args = pars)
 
       # Transform predictions.
       # TODO: confirm that this is the correct element name.
@@ -121,12 +121,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       prob = prob_vector_to_matrix(pred, lvls)
 
-      # Return a prediction object with PredictionClassif$new() or PredictionRegr$new()
       if (self$predict_type == "response") {
-        # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
-        #        i = max.col(prob, ties.method = "random")
-        #        response = factor(colnames(prob)[i], levels = lvls)
-        # PredictionClassif$new(task = task, response = response)
         response = ifelse(pred < 0.5, lvls[1L], lvls[2L])
 
         mlr3::PredictionClassif$new(task = task, response = response)
