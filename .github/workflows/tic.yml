@@ -70,6 +70,10 @@ jobs:
           echo -e 'options(Ncpus = 4, pkgType = "source", repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
           Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
 
+      - name: Install Python
+        run: |
+          Rscript -e "remotes::install_github('rstudio/reticulate')" -e "reticulate::install_miniconda()" -e "remotes::install_local()" -e "install.packages('keras')" -e "keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))" -e  "reticulate::py_install(c('torch', 'pycox'), pip = TRUE)"
+
       - name: "[Stage] Script"
         run: Rscript -e 'tic::script()'
 
