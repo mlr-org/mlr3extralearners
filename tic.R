@@ -22,29 +22,10 @@ if (ci_get_env("TEST") == "Learner") {
       stop_on_failure = TRUE))
 
 } else {
+  do_package_checks()
 
   get_stage("install") %>%
-    add_step(step_install_deps(dependencies = c("Depends", "Imports"))) %>%
     add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
 
-  get_stage("before_deploy") %>%
-    add_step(step_setup_ssh(
-      private_key_name = "TIC_DEPLOY_KEY"
-    )) %>%
-    add_step(step_setup_push_deploy(
-      path = "docs",
-      branch = "gh-pages",
-      orphan = FALSE,
-      remote_url = NULL,
-      checkout = TRUE
-    ))
-
-  get_stage("deploy") %>%
-    add_step(step_build_pkgdown()) %>%
-    add_step(step_do_push_deploy(
-      path = "docs",
-      commit_message = NULL,
-      commit_paths = ".",
-      force = FALSE
-    ))
+  do_pkgdown()
 }
