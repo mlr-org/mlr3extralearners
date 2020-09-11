@@ -42,13 +42,15 @@
 #' @return An object inheriting from class `akritas`.
 #'
 #' @examples
-#' library(survival)
-#' fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
-#' print(fit)
+#' if (requireNamespace("distr6", quietly = TRUE)) {
+#'   library(survival)
+#'   fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
+#'   print(fit)
 #'
-#' # alternative function calls
-#' akritas(data = rats[1:10, ], time_variable = "time", status_variable = "status")
-#' akritas(x = rats[1:10, c("litter", "rx", "sex")], y = Surv(rats$time, rats$status))
+#'   # alternative function calls
+#'   akritas(data = rats[1:10, ], time_variable = "time", status_variable = "status")
+#'   akritas(x = rats[1:10, c("litter", "rx", "sex")], y = Surv(rats$time, rats$status))
+#' }
 #' @export
 akritas <- function(formula = NULL, data = NULL, reverse = FALSE,
   time_variable = NULL, status_variable = NULL,
@@ -166,6 +168,7 @@ summary.akritas <- function(object, ...) {
 #'
 #'
 #' @examples
+#' if (requireNamespace("distr6", quietly = TRUE)) {
 #' library(survival)
 #' train <- 1:10
 #' test <- 11:20
@@ -187,6 +190,7 @@ summary.akritas <- function(object, ...) {
 #'
 #' # Or survival probabilities and a rank
 #' predict(fit, newdata = rats[test, ], type = "all", distr6 = TRUE)
+#' }
 #' @export
 predict.akritas <- function(object, newdata, times = NULL,
   lambda = 0.5,
