@@ -28,6 +28,7 @@ Imports:
 Suggests:
     C50,
     CoxBoost,
+    dbarts,
     distr6 (>= 1.4.3),
     extraTrees,
     flexsurv,
