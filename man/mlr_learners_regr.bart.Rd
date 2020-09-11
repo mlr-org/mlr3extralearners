@@ -25,6 +25,16 @@ lrn("regr.bart")
 }
 }
 
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item Parameter: keeptrees
+\item Original: FALSE
+\item New: TRUE
+\item Reason: Required for prediction
+}
+}
+
 \examples{
 if (mlr3misc::require_namespaces(c("dbarts"))) {
   learner = mlr3::lrn("regr.bart")

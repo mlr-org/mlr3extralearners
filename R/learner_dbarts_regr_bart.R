@@ -6,6 +6,12 @@
 #' @templateVar id regr.bart
 #' @templateVar caller bart
 #'
+#' @section Custom mlr3 defaults:
+#' * Parameter: keeptrees
+#' * Original: FALSE
+#' * New: TRUE
+#' * Reason: Required for prediction
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
@@ -17,22 +23,15 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps <- ParamSet$new( # parameter set using the paradox package
+      ps <- ParamSet$new(
         params = list(
-          # These reflect the defaults used by the dbarts package.
           ParamInt$new(id = "ntree", default = 200L, lower = 1L, tags = "train"),
-          # Only used for continuous models. Currently untyped to support the NULL default.
-          # ParamDbl$new(id = "sigest", default = NULL, lower = 0, tags = "train"),
           ParamUty$new(id = "sigest", default = NULL, tags = "train"),
-          # Only used for continuous models
           ParamInt$new(id = "sigdf", default = 3L, lower = 1L, tags = "train"),
-          # Only used for continuous models
           ParamDbl$new(id = "sigquant", default = 0.90, lower = 0, upper = 1, tags = "train"),
           ParamDbl$new(id = "k", default = 2.0, lower = 0, tags = "train"),
           ParamDbl$new(id = "power", default = 2.0, lower = 0, tags = "train"),
           ParamDbl$new(id = "base", default = 0.95, lower = 0, tags = "train"),
-          # Not applicable for LearnerRegr
-          # ParamDbl$new(id = "binaryOffset", default = 0.0, tags = "train"),
           ParamInt$new(id = "ndpost", default = 1000L, lower = 1L, tags = "train"),
           ParamInt$new(id = "nskip", default = 100L, lower = 0L, tags = "train"),
           ParamInt$new(id = "printevery", default = 100L, lower = 0L, tags = "train"),
@@ -48,8 +47,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
           ParamLgl$new(id = "offset.test", default = FALSE, tags = "predict")
         )
       )
-      # Override package defaults.
-      # We need keeptrees to be true in order to predict().
+
       ps$values <- list(keeptrees = TRUE)
 
       super$initialize(
