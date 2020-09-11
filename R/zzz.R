@@ -7,7 +7,6 @@ NULL
 #' @import data.table
 #' @import paradox
 #' @import mlr3misc
-#' @import survival
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr PredictionClassif PredictionRegr
 #' @importFrom mlr3proba LearnerSurv LearnerDens PredictionSurv PredictionDens

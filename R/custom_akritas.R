@@ -42,7 +42,7 @@
 #' @return An object inheriting from class `akritas`.
 #'
 #' @examples
-#' if (requireNamespace("distr6", quietly = TRUE)) {
+#' if (requireNamespace("distr6", quietly = TRUE) && if (requireNamespace("survival", quietly = TRUE))) {
 #'   library(survival)
 #'   fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
 #'   print(fit)
@@ -168,7 +168,7 @@ summary.akritas <- function(object, ...) {
 #'
 #'
 #' @examples
-#' if (requireNamespace("distr6", quietly = TRUE)) {
+#' if (requireNamespace("distr6", quietly = TRUE) && if (requireNamespace("survival", quietly = TRUE))) {
 #' library(survival)
 #' train <- 1:10
 #' test <- 11:20
