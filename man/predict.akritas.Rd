@@ -58,6 +58,8 @@ fitting on training data. This is achieved by fitting the empirical CDF on the t
 and applying this to the new data.
 }
 \examples{
+if (requireNamespace("distr6", quietly = TRUE) &&
+if (requireNamespace("survival", quietly = TRUE))) {
 library(survival)
 train <- 1:10
 test <- 11:20
@@ -79,6 +81,7 @@ predict(fit, newdata = rats[test, ], type = "risk")
 
 # Or survival probabilities and a rank
 predict(fit, newdata = rats[test, ], type = "all", distr6 = TRUE)
+}
 }
 \references{
 Akritas, M. G. (1994).

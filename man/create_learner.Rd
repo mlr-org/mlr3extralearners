@@ -63,6 +63,7 @@ This function does the following:
 learner parameters.
 \item Creates a test_package.yml file for running unit tests in GitHub actions
 \item Automatically completes the test (2), and yaml files (4)
+\item Automatically adds the learner package to the DESCRIPTION file
 \item For the learner file all fields are automatically filled but methods must be manually added
 along with the parameter set, this is clearly marked up in the files.
 }
@@ -77,7 +78,7 @@ then add these public methods manually.
 \item Run
 \enumerate{
 \item \code{devtools::document(roclets = c('rd', 'collate', 'namespace'))}
-\item \code{styler::style_pkg(style = styler::mlr_style)}
+\item \code{styler::style_pkg(style = styler::mlr_style)} (you may need to first run \verb{remotes::})
 \item \code{usethis::use_tidy_description()}
 \item \code{lintr::lint_package()}
 }

@@ -5,7 +5,7 @@
 \alias{LearnerSurvParametric}
 \title{Survival Fully Parametric Learner}
 \description{
-Calls \link[survival:survreg]{survival::survreg} from package \CRANpkg{survival}.
+Calls \link[pracma:survreg]{pracma::survreg} from package \CRANpkg{pracma}.
 }
 \details{
 This learner allows you to choose a distribution and a model form to compose a predicted
@@ -41,7 +41,7 @@ lrn("surv.parametric")
 \section{Traits}{
 
 \itemize{
-\item Packages: survival, pracma
+\item Packages: pracma
 \item Predict Types: distr, lp, crank
 \item Feature Types: logical, integer, numeric, factor
 \item Properties: weights
@@ -49,7 +49,7 @@ lrn("surv.parametric")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("survival", "pracma"))) {
+if (mlr3misc::require_namespaces(c("pracma"))) {
   learner = mlr3::lrn("surv.parametric")
   print(learner)
 

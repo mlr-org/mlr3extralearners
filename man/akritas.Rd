@@ -60,13 +60,16 @@ fitting on training data. This is achieved by fitting the empirical CDF on the t
 and applying this to the new data.
 }
 \examples{
-library(survival)
-fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
-print(fit)
+if (requireNamespace("distr6", quietly = TRUE) &&
+if (requireNamespace("survival", quietly = TRUE))) {
+  library(survival)
+  fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
+  print(fit)
 
-# alternative function calls
-akritas(data = rats[1:10, ], time_variable = "time", status_variable = "status")
-akritas(x = rats[1:10, c("litter", "rx", "sex")], y = Surv(rats$time, rats$status))
+  # alternative function calls
+  akritas(data = rats[1:10, ], time_variable = "time", status_variable = "status")
+  akritas(x = rats[1:10, c("litter", "rx", "sex")], y = Surv(rats$time, rats$status))
+}
 }
 \references{
 Akritas, M. G. (1994).
