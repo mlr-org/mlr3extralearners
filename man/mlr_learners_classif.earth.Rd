@@ -28,6 +28,15 @@ lrn("classif.earth")
 }
 }
 
+\examples{
+if (mlr3misc::require_namespaces(c("earth"))) {
+  learner = mlr3::lrn("classif.earth")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
 Stephen Milborrow (2014)
 Earth: multivariate adaptive regression spline models
@@ -38,6 +47,10 @@ Jerome H. Friedman (1991)
 Multivariate Adaptive Regression Splines
 The Annals of Statistics
 \url{https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963}
+}
+\seealso{
+\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
+\link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
 \author{
 pkopper

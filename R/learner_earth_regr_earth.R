@@ -20,6 +20,8 @@
 #' The Annals of Statistics
 #' \url{https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963}
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerRegrEarth = R6Class("LearnerRegrEarth",
   inherit = LearnerRegr,
