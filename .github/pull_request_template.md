@@ -2,7 +2,7 @@
 
 # New Learner
 
-This pull request adds Learner[Type][Name] with the unique key [type].[key] from package [package].
+This pull request adds **Learner[Type][Name]** with the unique key **[type].[key]** from package **{[package]}**.
 
 I have...
 
@@ -52,6 +52,8 @@ Tick as appropriate:
 * [ ] This is a regression or classification learner, I have assigned pat-s to review this.
 * [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
+# Comments
+
 -------
 
 # Updated Learner
@@ -93,6 +95,8 @@ Delete as appropriate:
 
 * [ ] This is a regression or classification learner, I have assigned pat-s to review this.
 * [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
+
+# Comments
 
 ----
 
