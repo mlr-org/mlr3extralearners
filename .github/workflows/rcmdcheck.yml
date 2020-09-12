@@ -3,7 +3,7 @@ on:
   schedule:
     - cron: "0 4 * * *"
 
-name: R CMD Check, Update Learners
+name: R CMD Check
 
 jobs:
   all:
