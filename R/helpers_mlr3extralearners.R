@@ -350,7 +350,7 @@ install_learners = function(.keys, ...) {
     pkgs = mlr3::lrn(.key)$packages
     sapply(pkgs, function(pkg) {
       x = requireNamespace(pkg, quietly = TRUE)
-      if(!x) {
+      if (!x) {
         utils::install.packages(pkg, ...)
       }
     })
