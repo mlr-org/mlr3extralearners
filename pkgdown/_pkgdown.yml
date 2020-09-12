@@ -71,6 +71,10 @@ reference:
   - title: Density Learners
     contents:
       - starts_with("mlr_learners_dens")
+  - title: Custom Implementations
+    contents:
+      - akritas
+      - predict.akritas
   - title: General
     contents:
       - mlr3extralearners-package
