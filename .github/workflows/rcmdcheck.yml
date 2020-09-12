@@ -84,7 +84,6 @@ jobs:
         run: Rscript -e 'tic::script()'
 
       - name: "[Stage] After Success"
-        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'release'
         run: Rscript -e "tic::after_success()"
 
       - name: "[Stage] Upload R CMD check artifacts"
@@ -93,6 +92,7 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+          
       - name: "[Stage] Before Deploy"
         run: |
           Rscript -e "tic::before_deploy()"
