@@ -43,6 +43,7 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mlr3learners (>= 0.3.0),
     mvtnorm,
     np,
     obliqueRSF,
@@ -67,6 +68,7 @@ LinkingTo:
     Rcpp
 Remotes:
     mlr-org/mlr3,
+    mlr-org/mlr3learners,
     mlr-org/mlr3proba,
     alan-turing-institute/distr6
 Encoding: UTF-8

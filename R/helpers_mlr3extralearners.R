@@ -100,7 +100,6 @@ pkg_root = function(path = ".") {
 #'  references = TRUE,
 #'  gh_name = "RaphaelS1"
 #' )
-#'
 #' }
 #' @export
 create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
