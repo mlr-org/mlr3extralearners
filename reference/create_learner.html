@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Akritas Conditional Non-Parametric Survival Estimator — akritas • mlr3extralearners</title>
+<title>Create a New Learner — create_learner • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,10 +47,9 @@
 
 
 
-<meta property="og:title" content="Akritas Conditional Non-Parametric Survival Estimator — akritas" />
-<meta property="og:description" content="The Akritas survival estimator is a conditional nearest-neighbours approach to the
-more common Kaplan-Meier estimator. Common usage includes IPCW Survival models and measures,
-which do not assume that censoring is independent of the covariates." />
+<meta property="og:title" content="Create a New Learner — create_learner" />
+<meta property="og:description" content="Helper function to generate all required files, and fill in fields, for new
+learners." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -158,125 +157,123 @@ which do not assume that censoring is independent of the covariates." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Akritas Conditional Non-Parametric Survival Estimator</h1>
+    <h1>Create a New Learner</h1>
     
-    <div class="hidden name"><code>akritas.Rd</code></div>
+    <div class="hidden name"><code>create_learner.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The Akritas survival estimator is a conditional nearest-neighbours approach to the
-more common Kaplan-Meier estimator. Common usage includes IPCW Survival models and measures,
-which do not assume that censoring is independent of the covariates.</p>
+    <p>Helper function to generate all required files, and fill in fields, for new
+learners.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>akritas</span>(
-  formula = <span class='kw'>NULL</span>,
-  data = <span class='kw'>NULL</span>,
-  reverse = <span class='fl'>FALSE</span>,
-  time_variable = <span class='kw'>NULL</span>,
-  status_variable = <span class='kw'>NULL</span>,
-  x = <span class='kw'>NULL</span>,
-  y = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
+    <pre class="usage"><span class='fu'>create_learner</span>(
+  pkg = <span class='st'>"."</span>,
+  <span class='kw'>classname</span>,
+  <span class='kw'>algorithm</span>,
+  <span class='kw'>type</span>,
+  key = <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span>(<span class='kw'>classname</span>),
+  package = <span class='fu'><a href='https://rdrr.io/r/base/chartr.html'>tolower</a></span>(<span class='kw'>classname</span>),
+  <span class='kw'>caller</span>,
+  <span class='kw'>feature_types</span>,
+  <span class='kw'>predict_types</span>,
+  properties = <span class='kw'>NULL</span>,
+  references = <span class='fl'>FALSE</span>,
+  <span class='kw'>gh_name</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>formula</th>
-      <td><p><code>(formula(1))</code><br />
-Objet specifying the model fit, left-hand-side of formula should describe a <code><a href='https://rdrr.io/pkg/survival/man/Surv.html'>survival::Surv()</a></code>
-object.</p></td>
+      <th>pkg</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Path to the mlr3extralearners package.</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p><code>(data.frame(1))</code><br />
-Training data of <code>data.frame</code> like object, internally is coerced with <code><a href='https://rdrr.io/r/stats/model.matrix.html'>stats::model.matrix()</a></code>.</p></td>
+      <th>classname</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Suffix for R6 class name passed to LearnerTypeclassname.</p></td>
     </tr>
     <tr>
-      <th>reverse</th>
-      <td><p><code>(logical(1))</code><br />
-If <code>TRUE</code> fits estimator on censoring distribution, otherwise (default) survival distribution.</p></td>
+      <th>algorithm</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Brief description of algorithm for documentation title.</p></td>
     </tr>
     <tr>
-      <th>time_variable</th>
-      <td><p><code>(character(1))</code><br />
-Alternative method to call the function. Name of the 'time' variable, required if <code>formula</code>.
-or <code>x</code> and <code>Y</code> not given.</p></td>
+      <th>type</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> See <code>mlr3::mlr_reflections$task_types$type</code>.</p></td>
     </tr>
     <tr>
-      <th>status_variable</th>
-      <td><p><code>(character(1))</code><br />
-Alternative method to call the function. Name of the 'status' variable, required if <code>formula</code>
-or <code>x</code> and <code>Y</code> not given.</p></td>
+      <th>key</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> id for learner, if not provided defaults to the <code>classname</code>
+in all lower case.</p></td>
     </tr>
     <tr>
-      <th>x</th>
-      <td><p><code>(data.frame(1))</code><br />
-Alternative method to call the function. Required if <code>formula, time_variable</code> and
-<code>status_variable</code> not given. Data frame like object of features which is internally
-coerced with <code>model.matrix</code>.</p></td>
+      <th>package</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Package from which the learner is implemented, defaults to
+the <code>classname</code> in all lower case.</p></td>
     </tr>
     <tr>
-      <th>y</th>
-      <td><p><code>([survival::Surv()])</code><br />
-Alternative method to call the function. Required if <code>formula, time_variable</code> and
-<code>status_variable</code> not given. Survival outcome of right-censored observations.</p></td>
+      <th>caller</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Training function called from the implemented package.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p><code>ANY</code> <br />
-Additional arguments, currently unused.</p></td>
+      <th>feature_types</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> <br /> Feature types that can be handled by the learner,
+see <code>mlr3::mlr_reflections$task_feature_types</code>.</p></td>
+    </tr>
+    <tr>
+      <th>predict_types</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> <br /> Prediction types that can be made by the learner,
+see <code>mlr3::mlr_reflections$learner_predict_types</code>.</p></td>
+    </tr>
+    <tr>
+      <th>properties</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> <br /> Properties that can be handled by the learner,
+see <code>mlr3::mlr_reflections$learner_properties</code>.</p></td>
+    </tr>
+    <tr>
+      <th>references</th>
+      <td><p><code><a href='https://rdrr.io/r/base/logical.html'>logical(1)</a></code> <br /> Set to <code>TRUE</code> if you want to add references for the learner.</p></td>
+    </tr>
+    <tr>
+      <th>gh_name</th>
+      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character(1)</a></code> <br /> Your GitHub handle, used to add you as the maintainer of
+the learner.</p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>An object inheriting from class <code>akritas</code>.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This implementation uses a fit/predict interface to allow estimation on unseen data after
-fitting on training data. This is achieved by fitting the empirical CDF on the training data
-and applying this to the new data.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>This function does the following:</p><ol>
+<li><p>Creates a learner_package_type_key.R file for the implemented learner.</p></li>
+<li><p>Creates a test_package_type_key.R file for unit testing the learner.</p></li>
+<li><p>Creates a test_paramtest_package_type_key.R file for testing correct implementation of
+learner parameters.</p></li>
+<li><p>Creates a test_package.yml file for running unit tests in GitHub actions</p></li>
+<li><p>Automatically completes the test (2), and yaml files (4)</p></li>
+<li><p>Automatically adds the learner package to the DESCRIPTION file</p></li>
+<li><p>For the learner file all fields are automatically filled but methods must be manually added
+along with the parameter set, this is clearly marked up in the files.</p></li>
+</ol>
 
-    <p>Akritas, M. G. (1994).
-Nearest Neighbor Estimation of a Bivariate Distribution Under Random Censoring.
-Ann. Statist., 22(3), 1299–1327.
-doi: <a href='https://doi.org/10.1214/aos/1176325630'>10.1214/aos/1176325630</a></p>
+<p>To create a learner you must follow these steps:</p><ol>
+<li><p>Run this function with as many arguments as possible</p></li>
+<li><p>Manually add <code>.train</code>, <code>.predict</code> private methods for the learner, as well as adding the
+<code>param_set</code> and possibly <code>param_vals</code>. If properties include <code>"oob_error"</code> and/or <code>"importance"</code>
+then add these public methods manually.</p></li>
+<li><p>Check the paramtests and unit tests pass locally.</p></li>
+<li><p>Run</p><ol>
+<li><p><code>devtools::document(roclets = c('rd', 'collate', 'namespace'))</code></p></li>
+<li><p><code>styler::style_pkg(style = styler::mlr_style)</code> (you may need to first run <code>remotes::</code>)</p></li>
+<li><p><code>usethis::use_tidy_description()</code></p></li>
+<li><p><code>lintr::lint_package()</code></p></li>
+</ol></li>
+<li><p>Open a pull request to <a href='https://github.com/mlr-org/mlr3extralearners/pulls'>https://github.com/mlr-org/mlr3extralearners/pulls</a> with the new
+learner template.</p></li>
+</ol>
+
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"distr6"</span>, quietly = <span class='fl'>TRUE</span>) <span class='op'>&amp;&amp;</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"survival"</span>, quietly = <span class='fl'>TRUE</span>)) {
-
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/therneau/survival'>survival</a></span>)
-  <span class='kw'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>akritas</span>(<span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span>(<span class='kw'>time</span>, <span class='kw'>status</span>) <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ])
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>fit</span>)
-
-  <span class='co'># alternative function calls</span>
-  <span class='fu'>akritas</span>(data = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], time_variable = <span class='st'>"time"</span>, status_variable = <span class='st'>"status"</span>)
-  <span class='fu'>akritas</span>(x = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"litter"</span>, <span class='st'>"rx"</span>, <span class='st'>"sex"</span>)], y = <span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span>(<span class='kw'>rats</span><span class='op'>$</span><span class='kw'>time</span>, <span class='kw'>rats</span><span class='op'>$</span><span class='kw'>status</span>))
-}
-</div><div class='output co'>#&gt; 
-#&gt; Akritas Estimator
-#&gt; 
-#&gt; Call:
-#&gt;   akritas(formula = Surv(time, status) ~ ., data = rats[1:10, ])
-#&gt; 
-#&gt; Response:
-#&gt;   Surv(time, status)
-#&gt; Features:
-#&gt;   {litter, rx, sex} </div><div class='output co'>#&gt; 
-#&gt; Akritas Estimator
-#&gt; 
-#&gt; Call:
-#&gt;   akritas(x = rats[1:10, c("litter", "rx", "sex")], y = Surv(rats$time,      rats$status))
-#&gt; 
-#&gt; Response:
-#&gt;   Surv(time, status)
-#&gt; Features:
-#&gt;   {litter, rx, sex} </div></pre>
+    <pre class="examples"></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

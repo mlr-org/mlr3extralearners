@@ -168,21 +168,21 @@ function from <code>torch.nn.modules.activation</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_pycox_activation</span>(
-  <span class='kw'>activation</span> <span class='kw'>=</span> <span class='st'>"relu"</span>,
-  <span class='kw'>construct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>dim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>lambd</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>min_val</span> <span class='kw'>=</span> -<span class='fl'>1</span>,
-  <span class='kw'>max_val</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>negative_slope</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>num_parameters</span> <span class='kw'>=</span> <span class='fl'>1L</span>,
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='fl'>0.25</span>,
-  <span class='kw'>lower</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>8</span>,
-  <span class='kw'>upper</span> <span class='kw'>=</span> <span class='fl'>1</span>/<span class='fl'>3</span>,
-  <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>threshold</span> <span class='kw'>=</span> <span class='fl'>20</span>,
-  <span class='kw'>value</span> <span class='kw'>=</span> <span class='fl'>20</span>
+  activation = <span class='st'>"relu"</span>,
+  construct = <span class='fl'>TRUE</span>,
+  alpha = <span class='fl'>1</span>,
+  dim = <span class='kw'>NULL</span>,
+  lambd = <span class='fl'>0.5</span>,
+  min_val = <span class='op'>-</span><span class='fl'>1</span>,
+  max_val = <span class='fl'>1</span>,
+  negative_slope = <span class='fl'>0.01</span>,
+  num_parameters = <span class='fl'>1L</span>,
+  init = <span class='fl'>0.25</span>,
+  lower = <span class='fl'>1</span><span class='op'>/</span><span class='fl'>8</span>,
+  upper = <span class='fl'>1</span><span class='op'>/</span><span class='fl'>3</span>,
+  beta = <span class='fl'>1</span>,
+  threshold = <span class='fl'>20</span>,
+  value = <span class='fl'>20</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -247,32 +247,32 @@ a class.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Implemented methods (with help pages) are</p><ul>
-<li><p><code>"celu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$CELU)</code></p></li>
-<li><p><code>"elu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$ELU)</code></p></li>
-<li><p><code>"gelu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$GELU)</code></p></li>
-<li><p><code>"glu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$GLU)</code></p></li>
-<li><p><code>"hardshrink"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Hardshrink)</code></p></li>
-<li><p><code>"hardsigmoid"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Hardsigmoid)</code></p></li>
-<li><p><code>"hardswish"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Hardswish)</code></p></li>
-<li><p><code>"hardtanh"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Hardtanh)</code></p></li>
-<li><p><code>"relu6"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$ReLU6)</code></p></li>
-<li><p><code>"leakyrelu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$LeakyReLU)</code></p></li>
-<li><p><code>"logsigmoid"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$LogSigmoid)</code></p></li>
-<li><p><code>"logsoftmax"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$LogSoftmax)</code></p></li>
-<li><p><code>"prelu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$PReLU)</code></p></li>
-<li><p><code>"rrelu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$RReLU)</code></p></li>
-<li><p><code>"relu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$ReLU)</code></p></li>
-<li><p><code>"selu"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$SELU)</code></p></li>
-<li><p><code>"sigmoid"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Sigmoid)</code></p></li>
-<li><p><code>"softmax"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softmax)</code></p></li>
-<li><p><code>"softmax2d"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softmax2d)</code></p></li>
-<li><p><code>"softmin"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softmin)</code></p></li>
-<li><p><code>"softplus"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softplus)</code></p></li>
-<li><p><code>"softshrink"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softshrink)</code></p></li>
-<li><p><code>"softsign"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Softsign)</code></p></li>
-<li><p><code>"tanh"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Tanh)</code></p></li>
-<li><p><code>"tanhshrink"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Tanhshrink)</code></p></li>
-<li><p><code>"threshold"</code> <br /> <code>reticulate::py_help(torch$nn$modules$activation$Threshold)</code></p></li>
+<li><p><code>"celu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$CELU)</a></code></p></li>
+<li><p><code>"elu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$ELU)</a></code></p></li>
+<li><p><code>"gelu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$GELU)</a></code></p></li>
+<li><p><code>"glu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$GLU)</a></code></p></li>
+<li><p><code>"hardshrink"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Hardshrink)</a></code></p></li>
+<li><p><code>"hardsigmoid"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Hardsigmoid)</a></code></p></li>
+<li><p><code>"hardswish"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Hardswish)</a></code></p></li>
+<li><p><code>"hardtanh"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Hardtanh)</a></code></p></li>
+<li><p><code>"relu6"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$ReLU6)</a></code></p></li>
+<li><p><code>"leakyrelu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$LeakyReLU)</a></code></p></li>
+<li><p><code>"logsigmoid"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$LogSigmoid)</a></code></p></li>
+<li><p><code>"logsoftmax"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$LogSoftmax)</a></code></p></li>
+<li><p><code>"prelu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$PReLU)</a></code></p></li>
+<li><p><code>"rrelu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$RReLU)</a></code></p></li>
+<li><p><code>"relu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$ReLU)</a></code></p></li>
+<li><p><code>"selu"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$SELU)</a></code></p></li>
+<li><p><code>"sigmoid"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Sigmoid)</a></code></p></li>
+<li><p><code>"softmax"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softmax)</a></code></p></li>
+<li><p><code>"softmax2d"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softmax2d)</a></code></p></li>
+<li><p><code>"softmin"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softmin)</a></code></p></li>
+<li><p><code>"softplus"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softplus)</a></code></p></li>
+<li><p><code>"softshrink"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softshrink)</a></code></p></li>
+<li><p><code>"softsign"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Softsign)</a></code></p></li>
+<li><p><code>"tanh"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Tanh)</a></code></p></li>
+<li><p><code>"tanhshrink"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Tanhshrink)</a></code></p></li>
+<li><p><code>"threshold"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$modules$activation$Threshold)</a></code></p></li>
 </ul>
 
 
@@ -291,7 +291,7 @@ a class.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

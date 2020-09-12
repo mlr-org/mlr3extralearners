@@ -166,15 +166,15 @@
     </div>
 
     <pre class="usage"><span class='fu'>build_keras_net</span>(
-  <span class='no'>n_in</span>,
-  <span class='no'>n_out</span>,
-  <span class='kw'>nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>32</span>),
-  <span class='kw'>layer_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>activation</span> <span class='kw'>=</span> <span class='st'>"linear"</span>,
-  <span class='kw'>act_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>dropout</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>batch_norm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>batch_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+  <span class='kw'>n_in</span>,
+  <span class='kw'>n_out</span>,
+  nodes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>32</span>),
+  layer_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  activation = <span class='st'>"linear"</span>,
+  act_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  dropout = <span class='fl'>0.1</span>,
+  batch_norm = <span class='fl'>TRUE</span>,
+  batch_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -195,17 +195,17 @@ of hidden nodes in respective layer.</p></td>
     </tr>
     <tr>
       <th>layer_pars</th>
-      <td><p><code>(list())</code><br /> Arguments passed to keras::layer_dense.</p></td>
+      <td><p><code>(list())</code><br /> Arguments passed to <a href='https://rdrr.io/pkg/keras/man/layer_dense.html'>keras::layer_dense</a>.</p></td>
     </tr>
     <tr>
       <th>activation</th>
-      <td><p><code>(character(1))</code><br /> Activation function passed to keras::layer_activation.
+      <td><p><code>(character(1))</code><br /> Activation function passed to <a href='https://rdrr.io/pkg/keras/man/layer_activation.html'>keras::layer_activation</a>.
 Default is linear.</p></td>
     </tr>
     <tr>
       <th>act_pars</th>
       <td><p><code>(list())</code><br /> Parameters for activation function, see
-keras::layer_activation.</p></td>
+<a href='https://rdrr.io/pkg/keras/man/layer_activation.html'>keras::layer_activation</a>.</p></td>
     </tr>
     <tr>
       <th>dropout</th>
@@ -220,7 +220,7 @@ to all layers.</p></td>
     <tr>
       <th>batch_pars</th>
       <td><p><code>(list())</code><br /> Parameters for batch normalisation, see
-keras::layer_batch_normalization.</p></td>
+<a href='https://rdrr.io/pkg/keras/man/layer_batch_normalization.html'>keras::layer_batch_normalization</a>.</p></td>
     </tr>
     </table>
 
@@ -231,8 +231,86 @@ limited to simple MLPs and with identical layers.
 More advanced networks will require manual creation with <a href='https://CRAN.R-project.org/package=keras'><span class="pkg">keras</span></a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>build_keras_net</span>(<span class='fl'>10</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘keras’</span></div><div class='input'>
-<span class='fu'>build_keras_net</span>(<span class='kw'>n_in</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>n_out</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>), <span class='kw'>activation</span> <span class='kw'>=</span> <span class='st'>"elu"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘keras’</span></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>build_keras_net</span>(<span class='fl'>10</span>, <span class='fl'>1</span>)
+</div><div class='output co'>#&gt; Model
+#&gt; Model: "sequential"
+#&gt; ________________________________________________________________________________
+#&gt; Layer (type)                        Output Shape                    Param #     
+#&gt; ================================================================================
+#&gt; dense (Dense)                       (None, 32)                      352         
+#&gt; ________________________________________________________________________________
+#&gt; activation (Activation)             (None, 32)                      0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization (BatchNormaliza (None, 32)                      128         
+#&gt; ________________________________________________________________________________
+#&gt; dropout (Dropout)                   (None, 32)                      0           
+#&gt; ________________________________________________________________________________
+#&gt; dense_1 (Dense)                     (None, 32)                      1056        
+#&gt; ________________________________________________________________________________
+#&gt; activation_1 (Activation)           (None, 32)                      0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_1 (BatchNormali (None, 32)                      128         
+#&gt; ________________________________________________________________________________
+#&gt; dropout_1 (Dropout)                 (None, 32)                      0           
+#&gt; ________________________________________________________________________________
+#&gt; dense_2 (Dense)                     (None, 1)                       33          
+#&gt; ________________________________________________________________________________
+#&gt; activation_2 (Activation)           (None, 1)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_2 (BatchNormali (None, 1)                       4           
+#&gt; ________________________________________________________________________________
+#&gt; dropout_2 (Dropout)                 (None, 1)                       0           
+#&gt; ================================================================================
+#&gt; Total params: 1,701
+#&gt; Trainable params: 1,571
+#&gt; Non-trainable params: 130
+#&gt; ________________________________________________________________________________
+#&gt; 
+#&gt; </div><div class='input'>
+<span class='fu'>build_keras_net</span>(n_in = <span class='fl'>10</span>, n_out = <span class='fl'>1</span>, nodes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>), activation = <span class='st'>"elu"</span>)
+</div><div class='output co'>#&gt; Model
+#&gt; Model: "sequential_1"
+#&gt; ________________________________________________________________________________
+#&gt; Layer (type)                        Output Shape                    Param #     
+#&gt; ================================================================================
+#&gt; dense_3 (Dense)                     (None, 4)                       44          
+#&gt; ________________________________________________________________________________
+#&gt; activation_3 (Activation)           (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_3 (BatchNormali (None, 4)                       16          
+#&gt; ________________________________________________________________________________
+#&gt; dropout_3 (Dropout)                 (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; dense_4 (Dense)                     (None, 4)                       20          
+#&gt; ________________________________________________________________________________
+#&gt; activation_4 (Activation)           (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_4 (BatchNormali (None, 4)                       16          
+#&gt; ________________________________________________________________________________
+#&gt; dropout_4 (Dropout)                 (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; dense_5 (Dense)                     (None, 4)                       20          
+#&gt; ________________________________________________________________________________
+#&gt; activation_5 (Activation)           (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_5 (BatchNormali (None, 4)                       16          
+#&gt; ________________________________________________________________________________
+#&gt; dropout_5 (Dropout)                 (None, 4)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; dense_6 (Dense)                     (None, 1)                       5           
+#&gt; ________________________________________________________________________________
+#&gt; activation_6 (Activation)           (None, 1)                       0           
+#&gt; ________________________________________________________________________________
+#&gt; batch_normalization_6 (BatchNormali (None, 1)                       4           
+#&gt; ________________________________________________________________________________
+#&gt; dropout_6 (Dropout)                 (None, 1)                       0           
+#&gt; ================================================================================
+#&gt; Total params: 141
+#&gt; Trainable params: 115
+#&gt; Non-trainable params: 26
+#&gt; ________________________________________________________________________________
+#&gt; 
+#&gt; </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -248,7 +326,7 @@ More advanced networks will require manual creation with <a href='https://CRAN.R
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

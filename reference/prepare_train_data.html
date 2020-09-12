@@ -168,18 +168,18 @@ Generally used internally only.</p>
     </div>
 
     <pre class="usage"><span class='fu'>prepare_train_data</span>(
-  <span class='no'>task</span>,
-  <span class='kw'>frac</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>standardize_time</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>log_duration</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>with_mean</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>with_std</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>discretise</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>cuts</span> <span class='kw'>=</span> <span class='fl'>10L</span>,
-  <span class='kw'>cutpoints</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>scheme</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"equidistant"</span>, <span class='st'>"quantiles"</span>),
-  <span class='kw'>cut_min</span> <span class='kw'>=</span> <span class='fl'>0L</span>,
-  <span class='no'>model</span>
+  <span class='kw'>task</span>,
+  frac = <span class='fl'>0</span>,
+  standardize_time = <span class='fl'>FALSE</span>,
+  log_duration = <span class='fl'>FALSE</span>,
+  with_mean = <span class='fl'>TRUE</span>,
+  with_std = <span class='fl'>TRUE</span>,
+  discretise = <span class='fl'>FALSE</span>,
+  cuts = <span class='fl'>10L</span>,
+  cutpoints = <span class='kw'>NULL</span>,
+  scheme = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"equidistant"</span>, <span class='st'>"quantiles"</span>),
+  cut_min = <span class='fl'>0L</span>,
+  <span class='kw'>model</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -232,12 +232,12 @@ exact cutpoints for discretisation. <code>cuts</code> is ignored if <code>cutpoi
     <tr>
       <th>scheme</th>
       <td><p><code>(character(1))</code><br /> Method of discretisation, either <code>"equidistant"</code> (default)
-or <code>"quantiles"</code>. See <code>reticulate::py_help(pycox$models$LogisticHazard$label_transform)</code>.</p></td>
+or <code>"quantiles"</code>. See <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(pycox$models$LogisticHazard$label_transform)</a></code>.</p></td>
     </tr>
     <tr>
       <th>cut_min</th>
       <td><p><code>(integer(1))</code><br /> Starting duration for discretisation, see
-<code>reticulate::py_help(pycox$models$LogisticHazard$label_transform)</code>.</p></td>
+<code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(pycox$models$LogisticHazard$label_transform)</a></code>.</p></td>
     </tr>
     <tr>
       <th>model</th>
@@ -262,7 +262,7 @@ and <code>"CoxTime"</code>.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

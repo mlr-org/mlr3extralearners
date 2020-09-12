@@ -162,7 +162,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Calls RWeka::AdaBoostM1 from package <a href='https://CRAN.R-project.org/package=RWeka'><span class="pkg">RWeka</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/RWeka/man/Weka_classifier_meta.html'>RWeka::AdaBoostM1</a> from package <a href='https://CRAN.R-project.org/package=RWeka'><span class="pkg">RWeka</span></a>.</p>
     </div>
 
 
@@ -171,8 +171,9 @@
 
     <p>This Learner can be instantiated via the
 <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='no'>mlr_learners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"classif.AdaBoostM1"</span>)
-<span class='fu'><a href='lrn.html'>lrn</a></span>(<span class='st'>"classif.AdaBoostM1"</span>)</pre>
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='kw'>mlr_learners</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"classif.AdaBoostM1"</span>)
+<span class='fu'><a href='lrn.html'>lrn</a></span>(<span class='st'>"classif.AdaBoostM1"</span>)
+</pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
 
@@ -211,13 +212,16 @@ since their ids contain irregular pattern</p></li>
     <p>Freund Y, Schapire, R (1993).
 Experiments with a New Boosting Algorithm
 <a href='http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&amp;rep=rep1&amp;type=pdf'>http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&amp;rep=rep1&amp;type=pdf</a></p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>henrifnk</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerClassif.html'>mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifAdaBoostM1</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
 <li><p><a href='#method-new'><code>LearnerClassifAdaBoostM1$new()</code></a></p></li>
@@ -236,17 +240,17 @@ Experiments with a New Boosting Algorithm
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>LearnerClassifAdaBoostM1</span>$<span class='fu'>new</span>()</pre><p></div></p>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>LearnerClassifAdaBoostM1</span><span class='op'>$</span><span class='fu'>new</span>()</pre><p></div></p>
 
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>LearnerClassifAdaBoostM1</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>LearnerClassifAdaBoostM1</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -268,7 +272,7 @@ Experiments with a New Boosting Algorithm
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

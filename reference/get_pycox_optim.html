@@ -166,25 +166,25 @@
     </div>
 
     <pre class="usage"><span class='fu'>get_pycox_optim</span>(
-  <span class='kw'>optimizer</span> <span class='kw'>=</span> <span class='st'>"adam"</span>,
-  <span class='no'>net</span>,
-  <span class='kw'>rho</span> <span class='kw'>=</span> <span class='fl'>0.9</span>,
-  <span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-08</span>,
-  <span class='kw'>lr</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>weight_decay</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>learning_rate</span> <span class='kw'>=</span> <span class='fl'>0.01</span>,
-  <span class='kw'>lr_decay</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>betas</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, <span class='fl'>0.999</span>),
-  <span class='kw'>amsgrad</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>lambd</span> <span class='kw'>=</span> <span class='fl'>1e-04</span>,
-  <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.75</span>,
-  <span class='kw'>t0</span> <span class='kw'>=</span> <span class='fl'>1e+06</span>,
-  <span class='kw'>momentum</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>centered</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>etas</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>1.2</span>),
-  <span class='kw'>step_sizes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e-06</span>, <span class='fl'>50</span>),
-  <span class='kw'>dampening</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>nesterov</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
+  optimizer = <span class='st'>"adam"</span>,
+  <span class='kw'>net</span>,
+  rho = <span class='fl'>0.9</span>,
+  eps = <span class='fl'>1e-08</span>,
+  lr = <span class='fl'>1</span>,
+  weight_decay = <span class='fl'>0</span>,
+  learning_rate = <span class='fl'>0.01</span>,
+  lr_decay = <span class='fl'>0</span>,
+  betas = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.9</span>, <span class='fl'>0.999</span>),
+  amsgrad = <span class='fl'>FALSE</span>,
+  lambd = <span class='fl'>1e-04</span>,
+  alpha = <span class='fl'>0.75</span>,
+  t0 = <span class='fl'>1e+06</span>,
+  momentum = <span class='fl'>0</span>,
+  centered = <span class='fl'>TRUE</span>,
+  etas = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.5</span>, <span class='fl'>1.2</span>),
+  step_sizes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1e-06</span>, <span class='fl'>50</span>),
+  dampening = <span class='fl'>0</span>,
+  nesterov = <span class='fl'>FALSE</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -256,16 +256,16 @@
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Implemented methods (with help pages) are</p><ul>
-<li><p><code>"adadelta"</code> <br /> <code>reticulate::py_help(torch$optim$Adadelta)</code></p></li>
-<li><p><code>"adagrad"</code> <br /> <code>reticulate::py_help(torch$optim$Adagrad)</code></p></li>
-<li><p><code>"adam"</code> <br /> <code>reticulate::py_help(torch$optim$Adam)</code></p></li>
-<li><p><code>"adamax"</code> <br /> <code>reticulate::py_help(torch$optim$Adamax)</code></p></li>
-<li><p><code>"adamw"</code> <br /> <code>reticulate::py_help(torch$optim$AdamW)</code></p></li>
-<li><p><code>"asgd"</code> <br /> <code>reticulate::py_help(torch$optim$ASGD)</code></p></li>
-<li><p><code>"rmsprop"</code> <br /> <code>reticulate::py_help(torch$optim$RMSprop)</code></p></li>
-<li><p><code>"rprop"</code> <br /> <code>reticulate::py_help(torch$optim$Rprop)</code></p></li>
-<li><p><code>"sgd"</code> <br /> <code>reticulate::py_help(torch$optim$SGD)</code></p></li>
-<li><p><code>"sparse_adam"</code> <br /> <code>reticulate::py_help(torch$optim$SparseAdam)</code></p></li>
+<li><p><code>"adadelta"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$Adadelta)</a></code></p></li>
+<li><p><code>"adagrad"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$Adagrad)</a></code></p></li>
+<li><p><code>"adam"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$Adam)</a></code></p></li>
+<li><p><code>"adamax"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$Adamax)</a></code></p></li>
+<li><p><code>"adamw"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$AdamW)</a></code></p></li>
+<li><p><code>"asgd"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$ASGD)</a></code></p></li>
+<li><p><code>"rmsprop"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$RMSprop)</a></code></p></li>
+<li><p><code>"rprop"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$Rprop)</a></code></p></li>
+<li><p><code>"sgd"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$SGD)</a></code></p></li>
+<li><p><code>"sparse_adam"</code> <br /> <code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$optim$SparseAdam)</a></code></p></li>
 </ul>
 
 
@@ -284,7 +284,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

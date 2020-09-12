@@ -162,20 +162,21 @@
     </div>
 
     <div class="ref-description">
-    <p>Calls LiblineaR::LiblineaR from package <a href='https://CRAN.R-project.org/package=LiblineaR'><span class="pkg">LiblineaR</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/LiblineaR/man/LiblineaR.html'>LiblineaR::LiblineaR</a> from package <a href='https://CRAN.R-project.org/package=LiblineaR'><span class="pkg">LiblineaR</span></a>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Calls <code>LiblineaR::LiblineaR()</code> with <code>type = 4</code>.</p>
+    <p>Calls <code><a href='https://rdrr.io/pkg/LiblineaR/man/LiblineaR.html'>LiblineaR::LiblineaR()</a></code> with <code>type = 4</code>.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
 <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='no'>mlr_learners</span>$<span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>)
-<span class='fu'><a href='lrn.html'>lrn</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>)</pre>
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='kw'>mlr_learners</span><span class='op'>$</span><span class='fu'><a href='https://rdrr.io/r/base/get.html'>get</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>)
+<span class='fu'><a href='lrn.html'>lrn</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>)
+</pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
 
@@ -206,13 +207,16 @@ default of the respective "type".</p></li>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>be-marc</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
     <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerClassif.html'>mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifLiblineaRMultiClassSVC</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
-<h3>Public methods</h3>
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
 <li><p><a href='#method-new'><code>LearnerClassifLiblineaRMultiClassSVC$new()</code></a></p></li>
@@ -231,17 +235,17 @@ default of the respective "type".</p></li>
 </details>
 
 <hr>
-<a id="method-new"></a></p><h3>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>LearnerClassifLiblineaRMultiClassSVC</span>$<span class='fu'>new</span>()</pre><p></div></p>
+<a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
+<p>Creates a new instance of this <a href='https://rdrr.io/pkg/R6/man/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>LearnerClassifLiblineaRMultiClassSVC</span><span class='op'>$</span><span class='fu'>new</span>()</pre><p></div></p>
 
 <p><hr>
-<a id="method-clone"></a></p><h3>Method <code>clone()</code></h3>
-<p>The objects of this class are cloneable with this method.</p><h3>Usage</h3>
-<p><div class="r"></p><pre><span class='no'>LearnerClassifLiblineaRMultiClassSVC</span>$<span class='fu'>clone</span>(<span class='kw'>deep</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre><p></div></p>
+<a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
+<p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='kw'>LearnerClassifLiblineaRMultiClassSVC</span><span class='op'>$</span><span class='fu'>clone</span>(deep = <span class='fl'>FALSE</span>)</pre><p></div></p>
 
-<h3>Arguments</h3>
-<p><div class="arguments"></p><dl'>
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
+<p><div class="arguments"></p><dl>
 <dt><code>deep</code></dt><dd><p>Whether to make a deep clone.</p></dd>
 
 </dl><p></div></p>
@@ -249,13 +253,20 @@ default of the respective "type".</p></li>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='kw pkg'>mlr3misc</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3misc.mlr-org.com/reference/require_namespaces.html'>require_namespaces</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"LiblineaR"</span>))) {
-  <span class='no'>learner</span> <span class='kw'>=</span> <span class='kw pkg'>mlr3</span><span class='kw ns'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='no'>learner</span>)
-
-  <span class='co'># available parameters:</span>
-  <span class='no'>learner</span>$<span class='no'>param_set</span>$<span class='fu'>ids</span>()
-}</div><div class='output co'>#&gt; <span class='error'>Error: The following packages could not be loaded: LiblineaR</span></div></pre>
+    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
+<span class='kw'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span>(<span class='kw'>mlr3</span>::<span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span>(<span class='st'>"classif.liblinearmulticlasssvc"</span>))
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>learner</span>)
+</div><div class='output co'>#&gt; &lt;LearnerClassifLiblineaRMultiClassSVC:classif.liblinearmulticlasssvc&gt;
+#&gt; * Model: -
+#&gt; * Parameters: epsilon=0.1
+#&gt; * Packages: LiblineaR
+#&gt; * Predict Type: response
+#&gt; * Feature types: numeric
+#&gt; * Properties: multiclass, twoclass</div><div class='input'>
+<span class='co'># available parameters:</span>
+<span class='kw'>learner</span><span class='op'>$</span><span class='kw'>param_set</span><span class='op'>$</span><span class='fu'>ids</span>()
+</div><div class='output co'>#&gt; [1] "cost"     "epsilon"  "bias"     "cross"    "verbose"  "wi"       "findC"   
+#&gt; [8] "useInitC"</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -271,7 +282,7 @@ default of the respective "type".</p></li>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -168,17 +168,17 @@ initialization with optional dropout and batch normalization.</p>
     </div>
 
     <pre class="usage"><span class='fu'>build_pytorch_net</span>(
-  <span class='no'>n_in</span>,
-  <span class='no'>n_out</span>,
-  <span class='kw'>nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>32</span>),
-  <span class='kw'>activation</span> <span class='kw'>=</span> <span class='st'>"relu"</span>,
-  <span class='kw'>act_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
-  <span class='kw'>dropout</span> <span class='kw'>=</span> <span class='fl'>0.1</span>,
-  <span class='kw'>bias</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>batch_norm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>batch_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>eps</span> <span class='kw'>=</span> <span class='fl'>1e-05</span>, <span class='kw'>momentum</span> <span class='kw'>=</span> <span class='fl'>0.1</span>, <span class='kw'>affine</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-  <span class='kw'>init</span> <span class='kw'>=</span> <span class='st'>"uniform"</span>,
-  <span class='kw'>init_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
+  <span class='kw'>n_in</span>,
+  <span class='kw'>n_out</span>,
+  nodes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>32</span>, <span class='fl'>32</span>),
+  activation = <span class='st'>"relu"</span>,
+  act_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(),
+  dropout = <span class='fl'>0.1</span>,
+  bias = <span class='fl'>TRUE</span>,
+  batch_norm = <span class='fl'>TRUE</span>,
+  batch_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(eps = <span class='fl'>1e-05</span>, momentum = <span class='fl'>0.1</span>, affine = <span class='fl'>TRUE</span>),
+  init = <span class='st'>"uniform"</span>,
+  init_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>()
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -226,7 +226,7 @@ to all layers.</p></td>
     <tr>
       <th>batch_pars</th>
       <td><p><code>(list())</code><br /> Parameters for batch normalisation, see
-<code>reticulate::py_help(torch$nn$BatchNorm1d)</code>.</p></td>
+<code><a href='https://rdrr.io/pkg/reticulate/man/py_help.html'>reticulate::py_help(torch$nn$BatchNorm1d)</a></code>.</p></td>
     </tr>
     <tr>
       <th>init</th>
@@ -246,11 +246,37 @@ limited to simple MLPs. More advanced networks will require manual creation with
 <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>build_pytorch_net</span>(<span class='fl'>10</span>, <span class='fl'>1</span>)</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘reticulate’</span></div><div class='input'>
+    <pre class="examples"><div class='input'><span class='fu'>build_pytorch_net</span>(<span class='fl'>10</span>, <span class='fl'>1</span>)
+</div><div class='output co'>#&gt; Sequential(
+#&gt;   (L0): Linear(in_features=10, out_features=32, bias=True)
+#&gt;   (A0): ReLU()
+#&gt;   (BN0): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+#&gt;   (D0): Dropout(p=0.1, inplace=False)
+#&gt;   (L1): Linear(in_features=32, out_features=32, bias=True)
+#&gt;   (A1): ReLU()
+#&gt;   (BN1): BatchNorm1d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+#&gt;   (D1): Dropout(p=0.1, inplace=False)
+#&gt;   (2): Linear(in_features=32, out_features=1, bias=True)
+#&gt; )</div><div class='input'>
 <span class='fu'>build_pytorch_net</span>(
-  <span class='kw'>n_in</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>n_out</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>nodes</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>), <span class='kw'>activation</span> <span class='kw'>=</span> <span class='st'>"elu"</span>,
-  <span class='kw'>act_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.5</span>), <span class='kw'>dropout</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.2</span>, <span class='fl'>0.1</span>, <span class='fl'>0.6</span>),
-  <span class='kw'>batch_norm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>init</span> <span class='kw'>=</span> <span class='st'>"kaiming_normal"</span>, <span class='kw'>init_pars</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>non_linearity</span> <span class='kw'>=</span> <span class='st'>"relu"</span>))</div><div class='output co'>#&gt; <span class='error'>Error in loadNamespace(name): there is no package called ‘reticulate’</span></div></pre>
+  n_in = <span class='fl'>10</span>, n_out = <span class='fl'>1</span>, nodes = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>4</span>, <span class='fl'>4</span>, <span class='fl'>4</span>), activation = <span class='st'>"elu"</span>,
+  act_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(alpha = <span class='fl'>0.5</span>), dropout = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0.2</span>, <span class='fl'>0.1</span>, <span class='fl'>0.6</span>),
+  batch_norm = <span class='fl'>TRUE</span>, init = <span class='st'>"kaiming_normal"</span>, init_pars = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(non_linearity = <span class='st'>"relu"</span>))
+</div><div class='output co'>#&gt; Sequential(
+#&gt;   (L0): Linear(in_features=10, out_features=4, bias=True)
+#&gt;   (A0): ELU(alpha=0.5)
+#&gt;   (BN0): BatchNorm1d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+#&gt;   (D0): Dropout(p=0.2, inplace=False)
+#&gt;   (L1): Linear(in_features=4, out_features=4, bias=True)
+#&gt;   (A1): ELU(alpha=0.5)
+#&gt;   (BN1): BatchNorm1d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+#&gt;   (D1): Dropout(p=0.2, inplace=False)
+#&gt;   (L2): Linear(in_features=4, out_features=4, bias=True)
+#&gt;   (A2): ELU(alpha=0.5)
+#&gt;   (BN2): BatchNorm1d(4, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+#&gt;   (D2): Dropout(p=0.1, inplace=False)
+#&gt;   (3): Linear(in_features=4, out_features=1, bias=True)
+#&gt; )</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -266,7 +292,7 @@ limited to simple MLPs. More advanced networks will require manual creation with
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

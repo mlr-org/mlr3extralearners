@@ -167,7 +167,7 @@ filtered and queried." />
 filtered and queried.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_mlr3learners</span>(<span class='kw'>select</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>list_mlr3learners</span>(select = <span class='kw'>NULL</span>, filter = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,8 +186,9 @@ names in table.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>list_mlr3learners</span>(
-  <span class='kw'>select</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"properties"</span>, <span class='st'>"predict_types"</span>),
-  <span class='kw'>filter</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"surv"</span>, <span class='kw'>predict_types</span> <span class='kw'>=</span> <span class='st'>"distr"</span>))</div><div class='output co'>#&gt;                   id                                    properties
+  select = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"id"</span>, <span class='st'>"properties"</span>, <span class='st'>"predict_types"</span>),
+  filter = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(class = <span class='st'>"surv"</span>, predict_types = <span class='st'>"distr"</span>))
+</div><div class='output co'>#&gt;                   id                                    properties
 #&gt;  1:     surv.akritas                                              
 #&gt;  2:  surv.blackboost                                       weights
 #&gt;  3:     surv.cforest                                       weights
@@ -210,8 +211,9 @@ names in table.</p></td>
 #&gt; 20:  surv.parametric                                       weights
 #&gt; 21:    surv.pchazard                                              
 #&gt; 22:   surv.penalized                                              
-#&gt; 23:       surv.rfsrc         importance,missings,oob_error,weights
-#&gt; 24:       surv.rpart importance,missings,selected_features,weights
+#&gt; 23:      surv.ranger                  importance,oob_error,weights
+#&gt; 24:       surv.rfsrc         importance,missings,oob_error,weights
+#&gt; 25:       surv.rpart importance,missings,selected_features,weights
 #&gt;                   id                                    properties
 #&gt;               predict_types
 #&gt;  1:             crank,distr
@@ -236,8 +238,9 @@ names in table.</p></td>
 #&gt; 20:          distr,lp,crank
 #&gt; 21:             crank,distr
 #&gt; 22:             distr,crank
-#&gt; 23:             crank,distr
+#&gt; 23:             distr,crank
 #&gt; 24:             crank,distr
+#&gt; 25:             crank,distr
 #&gt;               predict_types</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -254,7 +257,7 @@ names in table.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

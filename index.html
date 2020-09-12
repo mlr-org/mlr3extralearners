@@ -119,12 +119,13 @@
 <p>Package website: <a href="https://mlr3extralearners.mlr-org.com/">release</a> | <a href="https://mlr3extralearners.mlr-org.com/dev/">dev</a></p>
 <p>Extra Learners for <strong><a href="https://github.com/mlr-org/mlr3/">mlr3</a></strong>.</p>
 <!-- badges: start -->
-<p><a href="https://codecov.io/gh/mlr-org/mlr3extralearners"><img src="https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <!-- badges: end --></p>
+<p><a href="https://github.com/mlr-org/mlr3extralearners/actions?query=workflow%3A%22R+CMD+Check%22"><img src="https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg" alt="R CMD Check"></a> <a href="https://codecov.io/gh/mlr-org/mlr3extralearners"><img src="https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <!-- badges: end --></p>
 <div id="what-is-mlr3extralearners" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-mlr3extralearners" class="anchor"></a>What is mlr3extralearners?</h2>
 <p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="http://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for a live build status.</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span>(<span class="kw">select</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span>))
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span>(select = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span>))
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
 <span class="co">#&gt;   1: classif.AdaBoostM1 mlr3extralearners                  RWeka</span>
 <span class="co">#&gt;   2:        classif.C50 mlr3extralearners                    C50</span>
@@ -136,42 +137,53 @@
 <span class="co">#&gt;  98:     surv.penalized mlr3extralearners              penalized</span>
 <span class="co">#&gt;  99:         surv.rfsrc mlr3extralearners        randomForestSRC</span>
 <span class="co">#&gt; 100:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
-<span class="co">#&gt; 101:           surv.svm mlr3extralearners            survivalsvm</span></pre></div>
+<span class="co">#&gt; 101:           surv.svm mlr3extralearners            survivalsvm</span>
+</pre></div>
 <p>mlr3extralearners lives on GitHub and will not be on CRAN. Install with:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"mlr-org/mlr3extralearners"</span>)</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">remotes</span>::<span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"mlr-org/mlr3extralearners"</span>)
+</pre></div>
 </div>
 <div id="installing-and-loading-learners" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installing-and-loading-learners" class="anchor"></a>Installing and Loading Learners</h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="reference/lrn.html">lrn</a></span>(<span class="st">"regr.gbm"</span>)
-<span class="co">#&gt; Error: Required packages not installed, please run `install_learners("regr.gbm")`.</span></pre></div>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/install_learners.html">install_learners</a></span>(<span class="st">"regr.gbm"</span>)</pre></div>
-<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/lrn.html">lrn</a></span>(<span class="st">"regr.gbm"</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="reference/lrn.html">lrn</a></span>(<span class="st">"regr.gbm"</span>)
+<span class="co">#&gt; Error: Required packages not installed, please run `install_learners("regr.gbm")`.</span>
+</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="reference/install_learners.html">install_learners</a></span>(<span class="st">"regr.gbm"</span>)
+</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="reference/lrn.html">lrn</a></span>(<span class="st">"regr.gbm"</span>)
 <span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;</span>
 <span class="co">#&gt; * Model: -</span>
 <span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span>
 <span class="co">#&gt; * Packages: gbm</span>
 <span class="co">#&gt; * Predict Type: response</span>
 <span class="co">#&gt; * Feature types: integer, numeric, factor, ordered</span>
-<span class="co">#&gt; * Properties: importance, missings, weights</span></pre></div>
+<span class="co">#&gt; * Properties: importance, missings, weights</span>
+</pre></div>
 </div>
 <div id="extending-mlr3extralearners" class="section level2">
 <h2 class="hasAnchor">
 <a href="#extending-mlr3extralearners" class="anchor"></a>Extending mlr3extralearners</h2>
 <p>New learners can be created with the <code>create_learner</code> function. This assumes you have a local copy of <code>mlr3extralearners</code>. This function will automatically create the learner, learner tests, parameter tests, YAML files for CI if required, and update the DESCRIPTION if required. Once all tests are passing locally, open a <a href="https://github.com/mlr-org/mlr3extralearners/pulls">pull request</a> with the “New Learner” template.</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu">create_learner</span>(<span class="kw">classname</span> <span class="kw">=</span> <span class="st">"Locfit"</span>,
-               <span class="kw">algorithm</span> <span class="kw">=</span> <span class="st">"localised fit"</span>,
-               <span class="kw">type</span> <span class="kw">=</span> <span class="st">"dens"</span>,
-               <span class="kw">key</span> <span class="kw">=</span> <span class="st">"locfit"</span>,
-               <span class="kw">package</span> <span class="kw">=</span> <span class="st">"locfit"</span>,
-               <span class="kw">caller</span> <span class="kw">=</span> <span class="st">"density.lf"</span>,
-               <span class="kw">feature_types</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"integer"</span>, <span class="st">"numeric"</span>),
-               <span class="kw">predict_types</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"pdf"</span>, <span class="st">"cdf"</span>),
-               <span class="kw">properties</span> <span class="kw">=</span> <span class="kw">NULL</span>,
-               <span class="kw">importance</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-               <span class="kw">oob_error</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-               <span class="kw">references</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="reference/create_learner.html">create_learner</a></span>(classname = <span class="st">"Locfit"</span>,
+               algorithm = <span class="st">"localised fit"</span>,
+               type = <span class="st">"dens"</span>,
+               key = <span class="st">"locfit"</span>,
+               package = <span class="st">"locfit"</span>,
+               caller = <span class="st">"density.lf"</span>,
+               feature_types = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"integer"</span>, <span class="st">"numeric"</span>),
+               predict_types = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"pdf"</span>, <span class="st">"cdf"</span>),
+               properties = <span class="kw">NULL</span>,
+               importance = <span class="fl">FALSE</span>,
+               oob_error = <span class="fl">FALSE</span>,
+               references = <span class="fl">FALSE</span>)
+</pre></div>
 </div>
 </div>
   </div>
@@ -201,7 +213,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
