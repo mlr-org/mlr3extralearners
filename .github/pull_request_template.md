@@ -15,7 +15,7 @@ I have...
 * [ ] Added references and not left the tag blank - !!!Delete if not applicable!!!
 * [ ] Removed all 'FIXME's
 
-# Dependencies
+## Dependencies
 
 I have...
 
@@ -28,7 +28,7 @@ I have...
 
 #### Remote dependency
 
-# Tests
+## Tests
 
 I have...
 
@@ -36,7 +36,7 @@ I have...
 * [ ] Created a paramtest file with tests for all calls in both my `.train` and `.predict` methods and it passes locally.
 * [ ] Run `rcmdcheck::rcmdcheck` and there are no new NOTEs, WARNINGs, or ERRORs.
 
-# Cleaning
+## Cleaning
 
 I have run...
 
@@ -45,14 +45,18 @@ I have run...
 * [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
-# Reviewer
+And 
+
+* [ ] Updated NEWS.md
+
+## Reviewer
 
 Tick as appropriate:
 
 * [ ] This is a regression or classification learner, I have assigned pat-s to review this.
 * [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
-# Comments
+## Comments
 
 -------
 
@@ -60,9 +64,9 @@ Tick as appropriate:
 
 This pull request updates Learner[Type][Name].
 
-## Reason for update
+### Reason for update
 
-# Dependencies
+## Dependencies
 
 I have...
 
@@ -74,13 +78,13 @@ I have...
 
 #### Remote dependency
 
-# Tests
+## Tests
 
 * [ ] Learner autotest is passing locally.
 * [ ] Paramtest is passing locally.
 * [ ] I have run `rcmdcheck::rcmdcheck` and there are no new NOTEs, WARNINGs, or ERRORs.
 
-# Cleaning
+## Cleaning
 
 I have run...
 
@@ -89,14 +93,18 @@ I have run...
 * [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
-# Reviewer
+And 
+
+* [ ] Updated NEWS.md
+
+## Reviewer
 
 Delete as appropriate:
 
 * [ ] This is a regression or classification learner, I have assigned pat-s to review this.
 * [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
-# Comments
+## Comments
 
 ----
 
