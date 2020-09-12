@@ -18,7 +18,7 @@ lrn("surv.akritas")
 \section{Traits}{
 
 \itemize{
-\item Packages: pracma
+\item Packages: pracma, survival
 \item Predict Types: crank, distr
 \item Feature Types: logical, integer, character, numeric, factor
 \item Properties:
@@ -26,7 +26,7 @@ lrn("surv.akritas")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("pracma"))) {
+if (mlr3misc::require_namespaces(c("pracma", "survival"))) {
   learner = mlr3::lrn("surv.akritas")
   print(learner)
 

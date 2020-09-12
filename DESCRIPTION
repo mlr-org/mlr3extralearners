@@ -27,6 +27,7 @@ Imports:
     Rcpp (>= 1.0.4)
 Suggests:
     C50,
+    coin,
     CoxBoost,
     distr6 (>= 1.4.3),
     extraTrees,
@@ -56,6 +57,7 @@ Suggests:
     randomForestSRC,
     reticulate (>= 1.16),
     RWeka,
+    sandwich,
     set6,
     sm,
     survival,
