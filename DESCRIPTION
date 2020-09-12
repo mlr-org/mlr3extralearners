@@ -38,7 +38,6 @@ Suggests:
     keras (>= 2.3.0),
     kerdiest,
     kernlab,
-    knitr,
     ks,
     LiblineaR,
     locfit,
@@ -70,8 +69,6 @@ Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3proba,
     alan-turing-institute/distr6
-VignetteBuilder:
-    knitr
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
