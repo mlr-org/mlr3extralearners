@@ -82,7 +82,9 @@ akritas <- function(formula = NULL, data = NULL, reverse = FALSE,
     }
   } else if (!is.null(formula)) {
     f <- stats::as.formula(formula, env = data)
-    y <- eval(f[[2]], envir = data)
+    mlr3misc::with_package("survival", {
+      y <- eval(f[[2]], envir = data)
+    })
 
     if (deparse(f[[3]]) == ".") {
       if (is.null(data)) {
