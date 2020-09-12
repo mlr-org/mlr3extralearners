@@ -349,8 +349,10 @@ install_learners = function(.keys, ...) {
   sapply(.keys, function(.key) {
     pkgs = mlr3::lrn(.key)$packages
     sapply(pkgs, function(pkg) {
-      x = tryCatch(find.package(pkg),
-                   error = function(e) utils::install.packages(pkg, ...))
+      x = requireNamespace(pkg, quietly = TRUE)
+      if(!x) {
+        utils::install.packages(pkg, ...)
+      }
     })
   })
   invisible()
