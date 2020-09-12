@@ -8,8 +8,8 @@ test_that("autotest", {
 })
 
 test_that("akritas", {
-  expect_error(akritas(Surv(time, status) ~ .))
-  expect_silent(akritas(Surv(time, status) ~ ., data = survival::rats[1:10, ]))
+  expect_error(akritas(survival::Surv(time, status) ~ .))
+  expect_silent(akritas(survival::Surv(time, status) ~ ., data = survival::rats[1:10, ]))
   expect_error(akritas(x = "litter"), "Both 'x' and 'y'")
   expect_error(akritas(time_variable = "time"), "'time_variable'")
   expect_error(akritas(
@@ -17,16 +17,16 @@ test_that("akritas", {
     y = survival::rats$time), "Must inherit from")
   expect_error(akritas(
     x = survival::rats$rx,
-    y = Surv(survival::rats$time, survival::rats$status)
+    y = survival::Surv(survival::rats$time, survival::rats$status)
   ), "data.frame")
 
-  fit <- akritas(Surv(time, status) ~ ., data = survival::rats[1:100, ])
+  fit <- akritas(survival::Surv(time, status) ~ ., data = survival::rats[1:100, ])
   expect_equal(
     as.numeric(predict(fit, newdata = survival::rats[1:100, ], lambda = 1)[1, ]),
-    survfit(Surv(time, status) ~ 1, data = survival::rats[1:100, ])$surv)
+    survfit(survival::Surv(time, status) ~ 1, data = survival::rats[1:100, ])$surv)
 
-  fit <- akritas(Surv(time, status) ~ ., data = survival::rats[1:100, ], reverse = TRUE)
+  fit <- akritas(survival::Surv(time, status) ~ ., data = survival::rats[1:100, ], reverse = TRUE)
   expect_equal(
     as.numeric(predict(fit, newdata = survival::rats[1:100, ], lambda = 1)[1, ]),
-    survfit(Surv(time, 1 - status) ~ 1, data = survival::rats[1:100, ])$surv)
+    survfit(survival::Surv(time, 1 - status) ~ 1, data = survival::rats[1:100, ])$surv)
 })

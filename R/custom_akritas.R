@@ -42,7 +42,9 @@
 #' @return An object inheriting from class `akritas`.
 #'
 #' @examples
-#' if (mlr3misc::require_namespaces(c("distr6", "survival"))) {
+#' if (requireNamespace("distr6", quietly = TRUE) &&
+#'     requireNamespace("survival", quietly = TRUE)) {
+#'
 #'   library(survival)
 #'   fit <- akritas(Surv(time, status) ~ ., data = rats[1:10, ])
 #'   print(fit)
