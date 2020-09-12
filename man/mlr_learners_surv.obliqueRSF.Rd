@@ -38,13 +38,12 @@ lrn("surv.obliqueRSF")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("obliqueRSF", "pracma"))) {
-  learner = mlr3::lrn("surv.obliqueRSF")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.obliqueRSF"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).

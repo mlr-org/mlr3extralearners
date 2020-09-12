@@ -49,13 +49,12 @@ lrn("surv.parametric")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("survival", "pracma"))) {
-  learner = mlr3::lrn("surv.parametric")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.parametric"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kalbfleisch, J. D., & Prentice, R. L. (2011).

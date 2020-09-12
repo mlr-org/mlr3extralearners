@@ -26,13 +26,12 @@ lrn("surv.nelson")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("survival", "pracma"))) {
-  learner = mlr3::lrn("surv.nelson")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.nelson"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Nelson W (1969).

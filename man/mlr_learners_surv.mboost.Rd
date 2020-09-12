@@ -29,13 +29,12 @@ lrn("surv.mboost")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mboost"))) {
-  learner = mlr3::lrn("surv.mboost")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.mboost"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann P, Yu B (2003).

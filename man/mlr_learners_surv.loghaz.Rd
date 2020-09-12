@@ -32,13 +32,12 @@ lrn("surv.loghaz")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("reticulate", "pracma"))) {
-  learner = mlr3::lrn("surv.loghaz")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.loghaz"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gensheimer, M. F., & Narasimhan, B. (2018).

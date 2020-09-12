@@ -26,13 +26,12 @@ lrn("regr.ctree")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin"))) {
-  learner = mlr3::lrn("regr.ctree")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("regr.ctree"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).

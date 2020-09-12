@@ -26,13 +26,12 @@ lrn("dens.mixed")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("np"))) {
-  learner = mlr3::lrn("dens.mixed")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.mixed"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Li, Q. and J.S. Racine (2003),

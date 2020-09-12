@@ -26,13 +26,12 @@ lrn("dens.locfit")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("locfit"))) {
-  learner = mlr3::lrn("dens.locfit")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.locfit"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:

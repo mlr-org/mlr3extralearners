@@ -26,13 +26,12 @@ lrn("dens.logspline")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("logspline"))) {
-  learner = mlr3::lrn("dens.logspline")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.logspline"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Charles Kooperberg and Charles J. Stone.

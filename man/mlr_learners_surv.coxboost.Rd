@@ -33,13 +33,12 @@ lrn("surv.coxboost")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("CoxBoost", "pracma"))) {
-  learner = mlr3::lrn("surv.coxboost")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.coxboost"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Binder, H., Allignol, A., Schumacher, M., and Beyersmann, J. (2009).

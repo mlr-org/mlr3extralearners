@@ -58,6 +58,8 @@ akritas <- function(formula = NULL, data = NULL, reverse = FALSE,
   time_variable = NULL, status_variable = NULL,
   x = NULL, y = NULL, ...) {
 
+  requireNamespace("survival")
+
   call <- match.call()
 
   if (!is.null(x) | !is.null(y)) {
@@ -170,7 +172,8 @@ summary.akritas <- function(object, ...) {
 #'
 #'
 #' @examples
-#' if (mlr3misc::require_namespaces(c("distr6", "survival"))) {
+#' if (requireNamespace("distr6", quietly = TRUE) &&
+#'     requireNamespace("survival", quietly = TRUE)) {
 #' library(survival)
 #' train <- 1:10
 #' test <- 11:20
@@ -198,6 +201,8 @@ predict.akritas <- function(object, newdata, times = NULL,
   lambda = 0.5,
   type = c("survival", "risk", "all"),
   distr6 = FALSE, ...) {
+
+  requireNamespace("survival")
 
   type <- match.arg(type)
   unique_times <- sort(unique(object$y[, 1, drop = FALSE]))

@@ -35,13 +35,12 @@ lrn("surv.svm")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("survivalsvm"))) {
-  learner = mlr3::lrn("surv.svm")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.svm"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).

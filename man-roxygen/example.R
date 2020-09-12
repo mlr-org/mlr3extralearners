@@ -2,10 +2,9 @@
 lrn = mlr3::lrn(id)
 %>
 #' @examples
-#' if (mlr3misc::require_namespaces(c("<%=paste0(lrn$packages, collapse = '", "')%>"))) {
-#'   learner = mlr3::lrn("<%= id %>")
-#'   print(learner)
+#' # stop example failing with warning if package not installed
+#' learner = suppressWarnings(mlr3::lrn("<%= id %>"))
+#' print(learner)
 #'
-#'   # available parameters:
-#'   learner$param_set$ids()
-#' }
+#' # available parameters:
+#' learner$param_set$ids()

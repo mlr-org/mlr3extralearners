@@ -32,13 +32,12 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("penalized", "pracma"))) {
-  learner = mlr3::lrn("surv.penalized")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.penalized"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Goeman JJ (2009). “L1Penalized Estimation in the Cox Proportional Hazards Model.”

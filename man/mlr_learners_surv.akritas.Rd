@@ -26,13 +26,12 @@ lrn("surv.akritas")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("pracma", "survival"))) {
-  learner = mlr3::lrn("surv.akritas")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.akritas"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Akritas, M. G. (1994).

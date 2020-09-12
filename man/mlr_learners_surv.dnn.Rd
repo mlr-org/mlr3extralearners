@@ -28,13 +28,12 @@ lrn("surv.dnn")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("keras", "pseudo", "tensorflow"))) {
-  learner = mlr3::lrn("surv.dnn")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.dnn"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Zhao, L., & Feng, D. (2020).

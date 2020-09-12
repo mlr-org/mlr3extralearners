@@ -27,13 +27,12 @@ lrn("surv.deepsurv")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("reticulate", "pracma"))) {
-  learner = mlr3::lrn("surv.deepsurv")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.deepsurv"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Katzman, J. L., Shaham, U., Cloninger, A., Bates, J., Jiang, T., & Kluger, Y. (2018).

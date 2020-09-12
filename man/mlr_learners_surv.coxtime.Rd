@@ -27,13 +27,12 @@ lrn("surv.coxtime")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("reticulate", "pracma"))) {
-  learner = mlr3::lrn("surv.coxtime")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.coxtime"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kvamme, H., Borgan, Ø., & Scheel, I. (2019).

@@ -33,13 +33,12 @@ lrn("surv.rfsrc")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("randomForestSRC", "pracma"))) {
-  learner = mlr3::lrn("surv.rfsrc")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.rfsrc"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS, others (2008).
