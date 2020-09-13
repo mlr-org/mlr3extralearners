@@ -27,6 +27,7 @@ Imports:
     Rcpp (>= 1.0.4)
 Suggests:
     C50,
+    catboost,
     coin,
     CoxBoost,
     distr6 (>= 1.4.3),
@@ -70,7 +71,8 @@ Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3learners,
     mlr-org/mlr3proba,
-    alan-turing-institute/distr6
+    alan-turing-institute/distr6,
+    catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
