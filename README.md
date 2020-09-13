@@ -20,9 +20,9 @@ Extra Learners for
 functions to find where all the learners, across the mlr3verse, live and
 to install required packages to run these learners. See the interactive
 [learner
-list](http://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
+list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
-page](http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 for a live build status.
 
 ``` r
