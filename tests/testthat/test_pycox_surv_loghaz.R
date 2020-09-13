@@ -1,5 +1,11 @@
 install_learners("surv.loghaz")
 
+np = reticulate::import("numpy")
+torch = reticulate::import("torch")
+set.seed(1)
+np$random$seed(1L)
+torch$manual_seed(1L)
+
 test_that("autotest", {
   learner = LearnerSurvLogisticHazard$new()
   expect_learner(learner)
@@ -7,7 +13,6 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-set.seed(1)
 task = TaskSurv$new("task", data.frame(x1 = rnorm(100), x2 = rgamma(100, 4), x3 = rweibull(100, 2),
                                        status = rbinom(100, 1, 0.5), time = abs(rexp(100)) + 2),
                     "time", "status")
