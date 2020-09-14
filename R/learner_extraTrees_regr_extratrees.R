@@ -63,7 +63,10 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
+      self$state$feature_names = task$feature_names
+
       data = task$data()
+
       x = as.matrix(data[, task$feature_names, with = FALSE])
       y = data[, task$target_names, with = FALSE][[1]]
 
@@ -75,8 +78,7 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
-
+      newdata = task$data(cols = self$state$feature_names)
       p = invoke(predict, self$model, newdata = newdata)
       PredictionRegr$new(task = task, response = p)
     }

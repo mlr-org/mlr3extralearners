@@ -59,6 +59,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
+      self$state$feature_names = task$feature_names
       data = task$data()
       x = as.matrix(data[, task$feature_names, with = FALSE])
       y = data[, task$target_names, with = FALSE][[1]]
@@ -71,7 +72,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = task$data(cols = self$state$feature_names)
 
       if (self$predict_type == "response") {
         p = invoke(predict, self$model, newdata = newdata)
