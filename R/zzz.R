@@ -1,9 +1,3 @@
-## usethis namespace: start
-#' @importFrom Rcpp sourceCpp
-#' @useDynLib mlr3extralearners, .registration = TRUE
-## usethis namespace: end
-NULL
-
 #' @import data.table
 #' @import paradox
 #' @import mlr3misc

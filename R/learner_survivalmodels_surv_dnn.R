@@ -1,8 +1,10 @@
 #' @title Survival DNNSurv Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.dnn
-#' @template class_learner_custom
+#'
+#' @template class_learner
 #' @templateVar id surv.dnn
+#' @templateVar caller dnnsurv
 #'
 #' @description
 #' Implements the DNNSurv neural network.

@@ -23,8 +23,7 @@ Imports:
     mlr3misc,
     mlr3proba (>= 0.2.2),
     paradox,
-    R6,
-    Rcpp (>= 1.0.4)
+    R6
 Suggests:
     C50,
     coin,
@@ -61,16 +60,16 @@ Suggests:
     set6,
     sm,
     survival,
+    survivalmodels,
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat
-LinkingTo: 
-    Rcpp
 Remotes:
     mlr-org/mlr3,
     mlr-org/mlr3learners,
     mlr-org/mlr3proba,
-    alan-turing-institute/distr6
+    alan-turing-institute/distr6,
+    RaphaelS1/survivalmodels
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)

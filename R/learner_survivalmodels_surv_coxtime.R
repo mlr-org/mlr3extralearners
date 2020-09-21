@@ -2,11 +2,9 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.coxtime
 #'
-#' @template class_learner_reticulate
+#' @template class_learner
 #' @templateVar id surv.coxtime
-#' @templateVar caller pycox.models.CoxTime
-#' @templateVar pypkg pycox
-#' @templateVar pypkgurl https://pypi.org/project/pycox/
+#' @templateVar caller coxtime
 #'
 #' @references
 #' Kvamme, H., Borgan, Ø., & Scheel, I. (2019).
@@ -107,7 +105,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::surv.coxtime",
-        packages = c("reticulate", "pracma")
+        packages = c("survivalmodels", "reticulate")
       )
     }
   ),
@@ -115,113 +113,31 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
   private = list(
     .train = function(task) {
 
-      pycox = reticulate::import("pycox")
-      torch = reticulate::import("torch")
-      torchtuples = reticulate::import("torchtuples")
-
-      # Prepare data and optionally standardise outcome
-      pars = self$param_set$get_values(tags = "prep")
-      data = mlr3misc::invoke(
-        prepare_train_data,
-        model = "CoxTime",
-        task = task,
-        .args = pars
-      )
-      x_train = data$x_train
-      y_train = data$y_train
-
-      # Set-up network architecture
-      pars = self$param_set$get_values(tags = "net")
-      net = mlr3misc::invoke(
-        pycox$models$cox_time$MLPVanillaCoxTime,
-        in_features = x_train$shape[1],
-        num_nodes = reticulate::r_to_py(as.integer(pars$num_nodes)),
-        activation = mlr3misc::invoke(get_pycox_activation,
-          construct = FALSE,
-          .args = self$param_set$get_values(tags = "act")),
-        .args = pars[names(pars) %nin% "num_nodes"]
-      )
-
-      # Get optimizer and set-up model
-      pars = self$param_set$get_values(tags = "mod")
-      model = mlr3misc::invoke(
-        pycox$models$CoxTime,
-        net = net,
-        labtrans = data$labtrans,
-        optimizer = mlr3misc::invoke(get_pycox_optim,
-          net = net,
-          .args = self$param_set$get_values(tags = "opt")),
-        .args = pars
-      )
-
-      # Optionally get callbacks
-      pars = self$param_set$get_values(tags = "callbacks")
-      early_stopping = !is.null(pars$early_stopping) && pars$early_stopping
-      if (!early_stopping && !is.null(pars$best_weights) && pars$best_weights) {
-        callbacks = reticulate::r_to_py(list(torchtuples$callbacks$BestWeights()))
-      } else if (early_stopping) {
-        callbacks = reticulate::r_to_py(list(
-          mlr3misc::invoke(torchtuples$callbacks$EarlyStopping,
-            .args = self$param_set$get_values(tags = "early"))
-        ))
-      } else {
-        callbacks = NULL
-      }
-
-      # Fit model
-      pars = self$param_set$get_values(tags = "fit")
       mlr3misc::invoke(
-        model$fit,
-        input = x_train,
-        target = y_train,
-        callbacks = callbacks,
-        val_data = data$val,
+        survivalmodels::coxtime,
+        formula = task$formula(),
+        data = task$data(),
         .args = pars
       )
+
     },
 
     .predict = function(task) {
 
-      # compute baselines
-
-      self$model$model$compute_baseline_hazards()
-
-      # get test data
-      x_test = task$data(cols = task$feature_names)
-      x_test = reticulate::r_to_py(x_test)$values$astype("float32")
-
-      # predict survival probabilities
       pars = self$param_set$get_values(tags = "predict")
-      surv = mlr3misc::invoke(
-        self$model$model$predict_surv_df,
-        x_test,
+      newdata = task$data(cols = task$feature_names)
+
+      pred <- mlr3misc::invoke(
+        predict,
+        self$model,
+        newdata = newdata,
+        distr6 = TRUE,
+        type = "all",
         .args = pars
       )
 
-      # cast to distr6
-      x = rep(list(list(x = round(as.numeric(rownames(surv)), 5), pdf = 0)), task$nrow)
-      for (i in seq_len(task$nrow)) {
-        # fix for infinite hazards - invalidate results for NaNs
-        if (any(is.nan(surv[, i]))) {
-          x[[i]]$pdf = c(1, numeric(length(x[[i]]$x) - 1))
-        } else {
-          x[[i]]$pdf = round(1 - surv[, i], 6)
-          x[[i]]$pdf = c(x[[i]]$pdf[1], diff(x[[i]]$pdf))
-          x[[i]]$pdf[x[[i]]$pdf < 0.000001] = 0L
-          x[[i]]$pdf
-        }
-      }
+      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
 
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      # return prediction object
-      mlr3proba::PredictionSurv$new(
-        task = task,
-        distr = distr,
-        crank = distr$mean()
-      )
     }
   )
 )
