@@ -8,8 +8,6 @@
 #'
 #' @description
 #' Implements the DNNSurv neural network.
-#' Code for generating the conditional probabilities and pre-processing data is taken from
-#' \url{https://github.com/lilizhaoUM/DNNSurv}.
 #'
 #' @references
 #' Zhao, L., & Feng, D. (2020).
@@ -95,7 +93,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.dnn",
-        packages = c("keras", "pseudo", "tensorflow")
+        packages = c("survivalmodels", "keras", "pseudo", "tensorflow")
       )
     }
   ),
@@ -103,114 +101,31 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
   private = list(
     .train = function(task) {
 
-      data = task$data()
-      pars = self$param_set$get_values(tags = "prep")
-      time = data[[task$target_names[1L]]]
-      if (is.null(pars$cutpoints)) {
-        cuts = ifelse(is.null(pars$cuts), 5L, pars$cuts)
-        cutpoints = unique(round(seq.int(min(time), max(time), length.out = cuts), 2))
-      } else {
-        cutpoints = pars$cutpoints
-      }
-      pseudo_cond = get_pseudo_conditional(
-        time,
-        data[[task$target_names[2L]]],
-        cutpoints)
-      x = as.matrix(task$data(cols = task$feature_names))[pseudo_cond$id, ]
-      smatrix = model.matrix(~ as.factor(pseudo_cond$s) + 0)
-      x_train = cbind(x, smatrix)
-      y_train = pseudo_cond$pseudost
-
-      pars = self$param_set$get_values(tags = "mod")
-      if (is.null(pars$custom_model)) {
-        model = keras::keras_model_sequential()
-        keras::layer_dense(model,
-          units = 8, kernel_regularizer = keras::regularizer_l2(0.0001),
-          activation = "tanh",
-          input_shape = dim(x_train)[[2]])
-        keras::layer_dense(model,
-          units = 4, kernel_regularizer = keras::regularizer_l2(0.01),
-          activation = "tanh")
-        keras::layer_dense(model, units = 1, activation = "sigmoid")
-      } else {
-        model = pars$custom_model
-      }
-
-      pars = self$param_set$get_values(tags = "compile")
+      pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
-        keras::compile,
-        model,
-        loss = "mse",
-        metrics = "mae",
-        optimizer = mlr3misc::invoke(
-          get_keras_optimizer,
-          .args = self$param_set$get_values(tags = "opt")
-        ),
+        survivalmodels::survdnn,
+        formula = task$formula(),
+        data = task$data(),
         .args = pars
       )
 
-      if (!is.null(self$param_set$values$early_stopping) && self$param_set$values$early_stopping) {
-        callbacks = list(
-          mlr3misc::invoke(
-            keras::callback_early_stopping,
-            .args = self$param_set$get_values(tags = "early")
-          )
-        )
-      } else {
-        callbacks = NULL
-      }
-      pars = self$param_set$get_values(tags = "fit")
-      mlr3misc::invoke(
-        keras::fit,
-        model,
-        x_train,
-        y_train,
-        callbacks = callbacks,
-        .args = pars
-      )
-
-      structure(list(model = model, cutpoints = cutpoints), class = "dnnsurv")
     },
 
     .predict = function(task) {
 
-      # format test data
-
-      x_test = as.matrix(task$data(cols = task$feature_names))
-      x_test_all = do.call(rbind, replicate(length(self$model$cutpoints), x_test, simplify = FALSE))
-      smatrix_test = model.matrix(~ as.factor(rep(self$model$cutpoints, each = nrow(x_test))) + 0)
-      x_test_all = cbind(x_test_all, smatrix_test)
-
-      # predict test data
       pars = self$param_set$get_values(tags = "predict")
+      newdata = task$data(cols = task$feature_names)
+
       pred = mlr3misc::invoke(
         predict,
-        self$model$model,
-        x = x_test_all,
+        self$model,
+        newdata = newdata,
+        distr6 = TRUE,
+        type = "all",
         .args = pars
       )
-      pred <- matrix(pred, nrow = task$nrow)
-      ypred <- lapply(seq_along(self$model$cutpoints), function(i) {
-        apply(pred[, 1:i, drop = FALSE], 1, prod)
-      })
-      surv_prob <- Reduce(cbind, ypred)
 
-      # cast to distr6
-      x = rep(list(list(x = self$model$cutpoints, cdf = 0)), task$nrow)
-      for (i in seq_len(task$nrow)) {
-        x[[i]]$cdf = 1 - surv_prob[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      # return prediction object
-      mlr3proba::PredictionSurv$new(
-        task = task,
-        distr = distr,
-        crank = distr$mean()
-      )
+      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
     }
   )
 )

@@ -1,9 +1,10 @@
-#' @title Survival DeepHit Learner
+#' @title Survival PC-Hazard Learner
 #' @author RaphaelS1
-#' @name mlr_learners_surv.deephit
+#' @name mlr_learners_surv.pchazard
+#'
 #' @template class_learner_reticulate
-#' @templateVar id surv.deephit
-#' @templateVar caller pycox.models.DeepHitSingle
+#' @templateVar id surv.pchazard
+#' @templateVar caller pycox.models.PCHazard
 #' @templateVar pypkg pycox
 #' @templateVar pypkgurl https://pypi.org/project/pycox/
 #'
@@ -13,15 +14,14 @@
 #' depends on the number of discretised time-points, i.e. the parameters `cuts` or `cutpoints`.
 #'
 #' @references
-#' Changhee Lee, William R Zame, Jinsung Yoon, and Mihaela van der Schaar.
-#' Deephit: A deep learning approach to survival analysis with competing risks.
-#' In Thirty-Second AAAI Conference on Artificial Intelligence, 2018.
-#' http://medianetlab.ee.ucla.edu/papers/AAAI_2018_DeepHit
+#' Kvamme, H., & Borgan, Ø. (2019).
+#' Continuous and discrete-time survival prediction with neural networks.
+#' ArXiv Preprint ArXiv:1910.06724.
 #'
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
+LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
   inherit = mlr3proba::LearnerSurv,
 
   public = list(
@@ -52,7 +52,6 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
           ParamDbl$new("mod_alpha", default = 0.2, lower = 0, upper = 1, tags = c("train", "mod")),
           ParamDbl$new("sigma", default = 0.1, tags = c("train", "mod")),
           ParamUty$new("device", tags = c("train", "mod")),
-          ParamUty$new("loss", tags = c("train", "mod")),
           ParamFct$new("optimizer",
             default = "adam", levels = pycox_optimizers,
             tags = c("train", "opt")),
@@ -80,11 +79,7 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
           ParamLgl$new("early_stopping", default = FALSE, tags = c("train", "callbacks")),
           ParamDbl$new("min_delta", default = 0, tags = c("train", "early")),
           ParamInt$new("patience", default = 10, tags = c("train", "early")),
-          ParamLgl$new("interpolate", default = FALSE, tags = "predict"),
-          ParamInt$new("sub", default = 10, lower = 1, tags = c("inter", "predict")),
-          ParamFct$new("interpolate_scheme",
-            default = "const_pdf",
-            levels = c("const_hazard", "const_pdf"), tags = c("inter", "predict"))
+          ParamInt$new("sub", default = 1, lower = 1, tags = "predict")
         )
       )
 
@@ -111,16 +106,13 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
       ps$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
       ps$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
 
-      ps$add_dep("sub", "interpolate", CondEqual$new(TRUE))
-      ps$add_dep("interpolate_scheme", "interpolate", CondEqual$new(TRUE))
-
       super$initialize(
-        id = "surv.deephit",
+        id = "surv.pchazard",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.deephit",
-        packages = c("reticulate", "pracma")
+        man = "mlr3extralearners::surv.pchazard",
+        packages = c("survivalmodels", "reticulate")
       )
     }
   ),
@@ -128,140 +120,34 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
   private = list(
     .train = function(task) {
 
-      pycox = reticulate::import("pycox")
-      torch = reticulate::import("torch")
-      torchtuples = reticulate::import("torchtuples")
-
-      # Prepare data and optionally standardise outcome
-      pars = self$param_set$get_values(tags = "prep")
-      data = mlr3misc::invoke(
-        prepare_train_data,
-        task = task,
-        discretise = TRUE,
-        model = "DeepHit",
-        .args = pars
-      )
-      x_train = data$x_train
-      y_train = data$y_train
-
-      # Set-up network architecture
-      pars = self$param_set$get_values(tags = "net")
-      if (!is.null(pars$custom_net)) {
-        net = pars$custom_net
-      } else {
-        net = mlr3misc::invoke(
-          torchtuples$practical$MLPVanilla,
-          in_features = x_train$shape[1],
-          num_nodes = reticulate::r_to_py(as.integer(pars$num_nodes)),
-          activation = mlr3misc::invoke(get_pycox_activation,
-            construct = FALSE,
-            .args = self$param_set$get_values(tags = "act")),
-          out_features = data$labtrans$out_features,
-          .args = pars[names(pars) %nin% "num_nodes"]
-        )
-      }
-
-      # Get optimizer and set-up model
-      pars = self$param_set$get_values(tags = "mod")
-      if (!is.null(pars$modalpha)) {
-        names(pars)[names(pars) == "modalpha"] = "alpha"
-      }
-      model = mlr3misc::invoke(
-        pycox$models$DeepHitSingle,
-        net = net,
-        duration_index = data$labtrans$cuts,
-        optimizer = mlr3misc::invoke(get_pycox_optim,
-          net = net,
-          .args = self$param_set$get_values(tags = "opt")),
-        .args = pars
-      )
-
-      # Optionally get callbacks
-      pars = self$param_set$get_values(tags = "callbacks")
-      early_stopping = !is.null(pars$early_stopping) && pars$early_stopping
-      if (!early_stopping && !is.null(pars$best_weights) && pars$best_weights) {
-        callbacks = reticulate::r_to_py(list(torchtuples$callbacks$BestWeights()))
-      } else if (early_stopping) {
-        callbacks = reticulate::r_to_py(list(
-          mlr3misc::invoke(torchtuples$callbacks$EarlyStopping,
-            .args = self$param_set$get_values(tags = "early"))
-        ))
-      } else {
-        callbacks = NULL
-      }
-
-      # Fit model
-      pars = self$param_set$get_values(tags = "fit")
+      pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
-        model$fit,
-        input = x_train,
-        target = y_train,
-        callbacks = callbacks,
-        val_data = data$val,
+        survivalmodels::pchazard,
+        formula = task$formula(),
+        data = task$data(),
         .args = pars
       )
+
     },
 
     .predict = function(task) {
 
-      # get test data
+      pars = self$param_set$get_values(tags = "predict")
+      newdata = task$data(cols = task$feature_names)
 
-      x_test = task$data(cols = task$feature_names)
-      x_test = reticulate::r_to_py(x_test)$values$astype("float32")
-
-      # predict survival probabilities
-      if (!is.null(self$param_set$values$interpolate) && self$param_set$values$interpolate) {
-        pars_inter = self$param_set$get_values(tags = "inter")
-        if (!is.null(pars_inter$interpolate_scheme)) {
-          names(pars_inter)[names(pars_inter) == "interpolate_scheme"] = "scheme"
-        }
-        surv = mlr3misc::invoke(
-          self$model$model$interpolate,
-          sub = ifelse(is.null(pars_inter$sub), 10L, as.integer(pars_inter$sub)),
-          .args = pars_inter[names(pars_inter) %nin% c("sub")]
-        )
-        pars = self$param_set$get_values(tags = "predict")
-        pars = pars[names(pars) %nin% c(names(pars_inter), "interpolate")]
-        surv = mlr3misc::invoke(
-          surv$predict_surv_df,
-          x_test,
-          .args = pars
-        )
-      } else {
-        pars = self$param_set$get_values(tags = "predict")
-        surv = mlr3misc::invoke(
-          self$model$model$predict_surv_df,
-          x_test,
-          .args = pars
-        )
-      }
-
-      # cast to distr6
-      x = rep(list(list(x = round(as.numeric(rownames(surv)), 5), pdf = 0)), task$nrow)
-      for (i in seq_len(task$nrow)) {
-        # fix for infinite hazards - invalidate results for NaNs
-        if (any(is.nan(surv[, i]))) {
-          x[[i]]$pdf = c(1, numeric(length(x[[i]]$x) - 1))
-        } else {
-          x[[i]]$pdf = round(1 - surv[, i], 6)
-          x[[i]]$pdf = c(x[[i]]$pdf[1], diff(x[[i]]$pdf))
-          x[[i]]$pdf[x[[i]]$pdf < 0.000001] = 0L
-          x[[i]]$pdf
-        }
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      # return prediction object
-      mlr3proba::PredictionSurv$new(
-        task = task,
-        distr = distr,
-        crank = distr$mean()
+      pred = mlr3misc::invoke(
+        predict,
+        self$model,
+        newdata = newdata,
+        distr6 = TRUE,
+        type = "all",
+        .args = pars
       )
+
+      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
+
     }
   )
 )
 
-lrns_dict$add("surv.deephit", LearnerSurvDeephit)
+lrns_dict$add("surv.pchazard", LearnerSurvPCHazard)
