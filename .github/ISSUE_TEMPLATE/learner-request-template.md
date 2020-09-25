@@ -2,7 +2,7 @@
 name: Learner request template
 about: Used to request new learners
 title: "[LRNRQ] Add <algorithm> from package <package>"
-labels: new_learner
+labels: new learner
 assignees: ''
 
 ---
