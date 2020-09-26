@@ -1,6 +1,5 @@
 library(mlr3extralearners)
 install_learners("surv.deepsurv")
-remotes::install_github("RaphaelS1/survivalmodels", upgrade = "always", force = FALSE)
 
 test_that("surv.deepsurv train", {
   learner = lrn("surv.deepsurv")

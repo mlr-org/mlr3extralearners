@@ -5,7 +5,7 @@
 \alias{LearnerSurvPCHazard}
 \title{Survival PC-Hazard Learner}
 \description{
-Calls \link[survivalmodels:pchazard]{survivalmodels::pchazard} from package \CRANpkg{survivalmodels}.
+Calls \link[RaphaelS1/survivalmodels:pchazard]{RaphaelS1/survivalmodels::pchazard} from package \CRANpkg{RaphaelS1/survivalmodels}.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -24,7 +24,7 @@ lrn("surv.pchazard")
 \section{Traits}{
 
 \itemize{
-\item Packages: survivalmodels, distr6, reticulate
+\item Packages: RaphaelS1/survivalmodels, distr6, reticulate
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

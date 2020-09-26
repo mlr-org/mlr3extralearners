@@ -1,6 +1,5 @@
 library(mlr3extralearners)
 install_learners("surv.akritas")
-remotes::install_github("RaphaelS1/survivalmodels", upgrade = "always", force = FALSE)
 
 test_that("surv.akritas train", {
   learner = lrn("surv.akritas")

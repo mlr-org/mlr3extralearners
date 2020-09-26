@@ -335,21 +335,20 @@ list_mlr3learners = function(select = NULL, filter = NULL) {
 }
 
 #' @title Install Learner Dependencies
-#' @description Install required dependencies for specified learners.
+#' @description Install required dependencies for specified learners. Works for packages on
+#' GitHub and CRAN, otherwise must be manually installed.
 #' @param .keys `character()` \cr Keys passed to [mlr_learners][mlr3::mlr_learners] specifying
 #' learners to install.
-#' @param ... `ANY` \cr Additional options to pass to [install.packages].
-#' @examples
-#' \dontrun{
-#' install_learners(c("regr.gbm", "classif.kknn"))
-#' }
+#' @param ... `ANY` \cr Additional options to pass to [utils::install.packages] or
+#' [remotes::install_github].
 #' @export
 install_learners = function(.keys, ...) {
   sapply(.keys, function(.key) {
     pkgs = mlr3::lrn(.key)$packages
     sapply(pkgs, function(pkg) {
-      x = requireNamespace(pkg, quietly = TRUE)
-      if (!x) {
+      if (grepl("/", pkg) && !requireNamespace(strsplit(pkg, "/", TRUE)[[1]][2], quietly = TRUE)) {
+        remotes::install_github(pkg, upgrade = "always", ...)
+      } else if (!grepl("/", pkg) && !requireNamespace(pkg, quietly = TRUE)) {
         utils::install.packages(pkg, ...)
       }
     })

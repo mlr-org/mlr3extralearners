@@ -34,7 +34,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         feature_types = c("logical", "integer", "character", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        packages = c("survivalmodels", "distr6"),
+        packages = c("RaphaelS1/survivalmodels", "distr6"),
         man = "mlr3extralearners::mlr_learners_surv.akritas"
       )
     }

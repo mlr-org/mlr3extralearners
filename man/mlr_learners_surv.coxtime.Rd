@@ -5,7 +5,7 @@
 \alias{LearnerSurvCoxtime}
 \title{Survival Cox-Time Learner}
 \description{
-Calls \link[survivalmodels:coxtime]{survivalmodels::coxtime} from package \CRANpkg{survivalmodels}.
+Calls \link[RaphaelS1/survivalmodels:coxtime]{RaphaelS1/survivalmodels::coxtime} from package \CRANpkg{RaphaelS1/survivalmodels}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -18,7 +18,7 @@ lrn("surv.coxtime")
 \section{Traits}{
 
 \itemize{
-\item Packages: survivalmodels, distr6, reticulate
+\item Packages: RaphaelS1/survivalmodels, distr6, reticulate
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

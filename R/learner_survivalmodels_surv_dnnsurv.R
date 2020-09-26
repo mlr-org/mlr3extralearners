@@ -98,7 +98,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.dnnsurv",
-        packages = c("survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
+        packages = c("RaphaelS1/survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
       )
     }
   ),
