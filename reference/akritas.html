@@ -169,16 +169,16 @@ more common Kaplan-Meier estimator. Common usage includes IPCW Survival models a
 which do not assume that censoring is independent of the covariates.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>akritas</span>(
-  formula = <span class='kw'>NULL</span>,
-  data = <span class='kw'>NULL</span>,
-  reverse = <span class='fl'>FALSE</span>,
-  time_variable = <span class='kw'>NULL</span>,
-  status_variable = <span class='kw'>NULL</span>,
-  x = <span class='kw'>NULL</span>,
-  y = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>akritas</span><span class='op'>(</span>
+  formula <span class='op'>=</span> <span class='cn'>NULL</span>,
+  data <span class='op'>=</span> <span class='cn'>NULL</span>,
+  reverse <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  time_variable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  status_variable <span class='op'>=</span> <span class='cn'>NULL</span>,
+  x <span class='op'>=</span> <span class='cn'>NULL</span>,
+  y <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -247,17 +247,17 @@ Ann. Statist., 22(3), 1299–1327.
 doi: <a href='https://doi.org/10.1214/aos/1176325630'>10.1214/aos/1176325630</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"distr6"</span>, quietly = <span class='fl'>TRUE</span>) <span class='op'>&amp;&amp;</span>
-    <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"survival"</span>, quietly = <span class='fl'>TRUE</span>)) {
+    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"distr6"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span>
+    <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"survival"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
 
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/therneau/survival'>survival</a></span>)
-  <span class='kw'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>akritas</span>(<span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span>(<span class='kw'>time</span>, <span class='kw'>status</span>) <span class='op'>~</span> <span class='kw'>.</span>, data = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ])
-  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span>(<span class='kw'>fit</span>)
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/therneau/survival'>survival</a></span><span class='op'>)</span>
+  <span class='va'>fit</span> <span class='op'>&lt;-</span> <span class='fu'>akritas</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>time</span>, <span class='va'>status</span><span class='op'>)</span> <span class='op'>~</span> <span class='va'>.</span>, data <span class='op'>=</span> <span class='va'>rats</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span><span class='op'>)</span>
+  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>fit</span><span class='op'>)</span>
 
   <span class='co'># alternative function calls</span>
-  <span class='fu'>akritas</span>(data = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ], time_variable = <span class='st'>"time"</span>, status_variable = <span class='st'>"status"</span>)
-  <span class='fu'>akritas</span>(x = <span class='kw'>rats</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"litter"</span>, <span class='st'>"rx"</span>, <span class='st'>"sex"</span>)], y = <span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span>(<span class='kw'>rats</span><span class='op'>$</span><span class='kw'>time</span>, <span class='kw'>rats</span><span class='op'>$</span><span class='kw'>status</span>))
-}
+  <span class='fu'>akritas</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>rats</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span>, time_variable <span class='op'>=</span> <span class='st'>"time"</span>, status_variable <span class='op'>=</span> <span class='st'>"status"</span><span class='op'>)</span>
+  <span class='fu'>akritas</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>rats</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"litter"</span>, <span class='st'>"rx"</span>, <span class='st'>"sex"</span><span class='op'>)</span><span class='op'>]</span>, y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/survival/man/Surv.html'>Surv</a></span><span class='op'>(</span><span class='va'>rats</span><span class='op'>$</span><span class='va'>time</span>, <span class='va'>rats</span><span class='op'>$</span><span class='va'>status</span><span class='op'>)</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div><div class='output co'>#&gt; 
 #&gt; Akritas Estimator
 #&gt; 
