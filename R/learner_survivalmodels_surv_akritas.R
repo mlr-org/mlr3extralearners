@@ -2,9 +2,6 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.akritas
 #'
-#' @description
-#' Implements the Akritas estimator. Calls [akritas()].
-#'
 #' @template class_learner
 #' @templateVar id surv.akritas
 #' @templateVar caller akritas
@@ -37,7 +34,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         feature_types = c("logical", "integer", "character", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        packages = c("survivalmodels", "survival"),
+        packages = c("survivalmodels", "distr6"),
         man = "mlr3extralearners::mlr_learners_surv.akritas"
       )
     }
@@ -48,9 +45,11 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
       pars <- self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::akritas,
-        formula = task$formula(),
         data = as.data.frame(task$data()),
-        .args = pars)
+        time_variable = task$target_names[1L],
+        status_variable = task$target_names[2L],
+        .args = pars
+      )
     },
 
     .predict = function(task) {

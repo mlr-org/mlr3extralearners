@@ -24,51 +24,51 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
 
       ps = ParamSet$new(
         params = list(
-          ParamDbl$new("frac", default = 0, lower = 0, upper = 1, tags = c("train", "prep")),
-          ParamLgl$new("standardize_time", default = FALSE, tags = c("train", "prep")),
-          ParamLgl$new("log_duration", default = FALSE, tags = c("train", "prep")),
-          ParamLgl$new("with_mean", default = TRUE, tags = c("train", "prep")),
-          ParamLgl$new("with_std", default = TRUE, tags = c("train", "prep")),
-          ParamUty$new("num_nodes", tags = c("train", "net", "required")),
-          ParamLgl$new("batch_norm", default = TRUE, tags = c("train", "net")),
-          ParamDbl$new("dropout",
-            default = "None", special_vals = list("None"),
-            lower = 0, upper = 1, tags = c("train", "net")),
-          ParamFct$new("activation",
-            default = "relu", levels = pycox_activations,
-            tags = c("train", "act")),
-          ParamDbl$new("alpha", default = 1, lower = 0, tags = c("train", "opt")),
-          ParamDbl$new("lambd", default = 0.5, lower = 0, tags = c("train", "opt")),
-          ParamUty$new("device", tags = c("train", "mod")),
-          ParamDbl$new("shrink", default = 0, lower = 0, tags = c("train", "mod")),
-          ParamUty$new("loss", tags = c("train", "mod")),
-          ParamFct$new("optimizer",
-            default = "adam", levels = pycox_optimizers,
-            tags = c("train", "opt")),
-          ParamDbl$new("rho", default = 0.9, tags = c("train", "opt")),
-          ParamDbl$new("eps", default = 1e-8, tags = c("train", "opt")),
-          ParamDbl$new("lr", default = 1, tags = c("train", "opt")),
-          ParamDbl$new("weight_decay", default = 0, tags = c("train", "opt")),
-          ParamDbl$new("learning_rate", default = 1e-2, tags = c("train", "opt")),
-          ParamDbl$new("lr_decay", default = 0, tags = c("train", "opt")),
-          ParamUty$new("betas", default = c(0.9, 0.999), tags = c("train", "opt")),
-          ParamLgl$new("amsgrad", default = FALSE, tags = c("train", "opt")),
-          ParamDbl$new("t0", default = 1e6, tags = c("train", "opt")),
-          ParamDbl$new("momentum", default = 0, tags = c("train", "opt")),
-          ParamLgl$new("centered", default = TRUE, tags = c("train", "opt")),
-          ParamUty$new("etas", default = c(0.5, 1.2), tags = c("train", "opt")),
-          ParamUty$new("step_sizes", default = c(1e-6, 50), tags = c("train", "opt")),
-          ParamDbl$new("dampening", default = 0, tags = c("train", "opt")),
-          ParamLgl$new("nesterov", default = FALSE, tags = c("train", "opt")),
-          ParamInt$new("batch_size", default = 256, tags = c("train", "fit", "predict")),
-          ParamInt$new("epochs", lower = 1, upper = Inf, default = 1, tags = c("train", "fit")),
-          ParamLgl$new("verbose", default = TRUE, tags = c("train", "fit")),
-          ParamInt$new("num_workers", default = 0L, tags = c("train", "fit", "predict")),
-          ParamLgl$new("shuffle", default = TRUE, tags = c("train", "fit")),
-          ParamLgl$new("best_weights", default = FALSE, tags = c("train", "callbacks")),
-          ParamLgl$new("early_stopping", default = FALSE, tags = c("train", "callbacks")),
-          ParamDbl$new("min_delta", default = 0, tags = c("train", "early")),
-          ParamInt$new("patience", default = 10, tags = c("train", "early"))
+          ParamDbl$new("frac", default = 0, lower = 0, upper = 1, tags = "train"),
+          ParamLgl$new("standardize_time", default = FALSE, tags = "train"),
+          ParamLgl$new("log_duration", default = FALSE, tags = "train"),
+          ParamLgl$new("with_mean", default = TRUE, tags = "train"),
+          ParamLgl$new("with_std", default = TRUE, tags = "train"),
+          ParamUty$new("num_nodes", default = c(32L, 32L), tags = "train"),
+          ParamLgl$new("batch_norm", default = TRUE, tags = "train"),
+          ParamDbl$new("dropout", lower = 0, upper = 1, tags = "train"),
+          ParamFct$new("activation", default = "relu",
+            levels = c("celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
+                       "hardtanh", "relu6", "leakyrelu", "logsigmoid", "logsoftmax", "prelu",
+                       "rrelu", "relu", "selu", "sigmoid", "softmax", "softmax2d", "softmin",
+                       "softplus", "softshrink", "softsign", "tanh", "tanhshrink", "threshold"),
+            tags = "train"),
+          ParamUty$new("device", tags = "train"),
+          ParamDbl$new("shrink", default = 0, lower = 0, tags = "train"),
+          ParamFct$new("optimizer", default = "adam",
+            levels = c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
+                       "sgd", "sparse_adam"), tags = "train"),
+          ParamDbl$new("rho", default = 0.9, tags = "train"),
+          ParamDbl$new("eps", default = 1e-8, tags = "train"),
+          ParamDbl$new("lr", default = 1, tags = "train"),
+          ParamDbl$new("weight_decay", default = 0, tags = "train"),
+          ParamDbl$new("learning_rate", default = 1e-2, tags = "train"),
+          ParamDbl$new("lr_decay", default = 0, tags = "train"),
+          ParamUty$new("betas", default = c(0.9, 0.999), tags = "train"),
+          ParamLgl$new("amsgrad", default = FALSE, tags = "train"),
+          ParamDbl$new("lambd", default = 1e-4, lower = 0, tags = "train"),
+          ParamDbl$new("alpha", default = 0.75, lower = 0, tags = "train"),
+          ParamDbl$new("t0", default = 1e6, tags = "train"),
+          ParamDbl$new("momentum", default = 0, tags = "train"),
+          ParamLgl$new("centered", default = TRUE, tags = "train"),
+          ParamUty$new("etas", default = c(0.5, 1.2), tags = "train"),
+          ParamUty$new("step_sizes", default = c(1e-6, 50), tags = "train"),
+          ParamDbl$new("dampening", default = 0, tags = "train"),
+          ParamLgl$new("nesterov", default = FALSE, tags = "train"),
+          ParamInt$new("batch_size", default = 256L, tags = c("train", "predict")),
+          ParamInt$new("epochs", lower = 1L, upper = Inf, default = 1, tags = "train"),
+          ParamLgl$new("verbose", default = TRUE, tags = "train"),
+          ParamInt$new("num_workers", default = 0L, tags = c("train", "predict")),
+          ParamLgl$new("shuffle", default = TRUE, tags = "train"),
+          ParamLgl$new("best_weights", default = FALSE, tags = "train"),
+          ParamLgl$new("early_stopping", default = FALSE, tags = "train"),
+          ParamDbl$new("min_delta", default = 0, tags = "train"),
+          ParamInt$new("patience", default = 10, tags = "train")
         )
       )
 
@@ -77,13 +77,13 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
       ps$add_dep("with_std", "standardize_time", CondEqual$new(TRUE))
 
       ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("eps", "optimizer", CondAnyOf$new(setdiff(pycox_optimizers,
-                                                           c("asgd", "rprop", "sgd"))))
+      ps$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
+                                                "adamw", "rmsprop", "sparse_adam")))
       ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep(
-        "weight_decay", "optimizer",
-        CondAnyOf$new(setdiff(pycox_optimizers, c("rprop", "sparse_adam"))))
-      ps$add_dep("learning_rate", "optimizer", CondAnyOf$new(setdiff(pycox_optimizers, "adadelta")))
+      ps$add_dep("weight_decay", "optimizer",
+       CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "sgd")))
+      ps$add_dep("learning_rate", "optimizer", CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw",
+                               "asgd", "rmsprop", "rprop", "sgd", "sparse_adam")))
       ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
       ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
@@ -105,7 +105,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::surv.coxtime",
-        packages = c("survivalmodels", "reticulate")
+        packages = c("survivalmodels", "distr6", "reticulate")
       )
     }
   ),
@@ -116,8 +116,9 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
       pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::coxtime,
-        formula = task$formula(),
-        data = task$data(),
+        data = as.data.frame(task$data()),
+        time_variable = task$target_names[1L],
+        status_variable = task$target_names[2L],
         .args = pars
       )
 

@@ -1,5 +1,11 @@
 install_learners("surv.deepsurv")
 
+np = reticulate::import("numpy")
+torch = reticulate::import("torch")
+set.seed(1)
+np$random$seed(1L)
+torch$manual_seed(1L)
+
 test_that("autotest", {
   learner = LearnerSurvDeepsurv$new()
   expect_learner(learner)
