@@ -1,4 +1,5 @@
 install_learners("surv.dnnsurv")
+remotes::install_github("RaphaelS1/survivalmodels", upgrade = "always", force = FALSE)
 
 test_that("autotest", {
   set.seed(10)

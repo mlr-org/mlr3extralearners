@@ -1,4 +1,5 @@
 install_learners("surv.deephit")
+remotes::install_github("RaphaelS1/survivalmodels", upgrade = "always", force = FALSE)
 
 np = reticulate::import("numpy")
 torch = reticulate::import("torch")
