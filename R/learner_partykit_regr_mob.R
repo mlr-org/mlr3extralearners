@@ -149,9 +149,9 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         type = self$param_set$values$predict_fun, task = task,
         .type = self$predict_type)
       if (self$predict_type == "response") {
-        PredictionRegr$new(task = task, response = preds[, 1L])
+        list(response = preds[, 1L])
       } else {
-        PredictionRegr$new(task = task, response = preds[, 1L],
+        list(response = preds[, 1L],
           se = preds[, 2L])
       }
     }

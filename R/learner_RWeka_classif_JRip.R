@@ -94,7 +94,7 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob")
       }
-      PredictionClassif$new(task = task, response = response, prob = prob)
+      list(response = response, prob = prob)
     }
   )
 )

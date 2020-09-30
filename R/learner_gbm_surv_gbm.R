@@ -123,7 +123,7 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
       # predict linear predictor
       lp = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pv)
 
-      mlr3proba::PredictionSurv$new(task = task, crank = lp, lp = lp)
+      list(crank = lp, lp = lp)
     }
   )
 )

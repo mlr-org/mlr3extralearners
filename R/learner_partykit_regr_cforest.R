@@ -195,7 +195,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
       newdata = task$data(cols = task$feature_names)
       preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
-      PredictionRegr$new(task = task, response = preds)
+      list(response = preds)
     }
   )
 )

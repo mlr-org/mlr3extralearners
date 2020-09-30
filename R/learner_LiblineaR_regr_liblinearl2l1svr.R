@@ -80,7 +80,7 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
       newdata = task$data(cols = task$feature_names)
 
       p = invoke(predict, self$model, newx = newdata)
-      PredictionRegr$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )

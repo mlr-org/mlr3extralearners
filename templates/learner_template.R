@@ -86,8 +86,8 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       pred = mlr3misc::invoke(predict, self$model, newdata = newdata,
                               type = type, .args = pars)
 
-      # FIXME - ADD PREDICTION TO OBJECT BELOW
-      Prediction<Type>$new(task = task, ...)
+      # FIXME - ADD PREDICTIONS TO LIST BELOW
+      list(...)
     }
   )
 )

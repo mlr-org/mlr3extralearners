@@ -100,20 +100,12 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
       if (is.null(self$param_set$values$type) ||
           (self$param_set$values$type %in% c("regression", "hybrid"))) {
-
         response = crank
-
       } else {
-
         response = NULL
-
       }
 
-      mlr3proba::PredictionSurv$new(task = task,
-                                    crank = crank,
-                                    response = response,
-                                    lp = NULL,
-                                    distr = NULL)
+      list(crank = crank, response = response)
     }
   )
 )

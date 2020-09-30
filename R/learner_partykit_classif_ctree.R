@@ -116,11 +116,11 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
       if (self$predict_type == "response") {
         response = mlr3misc::invoke(predict, self$model, newdata = newdata,
           type = "response")
-        PredictionClassif$new(task = task, response = response)
+        list(response = response)
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata,
           type = "prob")
-        PredictionClassif$new(task = task, prob = prob)
+        list(prob = prob)
       }
     }
   )
