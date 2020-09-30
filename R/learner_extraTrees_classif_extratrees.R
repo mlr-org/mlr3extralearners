@@ -76,10 +76,10 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
 
       if (self$predict_type == "response") {
         p = invoke(predict, self$model, newdata = newdata)
-        PredictionClassif$new(task = task, response = p)
+        list(response = p)
       } else {
         p = invoke(predict, self$model, newdata = newdata, probability = TRUE)
-        PredictionClassif$new(task = task, prob = p)
+        list(prob = p)
       }
     }
   )

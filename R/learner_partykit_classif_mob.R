@@ -147,9 +147,9 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         type = self$param_set$values$predict_fun, task = task,
         .type = self$predict_type)
       if (self$predict_type == "response") {
-        PredictionClassif$new(task = task, response = preds)
+        list(response = preds)
       } else {
-        PredictionClassif$new(task = task, prob = preds)
+        list(prob = preds)
       }
     }
   )

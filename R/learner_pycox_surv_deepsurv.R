@@ -209,11 +209,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
         decorators = c("CoreStatistics", "ExoticStatistics"))
 
       # return prediction object
-      mlr3proba::PredictionSurv$new(
-        task = task,
-        distr = distr,
-        crank = distr$mean()
-      )
+      list(distr = distr, crank = distr$mean())
     }
   )
 )

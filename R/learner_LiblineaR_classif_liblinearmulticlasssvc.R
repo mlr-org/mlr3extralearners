@@ -75,7 +75,7 @@ LearnerClassifLiblineaRMultiClassSVC = R6Class("LearnerClassifLiblineaRMultiClas
       newdata = task$data(cols = task$feature_names)
 
       p = invoke(predict, self$model, newx = newdata)
-      PredictionClassif$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )

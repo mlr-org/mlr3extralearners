@@ -173,7 +173,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       # Define crank as the mean of the survival distribution
       crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
-      PredictionSurv$new(task = task, crank = crank, distr = distr)
+      list(crank = crank, distr = distr)
     }
   )
 )

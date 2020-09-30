@@ -99,7 +99,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
       p = invoke(kernlab::predict, self$model,
         newdata = newdata,
         type = "response")
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )

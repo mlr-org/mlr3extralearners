@@ -61,10 +61,10 @@ LearnerClassifLiblineaRL1LogReg = R6Class("LearnerClassifLiblineaRL1LogReg", # n
 
       if (self$predict_type == "response") {
         p = mlr3misc::invoke(predict, self$model, newx = newdata)
-        PredictionClassif$new(task = task, response = p$predictions)
+        list(response = p$predictions)
       } else {
         p = mlr3misc::invoke(predict, self$model, newx = newdata, proba = TRUE)
-        PredictionClassif$new(task = task, prob = p$probabilities)
+        list(prob = p$probabilities)
       }
     }
   )

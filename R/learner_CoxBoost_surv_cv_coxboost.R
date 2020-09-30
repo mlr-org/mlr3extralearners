@@ -190,7 +190,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         distribution = "WeightedDiscrete", params = x,
         decorators = c("CoreStatistics", "ExoticStatistics"))
 
-      mlr3proba::PredictionSurv$new(task = task, crank = lp, distr = distr, lp = lp)
+      list(crank = lp, distr = distr, lp = lp)
     }
   )
 )

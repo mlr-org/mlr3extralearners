@@ -114,7 +114,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
       newdata = task$data(cols = task$feature_names)
 
       p = mlr3misc::invoke(predict, self$model, newdata = newdata)
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )

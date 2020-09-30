@@ -57,7 +57,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
           train = train, test = newdata, cl = target,
           .args = model$pars
         )
-        PredictionClassif$new(task = task, response = p)
+        list(response = p)
       } else {
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
@@ -72,7 +72,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         p = ifelse(p == task$positive, prob, 1 - prob)
         p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
         colnames(p) = task$class_names
-        PredictionClassif$new(task = task, prob = p)
+        list(prob = p)
       }
     }
   )

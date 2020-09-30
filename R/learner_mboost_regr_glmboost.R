@@ -113,7 +113,7 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
       newdata = task$data(cols = task$feature_names)
 
       p = invoke(predict, self$model, newdata = newdata, type = "response")
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )

@@ -59,7 +59,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         type = "all", .args = pars
       )
 
-      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$distr)
     }
   )
 )

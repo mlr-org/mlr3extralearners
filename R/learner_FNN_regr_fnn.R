@@ -56,7 +56,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         train = train, test = newdata, y = target,
         .args = model$pars
       )
-      PredictionRegr$new(task = task, response = p$pred)
+      list(response = p$pred)
     }
   )
 )

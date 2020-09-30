@@ -113,7 +113,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
 
       crank = as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
 
-      mlr3proba::PredictionSurv$new(task = task, crank = crank, distr = distr)
+      list(crank = crank, distr = distr)
 
     }
   )

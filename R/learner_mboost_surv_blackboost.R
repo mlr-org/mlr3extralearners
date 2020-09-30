@@ -192,9 +192,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         }
       }
 
-      mlr3proba::PredictionSurv$new(
-        task = task, crank = lp, distr = distr, lp = lp,
-        response = response)
+      list(crank = lp, distr = distr, lp = lp, response = response)
     }
   )
 )

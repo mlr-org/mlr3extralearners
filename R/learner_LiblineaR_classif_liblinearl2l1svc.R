@@ -74,7 +74,7 @@ LearnerClassifLiblineaRL2L1SVC = R6Class("LearnerClassifLiblineaRL2L1SVC",
       newdata = task$data(cols = task$feature_names)
 
       p = mlr3misc::invoke(predict, self$model, newx = newdata)
-      PredictionClassif$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )

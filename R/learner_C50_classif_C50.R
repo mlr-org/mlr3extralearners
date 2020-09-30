@@ -89,7 +89,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
         )
       }
 
-      PredictionClassif$new(task = task, response = response, prob = prob)
+      list(response = response, prob = prob)
     }
   )
 )

@@ -119,7 +119,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         newdata = newdata,
         type = type, .args = pars)
 
-      PredictionRegr$new(task = task, response = pred)
+      list(response = pred)
     }
   )
 )
