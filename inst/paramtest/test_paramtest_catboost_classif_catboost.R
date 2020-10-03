@@ -1,5 +1,6 @@
 library(mlr3extralearners)
-install_learners("classif.catboost")
+devtools::install_url('https://github.com/catboost/catboost/releases/download/v0.24.1/catboost-R-Linux-0.24.1.tgz', # nolint
+                      INSTALL_opts = c("--no-multiarch"))
 
 test_that("classif.catboost_catboost.train", {
   learner = lrn("classif.catboost")
