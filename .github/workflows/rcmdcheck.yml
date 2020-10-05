@@ -93,7 +93,7 @@ jobs:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
      
-            - name: "[Stage] Update learner table"
+      - name: "[Stage] Update learner table"
         run: |
           R CMD INSTALL .
           Rscript build_learner_table.R
