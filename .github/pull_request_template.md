@@ -49,13 +49,6 @@ And
 
 * [ ] Updated NEWS.md
 
-## Reviewer
-
-Tick as appropriate:
-
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
-
 ## Comments
 
 -------
@@ -96,13 +89,6 @@ I have run...
 And 
 
 * [ ] Updated NEWS.md
-
-## Reviewer
-
-Delete as appropriate:
-
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
 ## Comments
 
