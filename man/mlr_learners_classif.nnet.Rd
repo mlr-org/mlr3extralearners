@@ -37,13 +37,12 @@ lrn("classif.nnet")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("nnet"))) {
-  learner = mlr3::lrn("classif.nnet")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("classif.nnet"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ripley, B (1996).

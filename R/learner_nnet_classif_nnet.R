@@ -87,20 +87,19 @@ LearnerClassifNnet = R6Class("LearnerClassifNnet",
     },
 
     .predict = function(task) {
-      response = NULL
-      prob = NULL
       newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {
         response = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "class")
+        return(list(response = response))
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "raw")
         if (length(self$model$lev) == 2L) {
           prob = cbind(1 - prob, prob)
           colnames(prob) = self$model$lev
         }
+        return(list(prob = prob))
       }
-      PredictionClassif$new(task = task, response = response, prob = prob)
     }
   )
 )

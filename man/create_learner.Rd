@@ -114,6 +114,5 @@ create_learner(
  references = TRUE,
  gh_name = "RaphaelS1"
 )
-
 }
 }
