@@ -118,6 +118,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.nnet.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.randomForest.html</loc>
   </url>
   <url>
