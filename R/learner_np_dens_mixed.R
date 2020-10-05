@@ -64,7 +64,6 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
       )
 
       super$initialize(
-        # see the mlr3book for a description: https://mlr3book.mlr-org.com/extending-mlr3.html
         id = "dens.mixed",
         packages = "np",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
