@@ -94,7 +94,7 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
     },
 
     .predict = function(task) {
-      mlr3proba::PredictionDens$new(task = task, pdf = self$model$pdf(task$truth()))
+      list(pdf = self$model$pdf(task$truth()))
     }
   )
 )
