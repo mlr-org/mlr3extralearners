@@ -7,7 +7,7 @@
 list_mlr3learners(select = NULL, filter = NULL)
 }
 \arguments{
-\item{select}{\code{character()} \cr Passed to \link[data.table:subset]{data.table::subset}.}
+\item{select}{\code{character()} \cr Passed to \link[data.table:subset.data.table]{data.table::subset}.}
 
 \item{filter}{\code{list()} \cr Named list of conditions to filter on, names correspond to column
 names in table.}
