@@ -35,7 +35,7 @@ pkg_root = function(path = ".") {
 #'   filter = list(class = "surv", predict_types = "distr"))
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
-  dt = copy(mlr3learners_table)
+  dt = data.table::copy(mlr3learners_table)
 
   if (!is.null(filter)) {
     if (!is.null(filter$name)) {
