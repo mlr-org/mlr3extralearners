@@ -161,32 +161,32 @@ predict_flexsurvreg <- function(object, task, ...) {
   pdf = function(x) {} # nolint
   body(pdf) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(x = x), args))
   }, list(func = object$dfns$d))
 
   cdf = function(x) {} # nolint
   body(cdf) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(q = x), args))
   }, list(func = object$dfns$p))
 
   quantile = function(p) {} # nolint
   body(quantile) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(p = p), args))
   }, list(func = object$dfns$q))
 
   rand = function(n) {} # nolint
   body(rand) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(n = n), args))
   }, list(func = object$dfns$r))
 

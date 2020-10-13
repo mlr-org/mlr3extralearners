@@ -4,12 +4,11 @@
 ## usethis namespace: end
 NULL
 
-#' @import data.table
 #' @import paradox
 #' @import mlr3misc
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
-#' @importFrom mlr3proba LearnerSurv LearnerDens PredictionSurv PredictionDens
+#' @importFrom mlr3proba LearnerSurv LearnerDens
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
