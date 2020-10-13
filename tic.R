@@ -28,4 +28,7 @@ if (ci_get_env("TEST") == "Learner") {
     add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
 
   do_pkgdown()
+      
+  get_stage("deploy") %>%
+    add_code_step(rmarkdown::render("README.Rmd"))
 }
