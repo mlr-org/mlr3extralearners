@@ -135,9 +135,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
         } else {
           ind = apply(p, 1, which.max)
           cns = colnames(p)
-          PredictionClassif$new(
-            task = task,
-            response = factor(cns[ind], levels = cns))
+          list(response = factor(cns[ind], levels = cns))
         }
       } else {
         if (task$properties %in% "twoclass") {

@@ -13,11 +13,11 @@ lrns(.keys, ...)
 \item{.key}{\code{(character(1))} \cr Key passed to \link[mlr3:mlr_learners]{mlr_learners} to retrieve
 the learner.}
 
-\item{...}{\code{ANY} \cr Passed to \link[mlr3:lrns]{mlr3::lrns}}
+\item{...}{\code{ANY} \cr Passed to \link[mlr3:mlr_sugar]{mlr3::lrns}}
 
 \item{.keys}{\code{(character())} \cr Keys passed to \link[mlr3:mlr_learners]{mlr_learners} to retrieve
 the learners.}
 }
 \description{
-Overloads \link[mlr3:lrn]{mlr3::lrn} to automatically detect if required packages are installed.
+Overloads \link[mlr3:mlr_sugar]{mlr3::lrn} to automatically detect if required packages are installed.
 }

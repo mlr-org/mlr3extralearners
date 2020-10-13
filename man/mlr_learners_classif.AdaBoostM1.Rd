@@ -5,7 +5,7 @@
 \alias{LearnerClassifAdaBoostM1}
 \title{Classification AdaBoostM1 Learner}
 \description{
-Calls \link[RWeka:AdaBoostM1]{RWeka::AdaBoostM1} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:Weka_classifier_meta]{RWeka::AdaBoostM1} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
