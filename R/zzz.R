@@ -1,9 +1,3 @@
-## usethis namespace: start
-#' @importFrom Rcpp sourceCpp
-#' @useDynLib mlr3extralearners, .registration = TRUE
-## usethis namespace: end
-NULL
-
 #' @import paradox
 #' @import mlr3misc
 #' @importFrom R6 R6Class

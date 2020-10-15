@@ -10,13 +10,10 @@ install_learners(.keys, ...)
 \item{.keys}{\code{character()} \cr Keys passed to \link[mlr3:mlr_learners]{mlr_learners} specifying
 learners to install.}
 
-\item{...}{\code{ANY} \cr Additional options to pass to \link{install.packages}.}
+\item{...}{\code{ANY} \cr Additional options to pass to \link[utils:install.packages]{utils::install.packages} or
+\link[remotes:install_github]{remotes::install_github}.}
 }
 \description{
-Install required dependencies for specified learners.
-}
-\examples{
-\dontrun{
-install_learners(c("regr.gbm", "classif.kknn"))
-}
+Install required dependencies for specified learners. Works for packages on
+GitHub and CRAN, otherwise must be manually installed.
 }

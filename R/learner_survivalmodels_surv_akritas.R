@@ -2,11 +2,9 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.akritas
 #'
-#' @description
-#' Implements the Akritas estimator. Calls [akritas()].
-#'
+#' @template class_learner
 #' @templateVar id surv.akritas
-#' @template class_learner_custom
+#' @templateVar caller akritas
 #'
 #' @references
 #' Akritas, M. G. (1994).
@@ -36,7 +34,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         feature_types = c("logical", "integer", "character", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        packages = c("pracma", "survival"),
+        packages = c("survivalmodels", "distr6"),
         man = "mlr3extralearners::mlr_learners_surv.akritas"
       )
     }
@@ -45,18 +43,26 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
   private = list(
     .train = function(task) {
       pars <- self$param_set$get_values(tags = "train")
-      mlr3misc::invoke(akritas,
-        formula = task$formula(), data = as.data.frame(task$data()),
-        .args = pars)
+      mlr3misc::invoke(
+        survivalmodels::akritas,
+        data = as.data.frame(task$data()),
+        time_variable = task$target_names[1L],
+        status_variable = task$target_names[2L],
+        .args = pars
+      )
     },
 
     .predict = function(task) {
       pars <- self$param_set$get_values(tags = "predict")
       newdata <- task$data(cols = task$feature_names)
 
-      pred <- mlr3misc::invoke(predict, self$model,
-        newdata = newdata, distr6 = TRUE,
-        type = "all", .args = pars
+      pred <- mlr3misc::invoke(
+        predict,
+        self$model,
+        newdata = newdata,
+        distr6 = TRUE,
+        type = "all",
+        .args = pars
       )
 
       list(crank = pred$risk, distr = pred$distr)
