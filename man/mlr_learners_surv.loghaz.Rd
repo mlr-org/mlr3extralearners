@@ -5,7 +5,7 @@
 \alias{LearnerSurvLogisticHazard}
 \title{Survival Logistic-Hazard Learner}
 \description{
-Calls \link[RaphaelS1/survivalmodels:loghaz]{RaphaelS1/survivalmodels::loghaz} from package \CRANpkg{RaphaelS1/survivalmodels}.
+Calls \link[survivalmodels:loghaz]{survivalmodels::loghaz} from package \CRANpkg{survivalmodels}.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -24,7 +24,7 @@ lrn("surv.loghaz")
 \section{Traits}{
 
 \itemize{
-\item Packages: RaphaelS1/survivalmodels, distr6, reticulate
+\item Packages: survivalmodels, distr6, reticulate
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

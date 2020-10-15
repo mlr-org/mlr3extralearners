@@ -5,7 +5,7 @@
 \alias{LearnerSurvDeepsurv}
 \title{Survival DeepSurv Learner}
 \description{
-Calls \link[RaphaelS1/survivalmodels:deepsurv]{RaphaelS1/survivalmodels::deepsurv} from package \CRANpkg{RaphaelS1/survivalmodels}.
+Calls \link[survivalmodels:deepsurv]{survivalmodels::deepsurv} from package \CRANpkg{survivalmodels}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -18,7 +18,7 @@ lrn("surv.deepsurv")
 \section{Traits}{
 
 \itemize{
-\item Packages: RaphaelS1/survivalmodels, distr6, reticulate
+\item Packages: survivalmodels, distr6, reticulate
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

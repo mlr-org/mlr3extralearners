@@ -5,7 +5,7 @@
 \alias{LearnerSurvDeephit}
 \title{Survival DeepHit Learner}
 \description{
-Calls \link[RaphaelS1/survivalmodels:deephit]{RaphaelS1/survivalmodels::deephit} from package \CRANpkg{RaphaelS1/survivalmodels}.
+Calls \link[survivalmodels:deephit]{survivalmodels::deephit} from package \CRANpkg{survivalmodels}.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -24,7 +24,7 @@ lrn("surv.deephit")
 \section{Traits}{
 
 \itemize{
-\item Packages: RaphaelS1/survivalmodels, distr6, reticulate
+\item Packages: survivalmodels, distr6, reticulate
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

@@ -5,7 +5,7 @@
 \alias{LearnerSurvDNNSurv}
 \title{Survival DNNSurv Learner}
 \description{
-Calls \link[RaphaelS1/survivalmodels:dnnsurv]{RaphaelS1/survivalmodels::dnnsurv} from package \CRANpkg{RaphaelS1/survivalmodels}.
+Calls \link[survivalmodels:dnnsurv]{survivalmodels::dnnsurv} from package \CRANpkg{survivalmodels}.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -24,7 +24,7 @@ lrn("surv.dnnsurv")
 \section{Traits}{
 
 \itemize{
-\item Packages: RaphaelS1/survivalmodels, keras, pseudo, tensorflow, distr6
+\item Packages: survivalmodels, keras, pseudo, tensorflow, distr6
 \item Predict Types: crank, distr
 \item Feature Types: integer, numeric
 \item Properties:

@@ -5,7 +5,7 @@
 \alias{LearnerSurvAkritas}
 \title{Survival Akritas Estimator Learner}
 \description{
-Calls \link[RaphaelS1/survivalmodels:akritas]{RaphaelS1/survivalmodels::akritas} from package \CRANpkg{RaphaelS1/survivalmodels}.
+Calls \link[survivalmodels:akritas]{survivalmodels::akritas} from package \CRANpkg{survivalmodels}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -18,7 +18,7 @@ lrn("surv.akritas")
 \section{Traits}{
 
 \itemize{
-\item Packages: RaphaelS1/survivalmodels, distr6
+\item Packages: survivalmodels, distr6
 \item Predict Types: crank, distr
 \item Feature Types: logical, integer, character, numeric, factor
 \item Properties:
