@@ -78,5 +78,6 @@ create_learner(classname = "Locfit",
                properties = NULL,
                importance = FALSE,
                oob_error = FALSE,
-               references = FALSE)
+               references = FALSE,
+               gh_name = "RaphaelS1")
 ```
