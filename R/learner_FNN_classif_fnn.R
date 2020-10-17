@@ -49,7 +49,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
     .predict = function(task) {
       model = self$model
       train = model$data[, task$feature_names, with = FALSE]
-      target = model$data[, task$target_names, with = FALSE][[1]]
+      target = model$data[, task$target_names, with = FALSE]
       newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {

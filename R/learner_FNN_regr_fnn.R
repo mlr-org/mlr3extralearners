@@ -49,13 +49,18 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     .predict = function(task) {
       model = self$model
       train = model$data[, task$feature_names, with = FALSE]
-      target = model$data[, task$target_names, with = FALSE][[1]]
+      target = model$data[, task$target_names, with = FALSE]
       newdata = task$data(cols = task$feature_names)
+
+      print(train)
+      print(target)
+      print(newdata)
 
       p = invoke(FNN::knn.reg,
         train = train, test = newdata, y = target,
         .args = model$pars
       )
+
       list(response = p$pred)
     }
   )
