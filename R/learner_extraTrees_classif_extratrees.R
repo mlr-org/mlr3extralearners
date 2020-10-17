@@ -60,9 +60,9 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       self$state$feature_names = task$feature_names
-      data = task$data()
-      x = as.matrix(data[, task$feature_names, with = FALSE])
-      y = data[, task$target_names, with = FALSE][[1]]
+
+      x = as.matrix(task$data(cols = task$feature_names))
+      y = task$truth()
 
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))
