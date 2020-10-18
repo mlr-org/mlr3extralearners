@@ -55,6 +55,7 @@ Suggests:
     pseudo,
     randomForest,
     randomForestSRC,
+    remotes,
     reticulate (>= 1.16),
     RWeka,
     sandwich,
