@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Survival LogisticHazard Learner — mlr_learners_surv.loghaz • mlr3extralearners</title>
+<title>Survival Logistic-Hazard Learner — mlr_learners_surv.loghaz • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,8 @@
 
 
 
-<meta property="og:title" content="Survival LogisticHazard Learner — mlr_learners_surv.loghaz" />
-<meta property="og:description" content="Calls pycox.models.LogisticHazard from Python package pycox via
-reticulate." />
+<meta property="og:title" content="Survival Logistic-Hazard Learner — mlr_learners_surv.loghaz" />
+<meta property="og:description" content="Calls survivalmodels::loghaz from package survivalmodels." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -157,27 +156,27 @@ reticulate." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Survival LogisticHazard Learner</h1>
+    <h1>Survival Logistic-Hazard Learner</h1>
     
     <div class="hidden name"><code>mlr_learners_surv.loghaz.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calls <code>pycox.models.LogisticHazard</code> from Python package <a href='https://pypi.org/project/pycox/'>pycox</a> via
-<a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/survivalmodels/man/loghaz.html'>survivalmodels::loghaz</a> from package <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Custom nets can be used in this learner either using the <a href='build_pytorch_net.html'>build_pytorch_net</a> utility function
-or using <code>torch</code> via <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>. However note that the number of output channels
-depends on the number of discretised time-points, i.e. the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
+    <p>Custom nets can be used in this learner either using the
+<a href='https://rdrr.io/pkg/survivalmodels/man/build_pytorch_net.html'>survivalmodels::build_pytorch_net</a> utility function or using <code>torch</code> via <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.
+The number of output channels depends on the number of discretised time-points, i.e.
+the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
+<a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>dictionary</a> mlr_learners or with the associated
 sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.loghaz"</span><span class='op'>)</span>
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.loghaz"</span><span class='op'>)</span>
 </pre>
@@ -187,7 +186,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: reticulate, pracma</p></li>
+<li><p>Packages: survivalmodels, distr6, reticulate</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: integer, numeric</p></li>
 <li><p>Properties:</p></li>
@@ -198,9 +197,12 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     <p>Gensheimer, M. F., &amp; Narasimhan, B. (2018).
 A Simple Discrete-Time Survival Model for Neural Networks, 1–17.
 https://doi.org/arXiv:1805.00917v3</p>
+<p>Kvamme, H., &amp; Borgan, Ø. (2019).
+Continuous and discrete-time survival prediction with neural networks.
+https://doi.org/arXiv:1910.06724.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -254,27 +256,23 @@ https://doi.org/arXiv:1805.00917v3</p>
 </div><div class='output co'>#&gt; &lt;LearnerSurvLogisticHazard:surv.loghaz&gt;
 #&gt; * Model: -
 #&gt; * Parameters: list()
-#&gt; * Packages: reticulate, pracma
+#&gt; * Packages: survivalmodels, distr6, reticulate
 #&gt; * Predict Type: crank
 #&gt; * Feature types: integer, numeric
 #&gt; * Properties: -</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "frac"               "cuts"               "cutpoints"         
-#&gt;  [4] "scheme"             "cut_min"            "custom_net"        
-#&gt;  [7] "num_nodes"          "batch_norm"         "dropout"           
-#&gt; [10] "activation"         "alpha"              "lambd"             
-#&gt; [13] "mod_alpha"          "sigma"              "device"            
-#&gt; [16] "loss"               "optimizer"          "rho"               
-#&gt; [19] "eps"                "lr"                 "weight_decay"      
-#&gt; [22] "learning_rate"      "lr_decay"           "betas"             
-#&gt; [25] "amsgrad"            "t0"                 "momentum"          
-#&gt; [28] "centered"           "etas"               "step_sizes"        
-#&gt; [31] "dampening"          "nesterov"           "batch_size"        
-#&gt; [34] "epochs"             "verbose"            "num_workers"       
-#&gt; [37] "shuffle"            "best_weights"       "early_stopping"    
-#&gt; [40] "min_delta"          "patience"           "interpolate"       
-#&gt; [43] "sub"                "interpolate_scheme"</div></pre>
+</div><div class='output co'>#&gt;  [1] "frac"           "cuts"           "cutpoints"      "scheme"        
+#&gt;  [5] "cut_min"        "num_nodes"      "batch_norm"     "dropout"       
+#&gt;  [9] "activation"     "custom_net"     "device"         "shrink"        
+#&gt; [13] "optimizer"      "rho"            "eps"            "lr"            
+#&gt; [17] "weight_decay"   "learning_rate"  "lr_decay"       "betas"         
+#&gt; [21] "amsgrad"        "lambd"          "alpha"          "t0"            
+#&gt; [25] "momentum"       "centered"       "etas"           "step_sizes"    
+#&gt; [29] "dampening"      "nesterov"       "batch_size"     "epochs"        
+#&gt; [33] "verbose"        "num_workers"    "shuffle"        "best_weights"  
+#&gt; [37] "early_stopping" "min_delta"      "patience"       "interpolate"   
+#&gt; [41] "inter_scheme"   "sub"           </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

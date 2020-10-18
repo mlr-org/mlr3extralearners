@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Survival DNNSurv Learner — mlr_learners_surv.dnn • mlr3extralearners</title>
+<title>Survival DNNSurv Learner — mlr_learners_surv.dnnsurv • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,10 +47,8 @@
 
 
 
-<meta property="og:title" content="Survival DNNSurv Learner — mlr_learners_surv.dnn" />
-<meta property="og:description" content="Implements the DNNSurv neural network.
-Code for generating the conditional probabilities and pre-processing data is taken from
-https://github.com/lilizhaoUM/DNNSurv." />
+<meta property="og:title" content="Survival DNNSurv Learner — mlr_learners_surv.dnnsurv" />
+<meta property="og:description" content="Calls survivalmodels::dnnsurv from package survivalmodels." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -160,23 +158,27 @@ https://github.com/lilizhaoUM/DNNSurv." />
     <div class="page-header">
     <h1>Survival DNNSurv Learner</h1>
     
-    <div class="hidden name"><code>mlr_learners_surv.dnn.Rd</code></div>
+    <div class="hidden name"><code>mlr_learners_surv.dnnsurv.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Implements the DNNSurv neural network.
-Code for generating the conditional probabilities and pre-processing data is taken from
-<a href='https://github.com/lilizhaoUM/DNNSurv'>https://github.com/lilizhaoUM/DNNSurv</a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/survivalmodels/man/dnnsurv.html'>survivalmodels::dnnsurv</a> from package <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Custom nets can be used in this learner either using the
+<a href='https://rdrr.io/pkg/survivalmodels/man/build_keras_net.html'>survivalmodels::build_keras_net</a> utility function or using <a href='https://CRAN.R-project.org/package=keras'><span class="pkg">keras</span></a>.
+The number of output channels should be of length <code>1</code> and number of input channels is
+the number of features plus number of cuts.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.dnn"</span><span class='op'>)</span>
-<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.dnn"</span><span class='op'>)</span>
+<a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>dictionary</a> mlr_learners or with the associated
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.dnnsurv"</span><span class='op'>)</span>
+<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.dnnsurv"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
@@ -184,10 +186,22 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: keras, pseudo, tensorflow</p></li>
+<li><p>Packages: survivalmodels, keras, pseudo, tensorflow, distr6</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: integer, numeric</p></li>
 <li><p>Properties:</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
+
+    
+
+<ul>
+<li><p><code>verbose</code>:</p><ul>
+<li><p>Actual default: <code>1L</code></p></li>
+<li><p>Adjusted default: <code>0L</code></p></li>
+<li><p>Reason for change: Prevents plotting.</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -197,7 +211,7 @@ DNNSurv: Deep Neural Networks for Survival Analysis Using Pseudo Values.
 https://arxiv.org/abs/1908.02337</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -246,12 +260,12 @@ https://arxiv.org/abs/1908.02337</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.dnn"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.dnnsurv"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerSurvDNNSurv:surv.dnn&gt;
+</div><div class='output co'>#&gt; &lt;LearnerSurvDNNSurv:surv.dnnsurv&gt;
 #&gt; * Model: -
 #&gt; * Parameters: verbose=0
-#&gt; * Packages: keras, pseudo, tensorflow
+#&gt; * Packages: survivalmodels, keras, pseudo, tensorflow, distr6
 #&gt; * Predict Type: crank
 #&gt; * Feature types: integer, numeric
 #&gt; * Properties: -</div><div class='input'>
@@ -265,9 +279,9 @@ https://arxiv.org/abs/1908.02337</p>
 #&gt; [16] "weighted_metrics"     "early_stopping"       "min_delta"           
 #&gt; [19] "patience"             "verbose"              "baseline"            
 #&gt; [22] "restore_best_weights" "batch_size"           "epochs"              
-#&gt; [25] "validation_split"     "shuffle"              "class_weight"        
-#&gt; [28] "sample_weight"        "initial_epoch"        "steps_per_epoch"     
-#&gt; [31] "validation_steps"     "steps"                "callbacks"           </div></pre>
+#&gt; [25] "validation_split"     "shuffle"              "sample_weight"       
+#&gt; [28] "initial_epoch"        "steps_per_epoch"      "validation_steps"    
+#&gt; [31] "steps"                "callbacks"           </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

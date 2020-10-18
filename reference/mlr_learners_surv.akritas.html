@@ -48,7 +48,7 @@
 
 
 <meta property="og:title" content="Survival Akritas Estimator Learner — mlr_learners_surv.akritas" />
-<meta property="og:description" content="Implements the Akritas estimator. Calls akritas()." />
+<meta property="og:description" content="Calls survivalmodels::akritas from package survivalmodels." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -162,7 +162,7 @@
     </div>
 
     <div class="ref-description">
-    <p>Implements the Akritas estimator. Calls <code><a href='akritas.html'>akritas()</a></code>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/survivalmodels/man/akritas.html'>survivalmodels::akritas</a> from package <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>.</p>
     </div>
 
 
@@ -170,7 +170,7 @@
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
+<a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>dictionary</a> mlr_learners or with the associated
 sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.akritas"</span><span class='op'>)</span>
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.akritas"</span><span class='op'>)</span>
 </pre>
@@ -180,7 +180,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: pracma, survival</p></li>
+<li><p>Packages: survivalmodels, distr6</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: logical, integer, character, numeric, factor</p></li>
 <li><p>Properties:</p></li>
@@ -194,7 +194,7 @@ Ann. Statist., 22(3), 1299–1327.
 doi: <a href='https://doi.org/10.1214/aos/1176325630'>10.1214/aos/1176325630</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -248,7 +248,7 @@ doi: <a href='https://doi.org/10.1214/aos/1176325630'>10.1214/aos/1176325630</a>
 </div><div class='output co'>#&gt; &lt;LearnerSurvAkritas:surv.akritas&gt;
 #&gt; * Model: -
 #&gt; * Parameters: list()
-#&gt; * Packages: pracma, survival
+#&gt; * Packages: survivalmodels, distr6
 #&gt; * Predict Type: crank
 #&gt; * Feature types: logical, integer, character, numeric, factor
 #&gt; * Properties: -</div><div class='input'>

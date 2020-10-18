@@ -48,8 +48,7 @@
 
 
 <meta property="og:title" content="Survival PC-Hazard Learner — mlr_learners_surv.pchazard" />
-<meta property="og:description" content="Calls pycox.models.PCHazard from Python package pycox via
-reticulate." />
+<meta property="og:description" content="Calls survivalmodels::pchazard from package survivalmodels." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -163,21 +162,21 @@ reticulate." />
     </div>
 
     <div class="ref-description">
-    <p>Calls <code>pycox.models.PCHazard</code> from Python package <a href='https://pypi.org/project/pycox/'>pycox</a> via
-<a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/survivalmodels/man/pchazard.html'>survivalmodels::pchazard</a> from package <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>.</p>
     </div>
 
 
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Custom nets can be used in this learner either using the <a href='build_pytorch_net.html'>build_pytorch_net</a> utility function
-or using <code>torch</code> via <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>. However note that the number of output channels
-depends on the number of discretised time-points, i.e. the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
+    <p>Custom nets can be used in this learner either using the
+<a href='https://rdrr.io/pkg/survivalmodels/man/build_pytorch_net.html'>survivalmodels::build_pytorch_net</a> utility function or using <code>torch</code> via <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.
+The number of output channels depends on the number of discretised time-points, i.e.
+the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
+<a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>dictionary</a> mlr_learners or with the associated
 sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.pchazard"</span><span class='op'>)</span>
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.pchazard"</span><span class='op'>)</span>
 </pre>
@@ -187,7 +186,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: reticulate, pracma</p></li>
+<li><p>Packages: survivalmodels, distr6, reticulate</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: integer, numeric</p></li>
 <li><p>Properties:</p></li>
@@ -200,7 +199,7 @@ Continuous and discrete-time survival prediction with neural networks.
 ArXiv Preprint ArXiv:1910.06724.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -254,23 +253,23 @@ ArXiv Preprint ArXiv:1910.06724.</p>
 </div><div class='output co'>#&gt; &lt;LearnerSurvPCHazard:surv.pchazard&gt;
 #&gt; * Model: -
 #&gt; * Parameters: list()
-#&gt; * Packages: reticulate, pracma
+#&gt; * Packages: survivalmodels, distr6, reticulate
 #&gt; * Predict Type: crank
 #&gt; * Feature types: integer, numeric
 #&gt; * Properties: -</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "frac"           "cuts"           "cutpoints"      "scheme"        
-#&gt;  [5] "cut_min"        "custom_net"     "num_nodes"      "batch_norm"    
-#&gt;  [9] "dropout"        "activation"     "alpha"          "lambd"         
-#&gt; [13] "mod_alpha"      "sigma"          "device"         "loss"          
-#&gt; [17] "optimizer"      "rho"            "eps"            "lr"            
-#&gt; [21] "weight_decay"   "learning_rate"  "lr_decay"       "betas"         
-#&gt; [25] "amsgrad"        "t0"             "momentum"       "centered"      
-#&gt; [29] "etas"           "step_sizes"     "dampening"      "nesterov"      
-#&gt; [33] "batch_size"     "epochs"         "verbose"        "num_workers"   
-#&gt; [37] "shuffle"        "best_weights"   "early_stopping" "min_delta"     
-#&gt; [41] "patience"       "sub"           </div></pre>
+#&gt;  [5] "cut_min"        "num_nodes"      "batch_norm"     "reduction"     
+#&gt;  [9] "dropout"        "activation"     "custom_net"     "device"        
+#&gt; [13] "shrink"         "optimizer"      "rho"            "eps"           
+#&gt; [17] "lr"             "weight_decay"   "learning_rate"  "lr_decay"      
+#&gt; [21] "betas"          "amsgrad"        "lambd"          "alpha"         
+#&gt; [25] "t0"             "momentum"       "centered"       "etas"          
+#&gt; [29] "step_sizes"     "dampening"      "nesterov"       "batch_size"    
+#&gt; [33] "epochs"         "verbose"        "num_workers"    "shuffle"       
+#&gt; [37] "best_weights"   "early_stopping" "min_delta"      "patience"      
+#&gt; [41] "interpolate"    "sub"           </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -48,8 +48,7 @@
 
 
 <meta property="og:title" content="Survival Cox-Time Learner — mlr_learners_surv.coxtime" />
-<meta property="og:description" content="Calls pycox.models.CoxTime from Python package pycox via
-reticulate." />
+<meta property="og:description" content="Calls survivalmodels::coxtime from package survivalmodels." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -163,8 +162,7 @@ reticulate." />
     </div>
 
     <div class="ref-description">
-    <p>Calls <code>pycox.models.CoxTime</code> from Python package <a href='https://pypi.org/project/pycox/'>pycox</a> via
-<a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/survivalmodels/man/coxtime.html'>survivalmodels::coxtime</a> from package <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>.</p>
     </div>
 
 
@@ -172,7 +170,7 @@ reticulate." />
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
-<a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
+<a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>dictionary</a> mlr_learners or with the associated
 sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"surv.coxtime"</span><span class='op'>)</span>
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.coxtime"</span><span class='op'>)</span>
 </pre>
@@ -182,7 +180,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: reticulate, pracma</p></li>
+<li><p>Packages: survivalmodels, distr6, reticulate</p></li>
 <li><p>Predict Types: crank, distr</p></li>
 <li><p>Feature Types: integer, numeric</p></li>
 <li><p>Properties:</p></li>
@@ -195,7 +193,7 @@ Time-to-event prediction with neural networks and Cox regression.
 Journal of Machine Learning Research, 20(129), 1–30.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
+    <div class='dont-index'><p><a href='https://rdrr.io/pkg/mlr3misc/man/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
@@ -249,7 +247,7 @@ Journal of Machine Learning Research, 20(129), 1–30.</p>
 </div><div class='output co'>#&gt; &lt;LearnerSurvCoxtime:surv.coxtime&gt;
 #&gt; * Model: -
 #&gt; * Parameters: list()
-#&gt; * Packages: reticulate, pracma
+#&gt; * Packages: survivalmodels, distr6, reticulate
 #&gt; * Predict Type: crank
 #&gt; * Feature types: integer, numeric
 #&gt; * Properties: -</div><div class='input'>
@@ -257,14 +255,14 @@ Journal of Machine Learning Research, 20(129), 1–30.</p>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "frac"             "standardize_time" "log_duration"     "with_mean"       
 #&gt;  [5] "with_std"         "num_nodes"        "batch_norm"       "dropout"         
-#&gt;  [9] "activation"       "alpha"            "lambd"            "device"          
-#&gt; [13] "shrink"           "loss"             "optimizer"        "rho"             
-#&gt; [17] "eps"              "lr"               "weight_decay"     "learning_rate"   
-#&gt; [21] "lr_decay"         "betas"            "amsgrad"          "t0"              
-#&gt; [25] "momentum"         "centered"         "etas"             "step_sizes"      
-#&gt; [29] "dampening"        "nesterov"         "batch_size"       "epochs"          
-#&gt; [33] "verbose"          "num_workers"      "shuffle"          "best_weights"    
-#&gt; [37] "early_stopping"   "min_delta"        "patience"        </div></pre>
+#&gt;  [9] "activation"       "device"           "shrink"           "optimizer"       
+#&gt; [13] "rho"              "eps"              "lr"               "weight_decay"    
+#&gt; [17] "learning_rate"    "lr_decay"         "betas"            "amsgrad"         
+#&gt; [21] "lambd"            "alpha"            "t0"               "momentum"        
+#&gt; [25] "centered"         "etas"             "step_sizes"       "dampening"       
+#&gt; [29] "nesterov"         "batch_size"       "epochs"           "verbose"         
+#&gt; [33] "num_workers"      "shuffle"          "best_weights"     "early_stopping"  
+#&gt; [37] "min_delta"        "patience"        </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
