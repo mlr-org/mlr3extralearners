@@ -58,12 +58,12 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
       )
 
       super$initialize(
-        id = "regr.liblinearl2l1svr",
+        id = "regr.liblinearl2l2svr",
         packages = "LiblineaR",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.liblinearl2l1svr"
+        man = "mlr3extralearners::mlr_learners_regr.liblinearl2l2svr"
       )
     }
   ),
