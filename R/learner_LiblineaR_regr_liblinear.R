@@ -1,12 +1,16 @@
-#' @title L2-Regularized L1-Loss Support Vector Regression Learner
+#' @title L2-Regularized Support Vector Regression Learner
 #' @author be-marc
-#' @name mlr_learners_regr.liblinearl2l1svr
+#' @name mlr_learners_regr.liblinear
 #'
 #' @template class_learner
-#' @templateVar id regr.liblinearl2l1svr
+#' @templateVar id regr.liblinear
 #' @templateVar caller LiblineaR
 #'
-#' @details Calls [LiblineaR::LiblineaR()] with `type = 13`.
+#' @details Type of SVR depends on `type` argument:
+#'
+#' * `type = 11` - L2-regularized L2-loss support vector regression (primal)
+#' * `type = 12` – L2-regularized L2-loss support vector regression (dual)
+#' * `type = 13` – L2-regularized L1-loss support vector regression (dual)
 #'
 #' @section Custom mlr3 defaults:
 #' - `svr_eps`:
@@ -15,16 +19,11 @@
 #'   - Reason for change: `svr_eps` is type dependent and the "type" is handled
 #'   by the mlr3learner. The default value is set to th default of the respective
 #'   "type".
-#' - `epsilon`:
-#'   - Actual default: 0.01
-#'   - Adjusted default: Removed
-#'   - Reason for change: For regr SVR learners paramter `svr_eps` overwrites
-#'   param `epsilon`.
 #'
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
+LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
   inherit = LearnerRegr,
   public = list(
 
@@ -32,10 +31,9 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      warning("Deprecated. In the future please use `regr.liblinear` with `type = 11` or `type = 12`.") # nolint
-
       ps = ParamSet$new(
         params = list(
+          ParamInt$new(id = "type", default = 11, lower = 11, upper = 13, tags = "train"),
           ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
           ParamDbl$new(id = "bias", default = 1, tags = "train"),
           ParamDbl$new(
@@ -55,16 +53,16 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
       # custom defaults
       ps$values = list(
         # Package default is NULL but for regr SVR learners takes precedence over epsilon
-        svr_eps = 0.1
+        svr_eps = 0.001
       )
 
       super$initialize(
-        id = "regr.liblinearl2l1svr",
+        id = "regr.liblinear",
         packages = "LiblineaR",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.liblinearl2l1svr"
+        man = "mlr3extralearners::mlr_learners_regr.liblinear"
       )
     }
   ),
@@ -75,7 +73,14 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
       train = task$data(cols = task$feature_names)
       target = task$truth()
 
-      invoke(LiblineaR::LiblineaR, data = train, target = target, type = 13L, .args = pars)
+      if (is.null(pars$type)) {
+        type = 11
+      } else {
+        type = as.numeric(pars$type)
+      }
+      pars = pars[names(pars) != "type"]
+
+      invoke(LiblineaR::LiblineaR, data = train, target = target, type = type, .args = pars)
     },
 
     .predict = function(task) {
@@ -87,4 +92,4 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
   )
 )
 
-.extralrns_dict$add("regr.liblinearl2l1svr", LearnerRegrLiblineaRL2L1SVR)
+.extralrns_dict$add("regr.liblinear", LearnerRegrLiblineaR)
