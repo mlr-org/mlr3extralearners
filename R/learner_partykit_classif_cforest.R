@@ -208,4 +208,4 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
   )
 )
 
-lrns_dict$add("classif.cforest", LearnerClassifCForest)
+.extralrns_dict$add("classif.cforest", LearnerClassifCForest)

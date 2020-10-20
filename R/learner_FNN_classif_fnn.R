@@ -78,4 +78,4 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
   )
 )
 
-lrns_dict$add("classif.fnn", LearnerClassifFNN)
+.extralrns_dict$add("classif.fnn", LearnerClassifFNN)

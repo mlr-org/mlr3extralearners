@@ -104,4 +104,4 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
   )
 )
 
-lrns_dict$add("regr.ksvm", LearnerRegrKSVM)
+.extralrns_dict$add("regr.ksvm", LearnerRegrKSVM)

@@ -135,4 +135,4 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
   )
 )
 
-lrns_dict$add("regr.gbm", LearnerRegrGBM)
+.extralrns_dict$add("regr.gbm", LearnerRegrGBM)

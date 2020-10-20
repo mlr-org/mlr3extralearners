@@ -156,4 +156,4 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
   )
 )
 
-lrns_dict$add("classif.gbm", LearnerClassifGBM)
+.extralrns_dict$add("classif.gbm", LearnerClassifGBM)

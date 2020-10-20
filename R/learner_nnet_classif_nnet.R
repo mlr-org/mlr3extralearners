@@ -104,4 +104,4 @@ LearnerClassifNnet = R6Class("LearnerClassifNnet",
   )
 )
 
-lrns_dict$add("classif.nnet", LearnerClassifNnet)
+.extralrns_dict$add("classif.nnet", LearnerClassifNnet)

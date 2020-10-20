@@ -80,4 +80,4 @@ LearnerClassifLiblineaRMultiClassSVC = R6Class("LearnerClassifLiblineaRMultiClas
   )
 )
 
-lrns_dict$add("classif.liblinearmulticlasssvc", LearnerClassifLiblineaRMultiClassSVC)
+.extralrns_dict$add("classif.liblinearmulticlasssvc", LearnerClassifLiblineaRMultiClassSVC)

@@ -238,4 +238,4 @@ predict_flexsurvreg <- function(object, task, ...) {
   return(list(distr = distr, lp = lp))
 }
 
-lrns_dict$add("surv.flexible", LearnerSurvFlexible)
+.extralrns_dict$add("surv.flexible", LearnerSurvFlexible)

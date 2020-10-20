@@ -92,4 +92,4 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
   )
 )
 
-lrns_dict$add("<type>.<key>", Learner<Type><Classname>)
+.extralrns_dict$add("<type>.<key>", Learner<Type><Classname>)

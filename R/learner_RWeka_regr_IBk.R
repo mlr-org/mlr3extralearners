@@ -91,4 +91,4 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
   )
 )
 
-lrns_dict$add("regr.IBk", LearnerRegrIBk)
+.extralrns_dict$add("regr.IBk", LearnerRegrIBk)

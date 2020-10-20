@@ -99,4 +99,4 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
   )
 )
 
-lrns_dict$add("classif.JRip", LearnerClassifJRip)
+.extralrns_dict$add("classif.JRip", LearnerClassifJRip)

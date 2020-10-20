@@ -99,4 +99,4 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
   )
 )
 
-lrns_dict$add("dens.mixed", LearnerDensMixed)
+.extralrns_dict$add("dens.mixed", LearnerDensMixed)

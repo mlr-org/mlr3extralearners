@@ -70,4 +70,4 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
   )
 )
 
-lrns_dict$add("surv.akritas", LearnerSurvAkritas)
+.extralrns_dict$add("surv.akritas", LearnerSurvAkritas)

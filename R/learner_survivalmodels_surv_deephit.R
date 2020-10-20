@@ -160,4 +160,4 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
   )
 )
 
-lrns_dict$add("surv.deephit", LearnerSurvDeephit)
+.extralrns_dict$add("surv.deephit", LearnerSurvDeephit)

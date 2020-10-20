@@ -200,4 +200,4 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
   )
 )
 
-lrns_dict$add("regr.cforest", LearnerRegrCForest)
+.extralrns_dict$add("regr.cforest", LearnerRegrCForest)

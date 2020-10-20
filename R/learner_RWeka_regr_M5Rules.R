@@ -88,4 +88,4 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
   )
 )
 
-lrns_dict$add("regr.M5Rules", LearnerRegrM5Rules)
+.extralrns_dict$add("regr.M5Rules", LearnerRegrM5Rules)

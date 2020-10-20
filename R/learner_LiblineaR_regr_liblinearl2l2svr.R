@@ -94,4 +94,4 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
   )
 )
 
-lrns_dict$add("regr.liblinearl2l2svr", LearnerRegrLiblineaRL2L2SVR)
+.extralrns_dict$add("regr.liblinearl2l2svr", LearnerRegrLiblineaRL2L2SVR)

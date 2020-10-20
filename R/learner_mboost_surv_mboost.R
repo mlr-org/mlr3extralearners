@@ -174,4 +174,4 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
   )
 )
 
-lrns_dict$add("surv.mboost", LearnerSurvMBoost)
+.extralrns_dict$add("surv.mboost", LearnerSurvMBoost)

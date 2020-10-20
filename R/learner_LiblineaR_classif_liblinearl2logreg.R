@@ -69,4 +69,4 @@ LearnerClassifLiblineaRL2LogReg = R6Class("LearnerClassifLiblineaRL2LogReg", # n
   )
 )
 
-lrns_dict$add("classif.liblinearl2logreg", LearnerClassifLiblineaRL2LogReg)
+.extralrns_dict$add("classif.liblinearl2logreg", LearnerClassifLiblineaRL2LogReg)

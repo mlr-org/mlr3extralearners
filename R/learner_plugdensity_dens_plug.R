@@ -59,4 +59,4 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
   )
 )
 
-lrns_dict$add("dens.plug", LearnerDensPlugin)
+.extralrns_dict$add("dens.plug", LearnerDensPlugin)

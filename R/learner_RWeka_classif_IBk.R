@@ -100,4 +100,4 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
   )
 )
 
-lrns_dict$add("classif.IBk", LearnerClassifIBk)
+.extralrns_dict$add("classif.IBk", LearnerClassifIBk)

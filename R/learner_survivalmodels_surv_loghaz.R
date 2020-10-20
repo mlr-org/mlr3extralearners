@@ -161,4 +161,4 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
   )
 )
 
-lrns_dict$add("surv.loghaz", LearnerSurvLogisticHazard)
+.extralrns_dict$add("surv.loghaz", LearnerSurvLogisticHazard)

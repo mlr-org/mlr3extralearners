@@ -70,4 +70,4 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
   )
 )
 
-lrns_dict$add("dens.kde_kd", LearnerDensKDEkd)
+.extralrns_dict$add("dens.kde_kd", LearnerDensKDEkd)

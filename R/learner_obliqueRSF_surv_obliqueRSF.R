@@ -119,4 +119,4 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
   )
 )
 
-lrns_dict$add("surv.obliqueRSF", LearnerSurvObliqueRSF)
+.extralrns_dict$add("surv.obliqueRSF", LearnerSurvObliqueRSF)

@@ -191,4 +191,4 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
   )
 )
 
-lrns_dict$add("surv.rfsrc", LearnerSurvRandomForestSRC)
+.extralrns_dict$add("surv.rfsrc", LearnerSurvRandomForestSRC)

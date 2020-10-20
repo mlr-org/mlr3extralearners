@@ -87,4 +87,4 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
   )
 )
 
-lrns_dict$add("dens.pen", LearnerDensPenalized)
+.extralrns_dict$add("dens.pen", LearnerDensPenalized)

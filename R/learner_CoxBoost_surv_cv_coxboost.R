@@ -195,4 +195,4 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   )
 )
 
-lrns_dict$add("surv.cv_coxboost", LearnerSurvCVCoxboost)
+.extralrns_dict$add("surv.cv_coxboost", LearnerSurvCVCoxboost)

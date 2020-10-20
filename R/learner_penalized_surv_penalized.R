@@ -121,4 +121,4 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
   )
 )
 
-lrns_dict$add("surv.penalized", LearnerSurvPenalized)
+.extralrns_dict$add("surv.penalized", LearnerSurvPenalized)

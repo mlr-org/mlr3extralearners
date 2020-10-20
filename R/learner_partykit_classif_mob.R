@@ -155,4 +155,4 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
   )
 )
 
-lrns_dict$add("classif.mob", LearnerClassifMob)
+.extralrns_dict$add("classif.mob", LearnerClassifMob)

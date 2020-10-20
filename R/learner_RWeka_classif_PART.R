@@ -106,4 +106,4 @@ LearnerClassifPART = R6Class("LearnerClassifPART",
   )
 )
 
-lrns_dict$add("classif.PART", LearnerClassifPART)
+.extralrns_dict$add("classif.PART", LearnerClassifPART)
