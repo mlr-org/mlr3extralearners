@@ -154,6 +154,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.ksvm.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinear.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinearl2l1svr.html</loc>
   </url>
   <url>
