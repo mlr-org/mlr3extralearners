@@ -67,6 +67,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ksvm.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinear.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl1l2svc.html</loc>
   </url>
   <url>
