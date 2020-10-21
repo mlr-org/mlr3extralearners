@@ -1,14 +1,13 @@
 library(mlr3extralearners)
-install_learners("regr.liblinear")
+install_learners("classif.liblinear")
 
-test_that("regr.liblinear", {
-  learner = lrn("regr.liblinear")
+test_that("classif.liblinear", {
+  learner = lrn("classif.liblinear")
   fun = LiblineaR::LiblineaR
   exclude = c(
     "data", # handled by mlr3
     "target", # handled by mlr3
-    "epsilon", # overwritten by svr_eps
-    "wi" # not used in regression
+    "svr_eps" # only for regression
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
@@ -17,14 +16,14 @@ test_that("regr.liblinear", {
     paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
-test_that("regr.liblinear predict", {
-  learner = lrn("regr.liblinear")
+test_that("classif.liblinear predict", {
+  learner = lrn("classif.liblinear")
   fun = LiblineaR:::predict.LiblineaR
   exclude = c(
     "object", # handled internally
     "newx", # handled internally
-    "proba", # classif only
-    "decisionValues" # classif only
+    "proba", # handled internally
+    "decisionValues" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)

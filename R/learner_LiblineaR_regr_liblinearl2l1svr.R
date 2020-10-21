@@ -32,7 +32,7 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      warning("Deprecated. In the future please use `regr.liblinear` with `type = 11` or `type = 12`.") # nolint
+      warning("Deprecated. In the future please use `regr.liblinear` with `type = 13`.") # nolint
 
       ps = ParamSet$new(
         params = list(

@@ -18,6 +18,9 @@ LearnerClassifLiblineaRL1LogReg = R6Class("LearnerClassifLiblineaRL1LogReg", # n
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      warning("Deprecated. In the future please use `classif.liblinear` with `type = 6`.") # nolint
+
       ps = ParamSet$new(
         params = list(
           ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
