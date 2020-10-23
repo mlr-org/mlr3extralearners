@@ -20,6 +20,8 @@
 #' If number of records > number of features, `type = 2` is faster than `type = 1`
 #' (Hsu et al. 2003).
 #'
+#' Note that probabilistic predictions are only available for types `0`, `6`, and `7`.
+#'
 #' The default `epsilon` value depends on the `type` parameter, see [LiblineaR::LiblineaR].
 #'
 #' @export

@@ -23,6 +23,8 @@ Type of SVC depends on \code{type} argument:
 If number of records > number of features, \code{type = 2} is faster than \code{type = 1}
 (Hsu et al. 2003).
 
+Note that probabilistic predictions are only available for types \code{0}, \code{6}, and \code{7}.
+
 The default \code{epsilon} value depends on the \code{type} parameter, see \link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR}.
 }
 \section{Dictionary}{
