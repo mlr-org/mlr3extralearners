@@ -41,7 +41,7 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
       super$initialize(
         id = "dens.kde_ks",
         packages = "ks",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_dens.kde_ks"
@@ -53,7 +53,7 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     .train = function(task) {
       pars = self$param_set$get_values(tag = "train")
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       pdf <- function(x) {
       }
@@ -68,7 +68,7 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     },
 
     .predict = function(task) {
-      list(pdf = self$model$pdf(task$truth()))
+      list(pdf = self$model$pdf(task$data()[[1]]))
     }
   )
 )

@@ -43,7 +43,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
       super$initialize(
         id = "dens.spline",
         packages = "gss",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
         properties = "missings",
@@ -57,7 +57,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
 
       pars = self$param_set$get_values(tags = "train")
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       fit = mlr3misc::invoke(gss::ssden, formula = ~ data, .args = pars)
 
@@ -84,7 +84,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
     },
 
     .predict = function(task) {
-      newdata = task$truth()
+      newdata = task$data()[[1]]
       list(pdf = self$model$pdf(newdata), cdf = self$model$cdf(newdata))
     }
   )
