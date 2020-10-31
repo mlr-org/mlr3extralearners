@@ -20,7 +20,7 @@ authors:
 
 navbar:
   structure:
-    left:  [reference, news, book, learners]
+    left:  [reference, news, book, Search Learners, Learner Status]
     right: [github, mattermost, stackoverflow, rss]
   components:
     home: ~
@@ -45,13 +45,10 @@ navbar:
     rss:
       icon: fa-rss
       href: https://mlr-org.com/
-    learners:
-      text: Learners
-      menu:
-       - text: Search Learners
-         href: articles/learners/list_learners.html
-       - text: Learner Status
-         href: articles/learners/learner_status.html
+    Search Learners:
+      href: articles/learners/list_learners.html
+    Learner Status:
+      href: articles/learners/learner_status.html
 
 reference:
   - title: Helpers
