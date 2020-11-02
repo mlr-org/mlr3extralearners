@@ -45,9 +45,11 @@ navbar:
     rss:
       icon: fa-rss
       href: https://mlr-org.com/
-    Search Learners:
+    search:
+      text: Search Learners
       href: articles/learners/list_learners.html
-    Learner Status:
+    status:
+      text: Learner Status
       href: articles/learners/learner_status.html
 
 reference:
