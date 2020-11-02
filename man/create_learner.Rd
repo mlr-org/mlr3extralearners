@@ -87,6 +87,7 @@ learner template.
 }
 }
 \examples{
+\donttest{
 \dontrun{
 # Simpler linear regression example
 create_learner(
@@ -114,5 +115,6 @@ create_learner(
  references = TRUE,
  gh_name = "RaphaelS1"
 )
+}
 }
 }
