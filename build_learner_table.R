@@ -5,6 +5,7 @@ library(mlr3)
 library(mlr3learners)
 library(mlr3extralearners)
 library(mlr3proba)
+library(mlr3cluster)
 
 keys = mlr3::mlr_learners$keys()
 all_lrns = suppressWarnings(mlr3::lrns(keys))
