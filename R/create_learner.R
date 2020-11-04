@@ -48,7 +48,6 @@
 #' the learner.
 #'
 #' @examples
-#' \donttest{
 #' \dontrun{
 #' # Simpler linear regression example
 #' create_learner(
@@ -76,7 +75,6 @@
 #'  references = TRUE,
 #'  gh_name = "RaphaelS1"
 #' )
-#' }
 #' }
 #' @export
 create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
