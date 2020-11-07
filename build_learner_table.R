@@ -1,6 +1,3 @@
-install.packages(c("usethis", "remotes"))
-remotes::install_github("mlr-org/mlr3learners", upgrade = "never")
-
 library(mlr3)
 library(mlr3learners)
 library(mlr3extralearners)

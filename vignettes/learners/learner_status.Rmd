@@ -27,7 +27,7 @@ tbl[grepl("debug|featureless", id) & mlr3_package == "mlr3cluster", "Package"] =
 
 tbl[,Status := ifelse(mlr3_package == "mlr3extralearners",
   paste0("[![", Package, "](https://github.com/mlr-org/mlr3extralearners/workflows/", Package, "%20(ubuntu-latest,%20release)/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions?query=workflow%3A%22", Package, "+%28ubuntu-latest%2C+release%29%22)"),
-  paste0("[![", mlr3_package, "](https://github.com/mlr-org/",mlr3_package ,"%s/workflows/tic/badge.svg)](https://github.com/mlr-org/", mlr3_package,"/actions)"))]
+  paste0("[![", mlr3_package, "](https://github.com/mlr-org/",mlr3_package ,"/workflows/tic/badge.svg)](https://github.com/mlr-org/", mlr3_package,"/actions)"))]
 
 
 colnames(tbl)[1:2] = c("Key", "mlr3Package")
