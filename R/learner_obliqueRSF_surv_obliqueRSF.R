@@ -1,7 +1,7 @@
 #' @title Survival Oblique Random Survival Forest Learner
 #'
 #' @name mlr_learners_surv.obliqueRSF
-#' @author RaphaelS1
+#' @author adibender
 #'
 #' @template class_learner
 #' @templateVar id surv.obliqueRSF
