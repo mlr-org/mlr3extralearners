@@ -83,7 +83,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         stop("No importance available. Try setting 'importance' to 'accuracy' or 'gini'.")
       )
 
-      sort(setNames(scores, rownames(imp)), decreasing = TRUE)
+      sort(stats::setNames(scores, rownames(imp)), decreasing = TRUE)
     },
 
     #' @description

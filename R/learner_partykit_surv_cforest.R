@@ -40,7 +40,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamLgl$new("trace", default = FALSE, tags = "train"),
         ParamUty$new("offset", tags = "train"),
         ParamUty$new("cluster", tags = "train"),
-        ParamUty$new("na.action", default = na.pass, tags = "train"),
+        ParamUty$new("na.action", default = stats::na.pass, tags = "train"),
         ParamUty$new("scores", tags = "train"),
 
         ParamFct$new("teststat", default = "quadratic",

@@ -49,7 +49,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
             id = "sigma", default = 0.1, lower = 0, upper = 1,
             tags = "train"),
           ParamUty$new(id = "ipcw", default = 1, tags = "train"),
-          ParamUty$new(id = "na.action", default = na.omit, tags = "train")
+          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train")
         )
       )
 
@@ -78,7 +78,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
       }
 
       vimp = as.numeric(mboost::varimp(self$model))
-      names(vimp) = unname(variable.names(self$model))
+      names(vimp) = unname(stats::variable.names(self$model))
 
       sort(vimp, decreasing = TRUE)
     },
@@ -92,7 +92,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         stopf("No model stored")
       }
 
-      unname(variable.names(self$model, usedonly = TRUE))
+      unname(stats::variable.names(self$model, usedonly = TRUE))
     }
   ),
 
@@ -119,20 +119,20 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
       family = switch(pars$family,
         coxph = mboost::CoxPH(),
         weibull = mlr3misc::invoke(mboost::Weibull,
-          .args = pars[names(pars) %in% formalArgs(mboost::Weibull)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Weibull)]),
         loglog = mlr3misc::invoke(mboost::Loglog,
-          .args = pars[names(pars) %in% formalArgs(mboost::Loglog)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Loglog)]),
         lognormal = mlr3misc::invoke(mboost::Lognormal,
-          .args = pars[names(pars) %in% formalArgs(mboost::Lognormal)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Lognormal)]),
         gehan = mboost::Gehan(),
         cindex = mlr3misc::invoke(mboost::Cindex,
-          .args = pars[names(pars) %in% formalArgs(mboost::Cindex)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Cindex)]),
         custom = pars$custom.family
       )
 
       # FIXME - until issue closes
-      pars = pars[!(names(pars) %in% formalArgs(mboost::Weibull))]
-      pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
+      pars = pars[!(names(pars) %in% methods::formalArgs(mboost::Weibull))]
+      pars = pars[!(names(pars) %in% methods::formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
       mlr3misc::with_package("mboost", {

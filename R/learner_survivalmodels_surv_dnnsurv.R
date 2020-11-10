@@ -131,7 +131,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
         .args = pars
       )
 
-      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$distr)
     }
   )
 )

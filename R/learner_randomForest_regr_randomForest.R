@@ -81,7 +81,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         stop("No importance available. Try setting 'importance' to 'mse' or 'nodepurity'.")
       )
 
-      sort(setNames(scores, rownames(imp)), decreasing = TRUE)
+      sort(stats::setNames(scores, rownames(imp)), decreasing = TRUE)
     },
 
     #' @description

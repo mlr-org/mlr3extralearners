@@ -164,7 +164,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
 
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        setdiff(formalArgs(partykit::ctree_control),
+        setdiff(methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")
         ))] # see ctree_control
       pars = pars[names(pars) %nin%

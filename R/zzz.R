@@ -3,9 +3,11 @@
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
 #' @importFrom mlr3proba LearnerSurv LearnerDens
+#' @importFrom stats predict
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
+
 # nocov start
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace

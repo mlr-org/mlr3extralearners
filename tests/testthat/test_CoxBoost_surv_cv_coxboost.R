@@ -14,6 +14,7 @@ test_that("optim", {
     penalty = "optimCoxBoostPenalty",
     maxstepno = 1, minstepno = 0, iter.max = 1, K = 2)
   task = tsk("rats")
+  task$select(c("litter", "rx"))
   expect_prediction_surv(
     suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
     )

@@ -150,7 +150,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
         .args = pars
       )
 
-      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$distr)
 
     }
   )

@@ -45,7 +45,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
           ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
           ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
           ParamUty$new(id = "stopintern", default = FALSE, tags = "train"),
-          ParamUty$new(id = "na.action", default = na.omit, tags = "train"),
+          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train"),
           ParamUty$new(id = "contrasts.arg", tags = "train")
         )
       )
@@ -77,11 +77,11 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-        formalArgs(mboost::boost_control))]
+                                methods::formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-        formalArgs(mboost::gamboost))]
+                                   methods::formalArgs(mboost::gamboost))]
       pars_binomial = pars[which(names(pars) %in%
-        formalArgs(mboost::Binomial))]
+                                   methods::formalArgs(mboost::Binomial))]
 
       f = task$formula()
       data = task$data()

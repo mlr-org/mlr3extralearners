@@ -30,7 +30,7 @@ lrn("surv.cv_coxboost")
 \itemize{
 \item Packages: CoxBoost, pracma
 \item Predict Types: distr, crank, lp
-\item Feature Types: integer, numeric, factor, logical
+\item Feature Types: integer, numeric
 \item Properties: weights
 }
 }

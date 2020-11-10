@@ -133,7 +133,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
         .args = pars
       )
 
-      PredictionSurv$new(task = task, crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$distr)
 
     }
   )
