@@ -11,14 +11,10 @@ test_that("autotest", {
 })
 
 test_that("manual sanity", {
-  learner = lrn("surv.dnnsurv", epochs = 50)
-  x = runif(100,0,10)
-  task = TaskSurv$new("sanity",
-                      data.frame(x = x,
-                                 time = x + rnorm(100),
-                                 status = rbinom(100, 1, 0.5)),
-                      time = "time", event = "status")
+  task = tsk('rats')$select(c("rx", "litter"))
+  learner = lrn("surv.dnnsurv")
   p = learner$train(task)$predict(task)
   expect_true(p$score() >= 0.5)
   expect_equal(rank(-p$crank), unname(rank(p$distr$mean())))
 })
+
