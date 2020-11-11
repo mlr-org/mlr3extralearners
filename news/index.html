@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.1.0</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.1.1</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -149,6 +149,22 @@
       
     </div>
 
+    <div id="mlr3extralearners-011" class="section level1">
+<h1 class="page-header" data-toc-text="0.1.1">
+<a href="#mlr3extralearners-011" class="anchor"></a>mlr3extralearners 0.1.1</h1>
+<ul>
+<li>Patch for bugs in <code>surv</code> learners that were reversing the order of <code>crank</code>, see this issue for full details: <a href="https://github.com/mlr-org/mlr3proba/issues/165" class="uri">https://github.com/mlr-org/mlr3proba/issues/165</a>
+</li>
+<li>
+<code>response</code> is no longer returned by <code>surv.mboost</code>, <code>surv.blackboost</code>, <code>surv.glmboost</code>, <code>surv.gamboost</code> or <code>surv.parametric</code>
+</li>
+<li>Bugfix in <code>surv.parametric</code> with <code>ph</code> form</li>
+<li>Bugfix in <code>survivalmodels</code>learners which weren’t returning <code>distr</code>
+</li>
+<li>
+<code>surv.coxboost</code> and <code>surv.coxboost_cv</code> can now only handle <code>integer</code> and <code>numeric</code> feature types, previous automated internal coercions were inconsistent with mlr3 design.</li>
+</ul>
+</div>
     <div id="mlr3extralearners-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
 <a href="#mlr3extralearners-010" class="anchor"></a>mlr3extralearners 0.1.0</h1>
