@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.1.0
+Version: 0.1.1
 Authors@R:
     c(person(given = "Raphael",
            family = "Sonabend",
@@ -21,7 +21,7 @@ Imports:
     data.table,
     mlr3 (>= 0.6.0),
     mlr3misc,
-    mlr3proba (>= 0.2.3),
+    mlr3proba (>= 0.2.4),
     paradox,
     R6
 Suggests:
@@ -43,7 +43,7 @@ Suggests:
     logspline,
     mboost,
     mlr3cluster,
-    mlr3learners (>= 0.3.0),
+    mlr3learners (>= 0.4.2),
     mvtnorm,
     nnet,
     np,
@@ -63,7 +63,7 @@ Suggests:
     set6,
     sm,
     survival,
-    survivalmodels,
+    survivalmodels (>= 0.1.3),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,

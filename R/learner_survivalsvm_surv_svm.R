@@ -100,12 +100,14 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
       if (is.null(self$param_set$values$type) ||
           (self$param_set$values$type %in% c("regression", "hybrid"))) {
+        # higher survival time = lower risk
         response = crank
       } else {
         response = NULL
       }
 
-      list(crank = crank, response = response)
+      # higher rank = higher risk
+      list(crank = -crank, response = response)
     }
   )
 )

@@ -171,7 +171,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         decorators   = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
+      crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
       list(crank = crank, distr = distr)
     }
