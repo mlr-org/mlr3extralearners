@@ -1,6 +1,9 @@
 # mlr3extralearners 0.1.1
 
 * Patch for bugs in `surv` learners that were reversing the order of `crank`, see this issue for full details: https://github.com/mlr-org/mlr3proba/issues/165
+* `response` is no longer returned by `surv.mboost`, `surv.blackboost`, `surv.glmboost`, `surv.gamboost` or `surv.parametric`
+* Bugfix in `surv.parametric` with `ph` form
+* Bugfix in `survivalmodels`learners which weren't returning `distr`
 * `surv.coxboost` and `surv.coxboost_cv` can now only handle `integer` and `numeric` feature types, previous automated internal coercions were inconsistent with mlr3 design.
 
 # mlr3extralearners 0.1.0
