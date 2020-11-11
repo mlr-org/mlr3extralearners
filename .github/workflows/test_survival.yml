@@ -1,10 +1,10 @@
 on:
   push:
     branches: master
-    paths: '**/survival**'
+    paths: '**/survival_**'
   pull_request:
     branches: master
-    paths: '**/survival**'
+    paths: '**/survival_**'
   schedule:
     - cron: "0 4 * * *"
 
