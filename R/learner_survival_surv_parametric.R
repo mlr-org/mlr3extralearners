@@ -138,11 +138,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
       # Call the predict method defined here
       pred = mlr3misc::invoke(predict_survreg, object = self$model, task = task, .args = pv)
 
-      if (is.null(self$param_set$values$type) || self$param_set$values$type == "aft") {
-        return(list(distr = pred$distr, crank = pred$lp, lp = pred$lp, response = exp(pred$lp)))
-      } else {
-        return(list(distr = pred$distr, crank = pred$lp, lp = pred$lp))
-      }
+      return(list(distr = pred$distr, crank = -pred$lp, lp = pred$lp))
     }
   )
 )
@@ -212,9 +208,9 @@ predict_survreg = function(object, task, type = "aft") {
 
   if (type == "ph") {
     for (i in seq_along(lp)) {
-      body(pdf) = substitute((exp(y) * basedist$hazard(x)) * (1 - self$cdf(x)), list(y = lp[i]))
-      body(cdf) = substitute(1 - (basedist$survival(x)^exp(y)), list(y = lp[i]))
-      body(quantile) = substitute(basedist$quantile(1 - exp(exp(-y) * log(1 - p))), list(y = lp[i])) # nolint
+      body(pdf) = substitute((exp(y) * basedist$hazard(x)) * (1 - self$cdf(x)), list(y = -lp[i]))
+      body(cdf) = substitute(1 - (basedist$survival(x)^exp(y)), list(y = -lp[i]))
+      body(quantile) = substitute(basedist$quantile(1 - exp(exp(-y) * log(1 - p))), list(y = -lp[i])) # nolint
       params[[i]]$pdf = pdf
       params[[i]]$cdf = cdf
       params[[i]]$quantile = quantile
@@ -247,7 +243,7 @@ predict_survreg = function(object, task, type = "aft") {
   }
 
   distlist = lapply(params, function(.x) do.call(distr6::Distribution$new, .x))
-  names(distlist) = paste0("WeibullAFT", seq_along(distlist))
+  names(distlist) = paste0(short_name, seq_along(distlist))
 
 
   distr = distr6::VectorDistribution$new(distlist,
@@ -255,7 +251,7 @@ predict_survreg = function(object, task, type = "aft") {
 
   lp = lp + fit$coefficients[1]
 
-  return(list(lp = as.numeric(lp), distr = distr))
+  list(lp = as.numeric(lp), distr = distr)
 }
 
 .extralrns_dict$add("surv.parametric", LearnerSurvParametric)

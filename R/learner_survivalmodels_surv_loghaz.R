@@ -155,7 +155,7 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
         .args = pars
       )
 
-      list(crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$surv)
 
     }
   )

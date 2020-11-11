@@ -91,7 +91,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         id = "surv.blackboost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor"),
-        predict_types = c("distr", "crank", "lp", "response"),
+        predict_types = c("distr", "crank", "lp"),
         properties = "weights",
         packages = c("mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.blackboost"
@@ -185,14 +185,15 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         distribution = "WeightedDiscrete", params = x,
         decorators = c("CoreStatistics", "ExoticStatistics"))
 
-      response = NULL
-      if (!is.null(self$param_set$values$family)) {
-        if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
-          response = exp(lp)
-        }
-      }
+      # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
+      # response = NULL
+      # if (!is.null(self$param_set$values$family)) {
+      #   if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
+      #     response = exp(lp)
+      #   }
+      # }
 
-      list(crank = lp, distr = distr, lp = lp, response = response)
+      list(crank = -distr$mean(), distr = distr, lp = lp)
     }
   )
 )

@@ -154,7 +154,7 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
         .args = pars
       )
 
-      list(crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$surv)
 
     }
   )

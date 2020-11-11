@@ -1,21 +1,27 @@
 install_learners("surv.parametric")
 
-test_that("autotest", {
-  learner = mlr_learners$get("surv.parametric")
+test_that("autotest aft", {
+  set.seed(1)
+  learner = lrn("surv.parametric")
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
+})
 
-  task = tsk("rats")
-  expect_silent(expect_prediction_surv(
-    lrn("surv.parametric", type = "aft")$train(tsk("rats"))$predict(tsk("rats"))
-  ))
-  expect_silent(expect_prediction_surv(
-    lrn("surv.parametric", type = "ph")$train(tsk("rats"))$predict(tsk("rats"))
-  ))
-  expect_silent(expect_prediction_surv(
-    lrn("surv.parametric", type = "po")$train(tsk("rats"))$predict(tsk("rats"))
-  ))
+test_that("autotest ph", {
+  set.seed(1)
+  learner = lrn("surv.parametric", type = "ph")
+  expect_learner(learner)
+  result = run_autotest(learner, check_replicable = FALSE)
+  expect_true(result, info = result$error)
+})
+
+test_that("autotest po", {
+  set.seed(1)
+  learner = lrn("surv.parametric", type = "po")
+  expect_learner(learner)
+  result = run_autotest(learner, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 data(lung, package = "survival")
@@ -32,7 +38,7 @@ test_that("manualtest - aft", {
   expect_silent(learner$train(task))
   p = learner$predict(task)
   expect_prediction_surv(p)
-  expect_equal(p$lp[1:20], predict(learner$model$fit, type = "lp")[1:20])
+  expect_equal(p$lp, predict(learner$model$fit, type = "lp"))
   expect_equal(p$distr[1]$survival(predict(
     learner$model$fit, type = "quantile", p = c(0.2, 0.8)
   )[1, ]), c(0.8, 0.2))

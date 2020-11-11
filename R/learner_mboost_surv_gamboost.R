@@ -65,7 +65,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         id = "surv.gamboost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
-        predict_types = c("distr", "crank", "lp", "response"),
+        predict_types = c("distr", "crank", "lp"),
         properties = c("weights", "importance", "selected_features"),
         packages = c("mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.gamboost"
@@ -170,14 +170,15 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         distribution = "WeightedDiscrete", params = x,
         decorators = c("CoreStatistics", "ExoticStatistics"))
 
-      response = NULL
-      if (!is.null(self$param_set$values$family)) {
-        if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
-          response = exp(lp)
-        }
-      }
+      # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
+      # response = NULL
+      # if (!is.null(self$param_set$values$family)) {
+      #   if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
+      #     response = exp(lp)
+      #   }
+      # }
 
-      list(crank = lp, distr = distr, lp = lp, response = response)
+      list(crank = -distr$mean(), distr = distr, lp = lp)
     }
   )
 )
