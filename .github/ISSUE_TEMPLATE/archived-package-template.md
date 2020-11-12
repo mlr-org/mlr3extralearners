@@ -1,8 +1,8 @@
 ---
 name: Archived package template
 about: Used to report archived packages, which will lead to broken builds.
-title: "[ARCLRN] Package <package> archived"
-labels: achived package
+title: "[ARCPKG] Package <package> archived"
+labels: archived package
 assignees: ''
 
 ---
