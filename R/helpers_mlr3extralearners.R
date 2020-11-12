@@ -11,7 +11,7 @@ pkg_root = function(path = ".") {
   path = normalizePath(path)
 
   if (!grepl("mlr3extralearners", path)) {
-    stopf("Path (%s) is not in mlr3extralearners directory.")
+    stopf("Path (%s) is not in mlr3extralearners directory.", path)
   }
 
   while (TRUE) {

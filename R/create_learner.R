@@ -81,15 +81,17 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
                           package = tolower(classname), caller,
                           feature_types, predict_types, properties = NULL,
                           references = FALSE, gh_name) {
-
   path = pkg_root(pkg)
+  if (!grepl("mlr3extralearners", path, fixed = TRUE)) {
+    mlr3misc::stopf("mlr3extralearners is not in 'path' (%s), set `pkg` argument to the mlr3extralearners directory.", path) # nolint
+  }
 
   checkmate::assert_choice(type, names(mlr3::mlr_reflections$task_properties))
   Type = toproper(type)
 
   checkmate::assert_character(key, len = 1)
   if (paste(type, key, sep = ".") %in% names(mlr_learners$items)) {
-    stopf(
+    mlr3misc::stopf(
       "%s already exists in learner dictionary, please choose a different key.",
       paste(type, key, sep = "."))
   }
@@ -208,7 +210,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
                 overwrite = FALSE)
   if (!x) {
-    messagef("Learner test YAML for {%s} already exists.", package)
+    mlr3misc::messagef("Learner test YAML for {%s} already exists.", package)
   } else {
     mlr3misc::catf("Creating {%s} learner test YAML file from template.\n", package)
     x = readLines(file_name)
@@ -223,7 +225,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     x = gsub("testthat", paste0(c("testthat", package), collapse = ",\n    "), x)
     cat(x, file = file.path(path, "DESCRIPTION"), sep = "\n")
   } else {
-    messagef("{%s} already exists in DESCRIPTION.", package)
+    mlr3misc::messagef("{%s} already exists in DESCRIPTION.", package)
   }
 
   # UPDATE USER
