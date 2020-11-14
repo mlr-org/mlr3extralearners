@@ -138,7 +138,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
       # Call the predict method defined here
       pred = mlr3misc::invoke(predict_survreg, object = self$model, task = task, .args = pv)
 
-      return(list(distr = pred$distr, crank = -pred$lp, lp = pred$lp))
+      # lp is aft-style, where higher value = lower risk, opposite needed for crank
+      list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
     }
   )
 )

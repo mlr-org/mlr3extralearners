@@ -149,24 +149,20 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     .predict = function(task) {
 
       newdata = task$data(cols = task$feature_names)
-
       # predict linear predictor
-      lp = as.numeric(mlr3misc::invoke(predict, self$model,
-        newdata = newdata, type = "link"))
+      lp = as.numeric(mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link"))
 
       # predict survival
-      surv = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
-      surv$cdf = 1 - surv$surv
+      if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
+        survfit = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(data = data.frame(x = surv$time, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = surv$cdf[, i]
+        mlr3proba::.surv_return(times = survfit$time,
+                                surv = t(survfit$surv),
+                                lp = lp)
+      } else {
+        mlr3proba::.surv_return(lp = -lp)
       }
 
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
 
       # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
       # response = NULL
@@ -175,8 +171,6 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       #     response = exp(lp)
       #   }
       # }
-
-      list(crank = -distr$mean(), distr = distr, lp = lp)
     }
   )
 )

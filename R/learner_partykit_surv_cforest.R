@@ -164,7 +164,11 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         type = "prob", .args = pars)
 
       # Define WeightedDiscrete distr6 distribution from the survival function
-      x = lapply(preds, function(z) data.frame(x = z$time, cdf = 1 - z$surv))
+      x = lapply(preds, function(z) {
+        time = c(0, z$time, max(z$time) + 1e-3)
+        surv = c(1, z$surv, 0)
+        data.frame(x = time, cdf = 1 - surv)
+      })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
         params       = x,

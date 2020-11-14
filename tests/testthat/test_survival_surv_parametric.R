@@ -4,24 +4,39 @@ test_that("autotest aft", {
   set.seed(1)
   learner = lrn("surv.parametric")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE)
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
+
+  # manually check sanity
+  task = generate_tasks.LearnerSurv(learner)$sanity
+  pred = learner$train(task, 1:10)$predict(task, 11:20)
+  expect_true(pred$score() >= 0.5)
 })
 
 test_that("autotest ph", {
   set.seed(1)
   learner = lrn("surv.parametric", type = "ph")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE)
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
+
+  # manually check sanity
+  task = generate_tasks.LearnerSurv(learner)$sanity
+  pred = learner$train(task, 1:10)$predict(task, 11:20)
+  expect_true(pred$score() >= 0.5)
 })
 
 test_that("autotest po", {
   set.seed(1)
   learner = lrn("surv.parametric", type = "po")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE)
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
+
+  # manually check sanity
+  task = generate_tasks.LearnerSurv(learner)$sanity
+  pred = learner$train(task, 1:10)$predict(task, 11:20)
+  expect_true(pred$score() >= 0.5)
 })
 
 data(lung, package = "survival")
@@ -38,7 +53,7 @@ test_that("manualtest - aft", {
   expect_silent(learner$train(task))
   p = learner$predict(task)
   expect_prediction_surv(p)
-  expect_equal(p$lp, predict(learner$model$fit, type = "lp"))
+  expect_equal(-p$lp, predict(learner$model$fit, type = "lp"))
   expect_equal(p$distr[1]$survival(predict(
     learner$model$fit, type = "quantile", p = c(0.2, 0.8)
   )[1, ]), c(0.8, 0.2))
@@ -52,12 +67,6 @@ test_that("manualtest - aft", {
   expect_equal(p$distr[15]$cdf(predict(
     learner$model$fit, type = "quantile", p = seq.int(0, 1, 0.1)
   )[15, ]), seq.int(0, 1, 0.1))
-#
-#   learner = lrn("surv.parametric", dist = "loglogistic", type = "aft")$train(task)
-#   p = learner$predict(task)
-#   expect_equal(p$distr[15]$cdf(predict(
-#     learner$model$fit, type = "quantile", p = seq.int(0, 1, 0.1)
-#   )[15, ]), seq.int(0, 1, 0.1))
 })
 
 

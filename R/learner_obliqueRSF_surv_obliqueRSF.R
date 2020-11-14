@@ -92,29 +92,17 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
 
     .predict = function(task) {
 
-      newdata = task$data(cols = task$feature_names)
-      pv = self$param_set$get_values(tags = "predict")
       time = self$model$data[[task$target_names[1]]]
       status = self$model$data[[task$target_names[2]]]
       utime = unique(time[status == 1])
 
-      p = mlr3misc::invoke(predict, self$model, newdata = newdata, times = utime, .args = pv)
-      cdf = 1 - p
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = utime, cdf = 0)), task$nrow)
-      for (i in seq_len(task$nrow)) {
-        x[[i]]$cdf = cdf[i, ]
-      }
+      surv = mlr3misc::invoke(predict,
+                              self$model,
+                              newdata = task$data(cols = task$feature_names),
+                              times = utime,
+                              .args = self$param_set$get_values(tags = "predict"))
 
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete",
-        params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      crank = -as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
-
-      list(crank = crank, distr = distr)
-
+      .surv_return(times = utime, surv = surv)
     }
   )
 )

@@ -65,7 +65,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         .args = pars
       )
 
-      list(crank = pred$risk, distr = pred$distr)
+      list(crank = pred$risk, distr = pred$surv)
     }
   )
 )

@@ -104,19 +104,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
           .args = pars)
       })
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = surv@time, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = 1 - surv@curves[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      crank = -as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
-
-      list(distr = distr, crank = crank)
+      .surv_return(times = surv@time, surv = surv@curves)
     }
   )
 )

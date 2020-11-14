@@ -1,3 +1,7 @@
+# mlr3extralearners 0.1.1.9000
+
+* Fixes in `crank` and `distr` computation of all survival learners
+
 # mlr3extralearners 0.1.1
 
 * Patch for bugs in `surv` learners that were reversing the order of `crank`, see this issue for full details: https://github.com/mlr-org/mlr3proba/issues/165

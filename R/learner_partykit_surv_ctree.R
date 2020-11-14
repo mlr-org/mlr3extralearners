@@ -113,10 +113,14 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
     .predict = function(task) {
 
       newdata = task$data(cols = task$feature_names)
-      p = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata)
+      preds = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata)
 
       # Define WeightedDiscrete distr6 distribution from the survival function
-      x = lapply(p, function(z) data.frame(x = z$time, cdf = 1 - z$surv))
+      x = lapply(preds, function(z) {
+        time = c(0, z$time, max(z$time) + 1e-3)
+        surv = c(1, z$surv, 0)
+        data.frame(x = time, cdf = 1 - surv)
+      })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
         params       = x,

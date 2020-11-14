@@ -13,16 +13,8 @@ np$random$seed(1L)
 torch$manual_seed(1L)
 
 test_that("autotest", {
-  learner = lrn("surv.deepsurv", epochs = 50)
+  learner = lrn("surv.deepsurv")
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
-})
-
-test_that("manual sanity", {
-  task = tsk('rats')$select(c("rx", "litter"))
-  learner = lrn("surv.deepsurv")
-  p = learner$train(task)$predict(task)
-  expect_true(p$score() >= 0.5)
-  expect_equal(rank(-p$crank), unname(rank(p$distr$mean())))
 })

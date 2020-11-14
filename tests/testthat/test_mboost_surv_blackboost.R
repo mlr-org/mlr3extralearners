@@ -1,6 +1,6 @@
 install_learners("surv.blackboost")
 
-test_that("autotest weibull", {
+test_that("autotest aft", {
   skip_on_cran()
   set.seed(1)
   learner = lrn("surv.blackboost", family = "weibull")

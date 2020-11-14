@@ -22,7 +22,7 @@ lrn("surv.glmboost")
 
 \itemize{
 \item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp, response
+\item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: weights
 }

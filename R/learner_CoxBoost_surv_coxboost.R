@@ -82,30 +82,24 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
 
     .predict = function(task) {
 
+      pars = self$param_set$get_values(tags = "predict")
+
       lp = as.numeric(mlr3misc::invoke(predict,
         self$model,
         newdata = as.matrix(task$data(cols = task$feature_names)),
-        .args = self$param_set$get_values(tags = "predict"),
+        .args = pars,
         type = "lp"))
 
-      cdf = mlr3misc::invoke(predict,
+      surv = mlr3misc::invoke(predict,
         self$model,
         newdata = as.matrix(task$data(cols = task$feature_names)),
-        .args = self$param_set$get_values(tags = "predict"),
-        type = "CIF",
+        .args = pars,
+        type = "risk",
         times = sort(unique(self$model$time)))
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = sort(unique(self$model$time)), cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = cdf[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      list(crank = lp, distr = distr, lp = lp)
+      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
+                   surv = surv,
+                   lp = lp)
     }
   )
 )

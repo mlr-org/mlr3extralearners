@@ -22,7 +22,7 @@ lrn("surv.mboost")
 
 \itemize{
 \item Packages: mboost
-\item Predict Types: distr, crank, lp, response
+\item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: importance, selected_features, weights
 }

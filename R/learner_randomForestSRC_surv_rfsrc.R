@@ -172,21 +172,9 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # default estimator is nelson, hence nelson selected if NULL
       estimator = if (is.null(pars_predict$estimator)) "nelson" else pars_predict$estimator
 
-      cdf = if (estimator == "nelson") 1 - exp(-p$chf) else 1 - p$survival
+      surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = self$model$time.interest, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = cdf[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      crank = -as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
-
-      list(crank = crank, distr = distr)
+      .surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )

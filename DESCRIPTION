@@ -22,7 +22,7 @@ Imports:
     methods,
     mlr3 (>= 0.6.0),
     mlr3misc,
-    mlr3proba (>= 0.2.4),
+    mlr3proba (>= 0.2.4.9000),
     paradox,
     R6
 Suggests:
@@ -64,7 +64,7 @@ Suggests:
     set6,
     sm,
     survival,
-    survivalmodels (>= 0.1.3),
+    survivalmodels (>= 0.1.3.9000),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
