@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.0.1.9000</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.1.1.9000</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -103,9 +103,18 @@
   </a>
 </li>
 <li>
+  <a href="../articles/learners/list_learners.html">Search Learners</a>
+</li>
+<li>
   <a href="../articles/learners/learner_status.html">Learner Status</a>
 </li>
         <li>
+  <a href="https://github.com/mlr-org/mlr3extralearners">
+    <span class="fa fa fa fa-github"></span>
+     
+  </a>
+</li>
+<li>
   <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
     <span class="fa fa fa fa-comments"></span>
      
@@ -148,6 +157,37 @@
     </colgroup>
 
     <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helpers" class="hasAnchor"><a href="#section-helpers" class="anchor"></a>Helpers</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_learner.html">create_learner()</a></code> </p>
+        </td>
+        <td><p>Create a New Learner</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="list_mlr3learners.html">list_mlr3learners()</a></code> </p>
+        </td>
+        <td><p>List Learners in mlr3verse</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="install_learners.html">install_learners()</a></code> </p>
+        </td>
+        <td><p>Install Learner Dependencies</p></td>
+      </tr>
+    </tbody><tbody>
       <tr>
         <th colspan="2">
           <h2 id="section-classification-learners" class="hasAnchor"><a href="#section-classification-learners" class="anchor"></a>Classification Learners</h2>
@@ -258,6 +298,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="mlr_learners_classif.liblinear.html">mlr_learners_classif.liblinear</a></code> </p>
+        </td>
+        <td><p>LiblineaR Classification Learner</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="mlr_learners_classif.liblinearl1l2svc.html">mlr_learners_classif.liblinearl1l2svc</a></code> </p>
         </td>
         <td><p>L1-Regularized L2-Loss Support Vector Classification Learner</p></td>
@@ -297,6 +343,12 @@
           <p><code><a href="mlr_learners_classif.mob.html">mlr_learners_classif.mob</a></code> </p>
         </td>
         <td><p>Classification Model-based Recursive Partitioning Learner</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mlr_learners_classif.nnet.html">mlr_learners_classif.nnet</a></code> </p>
+        </td>
+        <td><p>Classification nnet Learner</p></td>
       </tr><tr>
         
         <td>
@@ -382,6 +434,12 @@
           <p><code><a href="mlr_learners_regr.ksvm.html">mlr_learners_regr.ksvm</a></code> </p>
         </td>
         <td><p>Regression Kernlab Support Vector Machine</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="mlr_learners_regr.liblinear.html">mlr_learners_regr.liblinear</a></code> </p>
+        </td>
+        <td><p>L2-Regularized Support Vector Regression Learner</p></td>
       </tr><tr>
         
         <td>
@@ -482,7 +540,7 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="mlr_learners_surv.dnn.html">mlr_learners_surv.dnn</a></code> </p>
+          <p><code><a href="mlr_learners_surv.dnnsurv.html">mlr_learners_surv.dnnsurv</a></code> </p>
         </td>
         <td><p>Survival DNNSurv Learner</p></td>
       </tr><tr>
@@ -514,7 +572,7 @@
         <td>
           <p><code><a href="mlr_learners_surv.loghaz.html">mlr_learners_surv.loghaz</a></code> </p>
         </td>
-        <td><p>Survival LogisticHazard Learner</p></td>
+        <td><p>Survival Logistic-Hazard Learner</p></td>
       </tr><tr>
         
         <td>
@@ -664,11 +722,11 @@
 
       <footer>
       <div class="copyright">
-  <p>Developed by Raphael Sonabend.</p>
+  <p>Developed by Raphael Sonabend, <a href='https://pat-s.me'>Patrick Schratz</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

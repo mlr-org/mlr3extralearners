@@ -4,37 +4,10 @@
     <loc>https://mlr3extralearners.mlr-org.com/index.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/akritas.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/build_keras_net.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/build_pytorch_net.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/get_keras_optimizer.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/get_pycox_activation.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/get_pycox_init.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/get_pycox_optim.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/install_keras.html</loc>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/create_learner.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/install_learners.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/install_pycox.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/install_torch.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/list_mlr3learners.html</loc>
@@ -94,6 +67,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ksvm.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinear.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl1l2svc.html</loc>
   </url>
   <url>
@@ -113,6 +89,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.nnet.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.randomForest.html</loc>
@@ -178,6 +157,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.ksvm.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinear.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinearl2l1svr.html</loc>
   </url>
   <url>
@@ -220,7 +202,7 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.deepsurv.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.dnn.html</loc>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.dnnsurv.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.flexible.html</loc>
@@ -262,12 +244,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.svm.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/predict.akritas.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/prepare_train_data.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html</loc>
   </url>
 </urlset>
