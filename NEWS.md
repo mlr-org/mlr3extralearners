@@ -1,4 +1,4 @@
-# mlr3extralearners 0.1.1.9000
+# mlr3extralearners 0.1.2
 
 * Fixes in `crank` and `distr` computation of all survival learners
 
