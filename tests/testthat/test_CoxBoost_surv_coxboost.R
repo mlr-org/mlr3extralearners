@@ -1,3 +1,5 @@
+skip("Temporarily archived.")
+
 install_learners("surv.coxboost")
 
 test_that("autotest", {

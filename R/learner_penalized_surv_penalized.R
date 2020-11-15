@@ -104,7 +104,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
           .args = pars)
       })
 
-      .surv_return(times = surv@time, surv = surv@curves)
+      mlr3proba::.surv_return(times = surv@time, surv = surv@curves)
     }
   )
 )

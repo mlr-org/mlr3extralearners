@@ -102,7 +102,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
                               times = utime,
                               .args = self$param_set$get_values(tags = "predict"))
 
-      .surv_return(times = utime, surv = surv)
+      mlr3proba::.surv_return(times = utime, surv = surv)
     }
   )
 )

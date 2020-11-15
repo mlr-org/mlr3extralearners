@@ -174,7 +174,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      .surv_return(times = self$model$time.interest, surv = surv)
+      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )
