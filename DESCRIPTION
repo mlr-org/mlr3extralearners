@@ -90,6 +90,7 @@ Suggests:
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
+    mgcv,
     usethis
 Remotes:
     catboost/catboost/catboost/R-package
