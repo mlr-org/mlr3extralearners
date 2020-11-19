@@ -22,7 +22,6 @@ Imports:
     methods,
     mlr3 (>= 0.6.0),
     mlr3misc,
-    mlr3proba (>= 0.2.5),
     paradox,
     R6
 Suggests:
@@ -45,6 +44,7 @@ Suggests:
     mboost,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
+    mlr3proba (>= 0.2.5),
     mvtnorm,
     nnet,
     np,

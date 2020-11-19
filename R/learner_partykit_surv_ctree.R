@@ -21,7 +21,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvCTree = R6Class("LearnerSurvCTree",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
 
     #' @description

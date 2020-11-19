@@ -14,7 +14,7 @@
 #' @template example
 #' @export
 LearnerDensPenalized = R6Class("LearnerDensPenalized",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description

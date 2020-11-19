@@ -36,7 +36,7 @@
 #' @template example
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description

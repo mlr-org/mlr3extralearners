@@ -22,7 +22,7 @@
 #' @template example
 #' @export
 LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description

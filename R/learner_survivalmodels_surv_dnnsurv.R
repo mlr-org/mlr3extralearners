@@ -27,7 +27,7 @@
 #' @template example
 #' @export
 LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
