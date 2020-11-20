@@ -1,4 +1,5 @@
 install_learners("surv.coxtime")
+load_tests("surv.coxtime")
 
 skip_on_os("windows")
 

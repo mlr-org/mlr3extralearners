@@ -1,4 +1,5 @@
 install_learners("dens.kde_kd")
+load_tests("dens.kde_kd")
 
 test_that("autotest", {
   learner = LearnerDensKDEkd$new()

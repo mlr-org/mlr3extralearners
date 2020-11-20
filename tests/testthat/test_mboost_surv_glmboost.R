@@ -1,4 +1,5 @@
 install_learners("surv.glmboost")
+load_tests("surv.glmboost")
 
 test_that("autotest ph", {
   learner = lrn("surv.glmboost", family = "coxph")

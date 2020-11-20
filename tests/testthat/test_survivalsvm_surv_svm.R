@@ -1,4 +1,5 @@
 install_learners("surv.svm")
+load_tests("surv.svm")
 
 test_that("autotest", {
   learner = LearnerSurvSVM$new()
