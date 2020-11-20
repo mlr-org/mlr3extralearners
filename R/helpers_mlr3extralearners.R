@@ -87,7 +87,9 @@ list_mlr3learners = function(select = NULL, filter = NULL) {
 #' @export
 install_learners = function(.keys, ...) {
   sapply(.keys, function(.key) {
-    pkgs = mlr3::lrn(.key)$packages
+    lrn = subset(list_mlr3learners(), id == .key)
+    pkgs = lrn$required_packages[[1]]
+    if(lrn$mlr3_package != "mlr3extralearners") pkgs = c(pkgs, lrn$mlr3_package)
     sapply(pkgs, function(pkg) {
       if (grepl("/", pkg) && !requireNamespace(strsplit(pkg, "/", TRUE)[[1]][2], quietly = TRUE)) {
         remotes::install_github(pkg, upgrade = "always", ...)
