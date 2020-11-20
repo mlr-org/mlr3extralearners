@@ -58,7 +58,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       formula_feats = purrr::map_chr(
         task$feature_names,
         ~ ifelse(
-          is.logical(data[[.]]) | n_distinct(data[[.]]) <= 10,
+          is.logical(data[[.]]) | length(unique(data[[.]])) <= 10,
           .,
           paste0("s(", ., ")")
         )
