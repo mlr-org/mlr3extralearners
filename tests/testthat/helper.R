@@ -10,17 +10,17 @@ load_tests = function(key) {
   if (class %in% c("surv", "dens")) {
     if (!requireNamespace("mlr3proba", quietly = TRUE)) {
       remotes::install_github("mlr-org/mlr3proba", upgrade = "always")
-      require("mlr3proba")
     }
     invisible(lapply(list.files(system.file("testthat", package = "mlr3proba"),
                       pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
+    require("mlr3proba")
   } else if (class == "clust") {
     if (!requireNamespace("mlr3cluster", quietly = TRUE)) {
       remotes::install_github("mlr-org/mlr3cluster", upgrade = "always")
-      require("mlr3cluster")
     }
     invisible(lapply(list.files(system.file("testthat", package = "mlr3cluster"),
                       pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
+    require("mlr3cluster")
   }
 
 }
