@@ -44,7 +44,7 @@ Suggests:
     mboost,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.2.5),
+    mlr3proba (>= 0.2.5.9000),
     mvtnorm,
     nnet,
     np,
@@ -64,14 +64,13 @@ Suggests:
     set6,
     sm,
     survival,
-    survivalmodels (>= 0.1.3.9000),
+    survivalmodels (>= 0.1.4),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
     usethis
 Remotes:
-    mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels
+    mlr-org/mlr3proba
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
