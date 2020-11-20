@@ -35,7 +35,7 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = LearnerSurv,
+LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.

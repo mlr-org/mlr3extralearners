@@ -1,6 +1,7 @@
 skip("Temporarily archived.")
 
 install_learners("surv.cv_coxboost")
+load_tests("surv.cv_coxboost")
 
 test_that("autotest", {
   set.seed(1)

@@ -23,7 +23,7 @@
 #' @template example
 #' @export
 LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description

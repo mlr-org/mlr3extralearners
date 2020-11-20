@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description

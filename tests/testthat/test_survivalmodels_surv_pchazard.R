@@ -1,4 +1,5 @@
 install_learners("surv.pchazard")
+load_tests("surv.pchazard")
 
 skip_on_os("windows")
 

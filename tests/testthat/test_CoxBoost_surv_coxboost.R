@@ -1,6 +1,7 @@
 skip("Temporarily archived.")
 
 install_learners("surv.coxboost")
+load_tests("surv.coxboost")
 
 test_that("autotest", {
   learner = LearnerSurvCoxboost$new()

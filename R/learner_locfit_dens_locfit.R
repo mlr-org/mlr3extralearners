@@ -10,7 +10,7 @@
 #' @template example
 #' @export
 LearnerDensLocfit = R6Class("LearnerDensLocfit",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description

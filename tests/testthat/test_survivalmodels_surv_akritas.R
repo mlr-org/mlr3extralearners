@@ -1,4 +1,5 @@
 install_learners("surv.akritas")
+load_tests("surv.akritas")
 
 test_that("autotest", {
   learner = LearnerSurvAkritas$new()

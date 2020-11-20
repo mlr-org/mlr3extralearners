@@ -1,3 +1,8 @@
+# mlr3extralearners 0.1.2.9000
+
+* `mlr3proba` moved to `Suggests`
+* `install_learners` now additionally installs required mlr3 packages
+
 # mlr3extralearners 0.1.2
 
 * Fixes in `crank` and `distr` computation of all survival learners

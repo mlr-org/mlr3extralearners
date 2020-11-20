@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensMixed = R6Class("LearnerDensMixed",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.

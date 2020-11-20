@@ -1,4 +1,5 @@
 install_learners("surv.deephit")
+load_tests("surv.deephit")
 
 skip_on_os("windows")
 

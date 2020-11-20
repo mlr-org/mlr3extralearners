@@ -1,4 +1,5 @@
 install_learners("surv.gamboost")
+load_tests("surv.gamboost")
 
 test_that("autotest ph", {
   learner = lrn("surv.gamboost", baselearner = "bols", family = "coxph", center = TRUE)

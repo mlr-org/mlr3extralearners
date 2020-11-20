@@ -1,4 +1,5 @@
 install_learners("surv.gbm")
+load_tests("surv.gbm")
 
 test_that("autotest", {
   set.seed(1)

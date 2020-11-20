@@ -1,4 +1,5 @@
 install_learners("surv.flexible")
+load_tests("surv.flexible")
 
 test_that("autotest", {
   set.seed(200)

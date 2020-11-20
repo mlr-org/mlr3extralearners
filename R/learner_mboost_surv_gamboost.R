@@ -23,7 +23,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.

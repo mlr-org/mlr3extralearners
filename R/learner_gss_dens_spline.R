@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensSpline = R6Class("LearnerDensSpline",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description

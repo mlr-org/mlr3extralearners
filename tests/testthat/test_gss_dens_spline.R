@@ -1,4 +1,5 @@
 install_learners("dens.spline")
+load_tests("dens.spline")
 
 test_that("autotest", {
   learner = lrn("dens.spline")

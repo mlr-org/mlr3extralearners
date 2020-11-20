@@ -1,4 +1,5 @@
 install_learners("surv.cforest")
+load_tests("surv.cforest")
 
 test_that("autotest", {
   learner = LearnerSurvCForest$new()

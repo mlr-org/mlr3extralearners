@@ -1,4 +1,5 @@
 install_learners("surv.obliqueRSF")
+load_tests("surv.obliqueRSF")
 
 test_that("autotest", {
   learner = lrn("surv.obliqueRSF", compute_oob_predictions = TRUE)

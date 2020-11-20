@@ -21,7 +21,7 @@
 #' @template example
 #' @export
 LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description

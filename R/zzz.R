@@ -2,7 +2,6 @@
 #' @import mlr3misc
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
-#' @importFrom mlr3proba LearnerSurv LearnerDens
 #' @importFrom stats predict
 "_PACKAGE"
 

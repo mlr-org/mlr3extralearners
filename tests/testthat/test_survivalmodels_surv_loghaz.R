@@ -1,4 +1,5 @@
 install_learners("surv.loghaz")
+load_tests("surv.loghaz")
 
 skip_on_os("windows")
 

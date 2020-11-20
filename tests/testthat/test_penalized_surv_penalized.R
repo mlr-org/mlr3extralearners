@@ -1,4 +1,5 @@
 install_learners("surv.penalized")
+load_tests("surv.penalized")
 
 test_that("autotest", {
   learner = lrn("surv.penalized", trace = FALSE)
