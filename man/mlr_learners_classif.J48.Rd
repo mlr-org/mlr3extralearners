@@ -5,7 +5,7 @@
 \alias{LearnerClassifJ48}
 \title{Classification J48 Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_trees]{RWeka::J48} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:J48]{RWeka::J48} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

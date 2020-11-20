@@ -5,7 +5,7 @@
 \alias{LearnerClassifIBk}
 \title{Classification IBk Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_lazy]{RWeka::IBk} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:IBk]{RWeka::IBk} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
