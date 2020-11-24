@@ -8,14 +8,11 @@
 #' @export
 install_learners = function(.keys, ...) {
   sapply(.keys, function(.key) {
-    lrn = subset(list_mlr3learners(), id == .key)
-    pkgs = lrn$required_packages[[1]]
-    if(lrn$mlr3_package != "mlr3extralearners") {
-      pkgs = c(pkgs, lrn$mlr3_package)
-    }
-    if (lrn$class %in% c("surv", "dens")) {
+    lrn = mlr3::lrn(.key)
+    pkgs = lrn$packages
+    if (lrn$task_type %in% c("surv", "dens")) {
       pkgs = c(pkgs, "mlr3proba")
-    } else if (lrn$class == "clust") {
+    } else if (lrn$task_type == "clust") {
       pkgs = c(pkgs, "mlr3cluster")
     }
 
