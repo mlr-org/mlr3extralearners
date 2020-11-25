@@ -4,13 +4,15 @@
 \alias{install_learners}
 \title{Install Learner Dependencies}
 \usage{
-install_learners(.keys, ...)
+install_learners(.keys, repos = "https://cloud.r-project.org", ...)
 }
 \arguments{
-\item{.keys}{\code{character()} \cr Keys passed to \link[mlr3:mlr_learners]{mlr_learners} specifying
+\item{.keys}{(\code{character()}) \cr Keys passed to \link[mlr3:mlr_learners]{mlr_learners} specifying
 learners to install.}
 
-\item{...}{\code{ANY} \cr Additional options to pass to \link[utils:install.packages]{utils::install.packages} or
+\item{repos}{(\code{character(1)}) \cr Passed to \link{install.packages}.}
+
+\item{...}{(\code{ANY}) \cr Additional options to pass to \link[utils:install.packages]{utils::install.packages} or
 \link[remotes:install_github]{remotes::install_github}.}
 }
 \description{
