@@ -10,7 +10,7 @@ test_that("autotest ph", {
 })
 
 test_that("autotest aft", {
-  learner = lrn("surv.gamboost", family = "weibull", baselearner = "bols", center = TRUE)
+  learner = lrn("surv.gamboost", family = "loglog", baselearner = "bols", center = TRUE)
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
   result = run_autotest(learner, exclude = "weights", check_replicable = FALSE)

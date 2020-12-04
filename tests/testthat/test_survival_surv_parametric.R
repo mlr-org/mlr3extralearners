@@ -5,39 +5,24 @@ test_that("autotest aft", {
   set.seed(1)
   learner = lrn("surv.parametric")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
+  result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
-
-  # manually check sanity
-  task = generate_tasks.LearnerSurv(learner)$sanity
-  pred = learner$train(task, 1:10)$predict(task, 11:20)
-  expect_true(pred$score() >= 0.5)
 })
 
 test_that("autotest ph", {
   set.seed(1)
   learner = lrn("surv.parametric", type = "ph")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
+  result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
-
-  # manually check sanity
-  task = generate_tasks.LearnerSurv(learner)$sanity
-  pred = learner$train(task, 1:10)$predict(task, 11:20)
-  expect_true(pred$score() >= 0.5)
 })
 
 test_that("autotest po", {
   set.seed(1)
   learner = lrn("surv.parametric", type = "po")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
+  result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
-
-  # manually check sanity
-  task = generate_tasks.LearnerSurv(learner)$sanity
-  pred = learner$train(task, 1:10)$predict(task, 11:20)
-  expect_true(pred$score() >= 0.5)
 })
 
 data(lung, package = "survival")

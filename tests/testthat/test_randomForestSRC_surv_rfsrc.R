@@ -8,7 +8,7 @@ test_that("autotest", {
     list(importance = "random", na.action = "na.impute"))
   expect_learner(learner)
   set.seed(1)
-  result = run_autotest(learner, check_replicable = FALSE)
+  result = run_autotest(learner, check_replicable = FALSE, N = 100)
   expect_true(result, info = result$error)
 })
 

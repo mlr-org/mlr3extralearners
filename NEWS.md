@@ -2,6 +2,7 @@
 
 * `mlr3proba` moved to `Suggests`
 * `install_learners` now additionally installs required mlr3 packages
+* Bugfix in `surv.parametric` occurring if feature names are switched between training and predicting
 
 # mlr3extralearners 0.1.2
 

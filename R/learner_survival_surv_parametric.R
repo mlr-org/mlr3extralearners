@@ -86,6 +86,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
       fit = mlr3misc::invoke(survival::survreg, formula = task$formula(), data = task$data(),
                              .args = pv)
 
+      self$state$feature_names = task$feature_names
+
       # Fits the baseline distribution by reparameterising the fitted coefficients.
       # These were mostly derived numerically as precise documentation on the parameterisations is
       # hard to find.
@@ -125,18 +127,20 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 
     .predict = function(task) {
 
+      feature_names = self$state$feature_names
       # As we are using a custom predict method the missing assertions are performed here manually
       # (as opposed to the automatic assertions that take place after prediction)
-      if (any(is.na(data.frame(task$data(cols = task$feature_names))))) {
+      if (any(is.na(data.frame(task$data(cols = feature_names))))) {
         stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n",
           self$id, task$id,
-          paste0(which(is.na(data.frame(task$data(cols = task$feature_names)))), collapse = ", "))
+          paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
       }
 
       pv = self$param_set$get_values(tags = "predict")
 
       # Call the predict method defined here
-      pred = mlr3misc::invoke(predict_survreg, object = self$model, task = task, .args = pv)
+      pred = mlr3misc::invoke(.predict_survreg, object = self$model, task = task,
+                              feature_names = feature_names, .args = pv)
 
       # lp is aft-style, where higher value = lower risk, opposite needed for crank
       list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
@@ -144,7 +148,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   )
 )
 
-predict_survreg = function(object, task, type = "aft") {
+.predict_survreg = function(object, task, feature_names, type = "aft") {
 
   # Extracts baseline distribution and the model fit, performs assertions
   basedist = object$basedist
@@ -153,8 +157,8 @@ predict_survreg = function(object, task, type = "aft") {
   checkmate::assertClass(fit, "survreg")
 
   # define newdata from the supplied task and convert to model matrix
-  newdata = task$data(cols = task$feature_names)
-  x = stats::model.matrix(formulate(rhs = task$feature_names), data = newdata,
+  newdata = task$data(cols = feature_names)
+  x = stats::model.matrix(formulate(rhs = feature_names), data = newdata,
                           xlev = task$levels())[, -1]
 
   # linear predictor defined by the fitted cofficients multiplied by the model matrix
