@@ -3,7 +3,7 @@
 * `mlr3proba` moved to `Suggests`
 * `install_learners` now additionally installs required mlr3 packages
 * Bugfix in `surv.parametric` occurring if feature names are switched between training and predicting
-* Deprecated `classif.nnet` in the future please load from [mlr3learners](https://github.com/mlr-org/mlr3learners)
+* Deprecated `classif.nnet`, in the future please load from [mlr3learners](https://github.com/mlr-org/mlr3learners)
 
 # mlr3extralearners 0.1.2
 
