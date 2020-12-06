@@ -17,14 +17,17 @@ install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
 
     lrn = mlr3::lrn(.key)
     pkgs = lrn$packages
+    # get uninstalled packages
+    cran = pkgs[!grepl("/", pkgs)]
+    gh = setdiff(pkgs, cran)
 
-    sapply(unique(pkgs), function(pkg) {
-      if (grepl("/", pkg) && !requireNamespace(strsplit(pkg, "/", TRUE)[[1]][2], quietly = TRUE)) {
-        remotes::install_github(pkg, upgrade = "always", ...)
-      } else if (!grepl("/", pkg) && !requireNamespace(pkg, quietly = TRUE)) {
-        utils::install.packages(pkg, repos = repos, ...)
-      }
-    })
+    cran = cran[!mlr3misc::map_lgl(cran, requireNamespace, quietly = TRUE)]
+    if (length(cran)) install.packages(cran, repos = repos, ...)
+
+    gh = gh[!mlr3misc::map_lgl(gh, function(.x)
+      requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE))]
+    if (length(gh)) sapply(gh, remotes::install_github, upgrade = "always", ...)
   })
+
   invisible(NULL)
 }
