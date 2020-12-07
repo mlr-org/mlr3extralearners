@@ -20,7 +20,7 @@ Package website: [release](https://mlr3extralearners.mlr-org.com/) | [dev](https
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
-[![R CMD Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions?query=workflow%3A%22R+CMD+Check%22)
+[![R CMD Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 [![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
