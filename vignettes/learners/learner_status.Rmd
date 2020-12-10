@@ -29,8 +29,10 @@ tbl[,Status := ifelse(mlr3_package == "mlr3extralearners",
   paste0("[![", Package, "](https://github.com/mlr-org/mlr3extralearners/workflows/", Package, "%20(ubuntu-latest,%20release)/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions?query=workflow%3A%22", Package, "+%28ubuntu-latest%2C+release%29%22)"),
   paste0("[![", mlr3_package, "](https://github.com/mlr-org/",mlr3_package ,"/workflows/tic/badge.svg)](https://github.com/mlr-org/", mlr3_package,"/actions)"))]
 
+tbl[,"Cran Status" := sprintf("[![cran checks](https://cranchecks.info/badges/worst/%s)](https://cran.r-project.org/web/checks/check_results_%s.html)",
+Package, Package)]
 
-colnames(tbl)[1:2] = c("Key", "mlr3Package")
-tbl = tbl[order(tbl, tolower(Package), Key), c(1, 2, 3, 5, 4)]
+colnames(tbl)[1:2] = c("Key", "mlr3 Package")
+tbl = tbl[order(tbl, tolower(Package), Key), c(1, 2, 3, 5, 6, 4)]
 knitr::kable(tbl, "pipe")
 ```
