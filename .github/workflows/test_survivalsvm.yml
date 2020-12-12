@@ -42,19 +42,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: "[Stage] [Linux] Install curl and libgit2"
-        if: runner.os == 'Linux'
-        run: sudo apt install libcurl4-openssl-dev libgit2-dev
-
-      - name: "[Stage] [macOS] Install libgit2"
-        if: runner.os == 'macOS'
-        run: brew install libgit2
-
       - name: "[Stage] Prepare"
         if: runner.os == 'Linux'
         run: |
           sudo R CMD javareconf
-          sudo apt install ccache libcurl4-openssl-dev
+          sudo apt install ccache libcurl4-openssl-dev libgit2-dev
           mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
 
       - name: "[Custom block] [Stage] [Linux] Install pkgdown system lib req"
