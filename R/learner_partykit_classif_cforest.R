@@ -89,6 +89,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         ParamLgl$new("update", default = FALSE, tags = "train"),
         ParamFct$new("splitflavour", default = "ctree",
           levels = c("ctree", "exhaustive"), tags = "train"),
+        ParamInt$new("maxvar", lower = 1L, tags = "train"),
 
         # predict; missing FUN and simplify (not needed here)
         ParamLgl$new("OOB", default = FALSE, tags = c("predict", "importance")),

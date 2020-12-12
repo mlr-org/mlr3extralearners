@@ -80,6 +80,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamLgl$new("update", default = FALSE, tags = c("train", "ctrl")),
         ParamFct$new("splitflavour", default = "ctree",
           levels = c("ctree", "exhaustive"), tags = c("train", "ctrl")),
+        ParamInt$new("maxvar", lower = 1L, tags = c("train", "ctrl")),
 
         # predict; missing FUN and simplify (not needed here)
         ParamLgl$new("OOB", default = FALSE, tags = c("predict", "importance")),
@@ -117,7 +118,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         predict_types = c("distr", "crank"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
-        packages = c("partykit", "sandwich", "coin", "pracma"),
+        packages = c("partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_surv.cforest"
       )
     }
