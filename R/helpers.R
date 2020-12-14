@@ -31,12 +31,10 @@ pkg_root = function(path = ".") {
 #' @export
 lrn = function(.key, ...) {
   # FIXME - currently just discards .key if not in dictionary
-  pkgs = as.character(unlist(list_mlr3learners(
-    filter = list(id = .key),
-    select = "required_packages")))
+  pkgs = suppressWarnings(mlr3::lrn(.key))$packages
   tryCatch(mlr3misc::require_namespaces(pkgs),
            packageNotFoundError = function(e) {
-             mlr3misc::stopf('Required packages not installed, please run `install_learners("%s")`.', .key)
+             mlr3misc::stopf('Required packages not installed, please run `install_learners("%s")`.', .key) # nolint
            })
 
   mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)
