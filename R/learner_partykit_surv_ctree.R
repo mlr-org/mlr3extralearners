@@ -85,7 +85,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       super$initialize(
         id            = "surv.ctree",
-        packages      = c("partykit", "coin", "sandwich", "pracma"),
+        packages      = c("partykit", "coin", "sandwich"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("distr", "crank"),
         param_set     = ps,
