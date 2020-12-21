@@ -8,8 +8,7 @@
 #'
 #' @details
 #' This learner allows you to choose a distribution and a model form to compose a predicted
-#' survival probability distribution. Note: Just because any combination of distribution and model
-#' form is possible, this does not mean it will necessarily be sensible or interpretable.
+#' survival probability distribution.
 #'
 #' The internal predict method is implemented in this package as our implementation is more
 #' efficient for composition to distributions than [survival::predict.survreg()].
@@ -23,9 +22,24 @@
 #' * Proportional Hazards (`ph`) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
 #' * Proportional Odds (`po`) \deqn{S(t) =
 #' \frac{S_0(t)}{exp(-lp) + (1-exp(-lp)) S_0(t)}}{S(t) = S0(t) / [exp(-lp) + S0(t) (1-exp(-lp))]}
+#' * Tobit (`tobit`) \deqn{S(t) = 1 - F((t - lp)/s)}
 #'
 #' where \eqn{S_0}{S0} is the estimated baseline survival distribution (in this case
-#' with a given parametric form), and \eqn{lp} is the predicted linear predictor.
+#' with a given parametric form), \eqn{lp} is the predicted linear predictor, \eqn{F} is the cdf
+#' of a N(0, 1) distribution, and \eqn{s} is the fitted scale parameter.
+#'
+#' Whilst any combination of distribution and model form is possible, this does not mean it will
+#' necessarily create a sensible or interpretable prediction. The following combinations are
+#' 'sensible':
+#'
+#' * dist = "gaussian"; type = "tobit";
+#' * dist = "weibull"; type = "ph";
+#' * dist = "exponential"; type = "ph";
+#' * dist = "weibull"; type = "aft";
+#' * dist = "exponential"; type = "aft";
+#' * dist = "loglogistic"; type = "aft";
+#' * dist = "lognormal"; type = "aft";
+#' * dist = "loglogistic"; type = "po";
 #'
 #' @references
 #' Kalbfleisch, J. D., & Prentice, R. L. (2011).
@@ -42,11 +56,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamFct$new(id = "type", default = "aft", levels = c("aft", "ph", "po"),
+          ParamFct$new(id = "type", default = "aft", levels = c("aft", "ph", "po", "tobit"),
                        tags = "predict"),
           ParamUty$new(id = "na.action", tags = "train"),
           ParamFct$new(id = "dist", default = "weibull",
-                       levels = c("weibull", "exponential", "gaussian", "logistic",
+                       levels = c("weibull", "exponential", "gaussian",
                                   "lognormal", "loglogistic"), tags = "train"),
           ParamUty$new(id = "parms", tags = "train"),
           ParamUty$new(id = "init", tags = "train"),
@@ -105,21 +119,18 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
         location = -709
       }
 
-
       basedist = switch(fit$dist,
-        "gaussian" = distr6::Normal$new(mean = location, sd = scale,
-          decorators = "ExoticStatistics"),
-        "weibull" = distr6::Weibull$new(shape = 1 / scale, scale = exp(location),
-          decorators = "ExoticStatistics"),
-        "exponential" = distr6::Exponential$new(scale = exp(location),
-          decorators = "ExoticStatistics"),
-        "logistic" = distr6::Logistic$new(mean = location, scale = scale,
-          decorators = "ExoticStatistics"),
-        "lognormal" = distr6::Lognormal$new(meanlog = location, sdlog = scale,
-          decorators = "ExoticStatistics"),
-        "loglogistic" = distr6::Loglogistic$new(scale = exp(location),
-          shape = 1 / scale,
-          decorators = "ExoticStatistics")
+                        "weibull" = distr6::Weibull$new(shape = 1 / scale, scale = exp(location),
+                                                        decorators = "ExoticStatistics"),
+                        "exponential" = distr6::Exponential$new(scale = exp(location),
+                                                                decorators = "ExoticStatistics"),
+                        "gaussian" = distr6::Normal$new(mean = location, sd = scale,
+                                                        decorators = "ExoticStatistics"),
+                        "lognormal" = distr6::Lognormal$new(meanlog = location, sdlog = scale,
+                                                            decorators = "ExoticStatistics"),
+                        "loglogistic" = distr6::Loglogistic$new(scale = exp(location),
+                                                                shape = 1 / scale,
+                                                                decorators = "ExoticStatistics")
       )
 
       set_class(list(fit = fit, basedist = basedist), "surv.parametric")
@@ -132,8 +143,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
       # (as opposed to the automatic assertions that take place after prediction)
       if (any(is.na(data.frame(task$data(cols = feature_names))))) {
         stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n",
-          self$id, task$id,
-          paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
+              self$id, task$id,
+              paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
       }
 
       pv = self$param_set$get_values(tags = "predict")
@@ -148,7 +159,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   )
 )
 
-.predict_survreg = function(object, task, feature_names, type = "aft") {
+.predict_survreg = function(object, task, feature_names, type = "aft", tobit = FALSE) {
 
   # Extracts baseline distribution and the model fit, performs assertions
   basedist = object$basedist
@@ -173,7 +184,12 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 
   dist = toproper(fit$dist)
 
-  if (type == "ph") {
+  if (type == "tobit") {
+    name = paste(dist, "Tobit Model")
+    short_name = paste0(dist, "Tobit")
+    description = paste(dist, "Tobit Model with negative log-likelihood",
+                        -fit$loglik[2])
+  } else if (type == "ph") {
     name = paste(dist, "Proportional Hazards Model")
     short_name = paste0(dist, "PH")
     description = paste(dist, "Proportional Hazards Model with negative log-likelihood",
@@ -211,7 +227,16 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   cdf = function(x) {} # nolint
   quantile = function(p) {} # nolint
 
-  if (type == "ph") {
+  if (type == "tobit") {
+    for (i in seq_along(lp)) {
+      body(pdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      body(cdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      body(quantile) = substitute(qnorm(p) * scale + y, list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      params[[i]]$pdf = pdf
+      params[[i]]$cdf = cdf
+      params[[i]]$quantile = quantile
+    }
+  } else if (type == "ph") {
     for (i in seq_along(lp)) {
       body(pdf) = substitute((exp(y) * basedist$hazard(x)) * (1 - self$cdf(x)), list(y = -lp[i]))
       body(cdf) = substitute(1 - (basedist$survival(x)^exp(y)), list(y = -lp[i]))
@@ -249,7 +274,6 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 
   distlist = lapply(params, function(.x) do.call(distr6::Distribution$new, .x))
   names(distlist) = paste0(short_name, seq_along(distlist))
-
 
   distr = distr6::VectorDistribution$new(distlist,
                                          decorators = c("CoreStatistics", "ExoticStatistics"))

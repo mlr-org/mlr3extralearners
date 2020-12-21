@@ -9,8 +9,7 @@ Calls \link[survival:survreg]{survival::survreg} from package \CRANpkg{survival}
 }
 \details{
 This learner allows you to choose a distribution and a model form to compose a predicted
-survival probability distribution. Note: Just because any combination of distribution and model
-form is possible, this does not mean it will necessarily be sensible or interpretable.
+survival probability distribution.
 
 The internal predict method is implemented in this package as our implementation is more
 efficient for composition to distributions than \code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
@@ -25,10 +24,26 @@ The distribution \code{distr} is composed using the \code{lp} and specifying a m
 \item Proportional Hazards (\code{ph}) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
 \item Proportional Odds (\code{po}) \deqn{S(t) =
 \frac{S_0(t)}{exp(-lp) + (1-exp(-lp)) S_0(t)}}{S(t) = S0(t) / [exp(-lp) + S0(t) (1-exp(-lp))]}
+\item Tobit (\code{tobit}) \deqn{S(t) = 1 - F((t - lp)/s)}
 }
 
 where \eqn{S_0}{S0} is the estimated baseline survival distribution (in this case
-with a given parametric form), and \eqn{lp} is the predicted linear predictor.
+with a given parametric form), \eqn{lp} is the predicted linear predictor, \eqn{F} is the cdf
+of a N(0, 1) distribution, and \eqn{s} is the fitted scale parameter.
+
+Whilst any combination of distribution and model form is possible, this does not mean it will
+necessarily create a sensible or interpretable prediction. The following combinations are
+'sensible':
+\itemize{
+\item dist = "gaussian"; type = "tobit";
+\item dist = "weibull"; type = "ph";
+\item dist = "exponential"; type = "ph";
+\item dist = "weibull"; type = "aft";
+\item dist = "exponential"; type = "aft";
+\item dist = "loglogistic"; type = "aft";
+\item dist = "lognormal"; type = "aft";
+\item dist = "loglogistic"; type = "po";
+}
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
