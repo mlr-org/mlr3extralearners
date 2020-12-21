@@ -104,12 +104,6 @@ test_that("quantile dist", {
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
                predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
-
-  learner = lrn("surv.parametric", dist = "loglogistic")$train(task)
-  p = learner$predict(task)
-  quantile = p$distr$quantile(c(0.2, 0.8))
-  expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 })
 
 test_that("cdf dist", {
@@ -136,6 +130,17 @@ test_that("cdf dist", {
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+})
+
+test_that("loglogistic", {
+  skip_if_not_installed("actuar")
+
+  learner = lrn("surv.parametric", dist = "loglogistic")$train(task)
+  p = learner$predict(task)
+  quantile = p$distr$quantile(c(0.2, 0.8))
+  expect_equal(matrix(t(quantile), ncol = 2),
+               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+
 
   learner = lrn("surv.parametric", dist = "loglogistic")$train(task)
   p = learner$predict(task, row_ids = 151:200)
