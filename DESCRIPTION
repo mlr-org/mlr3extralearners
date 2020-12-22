@@ -25,6 +25,7 @@ Imports:
     paradox,
     R6
 Suggests:
+    actuar,
     apcluster,
     C50,
     coin,
