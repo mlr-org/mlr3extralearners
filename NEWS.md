@@ -1,3 +1,7 @@
+# mlr3extralearners 0.1.4
+
+* Added `LearnerRegrGlm` with the unique key `regr.glm` from package `stats`, which allows users to change the `family` hyperparameter when fitting generalized linear regression models.
+
 # mlr3extralearners 0.1.3.9000
 
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
