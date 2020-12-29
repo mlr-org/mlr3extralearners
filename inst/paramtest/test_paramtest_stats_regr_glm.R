@@ -1,3 +1,4 @@
+devtools::load_all()
 install_learners("regr.glm")
 
 test_that("regr.glm train", {
