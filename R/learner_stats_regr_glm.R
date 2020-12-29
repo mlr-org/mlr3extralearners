@@ -59,7 +59,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = c("response", "se"),
         param_set = ps,
-        properties = c("weights"),
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.glm"
       )
     }

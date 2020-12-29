@@ -1,4 +1,3 @@
-library(mlr3extralearners)
 install_learners("regr.glm")
 
 test_that("regr.glm train", {
@@ -24,7 +23,7 @@ test_that("regr.glm train", {
 
 test_that("regr.glm predict", {
   learner = lrn("regr.glm")
-  fun = stats:::predict
+  fun = stats::predict
     exclude = c(
       "object", # handled via mlr3
       "newdata", # handled via mlr3
