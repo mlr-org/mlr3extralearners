@@ -42,7 +42,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
           levels = c(
             "logit", "probit", "cauchit", "cloglog", "identity",
             "log", "sqrt", "1/mu^2", "inverse"),
-          tags = "family"),
+          tags = c("train", "family")),
         ParamDbl$new("epsilon", default = 1e-8, tags = c("train", "control")),
         ParamDbl$new("maxit", default = 25, tags = c("train", "control")),
         ParamLgl$new("trace", default = FALSE, tags = c("train", "control")),
@@ -75,6 +75,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       # get parameters for training
 
       pars = self$param_set$get_values(tags = "train")
+      pars = mlr3misc::remove_named(pars, "link")
       if ("weights" %in% task$properties) {
         pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
       }
