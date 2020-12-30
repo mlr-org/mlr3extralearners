@@ -7,6 +7,10 @@
 \description{
 Calls \link[stats:glm]{stats::glm} from package \CRANpkg{stats}.
 }
+\details{
+For logistic regression please use
+\code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
+}
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
 \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
@@ -32,11 +36,7 @@ lrn("regr.glm")
 \itemize{
 \item Actual default: "link"
 \item Adjusted default: "response"
-\item Reason for change: Users rarely want predictions on the link scale
-(for instance, on the log scale when using the Poisson distribution).
-It would be much more reasonable for the default to be "response",
-which puts predictions on the scale of the observed data,
-and allow the user to change the type to "link" if they so desire.
+\item Reason for change: Response scale more natural for predictions.
 }
 }
 }

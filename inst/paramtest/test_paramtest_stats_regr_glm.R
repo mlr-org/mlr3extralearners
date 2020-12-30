@@ -37,3 +37,16 @@ test_that("regr.glm predict", {
     paste0("- '", ParamTest$missing, "'", collapse = "
 ")))
 })
+
+test_that("regr.glm control", {
+  learner = lrn("regr.glm")
+  fun = stats:::glm.control
+  exclude = c(
+  )
+
+  ParamTest = run_paramtest(learner, fun, exclude)
+  expect_true(ParamTest, info = paste0(
+    "Missing parameters:",
+    paste0("- '", ParamTest$missing, "'", collapse = "
+")))
+})

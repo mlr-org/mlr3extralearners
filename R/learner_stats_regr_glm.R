@@ -9,16 +9,14 @@
 #'
 #' @template seealso_learner
 #' @template example
+#' @details For logistic regression please use
+#' \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
 #'
 #' @section Custom mlr3 defaults:
 #' - `type`
 #'   - Actual default: "link"
 #'   - Adjusted default: "response"
-#'   - Reason for change: Users rarely want predictions on the link scale
-#'   (for instance, on the log scale when using the Poisson distribution).
-#'   It would be much more reasonable for the default to be "response",
-#'   which puts predictions on the scale of the observed data,
-#'   and allow the user to change the type to "link" if they so desire.
+#'   - Reason for change: Response scale more natural for predictions.
 #' @export
 LearnerRegrGlm = R6Class("LearnerRegrGlm",
   inherit = LearnerRegr,
@@ -40,17 +38,22 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
           default = "gaussian",
           levels = c("gaussian", "poisson", "quasipoisson", "Gamma", "inverse.gaussian"),
           tags = "train"),
+        ParamFct$new("link",
+          levels = c(
+            "logit", "probit", "cauchit", "cloglog", "identity",
+            "log", "sqrt", "1/mu^2", "inverse"),
+          tags = "family"),
         ParamDbl$new("epsilon", default = 1e-8, tags = c("train", "control")),
         ParamDbl$new("maxit", default = 25, tags = c("train", "control")),
         ParamLgl$new("trace", default = FALSE, tags = c("train", "control")),
         ParamUty$new("dispersion", default = NULL, tags = "predict"),
         ParamFct$new("type",
-          default = "link",
-          levels = c("response", "link", "terms"),
+          default = "link", levels = c("response", "link", "terms"),
           tags = "predict")
       ))
 
       ps$values = insert_named(ps$values, list(
+        family = "gaussian",
         type = "response"))
 
       super$initialize(
@@ -72,6 +75,11 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       # get parameters for training
 
       pars = self$param_set$get_values(tags = "train")
+      if ("weights" %in% task$properties) {
+        pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
+      }
+      fam <- mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
+      pars <- mlr3misc::insert_named(pars, list(family = fam))
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
