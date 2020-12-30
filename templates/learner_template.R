@@ -61,7 +61,12 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      # FIXME - <Create objects for the train call
+      # FIXME - If learner does not have 'weights' property then delete these lines.
+      if ("weights" %in% task$properties) {
+        pars = insert_named(pars, list(weights = task$weights$weight))
+      }
+
+      # FIXME - <Create objects for the train call>
       # <At least "data" and "formula" are required>
       formula = task$formula()
       data = task$data()
