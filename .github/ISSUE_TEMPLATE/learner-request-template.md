@@ -1,6 +1,6 @@
 ---
 name: Learner request template
-about: Used to request new learners
+about: Used to request or discuss new learners
 title: "[LRNRQ] Add <algorithm> from package <package>"
 labels: new learner
 assignees: ''
@@ -29,4 +29,8 @@ assignees: ''
   * [ ] mlr3extralearners
   * [ ] Other core packages (e.g. mlr3proba)
 
-### Comments
+### Why do I think this is a useful learner?
+
+### Further Optional Comments
+
+(e.g. if this algorithm is already implemented under a different learner then please explain why this additional implementation is useful)
