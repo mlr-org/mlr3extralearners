@@ -49,6 +49,14 @@ And
 
 * [ ] Updated NEWS.md
 
+## Maintenance
+
+This PR will only be merged if the following is filled in and ticked:
+
+* [ ] <github_name> agrees to maintain this learner going forward and agrees that this learner will be removed from `mlr3extralearners` if: i) the build remains broken for more than one month with no effort to fix it; or ii) is broken for more than three months.
+
+The maintainer of the learner can be changed at any time by editing the '@author' tag and creating a pull request.
+
 ## Comments
 
 -------
