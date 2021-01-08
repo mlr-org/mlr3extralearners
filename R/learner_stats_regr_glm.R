@@ -38,6 +38,9 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
           default = "gaussian",
           levels = c("gaussian", "poisson", "quasipoisson", "Gamma", "inverse.gaussian"),
           tags = "train"),
+        ParamFct$new("na.action",
+          levels = c("na.omit", "na.pass", "na.fail", "na.exclude"),
+          tags = c("train", "predict")),
         ParamFct$new("link",
           levels = c(
             "logit", "probit", "cauchit", "cloglog", "identity",
@@ -52,7 +55,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
           tags = "predict")
       ))
 
-      ps$values = insert_named(ps$values, list(
+      ps$values = mlr3misc::insert_named(ps$values, list(
         family = "gaussian",
         type = "response"))
 
@@ -79,9 +82,13 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       if ("weights" %in% task$properties) {
         pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
       }
+      # add family to parameters
       fam <- mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
       pars <- mlr3misc::insert_named(pars, list(family = fam))
-
+      # if na.action not specified, use system default
+      if (!"na.action" %in% pars$values) {
+        pars <- mlr3misc::insert_named(pars, list(na.action = getOption("na.action")))
+      }
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
@@ -98,7 +105,10 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
+      # if na.action not specified, use na.pass (default for prediction)
+      if (!"na.action" %in% pars$values) {
+        pars <- mlr3misc::insert_named(pars, list(na.action = "na.pass"))
+      }
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 
