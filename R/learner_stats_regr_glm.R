@@ -85,10 +85,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       # add family to parameters
       fam <- mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
       pars <- mlr3misc::insert_named(pars, list(family = fam))
-      # if na.action not specified, use system default
-      if (!"na.action" %in% pars$values) {
-        pars <- mlr3misc::insert_named(pars, list(na.action = getOption("na.action")))
-      }
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
@@ -105,10 +101,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-      # if na.action not specified, use na.pass (default for prediction)
-      if (!"na.action" %in% pars$values) {
-        pars <- mlr3misc::insert_named(pars, list(na.action = "na.pass"))
-      }
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 

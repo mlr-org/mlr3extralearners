@@ -9,7 +9,6 @@ test_that("regr.glm train", {
     "data", # handled by mlr3
     "weights", # handled by mlr3
     "subset", # handled by mlr3
-    "na.action", # handled by mlr3
     "method", # we always use glm()
     "control", # handled by glm.control
     "contrasts" # causes lots of troubles just when setting the default
@@ -27,8 +26,7 @@ test_that("regr.glm predict", {
   fun = stats::predict
     exclude = c(
       "object", # handled via mlr3
-      "newdata", # handled via mlr3
-      "na.action" # handled via mlr3
+      "newdata" # handled via mlr3
     )
 
   ParamTest = run_paramtest(learner, fun, exclude)
@@ -50,3 +48,4 @@ test_that("regr.glm control", {
     paste0("- '", ParamTest$missing, "'", collapse = "
 ")))
 })
+
