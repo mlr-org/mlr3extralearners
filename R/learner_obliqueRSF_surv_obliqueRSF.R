@@ -91,16 +91,15 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
     },
 
     .predict = function(task) {
-
       time = self$model$data[[task$target_names[1]]]
       status = self$model$data[[task$target_names[2]]]
       utime = unique(time[status == 1])
 
       surv = mlr3misc::invoke(predict,
-                              self$model,
-                              newdata = task$data(cols = task$feature_names),
-                              times = utime,
-                              .args = self$param_set$get_values(tags = "predict"))
+        self$model,
+        newdata = task$data(cols = task$feature_names),
+        times = utime,
+        .args = self$param_set$get_values(tags = "predict"))
 
       mlr3proba::.surv_return(times = utime, surv = surv)
     }

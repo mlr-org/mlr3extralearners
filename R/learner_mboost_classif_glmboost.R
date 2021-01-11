@@ -69,6 +69,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     .train = function(task) {
 
       # Default family in mboost::glmboost is not useable for twoclass
+
       if (is.null(self$param_set$values$family)) {
         self$param_set$values = insert_named(
           self$param_set$values,
@@ -77,11 +78,11 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-                                methods::formalArgs(mboost::boost_control))]
+        methods::formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::gamboost))]
+        methods::formalArgs(mboost::gamboost))]
       pars_binomial = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::Binomial))]
+        methods::formalArgs(mboost::Binomial))]
 
       f = task$formula()
       data = task$data()

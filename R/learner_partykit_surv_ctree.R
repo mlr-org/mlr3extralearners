@@ -29,18 +29,24 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamFct$new("teststat", levels = c("quadratic", "maximum"),
+          ParamFct$new("teststat",
+            levels = c("quadratic", "maximum"),
             default = "quadratic", tags = "train"),
-          ParamFct$new("splitstat", levels = c("quadratic", "maximum"),
+          ParamFct$new("splitstat",
+            levels = c("quadratic", "maximum"),
             default = "quadratic", tags = "train"),
           ParamLgl$new("splittest", default = FALSE, tags = "train"),
-          ParamFct$new("testtype", levels = c("Bonferroni", "MonteCarlo",
-            "Univariate", "Teststatistic"), default = "Bonferroni",
-          tags = "train"),
-          ParamUty$new("nmax", tags = "train"),
-          ParamDbl$new("alpha", lower = 0, upper = 1, default = 0.05,
+          ParamFct$new("testtype",
+            levels = c(
+              "Bonferroni", "MonteCarlo",
+              "Univariate", "Teststatistic"), default = "Bonferroni",
             tags = "train"),
-          ParamDbl$new("mincriterion", lower = 0, upper = 1, default = 0.95,
+          ParamUty$new("nmax", tags = "train"),
+          ParamDbl$new("alpha",
+            lower = 0, upper = 1, default = 0.05,
+            tags = "train"),
+          ParamDbl$new("mincriterion",
+            lower = 0, upper = 1, default = 0.95,
             tags = "train"),
           ParamDbl$new("logmincriterion", tags = "train"),
           ParamInt$new("minsplit", lower = 1L, default = 20L, tags = "train"),
@@ -49,15 +55,19 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
           ParamLgl$new("stump", default = FALSE, tags = "train"),
           ParamLgl$new("lookahead", default = FALSE, tags = "train"),
           ParamLgl$new("MIA", default = FALSE, tags = "train"),
-          ParamInt$new("nresample", lower = 1L, default = 9999L,
+          ParamInt$new("nresample",
+            lower = 1L, default = 9999L,
             tags = "train"),
           ParamDbl$new("tol", lower = 0, tags = "train"),
-          ParamInt$new("maxsurrogate", lower = 0L, default = 0L,
+          ParamInt$new("maxsurrogate",
+            lower = 0L, default = 0L,
             tags = "train"),
           ParamLgl$new("numsurrogate", default = FALSE, tags = "train"),
-          ParamInt$new("mtry", lower = 0L, special_vals = list(Inf),
+          ParamInt$new("mtry",
+            lower = 0L, special_vals = list(Inf),
             default = Inf, tags = "train"),
-          ParamInt$new("maxdepth", lower = 0L, special_vals = list(Inf),
+          ParamInt$new("maxdepth",
+            lower = 0L, special_vals = list(Inf),
             default = Inf, tags = "train"),
           ParamInt$new("maxvar", lower = 1L, tags = "train"),
           ParamLgl$new("multiway", default = FALSE, tags = "train"),
@@ -66,11 +76,13 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
           ParamLgl$new("majority", default = FALSE, tags = "train"),
           ParamLgl$new("caseweights", default = FALSE, tags = "train"),
           ParamUty$new("applyfun", tags = "train"),
-          ParamInt$new("cores", special_vals = list(NULL), default = NULL,
+          ParamInt$new("cores",
+            special_vals = list(NULL), default = NULL,
             tags = "train"),
           ParamLgl$new("saveinfo", default = TRUE, tags = "train"),
           ParamLgl$new("update", default = FALSE, tags = "train"),
-          ParamFct$new("splitflavour", default = "ctree",
+          ParamFct$new("splitflavour",
+            default = "ctree",
             levels = c("ctree", "exhaustive"), tags = c("train", "control")),
           ParamUty$new("offset", tags = "train"),
           ParamUty$new("cluster", tags = "train"),
@@ -84,12 +96,12 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
 
       super$initialize(
-        id            = "surv.ctree",
-        packages      = c("partykit", "coin", "sandwich"),
+        id = "surv.ctree",
+        packages = c("partykit", "coin", "sandwich"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("distr", "crank"),
-        param_set     = ps,
-        properties    = "weights",
+        param_set = ps,
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_surv.ctree"
       )
     }
@@ -107,7 +119,8 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
       pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
       pars = pars[!(names(pars) %in% names(pars_pargs))]
 
-      mlr3misc::invoke(partykit::ctree, formula = task$formula(),
+      mlr3misc::invoke(partykit::ctree,
+        formula = task$formula(),
         data = task$data(), .args = pars)
     },
 
@@ -124,8 +137,8 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
       })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
-        params       = x,
-        decorators   = c("CoreStatistics", "ExoticStatistics"))
+        params = x,
+        decorators = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
       crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))

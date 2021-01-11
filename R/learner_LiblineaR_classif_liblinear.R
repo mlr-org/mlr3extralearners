@@ -34,7 +34,6 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       ps = ParamSet$new(
         params = list(
           ParamInt$new(id = "type", default = 0, lower = 0, upper = 7, tags = "train"),

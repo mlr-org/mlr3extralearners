@@ -33,12 +33,15 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         ParamInt$new("ntree", default = 500L, lower = 1L, tags = "train"),
         # replace and fraction go in perturb (named list)
         ParamLgl$new("replace", default = FALSE, tags = "train"),
-        ParamDbl$new("fraction", default = 0.632, lower = 0, upper = 1,
+        ParamDbl$new("fraction",
+          default = 0.632, lower = 0, upper = 1,
           tags = "train"),
-        ParamInt$new("mtry", lower = 0L, special_vals = list(Inf),
+        ParamInt$new("mtry",
+          lower = 0L, special_vals = list(Inf),
           tags = "train"), # default actually "ceiling(sqrt(nvar))"
         ParamUty$new("applyfun", tags = c("train", "importance")),
-        ParamInt$new("cores", default = NULL, special_vals = list(NULL),
+        ParamInt$new("cores",
+          default = NULL, special_vals = list(NULL),
           tags = c("train", "importance")),
         ParamLgl$new("trace", default = FALSE, tags = "train"),
         ParamUty$new("offset", tags = "train"),
@@ -47,12 +50,15 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
         # all in ctree_control(); missing: mtry, applyfun, cores
         # (see above, passed directly)
-        ParamFct$new("teststat", default = "quadratic",
+        ParamFct$new("teststat",
+          default = "quadratic",
           levels = c("quadratic", "maximum"), tags = "train"),
-        ParamFct$new("splitstat", default = "quadratic",
+        ParamFct$new("splitstat",
+          default = "quadratic",
           levels = c("quadratic", "maximum"), tags = "train"),
         ParamLgl$new("splittest", default = FALSE, tags = "train"),
-        ParamFct$new("testtype", default = "Univariate",
+        ParamFct$new("testtype",
+          default = "Univariate",
           levels = c("Bonferroni", "MonteCarlo", "Univariate", "Teststatistic"),
           tags = "train"),
         ParamUty$new("nmax", tags = "train"),
@@ -61,24 +67,29 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         # maxpts, abseps, releps
         ParamUty$new("pargs", tags = "train"),
 
-        ParamDbl$new("alpha", default = 0.05, lower = 0, upper = 1,
+        ParamDbl$new("alpha",
+          default = 0.05, lower = 0, upper = 1,
           tags = "train"),
-        ParamDbl$new("mincriterion", default = 0, lower = 0, upper = 1,
+        ParamDbl$new("mincriterion",
+          default = 0, lower = 0, upper = 1,
           tags = "train"),
         ParamDbl$new("logmincriterion", default = 0, tags = "train"),
         ParamInt$new("minsplit", lower = 1L, default = 20L, tags = "train"),
         ParamInt$new("minbucket", lower = 1L, default = 7L, tags = "train"),
-        ParamDbl$new("minprob", default = 0.01, lower = 0, upper = 1,
+        ParamDbl$new("minprob",
+          default = 0.01, lower = 0, upper = 1,
           tags = "train"),
         ParamLgl$new("stump", default = FALSE, tags = "train"),
         ParamLgl$new("lookahead", default = FALSE, tags = "train"),
         ParamLgl$new("MIA", default = FALSE, tags = "train"),
         ParamInt$new("nresample", default = 9999L, lower = 1L, tags = "train"),
-        ParamDbl$new("tol", default = sqrt(.Machine$double.eps), lower = 0,
+        ParamDbl$new("tol",
+          default = sqrt(.Machine$double.eps), lower = 0,
           tags = "train"),
         ParamInt$new("maxsurrogate", default = 0L, lower = 0L, tags = "train"),
         ParamLgl$new("numsurrogate", default = FALSE, tags = "train"),
-        ParamInt$new("maxdepth", default = Inf, lower = 0L,
+        ParamInt$new("maxdepth",
+          default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
         ParamLgl$new("multiway", default = FALSE, tags = "train"),
         ParamInt$new("splittry", default = 2L, lower = 0L, tags = "train"),
@@ -87,7 +98,8 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         ParamLgl$new("caseweights", default = TRUE, tags = "train"),
         ParamLgl$new("saveinfo", default = FALSE, tags = "train"),
         ParamLgl$new("update", default = FALSE, tags = "train"),
-        ParamFct$new("splitflavour", default = "ctree",
+        ParamFct$new("splitflavour",
+          default = "ctree",
           levels = c("ctree", "exhaustive"), tags = "train"),
         ParamInt$new("maxvar", lower = 1L, tags = "train"),
 
@@ -97,19 +109,24 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         ParamLgl$new("scale", default = TRUE, tags = "predict"),
 
         # importance; OOB see predict, applyfun, cores see train
-        ParamInt$new("nperm", default = 1L, lower = 0L,
+        ParamInt$new("nperm",
+          default = 1L, lower = 0L,
           tags = c("train", "importance")),
-        ParamFct$new("risk", default = "loglik",
+        ParamFct$new("risk",
+          default = "loglik",
           levels = c("loglik", "misclassification"),
           tags = c("train", "importance")),
-        ParamLgl$new("conditional", default = FALSE,
+        ParamLgl$new("conditional",
+          default = FALSE,
           tags = c("train", "importance")),
-        ParamDbl$new("threshold", default = 0.2,
+        ParamDbl$new("threshold",
+          default = 0.2,
           tags = c("train", "importance"))
       )
       )
 
-      ps$add_dep("nresample", on = "testtype",
+      ps$add_dep("nresample",
+        on = "testtype",
         cond = CondEqual$new("MonteCarlo"))
       ps$add_dep("nperm", on = "conditional", cond = CondEqual$new(TRUE))
       ps$add_dep("threshold", on = "conditional", cond = CondEqual$new(TRUE))
@@ -153,7 +170,8 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     #'
     #' @return `numeric(1)`.
     oob_error = function() {
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = NULL,
+      preds = mlr3misc::invoke(predict,
+        object = self$model, newdata = NULL,
         type = "response", OOB = TRUE, FUN = NULL, simplify = TRUE,
         scale = TRUE)
       confusion = table(self$model$data[[as.character(attr(self$model$data,
@@ -169,7 +187,8 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        setdiff(methods::formalArgs(partykit::ctree_control),
+        setdiff(
+          methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")
         ))] # see ctree_control
       pars = pars[names(pars) %nin%
@@ -198,7 +217,8 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
+      preds = mlr3misc::invoke(predict,
+        object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
       if (self$predict_type == "response") {
         list(response = preds)

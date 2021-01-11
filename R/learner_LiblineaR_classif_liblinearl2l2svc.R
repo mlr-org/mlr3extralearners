@@ -79,8 +79,9 @@ LearnerClassifLiblineaRL2L2SVC = R6Class("LearnerClassifLiblineaRL2L2SVC", # nol
       }
       pars = pars[names(pars) != "type"]
 
-      mlr3misc::invoke(LiblineaR::LiblineaR, data = train, target = target,
-       type = type, .args = pars)
+      mlr3misc::invoke(LiblineaR::LiblineaR,
+        data = train, target = target,
+        type = type, .args = pars)
     },
 
     .predict = function(task) {

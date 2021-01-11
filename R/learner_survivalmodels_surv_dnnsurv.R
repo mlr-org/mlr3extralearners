@@ -39,9 +39,10 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
           ParamInt$new("cuts", default = 5, lower = 1, tags = "train"),
           ParamUty$new("cutpoints", tags = "train"),
           ParamUty$new("custom_model", tags = "train"),
-          ParamFct$new("optimizer", default = "adam",
-                  levels = c("adadelta", "adagrad", "adamax", "adam", "nadam", "rmsprop", "sgd"),
-                  tags = "train"),
+          ParamFct$new("optimizer",
+            default = "adam",
+            levels = c("adadelta", "adagrad", "adamax", "adam", "nadam", "rmsprop", "sgd"),
+            tags = "train"),
           ParamDbl$new("lr", default = 0.02, lower = 0, tags = "train"),
           ParamDbl$new("beta_1", default = 0.9, lower = 0, upper = 1, tags = "train"),
           ParamDbl$new("beta_2", default = 0.999, lower = 0, upper = 1, tags = "train"),
@@ -105,7 +106,6 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
 
   private = list(
     .train = function(task) {
-
       pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::dnnsurv,
@@ -118,7 +118,6 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
     },
 
     .predict = function(task) {
-
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
 

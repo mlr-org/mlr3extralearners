@@ -146,7 +146,6 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     },
 
     .predict = function(task) {
-
       pars = self$param_set$get_values(tags = "predict")
 
       lp = as.numeric(mlr3misc::invoke(predict,
@@ -162,9 +161,10 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         type = "risk",
         times = sort(unique(self$model$time)))
 
-      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
-                              surv = surv,
-                              lp = lp)
+      mlr3proba::.surv_return(
+        times = sort(unique(self$model$time)),
+        surv = surv,
+        lp = lp)
     }
   )
 )

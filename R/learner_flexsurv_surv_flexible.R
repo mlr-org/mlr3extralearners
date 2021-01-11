@@ -60,8 +60,9 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
           ParamInt$new(id = "maxiter", default = 30L, tags = c("train", "control")),
           ParamDbl$new(id = "rel.tolerance", default = 1e-09, tags = c("train", "control")),
           ParamDbl$new(id = "toler.chol", default = 1e-10, tags = c("train", "control")),
-          ParamInt$new(id = "debug", default = 0, lower = 0, upper = 1,
-                       tags = c("train", "control")),
+          ParamInt$new(
+            id = "debug", default = 0, lower = 0, upper = 1,
+            tags = c("train", "control")),
           ParamInt$new(id = "outer.max", default = 10L, tags = c("train", "control"))
       ))
 
@@ -86,7 +87,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars_ctrl = self$param_set$get_values(tags = "control")
       pars_train = self$param_set$get_values(tags = "train")
       pars_train = pars_train[pars_train %nin% pars_ctrl]
-      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl) #nolint
+      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl) # nolint
 
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight
@@ -124,8 +125,8 @@ predict_flexsurvreg <- function(object, task, ...) {
 
   newdata = task$data(cols = task$feature_names)
   X = stats::model.matrix(formulate(rhs = task$feature_names),
-                          data = newdata,
-                          xlev = task$levels())
+    data = newdata,
+    xlev = task$levels())
 
   # collect the auxiliary arguments for the fitted object
   args <- object$aux
@@ -136,8 +137,8 @@ predict_flexsurvreg <- function(object, task, ...) {
 
   # collect fitted parameters
   pars = matrix(object$res.t[object$dlist$pars, "est"],
-                nrow = nrow(newdata),
-                ncol = length(object$dlist$pars), byrow = TRUE)
+    nrow = nrow(newdata),
+    ncol = length(object$dlist$pars), byrow = TRUE)
   colnames(pars) = object$dlist$pars
 
   # calculate the linear predictor as X\beta, note intercept not included in model.matrix
@@ -158,7 +159,8 @@ predict_flexsurvreg <- function(object, task, ...) {
   # Define the d/p/q/r methods using the d/p/q/r methods that are automatically generated in the
   # fitted object. The parameters referenced are defined below and are based on the gamma
   # parameters above.
-  pdf = function(x) {} # nolint
+  pdf = function(x) {
+  } # nolint
   body(pdf) = substitute({
     fn = func
     args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
@@ -166,7 +168,8 @@ predict_flexsurvreg <- function(object, task, ...) {
     do.call(fn, c(list(x = x), args))
   }, list(func = object$dfns$d))
 
-  cdf = function(x) {} # nolint
+  cdf = function(x) {
+  } # nolint
   body(cdf) = substitute({
     fn = func
     args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
@@ -174,7 +177,8 @@ predict_flexsurvreg <- function(object, task, ...) {
     do.call(fn, c(list(q = x), args))
   }, list(func = object$dfns$p))
 
-  quantile = function(p) {} # nolint
+  quantile = function(p) {
+  } # nolint
   body(quantile) = substitute({
     fn = func
     args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
@@ -182,7 +186,8 @@ predict_flexsurvreg <- function(object, task, ...) {
     do.call(fn, c(list(p = p), args))
   }, list(func = object$dfns$q))
 
-  rand = function(n) {} # nolint
+  rand = function(n) {
+  } # nolint
   body(rand) = substitute({
     fn = func
     args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
@@ -233,7 +238,7 @@ predict_flexsurvreg <- function(object, task, ...) {
   })
 
   distr = distr6::VectorDistribution$new(distlist,
-                                         decorators = c("CoreStatistics", "ExoticStatistics"))
+    decorators = c("CoreStatistics", "ExoticStatistics"))
 
   return(list(distr = distr, lp = lp))
 }

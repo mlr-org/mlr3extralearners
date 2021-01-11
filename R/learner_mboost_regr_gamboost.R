@@ -69,17 +69,18 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
     .train = function(task) {
 
       # Set to default for switch
+
       if (is.null(self$param_set$values$family)) {
         self$param_set$values$family = "Gaussian"
       }
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-                                methods::formalArgs(mboost::boost_control))]
+        methods::formalArgs(mboost::boost_control))]
       pars_gamboost = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::gamboost))]
+        methods::formalArgs(mboost::gamboost))]
       pars_family = pars[which(names(pars) %in%
-                                 methods::formalArgs(utils::getFromNamespace(
+        methods::formalArgs(utils::getFromNamespace(
           pars_gamboost$family,
           asNamespace("mboost"))))]
 

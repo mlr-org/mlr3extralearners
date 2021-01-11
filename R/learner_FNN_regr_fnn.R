@@ -47,6 +47,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     },
 
     .predict = function(task) {
+
       model = self$model
       train = model$data[, task$feature_names, with = FALSE]
       target = model$data[, task$target_names, with = FALSE]

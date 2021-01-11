@@ -30,12 +30,15 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       ps = ParamSet$new(list(
         ParamInt$new("ntree", default = 500L, lower = 1L, tags = "train"),
         ParamLgl$new("replace", default = FALSE, tags = c("train", "perturb")),
-        ParamDbl$new("fraction", default = 0.632, lower = 0, upper = 1,
+        ParamDbl$new("fraction",
+          default = 0.632, lower = 0, upper = 1,
           tags = c("train", "perturb")),
-        ParamInt$new("mtry", lower = 0L, special_vals = list(Inf),
+        ParamInt$new("mtry",
+          lower = 0L, special_vals = list(Inf),
           tags = "train"), # default actually "ceiling(sqrt(nvar))"
         ParamUty$new("applyfun", tags = c("train", "importance")),
-        ParamInt$new("cores", default = NULL, special_vals = list(NULL),
+        ParamInt$new("cores",
+          default = NULL, special_vals = list(NULL),
           tags = c("train", "importance")),
         ParamLgl$new("trace", default = FALSE, tags = "train"),
         ParamUty$new("offset", tags = "train"),
@@ -43,33 +46,41 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamUty$new("na.action", default = stats::na.pass, tags = "train"),
         ParamUty$new("scores", tags = "train"),
 
-        ParamFct$new("teststat", default = "quadratic",
+        ParamFct$new("teststat",
+          default = "quadratic",
           levels = c("quadratic", "maximum"), tags = c("train", "ctrl")),
-        ParamFct$new("splitstat", default = "quadratic",
+        ParamFct$new("splitstat",
+          default = "quadratic",
           levels = c("quadratic", "maximum"), tags = c("train", "ctrl")),
         ParamLgl$new("splittest", default = FALSE, tags = c("train", "ctrl")),
-        ParamFct$new("testtype", default = "Univariate",
+        ParamFct$new("testtype",
+          default = "Univariate",
           levels = c("Bonferroni", "MonteCarlo", "Univariate", "Teststatistic"),
           tags = c("train", "ctrl")),
         ParamUty$new("nmax", tags = c("train", "ctrl")),
-        ParamDbl$new("alpha", default = 0.05, lower = 0, upper = 1,
+        ParamDbl$new("alpha",
+          default = 0.05, lower = 0, upper = 1,
           tags = c("train", "ctrl")),
-        ParamDbl$new("mincriterion", default = 0.95, lower = 0, upper = 1,
+        ParamDbl$new("mincriterion",
+          default = 0.95, lower = 0, upper = 1,
           tags = c("train", "ctrl")),
         ParamDbl$new("logmincriterion", default = log(0.95), tags = c("train", "ctrl")),
         ParamInt$new("minsplit", lower = 1L, default = 20L, tags = c("train", "ctrl")),
         ParamInt$new("minbucket", lower = 1L, default = 7L, tags = c("train", "ctrl")),
-        ParamDbl$new("minprob", default = 0.01, lower = 0, upper = 1,
+        ParamDbl$new("minprob",
+          default = 0.01, lower = 0, upper = 1,
           tags = c("train", "ctrl")),
         ParamLgl$new("stump", default = FALSE, tags = c("train", "ctrl")),
         ParamLgl$new("lookahead", default = FALSE, tags = c("train", "ctrl")),
         ParamLgl$new("MIA", default = FALSE, tags = c("train", "ctrl")),
         ParamInt$new("nresample", default = 9999L, lower = 1L, tags = c("train", "ctrl")),
-        ParamDbl$new("tol", default = sqrt(.Machine$double.eps), lower = 0,
+        ParamDbl$new("tol",
+          default = sqrt(.Machine$double.eps), lower = 0,
           tags = c("train", "ctrl")),
         ParamInt$new("maxsurrogate", default = 0L, lower = 0L, tags = c("train", "ctrl")),
         ParamLgl$new("numsurrogate", default = FALSE, tags = c("train", "ctrl")),
-        ParamInt$new("maxdepth", default = Inf, lower = 0L,
+        ParamInt$new("maxdepth",
+          default = Inf, lower = 0L,
           special_vals = list(Inf), tags = c("train", "ctrl")),
         ParamLgl$new("multiway", default = FALSE, tags = c("train", "ctrl")),
         ParamInt$new("splittry", default = 2L, lower = 0L, tags = c("train", "ctrl")),
@@ -78,7 +89,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamLgl$new("caseweights", default = TRUE, tags = c("train", "ctrl")),
         ParamLgl$new("saveinfo", default = FALSE, tags = c("train", "ctrl")),
         ParamLgl$new("update", default = FALSE, tags = c("train", "ctrl")),
-        ParamFct$new("splitflavour", default = "ctree",
+        ParamFct$new("splitflavour",
+          default = "ctree",
           levels = c("ctree", "exhaustive"), tags = c("train", "ctrl")),
         ParamInt$new("maxvar", lower = 1L, tags = c("train", "ctrl")),
 
@@ -89,7 +101,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
         # importance; OOB see predict, applyfun, cores see train
         ParamInt$new("nperm", default = 1L, lower = 0L, tags = c("train", "importance")),
-        ParamFct$new("risk", default = "loglik", levels = c("loglik", "misclassification"),
+        ParamFct$new("risk",
+          default = "loglik", levels = c("loglik", "misclassification"),
           tags = c("train", "importance")),
         ParamLgl$new("conditional", default = FALSE, tags = c("train", "importance")),
         ParamDbl$new("threshold", default = 0.2, tags = c("train", "importance")),
@@ -100,7 +113,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       )
       )
 
-      ps$add_dep("nresample", on = "testtype",
+      ps$add_dep("nresample",
+        on = "testtype",
         cond = CondEqual$new("MonteCarlo"))
       ps$add_dep("nperm", on = "conditional", cond = CondEqual$new(TRUE))
       ps$add_dep("threshold", on = "conditional", cond = CondEqual$new(TRUE))
@@ -159,9 +173,11 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
     },
 
     .predict = function(task) {
+
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
+      preds = mlr3misc::invoke(predict,
+        object = self$model, newdata = newdata,
         type = "prob", .args = pars)
 
       # Define WeightedDiscrete distr6 distribution from the survival function
@@ -172,8 +188,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
-        params       = x,
-        decorators   = c("CoreStatistics", "ExoticStatistics"))
+        params = x,
+        decorators = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
       crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))

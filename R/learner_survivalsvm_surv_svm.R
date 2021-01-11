@@ -99,7 +99,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
       crank = as.numeric(fit$predicted)
 
       if (is.null(self$param_set$values$type) ||
-          (self$param_set$values$type %in% c("regression", "hybrid"))) {
+        (self$param_set$values$type %in% c("regression", "hybrid"))) {
         # higher survival time = lower risk
         response = crank
       } else {

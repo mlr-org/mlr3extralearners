@@ -9,6 +9,7 @@
 #' @export
 install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
   sapply(.keys, function(.key) {
+
     if (grepl("surv|dens", .key) && !requireNamespace("mlr3proba", quietly = TRUE)) {
       utils::install.packages("mlr3proba", repos = repos, ...)
     } else if (grepl("clust", .key) && !requireNamespace("mlr3cluster", quietly = TRUE)) {
@@ -24,8 +25,9 @@ install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
     cran = cran[!mlr3misc::map_lgl(cran, requireNamespace, quietly = TRUE)]
     if (length(cran)) install.packages(cran, repos = repos, ...)
 
-    gh = gh[!mlr3misc::map_lgl(gh, function(.x)
-      requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE))]
+    gh = gh[!mlr3misc::map_lgl(gh, function(.x) {
+      requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE)
+    })]
     if (length(gh)) sapply(gh, remotes::install_github, upgrade = "always", ...)
   })
 

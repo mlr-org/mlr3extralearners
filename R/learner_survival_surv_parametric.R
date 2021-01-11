@@ -49,19 +49,23 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::LearnerSurv,
+LearnerSurvParametric = R6Class("LearnerSurvParametric",
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamFct$new(id = "type", default = "aft", levels = c("aft", "ph", "po", "tobit"),
-                       tags = "predict"),
+          ParamFct$new(
+            id = "type", default = "aft", levels = c("aft", "ph", "po", "tobit"),
+            tags = "predict"),
           ParamUty$new(id = "na.action", tags = "train"),
-          ParamFct$new(id = "dist", default = "weibull",
-                       levels = c("weibull", "exponential", "gaussian",
-                                  "lognormal", "loglogistic"), tags = "train"),
+          ParamFct$new(
+            id = "dist", default = "weibull",
+            levels = c(
+              "weibull", "exponential", "gaussian",
+              "lognormal", "loglogistic"), tags = "train"),
           ParamUty$new(id = "parms", tags = "train"),
           ParamUty$new(id = "init", tags = "train"),
           ParamDbl$new(id = "scale", default = 0, lower = 0, tags = "train"),
@@ -97,8 +101,9 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
         pv$weights = task$weights$weight
       }
 
-      fit = mlr3misc::invoke(survival::survreg, formula = task$formula(), data = task$data(),
-                             .args = pv)
+      fit = mlr3misc::invoke(survival::survreg,
+        formula = task$formula(), data = task$data(),
+        .args = pv)
 
       self$state$feature_names = task$feature_names
 
@@ -120,17 +125,22 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
       }
 
       basedist = switch(fit$dist,
-                        "weibull" = distr6::Weibull$new(shape = 1 / scale, scale = exp(location),
-                                                        decorators = "ExoticStatistics"),
-                        "exponential" = distr6::Exponential$new(scale = exp(location),
-                                                                decorators = "ExoticStatistics"),
-                        "gaussian" = distr6::Normal$new(mean = location, sd = scale,
-                                                        decorators = "ExoticStatistics"),
-                        "lognormal" = distr6::Lognormal$new(meanlog = location, sdlog = scale,
-                                                            decorators = "ExoticStatistics"),
-                        "loglogistic" = distr6::Loglogistic$new(scale = exp(location),
-                                                                shape = 1 / scale,
-                                                                decorators = "ExoticStatistics")
+        "weibull" = distr6::Weibull$new(
+          shape = 1 / scale, scale = exp(location),
+          decorators = "ExoticStatistics"),
+        "exponential" = distr6::Exponential$new(
+          scale = exp(location),
+          decorators = "ExoticStatistics"),
+        "gaussian" = distr6::Normal$new(
+          mean = location, sd = scale,
+          decorators = "ExoticStatistics"),
+        "lognormal" = distr6::Lognormal$new(
+          meanlog = location, sdlog = scale,
+          decorators = "ExoticStatistics"),
+        "loglogistic" = distr6::Loglogistic$new(
+          scale = exp(location),
+          shape = 1 / scale,
+          decorators = "ExoticStatistics")
       )
 
       set_class(list(fit = fit, basedist = basedist), "surv.parametric")
@@ -142,16 +152,18 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
       # As we are using a custom predict method the missing assertions are performed here manually
       # (as opposed to the automatic assertions that take place after prediction)
       if (any(is.na(data.frame(task$data(cols = feature_names))))) {
-        stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n",
-              self$id, task$id,
-              paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
+        stopf(
+          "Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n",
+          self$id, task$id,
+          paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
       }
 
       pv = self$param_set$get_values(tags = "predict")
 
       # Call the predict method defined here
-      pred = mlr3misc::invoke(.predict_survreg, object = self$model, task = task,
-                              feature_names = feature_names, .args = pv)
+      pred = mlr3misc::invoke(.predict_survreg,
+        object = self$model, task = task,
+        feature_names = feature_names, .args = pv)
 
       # lp is aft-style, where higher value = lower risk, opposite needed for crank
       list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
@@ -162,6 +174,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 .predict_survreg = function(object, task, feature_names, type = "aft", tobit = FALSE) {
 
   # Extracts baseline distribution and the model fit, performs assertions
+
   basedist = object$basedist
   fit = object$fit
   distr6::assertDistribution(basedist)
@@ -169,8 +182,9 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 
   # define newdata from the supplied task and convert to model matrix
   newdata = task$data(cols = feature_names)
-  x = stats::model.matrix(formulate(rhs = feature_names), data = newdata,
-                          xlev = task$levels())[, -1]
+  x = stats::model.matrix(formulate(rhs = feature_names),
+    data = newdata,
+    xlev = task$levels())[, -1]
 
   # linear predictor defined by the fitted cofficients multiplied by the model matrix
   # (i.e. covariates)
@@ -187,50 +201,58 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   if (type == "tobit") {
     name = paste(dist, "Tobit Model")
     short_name = paste0(dist, "Tobit")
-    description = paste(dist, "Tobit Model with negative log-likelihood",
-                        -fit$loglik[2])
+    description = paste(
+      dist, "Tobit Model with negative log-likelihood",
+      -fit$loglik[2])
   } else if (type == "ph") {
     name = paste(dist, "Proportional Hazards Model")
     short_name = paste0(dist, "PH")
-    description = paste(dist, "Proportional Hazards Model with negative log-likelihood",
-                        -fit$loglik[2])
+    description = paste(
+      dist, "Proportional Hazards Model with negative log-likelihood",
+      -fit$loglik[2])
   } else if (type == "aft") {
     name = paste(dist, "Accelerated Failure Time Model")
     short_name = paste0(dist, "AFT")
-    description = paste(dist, "Accelerated Failure Time Model with negative log-likelihood",
-                        -fit$loglik[2])
+    description = paste(
+      dist, "Accelerated Failure Time Model with negative log-likelihood",
+      -fit$loglik[2])
   } else if (type == "po") {
     name = paste(dist, "Proportional Odds Model")
     short_name = paste0(dist, "PO")
-    description = paste(dist, "Proportional Odds Model with negative log-likelihood",
-                        -fit$loglik[2])
+    description = paste(
+      dist, "Proportional Odds Model with negative log-likelihood",
+      -fit$loglik[2])
   }
 
-  params = list(list(name = name,
-                     short_name = short_name,
-                     type = set6::PosReals$new(),
-                     support = set6::PosReals$new(),
-                     valueSupport = "continuous",
-                     variateForm = "univariate",
-                     description = description,
-                     .suppressChecks = TRUE,
-                     pdf = function() {
-                     },
-                     cdf = function() {
-                     },
-                     parameters = distr6::ParameterSet$new()
+  params = list(list(
+    name = name,
+    short_name = short_name,
+    type = set6::PosReals$new(),
+    support = set6::PosReals$new(),
+    valueSupport = "continuous",
+    variateForm = "univariate",
+    description = description,
+    .suppressChecks = TRUE,
+    pdf = function() {
+    },
+    cdf = function() {
+    },
+    parameters = distr6::ParameterSet$new()
   ))
 
   params = rep(params, length(lp))
 
-  pdf = function(x) {} # nolint
-  cdf = function(x) {} # nolint
-  quantile = function(p) {} # nolint
+  pdf = function(x) {
+  } # nolint
+  cdf = function(x) {
+  } # nolint
+  quantile = function(p) {
+  } # nolint
 
   if (type == "tobit") {
     for (i in seq_along(lp)) {
-      body(pdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
-      body(cdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      body(pdf) = substitute(pnorm((x - y) / scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      body(cdf) = substitute(pnorm((x - y) / scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
       body(quantile) = substitute(qnorm(p) * scale + y, list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
       params[[i]]$pdf = pdf
       params[[i]]$cdf = cdf
@@ -247,8 +269,9 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
     }
   } else if (type == "aft") {
     for (i in seq_along(lp)) {
-      body(pdf) = substitute((exp(-y) * basedist$hazard(x / exp(y))) * (1 - self$cdf(x)),
-                             list(y = lp[i]))
+      body(pdf) = substitute(
+        (exp(-y) * basedist$hazard(x / exp(y))) * (1 - self$cdf(x)),
+        list(y = lp[i]))
       body(cdf) = substitute(1 - (basedist$survival(x / exp(y))), list(y = lp[i]))
       body(quantile) = substitute(exp(y) * basedist$quantile(p), list(y = lp[i]))
       params[[i]]$pdf = pdf
@@ -258,14 +281,16 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   } else if (type == "po") {
     for (i in seq_along(lp)) {
       body(pdf) = substitute((basedist$hazard(x) *
-                                (1 - (basedist$survival(x) /
-                                        (((exp(y) - 1)^-1) + basedist$survival(x))))) *
-                               (1 - self$cdf(x)), list(y = lp[i]))
-      body(cdf) = substitute(1 - (basedist$survival(x) *
-                                    (exp(-y) + (1 - exp(-y)) * basedist$survival(x))^-1),
-                             list(y = lp[i]))
-      body(quantile) = substitute(basedist$quantile(-p / ((exp(-y) * (p - 1)) - p)), # nolint
-                                  list(y = lp[i]))
+        (1 - (basedist$survival(x) /
+          (((exp(y) - 1)^-1) + basedist$survival(x))))) *
+        (1 - self$cdf(x)), list(y = lp[i]))
+      body(cdf) = substitute(
+        1 - (basedist$survival(x) *
+          (exp(-y) + (1 - exp(-y)) * basedist$survival(x))^-1),
+        list(y = lp[i]))
+      body(quantile) = substitute(
+        basedist$quantile(-p / ((exp(-y) * (p - 1)) - p)), # nolint
+        list(y = lp[i]))
       params[[i]]$pdf = pdf
       params[[i]]$cdf = cdf
       params[[i]]$quantile = quantile
@@ -276,7 +301,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   names(distlist) = paste0(short_name, seq_along(distlist))
 
   distr = distr6::VectorDistribution$new(distlist,
-                                         decorators = c("CoreStatistics", "ExoticStatistics"))
+    decorators = c("CoreStatistics", "ExoticStatistics"))
 
   lp = lp + fit$coefficients[1]
 

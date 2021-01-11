@@ -29,17 +29,21 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
           ParamUty$new("num_nodes", default = c(32L, 32L), tags = "train"),
           ParamLgl$new("batch_norm", default = TRUE, tags = "train"),
           ParamDbl$new("dropout", lower = 0, upper = 1, tags = "train"),
-          ParamFct$new("activation", default = "relu",
-            levels = c("celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
-                       "hardtanh", "relu6", "leakyrelu", "logsigmoid", "logsoftmax", "prelu",
-                       "rrelu", "relu", "selu", "sigmoid", "softmax", "softmax2d", "softmin",
-                       "softplus", "softshrink", "softsign", "tanh", "tanhshrink", "threshold"),
+          ParamFct$new("activation",
+            default = "relu",
+            levels = c(
+              "celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
+              "hardtanh", "relu6", "leakyrelu", "logsigmoid", "logsoftmax", "prelu",
+              "rrelu", "relu", "selu", "sigmoid", "softmax", "softmax2d", "softmin",
+              "softplus", "softshrink", "softsign", "tanh", "tanhshrink", "threshold"),
             tags = "train"),
           ParamUty$new("device", tags = "train"),
           ParamDbl$new("shrink", default = 0, lower = 0, tags = "train"),
-          ParamFct$new("optimizer", default = "adam",
-            levels = c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
-                       "sgd", "sparse_adam"), tags = "train"),
+          ParamFct$new("optimizer",
+            default = "adam",
+            levels = c(
+              "adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
+              "sgd", "sparse_adam"), tags = "train"),
           ParamDbl$new("rho", default = 0.9, tags = "train"),
           ParamDbl$new("eps", default = 1e-8, tags = "train"),
           ParamDbl$new("lr", default = 1, tags = "train"),
@@ -70,15 +74,20 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
       )
 
       ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
-                                                     "adamw", "rmsprop", "sparse_adam")))
+      ps$add_dep("eps", "optimizer", CondAnyOf$new(c(
+        "adadelta", "adagrad", "adam", "adamax",
+        "adamw", "rmsprop", "sparse_adam")))
       ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("weight_decay", "optimizer",
-                 CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw",
-                                 "asgd", "rmsprop", "sgd")))
-      ps$add_dep("learning_rate", "optimizer",
-                 CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
-                                 "sgd", "sparse_adam")))
+      ps$add_dep(
+        "weight_decay", "optimizer",
+        CondAnyOf$new(c(
+          "adadelta", "adagrad", "adam", "adamax", "adamw",
+          "asgd", "rmsprop", "sgd")))
+      ps$add_dep(
+        "learning_rate", "optimizer",
+        CondAnyOf$new(c(
+          "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
+          "sgd", "sparse_adam")))
       ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
       ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
@@ -107,7 +116,6 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
 
   private = list(
     .train = function(task) {
-
       pars = self$param_set$get_values(tags = "fit")
       mlr3misc::invoke(
         survivalmodels::deepsurv,
@@ -120,7 +128,6 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
     },
 
     .predict = function(task) {
-
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
 

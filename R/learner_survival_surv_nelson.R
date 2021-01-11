@@ -22,7 +22,8 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSurv,
+LearnerSurvNelson = R6Class("LearnerSurvNelson",
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -44,11 +45,10 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSur
     },
 
     .predict = function(task) {
-
       times = self$model$time
       surv = matrix(rep(exp(-self$model$cumhaz), task$nrow),
-                    ncol = length(times), nrow = task$nrow,
-                    byrow = TRUE)
+        ncol = length(times), nrow = task$nrow,
+        byrow = TRUE)
 
       mlr3proba::.surv_return(times = times, surv = surv)
     }

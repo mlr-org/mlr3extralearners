@@ -88,7 +88,6 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
     .predict = function(task) {
       # Again the penalized and unpenalized covariates are automatically converted to the
       # correct formula
-
       pars = self$param_set$get_values(tags = "predict")
       if (length(pars$unpenalized) == 0) {
         penalized = formulate(rhs = task$feature_names)

@@ -18,7 +18,6 @@ LearnerClassifLiblineaRL2LogReg = R6Class("LearnerClassifLiblineaRL2LogReg", # n
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       warning("Deprecated. In the future please use `classif.liblinear` with `type = 0`.") # nolint
 
       ps = ParamSet$new(

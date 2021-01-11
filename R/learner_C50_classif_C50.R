@@ -30,13 +30,15 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
           ParamDbl$new(
             id = "CF", default = 0.25, lower = 0, upper = 1,
             tags = c("train", "C5.0Control")),
-          ParamInt$new(id = "minCases", default = 2L, lower = 0L, upper = Inf,
-           tags = c("train", "C5.0Control")),
+          ParamInt$new(
+            id = "minCases", default = 2L, lower = 0L, upper = Inf,
+            tags = c("train", "C5.0Control")),
           ParamLgl$new(
             id = "fuzzyThreshold", default = FALSE,
             tags = c("train", "C5.0Control")),
-          ParamDbl$new(id = "sample", default = 0, lower = 0, upper = .999,
-           tags = c("train", "C5.0Control")),
+          ParamDbl$new(
+            id = "sample", default = 0, lower = 0, upper = .999,
+            tags = c("train", "C5.0Control")),
           ParamInt$new(id = "seed", lower = -Inf, upper = Inf, tags = c("train", "C5.0Control")),
           ParamLgl$new(id = "earlyStopping", default = TRUE, tags = c("train", "C5.0Control")),
           ParamUty$new(id = "label", default = "outcome", tags = c("train", "C5.0Control")),

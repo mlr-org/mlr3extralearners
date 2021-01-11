@@ -68,6 +68,7 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
     .train = function(task) {
 
       # Set to default for switch
+
       if (is.null(self$param_set$values$family)) {
         self$param_set$values = insert_named(
           self$param_set$values,
@@ -76,11 +77,11 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-                                methods::formalArgs(mboost::boost_control))]
+        methods::formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::gamboost))]
+        methods::formalArgs(mboost::gamboost))]
       pars_family = pars[which(names(pars) %in%
-                                 methods::formalArgs(utils::getFromNamespace(
+        methods::formalArgs(utils::getFromNamespace(
           pars_glmboost$family,
           asNamespace("mboost"))))]
 
