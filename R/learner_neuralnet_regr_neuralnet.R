@@ -51,7 +51,7 @@ LearnerRegrNeuralnet = R6Class("LearnerRegrNeuralnet",
           number = paste("0", i, sep = "")
         }
         id_string = paste("layer", number, "size", sep = "")
-        ps$add(ParamInt$new(id = id_string, lower = 1L, default = 3L, tags = c("train", "layersizes")))
+        ps$add(ParamInt$new(id = id_string, lower = 1L, default = 1L, tags = c("train", "layersizes")))
         ps$add_dep(id_string, "layernumber", CondAnyOf$new(c(i:ps$upper["layernumber"])))
       }
 
