@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Density Smoothing Splines Learner — mlr_learners_dens.spline • mlr3extralearners</title>
+<title>Regression Generalized Linear Model Regression Learner — mlr_learners_regr.glm • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,8 +47,8 @@
 
 
 
-<meta property="og:title" content="Density Smoothing Splines Learner — mlr_learners_dens.spline" />
-<meta property="og:description" content="Calls gss::ssden from package gss." />
+<meta property="og:title" content="Regression Generalized Linear Model Regression Learner — mlr_learners_regr.glm" />
+<meta property="og:description" content="Calls stats::glm from package stats." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -147,23 +147,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Density Smoothing Splines Learner</h1>
+    <h1>Regression Generalized Linear Model Regression Learner</h1>
     
-    <div class="hidden name"><code>mlr_learners_dens.spline.Rd</code></div>
+    <div class="hidden name"><code>mlr_learners_regr.glm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calls <a href='https://rdrr.io/pkg/gss/man/ssden.html'>gss::ssden</a> from package <a href='https://CRAN.R-project.org/package=gss'><span class="pkg">gss</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/r/stats/glm.html'>stats::glm</a> from package <a href='https://CRAN.R-project.org/package=stats'><span class="pkg">stats</span></a>.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>For logistic regression please use
+<code><a href='https://mlr3learners.mlr-org.com/reference/mlr_learners_classif.log_reg.html'>mlr_learners_classif.log_reg</a></code>.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
 <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"dens.spline"</span><span class='op'>)</span>
-<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"dens.spline"</span><span class='op'>)</span>
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"regr.glm"</span><span class='op'>)</span>
+<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.glm"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
@@ -171,35 +175,42 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: gss</p></li>
-<li><p>Predict Types: pdf, cdf</p></li>
-<li><p>Feature Types: integer, numeric</p></li>
-<li><p>Properties: missings</p></li>
+<li><p>Packages: stats</p></li>
+<li><p>Predict Types: response, se</p></li>
+<li><p>Feature Types: logical, integer, numeric, character, factor, ordered</p></li>
+<li><p>Properties: weights</p></li>
 </ul>
 
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
 
-    <p>Gu, C. and Wang, J. (2003),
-Penalized likelihood density estimation: Direct cross-validation and scalable approximation.
-Statistica Sinica, 13, 811–826.</p>
+    
+
+<ul>
+<li><p><code>type</code></p><ul>
+<li><p>Actual default: "link"</p></li>
+<li><p>Adjusted default: "response"</p></li>
+<li><p>Reason for change: Response scale more natural for predictions.</p></li>
+</ul></li>
+</ul>
+
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>RaphaelS1</p>
+    <p>salauer</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3proba.mlr-org.com/reference/LearnerDens.html'>mlr3proba::LearnerDens</a></code> -&gt; <code>LearnerDensSpline</code></p>
+    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerRegr.html'>mlr3::LearnerRegr</a></code> -&gt; <code>LearnerRegrGlm</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>LearnerDensSpline$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>LearnerDensSpline$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>LearnerRegrGlm$new()</code></a></p></li>
+<li><p><a href='#method-clone'><code>LearnerRegrGlm$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
@@ -216,12 +227,12 @@ Statistica Sinica, 13, 811–826.</p>
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerDensSpline</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>LearnerRegrGlm</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerDensSpline</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>LearnerRegrGlm</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -233,20 +244,21 @@ Statistica Sinica, 13, 811–826.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"dens.spline"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.glm"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerDensSpline:dens.spline&gt;
+</div><div class='output co'>#&gt; &lt;LearnerRegrGlm:regr.glm&gt;
 #&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: gss
-#&gt; * Predict Type: pdf
-#&gt; * Feature types: integer, numeric
-#&gt; * Properties: missings</div><div class='input'>
+#&gt; * Parameters: family=gaussian, type=response
+#&gt; * Packages: stats
+#&gt; * Predict Type: response
+#&gt; * Feature types: logical, integer, numeric, character, factor, ordered
+#&gt; * Properties: weights</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "type"       "alpha"      "weights"    "na.action"  "id.basis"  
-#&gt;  [6] "nbasis"     "seed"       "domain"     "quad"       "qdsz.depth"
-#&gt; [11] "bias"       "prec"       "maxiter"    "skip.iter" </div></pre>
+</div><div class='output co'>#&gt;  [1] "singular.ok" "x"           "y"           "model"       "etastart"   
+#&gt;  [6] "mustart"     "start"       "offset"      "family"      "na.action"  
+#&gt; [11] "link"        "epsilon"     "maxit"       "trace"       "dispersion" 
+#&gt; [16] "type"       </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

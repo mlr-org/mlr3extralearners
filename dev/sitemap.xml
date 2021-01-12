@@ -151,6 +151,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gbm.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glm.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glmboost.html</loc>
   </url>
   <url>
