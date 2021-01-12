@@ -36,11 +36,11 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   4:      classif.ctree mlr3extralearners partykit,sandwich,coin
 #>   5:  classif.cv_glmnet      mlr3learners                 glmnet
 #>  ---                                                            
-#> 121:        surv.ranger      mlr3learners                 ranger
-#> 122:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
-#> 123:         surv.rpart         mlr3proba  rpart,distr6,survival
-#> 124:           surv.svm mlr3extralearners            survivalsvm
-#> 125:       surv.xgboost      mlr3learners                xgboost
+#> 122:        surv.ranger      mlr3learners                 ranger
+#> 123:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
+#> 124:         surv.rpart         mlr3proba  rpart,distr6,survival
+#> 125:           surv.svm mlr3extralearners            survivalsvm
+#> 126:       surv.xgboost      mlr3learners                xgboost
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN. Install with:
