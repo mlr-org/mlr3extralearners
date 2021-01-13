@@ -115,4 +115,4 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
   )
 )
 
-lrns_dict$add("regr.bart", LearnerRegrBart)
+.extralrns_dict$add("regr.bart", LearnerRegrBart)
