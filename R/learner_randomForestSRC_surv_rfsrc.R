@@ -24,7 +24,7 @@
 #' @template example
 #' @export
 LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
@@ -172,23 +172,11 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # default estimator is nelson, hence nelson selected if NULL
       estimator = if (is.null(pars_predict$estimator)) "nelson" else pars_predict$estimator
 
-      cdf = if (estimator == "nelson") 1 - exp(-p$chf) else 1 - p$survival
+      surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = self$model$time.interest, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = cdf[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      crank = as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
-
-      mlr3proba::PredictionSurv$new(task = task, crank = crank, distr = distr)
+      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )
 
-lrns_dict$add("surv.rfsrc", LearnerSurvRandomForestSRC)
+.extralrns_dict$add("surv.rfsrc", LearnerSurvRandomForestSRC)

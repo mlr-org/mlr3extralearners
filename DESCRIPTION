@@ -1,17 +1,17 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.1.0
+Version: 0.1.3.9000
 Authors@R:
     c(person(given = "Raphael",
-           family = "Sonabend",
-           role = c("aut", "cre"),
-           email = "raphael.sonabend.15@ucl.ac.uk",
-           comment = c(ORCID = "0000-0001-9225-4654")),
+             family = "Sonabend",
+             role = c("aut", "cre"),
+             email = "raphael.sonabend.15@ucl.ac.uk",
+             comment = c(ORCID = "0000-0001-9225-4654")),
       person(given = "Patrick",
-           family = "Schratz",
-           role = "aut",
-           email = "patrick.schratz@gmail.com",
-           comment = c(ORCID = "0000-0003-0748-6624")))
+             family = "Schratz",
+             role = "aut",
+             email = "patrick.schratz@gmail.com",
+             comment = c(ORCID = "0000-0003-0748-6624")))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
@@ -19,14 +19,16 @@ Depends:
 Imports:
     checkmate,
     data.table,
+    methods,
     mlr3 (>= 0.6.0),
     mlr3misc,
-    mlr3proba (>= 0.2.2),
     paradox,
-    R6,
-    Rcpp (>= 1.0.4)
+    R6
 Suggests:
+    actuar,
+    apcluster,
     C50,
+    coin,
     CoxBoost,
     dbarts,
     distr6 (>= 1.4.3),
@@ -43,7 +45,11 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mlr3cluster,
+    mlr3learners (>= 0.4.2),
+    mlr3proba (>= 0.2.5.9000),
     mvtnorm,
+    nnet,
     np,
     obliqueRSF,
     partykit,
@@ -54,20 +60,22 @@ Suggests:
     pseudo,
     randomForest,
     randomForestSRC,
+    remotes,
     reticulate (>= 1.16),
     RWeka,
+    sandwich,
+    set6,
     sm,
+    stats,
     survival,
+    survivalmodels (>= 0.1.4),
     survivalsvm,
     tensorflow (>= 2.0.0),
-    testthat
-LinkingTo: 
-    Rcpp
+    testthat,
+    usethis
 Remotes:
-    mlr-org/mlr3,
-    mlr-org/mlr3proba,
-    alan-turing-institute/distr6
+    mlr-org/mlr3proba
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1

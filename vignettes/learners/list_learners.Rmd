@@ -1,6 +1,6 @@
 ---
+title: "mlr3verse learners"
 output: html_document
-title: mlr3verse learners
 ---
 
 ```{r, include = FALSE}

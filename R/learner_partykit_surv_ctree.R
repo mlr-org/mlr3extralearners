@@ -21,7 +21,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvCTree = R6Class("LearnerSurvCTree",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
 
     #' @description
@@ -59,6 +59,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
             default = Inf, tags = "train"),
           ParamInt$new("maxdepth", lower = 0L, special_vals = list(Inf),
             default = Inf, tags = "train"),
+          ParamInt$new("maxvar", lower = 1L, tags = "train"),
           ParamLgl$new("multiway", default = FALSE, tags = "train"),
           ParamInt$new("splittry", lower = 0L, default = 2L, tags = "train"),
           ParamLgl$new("intersplit", default = FALSE, tags = "train"),
@@ -84,7 +85,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
 
       super$initialize(
         id            = "surv.ctree",
-        packages      = c("partykit", "coin", "sandwich", "pracma"),
+        packages      = c("partykit", "coin", "sandwich"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("distr", "crank"),
         param_set     = ps,
@@ -113,21 +114,25 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
     .predict = function(task) {
 
       newdata = task$data(cols = task$feature_names)
-      p = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata)
+      preds = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata)
 
       # Define WeightedDiscrete distr6 distribution from the survival function
-      x = lapply(p, function(z) data.frame(x = z$time, cdf = 1 - z$surv))
+      x = lapply(preds, function(z) {
+        time = c(0, z$time, max(z$time) + 1e-3)
+        surv = c(1, z$surv, 0)
+        data.frame(x = time, cdf = 1 - surv)
+      })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
         params       = x,
         decorators   = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
+      crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
-      PredictionSurv$new(task = task, crank = crank, distr = distr)
+      list(crank = crank, distr = distr)
     }
   )
 )
 
-lrns_dict$add("surv.ctree", LearnerSurvCTree)
+.extralrns_dict$add("surv.ctree", LearnerSurvCTree)

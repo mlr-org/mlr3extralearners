@@ -2,7 +2,7 @@
 
 # New Learner
 
-This pull request adds Learner[Type][Name] with the unique key [type].[key] from package [package].
+This pull request adds **Learner[Type][Name]** with the unique key **[type].[key]** from package **{[package]}**.
 
 I have...
 
@@ -15,7 +15,7 @@ I have...
 * [ ] Added references and not left the tag blank - !!!Delete if not applicable!!!
 * [ ] Removed all 'FIXME's
 
-# Dependencies
+## Dependencies
 
 I have...
 
@@ -28,7 +28,7 @@ I have...
 
 #### Remote dependency
 
-# Tests
+## Tests
 
 I have...
 
@@ -36,7 +36,7 @@ I have...
 * [ ] Created a paramtest file with tests for all calls in both my `.train` and `.predict` methods and it passes locally.
 * [ ] Run `rcmdcheck::rcmdcheck` and there are no new NOTEs, WARNINGs, or ERRORs.
 
-# Cleaning
+## Cleaning
 
 I have run...
 
@@ -45,12 +45,23 @@ I have run...
 * [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
-# Reviewer
+And 
 
-Tick as appropriate:
+* [ ] Updated NEWS.md
 
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
+## Maintenance and Contributions
+
+This PR will only be merged if the following is filled in and ticked:
+
+* [ ] <github_name> agrees to maintain this learner going forward and agrees that this learner will be removed from `mlr3extralearners` if: i) the build remains broken for more than one month with no effort to fix it; or ii) is broken for more than three months.
+
+The maintainer of the learner can be changed at any time by editing the '@author' tag and creating a pull request.
+
+Finally make sure you get credit and add yourself to the DESCRIPTION file (optionally add a note to say which learner(s) you implemented):
+
+* [ ] I have added myself (and anyone else who contributed) to the end of the "Authors" field in the DESCRIPTION file with role "ctb" 
+
+## Comments
 
 -------
 
@@ -58,9 +69,9 @@ Tick as appropriate:
 
 This pull request updates Learner[Type][Name].
 
-## Reason for update
+### Reason for update
 
-# Dependencies
+## Dependencies
 
 I have...
 
@@ -72,13 +83,13 @@ I have...
 
 #### Remote dependency
 
-# Tests
+## Tests
 
 * [ ] Learner autotest is passing locally.
 * [ ] Paramtest is passing locally.
 * [ ] I have run `rcmdcheck::rcmdcheck` and there are no new NOTEs, WARNINGs, or ERRORs.
 
-# Cleaning
+## Cleaning
 
 I have run...
 
@@ -87,12 +98,11 @@ I have run...
 * [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
-# Reviewer
+And 
 
-Delete as appropriate:
+* [ ] Updated NEWS.md
 
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
+## Comments
 
 ----
 

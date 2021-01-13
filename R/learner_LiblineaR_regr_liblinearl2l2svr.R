@@ -31,6 +31,7 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      warning("Deprecated. In the future please use `regr.liblinear` with `type = 11` or `type = 12`.") # nolint
 
       ps = ParamSet$new(
         params = list(
@@ -58,12 +59,12 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
       )
 
       super$initialize(
-        id = "regr.liblinearl2l1svr",
+        id = "regr.liblinearl2l2svr",
         packages = "LiblineaR",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.liblinearl2l1svr"
+        man = "mlr3extralearners::mlr_learners_regr.liblinearl2l2svr"
       )
     }
   ),
@@ -72,8 +73,8 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
 
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      train = data[, task$feature_names, with = FALSE]
-      target = data[, task$target_names, with = FALSE]
+      train = task$data(cols = task$feature_names)
+      target = task$truth()
 
       if (is.null(pars$type)) {
         type = 11
@@ -89,9 +90,9 @@ LearnerRegrLiblineaRL2L2SVR = R6Class("LearnerRegrLiblineaRL2L2SVR",
       newdata = task$data(cols = task$feature_names)
 
       p = invoke(predict, self$model, newx = newdata)
-      PredictionRegr$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )
 
-lrns_dict$add("regr.liblinearl2l2svr", LearnerRegrLiblineaRL2L2SVR)
+.extralrns_dict$add("regr.liblinearl2l2svr", LearnerRegrLiblineaRL2L2SVR)

@@ -5,7 +5,7 @@
 \alias{LearnerClassifPART}
 \title{Classification PART Learner}
 \description{
-Calls \link[RWeka:PART]{RWeka::PART} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:Weka_classifier_rules]{RWeka::PART} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

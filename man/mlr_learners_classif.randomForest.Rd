@@ -26,13 +26,12 @@ lrn("classif.randomForest")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("randomForest"))) {
-  learner = mlr3::lrn("classif.randomForest")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("classif.randomForest"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Breiman, L. (2001).

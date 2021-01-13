@@ -64,6 +64,7 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
           ParamLgl$new("intersplit", default = FALSE, tags = "train"),
           ParamLgl$new("majority", default = FALSE, tags = "train"),
           ParamLgl$new("caseweights", default = FALSE, tags = "train"),
+          ParamInt$new("maxvar", lower = 1L, tags = "train"),
           ParamUty$new("applyfun", tags = "train"),
           ParamInt$new("cores", special_vals = list(NULL), default = NULL,
             tags = "train"),
@@ -116,14 +117,14 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
       if (self$predict_type == "response") {
         response = mlr3misc::invoke(predict, self$model, newdata = newdata,
           type = "response")
-        PredictionClassif$new(task = task, response = response)
+        list(response = response)
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata,
           type = "prob")
-        PredictionClassif$new(task = task, prob = prob)
+        list(prob = prob)
       }
     }
   )
 )
 
-lrns_dict$add("classif.ctree", LearnerClassifCTree)
+.extralrns_dict$add("classif.ctree", LearnerClassifCTree)

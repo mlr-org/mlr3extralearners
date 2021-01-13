@@ -146,8 +146,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       newdata = task$data(cols = task$feature_names)
       pars = self$param_set$get_values(tags = "predict")
 
-      mlr3::PredictionRegr$new(
-        task = task,
+      list(
         response = mlr3misc::invoke(predict,
           object = self$model,
           newdata = newdata,
@@ -157,4 +156,4 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   )
 )
 
-lrns_dict$add("regr.rfsrc", LearnerRegrRandomForestSRC)
+.extralrns_dict$add("regr.rfsrc", LearnerRegrRandomForestSRC)

@@ -99,9 +99,9 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
       p = invoke(kernlab::predict, self$model,
         newdata = newdata,
         type = "response")
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )
 
-lrns_dict$add("regr.ksvm", LearnerRegrKSVM)
+.extralrns_dict$add("regr.ksvm", LearnerRegrKSVM)

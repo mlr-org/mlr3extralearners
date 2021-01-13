@@ -20,19 +20,18 @@ lrn("dens.logspline")
 \itemize{
 \item Packages: logspline
 \item Predict Types: pdf, cdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties:
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("logspline"))) {
-  learner = mlr3::lrn("dens.logspline")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.logspline"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Charles Kooperberg and Charles J. Stone.

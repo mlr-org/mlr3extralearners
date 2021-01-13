@@ -5,7 +5,7 @@
 \alias{LearnerClassifLMT}
 \title{Classification Logistic Model Trees Learner}
 \description{
-Calls \link[RWeka:LMT]{RWeka::LMT} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:Weka_classifier_trees]{RWeka::LMT} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

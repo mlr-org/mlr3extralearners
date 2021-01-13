@@ -21,7 +21,7 @@
 #' @template example
 #' @export
 LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
@@ -52,11 +52,10 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         # see the mlr3book for a description: https://mlr3book.mlr-org.com/extending-mlr3.html
         id = "surv.coxboost",
         packages = c("CoxBoost", "pracma"),
-        feature_types = c("integer", "numeric", "factor", "logical"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
         properties = "weights",
-        # the help file name is the one used as @name in the roxygen2 block
         man = "mlr3extralearners::mlr_learners_surv.coxboost"
       )
     }
@@ -75,9 +74,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
           CoxBoost::CoxBoost,
           time = task$truth()[, 1],
           status = task$truth()[, 2],
-          x = model.matrix(
-            ~.,
-            as.data.frame(task$data(cols = task$feature_names)))[, -1, drop = FALSE],
+          x = as.matrix(task$data(cols = task$feature_names)),
           .args = pars
         )
       })
@@ -85,38 +82,26 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
 
     .predict = function(task) {
 
+      pars = self$param_set$get_values(tags = "predict")
+
       lp = as.numeric(mlr3misc::invoke(predict,
         self$model,
-        newdata = model.matrix(
-          ~.,
-          as.data.frame(task$data(cols = task$feature_names)))[, -1,
-          drop = FALSE],
-        .args = self$param_set$get_values(tags = "predict"),
+        newdata = as.matrix(task$data(cols = task$feature_names)),
+        .args = pars,
         type = "lp"))
 
-      cdf = mlr3misc::invoke(predict,
+      surv = mlr3misc::invoke(predict,
         self$model,
-        newdata = model.matrix(
-          ~.,
-          as.data.frame(task$data(cols = task$feature_names)))[, -1,
-          drop = FALSE],
-        .args = self$param_set$get_values(tags = "predict"),
-        type = "CIF",
+        newdata = as.matrix(task$data(cols = task$feature_names)),
+        .args = pars,
+        type = "risk",
         times = sort(unique(self$model$time)))
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = sort(unique(self$model$time)), cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = cdf[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      mlr3proba::PredictionSurv$new(task = task, crank = lp, distr = distr, lp = lp)
+      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
+                   surv = surv,
+                   lp = lp)
     }
   )
 )
 
-lrns_dict$add("surv.coxboost", LearnerSurvCoxboost)
+.extralrns_dict$add("surv.coxboost", LearnerSurvCoxboost)

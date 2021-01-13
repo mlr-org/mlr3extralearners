@@ -18,6 +18,9 @@ LearnerClassifLiblineaRL2LogReg = R6Class("LearnerClassifLiblineaRL2LogReg", # n
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      warning("Deprecated. In the future please use `classif.liblinear` with `type = 0`.") # nolint
+
       ps = ParamSet$new(
         params = list(
           ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
@@ -49,8 +52,8 @@ LearnerClassifLiblineaRL2LogReg = R6Class("LearnerClassifLiblineaRL2LogReg", # n
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      train = data[, task$feature_names, with = FALSE]
-      target = data[, task$target_names, with = FALSE]
+      train = task$data(cols = task$feature_names)
+      target = task$truth()
 
       mlr3misc::invoke(LiblineaR::LiblineaR, data = train, target = target, type = 0L, .args = pars)
     },
@@ -60,13 +63,13 @@ LearnerClassifLiblineaRL2LogReg = R6Class("LearnerClassifLiblineaRL2LogReg", # n
 
       if (self$predict_type == "response") {
         p = invoke(predict, self$model, newx = newdata)
-        PredictionClassif$new(task = task, response = p$predictions)
+        list(response = p$predictions)
       } else {
         p = invoke(predict, self$model, newx = newdata, proba = TRUE)
-        PredictionClassif$new(task = task, prob = p$probabilities)
+        list(prob = p$probabilities)
       }
     }
   )
 )
 
-lrns_dict$add("classif.liblinearl2logreg", LearnerClassifLiblineaRL2LogReg)
+.extralrns_dict$add("classif.liblinearl2logreg", LearnerClassifLiblineaRL2LogReg)

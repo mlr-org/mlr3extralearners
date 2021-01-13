@@ -14,7 +14,7 @@
 #' @template example
 #' @export
 LearnerDensLogspline = R6Class("LearnerDensLogspline",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -37,7 +37,7 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
       super$initialize(
         id = "dens.logspline",
         packages = "logspline",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_dens.logspline"
@@ -48,7 +48,7 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
   private = list(
     .train = function(task) {
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       pars = self$param_set$get_values(tags = "train")
 
@@ -82,12 +82,10 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
     },
 
     .predict = function(task) {
-      mlr3proba::PredictionDens$new(
-        task = task,
-        pdf = self$model$pdf(task$truth()),
-        cdf = self$model$cdf(task$truth()))
+      newdata = task$data()[[1]]
+      list(pdf = self$model$pdf(newdata), cdf = self$model$cdf(newdata))
     }
   )
 )
 
-lrns_dict$add("dens.logspline", LearnerDensLogspline)
+.extralrns_dict$add("dens.logspline", LearnerDensLogspline)

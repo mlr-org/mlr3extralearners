@@ -21,7 +21,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -40,7 +40,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamLgl$new("trace", default = FALSE, tags = "train"),
         ParamUty$new("offset", tags = "train"),
         ParamUty$new("cluster", tags = "train"),
-        ParamUty$new("na.action", default = na.pass, tags = "train"),
+        ParamUty$new("na.action", default = stats::na.pass, tags = "train"),
         ParamUty$new("scores", tags = "train"),
 
         ParamFct$new("teststat", default = "quadratic",
@@ -80,6 +80,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         ParamLgl$new("update", default = FALSE, tags = c("train", "ctrl")),
         ParamFct$new("splitflavour", default = "ctree",
           levels = c("ctree", "exhaustive"), tags = c("train", "ctrl")),
+        ParamInt$new("maxvar", lower = 1L, tags = c("train", "ctrl")),
 
         # predict; missing FUN and simplify (not needed here)
         ParamLgl$new("OOB", default = FALSE, tags = c("predict", "importance")),
@@ -117,7 +118,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         predict_types = c("distr", "crank"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
-        packages = c("partykit", "sandwich", "coin", "pracma"),
+        packages = c("partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_surv.cforest"
       )
     }
@@ -164,18 +165,22 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         type = "prob", .args = pars)
 
       # Define WeightedDiscrete distr6 distribution from the survival function
-      x = lapply(preds, function(z) data.frame(x = z$time, cdf = 1 - z$surv))
+      x = lapply(preds, function(z) {
+        time = c(0, z$time, max(z$time) + 1e-3)
+        surv = c(1, z$surv, 0)
+        data.frame(x = time, cdf = 1 - surv)
+      })
       distr = distr6::VectorDistribution$new(
         distribution = "WeightedDiscrete",
         params       = x,
         decorators   = c("CoreStatistics", "ExoticStatistics"))
 
       # Define crank as the mean of the survival distribution
-      crank = vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
+      crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
 
-      PredictionSurv$new(task = task, crank = crank, distr = distr)
+      list(crank = crank, distr = distr)
     }
   )
 )
 
-lrns_dict$add("surv.cforest", LearnerSurvCForest)
+.extralrns_dict$add("surv.cforest", LearnerSurvCForest)

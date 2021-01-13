@@ -20,19 +20,18 @@ lrn("dens.spline")
 \itemize{
 \item Packages: gss
 \item Predict Types: pdf, cdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties: missings
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("gss"))) {
-  learner = mlr3::lrn("dens.spline")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.spline"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gu, C. and Wang, J. (2003),

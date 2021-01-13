@@ -86,9 +86,9 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
       response = mlr3misc::invoke(predict, self$model, newdata = newdata)
-      PredictionRegr$new(task = task, response = response)
+      list(response = response)
     }
   )
 )
 
-lrns_dict$add("regr.IBk", LearnerRegrIBk)
+.extralrns_dict$add("regr.IBk", LearnerRegrIBk)

@@ -5,7 +5,7 @@
 \alias{LearnerDensMixed}
 \title{Density Mixed Data Kernel Learner}
 \description{
-Calls \link[np:npudens]{np::npudens} from package \CRANpkg{np}.
+Calls \link[np:np.density]{np::npudens} from package \CRANpkg{np}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -20,19 +20,18 @@ lrn("dens.mixed")
 \itemize{
 \item Packages: np
 \item Predict Types: pdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties:
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("np"))) {
-  learner = mlr3::lrn("dens.mixed")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.mixed"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Li, Q. and J.S. Racine (2003),
