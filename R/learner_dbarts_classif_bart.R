@@ -129,4 +129,4 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
   )
 )
 
-lrns_dict$add("classif.bart", LearnerClassifBart)
+.extralrns_dict$add("classif.bart", LearnerClassifBart)
