@@ -30,6 +30,7 @@ Suggests:
     C50,
     coin,
     CoxBoost,
+    dbarts,
     earth,
     distr6 (>= 1.4.3),
     extraTrees,
