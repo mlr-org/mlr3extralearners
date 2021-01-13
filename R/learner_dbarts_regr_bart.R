@@ -73,11 +73,11 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
 
       # Convert from data.table to normal data.frame, just to be safe.
       # Dbarts expects x.train to be a dataframe.
-      setDF(data)
+      data.table::setDF(data)
 
       # This will also extract a data.table
       outcome <- task$data(cols = task$target_names)
-      setDF(outcome)
+      data.table::setDF(outcome)
       # Outcome will now be a factor vector.
       outcome <- outcome[[1]]
 
@@ -100,7 +100,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
       newdata <- task$data(cols = task$feature_names) # get newdata
 
       # Other possible vars: offset.test, combineChains, ...
-      setDF(newdata)
+      data.table::setDF(newdata)
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.

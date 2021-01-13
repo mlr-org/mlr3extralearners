@@ -72,11 +72,11 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       # Convert from data.table to normal data.frame, just to be safe.
       # Dbarts expects x.train to be a dataframe.
-      setDF(data)
+      data.table::setDF(data)
 
       # This will also extract a data.table
       outcome = task$data(cols = task$target_names)
-      setDF(outcome)
+      data.table::setDF(outcome)
       # Outcome will now be a factor vector.
       outcome = outcome[[1]]
 
@@ -101,7 +101,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       # type = ifelse(self$predict_type == "response", "response", "prob") # this is for the randomForest package
 
       # Other possible vars: offset.test, combineChains, ...
-      setDF(newdata)
+      data.table::setDF(newdata)
 
       # TODO: Can't get prediction to pass the sanity checks on factor level ordering.
       # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
