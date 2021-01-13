@@ -404,4 +404,4 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   )
 )
 
-lrns_dict$add("classif.catboost", LearnerClassifCatboost)
+.extralrns_dict$add("classif.catboost", LearnerClassifCatboost)
