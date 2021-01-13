@@ -60,6 +60,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         ParamUty$new("prune", tags = "train"),
         ParamLgl$new("restart", default = TRUE, tags = "train"),
         ParamLgl$new("verbose", default = FALSE, tags = "train"),
+        ParamInt$new("maxvar", lower = 1L, tags = "train"),
         ParamLgl$new("caseweights", default = TRUE, tags = "train"),
         ParamFct$new("ytype", default = "vector",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
@@ -118,7 +119,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        formalArgs(partykit::mob_control))]
+                                  methods::formalArgs(partykit::mob_control))]
       pars_additional = self$param_set$values$additional
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]
@@ -149,13 +150,13 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         type = self$param_set$values$predict_fun, task = task,
         .type = self$predict_type)
       if (self$predict_type == "response") {
-        PredictionRegr$new(task = task, response = preds[, 1L])
+        list(response = preds[, 1L])
       } else {
-        PredictionRegr$new(task = task, response = preds[, 1L],
+        list(response = preds[, 1L],
           se = preds[, 2L])
       }
     }
   )
 )
 
-lrns_dict$add("regr.mob", LearnerRegrMob)
+.extralrns_dict$add("regr.mob", LearnerRegrMob)

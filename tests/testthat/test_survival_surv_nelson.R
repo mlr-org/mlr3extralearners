@@ -1,8 +1,10 @@
 install_learners("surv.nelson")
+load_tests("surv.nelson")
 
 test_that("autotest", {
-  learner = mlr_learners$get("surv.nelson")
+  learner = lrn("surv.nelson")
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE)
+  # sanity always 0.5
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
 })

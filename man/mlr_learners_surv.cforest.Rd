@@ -18,7 +18,7 @@ lrn("surv.cforest")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit, sandwich, coin, pracma
+\item Packages: partykit, sandwich, coin
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, ordered
 \item Properties: weights

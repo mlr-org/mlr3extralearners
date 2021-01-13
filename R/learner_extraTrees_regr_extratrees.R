@@ -63,9 +63,10 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      data = task$data()
-      x = as.matrix(data[, task$feature_names, with = FALSE])
-      y = data[, task$target_names, with = FALSE][[1]]
+      self$state$feature_names = task$feature_names
+
+      x = as.matrix(task$data(cols = task$feature_names))
+      y = task$truth()
 
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))
@@ -75,12 +76,11 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
-
+      newdata = task$data(cols = self$state$feature_names)
       p = invoke(predict, self$model, newdata = newdata)
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )
 
-lrns_dict$add("regr.extratrees", LearnerRegrExtraTrees)
+.extralrns_dict$add("regr.extratrees", LearnerRegrExtraTrees)

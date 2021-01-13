@@ -14,7 +14,7 @@
 #' @template example
 #' @export
 LearnerDensPenalized = R6Class("LearnerDensPenalized",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -39,7 +39,7 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
       super$initialize(
         id = "dens.pen",
         packages = "pendensity",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_dens.pen"
@@ -52,7 +52,7 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
 
       pars = self$param_set$get_values(tag = "train")
       fit = mlr3misc::invoke(pendensity::pendensity,
-                             form = task$truth() ~ 1,
+                             form = task$data()[[1]] ~ 1,
                              .args = pars)
 
       pdf = function(x) {} # nolint
@@ -81,12 +81,10 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
     },
 
     .predict = function(task) {
-      newdata = task$truth()
-      mlr3proba::PredictionDens$new(task = task,
-                                    pdf = self$model$pdf(newdata),
-                                    cdf = self$model$pdf(newdata))
+      newdata = task$data()[[1]]
+      list(pdf = self$model$pdf(newdata), cdf = self$model$pdf(newdata))
     }
   )
 )
 
-lrns_dict$add("dens.pen", LearnerDensPenalized)
+.extralrns_dict$add("dens.pen", LearnerDensPenalized)

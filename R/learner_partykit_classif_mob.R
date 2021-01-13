@@ -49,6 +49,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         ParamInt$new("minsize", lower = 1L, tags = "train"),
         ParamInt$new("minsplit", lower = 1L, tags = "train"),
         ParamInt$new("minbucket", lower = 1L, tags = "train"),
+        ParamInt$new("maxvar", lower = 1L, tags = "train"),
         ParamInt$new("maxdepth", default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
         ParamInt$new("mtry", default = Inf, lower = 0L,
@@ -118,7 +119,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        formalArgs(partykit::mob_control))]
+                                  methods::formalArgs(partykit::mob_control))]
       pars_additional = self$param_set$values$additional
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]
@@ -147,12 +148,12 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         type = self$param_set$values$predict_fun, task = task,
         .type = self$predict_type)
       if (self$predict_type == "response") {
-        PredictionClassif$new(task = task, response = preds)
+        list(response = preds)
       } else {
-        PredictionClassif$new(task = task, prob = preds)
+        list(prob = preds)
       }
     }
   )
 )
 
-lrns_dict$add("classif.mob", LearnerClassifMob)
+.extralrns_dict$add("classif.mob", LearnerClassifMob)

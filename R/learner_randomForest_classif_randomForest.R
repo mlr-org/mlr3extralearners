@@ -83,7 +83,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         stop("No importance available. Try setting 'importance' to 'accuracy' or 'gini'.")
       )
 
-      sort(setNames(scores, rownames(imp)), decreasing = TRUE)
+      sort(stats::setNames(scores, rownames(imp)), decreasing = TRUE)
     },
 
     #' @description
@@ -141,12 +141,12 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         type = type, .args = pars)
 
       if (self$predict_type == "response") {
-        PredictionClassif$new(task = task, response = pred)
+        list(response = pred)
       } else {
-        PredictionClassif$new(task = task, prob = pred)
+        list(prob = pred)
       }
     }
   )
 )
 
-lrns_dict$add("classif.randomForest", LearnerClassifRandomForest)
+.extralrns_dict$add("classif.randomForest", LearnerClassifRandomForest)

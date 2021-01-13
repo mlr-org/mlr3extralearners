@@ -23,7 +23,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -53,7 +53,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
             id = "sigma", default = 0.1, lower = 0, upper = 1,
             tags = "train"),
           ParamUty$new(id = "ipcw", default = 1, tags = "train"),
-          ParamUty$new(id = "na.action", default = na.omit, tags = "train")
+          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train")
         )
       )
 
@@ -65,7 +65,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         id = "surv.gamboost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
-        predict_types = c("distr", "crank", "lp", "response"),
+        predict_types = c("distr", "crank", "lp"),
         properties = c("weights", "importance", "selected_features"),
         packages = c("mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.gamboost"
@@ -82,7 +82,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
       }
 
       vimp = as.numeric(mboost::varimp(self$model))
-      names(vimp) = unname(variable.names(self$model))
+      names(vimp) = unname(stats::variable.names(self$model))
 
       sort(vimp, decreasing = TRUE)
     },
@@ -97,7 +97,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         stopf("No model stored")
       }
 
-      unname(variable.names(self$model, usedonly = TRUE))
+      unname(stats::variable.names(self$model, usedonly = TRUE))
     }
   ),
 
@@ -121,26 +121,23 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         pars = pars[!is_ctrl_pars]
       }
 
-      # convert data to model matrix
-      # x = model.matrix(~., as.data.frame(task$data(cols = task$feature_names)))
-
       family = switch(pars$family,
         coxph = mboost::CoxPH(),
         weibull = mlr3misc::invoke(mboost::Weibull,
-          .args = pars[names(pars) %in% formalArgs(mboost::Weibull)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Weibull)]),
         loglog = mlr3misc::invoke(mboost::Loglog,
-          .args = pars[names(pars) %in% formalArgs(mboost::Loglog)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Loglog)]),
         lognormal = mlr3misc::invoke(mboost::Lognormal,
-          .args = pars[names(pars) %in% formalArgs(mboost::Lognormal)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Lognormal)]),
         gehan = mboost::Gehan(),
         cindex = mlr3misc::invoke(mboost::Cindex,
-          .args = pars[names(pars) %in% formalArgs(mboost::Cindex)]),
+          .args = pars[names(pars) %in% methods::formalArgs(mboost::Cindex)]),
         custom = pars$custom.family
       )
 
       # FIXME - until issue closes
-      pars = pars[!(names(pars) %in% formalArgs(mboost::Weibull))]
-      pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
+      pars = pars[!(names(pars) %in% methods::formalArgs(mboost::Weibull))]
+      pars = pars[!(names(pars) %in% methods::formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
 
@@ -155,36 +152,29 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
 
       newdata = task$data(cols = task$feature_names)
       # predict linear predictor
-      lp = as.numeric(mlr3misc::invoke(predict, self$model,
-        newdata = newdata,
-        type = "link"))
+      lp = as.numeric(mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link"))
 
       # predict survival
-      surv = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
-      surv$cdf = 1 - surv$surv
+      if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
+        survfit = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(data = data.frame(x = surv$time, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = surv$cdf[, i]
+        mlr3proba::.surv_return(times = survfit$time,
+                                surv = t(survfit$surv),
+                                lp = lp)
+      } else {
+        mlr3proba::.surv_return(lp = -lp)
       }
 
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
 
-      response = NULL
-      if (!is.null(self$param_set$values$family)) {
-        if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
-          response = exp(lp)
-        }
-      }
-
-      mlr3proba::PredictionSurv$new(
-        task = task, crank = lp, distr = distr,
-        lp = lp, response = response)
+      # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
+      # response = NULL
+      # if (!is.null(self$param_set$values$family)) {
+      #   if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
+      #     response = exp(lp)
+      #   }
+      # }
     }
   )
 )
 
-lrns_dict$add("surv.gamboost", LearnerSurvGAMBoost)
+.extralrns_dict$add("surv.gamboost", LearnerSurvGAMBoost)

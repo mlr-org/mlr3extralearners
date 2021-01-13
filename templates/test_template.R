@@ -1,4 +1,5 @@
 install_learners("<type>.<key>")
+load_tests("<type>.<key>")
 
 test_that("autotest", {
   learner = Learner<Type><Classname>$new()

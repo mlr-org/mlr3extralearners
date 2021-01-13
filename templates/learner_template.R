@@ -55,9 +55,18 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
   private = list(
 
     .train = function(task) {
+      # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
-      # FIXME - <Create objects for the train call
+      # set column names to ensure consistency in fit and predict
+      self$state$feature_names = task$feature_names
+
+      # FIXME - If learner does not have 'weights' property then delete these lines.
+      if ("weights" %in% task$properties) {
+        pars = insert_named(pars, list(weights = task$weights$weight))
+      }
+
+      # FIXME - <Create objects for the train call>
       # <At least "data" and "formula" are required>
       formula = task$formula()
       data = task$data()
@@ -75,17 +84,17 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-      # get newdata
-      newdata = task$data(cols = task$feature_names)
 
+      # get newdata and ensure same ordering in train and predict
+      newdata = task$data(cols = self$state$feature_names)
 
       pred = mlr3misc::invoke(predict, self$model, newdata = newdata,
                               type = type, .args = pars)
 
-      # FIXME - ADD PREDICTION TO OBJECT BELOW
-      Prediction<Type>$new(task = task, ...)
+      # FIXME - ADD PREDICTIONS TO LIST BELOW
+      list(...)
     }
   )
 )
 
-lrns_dict$add("<type>.<key>", Learner<Type><Classname>)
+.extralrns_dict$add("<type>.<key>", Learner<Type><Classname>)

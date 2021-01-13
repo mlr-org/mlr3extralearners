@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensPlugin = R6Class("LearnerDensPlugin",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -30,7 +30,7 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
       super$initialize(
         id = "dens.plug",
         packages = "plugdensity",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
         properties = "missings",
@@ -44,7 +44,7 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
       pdf <- function(x) {} # nolint
       body(pdf) <- substitute({
         mlr3misc::invoke(plugdensity::plugin.density, x = data, xout = x, na.rm = TRUE)$y
-      }, list(data = task$truth()))
+      }, list(data = task$data()[[1]]))
 
       distr6::Distribution$new(
         name = "Plugin KDE",
@@ -54,9 +54,9 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
     },
 
     .predict = function(task) {
-      mlr3proba::PredictionDens$new(task = task, pdf = self$model$pdf(task$truth()))
+      list(pdf = self$model$pdf(task$data()[[1]]))
     }
   )
 )
 
-lrns_dict$add("dens.plug", LearnerDensPlugin)
+.extralrns_dict$add("dens.plug", LearnerDensPlugin)

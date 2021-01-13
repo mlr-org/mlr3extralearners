@@ -26,6 +26,9 @@ LearnerClassifLiblineaRL2L1SVC = R6Class("LearnerClassifLiblineaRL2L1SVC",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      warning("Deprecated. In the future please use `classif.liblinear` with `type = 3`.") # nolint
+
       ps = ParamSet$new(
         params = list(
           ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
@@ -64,8 +67,8 @@ LearnerClassifLiblineaRL2L1SVC = R6Class("LearnerClassifLiblineaRL2L1SVC",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      train = data[, task$feature_names, with = FALSE]
-      target = data[, task$target_names, with = FALSE]
+      train = task$data(cols = task$feature_names)
+      target = task$truth()
 
       mlr3misc::invoke(LiblineaR::LiblineaR, data = train, target = target, type = 3L, .args = pars)
     },
@@ -74,9 +77,9 @@ LearnerClassifLiblineaRL2L1SVC = R6Class("LearnerClassifLiblineaRL2L1SVC",
       newdata = task$data(cols = task$feature_names)
 
       p = mlr3misc::invoke(predict, self$model, newx = newdata)
-      PredictionClassif$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )
 
-lrns_dict$add("classif.liblinearl2l1svc", LearnerClassifLiblineaRL2L1SVC)
+.extralrns_dict$add("classif.liblinearl2l1svc", LearnerClassifLiblineaRL2L1SVC)

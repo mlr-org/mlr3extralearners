@@ -49,6 +49,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
           ParamLgl$new("stump", default = FALSE, tags = "train"),
           ParamLgl$new("lookahead", default = FALSE, tags = "train"),
           ParamLgl$new("MIA", default = FALSE, tags = "train"),
+          ParamInt$new("maxvar", lower = 1L, tags = "train"),
           ParamInt$new("nresample", lower = 1L, default = 9999L,
             tags = "train"),
           ParamDbl$new("tol", lower = 0, tags = "train"),
@@ -114,9 +115,9 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
       newdata = task$data(cols = task$feature_names)
 
       p = mlr3misc::invoke(predict, self$model, newdata = newdata)
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )
 
-lrns_dict$add("regr.ctree", LearnerRegrCTree)
+.extralrns_dict$add("regr.ctree", LearnerRegrCTree)

@@ -49,12 +49,17 @@ And
 
 * [ ] Updated NEWS.md
 
-## Reviewer
+## Maintenance and Contributions
 
-Tick as appropriate:
+This PR will only be merged if the following is filled in and ticked:
 
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
+* [ ] <github_name> agrees to maintain this learner going forward and agrees that this learner will be removed from `mlr3extralearners` if: i) the build remains broken for more than one month with no effort to fix it; or ii) is broken for more than three months.
+
+The maintainer of the learner can be changed at any time by editing the '@author' tag and creating a pull request.
+
+Finally make sure you get credit and add yourself to the DESCRIPTION file (optionally add a note to say which learner(s) you implemented):
+
+* [ ] I have added myself (and anyone else who contributed) to the end of the "Authors" field in the DESCRIPTION file with role "ctb" 
 
 ## Comments
 
@@ -96,13 +101,6 @@ I have run...
 And 
 
 * [ ] Updated NEWS.md
-
-## Reviewer
-
-Delete as appropriate:
-
-* [ ] This is a regression or classification learner, I have assigned pat-s to review this.
-* [ ] This is a survival or density learner, I have assigned RaphaelS1 to review this.
 
 ## Comments
 

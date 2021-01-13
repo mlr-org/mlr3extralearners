@@ -103,12 +103,12 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         type = predict_type)
 
       if (self$predict_type == "response") {
-        PredictionClassif$new(task = task, response = p)
+        list(response = p)
       } else {
-        PredictionClassif$new(task = task, prob = p)
+        list(prob = p)
       }
     }
   )
 )
 
-lrns_dict$add("classif.ksvm", LearnerClassifKSVM)
+.extralrns_dict$add("classif.ksvm", LearnerClassifKSVM)

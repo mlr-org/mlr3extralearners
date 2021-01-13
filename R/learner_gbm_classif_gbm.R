@@ -131,19 +131,17 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
       if (self$predict_type == "response") {
         if (task$properties %in% "twoclass") {
           p = as.factor(ifelse(p > 0.5, task$positive, task$negative))
-          PredictionClassif$new(task = task, response = p)
+          list(response = p)
         } else {
           ind = apply(p, 1, which.max)
           cns = colnames(p)
-          PredictionClassif$new(
-            task = task,
-            response = factor(cns[ind], levels = cns))
+          list(response = factor(cns[ind], levels = cns))
         }
       } else {
         if (task$properties %in% "twoclass") {
           p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
           colnames(p) = task$class_names
-          PredictionClassif$new(task = task, prob = p)
+          list(prob = p)
         } else {
           # previously we had `p[, , 1L]`. This results in a numeric when nrow
           # == 1 and triggers an assertion error later. The following always
@@ -151,11 +149,11 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
           # https://stackoverflow.com/questions/58702027/
           # r-convert-array-to-matrix-with-one-row
           p = array(c(p), dim(p)[-3], dimnames = dimnames(p)[1:2])
-          PredictionClassif$new(task = task, prob = p)
+          list(prob = p)
         }
       }
     }
   )
 )
 
-lrns_dict$add("classif.gbm", LearnerClassifGBM)
+.extralrns_dict$add("classif.gbm", LearnerClassifGBM)

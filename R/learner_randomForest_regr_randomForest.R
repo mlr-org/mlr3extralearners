@@ -81,7 +81,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         stop("No importance available. Try setting 'importance' to 'mse' or 'nodepurity'.")
       )
 
-      sort(setNames(scores, rownames(imp)), decreasing = TRUE)
+      sort(stats::setNames(scores, rownames(imp)), decreasing = TRUE)
     },
 
     #' @description
@@ -119,9 +119,9 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         newdata = newdata,
         type = type, .args = pars)
 
-      PredictionRegr$new(task = task, response = pred)
+      list(response = pred)
     }
   )
 )
 
-lrns_dict$add("regr.randomForest", LearnerRegrRandomForest)
+.extralrns_dict$add("regr.randomForest", LearnerRegrRandomForest)

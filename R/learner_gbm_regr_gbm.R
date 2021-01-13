@@ -130,9 +130,9 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       newdata = task$data(cols = task$feature_names)
 
       p = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)
-      PredictionRegr$new(task = task, response = p)
+      list(response = p)
     }
   )
 )
 
-lrns_dict$add("regr.gbm", LearnerRegrGBM)
+.extralrns_dict$add("regr.gbm", LearnerRegrGBM)

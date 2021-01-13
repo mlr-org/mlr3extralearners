@@ -39,5 +39,5 @@ test_that("predict classif.J48", {
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(
     "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "‚")))
+    paste0("- '", ParamTest$missing, "'", collapse = ",")))
 })

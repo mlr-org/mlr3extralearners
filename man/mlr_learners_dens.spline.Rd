@@ -20,7 +20,7 @@ lrn("dens.spline")
 \itemize{
 \item Packages: gss
 \item Predict Types: pdf, cdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties: missings
 }
 }

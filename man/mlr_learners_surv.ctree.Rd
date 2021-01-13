@@ -18,7 +18,7 @@ lrn("surv.ctree")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit, coin, sandwich, pracma
+\item Packages: partykit, coin, sandwich
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, ordered
 \item Properties: weights
