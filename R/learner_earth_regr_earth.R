@@ -64,10 +64,8 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      f_names = task$feature_names
-      t_names = task$target_names
-      x = data[, ..f_names]
-      y = data[, ..t_names]
+      x = data[, task$feature_names]
+      y = data[, task$target_names]
       invoke(earth::earth, x = x, y = y, .args = pars)
     },
 

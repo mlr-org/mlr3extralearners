@@ -29,13 +29,12 @@ lrn("classif.earth")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("earth"))) {
-  learner = mlr3::lrn("classif.earth")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("classif.earth"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Stephen Milborrow (2014)
