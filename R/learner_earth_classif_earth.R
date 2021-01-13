@@ -86,4 +86,4 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
   )
 )
 
-lrns_dict$add("classif.earth", LearnerClassifEarth)
+.extralrns_dict$add("classif.earth", LearnerClassifEarth)
