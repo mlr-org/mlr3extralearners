@@ -4,13 +4,15 @@
 Package website: [release](https://mlr3extralearners.mlr-org.com/) |
 [dev](https://mlr3extralearners.mlr-org.com/dev/)
 
-Extra Learners for
-**[mlr3](https://github.com/mlr-org/mlr3/)**.
+Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
 
+[![R CMD
+Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 [![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+[![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -20,9 +22,9 @@ Extra Learners for
 functions to find where all the learners, across the mlr3verse, live and
 to install required packages to run these learners. See the interactive
 [learner
-list](http://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
+list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
-page](http://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 for a live build status.
 
 ``` r
@@ -34,11 +36,11 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   4:      classif.ctree mlr3extralearners partykit,sandwich,coin
 #>   5:  classif.cv_glmnet      mlr3learners                 glmnet
 #>  ---                                                            
-#>  97:      surv.pchazard mlr3extralearners      reticulate,pracma
-#>  98:     surv.penalized mlr3extralearners              penalized
-#>  99:         surv.rfsrc mlr3extralearners        randomForestSRC
-#> 100:         surv.rpart         mlr3proba  rpart,distr6,survival
-#> 101:           surv.svm mlr3extralearners            survivalsvm
+#> 122:        surv.ranger      mlr3learners                 ranger
+#> 123:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
+#> 124:         surv.rpart         mlr3proba  rpart,distr6,survival
+#> 125:           surv.svm mlr3extralearners            survivalsvm
+#> 126:       surv.xgboost      mlr3learners                xgboost
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN. Install with:
@@ -96,5 +98,6 @@ create_learner(classname = "Locfit",
                properties = NULL,
                importance = FALSE,
                oob_error = FALSE,
-               references = FALSE)
+               references = FALSE,
+               gh_name = "RaphaelS1")
 ```

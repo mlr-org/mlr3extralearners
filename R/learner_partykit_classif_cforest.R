@@ -89,6 +89,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         ParamLgl$new("update", default = FALSE, tags = "train"),
         ParamFct$new("splitflavour", default = "ctree",
           levels = c("ctree", "exhaustive"), tags = "train"),
+        ParamInt$new("maxvar", lower = 1L, tags = "train"),
 
         # predict; missing FUN and simplify (not needed here)
         ParamLgl$new("OOB", default = FALSE, tags = c("predict", "importance")),
@@ -168,7 +169,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        setdiff(formalArgs(partykit::ctree_control),
+        setdiff(methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")
         ))] # see ctree_control
       pars = pars[names(pars) %nin%
@@ -200,12 +201,12 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
       preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
       if (self$predict_type == "response") {
-        PredictionClassif$new(task = task, response = preds)
+        list(response = preds)
       } else {
-        PredictionClassif$new(task = task, prob = preds)
+        list(prob = preds)
       }
     }
   )
 )
 
-lrns_dict$add("classif.cforest", LearnerClassifCForest)
+.extralrns_dict$add("classif.cforest", LearnerClassifCForest)

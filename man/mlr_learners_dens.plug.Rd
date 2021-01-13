@@ -20,19 +20,18 @@ lrn("dens.plug")
 \itemize{
 \item Packages: plugdensity
 \item Predict Types: pdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties: missings
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("plugdensity"))) {
-  learner = mlr3::lrn("dens.plug")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.plug"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 J. Engel, Eva Herrmann and Theo Gasser (1994).

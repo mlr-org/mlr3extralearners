@@ -40,7 +40,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
           ParamInt$new(id = "seed", lower = -Inf, upper = Inf, tags = c("train", "C5.0Control")),
           ParamLgl$new(id = "earlyStopping", default = TRUE, tags = c("train", "C5.0Control")),
           ParamUty$new(id = "label", default = "outcome", tags = c("train", "C5.0Control")),
-          ParamUty$new(id = "na.action", default = na.pass, tags = "predict")
+          ParamUty$new(id = "na.action", default = stats::na.pass, tags = "predict")
         )
       )
       ps$add_dep("bands", "rules", CondEqual$new(TRUE))
@@ -89,9 +89,9 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
         )
       }
 
-      PredictionClassif$new(task = task, response = response, prob = prob)
+      list(response = response, prob = prob)
     }
   )
 )
 
-lrns_dict$add("classif.C50", LearnerClassifC50)
+.extralrns_dict$add("classif.C50", LearnerClassifC50)

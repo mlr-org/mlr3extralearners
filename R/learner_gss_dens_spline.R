@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensSpline = R6Class("LearnerDensSpline",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -26,7 +26,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
           ParamUty$new(id = "type", tags = "train"),
           ParamDbl$new(id = "alpha", default = 1.4, tags = "train"),
           ParamUty$new(id = "weights", tags = "train"),
-          ParamUty$new(id = "na.action", default = na.omit, tags = "train"),
+          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train"),
           ParamUty$new(id = "id.basis", tags = "train"),
           ParamInt$new(id = "nbasis", tags = "train"),
           ParamDbl$new(id = "seed", tags = "train"),
@@ -43,7 +43,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
       super$initialize(
         id = "dens.spline",
         packages = "gss",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
         properties = "missings",
@@ -57,7 +57,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
 
       pars = self$param_set$get_values(tags = "train")
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       fit = mlr3misc::invoke(gss::ssden, formula = ~ data, .args = pars)
 
@@ -84,14 +84,10 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
     },
 
     .predict = function(task) {
-      newdata = task$truth()
-
-      mlr3proba::PredictionDens$new(
-        task = task,
-        pdf = self$model$pdf(newdata),
-        cdf = self$model$cdf(newdata))
+      newdata = task$data()[[1]]
+      list(pdf = self$model$pdf(newdata), cdf = self$model$cdf(newdata))
     }
   )
 )
 
-lrns_dict$add("dens.spline", LearnerDensSpline)
+.extralrns_dict$add("dens.spline", LearnerDensSpline)

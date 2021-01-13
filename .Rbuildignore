@@ -20,3 +20,5 @@
 ^\.vscode$
 templates
 ^build\_learner\_table\.R$
+^README\.Rmd$
+vignettes/learners

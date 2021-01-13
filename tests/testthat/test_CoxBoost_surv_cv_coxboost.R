@@ -1,4 +1,7 @@
+skip("Temporarily archived.")
+
 install_learners("surv.cv_coxboost")
+load_tests("surv.cv_coxboost")
 
 test_that("autotest", {
   set.seed(1)
@@ -14,6 +17,7 @@ test_that("optim", {
     penalty = "optimCoxBoostPenalty",
     maxstepno = 1, minstepno = 0, iter.max = 1, K = 2)
   task = tsk("rats")
+  task$select(c("litter", "rx"))
   expect_prediction_surv(
     suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
     )

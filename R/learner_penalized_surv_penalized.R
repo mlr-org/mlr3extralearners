@@ -22,7 +22,7 @@
 #' @template example
 #' @export
 LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
@@ -104,21 +104,9 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
           .args = pars)
       })
 
-      # define WeightedDiscrete distr6 object from predicted survival function
-      x = rep(list(list(x = surv@time, cdf = 0)), task$nrow)
-      for (i in 1:task$nrow) {
-        x[[i]]$cdf = 1 - surv@curves[i, ]
-      }
-
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete", params = x,
-        decorators = c("CoreStatistics", "ExoticStatistics"))
-
-      crank = as.numeric(sapply(x, function(y) sum(y$x * c(y$cdf[1], diff(y$cdf)))))
-
-      mlr3proba::PredictionSurv$new(task = task, distr = distr, crank = crank)
+      mlr3proba::.surv_return(times = surv@time, surv = surv@curves)
     }
   )
 )
 
-lrns_dict$add("surv.penalized", LearnerSurvPenalized)
+.extralrns_dict$add("surv.penalized", LearnerSurvPenalized)

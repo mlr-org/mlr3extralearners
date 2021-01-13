@@ -32,6 +32,8 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
+      warning("Deprecated. In the future please use `regr.liblinear` with `type = 13`.") # nolint
+
       ps = ParamSet$new(
         params = list(
           ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
@@ -70,8 +72,8 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       data = task$data()
-      train = data[, task$feature_names, with = FALSE]
-      target = data[, task$target_names, with = FALSE]
+      train = task$data(cols = task$feature_names)
+      target = task$truth()
 
       invoke(LiblineaR::LiblineaR, data = train, target = target, type = 13L, .args = pars)
     },
@@ -80,9 +82,9 @@ LearnerRegrLiblineaRL2L1SVR = R6Class("LearnerRegrLiblineaRL2L1SVR",
       newdata = task$data(cols = task$feature_names)
 
       p = invoke(predict, self$model, newx = newdata)
-      PredictionRegr$new(task = task, response = p$predictions)
+      list(response = p$predictions)
     }
   )
 )
 
-lrns_dict$add("regr.liblinearl2l1svr", LearnerRegrLiblineaRL2L1SVR)
+.extralrns_dict$add("regr.liblinearl2l1svr", LearnerRegrLiblineaRL2L1SVR)

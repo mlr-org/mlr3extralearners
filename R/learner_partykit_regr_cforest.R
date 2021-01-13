@@ -73,6 +73,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
         ParamLgl$new("stump", default = FALSE, tags = "train"),
         ParamLgl$new("lookahead", default = FALSE, tags = "train"),
         ParamLgl$new("MIA", default = FALSE, tags = "train"),
+        ParamInt$new("maxvar", lower = 1L, tags = "train"),
         ParamInt$new("nresample", default = 9999L, lower = 1L, tags = "train"),
         ParamDbl$new("tol", default = sqrt(.Machine$double.eps), lower = 0,
           tags = "train"),
@@ -164,7 +165,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
 
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        setdiff(formalArgs(partykit::ctree_control),
+        setdiff(methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")
         ))] # see ctree_control
       pars = pars[names(pars) %nin%
@@ -195,9 +196,9 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
       newdata = task$data(cols = task$feature_names)
       preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
-      PredictionRegr$new(task = task, response = preds)
+      list(response = preds)
     }
   )
 )
 
-lrns_dict$add("regr.cforest", LearnerRegrCForest)
+.extralrns_dict$add("regr.cforest", LearnerRegrCForest)

@@ -18,7 +18,7 @@ lrn("surv.cforest")
 \section{Traits}{
 
 \itemize{
-\item Packages: partykit, sandwich, coin, pracma
+\item Packages: partykit, sandwich, coin
 \item Predict Types: distr, crank
 \item Feature Types: integer, numeric, factor, ordered
 \item Properties: weights
@@ -26,13 +26,12 @@ lrn("surv.cforest")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("partykit", "sandwich", "coin", "pracma"))) {
-  learner = mlr3::lrn("surv.cforest")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.cforest"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).

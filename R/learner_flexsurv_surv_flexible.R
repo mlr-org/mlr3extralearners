@@ -23,7 +23,7 @@
 #'   - Actual default: `0`
 #'   - Adjusted default: `1`
 #'   - Reason for change: The default value of `0` is equivalent to, and a much less efficient
-#'   implementation of, [LearnerSurvParametric][mlr3learners.survival::LearnerSurvParametric].
+#'   implementation of, [LearnerSurvParametric].
 #'
 #' @references
 #' Royston P, Parmar MKB (2002).
@@ -36,7 +36,7 @@
 #' @template example
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
@@ -113,7 +113,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pred = mlr3misc::invoke(predict_flexsurvreg, self$model, task)
 
       # crank is defined as the mean of the survival distribution
-      mlr3proba::PredictionSurv$new(task = task, distr = pred$distr, lp = pred$lp, crank = pred$lp)
+      list(distr = pred$distr, lp = pred$lp, crank = pred$lp)
     }
   )
 )
@@ -161,32 +161,32 @@ predict_flexsurvreg <- function(object, task, ...) {
   pdf = function(x) {} # nolint
   body(pdf) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(x = x), args))
   }, list(func = object$dfns$d))
 
   cdf = function(x) {} # nolint
   body(cdf) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(q = x), args))
   }, list(func = object$dfns$p))
 
   quantile = function(p) {} # nolint
   body(quantile) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(p = p), args))
   }, list(func = object$dfns$q))
 
   rand = function(n) {} # nolint
   body(rand) = substitute({
     fn = func
-    args = as.list(subset(as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(as.data.table(self$parameters())[, 1]))
+    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
+    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
     do.call(fn, c(list(n = n), args))
   }, list(func = object$dfns$r))
 
@@ -238,4 +238,4 @@ predict_flexsurvreg <- function(object, task, ...) {
   return(list(distr = distr, lp = lp))
 }
 
-lrns_dict$add("surv.flexible", LearnerSurvFlexible)
+.extralrns_dict$add("surv.flexible", LearnerSurvFlexible)

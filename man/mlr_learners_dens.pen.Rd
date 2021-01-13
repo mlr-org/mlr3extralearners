@@ -20,19 +20,18 @@ lrn("dens.pen")
 \itemize{
 \item Packages: pendensity
 \item Predict Types: pdf, cdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties:
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("pendensity"))) {
-  learner = mlr3::lrn("dens.pen")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.pen"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Density Estimation with a Penalized Mixture Approach, Schellhase C. and Kauermann G. (2012),

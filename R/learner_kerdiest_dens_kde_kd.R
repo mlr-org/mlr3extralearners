@@ -9,7 +9,7 @@
 #' @template example
 #' @export
 LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -27,7 +27,7 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
       super$initialize(
         id = "dens.kde_kd",
         packages = "kerdiest",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_dens.kde_kd"
@@ -40,7 +40,7 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
 
       pars = self$param_set$get_values(tag = "train")
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       pdf <- function(x) {
       }
@@ -65,12 +65,9 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
     },
 
     .predict = function(task) {
-      newdata = task$truth()
-
-      mlr3proba::PredictionDens$new(task = task, pdf = self$model$pdf(newdata))
-
+      list(pdf = self$model$pdf(task$data()[[1]]))
     }
   )
 )
 
-lrns_dict$add("dens.kde_kd", LearnerDensKDEkd)
+.extralrns_dict$add("dens.kde_kd", LearnerDensKDEkd)

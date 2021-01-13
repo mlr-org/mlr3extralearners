@@ -22,20 +22,19 @@ lrn("surv.glmboost")
 
 \itemize{
 \item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp, response
+\item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: weights
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mboost", "pracma"))) {
-  learner = mlr3::lrn("surv.glmboost")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.glmboost"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann P, Yu B (2003).
@@ -88,7 +87,7 @@ matrix and original names can't be recovered.
 
 description
 Selected features are extracted with the function
-\code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+\code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 return \code{character()}.
 \subsection{Usage}{

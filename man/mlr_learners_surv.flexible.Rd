@@ -45,19 +45,18 @@ lrn("surv.flexible")
 \item Actual default: \code{0}
 \item Adjusted default: \code{1}
 \item Reason for change: The default value of \code{0} is equivalent to, and a much less efficient
-implementation of, \link[mlr3learners.survival:LearnerSurvParametric]{LearnerSurvParametric}.
+implementation of, \link{LearnerSurvParametric}.
 }
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("flexsurv", "pracma"))) {
-  learner = mlr3::lrn("surv.flexible")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.flexible"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Royston P, Parmar MKB (2002).

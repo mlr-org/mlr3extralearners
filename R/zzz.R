@@ -1,25 +1,18 @@
-## usethis namespace: start
-#' @importFrom Rcpp sourceCpp
-#' @useDynLib mlr3extralearners, .registration = TRUE
-## usethis namespace: end
-NULL
-
-#' @import data.table
 #' @import paradox
 #' @import mlr3misc
-#' @import survival
 #' @importFrom R6 R6Class
-#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr PredictionClassif PredictionRegr
-#' @importFrom mlr3proba LearnerSurv LearnerDens PredictionSurv PredictionDens
+#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
+#' @importFrom stats predict
 "_PACKAGE"
 
-utils::globalVariables(c("name", "id", "mlr3_package", "required_package"))
+utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
+
 # nocov start
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace
   x = utils::getFromNamespace("mlr_learners", ns = "mlr3")
   # this prevents a very long list of extra learners
-  lrns = lrns_dict$lrns
+  lrns = .extralrns_dict$lrns
   for (i in seq_along(lrns)) {
     x$add(names(lrns)[[i]], lrns[[i]])
   }
@@ -39,3 +32,5 @@ register_mlr3 = function(libname, pkgname) {
     action = "replace")
 }
 # nocov end
+
+leanify_package()

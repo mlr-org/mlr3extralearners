@@ -1,13 +1,12 @@
 install_learners("surv.flexible")
+load_tests("surv.flexible")
 
 test_that("autotest", {
   set.seed(200)
-  learner = lrn("surv.flexible", k = 0, scale = "normal", inits = c(1, 1, 1))
+  learner = lrn("surv.flexible", k = 1, scale = "normal", inits = c(0.1, 1))
   expect_learner(learner)
-  # there's no reason why sanity in particular is excluded except that because of multiple
-  # experiments and changing seeds, I've found it isn't possible to remove the "`vnmin` is
-  # not finite" error
-  result = run_autotest(learner, exclude = "sanity", check_replicable = FALSE)
+  # sanity excluded due to issues in optimisation (it's too easy...)
+  result = run_autotest(learner,check_replicable = FALSE,exclude = "sanity")
   expect_true(result, info = result$error)
 })
 

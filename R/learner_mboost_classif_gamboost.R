@@ -48,7 +48,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
           ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
           ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
           ParamUty$new(id = "stopintern", default = FALSE, tags = "train"),
-          ParamUty$new(id = "na.action", default = na.omit, tags = "train")
+          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train")
         )
       )
       ps$add_dep("type", "family", CondEqual$new("Binomial"))
@@ -77,11 +77,11 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-        formalArgs(mboost::boost_control))]
+                                methods::formalArgs(mboost::boost_control))]
       pars_gamboost = pars[which(names(pars) %in%
-        formalArgs(mboost::gamboost))]
+                                   methods::formalArgs(mboost::gamboost))]
       pars_binomial = pars[which(names(pars) %in%
-        formalArgs(mboost::Binomial))]
+                                   methods::formalArgs(mboost::Binomial))]
 
       f = task$formula()
       data = task$data()
@@ -106,7 +106,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
       ctrl = mlr3misc::invoke(mboost::boost_control, .args = pars_boost)
 
       # baselearner argument requires attached mboost package
-      withr::with_package("mboost", {
+      mlr3misc::with_package("mboost", {
         mlr3misc::invoke(mboost::gamboost,
           formula = f, data = data,
           control = ctrl, .args = pars_gamboost)
@@ -124,17 +124,17 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
 
       if (self$predict_type == "response") {
         p = invoke(predict, self$model, newdata = newdata, type = "class")
-        PredictionClassif$new(task = task, response = p)
+        list(response = p)
       } else {
         p = mlr3misc::invoke(predict, self$model,
           newdata = newdata,
           type = "response")
         p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
         colnames(p) = task$class_names
-        PredictionClassif$new(task = task, prob = p)
+        list(prob = p)
       }
     }
   )
 )
 
-lrns_dict$add("classif.gamboost", LearnerClassifGAMBoost)
+.extralrns_dict$add("classif.gamboost", LearnerClassifGAMBoost)

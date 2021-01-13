@@ -26,13 +26,12 @@ lrn("classif.extratrees")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("extraTrees"))) {
-  learner = mlr3::lrn("classif.extratrees")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("classif.extratrees"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:

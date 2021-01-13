@@ -15,7 +15,7 @@
 #' @template example
 #' @export
 LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -39,7 +39,7 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
       super$initialize(
         id = "dens.nonpar",
         packages = "sm",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
         properties = "weights",
@@ -61,7 +61,7 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
         mlr3misc::invoke(sm::sm.density,
           x = data, eval.points = x, display = "none", show.script = FALSE,
           .args = pars)$estimate
-      }, list(data = task$truth()))
+      }, list(data = task$data(cols = task$feature_names)[[1]]))
 
       distr6::Distribution$new(
         name = "Nonparametric Density",
@@ -71,9 +71,9 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     },
 
     .predict = function(task) {
-      mlr3proba::PredictionDens$new(task = task, pdf = self$model$pdf(task$truth()))
+      list(pdf = self$model$pdf(task$data(cols = task$feature_names)[[1]]))
     }
   )
 )
 
-lrns_dict$add("dens.nonpar", LearnerDensNonparametric)
+.extralrns_dict$add("dens.nonpar", LearnerDensNonparametric)

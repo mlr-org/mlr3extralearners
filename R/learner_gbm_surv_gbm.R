@@ -26,7 +26,7 @@
 #' @template seealso_learner
 #' @template example
 LearnerSurvGBM = R6Class("LearnerSurvGBM",
-  inherit = LearnerSurv,
+  inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -123,9 +123,9 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
       # predict linear predictor
       lp = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pv)
 
-      mlr3proba::PredictionSurv$new(task = task, crank = lp, lp = lp)
+      list(crank = lp, lp = lp)
     }
   )
 )
 
-lrns_dict$add("surv.gbm", LearnerSurvGBM)
+.extralrns_dict$add("surv.gbm", LearnerSurvGBM)

@@ -1,4 +1,5 @@
 install_learners("dens.nonpar")
+load_tests("dens.nonpar")
 
 test_that("autotest", {
   learner = LearnerDensNonparametric$new()

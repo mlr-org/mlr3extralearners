@@ -10,7 +10,7 @@
 #' @template example
 #' @export
 LearnerDensLocfit = R6Class("LearnerDensLocfit",
-  inherit = LearnerDens,
+  inherit = mlr3proba::LearnerDens,
 
   public = list(
     #' @description
@@ -47,7 +47,7 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
       super$initialize(
         id = "dens.locfit",
         packages = "locfit",
-        feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+        feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_dens.locfit"
@@ -59,7 +59,7 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     .train = function(task) {
       pars = self$param_set$get_values(tag = "train")
 
-      data = task$truth()
+      data = task$data()[[1]]
 
       pdf <- function(x) {
       }
@@ -75,9 +75,9 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     },
 
     .predict = function(task) {
-      mlr3proba::PredictionDens$new(task = task, pdf = self$model$pdf(task$truth()))
+      list(pdf = self$model$pdf(task$data()[[1]]))
     }
   )
 )
 
-lrns_dict$add("dens.locfit", LearnerDensLocfit)
+.extralrns_dict$add("dens.locfit", LearnerDensLocfit)

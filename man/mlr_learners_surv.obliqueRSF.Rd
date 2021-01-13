@@ -38,13 +38,12 @@ lrn("surv.obliqueRSF")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("obliqueRSF", "pracma"))) {
-  learner = mlr3::lrn("surv.obliqueRSF")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.obliqueRSF"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
@@ -57,7 +56,7 @@ https://projecteuclid.org/euclid.aoas/1571277776.
 \link[mlr3:mlr_learners]{mlr3::mlr_learners}
 }
 \author{
-RaphaelS1
+adibender
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvObliqueRSF}

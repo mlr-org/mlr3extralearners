@@ -1,4 +1,5 @@
 install_learners("dens.pen")
+load_tests("dens.pen")
 
 test_that("autotest", {
   learner = lrn("dens.pen")

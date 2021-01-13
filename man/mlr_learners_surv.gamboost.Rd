@@ -30,7 +30,7 @@ lrn("surv.gamboost")
 
 \itemize{
 \item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp, response
+\item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: importance, selected_features, weights
 }
@@ -38,20 +38,19 @@ lrn("surv.gamboost")
 
 \itemize{
 \item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp, response
+\item Predict Types: distr, crank, lp
 \item Feature Types: integer, numeric, factor, logical
 \item Properties: importance, selected_features, weights
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mboost", "pracma"))) {
-  learner = mlr3::lrn("surv.gamboost")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("surv.gamboost"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann P, Yu B (2003).
@@ -120,7 +119,7 @@ Named \code{numeric()}.
 \if{latex}{\out{\hypertarget{method-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
 Selected features are extracted with the function
-\code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+\code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGAMBoost$selected_features()}\if{html}{\out{</div>}}

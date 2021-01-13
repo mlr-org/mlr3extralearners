@@ -20,19 +20,18 @@ lrn("dens.nonpar")
 \itemize{
 \item Packages: sm
 \item Predict Types: pdf
-\item Feature Types: logical, integer, numeric, character, factor, ordered
+\item Feature Types: integer, numeric
 \item Properties: weights
 }
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("sm"))) {
-  learner = mlr3::lrn("dens.nonpar")
-  print(learner)
+# stop example failing with warning if package not installed
+learner = suppressWarnings(mlr3::lrn("dens.nonpar"))
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bowman, A.W. and Azzalini, A. (1997).
