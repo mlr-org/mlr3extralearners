@@ -74,7 +74,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
-    catboost/catboost/catboost/R-package
+    catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba
 Encoding: UTF-8
 NeedsCompilation: no
