@@ -81,4 +81,4 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
   )
 )
 
-lrns_dict$add("regr.earth", LearnerRegrEarth)
+.extralrns_dict$add("regr.earth", LearnerRegrEarth)
