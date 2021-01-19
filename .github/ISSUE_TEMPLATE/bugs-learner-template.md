@@ -1,5 +1,5 @@
 ---
-name: Bugs in learner template
+name: Bugs in learner
 about: Used to report unexpected behaviour in learners
 title: "[BUGLRN] Bugs in learner <key>"
 labels: "Learner Status: Bugs"
