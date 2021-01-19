@@ -1,5 +1,5 @@
 ---
-name: Archived package template
+name: Archived package
 about: Used to report archived packages, which will lead to broken builds.
 title: "[ARCPKG] Package <package> archived"
 labels: archived package
