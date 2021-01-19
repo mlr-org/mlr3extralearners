@@ -98,11 +98,13 @@ jobs:
           path: check
      
       - name: "[Stage] Update learner table"
+        if: ${{ github.event_name != 'pull_request'}}
         run: |
           R CMD INSTALL .
           Rscript build_learner_table.R
 
       - name: Commit files
+        if: ${{ github.event_name != 'pull_request'}}
         run: |
           git add R/sysdata.rda
           git config --local user.email "action@github.com"
@@ -110,16 +112,20 @@ jobs:
           git diff-index --quiet HEAD || git commit -m "Update learner table"
 
       - name: Push changes
+        if: ${{ github.event_name != 'pull_request'}}
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: "[Stage] Before Deploy"
+        if: ${{ github.event_name != 'pull_request'}}
         run: |
           Rscript -e "tic::before_deploy()"
 
       - name: "[Stage] Deploy"
+        if: ${{ github.event_name != 'pull_request'}}
         run: Rscript -e "tic::deploy()"
 
       - name: "[Stage] After Deploy"
+        if: ${{ github.event_name != 'pull_request'}}
         run: Rscript -e "tic::after_deploy()"

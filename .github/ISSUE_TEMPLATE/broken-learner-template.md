@@ -1,8 +1,8 @@
 ---
-name: Broken learner template
+name: Broken learner
 about: Used to report broken learner builds, NOT bugs in learners
 title: "[BKLRN] Learner <key> broken <test_name> test(s)"
-labels: broken learner
+labels: "Learner Status: Broken"
 assignees: ''
 
 ---
