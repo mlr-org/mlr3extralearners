@@ -16,4 +16,10 @@ Authors:
   \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
 }
 
+Other contributors:
+\itemize{
+  \item Lorenz A. Kapsner \email{lorenz.kapsner@gmail.com} (\href{https://orcid.org/0000-0003-1866-860X}{ORCID}) [contributor]
+  \item Andrey Ogurtsov \email{ogurtsov.a.b@gmail.com} [contributor]
+}
+
 }

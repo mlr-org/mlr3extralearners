@@ -34,7 +34,10 @@ lrn = function(.key, ...) {
   pkgs = suppressWarnings(mlr3::lrn(.key))$packages
   tryCatch(mlr3misc::require_namespaces(pkgs),
            packageNotFoundError = function(e) {
-             mlr3misc::stopf('Required packages not installed, please run `install_learners("%s")`.', .key) # nolint
+             mlr3misc::stopf(
+               "Required packages not installed, please run `install_learners('%s'`",
+               .key
+             ) # nolint
            })
 
   mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)

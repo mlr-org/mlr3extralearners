@@ -11,7 +11,16 @@ Authors@R:
              family = "Schratz",
              role = "aut",
              email = "patrick.schratz@gmail.com",
-             comment = c(ORCID = "0000-0003-0748-6624")))
+             comment = c(ORCID = "0000-0003-0748-6624")),
+      person(given = "Lorenz A.",
+             family = "Kapsner",
+             role = "ctb",
+             email = "lorenz.kapsner@gmail.com",
+             comment = c(ORCID = "0000-0003-1866-860X")),
+      person(given = "Andrey",
+             family = "Ogurtsov",
+             role = "ctb",
+             email = "ogurtsov.a.b@gmail.com"))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
@@ -43,6 +52,7 @@ Suggests:
     kernlab,
     ks,
     LiblineaR,
+    lightgbm (>= 3.0.0),
     locfit,
     logspline,
     mboost,
