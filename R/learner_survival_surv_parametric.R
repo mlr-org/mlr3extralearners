@@ -229,9 +229,18 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
 
   if (type == "tobit") {
     for (i in seq_along(lp)) {
-      body(pdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
-      body(cdf) = substitute(pnorm((x-y)/scale), list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
-      body(quantile) = substitute(qnorm(p) * scale + y, list(y = lp[i] + fit$coefficients[1], scale = basedist$stdev()))
+      body(pdf) = substitute(pnorm((x - y) / scale), list(
+        y = lp[i] + fit$coefficients[1],
+        scale = basedist$stdev()
+      ))
+      body(cdf) = substitute(pnorm((x - y) / scale), list(
+        y = lp[i] + fit$coefficients[1],
+        scale = basedist$stdev()
+      ))
+      body(quantile) = substitute(qnorm(p) * scale + y, list(
+        y = lp[i] + fit$coefficients[1],
+        scale = basedist$stdev()
+      ))
       params[[i]]$pdf = pdf
       params[[i]]$cdf = cdf
       params[[i]]$quantile = quantile
@@ -240,7 +249,10 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
     for (i in seq_along(lp)) {
       body(pdf) = substitute((exp(y) * basedist$hazard(x)) * (1 - self$cdf(x)), list(y = -lp[i]))
       body(cdf) = substitute(1 - (basedist$survival(x)^exp(y)), list(y = -lp[i]))
-      body(quantile) = substitute(basedist$quantile(1 - exp(exp(-y) * log(1 - p))), list(y = -lp[i])) # nolint
+      body(quantile) = substitute(
+        basedist$quantile(1 - exp(exp(-y) * log(1 - p))), # nolint
+        list(y = -lp[i])
+      )
       params[[i]]$pdf = pdf
       params[[i]]$cdf = cdf
       params[[i]]$quantile = quantile

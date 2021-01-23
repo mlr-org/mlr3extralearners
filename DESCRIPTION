@@ -36,8 +36,8 @@ Suggests:
     coin,
     CoxBoost,
     dbarts,
-    earth,
     distr6 (>= 1.4.3),
+    earth,
     extraTrees,
     flexsurv,
     FNN,
@@ -56,7 +56,6 @@ Suggests:
     mlr3learners (>= 0.4.2),
     mlr3proba (>= 0.2.5.9000),
     mvtnorm,
-    nnet,
     np,
     obliqueRSF,
     partykit,
@@ -80,8 +79,6 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     usethis
-Remotes:
-    mlr-org/mlr3proba
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)

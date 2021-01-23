@@ -22,5 +22,4 @@ load_tests = function(key) {
                       pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
     require("mlr3cluster")
   }
-
 }

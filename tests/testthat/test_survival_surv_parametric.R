@@ -109,25 +109,25 @@ test_that("quantile dist", {
 test_that("cdf dist", {
   learner = lrn("surv.parametric", dist = "weibull", type = "aft")$train(task)
   p = learner$predict(task, row_ids = 151:200)
-  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
+  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "exponential", type = "aft")$train(task)
   p = learner$predict(task, row_ids = 151:200)
-  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
+  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "gaussian", type = "tobit")$train(task)
   p = learner$predict(task, row_ids = 151:200)
-  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
+  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "lognormal")$train(task)
   p = learner$predict(task, row_ids = 151:200)
-  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
+  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })
@@ -144,7 +144,7 @@ test_that("loglogistic", {
 
   learner = lrn("surv.parametric", dist = "loglogistic")$train(task)
   p = learner$predict(task, row_ids = 151:200)
-  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200,]
+  cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
                matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })

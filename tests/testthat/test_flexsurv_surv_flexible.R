@@ -6,7 +6,7 @@ test_that("autotest", {
   learner = lrn("surv.flexible", k = 1, scale = "normal", inits = c(0.1, 1))
   expect_learner(learner)
   # sanity excluded due to issues in optimisation (it's too easy...)
-  result = run_autotest(learner,check_replicable = FALSE,exclude = "sanity")
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
 })
 

@@ -98,13 +98,10 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
 
       newdata = task$data(cols = task$feature_names) # get newdata
-      # type = ifelse(self$predict_type == "response", "response", "prob") # this is for the randomForest package
 
       # Other possible vars: offset.test, combineChains, ...
       data.table::setDF(newdata)
 
-      # TODO: Can't get prediction to pass the sanity checks on factor level ordering.
-      # Via https://github.com/mlr-org/mlr3learners/blob/master/R/LearnerClassifXgboost.R#L171
       lvls = task$class_names
       nlvl = length(lvls)
 
