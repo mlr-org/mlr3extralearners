@@ -10,9 +10,10 @@ test_that("regr.lightgbm train", {
   exclude = c(
     "params", # handled internally
     "data", # handled internally
+    "obj", # uses 'objective' alias
+    "eval", # uses 'metric' alias
     "valids", # handled internally
-    "colnames", # handled internally
-    "categorical_feature" # handled internally
+    "colnames" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)

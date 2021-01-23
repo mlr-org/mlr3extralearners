@@ -19,7 +19,6 @@ Authors:
 Other contributors:
 \itemize{
   \item Lorenz A. Kapsner \email{lorenz.kapsner@gmail.com} (\href{https://orcid.org/0000-0003-1866-860X}{ORCID}) [contributor]
-  \item Andrey Ogurtsov \email{ogurtsov.a.b@gmail.com} [contributor]
 }
 
 }

@@ -1,9 +1,9 @@
-#' @title Regression Light GBM Learner
+#' @title Classification Light GBM Learner
 #' @author kapsner
-#' @name mlr_learners_regr.lightgbm
+#' @name mlr_learners_classif.lightgbm
 #'
 #' @template class_learner
-#' @templateVar id regr.lightgbm
+#' @templateVar id classif.lightgbm
 #' @templateVar caller lgb.train
 #'
 #' @section Custom mlr3 defaults:
@@ -24,8 +24,8 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
-  inherit = LearnerRegr,
+LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
+  inherit = LearnerClassif,
 
   public = list(
     #' @description
@@ -35,12 +35,13 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         params = list(
           # lgb.train core functions
           ParamInt$new(id = "nrounds", default = 5L, lower = 1L, tags = "train"),
-          ParamFct$new(id = "objective", default = "regression", levels = c("regression",
-            "regression_l1", "huber", "fair", "poisson", "quantile", "mape", "gamma", "tweedie"),
-            tags = "train"),
-          ParamFct$new(id = "metric", default = "", levels = c("", "None", "l1", "l2", "rmse",
-            "quantile", "mape", "huber", "fair", "poisson", "gamma", "gamma_deviance", "tweedie",
-            "ndcg"), tags = "train"),
+          ParamFct$new(id = "objective", default = "binary", levels = c("binary",
+            "multiclass", "multiclassova", "cross_entropy", "cross_entropy_lambda", "lambdarank",
+             "rank_xendcg"), tags = "train"),
+          ParamFct$new(id = "metric", default = "", levels = c("", "None", "ndcg",
+            "map", "auc", "average_precision", "binary_logloss", "binary_error", "auc_mu",
+            "multi_logloss", "multi_error", "cross_entropy", "cross_entropy_lambda",
+            "kullback_leibler"), tags = "train"),
           ParamUty$new(id = "custom_eval", default = NULL, tags = "train"),
           ParamInt$new(id = "verbose", default = 1L, tags = "train"),
           ParamLgl$new(id = "record", default = TRUE, tags = "train"),
@@ -73,6 +74,10 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           ParamInt$new(id = "min_data_in_leaf", default = 20L, lower = 0L, tags = "train"),
           ParamDbl$new(id = "min_sum_hessian_in_leaf", default = 1e-3, lower = 0, tags = "train"),
           ParamDbl$new(id = "bagging_fraction", default = 1.0, lower = 0.0, upper = 1.0,
+            tags = "train"),
+          ParamDbl$new(id = "pos_bagging_fraction", default = 1.0, lower = 0.0, upper = 1.0,
+            tags = "train"),
+          ParamDbl$new(id = "neg_bagging_fraction", default = 1.0, lower = 0, upper = 1.0,
             tags = "train"),
           ParamInt$new(id = "bagging_freq", default = 0L, lower = 0L, tags = "train"),
           ParamInt$new(id = "bagging_seed", default = 3L, tags = "train"),
@@ -141,16 +146,21 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           ParamUty$new(id = "forcedbins_filename", default = "", tags = "train"),
           ParamLgl$new(id = "save_binary", default = FALSE, tags = "train"),
           # objective parameters
+          ParamInt$new(id = "objective_seed", default = 5L, tags = "train"),
+          ParamLgl$new(id = "is_unbalance", default = FALSE, tags = "train"),
+          ParamDbl$new(id = "scale_pos_weight", default = 1, lower = 0, tags = "train"),
+          ParamDbl$new(id = "sigmoid", default = 1, lower = 0, tags = "train"),
           ParamLgl$new(id = "boost_from_average", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "reg_sqrt", default = FALSE, tags = "train"),
-          ParamDbl$new(id = "alpha", default = 0.9, lower = 0.0, tags = "train"),
-          ParamDbl$new(id = "fair_c", default = 1.0, lower = 0.0, tags = "train"),
-          ParamDbl$new(id = "poisson_max_delta_step", default = 0.7, lower = 0.0, tags = "train"),
-          ParamDbl$new(id = "tweedie_variance_power", default = 1.5, lower = 1.0, upper = 2.0,
+          ParamInt$new(id = "lambdarank_truncation_level", default = 30L, lower = 1L,
             tags = "train"),
+          ParamLgl$new(id = "lambdarank_norm", default = TRUE, tags = "train"),
+          ParamUty$new(id = "label_gain", tags = "train"),
           # metric parameters
           ParamInt$new(id = "metric_freq", default = 1L, lower = 1L, tags = "train"),
           ParamLgl$new(id = "is_provide_training_metric", default = FALSE, tags = "train"),
+          ParamUty$new(id = "eval_at", default = 1:5, tags = "train"),
+          ParamInt$new(id = "multi_error_top_k", default = 1L, lower = 1L, tags = "train"),
+          ParamUty$new(id = "auc_mu_weights", default = NULL, tags = "train"),
           # network parameters
           ParamInt$new(id = "num_machines", default = 1L, lower = 1L, tags = "train"),
           ParamInt$new(id = "local_listen_port", default = 12400L, lower = 1L, tags = "train"),
@@ -172,12 +182,22 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         )
       )
 
-      ps$add_dep("reg_sqrt", "objective", CondEqual$new("regression"))
-      ps$add_dep("fair_c", "objective", CondEqual$new("fair"))
-      ps$add_dep("poisson_max_delta_step", "objective", CondEqual$new("poisson"))
-      ps$add_dep("tweedie_variance_power", "objective", CondEqual$new("tweedie"))
-      ps$add_dep("alpha", "objective", CondAnyOf$new(c("huber", "quantile", "regression")))
-      ps$add_dep("boost_from_average", "objective", CondEqual$new("regression"))
+      ps$add_dep("pos_bagging_fraction", "objective", CondEqual$new("binary"))
+      ps$add_dep("neg_bagging_fraction", "objective", CondEqual$new("binary"))
+      ps$add_dep("objective_seed", "objective", CondEqual$new("rank_xendcg"))
+      ps$add_dep("is_unbalance", "objective", CondAnyOf$new(c("binary", "multiclassova")))
+      ps$add_dep("scale_pos_weight", "objective", CondAnyOf$new(c("binary", "multiclassova")))
+      ps$add_dep("sigmoid", "objective", CondAnyOf$new(c("binary", "multiclassova", "lambdarank")))
+      ps$add_dep("lambdarank_truncation_level", "objective", CondEqual$new("lambdarank"))
+      ps$add_dep("lambdarank_norm", "objective", CondEqual$new("lambdarank"))
+      ps$add_dep("label_gain", "objective", CondEqual$new("lambdarank"))
+      ps$add_dep("boost_from_average", "objective", CondAnyOf$new(c(
+        "binary", "multiclassova",
+        "cross_entropy"
+      )))
+      ps$add_dep("eval_at", "metric", CondAnyOf$new(c("ndcg", "map")))
+      ps$add_dep("multi_error_top_k", "metric", CondEqual$new("multi_error"))
+      ps$add_dep("auc_mu_weights", "metric", CondEqual$new("auc_mu"))
 
       ps$add_dep("drop_rate", "boosting", CondEqual$new("dart"))
       ps$add_dep("max_drop", "boosting", CondEqual$new("dart"))
@@ -188,16 +208,16 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       ps$add_dep("top_rate", "boosting", CondEqual$new("goss"))
       ps$add_dep("other_rate", "boosting", CondEqual$new("goss"))
 
-      ps$values = list(num_threads = 1L, verbose = -1L, objective = "regression")
+      ps$values = list(num_threads = 1L, verbose = -1L)
 
       super$initialize(
-        id = "regr.lightgbm",
+        id = "classif.lightgbm",
         packages = "lightgbm",
         feature_types = c("numeric", "integer"),
-        predict_types = c("response"),
+        predict_types = c("prob", "response"),
         param_set = ps,
-        properties = c("weights", "missings", "importance"),
-        man = "mlr3extralearners::mlr_learners_regr.lightgbm"
+        properties = c("weights", "missings", "importance", "twoclass", "multiclass"),
+        man = "mlr3extralearners::mlr_learners_classif.lightgbm"
       )
     },
 
@@ -220,6 +240,10 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
   private = list(
 
     .train = function(task) {
+
+      # set column names to ensure consistency in fit and predict
+      self$state$feature_names = task$feature_names
+
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
@@ -228,23 +252,49 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         pars$custom_eval = NULL
       }
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
+      # catch incorrect objective setting
+      if (!is.null(pars$objective) && pars$objective %in% c("multiclass", "multiclassova") &&
+          !("multiclass" %in% task$properties)) {
+            stop("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
+      }
+
+      # set default objective
+      if (is.null(pars$objective)) {
+        if ("multiclass" %in% task$properties)  {
+          pars$objective = "multiclass"
+        } else {
+          pars$objective = "binary"
+        }
+      }
+
+      # set number of classes if multiclass and save label ordering
+      if (pars$objective %in% c("multiclass", "multiclassova")) {
+        pars$num_class = length(task$class_names)
+        self$state$labels = unique(task$truth())
+      }
 
       if (length(task$row_roles$validation)) {
         train_ids = setdiff(seq(task$nrow), task$row_roles$validation)
+        valid_ids = task$row_roles$validation
+
+        if (pars$objective %in% c("multiclass", "multiclassova")) {
+          train_label = as.matrix(as.integer(task$truth(rows = train_ids)) - 1)
+          valid_label = as.matrix(as.integer(task$truth(rows = valid_ids)) - 1)
+        } else {
+          train_label = as.matrix(as.integer(task$truth(rows = train_ids) == task$positive))
+          valid_label = as.matrix(as.integer(task$truth(rows = valid_ids) == task$positive))
+        }
 
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
-          label = as.matrix(task$data(rows = train_ids, cols = task$target_names)),
+          label = train_label,
           free_raw_data = FALSE
         )
 
-        valid_ids = task$row_roles$validation
         dtest = lightgbm::lgb.Dataset.create.valid(
           dataset = dtrain,
           data = as.matrix(task$data(rows = valid_ids, cols = task$feature_names)),
-          label = as.matrix(task$data(rows = valid_ids, cols = task$target_names))
+          label = valid_label
         )
 
         if ("weights" %in% task$properties) {
@@ -257,10 +307,18 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           valids = list(test = dtest),
           .args = pars
         )
+
       } else {
+
+        if (pars$objective %in% c("multiclass", "multiclassova")) {
+          train_label = as.matrix(as.integer(task$truth()) - 1)
+        } else {
+          train_label = as.matrix(as.integer(task$truth() == task$positive))
+        }
+
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(cols = task$feature_names)),
-          label = as.matrix(task$data(cols = task$target_names)),
+          label = train_label,
           free_raw_data = FALSE
         )
 
@@ -286,12 +344,33 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       pred = mlr3misc::invoke(predict,
         object = self$model,
         data = newdata,
+        reshape = TRUE,
         .args = pars
       )
 
-      list(response = pred)
+      response = NULL
+
+      if ("multiclass" %in% task$properties) {
+        pred_mat = pred
+        colnames(pred_mat) = self$state$labels
+        if (self$predict_type == "response") {
+          which = apply(pred_mat, 1, which.max)
+          response = self$state$labels[which]
+          pred_mat = NULL
+        }
+      } else {
+        pred_mat = matrix(c(pred, 1 - pred), ncol = 2)
+        colnames(pred_mat) = c(task$positive, task$negative)
+        if (self$predict_type == "response") {
+          which = apply(pred_mat, 1, which.max)
+          response = colnames(pred_mat)[which]
+          pred_mat = NULL
+        }
+      }
+
+      list(prob = pred_mat, response = response)
     }
   )
 )
 
-.extralrns_dict$add("regr.lightgbm", LearnerRegrLightGBM)
+.extralrns_dict$add("classif.lightgbm", LearnerClassifLightGBM)

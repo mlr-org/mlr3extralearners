@@ -1,8 +1,9 @@
-# mlr3extralearners 0.1.3.9000
+# mlr3extralearners 0.2.0
 
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
 * Added `type = "tobit"` for `dist = "gaussian"` so predictions can correspond with `survival::survreg`.
 * Added `LearnerRegrGlm` with the unique key `regr.glm` from package `stats`, which allows users to change the `family` hyperparameter when fitting generalized linear regression models.
+* Added `LearnerRegrLightGBM` and `LearnerClassifLightGBM` with keys `regr.lightgbm` and `classif.lightgbm` respectively. Copied from [mlr3learners.lightgbm](https://github.com/mlr3learners/mlr3learners.lightgbm)
 
 # mlr3extralearners 0.1.3
 
