@@ -278,11 +278,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         valid_ids = task$row_roles$validation
 
         if (pars$objective %in% c("multiclass", "multiclassova")) {
-          train_label = as.matrix(as.integer(task$truth(rows = train_ids)) - 1)
-          valid_label = as.matrix(as.integer(task$truth(rows = valid_ids)) - 1)
+          train_label = as.integer(task$truth(rows = train_ids)) - 1
+          valid_label = as.integer(task$truth(rows = valid_ids)) - 1
         } else {
-          train_label = as.matrix(as.integer(task$truth(rows = train_ids) == task$positive))
-          valid_label = as.matrix(as.integer(task$truth(rows = valid_ids) == task$positive))
+          train_label = as.integer(task$truth(rows = train_ids) == task$positive)
+          valid_label = as.integer(task$truth(rows = valid_ids) == task$positive)
         }
 
         dtrain = lightgbm::lgb.Dataset(
@@ -302,7 +302,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           dtest$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
         }
 
-        mlr3misc::invoke(lightgbm::lgb.train,
+        mlr3misc::invoke(
+          lightgbm::lgb.train,
           data = dtrain,
           valids = list(test = dtest),
           .args = pars
@@ -311,9 +312,9 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       } else {
 
         if (pars$objective %in% c("multiclass", "multiclassova")) {
-          train_label = as.matrix(as.integer(task$truth()) - 1)
+          train_label = as.integer(task$truth()) - 1
         } else {
-          train_label = as.matrix(as.integer(task$truth() == task$positive))
+          train_label = as.integer(task$truth() == task$positive)
         }
 
         dtrain = lightgbm::lgb.Dataset(
@@ -326,7 +327,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           dtrain$setinfo("weight", task$weights$weight)
         }
 
-        mlr3misc::invoke(lightgbm::lgb.train,
+        mlr3misc::invoke(
+          lightgbm::lgb.train,
           data = dtrain,
           .args = pars
         )
