@@ -5,7 +5,7 @@ lapply(list.files(system.file("testthat", package = "mlr3"),
   pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
 load_tests = function(key) {
-  class = strsplit(mlr3::lrn(.key)$id, ".", TRUE)[[1]][[1]]
+  class = strsplit(mlr3::lrn(key)$id, ".", TRUE)[[1]][[1]]
 
   if (class %in% c("surv", "dens")) {
     if (!requireNamespace("mlr3proba", quietly = TRUE)) {
