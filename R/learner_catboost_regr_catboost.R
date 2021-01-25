@@ -307,7 +307,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
       # data must be a dataframe
       learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = setDF(data),
+        data = data.table::setDF(data),
         label = task$data(cols = task$target_names)[[1L]],
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
@@ -330,7 +330,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
       # data must be a dataframe
       pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = setDF(data),
+        data = data.table::setDF(data),
         thread_count = self$param_set$values$thread_count)
 
       preds = mlr3misc::invoke(catboost::catboost.predict,
