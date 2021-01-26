@@ -1,9 +1,9 @@
 on:
   push:
-    branches: master
+    branches: main
     paths: '**/RWeka**'
   pull_request:
-    branches: master
+    branches: main
     paths: '**/RWeka**'
   schedule:
     - cron: "0 4 * * *"

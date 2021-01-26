@@ -1,9 +1,9 @@
 on:
   push:
-    branches: master
+    branches: main
     paths: '**/CoxBoost**'
   pull_request:
-    branches: master
+    branches: main
     paths: '**/CoxBoost**'
   schedule:
     - cron: "0 4 * * *"
