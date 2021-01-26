@@ -25,7 +25,7 @@ if (ci_get_env("TEST") == "Learner") {
   do_package_checks()
 
   get_stage("before_deploy") %>%
-    add_step(step_setup_push_deploy(branch = "master", orphan = FALSE))
+    add_step(step_setup_push_deploy(branch = "main", orphan = FALSE))
   
   get_stage("install") %>%
     add_step(step_install_github("mlr-org/mlr3pkgdowntemplate"))
