@@ -49,7 +49,7 @@ Suggests:
     mboost,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.2.5.9000),
+    mlr3proba (>= 0.2.6),
     mvtnorm,
     nnet,
     np,
@@ -76,8 +76,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
-    catboost/catboost/catboost/R-package,
-    mlr-org/mlr3proba
+    catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
