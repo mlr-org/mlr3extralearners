@@ -1,9 +1,9 @@
 on:
   push:
-    branches: master
+    branches: main
     paths: '**/extraTrees**'
   pull_request:
-    branches: master
+    branches: main
     paths: '**/extraTrees**'
   schedule:
     - cron: "0 4 * * *"
