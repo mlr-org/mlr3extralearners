@@ -3,6 +3,7 @@
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
 #' @importFrom stats predict
+#' @importFrom data.table :=
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
