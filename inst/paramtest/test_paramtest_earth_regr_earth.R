@@ -25,7 +25,8 @@ test_that("regr.earth predict", {
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
-    "level" # unused
+    "level", # unused
+    "interval" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
