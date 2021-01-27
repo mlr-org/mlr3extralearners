@@ -18,7 +18,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
+          ParamInt$new(id = "k", default = 1L, lower = 1L, tags = "train"),
           ParamFct$new(
             id = "algorithm", default = "kd_tree",
             levels = c("kd_tree", "cover_tree", "brute"), tags = "train"
@@ -40,39 +40,40 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
 
   private = list(
     .train = function(task) {
+      self$state$feature_names = task$feature_names
       list(
-        data = task$data(),
-        pars = self$param_set$get_values(tags = "train")
+        train = task$data(cols = task$feature_names),
+        cl = task$truth()
       )
     },
 
     .predict = function(task) {
-      model = self$model
-      train = model$data[, task$feature_names, with = FALSE]
-      target = model$data[, task$target_names, with = FALSE]
-      newdata = task$data(cols = task$feature_names)
 
       if (self$predict_type == "response") {
-        p = invoke(FNN::knn,
-          train = train, test = newdata, cl = target,
-          .args = model$pars
+        p = mlr3misc::invoke(
+          FNN::knn,
+          train = self$model$train,
+          cl = self$model$cl,
+          test = task$data(cols = self$state$feature_names),
+          .args = self$param_set$get_values(tags = "train")
         )
         list(response = p)
       } else {
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
-        p = invoke(FNN::knn,
-          train = train, test = newdata, cl = target,
-          prob = TRUE, .args = model$pars
+        p = mlr3misc::invoke(
+          FNN::knn,
+          train = self$model$train,
+          cl = self$model$cl,
+          test = task$data(cols = self$state$feature_names),
+          prob = TRUE,
+          .args = self$param_set$get_values(tags = "train")
         )
 
-        # Predicted probabilities refer to the winning class
-        prob = attr(p, "prob")
-        p = ifelse(p == task$positive, prob, 1 - prob)
-        p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
-        colnames(p) = task$class_names
-        list(prob = p)
+        attr(p, "prob")[p == task$negative] = 1 - attr(p, "prob")[p == task$negative]
+
+        list(prob = pprob_to_matrix(attr(p, "prob"), task))
       }
     }
   )

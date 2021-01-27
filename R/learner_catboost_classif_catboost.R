@@ -392,13 +392,13 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         } else {
           self$state$train_task$class_names[preds + 1L]
         }
-        PredictionClassif$new(task = task, response = response)
+        list(response = response)
       } else {
         if (is_binary && is.null(dim(preds))) {
           preds = matrix(c(preds, 1 - preds), ncol = 2L, nrow = length(preds))
         }
         colnames(preds) = self$state$train_task$class_names
-        PredictionClassif$new(task = task, prob = preds)
+        list(prob = preds)
       }
     }
   )

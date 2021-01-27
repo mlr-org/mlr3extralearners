@@ -19,7 +19,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamInt$new(id = "k", default = 1, lower = 1L, tags = "train"),
+          ParamInt$new(id = "k", default = 1L, lower = 1L, tags = "train"),
           ParamFct$new(
             id = "algorithm", default = "kd_tree",
             levels = c("kd_tree", "cover_tree", "brute"), tags = "train"
@@ -40,28 +40,23 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
 
   private = list(
     .train = function(task) {
+      self$state$feature_names = task$feature_names
       list(
-        data = task$data(),
-        pars = self$param_set$get_values(tags = "train")
+        train = task$data(cols = task$feature_names),
+        y = task$truth()
       )
     },
 
     .predict = function(task) {
-      model = self$model
-      train = model$data[, task$feature_names, with = FALSE]
-      target = model$data[, task$target_names, with = FALSE]
-      newdata = task$data(cols = task$feature_names)
-
-      print(train)
-      print(target)
-      print(newdata)
-
-      p = invoke(FNN::knn.reg,
-        train = train, test = newdata, y = target,
-        .args = model$pars
+      response = mlr3misc::invoke(
+        FNN::knn.reg,
+        train = self$model$train,
+        y = self$model$y,
+        test = task$data(cols = self$state$feature_names),
+        .args = self$param_set$get_values(tags = "train")
       )
 
-      list(response = p$pred)
+      list(response = response$pred)
     }
   )
 )

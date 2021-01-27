@@ -48,3 +48,11 @@ lrn = function(.key, ...) {
 lrns = function(.keys, ...) {
   lapply(.keys, lrn, ...)
 }
+
+# copied from mlr3learners
+# pp - positive class predicted probabilities
+pprob_to_matrix <- function(pp, task) {
+  y <- matrix(c(pp, 1 - pp), ncol = 2L, nrow = length(pp))
+  colnames(y) <- task$class_names
+  y
+}

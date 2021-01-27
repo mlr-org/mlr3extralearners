@@ -339,7 +339,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         prediction_type = "RawFormulaVal",
         .args = self$param_set$get_values(tags = "predict"))
 
-      PredictionRegr$new(task = task, response = preds)
+      list(response = preds)
     }
   )
 )

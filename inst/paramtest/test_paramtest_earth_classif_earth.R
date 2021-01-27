@@ -3,18 +3,19 @@ install_learners("classif.earth")
 
 test_that("classif.earth", {
   learner = lrn("classif.earth")
-  fun = earth::earth
+  fun = earth:::earth.default
   exclude = c(
-
+    "x", # handled internally
+    "y", # handled internally
+    "subset", # handled internally
+    "weights", # handled internally
+    "na.action", # only one option
+    "glm" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  expect_true(ParamTest, info = paste0("Missing parameters:",
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
 test_that("classif.earth predict", {

@@ -3,6 +3,12 @@
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
 * Added `type = "tobit"` for `dist = "gaussian"` so predictions can correspond with `survival::survreg`.
 * Added `LearnerRegrGlm` with the unique key `regr.glm` from package `stats`, which allows users to change the `family` hyperparameter when fitting generalized linear regression models.
+* Minor internal changes
+* Removed `keeptrees` parameter from `classif.bart` as this is forced internally
+* Fixed incorrect response and probability predictions in `classif.bart`
+* Added hyper-parameters to `classif.earth` and `regr.earth`
+* Added `se` predict type to `regr.earth`
+* Fixed predictions in `regr.knn` and `classif.knn`
 
 # mlr3extralearners 0.1.3
 

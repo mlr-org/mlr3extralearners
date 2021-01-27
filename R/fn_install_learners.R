@@ -3,7 +3,7 @@
 #' GitHub and CRAN, otherwise must be manually installed.
 #' @param .keys (`character()`) \cr Keys passed to [mlr_learners][mlr3::mlr_learners] specifying
 #' learners to install.
-#' @param repos (`character(1)`) \cr Passed to [install.packages].
+#' @param repos (`character(1)`) \cr Passed to [utils::install.packages].
 #' @param ... (`ANY`) \cr Additional options to pass to [utils::install.packages] or
 #' [remotes::install_github].
 #' @export
@@ -22,7 +22,7 @@ install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
     gh = setdiff(pkgs, cran)
 
     cran = cran[!mlr3misc::map_lgl(cran, requireNamespace, quietly = TRUE)]
-    if (length(cran)) install.packages(cran, repos = repos, ...)
+    if (length(cran)) utils::install.packages(cran, repos = repos, ...)
 
     gh = gh[!mlr3misc::map_lgl(gh, function(.x)
       requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE))]

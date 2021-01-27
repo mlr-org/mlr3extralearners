@@ -6,7 +6,8 @@
 #' @importFrom data.table :=
 "_PACKAGE"
 
-utils::globalVariables(c("name", "id", "mlr3_package", "required_packages"))
+utils::globalVariables(c("name", "id", "mlr3_package", "required_packages",
+".SD"))
 
 # nocov start
 register_mlr3 = function(libname, pkgname) {
