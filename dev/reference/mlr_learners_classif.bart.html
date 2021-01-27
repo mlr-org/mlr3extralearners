@@ -177,17 +177,6 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <li><p>Properties: twoclass, weights</p></li>
 </ul>
 
-    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
-
-    
-
-<ul>
-<li><p>Parameter: keeptrees</p></li>
-<li><p>Original: FALSE</p></li>
-<li><p>New: TRUE</p></li>
-<li><p>Reason: Required for prediction</p></li>
-</ul>
-
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
@@ -243,7 +232,7 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; &lt;LearnerClassifBart:classif.bart&gt;
 #&gt; * Model: -
-#&gt; * Parameters: keeptrees=TRUE
+#&gt; * Parameters: list()
 #&gt; * Packages: dbarts
 #&gt; * Predict Type: response
 #&gt; * Feature types: integer, numeric, factor, ordered
@@ -253,8 +242,8 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 </div><div class='output co'>#&gt;  [1] "ntree"         "k"             "power"         "base"         
 #&gt;  [5] "binaryOffset"  "ndpost"        "nskip"         "printevery"   
 #&gt;  [9] "keepevery"     "keeptrainfits" "usequants"     "numcut"       
-#&gt; [13] "printcutoffs"  "verbose"       "keeptrees"     "keepcall"     
-#&gt; [17] "sampleronly"   "offset"        "offset.test"  </div></pre>
+#&gt; [13] "printcutoffs"  "verbose"       "keepcall"      "sampleronly"  
+#&gt; [17] "offset"        "offset.test"  </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

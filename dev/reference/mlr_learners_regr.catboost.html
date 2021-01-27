@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Regression MARS (Multivariate Adaptive Regression Splines) Learner — mlr_learners_regr.earth • mlr3extralearners</title>
+<title>Gradient Boosted Decision Trees Regression Learner — mlr_learners_regr.catboost • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,8 +47,8 @@
 
 
 
-<meta property="og:title" content="Regression MARS (Multivariate Adaptive Regression Splines) Learner — mlr_learners_regr.earth" />
-<meta property="og:description" content="Calls earth::earth from package earth." />
+<meta property="og:title" content="Gradient Boosted Decision Trees Regression Learner — mlr_learners_regr.catboost" />
+<meta property="og:description" content="Calls catboost::catboost.train from package catboost." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -147,26 +147,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Regression MARS (Multivariate Adaptive Regression Splines) Learner</h1>
+    <h1>Gradient Boosted Decision Trees Regression Learner</h1>
     
-    <div class="hidden name"><code>mlr_learners_regr.earth.Rd</code></div>
+    <div class="hidden name"><code>mlr_learners_regr.catboost.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calls <a href='https://rdrr.io/pkg/earth/man/earth.html'>earth::earth</a> from package <a href='https://CRAN.R-project.org/package=earth'><span class="pkg">earth</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/catboost/man/catboost.train.html'>catboost::catboost.train</a> from package <a href='https://CRAN.R-project.org/package=catboost'><span class="pkg">catboost</span></a>.</p>
     </div>
 
 
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>Methods for variance estimations are not yet implemented.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
 <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span>
-<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span>
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"regr.catboost"</span><span class='op'>)</span>
+<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.catboost"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
@@ -174,40 +171,66 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: earth</p></li>
-<li><p>Predict Types: response, se</p></li>
-<li><p>Feature Types: numeric, factor, integer</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Packages: catboost</p></li>
+<li><p>Predict Types: response</p></li>
+<li><p>Feature Types: logical, integer, numeric, factor, ordered</p></li>
+<li><p>Properties: importance, missings, weights</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
+
+    
+
+<ul>
+<li><p><code>logging_level</code>:</p><ul>
+<li><p>Actual default: "Verbose"</p></li>
+<li><p>Adjusted default: "Silent"</p></li>
+<li><p>Reason for change: consistent with other mlr3 learners</p></li>
+</ul></li>
+<li><p><code>thread_count</code>:</p><ul>
+<li><p>Actual default: -1</p></li>
+<li><p>Adjusted default: 1</p></li>
+<li><p>Reason for change: consistent with other mlr3 learners</p></li>
+</ul></li>
+<li><p><code>allow_writing_files</code>:</p><ul>
+<li><p>Actual default: TRUE</p></li>
+<li><p>Adjusted default: FALSE</p></li>
+<li><p>Reason for change: consistent with other mlr3 learners</p></li>
+</ul></li>
+<li><p><code>save_snapshot</code>:</p><ul>
+<li><p>Actual default: TRUE</p></li>
+<li><p>Adjusted default: FALSE</p></li>
+<li><p>Reason for change: consistent with other mlr3 learners</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Stephen Milborrow (2014)
-Earth: multivariate adaptive regression spline models
-R package version 3
-<a href='https://cran.r-project.org/web/packages/earth/earth.pdf'>https://cran.r-project.org/web/packages/earth/earth.pdf</a></p>
-<p>Jerome H. Friedman (1991)
-Multivariate Adaptive Regression Splines
-The Annals of Statistics
-<a href='https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963'>https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963</a></p>
+    <p>CatBoost: unbiased boosting with categorical features.
+Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
+2017. https://arxiv.org/abs/1706.09516.</p>
+<p>CatBoost: gradient boosting with categorical features support.
+Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
+2018. https://arxiv.org/abs/1810.11363.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>pkopper</p>
+    <p>sumny</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerRegr.html'>mlr3::LearnerRegr</a></code> -&gt; <code>LearnerRegrEarth</code></p>
+    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerRegr.html'>mlr3::LearnerRegr</a></code> -&gt; <code>LearnerRegrCatboost</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>LearnerRegrEarth$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>LearnerRegrEarth$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>LearnerRegrCatboost$new()</code></a></p></li>
+<li><p><a href='#method-importance'><code>LearnerRegrCatboost$importance()</code></a></p></li>
+<li><p><a href='#method-clone'><code>LearnerRegrCatboost$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
@@ -223,13 +246,22 @@ The Annals of Statistics
 
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
-<p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerRegrEarth</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+<p>Create a <code>LearnerRegrCatboost</code> object.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>LearnerRegrCatboost</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
+<p><hr>
+<a id="method-importance"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>importance()</code></h3>
+<p>The importance scores are calculated using
+<code><a href='https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html'>catboost.get_feature_importance</a></code>,
+setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>LearnerRegrCatboost</span><span class='op'>$</span><span class='fu'>importance</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>Named <code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code>.</p>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerRegrEarth</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>LearnerRegrCatboost</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -241,26 +273,50 @@ The Annals of Statistics
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.catboost"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerRegrEarth:regr.earth&gt;
+</div><div class='output co'>#&gt; &lt;LearnerRegrCatboost:regr.catboost&gt;
 #&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: earth
+#&gt; * Parameters: loss_function=RMSE, logging_level=Silent, thread_count=1,
+#&gt;   allow_writing_files=FALSE, save_snapshot=FALSE
+#&gt; * Packages: catboost
 #&gt; * Predict Type: response
-#&gt; * Feature types: numeric, factor, integer
-#&gt; * Properties: weights</div><div class='input'>
+#&gt; * Feature types: logical, integer, numeric, factor, ordered
+#&gt; * Properties: importance, missings, weights</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "wp"              "offset"          "keepxy"          "trace"          
-#&gt;  [5] "degree"          "penalty"         "nk"              "thresh"         
-#&gt;  [9] "minspan"         "endspan"         "newvar.penalty"  "fast.k"         
-#&gt; [13] "fast.beta"       "linpreds"        "allowed"         "pmethod"        
-#&gt; [17] "nprune"          "nfold"           "ncross"          "stratify"       
-#&gt; [21] "varmod.method"   "varmod.exponent" "varmod.conv"     "varmod.clamp"   
-#&gt; [25] "varmod.minspan"  "Scale.y"         "Adjust.endspan"  "Auto.linpreds"  
-#&gt; [29] "Force.weights"   "Use.beta.cache"  "Force.xtx.prune" "Get.leverages"  
-#&gt; [33] "Exhaustive.tol" </div></pre>
+</div><div class='output co'>#&gt;  [1] "loss_function"                  "iterations"                    
+#&gt;  [3] "learning_rate"                  "random_seed"                   
+#&gt;  [5] "l2_leaf_reg"                    "bootstrap_type"                
+#&gt;  [7] "bagging_temperature"            "subsample"                     
+#&gt;  [9] "sampling_frequency"             "sampling_unit"                 
+#&gt; [11] "mvs_reg"                        "random_strength"               
+#&gt; [13] "depth"                          "grow_policy"                   
+#&gt; [15] "min_data_in_leaf"               "max_leaves"                    
+#&gt; [17] "has_time"                       "rsm"                           
+#&gt; [19] "nan_mode"                       "fold_permutation_block"        
+#&gt; [21] "leaf_estimation_method"         "leaf_estimation_iterations"    
+#&gt; [23] "leaf_estimation_backtracking"   "fold_len_multiplier"           
+#&gt; [25] "approx_on_full_history"         "boosting_type"                 
+#&gt; [27] "boost_from_average"             "langevin"                      
+#&gt; [29] "diffusion_temperature"          "score_function"                
+#&gt; [31] "monotone_constraints"           "feature_weights"               
+#&gt; [33] "first_feature_use_penalties"    "penalties_coefficient"         
+#&gt; [35] "per_object_feature_penalties"   "model_shrink_rate"             
+#&gt; [37] "model_shrink_mode"              "target_border"                 
+#&gt; [39] "border_count"                   "feature_border_type"           
+#&gt; [41] "per_float_feature_quantization" "thread_count"                  
+#&gt; [43] "task_type"                      "devices"                       
+#&gt; [45] "logging_level"                  "metric_period"                 
+#&gt; [47] "train_dir"                      "model_size_reg"                
+#&gt; [49] "allow_writing_files"            "save_snapshot"                 
+#&gt; [51] "snapshot_file"                  "snapshot_interval"             
+#&gt; [53] "simple_ctr"                     "combinations_ctr"              
+#&gt; [55] "ctr_target_border_count"        "counter_calc_method"           
+#&gt; [57] "max_ctr_complexity"             "ctr_leaf_count_limit"          
+#&gt; [59] "store_all_simple_ctr"           "final_ctr_computation_mode"    
+#&gt; [61] "verbose"                        "ntree_start"                   
+#&gt; [63] "ntree_end"                     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
