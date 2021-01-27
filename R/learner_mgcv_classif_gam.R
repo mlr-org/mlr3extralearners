@@ -29,8 +29,30 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ParamSet$new(list(
-        ParamDbl$new("scale", default = 0, tags = "train")
-      ))
+          ParamUty$new("formula", tags = "train"),
+          ParamUty$new("family", default = binomial(link = "logit"), tags = "train"),
+          ParamUty$new("offset", default = NULL, tags = "train"),
+          ParamFct$new(
+            "method",
+            levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
+            default = "GCV.Cp",
+            tags = "train"
+            ),
+          ParamUty$new("optimizer", default = c("outer", "newton"), tags = "train"),
+          ParamDbl$new("scale", default = 0, tags = "train"),
+          ParamLgl$new("select", default = FALSE, tags = "train"),
+          ParamUty$new("knots", default = NULL, tags = "train"),
+          ParamUty$new("sp", default = NULL, tags = "train"),
+          ParamUty$new("min.sp", default = NULL, tags = "train"),
+          ParamUty$new("H", default = NULL, tags = "train"),
+          ParamDbl$new("gamma", default = 1, tags = "train"),
+          ParamLgl$new("fit", default = TRUE, tags = "train"),
+          ParamUty$new("paraPen", default = NULL, tags = "train"),
+          ParamUty$new("G", default = NULL, tags = "train"),
+          ParamUty$new("in.out", default = NULL, tags = "train"),
+          ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
+          ParamLgl$new("drop.intercept", default = FALSE, tags = "train")
+          ))
 
       super$initialize(
         id = "classif.gam",
@@ -47,32 +69,18 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
   private = list(
 
     .train = function(task) {
-      # get parameters for training
+
       pars = self$param_set$get_values(tags = "train")
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
       data = as.data.frame(task$data(cols = c(task$feature_names, task$target_names)))
-
-      formula_feats = purrr::map_chr(
-        task$feature_names,
-        ~ ifelse(
-          is.logical(data[[.]]) | length(unique(data[[.]])) <= 10,
-          .,
-          paste0("s(", ., ")")
-        )
-        )
-      formula = as.formula(paste(
-        task$target_names,
-        "~",
-        paste(formula_feats, collapse = " + ")
-      ))
-
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
-      pars$family = binomial(link = "logit")
+      formula = pars$formula
+
 
       mlr3misc::invoke(
         mgcv::gam,
@@ -89,14 +97,14 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       # get newdata and ensure same ordering in train and predict
       newdata = as.data.frame(task$data(cols = self$state$feature_names))
 
-      pred = mlr3misc::invoke(
+      prob = mlr3misc::invoke(
         predict,
         self$model,
         newdata = newdata,
         type = "response",
         .args = pars
       )
-      prob = cbind(as.matrix(1 - pred), as.matrix(pred))
+      prob = cbind(as.matrix(1 - prob), as.matrix(prob))
       colnames(prob) = levels(task$data(cols = task$target_names)[[1]])
       list(prob = prob)
     }
