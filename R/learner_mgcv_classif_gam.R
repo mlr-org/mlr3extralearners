@@ -52,7 +52,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
           ParamUty$new("in.out", default = NULL, tags = "train"),
           ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
           ParamLgl$new("drop.intercept", default = FALSE, tags = "train"),
-          ParamInt$new("nthreads", default = 1L, tags = "control"),
+          ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "control"),
           ParamDbl$new("irls.reg", default = 0.0, tags = "control"),
           ParamDbl$new("epsilon", default = 1e-07, tags = "control"),
           ParamInt$new("maxit", default = 200L, tags = "control")
@@ -83,15 +83,16 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
+      browser()
       formula = pars$formula
 
-      control_pars = mlr3misc::invoke(mgcv::gam.control,
-        self$param_set$get_values(tags = "control")
+      control_pars = mlr3misc::invoke(
+        mgcv::gam.control,
+        .args = self$param_set$get_values(tags = "control")
         )
 
       mlr3misc::invoke(
         mgcv::gam,
-        formula = formula,
         data = data,
         .args = pars,
         control = control_pars
