@@ -16,7 +16,12 @@ Authors@R:
              family = "Schneider",
              role = "ctb",
              email = "lennart.sch@web.de",
-             comment = c(ORCID = "0000-0003-4152-5308")))
+             comment = c(ORCID = "0000-0003-4152-5308")),
+      person(given = "Stephen A",
+             family = "Lauer",
+             role = "ctb",
+             email = "stephenalauer@gmail.com",
+             comment = c(ORCID = "0000-0003-2948-630X")))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
