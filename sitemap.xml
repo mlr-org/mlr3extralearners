@@ -43,10 +43,19 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.PART.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bart.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.catboost.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.cforest.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ctree.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.earth.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.extratrees.html</loc>
@@ -133,10 +142,19 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.M5Rules.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bart.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.catboost.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.cforest.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.ctree.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.earth.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.extratrees.html</loc>
@@ -149,6 +167,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gbm.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glm.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glmboost.html</loc>

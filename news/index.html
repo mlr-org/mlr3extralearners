@@ -80,7 +80,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.1.3</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -149,13 +149,24 @@
       
     </div>
 
-    <div id="mlr3extralearners-0139000" class="section level1">
-<h1 class="page-header" data-toc-text="0.1.3.9000">
-<a href="#mlr3extralearners-0139000" class="anchor"></a>mlr3extralearners 0.1.3.9000</h1>
+    <div id="mlr3extralearners-020" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#mlr3extralearners-020" class="anchor"></a>mlr3extralearners 0.2.0</h1>
 <ul>
 <li>
 <code>dist = "logistic"</code> has been removed from <code>surv.parametric</code> as it is unclear what this was previously predicting.</li>
 <li>Added <code>type = "tobit"</code> for <code>dist = "gaussian"</code> so predictions can correspond with <code><a href="https://rdrr.io/pkg/survival/man/survreg.html">survival::survreg</a></code>.</li>
+<li>Added <code>LearnerRegrGlm</code> with the unique key <code>regr.glm</code> from package <code>stats</code>, which allows users to change the <code>family</code> hyperparameter when fitting generalized linear regression models.</li>
+<li>Minor internal changes</li>
+<li>Removed <code>keeptrees</code> parameter from <code>classif.bart</code> as this is forced internally</li>
+<li>Fixed incorrect response and probability predictions in <code>classif.bart</code>
+</li>
+<li>Added hyper-parameters to <code>classif.earth</code> and <code>regr.earth</code>
+</li>
+<li>Added <code>se</code> predict type to <code>regr.earth</code>
+</li>
+<li>Fixed predictions in <code>regr.knn</code> and <code>classif.knn</code>
+</li>
 </ul>
 </div>
     <div id="mlr3extralearners-013" class="section level1">

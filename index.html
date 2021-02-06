@@ -40,7 +40,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="index.html">mlr3extralearners <small>v0.1.3</small></a>
+        <a class="navbar-brand" href="index.html">mlr3extralearners <small>v0.2.0</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -110,7 +110,7 @@
 <p>Package website: <a href="https://mlr3extralearners.mlr-org.com/">release</a> | <a href="https://mlr3extralearners.mlr-org.com/dev/">dev</a></p>
 <p>Extra Learners for <strong><a href="https://github.com/mlr-org/mlr3/">mlr3</a></strong>.</p>
 <!-- badges: start -->
-<p><a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html"><img src="https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg" alt="R CMD Check"></a> <a href="https://codecov.io/gh/mlr-org/mlr3extralearners"><img src="https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg" alt="codecov"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge" alt="CodeFactor"></a> <!-- badges: end --></p>
+<p><a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html"><img src="https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg" alt="R CMD Check"></a> <a href="https://codecov.io/gh/mlr-org/mlr3extralearners"><img src="https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg" alt="codecov"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge" alt="CodeFactor"></a> <!-- badges: end --></p>
 <div id="what-is-mlr3extralearners" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-mlr3extralearners" class="anchor"></a>What is mlr3extralearners?</h2>
@@ -119,16 +119,16 @@
 <code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
 <span class="co">#&gt;   1: classif.AdaBoostM1 mlr3extralearners                  RWeka</span>
-<span class="co">#&gt;   2:        classif.C50 mlr3extralearners                    C50</span>
-<span class="co">#&gt;   3:    classif.cforest mlr3extralearners partykit,sandwich,coin</span>
-<span class="co">#&gt;   4:      classif.ctree mlr3extralearners partykit,sandwich,coin</span>
-<span class="co">#&gt;   5:  classif.cv_glmnet      mlr3learners                 glmnet</span>
+<span class="co">#&gt;   2:       classif.bart mlr3extralearners                 dbarts</span>
+<span class="co">#&gt;   3:        classif.C50 mlr3extralearners                    C50</span>
+<span class="co">#&gt;   4:   classif.catboost mlr3extralearners               catboost</span>
+<span class="co">#&gt;   5:    classif.cforest mlr3extralearners partykit,sandwich,coin</span>
 <span class="co">#&gt;  ---                                                            </span>
-<span class="co">#&gt; 121:        surv.ranger      mlr3learners                 ranger</span>
-<span class="co">#&gt; 122:         surv.rfsrc mlr3extralearners randomForestSRC,pracma</span>
-<span class="co">#&gt; 123:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
-<span class="co">#&gt; 124:           surv.svm mlr3extralearners            survivalsvm</span>
-<span class="co">#&gt; 125:       surv.xgboost      mlr3learners                xgboost</span></code></pre></div>
+<span class="co">#&gt; 128:        surv.ranger      mlr3learners                 ranger</span>
+<span class="co">#&gt; 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma</span>
+<span class="co">#&gt; 130:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
+<span class="co">#&gt; 131:           surv.svm mlr3extralearners            survivalsvm</span>
+<span class="co">#&gt; 132:       surv.xgboost      mlr3learners                xgboost</span></code></pre></div>
 <p>mlr3extralearners lives on GitHub and will not be on CRAN. Install with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></code></pre></div>
@@ -187,6 +187,7 @@
 <li>Raphael Sonabend <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0001-9225-4654" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="https://pat-s.me">Patrick Schratz</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 
