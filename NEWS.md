@@ -1,4 +1,4 @@
-# mlr3extralearners 0.1.3.9000
+# mlr3extralearners 0.2.0
 
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
 * Added `type = "tobit"` for `dist = "gaussian"` so predictions can correspond with `survival::survreg`.
