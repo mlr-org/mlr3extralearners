@@ -22,7 +22,7 @@ lrn("regr.earth")
 
 \itemize{
 \item Packages: earth
-\item Predict Types: response
+\item Predict Types: response, se
 \item Feature Types: numeric, factor, integer
 \item Properties: weights
 }

@@ -31,22 +31,51 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
     initialize = function() {
       ps = ParamSet$new(
         params = list(
-          ParamUty$new(id = "weights", default = NULL, tags = "train"),
-          ParamInt$new(id = "degree", default = 1L, tags = "train"),
+          ParamUty$new(id = "wp", default = NULL, tags = "train"),
+          ParamUty$new(id = "offset", default = NULL, tags = "train"),
+          ParamLgl$new(id = "keepxy", default = FALSE, tags = "train"),
+          ParamFct$new(id = "trace", default = "0",
+            levels = c("0", ".3", ".5", "1", "2", "3", "4", "5"), tags = "train"
+          ),
+          ParamInt$new(id = "degree", default = 1L, lower = 1L, tags = "train"),
           ParamDbl$new(id = "penalty", default = 2L, lower = -1L, tags = "train"),
           ParamUty$new(id = "nk", default = NULL, tags = "train"),
           ParamDbl$new(id = "thresh", default = 0.001, tags = "train"),
-          ParamDbl$new(id = "minspan", default = 0L, tags = "train"),
-          ParamDbl$new(id = "endspan", default = 0L, tags = "train"),
-          ParamDbl$new(id = "newvar.penalty", default = 0L, tags = "train"),
-          ParamInt$new(id = "fast.k", default = 20L, tags = "train"),
+          ParamDbl$new(id = "minspan", default = 0L, lower = 0L, tags = "train"),
+          ParamDbl$new(id = "endspan", default = 0L, lower = 0L, tags = "train"),
+          ParamDbl$new(id = "newvar.penalty", default = 0L, lower = 0L, tags = "train"),
+          ParamInt$new(id = "fast.k", default = 20L, lower = 0L, tags = "train"),
           ParamInt$new(id = "fast.beta", lower = 0L, upper = 1L, default = 1L, tags = "train"),
           ParamUty$new(id = "linpreds", default = FALSE, tags = "train"),
-          ParamUty$new(id = "pmethod", default = "backward", tags = "train"),
-          ParamUty$new(id = "nprune", default = NULL, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "predict")
+          ParamUty$new(id = "allowed", tags = "train"),
+          ParamFct$new(id = "pmethod", default = "backward",
+            levels = c("backward", "none", "exhaustive", "forward", "seqrep", "cv"),
+            tags = "train"),
+          ParamInt$new(id = "nprune", lower = 0L, tags = "train"),
+          ParamInt$new(id = "nfold", default = 0L, lower = 0L, tags = "train"),
+          ParamInt$new(id = "ncross", default = 1L, lower = 0L, tags = "train"),
+          ParamLgl$new(id = "stratify", default = TRUE, tags = "train"),
+          ParamFct$new(
+            id = "varmod.method", default = "none",
+            levels = c("none", "const", "lm", "rlm", "earth", "gam", "power", "power0", "x.lm",
+              "x.rlm", "x.earth", "x.gam"), tags = "train"),
+          ParamDbl$new(id = "varmod.exponent", default = 1, tags = "train"),
+          ParamDbl$new(id = "varmod.conv", lower = 0, upper = 1, default = 1, tags = "train"),
+          ParamDbl$new(id = "varmod.clamp", default = 0.1, tags = "train"),
+          ParamDbl$new(id = "varmod.minspan", default = -3, tags = "train"),
+          ParamLgl$new(id = "Scale.y", default = FALSE, tags = "train"),
+          ParamDbl$new(id = "Adjust.endspan", default = 2, tags = "train"),
+          ParamLgl$new(id = "Auto.linpreds", default = TRUE, tags = "train"),
+          ParamLgl$new(id = "Force.weights", default = FALSE, tags = "train"),
+          ParamLgl$new(id = "Use.beta.cache", default = TRUE, tags = "train"),
+          ParamLgl$new(id = "Force.xtx.prune", default = FALSE, tags = "train"),
+          ParamLgl$new(id = "Get.leverages", default = TRUE, tags = "train"),
+          ParamDbl$new(id = "Exhaustive.tol", default = 1e-10, tags = "train")
         )
       )
+
+      ps$add_dep("varmod.minspan", "varmod.method", CondEqual$new("earth"))
+      ps$add_dep("Exhaustive.tol", "pmethod", CondEqual$new("exhaustive"))
 
       super$initialize(
         id = "classif.earth",
@@ -62,23 +91,35 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
 
   private = list(
     .train = function(task) {
+
       pars = self$param_set$get_values(tags = "train")
-      data = task$data()
-      x = data[, task$feature_names]
-      y = data[, task$target_names]
-      invoke(earth::earth, x = x, y = y, glm = list(family = binomial), .args = pars)
+
+      if ("weights" %in% task$properties) {
+        pars = insert_named(pars, list(weights = task$weights$weight))
+      }
+
+      mlr3misc::invoke(
+        earth::earth,
+        x = task$data(cols = task$feature_names),
+        y = as.integer(task$data(cols = task$target_names) == task$positive),
+        glm = list(family = stats::binomial),
+        .args = pars
+      )
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
-      # glm naming vs. mlr3
-      p = unname(predict(self$model, newdata = newdata, type = "response"))
-      levs = task$levels(task$target_names)[[1]]
+      p = mlr3misc::invoke(
+        predict,
+        self$model,
+        newdata = task$data(cols = task$feature_names),
+        type = "response",
+        .args = self$param_set$get_values(tags = "predict")
+      )
+
       if (self$predict_type == "response") {
-        pred = PredictionClassif$new(task = task,
-                                  response = ifelse(p < 0.5, levs[1L], levs[2L]))
+        list(response = ifelse(p < 0.5, task$negative, task$positive))
       } else {
-        pred = PredictionClassif$new(task = task, prob = prob_vector_to_matrix(p, levs))
+        list(prob = pprob_to_matrix(p, task))
       }
     }
   )

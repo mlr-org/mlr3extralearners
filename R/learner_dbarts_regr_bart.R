@@ -110,7 +110,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
       # TODO: confirm that this is the correct element name.
       pred <- colMeans(p)
 
-      mlr3::PredictionRegr$new(task = task, response = pred)
+      list(response = pred)
     }
   )
 )

@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.1.3.9000
+Version: 0.2.0
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -16,7 +16,17 @@ Authors@R:
              family = "Kapsner",
              role = "ctb",
              email = "lorenz.kapsner@gmail.com",
-             comment = c(ORCID = "0000-0003-1866-860X")))
+             comment = c(ORCID = "0000-0003-1866-860X")),
+      person(given = "Lennart",
+             family = "Schneider",
+             role = "ctb",
+             email = "lennart.sch@web.de",
+             comment = c(ORCID = "0000-0003-4152-5308")),
+      person(given = "Stephen A",
+             family = "Lauer",
+             role = "ctb",
+             email = "stephenalauer@gmail.com",
+             comment = c(ORCID = "0000-0003-2948-630X")))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
@@ -33,6 +43,7 @@ Suggests:
     actuar,
     apcluster,
     C50,
+    catboost,
     coin,
     CoxBoost,
     dbarts,
@@ -54,7 +65,7 @@ Suggests:
     mboost,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.2.5.9000),
+    mlr3proba (>= 0.2.6),
     mvtnorm,
     np,
     obliqueRSF,
@@ -79,6 +90,8 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     usethis
+Remotes:
+    catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)

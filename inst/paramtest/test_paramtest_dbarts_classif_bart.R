@@ -14,7 +14,8 @@ test_that("classif.bart", {
     "combinechains", # unused
     "sigest", # regr only
     "sigdf", # regr only
-    "sigquant" # regr only
+    "sigquant", # regr only
+    "keeptrees" # must be TRUE for prediction
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)

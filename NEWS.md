@@ -1,11 +1,21 @@
+# mlr3extralearners 0.3.0
+
+* Added `LearnerRegrLightGBM` and `LearnerClassifLightGBM` with keys `regr.lightgbm` and `classif.lightgbm` respectively. Copied from [mlr3learners.lightgbm](https://github.com/mlr3learners/mlr3learners.lightgbm)
+* `LearnerRegrLiblineaRX` and `LearnerClassifLiblineaRX` deprecated in favour of only two learners (`LearnerRegrLiblineaR` and `LearnerClassLiblineaR`) with added hyper-parameters. Deprecated learners will be removed in v0.3.0.
+* Deprecated `classif.nnet` will be removed in v0.4.0.
+* Deprecated `liblinearX` will be removed in v0.4.0.
+
 # mlr3extralearners 0.2.0
 
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
 * Added `type = "tobit"` for `dist = "gaussian"` so predictions can correspond with `survival::survreg`.
 * Added `LearnerRegrGlm` with the unique key `regr.glm` from package `stats`, which allows users to change the `family` hyperparameter when fitting generalized linear regression models.
-* Added `LearnerRegrLightGBM` and `LearnerClassifLightGBM` with keys `regr.lightgbm` and `classif.lightgbm` respectively. Copied from [mlr3learners.lightgbm](https://github.com/mlr3learners/mlr3learners.lightgbm)
-* `LearnerRegrLiblineaRX` and `LearnerClassifLiblineaRX` deprecated in favour of only two learners (`LearnerRegrLiblineaR` and `LearnerClassLiblineaR`) with added hyper-parameters. Deprecated learners will be removed in v0.3.0.
-* Deprecated `classif.nnet` will be removed in v0.3.0.
+* Minor internal changes
+* Removed `keeptrees` parameter from `classif.bart` as this is forced internally
+* Fixed incorrect response and probability predictions in `classif.bart`
+* Added hyper-parameters to `classif.earth` and `regr.earth`
+* Added `se` predict type to `regr.earth`
+* Fixed predictions in `regr.knn` and `classif.knn`
 
 # mlr3extralearners 0.1.3
 

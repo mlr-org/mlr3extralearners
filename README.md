@@ -10,7 +10,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 [![R CMD
 Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/master/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
+[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
 <!-- badges: end -->
@@ -33,14 +33,14 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   1: classif.AdaBoostM1 mlr3extralearners                  RWeka
 #>   2:       classif.bart mlr3extralearners                 dbarts
 #>   3:        classif.C50 mlr3extralearners                    C50
-#>   4:    classif.cforest mlr3extralearners partykit,sandwich,coin
-#>   5:      classif.ctree mlr3extralearners partykit,sandwich,coin
+#>   4:   classif.catboost mlr3extralearners               catboost
+#>   5:    classif.cforest mlr3extralearners partykit,sandwich,coin
 #>  ---                                                            
-#> 126:        surv.ranger      mlr3learners                 ranger
-#> 127:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
-#> 128:         surv.rpart         mlr3proba  rpart,distr6,survival
-#> 129:           surv.svm mlr3extralearners            survivalsvm
-#> 130:       surv.xgboost      mlr3learners                xgboost
+#> 128:        surv.ranger      mlr3learners                 ranger
+#> 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
+#> 130:         surv.rpart         mlr3proba  rpart,distr6,survival
+#> 131:           surv.svm mlr3extralearners            survivalsvm
+#> 132:       surv.xgboost      mlr3learners                xgboost
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN. Install with:

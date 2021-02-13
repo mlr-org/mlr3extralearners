@@ -25,16 +25,6 @@ lrn("classif.bart")
 }
 }
 
-\section{Custom mlr3 defaults}{
-
-\itemize{
-\item Parameter: keeptrees
-\item Original: FALSE
-\item New: TRUE
-\item Reason: Required for prediction
-}
-}
-
 \examples{
 # stop example failing with warning if package not installed
 learner = suppressWarnings(mlr3::lrn("classif.bart"))

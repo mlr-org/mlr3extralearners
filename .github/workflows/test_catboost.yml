@@ -1,14 +1,14 @@
 on:
   push:
     branches: main
-    paths: '**/C50**'
+    paths: '**/catboost**'
   pull_request:
     branches: main
-    paths: '**/C50**'
+    paths: '**/catboost**'
   schedule:
     - cron: "0 4 * * *"
 
-name: C50 (ubuntu-latest, release)
+name: catboost (ubuntu-latest, release)
 
 jobs:
   all:
@@ -25,7 +25,7 @@ jobs:
           - { os: ubuntu-latest, r: "release" }       
 
     env:
-      PKG: C50
+      PKG: catboost
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RGL_USE_NULL: true
       TEST: ${{ matrix.env.test }}

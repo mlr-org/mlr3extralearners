@@ -1,9 +1,9 @@
 on:
   push:
-    branches: master
+    branches: main
     paths: '**/sm**'
   pull_request:
-    branches: master
+    branches: main
     paths: '**/sm**'
   schedule:
     - cron: "0 4 * * *"

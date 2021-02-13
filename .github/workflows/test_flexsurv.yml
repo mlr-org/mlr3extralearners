@@ -1,9 +1,9 @@
 on:
   push:
-    branches: master
+    branches: main
     paths: '**/flexsurv**'
   pull_request:
-    branches: master
+    branches: main
     paths: '**/flexsurv**'
   schedule:
     - cron: "0 4 * * *"
