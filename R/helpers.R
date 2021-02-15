@@ -51,3 +51,9 @@ lrn = function(.key, ...) {
 lrns = function(.keys, ...) {
   lapply(.keys, lrn, ...)
 }
+
+pprob_to_matrix <- function(pp, task) {
+  y <- matrix(c(pp, 1 - pp), ncol = 2L, nrow = length(pp))
+  colnames(y) <- task$class_names
+  y
+}
