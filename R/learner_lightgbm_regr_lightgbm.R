@@ -247,6 +247,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           label = as.matrix(task$data(rows = valid_ids, cols = task$target_names))
         )
 
+        row_id = NULL
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", subset(task$weights, row_id %in% train_ids)$weight)
           dtest$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)

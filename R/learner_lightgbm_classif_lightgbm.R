@@ -297,6 +297,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           label = valid_label
         )
 
+        row_id = NULL
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", subset(task$weights, row_id %in% train_ids)$weight)
           dtest$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
