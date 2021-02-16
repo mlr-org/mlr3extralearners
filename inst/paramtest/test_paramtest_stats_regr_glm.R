@@ -48,4 +48,3 @@ test_that("regr.glm control", {
     paste0("- '", ParamTest$missing, "'", collapse = "
 ")))
 })
-

@@ -5,6 +5,8 @@ test_that("<type>.<key> train", {
   learner = lrn("<type>.<key>")
   fun = <package>::<caller>
   exclude = c(
+    "object", # handled internally
+    "data" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
@@ -18,6 +20,9 @@ test_that("<type>.<key> predict", {
   learner = lrn("<type>.<key>")
   fun = <package>:::predict
     exclude = c(
+      "object", # handled internally
+      "data", # handled internally
+      "newdata" # handled internally
     )
 
   ParamTest = run_paramtest(learner, fun, exclude)

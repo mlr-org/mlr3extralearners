@@ -1,3 +1,10 @@
+# mlr3extralearners 0.3.0
+
+* Added `LearnerRegrLightGBM` and `LearnerClassifLightGBM` with keys `regr.lightgbm` and `classif.lightgbm` respectively. Copied from [mlr3learners.lightgbm](https://github.com/mlr3learners/mlr3learners.lightgbm)
+* `LearnerRegrLiblineaRX` and `LearnerClassifLiblineaRX` deprecated in favour of only two learners (`LearnerRegrLiblineaR` and `LearnerClassLiblineaR`) with added hyper-parameters. Deprecated learners will be removed in v0.3.0.
+* Deprecated `classif.nnet` will be removed in v0.4.0.
+* Deprecated `liblinearX` will be removed in v0.4.0.
+
 # mlr3extralearners 0.2.0
 
 * `dist = "logistic"` has been removed from `surv.parametric` as it is unclear what this was previously predicting.
