@@ -1,0 +1,68 @@
+on:
+  push:
+    branches: main
+    
+name: Update Learner Table
+
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: "release" }
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RGL_USE_NULL: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.1.1
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+          Ncpus: 4
+
+      - uses: r-lib/actions/setup-tinytex@master
+        if: matrix.config.latex == 'true'
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: "[Stage] Prepare"
+        run: |
+          Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
+          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
+
+      - name: "[Stage] [Linux] Install curl"
+        run: |
+          sudo R CMD javareconf
+          sudo apt install ccache libcurl4-openssl-dev libgit2-dev
+          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
+        
+      - name: "[Custom block] [Stage] [Linux] Install pkgdown system lib req"
+        run: sudo apt install libharfbuzz-dev libfribidi-dev
+
+      - name: "[Stage] Install"
+        run: Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+     
+      - name: "[Stage] Update learner table"
+        run: |
+          R CMD INSTALL .
+          Rscript build_learner_table.R
+
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add R/sysdata.rda
+          git diff-index --quiet HEAD || git commit -m "Update learner table"
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        
