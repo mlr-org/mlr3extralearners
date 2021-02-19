@@ -96,26 +96,6 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-     
-      - name: "[Stage] Update learner table"
-        if: ${{ github.event_name != 'pull_request'}}
-        run: |
-          R CMD INSTALL .
-          Rscript build_learner_table.R
-
-      - name: Commit files
-        if: ${{ github.event_name != 'pull_request'}}
-        run: |
-          git add R/sysdata.rda
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git diff-index --quiet HEAD || git commit -m "Update learner table"
-
-      - name: Push changes
-        if: ${{ github.event_name != 'pull_request'}}
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
           
       - name: "[Stage] Before Deploy"
         if: ${{ github.event_name != 'pull_request'}}
