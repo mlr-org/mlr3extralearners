@@ -51,10 +51,29 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamUty$new("in.out", default = NULL, tags = "train"),
         ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
         ParamLgl$new("drop.intercept", default = FALSE, tags = "train"),
-        # ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "control"),
-        # ParamDbl$new("irls.reg", default = 0.0, tags = "control"),
-        # ParamDbl$new("epsilon", default = 1e-07, tags = "control"),
-        # ParamInt$new("maxit", default = 200L, tags = "control")
+        ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "train"), # control
+        ParamDbl$new("irls.reg", default = 0.0, tags = "train"), # control
+        ParamDbl$new("epsilon", default = 1e-07, tags = "train"), # control
+        ParamInt$new("maxit", default = 200L, tags = "train"), # control
+        ParamLgl$new("trace", default = FALSE, tags = "train"), # control
+        ParamDbl$new("mgcv.tol", default = 1e-07, tags  = "train"), # control
+        ParamInt$new("mgcv.half", default = 15L, tags = "train"), # control
+        ParamDbl$new("rank.tol", default = .Machine$double.eps^0.5, tags = "train"), # control
+        ParamUty$new("nlm", default = list(), tags = "train"), # control
+        ParamUty$new("optim", default = list(), tags = "train"), # control
+        ParamUty$new("newton", default = list(), tags = "train"), # control
+        ParamInt$new("outerPIsteps", default = 0L, tags = "train"), # control
+        ParamLgl$new("idLinksBases", default = TRUE, tags = "train"), # control
+        ParamLgl$new("scalePenalty", default = TRUE, tags = "train"), # control
+        ParamInt$new("efs.lspmax", default = 15L, tags = "train"), # control
+        ParamDbl$new("efs.tol", default = .1, tags = "train"), # control
+        ParamFct$new(
+          "scale.est",
+          levels = c("fletcher", "pearson", "deviance"),
+          default = "fletcher",
+          tags = "train"
+        ), # control
+        ParamLgl$new("edge.correct", default = FALSE, tags = "train"), # control
         ParamInt$new("block.size", default = 1000L, tags = "predict"),
         ParamLgl$new("unconditional", default = FALSE, tags = "predict")
         ))
@@ -96,16 +115,19 @@ private = list(
       pars$family = "binomial"
     }
 
-#     control_pars = mlr3misc::invoke(
-#       mgcv::gam.control,
-#       .args = self$param_set$get_values(tags = "control")
-#     )
-#
+    is_ctrl_pars = names(pars) %in% names(mgcv::gam.control())
+    if (any(is_ctrl_pars)) {
+        control_pars = mlr3misc::invoke(mgcv::gam.control, .args = pars[is_ctrl_pars])
+        pars = pars[!is_ctrl_pars]
+      } else {
+        control_pars = mgcv::gam.control()
+      }
+
     mlr3misc::invoke(
       mgcv::gam,
       data = data,
-      .args = pars #,
-#      control = control_pars
+      .args = pars,
+      control = control_pars
     )
   },
 
