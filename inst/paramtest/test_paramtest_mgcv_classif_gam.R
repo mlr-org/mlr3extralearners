@@ -22,8 +22,17 @@ test_that("classif.gam train", {
 
 test_that("classif.gam predict", {
   learner = lrn("classif.gam")
-  fun = mgcv:::predict
+  fun = mgcv:::predict.gam
     exclude = c(
+      "object", # handled internally
+      "newdata", # handled internally
+      "type", # handled internally
+      "newdata.guaranteed", # handled internally
+      "na.action", # handled internally
+      "se.fit", # temporary
+      "terms", # temporary
+      "exclude", # temporary
+      "iterms.type" # temporary
     )
 
   ParamTest = run_paramtest(learner, fun, exclude)

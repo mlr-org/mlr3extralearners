@@ -50,11 +50,13 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamUty$new("G", default = NULL, tags = "train"),
         ParamUty$new("in.out", default = NULL, tags = "train"),
         ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
-        ParamLgl$new("drop.intercept", default = FALSE, tags = "train") #,
+        ParamLgl$new("drop.intercept", default = FALSE, tags = "train"),
         # ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "control"),
         # ParamDbl$new("irls.reg", default = 0.0, tags = "control"),
         # ParamDbl$new("epsilon", default = 1e-07, tags = "control"),
         # ParamInt$new("maxit", default = 200L, tags = "control")
+        ParamInt$new("block.size", default = 1000L, tags = "predict"),
+        ParamLgl$new("unconditional", default = FALSE, tags = "predict")
         ))
 
     super$initialize(
@@ -119,6 +121,7 @@ private = list(
       self$model,
       newdata = newdata,
       type = "response",
+      newdata.guaranteed = TRUE,
       .args = pars
     )
     prob = cbind(as.matrix(1 - prob), as.matrix(prob))
