@@ -5,6 +5,12 @@ test_that("classif.gam train", {
   learner = lrn("classif.gam")
   fun = mgcv::gam
   exclude = c(
+    "family", # handled relatively to type of task
+    "data", # handled internally
+    "weights", # handled internally
+    "subset",# handled internally
+    "na.action", # handled internally
+    "control" # temporary
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
