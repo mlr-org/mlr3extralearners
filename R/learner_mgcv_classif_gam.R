@@ -44,29 +44,28 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamUty$new("sp", default = NULL, tags = "train"),
         ParamUty$new("min.sp", default = NULL, tags = "train"),
         ParamUty$new("H", default = NULL, tags = "train"),
-        ParamDbl$new("gamma", default = 1, tags = "train"),
-        ParamLgl$new("fit", default = TRUE, tags = "train"),
+        ParamDbl$new("gamma", default = 1, lower = 1, tags = "train"),
         ParamUty$new("paraPen", default = NULL, tags = "train"),
         ParamUty$new("G", default = NULL, tags = "train"),
         ParamUty$new("in.out", default = NULL, tags = "train"),
         ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
         ParamLgl$new("drop.intercept", default = FALSE, tags = "train"),
         ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "train"), # control
-        ParamDbl$new("irls.reg", default = 0.0, tags = "train"), # control
-        ParamDbl$new("epsilon", default = 1e-07, tags = "train"), # control
+        ParamDbl$new("irls.reg", default = 0.0, lower = 0, tags = "train"), # control
+        ParamDbl$new("epsilon", default = 1e-07, lower = 0, tags = "train"), # control
         ParamInt$new("maxit", default = 200L, tags = "train"), # control
         ParamLgl$new("trace", default = FALSE, tags = "train"), # control
-        ParamDbl$new("mgcv.tol", default = 1e-07, tags  = "train"), # control
-        ParamInt$new("mgcv.half", default = 15L, tags = "train"), # control
-        ParamDbl$new("rank.tol", default = .Machine$double.eps^0.5, tags = "train"), # control
+        ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags  = "train"), # control
+        ParamInt$new("mgcv.half", default = 15L, lower = 0L, tags = "train"), # control
+        ParamDbl$new("rank.tol", default = .Machine$double.eps^0.5, lower = 0, tags = "train"), # control
         ParamUty$new("nlm", default = list(), tags = "train"), # control
         ParamUty$new("optim", default = list(), tags = "train"), # control
         ParamUty$new("newton", default = list(), tags = "train"), # control
-        ParamInt$new("outerPIsteps", default = 0L, tags = "train"), # control
+        ParamInt$new("outerPIsteps", default = 0L, lower = 0L, tags = "train"), # control
         ParamLgl$new("idLinksBases", default = TRUE, tags = "train"), # control
         ParamLgl$new("scalePenalty", default = TRUE, tags = "train"), # control
-        ParamInt$new("efs.lspmax", default = 15L, tags = "train"), # control
-        ParamDbl$new("efs.tol", default = .1, tags = "train"), # control
+        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = "train"), # control
+        ParamDbl$new("efs.tol", default = .1, lower = 0, tags = "train"), # control
         ParamFct$new(
           "scale.est",
           levels = c("fletcher", "pearson", "deviance"),

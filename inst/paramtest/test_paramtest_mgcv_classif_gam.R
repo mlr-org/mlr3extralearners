@@ -10,7 +10,8 @@ test_that("classif.gam train", {
     "weights", # handled internally
     "subset",# handled internally
     "na.action", # handled internally
-    "control" # handled via "train" parameters
+    "control", # handled via "train" parameters
+    "fit" # A model should be fitted
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
@@ -42,10 +43,10 @@ test_that("classif.gam predict", {
       "type", # handled internally
       "newdata.guaranteed", # handled internally
       "na.action", # handled internally
-      "se.fit", # temporary
-      "terms", # temporary
-      "exclude", # temporary
-      "iterms.type" # temporary
+      "se.fit", # not supported for classification
+      "terms", # not relevant for predict type "prob" or "response"
+      "exclude", # not relevant for predict type "prob" or "response"
+      "iterms.type" # not relevant for predict type "prob" or "response"
     )
 
   ParamTest = run_paramtest(learner, fun, exclude)
