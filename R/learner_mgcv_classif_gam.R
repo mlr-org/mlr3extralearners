@@ -2,6 +2,12 @@
 #' @author JazzyPierrot
 #' @name mlr_learners_classif.gam
 #'
+#' @description
+#' Generalized additive models.
+#' Calls [mgcv::gam] from package \CRANpkg{mgcv}.
+#'
+#' Multiclass classification is not implemented yet.
+#'
 #' @template class_learner
 #' @templateVar id classif.gam
 #' @templateVar caller gam
