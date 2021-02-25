@@ -5,7 +5,7 @@
 \alias{LearnerDensMixed}
 \title{Density Mixed Data Kernel Learner}
 \description{
-Calls \link[np:npudens]{np::npudens} from package \CRANpkg{np}.
+Calls \link[np:np.density]{np::npudens} from package \CRANpkg{np}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
