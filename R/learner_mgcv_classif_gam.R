@@ -81,7 +81,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       id = "classif.gam",
       packages = "mgcv",
       feature_types = c("logical", "integer", "numeric"),
-      predict_types = c("prob"),
+      predict_types = c("prob", "response"),
       param_set = ps,
       properties = c("twoclass", "weights"),
       man = "mlr3extralearners::mlr_learners_classif.gam"
@@ -133,6 +133,7 @@ private = list(
   .predict = function(task) {
     # get parameters with tag "predict"
     pars = self$param_set$get_values(tags = "predict")
+    lvls = task$class_names
 
     # get newdata and ensure same ordering in train and predict
     newdata = as.data.frame(task$data(cols = self$state$feature_names))
@@ -146,8 +147,14 @@ private = list(
       .args = pars
     )
     prob = cbind(as.matrix(1 - prob), as.matrix(prob))
-    colnames(prob) = levels(task$data(cols = task$target_names)[[1]])
-    list(prob = prob)
+    colnames(prob) = lvls
+    if (self$predict_type == "response") {
+      i = max.col(prob, ties.method = "random")
+      response = factor(colnames(prob)[i], levels = lvls)
+      list(response = response)
+    }  else if (self$predict_type == "prob") {
+      list(prob = prob)
+    }
   }
 )
 )
