@@ -37,17 +37,17 @@ test_that("classif.gam control", {
 test_that("classif.gam predict", {
   learner = lrn("classif.gam")
   fun = mgcv::predict.gam
-    exclude = c(
-      "object", # handled internally
-      "newdata", # handled internally
-      "type", # handled internally
-      "newdata.guaranteed", # handled internally
-      "na.action", # handled internally
-      "se.fit", # not supported for classification
-      "terms", # not relevant for predict type "prob" or "response"
-      "exclude", # not relevant for predict type "prob" or "response"
-      "iterms.type" # not relevant for predict type "prob" or "response"
-    )
+  exclude = c(
+    "object", # handled internally
+    "newdata", # handled internally
+    "type", # handled internally
+    "newdata.guaranteed", # handled internally
+    "na.action", # handled internally
+    "se.fit", # not supported for classification
+    "terms", # not relevant for predict type "prob" or "response"
+    "exclude", # not relevant for predict type "prob" or "response"
+    "iterms.type" # not relevant for predict type "prob" or "response"
+  )
 
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(

@@ -109,16 +109,14 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         pars$weights = task$weights$weight
       }
       if (is.null(pars$formula)) {
-        formula = as.formula(paste(
+        formula = stats::as.formula(paste(
           task$target_names,
           "~",
           paste(task$feature_names, collapse = " + ")
           ))
         pars$formula = formula
       }
-      if (is.null(pars$family)) {
-        pars$family = "binomial"
-      }
+      pars$family = "binomial"
 
       is_ctrl_pars = names(pars) %in% names(mgcv::gam.control())
       if (any(is_ctrl_pars)) {
