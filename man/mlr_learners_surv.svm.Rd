@@ -29,7 +29,7 @@ lrn("surv.svm")
 \itemize{
 \item Packages: survivalsvm
 \item Predict Types: crank, response
-\item Feature Types: integer, numeric
+\item Feature Types: integer, numeric, character, factor, logical
 \item Properties:
 }
 }

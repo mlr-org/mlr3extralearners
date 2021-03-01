@@ -1,3 +1,7 @@
+# mlr3extralearners 0.3.0.9000
+
+* `surv.svm` now supports all feature types
+
 # mlr3extralearners 0.3.0
 
 * Added `LearnerRegrLightGBM` and `LearnerClassifLightGBM` with keys `regr.lightgbm` and `classif.lightgbm` respectively. Copied from [mlr3learners.lightgbm](https://github.com/mlr3learners/mlr3learners.lightgbm)
