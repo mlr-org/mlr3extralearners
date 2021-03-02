@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Regression Fast Nearest Neighbor Search Learner — mlr_learners_regr.fnn • mlr3extralearners</title>
+<title>Classification Light GBM Learner — mlr_learners_classif.lightgbm • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,8 +47,8 @@
 
 
 
-<meta property="og:title" content="Regression Fast Nearest Neighbor Search Learner — mlr_learners_regr.fnn" />
-<meta property="og:description" content="Calls FNN::knn.reg from package FNN." />
+<meta property="og:title" content="Classification Light GBM Learner — mlr_learners_classif.lightgbm" />
+<meta property="og:description" content="Calls lightgbm::lgb.train from package lightgbm." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -147,23 +147,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Regression Fast Nearest Neighbor Search Learner</h1>
+    <h1>Classification Light GBM Learner</h1>
     
-    <div class="hidden name"><code>mlr_learners_regr.fnn.Rd</code></div>
+    <div class="hidden name"><code>mlr_learners_classif.lightgbm.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calls <a href='https://rdrr.io/pkg/FNN/man/knn.reg.html'>FNN::knn.reg</a> from package <a href='https://CRAN.R-project.org/package=FNN'><span class="pkg">FNN</span></a>.</p>
+    <p>Calls <a href='https://rdrr.io/pkg/lightgbm/man/lgb.train.html'>lightgbm::lgb.train</a> from package <a href='https://CRAN.R-project.org/package=lightgbm'><span class="pkg">lightgbm</span></a>.</p>
     </div>
 
 
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>For categorical features either first transform factor colums with mlr3pipelines::PipeOpEncode
+or convert the columns with <code>as.integer</code> and specify the categorical columns with the
+<code>categorical_feature</code> parameter.</p>
     <h2 class="hasAnchor" id="dictionary"><a class="anchor" href="#dictionary"></a>Dictionary</h2>
 
     <p>This Learner can be instantiated via the
 <a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>dictionary</a> mlr_learners or with the associated
-sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"regr.fnn"</span><span class='op'>)</span>
-<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.fnn"</span><span class='op'>)</span>
+sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='va'>mlr_learners</span><span class='op'>$</span><span class='fu'>get</span><span class='op'>(</span><span class='st'>"classif.lightgbm"</span><span class='op'>)</span>
+<span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.lightgbm"</span><span class='op'>)</span>
 </pre>
 
     <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
@@ -171,10 +176,27 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
     
 
 <ul>
-<li><p>Packages: FNN</p></li>
-<li><p>Predict Types: response</p></li>
-<li><p>Feature Types: integer, numeric</p></li>
-<li><p>Properties:</p></li>
+<li><p>Packages: lightgbm</p></li>
+<li><p>Predict Types: prob, response</p></li>
+<li><p>Feature Types: numeric, integer</p></li>
+<li><p>Properties: importance, missings, multiclass, twoclass, weights</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
+
+    
+
+<ul>
+<li><p><code>num_threads</code>:</p><ul>
+<li><p>Actual default: 0L</p></li>
+<li><p>Adjusted default: 1L</p></li>
+<li><p>Reason for change: Prevents accidental conflicts with <code>future</code>.</p></li>
+</ul></li>
+<li><p><code>verbose</code>:</p><ul>
+<li><p>Actual default: 1L</p></li>
+<li><p>Adjusted default: -1L</p></li>
+<li><p>Reason for change: Prevents accidental conflicts with mlr messaging system.</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -183,18 +205,19 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>be-marc</p>
+    <p>kapsner</p>
     <h2 class="hasAnchor" id="super-classes"><a class="anchor" href="#super-classes"></a>Super classes</h2>
 
-    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerRegr.html'>mlr3::LearnerRegr</a></code> -&gt; <code>LearnerRegrFNN</code></p>
+    <p><code><a href='https://mlr3.mlr-org.com/reference/Learner.html'>mlr3::Learner</a></code> -&gt; <code><a href='https://mlr3.mlr-org.com/reference/LearnerClassif.html'>mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifLightGBM</code></p>
     <h2 class="hasAnchor" id="methods"><a class="anchor" href="#methods"></a>Methods</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Public methods</h3>
 
 <ul>
-<li><p><a href='#method-new'><code>LearnerRegrFNN$new()</code></a></p></li>
-<li><p><a href='#method-clone'><code>LearnerRegrFNN$clone()</code></a></p></li>
+<li><p><a href='#method-new'><code>LearnerClassifLightGBM$new()</code></a></p></li>
+<li><p><a href='#method-importance'><code>LearnerClassifLightGBM$importance()</code></a></p></li>
+<li><p><a href='#method-clone'><code>LearnerClassifLightGBM$clone()</code></a></p></li>
 </ul>
 <p><details ><summary>Inherited methods</summary>
 <ul>
@@ -211,12 +234,19 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <hr>
 <a id="method-new"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>new()</code></h3>
 <p>Creates a new instance of this <a href='https://r6.r-lib.org/reference/R6Class.html'>R6</a> class.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerRegrFNN</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>LearnerClassifLightGBM</span><span class='op'>$</span><span class='fu'>new</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
+<p><hr>
+<a id="method-importance"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>importance()</code></h3>
+<p>The importance scores are extracted from <code>lbg.importance</code>.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>LearnerClassifLightGBM</span><span class='op'>$</span><span class='fu'>importance</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Returns</h4>
+<p>Named <code><a href='https://rdrr.io/r/base/numeric.html'>numeric()</a></code>.</p>
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
 <p>The objects of this class are cloneable with this method.</p><h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>LearnerRegrFNN</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
+<p><div class="r"></p><pre><span class='va'>LearnerClassifLightGBM</span><span class='op'>$</span><span class='fu'>clone</span><span class='op'>(</span>deep <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre><p></div></p>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Arguments</h4>
 <p><div class="arguments"></p><dl>
@@ -228,18 +258,76 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.fnn"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.lightgbm"</span><span class='op'>)</span><span class='op'>)</span>
 <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerRegrFNN:regr.fnn&gt;
+</div><div class='output co'>#&gt; &lt;LearnerClassifLightGBM:classif.lightgbm&gt;
 #&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: FNN
-#&gt; * Predict Type: response
-#&gt; * Feature types: integer, numeric
-#&gt; * Properties: -</div><div class='input'>
+#&gt; * Parameters: num_threads=1, verbose=-1
+#&gt; * Packages: lightgbm
+#&gt; * Predict Type: prob
+#&gt; * Feature types: numeric, integer
+#&gt; * Properties: importance, missings, multiclass, twoclass, weights</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; [1] "k"         "algorithm"</div></pre>
+</div><div class='output co'>#&gt;   [1] "nrounds"                       "objective"                    
+#&gt;   [3] "metric"                        "custom_eval"                  
+#&gt;   [5] "verbose"                       "record"                       
+#&gt;   [7] "eval_freq"                     "init_model"                   
+#&gt;   [9] "early_stopping_rounds"         "callbacks"                    
+#&gt;  [11] "reset_data"                    "categorical_feature"          
+#&gt;  [13] "boosting"                      "linear_tree"                  
+#&gt;  [15] "num_iterations"                "learning_rate"                
+#&gt;  [17] "num_leaves"                    "tree_learner"                 
+#&gt;  [19] "num_threads"                   "device_type"                  
+#&gt;  [21] "seed"                          "deterministic"                
+#&gt;  [23] "force_col_wise"                "force_row_wise"               
+#&gt;  [25] "histogram_pool_size"           "max_depth"                    
+#&gt;  [27] "min_data_in_leaf"              "min_sum_hessian_in_leaf"      
+#&gt;  [29] "bagging_fraction"              "pos_bagging_fraction"         
+#&gt;  [31] "neg_bagging_fraction"          "bagging_freq"                 
+#&gt;  [33] "bagging_seed"                  "feature_fraction"             
+#&gt;  [35] "feature_fraction_bynode"       "feature_fraction_seed"        
+#&gt;  [37] "extra_trees"                   "extra_seed"                   
+#&gt;  [39] "first_metric_only"             "max_delta_step"               
+#&gt;  [41] "lambda_l1"                     "lambda_l2"                    
+#&gt;  [43] "linear_lambda"                 "min_gain_to_split"            
+#&gt;  [45] "drop_rate"                     "max_drop"                     
+#&gt;  [47] "skip_drop"                     "xgboost_dart_mode"            
+#&gt;  [49] "uniform_drop"                  "drop_seed"                    
+#&gt;  [51] "top_rate"                      "other_rate"                   
+#&gt;  [53] "min_data_per_group"            "max_cat_threshold"            
+#&gt;  [55] "cat_l2"                        "cat_smooth"                   
+#&gt;  [57] "max_cat_to_onehot"             "top_k"                        
+#&gt;  [59] "monotone_constraints"          "monotone_constraints_method"  
+#&gt;  [61] "monotone_penalty"              "feature_contri"               
+#&gt;  [63] "forcedsplits_filename"         "refit_decay_rate"             
+#&gt;  [65] "cegb_tradeoff"                 "cegb_penalty_split"           
+#&gt;  [67] "cegb_penalty_feature_lazy"     "cegb_penalty_feature_coupled" 
+#&gt;  [69] "path_smooth"                   "interaction_constraints"      
+#&gt;  [71] "input_model"                   "output_model"                 
+#&gt;  [73] "saved_feature_importance_type" "snapshot_freq"                
+#&gt;  [75] "max_bin"                       "max_bin_by_feature"           
+#&gt;  [77] "min_data_in_bin"               "bin_construct_sample_cnt"     
+#&gt;  [79] "data_random_seed"              "is_enable_sparse"             
+#&gt;  [81] "enable_bundle"                 "use_missing"                  
+#&gt;  [83] "zero_as_missing"               "feature_pre_filter"           
+#&gt;  [85] "pre_partition"                 "two_round"                    
+#&gt;  [87] "header"                        "group_column"                 
+#&gt;  [89] "forcedbins_filename"           "save_binary"                  
+#&gt;  [91] "objective_seed"                "is_unbalance"                 
+#&gt;  [93] "scale_pos_weight"              "sigmoid"                      
+#&gt;  [95] "boost_from_average"            "lambdarank_truncation_level"  
+#&gt;  [97] "lambdarank_norm"               "label_gain"                   
+#&gt;  [99] "metric_freq"                   "is_provide_training_metric"   
+#&gt; [101] "eval_at"                       "multi_error_top_k"            
+#&gt; [103] "auc_mu_weights"                "num_machines"                 
+#&gt; [105] "local_listen_port"             "time_out"                     
+#&gt; [107] "machine_list_filename"         "machines"                     
+#&gt; [109] "gpu_platform_id"               "gpu_device_id"                
+#&gt; [111] "gpu_use_dp"                    "num_gpu"                      
+#&gt; [113] "start_iteration"               "num_iteration"                
+#&gt; [115] "pred_early_stop"               "pred_early_stop_freq"         
+#&gt; [117] "pred_early_stop_margin"        "output_result"                </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
