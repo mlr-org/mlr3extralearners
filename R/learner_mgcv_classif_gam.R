@@ -63,7 +63,12 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamLgl$new("trace", default = FALSE, tags = "train"), # control
         ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags  = "train"), # control
         ParamInt$new("mgcv.half", default = 15L, lower = 0L, tags = "train"), # control
-        ParamDbl$new("rank.tol", default = .Machine$double.eps^0.5, lower = 0, tags = "train"), # control
+        ParamDbl$new(
+          "rank.tol",
+          default = .Machine$double.eps^0.5,
+          lower = 0,
+          tags = "train"
+          ), # control
         ParamUty$new("nlm", default = list(), tags = "train"), # control
         ParamUty$new("optim", default = list(), tags = "train"), # control
         ParamUty$new("newton", default = list(), tags = "train"), # control

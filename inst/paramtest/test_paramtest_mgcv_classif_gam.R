@@ -8,7 +8,7 @@ test_that("classif.gam train", {
     "family", # handled relatively to type of task
     "data", # handled internally
     "weights", # handled internally
-    "subset",# handled internally
+    "subset", # handled internally
     "na.action", # handled internally
     "control", # handled via "train" parameters
     "fit" # A model should be fitted

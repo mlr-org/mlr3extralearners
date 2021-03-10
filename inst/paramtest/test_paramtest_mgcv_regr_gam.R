@@ -7,7 +7,7 @@ test_that("regr.gam train", {
   exclude = c(
     "data", # handled internally
     "weights", # handled internally
-    "subset",# handled internally
+    "subset", # handled internally
     "na.action", # handled internally
     "control", # handled via "train" parameters
     "fit" # A model should be fitted
