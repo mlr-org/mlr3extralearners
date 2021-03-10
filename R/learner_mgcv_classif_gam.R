@@ -42,7 +42,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
           levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
           default = "GCV.Cp",
           tags = "train"
-          ),
+        ),
         ParamUty$new("optimizer", default = c("outer", "newton"), tags = "train"),
         ParamDbl$new("scale", default = 0, tags = "train"),
         ParamLgl$new("select", default = FALSE, tags = "train"),
@@ -61,14 +61,14 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamDbl$new("epsilon", default = 1e-07, lower = 0, tags = "train"), # control
         ParamInt$new("maxit", default = 200L, tags = "train"), # control
         ParamLgl$new("trace", default = FALSE, tags = "train"), # control
-        ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags  = "train"), # control
+        ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags = "train"), # control
         ParamInt$new("mgcv.half", default = 15L, lower = 0L, tags = "train"), # control
         ParamDbl$new(
           "rank.tol",
           default = .Machine$double.eps^0.5,
           lower = 0,
           tags = "train"
-          ), # control
+        ), # control
         ParamUty$new("nlm", default = list(), tags = "train"), # control
         ParamUty$new("optim", default = list(), tags = "train"), # control
         ParamUty$new("newton", default = list(), tags = "train"), # control
@@ -86,7 +86,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamLgl$new("edge.correct", default = FALSE, tags = "train"), # control
         ParamInt$new("block.size", default = 1000L, tags = "predict"),
         ParamLgl$new("unconditional", default = FALSE, tags = "predict")
-        ))
+      ))
 
       super$initialize(
         id = "classif.gam",
@@ -101,7 +101,6 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
   ),
 
   private = list(
-
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
@@ -118,18 +117,18 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
           task$target_names,
           "~",
           paste(task$feature_names, collapse = " + ")
-          ))
+        ))
         pars$formula = formula
       }
       pars$family = "binomial"
 
       is_ctrl_pars = names(pars) %in% names(mgcv::gam.control())
       if (any(is_ctrl_pars)) {
-          control_pars = mlr3misc::invoke(mgcv::gam.control, .args = pars[is_ctrl_pars])
-          pars = pars[!is_ctrl_pars]
-        } else {
-          control_pars = mgcv::gam.control()
-        }
+        control_pars = mlr3misc::invoke(mgcv::gam.control, .args = pars[is_ctrl_pars])
+        pars = pars[!is_ctrl_pars]
+      } else {
+        control_pars = mgcv::gam.control()
+      }
 
       mlr3misc::invoke(
         mgcv::gam,
@@ -141,6 +140,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
 
     .predict = function(task) {
       # get parameters with tag "predict"
+
       pars = self$param_set$get_values(tags = "predict")
       lvls = task$class_names
 
@@ -161,7 +161,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         i = max.col(prob, ties.method = "random")
         response = factor(colnames(prob)[i], levels = lvls)
         list(response = response)
-      }  else if (self$predict_type == "prob") {
+      } else if (self$predict_type == "prob") {
         list(prob = prob)
       }
     }
