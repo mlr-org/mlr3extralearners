@@ -63,6 +63,7 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
     mlr3proba (>= 0.2.6),
@@ -90,7 +91,6 @@ Suggests:
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
-    mgcv,
     usethis
 Remotes:
     catboost/catboost/catboost/R-package
