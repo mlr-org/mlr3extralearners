@@ -92,7 +92,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         id = "regr.gam",
         packages = "mgcv",
         feature_types = c("logical", "integer", "numeric"),
-        predict_types = c("response"),
+        predict_types = c("response", "se"),
         param_set = ps,
         properties = c("weights"),
         man = "mlr3extralearners::mlr_learners_regr.gam"
@@ -148,16 +148,23 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       # get newdata and ensure same ordering in train and predict
       newdata = as.data.frame(task$data(cols = self$state$feature_names))
 
-      response = mlr3misc::invoke(
+      include_se = (self$predict_type == "se")
+
+      preds = mlr3misc::invoke(
         predict,
         self$model,
         newdata = newdata,
         type = "response",
         newdata.guaranteed = TRUE,
+        se.fit = include_se,
         .args = pars
       )
 
-      list(response = response)
+      if (include_se) {
+        list(response = preds$fit, se = preds$se)
+      } else {
+        list(response = preds)
+      }
     }
   )
 )
