@@ -56,34 +56,34 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         ParamUty$new("in.out", default = NULL, tags = "train"),
         ParamLgl$new("drop.unused.levels", default = TRUE, tags = "train"),
         ParamLgl$new("drop.intercept", default = FALSE, tags = "train"),
-        ParamInt$new("nthreads", default = 1L, lower = 1L, tags = "train"), # control
-        ParamDbl$new("irls.reg", default = 0.0, lower = 0, tags = "train"), # control
-        ParamDbl$new("epsilon", default = 1e-07, lower = 0, tags = "train"), # control
-        ParamInt$new("maxit", default = 200L, tags = "train"), # control
-        ParamLgl$new("trace", default = FALSE, tags = "train"), # control
-        ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags = "train"), # control
-        ParamInt$new("mgcv.half", default = 15L, lower = 0L, tags = "train"), # control
+        ParamInt$new("nthreads", default = 1L, lower = 1L, tags = c("train", "control")),
+        ParamDbl$new("irls.reg", default = 0.0, lower = 0, tags = c("train", "control")),
+        ParamDbl$new("epsilon", default = 1e-07, lower = 0, tags = c("train", "control")),
+        ParamInt$new("maxit", default = 200L, tags = c("train", "control")),
+        ParamLgl$new("trace", default = FALSE, tags = c("train", "control")),
+        ParamDbl$new("mgcv.tol", default = 1e-07, lower = 0, tags = c("train", "control")),
+        ParamInt$new("mgcv.half", default = 15L, lower = 0L, tags = c("train", "control")),
         ParamDbl$new(
           "rank.tol",
           default = .Machine$double.eps^0.5,
           lower = 0,
-          tags = "train"
-        ), # control
-        ParamUty$new("nlm", default = list(), tags = "train"), # control
-        ParamUty$new("optim", default = list(), tags = "train"), # control
-        ParamUty$new("newton", default = list(), tags = "train"), # control
-        ParamInt$new("outerPIsteps", default = 0L, lower = 0L, tags = "train"), # control
-        ParamLgl$new("idLinksBases", default = TRUE, tags = "train"), # control
-        ParamLgl$new("scalePenalty", default = TRUE, tags = "train"), # control
-        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = "train"), # control
-        ParamDbl$new("efs.tol", default = .1, lower = 0, tags = "train"), # control
+          tags = c("train", "control")
+        ),
+        ParamUty$new("nlm", default = list(), tags = c("train", "control")),
+        ParamUty$new("optim", default = list(), tags = c("train", "control")),
+        ParamUty$new("newton", default = list(), tags = c("train", "control")),
+        ParamInt$new("outerPIsteps", default = 0L, lower = 0L, tags = c("train", "control")),
+        ParamLgl$new("idLinksBases", default = TRUE, tags = c("train", "control")),
+        ParamLgl$new("scalePenalty", default = TRUE, tags = c("train", "control")),
+        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = c("train", "control")),
+        ParamDbl$new("efs.tol", default = .1, lower = 0, tags = c("train", "control")),
         ParamFct$new(
           "scale.est",
           levels = c("fletcher", "pearson", "deviance"),
           default = "fletcher",
-          tags = "train"
-        ), # control
-        ParamLgl$new("edge.correct", default = FALSE, tags = "train"), # control
+          tags = c("train", "control")
+        ),
+        ParamLgl$new("edge.correct", default = FALSE, tags = c("train", "control")),
         ParamInt$new("block.size", default = 1000L, tags = "predict"),
         ParamLgl$new("unconditional", default = FALSE, tags = "predict")
       ))
@@ -122,10 +122,10 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       }
       pars$family = "binomial"
 
-      is_ctrl_pars = names(pars) %in% names(mgcv::gam.control())
-      if (any(is_ctrl_pars)) {
-        control_pars = mlr3misc::invoke(mgcv::gam.control, .args = pars[is_ctrl_pars])
-        pars = pars[!is_ctrl_pars]
+      ctrl_pars = mlr3misc::invoke(mgcv::gam.control, .args = self$param_set$get_values(tags = "control"))
+      if (length(ctrl_pars) > 0 ) {
+        control_pars = mlr3misc::invoke(mgcv::gam.control, .args = ctrl_pars)
+        pars = pars[!pars %in% ctrl_pars]
       } else {
         control_pars = mgcv::gam.control()
       }
