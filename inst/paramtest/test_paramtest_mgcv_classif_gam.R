@@ -25,8 +25,7 @@ test_that("classif.gam control", {
   learner = lrn("classif.gam")
   fun = mgcv::gam.control
   exclude = c(
-    "keepData", # handled internally
-    "nthreads" # handled internally
+    "keepData" # handled internally
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
