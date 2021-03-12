@@ -1,4 +1,4 @@
-# mlr3extralearners 0.3.0.9000
+# mlr3extralearners 0.3.1
 
 * `surv.svm` now supports all feature types
 

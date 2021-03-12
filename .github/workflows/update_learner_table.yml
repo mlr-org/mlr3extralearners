@@ -1,5 +1,5 @@
 on:
-  push:
+  pull_request:
     branches: main
     
 name: Update Learner Table
@@ -55,14 +55,11 @@ jobs:
         run: |
           R CMD INSTALL .
           Rscript build_learner_table.R
-
-      - name: Commit files
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add R/sysdata.rda
-          git diff-index --quiet HEAD || git commit -m "Update learner table"
-
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v3
-        
+          
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: github-actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: 'Update learner table'
+          add: 'R/sysdata.rda'
