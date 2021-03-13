@@ -34,15 +34,12 @@ I have...
 
 * [ ] Created a testthat file and it passes locally.
 * [ ] Created a paramtest file with tests for all calls in both my `.train` and `.predict` methods and it passes locally.
-* [ ] Run `rcmdcheck::rcmdcheck` and there are no new NOTEs, WARNINGs, or ERRORs.
 
 ## Cleaning
 
 I have run...
 
 * [ ] `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
-* [ ] `styler::style_pkg(style = styler::mlr_style)` - If needed install with `remotes::install_github('pat-s/styler@mlr-style')`
-* [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
 And 
@@ -94,13 +91,18 @@ I have...
 I have run...
 
 * [ ] `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
+
+If you've also made changes other than a small patch (i.e. changes that could affect code style) then please also confirm:
+
+I have run...
+
 * [ ] `styler::style_pkg(style = styler::mlr_style)` - If needed install with `remotes::install_github('pat-s/styler@mlr-style')`
-* [ ] `usethis::use_tidy_description()`
 * [ ] `lintr::lint_package()`
 
 And 
 
 * [ ] Updated NEWS.md
+* [ ] Updated the package version (For patches (bug fixing, small added feature): add 1 to the 3rd number. For minor updates (new learner, new features): add 1 to the 2nd number). 
 
 ## Comments
 
