@@ -87,6 +87,9 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   private = list(
     .train = function(task) {
 
+      # set column names to ensure consistency in fit and predict
+      self$state$feature_names = task$feature_names
+
       opt_pars = self$param_set$get_values(tags = "optimPenalty")
       cv_pars = self$param_set$get_values(tags = "cvpars")
       cox_pars = setdiff(
@@ -149,15 +152,18 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       pars = self$param_set$get_values(tags = "predict")
 
+      # get newdata and ensure same ordering in train and predict
+      newdata = as.matrix(task$data(cols = self$state$feature_names))
+
       lp = as.numeric(mlr3misc::invoke(predict,
         self$model,
-        newdata = as.matrix(task$data(cols = task$feature_names)),
+        newdata = newdata,
         .args = pars,
         type = "lp"))
 
       surv = mlr3misc::invoke(predict,
         self$model,
-        newdata = as.matrix(task$data(cols = task$feature_names)),
+        newdata = newdata,
         .args = pars,
         type = "risk",
         times = sort(unique(self$model$time)))
