@@ -1,6 +1,10 @@
-# mlr3extralearners 0.3.3
+# mlr3extralearners 0.3.6
 
 * `surv.coxboost` now uses the GitHub version instead of CRAN (archived)
+
+# mlr3extralearners 0.3.4
+
+* Add support for custom families to `regr.glmboost`
 
 # mlr3extralearners 0.3.1
 
