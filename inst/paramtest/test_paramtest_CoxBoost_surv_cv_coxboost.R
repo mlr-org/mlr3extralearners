@@ -1,4 +1,5 @@
 library(mlr3extralearners)
+install.packages("mlr3proba")
 remotes::install_github("binderh/CoxBoost")
 
 test_that("surv.cv_coxboost", {
