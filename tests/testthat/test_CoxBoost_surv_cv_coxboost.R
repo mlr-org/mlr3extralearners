@@ -1,5 +1,3 @@
-skip("Temporarily archived.")
-
 install_learners("surv.cv_coxboost")
 load_tests("surv.cv_coxboost")
 

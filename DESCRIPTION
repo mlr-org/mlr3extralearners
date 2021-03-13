@@ -45,7 +45,6 @@ Suggests:
     C50,
     catboost,
     coin,
-    CoxBoost,
     dbarts,
     distr6 (>= 1.4.3),
     earth,
@@ -92,6 +91,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
+    binderh/CoxBoost,
     catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no
