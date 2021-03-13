@@ -27,6 +27,7 @@ jobs:
       - name: New version
         run: |
           echo "NEW_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+          echo ${{ env.NEW_VERSION }}
           
       - uses: actions/checkout@v2
         with:
@@ -35,6 +36,7 @@ jobs:
       - name: Old version
         run: |
           echo "OLD_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+          echo ${{ env.OLD_VERSION }}
           
       - name: Compare versions
         run: |
