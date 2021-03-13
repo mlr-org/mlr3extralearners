@@ -1,4 +1,5 @@
 remotes::install_github("binderh/CoxBoost")
+install.packages("mlr3proba")
 
 test_that("autotest", {
   learner = LearnerSurvCoxboost$new()
