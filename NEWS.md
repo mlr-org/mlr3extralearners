@@ -1,3 +1,7 @@
+# mlr3extralearners 0.3.3
+
+* `surv.coxboost` now uses the GitHub version instead of CRAN (archived)
+
 # mlr3extralearners 0.3.1
 
 * `surv.svm` now supports all feature types
