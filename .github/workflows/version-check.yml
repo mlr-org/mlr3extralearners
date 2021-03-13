@@ -1,0 +1,42 @@
+on:
+  pull_request:
+    branches: main
+    
+name: Version Check
+
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: "release" }
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RGL_USE_NULL: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.1.1
+          
+      - name: New version
+        run: |
+          echo "NEW_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+          
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+          
+      - name: Old version
+        run: |
+          echo "OLD_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+          
+      - name: Compare versions
+        run: |
+          Rscript -e "if (commandArgs()[1] <= commandArgs()[2]) stop()" ${{ env.NEW_VERSION }} ${{ env.OLD_VERSION }}
+          
