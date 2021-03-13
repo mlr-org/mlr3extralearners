@@ -84,9 +84,9 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
 
       if (self$param_set$values$family != "custom") {
         pars_family = pars[which(names(pars) %in%
-                                 methods::formalArgs(utils::getFromNamespace(
-          pars_glmboost$family,
-          asNamespace("mboost"))))]
+                                   methods::formalArgs(utils::getFromNamespace(
+                                     pars_glmboost$family,
+                                     asNamespace("mboost"))))]
       }
 
       f = task$formula()
@@ -99,20 +99,20 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
       }
 
       pars_glmboost$family = switch(pars$family,
-        Gaussian = mboost::Gaussian(),
-        Laplace = mboost::Laplace(),
-        Huber = invoke(mboost::Huber, .args = pars_family),
-        Poisson = mboost::Poisson(),
-        GammaReg = invoke(mboost::GammaReg, .args = pars_family),
-        NBinomial = invoke(mboost::NBinomial, .args = pars_family),
-        Hurdle = invoke(mboost::Hurdle, .args = pars_family),
+                                    Gaussian = mboost::Gaussian(),
+                                    Laplace = mboost::Laplace(),
+                                    Huber = invoke(mboost::Huber, .args = pars_family),
+                                    Poisson = mboost::Poisson(),
+                                    GammaReg = invoke(mboost::GammaReg, .args = pars_family),
+                                    NBinomial = invoke(mboost::NBinomial, .args = pars_family),
+                                    Hurdle = invoke(mboost::Hurdle, .args = pars_family),
                                     custom = pars$custom.family
       )
 
       ctrl = invoke(mboost::boost_control, .args = pars_boost)
       invoke(mboost::glmboost, f,
-        data = data, control = ctrl,
-        .args = pars_glmboost)
+             data = data, control = ctrl,
+             .args = pars_glmboost)
     },
 
     .predict = function(task) {
