@@ -38,5 +38,5 @@ jobs:
           
       - name: Compare versions
         run: |
-          Rscript -e "if (commandArgs(TRUE)[1] <= commandArgs(TRUE)[2]) stop()" ${{ env.NEW_VERSION }} ${{ env.OLD_VERSION }}
+          Rscript -e "if (commandArgs(TRUE)[1] <= commandArgs(TRUE)[2]) stop("Package version has not been updated.")" ${{ env.NEW_VERSION }} ${{ env.OLD_VERSION }}
           
