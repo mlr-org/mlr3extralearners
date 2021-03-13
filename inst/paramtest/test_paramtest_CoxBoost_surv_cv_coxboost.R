@@ -13,8 +13,10 @@ test_that("surv.cv_coxboost", {
               # coerced internally
               "subset",
               # handled by task
-              "weights",
-              # handled by task
+              "weights", # handled by task
+              "stratum", # not currently supported
+              "cmprsk", # not currently supported
+              "coupled.strata", # not currently supported
               "parallel",
               # handled by future
               "upload.x",
@@ -55,6 +57,9 @@ test_that("surv.cv_coxboost_CoxBoost", {
               "parallel", # handled by future
               "subset", # handled by task
               "weights", # handled by task
+              "stratum", # not currently supported
+              "cmprsk", # not currently supported
+              "coupled.strata", # not currently supported
               "stepno" # optimised in cv.CoxBoost
   )
 
@@ -74,6 +79,8 @@ test_that("surv.cv_coxboost_predict", {
               "newstatus", # handled by newdata
               "subset", # handled by task,
               "times", # all times returned
+              "weights", # handled by task
+              "stratum", # not currently supported
               "type" # handled internally
   )
 
