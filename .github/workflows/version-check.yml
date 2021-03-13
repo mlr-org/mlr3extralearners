@@ -8,7 +8,7 @@ jobs:
   all:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: Check Version Test
 
     strategy:
       fail-fast: false
