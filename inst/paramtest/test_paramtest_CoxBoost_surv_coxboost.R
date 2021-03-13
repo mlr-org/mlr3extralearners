@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.coxboost")
+remotes::install_github("binderh/CoxBoost")
 
 test_that("surv.coxboost", {
   learner = lrn("surv.coxboost")

@@ -1,4 +1,4 @@
-install_learners("surv.cv_coxboost")
+remotes::install_github("binderh/CoxBoost")
 load_tests("surv.cv_coxboost")
 
 test_that("autotest", {

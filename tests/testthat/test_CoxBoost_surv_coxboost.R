@@ -1,5 +1,4 @@
-install_learners("surv.coxboost")
-load_tests("surv.coxboost")
+remotes::install_github("binderh/CoxBoost")
 
 test_that("autotest", {
   learner = LearnerSurvCoxboost$new()
