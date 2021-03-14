@@ -37,7 +37,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("covr")
         shell: Rscript {0}
-        
+
       - name: Install Python
         run: |
           remotes::install_github('rstudio/reticulate')
