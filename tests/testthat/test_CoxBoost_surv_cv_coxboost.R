@@ -1,6 +1,5 @@
-skip("Temporarily archived.")
-
-install_learners("surv.cv_coxboost")
+remotes::install_github("binderh/CoxBoost")
+install.packages(c("mlr3proba", "pracma"), repos = "https://cloud.r-project.org")
 load_tests("surv.cv_coxboost")
 
 test_that("autotest", {
