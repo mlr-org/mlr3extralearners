@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: "0 4 * * *"
 
-name: R CMD check/Update learner table
+name: Check/Codecov/Update Table
 
 jobs:
   R-CMD-check:
