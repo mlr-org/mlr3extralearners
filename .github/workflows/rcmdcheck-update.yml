@@ -59,7 +59,7 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
-        
+
       - name: Install Python
         run: |
           remotes::install_github('rstudio/reticulate')
@@ -88,7 +88,7 @@ jobs:
         run: |
           R CMD INSTALL .
           Rscript build_learner_table.R
-          
+
       - name: Commit changes
         if: ${{ github.event_name == 'pull_request' && success() }}
         uses: EndBug/add-and-commit@v7
