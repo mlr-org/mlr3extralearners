@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.3.5
+Version: 0.3.6
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -92,6 +92,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
+    binderh/CoxBoost,
     catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no
