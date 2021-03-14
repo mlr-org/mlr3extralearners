@@ -37,8 +37,17 @@ jobs:
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("covr")
         shell: Rscript {0}
+        
+      - name: Install Python
+        run: |
+          remotes::install_github('rstudio/reticulate')
+          reticulate::install_miniconda()
+          remotes::install_local()
+          install.packages('keras')
+          keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))
+          reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
+        shell: Rscript {0}
 
       - name: Test coverage
         run: covr::codecov()
         shell: Rscript {0}
-        
