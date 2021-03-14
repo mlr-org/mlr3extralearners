@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install.packages(c("mlr3proba", "pracma"))
+install.packages(c("mlr3proba", "pracma"), repos = "https://cloud.r-project.org")
 remotes::install_github("binderh/CoxBoost")
 
 test_that("surv.cv_coxboost", {
