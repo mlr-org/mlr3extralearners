@@ -4,13 +4,13 @@ on:
   schedule:
     - cron: "0 4 * * *"
 
-name: R CMD check/Update learner table
+name: Check/Codecov/Update Table
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: R CMD Check (${{ matrix.config.os }} (${{ matrix.config.r }}))
 
     strategy:
       fail-fast: false
@@ -82,6 +82,14 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Install covr
+        run: install.packages('covr')
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
 
       - name: Update learner table
         if: ${{ github.event_name == 'pull_request' && success() }}

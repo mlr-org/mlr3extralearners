@@ -1,3 +1,4 @@
+# nocov start
 #' @title Create a New Learner
 #' @description Helper function to generate all required files, and fill in fields, for new
 #' learners.
@@ -258,3 +259,4 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   cat(file_name_lrn)
   utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
 }
+# nocov end
