@@ -35,7 +35,7 @@ test_that("classif.gam control", {
 
 test_that("regr.gam predict", {
   learner = lrn("regr.gam")
-  fun = mgcv:::predict.gam
+  fun = mgcv::predict.gam
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
