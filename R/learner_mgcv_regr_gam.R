@@ -159,7 +159,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         mgcv::gam,
         data = data,
         .args = pars,
-        control = control_pars
+        control = control_obj
       )
     },
 
