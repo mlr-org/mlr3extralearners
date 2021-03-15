@@ -133,7 +133,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      data = as.data.frame(task$data(cols = c(task$feature_names, task$target_names)))
+      data = task$data(cols = c(task$feature_names, task$target_names))
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))
       }
