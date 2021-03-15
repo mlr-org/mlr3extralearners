@@ -97,6 +97,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
+    binderh/CoxBoost,
     catboost/catboost/catboost/R-package
 Encoding: UTF-8
 NeedsCompilation: no

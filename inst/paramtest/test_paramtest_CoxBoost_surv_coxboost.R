@@ -1,7 +1,6 @@
-skip("Temporarily archived.")
-
 library(mlr3extralearners)
-install_learners("surv.coxboost")
+install.packages(c("mlr3proba", "pracma"), repos = "https://cloud.r-project.org")
+remotes::install_github("binderh/CoxBoost")
 
 test_that("surv.coxboost", {
   learner = lrn("surv.coxboost")
@@ -10,7 +9,10 @@ test_that("surv.coxboost", {
               "status", # coerced internally
               "x", # coerced internally
               "subset", # handled by task
-              "weights" # handled by task
+              "weights", # handled by task
+              "stratum", # not currently supported
+              "cmprsk", # not currently supported
+              "coupled.strata" # not currently supported
               )
 
               ParamTest = run_paramtest(learner, fun, exclude)
@@ -29,6 +31,8 @@ test_that("surv.coxboost_predict", {
               "newstatus", # handled by newdata
               "subset", # handled by task,
               "times", # all times returned
+              "weights", # handled by task
+              "stratum", # not currently supported
               "type" # handled internally
   )
 

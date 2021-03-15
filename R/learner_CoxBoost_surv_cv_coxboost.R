@@ -87,6 +87,9 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   private = list(
     .train = function(task) {
 
+      # set column names to ensure consistency in fit and predict
+      self$state$feature_names = task$feature_names
+
       opt_pars = self$param_set$get_values(tags = "optimPenalty")
       cv_pars = self$param_set$get_values(tags = "cvpars")
       cox_pars = setdiff(
@@ -97,12 +100,16 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         cox_pars$weights = as.numeric(task$weights$weight)
       }
 
+      data <- as.matrix(task$data(cols = task$feature_names))
+
       pen_optim = FALSE
       if (!is.null(opt_pars$penalty)) {
         if (opt_pars$penalty == "optimCoxBoostPenalty") {
           pen_optim = TRUE
           opt_pars$penalty = NULL
         }
+      } else {
+        cv_pars = insert_named(cv_pars, list(penalty = NULL))
       }
 
       with_package("CoxBoost", {
@@ -111,7 +118,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             CoxBoost::optimCoxBoostPenalty,
             time = task$truth()[, 1],
             status = task$truth()[, 2],
-            x = as.matrix(task$data(cols = task$feature_names)),
+            x = data,
             .args = c(opt_pars, cv_pars)
           )
 
@@ -119,7 +126,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             CoxBoost::CoxBoost,
             time = task$truth()[, 1],
             status = task$truth()[, 2],
-            x = as.matrix(task$data(cols = task$feature_names)),
+            x = data,
             stepno = optim$cv.res$optimal.step,
             penalty = optim$penalty,
             .args = cox_pars
@@ -129,7 +136,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             CoxBoost::cv.CoxBoost,
             time = task$truth()[, 1],
             status = task$truth()[, 2],
-            x = as.matrix(task$data(cols = task$feature_names)),
+            x = data,
             .args = c(cv_pars, cox_pars)
           )$optimal.step
 
@@ -137,7 +144,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             CoxBoost::CoxBoost,
             time = task$truth()[, 1],
             status = task$truth()[, 2],
-            x = as.matrix(task$data(cols = task$feature_names)),
+            x = data,
             stepno = optimal_step,
             .args = cox_pars
           ))
@@ -149,15 +156,18 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       pars = self$param_set$get_values(tags = "predict")
 
+      # get newdata and ensure same ordering in train and predict
+      newdata = as.matrix(task$data(cols = self$state$feature_names))
+
       lp = as.numeric(mlr3misc::invoke(predict,
         self$model,
-        newdata = as.matrix(task$data(cols = task$feature_names)),
+        newdata = newdata,
         .args = pars,
         type = "lp"))
 
       surv = mlr3misc::invoke(predict,
         self$model,
-        newdata = as.matrix(task$data(cols = task$feature_names)),
+        newdata = newdata,
         .args = pars,
         type = "risk",
         times = sort(unique(self$model$time)))

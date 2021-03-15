@@ -4,13 +4,13 @@ on:
   schedule:
     - cron: "0 4 * * *"
 
-name: R CMD Check
+name: Check/Codecov/Update Table
 
 jobs:
-  all:
+  R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: R CMD Check (${{ matrix.config.os }} (${{ matrix.config.r }}))
 
     strategy:
       fail-fast: false
@@ -20,90 +20,88 @@ jobs:
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      CRAN: ${{ matrix.config.cran }}
-      TIC_DEPLOY_KEY: ${{ secrets.TIC_DEPLOY_KEY }}
-      RGL_USE_NULL: true
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      RSPM: ${{ matrix.config.rspm }}
 
     steps:
-      - uses: actions/checkout@v2.1.1
+      - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
-          Ncpus: 4
-
-      - uses: r-lib/actions/setup-tinytex@master
-        if: matrix.config.latex == 'true'
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: "[Cache] Prepare daily timestamp for cache"
-        if: runner.os != 'Windows'
-        id: date
-        run: echo "::set-output name=date::$(date '+%d-%m')"
+      - name: Query dependencies
+        run: |
+          install.packages('remotes')
+          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+        shell: Rscript {0}
 
-      - name: "[Cache] Cache R packages"
-        if: runner.os != 'Windows'
-        uses: pat-s/always-upload-cache@v2.0.0
+      - name: Cache R packages
+        uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
-      - name: "[Stage] Prepare"
+      - name: Install system dependencies
         run: |
-          Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
-          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
+          set -x
+          while read -r cmd
+          do
+            eval sudo $cmd
+          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "20.04"), sep = "\n")')
 
-      - name: "[Stage] [Linux] Install curl"
-        if: runner.os == 'Linux'
+      - name: Install dependencies
         run: |
-          sudo R CMD javareconf
-          sudo apt install ccache libcurl4-openssl-dev libgit2-dev
-          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
-        
-      - name: "[Custom block] [Stage] [Linux] Install pkgdown system lib req"
-        if: runner.os == 'Linux'
-        run: sudo apt install libharfbuzz-dev libfribidi-dev
-
-      - name: "[Stage] Install"
-        if: matrix.config.os != 'macOS-latest' || matrix.config.r != 'devel'
-        run: Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
-
-      # macOS devel needs its own stage because we need to work with an option to suppress the usage of binaries
-      - name: "[Stage] Prepare & Install (macOS-devel)"
-        if: matrix.config.os == 'macOS-latest' && matrix.config.r == 'devel'
-        run: |
-          echo -e 'options(Ncpus = 4, pkgType = "source", repos = structure(c(CRAN = "https://cloud.r-project.org/")))' > $HOME/.Rprofile
-          Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+          install.packages(c("remotes"))
+          remotes::install_deps(dependencies = TRUE)
+          remotes::install_cran("rcmdcheck")
+        shell: Rscript {0}
 
       - name: Install Python
         run: |
-          Rscript -e "remotes::install_github('rstudio/reticulate')" -e "reticulate::install_miniconda()" -e "remotes::install_local()" -e "install.packages('keras')" -e "keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))" -e  "reticulate::py_install(c('torch', 'pycox'), pip = TRUE)"
+          remotes::install_github('rstudio/reticulate')
+          reticulate::install_miniconda()
+          remotes::install_local()
+          install.packages('keras')
+          keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))
+          reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
+        shell: Rscript {0}
 
-      - name: "[Stage] Script"
-        run: Rscript -e 'tic::script()'
+      - name: Check
+        env:
+          _R_CHECK_CRAN_INCOMING_REMOTE_: false
+        run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
+        shell: Rscript {0}
 
-      - name: "[Stage] After Success"
-        run: Rscript -e "tic::after_success()"
-
-      - name: "[Stage] Upload R CMD check artifacts"
+      - name: Upload check results
         if: failure()
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@main
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-          
-      - name: "[Stage] Before Deploy"
-        if: ${{ github.event_name != 'pull_request'}}
+
+      - name: Install covr
+        run: install.packages('covr')
+        shell: Rscript {0}
+
+      - name: Test coverage
+        run: covr::codecov()
+        shell: Rscript {0}
+
+      - name: Update learner table
+        if: ${{ github.event_name == 'pull_request' && success() }}
         run: |
-          Rscript -e "tic::before_deploy()"
+          R CMD INSTALL .
+          Rscript build_learner_table.R
 
-      - name: "[Stage] Deploy"
-        if: ${{ github.event_name != 'pull_request'}}
-        run: Rscript -e "tic::deploy()"
-
-      - name: "[Stage] After Deploy"
-        if: ${{ github.event_name != 'pull_request'}}
-        run: Rscript -e "tic::after_deploy()"
+      - name: Commit changes
+        if: ${{ github.event_name == 'pull_request' && success() }}
+        uses: EndBug/add-and-commit@v7
+        with:
+          author_name: github-actions
+          author_email: 41898282+github-actions[bot]@users.noreply.github.com
+          message: 'Update learner table'
+          add: 'R/sysdata.rda'
