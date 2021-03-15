@@ -169,7 +169,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = as.data.frame(task$data(cols = self$state$feature_names))
+      newdata = task$data(cols = self$state$feature_names)
 
       include_se = (self$predict_type == "se")
 
