@@ -1,7 +1,10 @@
-# mlr3extralearners 0.3.0.9000
+# mlr3extralearners 0.3.9
+
+* Added `LearnerRegrGam` and `LearnerClassifGam` with keys `regr.gam` and `classif.gam` from package `mgcv`.
+
+# mlr3extralearners 0.3.1
 
 * `surv.svm` now supports all feature types
-* Added `LearnerRegrGam` and `LearnerClassifGam` with keys `regr.gam` and `classif.gam` from package `mgcv`.
 
 # mlr3extralearners 0.3.0
 
