@@ -141,19 +141,19 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       }
       pars$family = "binomial"
 
-      ctrl_pars = mlr3misc::invoke(mgcv::gam.control, .args = self$param_set$get_values(tags = "control"))
-      if (length(ctrl_pars) > 0 ) {
-        control_pars = mlr3misc::invoke(mgcv::gam.control, .args = ctrl_pars)
-        pars = pars[!pars %in% ctrl_pars]
+      control_pars = self$param_set$get_values(tags = "control")
+      if (length(control_pars) > 0 ) {
+        control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
+        pars = pars[!pars %in% control_pars]
       } else {
-        control_pars = mgcv::gam.control()
+        control_obj = mgcv::gam.control()
       }
 
       mlr3misc::invoke(
         mgcv::gam,
         data = data,
         .args = pars,
-        control = control_pars
+        control = control_obj
       )
     },
 
