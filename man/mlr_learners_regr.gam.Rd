@@ -8,6 +8,12 @@
 Generalized additive models.
 Calls \link[mgcv:gam]{mgcv::gam} from package \CRANpkg{mgcv}.
 
+A gam formula specific to the task at hand is required for the \code{formula}
+parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is provided, a fallback formula is
+used that will make the gam behave like a glm (this behavior is required
+for the unit tests). Only features specified in the formula will be used,
+superseding columns with col_roles "feature" in the task.
+
 Calls \link[mgcv:gam]{mgcv::gam} from package \CRANpkg{mgcv}.
 }
 \section{Dictionary}{
@@ -35,6 +41,16 @@ print(learner)
 
 # available parameters:
 learner$param_set$ids()
+
+# simple example
+t = tsk("mtcars")
+l = lrn("regr.gam")
+l$param_set$values = list(
+  formula = mpg ~ cyl + am + s(disp) + s(hp)
+)
+l$train(t)
+l$predict(t)
+
 }
 \references{
 Wood, S.N. (2017) Generalized Additive Models: An Introduction with R (2nd edition). Chapman
