@@ -37,9 +37,7 @@
 #' # simple example
 #' t = mlr3::tsk("mtcars")
 #' l = mlr3::lrn("regr.gam")
-#' l$param_set$values = list(
-#'   formula = mpg ~ cyl + am + s(disp) + s(hp)
-#' )
+#' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 #' l$train(t)
 #' l$model
 #'

@@ -39,9 +39,7 @@
 #' # simple example
 #' t = mlr3::tsk("spam")
 #' l = mlr3::lrn("classif.gam")
-#' l$param_set$values = list(
-#'   formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
-#' )
+#' l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 #' l$train(t)
 #' l$model
 #'
