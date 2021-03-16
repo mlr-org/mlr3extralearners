@@ -148,7 +148,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       control_pars = self$param_set$get_values(tags = "control")
       if (length(control_pars)) {
         control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
-        pars = pars[!pars %in% control_pars]
+        pars = pars[!names(pars) %in% names(control_pars)]
       } else {
         control_obj = mgcv::gam.control()
       }
