@@ -43,7 +43,7 @@
 #'   formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 #' )
 #' l$train(t)
-#' l$predict(t)
+#' l$model
 #'
 #' @export
 LearnerClassifGam = R6Class("LearnerClassifGam",

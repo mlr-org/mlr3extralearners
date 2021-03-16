@@ -41,7 +41,7 @@
 #'   formula = mpg ~ cyl + am + s(disp) + s(hp)
 #' )
 #' l$train(t)
-#' l$predict(t)
+#' l$model
 #'
 #' @export
 LearnerRegrGam = R6Class("LearnerRegrGam",
