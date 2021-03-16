@@ -142,7 +142,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       pars$family = "binomial"
 
       control_pars = self$param_set$get_values(tags = "control")
-      if (length(control_pars) > 0 ) {
+      if (length(control_pars)) {
         control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
         pars = pars[!pars %in% control_pars]
       } else {

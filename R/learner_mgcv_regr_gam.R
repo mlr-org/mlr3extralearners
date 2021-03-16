@@ -98,7 +98,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         ParamInt$new("outerPIsteps", default = 0L, lower = 0L, tags = c("train", "control")),
         ParamLgl$new("idLinksBases", default = TRUE, tags = c("train", "control")),
         ParamLgl$new("scalePenalty", default = TRUE, tags = c("train", "control")),
-        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = c("train", "control")),
+        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = c("train", "control")), # nolint
         ParamDbl$new("efs.tol", default = .1, lower = 0, tags = c("train", "control")),
         ParamFct$new(
           "scale.est",
@@ -148,7 +148,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       }
 
       control_pars = self$param_set$get_values(tags = "control")
-      if (length(control_pars) > 0 ) {
+      if (length(control_pars)) {
         control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
         pars = pars[!pars %in% control_pars]
       } else {
