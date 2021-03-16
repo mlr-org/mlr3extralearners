@@ -1,4 +1,4 @@
-# mlr3extralearners 0.3.9
+# mlr3extralearners 0.4.0
 
 * Added `LearnerRegrGam` and `LearnerClassifGam` with keys `regr.gam` and `classif.gam` from package `mgcv`.
 
