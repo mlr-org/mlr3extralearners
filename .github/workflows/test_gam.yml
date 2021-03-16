@@ -22,14 +22,14 @@ jobs:
           - { test: "Learner"}
           - { test: "Param"}
         config:
-          - { os: ubuntu-latest, r: "release" }       
+          - { os: ubuntu-latest, r: "release" }
 
     env:
       PKG: mgcv
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RGL_USE_NULL: true
       TEST: ${{ matrix.env.test }}
-      
+
     steps:
       - uses: actions/checkout@v2.2.0
 
