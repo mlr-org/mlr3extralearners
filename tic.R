@@ -5,7 +5,7 @@ if (ci_get_env("TEST") == "Learner") {
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
-    add_code_step(library(mlr3extralearners)) %>%
+    add_code_step(library(mlr3extralearners)) %>% # nolint
     add_code_step(devtools::test(filter = paste0(tic::ci_get_env("PKG"), "_"),
                                  stop_on_failure = TRUE))
 
@@ -16,7 +16,7 @@ if (ci_get_env("TEST") == "Learner") {
 
   get_stage("script") %>%
     add_code_step(remotes::install_dev("mlr3")) %>%
-    add_code_step(library(mlr3extralearners)) %>%
+    add_code_step(library(mlr3extralearners)) %>% # nolint
     add_code_step(testthat::test_dir(
       system.file("paramtest",
                   package = "mlr3extralearners"),
