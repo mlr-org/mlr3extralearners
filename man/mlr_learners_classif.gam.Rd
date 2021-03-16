@@ -46,13 +46,11 @@ print(learner)
 learner$param_set$ids()
 
 # simple example
-t = tsk("spam")
-l = lrn("classif.gam")
-l$param_set$values = list(
-  formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
-)
+t = mlr3::tsk("spam")
+l = mlr3::lrn("classif.gam")
+l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 l$train(t)
-l$predict(t)
+l$model
 
 }
 \references{

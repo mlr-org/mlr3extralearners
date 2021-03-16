@@ -43,13 +43,11 @@ print(learner)
 learner$param_set$ids()
 
 # simple example
-t = tsk("mtcars")
-l = lrn("regr.gam")
-l$param_set$values = list(
-  formula = mpg ~ cyl + am + s(disp) + s(hp)
-)
+t = mlr3::tsk("mtcars")
+l = mlr3::lrn("regr.gam")
+l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 l$train(t)
-l$predict(t)
+l$model
 
 }
 \references{
