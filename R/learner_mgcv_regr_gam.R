@@ -35,8 +35,8 @@
 #' @examples
 #'
 #' # simple example
-#' t = tsk("mtcars")
-#' l = lrn("regr.gam")
+#' t = mlr3::tsk("mtcars")
+#' l = mlr3::lrn("regr.gam")
 #' l$param_set$values = list(
 #'   formula = mpg ~ cyl + am + s(disp) + s(hp)
 #' )
