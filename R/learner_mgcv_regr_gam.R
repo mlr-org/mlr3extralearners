@@ -96,7 +96,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         ParamInt$new("outerPIsteps", default = 0L, lower = 0L, tags = c("train", "control")),
         ParamLgl$new("idLinksBases", default = TRUE, tags = c("train", "control")),
         ParamLgl$new("scalePenalty", default = TRUE, tags = c("train", "control")),
-        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = c("train", "control")), # nolint
+        ParamInt$new("efs.lspmax", default = 15L, lower = 0L, tags = c("train", "control")),
         ParamDbl$new("efs.tol", default = .1, lower = 0, tags = c("train", "control")),
         ParamFct$new(
           "scale.est",
@@ -115,7 +115,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "se"),
         param_set = ps,
-        properties = c("weights"),
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.gam"
       )
     }
