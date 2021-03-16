@@ -1,4 +1,3 @@
-library(mlr3extralearners)
 install_learners("classif.gam")
 
 test_that("classif.gam train", {
