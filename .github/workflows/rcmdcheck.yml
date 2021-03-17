@@ -84,10 +84,12 @@ jobs:
           path: check
 
       - name: Install covr
+        if: ${{ github.event_name == 'pull_request' }}
         run: install.packages('covr')
         shell: Rscript {0}
 
       - name: Test coverage
+        if: ${{ github.event_name == 'pull_request' }}
         run: covr::codecov()
         shell: Rscript {0}
 
