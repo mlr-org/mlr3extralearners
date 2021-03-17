@@ -10,7 +10,8 @@ test_that("classif.gam train", {
     "subset", # handled internally
     "na.action", # handled internally
     "control", # handled via "train" parameters
-    "fit" # A model should be fitted
+    "fit", # A model should be fitted
+    "discrete" # experimental, should not be modified
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
