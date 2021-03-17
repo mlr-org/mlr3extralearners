@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.0
+
+* Added `LearnerRegrGam` and `LearnerClassifGam` with keys `regr.gam` and `classif.gam` from package `mgcv`.
+
 # mlr3extralearners 0.3.6
 
 * `surv.coxboost` now uses the GitHub version instead of CRAN (archived)

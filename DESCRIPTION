@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.3.10
+Version: 0.4.0
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -26,7 +26,11 @@ Authors@R:
              family = "Lauer",
              role = "ctb",
              email = "stephenalauer@gmail.com",
-             comment = c(ORCID = "0000-0003-2948-630X")))
+             comment = c(ORCID = "0000-0003-2948-630X")),
+      person(given = "Pierre",
+             family = "Camilleri",
+             role = "ctb",
+             email = "camilleri_pierre@hotmail.fr"))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
@@ -63,6 +67,7 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
     mlr3proba (>= 0.2.6),
