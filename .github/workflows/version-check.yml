@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches: main
-    
+
 name: Version Check
 
 jobs:
@@ -23,20 +23,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2.1.1
-          
+
       - name: New version
         run: |
           echo "NEW_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
-          
+
       - uses: actions/checkout@v2
         with:
           ref: main
-          
+
       - name: Old version
         run: |
           echo "OLD_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
-          
+
       - name: Compare versions
         run: |
           Rscript -e "if (commandArgs(TRUE)[1] <= commandArgs(TRUE)[2]) stop('Package version has not been updated.')" ${{ env.NEW_VERSION }} ${{ env.OLD_VERSION }}
-          
+
+      - name: Check version format
+        run: |
+          Rscript -e "if (!grepl('^[0-9]*\\\.[0-9]*\\\.[0-9]*$', commandArgs(TRUE)[1])) stop('Format of package version must be major.minor.patch.')" ${{ env.NEW_VERSION }}
