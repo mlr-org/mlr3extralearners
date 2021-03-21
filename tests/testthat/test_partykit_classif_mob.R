@@ -6,7 +6,7 @@ test_that("autotest", {
     glm(y ~ 1, family = binomial, start = start, ...)
   }
   learner = LearnerClassifMob$new()
-  learner$param_set$values$rhs = " . "
+  learner$param_set$values$rhs = "."
   learner$param_set$values$fit = logit_
   learner$param_set$values$additional = list(maxit = 100)
   learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")

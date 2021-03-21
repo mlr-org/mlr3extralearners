@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.2
+
+* Fix broken partykit tests
+
 # mlr3extralearners 0.4.0
 
 * Added `LearnerRegrGam` and `LearnerClassifGam` with keys `regr.gam` and `classif.gam` from package `mgcv`.
