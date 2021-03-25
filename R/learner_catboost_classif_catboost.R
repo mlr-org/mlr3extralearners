@@ -44,223 +44,96 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     #' Create a `LearnerClassifCatboost` object.
     initialize = function() {
 
-      ps = ParamSet$new(
-        params = list(
-          # catboost.train
-          # https://catboost.ai/docs/concepts/r-reference_catboost-train.html
-          # Common parameters
-          ParamFct$new(
-            id = "loss_function_twoclass",
-            levels = c("Logloss", "CrossEntropy"),
-            default = "Logloss", tags = "train"),
-          ParamFct$new(
-            id = "loss_function_multiclass",
-            levels = c("MultiClass", "MultiClassOneVsAll"),
-            default = "MultiClass", tags = "train"),
-          # custom_loss missing
-          # eval_metric missing
-          ParamInt$new(
-            id = "iterations", lower = 1L, upper = Inf,
-            default = 1000, tags = "train"),
-          ParamDbl$new(
-            id = "learning_rate", lower = 0.001, upper = 1,
-            default = 0.03, tags = "train"),
-          ParamInt$new(
-            id = "random_seed", lower = 0, upper = Inf,
-            default = 0, tags = "train"),
-          ParamDbl$new(
-            id = "l2_leaf_reg", lower = 0, upper = Inf,
-            default = 3, tags = "train"),
-          ParamFct$new(
-            id = "bootstrap_type",
-            levels = c("Bayesian", "Bernoulli", "MVS", "Poisson", "No"),
-            tags = "train"),
-          ParamDbl$new(
-            id = "bagging_temperature", lower = 0, upper = Inf,
-            default = 1, tags = "train"),
-          ParamDbl$new(id = "subsample", lower = 0, upper = 1, tags = "train"),
-          ParamFct$new(
-            id = "sampling_frequency",
-            levels = c("PerTree", "PerTreeLevel"),
-            default = "PerTreeLevel", tags = "train"),
-          ParamFct$new(
-            id = "sampling_unit", levels = c("Object", "Group"),
-            default = "Object", tags = "train"),
-          ParamDbl$new(id = "mvs_reg", lower = 0, upper = Inf, tags = "train"),
-          ParamDbl$new(
-            id = "random_strength", lower = 0, upper = Inf,
-            default = 1, tags = "train"),
-          # use_best_model missing
-          # best_model_min_trees missing
-          ParamInt$new(
-            id = "depth", lower = 1L, upper = 16L,
-            default = 6L, tags = "train"),
-          ParamFct$new(
-            id = "grow_policy",
-            levels = c("SymmetricTree", "Depthwise", "Lossguide"),
-            default = "SymmetricTree", tags = "train"),
-          ParamInt$new(
-            id = "min_data_in_leaf", lower = 1L, upper = Inf,
-            default = 1L, tags = "train"),
-          ParamInt$new(
-            id = "max_leaves", lower = 1L, upper = Inf,
-            default = 31L, tags = "train"),
-          # ignored_features missing
-          # one_hot_max_size missing
-          ParamLgl$new(id = "has_time", default = FALSE, tags = "train"),
-          ParamDbl$new(
-            id = "rsm", lower = 0.001, upper = 1,
-            default = 1, tags = "train"),
-          ParamFct$new(
-            id = "nan_mode", levels = c("Min", "Max"),
-            default = "Min", tags = "train"), # do not allow "Forbidden"
-          ParamInt$new(
-            id = "fold_permutation_block",
-            lower = 1L, upper = 256L, tags = "train"),
-          ParamFct$new(
-            id = "leaf_estimation_method",
-            levels = c("Newton", "Gradient", "Exact"), tags = "train"),
-          ParamInt$new(
-            id = "leaf_estimation_iterations",
-            lower = 1L, upper = Inf, tags = "train"),
-          ParamFct$new(
-            id = "leaf_estimation_backtracking",
-            levels = c("No", "AnyImprovement", "Armijo"),
-            default = "AnyImprovement", tags = "train"),
-          # name missing
-          ParamDbl$new(
-            id = "fold_len_multiplier",
-            lower = 1.001, upper = Inf, default = 2, tags = "train"),
-          ParamLgl$new(
-            id = "approx_on_full_history",
-            default = TRUE, tags = "train"),
-          ParamUty$new(id = "class_weights", tags = "train"),
-          ParamFct$new(
-            id = "auto_class_weights",
-            levels = c("None", "Balanced", "SqrtBalanced"),
-            default = "None", tags = "train"),
-          ParamFct$new(
-            id = "boosting_type",
-            levels = c("Ordered", "Plain"), tags = "train"),
-          ParamLgl$new("boost_from_average", tags = "train"),
-          ParamLgl$new(id = "langevin", default = FALSE, tags = "train"),
-          ParamDbl$new(
-            id = "diffusion_temperature", lower = 0, upper = Inf,
-            default = 10000, tags = "train"),
-          # allow_const_label missing
-          ParamFct$new(
-            id = "score_function",
-            levels = c("Cosine", "L2", "NewtonCosine", "NewtonL2"),
-            default = "Cosine", tags = "train"),
-          # cat_features missing
-          ParamUty$new(
-            id = "monotone_constraints", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamUty$new(
-            id = "feature_weights", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamUty$new(
-            id = "first_feature_use_penalties", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamDbl$new(
-            id = "penalties_coefficient", lower = 0, upper = Inf,
-            default = 1, tags = "train"),
-          ParamUty$new(
-            id = "per_object_feature_penalties", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamDbl$new(id = "model_shrink_rate", tags = "train"),
-          ParamFct$new(
-            id = "model_shrink_mode",
-            levels = c("Constant", "Decreasing"), tags = "train"),
-          # Overfitting detection settings missing
-          # Quantization settings
-          ParamDbl$new(id = "target_border", tags = "train"),
-          ParamInt$new(
-            id = "border_count",
-            lower = 1L, upper = 65535L, tags = "train"),
-          ParamFct$new(
-            id = "feature_border_type",
-            levels = c(
-              "Median", "Uniform", "UniformAndQuantiles", "MaxLogSum",
-              "MinEntropy", "GreedyLogSum"),
-            default = "GreedyLogSum", tags = "train"),
-          ParamUty$new(
-            id = "per_float_feature_quantization", tags = "train",
-            custom_check = checkmate::check_string),
-          # Multiclassification settings
-          ParamInt$new(
-            id = "classes_count",
-            lower = 1L, upper = Inf, tags = "train"),
-          # Performance Settings
-          ParamInt$new(
-            id = "thread_count",
-            lower = -1L, upper = Inf, default = 1L,
-            tags = c("train", "predict", "importance")),
-          # Processing units settings
-          ParamFct$new(
-            id = "task_type", levels = c("CPU", "GPU"),
-            default = "CPU", tags = "train"),
-          ParamUty$new(id = "devices", tags = "train"),
-          # Output settings
-          ParamFct$new(
-            id = "logging_level",
-            levels = c("Silent", "Verbose", "Info", "Debug"),
-            default = "Silent", tags = "train"),
-          ParamInt$new(
-            id = "metric_period", lower = 1L, upper = Inf,
-            default = 1L, tags = "train"),
-          # verbose missing
-          ParamUty$new(
-            id = "train_dir", default = "catboost_info",
-            tags = "train", custom_check = checkmate::check_string),
-          ParamDbl$new(
-            id = "model_size_reg", lower = 0, upper = 1,
-            default = 0.5, tags = "train"),
-          ParamLgl$new(
-            id = "allow_writing_files",
-            default = FALSE, tags = "train"),
-          ParamLgl$new(id = "save_snapshot", default = FALSE, tags = "train"),
-          ParamUty$new(
-            id = "snapshot_file", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamInt$new(
-            id = "snapshot_interval", lower = 1L, upper = Inf,
-            default = 600L, tags = "train"),
-          # CTR settings
-          ParamUty$new(
-            id = "simple_ctr", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamUty$new(
-            id = "combinations_ctr", tags = "train",
-            custom_check = checkmate::check_string),
-          ParamInt$new(
-            id = "ctr_target_border_count",
-            lower = 1L, upper = 255L, tags = "train"),
-          ParamFct$new(
-            id = "counter_calc_method",
-            levels = c("SkipTest", "Full"), default = "Full", tags = "train"),
-          ParamInt$new(
-            id = "max_ctr_complexity",
-            lower = 1L, upper = Inf, tags = "train"),
-          ParamInt$new(
-            id = "ctr_leaf_count_limit",
-            lower = 1L, upper = Inf, tags = "train"),
-          ParamLgl$new(
-            id = "store_all_simple_ctr",
-            default = FALSE, tags = "train"),
-          ParamFct$new(
-            id = "final_ctr_computation_mode",
-            levels = c("Default", "Skip"), default = "Default", tags = "train"),
-          # catboost.predict
-          # https://catboost.ai/docs/concepts/r-reference_catboost-predict.html
-          ParamLgl$new(id = "verbose", default = FALSE, tags = "predict"),
-          ParamInt$new(
-            id = "ntree_start", lower = 0L, upper = Inf,
-            default = 0L, tags = "predict"),
-          ParamInt$new(
-            id = "ntree_end", lower = 0L, upper = Inf,
-            default = 0L, tags = "predict")
-        )
+      ps = ps(
+        # catboost.train
+        # https://catboost.ai/docs/concepts/r-reference_catboost-train.html
+        # Common parameters
+        loss_function_twoclass = p_fct(levels = c("Logloss", "CrossEntropy"), default = "Logloss", tags = "train"),
+        loss_function_multiclass = p_fct(levels = c("MultiClass", "MultiClassOneVsAll"), default = "MultiClass", tags = "train"),
+        # custom_loss missing
+        # eval_metric missing
+        iterations = p_int(lower = 1L, upper = Inf, default = 1000, tags = "train"),
+        learning_rate = p_dbl(lower = 0.001, upper = 1, default = 0.03, tags = "train"),
+        random_seed = p_int(lower = 0, upper = Inf, default = 0, tags = "train"),
+        l2_leaf_reg = p_dbl(lower = 0, upper = Inf, default = 3, tags = "train"),
+        bootstrap_type = p_fct(levels = c("Bayesian", "Bernoulli", "MVS", "Poisson", "No"), tags = "train"),
+        bagging_temperature = p_dbl(lower = 0, upper = Inf, default = 1, tags = "train"),
+        subsample = p_dbl(lower = 0, upper = 1, tags = "train"),
+        sampling_frequency = p_fct(levels = c("PerTree", "PerTreeLevel"), default = "PerTreeLevel", tags = "train"),
+        sampling_unit = p_fct(levels = c("Object", "Group"), default = "Object", tags = "train"),
+        mvs_reg = p_dbl(lower = 0, upper = Inf, tags = "train"),
+        random_strength = p_dbl(lower = 0, upper = Inf, default = 1, tags = "train"),
+        # use_best_model missing
+        # best_model_min_trees missing
+        depth = p_int(lower = 1L, upper = 16L, default = 6L, tags = "train"),
+        grow_policy = p_fct(levels = c("SymmetricTree", "Depthwise", "Lossguide"), default = "SymmetricTree", tags = "train"),
+        min_data_in_leaf = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
+        max_leaves = p_int(lower = 1L, upper = Inf, default = 31L, tags = "train"),
+        # ignored_features missing
+        # one_hot_max_size missing
+        has_time = p_lgl(default = FALSE, tags = "train"),
+        rsm = p_dbl(lower = 0.001, upper = 1, default = 1, tags = "train"),
+        nan_mode = p_fct(levels = c("Min", "Max"), default = "Min", tags = "train"), # do not allow "Forbidden"
+        fold_permutation_block = p_int(lower = 1L, upper = 256L, tags = "train"),
+        leaf_estimation_method = p_fct(levels = c("Newton", "Gradient", "Exact"), tags = "train"),
+        leaf_estimation_iterations = p_int(lower = 1L, upper = Inf, tags = "train"),
+        leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"), default = "AnyImprovement", tags = "train"),
+        # name missin
+        fold_len_multiplier = p_dbl(lower = 1.001, upper = Inf, default = 2, tags = "train"),
+        approx_on_full_history = p_lgl(default = TRUE, tags = "train"),
+        class_weights = p_uty(tags = "train"),
+        auto_class_weights = p_fct(levels = c("None", "Balanced", "SqrtBalanced"), default = "None", tags = "train"),
+        boosting_type = p_fct(levels = c("Ordered", "Plain"), tags = "train"),
+        boost_from_average = p_lgl(tags = "train"),
+        langevin = p_lgl(default = FALSE, tags = "train"),
+        diffusion_temperature = p_dbl(lower = 0, upper = Inf, default = 10000, tags = "train"),
+        # allow_const_label missing
+        score_function = p_fct(levels = c("Cosine", "L2", "NewtonCosine", "NewtonL2"), default = "Cosine", tags = "train"),
+        # cat_features missing
+        monotone_constraints = p_uty(tags = "train", custom_check = checkmate::check_string),
+        feature_weights = p_uty(tags = "train", custom_check = checkmate::check_string),
+        first_feature_use_penalties = p_uty(tags = "train", custom_check = checkmate::check_string),
+        penalties_coefficient = p_dbl(lower = 0, upper = Inf, default = 1, tags = "train"),
+        per_object_feature_penalties = p_uty(tags = "train", custom_check = checkmate::check_string),
+        model_shrink_rate = p_dbl(tags = "train"),
+        model_shrink_mode = p_fct(levels = c("Constant", "Decreasing"), tags = "train"),
+        # Overfitting detection settings missing
+        # Quantization settings
+        target_border = p_dbl(tags = "train"),
+        border_count = p_int(lower = 1L, upper = 65535L, tags = "train"),
+        feature_border_type = p_fct(levels = c( "Median", "Uniform", "UniformAndQuantiles", "MaxLogSum", "MinEntropy", "GreedyLogSum"), default = "GreedyLogSum", tags = "train"),
+        per_float_feature_quantization = p_uty(tags = "train", custom_check = checkmate::check_string),
+        # Multiclassification settings
+        classes_count = p_int(lower = 1L, upper = Inf, tags = "train"),
+        # Performance Settings
+        thread_count = p_int(lower = -1L, upper = Inf, default = 1L, tags = c("train", "predict", "importance")),
+        # Processing units settings
+        task_type = p_fct(levels = c("CPU", "GPU"), default = "CPU", tags = "train"),
+        devices = p_uty(tags = "train"),
+        # Output settings
+        logging_level = p_fct(levels = c("Silent", "Verbose", "Info", "Debug"), default = "Silent", tags = "train"),
+        metric_period = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
+        # verbose missing
+        train_dir = p_uty(default = "catboost_info", tags = "train", custom_check = checkmate::check_string),
+        model_size_reg = p_dbl(lower = 0, upper = 1, default = 0.5, tags = "train"),
+        allow_writing_files = p_lgl(default = FALSE, tags = "train"),
+        save_snapshot = p_lgl(default = FALSE, tags = "train"),
+        snapshot_file = p_uty(tags = "train", custom_check = checkmate::check_string),
+        snapshot_interval = p_int(lower = 1L, upper = Inf, default = 600L, tags = "train"),
+        # CTR settings
+        simple_ctr = p_uty(tags = "train", custom_check = checkmate::check_string),
+        combinations_ctr = p_uty(tags = "train", custom_check = checkmate::check_string),
+        ctr_target_border_count = p_int(lower = 1L, upper = 255L, tags = "train"),
+        counter_calc_method = p_fct(levels = c("SkipTest", "Full"), default = "Full", tags = "train"),
+        max_ctr_complexity = p_int(lower = 1L, upper = Inf, tags = "train"),
+        ctr_leaf_count_limit = p_int(lower = 1L, upper = Inf, tags = "train"),
+        store_all_simple_ctr = p_lgl(default = FALSE, tags = "train"),
+        final_ctr_computation_mode = p_fct(levels = c("Default", "Skip"), default = "Default", tags = "train"),
+        # catboost.predict
+        # https://catboost.ai/docs/concepts/r-reference_catboost-predict.html
+        verbose = p_lgl(default = FALSE, tags = "predict"),
+        ntree_start = p_int(lower = 0L, upper = Inf, default = 0L, tags = "predict"),
+        ntree_end = p_int(lower = 0L, upper = Inf, default = 0L, tags = "predict")
       )
       ps$add_dep(
         id = "mvs_reg", on = "bootstrap_type",

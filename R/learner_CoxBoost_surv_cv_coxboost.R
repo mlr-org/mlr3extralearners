@@ -31,43 +31,27 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(
-            id = "maxstepno", default = 100, lower = 0,
-            tags = c("train", "cvpars")),
-          ParamInt$new(id = "K", default = 10, lower = 2, tags = c("train", "cvpars")),
-          ParamFct$new(
-            id = "type", default = "verweij", levels = c("verweij", "naive"),
-            tags = c("train", "cvpars")),
-          ParamUty$new(id = "folds", default = NULL, tags = c("train", "cvpars")),
-          ParamInt$new(
-            id = "minstepno", default = 50, lower = 0,
-            tags = c("train", "optimPenalty")),
-          ParamDbl$new(id = "start.penalty", tags = c("train", "optimPenalty")),
-          ParamInt$new(id = "iter.max", default = 10, lower = 1, tags = c("train", "optimPenalty")),
-          ParamDbl$new(
-            id = "upper.margin", default = 0.05, lower = 0, upper = 1,
-            tags = c("train", "optimPenalty")),
-          ParamUty$new(id = "unpen.index", tags = "train"),
-          ParamLgl$new(id = "standardize", default = TRUE, tags = "train"),
-          ParamDbl$new(
-            id = "penalty", special_vals = list("optimCoxBoostPenalty"),
-            tags = c("train", "optimPenalty")),
-          ParamFct$new(
-            id = "criterion", default = "pscore",
-            levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
-          ParamDbl$new(id = "stepsize.factor", default = 1, tags = "train"),
-          ParamFct$new(
-            id = "sf.scheme", default = "sigmoid", levels = c("sigmoid", "linear"),
-            tags = "train"),
-          ParamUty$new(id = "pendistmat", tags = "train"),
-          ParamUty$new(id = "connected.index", tags = "train"),
-          ParamLgl$new(id = "x.is.01", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "return.score", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
-          ParamUty$new(id = "at.step", tags = "predict")
-        )
+      ps = ps(
+        maxstepno = p_int(default = 100, lower = 0, tags = c("train", "cvpars")),
+        K = p_int(default = 10, lower = 2, tags = c("train", "cvpars")),
+        type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = c("train", "cvpars")),
+        folds = p_uty(default = NULL, tags = c("train", "cvpars")),
+        minstepno = p_int(default = 50, lower = 0, tags = c("train", "optimPenalty")),
+        start.penalty = p_dbl(tags = c("train", "optimPenalty")),
+        iter.max = p_int(default = 10, lower = 1, tags = c("train", "optimPenalty")),
+        upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = c("train", "optimPenalty")),
+        unpen.index = p_uty(tags = "train"),
+        standardize = p_lgl(default = TRUE, tags = "train"),
+        penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = c("train", "optimPenalty")),
+        criterion = p_fct(default = "pscore", levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
+        stepsize.factor = p_dbl(default = 1, tags = "train"),
+        sf.scheme = p_fct(default = "sigmoid", levels = c("sigmoid", "linear"), tags = "train"),
+        pendistmat = p_uty(tags = "train"),
+        connected.index = p_uty(tags = "train"),
+        x.is.01 = p_lgl(default = FALSE, tags = "train"),
+        return.score = p_lgl(default = TRUE, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        at.step = p_uty(tags = "predict")
       )
 
       super$initialize(

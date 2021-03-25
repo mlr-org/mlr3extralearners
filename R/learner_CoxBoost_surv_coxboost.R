@@ -27,26 +27,21 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "unpen.index", tags = "train"),
-          ParamLgl$new(id = "standardize", default = TRUE, tags = "train"),
-          ParamInt$new(id = "stepno", default = 100, lower = 0, tags = "train"),
-          ParamDbl$new(id = "penalty", tags = "train"),
-          ParamFct$new(
-            id = "criterion", default = "pscore",
-            levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
-          ParamDbl$new(id = "stepsize.factor", default = 1, tags = "train"),
-          ParamFct$new(
-            id = "sf.scheme", default = "sigmoid", levels = c("sigmoid", "linear"),
-            tags = "train"),
-          ParamUty$new(id = "pendistmat", tags = "train"),
-          ParamUty$new(id = "connected.index", tags = "train"),
-          ParamLgl$new(id = "x.is.01", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "return.score", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
-          ParamUty$new(id = "at.step", tags = "predict")
-      ))
+      ps = ps(
+        unpen.index = p_uty(tags = "train"),
+        standardize = p_lgl(default = TRUE, tags = "train"),
+        stepno = p_int(default = 100, lower = 0, tags = "train"),
+        penalty = p_dbl(tags = "train"),
+        criterion = p_fct(default = "pscore", levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
+        stepsize.factor = p_dbl(default = 1, tags = "train"),
+        sf.scheme = p_fct(default = "sigmoid", levels = c("sigmoid", "linear"), tags = "train"),
+        pendistmat = p_uty(tags = "train"),
+        connected.index = p_uty(tags = "train"),
+        x.is.01 = p_lgl(default = FALSE, tags = "train"),
+        return.score = p_lgl(default = TRUE, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        at.step = p_uty(tags = "predict")
+      )
 
       super$initialize(
         # see the mlr3book for a description: https://mlr3book.mlr-org.com/extending-mlr3.html

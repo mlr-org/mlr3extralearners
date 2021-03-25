@@ -17,14 +17,9 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(id = "k", default = 1L, lower = 1L, tags = "train"),
-          ParamFct$new(
-            id = "algorithm", default = "kd_tree",
-            levels = c("kd_tree", "cover_tree", "brute"), tags = "train"
-          )
-        )
+      ps = ps(
+        k = p_int(default = 1L, lower = 1L, tags = "train"),
+        algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
       )
 
       super$initialize(

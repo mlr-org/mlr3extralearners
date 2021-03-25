@@ -23,29 +23,27 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps <- ParamSet$new(
-        params = list(
-          ParamInt$new(id = "ntree", default = 200L, lower = 1L, tags = "train"),
-          ParamUty$new(id = "sigest", default = NULL, tags = "train"),
-          ParamInt$new(id = "sigdf", default = 3L, lower = 1L, tags = "train"),
-          ParamDbl$new(id = "sigquant", default = 0.90, lower = 0, upper = 1, tags = "train"),
-          ParamDbl$new(id = "k", default = 2.0, lower = 0, tags = "train"),
-          ParamDbl$new(id = "power", default = 2.0, lower = 0, tags = "train"),
-          ParamDbl$new(id = "base", default = 0.95, lower = 0, tags = "train"),
-          ParamInt$new(id = "ndpost", default = 1000L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "nskip", default = 100L, lower = 0L, tags = "train"),
-          ParamInt$new(id = "printevery", default = 100L, lower = 0L, tags = "train"),
-          ParamInt$new(id = "keepevery", default = 1L, lower = 1L, tags = "train"),
-          ParamLgl$new(id = "keeptrainfits", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "usequants", default = FALSE, tags = "train"),
-          ParamInt$new(id = "numcut", default = 100L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "printcutoffs", default = 0, tags = "train"),
-          ParamLgl$new(id = "verbose", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "keeptrees", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "keepcall", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "sampleronly", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "offset.test", default = FALSE, tags = "predict")
-        )
+      ps <- ps(
+        ntree = p_int(default = 200L, lower = 1L, tags = "train"),
+        sigest = p_uty(default = NULL, tags = "train"),
+        sigdf = p_int(default = 3L, lower = 1L, tags = "train"),
+        sigquant = p_dbl(default = 0.90, lower = 0, upper = 1, tags = "train"),
+        k = p_dbl(default = 2.0, lower = 0, tags = "train"),
+        power = p_dbl(default = 2.0, lower = 0, tags = "train"),
+        base = p_dbl(default = 0.95, lower = 0, tags = "train"),
+        ndpost = p_int(default = 1000L, lower = 1L, tags = "train"),
+        nskip = p_int(default = 100L, lower = 0L, tags = "train"),
+        printevery = p_int(default = 100L, lower = 0L, tags = "train"),
+        keepevery = p_int(default = 1L, lower = 1L, tags = "train"),
+        keeptrainfits = p_lgl(default = TRUE, tags = "train"),
+        usequants = p_lgl(default = FALSE, tags = "train"),
+        numcut = p_int(default = 100L, lower = 1L, tags = "train"),
+        printcutoffs = p_int(default = 0, tags = "train"),
+        verbose = p_lgl(default = TRUE, tags = "train"),
+        keeptrees = p_lgl(default = FALSE, tags = "train"),
+        keepcall = p_lgl(default = TRUE, tags = "train"),
+        sampleronly = p_lgl(default = FALSE, tags = "train"),
+        offset.test = p_lgl(default = FALSE, tags = "predict")
       )
 
       ps$values <- list(keeptrees = TRUE)

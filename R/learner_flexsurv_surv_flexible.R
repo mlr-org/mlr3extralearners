@@ -42,29 +42,23 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "bhazard", tags = "train"),
-          ParamInt$new(id = "k", default = 0L, lower = 0L, tags = "train"),
-          ParamUty$new(id = "knots", tags = "train"),
-          ParamUty$new(id = "bknots", tags = "train"),
-          ParamFct$new(
-            id = "scale", default = "hazard",
-            levels = c("hazard", "odds", "normal"), tags = "train"),
-          ParamFct$new(
-            id = "timescale", default = "log",
-            levels = c("log", "identity"), tags = "train"),
-          ParamUty$new(id = "inits", tags = "train"),
-          ParamUty$new(id = "rtrunc", tags = "train"),
-          ParamUty$new(id = "fixedpars", tags = "train"),
-          ParamDbl$new(id = "cl", default = 0.95, lower = 0, upper = 1, tags = "train"),
-          ParamInt$new(id = "maxiter", default = 30L, tags = c("train", "control")),
-          ParamDbl$new(id = "rel.tolerance", default = 1e-09, tags = c("train", "control")),
-          ParamDbl$new(id = "toler.chol", default = 1e-10, tags = c("train", "control")),
-          ParamInt$new(id = "debug", default = 0, lower = 0, upper = 1,
-                       tags = c("train", "control")),
-          ParamInt$new(id = "outer.max", default = 10L, tags = c("train", "control"))
-      ))
+      ps = ps(
+        bhazard = p_uty(tags = "train"),
+        k = p_int(default = 0L, lower = 0L, tags = "train"),
+        knots = p_uty(tags = "train"),
+        bknots = p_uty(tags = "train"),
+        scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
+        timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
+        inits = p_uty(tags = "train"),
+        rtrunc = p_uty(tags = "train"),
+        fixedpars = p_uty(tags = "train"),
+        cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
+        maxiter = p_int(default = 30L, tags = c("train", "control")),
+        rel.tolerance = p_dbl(default = 1e-09, tags = c("train", "control")),
+        toler.chol = p_dbl(default = 1e-10, tags = c("train", "control")),
+        debug = p_int(default = 0, lower = 0, upper = 1, tags = c("train", "control")),
+        outer.max = p_int(default = 10L, tags = c("train", "control"))
+      )
 
       # value of k is changed as the default is equivalent (and a much more inefficient)
       # implementation of `surv.parametric`
