@@ -35,7 +35,8 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
             id = "family", default = c("Gaussian"),
             levels = c(
               "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
-              "NBinomial", "Hurdle"), tags = "train"),
+              "NBinomial", "Hurdle", "custom"), tags = "train"),
+          ParamUty$new(id = "custom.family", tags = "train"),
           ParamUty$new(id = "nuirange", default = c(0, 100), tags = "train"),
           ParamDbl$new(
             id = "d", default = NULL, special_vals = list(NULL),
@@ -68,6 +69,11 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   private = list(
     .train = function(task) {
 
+      # parameter custom.family takes precedence over family
+      if (!is.null(self$param_set$values$custom.family)) {
+        self$param_set$values$family = "custom"
+      }
+
       # Set to default for switch
       if (is.null(self$param_set$values$family)) {
         self$param_set$values$family = "Gaussian"
@@ -78,10 +84,13 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
                                 methods::formalArgs(mboost::boost_control))]
       pars_gamboost = pars[which(names(pars) %in%
                                    methods::formalArgs(mboost::gamboost))]
-      pars_family = pars[which(names(pars) %in%
-                                 methods::formalArgs(utils::getFromNamespace(
-          pars_gamboost$family,
-          asNamespace("mboost"))))]
+
+      if (self$param_set$values$family != "custom") {
+        pars_family = pars[which(names(pars) %in%
+                                   methods::formalArgs(utils::getFromNamespace(
+                                     pars_gamboost$family,
+                                     asNamespace("mboost"))))]
+      }
 
       f = task$formula()
       data = task$data()
@@ -99,7 +108,8 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         Poisson = mboost::Poisson(),
         GammaReg = invoke(mboost::GammaReg, .args = pars_family),
         NBinomial = invoke(mboost::NBinomial, .args = pars_family),
-        Hurdle = invoke(mboost::Hurdle, .args = pars_family)
+        Hurdle = invoke(mboost::Hurdle, .args = pars_family,
+        custom = pars$custom.family)
       )
 
       ctrl = invoke(mboost::boost_control, .args = pars_boost)

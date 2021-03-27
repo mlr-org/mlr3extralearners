@@ -29,7 +29,8 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
             tags = "train"),
           ParamFct$new(
             id = "family", default = c("Binomial"),
-            levels = c("Binomial", "AdaExp", "AUC"), tags = "train"),
+            levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
+          ParamUty$new(id = "custom.family", tags = "train"),
           ParamFct$new(
             id = "link", default = "logit",
             levels = c("logit", "probit"), tags = "train"),
@@ -68,6 +69,11 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
   private = list(
     .train = function(task) {
 
+      # parameter custom.family takes precedence over family
+      if (!is.null(self$param_set$values$custom.family)) {
+        self$param_set$values$family = "custom"
+      }
+
       # Default family in mboost::glmboost is not useable for twoclass
       if (is.null(self$param_set$values$family)) {
         self$param_set$values = insert_named(
@@ -95,7 +101,8 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
       pars_glmboost$family = switch(pars_glmboost$family,
         Binomial = invoke(mboost::Binomial, .args = pars_binomial),
         AdaExp = mboost::AdaExp(),
-        AUC = mboost::AUC())
+        AUC = mboost::AUC(),
+        custom = pars$custom.family)
 
       # Predicted probabilities refer to the last factor level
       if (self$predict_type == "prob") {
