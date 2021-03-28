@@ -5,7 +5,7 @@
 \alias{LearnerRegrM5Rules}
 \title{Regression M5Rules Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_rules]{RWeka::M5Rules} from package \CRANpkg{RWeka}.
+Calls \link[RWeka:M5Rules]{RWeka::M5Rules} from package \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the

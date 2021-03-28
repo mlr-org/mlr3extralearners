@@ -8,7 +8,7 @@
 Calls \link[lightgbm:lgb.train]{lightgbm::lgb.train} from package \CRANpkg{lightgbm}.
 }
 \details{
-For categorical features either first transform factor colums with \link[mlr3pipelines:mlr_pipeops_encode]{mlr3pipelines::PipeOpEncode}
+For categorical features either first transform factor colums with \link[mlr3pipelines:PipeOpEncode]{mlr3pipelines::PipeOpEncode}
 or convert the columns with \code{as.integer} and specify the categorical columns with the
 \code{categorical_feature} parameter.
 }

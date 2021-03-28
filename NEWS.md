@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.3
+
+* Add support for custom families in all remaining mboost learners
+
 # mlr3extralearners 0.4.2
 
 * Fix broken partykit tests
