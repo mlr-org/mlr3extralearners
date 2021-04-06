@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.4.2
+Version: 0.4.4
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -30,7 +30,11 @@ Authors@R:
       person(given = "Pierre",
              family = "Camilleri",
              role = "ctb",
-             email = "camilleri_pierre@hotmail.fr"))
+             email = "camilleri_pierre@hotmail.fr"),
+      person(given = "Javier",
+             family = "García",
+             role = "ctb",
+             email = "geshter@hotmail.com"))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:

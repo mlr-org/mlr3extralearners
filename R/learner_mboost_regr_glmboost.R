@@ -69,7 +69,12 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
   private = list(
     .train = function(task) {
 
-      # Set to default for switch
+      # parameter custom.family takes precedence over family
+      if (!is.null(self$param_set$values$custom.family)) {
+        self$param_set$values$family = "custom"
+      }
+
+      # Set to default for switch if no family is provided
       if (is.null(self$param_set$values$family)) {
         self$param_set$values = insert_named(
           self$param_set$values,
