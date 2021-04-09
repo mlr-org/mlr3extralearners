@@ -25,8 +25,7 @@ test_that("autotest po", {
   expect_true(result, info = result$error)
 })
 
-data(lung, package = "survival")
-lung2 = lung
+lung2 = survival::lung
 lung2$status = lung2$status - 1
 lung2 = lung2[-14, c("time", "status", "ph.ecog")]
 task = TaskSurv$new("param",
