@@ -35,7 +35,7 @@ lrn = function(.key, ...) {
   tryCatch(mlr3misc::require_namespaces(pkgs),
            packageNotFoundError = function(e) {
              mlr3misc::stopf(
-               "Required packages not installed, please run `install_learners('%s'`",
+               "Required packages not installed, please run `install_learners('%s')`",
                .key
              ) # nolint
            })
