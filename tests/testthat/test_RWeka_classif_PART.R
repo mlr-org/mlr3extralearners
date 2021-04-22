@@ -6,6 +6,6 @@ test_that("autotest", {
   set.seed(1)
   learner = LearnerClassifPART$new()
   expect_learner(learner)
-  result = run_autotest(learner, exclude = "missing-each-row-binary")
+  result = run_autotest(learner, exclude = "missings_each_row_binary")
   expect_true(result, info = result$error)
 })
