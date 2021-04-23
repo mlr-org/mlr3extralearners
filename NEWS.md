@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.5
+
+* Fix RWeka tests (stochastic failures, implementation unaffected)
+
 # mlr3extralearners 0.4.3
 
 * Add support for custom families in all remaining mboost learners
