@@ -1,3 +1,8 @@
+# mlr3extralearners 0.4.6
+
+* Deprecated liblinear learners now removed
+* Internal changes to ParamSet representation
+
 # mlr3extralearners 0.4.5
 
 * Fix RWeka tests (stochastic failures, implementation unaffected)
