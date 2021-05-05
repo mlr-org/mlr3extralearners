@@ -102,6 +102,11 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
   private = list(
     .train = function(task) {
 
+      # parameter custom.family takes precedence over family
+      if (!is.null(self$param_set$values$custom.family)) {
+        self$param_set$values$family = "custom"
+      }
+
       pars = self$param_set$get_values(tags = "train")
 
       if ("weights" %in% task$properties) {
