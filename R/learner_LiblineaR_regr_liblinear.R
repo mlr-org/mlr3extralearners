@@ -31,18 +31,17 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamInt$new(id = "type", default = 11, lower = 11, upper = 13, tags = "train"),
-          ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
-          ParamDbl$new(id = "bias", default = 1, tags = "train"),
-          ParamDbl$new(
-            id = "svr_eps", default = NULL, special_vals = list(NULL),
+          type = p_int(default = 11, lower = 11, upper = 13, tags = "train"),
+          cost = p_dbl(default = 1, lower = 0, tags = "train"),
+          bias = p_dbl(default = 1, tags = "train"),
+          svr_eps = p_dbl(default = NULL, special_vals = list(NULL),
             lower = 0, tags = "train"),
-          ParamInt$new(id = "cross", default = 0L, lower = 0L, tags = "train"),
-          ParamLgl$new(id = "verbose", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "findC", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "useInitC", default = TRUE, tags = "train")
+          cross = p_int(default = 0L, lower = 0L, tags = "train"),
+          verbose = p_lgl(default = FALSE, tags = "train"),
+          findC = p_lgl(default = FALSE, tags = "train"),
+          useInitC = p_lgl(default = TRUE, tags = "train")
         )
       )
 

@@ -16,25 +16,25 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamDbl$new(id = "h", lower = 0, tags = "train"),
-          ParamUty$new(id = "H", tags = "train"),
-          ParamUty$new(id = "gridsize", tags = "train"),
-          ParamUty$new(id = "gridtype", tags = "train"),
-          ParamDbl$new(id = "xmin", tags = "train"),
-          ParamDbl$new(id = "xmax", tags = "train"),
-          ParamDbl$new(id = "supp", default = 3.7, tags = "train"),
-          ParamDbl$new(id = "binned", tags = "train"),
-          ParamUty$new(id = "bgridsize", tags = "train"),
-          ParamLgl$new(id = "positive", default = FALSE, tags = "train"),
-          ParamUty$new(id = "adj.positive", tags = "train"),
-          ParamUty$new(id = "w", tags = "train"),
-          ParamLgl$new(id = "compute.cont", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "approx.cont", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "unit.interval", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "verbose", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "zero.flag", default = TRUE, tags = "train")
+          h = p_dbl(lower = 0, tags = "train"),
+          H = p_uty(tags = "train"),
+          gridsize = p_uty(tags = "train"),
+          gridtype = p_uty(tags = "train"),
+          xmin = p_dbl(tags = "train"),
+          xmax = p_dbl(tags = "train"),
+          supp = p_dbl(default = 3.7, tags = "train"),
+          binned = p_dbl(tags = "train"),
+          bgridsize = p_uty(tags = "train"),
+          positive = p_lgl(default = FALSE, tags = "train"),
+          adj.positive = p_uty(tags = "train"),
+          w = p_uty(tags = "train"),
+          compute.cont = p_lgl(default = TRUE, tags = "train"),
+          approx.cont = p_lgl(default = TRUE, tags = "train"),
+          unit.interval = p_lgl(default = FALSE, tags = "train"),
+          verbose = p_lgl(default = FALSE, tags = "train"),
+          zero.flag = p_lgl(default = TRUE, tags = "train")
         )
       )
 

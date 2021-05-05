@@ -16,30 +16,27 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(list(
-        ParamLgl$new(id = "scaled", default = TRUE, tags = c("train")),
-        ParamFct$new(
-          id = "type", default = "C-svc",
+      ps = ps(list(
+        scaled = p_lgl(default = TRUE, tags = c("train")),
+        type = p_fct(default = "C-svc",
           levels = c("C-svc", "nu-svc", "C-bsvc", "spoc-svc", "kbb-svc"),
           tags = c("train")),
-        ParamFct$new(
-          id = "kernel", default = "rbfdot",
+        kernel = p_fct(default = "rbfdot",
           levels = c(
             "rbfdot", "polydot", "vanilladot",
             "laplacedot", "besseldot", "anovadot"),
           tags = c("train")),
-        ParamDbl$new(id = "C", default = 1, tags = c("train")),
-        ParamDbl$new(id = "nu", default = 0.2, lower = 0, tags = c("train")),
-        ParamInt$new(id = "cache", default = 40, lower = 1L, tags = c("train")),
-        ParamDbl$new(id = "tol", default = 0.001, lower = 0, tags = c("train")),
-        ParamLgl$new(id = "shrinking", default = TRUE, tags = c("train")),
-        ParamDbl$new(id = "sigma", default = NO_DEF, lower = 0, tags = "train"),
-        ParamInt$new(
-          id = "degree", default = NO_DEF, lower = 1L,
+        C = p_dbl(default = 1, tags = c("train")),
+        nu = p_dbl(default = 0.2, lower = 0, tags = c("train")),
+        cache = p_int(default = 40, lower = 1L, tags = c("train")),
+        tol = p_dbl(default = 0.001, lower = 0, tags = c("train")),
+        shrinking = p_lgl(default = TRUE, tags = c("train")),
+        sigma = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
+        degree = p_int(default = NO_DEF, lower = 1L,
           tags = "train"),
-        ParamDbl$new(id = "scale", default = NO_DEF, lower = 0, tags = "train"),
-        ParamInt$new(id = "order", default = NO_DEF, tags = "train"),
-        ParamDbl$new(id = "offset", default = NO_DEF, tags = "train")
+        scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
+        order = p_int(default = NO_DEF, tags = "train"),
+        offset = p_dbl(default = NO_DEF, tags = "train")
       ))
 
       ps$add_dep(
