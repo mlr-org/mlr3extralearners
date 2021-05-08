@@ -28,20 +28,20 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamUty$new(id = "unpenalized", tags = c("train", "predict")),
-          ParamUty$new(id = "lambda1", default = 0, tags = "train"),
-          ParamUty$new(id = "lambda2", default = 0, tags = "train"),
-          ParamLgl$new(id = "positive", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "fusedl", default = FALSE, tags = "train"),
-          ParamDbl$new(id = "startbeta", tags = "train"),
-          ParamDbl$new(id = "startgamma", tags = "train"),
-          ParamInt$new(id = "steps", lower = 1L, default = 1L, tags = "train"),
-          ParamDbl$new(id = "epsilon", default = 1.0e-10, lower = 0, upper = 1, tags = "train"),
-          ParamInt$new(id = "maxiter", lower = 1, tags = "train"),
-          ParamLgl$new(id = "standardize", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "trace", default = TRUE, tags = "train")
+          unpenalized = p_uty(tags = c("train", "predict")),
+          lambda1 = p_uty(default = 0, tags = "train"),
+          lambda2 = p_uty(default = 0, tags = "train"),
+          positive = p_lgl(default = FALSE, tags = "train"),
+          fusedl = p_lgl(default = FALSE, tags = "train"),
+          startbeta = p_dbl(tags = "train"),
+          startgamma = p_dbl(tags = "train"),
+          steps = p_int(lower = 1L, default = 1L, tags = "train"),
+          epsilon = p_dbl(default = 1.0e-10, lower = 0, upper = 1, tags = "train"),
+          maxiter = p_int(lower = 1, tags = "train"),
+          standardize = p_lgl(default = FALSE, tags = "train"),
+          trace = p_lgl(default = TRUE, tags = "train")
         )
       )
 

@@ -20,19 +20,18 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamFct$new(
-            id = "base", default = "bspline",
+          base = p_fct(default = "bspline",
             levels = c("bspline", "gaussian"), tags = "train"),
-          ParamDbl$new(id = "no.base", default = 41, tags = "train"),
-          ParamDbl$new(id = "max.iter", default = 20, tags = "train"),
-          ParamDbl$new(id = "lambda0", default = 500, tags = "train"),
-          ParamDbl$new(id = "q", default = 3, tags = "train"),
-          ParamLgl$new(id = "sort", default = TRUE, tags = "train"),
-          ParamUty$new(id = "with.border", tags = "train"),
-          ParamDbl$new(id = "m", default = 3, tags = "train"),
-          ParamDbl$new(id = "eps", default = 0.01, tags = "train")
+          no.base = p_dbl(default = 41, tags = "train"),
+          max.iter = p_dbl(default = 20, tags = "train"),
+          lambda0 = p_dbl(default = 500, tags = "train"),
+          q = p_dbl(default = 3, tags = "train"),
+          sort = p_lgl(default = TRUE, tags = "train"),
+          with.border = p_uty(tags = "train"),
+          m = p_dbl(default = 3, tags = "train"),
+          eps = p_dbl(default = 0.01, tags = "train")
         )
       )
 

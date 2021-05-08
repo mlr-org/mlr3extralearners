@@ -16,31 +16,28 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamFct$new(id = "window", levels = c(
+          window = p_fct(levels = c(
             "tcub", "rect", "trwt",
             "tria", "epan", "bisq",
             "gaus"), default = "gaus", tags = "train"),
-          ParamDbl$new(id = "width", tags = "train"),
-          ParamDbl$new(id = "from", tags = "train"),
-          ParamDbl$new(id = "to", tags = "train"),
-          ParamDbl$new(id = "cut", tags = "train"),
-          ParamDbl$new(id = "deg", default = 0, tags = "train"),
-          ParamFct$new(
-            id = "link", default = "ident", tags = "train",
+          width = p_dbl(tags = "train"),
+          from = p_dbl(tags = "train"),
+          to = p_dbl(tags = "train"),
+          cut = p_dbl(tags = "train"),
+          deg = p_dbl(default = 0, tags = "train"),
+          link = p_fct(default = "ident", tags = "train",
             levels = c("ident", "log", "logit", "inverse", "sqrt", "arcsin")),
-          ParamFct$new(
-            id = "kern", default = "tcub", tags = "train",
+          kern = p_fct(default = "tcub", tags = "train",
             levels = c("rect", "trwt", "tria", "epan", "bisq", "gauss", "tcub")),
-          ParamFct$new(
-            id = "kt", default = "sph", tags = "train",
+          kt = p_fct(default = "sph", tags = "train",
             levels = c("sph", "prod")),
-          ParamLgl$new(id = "renorm", default = FALSE, tags = "train"),
-          ParamInt$new(id = "maxk", default = 100, lower = 0, tags = "train"),
-          ParamFct$new(id = "itype", levels = c("prod", "mult", "mlin", "haz"), tags = "train"),
-          ParamInt$new(id = "mint", default = 20, lower = 1, tags = "train"),
-          ParamInt$new(id = "maxit", default = 20, lower = 1, tags = "train")
+          renorm = p_lgl(default = FALSE, tags = "train"),
+          maxk = p_int(default = 100, lower = 0, tags = "train"),
+          itype = p_fct(levels = c("prod", "mult", "mlin", "haz"), tags = "train"),
+          mint = p_int(default = 20, lower = 1, tags = "train"),
+          maxit = p_int(default = 20, lower = 1, tags = "train")
         )
       )
 
