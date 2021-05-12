@@ -20,69 +20,67 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(id = "ntree", default = 1000, lower = 1L, tags = c("train", "predict")),
-          ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-          ParamInt$new(id = "nodesize", default = 15L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "nodedepth", lower = 1L, tags = "train"),
-          ParamFct$new(
-            id = "splitrule", levels = c("mse", "quantile.regr", "la.quantile.regr"),
+      ps = ps(
+          ntree = p_int(default = 1000, lower = 1L, tags = c("train", "predict")),
+          mtry = p_int(lower = 1L, tags = "train"),
+          nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
+          nodedepth = p_int(lower = 1L, tags = "train"),
+          splitrule = p_fct(
+            levels = c("mse", "quantile.regr", "la.quantile.regr"),
             default = "mse", tags = "train"),
-          ParamInt$new(id = "nsplit", lower = 0, default = 10, tags = "train"),
-          ParamFct$new(
-            id = "importance", default = "FALSE",
+          nsplit = p_int(lower = 0, default = 10, tags = "train"),
+          importance = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "TRUE", "none", "permute", "random", "anti"),
             tags = c("train", "predict")),
-          ParamInt$new(id = "block.size", default = 10L, lower = 1L, tags = c("train", "predict")),
-          ParamFct$new(
-            id = "ensemble", default = "all", levels = c("all", "oob", "inbag"),
+          block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
+          ensemble = p_fct(
+            default = "all", levels = c("all", "oob", "inbag"),
             tags = c("train", "predict")),
-          ParamFct$new(
-            id = "bootstrap", default = "by.root",
+          bootstrap = p_fct(
+            default = "by.root",
             levels = c("by.root", "by.node", "none", "by.user"), tags = "train"),
-          ParamFct$new(
-            id = "samptype", default = "swor", levels = c("swor", "swr"),
+          samptype = p_fct(
+            default = "swor", levels = c("swor", "swr"),
             tags = "train"),
-          ParamUty$new(id = "samp", tags = "train"),
-          ParamLgl$new(id = "membership", default = FALSE, tags = c("train", "predict")),
-          ParamUty$new(id = "sampsize", tags = "train"),
-          ParamFct$new(
-            id = "na.action", default = "na.omit", levels = c("na.omit", "na.impute"),
+          samp = p_uty(tags = "train"),
+          membership = p_lgl(default = FALSE, tags = c("train", "predict")),
+          sampsize = p_uty(tags = "train"),
+          na.action = p_fct(
+            default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
-          ParamInt$new(id = "nimpute", default = 1L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "ntime", lower = 1L, tags = "train"),
-          ParamInt$new(id = "cause", lower = 1L, tags = "train"),
-          ParamFct$new(
-            id = "proximity", default = "FALSE",
+          nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
+          ntime = p_int(lower = 1L, tags = "train"),
+          cause = p_int(lower = 1L, tags = "train"),
+          proximity = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
             tags = c("train", "predict")),
-          ParamFct$new(
-            id = "distance", default = "FALSE",
+          distance = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
             tags = c("train", "predict")),
-          ParamFct$new(
-            id = "forest.wt", default = "FALSE",
+          forest.wt = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
             tags = c("train", "predict")),
-          ParamUty$new(id = "xvar.wt", tags = "train"),
-          ParamUty$new(id = "split.wt", tags = "train"),
-          ParamLgl$new(id = "forest", default = TRUE, tags = "train"),
-          ParamFct$new(
-            id = "var.used", default = "FALSE",
+          xvar.wt = p_uty(tags = "train"),
+          split.wt = p_uty(tags = "train"),
+          forest = p_lgl(default = TRUE, tags = "train"),
+          var.used = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
-          ParamFct$new(
-            id = "split.depth", default = "FALSE",
+          split.depth = p_fct(
+            default = "FALSE",
             levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
-          ParamInt$new(id = "seed", upper = -1L, tags = c("train", "predict")),
-          ParamLgl$new(id = "do.trace", default = FALSE, tags = c("train", "predict")),
-          ParamLgl$new(id = "statistics", default = FALSE, tags = c("train", "predict")),
-          ParamUty$new(id = "get.tree", tags = "predict"),
-          ParamFct$new(
-            id = "outcome", default = "train", levels = c("train", "test"),
+          seed = p_int(upper = -1L, tags = c("train", "predict")),
+          do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
+          statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
+          get.tree = p_uty(tags = "predict"),
+          outcome = p_fct(
+            default = "train", levels = c("train", "test"),
             tags = "predict"),
-          ParamInt$new(id = "ptn.count", default = 0L, lower = 0L, tags = "predict")
-        )
+          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict")
       )
 
       super$initialize(
