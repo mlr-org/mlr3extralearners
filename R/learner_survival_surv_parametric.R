@@ -54,26 +54,24 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamFct$new(id = "type", default = "aft", levels = c("aft", "ph", "po", "tobit"),
+      ps = ps(
+          type = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
                        tags = "predict"),
-          ParamUty$new(id = "na.action", tags = "train"),
-          ParamFct$new(id = "dist", default = "weibull",
+          na.action = p_uty(tags = "train"),
+          dist = p_fct(default = "weibull",
                        levels = c("weibull", "exponential", "gaussian",
                                   "lognormal", "loglogistic"), tags = "train"),
-          ParamUty$new(id = "parms", tags = "train"),
-          ParamUty$new(id = "init", tags = "train"),
-          ParamDbl$new(id = "scale", default = 0, lower = 0, tags = "train"),
-          ParamInt$new(id = "maxiter", default = 30L, tags = "train"),
-          ParamDbl$new(id = "rel.tolerance", default = 1e-09, tags = "train"),
-          ParamDbl$new(id = "toler.chol", default = 1e-10, tags = "train"),
-          ParamInt$new(id = "debug", default = 0, lower = 0, upper = 1, tags = "train"),
-          ParamInt$new(id = "outer.max", default = 10L, tags = "train"),
-          ParamLgl$new(id = "robust", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "score", default = FALSE, tags = "train"),
-          ParamUty$new(id = "cluster", tags = "train")
-        )
+          parms = p_uty(tags = "train"),
+          init = p_uty(tags = "train"),
+          scale = p_dbl(default = 0, lower = 0, tags = "train"),
+          maxiter = p_int(default = 30L, tags = "train"),
+          rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
+          toler.chol = p_dbl(default = 1e-10, tags = "train"),
+          debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
+          outer.max = p_int(default = 10L, tags = "train"),
+          robust = p_lgl(default = FALSE, tags = "train"),
+          score = p_lgl(default = FALSE, tags = "train"),
+          cluster = p_uty(tags = "train")
       )
 
       super$initialize(
