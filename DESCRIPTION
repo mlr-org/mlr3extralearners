@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.4.5
+Version: 0.4.7
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
