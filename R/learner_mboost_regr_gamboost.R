@@ -22,34 +22,30 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
     #' @description
     #' Create a `LearnerRegrGAMBoost` object.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamFct$new(
-            id = "baselearner", default = "bbs",
+          baselearner = p_fct(default = "bbs",
             levels = c("bbs", "bols", "btree"), tags = "train"),
-          ParamInt$new(id = "dfbase", default = 4L, tags = "train"),
-          ParamDbl$new(
-            id = "offset", default = NULL, special_vals = list(NULL),
-            tags = "train"),
-          ParamFct$new(
-            id = "family", default = c("Gaussian"),
+          dfbase = p_int(default = 4L, tags = "train"),
+          offset = p_dbl(default = NULL,
+            special_vals = list(NULL), tags = "train"),
+          family = p_fct(default = c("Gaussian"),
             levels = c(
               "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
               "NBinomial", "Hurdle", "custom"), tags = "train"),
-          ParamUty$new(id = "custom.family", tags = "train"),
-          ParamUty$new(id = "nuirange", default = c(0, 100), tags = "train"),
-          ParamDbl$new(
-            id = "d", default = NULL, special_vals = list(NULL),
+          custom.family = p_uty(tags = "train"),
+          nuirange = p_uty(default = c(0, 100), tags = "train"),
+          d = p_dbl(default = NULL, special_vals = list(NULL),
             tags = "train"),
-          ParamInt$new(id = "mstop", default = 100, tags = "train"),
-          ParamDbl$new(id = "nu", default = 0.1, tags = "train"),
-          ParamFct$new(
+          mstop = p_int(id = "mstop", default = 100, tags = "train"),
+          nu = p_dbl(id = "nu", default = 0.1, tags = "train"),
+          risk = p_fct(
             id = "risk", default = "inbag",
             levels = c("inbag", "oobag", "none"), tags = "train"),
-          ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
-          ParamUty$new(id = "stopintern", default = FALSE, tags = "train"),
-          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train")
+          oobweights = p_uty(default = NULL, tags = "train"),
+          trace = p_lgl(default = FALSE, tags = "train"),
+          stopintern = p_uty(default = FALSE, tags = "train"),
+          na.action = p_uty(default = stats::na.omit, tags = "train")
         )
       )
       ps$add_dep("oobweights", "risk", CondEqual$new("oobag"))

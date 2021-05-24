@@ -22,32 +22,28 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     #' @description
     #' Create a `LearnerClassifGLMBoost` object.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamDbl$new(
-            id = "offset", default = NULL, special_vals = list(NULL),
-            tags = "train"),
-          ParamFct$new(
-            id = "family", default = c("Binomial"),
+          offset = p_dbl(default = NULL,
+            special_vals = list(NULL), tags = "train"),
+          family = p_fct(default = c("Binomial"),
             levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
-          ParamUty$new(id = "custom.family", tags = "train"),
-          ParamFct$new(
-            id = "link", default = "logit",
+          custom.family = p_uty(tags = "train"),
+          link = p_fct(default = "logit",
             levels = c("logit", "probit"), tags = "train"),
-          ParamFct$new(
-            id = "type", default = "adaboost",
+          type = p_fct(default = "adaboost",
             levels = c("glm", "adaboost"), tags = "train"),
-          ParamLgl$new(id = "center", default = TRUE, tags = "train"),
-          ParamInt$new(id = "mstop", default = 100, tags = "train"),
-          ParamDbl$new(id = "nu", default = 0.1, tags = "train"),
-          ParamFct$new(
-            id = "risk", default = "inbag",
+          center = p_lgl(default = TRUE, tags = "train"),
+          mstop = p_int(id = "mstop", default = 100, tags = "train"),
+          nu = p_dbl(id = "nu", default = 0.1, tags = "train"),
+          risk = p_fct(
+            default = "inbag",
             levels = c("inbag", "oobag", "none"), tags = "train"),
-          ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
-          ParamUty$new(id = "stopintern", default = FALSE, tags = "train"),
-          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train"),
-          ParamUty$new(id = "contrasts.arg", tags = "train")
+          oobweights = p_uty(default = NULL, tags = "train"),
+          trace = p_lgl(default = FALSE, tags = "train"),
+          stopintern = p_uty(default = FALSE, tags = "train"),
+          na.action = p_uty(default = stats::na.omit, tags = "train"),
+          contrasts.arg = p_uty(tags = "train")
         )
       )
       ps$add_dep("link", "family", CondEqual$new("Binomial"))
