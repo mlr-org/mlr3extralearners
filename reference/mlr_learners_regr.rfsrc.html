@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.4.5</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.4.6</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -175,6 +175,18 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <li><p>Predict Types: response</p></li>
 <li><p>Feature Types: logical, integer, numeric, factor</p></li>
 <li><p>Properties: importance, missings, oob_error, weights</p></li>
+</ul>
+
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
+
+    
+
+<ul>
+<li><p><code>cores</code>:</p><ul>
+<li><p>Actual default: Auto-detecting the number of cores</p></li>
+<li><p>Adjusted default: 1</p></li>
+<li><p>Reason for change: Threading conflicts with explicit parallelization via <a href='https://CRAN.R-project.org/package=future'><span class="pkg">future</span></a>.</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
@@ -273,7 +285,7 @@ Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: <a href='https://doi.org/1
 #&gt; [16] "nimpute"     "ntime"       "cause"       "proximity"   "distance"   
 #&gt; [21] "forest.wt"   "xvar.wt"     "split.wt"    "forest"      "var.used"   
 #&gt; [26] "split.depth" "seed"        "do.trace"    "statistics"  "get.tree"   
-#&gt; [31] "outcome"     "ptn.count"  </div></pre>
+#&gt; [31] "outcome"     "ptn.count"   "cores"      </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
