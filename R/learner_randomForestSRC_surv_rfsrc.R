@@ -6,6 +6,12 @@
 #' @templateVar id surv.rfsrc
 #' @templateVar caller rfsrc
 #'
+#' @section Custom mlr3 defaults:
+#' - `cores`:
+#'   - Actual default: Auto-detecting the number of cores
+#'   - Adjusted default: 1
+#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#'
 #' @details
 #' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and
 #' survival function (surv) but uses different estimators to derive these. `chf` uses a
@@ -94,7 +100,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
           ParamInt$new(id = "ptn.count", default = 0L, lower = 0L, tags = "predict"),
           ParamFct$new(
             id = "estimator", default = "nelson", levels = c("nelson", "kaplan"),
-            tags = c("predict", "distr"))
+            tags = c("predict", "distr")),
+          ParamInt$new(id = "cores", default = 1L, lower = 1L, tags = c("train", "predict", "threads"))
         )
       )
 
@@ -145,6 +152,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -152,7 +160,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
       mlr3misc::invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = task$data(),
-        .args = pv)
+        .args = pv, .opts = list(rf.cores = cores))
     },
 
     .predict = function(task) {
@@ -162,8 +170,10 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       pars_predict = self$param_set$get_values(tags = "predict")
       pars_distr = self$param_set$get_values(tags = "distr")
       pars_predict = pars_predict[names(pars_predict) %nin% names(pars_distr)]
+      cores = pars_predict$cores %??% 1L
 
-      p = mlr3misc::invoke(predict, object = self$model, newdata = newdata, .args = pars_predict)
+      p = mlr3misc::invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
+        .opts = list(rf.cores = cores))
 
       # rfsrc uses Nelson-Aalen in chf and Kaplan-Meier for survival, as these
       # don't give equivalent results one must be chosen and the relevant functions are transformed
