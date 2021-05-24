@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.6
+
+* Updates default cores for `rfsrc` learners to `1`
+
 # mlr3extralearners 0.4.5
 
 * Fix RWeka tests (stochastic failures, implementation unaffected)
