@@ -34,6 +34,9 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      warning("Deprecated, please use `lrn(regr.rweka, model = 'IBk')` in the future.")
+
       ps = ParamSet$new(
         params = list(
           ParamUty$new(id = "subset", tags = c("train", "pars")),

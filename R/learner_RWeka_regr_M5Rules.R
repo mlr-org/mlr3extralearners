@@ -36,6 +36,9 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      warning("Deprecated, please use `lrn(regr.rweka, model = 'M5Rules')` in the future.")
+
       ps = ParamSet$new(
         params = list(
           ParamUty$new(id = "subset", tags = c("train", "pars")),
