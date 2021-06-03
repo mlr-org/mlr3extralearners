@@ -165,7 +165,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   basedist = object$basedist
   fit = object$fit
   distr6::assertDistribution(basedist)
-  checkmate::assertClass(fit, "survreg")
+  assertClass(fit, "survreg")
 
   # define newdata from the supplied task and convert to model matrix
   newdata = task$data(cols = feature_names)

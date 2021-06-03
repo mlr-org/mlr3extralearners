@@ -155,19 +155,19 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
           # cat_features missing
           ParamUty$new(
             id = "monotone_constraints", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamUty$new(
             id = "feature_weights", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamUty$new(
             id = "first_feature_use_penalties", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamDbl$new(
             id = "penalties_coefficient", lower = 0, upper = Inf,
             default = 1, tags = "train"),
           ParamUty$new(
             id = "per_object_feature_penalties", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamDbl$new(id = "model_shrink_rate", tags = "train"),
           ParamFct$new(
             id = "model_shrink_mode",
@@ -186,7 +186,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
             default = "GreedyLogSum", tags = "train"),
           ParamUty$new(
             id = "per_float_feature_quantization", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           # Multiclassification settings
           ParamInt$new(
             id = "classes_count",
@@ -212,7 +212,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
           # verbose missing
           ParamUty$new(
             id = "train_dir", default = "catboost_info",
-            tags = "train", custom_check = checkmate::check_string),
+            tags = "train", custom_check = check_string),
           ParamDbl$new(
             id = "model_size_reg", lower = 0, upper = 1,
             default = 0.5, tags = "train"),
@@ -222,17 +222,17 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
           ParamLgl$new(id = "save_snapshot", default = FALSE, tags = "train"),
           ParamUty$new(
             id = "snapshot_file", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamInt$new(
             id = "snapshot_interval", lower = 1L, upper = Inf,
             default = 600L, tags = "train"),
           # CTR settings
           ParamUty$new(
             id = "simple_ctr", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamUty$new(
             id = "combinations_ctr", tags = "train",
-            custom_check = checkmate::check_string),
+            custom_check = check_string),
           ParamInt$new(
             id = "ctr_target_border_count",
             lower = 1L, upper = 255L, tags = "train"),

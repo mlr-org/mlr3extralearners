@@ -33,10 +33,10 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
     initialize = function() {
       ps = ParamSet$new(list(
         # missing: subset, na.action, weights (see bottom)
-        ParamUty$new("rhs", custom_check = checkmate::check_character,
+        ParamUty$new("rhs", custom_check = check_character,
           tags = "train"),
         ParamUty$new("fit", custom_check = function(x) {
-          checkmate::check_function(x,
+          check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
         }, tags = "train"),
         ParamUty$new("offset", tags = "train"),
@@ -82,7 +82,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         ParamInt$new("cores", default = NULL, special_vals = list(NULL),
           tags = "train"),
         # additional arguments passed to fitting function
-        ParamUty$new("additional", custom_check = checkmate::check_list,
+        ParamUty$new("additional", custom_check = check_list,
           tags = "train"),
         # the predict function depends on the predict method of the fitting
         # function itself and can be passed via type, see predict.modelparty
@@ -90,7 +90,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         # itself, the newdata, the original task and a
         # predict type
         ParamUty$new("predict_fun", custom_check = function(x) {
-          checkmate::check_function(x,
+          check_function(x,
             args = c("object", "newdata", "task", ".type"))
         }, tags = "predict")
       )
