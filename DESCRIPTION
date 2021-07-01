@@ -54,6 +54,7 @@ Suggests:
     catboost,
     coin,
     CoxBoost,
+    Cubist,
     dbarts,
     distr6 (>= 1.4.3),
     earth,
