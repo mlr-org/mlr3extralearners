@@ -71,6 +71,7 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mda,
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
