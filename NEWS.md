@@ -3,6 +3,7 @@
 * Deprecated liblinear learners now removed
 * Internal changes to ParamSet representation
 * rweka learners now combined into regr.rweka and classif.rweka, old ones are deprecated and will be removed in 0.6.0
+
 # mlr3extralearners 0.4.7
 
 * Moved `nnet` learners to [mlr3learners](https://github.com/mlr-org/mlr3learners)
