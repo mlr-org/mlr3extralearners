@@ -32,6 +32,18 @@ lrn("surv.rfsrc")
 }
 }
 
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item \code{cores}:
+\itemize{
+\item Actual default: Auto-detecting the number of cores
+\item Adjusted default: 1
+\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+}
+}
+}
+
 \examples{
 # stop example failing with warning if package not installed
 learner = suppressWarnings(mlr3::lrn("surv.rfsrc"))

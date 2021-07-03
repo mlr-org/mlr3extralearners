@@ -6,6 +6,12 @@
 #' @templateVar id regr.rfsrc
 #' @templateVar caller rfsrc
 #'
+#' @section Custom mlr3 defaults:
+#' - `cores`:
+#'   - Actual default: Auto-detecting the number of cores
+#'   - Adjusted default: 1
+#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#'
 #' @references
 #' Breiman L (2001). “Random Forests.”
 #' Machine Learning, 45(1), 5–32. ISSN 1573-0565, \doi{10.1023/A:1010933404324}
@@ -80,7 +86,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           outcome = p_fct(
             default = "train", levels = c("train", "test"),
             tags = "predict"),
-          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict")
+          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
+          cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -130,6 +137,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -137,18 +145,18 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
 
       mlr3misc::invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = task$data(),
-        .args = pv)
+        .args = pv, .opts = list(rf.cores = cores))
     },
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
       pars = self$param_set$get_values(tags = "predict")
+      cores = pars$cores %??% 1L
 
       list(
         response = mlr3misc::invoke(predict,
-          object = self$model,
-          newdata = newdata,
-          .args = pars)$predicted
+          object = self$model, newdata = newdata,
+          .args = pars, .opts = list(rf.cores = cores))$predicted
       )
     }
   )
