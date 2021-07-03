@@ -34,30 +34,30 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamUty$new(id = "subset", tags = c("train", "pars")),
-          ParamUty$new(id = "na.action", tags = c("train", "pars")),
-          ParamLgl$new(id = "B", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "R", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "C", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "P", default = FALSE, tags = c("train", "control")),
-          ParamInt$new(id = "I", lower = 1L, tags = c("train", "control")),
-          ParamInt$new(id = "M", default = 15L, lower = 1L, tags = c("train", "control")),
-          ParamDbl$new(id = "W", default = 0, lower = 0, upper = 1, tags = c("train", "control")),
-          ParamLgl$new(id = "A", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
+          p_uty(id = "subset", tags = c("train", "pars")),
+          p_uty(id = "na.action", tags = c("train", "pars")),
+          p_lgl(id = "B", default = FALSE, tags = c("train", "control")),
+          p_lgl(id = "R", default = FALSE, tags = c("train", "control")),
+          p_lgl(id = "C", default = FALSE, tags = c("train", "control")),
+          p_lgl(id = "P", default = FALSE, tags = c("train", "control")),
+          p_int(id = "I", lower = 1L, tags = c("train", "control")),
+          p_int(id = "M", default = 15L, lower = 1L, tags = c("train", "control")),
+          p_dbl(id = "W", default = 0, lower = 0, upper = 1, tags = c("train", "control")),
+          p_lgl(id = "A", default = FALSE, tags = c("train", "control")),
+          p_lgl(
             id = "doNotMakeSplitPointActualValue", default = FALSE,
             tags = c("train", "control")),
-          ParamLgl$new(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
+          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
+          p_lgl(
             id = "do_not_check_capabilities", default = FALSE,
             tags = c("train", "control")),
-          ParamInt$new(
+          p_int(
             id = "num_decimal_places", default = 2L, lower = 1L,
             tags = c("train", "control")),
-          ParamInt$new(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(id = "options", default = NULL, tags = c("train", "pars"))
+          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
+          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
         )
       )
       ps$add_dep("I", "C", CondEqual$new(FALSE))

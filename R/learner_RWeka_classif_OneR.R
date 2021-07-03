@@ -34,20 +34,20 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
+      ps = ps(
         params = list(
-          ParamUty$new(id = "subset", tags = c("train", "pars")),
-          ParamUty$new(id = "na.action", tags = c("train", "pars")),
-          ParamInt$new(id = "B", default = 6L, lower = 1L, tags = c("train", "control")),
-          ParamLgl$new(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
+          p_uty(id = "subset", tags = c("train", "pars")),
+          p_uty(id = "na.action", tags = c("train", "pars")),
+          p_int(id = "B", default = 6L, lower = 1L, tags = c("train", "control")),
+          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
+          p_lgl(
             id = "do_not_check_capabilities", default = FALSE,
             tags = c("train", "control")),
-          ParamInt$new(
+          p_int(
             id = "num_decimal_places", default = 2L, lower = 1L,
             tags = c("train", "control")),
-          ParamInt$new(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(id = "options", default = NULL, tags = c("train", "pars"))
+          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
+          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
         )
       )
 

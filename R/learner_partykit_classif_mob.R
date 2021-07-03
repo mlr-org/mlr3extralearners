@@ -31,65 +31,65 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(list(
+      ps = ps(list(
         # missing: subset, na.action, weights (see bottom)
-        ParamUty$new("rhs", custom_check = checkmate::check_character,
+        p_uty("rhs", custom_check = checkmate::check_character,
           tags = "train"),
-        ParamUty$new("fit", custom_check = function(x) {
+        p_uty("fit", custom_check = function(x) {
           checkmate::check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
         }, tags = "train"),
-        ParamUty$new("offset", tags = "train"),
-        ParamUty$new("cluster", tags = "train"),
+        p_uty("offset", tags = "train"),
+        p_uty("cluster", tags = "train"),
         # all in mob_control()
-        ParamDbl$new("alpha", default = 0.05, lower = 0, upper = 1,
+        p_dbl("alpha", default = 0.05, lower = 0, upper = 1,
           tags = "train"),
-        ParamLgl$new("bonferroni", default = TRUE, tags = "train"),
+        p_lgl("bonferroni", default = TRUE, tags = "train"),
         # minsize, minsplit, minbucket are equivalent, adaptive default
-        ParamInt$new("minsize", lower = 1L, tags = "train"),
-        ParamInt$new("minsplit", lower = 1L, tags = "train"),
-        ParamInt$new("minbucket", lower = 1L, tags = "train"),
-        ParamInt$new("maxvar", lower = 1L, tags = "train"),
-        ParamInt$new("maxdepth", default = Inf, lower = 0L,
+        p_int("minsize", lower = 1L, tags = "train"),
+        p_int("minsplit", lower = 1L, tags = "train"),
+        p_int("minbucket", lower = 1L, tags = "train"),
+        p_int("maxvar", lower = 1L, tags = "train"),
+        p_int("maxdepth", default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
-        ParamInt$new("mtry", default = Inf, lower = 0L,
+        p_int("mtry", default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
-        ParamDbl$new("trim", default = 0.1, lower = 0, tags = "train"),
-        ParamLgl$new("breakties", default = FALSE, tags = "train"),
-        ParamUty$new("parm", tags = "train"),
-        ParamInt$new("dfsplit", lower = 0L, tags = "train"),
-        ParamUty$new("prune", tags = "train"),
-        ParamLgl$new("restart", default = TRUE, tags = "train"),
-        ParamLgl$new("verbose", default = FALSE, tags = "train"),
-        ParamLgl$new("caseweights", default = TRUE, tags = "train"),
-        ParamFct$new("ytype", default = "vector",
+        p_dbl("trim", default = 0.1, lower = 0, tags = "train"),
+        p_lgl("breakties", default = FALSE, tags = "train"),
+        p_uty("parm", tags = "train"),
+        p_int("dfsplit", lower = 0L, tags = "train"),
+        p_uty("prune", tags = "train"),
+        p_lgl("restart", default = TRUE, tags = "train"),
+        p_lgl("verbose", default = FALSE, tags = "train"),
+        p_lgl("caseweights", default = TRUE, tags = "train"),
+        p_fct("ytype", default = "vector",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
-        ParamFct$new("xtype", default = "matrix",
+        xtype = p_fct(default = "matrix",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
-        ParamUty$new("terminal", default = "object", tags = "train"),
-        ParamUty$new("inner", default = "object", tags = "train"),
-        ParamLgl$new("model", default = TRUE, tags = "train"),
-        ParamFct$new("numsplit", default = "left", levels = c("left", "center"),
+        terminal = p_uty(default = "object", tags = "train"),
+        inner = p_uty(default = "object", tags = "train"),
+        model = p_lgl(default = TRUE, tags = "train"),
+        numsplit = p_fct(default = "left", levels = c("left", "center"),
           tags = "train"),
-        ParamFct$new("catsplit", default = "binary",
+        catsplit = p_fct(default = "binary",
           levels = c("binary", "multiway"), tags = "train"),
-        ParamFct$new("vcov", default = "opg",
+        vcov = p_fct(default = "opg",
           levels = c("opg", "info", "sandwich"), tags = "train"),
-        ParamFct$new("ordinal", default = "chisq",
+        ordinal = p_fct(default = "chisq",
           levels = c("chisq", "max", "L2"), tags = "train"),
-        ParamInt$new("nrep", default = 10000, lower = 0L, tags = "train"),
-        ParamUty$new("applyfun", tags = "train"),
-        ParamInt$new("cores", default = NULL, special_vals = list(NULL),
+        nrep = p_int(default = 10000, lower = 0L, tags = "train"),
+        applyfun = p_uty(tags = "train"),
+        cores = p_int(default = NULL, special_vals = list(NULL),
           tags = "train"),
         # additional arguments passed to fitting function
-        ParamUty$new("additional", custom_check = checkmate::check_list,
+        additional = p_uty(custom_check = checkmate::check_list,
           tags = "train"),
         # the predict function depends on the predict method of the fitting
         # function itself and can be passed via type, see predict.modelparty
         # most fitting functions should not need anything else than the model
         # itself, the newdata, the original task and a
         # predict type
-        ParamUty$new("predict_fun", custom_check = function(x) {
+        p_uty("predict_fun", custom_check = function(x) {
           checkmate::check_function(x,
             args = c("object", "newdata", "task", ".type"))
         }, tags = "predict")
