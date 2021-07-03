@@ -36,28 +36,25 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
     initialize = function() {
       ps = ps(
         params = list(
-          p_uty(id = "subset", tags = c("train", "pars")),
-          p_uty(id = "na.action", tags = c("train", "pars")),
-          p_lgl(id = "B", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "R", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "C", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "P", default = FALSE, tags = c("train", "control")),
-          p_int(id = "I", lower = 1L, tags = c("train", "control")),
-          p_int(id = "M", default = 15L, lower = 1L, tags = c("train", "control")),
-          p_dbl(id = "W", default = 0, lower = 0, upper = 1, tags = c("train", "control")),
-          p_lgl(id = "A", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "doNotMakeSplitPointActualValue", default = FALSE,
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          B = p_lgl(default = FALSE, tags = c("train", "control")),
+          R = p_lgl(default = FALSE, tags = c("train", "control")),
+          C = p_lgl(default = FALSE, tags = c("train", "control")),
+          P = p_lgl(default = FALSE, tags = c("train", "control")),
+          I = p_int(lower = 1L, tags = c("train", "control")),
+          M = p_int(default = 15L, lower = 1L, tags = c("train", "control")),
+          W = p_dbl(default = 0, lower = 0, upper = 1, tags = c("train", "control")),
+          A = p_lgl(default = FALSE, tags = c("train", "control")),
+          doNotMakeSplitPointActualValue = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "do_not_check_capabilities", default = FALSE,
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_int(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
       ps$add_dep("I", "C", CondEqual$new(FALSE))

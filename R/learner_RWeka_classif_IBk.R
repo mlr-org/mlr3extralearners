@@ -36,26 +36,23 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
     initialize = function() {
       ps = ps(
         params = list(
-          p_uty(id = "subset", tags = c("train", "pars")),
-          p_uty(id = "na.action", tags = c("train", "pars")),
-          p_lgl(id = "I", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "F", default = FALSE, tags = c("train", "control")),
-          p_int(id = "K", default = 1L, lower = 1L, tags = c("train", "control")),
-          p_lgl(id = "E", default = FALSE, tags = c("train", "control")),
-          p_int(id = "W", default = 0L, lower = 0L, tags = c("train", "control")),
-          p_lgl(id = "X", default = FALSE, tags = c("train", "control")),
-          p_uty(
-            id = "A", default = "weka.core.neighboursearch.LinearNNSearch",
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          I = p_lgl(default = FALSE, tags = c("train", "control")),
+          F = p_lgl(default = FALSE, tags = c("train", "control")),
+          K = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+          E = p_lgl(default = FALSE, tags = c("train", "control")),
+          W = p_int(default = 0L, lower = 0L, tags = c("train", "control")),
+          X = p_lgl(default = FALSE, tags = c("train", "control")),
+          A = p_uty(default = "weka.core.neighboursearch.LinearNNSearch",
             tags = c("train", "control")),
-          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "do_not_check_capabilities", default = FALSE,
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_int(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
 

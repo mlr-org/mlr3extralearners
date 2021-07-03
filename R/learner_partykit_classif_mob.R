@@ -33,36 +33,36 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
     initialize = function() {
       ps = ps(list(
         # missing: subset, na.action, weights (see bottom)
-        p_uty("rhs", custom_check = checkmate::check_character,
+        rhs = p_uty(custom_check = checkmate::check_character,
           tags = "train"),
-        p_uty("fit", custom_check = function(x) {
+        fit = p_uty(custom_check = function(x) {
           checkmate::check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
         }, tags = "train"),
-        p_uty("offset", tags = "train"),
-        p_uty("cluster", tags = "train"),
+        offset = p_uty(tags = "train"),
+        cluster = p_uty(tags = "train"),
         # all in mob_control()
-        p_dbl("alpha", default = 0.05, lower = 0, upper = 1,
+        alpha = p_dbl(default = 0.05, lower = 0, upper = 1,
           tags = "train"),
-        p_lgl("bonferroni", default = TRUE, tags = "train"),
+        bonferroni = p_lgl(default = TRUE, tags = "train"),
         # minsize, minsplit, minbucket are equivalent, adaptive default
-        p_int("minsize", lower = 1L, tags = "train"),
-        p_int("minsplit", lower = 1L, tags = "train"),
-        p_int("minbucket", lower = 1L, tags = "train"),
-        p_int("maxvar", lower = 1L, tags = "train"),
-        p_int("maxdepth", default = Inf, lower = 0L,
+        minsize = p_int(lower = 1L, tags = "train"),
+        minsplit = p_int(lower = 1L, tags = "train"),
+        minbucket = p_int(lower = 1L, tags = "train"),
+        maxvar = p_int(lower = 1L, tags = "train"),
+        maxdepth = p_int(default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
-        p_int("mtry", default = Inf, lower = 0L,
+        mtry = p_int(default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
-        p_dbl("trim", default = 0.1, lower = 0, tags = "train"),
-        p_lgl("breakties", default = FALSE, tags = "train"),
-        p_uty("parm", tags = "train"),
-        p_int("dfsplit", lower = 0L, tags = "train"),
-        p_uty("prune", tags = "train"),
-        p_lgl("restart", default = TRUE, tags = "train"),
-        p_lgl("verbose", default = FALSE, tags = "train"),
-        p_lgl("caseweights", default = TRUE, tags = "train"),
-        p_fct("ytype", default = "vector",
+        trim = p_dbl(default = 0.1, lower = 0, tags = "train"),
+        breakties = p_lgl(default = FALSE, tags = "train"),
+        parm = p_uty(tags = "train"),
+        dfsplit = p_int(lower = 0L, tags = "train"),
+        prune = p_uty(tags = "train"),
+        restart = p_lgl(default = TRUE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        caseweights = p_lgl(default = TRUE, tags = "train"),
+        ytype = p_fct(default = "vector",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
         xtype = p_fct(default = "matrix",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
@@ -89,7 +89,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         # most fitting functions should not need anything else than the model
         # itself, the newdata, the original task and a
         # predict type
-        p_uty("predict_fun", custom_check = function(x) {
+        predict_fun = p_uty(custom_check = function(x) {
           checkmate::check_function(x,
             args = c("object", "newdata", "task", ".type"))
         }, tags = "predict")

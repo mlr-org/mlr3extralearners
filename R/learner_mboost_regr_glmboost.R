@@ -43,7 +43,7 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
           oobweights = p_uty(default = NULL, tags = "train"),
           trace = p_lgl(default = FALSE, tags = "train"),
           stopintern = p_uty(default = FALSE, tags = "train"),
-          na.action = p_uty(default = stats::na.omit, tags = "train")
+          na.action = p_uty(default = stats::na.omit, tags = "train"),
           contrasts.arg = p_uty(tags = "train")
         )
       )

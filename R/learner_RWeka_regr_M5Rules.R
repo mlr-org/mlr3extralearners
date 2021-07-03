@@ -41,19 +41,17 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
 
       ps = ParamSet$new(
         params = list(
-          ParamUty$new(id = "subset", tags = c("train", "pars")),
-          ParamUty$new(id = "na.action", tags = c("train", "pars")),
-          ParamLgl$new(id = "N", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "U", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "R", default = FALSE, tags = c("train", "control")),
-          ParamInt$new(id = "M", default = 4L, tags = c("train", "control")),
-          ParamLgl$new(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
-            id = "do_not_check_capabilities", default = FALSE, tags = c("train", "control")),
-          ParamInt$new(
-            id = "num_decimal_places", default = 2L, lower = 1L, tags = c("train", "control")),
-          ParamInt$new(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(id = "options", default = NULL, tags = c("train", "pars"))
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          N = p_lgl(default = FALSE, tags = c("train", "control")),
+          U = p_lgl(default = FALSE, tags = c("train", "control")),
+          R = p_lgl(default = FALSE, tags = c("train", "control")),
+          M = p_int(default = 4L, tags = c("train", "control")),
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE, tags = c("train", "control")),
+          num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
 

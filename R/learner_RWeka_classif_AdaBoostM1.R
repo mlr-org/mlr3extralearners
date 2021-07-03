@@ -36,26 +36,22 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
     initialize = function() {
       ps = ps(
         params = list(
-          p_uty(id = "subset", tags = c("train", "pars")),
-          p_uty(id = "na.action", tags = c("train", "pars")),
-          p_int(
-            id = "P", default = 100L, lower = 90L, upper = 100L,
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          P = p_int(default = 100L, lower = 90L, upper = 100L,
             tags = c("train", "control")),
-          p_lgl(id = "Q", default = FALSE, tags = c("train", "control")),
-          p_int(id = "S", default = 1L, lower = 1L, tags = c("train", "control")),
-          p_int(id = "I", default = 10L, lower = 1L, tags = c("train", "control")),
-          p_uty(
-            id = "W", default = "weka.classifiers.trees.DecisionStump",
+          Q = p_lgl(default = FALSE, tags = c("train", "control")),
+          S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+          I = p_int(default = 10L, lower = 1L, tags = c("train", "control")),
+          W = p_uty(default = "weka.classifiers.trees.DecisionStump",
             tags = c("train", "control")),
-          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "do_not_check_capabilities", default = FALSE,
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_int(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
 

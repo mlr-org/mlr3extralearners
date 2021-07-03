@@ -36,18 +36,16 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
     initialize = function() {
       ps = ps(
         params = list(
-          p_uty(id = "subset", tags = c("train", "pars")),
-          p_uty(id = "na.action", tags = c("train", "pars")),
-          p_int(id = "B", default = 6L, lower = 1L, tags = c("train", "control")),
-          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "do_not_check_capabilities", default = FALSE,
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          B = p_int(default = 6L, lower = 1L, tags = c("train", "control")),
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_int(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
 

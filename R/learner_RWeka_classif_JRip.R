@@ -37,24 +37,22 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
     initialize = function() {
       ps = ps(
         params = list(
-          p_uty(id = "subset", tags = c("train", "pars")),
-          p_uty(id = "na.action", tags = c("train", "pars")),
-          p_int(id = "F", default = 3L, lower = 2L, tags = c("train", "control")),
-          p_dbl(id = "N", default = 2, lower = 0, tags = c("train", "control")),
-          p_int(id = "O", default = 2L, lower = 1L, tags = c("train", "control")),
-          p_lgl(id = "D", default = FALSE, tags = c("train", "control")),
-          p_int(id = "S", default = 1L, lower = 1L, tags = c("train", "control")),
-          p_lgl(id = "E", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "P", default = FALSE, tags = c("train", "control")),
-          p_lgl(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          p_lgl(
-            id = "do_not_check_capabilities", default = FALSE,
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          F = p_int(default = 3L, lower = 2L, tags = c("train", "control")),
+          N = p_dbl(default = 2, lower = 0, tags = c("train", "control")),
+          O = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+          D = p_lgl(default = FALSE, tags = c("train", "control")),
+          S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+          E = p_lgl(default = FALSE, tags = c("train", "control")),
+          P = p_lgl(default = FALSE, tags = c("train", "control")),
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          p_int(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          p_int(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          p_uty(id = "options", default = NULL, tags = c("train", "pars"))
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
         )
       )
 
