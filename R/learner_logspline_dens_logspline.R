@@ -20,7 +20,6 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        list(
           lbound = p_dbl(tags = "train"),
           ubound = p_dbl(tags = "train"),
           maxknots = p_dbl(default = 0, lower = 0, tags = "train"),
@@ -30,7 +29,6 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
           silent = p_lgl(default = TRUE, tags = "train"),
           mind = p_dbl(default = -1, tags = "train"),
           error.action = p_int(default = 2, lower = 0, upper = 2, tags = "train")
-        )
       )
 
 

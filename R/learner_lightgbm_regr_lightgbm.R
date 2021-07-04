@@ -161,12 +161,12 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           gpu_use_dp = p_lgl(default = FALSE, tags = "train"),
           num_gpu = p_int(default = 1L, lower = 1L, tags = "train"),
           # predict parameters
-          start_iteration = p_int("start_iteration", default = 0L, tags = "predict"),
-          num_iteration = p_int("num_iteration", default = -1L, tags = "predict"),
-          pred_early_stop = p_lgl("pred_early_stop", default = FALSE, tags = "predict"),
-          pred_early_stop_freq = p_int("pred_early_stop_freq", default = 10L, tags = "predict"),
-          pred_early_stop_margin = p_dbl("pred_early_stop_margin", default = 10, tags = "predict"),
-          output_result = p_uty("output_result", default = "LightGBM_predict_result.txt", tags = "predict")
+          start_iteration = p_int(default = 0L, tags = "predict"),
+          num_iteration = p_int(default = -1L, tags = "predict"),
+          pred_early_stop = p_lgl(default = FALSE, tags = "predict"),
+          pred_early_stop_freq = p_int(default = 10L, tags = "predict"),
+          pred_early_stop_margin = p_dbl(default = 10, tags = "predict"),
+          output_result = p_uty(default = "LightGBM_predict_result.txt", tags = "predict")
       )
 
       ps$add_dep("reg_sqrt", "objective", CondEqual$new("regression"))
