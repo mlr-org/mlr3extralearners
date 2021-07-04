@@ -16,29 +16,25 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(id = "committees", lower = 1L, upper = 100L, default = 1L,
-            tags = c("train", "required")),
-          ParamLgl$new(id = "unbiased", default = FALSE, tags = "train"),
-          ParamInt$new(id = "rules", lower = 1L, default = 100L, tags = "train"),
-          ParamDbl$new(id = "extrapolation", lower = 0, upper = 100, default = 100, tags = "train"),
-          ParamInt$new(id = "sample", lower = 0L, default = 0L, tags = "train"),
-          ParamInt$new(id = "seed", default = sample.int(4096, size = 1), tags = "train"),
-          ParamUty$new(id = "label", default = "outcome", tags = "train"),
-          ParamInt$new(id = "neighbors", lower = 0L, upper = 0L, default = 0L,
-            tags = c("predict", "required"))
-        )
+      param_set = ps(
+        committees = p_int(lower = 1L, upper = 100L, default = 1L, tags = c("train", "required")),
+        unbiased = p_lgl(default = FALSE, tags = "train"),
+        rules = p_int(lower = 1L, default = 100L, tags = "train"),
+        extrapolation = p_dbl(lower = 0, upper = 100, default = 100, tags = "train"),
+        sample = p_int(lower = 0L, default = 0L, tags = "train"),
+        seed = p_int(default = sample.int(4096, size = 1), tags = "train"),
+        label = p_uty(default = "outcome", tags = "train"),
+        neighbors = p_int(lower = 0L, upper = 0L, default = 0L, tags = c("predict", "required"))
       )
-      ps$values$committees = 1L # is passed in call directly
-      ps$values$neighbors = 0L # is passed in call directly
+      param_set$values$committees = 1L
+      param_set$values$neighbors = 0L
 
       super$initialize(
         id = "regr.cubist",
         packages = "Cubist",
         feature_types = c("integer", "numeric", "character", "factor", "ordered"),
         predict_types = "response",
-        param_set = ps,
+        param_set = param_set,
         man = "mlr3extralearners::mlr_learners_regr.cubist"
       )
     }
@@ -49,9 +45,8 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
   private = list(
     .train = function(task) {
       # get parameters for training
-
       pars = self$param_set$get_values(tags = "train")
-      pars[["committees"]] = NULL # is passed in call directly
+      pars[["committees"]] = NULL
       control = mlr3misc::invoke(Cubist::cubistControl, .args = pars)
 
       # set column names to ensure consistency in fit and predict
