@@ -35,9 +35,7 @@ LearnerRegrRweka = R6Class("LearnerRegrRweka",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          model = p_fct(levels = c("IBk", "M5Rules"), tags = "train"),
-          subset = p_uty(tags = "train"),
-          na.action = p_uty(tags = "train"),
+          model = p_fct(levels = c("IBk", "M5Rules"), tags = c("train", "required")),
           I = p_lgl(default = FALSE, tags = c("train", "IBk")),
           F = p_lgl(default = FALSE, tags = c("train", "IBk")),
           K = p_int(default = 1L, lower = 1L, tags = c("train", "IBk")),
@@ -50,11 +48,13 @@ LearnerRegrRweka = R6Class("LearnerRegrRweka",
           U = p_lgl(default = FALSE, tags = c("train", "M5Rules")),
           R = p_lgl(default = FALSE, tags = c("train", "M5Rules")),
           M = p_int(default = 4L, tags = c("train", "M5Rules")),
-          output_debug_info = p_lgl(default = FALSE, tags = "train"),
-          do_not_check_capabilities = p_lgl(default = FALSE, tags = "train"),
-          num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
-          batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
-          options = p_uty(default = NULL, tags = "train")
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE, tags = c("train", "control")),
+          num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars")),
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars"))
       )
 
       super$initialize(
@@ -73,21 +73,19 @@ LearnerRegrRweka = R6Class("LearnerRegrRweka",
     .train = function(task) {
       model = self$param_set$values$model
 
-      ctrl = self$param_set$get_values(tags = model)
+      ctrl = c(self$param_set$get_values(tags = "control"),
+               self$param_set$get_values(tags = model))
       if (length(ctrl)) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = mlr3misc::invoke(RWeka::Weka_control, ctrl)
+        ctrl = RWeka::Weka_control(ctrl)
       }
-
-      args = self$param_set$get_values(tags = "train")
-      args = args[setdiff(names(args), names(ctrl))]
 
       mlr3misc::invoke(
         getFromNamespace(model, "RWeka"),
         formula = task$formula(),
         data = task$data(),
         control = ctrl,
-        .args = args
+        .args = self$param_set$get_values(tags = "pars")
       )
     },
 
