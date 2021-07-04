@@ -29,7 +29,6 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           unpenalized = p_uty(tags = c("train", "predict")),
           lambda1 = p_uty(default = 0, tags = "train"),
           lambda2 = p_uty(default = 0, tags = "train"),
@@ -42,7 +41,6 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
           maxiter = p_int(lower = 1, tags = "train"),
           standardize = p_lgl(default = FALSE, tags = "train"),
           trace = p_lgl(default = TRUE, tags = "train")
-        )
       )
 
       super$initialize(

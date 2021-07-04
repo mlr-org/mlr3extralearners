@@ -17,7 +17,6 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           window = p_fct(levels = c(
             "tcub", "rect", "trwt",
             "tria", "epan", "bisq",
@@ -38,7 +37,6 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
           itype = p_fct(levels = c("prod", "mult", "mlin", "haz"), tags = "train"),
           mint = p_int(default = 20, lower = 1, tags = "train"),
           maxit = p_int(default = 20, lower = 1, tags = "train")
-        )
       )
 
       super$initialize(

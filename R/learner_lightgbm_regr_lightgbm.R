@@ -32,7 +32,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           # lgb.train core functions
           nrounds = p_int(default = 5L, lower = 1L, tags = "train"),
           objective = p_fct(default = "regression", levels = c("regression",
@@ -168,7 +167,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           pred_early_stop_freq = p_int("pred_early_stop_freq", default = 10L, tags = "predict"),
           pred_early_stop_margin = p_dbl("pred_early_stop_margin", default = 10, tags = "predict"),
           output_result = p_uty("output_result", default = "LightGBM_predict_result.txt", tags = "predict")
-        )
       )
 
       ps$add_dep("reg_sqrt", "objective", CondEqual$new("regression"))

@@ -24,7 +24,6 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
     #' Create a `LearnerRegrGLMBoost` object.
     initialize = function() {
       ps = ps(
-        params = list(
           offset = p_dbl(default = NULL,
             special_vals = list(NULL), tags = "train"),
           family = p_fct(default = c("Gaussian"),
@@ -45,7 +44,6 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
           stopintern = p_uty(default = FALSE, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train"),
           contrasts.arg = p_uty(tags = "train")
-        )
       )
       ps$add_dep("oobweights", "risk", CondEqual$new("oobag"))
 

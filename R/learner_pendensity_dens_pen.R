@@ -21,7 +21,6 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           base = p_fct(default = "bspline",
             levels = c("bspline", "gaussian"), tags = "train"),
           no.base = p_dbl(default = 41, tags = "train"),
@@ -32,7 +31,6 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
           with.border = p_uty(tags = "train"),
           m = p_dbl(default = 3, tags = "train"),
           eps = p_dbl(default = 0.01, tags = "train")
-        )
       )
 
       super$initialize(

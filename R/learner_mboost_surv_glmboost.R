@@ -26,7 +26,6 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           offset = p_dbl(tags = "train"),
           family = p_fct(default = "coxph",
             levels = c(
@@ -47,7 +46,6 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
           ipcw = p_uty(default = 1, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train"),
           contrasts.args = p_uty(tags = "train")
-        )
       )
 
       ps$values = list(family = "coxph")

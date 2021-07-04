@@ -35,7 +35,6 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           subset = p_uty(tags = c("train", "pars")),
           na.action = p_uty(tags = c("train", "pars")),
           I = p_lgl(default = FALSE, tags = c("train", "control")),
@@ -53,7 +52,6 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
             tags = c("train", "control")),
           batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
           options = p_uty(default = NULL, tags = c("train", "pars"))
-        )
       )
 
       super$initialize(

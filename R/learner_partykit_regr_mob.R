@@ -31,7 +31,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(list(
+      ps = ps(
         # missing: subset, na.action, weights (see bottom)
         rhs = p_uty(custom_check = checkmate::check_character,
           tags = "train"),
@@ -93,7 +93,6 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
           checkmate::check_function(x,
             args = c("object", "newdata", "task", ".type"))
         }, tags = "predict")
-      )
       )
 
       ps$add_dep("nrep", on = "ordinal", cond = CondEqual$new("L2"))

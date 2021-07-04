@@ -26,7 +26,6 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           family = p_fct(default = "coxph",
             levels = c(
               "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
@@ -35,7 +34,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
           nuirange = p_uty(default = c(0, 100), tags = "train"),
           offset = p_dbl(tags = "train"),
           center = p_lgl(default = TRUE, tags = "train"),
-          mstop = p_int(id = "mstop", default = 100L, lower = 0L, tags = "train"),
+          mstop = p_int("mstop", default = 100L, lower = 0L, tags = "train"),
           nu = p_dbl(id = "nu", default = 0.1, lower = 0, upper = 1, tags = "train"),
           risk = p_fct(default = "inbag",
             levels = c("inbag", "oobag", "none"), tags = "train"),
@@ -48,7 +47,6 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
             tags = "train"),
           ipcw = p_uty(default = 1, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train")
-        )
       )
 
       ps$values = list(family = "coxph")

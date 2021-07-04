@@ -37,8 +37,7 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
 
       warning("Deprecated, please use `lrn(regr.rweka, model = 'IBk')` in the future.")
 
-      ps = ParamSet$new(
-        params = list(
+      ps = ps(
           subset = p_uty(tags = c("train", "pars")),
           na.action = p_uty(tags = c("train", "pars")),
           I = p_lgl(default = FALSE, tags = c("train", "control")),
@@ -54,7 +53,6 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
           num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
           batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
           options = p_uty(default = NULL, tags = c("train", "pars"))
-        )
       )
 
       super$initialize(

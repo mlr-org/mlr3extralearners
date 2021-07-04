@@ -23,7 +23,6 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           ntree = p_int(default = 500L, lower = 1L,
             tags = c("train", "predict")),
           mtry = p_int(lower = 1L, tags = "train"),
@@ -48,7 +47,6 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
           keep.inbag = p_lgl(default = FALSE, tags = "train"),
           predict.all = p_lgl(default = FALSE, tags = "predict"),
           nodes = p_lgl(default = FALSE, tags = "predict")
-        )
       )
 
       super$initialize(

@@ -17,7 +17,6 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           h = p_dbl(lower = 0, tags = "train"),
           H = p_uty(tags = "train"),
           gridsize = p_uty(tags = "train"),
@@ -35,7 +34,6 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
           unit.interval = p_lgl(default = FALSE, tags = "train"),
           verbose = p_lgl(default = FALSE, tags = "train"),
           zero.flag = p_lgl(default = TRUE, tags = "train")
-        )
       )
 
       super$initialize(

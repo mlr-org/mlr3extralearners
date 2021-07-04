@@ -22,7 +22,6 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           h = p_dbl(tags = "train"),
           group = p_uty(tags = "train"),
           delta = p_dbl(tags = "train"),
@@ -32,7 +31,6 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
             levels = c("normal", "cv", "sj", "df", "aicc"), tags = "train"),
           positive = p_lgl(default = FALSE, tags = "train"),
           verbose = p_uty(default = 1, tags = "train")
-        )
       )
 
       super$initialize(

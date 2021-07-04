@@ -28,7 +28,6 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           teststat = p_fct(levels = c("quadratic", "maximum"),
             default = "quadratic", tags = "train"),
           splitstat = p_fct(levels = c("quadratic", "maximum"),
@@ -79,7 +78,6 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
           maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
           abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
           releps = p_dbl(default = 0, lower = 0, tags = c("train", "pargs"))
-        )
       )
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
 

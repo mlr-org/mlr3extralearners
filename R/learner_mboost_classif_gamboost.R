@@ -23,7 +23,6 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
     #' Create a `LearnerClassifGAMBoost` object.
     initialize = function() {
       ps = ps(
-        params = list(
           baselearner = p_fct(default = "bbs",
             levels = c("bbs", "bols", "btree"), tags = "train"),
           dfbase = p_int(default = 4L, tags = "train"),
@@ -44,7 +43,6 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
           trace = p_lgl(default = FALSE, tags = "train"),
           stopintern = p_uty(default = FALSE, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train")
-        )
       )
       ps$add_dep("type", "family", CondEqual$new("Binomial"))
       ps$add_dep("link", "family", CondEqual$new("Binomial"))

@@ -27,7 +27,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ps(list(
+      ps = ps(
         # missing: weights (see bottom), subset, strata
         # (see FIXME: below), na.action, ytrafo
         ntree = p_int(default = 500L, lower = 1L, tags = "train"),
@@ -106,7 +106,6 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
           tags = c("train", "importance")),
         threshold = p_dbl(default = 0.2,
           tags = c("train", "importance"))
-      )
       )
 
       ps$add_dep("nresample", on = "testtype",

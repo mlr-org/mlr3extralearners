@@ -22,7 +22,6 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           type = p_uty(tags = "train"),
           alpha = p_dbl(default = 1.4, tags = "train"),
           weights = p_uty(tags = "train"),
@@ -37,7 +36,6 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
           prec = p_dbl(default = 1e-7, tags = "train"),
           maxiter = p_int(default = 30, lower = 1, tags = "train"),
           skip.iter = p_lgl(tags = "train")
-        )
       )
 
       super$initialize(

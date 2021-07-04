@@ -21,7 +21,6 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           bws = p_uty(tags = "train"),
           ckertype = p_fct(
             default = "gaussian",
@@ -60,7 +59,6 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
           dfac.init = p_dbl(default = 0.37, tags = "train"),
           ukertype = p_fct(levels = c("aitchisonaitken", "liracine"), tags = "train"),
           okertype = p_fct(levels = c("wangvanryzin", "liracine"), tags = "train")
-        )
       )
 
       super$initialize(

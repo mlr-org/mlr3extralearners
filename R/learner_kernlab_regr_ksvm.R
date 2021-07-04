@@ -16,7 +16,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(list(
+      ps = ps(
         scaled = p_lgl(default = TRUE, tags = "train"),
         type = p_fct(default = "eps-svr",
           levels = c("eps-svr", "nu-svr", "eps-bsvr"), tags = "train"),
@@ -37,7 +37,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
         scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
         order = p_int(default = NO_DEF, tags = "train"),
         offset = p_dbl(default = NO_DEF, tags = "train")
-      ))
+      )
 
       ps$add_dep("C", "type", CondAnyOf$new(c("eps-svr", "eps-bsvr")))
       ps$add_dep("nu", "type", CondAnyOf$new(c("nu-svr")))

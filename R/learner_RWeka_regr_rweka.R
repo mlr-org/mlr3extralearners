@@ -35,7 +35,6 @@ LearnerRegrRweka = R6Class("LearnerRegrRweka",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           model = p_fct(levels = c("IBk", "M5Rules"), tags = "train"),
           subset = p_uty(tags = "train"),
           na.action = p_uty(tags = "train"),
@@ -56,7 +55,6 @@ LearnerRegrRweka = R6Class("LearnerRegrRweka",
           num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
           batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
           options = p_uty(default = NULL, tags = "train")
-        )
       )
 
       super$initialize(

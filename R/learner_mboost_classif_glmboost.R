@@ -23,7 +23,6 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     #' Create a `LearnerClassifGLMBoost` object.
     initialize = function() {
       ps = ps(
-        params = list(
           offset = p_dbl(default = NULL,
             special_vals = list(NULL), tags = "train"),
           family = p_fct(default = c("Binomial"),
@@ -34,7 +33,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
           type = p_fct(default = "adaboost",
             levels = c("glm", "adaboost"), tags = "train"),
           center = p_lgl(default = TRUE, tags = "train"),
-          mstop = p_int(id = "mstop", default = 100, tags = "train"),
+          mstop = p_int("mstop", default = 100, tags = "train"),
           nu = p_dbl(id = "nu", default = 0.1, tags = "train"),
           risk = p_fct(
             default = "inbag",
@@ -44,7 +43,6 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
           stopintern = p_uty(default = FALSE, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train"),
           contrasts.arg = p_uty(tags = "train")
-        )
       )
       ps$add_dep("link", "family", CondEqual$new("Binomial"))
       ps$add_dep("type", "family", CondEqual$new("Binomial"))

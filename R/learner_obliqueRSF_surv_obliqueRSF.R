@@ -30,7 +30,6 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           alpha = p_dbl(default = 0.5, tags = "train"),
           ntree = p_int(default = 100L, lower = 1L, tags = "train"),
           eval_times = p_uty(tags = "train"),
@@ -48,7 +47,6 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
           verbose = p_lgl(default = TRUE, tags = "train"),
           compute_oob_predictions = p_lgl(default = FALSE, tags = "train"),
           random_seed = p_int(tags = "train")
-        )
       )
 
       ps$values = list(verbose = FALSE)

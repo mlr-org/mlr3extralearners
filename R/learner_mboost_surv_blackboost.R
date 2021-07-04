@@ -26,7 +26,6 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           family = p_fct(default = "coxph",
             levels = c(
               "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
@@ -48,7 +47,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
             default = "quadratic", levels = c("quadratic", "maximum"),
             tags = "train"),
           splittest = p_lgl(default = FALSE, tags = "train"),
-          p_fct(
+          testtype = p_fct(
             default = "Bonferroni",
             levels = c("Bonferroni", "MonteCarlo", "Univariate", "Teststatistic"), tags = "train"),
           maxpts = p_int(default = 25000L, lower = 1L, tags = "train"),
@@ -78,7 +77,6 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
             tags = "train"),
           ipcw = p_uty(default = 1, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train")
-        )
       )
 
       ps$values = list(family = "coxph")

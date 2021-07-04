@@ -36,7 +36,6 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
     initialize = function() {
 
       ps = ps(
-        params = list(
           type = p_int(default = 0, lower = 0, upper = 7, tags = "train"),
           cost = p_dbl(default = 1, lower = 0, tags = "train"),
           epsilon = p_dbl(lower = 0, tags = "train"),
@@ -46,7 +45,6 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
           wi = p_uty(default = NULL, tags = "train"),
           findC = p_lgl(default = FALSE, tags = "train"),
           useInitC = p_lgl(default = TRUE, tags = "train")
-        )
       )
 
       # 50 is an arbitrary choice here

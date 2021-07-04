@@ -16,7 +16,7 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(list(
+      ps = ps(
         scaled = p_lgl(default = TRUE, tags = c("train")),
         type = p_fct(default = "C-svc",
           levels = c("C-svc", "nu-svc", "C-bsvc", "spoc-svc", "kbb-svc"),
@@ -37,7 +37,7 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
         order = p_int(default = NO_DEF, tags = "train"),
         offset = p_dbl(default = NO_DEF, tags = "train")
-      ))
+      )
 
       ps$add_dep(
         "C", "type",

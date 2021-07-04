@@ -43,13 +43,12 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           type = p_fct(
             default = "regression",
             levels = c("regression", "vanbelle1", "vanbelle2", "hybrid"),
             tags = "train"),
           diff.meth = p_fct(
-            id = "diff.meth", levels = c("makediff1", "makediff2", "makediff3"),
+            "diff.meth", levels = c("makediff1", "makediff2", "makediff3"),
             tags = c("train")),
           gamma.mu = p_uty(tags = c("train", "required")),
           opt.meth = p_fct(
@@ -68,7 +67,6 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
           eig.tol = p_dbl(default = 1e-06, lower = 0, tags = "train"),
           conv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
           posd.tol = p_dbl(default = 1e-08, lower = 0, tags = "train")
-        )
       )
 
       ps$add_dep("diff.meth", "type", CondAnyOf$new(c("vanbelle1", "vanbelle2", "hybrid")))

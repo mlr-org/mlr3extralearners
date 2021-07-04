@@ -22,9 +22,7 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
-          na.rm = p_lgl(default = FALSE, tags = "train")
-        )
+        na.rm = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(

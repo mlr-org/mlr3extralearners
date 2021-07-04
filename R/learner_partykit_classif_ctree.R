@@ -28,7 +28,6 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        params = list(
           teststat = p_fct(default = "quadratic",
             levels = c("quadratic", "maximum"), tags = "train"),
           splitstat = p_fct(default = "quadratic",
@@ -77,7 +76,6 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
           maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
           abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
           releps = p_dbl(default = 0, lower = 0, tags = c("train", "pargs"))
-        )
       )
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
 

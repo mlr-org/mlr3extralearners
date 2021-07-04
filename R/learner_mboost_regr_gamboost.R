@@ -23,7 +23,6 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
     #' Create a `LearnerRegrGAMBoost` object.
     initialize = function() {
       ps = ps(
-        params = list(
           baselearner = p_fct(default = "bbs",
             levels = c("bbs", "bols", "btree"), tags = "train"),
           dfbase = p_int(default = 4L, tags = "train"),
@@ -37,7 +36,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
           nuirange = p_uty(default = c(0, 100), tags = "train"),
           d = p_dbl(default = NULL, special_vals = list(NULL),
             tags = "train"),
-          mstop = p_int(id = "mstop", default = 100, tags = "train"),
+          mstop = p_int("mstop", default = 100, tags = "train"),
           nu = p_dbl(id = "nu", default = 0.1, tags = "train"),
           risk = p_fct(
             id = "risk", default = "inbag",
@@ -46,7 +45,6 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
           trace = p_lgl(default = FALSE, tags = "train"),
           stopintern = p_uty(default = FALSE, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train")
-        )
       )
       ps$add_dep("oobweights", "risk", CondEqual$new("oobag"))
 

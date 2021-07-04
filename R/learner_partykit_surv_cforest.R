@@ -27,7 +27,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ps(list(
+      ps = ps(
         ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         replace = p_lgl(default = FALSE, tags = c("train", "perturb")),
         fraction = p_dbl(default = 0.632, lower = 0, upper = 1,
@@ -97,7 +97,6 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
         abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
         releps = p_dbl(default = 0, lower = 0, tags = c("train", "pargs"))
-      )
       )
 
       ps$add_dep("nresample", on = "testtype",

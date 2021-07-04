@@ -32,7 +32,6 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
     initialize = function() {
 
       ps = ps(
-        params = list(
           type = p_int(default = 11, lower = 11, upper = 13, tags = "train"),
           cost = p_dbl(default = 1, lower = 0, tags = "train"),
           bias = p_dbl(default = 1, tags = "train"),
@@ -42,7 +41,6 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
           verbose = p_lgl(default = FALSE, tags = "train"),
           findC = p_lgl(default = FALSE, tags = "train"),
           useInitC = p_lgl(default = TRUE, tags = "train")
-        )
       )
 
       # 50 is an arbitrary choice here

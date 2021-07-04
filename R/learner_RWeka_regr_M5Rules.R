@@ -39,8 +39,7 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
 
       warning("Deprecated, please use `lrn(regr.rweka, model = 'M5Rules')` in the future.")
 
-      ps = ParamSet$new(
-        params = list(
+      ps = ps(
           subset = p_uty(tags = c("train", "pars")),
           na.action = p_uty(tags = c("train", "pars")),
           N = p_lgl(default = FALSE, tags = c("train", "control")),
@@ -52,7 +51,6 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
           num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
           batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
           options = p_uty(default = NULL, tags = c("train", "pars"))
-        )
       )
 
       super$initialize(
