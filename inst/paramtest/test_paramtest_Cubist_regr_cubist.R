@@ -17,7 +17,7 @@ test_that("regr.cubist train", {
 
 test_that("regr.cubist predict", {
   learner = lrn("regr.cubist")
-  fun = Cubist:::predict.cubist
+  fun = Cubist:::predict.cubist # nolint
     exclude = c(
       "object", # handled internally
       "newdata" # handled internally

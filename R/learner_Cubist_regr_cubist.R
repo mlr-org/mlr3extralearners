@@ -38,8 +38,6 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         man = "mlr3extralearners::mlr_learners_regr.cubist"
       )
     }
-
-
   ),
 
   private = list(

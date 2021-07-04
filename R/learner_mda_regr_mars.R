@@ -16,16 +16,14 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(id = "degree", lower = 1L, default = 1L, tags = "train"),
-          ParamInt$new(id = "nk", lower = 1L, tags = "train"),
-          ParamDbl$new(id = "penalty", lower = 0, default = 2, tags = "train"),
-          ParamDbl$new(id = "thresh", lower = 0, default = 0.001, tags = "train"),
-          ParamLgl$new(id = "prune", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "trace.mars", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "forward.step", default = FALSE, tags = "train")
-        )
+      param_set = ps(
+        degree = p_int(lower = 1L, default = 1L, tags = "train"),
+        nk = p_int(lower = 1L, tags = "train"),
+        penalty = p_dbl(lower = 0, default = 2, tags = "train"),
+        thresh = p_dbl(lower = 0, default = 0.001, tags = "train"),
+        prune = p_lgl(default = TRUE, tags = "train"),
+        trace.mars = p_lgl(default = FALSE, tags = "train"),
+        forward.step = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -33,12 +31,10 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
         packages = "mda",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
-        param_set = ps,
+        param_set = param_set,
         man = "mlr3extralearners::mlr_learners_regr.mars"
       )
     }
-
-
   ),
 
   private = list(

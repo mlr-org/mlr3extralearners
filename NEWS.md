@@ -1,11 +1,10 @@
 # mlr3extralearners 0.4.8
 
-* Added `LearnerRegrCubist`
+* Added `LearnerRegrCubist` and `LearnerRegrMars`
 
 # mlr3extralearners 0.4.7
 
 * Moved `nnet` learners to [mlr3learners](https://github.com/mlr-org/mlr3learners)
-* Added `LearnerRegrMars`
 
 # mlr3extralearners 0.4.6
 

@@ -20,7 +20,7 @@ test_that("regr.mars train", {
 
 test_that("regr.mars predict", {
   learner = lrn("regr.mars")
-  fun = mda:::predict.mars
+  fun = mda:::predict.mars # nolint
     exclude = c(
       "object", # handled internally
       "newdata" # handled internally
