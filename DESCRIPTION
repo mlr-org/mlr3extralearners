@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.4.7
+Version: 0.4.8
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -54,6 +54,7 @@ Suggests:
     catboost,
     coin,
     CoxBoost,
+    Cubist,
     dbarts,
     distr6 (>= 1.4.3),
     earth,
@@ -71,6 +72,7 @@ Suggests:
     locfit,
     logspline,
     mboost,
+    mda,
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
