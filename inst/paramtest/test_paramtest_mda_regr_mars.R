@@ -1,11 +1,14 @@
-install_learners("<type>.<key>")
+install_learners("regr.mars")
 
-test_that("<type>.<key> train", {
-  learner = lrn("<type>.<key>")
-  fun = <package>::<caller>
+test_that("regr.mars train", {
+  learner = lrn("regr.mars")
+  fun = mda::mars
   exclude = c(
-    "object", # handled internally
-    "data" # handled internally
+    "x", # handled internally
+    "y", # handled internally
+    "w", # handled internally
+    "wp", # ignored
+    "prevfit" # ignored
   )
 
   ParamTest = run_paramtest(learner, fun, exclude)
@@ -15,12 +18,11 @@ test_that("<type>.<key> train", {
 ")))
 })
 
-test_that("<type>.<key> predict", {
-  learner = lrn("<type>.<key>")
-  fun = <package>:::predict # nolint
+test_that("regr.mars predict", {
+  learner = lrn("regr.mars")
+  fun = mda:::predict.mars # nolint
     exclude = c(
       "object", # handled internally
-      "data", # handled internally
       "newdata" # handled internally
     )
 
