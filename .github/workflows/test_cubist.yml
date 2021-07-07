@@ -1,0 +1,70 @@
+on:
+  push:
+    branches: main
+    paths: '**/Cubist**'
+  pull_request:
+    branches: main
+    paths: '**/Cubist**'
+  schedule:
+    - cron: "0 4 * * *"
+
+name: Cubist (ubuntu-latest, release)
+
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.env.TEST }} Test
+
+    strategy:
+      matrix:
+        env:
+          - { test: "Learner"}
+          - { test: "Param"}
+        config:
+          - { os: ubuntu-latest, r: "release" }       
+
+    env:
+      PKG: Cubist
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RGL_USE_NULL: true
+      TEST: ${{ matrix.env.test }}
+      
+    steps:
+      - uses: actions/checkout@v2.2.0
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+          Ncpus: 4
+
+      - uses: r-lib/actions/setup-tinytex@master
+
+      - uses: r-lib/actions/setup-pandoc@master
+
+      - name: "[Stage] Prepare"
+        if: runner.os == 'Linux'
+        run: |
+          sudo R CMD javareconf
+          sudo apt install ccache libcurl4-openssl-dev libgit2-dev
+          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
+
+      - name: "[Custom block] [Stage] [Linux] Install pkgdown system lib req"
+        if: runner.os == 'Linux'
+        run: sudo apt install libharfbuzz-dev libfribidi-dev
+
+      - name: "[Stage] Install"
+        run: |
+          Rscript -e "install.packages('remotes', type = 'source')" -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+
+      - name: "[Stage] Script"
+        run: |
+          R CMD INSTALL .
+          Rscript -e "tic::script()"
+
+      - name: "[Stage] Upload R CMD check artifacts"
+        if: failure()
+        uses: actions/upload-artifact@master
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-r${{ matrix.env.PKG }}-results
+          path: check
