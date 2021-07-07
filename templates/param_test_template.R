@@ -17,7 +17,7 @@ test_that("<type>.<key> train", {
 
 test_that("<type>.<key> predict", {
   learner = lrn("<type>.<key>")
-  fun = <package>:::predict
+  fun = <package>:::predict # nolint
     exclude = c(
       "object", # handled internally
       "data", # handled internally

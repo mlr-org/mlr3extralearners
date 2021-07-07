@@ -1,3 +1,7 @@
+# mlr3extralearners 0.4.9
+
+* Minor internal changes
+
 # mlr3extralearners 0.4.8
 
 * Added `LearnerRegrCubist` and `LearnerRegrMars`
