@@ -45,7 +45,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
             tags = "train"),
           ipcw = p_uty(default = 1, tags = "train"),
           na.action = p_uty(default = stats::na.omit, tags = "train"),
-          contrasts.args = p_uty(tags = "train")
+          contrasts.arg = p_uty(tags = "train")
       )
 
       ps$values = list(family = "coxph")
