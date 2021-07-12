@@ -25,35 +25,34 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(list(
-        ParamLgl$new("singular.ok", default = TRUE, tags = "train"),
-        ParamLgl$new("x", default = FALSE, tags = "train"),
-        ParamLgl$new("y", default = TRUE, tags = "train"),
-        ParamLgl$new("model", default = TRUE, tags = "train"),
-        ParamUty$new("etastart", tags = "train"),
-        ParamUty$new("mustart", tags = "train"),
-        ParamUty$new("start", default = NULL, tags = "train"),
-        ParamUty$new("offset", tags = "train"),
-        ParamFct$new("family",
+      ps = ps(
+        singular.ok = p_lgl(default = TRUE, tags = "train"),
+        x = p_lgl(default = FALSE, tags = "train"),
+        y = p_lgl(default = TRUE, tags = "train"),
+        model = p_lgl(default = TRUE, tags = "train"),
+        etastart = p_uty(tags = "train"),
+        mustart = p_uty(tags = "train"),
+        start = p_uty(default = NULL, tags = "train"),
+        offset = p_uty(tags = "train"),
+        family = p_fct(
           default = "gaussian",
           levels = c("gaussian", "poisson", "quasipoisson", "Gamma", "inverse.gaussian"),
           tags = "train"),
-        ParamFct$new("na.action",
+        na.action = p_fct(
           levels = c("na.omit", "na.pass", "na.fail", "na.exclude"),
           tags = c("train", "predict")),
-        ParamFct$new("link",
+        link = p_fct(
           levels = c(
             "logit", "probit", "cauchit", "cloglog", "identity",
             "log", "sqrt", "1/mu^2", "inverse"),
           tags = c("train", "family")),
-        ParamDbl$new("epsilon", default = 1e-8, tags = c("train", "control")),
-        ParamDbl$new("maxit", default = 25, tags = c("train", "control")),
-        ParamLgl$new("trace", default = FALSE, tags = c("train", "control")),
-        ParamUty$new("dispersion", default = NULL, tags = "predict"),
-        ParamFct$new("type",
-          default = "link", levels = c("response", "link", "terms"),
+        epsilon = p_dbl(default = 1e-8, tags = c("train", "control")),
+        maxit = p_dbl(default = 25, tags = c("train", "control")),
+        trace = p_lgl(default = FALSE, tags = c("train", "control")),
+        dispersion = p_uty(default = NULL, tags = "predict"),
+        type = p_fct(default = "link", levels = c("response", "link", "terms"),
           tags = "predict")
-      ))
+      )
 
       ps$values = mlr3misc::insert_named(ps$values, list(
         family = "gaussian",

@@ -23,32 +23,29 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(
-            id = "ntree", default = 500L, lower = 1L,
+      ps = ps(
+          ntree = p_int(default = 500L, lower = 1L,
             tags = c("train", "predict")),
-          ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-          ParamLgl$new(id = "replace", default = TRUE, tags = "train"),
-          ParamUty$new(id = "strata", tags = "train"),
-          ParamUty$new(id = "sampsize", tags = "train"), # lower = 1L
-          ParamInt$new(id = "nodesize", default = 5L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "maxnodes", lower = 1L, tags = "train"),
-          ParamFct$new(
-            id = "importance", default = FALSE,
+          mtry = p_int(lower = 1L, tags = "train"),
+          replace = p_lgl(default = TRUE, tags = "train"),
+          strata = p_uty(tags = "train"),
+          sampsize = p_uty(tags = "train"),
+          nodesize = p_int(default = 5L, lower = 1L,
+            tags = "train"),
+          maxnodes = p_int(lower = 1L, tags = "train"),
+          importance = p_fct(default = FALSE,
             levels = c("mse", "nudepurity", "none", FALSE),
             special_vals = list(FALSE),
             tag = "train"),
-          ParamLgl$new(id = "localImp", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "proximity", default = FALSE, tags = c("train", "predict")),
-          ParamLgl$new(id = "oob.prox", tags = "train"),
-          ParamLgl$new(id = "norm.votes", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "do.trace", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "keep.forest", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "keep.inbag", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "predict.all", default = FALSE, tags = "predict"),
-          ParamLgl$new(id = "nodes", default = FALSE, tags = "predict")
-        )
+          localImp = p_lgl(default = FALSE, tags = "train"),
+          proximity = p_lgl(default = FALSE, tags = c("train", "predict")),
+          oob.prox = p_lgl(tags = "train"),
+          norm.votes = p_lgl(default = TRUE, tags = "train"),
+          do.trace = p_lgl(default = FALSE, tags = "train"),
+          keep.forest = p_lgl(default = TRUE, tags = "train"),
+          keep.inbag = p_lgl(default = FALSE, tags = "train"),
+          predict.all = p_lgl(default = FALSE, tags = "predict"),
+          nodes = p_lgl(default = FALSE, tags = "predict")
       )
 
       super$initialize(

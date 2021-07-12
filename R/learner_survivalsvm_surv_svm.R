@@ -42,33 +42,31 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamFct$new(
-            id = "type", default = "regression",
+      ps = ps(
+          type = p_fct(
+            default = "regression",
             levels = c("regression", "vanbelle1", "vanbelle2", "hybrid"),
             tags = "train"),
-          ParamFct$new(
-            id = "diff.meth", levels = c("makediff1", "makediff2", "makediff3"),
+          diff.meth = p_fct(
+            levels = c("makediff1", "makediff2", "makediff3"),
             tags = c("train")),
-          ParamUty$new(id = "gamma.mu", tags = c("train", "required")),
-          ParamFct$new(
-            id = "opt.meth", default = "quadprog", levels = c("quadprog", "ipop"),
+          gamma.mu = p_uty(tags = c("train", "required")),
+          opt.meth = p_fct(
+            default = "quadprog", levels = c("quadprog", "ipop"),
             tags = "train"),
-          ParamFct$new(
-            id = "kernel", default = "lin_kernel",
+          kernel = p_fct(
+            default = "lin_kernel",
             levels = c("lin_kernel", "add_kernel", "rbf_kernel", "poly_kernel"),
             tags = "train"),
-          ParamUty$new(id = "kernel.pars", tags = "train"),
-          ParamInt$new(id = "sgf.sv", default = 5L, lower = 0L, tags = "train"),
-          ParamInt$new(id = "sigf", default = 7L, lower = 0L, tags = "train"),
-          ParamInt$new(id = "maxiter", default = 20L, lower = 0L, tags = "train"),
-          ParamDbl$new(id = "margin", default = 0.05, lower = 0, tags = "train"),
-          ParamDbl$new(id = "bound", default = 10, lower = 0, tags = "train"),
-          ParamDbl$new(id = "eig.tol", default = 1e-06, lower = 0, tags = "train"),
-          ParamDbl$new(id = "conv.tol", default = 1e-07, lower = 0, tags = "train"),
-          ParamDbl$new(id = "posd.tol", default = 1e-08, lower = 0, tags = "train")
-        )
+          kernel.pars = p_uty(tags = "train"),
+          sgf.sv = p_int(default = 5L, lower = 0L, tags = "train"),
+          sigf = p_int(default = 7L, lower = 0L, tags = "train"),
+          maxiter = p_int(default = 20L, lower = 0L, tags = "train"),
+          margin = p_dbl(default = 0.05, lower = 0, tags = "train"),
+          bound = p_dbl(default = 10, lower = 0, tags = "train"),
+          eig.tol = p_dbl(default = 1e-06, lower = 0, tags = "train"),
+          conv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
+          posd.tol = p_dbl(default = 1e-08, lower = 0, tags = "train")
       )
 
       ps$add_dep("diff.meth", "type", CondAnyOf$new(c("vanbelle1", "vanbelle2", "hybrid")))

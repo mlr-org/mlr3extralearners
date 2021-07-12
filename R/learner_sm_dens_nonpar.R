@@ -21,19 +21,16 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamDbl$new(id = "h", tags = "train"),
-          ParamUty$new(id = "group", tags = "train"),
-          ParamDbl$new(id = "delta", tags = "train"),
-          ParamDbl$new(id = "h.weights", default = 1, tags = "train"),
-          ParamUty$new(id = "hmult", default = 1, tags = "train"),
-          ParamFct$new(
-            id = "method", default = "normal",
+      ps = ps(
+          h = p_dbl(tags = "train"),
+          group = p_uty(tags = "train"),
+          delta = p_dbl(tags = "train"),
+          h.weights = p_dbl(default = 1, tags = "train"),
+          hmult = p_uty(default = 1, tags = "train"),
+          method = p_fct(default = "normal",
             levels = c("normal", "cv", "sj", "df", "aicc"), tags = "train"),
-          ParamLgl$new(id = "positive", default = FALSE, tags = "train"),
-          ParamUty$new(id = "verbose", default = 1, tags = "train")
-        )
+          positive = p_lgl(default = FALSE, tags = "train"),
+          verbose = p_uty(default = 1, tags = "train")
       )
 
       super$initialize(

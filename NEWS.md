@@ -1,3 +1,9 @@
+# mlr3extralearners 0.5.0
+
+* Deprecated liblinear learners now removed
+* Internal changes to ParamSet representation
+* checkmate now imported
+
 # mlr3extralearners 0.4.9
 
 * Minor internal changes

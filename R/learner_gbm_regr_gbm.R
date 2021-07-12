@@ -28,41 +28,22 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamFct$new(
-            id = "distribution", default = "gaussian",
-            levels = c("gaussian", "laplace", "poisson", "tdist", "quantile"),
-            tags = "train"),
-          ParamInt$new(
-            id = "n.trees", default = 100L, lower = 1L,
-            tags = c("train", "predict", "importance")),
-          ParamInt$new(
-            id = "interaction.depth", default = 1L, lower = 1L,
-            tags = "train"),
-          ParamInt$new(
-            id = "n.minobsinnode", default = 10L, lower = 1L,
-            tags = "train"),
-          ParamDbl$new(
-            id = "shrinkage", default = 0.001, lower = 0,
-            tags = "train"),
-          ParamDbl$new(
-            id = "bag.fraction", default = 0.5, lower = 0, upper = 1,
-            tags = "train"),
-          ParamDbl$new(
-            id = "train.fraction", default = 1, lower = 0, upper = 1,
-            tags = "train"),
-          ParamInt$new(id = "cv.folds", default = 0L, tags = "train"),
-          ParamDbl$new(
-            id = "alpha", default = 0.5, lower = 0, upper = 1,
-            tags = "train"),
-          # Set to FALSE to reduce memory requirements
-          ParamLgl$new(id = "keep.data", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "verbose", default = FALSE, tags = "train"),
-          # Set to 1 to suppress parallelization by the package
-          ParamInt$new(id = "n.cores", default = 1, tags = "train"),
-          ParamUty$new(id = "var.monotone", tags = "train")
-        )
+      ps = ps(
+        distribution = p_fct(default = "gaussian", levels = c("gaussian", "laplace", "poisson", "tdist", "quantile"), tags = "train"),
+        n.trees = p_int(default = 100L, lower = 1L, tags = c("train", "predict", "importance")),
+        interaction.depth = p_int(default = 1L, lower = 1L, tags = "train"),
+        n.minobsinnode = p_int(default = 10L, lower = 1L, tags = "train"),
+        shrinkage = p_dbl(default = 0.001, lower = 0, tags = "train"),
+        bag.fraction = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
+        train.fraction = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
+        cv.folds = p_int(default = 0L, tags = "train"),
+        alpha = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
+        # Set to FALSE to reduce memory requirements
+        keep.data = p_lgl(default = FALSE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        # Set to 1 to suppress parallelization by the package
+        n.cores = p_int(default = 1, tags = "train"),
+        var.monotone = p_uty(tags = "train")
       )
       ps$values = list(keep.data = FALSE, n.cores = 1)
 

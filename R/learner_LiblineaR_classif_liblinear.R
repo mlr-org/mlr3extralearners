@@ -35,18 +35,16 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(id = "type", default = 0, lower = 0, upper = 7, tags = "train"),
-          ParamDbl$new(id = "cost", default = 1, lower = 0, tags = "train"),
-          ParamDbl$new(id = "epsilon", lower = 0, tags = "train"),
-          ParamDbl$new(id = "bias", default = 1, tags = "train"),
-          ParamInt$new(id = "cross", default = 0L, lower = 0L, tags = "train"),
-          ParamLgl$new(id = "verbose", default = FALSE, tags = "train"),
-          ParamUty$new(id = "wi", default = NULL, tags = "train"),
-          ParamLgl$new(id = "findC", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "useInitC", default = TRUE, tags = "train")
-        )
+      ps = ps(
+          type = p_int(default = 0, lower = 0, upper = 7, tags = "train"),
+          cost = p_dbl(default = 1, lower = 0, tags = "train"),
+          epsilon = p_dbl(lower = 0, tags = "train"),
+          bias = p_dbl(default = 1, tags = "train"),
+          cross = p_int(default = 0L, lower = 0L, tags = "train"),
+          verbose = p_lgl(default = FALSE, tags = "train"),
+          wi = p_uty(default = NULL, tags = "train"),
+          findC = p_lgl(default = FALSE, tags = "train"),
+          useInitC = p_lgl(default = TRUE, tags = "train")
       )
 
       # 50 is an arbitrary choice here

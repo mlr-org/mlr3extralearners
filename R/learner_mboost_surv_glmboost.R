@@ -25,34 +25,27 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamDbl$new(
-            id = "offset", default = NULL, special_vals = list(NULL),
-            tags = "train"),
-          ParamFct$new(
-            id = "family", default = "coxph",
+      ps = ps(
+          offset = p_dbl(tags = "train"),
+          family = p_fct(default = "coxph",
             levels = c(
               "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
               "custom"), tags = "train"),
-          ParamUty$new(id = "custom.family", tags = "train"),
-          ParamUty$new(id = "nuirange", default = c(0, 100), tags = "train"),
-          ParamLgl$new(id = "center", default = TRUE, tags = "train"),
-          ParamInt$new(id = "mstop", default = 100L, lower = 0L, tags = "train"),
-          ParamDbl$new(id = "nu", default = 0.1, lower = 0, upper = 1,
-                       tags = "train"),
-          ParamFct$new(id = "risk", levels = c("inbag", "oobag", "none"),
-                       tags = "train"),
-          ParamUty$new(id = "oobweights", default = NULL, tags = "train"),
-          ParamLgl$new(id = "stopintern", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "trace", default = FALSE, tags = "train"),
-          ParamDbl$new(
-            id = "sigma", default = 0.1, lower = 0, upper = 1,
+          custom.family = p_uty(tags = "train"),
+          nuirange = p_uty(default = c(0, 100), tags = "train"),
+          center = p_lgl(default = TRUE, tags = "train"),
+          mstop = p_int(default = 100L, lower = 0L, tags = "train"),
+          nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
+          risk = p_fct(default = "inbag",
+            levels = c("inbag", "oobag", "none"), tags = "train"),
+          oobweights = p_uty(default = NULL, tags = "train"),
+          stopintern = p_lgl(default = FALSE, tags = "train"),
+          trace = p_lgl(default = FALSE, tags = "train"),
+          sigma = p_dbl(default = 0.1, lower = 0, upper = 1,
             tags = "train"),
-          ParamUty$new(id = "ipcw", default = 1, tags = "train"),
-          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train"),
-          ParamUty$new(id = "contrasts.arg", tags = "train")
-        )
+          ipcw = p_uty(default = 1, tags = "train"),
+          na.action = p_uty(default = stats::na.omit, tags = "train"),
+          contrasts.arg = p_uty(tags = "train")
       )
 
       ps$values = list(family = "coxph")

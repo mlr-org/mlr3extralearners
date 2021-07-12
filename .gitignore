@@ -124,3 +124,4 @@ docs/
 *.html
 
 .ccache/
+.vscode/settings.json

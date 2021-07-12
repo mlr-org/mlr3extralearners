@@ -15,13 +15,10 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamDbl$new(id = "bw", lower = 0, tags = "train"),
-          ParamFct$new("type_kernel",
-            levels = c("n", "e", "t", "b"),
-            default = "n", tags = "train")
-        )
+      ps = ps(
+        bw = p_dbl(lower = 0, tags = "train"),
+        type_kernel = p_fct(levels = c("n", "e", "t", "b"),
+                            default = "n", tags = "train")
       )
 
       super$initialize(

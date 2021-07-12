@@ -20,47 +20,45 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "bws", tags = "train"),
-          ParamFct$new(
-            id = "ckertype", default = "gaussian",
+      ps = ps(
+          bws = p_uty(tags = "train"),
+          ckertype = p_fct(
+            default = "gaussian",
             levels = c("gaussian", "epanechnikov", "uniform"),
             tags = c("train")),
-          ParamLgl$new(id = "bwscaling", default = FALSE, tags = "train"),
-          ParamFct$new(
-            id = "bwmethod", default = "cv.ml",
+          bwscaling = p_lgl(default = FALSE, tags = "train"),
+          bwmethod = p_fct(
+            default = "cv.ml",
             levels = c("cv.ml", "cv.ls", "normal-reference"),
             tags = "train"),
-          ParamFct$new(
-            id = "bwtype", default = "fixed",
+          bwtype = p_fct(
+            default = "fixed",
             levels = c("fixed", "generalized_nn", "adaptive_nn"),
             tags = "train"),
-          ParamLgl$new(id = "bandwidth.compute", default = FALSE, tags = "train"),
-          ParamInt$new(id = "ckerorder", default = 2, lower = 2, upper = 8, tags = "train"),
-          ParamLgl$new(id = "remin", default = TRUE, tags = "train"),
-          ParamInt$new(id = "itmax", lower = 1, default = 10000, tags = "train"),
-          ParamInt$new(id = "nmulti", lower = 1, tags = "train"),
-          ParamDbl$new(id = "ftol", default = 1.490116e-07, tags = "train"),
-          ParamDbl$new(id = "tol", default = 1.490116e-04, tags = "train"),
-          ParamDbl$new(id = "small", default = 1.490116e-05, tags = "train"),
-          ParamDbl$new(id = "lbc.dir", default = 0.5, tags = "train"),
-          ParamDbl$new(id = "dfc.dir", default = 0.5, tags = "train"),
-          ParamUty$new(id = "cfac.dir", default = 2.5 * (3.0 - sqrt(5)), tags = "train"),
-          ParamDbl$new(id = "initc.dir", default = 1.0, tags = "train"),
-          ParamDbl$new(id = "lbd.dir", default = 0.1, tags = "train"),
-          ParamDbl$new(id = "hbd.dir", default = 1, tags = "train"),
-          ParamUty$new(id = "dfac.dir", default = 0.25 * (3.0 - sqrt(5)), tags = "train"),
-          ParamDbl$new(id = "initd.dir", default = 1.0, tags = "train"),
-          ParamDbl$new(id = "lbc.init", default = 0.1, tags = "train"),
-          ParamDbl$new(id = "hbc.init", default = 2.0, tags = "train"),
-          ParamDbl$new(id = "cfac.init", default = 0.5, tags = "train"),
-          ParamDbl$new(id = "lbd.init", default = 0.1, tags = "train"),
-          ParamDbl$new(id = "hbd.init", default = 0.9, tags = "train"),
-          ParamDbl$new(id = "dfac.init", default = 0.37, tags = "train"),
-          ParamFct$new(id = "ukertype", levels = c("aitchisonaitken", "liracine"), tags = "train"),
-          ParamFct$new(id = "okertype", levels = c("wangvanryzin", "liracine"), tags = "train")
-        )
+          bandwidth.compute = p_lgl(default = FALSE, tags = "train"),
+          ckerorder = p_int(default = 2, lower = 2, upper = 8, tags = "train"),
+          remin = p_lgl(default = TRUE, tags = "train"),
+          itmax = p_int(lower = 1, default = 10000, tags = "train"),
+          nmulti = p_int(lower = 1, tags = "train"),
+          ftol = p_dbl(default = 1.490116e-07, tags = "train"),
+          tol = p_dbl(default = 1.490116e-04, tags = "train"),
+          small = p_dbl(default = 1.490116e-05, tags = "train"),
+          lbc.dir = p_dbl(default = 0.5, tags = "train"),
+          dfc.dir = p_dbl(default = 0.5, tags = "train"),
+          cfac.dir = p_uty(default = 2.5 * (3.0 - sqrt(5)), tags = "train"),
+          initc.dir = p_dbl(default = 1.0, tags = "train"),
+          lbd.dir = p_dbl(default = 0.1, tags = "train"),
+          hbd.dir = p_dbl(default = 1, tags = "train"),
+          dfac.dir = p_uty(default = 0.25 * (3.0 - sqrt(5)), tags = "train"),
+          initd.dir = p_dbl(default = 1.0, tags = "train"),
+          lbc.init = p_dbl(default = 0.1, tags = "train"),
+          hbc.init = p_dbl(default = 2.0, tags = "train"),
+          cfac.init = p_dbl(default = 0.5, tags = "train"),
+          lbd.init = p_dbl(default = 0.1, tags = "train"),
+          hbd.init = p_dbl(default = 0.9, tags = "train"),
+          dfac.init = p_dbl(default = 0.37, tags = "train"),
+          ukertype = p_fct(levels = c("aitchisonaitken", "liracine"), tags = "train"),
+          okertype = p_fct(levels = c("wangvanryzin", "liracine"), tags = "train")
       )
 
       super$initialize(

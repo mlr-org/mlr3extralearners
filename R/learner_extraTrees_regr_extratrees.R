@@ -16,36 +16,20 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamInt$new(
-            id = "ntree", default = 500L, lower = 1L,
-            tags = "train"),
-          ParamInt$new(id = "mtry", lower = 1L, tags = "train"),
-          ParamInt$new(
-            id = "nodesize", default = 1L, lower = 1L,
-            tags = "train"),
-          ParamInt$new(id = "numRandomCuts", default = 1L, tags = "train"),
-          ParamLgl$new(id = "evenCuts", default = FALSE, tags = "train"),
-          ParamInt$new(
-            id = "numThreads", default = 1L, lower = 1L,
-            tags = "train"),
-          ParamLgl$new(
-            id = "quantile", default = FALSE,
-            tags = c("train", "predict")),
-          ParamUty$new(id = "subsetSizes", tags = "train"),
-          ParamUty$new(id = "subsetGroups", tags = "train"),
-          ParamUty$new(id = "tasks", tags = "train"),
-          ParamDbl$new(
-            id = "probOfTaskCuts", lower = 0, upper = 1,
-            tags = "train"),
-          ParamInt$new(
-            id = "numRandomTaskCuts", default = 1L, lower = 1L,
-            tags = "train"),
-          ParamFct$new(
-            id = "na.action", default = "stop",
-            levels = c("stop", "zero", "fuse"), tags = "train")
-        )
+      ps = ps(
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
+        mtry = p_int(lower = 1L, tags = "train"),
+        nodesize = p_int(default = 1L, lower = 1L, tags = "train"),
+        numRandomCuts = p_int(default = 1L, tags = "train"),
+        evenCuts = p_lgl(default = FALSE, tags = "train"),
+        numThreads = p_int(default = 1L, lower = 1L, tags = "train"),
+        quantile = p_lgl(default = FALSE, tags = c("train", "predict")),
+        subsetSizes = p_uty(tags = "train"),
+        subsetGroups = p_uty(tags = "train"),
+        tasks = p_uty(tags = "train"),
+        probOfTaskCuts = p_dbl(lower = 0, upper = 1, tags = "train"),
+        numRandomTaskCuts = p_int(default = 1L, lower = 1L, tags = "train"),
+        na.action = p_fct(default = "stop", levels = c("stop", "zero", "fuse"), tags = "train")
       )
 
       super$initialize(

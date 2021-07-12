@@ -22,11 +22,9 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps <- ParamSet$new(
-        params = list(
-          ParamDbl$new("lambda", default = 0.5, lower = 0, upper = 1, tags = "predict"),
-          ParamLgl$new("reverse", default = FALSE, tags = "train")
-        )
+      ps <- ps(
+          lambda = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "predict"),
+          reverse = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(

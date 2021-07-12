@@ -29,27 +29,24 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamDbl$new(id = "alpha", default = 0.5, tags = "train"),
-          ParamInt$new(id = "ntree", default = 100L, lower = 1L, tags = "train"),
-          ParamUty$new(id = "eval_times", tags = "train"),
-          ParamInt$new(id = "min_events_to_split_node", default = 5L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "min_obs_to_split_node", default = 10L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "min_obs_in_leaf_node", default = 5L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "min_events_in_leaf_node", default = 1L, lower = 1L, tags = "train"),
-          ParamInt$new(id = "nsplit", default = 25L, lower = 1, tags = "train"),
-          ParamDbl$new(id = "gamma", default = 0.5, lower = 1e-16, tags = "train"),
-          ParamDbl$new(
-            id = "max_pval_to_split_node", lower = 0, upper = 1, default = 0.5,
+      ps = ps(
+          alpha = p_dbl(default = 0.5, tags = "train"),
+          ntree = p_int(default = 100L, lower = 1L, tags = "train"),
+          eval_times = p_uty(tags = "train"),
+          min_events_to_split_node = p_int(default = 5L, lower = 1L, tags = "train"),
+          min_obs_to_split_node = p_int(default = 10L, lower = 1L, tags = "train"),
+          min_obs_in_leaf_node = p_int(default = 5L, lower = 1L, tags = "train"),
+          min_events_in_leaf_node = p_int(default = 1L, lower = 1L, tags = "train"),
+          nsplit = p_int(default = 25L, lower = 1, tags = "train"),
+          gamma = p_dbl(default = 0.5, lower = 1e-16, tags = "train"),
+          max_pval_to_split_node = p_dbl(lower = 0, upper = 1, default = 0.5,
             tags = "train"),
-          ParamInt$new(id = "mtry", lower = 1, tags = "train"),
-          ParamInt$new(id = "dfmax", lower = 1, tags = "train"),
-          ParamLgl$new(id = "use.cv", default = FALSE, tags = "train"),
-          ParamLgl$new(id = "verbose", default = TRUE, tags = "train"),
-          ParamLgl$new(id = "compute_oob_predictions", default = FALSE, tags = "train"),
-          ParamInt$new(id = "random_seed", tags = "train")
-        )
+          mtry = p_int(lower = 1, tags = "train"),
+          dfmax = p_int(lower = 1, tags = "train"),
+          use.cv = p_lgl(default = FALSE, tags = "train"),
+          verbose = p_lgl(default = TRUE, tags = "train"),
+          compute_oob_predictions = p_lgl(default = FALSE, tags = "train"),
+          random_seed = p_int(tags = "train")
       )
 
       ps$values = list(verbose = FALSE)

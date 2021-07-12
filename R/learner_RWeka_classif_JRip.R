@@ -35,27 +35,23 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "subset", tags = c("train", "pars")),
-          ParamUty$new(id = "na.action", tags = c("train", "pars")),
-          ParamInt$new(id = "F", default = 3L, lower = 2L, tags = c("train", "control")),
-          ParamDbl$new(id = "N", default = 2, lower = 0, tags = c("train", "control")),
-          ParamInt$new(id = "O", default = 2L, lower = 1L, tags = c("train", "control")),
-          ParamLgl$new(id = "D", default = FALSE, tags = c("train", "control")),
-          ParamInt$new(id = "S", default = 1L, lower = 1L, tags = c("train", "control")),
-          ParamLgl$new(id = "E", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "P", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
-            id = "do_not_check_capabilities", default = FALSE,
+      ps = ps(
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          F = p_int(default = 3L, lower = 2L, tags = c("train", "control")),
+          N = p_dbl(default = 2, lower = 0, tags = c("train", "control")),
+          O = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+          D = p_lgl(default = FALSE, tags = c("train", "control")),
+          S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+          E = p_lgl(default = FALSE, tags = c("train", "control")),
+          P = p_lgl(default = FALSE, tags = c("train", "control")),
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          ParamInt$new(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          ParamInt$new(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(id = "options", default = NULL, tags = c("train", "pars"))
-        )
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
       )
 
       super$initialize(

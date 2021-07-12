@@ -34,29 +34,23 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "subset", tags = c("train", "pars")),
-          ParamUty$new(id = "na.action", tags = c("train", "pars")),
-          ParamInt$new(
-            id = "P", default = 100L, lower = 90L, upper = 100L,
+      ps = ps(
+          subset = p_uty(tags = c("train", "pars")),
+          na.action = p_uty(tags = c("train", "pars")),
+          P = p_int(default = 100L, lower = 90L, upper = 100L,
             tags = c("train", "control")),
-          ParamLgl$new(id = "Q", default = FALSE, tags = c("train", "control")),
-          ParamInt$new(id = "S", default = 1L, lower = 1L, tags = c("train", "control")),
-          ParamInt$new(id = "I", default = 10L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(
-            id = "W", default = "weka.classifiers.trees.DecisionStump",
+          Q = p_lgl(default = FALSE, tags = c("train", "control")),
+          S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+          I = p_int(default = 10L, lower = 1L, tags = c("train", "control")),
+          W = p_uty(default = "weka.classifiers.trees.DecisionStump",
             tags = c("train", "control")),
-          ParamLgl$new(id = "output_debug_info", default = FALSE, tags = c("train", "control")),
-          ParamLgl$new(
-            id = "do_not_check_capabilities", default = FALSE,
+          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          do_not_check_capabilities = p_lgl(default = FALSE,
             tags = c("train", "control")),
-          ParamInt$new(
-            id = "num_decimal_places", default = 2L, lower = 1L,
+          num_decimal_places = p_int(default = 2L, lower = 1L,
             tags = c("train", "control")),
-          ParamInt$new(id = "batch_size", default = 100L, lower = 1L, tags = c("train", "control")),
-          ParamUty$new(id = "options", default = NULL, tags = c("train", "pars"))
-        )
+          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+          options = p_uty(default = NULL, tags = c("train", "pars"))
       )
 
       super$initialize(

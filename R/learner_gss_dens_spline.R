@@ -21,23 +21,21 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        params = list(
-          ParamUty$new(id = "type", tags = "train"),
-          ParamDbl$new(id = "alpha", default = 1.4, tags = "train"),
-          ParamUty$new(id = "weights", tags = "train"),
-          ParamUty$new(id = "na.action", default = stats::na.omit, tags = "train"),
-          ParamUty$new(id = "id.basis", tags = "train"),
-          ParamInt$new(id = "nbasis", tags = "train"),
-          ParamDbl$new(id = "seed", tags = "train"),
-          ParamUty$new(id = "domain", tags = "train"),
-          ParamUty$new(id = "quad", tags = "train"),
-          ParamDbl$new(id = "qdsz.depth", tags = "train"),
-          ParamUty$new(id = "bias", tags = "train"),
-          ParamDbl$new(id = "prec", default = 1e-7, tags = "train"),
-          ParamInt$new(id = "maxiter", default = 30, lower = 1, tags = "train"),
-          ParamLgl$new(id = "skip.iter", tags = "train")
-        )
+      ps = ps(
+          type = p_uty(tags = "train"),
+          alpha = p_dbl(default = 1.4, tags = "train"),
+          weights = p_uty(tags = "train"),
+          na.action = p_uty(default = stats::na.omit, tags = "train"),
+          id.basis = p_uty(tags = "train"),
+          nbasis = p_int(tags = "train"),
+          seed = p_dbl(tags = "train"),
+          domain = p_uty(tags = "train"),
+          quad = p_uty(tags = "train"),
+          qdsz.depth = p_dbl(tags = "train"),
+          bias = p_uty(tags = "train"),
+          prec = p_dbl(default = 1e-7, tags = "train"),
+          maxiter = p_int(default = 30, lower = 1, tags = "train"),
+          skip.iter = p_lgl(tags = "train")
       )
 
       super$initialize(

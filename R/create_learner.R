@@ -87,28 +87,28 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     mlr3misc::stopf("mlr3extralearners is not in 'path' (%s), set `pkg` argument to the mlr3extralearners directory.", path) # nolint
   }
 
-  checkmate::assert_choice(type, names(mlr3::mlr_reflections$task_properties))
+  assert_choice(type, names(mlr3::mlr_reflections$task_properties))
   Type = toproper(type)
 
-  checkmate::assert_character(key, len = 1)
+  assert_character(key, len = 1)
   if (paste(type, key, sep = ".") %in% names(mlr_learners$items)) {
     mlr3misc::stopf(
       "%s already exists in learner dictionary, please choose a different key.",
       paste(type, key, sep = "."))
   }
 
-  algorithm = toproper(checkmate::assert_character(algorithm, len = 1))
-  classname = toproper(checkmate::assert_character(classname, len = 1))
-  checkmate::assert_character(caller, len = 1)
-  checkmate::assert_character(gh_name, len = 1)
+  algorithm = toproper(assert_character(algorithm, len = 1))
+  classname = toproper(assert_character(classname, len = 1))
+  assert_character(caller, len = 1)
+  assert_character(gh_name, len = 1)
 
-  checkmate::assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
-  checkmate::assert_subset(predict_types,
+  assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
+  assert_subset(predict_types,
                            names(mlr3::mlr_reflections$learner_predict_types[[type]]))
-  checkmate::assert_subset(properties, mlr3::mlr_reflections$learner_properties[[type]])
+  assert_subset(properties, mlr3::mlr_reflections$learner_properties[[type]])
   importance = "importance" %in% properties
   oob_error = "oob_error" %in% properties
-  checkmate::assert_flag(references)
+  assert_flag(references)
 
   type_lng = switch(type,
                     classif = "Classification",

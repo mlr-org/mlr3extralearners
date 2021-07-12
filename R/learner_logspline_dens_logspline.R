@@ -19,18 +19,16 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ParamSet$new(
-        list(
-          ParamDbl$new(id = "lbound", tags = "train"),
-          ParamDbl$new(id = "ubound", tags = "train"),
-          ParamDbl$new(id = "maxknots", default = 0, lower = 0, tags = "train"),
-          ParamUty$new(id = "knots", tags = "train"),
-          ParamDbl$new(id = "nknots", default = 0, lower = 0, tags = "train"),
-          ParamUty$new(id = "penalty", tags = "train"),
-          ParamLgl$new(id = "silent", default = TRUE, tags = "train"),
-          ParamDbl$new(id = "mind", default = -1, tags = "train"),
-          ParamInt$new(id = "error.action", default = 2, lower = 0, upper = 2, tags = "train")
-        )
+      ps = ps(
+          lbound = p_dbl(tags = "train"),
+          ubound = p_dbl(tags = "train"),
+          maxknots = p_dbl(default = 0, lower = 0, tags = "train"),
+          knots = p_uty(tags = "train"),
+          nknots = p_dbl(default = 0, lower = 0, tags = "train"),
+          penalty = p_uty(tags = "train"),
+          silent = p_lgl(default = TRUE, tags = "train"),
+          mind = p_dbl(default = -1, tags = "train"),
+          error.action = p_int(default = 2, lower = 0, upper = 2, tags = "train")
       )
 
 
