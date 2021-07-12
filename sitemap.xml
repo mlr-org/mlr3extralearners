@@ -82,24 +82,6 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinear.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl1l2svc.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl1logreg.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl2l1svc.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl2l2svc.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearl2logreg.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinearmulticlasssvc.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lightgbm.html</loc>
   </url>
   <url>
@@ -188,12 +170,6 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinear.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinearl2l1svr.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinearl2l2svr.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.lightgbm.html</loc>
