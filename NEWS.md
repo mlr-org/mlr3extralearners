@@ -2,7 +2,7 @@
 
 * Deprecated liblinear learners now removed
 * Internal changes to ParamSet representation
-* Regression rweka learners now combined into regr.rweka, old ones are deprecated and will be removed in 0.6.0
+* checkmate now imported
 
 # mlr3extralearners 0.4.9
 

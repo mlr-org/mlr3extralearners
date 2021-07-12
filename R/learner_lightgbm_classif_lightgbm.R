@@ -17,9 +17,8 @@
 #'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
 #'
 #' @details
-#' For categorical features either first transform factor colums with [mlr3pipelines::PipeOpEncode]
-#' or convert the columns with `as.integer` and specify the categorical columns with the
-#' `categorical_feature` parameter.
+#' For categorical features either pre-process data by encoding columns or
+#' specify the categorical columns with the `categorical_feature` parameter.
 #'
 #' @template seealso_learner
 #' @template example

@@ -33,10 +33,10 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
     initialize = function() {
       ps = ps(
         # missing: subset, na.action, weights (see bottom)
-        rhs = p_uty(custom_check = checkmate::check_character,
+        rhs = p_uty(custom_check = check_character,
           tags = "train"),
         fit = p_uty(custom_check = function(x) {
-          checkmate::check_function(x,
+          check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
         }, tags = "train"),
         offset = p_uty(tags = "train"),
@@ -82,7 +82,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         cores = p_int(default = NULL, special_vals = list(NULL),
           tags = "train"),
         # additional arguments passed to fitting function
-        additional = p_uty(custom_check = checkmate::check_list,
+        additional = p_uty(custom_check = check_list,
           tags = "train"),
         # the predict function depends on the predict method of the fitting
         # function itself and can be passed via type, see predict.modelparty
@@ -90,7 +90,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         # itself, the newdata, the original task and a
         # predict type
         predict_fun = p_uty(custom_check = function(x) {
-          checkmate::check_function(x,
+          check_function(x,
             args = c("object", "newdata", "task", ".type"))
         }, tags = "predict")
       )
