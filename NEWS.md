@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.1
+
+* Fixes bug in `base` parameter of {bart} learners
+
 # mlr3extralearners 0.5.0
 
 * Deprecated liblinear learners now removed
