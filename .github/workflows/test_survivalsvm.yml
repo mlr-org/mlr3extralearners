@@ -74,7 +74,7 @@ jobs:
         if: ${{ matrix.env.TEST }} == "Learner"
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_dir(as.package(".")$path, sprinf("%s_", ${{ matrix.env.PKG }}))
+          testthat::test_dir(".", sprintf("%s_", ${{ matrix.env.PKG }}))
         shell: Rscript {0}
 
       - name: Parameter test
