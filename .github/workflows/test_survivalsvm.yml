@@ -9,7 +9,7 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.env.TEST }} Test
+    name: ${{ matrix.env.test }} Test
 
     strategy:
       fail-fast: false
@@ -25,7 +25,6 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      TEST: ${{ matrix.env.test }}
 
     steps:
       - uses: actions/checkout@v2
@@ -50,8 +49,8 @@ jobs:
           path: |
             ${{ env.R_LIBS_USER }}/*
             !${{ env.R_LIBS_USER }}/pak
-          key: ${{ matrix.config.os }}-${{ matrix.env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
-          restore-keys: ${{ matrix.config.os }}-${{ matrix.env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-
+          key: ${{ matrix.config.os }}-${{ env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ${{ matrix.config.os }}-${{ env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-
 
       - name: Install system dependencies
         run: |
@@ -71,17 +70,17 @@ jobs:
         shell: Rscript {0}
 
       - name: Learner test
-        if: ${{ matrix.env.TEST }} == "Learner"
+        if: ${{ matrix.env.test == "Learner" }}
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_dir(".", sprintf("%s_", ${{ matrix.env.PKG }}))
+          testthat::test_dir(".", sprintf("%s_", ${{ env.PKG }}))
         shell: Rscript {0}
 
       - name: Parameter test
-        if: ${{ matrix.env.TEST }} == "Param"
+        if: ${{ matrix.env.test == "Param" }}
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", ${{ matrix.env.PKG }}))
+          testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", ${{ env.PKG }}))
         shell: Rscript {0}
 
       - name: Show testthat output
@@ -93,5 +92,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@main
         with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-${{ matrix.env.PKG }}-results
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-${{ env.PKG }}-results
           path: check
