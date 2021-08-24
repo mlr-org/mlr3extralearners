@@ -88,11 +88,6 @@ jobs:
           testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
-      - name: Show testthat output
-        if: always()
-        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
-        shell: bash
-
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@main

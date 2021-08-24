@@ -1,70 +1,96 @@
 on:
-  push:
-    branches: main
-    paths: '**/partykit**'
   pull_request:
     branches: main
     paths: '**/partykit**'
-  schedule:
-    - cron: "0 4 * * *"
 
 name: partykit (ubuntu-latest, release)
 
 jobs:
-  all:
+  R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.env.TEST }} Test
+    name: ${{ matrix.env.test }} Test
 
     strategy:
+      fail-fast: false
       matrix:
         env:
           - { test: "Learner"}
           - { test: "Param"}
         config:
-          - { os: ubuntu-latest, r: "release" }       
+          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       PKG: partykit
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      RGL_USE_NULL: true
-      TEST: ${{ matrix.env.test }}
-      
-    steps:
-      - uses: actions/checkout@v2.2.0
+      RSPM: ${{ matrix.config.rspm }}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: r-lib/actions/setup-r@master
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v1
+        id: install-r
         with:
           r-version: ${{ matrix.config.r }}
-          Ncpus: 4
+          http-user-agent: ${{ matrix.config.http-user-agent }}
 
-      - uses: r-lib/actions/setup-tinytex@master
+      - uses: r-lib/actions/setup-pandoc@v1
 
-      - uses: r-lib/actions/setup-pandoc@master
-
-      - name: "[Stage] Prepare"
-        if: runner.os == 'Linux'
+      - name: Install pak and query dependencies
         run: |
-          sudo R CMD javareconf
-          sudo apt install ccache libcurl4-openssl-dev libgit2-dev
-          mkdir -p ~/.R && echo -e 'CXX_STD = CXX14\n\nCC=ccache gcc -std=gnu99\nCXX=ccache g++\nCXX11=ccache g++ -std=gnu99\nCXX14=ccache g++ -std=gnu99\nC11=ccache g++\nC14=ccache g++\nFC=ccache gfortran\nF77=ccache gfortran' > $HOME/.R/Makevars
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
+          saveRDS(pak::pkg_deps("local::.", dependencies = FALSE), ".github/r-depends.rds")
+        shell: Rscript {0}
 
-      - name: "[Custom block] [Stage] [Linux] Install pkgdown system lib req"
-        if: runner.os == 'Linux'
-        run: sudo apt install libharfbuzz-dev libfribidi-dev
-
-      - name: "[Stage] Install"
-        run: |
-          Rscript -e "install.packages('remotes', type = 'source')" -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
-
-      - name: "[Stage] Script"
-        run: |
-          R CMD INSTALL .
-          Rscript -e "tic::script()"
-
-      - name: "[Stage] Upload R CMD check artifacts"
-        if: failure()
-        uses: actions/upload-artifact@master
+      - name: Restore R package cache
+        uses: actions/cache@v2
         with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-r${{ matrix.env.PKG }}-results
+          path: |
+            ${{ env.R_LIBS_USER }}/*
+            !${{ env.R_LIBS_USER }}/pak
+          key: ${{ matrix.config.os }}-${{ env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-${{ hashFiles('.github/r-depends.rds') }}
+          restore-keys: ${{ matrix.config.os }}-${{ env.PKG }}-${{ steps.install-r.outputs.installed-r-version }}-1-
+
+      - name: Install system dependencies
+        run: |
+          pak::local_system_requirements(execute = TRUE)
+          pak::pkg_system_requirements("testthat", execute = TRUE)
+        shell: Rscript {0}
+
+      - name: Install package dependencies
+        run: |
+          pak::local_install_dev_deps(upgrade = TRUE, dependencies = FALSE)
+          pak::pkg_install("testthat")
+        shell: Rscript {0}
+
+      - name: Session info
+        run: |
+          sessionInfo()
+        shell: Rscript {0}
+
+      - name: Install
+        run: |
+          pak::local_install()
+        shell: Rscript {0}
+
+      - name: Learner test
+        if: ${{ matrix.env.test == 'Learner' }}
+        run: |
+          options(crayon.enabled = TRUE)
+          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
+      - name: Parameter test
+        if: ${{ matrix.env.test == 'Param' }}
+        run: |
+          options(crayon.enabled = TRUE)
+          testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
+      - name: Upload check results
+        if: failure()
+        uses: actions/upload-artifact@main
+        with:
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-${{ env.PKG }}-results
           path: check
