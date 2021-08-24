@@ -67,7 +67,7 @@ jobs:
 
       - name: Session info
         run: |
-          sessioninfo()
+          sessionInfo()
         shell: Rscript {0}
 
       - name: Learner test
@@ -93,5 +93,5 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@main
         with:
-          name: ${{ matrix.config.os }}-r${{ matrix.config.r }}-results
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-${{ matrix.env.PKG }}-results
           path: check
