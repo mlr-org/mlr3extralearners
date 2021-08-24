@@ -69,11 +69,16 @@ jobs:
           sessionInfo()
         shell: Rscript {0}
 
+      - name: Install
+        run: |
+          pak::local_install()
+        shell: Rscript {0}
+
       - name: Learner test
         if: ${{ matrix.env.test == 'Learner' }}
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_dir(".", sprintf("%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Parameter test
