@@ -70,14 +70,14 @@ jobs:
         shell: Rscript {0}
 
       - name: Learner test
-        if: ${{ matrix.env.test == "Learner" }}
+        if: ${{ matrix.env.test == 'Learner' }}
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_dir(".", sprintf("%s_", ${{ env.PKG }}))
         shell: Rscript {0}
 
       - name: Parameter test
-        if: ${{ matrix.env.test == "Param" }}
+        if: ${{ matrix.env.test == 'Param' }}
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", ${{ env.PKG }}))
