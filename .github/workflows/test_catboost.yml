@@ -56,12 +56,14 @@ jobs:
         run: |
           pak::local_system_requirements(execute = TRUE)
           pak::pkg_system_requirements("testthat", execute = TRUE)
+          pak::pkg_system_requirements("remotes", execute = TRUE)
         shell: Rscript {0}
 
       - name: Install package dependencies
         run: |
           pak::local_install_dev_deps(upgrade = TRUE, dependencies = FALSE)
           pak::pkg_install("testthat")
+          pak::pkg_install("remotes")
         shell: Rscript {0}
 
       - name: Session info
