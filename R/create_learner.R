@@ -207,7 +207,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
 
   # CREATE YAML
-  file_name = file.path(path, ".github", "workflows", paste0("test_", key, ".yml"))
+  file_name = file.path(path, ".github", "workflows", paste0("test_", package, ".yml"))
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
                 overwrite = FALSE)
   if (!x) {
