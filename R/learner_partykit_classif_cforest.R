@@ -200,7 +200,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
       preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
       if (self$predict_type == "response") {
-        list(response = preds)
+        list(response = unname(preds))
       } else {
         list(prob = preds)
       }

@@ -136,7 +136,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         type = type, .args = pars)
 
       if (self$predict_type == "response") {
-        list(response = pred)
+        list(response = unname(pred))
       } else {
         list(prob = pred)
       }
