@@ -1,3 +1,4 @@
+library(mlr3extralearners)
 install_learners("regr.gam")
 
 test_that("regr.gam train", {

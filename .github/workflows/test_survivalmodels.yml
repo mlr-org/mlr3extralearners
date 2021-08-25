@@ -64,6 +64,17 @@ jobs:
           pak::pkg_install("testthat")
         shell: Rscript {0}
 
+      - name: Install Python
+        run: |
+          pak::pkg_install("remotes")
+          remotes::install_github('rstudio/reticulate')
+          reticulate::install_miniconda()
+          remotes::install_local()
+          install.packages('keras')
+          keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))
+          reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
+        shell: Rscript {0}
+
       - name: Session info
         run: |
           sessionInfo()
