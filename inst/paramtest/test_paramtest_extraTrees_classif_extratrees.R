@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.extratrees")
+mlr3extralearners::install_learners("classif.extratrees")
 
 test_that("classif.extratrees", {
   learner = lrn("classif.extratrees")

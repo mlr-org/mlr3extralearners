@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.bart")
+mlr3extralearners::install_learners("classif.bart")
 
 test_that("classif.bart", {
   learner = lrn("classif.bart")

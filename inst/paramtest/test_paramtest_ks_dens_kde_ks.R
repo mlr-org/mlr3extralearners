@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("dens.kde_ks")
+mlr3extralearners::install_learners("dens.kde_ks")
 
 test_that("dens.kde_ks", {
   learner = lrn("dens.kde_ks")

@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.obliqueRSF")
+mlr3extralearners::install_learners("surv.obliqueRSF")
 
 test_that("surv.obliqueRSF_train", {
   learner = lrn("surv.obliqueRSF")

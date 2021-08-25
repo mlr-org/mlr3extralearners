@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.OneR")
+mlr3extralearners::install_learners("classif.OneR")
 
 test_that("classif.OneR", {
   learner = lrn("classif.OneR")

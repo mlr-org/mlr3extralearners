@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.bart")
+mlr3extralearners::install_learners("regr.bart")
 
 test_that("regr.bart", {
   learner = lrn("regr.bart")

@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.randomForest")
+mlr3extralearners::install_learners("classif.randomForest")
 
 test_that("classif.randomforest", {
   learner = lrn("classif.randomForest")

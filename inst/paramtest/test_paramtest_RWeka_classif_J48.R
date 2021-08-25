@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.J48")
+mlr3extralearners::install_learners("classif.J48")
 
 test_that("classif.J48", {
   learner = lrn("classif.J48")

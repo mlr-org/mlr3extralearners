@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.gamboost")
+mlr3extralearners::install_learners("regr.gamboost")
 
 test_that("regr.gamboost", {
   learner = lrn("regr.gamboost")

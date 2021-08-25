@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.rfsrc")
+mlr3extralearners::install_learners("surv.rfsrc")
 
 test_that("surv.rfsrc_train", {
   learner = lrn("surv.rfsrc")

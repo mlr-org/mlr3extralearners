@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.flexible")
+mlr3extralearners::install_learners("surv.flexible")
 
 test_that("surv.flexible_train", {
   learner = lrn("surv.flexible")

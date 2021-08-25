@@ -64,11 +64,6 @@ jobs:
           pak::pkg_install("testthat")
         shell: Rscript {0}
 
-      - name: Session info
-        run: |
-          sessionInfo()
-        shell: Rscript {0}
-
       - name: Install
         run: |
           pak::local_install()
@@ -86,6 +81,11 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
+      - name: Session info
+        run: |
+          sessionInfo()
         shell: Rscript {0}
 
       - name: Upload check results

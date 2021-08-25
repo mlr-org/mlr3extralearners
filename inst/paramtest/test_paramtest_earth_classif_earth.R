@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.earth")
+mlr3extralearners::install_learners("classif.earth")
 
 test_that("classif.earth", {
   learner = lrn("classif.earth")

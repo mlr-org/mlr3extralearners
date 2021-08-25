@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.liblinear")
+mlr3extralearners::install_learners("regr.liblinear")
 
 test_that("regr.liblinear", {
   learner = lrn("regr.liblinear")

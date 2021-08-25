@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.blackboost")
+mlr3extralearners::install_learners("surv.blackboost")
 
 test_that("surv.blackboost", {
   learner = lrn("surv.blackboost")

@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.gbm")
+mlr3extralearners::install_learners("classif.gbm")
 
 test_that("classif.gbm", {
   learner = lrn("classif.gbm")

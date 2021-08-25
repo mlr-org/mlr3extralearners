@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.glmboost")
+mlr3extralearners::install_learners("surv.glmboost")
 
 test_that("surv.glmboost", {
   learner = lrn("surv.glmboost")

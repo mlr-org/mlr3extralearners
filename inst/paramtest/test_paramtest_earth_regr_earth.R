@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.earth")
+mlr3extralearners::install_learners("regr.earth")
 
 test_that("regr.earth", {
   learner = lrn("regr.earth")

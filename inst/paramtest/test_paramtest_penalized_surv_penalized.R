@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.penalized")
+mlr3extralearners::install_learners("surv.penalized")
 
 test_that("surv.penalized_train", {
   learner = lrn("surv.penalized")

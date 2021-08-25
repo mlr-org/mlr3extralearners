@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.JRip")
+mlr3extralearners::install_learners("classif.JRip")
 
 test_that("classif.JRip", {
   learner = lrn("classif.JRip")

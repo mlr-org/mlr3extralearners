@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("dens.mixed")
+mlr3extralearners::install_learners("dens.mixed")
 
 test_that("dens.mixed", {
   learner = lrn("dens.mixed")

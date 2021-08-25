@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.cubist")
+mlr3extralearners::install_learners("regr.cubist")
 
 test_that("regr.cubist train", {
   learner = lrn("regr.cubist")
