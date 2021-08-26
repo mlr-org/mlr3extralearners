@@ -76,7 +76,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.4.0.9000),
+    mlr3proba (>= 0.4.0),
     mvtnorm,
     nnet,
     np,
@@ -104,8 +104,7 @@ Suggests:
     usethis
 Remotes:
     binderh/CoxBoost,
-    catboost/catboost/catboost/R-package,
-    mlr-org/mlr3proba
+    catboost/catboost/catboost/R-package
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
