@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.coxtime")
+mlr3extralearners::install_learners("surv.coxtime")
 
 test_that("surv.coxtime train", {
   learner = lrn("surv.coxtime")

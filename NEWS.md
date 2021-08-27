@@ -1,3 +1,6 @@
+# mlr3extralearners 0.5.2
+
+* Fixed learner tests
 # mlr3extralearners 0.5.1
 
 * Fixes bug in `base` parameter of {bart} learners

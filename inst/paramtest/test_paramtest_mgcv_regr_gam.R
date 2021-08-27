@@ -1,4 +1,5 @@
-install_learners("regr.gam")
+library(mlr3extralearners)
+mlr3extralearners::install_learners("regr.gam")
 
 test_that("regr.gam train", {
   learner = lrn("regr.gam")

@@ -1,3 +1,4 @@
+library(mlr3extralearners)
 install_learners("<type>.<key>")
 
 test_that("<type>.<key> train", {

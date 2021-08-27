@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.cforest")
+mlr3extralearners::install_learners("surv.cforest")
 
 test_that("surv.cforest", {
   learner = lrn("surv.cforest")

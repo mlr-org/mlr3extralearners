@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.deepsurv")
+mlr3extralearners::install_learners("surv.deepsurv")
 
 test_that("surv.deepsurv train", {
   learner = lrn("surv.deepsurv")

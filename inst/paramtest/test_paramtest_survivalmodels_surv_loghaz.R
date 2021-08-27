@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.loghaz")
+mlr3extralearners::install_learners("surv.loghaz")
 
 test_that("surv.loghaz train", {
   learner = lrn("surv.loghaz")

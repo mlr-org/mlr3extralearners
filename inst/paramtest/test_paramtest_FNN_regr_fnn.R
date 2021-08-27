@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.fnn")
+mlr3extralearners::install_learners("regr.fnn")
 
 test_that("regr.fnn", {
   learner = lrn("regr.fnn")

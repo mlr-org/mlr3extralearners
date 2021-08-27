@@ -1,11 +1,11 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.1
+Version: 0.5.2
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
              role = c("aut", "cre"),
-             email = "raphael.sonabend.15@ucl.ac.uk",
+             email = "raphaelsonabend@gmail.com",
              comment = c(ORCID = "0000-0001-9225-4654")),
       person(given = "Patrick",
              family = "Schratz",
@@ -51,7 +51,6 @@ Suggests:
     actuar,
     apcluster,
     C50,
-    catboost,
     coin,
     CoxBoost,
     Cubist,
@@ -76,7 +75,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.2.6),
+    mlr3proba (>= 0.4.0),
     mvtnorm,
     nnet,
     np,
@@ -103,8 +102,8 @@ Suggests:
     testthat,
     usethis
 Remotes:
-    binderh/CoxBoost,
-    catboost/catboost/catboost/R-package
+    binderh/CoxBoost
+Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)

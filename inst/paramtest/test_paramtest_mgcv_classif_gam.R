@@ -1,4 +1,5 @@
-install_learners("classif.gam")
+library(mlr3extralearners)
+mlr3extralearners::install_learners("classif.gam")
 
 test_that("classif.gam train", {
   learner = lrn("classif.gam")

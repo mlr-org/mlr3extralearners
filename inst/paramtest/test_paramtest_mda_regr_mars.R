@@ -1,4 +1,5 @@
-install_learners("regr.mars")
+library(mlr3extralearners)
+mlr3extralearners::install_learners("regr.mars")
 
 test_that("regr.mars train", {
   learner = lrn("regr.mars")

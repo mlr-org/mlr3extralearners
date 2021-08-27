@@ -2,7 +2,7 @@
 #   https://github.com/microsoft/LightGBM/blob/master/docs/Parameters.rst
 
 library(mlr3extralearners)
-install_learners("regr.lightgbm")
+mlr3extralearners::install_learners("regr.lightgbm")
 
 test_that("regr.lightgbm train", {
   learner = lrn("regr.lightgbm")

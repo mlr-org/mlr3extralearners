@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("dens.plug")
+mlr3extralearners::install_learners("dens.plug")
 
 test_that("dens.plug", {
   learner = lrn("dens.plug")

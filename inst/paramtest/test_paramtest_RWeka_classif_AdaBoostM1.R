@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.AdaBoostM1")
+mlr3extralearners::install_learners("classif.AdaBoostM1")
 
 test_that("classif.AdaBoostM1", {
   learner = lrn("classif.AdaBoostM1")

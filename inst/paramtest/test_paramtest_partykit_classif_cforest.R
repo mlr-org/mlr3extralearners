@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.cforest")
+mlr3extralearners::install_learners("classif.cforest")
 
 test_that("classif.cforest", {
   learner = lrn("classif.cforest")

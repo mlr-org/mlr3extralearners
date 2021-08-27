@@ -1,9 +1,9 @@
 on:
   pull_request:
     branches: main
-    paths: '**/C50**'
+    paths: '**/mda**'
 
-name: C50 (ubuntu-latest, release)
+name: mda (ubuntu-latest, release)
 
 jobs:
   R-CMD-check:
@@ -21,7 +21,7 @@ jobs:
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
-      PKG: C50
+      PKG: mda
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

@@ -2,7 +2,7 @@
 #   https://github.com/microsoft/LightGBM/blob/master/docs/Parameters.rst
 
 library(mlr3extralearners)
-install_learners("classif.lightgbm")
+mlr3extralearners::install_learners("classif.lightgbm")
 
 test_that("classif.lightgbm train", {
   learner = lrn("classif.lightgbm")

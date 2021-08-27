@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.ctree")
+mlr3extralearners::install_learners("surv.ctree")
 
 test_that("surv.ctree", {
   learner = lrn("surv.ctree")

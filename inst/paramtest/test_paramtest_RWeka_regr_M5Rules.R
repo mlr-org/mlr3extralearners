@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("regr.M5Rules")
+mlr3extralearners::install_learners("regr.M5Rules")
 
 test_that("regr.M5Rules", {
   learner = lrn("regr.M5Rules")

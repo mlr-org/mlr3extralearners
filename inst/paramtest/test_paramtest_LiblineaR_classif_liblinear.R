@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.liblinear")
+mlr3extralearners::install_learners("classif.liblinear")
 
 test_that("classif.liblinear", {
   learner = lrn("classif.liblinear")

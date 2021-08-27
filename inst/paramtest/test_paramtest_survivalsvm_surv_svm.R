@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("surv.svm")
+mlr3extralearners::install_learners("surv.svm")
 
 test_that("surv.svm_train", {
   learner = lrn("surv.svm")

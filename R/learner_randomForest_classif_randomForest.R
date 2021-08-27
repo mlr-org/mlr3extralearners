@@ -37,7 +37,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
           importance = p_fct(default = FALSE,
             levels = c("accuracy", "gini", "none", FALSE),
             special_vals = list(FALSE),
-            tag = "train"),
+            tags = "train"),
           localImp = p_lgl(default = FALSE, tags = "train"),
           proximity = p_lgl(default = FALSE, tags = c("train", "predict")),
           oob.prox = p_lgl(tags = "train"),
@@ -136,7 +136,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         type = type, .args = pars)
 
       if (self$predict_type == "response") {
-        list(response = pred)
+        list(response = unname(pred))
       } else {
         list(prob = pred)
       }

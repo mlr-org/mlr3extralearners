@@ -1,5 +1,5 @@
 library(mlr3extralearners)
-install_learners("classif.glmboost")
+mlr3extralearners::install_learners("classif.glmboost")
 
 test_that("classif.glmboost", {
   learner = lrn("classif.glmboost")
