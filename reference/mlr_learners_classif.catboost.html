@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.2</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.3</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -173,10 +173,16 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <ul>
 <li><p>Packages: catboost</p></li>
 <li><p>Predict Types: response, prob</p></li>
-<li><p>Feature Types: logical, integer, numeric, factor, ordered</p></li>
+<li><p>Feature Types: numeric, factor, ordered</p></li>
 <li><p>Properties: importance, missings, multiclass, twoclass, weights</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
+
+    
+
+<p>The easiest way to install catboost is with the helper function
+<a href='install_catboost.html'>install_catboost</a>.</p>
     <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
 
     
@@ -206,10 +212,10 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>CatBoost: unbiased boosting with categorical features.
+    <p>catboost: unbiased boosting with categorical features.
 Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
 2017. https://arxiv.org/abs/1706.09516.</p>
-<p>CatBoost: gradient boosting with categorical features support.
+<p>catboost: gradient boosting with categorical features support.
 Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
 2018. https://arxiv.org/abs/1810.11363.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -283,7 +289,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><h4 clas
 #&gt;   thread_count=1, allow_writing_files=FALSE, save_snapshot=FALSE
 #&gt; * Packages: catboost
 #&gt; * Predict Type: response
-#&gt; * Feature types: logical, integer, numeric, factor, ordered
+#&gt; * Feature types: numeric, factor, ordered
 #&gt; * Properties: importance, missings, multiclass, twoclass, weights</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>

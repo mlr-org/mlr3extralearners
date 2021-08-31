@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>List Learners in mlr3verse — list_mlr3learners • mlr3extralearners</title>
+<title>Install catboost — install_catboost • mlr3extralearners</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -47,9 +47,8 @@
 
 
 
-<meta property="og:title" content="List Learners in mlr3verse — list_mlr3learners" />
-<meta property="og:description" content="Lists all learners, properties, and associated packages in a table that can be
-filtered and queried." />
+<meta property="og:title" content="Install catboost — install_catboost" />
+<meta property="og:description" content="Helper function to install catboost" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -148,91 +147,55 @@ filtered and queried." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>List Learners in mlr3verse</h1>
+    <h1>Install catboost</h1>
     
-    <div class="hidden name"><code>list_mlr3learners.Rd</code></div>
+    <div class="hidden name"><code>install_catboost.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Lists all learners, properties, and associated packages in a table that can be
-filtered and queried.</p>
+    <p>Helper function to install catboost</p>
     </div>
 
-    <pre class="usage"><span class='fu'>list_mlr3learners</span><span class='op'>(</span>select <span class='op'>=</span> <span class='cn'>NULL</span>, filter <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>install_catboost</span><span class='op'>(</span>
+  version <span class='op'>=</span> <span class='cn'>NULL</span>,
+  os <span class='op'>=</span> <span class='cn'>NULL</span>,
+  install_required <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  INSTALL_opts <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"--no-multiarch"</span>, <span class='st'>"--no-test-load"</span><span class='op'>)</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>select</th>
-      <td><p><code><a href='https://rdrr.io/r/base/character.html'>character()</a></code> <br /> Passed to <a href='https://Rdatatable.gitlab.io/data.table/reference/subset.data.table.html'>data.table::subset</a>.</p></td>
+      <th>version</th>
+      <td><p><code>(character(1))</code>
+Version to install, if <code>NULL</code> installs latest</p></td>
     </tr>
     <tr>
-      <th>filter</th>
-      <td><p><code><a href='https://rdrr.io/r/base/list.html'>list()</a></code> <br /> Named list of conditions to filter on, names correspond to column
-names in table.</p></td>
+      <th>os</th>
+      <td><p><code>(character(1))</code> <br />
+Operating system to install on, if <code>NULL</code> automatically detected</p></td>
+    </tr>
+    <tr>
+      <th>install_required</th>
+      <td><p><code>(logical(1))</code> <br />
+If <code>TRUE</code> (default) then installs required packages: curl, jsonlite,
+devtools</p></td>
+    </tr>
+    <tr>
+      <th>INSTALL_opts</th>
+      <td><p><code>(character())</code> <br />
+Passed to devtools::install_url</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p><code>ANY</code> <br />
+Other arguments passed to devtools::install_url</p></td>
     </tr>
     </table>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>list_mlr3learners</span><span class='op'>(</span>
-  select <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"id"</span>, <span class='st'>"properties"</span>, <span class='st'>"predict_types"</span><span class='op'>)</span>,
-  filter <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>class <span class='op'>=</span> <span class='st'>"surv"</span>, predict_types <span class='op'>=</span> <span class='st'>"distr"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;                   id                                    properties
-#&gt;  1:     surv.akritas                                              
-#&gt;  2:  surv.blackboost                                       weights
-#&gt;  3:     surv.cforest                                       weights
-#&gt;  4:    surv.coxboost                                       weights
-#&gt;  5:       surv.coxph                                       weights
-#&gt;  6:     surv.coxtime                                              
-#&gt;  7:       surv.ctree                                       weights
-#&gt;  8: surv.cv_coxboost                                       weights
-#&gt;  9:     surv.deephit                                              
-#&gt; 10:    surv.deepsurv                                              
-#&gt; 11:     surv.dnnsurv                                              
-#&gt; 12:    surv.flexible                                       weights
-#&gt; 13:    surv.gamboost          importance,selected_features,weights
-#&gt; 14:    surv.glmboost                                       weights
-#&gt; 15:      surv.kaplan                                      missings
-#&gt; 16:      surv.loghaz                                              
-#&gt; 17:      surv.mboost          importance,selected_features,weights
-#&gt; 18:      surv.nelson                                      missings
-#&gt; 19:  surv.obliqueRSF                            missings,oob_error
-#&gt; 20:  surv.parametric                                       weights
-#&gt; 21:    surv.pchazard                                              
-#&gt; 22:   surv.penalized                                              
-#&gt; 23:      surv.ranger                  importance,oob_error,weights
-#&gt; 24:       surv.rfsrc         importance,missings,oob_error,weights
-#&gt; 25:       surv.rpart importance,missings,selected_features,weights
-#&gt;                   id                                    properties
-#&gt;      predict_types
-#&gt;  1:    crank,distr
-#&gt;  2: distr,crank,lp
-#&gt;  3:    distr,crank
-#&gt;  4: distr,crank,lp
-#&gt;  5: distr,crank,lp
-#&gt;  6:    crank,distr
-#&gt;  7:    distr,crank
-#&gt;  8: distr,crank,lp
-#&gt;  9:    crank,distr
-#&gt; 10:    crank,distr
-#&gt; 11:    crank,distr
-#&gt; 12: distr,crank,lp
-#&gt; 13: distr,crank,lp
-#&gt; 14: distr,crank,lp
-#&gt; 15:    crank,distr
-#&gt; 16:    crank,distr
-#&gt; 17: distr,crank,lp
-#&gt; 18:    crank,distr
-#&gt; 19:    crank,distr
-#&gt; 20: distr,lp,crank
-#&gt; 21:    crank,distr
-#&gt; 22:    distr,crank
-#&gt; 23:    distr,crank
-#&gt; 24:    crank,distr
-#&gt; 25:    crank,distr
-#&gt;      predict_types</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
