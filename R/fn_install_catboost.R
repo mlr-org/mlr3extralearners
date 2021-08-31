@@ -19,11 +19,11 @@ install_catboost <- function(version = NULL, os = NULL,
 
   if (is.null(version)) {
 
-    if (requireNamespace("jsonlite", quietly = TRUE) && install_required) {
+    if (!requireNamespace("jsonlite", quietly = TRUE) && install_required) {
       utils::install.packages("jsonlite", repos = "https://cloud.r-project.org")
     }
 
-    if (requireNamespace("curl", quietly = TRUE) && install_required) {
+    if (!requireNamespace("curl", quietly = TRUE) && install_required) {
       utils::install.packages("curl", repos = "https://cloud.r-project.org")
     }
 
@@ -42,7 +42,7 @@ install_catboost <- function(version = NULL, os = NULL,
     "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-%s-%s.tgz",
     version, os, version)
 
-  if (requireNamespace("devtools", quietly = TRUE) && install_required) {
+  if (!requireNamespace("devtools", quietly = TRUE) && install_required) {
     utils::install.packages("devtools", repos = "https://cloud.r-project.org")
   }
 
