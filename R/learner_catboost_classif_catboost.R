@@ -6,6 +6,10 @@
 #' @templateVar id classif.catboost
 #' @templateVar caller catboost.train
 #'
+#' @section Installation:
+#' The easiest way to install catboost is with the helper function
+#' [install_catboost].
+#'
 #' @section Custom mlr3 defaults:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
@@ -25,11 +29,11 @@
 #'   - Reason for change: consistent with other mlr3 learners
 #'
 #' @references
-#' CatBoost: unbiased boosting with categorical features.
+#' catboost: unbiased boosting with categorical features.
 #' Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
 #' 2017. https://arxiv.org/abs/1706.09516.
 #'
-#' CatBoost: gradient boosting with categorical features support.
+#' catboost: gradient boosting with categorical features support.
 #' Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
 #' 2018. https://arxiv.org/abs/1810.11363.
 #'
@@ -155,7 +159,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       super$initialize(
         id = "classif.catboost",
         packages = "catboost",
-        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c(
@@ -182,18 +186,14 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
   private = list(
     .train = function(task) {
-      # integer/logical features must be converted to numerics explicitly
 
-      data = task$data(cols = task$feature_names)
-      to_numerics = task$feature_types$id[task$feature_types$type %in%
-        c("integer", "logical")]
-      if (length(to_numerics)) {
-        data[, (to_numerics) := lapply(.SD, as.numeric), .SDcols = to_numerics]
+      if (packageVersion('catboost') < '0.21') {
+        stop('catboost v0.21 or greater is required, update with install_catboost')
       }
 
       # target is encoded as integer values from 0
       # if binary, the positive class is 1
-      is_binary = (length(task$class_names) == 2L)
+      is_binary = length(task$class_names) == 2L
       label = if (is_binary) {
         ifelse(task$data(cols = task$target_names)[[1L]] == task$positive,
           yes = 1L,
@@ -204,7 +204,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       # data must be a dataframe
       learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = data.table::setDF(data),
+        data = task$data(cols = task$feature_names),
         label = label,
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
@@ -219,29 +219,16 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       pars$loss_function_twoclass = NULL
       pars$loss_function_multiclass = NULL
 
-      mlr3misc::invoke(catboost::catboost.train,
-        learn_pool = learn_pool,
-        test_pool = NULL,
-        params = pars)
+      catboost::catboost.train(learn_pool, NULL, pars)
     },
 
     .predict = function(task) {
-      # integer/logical features must be converted to numerics explicitly
 
-      data = task$data(cols = task$feature_names)
-      to_numerics = task$feature_types$id[task$feature_types$type %in%
-        c("integer", "logical")]
-      if (length(to_numerics)) {
-        data[, (to_numerics) := lapply(.SD, as.numeric), .SDcols = to_numerics]
-      }
-
-      # target was encoded as integer values based on the train_task
-      # to later revert this, again use the train_task
-      is_binary = (length(self$state$train_task$class_names) == 2L)
+      is_binary = (length(task$class_names) == 2L)
 
       # data must be a dataframe
       pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = data.table::setDF(data),
+        data = task$data(cols = task$feature_names),
         thread_count = self$param_set$values$thread_count)
 
       prediction_type = if (self$predict_type == "response") {
@@ -257,20 +244,20 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       if (self$predict_type == "response") {
         response = if (is_binary) {
-          ifelse(preds == 1L,
-            yes = self$state$train_task$positive,
-            no = setdiff(
-              self$state$train_task$class_names,
-              self$state$train_task$positive))
+          ifelse(preds == 1L, yes = task$positive, no = task$negative)
         } else {
-          self$state$train_task$class_names[preds + 1L]
+          task$class_names[preds + 1L]
         }
-        list(response = response)
+        list(response = as.character(unname(response)))
       } else {
+
         if (is_binary && is.null(dim(preds))) {
           preds = matrix(c(preds, 1 - preds), ncol = 2L, nrow = length(preds))
+          colnames(preds) = c(task$positive, task$negative)
+        } else {
+          colnames(preds) = self$state$train_task$class_names
         }
-        colnames(preds) = self$state$train_task$class_names
+
         list(prob = preds)
       }
     }

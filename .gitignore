@@ -125,3 +125,4 @@ docs/
 
 .ccache/
 .vscode/settings.json
+catboost_info/

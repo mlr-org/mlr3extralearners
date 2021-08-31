@@ -1,8 +1,9 @@
-remotes::install_url('https://github.com/catboost/catboost/releases/download/v0.24.1/catboost-R-Linux-0.24.1.tgz', # nolint
-                      INSTALL_opts = c("--no-multiarch"))
+if (!requireNamespace("catboost", quietly = TRUE)) {
+  install_catboost("0.26.1")
+}
 
 test_that("autotest", {
-  learner = LearnerClassifCatboost$new()
+  learner = lrn("classif.catboost", iterations = 10)
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)

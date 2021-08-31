@@ -1,6 +1,7 @@
 library(mlr3extralearners)
-remotes::install_url('https://github.com/catboost/catboost/releases/download/v0.24.1/catboost-R-Linux-0.24.1.tgz', # nolint
-                      INSTALL_opts = c("--no-multiarch"))
+if (!requireNamespace("catboost", quietly = TRUE)) {
+  install_catboost("0.26.1")
+}
 
 
 test_that("regr.catboost_catboost.train", {
