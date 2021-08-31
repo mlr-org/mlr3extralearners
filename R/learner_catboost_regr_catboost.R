@@ -6,6 +6,10 @@
 #' @templateVar id regr.catboost
 #' @templateVar caller catboost.train
 #'
+#' @section Installation:
+#' The easiest way to install CatBoost is with the helper function
+#' [install_catboost].
+#'
 #' @section Custom mlr3 defaults:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
@@ -149,7 +153,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
       super$initialize(
         id = "regr.catboost",
         packages = "catboost",
-        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+        feature_types = c("numeric", "integer", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         properties = c(
@@ -176,17 +180,14 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
   private = list(
     .train = function(task) {
-      # integer/logical features must be converted to numerics explicitly
-      data = task$data(cols = task$feature_names)
-      to_numerics = task$feature_types$id[task$feature_types$type %in%
-        c("integer", "logical")]
-      if (length(to_numerics)) {
-        data[, (to_numerics) := lapply(.SD, as.numeric), .SDcols = to_numerics]
+
+      if (packageVersion('catboost') < '0.21') {
+        stop('catboost v0.21 or greater is required, update with install_catboost')
       }
 
       # data must be a dataframe
       learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = data.table::setDF(data),
+        data = task$data(cols = task$feature_names),
         label = task$data(cols = task$target_names)[[1L]],
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
@@ -198,18 +199,10 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     },
 
     .predict = function(task) {
-      # integer/logical features must be converted to numerics explicitly
-
-      data = task$data(cols = task$feature_names)
-      to_numerics = task$feature_types$id[task$feature_types$type %in%
-        c("integer", "logical")]
-      if (length(to_numerics)) {
-        data[, (to_numerics) := lapply(.SD, as.numeric), .SDcols = to_numerics]
-      }
 
       # data must be a dataframe
       pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = data.table::setDF(data),
+        data = task$data(cols = task$feature_names),
         thread_count = self$param_set$values$thread_count)
 
       preds = mlr3misc::invoke(catboost::catboost.predict,

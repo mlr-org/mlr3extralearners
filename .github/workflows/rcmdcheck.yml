@@ -65,7 +65,7 @@ jobs:
       - name: Install CatBoost
         run: |
           install.packages("remotes")
-          remotes::install_url('https://github.com/catboost/catboost/releases/download/v0.24.1/catboost-R-Linux-0.24.1.tgz', INSTALL_opts = c("--no-multiarch"))
+          remotes::install_url('https://github.com/catboost/catboost/releases/download/v0.26.1/catboost-R-Linux-0.26.1.tgz', INSTALL_opts = c("--no-multiarch"))
         shell: Rscript {0}
 
       - name: Install Python
