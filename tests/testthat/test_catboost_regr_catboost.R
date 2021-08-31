@@ -1,5 +1,5 @@
 if (!requireNamespace("catboost", quietly = TRUE)) {
-  install_catboost()
+  install_catboost("0.26.1")
 }
 
 

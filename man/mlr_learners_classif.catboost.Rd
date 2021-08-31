@@ -20,9 +20,15 @@ lrn("classif.catboost")
 \itemize{
 \item Packages: catboost
 \item Predict Types: response, prob
-\item Feature Types: logical, integer, numeric, factor, ordered
+\item Feature Types: numeric, factor, ordered
 \item Properties: importance, missings, multiclass, twoclass, weights
 }
+}
+
+\section{Installation}{
+
+The easiest way to install catboost is with the helper function
+\link{install_catboost}.
 }
 
 \section{Custom mlr3 defaults}{
@@ -64,11 +70,11 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-CatBoost: unbiased boosting with categorical features.
+catboost: unbiased boosting with categorical features.
 Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
 2017. https://arxiv.org/abs/1706.09516.
 
-CatBoost: gradient boosting with categorical features support.
+catboost: gradient boosting with categorical features support.
 Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
 2018. https://arxiv.org/abs/1810.11363.
 }

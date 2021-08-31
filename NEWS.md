@@ -2,7 +2,7 @@
 
 * Fixed bugs in catboost for classification
 * Removed factor feature types from catboost
-* Added `install_catboost` to make installation from CatBoost simpler
+* Added `install_catboost` to make installation from catboost simpler
 
 # mlr3extralearners 0.5.2
 

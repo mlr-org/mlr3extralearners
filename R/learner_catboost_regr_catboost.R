@@ -7,7 +7,7 @@
 #' @templateVar caller catboost.train
 #'
 #' @section Installation:
-#' The easiest way to install CatBoost is with the helper function
+#' The easiest way to install catboost is with the helper function
 #' [install_catboost].
 #'
 #' @section Custom mlr3 defaults:
@@ -29,11 +29,11 @@
 #'   - Reason for change: consistent with other mlr3 learners
 #'
 #' @references
-#' CatBoost: unbiased boosting with categorical features.
+#' catboost: unbiased boosting with categorical features.
 #' Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
 #' 2017. https://arxiv.org/abs/1706.09516.
 #'
-#' CatBoost: gradient boosting with categorical features support.
+#' catboost: gradient boosting with categorical features support.
 #' Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
 #' 2018. https://arxiv.org/abs/1810.11363.
 #'

@@ -1,6 +1,6 @@
 library(mlr3extralearners)
 if (!requireNamespace("catboost", quietly = TRUE)) {
-  install_catboost()
+  install_catboost("0.26.1")
 }
 
 test_that("classif.catboost_catboost.train", {
