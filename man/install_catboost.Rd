@@ -20,8 +20,8 @@ Version to install, if \code{NULL} installs latest}
 Operating system to install on, if \code{NULL} automatically detected}
 
 \item{install_required}{\code{(logical(1))} \cr
-If \code{TRUE} (default) and version is \code{NULL} then installs {curl} and
-{jsonlite} if not already installed.}
+If \code{TRUE} (default) then installs required packages: {curl}, {jsonlite},
+{devtools}}
 
 \item{INSTALL_opts}{\code{(character())} \cr
 Passed to \link[devtools:remote-reexports]{devtools::install_url}}
