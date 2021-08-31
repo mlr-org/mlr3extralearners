@@ -159,7 +159,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       super$initialize(
         id = "classif.catboost",
         packages = "catboost",
-        feature_types = c("numeric", "integer", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c(
@@ -218,7 +218,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       }
       pars$loss_function_twoclass = NULL
       pars$loss_function_multiclass = NULL
-browser()
+
       catboost::catboost.train(learn_pool, NULL, pars)
     },
 
@@ -248,14 +248,14 @@ browser()
         } else {
           task$class_names[preds + 1L]
         }
-        list(response = response)
+        list(response = as.character(unname(response)))
       } else {
 
         if (is_binary && is.null(dim(preds))) {
           preds = matrix(c(preds, 1 - preds), ncol = 2L, nrow = length(preds))
           colnames(preds) = c(task$positive, task$negative)
         } else {
-          colnames(preds) = self$state$task$class_names
+          colnames(preds) = self$state$train_task$class_names
         }
 
         list(prob = preds)

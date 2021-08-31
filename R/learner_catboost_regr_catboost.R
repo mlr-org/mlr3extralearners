@@ -153,7 +153,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
       super$initialize(
         id = "regr.catboost",
         packages = "catboost",
-        feature_types = c("numeric", "integer", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         properties = c(
@@ -185,6 +185,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         stop('catboost v0.21 or greater is required, update with install_catboost')
       }
 
+      self$state$feature_names = task$feature_names
+
       # data must be a dataframe
       learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
@@ -200,9 +202,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
     .predict = function(task) {
 
-      # data must be a dataframe
       pool = mlr3misc::invoke(catboost::catboost.load_pool,
-        data = task$data(cols = task$feature_names),
+        data = task$data(cols = self$state$feature_names),
         thread_count = self$param_set$values$thread_count)
 
       preds = mlr3misc::invoke(catboost::catboost.predict,
