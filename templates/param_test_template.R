@@ -12,8 +12,7 @@ test_that("<type>.<key> train", {
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(
     "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
 
 test_that("<type>.<key> predict", {
@@ -28,6 +27,5 @@ test_that("<type>.<key> predict", {
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(
     "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+    paste0("- '", ParamTest$missing, "'", collapse = "")))
 })
