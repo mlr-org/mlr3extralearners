@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.6
+
+* Add `regr.rvm` and `classif.lssvm`
+
 # mlr3extralearners 0.5.5
 
 * Bugfix `regr.gausspr`
