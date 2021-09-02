@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.5
+
+* Bugfix `regr.gausspr`
+
 # mlr3extralearners 0.5.4
 
 * Add `regr.gausspr` and `classif.gausspr` from `kernlab::gausspr`
