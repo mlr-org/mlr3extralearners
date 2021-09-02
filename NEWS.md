@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.4
+
+* Add `regr.gausspr` and `classif.gausspr` from `kernlab::gausspr`
+
 # mlr3extralearners 0.5.3
 
 * Fixed bugs in catboost for classification
