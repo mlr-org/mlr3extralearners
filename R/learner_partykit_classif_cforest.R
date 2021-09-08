@@ -8,9 +8,9 @@
 #'
 #' @section Custom mlr3 defaults:
 #' - `mtry`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
-#'     as `mtry = min(floor(mtry.ratio * n_features + 1), n_features)`.
-#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtryratio`
+#'     as `mtry = min(floor(mtryratio * n_features + 1), n_features)`.
+#'     Note that `mtry` and `mtryratio` are mutually exclusive.
 #'
 #' @references
 #' `r format_bib(c("hothorn_2015", "hothorn_2006"))
@@ -35,7 +35,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
           tags = "train"),
         mtry = p_int(lower = 0L, special_vals = list(Inf),
           tags = "train"), # default actually "ceiling(sqrt(nvar))"
-        mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
+        mtryratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         applyfun = p_uty(tags = c("train", "importance")),
         cores = p_int(default = NULL, special_vals = list(NULL),
           tags = c("train", "importance")),
@@ -166,7 +166,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
-      pars = convert_ratio(pars, "mtry", "mtry.ratio", length(task$feature_names))
+      pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
       pars_control = pars[which(names(pars) %in%
         setdiff(methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")

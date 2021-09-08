@@ -30,9 +30,9 @@ lrn("regr.cforest")
 \itemize{
 \item \code{mtry}:
 \itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = min(floor(mtry.ratio * n_features + 1), n_features)}.
-Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtryratio}
+as \code{mtry = min(floor(mtryratio * n_features + 1), n_features)}.
+Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 }
 }
