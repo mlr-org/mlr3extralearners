@@ -25,6 +25,18 @@ lrn("classif.cforest")
 }
 }
 
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
+as \code{mtry = min(floor(mtry.ratio * n_features + 1), n_features)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+}
+}
+
 \examples{
 # stop example failing with warning if package not installed
 learner = suppressWarnings(mlr3::lrn("classif.cforest"))
@@ -34,15 +46,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Hothorn T, Zeileis A (2015).
-“partykit: A Modular Toolkit for Recursive Partytioning in R.”
-Journal of Machine Learning Research, 16(118), 3905-3909.
-\url{http://jmlr.org/papers/v16/hothorn15a.html}
-
-Hothorn T, Hornik K, Zeileis A (2006).
-“Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-Journal of Computational and Graphical Statistics, 15(3), 651–674.
-\doi{10.1198/106186006x133933}
+`r format_bib(c("hothorn_2015", "hothorn_2006"))
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
