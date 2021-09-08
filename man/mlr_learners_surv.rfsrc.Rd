@@ -44,8 +44,14 @@ lrn("surv.rfsrc")
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = max(floor(mtry.ratio * n_features), 1)}.
+as \code{mtry = max(round(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+\item \code{sampsize}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
+as \code{sampsize = max(round(sampsize.ratio * n_obs), 1)}.
+Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 }
 }

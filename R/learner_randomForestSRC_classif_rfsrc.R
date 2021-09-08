@@ -13,8 +13,12 @@
 #'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
-#'     as `mtry = max(floor(mtry.ratio * n_features), 1)`.
+#'     as `mtry = max(round(mtry.ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `sampsize`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
+#'     as `sampsize = max(round(sampsize.ratio * n_obs), 1)`.
+#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
@@ -56,6 +60,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           samp = p_uty(tags = "train"),
           membership = p_lgl(default = FALSE, tags = c("train", "predict")),
           sampsize = p_uty(tags = "train"),
+          sampsize.ratio = p_dbl(0, 1, tags = "train"),
           na.action = p_fct(
             default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
@@ -144,7 +149,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      pv = rf_get_mtry(pv, task)
+      pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
+      pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {

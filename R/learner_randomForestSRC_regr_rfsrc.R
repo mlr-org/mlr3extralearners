@@ -48,6 +48,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           samp = p_uty(tags = "train"),
           membership = p_lgl(default = FALSE, tags = c("train", "predict")),
           sampsize = p_uty(tags = "train"),
+          sampsize.ratio = p_dbl(0, 1, tags = "train"),
           na.action = p_fct(
             default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
@@ -133,7 +134,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      pv = rf_get_mtry(pv, task)
+      pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
+      pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
