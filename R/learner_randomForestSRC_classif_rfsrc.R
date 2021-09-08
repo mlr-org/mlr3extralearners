@@ -11,10 +11,13 @@
 #'   - Actual default: Auto-detecting the number of cores
 #'   - Adjusted default: 1
 #'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' - `mtry`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
+#'     as `mtry = max(floor(mtry.ratio * n_features), 1)`.
+#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
 #'
 #' @references
-#' Breiman L (2001). “Random Forests.”
-#' Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: 10.1023/A:1010933404324.
+#' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -29,6 +32,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       ps = ps(
           ntree = p_int(default = 1000, lower = 1L, tags = c("train", "predict")),
           mtry = p_int(lower = 1L, tags = "train"),
+          mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
           nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
           nodedepth = p_int(lower = 1L, tags = "train"),
           splitrule = p_fct(
@@ -140,6 +144,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv = rf_get_mtry(pv, task)
       cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {

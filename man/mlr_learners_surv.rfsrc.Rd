@@ -41,6 +41,12 @@ lrn("surv.rfsrc")
 \item Adjusted default: 1
 \item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
 }
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
+as \code{mtry = max(floor(mtry.ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
 }
 }
 
@@ -53,11 +59,17 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS, others (2008).
-“Random survival forests.” The annals of applied statistics, 2(3), 841–860.
 
-Breiman L (2001). “Random Forests.”
-Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: 10.1023/A:1010933404324.
+
+Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).
+\dQuote{Random survival forests.}
+\emph{The Annals of Applied Statistics}, \bold{2}(3).
+\doi{10.1214/08-aoas169}, \url{https://doi.org/10.1214/08-aoas169}.
+
+Breiman, Leo (2001).
+\dQuote{Random Forests.}
+\emph{Machine Learning}, \bold{45}(1), 5--32.
+ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
