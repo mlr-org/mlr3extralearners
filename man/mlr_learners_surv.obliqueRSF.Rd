@@ -34,6 +34,12 @@ lrn("surv.obliqueRSF")
 \item Adjusted default: \code{FALSE}
 \item Reason for change: mlr3 already has it's own verbose set to \code{TRUE} by default
 }
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
+as \code{mtry = min(floor(mtry_ratio * n_features + 1), n_features)}.
+Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
+}
 }
 }
 
@@ -47,9 +53,9 @@ learner$param_set$ids()
 }
 \references{
 Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
-“Oblique random survival forests.” The Annals of Applied Statistics, 13(3), 1847–1883.
-ISSN 1932-6157, 1941-7330, doi: 10.1214/19-AOAS1261,
-https://projecteuclid.org/euclid.aoas/1571277776.
+\dQuote{Oblique random survival forests.}
+\emph{The Annals of Applied Statistics}, \bold{13}(3).
+\doi{10.1214/19-aoas1261}.
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:

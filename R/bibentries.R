@@ -47,5 +47,17 @@ bibentries = c( # nolint start
     author      = "Torsten Hothorn and Kurt Hornik and Achim Zeileis",
     title       = "Unbiased Recursive Partitioning: A Conditional Inference Framework",
     journal     = "Journal of Computational and Graphical Statistics"
+  ),
+
+  jaeger_2019   = bibentry("article",
+  doi           = "10.1214/19-aoas1261",
+  year          = "2019",
+  month         = "9",
+  publisher     = "Institute of Mathematical Statistics",
+  volume        = "13",
+  number        = "3",
+  author        = "Byron C. Jaeger and D. Leann Long and Dustin M. Long and Mario Sims and Jeff M. Szychowski and Yuan-I Min and Leslie A. Mcclure and George Howard and Noah Simon",
+  title         = "Oblique random survival forests",
+  journal       = "The Annals of Applied Statistics"
   )
 ) # nolint end
