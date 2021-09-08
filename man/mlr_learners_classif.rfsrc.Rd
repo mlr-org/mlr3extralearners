@@ -37,13 +37,13 @@ lrn("classif.rfsrc")
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = max(round(mtry.ratio * n_features), 1)}.
+as \code{mtry = min(floor(mtry.ratio * n_features + 1), n_features)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 }
 \item \code{sampsize}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
-as \code{sampsize = max(round(sampsize.ratio * n_obs), 1)}.
+as \code{sampsize = min(floor(sampsize.ratio * n_obs), n_obs)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 }

@@ -69,7 +69,7 @@ convert_ratio = function(pv, target, ratio, n) {
 
     # !mtry && mtry.ratio
     {
-      pv[[target]] = as.integer(max(round(pv[[ratio]] * n), 1))
+      pv[[target]] = min(as.integer(pv[[ratio]] * n + 1), n)
       remove_named(pv, ratio)
     },
 
