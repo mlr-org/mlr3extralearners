@@ -31,7 +31,7 @@ lrn("surv.cforest")
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtryratio}
-as \code{mtry = min(floor(mtryratio * n_features + 1), n_features)}.
+as \code{mtry = max(ceiling(mtryratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 }

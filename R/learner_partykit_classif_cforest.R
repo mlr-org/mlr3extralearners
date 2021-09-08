@@ -9,7 +9,7 @@
 #' @section Custom mlr3 defaults:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtryratio`
-#'     as `mtry = min(floor(mtryratio * n_features + 1), n_features)`.
+#'     as `mtry = max(ceiling(mtryratio * n_features), 1)`.
 #'     Note that `mtry` and `mtryratio` are mutually exclusive.
 #'
 #' @references

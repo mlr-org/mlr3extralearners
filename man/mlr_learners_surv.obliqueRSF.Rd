@@ -37,7 +37,7 @@ lrn("surv.obliqueRSF")
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
-as \code{mtry = min(floor(mtry_ratio * n_features + 1), n_features)}.
+as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 }
 }

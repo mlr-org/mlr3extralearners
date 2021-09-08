@@ -14,7 +14,7 @@
 #'   - Reason for change: mlr3 already has it's own verbose set to `TRUE` by default
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry_ratio`
-#'     as `mtry = min(floor(mtry_ratio * n_features + 1), n_features)`.
+#'     as `mtry = max(ceiling(mtry_ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry_ratio` are mutually exclusive.
 #'
 #' @references
