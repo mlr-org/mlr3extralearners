@@ -1,3 +1,9 @@
+# mlr3extralearners 0.5.6
+
+* Introduced new custom hyperparameters for `randomForestSRC::rfsrc()`,
+  `partykit::cforest()` and `obliqueRSF::ORSF()` to conveniently tune
+  hyperparameters whose upper limit depends on data dimensions.
+
 # mlr3extralearners 0.5.5
 
 * Bugfix `regr.gausspr`
