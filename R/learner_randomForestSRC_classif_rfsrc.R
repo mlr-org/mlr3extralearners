@@ -147,12 +147,12 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       }
 
       mlr3misc::invoke(randomForestSRC::rfsrc,
-        formula = task$formula(), data = as.data.frame(task$data()),
+        formula = task$formula(), data = data.table::setDF(task$data()),
         .args = pv, .opts = list(rf.cores = cores))
     },
 
     .predict = function(task) {
-      newdata = as.data.frame(task$data(cols = task$feature_names))
+      newdata = data.table::setDF(task$data(cols = task$feature_names))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
       pred = mlr3misc::invoke(predict,

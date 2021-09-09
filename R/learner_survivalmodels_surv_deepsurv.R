@@ -109,7 +109,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
       pars = self$param_set$get_values(tags = "fit")
       mlr3misc::invoke(
         survivalmodels::deepsurv,
-        data = as.data.frame(task$data()),
+        data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
         .args = pars
