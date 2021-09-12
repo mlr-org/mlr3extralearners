@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.6</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.7</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -177,16 +177,21 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <li><p>Properties: weights</p></li>
 </ul>
 
+    <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
+
+    
+
+<ul>
+<li><p><code>mtry</code>:</p><ul>
+<li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtryratio</code>
+as <code>mtry = max(ceiling(mtryratio * n_features), 1)</code>.
+Note that <code>mtry</code> and <code>mtryratio</code> are mutually exclusive.</p></li>
+</ul></li>
+</ul>
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Hothorn T, Zeileis A (2015).
-“partykit: A Modular Toolkit for Recursive Partytioning in R.”
-Journal of Machine Learning Research, 16(118), 3905-3909.
-<a href='http://jmlr.org/papers/v16/hothorn15a.html'>http://jmlr.org/papers/v16/hothorn15a.html</a></p>
-<p>Hothorn T, Hornik K, Zeileis A (2006).
-“Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-Journal of Computational and Graphical Statistics, 15(3), 651–674.
-doi: <a href='https://doi.org/10.1198/106186006x133933'>10.1198/106186006x133933</a></p>
+    <p>`r format_bib(c("hothorn_2015", "hothorn_2006"))</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
@@ -252,18 +257,18 @@ doi: <a href='https://doi.org/10.1198/106186006x133933'>10.1198/106186006x133933
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt;  [1] "ntree"           "replace"         "fraction"        "mtry"           
-#&gt;  [5] "applyfun"        "cores"           "trace"           "offset"         
-#&gt;  [9] "cluster"         "na.action"       "scores"          "teststat"       
-#&gt; [13] "splitstat"       "splittest"       "testtype"        "nmax"           
-#&gt; [17] "alpha"           "mincriterion"    "logmincriterion" "minsplit"       
-#&gt; [21] "minbucket"       "minprob"         "stump"           "lookahead"      
-#&gt; [25] "MIA"             "nresample"       "tol"             "maxsurrogate"   
-#&gt; [29] "numsurrogate"    "maxdepth"        "multiway"        "splittry"       
-#&gt; [33] "intersplit"      "majority"        "caseweights"     "saveinfo"       
-#&gt; [37] "update"          "splitflavour"    "maxvar"          "OOB"            
-#&gt; [41] "simplify"        "scale"           "nperm"           "risk"           
-#&gt; [45] "conditional"     "threshold"       "maxpts"          "abseps"         
-#&gt; [49] "releps"         </div></pre>
+#&gt;  [5] "mtryratio"       "applyfun"        "cores"           "trace"          
+#&gt;  [9] "offset"          "cluster"         "na.action"       "scores"         
+#&gt; [13] "teststat"        "splitstat"       "splittest"       "testtype"       
+#&gt; [17] "nmax"            "alpha"           "mincriterion"    "logmincriterion"
+#&gt; [21] "minsplit"        "minbucket"       "minprob"         "stump"          
+#&gt; [25] "lookahead"       "MIA"             "nresample"       "tol"            
+#&gt; [29] "maxsurrogate"    "numsurrogate"    "maxdepth"        "multiway"       
+#&gt; [33] "splittry"        "intersplit"      "majority"        "caseweights"    
+#&gt; [37] "saveinfo"        "update"          "splitflavour"    "maxvar"         
+#&gt; [41] "OOB"             "simplify"        "scale"           "nperm"          
+#&gt; [45] "risk"            "conditional"     "threshold"       "maxpts"         
+#&gt; [49] "abseps"          "releps"         </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

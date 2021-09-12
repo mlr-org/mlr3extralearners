@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.6</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.7</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -187,12 +187,25 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <li><p>Adjusted default: 1</p></li>
 <li><p>Reason for change: Threading conflicts with explicit parallelization via <a href='https://CRAN.R-project.org/package=future'><span class="pkg">future</span></a>.</p></li>
 </ul></li>
+<li><p><code>mtry</code>:</p><ul>
+<li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry.ratio</code>
+as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
+Note that <code>mtry</code> and <code>mtry.ratio</code> are mutually exclusive.</p></li>
+</ul></li>
+<li><p><code>sampsize</code>:</p><ul>
+<li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>sampsize.ratio</code>
+as <code>sampsize = max(ceiling(sampsize.ratio * n_obs), 1)</code>.
+Note that <code>sampsize</code> and <code>sampsize.ratio</code> are mutually exclusive.</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Breiman L (2001). “Random Forests.”
-Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: <a href='https://doi.org/10.1023/A:1010933404324'>10.1023/A:1010933404324</a></p>
+    <p>Breiman, Leo (2001).
+&#8220;Random Forests.&#8221;
+<em>Machine Learning</em>, <b>45</b>(1), 5--32.
+ISSN 1573-0565, doi: <a href='https://doi.org/10.1023/A:1010933404324'>10.1023/A:1010933404324</a>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
@@ -280,13 +293,15 @@ Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: <a href='https://doi.org/1
 #&gt; * Properties: importance, missings, oob_error, weights</div><div class='input'>
 <span class='co'># available parameters:</span>
 <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "ntree"       "mtry"        "nodesize"    "nodedepth"   "splitrule"  
-#&gt;  [6] "nsplit"      "importance"  "block.size"  "ensemble"    "bootstrap"  
-#&gt; [11] "samptype"    "samp"        "membership"  "sampsize"    "na.action"  
-#&gt; [16] "nimpute"     "ntime"       "cause"       "proximity"   "distance"   
-#&gt; [21] "forest.wt"   "xvar.wt"     "split.wt"    "forest"      "var.used"   
-#&gt; [26] "split.depth" "seed"        "do.trace"    "statistics"  "get.tree"   
-#&gt; [31] "outcome"     "ptn.count"   "cores"      </div></pre>
+</div><div class='output co'>#&gt;  [1] "ntree"          "mtry"           "mtry.ratio"     "nodesize"      
+#&gt;  [5] "nodedepth"      "splitrule"      "nsplit"         "importance"    
+#&gt;  [9] "block.size"     "ensemble"       "bootstrap"      "samptype"      
+#&gt; [13] "samp"           "membership"     "sampsize"       "sampsize.ratio"
+#&gt; [17] "na.action"      "nimpute"        "ntime"          "cause"         
+#&gt; [21] "proximity"      "distance"       "forest.wt"      "xvar.wt"       
+#&gt; [25] "split.wt"       "forest"         "var.used"       "split.depth"   
+#&gt; [29] "seed"           "do.trace"       "statistics"     "get.tree"      
+#&gt; [33] "outcome"        "ptn.count"      "cores"         </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

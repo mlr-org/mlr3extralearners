@@ -82,7 +82,7 @@
 
       <div class="navbar-brand-container">
         <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org" /></a>
-        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.6</small></a>
+        <a class="navbar-brand" href="../index.html">mlr3extralearners <small>v0.5.7</small></a>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
@@ -187,14 +187,20 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <li><p>Adjusted default: <code>FALSE</code></p></li>
 <li><p>Reason for change: mlr3 already has it's own verbose set to <code>TRUE</code> by default</p></li>
 </ul></li>
+<li><p><code>mtry</code>:</p><ul>
+<li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry_ratio</code>
+as <code>mtry = max(ceiling(mtry_ratio * n_features), 1)</code>.
+Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.</p></li>
+</ul></li>
 </ul>
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
-“Oblique random survival forests.” The Annals of Applied Statistics, 13(3), 1847–1883.
-ISSN 1932-6157, 1941-7330, doi: 10.1214/19-AOAS1261,
-https://projecteuclid.org/euclid.aoas/1571277776.</p>
+&#8220;Oblique random survival forests.&#8221;
+<em>The Annals of Applied Statistics</em>, <b>13</b>(3).
+doi: <a href='https://doi.org/10.1214/19-aoas1261'>10.1214/19-aoas1261</a>
+.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
@@ -272,9 +278,10 @@ Concordance is also available.</p><h4 class='hasAnchor' id='arguments'><a class=
 #&gt;  [5] "min_obs_to_split_node"    "min_obs_in_leaf_node"    
 #&gt;  [7] "min_events_in_leaf_node"  "nsplit"                  
 #&gt;  [9] "gamma"                    "max_pval_to_split_node"  
-#&gt; [11] "mtry"                     "dfmax"                   
-#&gt; [13] "use.cv"                   "verbose"                 
-#&gt; [15] "compute_oob_predictions"  "random_seed"             </div></pre>
+#&gt; [11] "mtry"                     "mtry_ratio"              
+#&gt; [13] "dfmax"                    "use.cv"                  
+#&gt; [15] "verbose"                  "compute_oob_predictions" 
+#&gt; [17] "random_seed"             </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
