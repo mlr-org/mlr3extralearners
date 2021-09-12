@@ -216,7 +216,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
                      },
                      cdf = function() {
                      },
-                     parameters = distr6::ParameterSet$new()
+                     parameters = param6::pset()
   ))
 
   params = rep(params, length(lp))
