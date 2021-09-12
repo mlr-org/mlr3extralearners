@@ -68,12 +68,18 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         pars$weights = as.numeric(task$weights$weight)
       }
 
+      data = task$data()
+      tn = task$target_names
+      time = data[[tn[1L]]]
+      status = data[[tn[2L]]]
+      data = as.matrix(data[, !tn, with = FALSE])
+
       with_package("CoxBoost", {
         mlr3misc::invoke(
           CoxBoost::CoxBoost,
-          time = task$truth()[, 1],
-          status = task$truth()[, 2],
-          x = as.matrix(task$data(cols = task$feature_names)),
+          time = time,
+          status = status,
+          x = data,
           .args = pars
         )
       })
