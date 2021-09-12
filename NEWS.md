@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.6
+
+* Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests
+
 # mlr3extralearners 0.5.5
 
 * Bugfix `regr.gausspr`

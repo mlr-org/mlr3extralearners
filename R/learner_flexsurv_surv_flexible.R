@@ -155,51 +155,35 @@ predict_flexsurvreg <- function(object, task, ...) {
   # parameters above.
   pdf = function(x) {} # nolint
   body(pdf) = substitute({
-    fn = func
-    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
-    do.call(fn, c(list(x = x), args))
+    do.call(func, c(list(x = x), self$parameters()$values))
   }, list(func = object$dfns$d))
 
   cdf = function(x) {} # nolint
   body(cdf) = substitute({
-    fn = func
-    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
-    do.call(fn, c(list(q = x), args))
+    do.call(func, c(list(q = x), self$parameters()$values))
   }, list(func = object$dfns$p))
 
   quantile = function(p) {} # nolint
   body(quantile) = substitute({
-    fn = func
-    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
-    do.call(fn, c(list(p = p), args))
+    do.call(func, c(list(p = p), self$parameters()$values))
   }, list(func = object$dfns$q))
 
   rand = function(n) {} # nolint
   body(rand) = substitute({
-    fn = func
-    args = as.list(subset(data.table::as.data.table(self$parameters()), select = "value"))$value
-    names(args) = unname(unlist(data.table::as.data.table(self$parameters())[, 1]))
-    do.call(fn, c(list(n = n), args))
+    do.call(func, c(list(n = n), self$parameters()$values))
   }, list(func = object$dfns$r))
 
   # The parameter set combines the auxiliary parameters with the fitted gamma coefficients.
-  # Whilst the
-  # user can set these after fitting, this is generally ill-advised.
-  parameters = distr6::ParameterSet$new(
-    id = c(names(args), object$dlist$pars),
-    value = c(list(
-      numeric(length(object$knots)),
-      "hazard", "log"), rep(list(0), length(object$dlist$pars))),
-    settable = rep(TRUE, length(args) + length(object$dlist$pars)),
-    support = c(
-      list(set6::Reals$new()^length(object$knots)),
-      set6::Set$new("hazard", "odds", "normal"),
-      set6::Set$new("log", "identity"),
-      rep(list(set6::Reals$new()), length(object$dlist$pars)))
-  )
+  # Whilst the user can set these after fitting, this is generally ill-advised.
+  parameters = param6::ParameterSet$new(c(list(
+    param6::prm(
+      "knots", set6::Reals$new()^length(object$knots),
+      numeric(length(object$knots))
+    ),
+    param6::prm("scale", set6::Set$new("hazard", "odds", "normal"), "hazard"),
+    param6::prm("timescale", set6::Set$new("log", "identity"), "log")),
+    lapply(object$dlist$pars, function(x) param6::prm(x, "reals", 0))
+  ))
 
   pars = data.table::data.table(t(pars))
   pargs = data.table::data.table(matrix(args, ncol = ncol(pars), nrow = length(args)))
@@ -217,18 +201,16 @@ predict_flexsurvreg <- function(object, task, ...) {
     pdf = pdf, cdf = cdf, quantile = quantile, rand = rand
   )
 
+  ## FIXME - This is bad and needs speeding up
   distlist = lapply(pars, function(x) {
-    x = as.list(x)
-    names(x) = c(object$dlist$pars, names(args))
     yparams = parameters$clone(deep = TRUE)
-    ind = match(yparams$.__enclos_env__$private$.parameters$id, names(x))
-    yparams$.__enclos_env__$private$.parameters$value = x[ind]
+    yparams$values = setNames(as.list(x), c(object$dlist$pars, names(args)))
 
     do.call(distr6::Distribution$new, c(list(parameters = yparams), shared_params))
   })
 
-  distr = distr6::VectorDistribution$new(distlist,
-                                         decorators = c("CoreStatistics", "ExoticStatistics"))
+  distr = distr6::VectorDistribution$new(
+    distlist, decorators = c("CoreStatistics", "ExoticStatistics"))
 
   return(list(distr = distr, lp = lp))
 }

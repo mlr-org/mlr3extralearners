@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.5
+Version: 0.5.6
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -80,6 +80,7 @@ Suggests:
     nnet,
     np,
     obliqueRSF,
+    param6,
     partykit,
     penalized,
     pendensity,
@@ -96,7 +97,7 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels (>= 0.1.4),
+    survivalmodels (>= 0.1.9),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
