@@ -34,6 +34,18 @@ lrn("regr.rfsrc")
 \item Adjusted default: 1
 \item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
 }
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
+as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+\item \code{sampsize}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
+as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
+Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
+}
 }
 }
 
@@ -46,8 +58,10 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Breiman L (2001). “Random Forests.”
-Machine Learning, 45(1), 5–32. ISSN 1573-0565, \doi{10.1023/A:1010933404324}
+Breiman, Leo (2001).
+\dQuote{Random Forests.}
+\emph{Machine Learning}, \bold{45}(1), 5--32.
+ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:

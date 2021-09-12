@@ -12,12 +12,13 @@
 #'   - Actual default: `TRUE`
 #'   - Adjusted default: `FALSE`
 #'   - Reason for change: mlr3 already has it's own verbose set to `TRUE` by default
+#' - `mtry`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry_ratio`
+#'     as `mtry = max(ceiling(mtry_ratio * n_features), 1)`.
+#'     Note that `mtry` and `mtry_ratio` are mutually exclusive.
 #'
 #' @references
-#' Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
-#' “Oblique random survival forests.” The Annals of Applied Statistics, 13(3), 1847–1883.
-#' ISSN 1932-6157, 1941-7330, doi: 10.1214/19-AOAS1261,
-#' https://projecteuclid.org/euclid.aoas/1571277776.
+#' `r format_bib("jaeger_2019")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -42,6 +43,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
           max_pval_to_split_node = p_dbl(lower = 0, upper = 1, default = 0.5,
             tags = "train"),
           mtry = p_int(lower = 1, tags = "train"),
+          mtry_ratio = p_dbl(0, 1, tags = "train"),
           dfmax = p_int(lower = 1, tags = "train"),
           use.cv = p_lgl(default = FALSE, tags = "train"),
           verbose = p_lgl(default = TRUE, tags = "train"),
@@ -76,11 +78,12 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv = convert_ratio(pv, "mtry", "mtry_ratio", length(task$feature_names))
       targets = task$target_names
 
       mlr3misc::invoke(
         obliqueRSF::ORSF,
-        data     = as.data.frame(task$data()),
+        data     = data.table::setDF(task$data()),
         time     = targets[1L],
         status   = targets[2L],
         .args    = pv

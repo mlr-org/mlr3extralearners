@@ -43,7 +43,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
       pars <- self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::akritas,
-        data = as.data.frame(task$data()),
+        data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
         .args = pars

@@ -6,15 +6,10 @@
 #' @templateVar id regr.rfsrc
 #' @templateVar caller rfsrc
 #'
-#' @section Custom mlr3 defaults:
-#' - `cores`:
-#'   - Actual default: Auto-detecting the number of cores
-#'   - Adjusted default: 1
-#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 defaults
 #'
 #' @references
-#' Breiman L (2001). “Random Forests.”
-#' Machine Learning, 45(1), 5–32. ISSN 1573-0565, \doi{10.1023/A:1010933404324}
+#' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -29,6 +24,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       ps = ps(
           ntree = p_int(default = 1000, lower = 1L, tags = c("train", "predict")),
           mtry = p_int(lower = 1L, tags = "train"),
+          mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
           nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
           nodedepth = p_int(lower = 1L, tags = "train"),
           splitrule = p_fct(
@@ -52,6 +48,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           samp = p_uty(tags = "train"),
           membership = p_lgl(default = FALSE, tags = c("train", "predict")),
           sampsize = p_uty(tags = "train"),
+          sampsize.ratio = p_dbl(0, 1, tags = "train"),
           na.action = p_fct(
             default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
@@ -137,6 +134,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
+      pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
