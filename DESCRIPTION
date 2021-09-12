@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.6
+Version: 0.5.8
 Authors@R:
     c(person(given = "Raphael",
              family = "Sonabend",
@@ -44,7 +44,7 @@ Imports:
     data.table,
     methods,
     mlr3 (>= 0.6.0),
-    mlr3misc,
+    mlr3misc (>= 0.9.4),
     paradox,
     R6
 Suggests:
@@ -55,7 +55,7 @@ Suggests:
     CoxBoost,
     Cubist,
     dbarts,
-    distr6 (>= 1.4.3),
+    distr6 (>= 1.6.0),
     earth,
     extraTrees,
     flexsurv,
@@ -75,11 +75,12 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.4.0),
+    mlr3proba (>= 0.4.1),
     mvtnorm,
     nnet,
     np,
     obliqueRSF,
+    param6,
     partykit,
     penalized,
     pendensity,
@@ -96,7 +97,7 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels (>= 0.1.4),
+    survivalmodels (>= 0.1.9),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
@@ -107,4 +108,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

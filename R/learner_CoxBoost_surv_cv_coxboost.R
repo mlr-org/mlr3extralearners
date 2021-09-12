@@ -84,7 +84,11 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         cox_pars$weights = as.numeric(task$weights$weight)
       }
 
-      data <- as.matrix(task$data(cols = task$feature_names))
+      data = task$data()
+      tn = task$target_names
+      time = data[[tn[1L]]]
+      status = data[[tn[2L]]]
+      data = as.matrix(data[, !tn, with = FALSE])
 
       pen_optim = FALSE
       if (!is.null(opt_pars$penalty)) {
@@ -100,16 +104,16 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         if (pen_optim) {
           optim = mlr3misc::invoke(
             CoxBoost::optimCoxBoostPenalty,
-            time = task$truth()[, 1],
-            status = task$truth()[, 2],
+            time = time,
+            status = status,
             x = data,
             .args = c(opt_pars, cv_pars)
           )
 
           return(mlr3misc::invoke(
             CoxBoost::CoxBoost,
-            time = task$truth()[, 1],
-            status = task$truth()[, 2],
+            time = time,
+            status = status,
             x = data,
             stepno = optim$cv.res$optimal.step,
             penalty = optim$penalty,
@@ -118,16 +122,16 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         } else {
           optimal_step = mlr3misc::invoke(
             CoxBoost::cv.CoxBoost,
-            time = task$truth()[, 1],
-            status = task$truth()[, 2],
+            time = time,
+            status = status,
             x = data,
             .args = c(cv_pars, cox_pars)
           )$optimal.step
 
           return(mlr3misc::invoke(
             CoxBoost::CoxBoost,
-            time = task$truth()[, 1],
-            status = task$truth()[, 2],
+            time = time,
+            status = status,
             x = data,
             stepno = optimal_step,
             .args = cox_pars

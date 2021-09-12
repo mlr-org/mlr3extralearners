@@ -6,16 +6,10 @@
 #' @templateVar id regr.cforest
 #' @templateVar caller cforest
 #'
-#' @references
-#' Hothorn T, Zeileis A (2015).
-#' “partykit: A Modular Toolkit for Recursive Partytioning in R.”
-#' Journal of Machine Learning Research, 16(118), 3905-3909.
-#' \url{http://jmlr.org/papers/v16/hothorn15a.html}
+#' @inheritSection mlr_learners_classif.cforest Custom mlr3 defaults
 #'
-#' Hothorn T, Hornik K, Zeileis A (2006).
-#' “Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-#' Journal of Computational and Graphical Statistics, 15(3), 651–674.
-#' \doi{10.1198/106186006x133933}
+#' @references
+#' `r format_bib(c("hothorn_2015", "hothorn_2006"))
 #'
 #' @export
 #' @template seealso_learner
@@ -37,6 +31,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
           tags = "train"),
         mtry = p_int(lower = 0L, special_vals = list(Inf),
           tags = "train"), # default actually "ceiling(sqrt(nvar))"
+        mtryratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         applyfun = p_uty(tags = c("train", "importance")),
         cores = p_int(default = NULL, special_vals = list(NULL),
           tags = c("train", "importance")),
@@ -163,6 +158,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
+      pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
       pars_control = pars[which(names(pars) %in%
         setdiff(methods::formalArgs(partykit::ctree_control),
           c("mtry", "applyfun", "cores")

@@ -107,7 +107,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
       pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::dnnsurv,
-        data = as.data.frame(task$data()),
+        data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
         .args = pars
