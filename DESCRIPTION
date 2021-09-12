@@ -97,7 +97,7 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels (>= 0.1.4),
+    survivalmodels (>= 0.1.9),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
