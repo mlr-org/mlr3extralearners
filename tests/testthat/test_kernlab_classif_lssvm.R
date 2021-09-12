@@ -2,6 +2,7 @@ install_learners("classif.lssvm")
 load_tests("classif.lssvm")
 
 test_that("autotest", {
+  set.seed(1)
   learner = lrn("classif.lssvm")
   expect_learner(learner)
   result = run_autotest(learner, exclude = "single", N = 50)
