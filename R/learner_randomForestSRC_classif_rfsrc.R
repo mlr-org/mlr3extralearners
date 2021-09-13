@@ -11,10 +11,17 @@
 #'   - Actual default: Auto-detecting the number of cores
 #'   - Adjusted default: 1
 #'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' - `mtry`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
+#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
+#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `sampsize`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
+#'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
+#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
 #' @references
-#' Breiman L (2001). “Random Forests.”
-#' Machine Learning, 45(1), 5–32. ISSN 1573-0565, doi: 10.1023/A:1010933404324.
+#' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -29,6 +36,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       ps = ps(
           ntree = p_int(default = 1000, lower = 1L, tags = c("train", "predict")),
           mtry = p_int(lower = 1L, tags = "train"),
+          mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
           nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
           nodedepth = p_int(lower = 1L, tags = "train"),
           splitrule = p_fct(
@@ -52,6 +60,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           samp = p_uty(tags = "train"),
           membership = p_lgl(default = FALSE, tags = c("train", "predict")),
           sampsize = p_uty(tags = "train"),
+          sampsize.ratio = p_dbl(0, 1, tags = "train"),
           na.action = p_fct(
             default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
@@ -140,6 +149,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
+      pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
@@ -147,12 +158,12 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       }
 
       mlr3misc::invoke(randomForestSRC::rfsrc,
-        formula = task$formula(), data = as.data.frame(task$data()),
+        formula = task$formula(), data = data.table::setDF(task$data()),
         .args = pv, .opts = list(rf.cores = cores))
     },
 
     .predict = function(task) {
-      newdata = as.data.frame(task$data(cols = task$feature_names))
+      newdata = data.table::setDF(task$data(cols = task$feature_names))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
       pred = mlr3misc::invoke(predict,

@@ -1,3 +1,17 @@
+# mlr3extralearners 0.5.8
+
+* Add `regr.rvm` and `classif.lssvm`
+
+# mlr3extralearners 0.5.7
+
+* Introduced new custom hyperparameters for `randomForestSRC::rfsrc()`,
+  `partykit::cforest()` and `obliqueRSF::ORSF()` to conveniently tune
+  hyperparameters whose upper limit depends on data dimensions.
+  
+# mlr3extralearners 0.5.6
+
+* Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests
+
 # mlr3extralearners 0.5.5
 
 * Bugfix `regr.gausspr`
