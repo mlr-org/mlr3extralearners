@@ -257,6 +257,17 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   # OPEN FILES
   cat(file_name_lrn)
-  utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
+  x <- readline("\nDo you want to open the new files now? (Y/N) ")
+  if (x == "Y") {
+    utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
+  } else {
+    mlr3misc::catf(
+      "\nEdit the following files when ready:\n %s",
+      paste0(c(file_name_lrn, file_name_test, file_name_ptest),
+        collapse = "\n "
+      )
+    )
+  }
+
 }
 # nocov end
