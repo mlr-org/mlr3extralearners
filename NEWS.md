@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.9
+
+* Fixed bug that didn't allow C parameter to be set for nu-regression
+
 # mlr3extralearners 0.5.8
 
 * Add `regr.rvm` and `classif.lssvm`
