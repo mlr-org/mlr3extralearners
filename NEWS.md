@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.10
+
+* Added params `ignored_features` and `one_hot_max_size` to `classif.catboost`
+
 # mlr3extralearners 0.5.9
 
 * Fixed bug that didn't allow C parameter to be set for nu-regression
