@@ -345,7 +345,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         object = self$model,
         data = newdata,
         reshape = TRUE,
-        .args = pars
+        params = pars
       )
 
       response = NULL
