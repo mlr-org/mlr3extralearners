@@ -328,7 +328,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         mlr3misc::invoke(
           lightgbm::lgb.train,
           data = dtrain,
-          .args = pars
+          params = pars
         )
       }
 
