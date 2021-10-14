@@ -252,7 +252,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         mlr3misc::invoke(lightgbm::lgb.train,
           data = dtrain,
           valids = list(test = dtest),
-          .args = pars
+          params = pars
         )
       } else {
         dtrain = lightgbm::lgb.Dataset(
