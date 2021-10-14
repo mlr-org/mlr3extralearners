@@ -304,7 +304,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           lightgbm::lgb.train,
           data = dtrain,
           valids = list(test = dtest),
-          .args = pars
+          params = pars
         )
 
       } else {
