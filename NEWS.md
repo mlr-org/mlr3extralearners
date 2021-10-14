@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.11
+
+* Patch for `lightgbm` updates
+
 # mlr3extralearners 0.5.10
 
 * Added params `ignored_features` and `one_hot_max_size` to `classif.catboost`
