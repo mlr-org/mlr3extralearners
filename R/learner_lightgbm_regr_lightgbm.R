@@ -283,7 +283,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       pred = mlr3misc::invoke(predict,
         object = self$model,
         data = newdata,
-        .args = pars
+        params = pars
       )
 
       list(response = pred)
