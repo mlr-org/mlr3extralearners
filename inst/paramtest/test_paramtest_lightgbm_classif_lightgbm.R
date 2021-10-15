@@ -27,6 +27,7 @@ test_that("classif.lightgbm predict", {
   learner = lrn("classif.lightgbm")
   fun = lightgbm:::predict.lgb.Booster
     exclude = c(
+      "params", # handled internally
       "object", # handled internally
       "data", # handled internally
       "rawscore", # always FALSE

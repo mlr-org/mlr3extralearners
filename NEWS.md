@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.12
+
+* Patch for `lightgbm` updates
+
 # mlr3extralearners 0.5.11
 
 * Add option to not open files with `create_learner`

@@ -14,7 +14,7 @@ test_that("manual validation binary", {
   task = tsk("sonar")
   expect_error(learner$train(task))
   task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
-  expect_silent(learner$train(task))
+  expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })
 
 test_that("manual validation multiclass", {
@@ -22,5 +22,5 @@ test_that("manual validation multiclass", {
   task = tsk("iris")
   expect_error(learner$train(task))
   task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
-  expect_silent(learner$train(task))
+  expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })

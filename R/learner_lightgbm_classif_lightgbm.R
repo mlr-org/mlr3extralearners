@@ -304,7 +304,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           lightgbm::lgb.train,
           data = dtrain,
           valids = list(test = dtest),
-          .args = pars
+          params = pars
         )
 
       } else {
@@ -328,7 +328,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         mlr3misc::invoke(
           lightgbm::lgb.train,
           data = dtrain,
-          .args = pars
+          params = pars
         )
       }
 
@@ -345,7 +345,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         object = self$model,
         data = newdata,
         reshape = TRUE,
-        .args = pars
+        params = pars
       )
 
       response = NULL
