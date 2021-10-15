@@ -1,6 +1,10 @@
-# mlr3extralearners 0.5.11
+# mlr3extralearners 0.5.12
 
 * Patch for `lightgbm` updates
+
+# mlr3extralearners 0.5.11
+
+* Add option to not open files with `create_learner`
 
 # mlr3extralearners 0.5.10
 
@@ -19,7 +23,7 @@
 * Introduced new custom hyperparameters for `randomForestSRC::rfsrc()`,
   `partykit::cforest()` and `obliqueRSF::ORSF()` to conveniently tune
   hyperparameters whose upper limit depends on data dimensions.
-  
+
 # mlr3extralearners 0.5.6
 
 * Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests
