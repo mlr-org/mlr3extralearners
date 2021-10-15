@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches: main
-    paths: '**/<package>**'
+    paths: '**/_<package>**'
 
 name: <package> (ubuntu-latest, release)
 

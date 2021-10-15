@@ -1,6 +1,14 @@
-# mlr3extralearners 0.5.9
+# mlr3extralearners 0.5.11
 
 * Add option to not open files with `create_learner`
+
+# mlr3extralearners 0.5.10
+
+* Added params `ignored_features` and `one_hot_max_size` to `classif.catboost`
+
+# mlr3extralearners 0.5.9
+
+* Fixed bug that didn't allow C parameter to be set for nu-regression
 
 # mlr3extralearners 0.5.8
 
