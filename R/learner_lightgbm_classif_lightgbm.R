@@ -19,6 +19,7 @@
 #' @details
 #' For categorical features either pre-process data by encoding columns or
 #' specify the categorical columns with the `categorical_feature` parameter.
+#' For this learner please do not prefix the categorical feature with `name:`.
 #'
 #' @template seealso_learner
 #' @template example
@@ -285,8 +286,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
           label = train_label,
-          free_raw_data = FALSE
+          free_raw_data = FALSE,
+          categorical_feature = pars$categorical_feature
         )
+
+        pars$categorical_feature <- NULL
 
         dtest = lightgbm::lgb.Dataset.create.valid(
           dataset = dtrain,
@@ -318,8 +322,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(cols = task$feature_names)),
           label = train_label,
-          free_raw_data = FALSE
+          free_raw_data = FALSE,
+          categorical_feature = pars$categorical_feature
         )
+
+        pars$categorical_feature <- NULL
 
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", task$weights$weight)
