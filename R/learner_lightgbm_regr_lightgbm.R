@@ -16,9 +16,9 @@
 #'   - Adjusted default: -1L
 #'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
 #'
-#' @details
 #' For categorical features either pre-process data by encoding columns or
 #' specify the categorical columns with the `categorical_feature` parameter.
+#' For this learner please do not prefix the categorical feature with `name:`.
 #'
 #' @template seealso_learner
 #' @template example
@@ -231,10 +231,13 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         train_ids = setdiff(seq(task$nrow), task$row_roles$validation)
 
         dtrain = lightgbm::lgb.Dataset(
-          data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
-          label = as.matrix(task$data(rows = train_ids, cols = task$target_names)),
-          free_raw_data = FALSE
+          data = as.matrix(task$data(cols = task$feature_names)),
+          label = train_label,
+          free_raw_data = FALSE,
+          categorical_feature = pars$categorical_feature
         )
+
+        pars$categorical_feature <- NULL
 
         valid_ids = task$row_roles$validation
         dtest = lightgbm::lgb.Dataset.create.valid(
@@ -258,8 +261,11 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(cols = task$feature_names)),
           label = as.matrix(task$data(cols = task$target_names)),
-          free_raw_data = FALSE
+          free_raw_data = FALSE,
+          categorical_feature = pars$categorical_feature
         )
+
+        pars$categorical_feature <- NULL
 
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", task$weights$weight)
