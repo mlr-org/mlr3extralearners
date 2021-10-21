@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.14
+
+* Further bug fixes in {lightgbm} learners
+
 # mlr3extralearners 0.5.13
 
 * Fix `categorical_features` in {lightgbm} learners

@@ -47,11 +47,9 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           early_stopping_rounds = p_int(lower = 1L, tags = "train"),
           callbacks = p_uty(tags = "train"),
           reset_data = p_lgl(default = FALSE, tags = "train"),
-          categorical_feature = p_uty(default = "", tags = "train"),
           # other core functions
           boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart",
             "goss"), tags = "train"),
-          linear_tree = p_lgl(default = FALSE, tags = "train"),
           num_iterations = p_int(default = 100L, lower = 0L, tags = "train"),
           learning_rate = p_dbl(default = 0.1, lower = 0.0, tags = "train"),
           num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L,
@@ -121,23 +119,25 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
             tags = "train"),
           snapshot_freq = p_int(default = -1L, tags = "train"),
           # dataset parameters
-          max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
-          max_bin_by_feature = p_uty(default = NULL, tags = "train"),
-          min_data_in_bin = p_int(default = 3L, lower = 1L, tags = "train"),
+          linear_tree = p_lgl(default = FALSE, tags = c("train", "dataset")),
+          max_bin = p_int(default = 255L, lower = 2L, tags = c("train", "dataset")),
+          max_bin_by_feature = p_uty(default = NULL, tags = c("train", "dataset")),
+          min_data_in_bin = p_int(default = 3L, lower = 1L, tags = c("train", "dataset")),
           bin_construct_sample_cnt = p_int(default = 200000L, lower = 1L,
-            tags = "train"),
-          data_random_seed = p_int(default = 1L, tags = "train"),
-          is_enable_sparse = p_lgl(default = TRUE, tags = "train"),
-          enable_bundle = p_lgl(default = TRUE, tags = "train"),
-          use_missing = p_lgl(default = TRUE, tags = "train"),
-          zero_as_missing = p_lgl(default = FALSE, tags = "train"),
-          feature_pre_filter = p_lgl(default = TRUE, tags = "train"),
-          pre_partition = p_lgl(default = FALSE, tags = "train"),
-          two_round = p_lgl(default = FALSE, tags = "train"),
-          header = p_lgl(default = FALSE, tags = "train"),
-          group_column = p_uty(default = "", tags = "train"),
-          forcedbins_filename = p_uty(default = "", tags = "train"),
-          save_binary = p_lgl(default = FALSE, tags = "train"),
+            tags = c("train", "dataset")),
+          data_random_seed = p_int(default = 1L, tags = c("train", "dataset")),
+          is_enable_sparse = p_lgl(default = TRUE, tags = c("train", "dataset")),
+          enable_bundle = p_lgl(default = TRUE, tags = c("train", "dataset")),
+          use_missing = p_lgl(default = TRUE, tags = c("train", "dataset")),
+          zero_as_missing = p_lgl(default = FALSE, tags = c("train", "dataset")),
+          feature_pre_filter = p_lgl(default = TRUE, tags = c("train", "dataset")),
+          pre_partition = p_lgl(default = FALSE, tags = c("train", "dataset")),
+          two_round = p_lgl(default = FALSE, tags = c("train", "dataset")),
+          header = p_lgl(default = FALSE, tags = c("train", "dataset")),
+          group_column = p_uty(default = "", tags = c("train", "dataset")),
+          categorical_feature = p_uty(default = "", tags = c("train", "dataset")),
+          forcedbins_filename = p_uty(default = "", tags = c("train", "dataset")),
+          save_binary = p_lgl(default = FALSE, tags = c("train", "dataset")),
           # objective parameters
           boost_from_average = p_lgl(default = TRUE, tags = "train"),
           reg_sqrt = p_lgl(default = FALSE, tags = "train"),
@@ -230,14 +230,16 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       if (length(task$row_roles$validation)) {
         train_ids = setdiff(seq(task$nrow), task$row_roles$validation)
 
+        df_pars = self$param_set$get_values(tags = "dataset")
+
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
           label = as.matrix(task$data(rows = train_ids, cols = task$target_names)),
           free_raw_data = FALSE,
-          categorical_feature = pars$categorical_feature
+          params = df_pars
         )
 
-        pars$categorical_feature <- NULL
+        pars = pars[setdiff(names(pars), names(df_pars))]
 
         valid_ids = task$row_roles$validation
         dtest = lightgbm::lgb.Dataset.create.valid(
@@ -258,14 +260,16 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           params = pars
         )
       } else {
+        df_pars = self$param_set$get_values(tags = "dataset")
+
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(cols = task$feature_names)),
           label = as.matrix(task$data(cols = task$target_names)),
           free_raw_data = FALSE,
-          categorical_feature = pars$categorical_feature
+          params = df_pars
         )
 
-        pars$categorical_feature <- NULL
+        pars = pars[setdiff(names(pars), names(df_pars))]
 
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", task$weights$weight)
