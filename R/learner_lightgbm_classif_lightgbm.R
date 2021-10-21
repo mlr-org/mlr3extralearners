@@ -286,7 +286,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         df_pars = self$param_set$get_values(tags = "dataset")
 
         dtrain = lightgbm::lgb.Dataset(
-          data = as.matrix(task$data(cols = task$feature_names)),
+          data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
           label = train_label,
           free_raw_data = FALSE,
           params = df_pars
