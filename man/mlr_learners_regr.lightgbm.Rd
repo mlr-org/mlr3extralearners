@@ -7,10 +7,6 @@
 \description{
 Calls \link[lightgbm:lgb.train]{lightgbm::lgb.train} from package \CRANpkg{lightgbm}.
 }
-\details{
-For categorical features either pre-process data by encoding columns or
-specify the categorical columns with the \code{categorical_feature} parameter.
-}
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
 \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
@@ -45,6 +41,9 @@ lrn("regr.lightgbm")
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
 }
+
+For categorical features either pre-process data by encoding columns or
+specify the categorical columns with the \code{categorical_feature} parameter.
 }
 
 \examples{

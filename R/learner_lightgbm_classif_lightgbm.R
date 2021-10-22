@@ -19,7 +19,6 @@
 #' @details
 #' For categorical features either pre-process data by encoding columns or
 #' specify the categorical columns with the `categorical_feature` parameter.
-#' For this learner please do not prefix the categorical feature with `name:`.
 #'
 #' @template seealso_learner
 #' @template example
