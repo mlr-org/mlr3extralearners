@@ -283,11 +283,15 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         }
 
         df_pars = self$param_set$get_values(tags = "dataset")
+        cf = df_pars$categorical_feature
+        df_pars$categorical_feature = NULL
 
-        dtrain = lightgbm::lgb.Dataset(
+        dtrain = mlr3misc::invoke(
+          lightgbm::lgb.Dataset,
           data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
           label = train_label,
           free_raw_data = FALSE,
+          categorical_feature = cf,
           params = df_pars
         )
 
@@ -321,12 +325,16 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         }
 
         df_pars = self$param_set$get_values(tags = "dataset")
+        cf = df_pars$categorical_feature
+        df_pars$categorical_feature = NULL
 
-        dtrain = lightgbm::lgb.Dataset(
+        dtrain = mlr3misc::invoke(
+          lightgbm::lgb.Dataset,
           data = as.matrix(task$data(cols = task$feature_names)),
           label = train_label,
           free_raw_data = FALSE,
-          params = df_pars
+          categorical_feature = cf,
+          df_pars
         )
 
         pars = pars[setdiff(names(pars), names(df_pars))]
