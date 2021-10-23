@@ -48,6 +48,7 @@ Imports:
     paradox,
     R6
 Suggests:
+    abess,
     actuar,
     apcluster,
     C50,
