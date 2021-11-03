@@ -48,7 +48,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
 
       super$initialize(
         id = "classif.gbm",
-        packages = "gbm",
+        packages = c("mlr3extralearners", "gbm"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

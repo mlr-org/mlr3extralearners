@@ -28,7 +28,7 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
 
       super$initialize(
         id = "regr.mars",
-        packages = "mda",
+        packages = c("mlr3extralearners", "mda"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,

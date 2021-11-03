@@ -40,7 +40,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       super$initialize(
         id = "classif.bart",
-        packages = "dbarts",
+        packages = c("mlr3extralearners", "dbarts"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

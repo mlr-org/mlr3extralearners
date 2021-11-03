@@ -21,23 +21,72 @@ lrn("surv.loghaz")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: survivalmodels, distr6, reticulate
-\item Predict Types: crank, distr
-\item Feature Types: integer, numeric
-\item Properties:
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}, \CRANpkg{reticulate}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   frac \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   cuts \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   cutpoints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scheme \tab character \tab equidistant \tab equidistant, quantiles \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cut_min \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   num_nodes \tab list \tab 32, 32 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   batch_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dropout \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   activation \tab character \tab relu \tab celu, elu, gelu, glu, hardshrink, hardsigmoid, hardswish, hardtanh, relu6, leakyrelu, \link{...} \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom_net \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   device \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   shrink \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   optimizer \tab character \tab adam \tab adadelta, adagrad, adam, adamax, adamw, asgd, rmsprop, rprop, sgd, sparse_adam \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   rho \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   eps \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lr \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   weight_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   learning_rate \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lr_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   betas \tab list \tab 0.900, 0.999 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   amsgrad \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lambd \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   alpha \tab numeric \tab 0.75 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   t0 \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   momentum \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   centered \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   etas \tab list \tab 0.5, 1.2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   step_sizes \tab list \tab 1e-06, 5e+01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dampening \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   batch_size \tab integer \tab 256 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   epochs \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_workers \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   shuffle \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   best_weights \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   min_delta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   patience \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   interpolate \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   inter_scheme \tab character \tab const_hazard \tab const_hazard, const_pdf \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sub \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.loghaz"))
-print(learner)
+if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.loghaz")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Gensheimer, M. F., & Narasimhan, B. (2018).
@@ -49,8 +98,15 @@ Continuous and discrete-time survival prediction with neural networks.
 https://doi.org/arXiv:1910.06724.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

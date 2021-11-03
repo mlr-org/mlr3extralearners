@@ -56,7 +56,7 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
 
       super$initialize(
         id = "classif.JRip",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

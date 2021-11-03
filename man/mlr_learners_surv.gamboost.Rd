@@ -26,31 +26,74 @@ lrn("surv.gamboost")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp
-\item Feature Types: integer, numeric, factor, logical
-\item Properties: importance, selected_features, weights
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
 }
 
 
 \itemize{
-\item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp
-\item Feature Types: integer, numeric, factor, logical
-\item Properties: importance, selected_features, weights
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nuirange \tab list \tab 0, 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   center \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopintern \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfbase \tab integer \tab 4 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   ipcw \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
+
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nuirange \tab list \tab 0, 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   center \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopintern \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfbase \tab integer \tab 4 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   ipcw \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.gamboost"))
-print(learner)
+if (requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.gamboost")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Bühlmann P, Yu B (2003).
@@ -59,8 +102,15 @@ Journal of the American Statistical Association, 98(462), 324–339.
 \doi{10.1198/016214503000125}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

@@ -15,13 +15,66 @@ lrn("classif.cforest")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: partykit, sandwich, coin
-\item Predict Types: response, prob
-\item Feature Types: integer, numeric, factor, ordered
-\item Properties: multiclass, oob_error, twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   replace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   mtry \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   mtryratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   applyfun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cluster \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scores \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   teststat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splitstat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   testtype \tab character \tab Univariate \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nmax \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pargs \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   mincriterion \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   logmincriterion \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   minsplit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   minbucket \tab integer \tab 7 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   minprob \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   stump \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lookahead \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   MIA \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nresample \tab integer \tab 9999 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxsurrogate \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   numsurrogate \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   maxdepth \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   multiway \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splittry \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   intersplit \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   majority \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   saveinfo \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   update \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splitflavour \tab character \tab ctree \tab ctree, exhaustive \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   maxvar \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   OOB \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   simplify \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scale \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nperm \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   risk \tab character \tab loglik \tab loglik, misclassification \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   conditional \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   threshold \tab numeric \tab 0.2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
@@ -38,19 +91,27 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("classif.cforest"))
-print(learner)
+if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.cforest")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 `r format_bib(c("hothorn_2015", "hothorn_2006"))
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 sumny

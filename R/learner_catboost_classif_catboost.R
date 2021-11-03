@@ -158,7 +158,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       super$initialize(
         id = "classif.catboost",
-        packages = "catboost",
+        packages = c("mlr3extralearners", "catboost"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

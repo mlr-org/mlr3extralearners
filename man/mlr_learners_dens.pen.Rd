@@ -15,31 +15,54 @@ lrn("dens.pen")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: pendensity
-\item Predict Types: pdf, cdf
-\item Feature Types: integer, numeric
-\item Properties:
+\item Task type: \dQuote{dens}
+\item Predict Types: \dQuote{pdf}, \dQuote{cdf}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{pendensity}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   base \tab character \tab bspline \tab bspline, gaussian \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   no.base \tab numeric \tab 41 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max.iter \tab numeric \tab 20 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lambda0 \tab numeric \tab 500 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   q \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sort \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   with.border \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   m \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   eps \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("dens.pen"))
-print(learner)
+if (requireNamespace("pendensity", quietly = TRUE)) {
+  learner = mlr3::lrn("dens.pen")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Density Estimation with a Penalized Mixture Approach, Schellhase C. and Kauermann G. (2012),
 Computational Statistics 27 (4), p. 757-777.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

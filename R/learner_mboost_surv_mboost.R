@@ -60,7 +60,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("distr", "crank", "lp"),
         properties = c("weights", "importance", "selected_features"),
-        packages = "mboost",
+        packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.mboost"
       )
     },

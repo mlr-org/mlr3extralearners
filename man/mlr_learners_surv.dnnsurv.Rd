@@ -21,13 +21,51 @@ lrn("surv.dnnsurv")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: survivalmodels, keras, pseudo, tensorflow, distr6
-\item Predict Types: crank, distr
-\item Feature Types: integer, numeric
-\item Properties:
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{keras}, \CRANpkg{pseudo}, \CRANpkg{tensorflow}, \CRANpkg{distr6}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   cuts \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   cutpoints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom_model \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   optimizer \tab character \tab adam \tab adadelta, adagrad, adamax, adam, nadam, rmsprop, sgd \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lr \tab numeric \tab 0.02 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   beta_1 \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   beta_2 \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   epsilon \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   decay \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   clipnorm \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   clipvalue \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   schedule_decay \tab numeric \tab 0.04 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   momentum \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   loss_weights \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   weighted_metrics \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   min_delta \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   patience \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   verbose \tab integer \tab 0 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
+   baseline \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   restore_best_weights \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   batch_size \tab integer \tab 32 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   epochs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   validation_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   shuffle \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sample_weight \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   initial_epoch \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   steps_per_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   validation_steps \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   steps \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   callbacks \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
@@ -44,12 +82,13 @@ lrn("surv.dnnsurv")
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.dnnsurv"))
-print(learner)
+if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("keras", quietly = TRUE) && requireNamespace("pseudo", quietly = TRUE) && requireNamespace("tensorflow", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.dnnsurv")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Zhao, L., & Feng, D. (2020).
@@ -57,8 +96,15 @@ DNNSurv: Deep Neural Networks for Survival Analysis Using Pseudo Values.
 https://arxiv.org/abs/1908.02337
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

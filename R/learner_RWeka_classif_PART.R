@@ -60,7 +60,7 @@ LearnerClassifPART = R6Class("LearnerClassifPART",
 
       super$initialize(
         id = "classif.PART",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

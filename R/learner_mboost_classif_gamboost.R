@@ -50,7 +50,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
 
       super$initialize(
         id = "classif.gamboost",
-        packages = "mboost",
+        packages = c("mlr3extralearners", "mboost"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

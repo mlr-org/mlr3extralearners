@@ -32,7 +32,7 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSur
         predict_types = c("crank", "distr"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = "missings",
-        packages = c("survival", "pracma"),
+        packages = c("mlr3extralearners", "survival", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.nelson"
       )
     }

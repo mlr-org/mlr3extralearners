@@ -50,7 +50,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
 
       super$initialize(
         id = "regr.bart",
-        packages = "dbarts",
+        packages = c("mlr3extralearners", "dbarts"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         # TODO: add "se" to the list of predict types.
         predict_types = c("response"),

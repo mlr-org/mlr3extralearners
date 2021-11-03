@@ -188,7 +188,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
       super$initialize(
         id = "regr.lightgbm",
-        packages = "lightgbm",
+        packages = c("mlr3extralearners", "lightgbm"),
         feature_types = c("numeric", "integer"),
         predict_types = c("response"),
         param_set = ps,

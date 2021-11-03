@@ -34,7 +34,7 @@ LearnerRegrExtraTrees = R6Class("LearnerRegrExtraTrees",
 
       super$initialize(
         id = "regr.extratrees",
-        packages = "extraTrees",
+        packages = c("mlr3extralearners", "extraTrees"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,

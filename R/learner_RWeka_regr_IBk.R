@@ -55,7 +55,7 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
 
       super$initialize(
         id = "regr.IBk",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,

@@ -37,7 +37,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
 
       super$initialize(
         id = "classif.C50",
-        packages = "C50",
+        packages = c("mlr3extralearners", "C50"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

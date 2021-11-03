@@ -15,27 +15,55 @@ lrn("dens.locfit")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: locfit
-\item Predict Types: pdf
-\item Feature Types: integer, numeric
-\item Properties:
+\item Task type: \dQuote{dens}
+\item Predict Types: \dQuote{pdf}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{locfit}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   window \tab character \tab gaus \tab tcub, rect, trwt, tria, epan, bisq, gaus \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   width \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   from \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   to \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cut \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   deg \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   link \tab character \tab ident \tab ident, log, logit, inverse, sqrt, arcsin \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kern \tab character \tab tcub \tab rect, trwt, tria, epan, bisq, gauss, tcub \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kt \tab character \tab sph \tab sph, prod \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   renorm \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   maxk \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   itype \tab character \tab - \tab prod, mult, mlin, haz \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mint \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   maxit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("dens.locfit"))
-print(learner)
+if (requireNamespace("locfit", quietly = TRUE)) {
+  learner = mlr3::lrn("dens.locfit")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

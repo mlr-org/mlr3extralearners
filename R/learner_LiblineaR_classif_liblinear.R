@@ -53,7 +53,7 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
 
       super$initialize(
         id = "classif.liblinear",
-        packages = "LiblineaR",
+        packages = c("mlr3extralearners", "LiblineaR"),
         feature_types = "numeric",
         predict_types = c("response", "prob"),
         param_set = ps,

@@ -51,7 +51,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
 
       super$initialize(
         id = "regr.gbm",
-        packages = "gbm",
+        packages = c("mlr3extralearners", "gbm"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,

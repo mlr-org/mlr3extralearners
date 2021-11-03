@@ -102,7 +102,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
 
       super$initialize(
         id = "classif.gam",
-        packages = "mgcv",
+        packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("prob", "response"),
         param_set = ps,

@@ -99,7 +99,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
       super$initialize(
         id = "surv.rfsrc",
-        packages = c("randomForestSRC", "pracma"),
+        packages = c("mlr3extralearners", "randomForestSRC", "pracma"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,

@@ -98,7 +98,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::surv.deepsurv",
-        packages = c("survivalmodels", "distr6", "reticulate")
+        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }
   ),

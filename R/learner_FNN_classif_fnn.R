@@ -23,7 +23,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
 
       super$initialize(
         id = "classif.fnn",
-        packages = "FNN",
+        packages = c("mlr3extralearners", "FNN"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = ps,
