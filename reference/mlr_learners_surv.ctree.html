@@ -166,16 +166,62 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.ctree"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: partykit, coin, sandwich</p></li>
-<li><p>Predict Types: distr, crank</p></li>
-<li><p>Feature Types: integer, numeric, factor, ordered</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Task type: &#8220;surv&#8221;</p></li>
+<li><p>Predict Types: &#8220;distr&#8221;, &#8220;crank&#8221;</p></li>
+<li><p>Feature Types: &#8220;integer&#8221;, &#8220;numeric&#8221;, &#8220;factor&#8221;, &#8220;ordered&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=partykit'><span class="pkg">partykit</span></a>, <a href='https://CRAN.R-project.org/package=coin'><span class="pkg">coin</span></a>, <a href='https://CRAN.R-project.org/package=sandwich'><span class="pkg">sandwich</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>teststat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splitstat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splittest</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>testtype</td><td>character</td><td>Bonferroni</td><td>Bonferroni, MonteCarlo, Univariate, Teststatistic</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nmax</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>alpha</td><td>numeric</td><td>0.05</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>mincriterion</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>logmincriterion</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>minsplit</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>minbucket</td><td>integer</td><td>7</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>minprob</td><td>numeric</td><td>0.01</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>stump</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>lookahead</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>MIA</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nresample</td><td>integer</td><td>9999</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>tol</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>maxsurrogate</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>numsurrogate</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>mtry</td><td>integer</td><td>Inf</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>maxdepth</td><td>integer</td><td>Inf</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>maxvar</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>multiway</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splittry</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>intersplit</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>majority</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>caseweights</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>applyfun</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>cores</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>saveinfo</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>update</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splitflavour</td><td>character</td><td>ctree</td><td>ctree, exhaustive</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>offset</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>cluster</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>scores</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>doFit</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>maxpts</td><td>integer</td><td>25000</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>abseps</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>releps</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -189,8 +235,17 @@ Journal of Computational and Graphical Statistics, 15(3), 651–674.
 doi: <a href='https://doi.org/10.1198/106186006x133933'>10.1198/106186006x133933</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>adibender</p>
@@ -238,28 +293,31 @@ doi: <a href='https://doi.org/10.1198/106186006x133933'>10.1198/106186006x133933
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.ctree"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerSurvCTree:surv.ctree&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: partykit, coin, sandwich
-#&gt; * Predict Type: distr
-#&gt; * Feature types: integer, numeric, factor, ordered
-#&gt; * Properties: weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "teststat"        "splitstat"       "splittest"       "testtype"       
-#&gt;  [5] "nmax"            "alpha"           "mincriterion"    "logmincriterion"
-#&gt;  [9] "minsplit"        "minbucket"       "minprob"         "stump"          
-#&gt; [13] "lookahead"       "MIA"             "nresample"       "tol"            
-#&gt; [17] "maxsurrogate"    "numsurrogate"    "mtry"            "maxdepth"       
-#&gt; [21] "maxvar"          "multiway"        "splittry"        "intersplit"     
-#&gt; [25] "majority"        "caseweights"     "applyfun"        "cores"          
-#&gt; [29] "saveinfo"        "update"          "splitflavour"    "offset"         
-#&gt; [33] "cluster"         "scores"          "doFit"           "maxpts"         
-#&gt; [37] "abseps"          "releps"         </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"partykit"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"coin"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"sandwich"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.ctree"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerSurvCTree:surv.ctree&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, partykit, coin, sandwich</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: distr</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: integer, numeric, factor, ordered</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "teststat"        "splitstat"       "splittest"       "testtype"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "nmax"            "alpha"           "mincriterion"    "logmincriterion"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "minsplit"        "minbucket"       "minprob"         "stump"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "lookahead"       "MIA"             "nresample"       "tol"            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "maxsurrogate"    "numsurrogate"    "mtry"            "maxdepth"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "maxvar"          "multiway"        "splittry"        "intersplit"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "majority"        "caseweights"     "applyfun"        "cores"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "saveinfo"        "update"          "splitflavour"    "offset"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "cluster"         "scores"          "doFit"           "maxpts"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [37] "abseps"          "releps"         </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

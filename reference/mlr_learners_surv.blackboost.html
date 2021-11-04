@@ -169,16 +169,65 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.blackboost"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: mboost, pracma</p></li>
-<li><p>Predict Types: distr, crank, lp</p></li>
-<li><p>Feature Types: integer, numeric, factor</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Task type: &#8220;surv&#8221;</p></li>
+<li><p>Predict Types: &#8220;distr&#8221;, &#8220;crank&#8221;, &#8220;lp&#8221;</p></li>
+<li><p>Feature Types: &#8220;integer&#8221;, &#8220;numeric&#8221;, &#8220;factor&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=mboost'><span class="pkg">mboost</span></a>, <a href='https://CRAN.R-project.org/package=pracma'><span class="pkg">pracma</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>family</td><td>character</td><td>coxph</td><td>coxph, weibull, loglog, lognormal, gehan, cindex, custom</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>custom.family</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nuirange</td><td>list</td><td>0, 100</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>offset</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>mstop</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>nu</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>risk</td><td>character</td><td>-</td><td>inbag, oobag, none</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>stopintern</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>oobweights</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>teststat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splitstat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splittest</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>testtype</td><td>character</td><td>Bonferroni</td><td>Bonferroni, MonteCarlo, Univariate, Teststatistic</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>maxpts</td><td>integer</td><td>25000</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>abseps</td><td>numeric</td><td>0.001</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>releps</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nmax</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>alpha</td><td>numeric</td><td>0.05</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>mincriterion</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>logmincriterion</td><td>numeric</td><td>-0.05129329</td><td></td><td>\((-\infty, 0]\)</td></tr>
+<tr><td>minsplit</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>minbucket</td><td>integer</td><td>7</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>minprob</td><td>numeric</td><td>0.01</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>stump</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>lookahead</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>MIA</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nresample</td><td>integer</td><td>9999</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>maxsurrogate</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>maxdepth</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>multiway</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>splittry</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>intersplit</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>majority</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>caseweights</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sigma</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>ipcw</td><td>list</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>na.action</td><td>list</td><td>function (object, ...) , UseMethod("na.omit")</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -188,8 +237,17 @@ Journal of the American Statistical Association, 98(462), 324–339.
 doi: <a href='https://doi.org/10.1198/016214503000125'>10.1198/016214503000125</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>RaphaelS1</p>
@@ -237,29 +295,32 @@ doi: <a href='https://doi.org/10.1198/016214503000125'>10.1198/016214503000125</
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.blackboost"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerSurvBlackBoost:surv.blackboost&gt;
-#&gt; * Model: -
-#&gt; * Parameters: family=coxph
-#&gt; * Packages: mboost, pracma
-#&gt; * Predict Type: distr
-#&gt; * Feature types: integer, numeric, factor
-#&gt; * Properties: weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "family"          "custom.family"   "nuirange"        "offset"         
-#&gt;  [5] "center"          "mstop"           "nu"              "risk"           
-#&gt;  [9] "stopintern"      "trace"           "oobweights"      "teststat"       
-#&gt; [13] "splitstat"       "splittest"       "testtype"        "maxpts"         
-#&gt; [17] "abseps"          "releps"          "nmax"            "alpha"          
-#&gt; [21] "mincriterion"    "logmincriterion" "minsplit"        "minbucket"      
-#&gt; [25] "minprob"         "stump"           "lookahead"       "MIA"            
-#&gt; [29] "nresample"       "tol"             "maxsurrogate"    "mtry"           
-#&gt; [33] "maxdepth"        "multiway"        "splittry"        "intersplit"     
-#&gt; [37] "majority"        "caseweights"     "sigma"           "ipcw"           
-#&gt; [41] "na.action"      </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"mboost"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"pracma"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.blackboost"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerSurvBlackBoost:surv.blackboost&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: family=coxph</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, mboost, pracma</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: distr</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: integer, numeric, factor</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "family"          "custom.family"   "nuirange"        "offset"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "center"          "mstop"           "nu"              "risk"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "stopintern"      "trace"           "oobweights"      "teststat"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "splitstat"       "splittest"       "testtype"        "maxpts"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "abseps"          "releps"          "nmax"            "alpha"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "mincriterion"    "logmincriterion" "minsplit"        "minbucket"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "minprob"         "stump"           "lookahead"       "MIA"            </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "nresample"       "tol"             "maxsurrogate"    "mtry"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "maxdepth"        "multiway"        "splittry"        "intersplit"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [37] "majority"        "caseweights"     "sigma"           "ipcw"           </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [41] "na.action"      </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

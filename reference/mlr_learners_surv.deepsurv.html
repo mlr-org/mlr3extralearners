@@ -166,16 +166,58 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.deepsurv"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: survivalmodels, distr6, reticulate</p></li>
-<li><p>Predict Types: crank, distr</p></li>
-<li><p>Feature Types: integer, numeric</p></li>
-<li><p>Properties:</p></li>
+<li><p>Task type: &#8220;surv&#8221;</p></li>
+<li><p>Predict Types: &#8220;crank&#8221;, &#8220;distr&#8221;</p></li>
+<li><p>Feature Types: &#8220;integer&#8221;, &#8220;numeric&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=survivalmodels'><span class="pkg">survivalmodels</span></a>, <a href='https://CRAN.R-project.org/package=distr6'><span class="pkg">distr6</span></a>, <a href='https://CRAN.R-project.org/package=reticulate'><span class="pkg">reticulate</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>frac</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>num_nodes</td><td>list</td><td>32, 32</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>batch_norm</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>dropout</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>activation</td><td>character</td><td>relu</td><td>celu, elu, gelu, glu, hardshrink, hardsigmoid, hardswish, hardtanh, relu6, leakyrelu, <a href='https://rdrr.io/r/base/dots.html'>...</a></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>device</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>shrink</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>optimizer</td><td>character</td><td>adam</td><td>adadelta, adagrad, adam, adamax, adamw, asgd, rmsprop, rprop, sgd, sparse_adam</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>rho</td><td>numeric</td><td>0.9</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>eps</td><td>numeric</td><td>1e-08</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>lr</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>weight_decay</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>learning_rate</td><td>numeric</td><td>0.01</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>lr_decay</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>betas</td><td>list</td><td>0.900, 0.999</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>amsgrad</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>lambd</td><td>numeric</td><td>1e-04</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>alpha</td><td>numeric</td><td>0.75</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>t0</td><td>numeric</td><td>1e+06</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>momentum</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>centered</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>etas</td><td>list</td><td>0.5, 1.2</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>step_sizes</td><td>list</td><td>1e-06, 5e+01</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>dampening</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nesterov</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>batch_size</td><td>integer</td><td>256</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>epochs</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>verbose</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>num_workers</td><td>integer</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>shuffle</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>best_weights</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>early_stopping</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>min_delta</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>patience</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -185,8 +227,17 @@ network.
 BMC Medical Research Methodology, 18(1), 24. https://doi.org/10.1186/s12874-018-0482-1</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>RaphaelS1</p>
@@ -234,27 +285,30 @@ BMC Medical Research Methodology, 18(1), 24. https://doi.org/10.1186/s12874-018-
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.deepsurv"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerSurvDeepsurv:surv.deepsurv&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: survivalmodels, distr6, reticulate
-#&gt; * Predict Type: crank
-#&gt; * Feature types: integer, numeric
-#&gt; * Properties: -</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "frac"           "num_nodes"      "batch_norm"     "dropout"       
-#&gt;  [5] "activation"     "device"         "shrink"         "optimizer"     
-#&gt;  [9] "rho"            "eps"            "lr"             "weight_decay"  
-#&gt; [13] "learning_rate"  "lr_decay"       "betas"          "amsgrad"       
-#&gt; [17] "lambd"          "alpha"          "t0"             "momentum"      
-#&gt; [21] "centered"       "etas"           "step_sizes"     "dampening"     
-#&gt; [25] "nesterov"       "batch_size"     "epochs"         "verbose"       
-#&gt; [29] "num_workers"    "shuffle"        "best_weights"   "early_stopping"
-#&gt; [33] "min_delta"      "patience"      </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"survivalmodels"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"distr6"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"reticulate"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.deepsurv"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerSurvDeepsurv:surv.deepsurv&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, survivalmodels, distr6, reticulate</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: crank</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: integer, numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "frac"           "num_nodes"      "batch_norm"     "dropout"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "activation"     "device"         "shrink"         "optimizer"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "rho"            "eps"            "lr"             "weight_decay"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "learning_rate"  "lr_decay"       "betas"          "amsgrad"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "lambd"          "alpha"          "t0"             "momentum"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "centered"       "etas"           "step_sizes"     "dampening"     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "nesterov"       "batch_size"     "epochs"         "verbose"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "num_workers"    "shuffle"        "best_weights"   "early_stopping"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "min_delta"      "patience"      </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

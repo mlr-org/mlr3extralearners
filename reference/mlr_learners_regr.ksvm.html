@@ -166,21 +166,52 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.ksvm"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: kernlab</p></li>
-<li><p>Predict Types: response</p></li>
-<li><p>Feature Types: logical, integer, numeric, character, factor, ordered</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Task type: &#8220;regr&#8221;</p></li>
+<li><p>Predict Types: &#8220;response&#8221;</p></li>
+<li><p>Feature Types: &#8220;logical&#8221;, &#8220;integer&#8221;, &#8220;numeric&#8221;, &#8220;character&#8221;, &#8220;factor&#8221;, &#8220;ordered&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=kernlab'><span class="pkg">kernlab</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>scaled</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>type</td><td>character</td><td>eps-svr</td><td>eps-svr, nu-svr, eps-bsvr</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>kernel</td><td>character</td><td>rbfdot</td><td>rbfdot, polydot, vanilladot, laplacedot, besseldot, anovadot</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>C</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nu</td><td>numeric</td><td>0.2</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>epsilon</td><td>numeric</td><td>0.1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>cache</td><td>integer</td><td>40</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>tol</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>shrinking</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sigma</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>degree</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>scale</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>order</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>offset</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>mboecker</p>
@@ -228,21 +259,24 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.ksvm"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerRegrKSVM:regr.ksvm&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: kernlab
-#&gt; * Predict Type: response
-#&gt; * Feature types: logical, integer, numeric, character, factor, ordered
-#&gt; * Properties: weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "scaled"    "type"      "kernel"    "C"         "nu"        "epsilon"  
-#&gt;  [7] "cache"     "tol"       "shrinking" "sigma"     "degree"    "scale"    
-#&gt; [13] "order"     "offset"   </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"kernlab"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.ksvm"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerRegrKSVM:regr.ksvm&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, kernlab</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: response</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: logical, integer, numeric, character, factor, ordered</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "scaled"    "type"      "kernel"    "C"         "nu"        "epsilon"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [7] "cache"     "tol"       "shrinking" "sigma"     "degree"    "scale"    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "order"     "offset"   </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

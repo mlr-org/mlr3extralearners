@@ -166,21 +166,52 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"dens.locfit"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: locfit</p></li>
-<li><p>Predict Types: pdf</p></li>
-<li><p>Feature Types: integer, numeric</p></li>
-<li><p>Properties:</p></li>
+<li><p>Task type: &#8220;dens&#8221;</p></li>
+<li><p>Predict Types: &#8220;pdf&#8221;</p></li>
+<li><p>Feature Types: &#8220;integer&#8221;, &#8220;numeric&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=locfit'><span class="pkg">locfit</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>window</td><td>character</td><td>gaus</td><td>tcub, rect, trwt, tria, epan, bisq, gaus</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>width</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>from</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>to</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>cut</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>deg</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>link</td><td>character</td><td>ident</td><td>ident, log, logit, inverse, sqrt, arcsin</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>kern</td><td>character</td><td>tcub</td><td>rect, trwt, tria, epan, bisq, gauss, tcub</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>kt</td><td>character</td><td>sph</td><td>sph, prod</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>renorm</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>maxk</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>itype</td><td>character</td><td>-</td><td>prod, mult, mlin, haz</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>mint</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>maxit</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>RaphaelS1</p>
@@ -228,20 +259,23 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"dens.locfit"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerDensLocfit:dens.locfit&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: locfit
-#&gt; * Predict Type: pdf
-#&gt; * Feature types: integer, numeric
-#&gt; * Properties: -</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "window" "width"  "from"   "to"     "cut"    "deg"    "link"   "kern"  
-#&gt;  [9] "kt"     "renorm" "maxk"   "itype"  "mint"   "maxit" </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"locfit"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"dens.locfit"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerDensLocfit:dens.locfit&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, locfit</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: pdf</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: integer, numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "window" "width"  "from"   "to"     "cut"    "deg"    "link"   "kern"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "kt"     "renorm" "maxk"   "itype"  "mint"   "maxit" </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

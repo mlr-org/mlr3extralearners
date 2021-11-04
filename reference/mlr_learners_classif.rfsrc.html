@@ -166,16 +166,59 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rfsrc"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: randomForestSRC</p></li>
-<li><p>Predict Types: response, prob</p></li>
-<li><p>Feature Types: logical, integer, numeric, factor</p></li>
-<li><p>Properties: importance, missings, multiclass, oob_error, twoclass, weights</p></li>
+<li><p>Task type: &#8220;classif&#8221;</p></li>
+<li><p>Predict Types: &#8220;response&#8221;, &#8220;prob&#8221;</p></li>
+<li><p>Feature Types: &#8220;logical&#8221;, &#8220;integer&#8221;, &#8220;numeric&#8221;, &#8220;factor&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=randomForestSRC'><span class="pkg">randomForestSRC</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>ntree</td><td>integer</td><td>1000</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>mtry.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>nodesize</td><td>integer</td><td>15</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>nodedepth</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>splitrule</td><td>character</td><td>gini</td><td>gini, auc, entropy</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nsplit</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>importance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, none, permute, random, anti</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>block.size</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>ensemble</td><td>character</td><td>all</td><td>all, oob, inbag</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>bootstrap</td><td>character</td><td>by.root</td><td>by.root, by.node, none, by.user</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>samptype</td><td>character</td><td>swor</td><td>swor, swr</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>samp</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>membership</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sampsize</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sampsize.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>na.action</td><td>character</td><td>na.omit</td><td>na.omit, na.impute</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nimpute</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>ntime</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>cause</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>proximity</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>distance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>forest.wt</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>xvar.wt</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>split.wt</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>forest</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>var.used</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>split.depth</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, -1]\)</td></tr>
+<tr><td>do.trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>statistics</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>get.tree</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>outcome</td><td>character</td><td>train</td><td>train, test</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>ptn.count</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>cores</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="custom-mlr-defaults"><a class="anchor" href="#custom-mlr-defaults"></a>Custom mlr3 defaults</h2>
 
@@ -208,8 +251,17 @@ ISSN 1573-0565, doi: <a href='https://doi.org/10.1023/A:1010933404324'>10.1023/A
 .</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>RaphaelS1</p>
@@ -282,28 +334,31 @@ ISSN 1573-0565, doi: <a href='https://doi.org/10.1023/A:1010933404324'>10.1023/A
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rfsrc"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerClassifRandomForestSRC:classif.rfsrc&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: randomForestSRC
-#&gt; * Predict Type: response
-#&gt; * Feature types: logical, integer, numeric, factor
-#&gt; * Properties: importance, missings, multiclass, oob_error, twoclass,
-#&gt;   weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "ntree"          "mtry"           "mtry.ratio"     "nodesize"      
-#&gt;  [5] "nodedepth"      "splitrule"      "nsplit"         "importance"    
-#&gt;  [9] "block.size"     "ensemble"       "bootstrap"      "samptype"      
-#&gt; [13] "samp"           "membership"     "sampsize"       "sampsize.ratio"
-#&gt; [17] "na.action"      "nimpute"        "ntime"          "cause"         
-#&gt; [21] "proximity"      "distance"       "forest.wt"      "xvar.wt"       
-#&gt; [25] "split.wt"       "forest"         "var.used"       "split.depth"   
-#&gt; [29] "seed"           "do.trace"       "statistics"     "get.tree"      
-#&gt; [33] "outcome"        "ptn.count"      "cores"         </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"randomForestSRC"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.rfsrc"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerClassifRandomForestSRC:classif.rfsrc&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, randomForestSRC</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: response</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: logical, integer, numeric, factor</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: importance, missings, multiclass, oob_error, twoclass,</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>   weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "ntree"          "mtry"           "mtry.ratio"     "nodesize"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "nodedepth"      "splitrule"      "nsplit"         "importance"    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "block.size"     "ensemble"       "bootstrap"      "samptype"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "samp"           "membership"     "sampsize"       "sampsize.ratio"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "na.action"      "nimpute"        "ntime"          "cause"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "proximity"      "distance"       "forest.wt"      "xvar.wt"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "split.wt"       "forest"         "var.used"       "split.depth"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "seed"           "do.trace"       "statistics"     "get.tree"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "outcome"        "ptn.count"      "cores"         </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

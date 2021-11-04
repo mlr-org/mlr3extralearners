@@ -166,16 +166,93 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.catboost"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: catboost</p></li>
-<li><p>Predict Types: response, prob</p></li>
-<li><p>Feature Types: numeric, factor, ordered</p></li>
-<li><p>Properties: importance, missings, multiclass, twoclass, weights</p></li>
+<li><p>Task type: &#8220;classif&#8221;</p></li>
+<li><p>Predict Types: &#8220;response&#8221;, &#8220;prob&#8221;</p></li>
+<li><p>Feature Types: &#8220;numeric&#8221;, &#8220;factor&#8221;, &#8220;ordered&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=catboost'><span class="pkg">catboost</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>loss_function_twoclass</td><td>character</td><td>Logloss</td><td>Logloss, CrossEntropy</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>loss_function_multiclass</td><td>character</td><td>MultiClass</td><td>MultiClass, MultiClassOneVsAll</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>iterations</td><td>integer</td><td>1000</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>learning_rate</td><td>numeric</td><td>0.03</td><td></td><td>\([0.001, 1]\)</td></tr>
+<tr><td>random_seed</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>l2_leaf_reg</td><td>numeric</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>bootstrap_type</td><td>character</td><td>-</td><td>Bayesian, Bernoulli, MVS, Poisson, No</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>bagging_temperature</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>subsample</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>sampling_frequency</td><td>character</td><td>PerTreeLevel</td><td>PerTree, PerTreeLevel</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sampling_unit</td><td>character</td><td>Object</td><td>Object, Group</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>mvs_reg</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>random_strength</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>depth</td><td>integer</td><td>6</td><td></td><td>\([1, 16]\)</td></tr>
+<tr><td>grow_policy</td><td>character</td><td>SymmetricTree</td><td>SymmetricTree, Depthwise, Lossguide</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>min_data_in_leaf</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>max_leaves</td><td>integer</td><td>31</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>ignored_features</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>one_hot_max_size</td><td>list</td><td>FALSE</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>has_time</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>rsm</td><td>numeric</td><td>1</td><td></td><td>\([0.001, 1]\)</td></tr>
+<tr><td>nan_mode</td><td>character</td><td>Min</td><td>Min, Max</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>fold_permutation_block</td><td>integer</td><td>-</td><td></td><td>\([1, 256]\)</td></tr>
+<tr><td>leaf_estimation_method</td><td>character</td><td>-</td><td>Newton, Gradient, Exact</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>leaf_estimation_iterations</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>leaf_estimation_backtracking</td><td>character</td><td>AnyImprovement</td><td>No, AnyImprovement, Armijo</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>fold_len_multiplier</td><td>numeric</td><td>2</td><td></td><td>\([1.001, \infty)\)</td></tr>
+<tr><td>approx_on_full_history</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>class_weights</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>auto_class_weights</td><td>character</td><td>None</td><td>None, Balanced, SqrtBalanced</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>boosting_type</td><td>character</td><td>-</td><td>Ordered, Plain</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>boost_from_average</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>langevin</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>diffusion_temperature</td><td>numeric</td><td>10000</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>score_function</td><td>character</td><td>Cosine</td><td>Cosine, L2, NewtonCosine, NewtonL2</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>monotone_constraints</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>feature_weights</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>first_feature_use_penalties</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>penalties_coefficient</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>per_object_feature_penalties</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>model_shrink_rate</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>model_shrink_mode</td><td>character</td><td>-</td><td>Constant, Decreasing</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>target_border</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>border_count</td><td>integer</td><td>-</td><td></td><td>\([1, 65535]\)</td></tr>
+<tr><td>feature_border_type</td><td>character</td><td>GreedyLogSum</td><td>Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>per_float_feature_quantization</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>classes_count</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>thread_count</td><td>integer</td><td>1</td><td></td><td>\([-1, \infty)\)</td></tr>
+<tr><td>task_type</td><td>character</td><td>CPU</td><td>CPU, GPU</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>devices</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>logging_level</td><td>character</td><td>Silent</td><td>Silent, Verbose, Info, Debug</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>metric_period</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>train_dir</td><td>list</td><td>catboost_info</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>model_size_reg</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>allow_writing_files</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>save_snapshot</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>snapshot_file</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>snapshot_interval</td><td>integer</td><td>600</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>simple_ctr</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>combinations_ctr</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>ctr_target_border_count</td><td>integer</td><td>-</td><td></td><td>\([1, 255]\)</td></tr>
+<tr><td>counter_calc_method</td><td>character</td><td>Full</td><td>SkipTest, Full</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>max_ctr_complexity</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>ctr_leaf_count_limit</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>store_all_simple_ctr</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>final_ctr_computation_mode</td><td>character</td><td>Default</td><td>Default, Skip</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>verbose</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>ntree_start</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>ntree_end</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
 
@@ -220,8 +297,17 @@ Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
 2018. https://arxiv.org/abs/1810.11363.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>sumny</p>
@@ -279,55 +365,14 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><h4 clas
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.catboost"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerClassifCatboost:classif.catboost&gt;
-#&gt; * Model: -
-#&gt; * Parameters: loss_function_twoclass=Logloss,
-#&gt;   loss_function_multiclass=MultiClass, logging_level=Silent,
-#&gt;   thread_count=1, allow_writing_files=FALSE, save_snapshot=FALSE
-#&gt; * Packages: catboost
-#&gt; * Predict Type: response
-#&gt; * Feature types: numeric, factor, ordered
-#&gt; * Properties: importance, missings, multiclass, twoclass, weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "loss_function_twoclass"         "loss_function_multiclass"      
-#&gt;  [3] "iterations"                     "learning_rate"                 
-#&gt;  [5] "random_seed"                    "l2_leaf_reg"                   
-#&gt;  [7] "bootstrap_type"                 "bagging_temperature"           
-#&gt;  [9] "subsample"                      "sampling_frequency"            
-#&gt; [11] "sampling_unit"                  "mvs_reg"                       
-#&gt; [13] "random_strength"                "depth"                         
-#&gt; [15] "grow_policy"                    "min_data_in_leaf"              
-#&gt; [17] "max_leaves"                     "ignored_features"              
-#&gt; [19] "one_hot_max_size"               "has_time"                      
-#&gt; [21] "rsm"                            "nan_mode"                      
-#&gt; [23] "fold_permutation_block"         "leaf_estimation_method"        
-#&gt; [25] "leaf_estimation_iterations"     "leaf_estimation_backtracking"  
-#&gt; [27] "fold_len_multiplier"            "approx_on_full_history"        
-#&gt; [29] "class_weights"                  "auto_class_weights"            
-#&gt; [31] "boosting_type"                  "boost_from_average"            
-#&gt; [33] "langevin"                       "diffusion_temperature"         
-#&gt; [35] "score_function"                 "monotone_constraints"          
-#&gt; [37] "feature_weights"                "first_feature_use_penalties"   
-#&gt; [39] "penalties_coefficient"          "per_object_feature_penalties"  
-#&gt; [41] "model_shrink_rate"              "model_shrink_mode"             
-#&gt; [43] "target_border"                  "border_count"                  
-#&gt; [45] "feature_border_type"            "per_float_feature_quantization"
-#&gt; [47] "classes_count"                  "thread_count"                  
-#&gt; [49] "task_type"                      "devices"                       
-#&gt; [51] "logging_level"                  "metric_period"                 
-#&gt; [53] "train_dir"                      "model_size_reg"                
-#&gt; [55] "allow_writing_files"            "save_snapshot"                 
-#&gt; [57] "snapshot_file"                  "snapshot_interval"             
-#&gt; [59] "simple_ctr"                     "combinations_ctr"              
-#&gt; [61] "ctr_target_border_count"        "counter_calc_method"           
-#&gt; [63] "max_ctr_complexity"             "ctr_leaf_count_limit"          
-#&gt; [65] "store_all_simple_ctr"           "final_ctr_computation_mode"    
-#&gt; [67] "verbose"                        "ntree_start"                   
-#&gt; [69] "ntree_end"                     </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"catboost"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"classif.catboost"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

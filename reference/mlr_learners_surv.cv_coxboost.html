@@ -175,16 +175,44 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.cv_coxboost"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: CoxBoost, pracma</p></li>
-<li><p>Predict Types: distr, crank, lp</p></li>
-<li><p>Feature Types: integer, numeric</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Task type: &#8220;surv&#8221;</p></li>
+<li><p>Predict Types: &#8220;distr&#8221;, &#8220;crank&#8221;, &#8220;lp&#8221;</p></li>
+<li><p>Feature Types: &#8220;integer&#8221;, &#8220;numeric&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=CoxBoost'><span class="pkg">CoxBoost</span></a>, <a href='https://CRAN.R-project.org/package=pracma'><span class="pkg">pracma</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>maxstepno</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>K</td><td>integer</td><td>10</td><td></td><td>\([2, \infty)\)</td></tr>
+<tr><td>type</td><td>character</td><td>verweij</td><td>verweij, naive</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>folds</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>minstepno</td><td>integer</td><td>50</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>start.penalty</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>iter.max</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>upper.margin</td><td>numeric</td><td>0.05</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>unpen.index</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>standardize</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>penalty</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>criterion</td><td>character</td><td>pscore</td><td>pscore, score, hpscore, hscore</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>stepsize.factor</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>sf.scheme</td><td>character</td><td>sigmoid</td><td>sigmoid, linear</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>pendistmat</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>connected.index</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>x.is.01</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>return.score</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>at.step</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -193,8 +221,17 @@ Boosting for high-dimensional time-to-event data with competing risks.
 Bioinformatics, 25:890-896.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>RaphaelS1</p>
@@ -242,23 +279,26 @@ Bioinformatics, 25:890-896.</p>
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.cv_coxboost"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerSurvCVCoxboost:surv.cv_coxboost&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: CoxBoost, pracma
-#&gt; * Predict Type: distr
-#&gt; * Feature types: integer, numeric
-#&gt; * Properties: weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "maxstepno"       "K"               "type"            "folds"          
-#&gt;  [5] "minstepno"       "start.penalty"   "iter.max"        "upper.margin"   
-#&gt;  [9] "unpen.index"     "standardize"     "penalty"         "criterion"      
-#&gt; [13] "stepsize.factor" "sf.scheme"       "pendistmat"      "connected.index"
-#&gt; [17] "x.is.01"         "return.score"    "trace"           "at.step"        </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"CoxBoost"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>&amp;&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"pracma"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"surv.cv_coxboost"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerSurvCVCoxboost:surv.cv_coxboost&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, CoxBoost, pracma</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: distr</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: integer, numeric</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "maxstepno"       "K"               "type"            "folds"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "minstepno"       "start.penalty"   "iter.max"        "upper.margin"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "unpen.index"     "standardize"     "penalty"         "criterion"      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "stepsize.factor" "sf.scheme"       "pendistmat"      "connected.index"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "x.is.01"         "return.score"    "trace"           "at.step"        </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

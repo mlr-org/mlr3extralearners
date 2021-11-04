@@ -169,16 +169,57 @@ sugar function <code><a href='lrn.html'>lrn()</a></code>:</p><pre><span class='v
 <span class='fu'><a href='lrn.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span>
 </pre>
 
-    <h2 class="hasAnchor" id="traits"><a class="anchor" href="#traits"></a>Traits</h2>
+    <h2 class="hasAnchor" id="meta-information"><a class="anchor" href="#meta-information"></a>Meta Information</h2>
 
     
 
 <ul>
-<li><p>Packages: earth</p></li>
-<li><p>Predict Types: response, se</p></li>
-<li><p>Feature Types: numeric, factor, integer</p></li>
-<li><p>Properties: weights</p></li>
+<li><p>Task type: &#8220;regr&#8221;</p></li>
+<li><p>Predict Types: &#8220;response&#8221;, &#8220;se&#8221;</p></li>
+<li><p>Feature Types: &#8220;numeric&#8221;, &#8220;factor&#8221;, &#8220;integer&#8221;</p></li>
+<li><p>Required Packages: <a href='https://CRAN.R-project.org/package=mlr3extralearners'><span class="pkg">mlr3extralearners</span></a>, <a href='https://CRAN.R-project.org/package=earth'><span class="pkg">earth</span></a></p></li>
 </ul>
+
+    <h2 class="hasAnchor" id="parameters"><a class="anchor" href="#parameters"></a>Parameters</h2>
+
+    
+<table class='table'>
+<tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr>
+<tr><td>wp</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>offset</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>keepxy</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>trace</td><td>character</td><td>0</td><td>0, .3, .5, 1, 2, 3, 4, 5</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>degree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr>
+<tr><td>penalty</td><td>numeric</td><td>2</td><td></td><td>\([-1, \infty)\)</td></tr>
+<tr><td>nk</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>thresh</td><td>numeric</td><td>0.001</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>minspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>endspan</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>newvar.penalty</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>fast.k</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>fast.beta</td><td>integer</td><td>1</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>linpreds</td><td>list</td><td>FALSE</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>allowed</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>pmethod</td><td>character</td><td>backward</td><td>backward, none, exhaustive, forward, seqrep, cv</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>nprune</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>nfold</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>ncross</td><td>integer</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr>
+<tr><td>stratify</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>varmod.method</td><td>character</td><td>none</td><td>none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, <a href='https://rdrr.io/r/base/dots.html'>...</a></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>varmod.exponent</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>varmod.conv</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr>
+<tr><td>varmod.clamp</td><td>numeric</td><td>0.1</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>varmod.minspan</td><td>numeric</td><td>-3</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Scale.y</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Adjust.endspan</td><td>numeric</td><td>2</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Auto.linpreds</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Force.weights</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Use.beta.cache</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Force.xtx.prune</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Get.leverages</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr>
+<tr><td>Exhaustive.tol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr>
+</table>
+
 
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
@@ -192,8 +233,17 @@ The Annals of Statistics
 <a href='https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963'>https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>:
-<a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a></p></div>
+    <div class='dont-index'>
+<ul>
+<li><p><a href='https://mlr3misc.mlr-org.com/reference/Dictionary.html'>Dictionary</a> of <a href='https://mlr3.mlr-org.com/reference/Learner.html'>Learners</a>: <a href='https://mlr3.mlr-org.com/reference/mlr_learners.html'>mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href='https://mlr3book.mlr-org.com/'>mlr3book</a>: <a href='https://mlr3book.mlr-org.com/basics.html#learners'>https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3learners'><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3cluster'><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3pipelines'><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href='https://CRAN.R-project.org/package=mlr3tuning'><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href='https://CRAN.R-project.org/package=mlr3tuningspaces'><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul>
+</div>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>pkopper</p>
@@ -241,27 +291,30 @@ The Annals of Statistics
 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># stop example failing with warning if package not installed</span>
-<span class='va'>learner</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/warning.html'>suppressWarnings</a></span><span class='op'>(</span><span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span><span class='op'>)</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; &lt;LearnerRegrEarth:regr.earth&gt;
-#&gt; * Model: -
-#&gt; * Parameters: list()
-#&gt; * Packages: earth
-#&gt; * Predict Type: response
-#&gt; * Feature types: numeric, factor, integer
-#&gt; * Properties: weights</div><div class='input'>
-<span class='co'># available parameters:</span>
-<span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt;  [1] "wp"              "offset"          "keepxy"          "trace"          
-#&gt;  [5] "degree"          "penalty"         "nk"              "thresh"         
-#&gt;  [9] "minspan"         "endspan"         "newvar.penalty"  "fast.k"         
-#&gt; [13] "fast.beta"       "linpreds"        "allowed"         "pmethod"        
-#&gt; [17] "nprune"          "nfold"           "ncross"          "stratify"       
-#&gt; [21] "varmod.method"   "varmod.exponent" "varmod.conv"     "varmod.clamp"   
-#&gt; [25] "varmod.minspan"  "Scale.y"         "Adjust.endspan"  "Auto.linpreds"  
-#&gt; [29] "Force.weights"   "Use.beta.cache"  "Force.xtx.prune" "Get.leverages"  
-#&gt; [33] "Exhaustive.tol" </div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"earth"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='va'>learner</span> <span class='op'>=</span> <span class='fu'>mlr3</span><span class='fu'>::</span><span class='fu'><a href='https://mlr3.mlr-org.com/reference/mlr_sugar.html'>lrn</a></span><span class='op'>(</span><span class='st'>"regr.earth"</span><span class='op'>)</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>learner</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'>  <span class='co'># available parameters:</span></span>
+<span class='r-in'>  <span class='va'>learner</span><span class='op'>$</span><span class='va'>param_set</span><span class='op'>$</span><span class='fu'>ids</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> &lt;LearnerRegrEarth:regr.earth&gt;</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Model: -</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Parameters: list()</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Packages: mlr3extralearners, earth</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Predict Type: response</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Feature types: numeric, factor, integer</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> * Properties: weights</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [1] "wp"              "offset"          "keepxy"          "trace"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [5] "degree"          "penalty"         "nk"              "thresh"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>  [9] "minspan"         "endspan"         "newvar.penalty"  "fast.k"         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [13] "fast.beta"       "linpreds"        "allowed"         "pmethod"        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [17] "nprune"          "nfold"           "ncross"          "stratify"       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [21] "varmod.method"   "varmod.exponent" "varmod.conv"     "varmod.clamp"   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [25] "varmod.minspan"  "Scale.y"         "Adjust.endspan"  "Auto.linpreds"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [29] "Force.weights"   "Use.beta.cache"  "Force.xtx.prune" "Get.leverages"  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [33] "Exhaustive.tol" </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
