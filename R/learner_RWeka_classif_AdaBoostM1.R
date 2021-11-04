@@ -55,7 +55,7 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
 
       super$initialize(
         id = "classif.AdaBoostM1",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

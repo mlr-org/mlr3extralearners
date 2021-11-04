@@ -18,23 +18,71 @@ lrn("surv.blackboost")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: mboost, pracma
-\item Predict Types: distr, crank, lp
-\item Feature Types: integer, numeric, factor
-\item Properties: weights
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nuirange \tab list \tab 0, 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   center \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   risk \tab character \tab - \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopintern \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   oobweights \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   teststat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splitstat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   testtype \tab character \tab Bonferroni \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   maxpts \tab integer \tab 25000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   abseps \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   releps \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nmax \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   mincriterion \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   logmincriterion \tab numeric \tab -0.05129329 \tab  \tab \eqn{(-\infty, 0]}{(-Inf, 0]} \cr
+   minsplit \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   minbucket \tab integer \tab 7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   minprob \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   stump \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lookahead \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   MIA \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nresample \tab integer \tab 9999 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxsurrogate \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   mtry \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxdepth \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   multiway \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   splittry \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   intersplit \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   majority \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   ipcw \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.blackboost"))
-print(learner)
+if (requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.blackboost")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Bühlmann P, Yu B (2003).
@@ -43,8 +91,15 @@ Journal of the American Statistical Association, 98(462), 324–339.
 \doi{10.1198/016214503000125}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

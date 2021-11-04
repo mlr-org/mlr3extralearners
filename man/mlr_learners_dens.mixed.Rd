@@ -15,23 +15,59 @@ lrn("dens.mixed")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: np
-\item Predict Types: pdf
-\item Feature Types: integer, numeric
-\item Properties:
+\item Task type: \dQuote{dens}
+\item Predict Types: \dQuote{pdf}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{np}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   bws \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ckertype \tab character \tab gaussian \tab gaussian, epanechnikov, uniform \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bwscaling \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bwmethod \tab character \tab cv.ml \tab cv.ml, cv.ls, normal-reference \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bwtype \tab character \tab fixed \tab fixed, generalized_nn, adaptive_nn \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bandwidth.compute \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ckerorder \tab integer \tab 2 \tab  \tab \eqn{[2, 8]}{[2, 8]} \cr
+   remin \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   itmax \tab integer \tab 10000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nmulti \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ftol \tab numeric \tab 1.490116e-07 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   tol \tab numeric \tab 0.0001490116 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   small \tab numeric \tab 1.490116e-05 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lbc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cfac.dir \tab list \tab 1.90983 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   initc.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lbd.dir \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   hbd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfac.dir \tab list \tab 0.190983 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   initd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lbc.init \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   hbc.init \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cfac.init \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lbd.init \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   hbd.init \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfac.init \tab numeric \tab 0.37 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ukertype \tab character \tab - \tab aitchisonaitken, liracine \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   okertype \tab character \tab - \tab wangvanryzin, liracine \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("dens.mixed"))
-print(learner)
+if (requireNamespace("np", quietly = TRUE)) {
+  learner = mlr3::lrn("dens.mixed")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Li, Q. and J.S. Racine (2003),
@@ -39,8 +75,15 @@ Li, Q. and J.S. Racine (2003),
 Journal of Multivariate Analysis, 86, 266-292.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

@@ -31,7 +31,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
 
       super$initialize(
         id = "regr.cubist",
-        packages = "Cubist",
+        packages = c("mlr3extralearners", "Cubist"),
         feature_types = c("integer", "numeric", "character", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,

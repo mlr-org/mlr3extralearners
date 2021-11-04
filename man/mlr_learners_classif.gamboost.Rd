@@ -15,23 +15,44 @@ lrn("classif.gamboost")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: mboost
-\item Predict Types: response, prob
-\item Feature Types: integer, numeric, factor, ordered
-\item Properties: twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfbase \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   family \tab character \tab Binomial \tab Binomial, AdaExp, AUC, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   link \tab character \tab logit \tab logit, probit \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type \tab character \tab adaboost \tab glm, adaboost \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopintern \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("classif.gamboost"))
-print(learner)
+if (requireNamespace("mboost", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.gamboost")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Bühlmann P, Yu B (2003).
@@ -40,8 +61,15 @@ Journal of the American Statistical Association, 98(462), 324–339.
 \doi{10.1198/016214503000125}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 be-marc

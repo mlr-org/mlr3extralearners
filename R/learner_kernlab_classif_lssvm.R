@@ -50,7 +50,7 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
 
       super$initialize(
         id = "classif.lssvm",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer"),
         predict_types = "response",
         properties = c("twoclass", "multiclass"),

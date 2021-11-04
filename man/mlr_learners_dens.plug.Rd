@@ -15,23 +15,31 @@ lrn("dens.plug")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: plugdensity
-\item Predict Types: pdf
-\item Feature Types: integer, numeric
-\item Properties: missings
+\item Task type: \dQuote{dens}
+\item Predict Types: \dQuote{pdf}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{plugdensity}
+}
+}
+
+\section{Parameters}{
+\tabular{llll}{
+   Id \tab Type \tab Default \tab Levels \cr
+   na.rm \tab logical \tab FALSE \tab TRUE, FALSE \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("dens.plug"))
-print(learner)
+if (requireNamespace("plugdensity", quietly = TRUE)) {
+  learner = mlr3::lrn("dens.plug")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 J. Engel, Eva Herrmann and Theo Gasser (1994).
@@ -39,8 +47,15 @@ An iterative bandwidth selector for kernel estimation of densities and their der
 Journal of Nonparametric Statistics 4, 21–34.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

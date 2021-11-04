@@ -48,7 +48,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
 
       super$initialize(
         id = "regr.gausspr",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
                           "factor", "ordered"),
         predict_types = "response",

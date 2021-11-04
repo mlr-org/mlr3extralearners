@@ -60,7 +60,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
 
       super$initialize(
         id = "regr.glm",
-        packages = "stats",
+        packages = c("mlr3extralearners", "stats"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = c("response", "se"),
         param_set = ps,

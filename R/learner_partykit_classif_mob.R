@@ -105,7 +105,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         feature_types = c("logical", "integer", "numeric", "character",
           "factor", "ordered"),
         properties = c("weights", "twoclass", "multiclass"),
-        packages = c("partykit", "sandwich", "coin"),
+        packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_classif.mob"
       )
     }

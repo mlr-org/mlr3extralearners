@@ -152,7 +152,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
       super$initialize(
         id = "regr.catboost",
-        packages = "catboost",
+        packages = c("mlr3extralearners", "catboost"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,

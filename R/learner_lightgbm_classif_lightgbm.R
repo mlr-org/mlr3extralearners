@@ -210,7 +210,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       super$initialize(
         id = "classif.lightgbm",
-        packages = "lightgbm",
+        packages = c("mlr3extralearners", "lightgbm"),
         feature_types = c("numeric", "integer"),
         predict_types = c("prob", "response"),
         param_set = ps,

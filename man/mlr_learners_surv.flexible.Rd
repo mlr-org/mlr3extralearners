@@ -27,13 +27,34 @@ lrn("surv.flexible")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: flexsurv, pracma
-\item Predict Types: distr, crank, lp
-\item Feature Types: logical, integer, factor, numeric
-\item Properties: weights
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{factor}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{flexsurv}, \CRANpkg{pracma}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   bhazard \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   knots \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bknots \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scale \tab character \tab hazard \tab hazard, odds, normal \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   timescale \tab character \tab log \tab log, identity \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   inits \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   rtrunc \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   fixedpars \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cl \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   toler.chol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   debug \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   outer.max \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
@@ -51,12 +72,13 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.flexible"))
-print(learner)
+if (requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.flexible")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Royston P, Parmar MKB (2002).
@@ -66,8 +88,15 @@ Statistics in Medicine, 21(15), 2175–2197.
 doi: 10.1002/sim.1203.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

@@ -15,23 +15,29 @@ lrn("surv.nelson")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: survival, pracma
-\item Predict Types: crank, distr
-\item Feature Types: logical, integer, numeric, character, factor, ordered
-\item Properties: missings
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
 }
+}
+
+\section{Parameters}{
+
+Empty ParamSet
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.nelson"))
-print(learner)
+if (requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.nelson")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Nelson W (1969).
@@ -47,8 +53,15 @@ Nonparametric Inference for a Family of Counting Processes.
 The Annals of Statistics, 6(4), 701–726.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

@@ -15,13 +15,33 @@ lrn("classif.C50")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: C50
-\item Predict Types: response, prob
-\item Feature Types: numeric, factor, ordered
-\item Properties: missings, multiclass, twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{C50}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   trials \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   rules \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   subset \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bands \tab integer \tab - \tab  \tab \eqn{[0, 1000]}{[0, 1000]} \cr
+   winnow \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   noGlobalPruning \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   CF \tab numeric \tab 0.25 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   minCases \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   fuzzyThreshold \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sample \tab numeric \tab 0 \tab  \tab \eqn{[0, 0.999]}{[0, 0.999]} \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   earlyStopping \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   label \tab list \tab outcome \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , object \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 

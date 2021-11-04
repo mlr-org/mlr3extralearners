@@ -41,7 +41,7 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
 
       super$initialize(
         id = "dens.locfit",
-        packages = "locfit",
+        packages = c("mlr3extralearners", "locfit"),
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,

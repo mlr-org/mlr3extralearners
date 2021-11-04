@@ -24,7 +24,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
 
       super$initialize(
         id = "regr.fnn",
-        packages = "FNN",
+        packages = c("mlr3extralearners", "FNN"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,

@@ -73,7 +73,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
       super$initialize(
         id = "surv.svm",
-        packages = "survivalsvm",
+        packages = c("mlr3extralearners", "survivalsvm"),
         feature_types = c("integer", "numeric", "character", "factor", "logical"),
         predict_types = c("crank", "response"),
         param_set = ps,

@@ -70,7 +70,7 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
 
       super$initialize(
         id = "classif.earth",
-        packages = "earth",
+        packages = c("mlr3extralearners", "earth"),
         feature_types = c("numeric", "factor", "integer"),
         predict_types = c("response", "prob"),
         param_set = ps,

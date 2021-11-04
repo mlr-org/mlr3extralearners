@@ -15,13 +15,54 @@ lrn("classif.rfsrc")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: randomForestSRC
-\item Predict Types: response, prob
-\item Feature Types: logical, integer, numeric, factor
-\item Properties: importance, missings, multiclass, oob_error, twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{randomForestSRC}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   ntree \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   nodesize \tab integer \tab 15 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nodedepth \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   splitrule \tab character \tab gini \tab gini, auc, entropy \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nsplit \tab integer \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   importance \tab character \tab FALSE \tab FALSE, TRUE, none, permute, random, anti \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   block.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ensemble \tab character \tab all \tab all, oob, inbag \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bootstrap \tab character \tab by.root \tab by.root, by.node, none, by.user \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   samptype \tab character \tab swor \tab swor, swr \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   samp \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   membership \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sampsize \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sampsize.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   na.action \tab character \tab na.omit \tab na.omit, na.impute \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nimpute \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntime \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   cause \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   proximity \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   distance \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   forest.wt \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   xvar.wt \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   split.wt \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   forest \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   var.used \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
+   do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   statistics \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   get.tree \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   outcome \tab character \tab train \tab train, test \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
@@ -50,12 +91,13 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("classif.rfsrc"))
-print(learner)
+if (requireNamespace("randomForestSRC", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.rfsrc")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Breiman, Leo (2001).
@@ -64,8 +106,15 @@ Breiman, Leo (2001).
 ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1

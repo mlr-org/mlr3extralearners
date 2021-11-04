@@ -10,6 +10,7 @@ Calls \link[lightgbm:lgb.train]{lightgbm::lgb.train} from package \CRANpkg{light
 \details{
 For categorical features either pre-process data by encoding columns or
 specify the categorical columns with the \code{categorical_feature} parameter.
+For this learner please do not prefix the categorical feature with \verb{name:}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -19,13 +20,137 @@ lrn("classif.lightgbm")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: lightgbm
-\item Predict Types: prob, response
-\item Feature Types: numeric, integer
-\item Properties: importance, missings, multiclass, twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{prob}, \dQuote{response}
+\item Feature Types: \dQuote{numeric}, \dQuote{integer}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{lightgbm}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   nrounds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   objective \tab character \tab binary \tab binary, multiclass, multiclassova, cross_entropy, cross_entropy_lambda, lambdarank, rank_xendcg \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   metric \tab character \tab  \tab , None, ndcg, map, auc, average_precision, binary_logloss, binary_error, auc_mu, multi_logloss, \link{...} \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   custom_eval \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   record \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   init_model \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   callbacks \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   categorical_feature \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   num_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, 131072]}{[1, 131072]} \cr
+   tree_learner \tab character \tab serial \tab serial, feature, data, voting \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_threads \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   device_type \tab character \tab cpu \tab cpu, gpu \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   force_col_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   force_row_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   histogram_pool_size \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_depth \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   min_data_in_leaf \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   min_sum_hessian_in_leaf \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   bagging_fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   pos_bagging_fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   neg_bagging_fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   bagging_freq \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   bagging_seed \tab integer \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   feature_fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   feature_fraction_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   feature_fraction_seed \tab integer \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   extra_trees \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   extra_seed \tab integer \tab 6 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lambda_l1 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   lambda_l2 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   linear_lambda \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   min_gain_to_split \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   drop_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   max_drop \tab integer \tab 50 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   skip_drop \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   xgboost_dart_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   uniform_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   drop_seed \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   top_rate \tab numeric \tab 0.2 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   other_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   min_data_per_group \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_cat_threshold \tab integer \tab 32 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   cat_l2 \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cat_smooth \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   top_k \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   monotone_constraints \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   monotone_constraints_method \tab character \tab basic \tab basic, intermediate, advanced \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   monotone_penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   feature_contri \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   forcedsplits_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   refit_decay_rate \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   cegb_tradeoff \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cegb_penalty_split \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   cegb_penalty_feature_lazy \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cegb_penalty_feature_coupled \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   interaction_constraints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   input_model \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   output_model \tab list \tab LightGBM_model.txt \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   saved_feature_importance_type \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   snapshot_freq \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
+   max_bin_by_feature \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   bin_construct_sample_cnt \tab integer \tab 200000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   data_random_seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   is_enable_sparse \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   enable_bundle \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   use_missing \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   zero_as_missing \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   header \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   group_column \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   forcedbins_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   save_binary \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   objective_seed \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   is_unbalance \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   sigmoid \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   lambdarank_truncation_level \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   lambdarank_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   label_gain \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   metric_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   is_provide_training_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   eval_at \tab list \tab 1, 2, 3, 4, 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   multi_error_top_k \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   auc_mu_weights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   machine_list_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   machines \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_gpu \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   start_iteration \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iteration \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   output_result \tab list \tab LightGBM_predict_result.txt \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
@@ -48,16 +173,24 @@ lrn("classif.lightgbm")
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("classif.lightgbm"))
-print(learner)
+if (requireNamespace("lightgbm", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.lightgbm")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 kapsner

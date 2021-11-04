@@ -57,7 +57,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
 
       super$initialize(
         id = "regr.ksvm",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c(
           "logical", "integer", "numeric",
           "character", "factor", "ordered"),
