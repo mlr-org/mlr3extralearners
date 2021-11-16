@@ -1,5 +1,9 @@
 library(mlr3extralearners)
-install_learners("classif.abess")
+if (!requireNamespace("abess", quietly = TRUE)) {
+  library(devtools)
+  install_github(repo = "abess-team/abess", subdir = "R-package")
+}
+mlr3extralearners::install_learners("classif.abess")
 
 test_that("classif.abess train", {
   learner = lrn("classif.abess")
