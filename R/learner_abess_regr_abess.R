@@ -68,7 +68,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
         id = "regr.abess",
         packages = "abess",
         feature_types = c("logical", "integer", "numeric", "ordered"),
-        predict_types = c("response"),
+      #  predict_types = c("response"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.abess"
       )
