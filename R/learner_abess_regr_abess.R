@@ -111,7 +111,6 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
         newx = newdata,
         type = "response")
 
-      # FIXME - ADD PREDICTIONS TO LIST BELOW
       list(response = pred)
     }
   )
