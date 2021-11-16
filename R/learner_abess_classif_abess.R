@@ -147,7 +147,6 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
           type = "response")
       }
 
-      # FIXME - ADD PREDICTIONS TO LIST BELOW
       list(response = response, prob = prob[[1]])
     }
   )
