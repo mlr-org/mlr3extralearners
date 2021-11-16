@@ -1,5 +1,5 @@
 #' @title Classification Adaptive Best-subset Selection Learner
-#' @author Jin Zhu
+#' @author @rlwanggg
 #' @name mlr_learners_classif.abess
 #'
 #' @template class_learner
@@ -130,11 +130,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
 
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
-      # predict_type = ifelse(self$predict_type == "response",
-      #                       "response", "prob")
-      #
-      # pred = mlr3misc::invoke(predict, self$model, newx = newdata,
-      #                         type = predict_type, .args = pars)
+      
       if (self$predict_type == "response") {
         pred = mlr3misc::invoke(predict, self$model,
           newx = newdata,
