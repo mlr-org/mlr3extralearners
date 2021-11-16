@@ -1,5 +1,5 @@
 #' @title Regression Adaptive Best-subset Selection Learner
-#' @author Jin Zhu
+#' @author @rlwanggg
 #' @name mlr_learners_regr.abess
 #'
 #' @template class_learner
