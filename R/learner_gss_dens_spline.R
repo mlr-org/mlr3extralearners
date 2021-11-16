@@ -40,7 +40,7 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
 
       super$initialize(
         id = "dens.spline",
-        packages = "gss",
+        packages = c("mlr3extralearners", "gss"),
         feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,

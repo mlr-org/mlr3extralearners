@@ -51,7 +51,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
 
       super$initialize(
         id = "classif.randomForest",
-        packages = "randomForest",
+        packages = c("mlr3extralearners", "randomForest"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

@@ -55,7 +55,7 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
 
       super$initialize(
         id = "classif.ksvm",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c(
           "logical", "integer", "numeric",
           "character", "factor", "ordered"),

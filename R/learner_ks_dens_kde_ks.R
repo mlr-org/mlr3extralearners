@@ -38,7 +38,7 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
 
       super$initialize(
         id = "dens.kde_ks",
-        packages = "ks",
+        packages = c("mlr3extralearners", "ks"),
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,

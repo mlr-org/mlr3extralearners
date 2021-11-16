@@ -43,7 +43,7 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
 
       super$initialize(
         id = "classif.gausspr",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
                           "factor", "ordered"),
         predict_types = c("response", "prob"),

@@ -89,7 +89,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
 
       super$initialize(
         id = "regr.rfsrc",
-        packages = "randomForestSRC",
+        packages = c("mlr3extralearners", "randomForestSRC"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = "response",
         param_set = ps,

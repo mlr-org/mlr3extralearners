@@ -58,7 +58,7 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
       ps$add_dep("I", "C", CondEqual$new(FALSE))
       super$initialize(
         id = "classif.LMT",
-        packages = "RWeka",
+        packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

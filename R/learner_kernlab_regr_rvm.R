@@ -51,7 +51,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
 
       super$initialize(
         id = "regr.rvm",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
                           "factor", "ordered"),
         predict_types = "response",

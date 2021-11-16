@@ -73,8 +73,8 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         grow_policy = p_fct(levels = c("SymmetricTree", "Depthwise", "Lossguide"), default = "SymmetricTree", tags = "train"),
         min_data_in_leaf = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
         max_leaves = p_int(lower = 1L, upper = Inf, default = 31L, tags = "train"),
-        # ignored_features missing
-        # one_hot_max_size missing
+        ignored_features = p_uty(default = NULL, tags = "train"),
+        one_hot_max_size = p_uty(default = FALSE, tags = "train"),
         has_time = p_lgl(default = FALSE, tags = "train"),
         rsm = p_dbl(lower = 0.001, upper = 1, default = 1, tags = "train"),
         nan_mode = p_fct(levels = c("Min", "Max"), default = "Min", tags = "train"), # do not allow "Forbidden"
@@ -158,7 +158,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       super$initialize(
         id = "classif.catboost",
-        packages = "catboost",
+        packages = c("mlr3extralearners", "catboost"),
         feature_types = c("numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,

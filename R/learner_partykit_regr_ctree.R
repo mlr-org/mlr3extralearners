@@ -83,7 +83,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
 
       super$initialize(
         id = "regr.ctree",
-        packages = c("partykit", "sandwich", "coin"),
+        packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,

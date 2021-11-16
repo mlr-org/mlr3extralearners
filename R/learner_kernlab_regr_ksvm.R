@@ -39,7 +39,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
         offset = p_dbl(default = NO_DEF, tags = "train")
       )
 
-      ps$add_dep("C", "type", CondAnyOf$new(c("eps-svr", "eps-bsvr")))
+      ps$add_dep("C", "type", CondAnyOf$new(c("eps-svr", "eps-bsvr", "nu-svr")))
       ps$add_dep("nu", "type", CondAnyOf$new(c("nu-svr")))
       ps$add_dep(
         "epsilon", "type",
@@ -57,7 +57,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
 
       super$initialize(
         id = "regr.ksvm",
-        packages = "kernlab",
+        packages = c("mlr3extralearners", "kernlab"),
         feature_types = c(
           "logical", "integer", "numeric",
           "character", "factor", "ordered"),

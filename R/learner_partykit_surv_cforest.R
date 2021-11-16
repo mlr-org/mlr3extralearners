@@ -112,7 +112,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         predict_types = c("distr", "crank"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
-        packages = c("partykit", "sandwich", "coin"),
+        packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_surv.cforest"
       )
     }

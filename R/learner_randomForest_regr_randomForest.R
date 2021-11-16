@@ -50,7 +50,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
 
       super$initialize(
         id = "regr.randomForest",
-        packages = "randomForest",
+        packages = c("mlr3extralearners", "randomForest"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response"),
         param_set = ps,

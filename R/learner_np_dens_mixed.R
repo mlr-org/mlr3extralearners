@@ -63,7 +63,7 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
 
       super$initialize(
         id = "dens.mixed",
-        packages = "np",
+        packages = c("mlr3extralearners", "np"),
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,

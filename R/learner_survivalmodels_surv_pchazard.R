@@ -115,7 +115,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::surv.pchazard",
-        packages = c("survivalmodels", "distr6", "reticulate")
+        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }
   ),

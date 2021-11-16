@@ -63,7 +63,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("distr", "crank", "lp"),
         properties = c("weights", "importance", "selected_features"),
-        packages = c("mboost", "pracma"),
+        packages = c("mlr3extralearners", "mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.gamboost"
       )
     },

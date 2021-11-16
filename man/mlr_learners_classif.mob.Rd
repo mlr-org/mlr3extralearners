@@ -15,23 +15,64 @@ lrn("classif.mob")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: partykit, sandwich, coin
-\item Predict Types: response, prob
-\item Feature Types: logical, integer, numeric, character, factor, ordered
-\item Properties: multiclass, twoclass, weights
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   rhs \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   fit \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cluster \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   bonferroni \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   minsize \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   minsplit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   minbucket \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   maxvar \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   maxdepth \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   mtry \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   trim \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   breakties \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   parm \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfsplit \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   prune \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   restart \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ytype \tab character \tab vector \tab vector, matrix, data.frame \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   xtype \tab character \tab matrix \tab vector, matrix, data.frame \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   terminal \tab list \tab object \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   inner \tab list \tab object \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   model \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   numsplit \tab character \tab left \tab left, center \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   catsplit \tab character \tab binary \tab binary, multiway \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   vcov \tab character \tab opg \tab opg, info, sandwich \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ordinal \tab character \tab chisq \tab chisq, max, L2 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nrep \tab integer \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   applyfun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   additional \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   predict_fun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("classif.mob"))
-print(learner)
+if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.mob")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Hothorn T, Zeileis A (2015).
@@ -50,8 +91,15 @@ Journal of Computational and Graphical Statistics, 17(2), 492–514.
 \doi{10.1198/106186008X319331}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 sumny

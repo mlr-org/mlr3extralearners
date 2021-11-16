@@ -55,7 +55,7 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
 
       super$initialize(
         id = "regr.liblinear",
-        packages = "LiblineaR",
+        packages = c("mlr3extralearners", "LiblineaR"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,

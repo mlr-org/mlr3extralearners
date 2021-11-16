@@ -18,23 +18,63 @@ lrn("regr.earth")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: earth
-\item Predict Types: response, se
-\item Feature Types: numeric, factor, integer
-\item Properties: weights
+\item Task type: \dQuote{regr}
+\item Predict Types: \dQuote{response}, \dQuote{se}
+\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{integer}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{earth}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   wp \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   offset \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   keepxy \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab character \tab 0 \tab 0, .3, .5, 1, 2, 3, 4, 5 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   degree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   penalty \tab numeric \tab 2 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   nk \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   thresh \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   minspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   endspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   newvar.penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   fast.k \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   fast.beta \tab integer \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   linpreds \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   allowed \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pmethod \tab character \tab backward \tab backward, none, exhaustive, forward, seqrep, cv \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nprune \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nfold \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   ncross \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stratify \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.method \tab character \tab none \tab none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, \link{...} \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.exponent \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.conv \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   varmod.clamp \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.minspan \tab numeric \tab -3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Scale.y \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Adjust.endspan \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Auto.linpreds \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Force.weights \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Use.beta.cache \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Force.xtx.prune \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Get.leverages \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Exhaustive.tol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("regr.earth"))
-print(learner)
+if (requireNamespace("earth", quietly = TRUE)) {
+  learner = mlr3::lrn("regr.earth")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Stephen Milborrow (2014)
@@ -48,8 +88,15 @@ The Annals of Statistics
 \url{https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963}
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 pkopper

@@ -33,7 +33,7 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
 
       super$initialize(
         id = "classif.extratrees",
-        packages = "extraTrees",
+        packages = c("mlr3extralearners", "extraTrees"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = ps,

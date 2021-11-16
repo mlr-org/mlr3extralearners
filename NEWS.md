@@ -1,3 +1,23 @@
+# mlr3extralearners 0.5.13
+
+* Fix `categorical_features` in {lightgbm} learners
+
+# mlr3extralearners 0.5.12
+
+* Patch for `lightgbm` updates
+
+# mlr3extralearners 0.5.11
+
+* Add option to not open files with `create_learner`
+
+# mlr3extralearners 0.5.10
+
+* Added params `ignored_features` and `one_hot_max_size` to `classif.catboost`
+
+# mlr3extralearners 0.5.9
+
+* Fixed bug that didn't allow C parameter to be set for nu-regression
+
 # mlr3extralearners 0.5.8
 
 * Add `regr.rvm` and `classif.lssvm`
@@ -7,7 +27,7 @@
 * Introduced new custom hyperparameters for `randomForestSRC::rfsrc()`,
   `partykit::cforest()` and `obliqueRSF::ORSF()` to conveniently tune
   hyperparameters whose upper limit depends on data dimensions.
-  
+
 # mlr3extralearners 0.5.6
 
 * Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests

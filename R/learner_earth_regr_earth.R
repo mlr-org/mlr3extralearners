@@ -70,7 +70,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
 
       super$initialize(
         id = "regr.earth",
-        packages = "earth",
+        packages = c("mlr3extralearners", "earth"),
         feature_types = c("numeric", "factor", "integer"),
         predict_types = c("response", "se"),
         param_set = ps,

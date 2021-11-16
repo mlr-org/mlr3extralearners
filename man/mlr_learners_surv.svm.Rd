@@ -24,23 +24,44 @@ lrn("surv.svm")
 }
 }
 
-\section{Traits}{
+\section{Meta Information}{
 
 \itemize{
-\item Packages: survivalsvm
-\item Predict Types: crank, response
-\item Feature Types: integer, numeric, character, factor, logical
-\item Properties:
+\item Task type: \dQuote{surv}
+\item Predict Types: \dQuote{crank}, \dQuote{response}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{logical}
+\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalsvm}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   type \tab character \tab regression \tab regression, vanbelle1, vanbelle2, hybrid \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   diff.meth \tab character \tab - \tab makediff1, makediff2, makediff3 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gamma.mu \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   opt.meth \tab character \tab quadprog \tab quadprog, ipop \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kernel \tab character \tab lin_kernel \tab lin_kernel, add_kernel, rbf_kernel, poly_kernel \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kernel.pars \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sgf.sv \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   sigf \tab integer \tab 7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   maxiter \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   margin \tab numeric \tab 0.05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   bound \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   eig.tol \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   conv.tol \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   posd.tol \tab numeric \tab 1e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
 
 \examples{
-# stop example failing with warning if package not installed
-learner = suppressWarnings(mlr3::lrn("surv.svm"))
-print(learner)
+if (requireNamespace("survivalsvm", quietly = TRUE)) {
+  learner = mlr3::lrn("surv.svm")
+  print(learner)
 
-# available parameters:
-learner$param_set$ids()
+  # available parameters:
+  learner$param_set$ids()
+}
 }
 \references{
 Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
@@ -60,8 +81,15 @@ In Proceedings - IEEE International Conference on Data Mining, ICDM (pp. 655–6
 https://doi.org/10.1109/ICDM.2007.93
 }
 \seealso{
-\link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}:
-\link[mlr3:mlr_learners]{mlr3::mlr_learners}
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 RaphaelS1
