@@ -1,6 +1,6 @@
-library(mlr3extralearners)
+#library(mlr3extralearners)
 if (!requireNamespace("abess", quietly = TRUE)) {
-  library(devtools)
+#  library(devtools)
   install_github(repo = "abess-team/abess", subdir = "R-package")
 }
 mlr3extralearners::install_learners("classif.abess")
