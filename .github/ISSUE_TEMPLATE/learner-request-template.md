@@ -18,16 +18,17 @@ assignees: ''
 ### Supported types
 
 * [ ] classif
+* [ ] clust 
+* [ ] dens
 * [ ] regr
 * [ ] surv
-* [ ] dens
 
 ### I have checked that this is not already implemented in
 
   * [ ] mlr3
   * [ ] mlr3learners
   * [ ] mlr3extralearners
-  * [ ] Other core packages (e.g. mlr3proba)
+  * [ ] Other core packages (e.g. mlr3proba, mlr3keras)
 
 ### Why do I think this is a useful learner?
 
