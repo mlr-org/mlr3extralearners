@@ -54,7 +54,7 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
       super$initialize(
         id = "regr.M5Rules",
         packages = c("mlr3extralearners", "RWeka"),
-        feature_types = c("numeric", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered", "integer"),
         predict_types = "response",
         param_set = ps,
         properties = character(0L),
