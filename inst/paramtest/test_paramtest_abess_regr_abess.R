@@ -1,7 +1,7 @@
 #library(mlr3extralearners)
 if (!requireNamespace("abess", quietly = TRUE)) {
 #  library(devtools)
-  install_github(repo = "abess-team/abess", subdir = "R-package")
+  devtools::install_github(repo = "abess-team/abess", subdir = "R-package")
 }
 mlr3extralearners::install_learners("regr.abess")
 
