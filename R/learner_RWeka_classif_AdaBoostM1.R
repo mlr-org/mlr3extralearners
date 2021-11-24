@@ -70,7 +70,7 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
       ctrl = self$param_set$get_values(tags = "control")
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = mlr3misc::invoke(RWeka::Weka_control, ctrl)
+        ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
       }
 
       pars = self$param_set$get_values(tags = "pars")
