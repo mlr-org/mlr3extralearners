@@ -107,14 +107,14 @@
 <div id="mlr3extralearners" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#mlr3extralearners" class="anchor"></a>mlr3extralearners</h1></div>
-<p>Package website: <a href="https://mlr3extralearners.mlr-org.com/">release</a> | <a href="https://mlr3extralearners.mlr-org.com/dev/">dev</a></p>
+<p><a href="https://mlr3extralearners.mlr-org.com/">Package website</a></p>
 <p>Extra Learners for <strong><a href="https://github.com/mlr-org/mlr3/">mlr3</a></strong>.</p>
 <!-- badges: start -->
 <p><a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html"><img src="https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg" alt="R CMD Check"></a> <a href="https://codecov.io/gh/mlr-org/mlr3extralearners"><img src="https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg" alt="codecov"></a> <a href="https://stackoverflow.com/questions/tagged/mlr3"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a> <a href="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge" alt="CodeFactor"></a> <!-- badges: end --></p>
 <div id="what-is-mlr3extralearners" class="section level2">
 <h2 class="hasAnchor">
 <a href="#what-is-mlr3extralearners" class="anchor"></a>What is mlr3extralearners?</h2>
-<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for a live build status.</p>
+<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for the respective upstream packages and their CRAN status.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
