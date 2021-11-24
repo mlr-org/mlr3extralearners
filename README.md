@@ -1,8 +1,7 @@
 
 # mlr3extralearners
 
-Package website: [release](https://mlr3extralearners.mlr-org.com/) |
-[dev](https://mlr3extralearners.mlr-org.com/dev/)
+[Package website](https://mlr3extralearners.mlr-org.com/) 
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
