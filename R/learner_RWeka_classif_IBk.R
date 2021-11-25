@@ -57,7 +57,7 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
       super$initialize(
         id = "classif.IBk",
         packages = c("mlr3extralearners", "RWeka"),
-        feature_types = c("numeric", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered", "integer"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),

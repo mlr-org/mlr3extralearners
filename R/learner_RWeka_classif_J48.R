@@ -69,7 +69,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
       super$initialize(
         id = "classif.J48",
         packages = c("mlr3extralearners", "RWeka"),
-        feature_types = c("numeric", "factor", "ordered"),
+        feature_types = c("numeric", "factor", "ordered", "integer"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings"),
