@@ -15,7 +15,7 @@ format_exclude_once = function(x) {
 
 format_exclude = function(x) {
   x = x[(nchar(x) > 0)]
-  x = map_chr(x, format_exclude_once)
+  x = mlr3misc::map_chr(x, format_exclude_once)
   return(x)
 }
 
