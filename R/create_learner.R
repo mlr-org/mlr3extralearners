@@ -55,7 +55,7 @@
 #'  classname = "LM",
 #'  algorithm = "linear regression",
 #'  type = "regr",
-#'  package = "stats"
+#'  package = "stats",
 #'  caller = "lm",
 #'  feature_types = c("logical", "integer", "numeric", "factor"),
 #'  predict_types = c("response", "se"),

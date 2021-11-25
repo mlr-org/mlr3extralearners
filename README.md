@@ -1,8 +1,7 @@
 
 # mlr3extralearners
 
-Package website: [release](https://mlr3extralearners.mlr-org.com/) |
-[dev](https://mlr3extralearners.mlr-org.com/dev/)
+[Package website](https://mlr3extralearners.mlr-org.com/) 
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
@@ -25,7 +24,7 @@ to install required packages to run these learners. See the interactive
 list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
 page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-for a live build status.
+for the respective upstream packages and their CRAN status.
 
 ``` r
 list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
