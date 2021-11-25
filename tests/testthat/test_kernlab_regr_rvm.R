@@ -19,3 +19,5 @@ test_that("regr.rvm sigma", {
   learner$train(t)
   expect_equal(learner$model@kernelf@kpar$sigma, 0.2)
 })
+
+# FIXME: Add paramtests
