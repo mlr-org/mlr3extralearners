@@ -1,7 +1,7 @@
 on:
   pull_request:
     branches: main
-    paths: '**/partykit**'
+    paths: '**partykit*'
 
 name: partykit (ubuntu-latest, release)
 
@@ -74,13 +74,6 @@ jobs:
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
-        shell: Rscript {0}
-
-      - name: Parameter test
-        if: ${{ matrix.env.test == 'Param' }}
-        run: |
-          options(crayon.enabled = TRUE)
-          testthat::test_dir(system.file("paramtest", package = "mlr3extralearners"), filter = sprintf("_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Session info
