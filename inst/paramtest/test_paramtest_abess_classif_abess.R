@@ -1,12 +1,10 @@
-library(mlr3extralearners)
 if (!requireNamespace("abess", quietly = TRUE)) {
-  library(devtools)
   devtools::install_github(repo = "abess-team/abess", subdir = "R-package")
 }
 mlr3extralearners::install_learners("classif.abess")
 
 test_that("classif.abess train", {
-  learner = lrn("classif.abess")
+  learner = mlr3extralearners::lrn("classif.abess")
   fun = abess::abess
   exclude = c(
     "formula",# handled internally
@@ -22,7 +20,7 @@ test_that("classif.abess train", {
     "control", # handled internally
     "cost" # handled internally
   )
-  
+
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(
     "Missing parameters:",
@@ -31,15 +29,15 @@ test_that("classif.abess train", {
 })
 
 test_that("classif.abess predict", {
-  learner = lrn("classif.abess")
-  fun = abess::predict.abess
+  learner = mlr3extralearners::lrn("classif.abess")
+  fun = abess:::predict.abess
   exclude = c(
     "object", # handled internally
     "newx", # handled internally
     "type", # handled internally
     "na.action" # handled internally
   )
-  
+
   ParamTest = run_paramtest(learner, fun, exclude)
   expect_true(ParamTest, info = paste0(
     "Missing parameters:",
