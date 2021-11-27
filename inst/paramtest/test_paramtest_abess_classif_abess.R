@@ -32,7 +32,7 @@ test_that("classif.abess train", {
 
 test_that("classif.abess predict", {
   learner = lrn("classif.abess")
-  fun = abess:::predict.abess
+  fun = abess::predict.abess
   exclude = c(
     "object", # handled internally
     "newx", # handled internally
