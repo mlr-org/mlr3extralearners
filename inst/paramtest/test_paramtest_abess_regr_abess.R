@@ -1,11 +1,10 @@
-library(mlr3extralearners)
 if (!requireNamespace("abess", quietly = TRUE)) {
   devtools::install_github(repo = "abess-team/abess", subdir = "R-package")
 }
 mlr3extralearners::install_learners("regr.abess")
 
 test_that("regr.abess train", {
-  learner = lrn("regr.abess")
+  learner = mlr3extralearners::lrn("regr.abess")
   fun = abess::abess
   exclude = c(
     "formula",# handled internally
@@ -30,7 +29,7 @@ test_that("regr.abess train", {
 })
 
 test_that("regr.abess predict", {
-  learner = lrn("regr.abess")
+  learner = mlr3extralearners::lrn("regr.abess")
   fun = abess:::predict.abess
   exclude = c(
     "object", # handled internally
