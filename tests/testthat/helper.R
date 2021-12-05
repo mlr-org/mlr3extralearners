@@ -2,11 +2,8 @@ library(checkmate)
 library(mlr3)
 library(mlr3extralearners)
 
-lapply(list.files(system.file("testthat", package = "mlr3"),
-  pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-# FIXME: do we really need both?
-lapply(list.files(system.file("testthat", package = "mlr3"),
-  pattern = "helper_autotest", full.names = TRUE), source)
+list.files(system.file("testthat", package = "mlr3"),
+  pattern = "^helper.*\\.[rR]", full.names = TRUE)
 
 load_tests = function(key) {
   class = strsplit(mlr3::lrn(key)$id, ".", TRUE)[[1]][[1]]
