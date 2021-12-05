@@ -1,7 +1,7 @@
 ## List with fixed tests
 - [x] test_C50_classif_C50
 - [x] test_catboost_classif_catboost
-- [ ] test_catboost_regr_catboost
+- [x] test_catboost_regr_catboost
 - [ ] test_CoxBoost_surv_coxboost
 - [ ] test_CoxBoost_surv_cv_coxboost
 - [ ] test_Cubist_regr_cubist
