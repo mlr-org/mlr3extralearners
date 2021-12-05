@@ -20,6 +20,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
       ps = ps(
         trials = p_int(default = 1L, lower = 1L, tags = c("train", "pars", "predict")),
         rules = p_lgl(default = FALSE, tags = c("train", "pars")),
+        costs = p_uty(default = NULL, tags = c("train", "pars")),
         subset = p_lgl(default = TRUE, tags = c("train", "C5.0Control")),
         bands = p_int(lower = 0, upper = 1000L, tags = c("train", "C5.0Control")),
         winnow = p_lgl(default = FALSE, tags = c("train", "C5.0Control")),
@@ -56,6 +57,10 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
       )
 
       pars = self$param_set$get_values(tags = "pars")
+      if ("weights" %in% task$properties) {
+        pars$weights = task$weights$weight
+      }
+
       f = task$formula()
       data = task$data()
       invoke(C50::C5.0.formula, formula = f, data = data, control = c5control, .args = pars)

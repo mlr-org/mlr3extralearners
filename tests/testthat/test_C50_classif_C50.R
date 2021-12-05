@@ -11,11 +11,17 @@ test_that("autotest", {
 
 test_that("paramtest", {
   learner = lrn("classif.C50")
-  fun = C50::C5.0
+  fun_list = list(C50::C5.0, C50::C5.0Control, C50::predict.C5.0, C50::C5.0.default)
+  predict_args = formalArgs(C50::predict.C5.0)
   exclude = c(
-    "x" # handled via mlr3
+    "x", # handled via mlr3
+    "object", # handled via mlr3,
+    "newdata", # handled via mlr3
+    "y", # handled via mlr3
+    "control", # handled via mlr3
+    "weights", # handled via mlr3 (belongs to the task)
+    "type" # set via the `predict_type` field of the learner class
   )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest)
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_true(paramtest)
 })
