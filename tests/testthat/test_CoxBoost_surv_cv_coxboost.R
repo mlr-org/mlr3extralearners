@@ -24,7 +24,8 @@ test_that("optim", {
 
 test_that("surv.cv_coxboost", {
   learner = lrn("surv.cv_coxboost")
-  fun = CoxBoost::cv.CoxBoost
+  fun_list = list(CoxBoost::cv.CoxBoost, CoxBoost::optimCoxBoostPenalty, CoxBoost::CoxBoost,
+                  CoxBoost:::predict.CoxBoost)
   exclude = c("time",
               # coerced internally
               "status",
@@ -41,72 +42,16 @@ test_that("surv.cv_coxboost", {
               # handled by future
               "upload.x",
               # handled by future
-              "multicore" # handled by future
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")
-  ))
-})
-
-# example for checking a "control" function of a learner
-test_that("surv.cv_coxboost_optimCoxBoostPenalty", {
-  learner = lrn("surv.cv_coxboost")
-  fun = CoxBoost::optimCoxBoostPenalty # replace!
-  exclude = c("time", # coerced internally
-              "status", # coerced internally
-              "x", # coerced internally
-              "parallel" # handled by future
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")
-  ))
-})
-
-test_that("surv.cv_coxboost_CoxBoost", {
-  learner = lrn("surv.cv_coxboost")
-  fun = CoxBoost::CoxBoost # replace!
-  exclude = c("time", # coerced internally
-              "status", # coerced internally
-              "x", # coerced internally
-              "parallel", # handled by future
-              "subset", # handled by task
-              "weights", # handled by task
-              "stratum", # not currently supported
-              "cmprsk", # not currently supported
-              "coupled.strata", # not currently supported
-              "stepno" # optimised in cv.CoxBoost
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")
-  ))
-})
-
-test_that("surv.cv_coxboost_predict", {
-  learner = lrn("surv.cv_coxboost")
-  fun = CoxBoost:::predict.CoxBoost
-  exclude = c("object", # handled by self$model
+              "multicore", # handled by future
+              "parallel", # coerced internally
+              "stepno", # optimised in cv.CoxBoost
+              "object", # handled by mlr3
+              "times", # all times returned
               "newdata", # handled by task
               "newtime", # handled by newdata
-              "newstatus", # handled by newdata
-              "subset", # handled by task,
-              "times", # all times returned
-              "weights", # handled by task
-              "stratum", # not currently supported
-              "type" # handled internally
-  )
+              "newstatus" # handled by newdata
+              )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")
-  ))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })
