@@ -21,7 +21,7 @@ lrn("dens.plug")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{plugdensity}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{plugdensity}
 }
 }
 

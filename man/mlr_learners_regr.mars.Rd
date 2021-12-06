@@ -21,7 +21,7 @@ lrn("regr.mars")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mda}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mda}
 }
 }
 
@@ -32,9 +32,9 @@ lrn("regr.mars")
    nk \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    penalty \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    thresh \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   prune \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace.mars \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   forward.step \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   prune \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   trace.mars \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   forward.step \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

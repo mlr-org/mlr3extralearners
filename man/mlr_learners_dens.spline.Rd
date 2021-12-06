@@ -21,27 +21,27 @@ lrn("dens.spline")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{gss}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{gss}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type \tab list \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 1.4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   weights \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   id.basis \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   weights \tab list \tab - \tab  \tab - \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   id.basis \tab list \tab - \tab  \tab - \cr
    nbasis \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    seed \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   domain \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   quad \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   domain \tab list \tab - \tab  \tab - \cr
+   quad \tab list \tab - \tab  \tab - \cr
    qdsz.depth \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bias \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bias \tab list \tab - \tab  \tab - \cr
    prec \tab numeric \tab 1e-07 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   skip.iter \tab logical \tab - \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   skip.iter \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 

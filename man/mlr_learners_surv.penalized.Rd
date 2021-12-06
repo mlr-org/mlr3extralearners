@@ -27,25 +27,25 @@ lrn("surv.penalized")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{penalized}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{penalized}, \CRANpkg{pracma}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   unpenalized \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   lambda1 \tab list \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   lambda2 \tab list \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fusedl \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   unpenalized \tab list \tab - \tab  \tab - \cr
+   lambda1 \tab list \tab 0 \tab  \tab - \cr
+   lambda2 \tab list \tab 0 \tab  \tab - \cr
+   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fusedl \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    startbeta \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    startgamma \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    steps \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    epsilon \tab numeric \tab 1e-10 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    maxiter \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   standardize \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   standardize \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   trace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 

@@ -21,21 +21,21 @@ lrn("classif.ksvm")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   scaled \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   type \tab character \tab C-svc \tab C-svc, nu-svc, C-bsvc, spoc-svc, kbb-svc \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, laplacedot, besseldot, anovadot \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scaled \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   type \tab character \tab C-svc \tab C-svc, nu-svc, C-bsvc, spoc-svc, kbb-svc \tab - \cr
+   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, laplacedot, besseldot, anovadot \tab - \cr
    C \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cache \tab integer \tab 40 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    tol \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   shrinking \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   shrinking \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sigma \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    degree \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    scale \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

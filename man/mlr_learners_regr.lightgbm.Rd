@@ -21,7 +21,7 @@ lrn("regr.lightgbm")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{numeric}, \dQuote{integer}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{lightgbm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{lightgbm}
 }
 }
 
@@ -29,29 +29,29 @@ lrn("regr.lightgbm")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    nrounds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   objective \tab character \tab regression \tab regression, regression_l1, huber, fair, poisson, quantile, mape, gamma, tweedie \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   metric \tab character \tab  \tab , None, l1, l2, rmse, quantile, mape, huber, fair, poisson, \link{...} \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   custom_eval \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   objective \tab character \tab regression \tab regression, regression_l1, huber, fair, poisson, quantile, mape, gamma, tweedie \tab - \cr
+   metric \tab character \tab  \tab , None, l1, l2, rmse, quantile, mape, huber, fair, poisson, \link{...} \tab - \cr
+   custom_eval \tab list \tab NULL \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   record \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   init_model \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   init_model \tab list \tab NULL \tab  \tab - \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   callbacks \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   categorical_feature \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   callbacks \tab list \tab - \tab  \tab - \cr
+   reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   categorical_feature \tab list \tab  \tab  \tab - \cr
+   boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
+   linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    num_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, 131072]}{[1, 131072]} \cr
-   tree_learner \tab character \tab serial \tab serial, feature, data, voting \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   tree_learner \tab character \tab serial \tab serial, feature, data, voting \tab - \cr
    num_threads \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   device_type \tab character \tab cpu \tab cpu, gpu \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   device_type \tab character \tab cpu \tab cpu, gpu \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   force_col_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   force_row_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   force_col_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   force_row_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    histogram_pool_size \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_depth \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    min_data_in_leaf \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -62,9 +62,9 @@ lrn("regr.lightgbm")
    feature_fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_fraction_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_fraction_seed \tab integer \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   extra_trees \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   extra_trees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    extra_seed \tab integer \tab 6 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lambda_l1 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda_l2 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -73,8 +73,8 @@ lrn("regr.lightgbm")
    drop_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_drop \tab integer \tab 50 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    skip_drop \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   xgboost_dart_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   uniform_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   xgboost_dart_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   uniform_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    drop_seed \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    top_rate \tab numeric \tab 0.2 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    other_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -84,61 +84,61 @@ lrn("regr.lightgbm")
    cat_smooth \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    top_k \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   monotone_constraints \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   monotone_constraints_method \tab character \tab basic \tab basic, intermediate, advanced \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   monotone_constraints \tab list \tab NULL \tab  \tab - \cr
+   monotone_constraints_method \tab character \tab basic \tab basic, intermediate, advanced \tab - \cr
    monotone_penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   feature_contri \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   forcedsplits_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   feature_contri \tab list \tab NULL \tab  \tab - \cr
+   forcedsplits_filename \tab list \tab  \tab  \tab - \cr
    refit_decay_rate \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cegb_tradeoff \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cegb_penalty_split \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   cegb_penalty_feature_lazy \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cegb_penalty_feature_coupled \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cegb_penalty_feature_lazy \tab list \tab - \tab  \tab - \cr
+   cegb_penalty_feature_coupled \tab list \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   interaction_constraints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   input_model \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_model \tab list \tab LightGBM_model.txt \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   interaction_constraints \tab list \tab - \tab  \tab - \cr
+   input_model \tab list \tab  \tab  \tab - \cr
+   output_model \tab list \tab LightGBM_model.txt \tab  \tab - \cr
    saved_feature_importance_type \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    snapshot_freq \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
-   max_bin_by_feature \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_bin_by_feature \tab list \tab NULL \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    bin_construct_sample_cnt \tab integer \tab 200000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    data_random_seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   is_enable_sparse \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   enable_bundle \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   use_missing \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   zero_as_missing \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   header \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   group_column \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   forcedbins_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   save_binary \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   reg_sqrt \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   is_enable_sparse \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   enable_bundle \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   use_missing \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   zero_as_missing \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   header \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   group_column \tab list \tab  \tab  \tab - \cr
+   forcedbins_filename \tab list \tab  \tab  \tab - \cr
+   save_binary \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   reg_sqrt \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    fair_c \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    poisson_max_delta_step \tab numeric \tab 0.7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    metric_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   is_provide_training_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   is_provide_training_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   machine_list_filename \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   machines \tab list \tab  \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   machine_list_filename \tab list \tab  \tab  \tab - \cr
+   machines \tab list \tab  \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_gpu \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    start_iteration \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    num_iteration \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_result \tab list \tab LightGBM_predict_result.txt \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   output_result \tab list \tab LightGBM_predict_result.txt \tab  \tab - \cr
 }
 }
 

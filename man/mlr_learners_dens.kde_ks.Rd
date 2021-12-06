@@ -21,7 +21,7 @@ lrn("dens.kde_ks")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{ks}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{ks}
 }
 }
 
@@ -29,22 +29,22 @@ lrn("dens.kde_ks")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    h \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   H \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   gridsize \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   gridtype \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   H \tab list \tab - \tab  \tab - \cr
+   gridsize \tab list \tab - \tab  \tab - \cr
+   gridtype \tab list \tab - \tab  \tab - \cr
    xmin \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    xmax \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    supp \tab numeric \tab 3.7 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    binned \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bgridsize \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   adj.positive \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   w \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   compute.cont \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   approx.cont \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   unit.interval \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   zero.flag \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bgridsize \tab list \tab - \tab  \tab - \cr
+   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   adj.positive \tab list \tab - \tab  \tab - \cr
+   w \tab list \tab - \tab  \tab - \cr
+   compute.cont \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   approx.cont \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   unit.interval \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   zero.flag \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 

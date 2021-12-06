@@ -6,6 +6,24 @@
 #' @templateVar id classif.bart
 #' @templateVar caller bart
 #'
+#' @section Custom mlr3 defaults:
+#' * Parameter: keeptrees
+#'
+#'  * Original: FALSE
+#'  * New: TRUE
+#'  * Reason: Required for prediction
+#'
+#' * Parameter: offset
+#'  * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
+#'    and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
+#'    `dbarts::dbart`.
+#'
+#' * Parameter: nthread, nchain, combineChains, combinechains
+#'  * The parameters are removed as parallelization of multiple models is handled by future.
+#'
+#' * Parameter: sigest, sigdf, sigquant, keeptres
+#'  * Regression only.
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
@@ -34,8 +52,8 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
         verbose = p_lgl(default = TRUE, tags = "train"),
         keepcall = p_lgl(default = TRUE, tags = "train"),
         sampleronly = p_lgl(default = FALSE, tags = "train"),
-        offset = p_dbl(default = 0.0, tags = "predict"),
-        offset.test = p_lgl(default = FALSE, tags = "predict")
+        seed = p_int(default = NO_DEF, tags = "train"),
+        proposalprobs = p_uty(default = NULL, tags = "train")
       )
 
       super$initialize(

@@ -21,7 +21,7 @@ lrn("classif.extratrees")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{extraTrees}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{extraTrees}
 }
 }
 
@@ -32,14 +32,14 @@ lrn("classif.extratrees")
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nodesize \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    numRandomCuts \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   evenCuts \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   evenCuts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numThreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   subsetSizes \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   subsetGroups \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   tasks \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   subsetSizes \tab list \tab - \tab  \tab - \cr
+   subsetGroups \tab list \tab - \tab  \tab - \cr
+   tasks \tab list \tab - \tab  \tab - \cr
    probOfTaskCuts \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    numRandomTaskCuts \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   na.action \tab character \tab stop \tab stop, zero, fuse \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab character \tab stop \tab stop, zero, fuse \tab - \cr
 }
 }
 

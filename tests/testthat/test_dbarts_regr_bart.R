@@ -14,36 +14,27 @@ test_that("autotest", {
 
 test_that("regr.bart", {
   learner = lrn("regr.bart")
-  fun = dbarts::bart
+  fun_list = list(dbarts::bart, dbarts:::predict.bart)
   exclude = c(
     "x.train", # handled internally
     "y.train", # handled internally
     "x.test", # handled internally
     "binaryOffset", # classification only
     "weights", # handled by task
-    "nthread", # handled by future
-    "nchain", # unused
-    "combinechains" # unused
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})
-
-# example for checking a predict function of a learner
-test_that("regr.bart_predict", {
-  learner = lrn("regr.bart")
-  fun = dbarts:::predict.bart
-  exclude = c(
+    "nthread", # handled by future (
+    "nchain", # unused (specifies how many independent tree sets and fits should be calculated
+    # This can be done with future
+    "combineChains", # only used if nchain > 1
+    "combinechains", # only used if nchain > 1
     "newdata", # handled internally
     "object", # handled internally
-    "type", # handled internally
-    "offset", # classification only
-    "combineChains" # unused
+    "type", # only allow the response
+    "offset" # we don't allow offsets (only using bart2 allows to train with offset, theoretically
+    # the predict function still uses an offset but this will only be implemented if a user demands
+    # it (https://cran.r-project.org/web/packages/dbarts/dbarts.pdf)
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })
+

@@ -33,49 +33,49 @@ lrn("classif.gam")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{prob}, \dQuote{response}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mgcv}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mgcv}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   formula \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   optimizer \tab list \tab outer , newton \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   formula \tab list \tab - \tab  \tab - \cr
+   offset \tab list \tab NULL \tab  \tab - \cr
+   method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab - \cr
+   optimizer \tab list \tab outer , newton \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   select \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   knots \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sp \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   min.sp \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   H \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   select \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   knots \tab list \tab NULL \tab  \tab - \cr
+   sp \tab list \tab NULL \tab  \tab - \cr
+   min.sp \tab list \tab NULL \tab  \tab - \cr
+   H \tab list \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   paraPen \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   G \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   in.out \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   paraPen \tab list \tab NULL \tab  \tab - \cr
+   G \tab list \tab NULL \tab  \tab - \cr
+   in.out \tab list \tab NULL \tab  \tab - \cr
+   drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    irls.reg \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    epsilon \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxit \tab integer \tab 200 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    mgcv.tol \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mgcv.half \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    rank.tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   nlm \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   optim \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   newton \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nlm \tab list \tab NULL \tab  \tab - \cr
+   optim \tab list \tab NULL \tab  \tab - \cr
+   newton \tab list \tab NULL \tab  \tab - \cr
    outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    efs.lspmax \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    efs.tol \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab - \cr
+   edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

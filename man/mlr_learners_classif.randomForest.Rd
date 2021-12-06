@@ -21,7 +21,7 @@ lrn("classif.randomForest")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{randomForest}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForest}
 }
 }
 
@@ -30,23 +30,23 @@ lrn("classif.randomForest")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   replace \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   classwt \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cutoff \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   strata \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sampsize \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   replace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   classwt \tab list \tab NULL \tab  \tab - \cr
+   cutoff \tab list \tab - \tab  \tab - \cr
+   strata \tab list \tab - \tab  \tab - \cr
+   sampsize \tab list \tab - \tab  \tab - \cr
    nodesize \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxnodes \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   importance \tab character \tab FALSE \tab accuracy, gini, none, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   localImp \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   proximity \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   oob.prox \tab logical \tab - \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   norm.votes \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keep.forest \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keep.inbag \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict.all \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nodes \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   importance \tab character \tab FALSE \tab accuracy, gini, none, FALSE \tab - \cr
+   localImp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   proximity \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   oob.prox \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   norm.votes \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   keep.forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   keep.inbag \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   predict.all \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nodes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

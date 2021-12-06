@@ -21,7 +21,7 @@ lrn("classif.bart")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{dbarts}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{dbarts}
 }
 }
 
@@ -37,15 +37,33 @@ lrn("classif.bart")
    nskip \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    printevery \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    keepevery \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   keeptrainfits \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   keeptrainfits \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numcut \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    printcutoffs \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset.test \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   proposalprobs \tab list \tab NULL \tab  \tab - \cr
+}
+}
+
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item Parameter: keeptrees
+\item Original: FALSE
+\item New: TRUE
+\item Reason: Required for prediction
+\item Parameter: offset
+\item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
+and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
+\code{dbarts::dbart}.
+\item Parameter: nthread, nchain, combineChains, combinechains
+\item The parameters are removed as parallelization of multiple models is handled by future.
+\item Parameter: sigest, sigdf, sigquant, keeptres
+\item Regression only.
 }
 }
 

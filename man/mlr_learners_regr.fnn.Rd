@@ -21,7 +21,7 @@ lrn("regr.fnn")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{FNN}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{FNN}
 }
 }
 
@@ -29,7 +29,7 @@ lrn("regr.fnn")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    k \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   algorithm \tab character \tab kd_tree \tab kd_tree, cover_tree, brute \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   algorithm \tab character \tab kd_tree \tab kd_tree, cover_tree, brute \tab - \cr
 }
 }
 

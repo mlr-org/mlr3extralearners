@@ -21,7 +21,7 @@ lrn("dens.kde_kd")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{kerdiest}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kerdiest}
 }
 }
 
@@ -29,7 +29,7 @@ lrn("dens.kde_kd")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    bw \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   type_kernel \tab character \tab n \tab n, e, t, b \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type_kernel \tab character \tab n \tab n, e, t, b \tab - \cr
 }
 }
 

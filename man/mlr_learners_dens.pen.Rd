@@ -21,20 +21,20 @@ lrn("dens.pen")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{pendensity}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{pendensity}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   base \tab character \tab bspline \tab bspline, gaussian \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   base \tab character \tab bspline \tab bspline, gaussian \tab - \cr
    no.base \tab numeric \tab 41 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max.iter \tab numeric \tab 20 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lambda0 \tab numeric \tab 500 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    q \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sort \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   with.border \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sort \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   with.border \tab list \tab - \tab  \tab - \cr
    m \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    eps \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }

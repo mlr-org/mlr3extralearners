@@ -21,7 +21,7 @@ lrn("regr.glmboost")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
 }
 }
 
@@ -29,19 +29,19 @@ lrn("regr.glmboost")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   family \tab character \tab Gaussian \tab Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nuirange \tab list \tab 0, 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   family \tab character \tab Gaussian \tab Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom \tab - \cr
+   custom.family \tab list \tab - \tab  \tab - \cr
+   nuirange \tab list \tab 0, 100 \tab  \tab - \cr
    d \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   center \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   stopintern \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   contrasts.arg \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
+   oobweights \tab list \tab NULL \tab  \tab - \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   stopintern \tab list \tab FALSE \tab  \tab - \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   contrasts.arg \tab list \tab - \tab  \tab - \cr
 }
 }
 
