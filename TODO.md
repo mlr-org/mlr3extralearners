@@ -4,7 +4,7 @@
 - [x] test_catboost_regr_catboost
 - [x] test_CoxBoost_surv_coxboost
 - [x] test_CoxBoost_surv_cv_coxboost
-- [ ] test_Cubist_regr_cubist
+- [x] test_Cubist_regr_cubist
 - [ ] test_dbarts_classif_bart
 - [ ] test_dbarts_regr_bart
 - [ ] test_earth_classif_earth

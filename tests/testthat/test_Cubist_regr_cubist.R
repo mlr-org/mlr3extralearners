@@ -10,30 +10,19 @@ test_that("autotest", {
 
 test_that("regr.cubist train", {
   learner = lrn("regr.cubist")
-  fun = Cubist::cubist
+  fun_list = list(Cubist::cubist, Cubist::cubistControl, Cubist:::predict.cubist,
+                  Cubist:::cubist.default)
   exclude = c(
-    "x", # handled internally
-    "y" # handled internally
+    "object", # handled by mlr3
+    "newdata", # handled by mlr3
+    "x", # handled by mlr3
+    "y", # handled by mlr3
+    "missing", # handled by mlr3
+    "control", # handled by mlr3
+    "weights" # handled by mlr3
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })
 
-test_that("regr.cubist predict", {
-  learner = lrn("regr.cubist")
-  fun = Cubist:::predict.cubist # nolint
-    exclude = c(
-      "object", # handled internally
-      "newdata" # handled internally
-    )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
-})
