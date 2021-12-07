@@ -9,13 +9,12 @@
 - [x] test_dbarts_regr_bart
 - [x] test_earth_classif_earth
 - [x] test_earth_regr_earth
-- [ ] test_extraTrees_classif_extratrees
-- [ ] test_extraTrees_regr_extratrees
+- [x] test_extraTrees_classif_extratrees
+- [x] test_extraTrees_regr_extratrees
 - [ ] test_flexsurv_surv_flexible
 - [ ] test_FNN_classif_fnn
 - [ ] test_FNN_regr_fnn
 - [ ] test_gbm_classif_gbm
-- [ ] test_gbm_regr_gbm
 - [ ] test_gbm_surv_gbm
 - [ ] test_gss_dens_spline
 - [ ] test_kerdiest_dens_kde_kd

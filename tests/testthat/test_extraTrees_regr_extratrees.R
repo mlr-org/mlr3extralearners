@@ -9,16 +9,21 @@ test_that("autotest", {
 
 test_that("regr.extratrees", {
   learner = lrn("regr.extratrees")
-  fun = extraTrees::extraTrees
+  fun_list = list(extraTrees::extraTrees, extraTrees:::extraTrees.default,
+                  extraTrees:::predict.extraTrees)
   exclude = c(
-    "x" # handled by mlr3
+    "x", # handled by mlr3
+    "y", # handled by mlr3
+    "weights", # handled by task
+    "object", # handled by mlr3
+    "newdata", # handled by mlr3
+    "probability", # handledy by mlr3 response_type
+    "newtasks", # No multi task learning allowed
+    "allValues", # would return the prediction of all Trees, don't want that here
+    "quantile" # currently not supported
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  print(param_test)
+  expect_true(param_test)
 })
