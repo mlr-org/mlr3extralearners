@@ -10,8 +10,8 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-task = tsk("rats")
 test_that("manualtest", {
+  task = tsk("rats")
   set.seed(1)
   learn = lrn("surv.flexible", k = 1, scale = "normal", inits = c(1, 1, 1))
   learn$train(task)
@@ -30,34 +30,32 @@ test_that("manualtest", {
 })
 
 test_that("missing", {
+  task = tsk("rats")
   learner = lrn("surv.flexible", k = 1)
   learner$train(task)
   expect_error(learner$predict(tsk("lung")))
 })
 
-test_that("surv.flexible_train", {
+test_that("Param test", {
+  task = tsk("rats")
   learner = lrn("surv.flexible")
-  fun = flexsurv::flexsurvspline
+  fun_list = list(flexsurv::flexsurvspline, flexsurv::flexsurvreg, survival::survreg.control)
   exclude = c(
-    "formula", # handled internally
     "data", # handled internally
     "weights", # handle by task
-    "subset" # handle by task
+    "subset", # handle by task
+    "iter.max", # identical to maxiter
+    "formula", # Not implemented by the creator
+    "anc", # not implemented by the creator
+    "na.action", # not implemented by the creator
+    "dist", # not implemented by the creator
+    "dfns", # not implemented by the creator
+    "aux", # not implemented by the creator
+    "integ.opts", # not implemented by the creator
+    "sr.control" # not implemented by the creator
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })
 
-test_that("surv.flexible_control", {
-  learner = lrn("surv.flexible")
-  fun = survival::survreg.control
-  exclude = c(
-    "iter.max" # identical to maxiter
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})

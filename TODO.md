@@ -11,7 +11,7 @@
 - [x] test_earth_regr_earth
 - [x] test_extraTrees_classif_extratrees
 - [x] test_extraTrees_regr_extratrees
-- [ ] test_flexsurv_surv_flexible
+- [x] test_flexsurv_surv_flexible
 - [ ] test_FNN_classif_fnn
 - [ ] test_FNN_regr_fnn
 - [ ] test_gbm_classif_gbm
