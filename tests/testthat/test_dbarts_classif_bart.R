@@ -15,7 +15,7 @@ test_that("autotest", {
 
 test_that("classif.bart", {
   learner = lrn("classif.bart")
-  fun = list(dbarts::bart, dbarts:::predict.bart)
+  fun_list = list(dbarts::bart, dbarts:::predict.bart)
   exclude = c(
     "x.train", # handled internally
     "y.train", # handled internally

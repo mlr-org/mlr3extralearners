@@ -5,10 +5,10 @@
 - [x] test_CoxBoost_surv_coxboost
 - [x] test_CoxBoost_surv_cv_coxboost
 - [x] test_Cubist_regr_cubist
-- [ ] test_dbarts_classif_bart
-- [ ] test_dbarts_regr_bart
-- [ ] test_earth_classif_earth
-- [ ] test_earth_regr_earth
+- [x] test_dbarts_classif_bart
+- [x] test_dbarts_regr_bart
+- [x] test_earth_classif_earth
+- [x] test_earth_regr_earth
 - [ ] test_extraTrees_classif_extratrees
 - [ ] test_extraTrees_regr_extratrees
 - [ ] test_flexsurv_surv_flexible

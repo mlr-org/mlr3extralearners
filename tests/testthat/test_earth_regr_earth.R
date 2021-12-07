@@ -10,32 +10,24 @@ test_that("autotest", {
 test_that("regr.earth", {
   learner = lrn("regr.earth")
   fun = earth:::earth.default
+  fun_list = list(earth:::earth.default, earth:::predict.earth, earth:::earth.fit)
+
   exclude = c(
     "x", # handled internally
     "y", # handled internally
     "subset", # handled internally
     "weights", # handled internally
     "na.action", # only one option
-    "glm" # handled internally
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
-})
-
-test_that("regr.earth predict", {
-  learner = lrn("regr.earth")
-  fun = earth:::predict.earth
-  exclude = c(
+    "glm", # handled internally
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
     "level", # unused
-    "interval" # handled internally
+    "interval", # handled internally
+    "Object" # only used when called by update.earth
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })
+
