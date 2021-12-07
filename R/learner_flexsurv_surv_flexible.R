@@ -113,7 +113,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   )
 )
 
-predict_flexsurvreg <- function(object, task, ...) {
+predict_flexsurvreg = function(object, task, ...) {
 
   # define newdata from the supplied task and convert to model matrix
 
@@ -123,8 +123,8 @@ predict_flexsurvreg <- function(object, task, ...) {
                           xlev = task$levels())
 
   # collect the auxiliary arguments for the fitted object
-  args <- object$aux
-  args$knots <- as.numeric(args$knots)
+  args = object$aux
+  args$knots = as.numeric(args$knots)
 
   # define matrix of coeffs coefficients
   coeffs = matrix(object$coefficients[c("gamma0", colnames(X)[-1])], nrow = 1)
@@ -137,13 +137,13 @@ predict_flexsurvreg <- function(object, task, ...) {
 
   # calculate the linear predictor as X\beta, note intercept not included in model.matrix
   # so added manually
-  pars[, "gamma0"] <- coeffs %*% t(X)
+  pars[, "gamma0"] = coeffs %*% t(X)
 
   # if any inverse transformations exist then apply them
   invs = sapply(object$dlist$inv.transforms, function(tr) body(tr) != "x")
   if (any(invs)) {
     for (i in which(invs)) {
-      pars[, i] <- object$dlist$inv.transforms[[i]](pars[, i])
+      pars[, i] = object$dlist$inv.transforms[[i]](pars[, i])
     }
   }
 
