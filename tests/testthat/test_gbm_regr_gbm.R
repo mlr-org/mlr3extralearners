@@ -12,19 +12,18 @@ test_that("autotest", {
 
 test_that("regr.gbm", {
   learner = lrn("regr.gbm")
-  fun = gbm::gbm
+  fun_list = list(gbm::gbm, gbm::predict.gbm)
   exclude = c(
     "formula", # handled by mlr3
     "data", # handled by mlr3
     "weights", # handled by mlr3
-    "class.stratify.cv" # handled by mlr3
+    "class.stratify.cv", # handled by mlr3
+    "single.tree", # we don't allow for single trees
+    "newdata", # handled by mlr3
+    "object", # handled by mlr3
+    "type" # we only allow type "link" to get the response prediction
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  param_test = run_paramtest(learner, fun_list, exclude)
+  expect_true(param_test)
 })

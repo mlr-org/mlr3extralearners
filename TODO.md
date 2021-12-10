@@ -14,8 +14,9 @@
 - [x] test_flexsurv_surv_flexible
 - [x] test_FNN_classif_fnn
 - [x] test_FNN_regr_fnn
-- [ ] test_gbm_classif_gbm
-- [ ] test_gbm_surv_gbm
+- [x] test_gbm_classif_gbm
+- [x] test_gbm_regr_gbm
+- [x] test_gbm_surv_gbm
 - [ ] test_gss_dens_spline
 - [ ] test_kerdiest_dens_kde_kd
 - [ ] test_kernlab_classif_gausspr
