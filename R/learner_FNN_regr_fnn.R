@@ -19,7 +19,8 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     initialize = function() {
       ps = ps(
         k = p_int(default = 1L, lower = 1L, tags = "train"),
-        algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
+        algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"),
+                          tags = "train")
       )
 
       super$initialize(

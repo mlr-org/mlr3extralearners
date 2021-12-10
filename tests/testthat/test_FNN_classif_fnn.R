@@ -19,11 +19,6 @@ test_that("classif.fnn", {
     "prob" # handled by mlr
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  param_test = run_paramtest(learner, fun, exclude)
+  expect_true(param_test)
 })
