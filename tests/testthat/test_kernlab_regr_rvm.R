@@ -20,4 +20,35 @@ test_that("regr.rvm sigma", {
   expect_equal(learner$model@kernelf@kpar$sigma, 0.2)
 })
 
-# FIXME: Add paramtests
+test_that("paramtest", {
+  learner = lrn("regr.rvm")
+  # The Learner actually calls the S4 method with class "formula", but this only creates the matrix
+  # and then calls the method for the class "matrix"
+  fun_list = list(
+    s4_helper(getMethod("rvm", "matrix")),
+    s4_helper(getMethod("predict", "rvm"))
+  )
+  exclude = c(
+    "x", # handled by mlr3
+    "y", # handled by mlr3
+    "cross", # crossvalidation is done in mlrregr ksv3
+    "type", # train: set to regression
+    "subset", # mlr3
+    # on the residuals, can be implemented if wanted
+    # the kpar parameters are passed explicitly via "kpar", "degree", "scale", "order", "offset",
+    # "length", "lambda", "normalized"
+    "degree",
+    "sigma",
+    "scale",
+    "order",
+    "offset",
+    "length",
+    "lambda",
+    "normalized",
+    # predict
+    "object",
+    "newdata"
+  )
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
+})

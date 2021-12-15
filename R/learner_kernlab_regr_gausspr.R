@@ -39,11 +39,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
         variance.model = p_lgl(default = FALSE, tag = "train"),
         tol = p_dbl(lower = 0, default = 0.001, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train"),
-        type = p_fct(default = "regression",
-                     levels = c("regression", "variance", "sdeviation"),
-                     tag = "train")
+        na.action = p_uty(default = na.omit, tag = "train")
       )
 
       super$initialize(
@@ -78,6 +74,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
       }
 
       pars = pars[setdiff(names(pars), c("kpar", names(kpars)))]
+      pars$type = "regression"
 
 
       # set column names to ensure consistency in fit and predict

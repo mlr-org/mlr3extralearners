@@ -17,6 +17,6 @@ test_that("regr.fnn", {
     "y" # handled by mlr
   )
 
-  param_test = run_paramtest(learner, fun, exclude)
-  expect_true(param_test)
+  paramtest = run_paramtest(learner, fun, exclude)
+  expect_paramtest(paramtest)
 })

@@ -22,7 +22,7 @@ test_that("regr.cubist train", {
     "weights" # handled by mlr3
   )
 
-  param_test = run_paramtest(learner, fun_list, exclude)
-  expect_true(param_test)
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 

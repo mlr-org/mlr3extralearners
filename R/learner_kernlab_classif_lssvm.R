@@ -44,8 +44,8 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         delta = p_int(default = 40, tag = "train"),
         tol = p_dbl(default = 0.0001, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train")
+        na.action = p_uty(default = na.omit, tag = "train"),
+        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tag = "predict")
       )
 
       super$initialize(
@@ -94,11 +94,13 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
 
     .predict = function(task) {
       out = setNames(vector("list", 1L), self$predict_type)
+      pars = self$param_set$get_values(tags = "predict")
       out[[1]] = mlr3misc::invoke(
         getMethod("predict", "lssvm"),
         self$model,
         task$data(cols = self$state$feature_names),
-        type = self$predict_type
+        type = self$predict_type,
+        .args = pars
       )
       out
     }

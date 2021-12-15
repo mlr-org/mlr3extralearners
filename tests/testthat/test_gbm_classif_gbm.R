@@ -25,6 +25,6 @@ test_that("classif.gbm", {
     "type" # we only allow type "link" to get the response prediction
   )
 
-  param_test = run_paramtest(learner, fun_list, exclude)
-  expect_true(param_test)
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })

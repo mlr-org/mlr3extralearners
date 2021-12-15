@@ -23,7 +23,6 @@ test_that("classif.extratrees", {
     "quantile" # only used in regression + currently not supported
   )
 
-  param_test = run_paramtest(learner, fun_list, exclude)
-  print(param_test)
-  expect_true(param_test)
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })

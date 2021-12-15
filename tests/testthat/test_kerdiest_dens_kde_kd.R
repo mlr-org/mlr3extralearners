@@ -16,7 +16,6 @@ test_that("dens.kde_kd", {
     "y" # handled by predict
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude)
+  expect_paramtest(paramtest)
 })

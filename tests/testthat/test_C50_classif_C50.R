@@ -23,5 +23,5 @@ test_that("paramtest", {
     "type" # set via the `predict_type` field of the learner class
   )
   paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_true(paramtest)
+  expect_paramtest(paramtest)
 })

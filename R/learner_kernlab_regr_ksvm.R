@@ -16,6 +16,9 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # the default for kpar is "automatic", which uses "sigest" in case the kernel is "rbfdot"
+      # (also the default). Only when the sigma, ... are set, the "automatic" value is overwritten
+      # Note that this is not explicitly checked with dependencies (maybe add at some point)
       ps = ps(
         scaled = p_lgl(default = TRUE, tags = "train"),
         type = p_fct(default = "eps-svr",
@@ -36,24 +39,19 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
           tags = "train"),
         scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
         order = p_int(default = NO_DEF, tags = "train"),
-        offset = p_dbl(default = NO_DEF, tags = "train")
+        offset = p_dbl(default = NO_DEF, tags = "train"),
+        na.action = p_uty(default = na.omit, tags = "train"),
+        fit = p_lgl(default = TRUE, tags = "train")
       )
-
-      ps$add_dep("C", "type", CondAnyOf$new(c("eps-svr", "eps-bsvr", "nu-svr")))
-      ps$add_dep("nu", "type", CondAnyOf$new(c("nu-svr")))
-      ps$add_dep(
-        "epsilon", "type",
-        CondAnyOf$new(c("eps-svr", "nu-svr", "eps-bsvr")))
-
       ps$add_dep(
         "sigma", "kernel",
         CondAnyOf$new(c("rbfdot", "laplacedot", "besseldot", "anovadot")))
       ps$add_dep(
         "degree", "kernel",
         CondAnyOf$new(c("polydot", "besseldot", "anovadot")))
-      ps$add_dep("scale", "kernel", CondAnyOf$new(c("polydot")))
-      ps$add_dep("order", "kernel", CondAnyOf$new(c("besseldot")))
-      ps$add_dep("offset", "kernel", CondAnyOf$new(c("polydot")))
+      ps$add_dep("scale", "kernel", CondAnyOf$new("polydot"))
+      ps$add_dep("order", "kernel", CondAnyOf$new("besseldot"))
+      ps$add_dep("offset", "kernel", CondAnyOf$new("polydot"))
 
       super$initialize(
         id = "regr.ksvm",

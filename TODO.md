@@ -17,9 +17,9 @@
 - [x] test_gbm_classif_gbm
 - [x] test_gbm_regr_gbm
 - [x] test_gbm_surv_gbm
-- [ ] test_gss_dens_spline
-- [ ] test_kerdiest_dens_kde_kd
-- [ ] test_kernlab_classif_gausspr
+- [x] test_gss_dens_spline
+- [x] test_kerdiest_dens_kde_kd
+- [x] test_kernlab_classif_gausspr
 - [ ] test_kernlab_classif_ksvm
 - [ ] test_kernlab_classif_lssvm
 - [ ] test_kernlab_regr_gausspr

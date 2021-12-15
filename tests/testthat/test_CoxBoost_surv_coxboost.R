@@ -26,7 +26,7 @@ test_that("Paramtest", {
               "newstatus", # handled by newdata
               "times", # all times returned
               "type") # handled internally
-  param_test = run_paramtest(learner, fun_list, exclude)
-  expect_true(param_test)
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
