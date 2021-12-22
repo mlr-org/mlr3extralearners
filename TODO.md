@@ -26,11 +26,11 @@ f# List with fixed tests
 - [x] test_kernlab_regr_ksvm
 - [x] test_kernlab_regr_rvm
 - [x] test_ks_dens_kde_ks
-- [ ] test_LiblineaR_classif_liblinear
-- [ ] test_LiblineaR_regr_liblinear
-- [ ] test_lightgbm_classif_lightgbm
-- [ ] test_lightgbm_regr_lightgbm
-- [ ] test_locfit_dens_locfit
+- [x] test_LiblineaR_classif_liblinear
+- [x] test_LiblineaR_regr_liblinear
+- [x] test_lightgbm_classif_lightgbm
+- [x] test_lightgbm_regr_lightgbm
+- [x] test_locfit_dens_locfit
 - [ ] test_logspline_dens_logspline
 - [ ] test_mboost_classif_gamboost
 - [ ] test_mboost_classif_glmboost
