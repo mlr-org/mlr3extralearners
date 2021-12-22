@@ -6,17 +6,16 @@ test_that("autotest", {
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
+})
 
 test_that("dens.kde_ks", {
   learner = lrn("dens.kde_ks")
-  fun = ks::kde
+  fun_list = list(ks::kde)
   exclude = c(
     "x", # handled internally
     "eval.points" # handled by predict
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })

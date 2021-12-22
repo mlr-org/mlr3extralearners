@@ -1,4 +1,4 @@
-## List with fixed tests
+f# List with fixed tests
 - [x] test_C50_classif_C50
 - [x] test_catboost_classif_catboost
 - [x] test_catboost_regr_catboost
@@ -20,12 +20,12 @@
 - [x] test_gss_dens_spline
 - [x] test_kerdiest_dens_kde_kd
 - [x] test_kernlab_classif_gausspr
-- [ ] test_kernlab_classif_ksvm
-- [ ] test_kernlab_classif_lssvm
-- [ ] test_kernlab_regr_gausspr
-- [ ] test_kernlab_regr_ksvm
-- [ ] test_kernlab_regr_rvm
-- [ ] test_ks_dens_kde_ks
+- [x] test_kernlab_classif_ksvm
+- [x] test_kernlab_classif_lssvm
+- [x] test_kernlab_regr_gausspr
+- [x] test_kernlab_regr_ksvm
+- [x] test_kernlab_regr_rvm
+- [x] test_ks_dens_kde_ks
 - [ ] test_LiblineaR_classif_liblinear
 - [ ] test_LiblineaR_regr_liblinear
 - [ ] test_lightgbm_classif_lightgbm
