@@ -9,32 +9,19 @@ test_that("autotest", {
 
 test_that("paramtest: train", {
   learner = lrn("regr.liblinear")
-  fun = LiblineaR::LiblineaR
+  fun_list = list(LiblineaR::LiblineaR, LiblineaR:::predict.LiblineaR)
   exclude = c(
     "data", # handled by mlr3
     "target", # handled by mlr3
     "epsilon", # overwritten by svr_eps
-    "wi" # not used in regression
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
-})
-
-test_that("paramtest: predict", {
-  learner = lrn("regr.liblinear")
-  fun = LiblineaR:::predict.LiblineaR
-  exclude = c(
+    "wi", # not used in regression
     "object", # handled internally
     "newx", # handled internally
     "proba", # classif only
     "decisionValues" # classif only
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
+
