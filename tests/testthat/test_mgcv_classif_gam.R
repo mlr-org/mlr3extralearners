@@ -10,7 +10,8 @@ test_that("autotest", {
 
 test_that("classif.gam train", {
   learner = lrn("classif.gam")
-  fun = mgcv::gam
+  fun_list = list(mgcv::gam, mgcv::gam.control, mgcv::predict.gam)
+
   exclude = c(
     "family", # handled relatively to type of task
     "data", # handled internally
@@ -19,33 +20,8 @@ test_that("classif.gam train", {
     "na.action", # handled internally
     "control", # handled via "train" parameters
     "fit", # A model should be fitted
-    "discrete" # experimental, should not be modified
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
-})
-
-test_that("classif.gam control", {
-  learner = lrn("classif.gam")
-  fun = mgcv::gam.control
-  exclude = c(
-    "keepData" # handled internally
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = ",")))
-})
-
-test_that("classif.gam predict", {
-  learner = lrn("classif.gam")
-  fun = mgcv::predict.gam
-  exclude = c(
+    "discrete", # experimental, should not be modified
+    "keepData", # handled internally
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
@@ -57,9 +33,7 @@ test_that("classif.gam predict", {
     "iterms.type" # not relevant for predict type "prob" or "response"
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
+

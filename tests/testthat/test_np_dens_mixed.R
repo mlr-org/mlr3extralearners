@@ -10,24 +10,12 @@ test_that("autotest", {
 
 test_that("dens.mixed", {
   learner = lrn("dens.mixed")
-  fun = np::npudens
+  fun_list = list(np::npudens, np:::npudensbw.default)
+
   exclude = c(
-
+    "dat", # handled by mlr3
+    "scale.init.categorical.sample" # not implemented by the author
   )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})
-
-test_that("dens.mixed_bw", {
-  learner = lrn("dens.mixed")
-  fun = np::npudensbw
-  exclude = c(
-
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })

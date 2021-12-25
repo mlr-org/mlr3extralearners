@@ -41,10 +41,10 @@ f# List with fixed tests
 - [x] test_mboost_surv_glmboost
 - [x] test_mboost_surv_mboost 
 - [x] test_mda_regr_mars
-- [ ] test_mgcv_classif_gam
-- [ ] test_mgcv_regr_gam
-- [ ] test_np_dens_mixed
-- [ ] test_obliqueRSF_surv_obliqueRSF
+- [x] test_mgcv_classif_gam
+- [x] test_mgcv_regr_gam
+- [x] test_np_dens_mixed
+- [x] test_obliqueRSF_surv_obliqueRSF
 - [ ] test_partykit_classif_cforest
 - [ ] test_partykit_classif_ctree
 - [ ] test_partykit_classif_mob

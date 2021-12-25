@@ -23,7 +23,7 @@ test_that("parameter setting works", {
 
 test_that("classif.cforest", {
   learner = lrn("classif.cforest")
-  fun = partykit::cforest
+  fun_list = list(partykit::cforest, partykit::ctree_control)
   exclude = c(
     "formula", # handled in mlr3
     "data", # handled in mlr3
@@ -33,16 +33,14 @@ test_that("classif.cforest", {
     "na.action", # handled in mlr3
     "control", # handled in partykit::ctree_control
     "ytrafo", # handled in mlr3pipelines
-    "perturb" # handled separately
+    "perturb", # handled separately
+    "mtry", # passed directly
+    "applyfun", # passed directly
+    "cores" # passed directly
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
 test_that("classif.cforest_control", {
