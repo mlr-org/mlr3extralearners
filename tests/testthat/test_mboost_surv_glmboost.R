@@ -19,19 +19,20 @@ test_that("autotest aft", {
 
 test_that("surv.glmboost", {
   learner = lrn("surv.glmboost")
-  fun = mboost:::glmboost.formula
+  fun_list = list(mboost:::glmboost.formula, mboost::boost_control)
   exclude = c(
     "formula", # handled via mlr3
     "data", # handled via mlr3
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
-    "..." # not used
+    "custom.family", # Pass custom families as other families are parametrized as characters
+    "nuirange", # e.g. mboost::Weibbull
+    "sigma", # e.g. mboost::Cindex
+    "ipcw" # e.g. mboost::Cindex
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.glmboost_boost_control", {
