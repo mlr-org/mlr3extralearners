@@ -55,7 +55,8 @@ reference:
     contents:
       - create_learner
       - list_mlr3learners
-      - install_learners
+      - starts_with("install_")
+
   - title: Classification Learners
     contents:
       - starts_with("mlr_learners_classif")
