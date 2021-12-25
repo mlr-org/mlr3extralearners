@@ -4,7 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="mlr3extralearners">
 <title>Learner Status • mlr3extralearners</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
@@ -12,105 +13,97 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../../apple-touch-icon-120x120.png">
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../../apple-touch-icon-76x76.png">
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
-<script src="../../bootstrap-toc.js"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/journal/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
-<link href="../../extra.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="Learner Status">
+<script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><link href="../../deps/_Roboto-0.4.0/font.css" rel="stylesheet">
+<link href="../../deps/_JetBrains%20Mono-0.4.0/font.css" rel="stylesheet">
+<link href="../../deps/_Roboto%20Slab-0.4.0/font.css" rel="stylesheet">
+<!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Learner Status">
 <meta property="og:description" content="mlr3extralearners">
-<meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-      <div class="navbar-brand-container">
-        <a href="https://mlr-org.com"><img src="https://raw.githubusercontent.com/mlr-org/mlr3/master/man/figures/logo.png" id="hexlogo" alt="mlr-org"></a>
-        <a class="navbar-brand" href="../../index.html">mlr3extralearners <small>v0.5.18</small></a>
-      </div>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="../../reference/index.html">
-    <span class="fa fa-file-alt"></span>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../../index.html">mlr3extralearners</a>
+
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.18</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../../reference/index.html">
+    <span class="fa fa fa fa-file-alt"></span>
      
     Reference
   </a>
 </li>
-<li>
-  <a href="../../news/index.html">Changelog</a>
+<li class="nav-item">
+  <a class="nav-link" href="../../news/index.html">Changelog</a>
 </li>
-<li>
-  <a href="https://mlr3book.mlr-org.com">
-    <span class="fa fa-link"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://mlr3book.mlr-org.com">
+    <span class="fa fa fa fa-link"></span>
      
     mlr3book
   </a>
 </li>
-<li>
-  <a href="../../articles/learners/list_learners.html">Search Learners</a>
-</li>
-<li>
-  <a href="../../articles/learners/learner_status.html">Learner Status</a>
-</li>
-        <li>
-  <a href="https://github.com/mlr-org/mlr3extralearners">
-    <span class="fa fa-github"></span>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/mlr-org/mlr3extralearners">
+    <span class="fa fa fa fa-github"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
-    <span class="fa fa-comments"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/">
+    <span class="fa fa fa fa-comments"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://stackoverflow.com/questions/tagged/mlr3">
-    <span class="fab fa-stack-overflow"></span>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://stackoverflow.com/questions/tagged/mlr3">
+    <span class="fab fa fab fa-stack-overflow"></span>
      
   </a>
 </li>
-<li>
-  <a href="https://mlr-org.com/">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://mlr-org.com/">
     <span class="fa fa-rss"></span>
      
   </a>
 </li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
-
-      
-
-      </header><script src="learner_status_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Learner Status</h1>
+</nav><div class="container template-article">
+<script src="learner_status_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Learner Status</h1>
             
       
       
-      <div class="hidden name"><code>learner_status.Rmd</code></div>
-
+      <div class="d-none name"><code>learner_status.Rmd</code></div>
     </div>
 
     
@@ -175,7 +168,7 @@ mlr3
 rpart
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_rpart.html"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_rpart.html" class="external-link"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -223,7 +216,7 @@ mlr3
 rpart
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_rpart.html"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_rpart.html" class="external-link"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -240,7 +233,7 @@ mlr3cluster
 ClusterR
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_ClusterR.html"><img src="https://cranchecks.info/badges/worst/ClusterR" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_ClusterR.html" class="external-link"><img src="https://cranchecks.info/badges/worst/ClusterR" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -257,7 +250,7 @@ mlr3cluster
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -274,7 +267,7 @@ mlr3cluster
 cluster
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_cluster.html"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_cluster.html" class="external-link"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -291,7 +284,7 @@ mlr3cluster
 apcluster
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_apcluster.html"><img src="https://cranchecks.info/badges/worst/apcluster" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_apcluster.html" class="external-link"><img src="https://cranchecks.info/badges/worst/apcluster" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -308,7 +301,7 @@ mlr3cluster
 e1071
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_e1071.html"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_e1071.html" class="external-link"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -325,7 +318,7 @@ mlr3cluster
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -342,7 +335,7 @@ mlr3cluster
 dbscan
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_dbscan.html"><img src="https://cranchecks.info/badges/worst/dbscan" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_dbscan.html" class="external-link"><img src="https://cranchecks.info/badges/worst/dbscan" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -359,7 +352,7 @@ mlr3cluster
 cluster
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_cluster.html"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_cluster.html" class="external-link"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -376,7 +369,7 @@ mlr3cluster
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -393,7 +386,7 @@ mlr3cluster
 cluster
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_cluster.html"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_cluster.html" class="external-link"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -425,7 +418,7 @@ mlr3cluster
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -457,7 +450,7 @@ mlr3cluster
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -474,7 +467,7 @@ mlr3cluster
 stats<br>clue
 </td>
 <td style="text-align:left;">
-<br><a href="https://cran.r-project.org/web/checks/check_results_clue.html"><img src="https://cranchecks.info/badges/worst/clue" alt="cran checks"></a>
+<br><a href="https://cran.r-project.org/web/checks/check_results_clue.html" class="external-link"><img src="https://cranchecks.info/badges/worst/clue" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -491,7 +484,7 @@ mlr3cluster
 LPCM
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_LPCM.html"><img src="https://cranchecks.info/badges/worst/LPCM" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_LPCM.html" class="external-link"><img src="https://cranchecks.info/badges/worst/LPCM" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -508,7 +501,7 @@ mlr3cluster
 cluster
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_cluster.html"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_cluster.html" class="external-link"><img src="https://cranchecks.info/badges/worst/cluster" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -525,7 +518,7 @@ mlr3cluster
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@damirpolat</span>
@@ -542,7 +535,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -559,7 +552,7 @@ mlr3extralearners
 C50
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_C50.html"><img src="https://cranchecks.info/badges/worst/C50" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_C50.html" class="external-link"><img src="https://cranchecks.info/badges/worst/C50" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -576,7 +569,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -593,7 +586,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -610,7 +603,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -627,7 +620,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -644,7 +637,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -661,7 +654,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -678,7 +671,7 @@ mlr3extralearners
 dbarts
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_dbarts.html"><img src="https://cranchecks.info/badges/worst/dbarts" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_dbarts.html" class="external-link"><img src="https://cranchecks.info/badges/worst/dbarts" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@ck37</span>
@@ -711,7 +704,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -728,7 +721,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -745,7 +738,7 @@ mlr3extralearners
 earth
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_earth.html"><img src="https://cranchecks.info/badges/worst/earth" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_earth.html" class="external-link"><img src="https://cranchecks.info/badges/worst/earth" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@pkopper</span>
@@ -762,7 +755,7 @@ mlr3extralearners
 extraTrees
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_extraTrees.html"><img src="https://cranchecks.info/badges/worst/extraTrees" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_extraTrees.html" class="external-link"><img src="https://cranchecks.info/badges/worst/extraTrees" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -779,7 +772,7 @@ mlr3extralearners
 FNN
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_FNN.html"><img src="https://cranchecks.info/badges/worst/FNN" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_FNN.html" class="external-link"><img src="https://cranchecks.info/badges/worst/FNN" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -796,7 +789,7 @@ mlr3extralearners
 mgcv
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mgcv.html"><img src="https://cranchecks.info/badges/worst/mgcv" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mgcv.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mgcv" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@JazzyPierrot</span>
@@ -813,7 +806,7 @@ mlr3extralearners
 mboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -830,7 +823,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -847,7 +840,7 @@ mlr3extralearners
 gbm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_gbm.html"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_gbm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -864,7 +857,7 @@ mlr3extralearners
 mboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -881,7 +874,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mboecker</span>
@@ -898,7 +891,7 @@ mlr3extralearners
 LiblineaR
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_LiblineaR.html"><img src="https://cranchecks.info/badges/worst/LiblineaR" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_LiblineaR.html" class="external-link"><img src="https://cranchecks.info/badges/worst/LiblineaR" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -915,7 +908,7 @@ mlr3extralearners
 lightgbm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_lightgbm.html"><img src="https://cranchecks.info/badges/worst/lightgbm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_lightgbm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/lightgbm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@kapsner</span>
@@ -932,7 +925,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -949,7 +942,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -966,7 +959,7 @@ mlr3extralearners
 randomForest
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_randomForest.html"><img src="https://cranchecks.info/badges/worst/randomForest" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_randomForest.html" class="external-link"><img src="https://cranchecks.info/badges/worst/randomForest" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@pat-s</span>
@@ -983,7 +976,7 @@ mlr3extralearners
 randomForestSRC
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html" class="external-link"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1000,7 +993,7 @@ mlr3extralearners
 kerdiest
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kerdiest.html"><img src="https://cranchecks.info/badges/worst/kerdiest" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kerdiest.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kerdiest" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1017,7 +1010,7 @@ mlr3extralearners
 ks
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_ks.html"><img src="https://cranchecks.info/badges/worst/ks" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_ks.html" class="external-link"><img src="https://cranchecks.info/badges/worst/ks" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1034,7 +1027,7 @@ mlr3extralearners
 locfit
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_locfit.html"><img src="https://cranchecks.info/badges/worst/locfit" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_locfit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/locfit" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1051,7 +1044,7 @@ mlr3extralearners
 logspline
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_logspline.html"><img src="https://cranchecks.info/badges/worst/logspline" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_logspline.html" class="external-link"><img src="https://cranchecks.info/badges/worst/logspline" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1068,7 +1061,7 @@ mlr3extralearners
 np
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_np.html"><img src="https://cranchecks.info/badges/worst/np" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_np.html" class="external-link"><img src="https://cranchecks.info/badges/worst/np" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1085,7 +1078,7 @@ mlr3extralearners
 sm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_sm.html"><img src="https://cranchecks.info/badges/worst/sm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_sm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1102,7 +1095,7 @@ mlr3extralearners
 pendensity
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_pendensity.html"><img src="https://cranchecks.info/badges/worst/pendensity" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_pendensity.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pendensity" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1119,7 +1112,7 @@ mlr3extralearners
 plugdensity
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_plugdensity.html"><img src="https://cranchecks.info/badges/worst/plugdensity" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_plugdensity.html" class="external-link"><img src="https://cranchecks.info/badges/worst/plugdensity" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1136,7 +1129,7 @@ mlr3extralearners
 gss
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_gss.html"><img src="https://cranchecks.info/badges/worst/gss" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_gss.html" class="external-link"><img src="https://cranchecks.info/badges/worst/gss" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1153,7 +1146,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -1170,7 +1163,7 @@ mlr3extralearners
 RWeka
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_RWeka.html" class="external-link"><img src="https://cranchecks.info/badges/worst/RWeka" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@henrifnk</span>
@@ -1187,7 +1180,7 @@ mlr3extralearners
 dbarts
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_dbarts.html"><img src="https://cranchecks.info/badges/worst/dbarts" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_dbarts.html" class="external-link"><img src="https://cranchecks.info/badges/worst/dbarts" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@ck37</span>
@@ -1220,7 +1213,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -1237,7 +1230,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -1254,7 +1247,7 @@ mlr3extralearners
 Cubist
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_Cubist.html"><img src="https://cranchecks.info/badges/worst/Cubist" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_Cubist.html" class="external-link"><img src="https://cranchecks.info/badges/worst/Cubist" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -1271,7 +1264,7 @@ mlr3extralearners
 earth
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_earth.html"><img src="https://cranchecks.info/badges/worst/earth" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_earth.html" class="external-link"><img src="https://cranchecks.info/badges/worst/earth" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@pkopper</span>
@@ -1288,7 +1281,7 @@ mlr3extralearners
 extraTrees
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_extraTrees.html"><img src="https://cranchecks.info/badges/worst/extraTrees" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_extraTrees.html" class="external-link"><img src="https://cranchecks.info/badges/worst/extraTrees" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1305,7 +1298,7 @@ mlr3extralearners
 FNN
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_FNN.html"><img src="https://cranchecks.info/badges/worst/FNN" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_FNN.html" class="external-link"><img src="https://cranchecks.info/badges/worst/FNN" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1322,7 +1315,7 @@ mlr3extralearners
 mgcv
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mgcv.html"><img src="https://cranchecks.info/badges/worst/mgcv" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mgcv.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mgcv" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@JazzyPierrot</span>
@@ -1339,7 +1332,7 @@ mlr3extralearners
 mboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1356,7 +1349,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1373,7 +1366,7 @@ mlr3extralearners
 gbm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_gbm.html"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_gbm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1406,7 +1399,7 @@ mlr3extralearners
 mboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1423,7 +1416,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mboecker</span>
@@ -1440,7 +1433,7 @@ mlr3extralearners
 LiblineaR
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_LiblineaR.html"><img src="https://cranchecks.info/badges/worst/LiblineaR" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_LiblineaR.html" class="external-link"><img src="https://cranchecks.info/badges/worst/LiblineaR" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@be-marc</span>
@@ -1457,7 +1450,7 @@ mlr3extralearners
 lightgbm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_lightgbm.html"><img src="https://cranchecks.info/badges/worst/lightgbm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_lightgbm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/lightgbm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@kapsner</span>
@@ -1474,7 +1467,7 @@ mlr3extralearners
 mda
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mda.html"><img src="https://cranchecks.info/badges/worst/mda" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mda.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mda" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -1491,7 +1484,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@sumny</span>
@@ -1508,7 +1501,7 @@ mlr3extralearners
 randomForest
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_randomForest.html"><img src="https://cranchecks.info/badges/worst/randomForest" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_randomForest.html" class="external-link"><img src="https://cranchecks.info/badges/worst/randomForest" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@pat-s</span>
@@ -1525,7 +1518,7 @@ mlr3extralearners
 randomForestSRC
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html" class="external-link"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1542,7 +1535,7 @@ mlr3extralearners
 kernlab
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kernlab.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kernlab" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1559,7 +1552,7 @@ mlr3extralearners
 survivalmodels<br>distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1576,7 +1569,7 @@ mlr3extralearners
 mboost<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1593,7 +1586,7 @@ mlr3extralearners
 partykit<br>sandwich<br>coin
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1610,7 +1603,7 @@ mlr3extralearners
 CoxBoost<br>pracma
 </td>
 <td style="text-align:left;">
-<br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1627,7 +1620,7 @@ mlr3extralearners
 survivalmodels<br>distr6<br>reticulate
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html" class="external-link"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1644,7 +1637,7 @@ mlr3extralearners
 partykit<br>coin<br>sandwich
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_partykit.html"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_partykit.html" class="external-link"><img src="https://cranchecks.info/badges/worst/partykit" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_coin.html" class="external-link"><img src="https://cranchecks.info/badges/worst/coin" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_sandwich.html" class="external-link"><img src="https://cranchecks.info/badges/worst/sandwich" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@adibender</span>
@@ -1661,7 +1654,7 @@ mlr3extralearners
 CoxBoost<br>pracma
 </td>
 <td style="text-align:left;">
-<br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1678,7 +1671,7 @@ mlr3extralearners
 survivalmodels<br>distr6<br>reticulate
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html" class="external-link"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1695,7 +1688,7 @@ mlr3extralearners
 survivalmodels<br>distr6<br>reticulate
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html" class="external-link"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1712,7 +1705,7 @@ mlr3extralearners
 survivalmodels<br>keras<br>pseudo<br>tensorflow<br>distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_keras.html"><img src="https://cranchecks.info/badges/worst/keras" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pseudo.html"><img src="https://cranchecks.info/badges/worst/pseudo" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_tensorflow.html"><img src="https://cranchecks.info/badges/worst/tensorflow" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_keras.html" class="external-link"><img src="https://cranchecks.info/badges/worst/keras" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pseudo.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pseudo" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_tensorflow.html" class="external-link"><img src="https://cranchecks.info/badges/worst/tensorflow" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1729,7 +1722,7 @@ mlr3extralearners
 flexsurv<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_flexsurv.html"><img src="https://cranchecks.info/badges/worst/flexsurv" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_flexsurv.html" class="external-link"><img src="https://cranchecks.info/badges/worst/flexsurv" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1746,7 +1739,7 @@ mlr3extralearners
 mboost<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1763,7 +1756,7 @@ mlr3extralearners
 gbm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_gbm.html"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_gbm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/gbm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1780,7 +1773,7 @@ mlr3extralearners
 mboost<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1797,7 +1790,7 @@ mlr3extralearners
 survivalmodels<br>distr6<br>reticulate
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html" class="external-link"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1814,7 +1807,7 @@ mlr3extralearners
 mboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_mboost.html"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_mboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/mboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1831,7 +1824,7 @@ mlr3extralearners
 survival<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survival.html"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survival.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1848,7 +1841,7 @@ mlr3extralearners
 obliqueRSF<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_obliqueRSF.html"><img src="https://cranchecks.info/badges/worst/obliqueRSF" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_obliqueRSF.html" class="external-link"><img src="https://cranchecks.info/badges/worst/obliqueRSF" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@adibender</span>
@@ -1865,7 +1858,7 @@ mlr3extralearners
 survival<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survival.html"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survival.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1882,7 +1875,7 @@ mlr3extralearners
 survivalmodels<br>distr6<br>reticulate
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalmodels.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalmodels" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_reticulate.html" class="external-link"><img src="https://cranchecks.info/badges/worst/reticulate" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1899,7 +1892,7 @@ mlr3extralearners
 penalized<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_penalized.html"><img src="https://cranchecks.info/badges/worst/penalized" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_penalized.html" class="external-link"><img src="https://cranchecks.info/badges/worst/penalized" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1916,7 +1909,7 @@ mlr3extralearners
 randomForestSRC<br>pracma
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_randomForestSRC.html" class="external-link"><img src="https://cranchecks.info/badges/worst/randomForestSRC" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_pracma.html" class="external-link"><img src="https://cranchecks.info/badges/worst/pracma" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1933,7 +1926,7 @@ mlr3extralearners
 survivalsvm
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survivalsvm.html"><img src="https://cranchecks.info/badges/worst/survivalsvm" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survivalsvm.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survivalsvm" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -1950,7 +1943,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -1967,7 +1960,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -1984,7 +1977,7 @@ mlr3learners
 kknn
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kknn.html"><img src="https://cranchecks.info/badges/worst/kknn" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kknn.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kknn" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2001,7 +1994,7 @@ mlr3learners
 MASS
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_MASS.html"><img src="https://cranchecks.info/badges/worst/MASS" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_MASS.html" class="external-link"><img src="https://cranchecks.info/badges/worst/MASS" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2034,7 +2027,7 @@ mlr3learners
 nnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_nnet.html"><img src="https://cranchecks.info/badges/worst/nnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_nnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/nnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2051,7 +2044,7 @@ mlr3learners
 e1071
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_e1071.html"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_e1071.html" class="external-link"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2068,7 +2061,7 @@ mlr3learners
 nnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_nnet.html"><img src="https://cranchecks.info/badges/worst/nnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_nnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/nnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2085,7 +2078,7 @@ mlr3learners
 MASS
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_MASS.html"><img src="https://cranchecks.info/badges/worst/MASS" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_MASS.html" class="external-link"><img src="https://cranchecks.info/badges/worst/MASS" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2102,7 +2095,7 @@ mlr3learners
 ranger
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_ranger.html"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_ranger.html" class="external-link"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2119,7 +2112,7 @@ mlr3learners
 e1071
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_e1071.html"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_e1071.html" class="external-link"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2136,7 +2129,7 @@ mlr3learners
 xgboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2153,7 +2146,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2170,7 +2163,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2187,7 +2180,7 @@ mlr3learners
 kknn
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_kknn.html"><img src="https://cranchecks.info/badges/worst/kknn" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_kknn.html" class="external-link"><img src="https://cranchecks.info/badges/worst/kknn" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2204,7 +2197,7 @@ mlr3learners
 DiceKriging
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_DiceKriging.html"><img src="https://cranchecks.info/badges/worst/DiceKriging" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_DiceKriging.html" class="external-link"><img src="https://cranchecks.info/badges/worst/DiceKriging" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2237,7 +2230,7 @@ mlr3learners
 ranger
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_ranger.html"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_ranger.html" class="external-link"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2254,7 +2247,7 @@ mlr3learners
 e1071
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_e1071.html"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_e1071.html" class="external-link"><img src="https://cranchecks.info/badges/worst/e1071" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2271,7 +2264,7 @@ mlr3learners
 xgboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2288,7 +2281,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2305,7 +2298,7 @@ mlr3learners
 glmnet
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_glmnet.html" class="external-link"><img src="https://cranchecks.info/badges/worst/glmnet" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2322,7 +2315,7 @@ mlr3learners
 ranger
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_ranger.html"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_ranger.html" class="external-link"><img src="https://cranchecks.info/badges/worst/ranger" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2339,7 +2332,7 @@ mlr3learners
 xgboost
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_xgboost.html" class="external-link"><img src="https://cranchecks.info/badges/worst/xgboost" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@mllg</span>
@@ -2356,7 +2349,7 @@ mlr3proba
 distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -2373,7 +2366,7 @@ mlr3proba
 distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -2390,7 +2383,7 @@ mlr3proba
 survival<br>distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survival.html"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survival.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -2407,7 +2400,7 @@ mlr3proba
 survival<br>distr6
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_survival.html"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_survival.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
@@ -2424,37 +2417,34 @@ mlr3proba
 rpart<br>distr6<br>survival
 </td>
 <td style="text-align:left;">
-<a href="https://cran.r-project.org/web/checks/check_results_rpart.html"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_survival.html"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_rpart.html" class="external-link"><img src="https://cranchecks.info/badges/worst/rpart" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_distr6.html" class="external-link"><img src="https://cranchecks.info/badges/worst/distr6" alt="cran checks"></a><br><a href="https://cran.r-project.org/web/checks/check_results_survival.html" class="external-link"><img src="https://cranchecks.info/badges/worst/survival" alt="cran checks"></a>
 </td>
 <td style="text-align:left;">
 <span class="citation">@RaphaelS1</span>
 </td>
 </tr>
 </tbody>
-</table>
-</div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-      </div>
-
+</table></main>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me">Patrick Schratz</a>, Sebastian Fischer.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>
