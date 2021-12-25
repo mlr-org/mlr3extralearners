@@ -18,7 +18,7 @@ authors:
 
 navbar:
   structure:
-    left:  [reference, news, book, Search Learners, Learner Status]
+    left:  [reference, news, book, search, status]
     right: [github, mattermost, stackoverflow, rss]
   components:
     home: ~
