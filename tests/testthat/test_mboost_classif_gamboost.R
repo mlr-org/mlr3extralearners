@@ -10,30 +10,19 @@ test_that("autotest", {
 
 test_that("classif.gamboost", {
   learner = lrn("classif.gamboost")
-  fun = mboost::gamboost
+  fun_list = list(mboost::gamboost, mboost::boost_control)
   exclude = c(
     "formula", # handled via mlr3
     "data", # handled via mlr3
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
-    "..." # not used
+    "center", # (mboost_control) depreacated
+    "custom.family", # Provide a custom family
+    "type", # mboost::Binomial
+    "link" # mboost::Binomial
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
-test_that("classif.gamboost_boost_control", {
-  learner = lrn("classif.gamboost")
-  fun = mboost::boost_control
-  exclude = c(
-    "center" # deprecated
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})

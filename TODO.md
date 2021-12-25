@@ -31,15 +31,15 @@ f# List with fixed tests
 - [x] test_lightgbm_classif_lightgbm
 - [x] test_lightgbm_regr_lightgbm
 - [x] test_locfit_dens_locfit
-- [ ] test_logspline_dens_logspline
-- [ ] test_mboost_classif_gamboost
+- [x] test_logspline_dens_logspline
+- [x] test_mboost_classif_gamboost
 - [ ] test_mboost_classif_glmboost
 - [ ] test_mboost_regr_gamboost
 - [ ] test_mboost_regr_glmboost
 - [ ] test_mboost_surv_blackboost
 - [ ] test_mboost_surv_gamboost
 - [ ] test_mboost_surv_glmboost
-- [ ] test_mboost_surv_mboost
+- [ ] test_mboost_surv_mboost <-- problematic
 - [ ] test_mda_regr_mars
 - [ ] test_mgcv_classif_gam
 - [ ] test_mgcv_regr_gam
