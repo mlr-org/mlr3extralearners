@@ -25,4 +25,3 @@ test_that("classif.gamboost", {
   paramtest = run_paramtest(learner, fun_list, exclude)
   expect_paramtest(paramtest)
 })
-

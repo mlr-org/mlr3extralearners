@@ -35,15 +35,3 @@ test_that("surv.glmboost", {
   expect_paramtest(paramtest)
 })
 
-test_that("surv.glmboost_boost_control", {
-  learner = lrn("surv.glmboost")
-  fun = mboost::boost_control
-  exclude = c(
-    "center" # deprecated
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})
