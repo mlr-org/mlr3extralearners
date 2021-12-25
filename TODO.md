@@ -39,8 +39,8 @@ f# List with fixed tests
 - [x] test_mboost_surv_blackboost
 - [x] test_mboost_surv_gamboost
 - [x] test_mboost_surv_glmboost
-- [ ] test_mboost_surv_mboost <-- problematic
-- [ ] test_mda_regr_mars
+- [x] test_mboost_surv_mboost 
+- [x] test_mda_regr_mars
 - [ ] test_mgcv_classif_gam
 - [ ] test_mgcv_regr_gam
 - [ ] test_np_dens_mixed

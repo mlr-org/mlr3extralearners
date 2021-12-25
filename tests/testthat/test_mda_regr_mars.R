@@ -10,33 +10,18 @@ test_that("autotest", {
 
 test_that("regr.mars train", {
   learner = lrn("regr.mars")
-  fun = mda::mars
+  fun_list = list(mda::mars, mda:::predict.mars)
   exclude = c(
     "x", # handled internally
     "y", # handled internally
     "w", # handled internally
     "wp", # ignored
-    "prevfit" # ignored
+    "prevfit", # ignored
+    "object", # handled internally
+    "newdata" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
-test_that("regr.mars predict", {
-  learner = lrn("regr.mars")
-  fun = mda:::predict.mars # nolint
-    exclude = c(
-      "object", # handled internally
-      "newdata" # handled internally
-    )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
-})
