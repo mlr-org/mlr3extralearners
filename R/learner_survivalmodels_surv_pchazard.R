@@ -143,7 +143,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
         predict,
         self$model,
         newdata = newdata,
-        distr6 = FALSE,
+        distr6 = TRUE,
         type = "all",
         .args = pars
       )
