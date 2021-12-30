@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.19
+
+* Fix all {survivalmodels} learners
+
 # mlr3extralearners 0.5.13
 
 * Fix `categorical_features` in {lightgbm} learners
