@@ -1,10 +1,8 @@
 url: https://mlr3extralearners.mlr-org.com
 
 template:
+  bootstrap: 5
   package: mlr3pkgdowntemplate
-  params:
-    bootswatch: journal
-  default_assets: false
 
 development:
   mode: auto
@@ -20,7 +18,7 @@ authors:
 
 navbar:
   structure:
-    left:  [reference, news, book, Search Learners, Learner Status]
+    left:  [reference, news, book, search, status]
     right: [github, mattermost, stackoverflow, rss]
   components:
     home: ~
@@ -57,7 +55,8 @@ reference:
     contents:
       - create_learner
       - list_mlr3learners
-      - install_learners
+      - starts_with("install_")
+      - lrn
   - title: Classification Learners
     contents:
       - starts_with("mlr_learners_classif")

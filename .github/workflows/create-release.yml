@@ -1,8 +1,8 @@
 on:
   push:
-    branches:
-      - main
-      
+    tags:
+      - "*"
+
 name: Create Release
 
 jobs:
@@ -10,15 +10,15 @@ jobs:
     name: Create Release
     runs-on: ubuntu-latest
     steps:
-    
+
       - name: Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Extract version
         run: |
           echo "PACKAGE_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
           echo "PACKAGE_NAME=$(grep '^Package' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
-        
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -31,4 +31,4 @@ jobs:
             https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md
           draft: false
           prerelease: false
- 
+

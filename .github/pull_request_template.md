@@ -42,7 +42,7 @@ I have run...
 * [ ] `devtools::document(roclets = c('rd', 'collate', 'namespace'))`
 * [ ] `lintr::lint_package()`
 
-And 
+And
 
 * [ ] Updated NEWS.md
 
@@ -56,7 +56,7 @@ The maintainer of the learner can be changed at any time by editing the '@author
 
 Finally make sure you get credit and add yourself to the DESCRIPTION file (optionally add a note to say which learner(s) you implemented):
 
-* [ ] I have added myself (and anyone else who contributed) to the end of the "Authors" field in the DESCRIPTION file with role "ctb" 
+* [ ] I have added myself (and anyone else who contributed) to the end of the "Authors" field in the DESCRIPTION file with role "ctb"
 
 ## Comments
 
@@ -96,13 +96,13 @@ If you've also made changes other than a small patch (i.e. changes that could af
 
 I have run...
 
-* [ ] `styler::style_pkg(style = styler::mlr_style)` - If needed install with `remotes::install_github('pat-s/styler@mlr-style')`
+* [ ] `styler.mlr::style_pkg()` - If needed install with `remotes::install_github('mlr-org/styler.mlr')`
 * [ ] `lintr::lint_package()`
 
-And 
+And
 
 * [ ] Updated NEWS.md
-* [ ] Updated the package version (For patches (bug fixing, small added feature): add 1 to the 3rd number. For minor updates (new learner, new features): add 1 to the 2nd number). 
+* [ ] Updated the package version (For patches (bug fixing, small added feature): add 1 to the 3rd number. For minor updates (new learner, new features): add 1 to the 2nd number).
 
 ## Comments
 
