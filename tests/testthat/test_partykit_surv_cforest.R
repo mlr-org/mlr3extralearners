@@ -8,28 +8,10 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("surv.cforest", {
-  learner = lrn("surv.cforest")
-  fun = partykit::cforest
-  exclude = c(
-    "formula", # handled in mlr3
-    "data", # handled in mlr3
-    "weights", # handled in mlr3
-    "subset", # handled in mlr3
-    "strata", # FIXME: handled in mlr3?
-    "na.action", # handled in mlr3
-    "control", # handled in partykit::ctree_control
-    "ytrafo", # handled in mlr3pipelines
-    "perturb" # handled separately
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_paramtest(paramtest)
-})
 
 test_that("train surv.cforest", {
   learner = lrn("surv.cforest")
-  fun_list = list(partykit::cforest, partykit::ctree_control, partykit::predict.cforest)
+  fun_list = list(partykit::cforest, partykit::ctree_control)
   exclude = c(
     "formula", # handled in mlr3
     "data", # handled in mlr3
