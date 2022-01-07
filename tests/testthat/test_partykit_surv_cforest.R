@@ -4,7 +4,7 @@ load_tests("surv.cforest")
 test_that("autotest", {
   learner = LearnerSurvCForest$new()
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, N = 100)
+  result = run_autotest(learner, check_replicable = FALSE, N = 10)
   expect_true(result, info = result$error)
 })
 
@@ -23,33 +23,54 @@ test_that("surv.cforest", {
     "perturb" # handled separately
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:", paste0("- '", ParamTest$missing, "'", collapse = "")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })
 
-test_that("surv.cforest_control", {
+test_that("train surv.cforest", {
   learner = lrn("surv.cforest")
-  fun = partykit::ctree_control
+  fun_list = list(partykit::cforest, partykit::ctree_control, partykit::predict.cforest)
   exclude = c(
+    "formula", # handled in mlr3
+    "data", # handled in mlr3
+    "weights", # handled in mlr3
+    "subset", # handled in mlr3
+    "strata", # FIXME: handled in mlr3?
+    "na.action", # handled in mlr3
+    "control", # handled in partykit::ctree_control
+    "ytrafo", # handled in mlr3pipelines
+    "perturb", # handled separately
     "mtry", # passed directly
     "applyfun", # passed directly
     "cores", # passed directly
-    "pargs" # handled internally
+    "replace", # perturb = list(replace, fraction)
+    "fraction", # perturb = list(replace, fraction)
+    "object", # handled internally
+    "mtryratio", # added as alternative to mtry
+    "newdata", # handled internally
+    "type", # handled by mlr3
+    "FUN", # summary statistics are handled by mlr3 with measures
+    "pargs", # maxapts, abseps and releps are passed directly
+    "maxpts",
+    "abseps",
+    "releps",
+    NULL
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
-test_that("GenzBretz", {
+test_that("train surv.cforest", {
   learner = lrn("surv.cforest")
-  fun = mvtnorm::GenzBretz
+  fun_list = list(partykit::predict.cforest)
   exclude = c(
+    "object", # handled internally
+    "newdata", # handled internally
+    "type", # handled by mlr3
+    "FUN", # summary statistics are handled by mlr3 with measures
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("Missing parameters:",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })

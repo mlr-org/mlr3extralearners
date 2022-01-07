@@ -23,7 +23,7 @@ test_that("parameter setting works", {
 
 test_that("regr.cforest", {
   learner = lrn("regr.cforest")
-  fun = partykit::cforest
+  fun_list = list(partykit::cforest, partykit::ctree_control, partykit::predict.cforest)
   exclude = c(
     "formula", # handled in mlr3
     "data", # handled in mlr3
@@ -33,32 +33,21 @@ test_that("regr.cforest", {
     "na.action", # handled in mlr3
     "control", # handled in partykit::ctree_control
     "ytrafo", # handled in mlr3pipelines
-    "perturb" # handled separately
+    "perturb", # handled separately
+    "replace", # goes into perturb
+    "fraction", # goes into perturb
+    "object", # handled internally
+    "mtryratio", # added as alternative to mtry
+    "newdata", # handled internally
+    "type", # handled by mlr3
+    "FUN", # summary statistics are handled by mlr3 with measures
+    # Parameters from varimp (needs a fix in partykit --> see learner)
+    "nperm",
+    "risk",
+    "conditional",
+    "threshold"
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
-})
-
-test_that("regr.cforest_control", {
-  learner = lrn("regr.cforest")
-  fun = partykit::ctree_control
-  exclude = c(
-    "mtry", # passed directly
-    "applyfun", # passed directly
-    "cores" # passed directly
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "
-Missing parameters:
-",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun_list, exclude)
+  expect_paramtest(paramtest)
 })

@@ -83,11 +83,11 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         scale = p_lgl(default = TRUE, tags = "predict"),
 
         # importance; OOB see predict, applyfun, cores see train
-        nperm = p_int(default = 1L, lower = 0L, tags = c("train", "importance")),
-        risk = p_fct(default = "loglik", levels = c("loglik", "misclassification"),
-          tags = c("train", "importance")),
-        conditional = p_lgl(default = FALSE, tags = c("train", "importance")),
-        threshold = p_dbl(default = 0.2, tags = c("train", "importance")),
+        # nperm = p_int(default = 1L, lower = 0L, tags = c("train", "importance")),
+        # risk = p_fct(default = "loglik", levels = c("loglik", "misclassification"),
+        #   tags = c("train", "importance")),
+        # conditional = p_lgl(default = FALSE, tags = c("train", "importance")),
+        # threshold = p_dbl(default = 0.2, tags = c("train", "importance")),
 
         maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
         abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
@@ -96,8 +96,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
       ps$add_dep("nresample", on = "testtype",
         cond = CondEqual$new("MonteCarlo"))
-      ps$add_dep("nperm", on = "conditional", cond = CondEqual$new(TRUE))
-      ps$add_dep("threshold", on = "conditional", cond = CondEqual$new(TRUE))
+      # ps$add_dep("nperm", on = "conditional", cond = CondEqual$new(TRUE))
+      # ps$add_dep("threshold", on = "conditional", cond = CondEqual$new(TRUE))
 
       # set the cforest specific ctree_control parameters
       ps$values$teststat = "quadratic"

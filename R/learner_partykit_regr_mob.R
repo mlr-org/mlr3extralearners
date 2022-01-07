@@ -60,7 +60,6 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         prune = p_uty(tags = "train"),
         restart = p_lgl(default = TRUE, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train"),
-        maxvar = p_int(lower = 1L, tags = "train"),
         caseweights = p_lgl(default = TRUE, tags = "train"),
         ytype = p_fct(default = "vector",
           levels = c("vector", "matrix", "data.frame"), tags = "train"),
@@ -118,7 +117,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-                                  methods::formalArgs(partykit::mob_control))]
+        methods::formalArgs(partykit::mob_control))]
       pars_additional = self$param_set$values$additional
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]

@@ -39,20 +39,20 @@ f# List with fixed tests
 - [x] test_mboost_surv_blackboost
 - [x] test_mboost_surv_gamboost
 - [x] test_mboost_surv_glmboost
-- [x] test_mboost_surv_mboost 
+- [x] test_mboost_surv_mboost
 - [x] test_mda_regr_mars
 - [x] test_mgcv_classif_gam
 - [x] test_mgcv_regr_gam
 - [x] test_np_dens_mixed
 - [x] test_obliqueRSF_surv_obliqueRSF
-- [ ] test_partykit_classif_cforest
-- [ ] test_partykit_classif_ctree
-- [ ] test_partykit_classif_mob
-- [ ] test_partykit_regr_cforest
-- [ ] test_partykit_regr_ctree
-- [ ] test_partykit_regr_mob
-- [ ] test_partykit_surv_cforest
-- [ ] test_partykit_surv_ctree
+- [x] test_partykit_classif_cforest
+- [x] test_partykit_classif_ctree
+- [x] test_partykit_classif_mob
+- [x] test_partykit_regr_cforest
+- [x] test_partykit_regr_ctree
+- [x] test_partykit_regr_mob
+- [x] test_partykit_surv_cforest
+- [x] test_partykit_surv_ctree
 - [ ] test_penalized_surv_penalized
 - [ ] test_pendensity_dens_pen
 - [ ] test_plugdensity_dens_plug
