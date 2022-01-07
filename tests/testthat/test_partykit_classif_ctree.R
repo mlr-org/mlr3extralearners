@@ -9,7 +9,9 @@ test_that("autotest", {
 
 test_that("classif.ctree", {
   learner = lrn("classif.ctree")
-  fun_list = list(partykit::ctree, partykit::ctree_control, partykit::predict.party)
+  fun_list = list(partykit::ctree, partykit::ctree_control, partykit::predict.party,
+    mvtnorm::GenzBretz
+  )
   exclude = c(
     "formula", # handled in mlr3
     "data", # handled in mlr3

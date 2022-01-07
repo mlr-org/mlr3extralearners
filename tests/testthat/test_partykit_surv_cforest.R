@@ -61,14 +61,14 @@ test_that("train surv.cforest", {
   expect_paramtest(paramtest)
 })
 
-test_that("train surv.cforest", {
+test_that("predict surv.cforest", {
   learner = lrn("surv.cforest")
   fun_list = list(partykit::predict.cforest)
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled by mlr3
-    "FUN", # summary statistics are handled by mlr3 with measures
+    "FUN" # summary statistics are handled by mlr3 with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")

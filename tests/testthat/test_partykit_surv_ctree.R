@@ -34,4 +34,3 @@ test_that("surv.ctree", {
   paramtest = run_paramtest(learner, fun_list, exclude)
   expect_paramtest(paramtest)
 })
-

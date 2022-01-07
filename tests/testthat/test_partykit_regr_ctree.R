@@ -8,7 +8,7 @@ test_that("autotest", {
 })
 
 
-test_that("regr.ctree_control", {
+test_that("regr.ctree", {
   learner = lrn("regr.ctree")
   fun_list = list(partykit::ctree, partykit::ctree_control, partykit::predict.party,
     mvtnorm::GenzBretz)
