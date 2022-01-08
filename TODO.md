@@ -53,7 +53,7 @@ f# List with fixed tests
 - [x] test_partykit_regr_mob
 - [x] test_partykit_surv_cforest
 - [x] test_partykit_surv_ctree
-- [ ] test_penalized_surv_penalized
+- [x] test_penalized_surv_penalized
 - [ ] test_pendensity_dens_pen
 - [ ] test_plugdensity_dens_plug
 - [ ] test_randomForest_classif_randomForest

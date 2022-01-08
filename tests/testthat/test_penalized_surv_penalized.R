@@ -17,9 +17,9 @@ test_that("unpenalized", {
   expect_prediction_surv(learner$predict(task))
 })
 
-test_that("surv.penalized_train", {
+test_that("train surv.penalized", {
   learner = lrn("surv.penalized")
-  fun = penalized::penalized
+  fun_list = list(penalized::penalized)
   exclude = c(
     "response", # coerced internally
     "penalized", # all variables assumed penalized unless passed to 'unpenalized' parameter
@@ -27,19 +27,18 @@ test_that("surv.penalized_train", {
     "model" # coerced internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.penalized_predict", {
   learner = lrn("surv.penalized")
-  fun = penalized:::predict
+  fun_list = list(penalized:::predict)
   exclude = c(
-    "object" # passed internally
+    "object", # passed internally
+    "unpenalized" # see learner details
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })
