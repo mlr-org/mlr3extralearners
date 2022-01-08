@@ -57,10 +57,10 @@ f# List with fixed tests
 - [x] test_pendensity_dens_pen
 - [x] test_plugdensity_dens_plug
 - [x] test_randomForest_classif_randomForest
-- [ ] test_randomForest_regr_randomForest
-- [ ] test_randomForestSRC_classif_rfsrc
-- [ ] test_randomForestSRC_regr_rfsrc
-- [ ] test_randomForestSRC_surv_rfsrc
+- [x] test_randomForest_regr_randomForest
+- [x] test_randomForestSRC_classif_rfsrc
+- [x] test_randomForestSRC_regr_rfsrc
+- [x] test_randomForestSRC_surv_rfsrc
 - [ ] test_RWeka_classif_AdaBoostM1
 - [ ] test_RWeka_classif_IBk
 - [ ] test_RWeka_classif_J48
