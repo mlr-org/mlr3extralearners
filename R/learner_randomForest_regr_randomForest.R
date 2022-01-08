@@ -25,7 +25,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     initialize = function() {
       ps = ps(
           ntree = p_int(default = 500L, lower = 1L,
-            tags = c("train", "predict")),
+            tags = "train"),
           mtry = p_int(lower = 1L, tags = "train"),
           replace = p_lgl(default = TRUE, tags = "train"),
           strata = p_uty(tags = "train"),

@@ -56,7 +56,7 @@ f# List with fixed tests
 - [x] test_penalized_surv_penalized
 - [x] test_pendensity_dens_pen
 - [x] test_plugdensity_dens_plug
-- [ ] test_randomForest_classif_randomForest
+- [x] test_randomForest_classif_randomForest
 - [ ] test_randomForest_regr_randomForest
 - [ ] test_randomForestSRC_classif_rfsrc
 - [ ] test_randomForestSRC_regr_rfsrc

@@ -8,31 +8,34 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("regr.randomforest", {
+test_that("train regr.randomforest", {
   learner = lrn("regr.randomForest")
-  fun = randomForest::randomForest
+  fun_list = list(randomForest:::randomForest.default)
   exclude = c(
-    "x" # handled via mlr3
+    "x", # handled via mlr3
+    "y", # handled via mlr3
+    "xtest", # handled via mlr3
+    "ytest", # handled via mlr3
+    "corr.bias", # not implemented by author
+    "nPerm", # not implemented by author
+    "classwt", # classification only
+    "cutoff" # classification only
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("predict regr.randomForest", {
   learner = lrn("regr.randomForest")
-  fun = randomForest:::predict.randomForest
+  fun_list = list(randomForest:::predict.randomForest)
   exclude = c(
     "object", # handled via mlr3
     "newdata", # handled via mlr3
     "type", # handled via mlr3
-    "cutoff" # classification only
+    "cutoff", # classification only
+    "norm.votes" # classification only
   )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })
