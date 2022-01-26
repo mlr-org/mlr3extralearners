@@ -89,7 +89,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
       pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
-      mlr3misc::invoke(RWeka::J48, formula = f, data = data, control = ctrl, .args = pars)
+      mlr3misc::invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {
