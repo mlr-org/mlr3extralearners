@@ -24,7 +24,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         sample = p_int(lower = 0L, default = 0L, tags = "train"),
         seed = p_int(default = sample.int(4096, size = 1), tags = "train"),
         label = p_uty(default = "outcome", tags = "train"),
-        neighbors = p_int(lower = 0L, upper = 0L, default = 0L, tags = c("predict", "required"))
+        neighbors = p_int(lower = 0L, upper = 9L, default = 0L, tags = c("predict", "required"))
       )
       param_set$values$committees = 1L
       param_set$values$neighbors = 0L
