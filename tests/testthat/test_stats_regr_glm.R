@@ -8,9 +8,9 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("regr.glm train", {
+test_that("paramtest regr.glm train", {
   learner = lrn("regr.glm")
-  fun = stats::glm
+  fun_list = list(stats::glm, stats::glm.control)
   exclude = c(
     "formula", # handled by mlr3
     "data", # handled by mlr3
@@ -18,40 +18,33 @@ test_that("regr.glm train", {
     "subset", # handled by mlr3
     "method", # we always use glm()
     "control", # handled by glm.control
-    "contrasts" # causes lots of troubles just when setting the default
+    "contrasts", # causes lots of troubles just when setting the defaul
+    "link" # parameter passed to the family
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("regr.glm predict", {
   learner = lrn("regr.glm")
-  fun = stats::predict
-    exclude = c(
-      "object", # handled via mlr3
-      "newdata" # handled via mlr3
-    )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
-})
-
-test_that("regr.glm control", {
-  learner = lrn("regr.glm")
-  fun = stats:::glm.control
+  fun = stats:::predict.glm
   exclude = c(
+    "object", # handled via mlr3
+    "newdata", # handled via mlr3
+    "se.fit", # handled via mlr3
+    "terms" # not implemented by author
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "
-")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
+})
+
+test_that("paramtest regr.glm control", {
+  learner = lrn("regr.glm")
+  fun = stats:::glm.control
+  exclude = c()
+
+  paramtest = run_paramtest(learner, fun, exclude, tag = "control")
+  expect_paramtest(paramtest)
 })
