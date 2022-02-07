@@ -83,11 +83,16 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
       response = NULL
       prob = NULL
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_setr$get_values(tags = "predict")
 
       if (self$predict_type == "response") {
-        response = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "class")
+        response = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "class",
+          .args = pars
+        )
       } else {
-        prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob")
+        prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob",
+          .agrs = pars
+        )
       }
       list(response = response, prob = prob)
     }
