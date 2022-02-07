@@ -4,8 +4,9 @@ load_tests("surv.loghaz")
 skip_on_os("windows")
 
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||
-    !reticulate::py_module_available("numpy"))
+  !reticulate::py_module_available("numpy")) {
   skip("One of torch, numpy, pycox not available for testing.")
+}
 
 np = reticulate::import("numpy")
 torch = reticulate::import("torch")
@@ -22,7 +23,7 @@ test_that("autotest", {
 
 test_that("surv.loghaz train", {
   learner = lrn("surv.loghaz")
-  fun = survivalmodels::loghaz
+  fun_list = list(survivalmodels::loghaz, survivalmodels::get_pycox_optim)
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -30,12 +31,12 @@ test_that("surv.loghaz train", {
     "time_variable", # handled internally
     "status_variable", # handled internally
     "x", # unused
-    "y" # unused
+    "y", # unused
+    "net" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.loghaz predict", {
@@ -48,19 +49,6 @@ test_that("surv.loghaz predict", {
     "distr6" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})
-
-test_that("surv.loghaz get_pycox_optim", {
-  learner = lrn("surv.loghaz")
-  fun = survivalmodels:::get_pycox_optim
-  exclude = c(
-    "net" # handled internally
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })

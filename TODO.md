@@ -61,24 +61,24 @@ f# List with fixed tests
 - [x] test_randomForestSRC_classif_rfsrc
 - [x] test_randomForestSRC_regr_rfsrc
 - [x] test_randomForestSRC_surv_rfsrc
-- [ ] test_RWeka_classif_AdaBoostM1
-- [ ] test_RWeka_classif_IBk
-- [ ] test_RWeka_classif_J48
-- [ ] test_RWeka_classif_JRip
-- [ ] test_RWeka_classif_LMT
-- [ ] test_RWeka_classif_OneR
-- [ ] test_RWeka_classif_PART
-- [ ] test_RWeka_regr_IBk
-- [ ] test_RWeka_regr_M5Rules
-- [ ] test_sm_dens_nonpar
-- [ ] test_stats_regr_glm
-- [ ] test_survival_surv_nelson
-- [ ] test_survival_surv_parametric
-- [ ] test_survivalmodels_surv_akritas
-- [ ] test_survivalmodels_surv_coxtime
-- [ ] test_survivalmodels_surv_deephit
-- [ ] test_survivalmodels_surv_deepsurv
-- [ ] test_survivalmodels_surv_dnnsurv
-- [ ] test_survivalmodels_surv_loghaz
-- [ ] test_survivalmodels_surv_pchazard
-- [ ] test_survivalsvm_surv_svm
+- [x] test_RWeka_classif_AdaBoostM1
+- [x] test_RWeka_classif_IBk
+- [x] test_RWeka_classif_J48
+- [x] test_RWeka_classif_JRip
+- [x] test_RWeka_classif_LMT
+- [x] test_RWeka_classif_OneR
+- [x] test_RWeka_classif_PART
+- [x] test_RWeka_regr_IBk
+- [x] test_RWeka_regr_M5Rules
+- [x] test_sm_dens_nonpar
+- [x] test_stats_regr_glm
+- [x] test_survival_surv_nelson
+- [x] test_survival_surv_parametric
+- [x] test_survivalmodels_surv_akritas
+- [x] test_survivalmodels_surv_coxtime
+- [x] test_survivalmodels_surv_deephit
+- [x] test_survivalmodels_surv_deepsurv
+- jx] test_survivalmodels_surv_dnnsurv
+- [x] test_survivalmodels_surv_loghaz
+- [x] test_survivalmodels_surv_pchazard
+- [x] test_survivalsvm_surv_svm

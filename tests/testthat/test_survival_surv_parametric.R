@@ -66,7 +66,7 @@ test_that("quantile type", {
   p = lrn("surv.parametric", dist = "weibull", type = "aft")$train(task)$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
   quantile = p$distr$quantile(0.5)
   expect_equal(unlist(p$distr$cdf(quantile), use.names = FALSE), rep(0.5, 227))
 
@@ -84,25 +84,25 @@ test_that("quantile dist", {
   p = learner$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 
   learner = lrn("surv.parametric", dist = "exponential", type = "aft")$train(task)
   p = learner$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 
   learner = lrn("surv.parametric", dist = "gaussian", type = "tobit")$train(task)
   p = learner$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 
   learner = lrn("surv.parametric", dist = "lognormal")$train(task)
   p = learner$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 })
 
 test_that("cdf dist", {
@@ -110,25 +110,25 @@ test_that("cdf dist", {
   p = learner$predict(task, row_ids = 151:200)
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
-               matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+    matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "exponential", type = "aft")$train(task)
   p = learner$predict(task, row_ids = 151:200)
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
-               matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+    matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "gaussian", type = "tobit")$train(task)
   p = learner$predict(task, row_ids = 151:200)
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
-               matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+    matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 
   learner = lrn("surv.parametric", dist = "lognormal")$train(task)
   p = learner$predict(task, row_ids = 151:200)
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
-               matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+    matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })
 
 test_that("loglogistic", {
@@ -138,17 +138,17 @@ test_that("loglogistic", {
   p = learner$predict(task)
   quantile = p$distr$quantile(c(0.2, 0.8))
   expect_equal(matrix(t(quantile), ncol = 2),
-               predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
+    predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8)))
 
 
   learner = lrn("surv.parametric", dist = "loglogistic")$train(task)
   p = learner$predict(task, row_ids = 151:200)
   cdf = predict(learner$model$fit, type = "quantile", p = c(0.2, 0.8))[151:200, ]
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
-               matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
+    matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })
 
-test_that("surv.parametric", {
+test_that("paramtest surv.parametric train", {
   learner = lrn("surv.parametric")
   fun = survival::survreg
   exclude = c(
@@ -176,25 +176,10 @@ test_that("surv.parametric", {
     # model always returned
     "data",
     # x,y,data are all coerced to formula internally
-    "formula" # x,y,data are all coerced to formula internally
+    "formula", # x,y,data are all coerced to formula internally
+    "type" #
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")
-  ))
-})
-
-test_that("surv.parametric_control", {
-  learner = lrn("surv.parametric")
-  fun = survival::survreg.control # replace!
-  exclude = c("iter.max" # identical to maxiter
-              )
-
-              ParamTest = run_paramtest(learner, fun, exclude)
-              expect_true(ParamTest, info = paste0(
-                "\nMissing parameters:\n",
-                paste0("- '", ParamTest$missing, "'", collapse = "\n")
-              ))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })

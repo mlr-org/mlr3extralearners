@@ -4,8 +4,9 @@ load_tests("surv.coxtime")
 skip_on_os("windows")
 
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||
-    !reticulate::py_module_available("numpy"))
+  !reticulate::py_module_available("numpy")) {
   skip("One of torch, numpy, pycox not available for testing.")
+}
 
 np = reticulate::import("numpy")
 torch = reticulate::import("torch")
@@ -20,9 +21,9 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("surv.coxtime train", {
+test_that("paramtest surv.coxtime train", {
   learner = lrn("surv.coxtime")
-  fun = survivalmodels::coxtime
+  fun_list = list(survivalmodels::coxtime, survivalmodels:::get_pycox_optim)
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -30,12 +31,12 @@ test_that("surv.coxtime train", {
     "time_variable", # handled internally
     "status_variable", # handled internally
     "x", # unused
-    "y" # unused
+    "y", # unused
+    "net" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.coxtime predict", {
@@ -51,19 +52,7 @@ test_that("surv.coxtime predict", {
     "sub" # unused
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })
 
-test_that("surv.coxtime get_pycox_optim", {
-  learner = lrn("surv.coxtime")
-  fun = survivalmodels:::get_pycox_optim
-  exclude = c(
-    "net" # handled internally
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})

@@ -13,7 +13,8 @@ test_that("autotest", {
 
 test_that("surv.dnnsurv train", {
   learner = lrn("surv.dnnsurv")
-  fun = survivalmodels::dnnsurv
+  fun_list = list(survivalmodels::dnnsurv, survivalmodels::get_keras_optimizer)
+
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -24,9 +25,8 @@ test_that("surv.dnnsurv train", {
     "y" # unused
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.dnnsurv predict", {
@@ -39,7 +39,6 @@ test_that("surv.dnnsurv predict", {
     "distr6" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })

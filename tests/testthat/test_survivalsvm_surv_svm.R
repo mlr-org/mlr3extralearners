@@ -20,9 +20,8 @@ test_that("surv.svm_train", {
     "status.variable.name" # unused alternative formulation to formula
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-    paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.svm_predict", {
@@ -34,7 +33,6 @@ test_that("surv.svm_predict", {
     "subset" # coerced internally by task
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })

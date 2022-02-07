@@ -22,7 +22,7 @@ test_that("autotest", {
 
 test_that("surv.deepsurv train", {
   learner = lrn("surv.deepsurv")
-  fun = survivalmodels::deepsurv
+  fun_list = list(survivalmodels::deepsurv, survivalmodels:::get_pycox_optim)
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -30,12 +30,12 @@ test_that("surv.deepsurv train", {
     "time_variable", # handled internally
     "status_variable", # handled internally
     "x", # unused
-    "y" # unused
+    "y", # unused
+    "net" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
 test_that("surv.deepsurv predict", {
@@ -51,19 +51,7 @@ test_that("surv.deepsurv predict", {
     "sub" # unused
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })
 
-test_that("surv.deepsurv get_pycox_optim", {
-  learner = lrn("surv.deepsurv")
-  fun = survivalmodels:::get_pycox_optim
-  exclude = c(
-    "net" # handled internally
-  )
-
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
-})

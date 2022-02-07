@@ -8,7 +8,7 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("surv.akritas train", {
+test_that("paramtest surv.akritas train", {
   learner = lrn("surv.akritas")
   fun = survivalmodels::akritas
   exclude = c(
@@ -21,12 +21,11 @@ test_that("surv.akritas train", {
     "y" # unused
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
+  expect_paramtest(paramtest)
 })
 
-test_that("surv.akritas predict", {
+test_that("paramtest surv.akritas predict", {
   learner = lrn("surv.akritas")
   fun = survivalmodels:::predict.akritas
   exclude = c(
@@ -37,7 +36,6 @@ test_that("surv.akritas predict", {
     "distr6" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0("\nMissing parameters:\n",
-                                       paste0("- '", ParamTest$missing, "'", collapse = "\n")))
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest)
 })
