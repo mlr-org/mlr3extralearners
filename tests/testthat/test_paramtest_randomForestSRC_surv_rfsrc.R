@@ -30,4 +30,4 @@ test_that("paramtest surv.rfsrc predict", {
 
   paramtest = run_paramtest(learner, fun_list, exclude, "predict")
   expect_paramtest(paramtest)
-})})
+})

@@ -36,9 +36,6 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           levels = c("FALSE", "TRUE", "none", "permute", "random", "anti"),
           tags = c("train", "predict")),
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
-        ensemble = p_fct(
-          default = "all", levels = c("all", "oob", "inbag"),
-          tags = c("train", "predict")),
         bootstrap = p_fct(
           default = "by.root",
           levels = c("by.root", "by.node", "none", "by.user"), tags = "train"),
