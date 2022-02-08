@@ -2,6 +2,8 @@ on:
   pull_request:
     branches: main
     paths: '**lightgbm*'
+  push:
+    paths: '**lightgbm*'
 
 name: lightgbm (ubuntu-latest, release)
 
@@ -9,14 +11,11 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.env.test }} Test
+    name: Learner and Parameter Test
 
     strategy:
       fail-fast: false
       matrix:
-        env:
-          - { test: "Learner"}
-          - { test: "Param"}
         config:
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
@@ -75,10 +74,15 @@ jobs:
         shell: Rscript {0}
 
       - name: Learner test
-        if: ${{ matrix.env.test == 'Learner' }}
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("^%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
+      - name: Parameter test
+        run: |
+          options(crayon.enabled = TRUE)
+          testthat::test_local(filter = sprintf("^paramtest_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Upload check results
