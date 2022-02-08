@@ -4,9 +4,6 @@ on:
     paths: '**C50*'
   push:
     paths: '**C50*'
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron: "0 4 * * SUN"
 
 name: C50 (ubuntu-latest, release)
 
@@ -82,13 +79,13 @@ jobs:
       - name: Learner test
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("^%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Parameter test
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("paramtest_%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("^paramtest_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Upload check results
