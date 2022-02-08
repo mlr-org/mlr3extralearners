@@ -9,7 +9,8 @@ test_that("paramtest regr.randomforest train", {
     "corr.bias", # not implemented by author
     "nPerm", # not implemented by author
     "classwt", # classification only
-    "cutoff" # classification only
+    "cutoff", # classification only
+    "weights" # mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

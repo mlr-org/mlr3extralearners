@@ -7,7 +7,8 @@ test_that("paramtest classif.randomforest train", {
     "xtest", # handled via mlr3
     "ytest", # handled via mlr3
     "corr.bias", # only regression
-    "nPerm" # only regression
+    "nPerm", # only regression
+    "weights" # mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
