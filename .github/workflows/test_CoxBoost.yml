@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**CoxBoost*'
   push:
+    branches: main
     paths: '**CoxBoost*'
+  workflow_dispatch:
 
 name: CoxBoost (ubuntu-latest, release)
 

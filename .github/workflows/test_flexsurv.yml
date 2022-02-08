@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**flexsurv*'
   push:
+    branches: main
     paths: '**flexsurv*'
+  workflow_dispatch:
 
 name: flexsurv (ubuntu-latest, release)
 

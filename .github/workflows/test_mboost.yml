@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**mboost*'
   push:
+    branches: main
     paths: '**mboost*'
+  workflow_dispatch:
 
 name: mboost (ubuntu-latest, release)
 

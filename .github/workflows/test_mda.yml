@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**mda*'
   push:
+    branches: main
     paths: '**mda*'
+  workflow_dispatch:
 
 name: mda (ubuntu-latest, release)
 

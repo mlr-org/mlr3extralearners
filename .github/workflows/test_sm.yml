@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**sm*'
   push:
+    branches: main
     paths: '**sm*'
+  workflow_dispatch:
 
 name: sm (ubuntu-latest, release)
 

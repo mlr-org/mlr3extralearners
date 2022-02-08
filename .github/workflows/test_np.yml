@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**np*'
   push:
+    branches: main
     paths: '**np*'
+  workflow_dispatch:
 
 name: np (ubuntu-latest, release)
 

@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**lightgbm*'
   push:
+    branches: main
     paths: '**lightgbm*'
+  workflow_dispatch:
 
 name: lightgbm (ubuntu-latest, release)
 

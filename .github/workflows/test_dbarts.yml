@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**dbarts*'
   push:
+    branches: main
     paths: '**dbarts*'
+  workflow_dispatch:
 
 name: dbarts (ubuntu-latest, release)
 

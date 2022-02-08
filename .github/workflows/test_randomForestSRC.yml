@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**randomForestSRC*'
   push:
+    branches: main
     paths: '**randomForestSRC*'
+  workflow_dispatch:
 
 name: randomForestSRC (ubuntu-latest, release)
 

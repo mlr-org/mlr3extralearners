@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**gss*'
   push:
+    branches: main
     paths: '**gss*'
+  workflow_dispatch:
 
 name: gss (ubuntu-latest, release)
 

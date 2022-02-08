@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**Cubist*'
   push:
+    branches: main
     paths: '**Cubist*'
+  workflow_dispatch:
 
 name: Cubist (ubuntu-latest, release)
 

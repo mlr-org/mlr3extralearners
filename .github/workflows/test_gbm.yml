@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**_gbm*'
   push:
+    branches: main
     paths: '**_gbm*'
+  workflow_dispatch:
 
 name: gbm (ubuntu-latest, release)
 

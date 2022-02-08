@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**stats*'
   push:
+    branches: main
     paths: '**stats*'
+  workflow_dispatch:
 
 name: stats (ubuntu-latest, release)
 

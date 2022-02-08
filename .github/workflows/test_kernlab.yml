@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**kernlab*'
   push:
+    branches: main
     paths: '**kernlab*'
+  workflow_dispatch:
 
 name: kernlab (ubuntu-latest, release)
 

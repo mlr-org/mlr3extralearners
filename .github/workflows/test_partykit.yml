@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**partykit*'
   push:
+    branches: main
     paths: '**partykit*'
+  workflow_dispatch:
 
 name: partykit (ubuntu-latest, release)
 

@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**kerdiest*'
   push:
+    branches: main
     paths: '**kerdiest*'
+  workflow_dispatch:
 
 name: kerdiest (ubuntu-latest, release)
 

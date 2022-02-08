@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**plugdensity*'
   push:
+    branches: main
     paths: '**plugdensity*'
+  workflow_dispatch:
 
 name: plugdensity (ubuntu-latest, release)
 

@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**logspline*'
   push:
+    branches: main
     paths: '**logspline*'
+  workflow_dispatch:
 
 name: logspline (ubuntu-latest, release)
 

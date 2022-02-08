@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**survival*'
   push:
+    branches: main
     paths: '**survival*'
+  workflow_dispatch:
 
 name: survival (ubuntu-latest, release)
 

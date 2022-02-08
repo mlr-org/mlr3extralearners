@@ -3,7 +3,9 @@ on:
     branches: main
     paths: '**mgcv*'
   push:
+    branches: main
     paths: '**mgcv*'
+  workflow_dispatch:
 
 name: mgcv (ubuntu-latest, release)
 
