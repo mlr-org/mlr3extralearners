@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.18</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.20</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,12 +104,12 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “distr”, “crank”, “lp”</p></li>
 <li><p>Feature Types: “integer”, “numeric”, “factor”, “logical”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>family</td><td>character</td><td>coxph</td><td>coxph, weibull, loglog, lognormal, gehan, cindex, custom</td><td>\((-\infty, \infty)\)</td></tr><tr><td>custom.family</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>nuirange</td><td>list</td><td>0, 100</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>offset</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr><tr><td>mstop</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nu</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>risk</td><td>character</td><td>inbag</td><td>inbag, oobag, none</td><td>\((-\infty, \infty)\)</td></tr><tr><td>stopintern</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>\((-\infty, \infty)\)</td></tr><tr><td>oobweights</td><td>list</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>baselearner</td><td>character</td><td>bbs</td><td>bbs, bols, btree</td><td>\((-\infty, \infty)\)</td></tr><tr><td>sigma</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>ipcw</td><td>list</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>na.action</td><td>list</td><td>function (object, ...) , UseMethod("na.omit")</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>contrasts.args</td><td>list</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>family</td><td>character</td><td>coxph</td><td>coxph, weibull, loglog, lognormal, gehan, cindex, custom</td><td>-</td></tr><tr><td>custom.family</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>nuirange</td><td>list</td><td>0, 100</td><td></td><td>-</td></tr><tr><td>offset</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mstop</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nu</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>risk</td><td>character</td><td>inbag</td><td>inbag, oobag, none</td><td>-</td></tr><tr><td>stopintern</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobweights</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>baselearner</td><td>character</td><td>bbs</td><td>bbs, bols, btree</td><td>-</td></tr><tr><td>sigma</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>ipcw</td><td>list</td><td>1</td><td></td><td>-</td></tr><tr><td>na.action</td><td>list</td><td>function (object, ...) , UseMethod("na.omit")</td><td></td><td>-</td></tr><tr><td>contrasts.args</td><td>list</td><td>-</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Bühlmann P, Yu B (2003).
@@ -225,10 +225,10 @@ default arguments.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Type: distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature types: integer, numeric, factor, logical</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, selected_features, weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "family"         "custom.family"  "nuirange"       "offset"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "center"         "mstop"          "nu"             "risk"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "stopintern"     "trace"          "oobweights"     "baselearner"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "sigma"          "ipcw"           "na.action"      "contrasts.args"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "family"        "custom.family" "nuirange"      "offset"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "center"        "mstop"         "nu"            "risk"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "stopintern"    "trace"         "oobweights"    "baselearner"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "sigma"         "ipcw"          "na.action"    </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

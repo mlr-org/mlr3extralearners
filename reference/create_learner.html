@@ -12,7 +12,7 @@ learners."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/m
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.18</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.20</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -165,7 +165,35 @@ learner template.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in"><span class="co"># Simpler linear regression example</span></span>
+<span class="r-in"><span class="fu">create_learner</span><span class="op">(</span></span>
+<span class="r-in"> classname <span class="op">=</span> <span class="st">"LM"</span>,</span>
+<span class="r-in"> algorithm <span class="op">=</span> <span class="st">"linear regression"</span>,</span>
+<span class="r-in"> type <span class="op">=</span> <span class="st">"regr"</span>,</span>
+<span class="r-in"> package <span class="op">=</span> <span class="st">"stats"</span>,</span>
+<span class="r-in"> caller <span class="op">=</span> <span class="st">"lm"</span>,</span>
+<span class="r-in"> feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logical"</span>, <span class="st">"integer"</span>, <span class="st">"numeric"</span>, <span class="st">"factor"</span><span class="op">)</span>,</span>
+<span class="r-in"> predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"response"</span>, <span class="st">"se"</span><span class="op">)</span>,</span>
+<span class="r-in"> properties <span class="op">=</span> <span class="st">"weights"</span>,</span>
+<span class="r-in"> gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in"><span class="co"># Slightly more complex random forest learner</span></span>
+<span class="r-in"><span class="fu">create_learner</span><span class="op">(</span></span>
+<span class="r-in"> classname <span class="op">=</span> <span class="st">"RandomForestSRC"</span>,</span>
+<span class="r-in"> algorithm <span class="op">=</span> <span class="st">"random forest"</span>,</span>
+<span class="r-in"> type <span class="op">=</span> <span class="st">"surv"</span>,</span>
+<span class="r-in"> package <span class="op">=</span> <span class="st">"randomForestSRC"</span>,</span>
+<span class="r-in"> caller <span class="op">=</span> <span class="st">"rfsrc"</span>,</span>
+<span class="r-in"> feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"logical"</span>, <span class="st">"integer"</span>, <span class="st">"numeric"</span>, <span class="st">"factor"</span><span class="op">)</span>,</span>
+<span class="r-in"> predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"crank"</span>, <span class="st">"distr"</span><span class="op">)</span>,</span>
+<span class="r-in"> properties <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"importance"</span>, <span class="st">"missings"</span>, <span class="st">"oob_error"</span>, <span class="st">"weights"</span><span class="op">)</span>,</span>
+<span class="r-in"> references <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span class="r-in"> gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span></span>
+<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+</code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
