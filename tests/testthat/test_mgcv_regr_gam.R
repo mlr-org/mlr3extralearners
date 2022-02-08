@@ -7,4 +7,4 @@ test_that("autotest", {
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
-)
+
