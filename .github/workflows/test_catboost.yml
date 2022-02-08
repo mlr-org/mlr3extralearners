@@ -1,9 +1,9 @@
 on:
   pull_request:
     branches: main
-    paths: '**C50*'
+    paths: '**catboost*'
   push:
-    paths: '**C50*'
+    paths: '**catboost*'
 
 name: catboost (ubuntu-latest, release)
 
