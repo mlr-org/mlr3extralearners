@@ -27,28 +27,28 @@ lrn("regr.gausspr")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{numeric}, \dQuote{integer}, \dQuote{logical}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   scaled \tab list \tab TRUE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   scaled \tab list \tab TRUE \tab  \tab - \cr
+   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot \tab - \cr
    sigma \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    degree \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    scale \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    order \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kpar \tab list \tab automatic \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kpar \tab list \tab automatic \tab  \tab - \cr
    var \tab numeric \tab 0.001 \tab  \tab \eqn{[0.001, \infty)}{[0.001, Inf)} \cr
-   variance.model \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   variance.model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    tol \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   fit \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   fit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   type \tab character \tab regression \tab regression, variance, sdeviation \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   type \tab character \tab regression \tab regression, variance, sdeviation \tab - \cr
 }
 }
 

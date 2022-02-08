@@ -2,7 +2,6 @@ if (!requireNamespace("catboost", quietly = TRUE)) {
   install_catboost("0.26.1")
 }
 
-
 test_that("autotest", {
   learner = lrn("regr.catboost", iterations = 10)
   expect_learner(learner)

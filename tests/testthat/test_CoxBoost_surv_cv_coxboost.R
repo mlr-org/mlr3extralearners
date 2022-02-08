@@ -19,5 +19,5 @@ test_that("optim", {
   task$select(c("litter", "rx"))
   expect_prediction_surv(
     suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
-    )
+  )
 })

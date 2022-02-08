@@ -45,7 +45,6 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
         minmaxdiff = p_dbl(lower = 0, default = 1e-3, tag = "train"),
         verbosity = p_lgl(default = FALSE, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
         na.action = p_uty(default = na.omit, tag = "train")
       )
 

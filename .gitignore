@@ -126,3 +126,6 @@ docs/
 .ccache/
 .vscode/settings.json
 catboost_info/
+
+# nvim-R
+*.R.tmp.R

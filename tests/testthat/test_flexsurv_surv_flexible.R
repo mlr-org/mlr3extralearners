@@ -10,8 +10,8 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-task = tsk("rats")
 test_that("manualtest", {
+  task = tsk("rats")
   set.seed(1)
   learn = lrn("surv.flexible", k = 1, scale = "normal", inits = c(1, 1, 1))
   learn$train(task)
@@ -30,6 +30,7 @@ test_that("manualtest", {
 })
 
 test_that("missing", {
+  task = tsk("rats")
   learner = lrn("surv.flexible", k = 1)
   learner$train(task)
   expect_error(learner$predict(tsk("lung")))

@@ -21,7 +21,7 @@ lrn("surv.obliqueRSF")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{obliqueRSF}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{obliqueRSF}, \CRANpkg{pracma}
 }
 }
 
@@ -30,7 +30,7 @@ lrn("surv.obliqueRSF")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    alpha \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    ntree \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   eval_times \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   eval_times \tab list \tab - \tab  \tab - \cr
    min_events_to_split_node \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_obs_to_split_node \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_obs_in_leaf_node \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -41,9 +41,9 @@ lrn("surv.obliqueRSF")
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    dfmax \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   use.cv \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   compute_oob_predictions \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   use.cv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   compute_oob_predictions \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    random_seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }

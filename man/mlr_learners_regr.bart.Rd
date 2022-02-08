@@ -21,7 +21,7 @@ lrn("regr.bart")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{dbarts}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{dbarts}
 }
 }
 
@@ -29,7 +29,7 @@ lrn("regr.bart")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 200 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   sigest \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sigest \tab list \tab NULL \tab  \tab - \cr
    sigdf \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sigquant \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    k \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -39,15 +39,16 @@ lrn("regr.bart")
    nskip \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    printevery \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    keepevery \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   keeptrainfits \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   keeptrainfits \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numcut \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    printcutoffs \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keeptrees \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset.test \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   keeptrees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   proposalprobs \tab list \tab NULL \tab  \tab - \cr
 }
 }
 
@@ -55,9 +56,21 @@ lrn("regr.bart")
 
 \itemize{
 \item Parameter: keeptrees
+\itemize{
 \item Original: FALSE
 \item New: TRUE
 \item Reason: Required for prediction
+}
+\item Parameter: offset
+\itemize{
+\item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
+and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
+\code{dbarts::dbart}.
+}
+\item Parameter: nthread, nchain, combineChains, combinechains
+\itemize{
+\item The parameters are removed as parallelization of multiple models is handled by future.
+}
 }
 }
 

@@ -1,5 +1,5 @@
 if (!requireNamespace("catboost", quietly = TRUE)) {
-  install_catboost("0.26.1")
+  install_catboost("1.0.3")
 }
 
 test_that("autotest", {

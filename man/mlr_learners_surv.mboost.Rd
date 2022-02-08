@@ -24,29 +24,29 @@ lrn("surv.mboost")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nuirange \tab list \tab 0, 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
+   custom.family \tab list \tab - \tab  \tab - \cr
+   nuirange \tab list \tab 0, 100 \tab  \tab - \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   center \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   stopintern \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
+   stopintern \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   oobweights \tab list \tab NULL \tab  \tab - \cr
+   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab - \cr
    sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   ipcw \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   contrasts.args \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ipcw \tab list \tab 1 \tab  \tab - \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   contrasts.args \tab list \tab - \tab  \tab - \cr
 }
 }
 

@@ -20,34 +20,34 @@ lrn("classif.J48")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
+\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}, \dQuote{integer}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   U \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   O \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   subset \tab list \tab - \tab  \tab - \cr
+   na.action \tab list \tab - \tab  \tab - \cr
+   U \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   O \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    C \tab numeric \tab 0.25 \tab  \tab \eqn{[2.22044604925031e-16, 1]}{[2.22044604925031e-16, 1]} \cr
    M \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   R \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    N \tab integer \tab 3 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
-   B \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   S \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   L \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   A \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   J \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   B \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   S \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   L \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   A \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   J \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Q \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   doNotMakeSplitPointActualValue \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   doNotMakeSplitPointActualValue \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   options \tab list \tab NULL \tab  \tab - \cr
 }
 }
 

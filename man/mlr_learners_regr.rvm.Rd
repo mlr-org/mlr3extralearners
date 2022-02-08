@@ -27,14 +27,14 @@ lrn("regr.rvm")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{numeric}, \dQuote{integer}, \dQuote{logical}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot, stringdot \tab - \cr
    sigma \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    degree \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    scale \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -42,18 +42,18 @@ lrn("regr.rvm")
    order \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    length \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   normalized \tab logical \tab - \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kpar \tab list \tab automatic \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   alpha \tab list \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   normalized \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   kpar \tab list \tab automatic \tab  \tab - \cr
+   alpha \tab list \tab 5 \tab  \tab - \cr
    var \tab numeric \tab 0.1 \tab  \tab \eqn{[0.001, \infty)}{[0.001, Inf)} \cr
-   var.fix \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   var.fix \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    tol \tab numeric \tab 2.220446e-16 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    minmaxdiff \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   verbosity \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fit \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbosity \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
 }
 }
 

@@ -21,7 +21,7 @@ lrn("surv.akritas")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{character}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
 }
 }
 
@@ -29,7 +29,7 @@ lrn("surv.akritas")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    lambda \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   reverse \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   reverse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

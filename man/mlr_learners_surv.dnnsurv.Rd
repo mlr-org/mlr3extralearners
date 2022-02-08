@@ -27,7 +27,7 @@ lrn("surv.dnnsurv")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{keras}, \CRANpkg{pseudo}, \CRANpkg{tensorflow}, \CRANpkg{distr6}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{keras}, \CRANpkg{pseudo}, \CRANpkg{tensorflow}, \CRANpkg{distr6}
 }
 }
 
@@ -35,9 +35,9 @@ lrn("surv.dnnsurv")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    cuts \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   cutpoints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   custom_model \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   optimizer \tab character \tab adam \tab adadelta, adagrad, adamax, adam, nadam, rmsprop, sgd \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cutpoints \tab list \tab - \tab  \tab - \cr
+   custom_model \tab list \tab - \tab  \tab - \cr
+   optimizer \tab character \tab adam \tab adadelta, adagrad, adamax, adam, nadam, rmsprop, sgd \tab - \cr
    lr \tab numeric \tab 0.02 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    beta_1 \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    beta_2 \tab numeric \tab 0.999 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -47,25 +47,25 @@ lrn("surv.dnnsurv")
    clipvalue \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    schedule_decay \tab numeric \tab 0.04 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   loss_weights \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   weighted_metrics \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   loss_weights \tab list \tab - \tab  \tab - \cr
+   weighted_metrics \tab list \tab - \tab  \tab - \cr
+   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    min_delta \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    patience \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    verbose \tab integer \tab 0 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    baseline \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   restore_best_weights \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   restore_best_weights \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    batch_size \tab integer \tab 32 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    epochs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    validation_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   shuffle \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sample_weight \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   shuffle \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   sample_weight \tab list \tab - \tab  \tab - \cr
    initial_epoch \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    steps_per_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    validation_steps \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    steps \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   callbacks \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   callbacks \tab list \tab - \tab  \tab - \cr
 }
 }
 

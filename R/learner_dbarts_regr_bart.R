@@ -8,14 +8,22 @@
 #'
 #' @section Custom mlr3 defaults:
 #' * Parameter: keeptrees
-#' * Original: FALSE
-#' * New: TRUE
-#' * Reason: Required for prediction
+#'   * Original: FALSE
+#'   * New: TRUE
+#'   * Reason: Required for prediction
+#'
+#' * Parameter: offset
+#'   * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
+#'     and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
+#'     `dbarts::dbart`.
+#'
+#' * Parameter: nthread, nchain, combineChains, combinechains
+#'   * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerRegrBart <- R6Class("LearnerRegrBart",
+LearnerRegrBart = R6Class("LearnerRegrBart",
   inherit = LearnerRegr,
 
   public = list(
@@ -23,7 +31,7 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps <- ps(
+      ps = ps(
         ntree = p_int(default = 200L, lower = 1L, tags = "train"),
         sigest = p_uty(default = NULL, tags = "train"),
         sigdf = p_int(default = 3L, lower = 1L, tags = "train"),
@@ -43,10 +51,11 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
         keeptrees = p_lgl(default = FALSE, tags = "train"),
         keepcall = p_lgl(default = TRUE, tags = "train"),
         sampleronly = p_lgl(default = FALSE, tags = "train"),
-        offset.test = p_lgl(default = FALSE, tags = "predict")
+        seed = p_int(default = NA_integer_, tags = "train", special_vals = list(NA_integer_)),
+        proposalprobs = p_uty(default = NULL, tags = "train")
       )
 
-      ps$values <- list(keeptrees = TRUE)
+      ps$values = list(keeptrees = TRUE)
 
       super$initialize(
         id = "regr.bart",
@@ -64,23 +73,23 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
   private = list(
     .train = function(task) {
 
-      pars <- self$param_set$get_values(tags = "train")
+      pars = self$param_set$get_values(tags = "train")
 
       # Extact just the features from the task data.
-      data <- task$data(cols = task$feature_names)
+      data = task$data(cols = task$feature_names)
 
       # Convert from data.table to normal data.frame, just to be safe.
       # Dbarts expects x.train to be a dataframe.
       data.table::setDF(data)
 
       # This will also extract a data.table
-      outcome <- task$data(cols = task$target_names)
+      outcome = task$data(cols = task$target_names)
       data.table::setDF(outcome)
       # Outcome will now be a factor vector.
-      outcome <- outcome[[1]]
+      outcome = outcome[[1]]
 
       if ("weights" %in% task$properties) {
-        pars$weights <- task$weights$weight
+        pars$weights = task$weights$weight
       }
 
       # Use the mlr3misc::invoke function (it's similar to do.call())
@@ -93,20 +102,20 @@ LearnerRegrBart <- R6Class("LearnerRegrBart",
 
     .predict = function(task) {
 
-      pars <- self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
+      pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
 
-      newdata <- task$data(cols = task$feature_names) # get newdata
+      newdata = task$data(cols = task$feature_names) # get newdata
 
       # Other possible vars: offset.test, combineChains, ...
       data.table::setDF(newdata)
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.
-      p <- invoke(predict, self$model, newdata = newdata, .args = pars)
+      p = invoke(predict, self$model, newdata = newdata, .args = pars)
 
       # Transform predictions.
       # TODO: confirm that this is the correct element name.
-      pred <- colMeans(p)
+      pred = colMeans(p)
 
       list(response = pred)
     }

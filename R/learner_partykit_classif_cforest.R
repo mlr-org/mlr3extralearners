@@ -131,18 +131,19 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
       )
     },
 
-    # #' @description
-    # #' The importance scores are calculated using `partykit::varimp()`.
-    # #'
-    # #' @return Named `numeric()`.
-    # # FIXME: needs fix in partykit, WIP
+    #' @description
+    #' The importance scores are calculated using `partykit::varimp()`.
+    #'
+    #' @return Named `numeric()`.
+    # FIXME: needs fix in partykit, WIP, either this function is corrected or the parameters have
+    # to be removed
     # importance = function() {
-    #  if (is.null(self$model)) {
-    #    stopf("No model stored")
-    #  }
-    #  pars = self$param_set$get_values(tags = "importance")
-    #  sort(mlr3misc::invoke(partykit::varimp, object = self$model,
-    #    .args = pars), decreasing = TRUE)
+    #   if (is.null(self$model)) {
+    #     stopf("No model stored")
+    #   }
+    #   pars = self$param_set$get_values(tags = "importance")
+    #   sort(mlr3misc::invoke(partykit::varimp, object = self$model,
+    #     .args = pars), decreasing = TRUE)
     # },
 
     #' @description
@@ -164,7 +165,6 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
   private = list(
     .train = function(task) {
-
       pars = self$param_set$get_values(tags = "train")
       pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
       pars_control = pars[which(names(pars) %in%
@@ -175,13 +175,10 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         c("replace", "fraction", names(pars_control))]
       control = mlr3misc::invoke(partykit::ctree_control, .args = pars_control)
       # perturb parameters need special handling; FIXME: easier way?
-      perturb = list(replace = FALSE, fraction = 0.632)
-      if (!is.null(self$param_set$values$replace)) {
-        perturb$replace = self$param_set$values$replace
-      }
-      if (!is.null(self$param_set$values$fraction)) {
-        perturb$fraction = self$param_set$values$fraction
-      }
+      perturb = list(
+        replace = self$param_set$values$replace %??% FALSE,
+        fraction = self$param_set$values$fraction %??% 0.632
+      )
 
       mlr3misc::invoke(partykit::cforest,
         formula = task$formula(),

@@ -21,21 +21,21 @@ lrn("dens.mixed")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{np}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{np}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   bws \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   ckertype \tab character \tab gaussian \tab gaussian, epanechnikov, uniform \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bwscaling \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bwmethod \tab character \tab cv.ml \tab cv.ml, cv.ls, normal-reference \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bwtype \tab character \tab fixed \tab fixed, generalized_nn, adaptive_nn \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bandwidth.compute \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bws \tab list \tab - \tab  \tab - \cr
+   ckertype \tab character \tab gaussian \tab gaussian, epanechnikov, uniform \tab - \cr
+   bwscaling \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   bwmethod \tab character \tab cv.ml \tab cv.ml, cv.ls, normal-reference \tab - \cr
+   bwtype \tab character \tab fixed \tab fixed, generalized_nn, adaptive_nn \tab - \cr
+   bandwidth.compute \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ckerorder \tab integer \tab 2 \tab  \tab \eqn{[2, 8]}{[2, 8]} \cr
-   remin \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   remin \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    itmax \tab integer \tab 10000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nmulti \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ftol \tab numeric \tab 1.490116e-07 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -43,11 +43,11 @@ lrn("dens.mixed")
    small \tab numeric \tab 1.490116e-05 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    dfc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cfac.dir \tab list \tab 1.90983 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   cfac.dir \tab list \tab 1.90983 \tab  \tab - \cr
    initc.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbd.dir \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    hbd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   dfac.dir \tab list \tab 0.190983 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   dfac.dir \tab list \tab 0.190983 \tab  \tab - \cr
    initd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbc.init \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    hbc.init \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -55,8 +55,8 @@ lrn("dens.mixed")
    lbd.init \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    hbd.init \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    dfac.init \tab numeric \tab 0.37 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   ukertype \tab character \tab - \tab aitchisonaitken, liracine \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   okertype \tab character \tab - \tab wangvanryzin, liracine \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ukertype \tab character \tab - \tab aitchisonaitken, liracine \tab - \cr
+   okertype \tab character \tab - \tab wangvanryzin, liracine \tab - \cr
 }
 }
 

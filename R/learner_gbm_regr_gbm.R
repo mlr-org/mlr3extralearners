@@ -29,7 +29,8 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        distribution = p_fct(default = "gaussian", levels = c("gaussian", "laplace", "poisson", "tdist", "quantile"), tags = "train"),
+        distribution = p_fct(default = "gaussian", levels = c("gaussian", "laplace", "poisson",
+                             "tdist"), tags = "train"),
         n.trees = p_int(default = 100L, lower = 1L, tags = c("train", "predict", "importance")),
         interaction.depth = p_int(default = 1L, lower = 1L, tags = "train"),
         n.minobsinnode = p_int(default = 10L, lower = 1L, tags = "train"),
@@ -37,7 +38,6 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         bag.fraction = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
         train.fraction = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
         cv.folds = p_int(default = 0L, tags = "train"),
-        alpha = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
         # Set to FALSE to reduce memory requirements
         keep.data = p_lgl(default = FALSE, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train"),
@@ -46,8 +46,6 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         var.monotone = p_uty(tags = "train")
       )
       ps$values = list(keep.data = FALSE, n.cores = 1)
-
-      ps$add_dep("alpha", "distribution", CondEqual$new("quantile"))
 
       super$initialize(
         id = "regr.gbm",
@@ -87,15 +85,8 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       f = task$formula()
       data = task$data()
 
-      if (!is.null(pars$distribution)) {
-        if (pars$distribution == "quantile") {
-          alpha = ifelse(is.null(pars$alpha), 0.5, pars$alpha)
-          pars$distribution = list(name = "quantile", alpha = alpha)
-        }
-      }
-
       if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(weights = task$weights$weight))
+        pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
       }
 
       mlr3misc::invoke(gbm::gbm, formula = f, data = data, .args = pars)

@@ -21,25 +21,25 @@ lrn("dens.locfit")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{locfit}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{locfit}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   window \tab character \tab gaus \tab tcub, rect, trwt, tria, epan, bisq, gaus \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   window \tab character \tab gaus \tab tcub, rect, trwt, tria, epan, bisq, gaus \tab - \cr
    width \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    from \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    to \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    cut \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    deg \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   link \tab character \tab ident \tab ident, log, logit, inverse, sqrt, arcsin \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kern \tab character \tab tcub \tab rect, trwt, tria, epan, bisq, gauss, tcub \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kt \tab character \tab sph \tab sph, prod \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   renorm \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   link \tab character \tab ident \tab ident, log, logit, inverse, sqrt, arcsin \tab - \cr
+   kern \tab character \tab tcub \tab rect, trwt, tria, epan, bisq, gauss, tcub \tab - \cr
+   kt \tab character \tab sph \tab sph, prod \tab - \cr
+   renorm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    maxk \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   itype \tab character \tab - \tab prod, mult, mlin, haz \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   itype \tab character \tab - \tab prod, mult, mlin, haz \tab - \cr
    mint \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
