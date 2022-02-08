@@ -16,7 +16,7 @@ test_that("paramtest regr.liblinear train", {
 
 test_that("paramtest regr.liblinear predict", {
   learner = lrn("regr.liblinear")
-  fun_list = list(LiblineaR:::predict.LiblineaR)
+  fun_list = list(LiblineaR:::predict.LiblineaR) # nolint
   exclude = c(
     "object", # handled internally
     "newx", # handled internally

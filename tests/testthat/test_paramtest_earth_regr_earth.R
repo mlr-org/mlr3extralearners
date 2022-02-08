@@ -2,8 +2,8 @@ install_learners("regr.earth")
 
 test_that("paramtest regr.earth train", {
   learner = lrn("regr.earth")
-  fun = earth:::earth.default
-  fun_list = list(earth:::earth.default, earth:::earth.fit)
+  fun = earth:::earth.default # nolint
+  fun_list = list(earth:::earth.default, earth:::earth.fit) # nolint
 
   exclude = c(
     "x", # handled internally

@@ -21,7 +21,7 @@ test_that("paramtest regr.gamboost train", {
 
 test_that("paramtest regr.gamboost predict", {
   learner = lrn("regr.gamboost")
-  fun_list = list(mboost:::predict.mboost)
+  fun_list = list(mboost:::predict.mboost) # nolint
 
   exclude = c(
     "object", # mlr3

@@ -20,7 +20,7 @@ test_that("paramtest classif.mob train", {
 
 test_that("paramtest classif.mob predict", {
   learner = lrn("classif.mob")
-  fun_list = list(partykit:::predict.modelparty)
+  fun_list = list(partykit:::predict.modelparty) # nolint
   exclude = c(
     "object", # handled by mlr3
     "newdata", # handled by mlr3

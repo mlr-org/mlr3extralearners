@@ -1,6 +1,6 @@
 test_that("paramtest classif.extratrees train", {
   learner = lrn("classif.extratrees")
-  fun_list = list(extraTrees::extraTrees, extraTrees:::extraTrees.default)
+  fun_list = list(extraTrees::extraTrees, extraTrees:::extraTrees.default) # nolint
   exclude = c(
     "x", # handled by mlr3
     "y", # handled by mlr3
@@ -15,7 +15,7 @@ test_that("paramtest classif.extratrees train", {
 
 test_that("paramtest classif.extratrees predict", {
   learner = lrn("classif.extratrees")
-  fun_list = list(extraTrees:::predict.extraTrees)
+  fun_list = list(extraTrees:::predict.extraTrees) # nolint
   exclude = c(
     "object", # handled by mlr3
     "newdata", # handled by mlr3

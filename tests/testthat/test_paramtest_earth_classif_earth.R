@@ -2,8 +2,7 @@ install_learners("classif.earth")
 
 test_that("paramtest classif.earth train", {
   learner = lrn("classif.earth")
-  fun = earth:::earth.default
-  fun_list = list(earth:::earth.default, earth:::earth.fit)
+  fun_list = list(earth:::earth.default, earth:::earth.fit) # nolint
 
   exclude = c(
     "x", # handled internally
@@ -22,8 +21,7 @@ test_that("paramtest classif.earth train", {
 
 test_that("paramtest classif.earth train", {
   learner = lrn("classif.earth")
-  fun = earth:::earth.default
-  fun_list = earth:::predict.earth
+  fun_list = earth:::predict.earth # nolint
 
   exclude = c(
     "object", # handled internally

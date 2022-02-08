@@ -3,7 +3,7 @@ load_tests("surv.glmboost")
 
 test_that("paramtest surv.glmboost train", {
   learner = lrn("surv.glmboost")
-  fun_list = list(mboost:::glmboost.formula, mboost::boost_control)
+  fun_list = list(mboost:::glmboost.formula, mboost::boost_control) # nolint
   exclude = c(
     "formula", # handled via mlr3
     "data", # handled via mlr3
@@ -21,7 +21,7 @@ test_that("paramtest surv.glmboost train", {
 
 test_that("paramtest surv.glmboost predict", {
   learner = lrn("surv.glmboost")
-  fun_list = list(mboost:::predict.glmboost)
+  fun_list = list(mboost:::predict.glmboost) # nolint
   exclude = c(
     "object",
     "newdata",

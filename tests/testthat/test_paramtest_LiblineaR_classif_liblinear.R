@@ -13,7 +13,7 @@ test_that("paramtest classif.liblinear train", {
 
 test_that("paramtest classif.liblinear predict", {
   learner = lrn("classif.liblinear")
-  fun_list = list(LiblineaR:::predict.LiblineaR)
+  fun_list = list(LiblineaR:::predict.LiblineaR) # nolint
   exclude = c(
     "object", # handled internally
     "newx", # handled internally

@@ -1,6 +1,6 @@
 test_that("paramtest regr.randomforest train", {
   learner = lrn("regr.randomForest")
-  fun_list = list(randomForest:::randomForest.default)
+  fun_list = list(randomForest:::randomForest.default) # nolint
   exclude = c(
     "x", # handled via mlr3
     "y", # handled via mlr3
@@ -18,7 +18,7 @@ test_that("paramtest regr.randomforest train", {
 
 test_that("paramtest regr.randomForest predict", {
   learner = lrn("regr.randomForest")
-  fun_list = list(randomForest:::predict.randomForest)
+  fun_list = list(randomForest:::predict.randomForest) # nolint
   exclude = c(
     "object", # handled via mlr3
     "newdata", # handled via mlr3

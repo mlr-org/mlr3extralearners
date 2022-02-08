@@ -22,6 +22,6 @@ test_that("paramtest regr.M5Rules predict", {
     "newdata",
     "type"
   )
-  paramtest = run_paramtest(learner, RWeka:::predict.Weka_classifier, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, RWeka:::predict.Weka_classifier, exclude, tag = "predict") # nolint
   expect_paramtest(paramtest)
 })

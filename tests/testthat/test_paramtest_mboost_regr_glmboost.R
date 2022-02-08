@@ -2,7 +2,7 @@ install_learners("regr.glmboost")
 
 test_that("paramtest regr.glmboost train", {
   learner = lrn("regr.glmboost")
-  fun_list = list(mboost:::glmboost.formula, mboost::boost_control)
+  fun_list = list(mboost:::glmboost.formula, mboost::boost_control) # nolint
   exclude = c(
     "formula", # handled via mlr3
     "data", # handled via mlr3
@@ -20,7 +20,7 @@ test_that("paramtest regr.glmboost train", {
 
 test_that("paramtest regr.glmboost predict", {
   learner = lrn("regr.glmboost")
-  fun = list(mboost:::predict.glmboost)
+  fun = list(mboost:::predict.glmboost) # nolint
   exclude = c(
     "object", # handled by mlr3
     "newdata", # handled via mlr3

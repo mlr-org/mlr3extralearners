@@ -18,7 +18,7 @@ test_that("paramtest surv.loghaz train", {
 
 test_that("paramtest surv.loghaz predict", {
   learner = lrn("surv.loghaz")
-  fun = survivalmodels:::predict.pycox
+  fun = survivalmodels:::predict.pycox # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally

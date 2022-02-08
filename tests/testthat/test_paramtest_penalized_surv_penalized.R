@@ -17,7 +17,7 @@ test_that("paramtest surv.penalized train", {
 
 test_that("paramtest surv.penalized predict", {
   learner = lrn("surv.penalized")
-  fun_list = list(penalized:::predict)
+  fun_list = list(penalized:::predict) # nolint
   exclude = c(
     "object", # passed internally
     "unpenalized" # see learner details

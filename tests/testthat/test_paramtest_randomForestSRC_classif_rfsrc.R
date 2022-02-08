@@ -19,7 +19,7 @@ test_that("paramtest classif.rfsrc train", {
 
 test_that("paramtest classif.rfsrc predict", {
   learner = lrn("classif.rfsrc")
-  fun_list = list(randomForestSRC:::predict.rfsrc)
+  fun_list = list(randomForestSRC:::predict.rfsrc) # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally

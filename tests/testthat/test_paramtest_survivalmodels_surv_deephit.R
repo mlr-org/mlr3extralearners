@@ -1,6 +1,6 @@
 test_that("paramtest surv.deephit train", {
   learner = lrn("surv.deephit")
-  fun_list = list(survivalmodels::deephit, survivalmodels:::get_pycox_optim)
+  fun_list = list(survivalmodels::deephit, survivalmodels:::get_pycox_optim) # nolint
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -18,7 +18,7 @@ test_that("paramtest surv.deephit train", {
 
 test_that("paramtest surv.deephit predict", {
   learner = lrn("surv.deephit")
-  fun = survivalmodels:::predict.pycox
+  fun = survivalmodels:::predict.pycox # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally

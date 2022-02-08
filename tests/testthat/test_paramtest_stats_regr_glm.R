@@ -21,7 +21,7 @@ test_that("paramtest regr.glm train", {
 
 test_that("paramtest regr.glm predict", {
   learner = lrn("regr.glm")
-  fun = stats:::predict.glm
+  fun = stats:::predict.glm # nolint
   exclude = c(
     "object", # handled via mlr3
     "newdata", # handled via mlr3
@@ -35,7 +35,7 @@ test_that("paramtest regr.glm predict", {
 
 test_that("paramtest regr.glm control", {
   learner = lrn("regr.glm")
-  fun = stats:::glm.control
+  fun = stats:::glm.control # nolint
   exclude = c()
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "control")

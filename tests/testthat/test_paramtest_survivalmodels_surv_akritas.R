@@ -17,7 +17,7 @@ test_that("paramtest surv.akritas train", {
 
 test_that("paramtest surv.akritas predict", {
   learner = lrn("surv.akritas")
-  fun = survivalmodels:::predict.akritas
+  fun = survivalmodels:::predict.akritas # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally

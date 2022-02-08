@@ -18,7 +18,7 @@ test_that("paramtest surv.svm_train", {
 
 test_that("paramtest surv.svm predict", {
   learner = lrn("surv.svm")
-  fun = survivalsvm:::predict.survivalsvm
+  fun = survivalsvm:::predict.survivalsvm # nolint
   exclude = c(
     "object", # passed internally
     "newdata", # coerced internally by task

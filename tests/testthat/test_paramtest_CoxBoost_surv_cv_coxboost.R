@@ -30,7 +30,7 @@ test_that("paramtest surv.cv_coxboost train", {
 
 test_that("paramtest surv.cv_coxboost predict", {
   learner = lrn("surv.cv_coxboost")
-  fun_list = list(CoxBoost:::predict.CoxBoost)
+  fun_list = list(CoxBoost:::predict.CoxBoost) # nolint
   exclude = c("time",
     "object", # handled by mlr3
     "newdata", # handled by task

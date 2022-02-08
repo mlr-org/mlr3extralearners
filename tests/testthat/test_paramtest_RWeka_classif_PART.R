@@ -22,6 +22,6 @@ test_that("paramtest classif.PART predict", {
     "newdata",
     "type"
   )
-  paramtest = run_paramtest(learner, RWeka:::predict.Weka_classifier, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, RWeka:::predict.Weka_classifier, exclude, tag = "predict") # nolint
   expect_paramtest(paramtest)
 })

@@ -21,7 +21,7 @@ test_that("paramtest regr.bart train", {
 
 test_that("paramtest regr.bart predict", {
   learner = lrn("regr.bart")
-  fun_list = list(dbarts:::predict.bart)
+  fun_list = list(dbarts:::predict.bart) # nolint
   exclude = c(
     "combineChains", # only used if nchain > 1
     "newdata", # handled internally
