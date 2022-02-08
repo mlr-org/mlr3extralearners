@@ -24,6 +24,3 @@ test_that("manual validation multiclass", {
   task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
   expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })
-# NOTE - Most parameters not in formals, all listed here:
-#   https://github.com/microsoft/LightGBM/blob/master/docs/Parameters.rst
-# --> paramtest does not make sense

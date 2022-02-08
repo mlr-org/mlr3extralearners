@@ -19,39 +19,5 @@ test_that("optim", {
   task$select(c("litter", "rx"))
   expect_prediction_surv(
     suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
-    )
-})
-
-test_that("surv.cv_coxboost", {
-  learner = lrn("surv.cv_coxboost")
-  fun_list = list(CoxBoost::cv.CoxBoost, CoxBoost::optimCoxBoostPenalty, CoxBoost::CoxBoost,
-                  CoxBoost:::predict.CoxBoost)
-  exclude = c("time",
-              # coerced internally
-              "status",
-              # coerced internally
-              "x",
-              # coerced internally
-              "subset",
-              # handled by task
-              "weights", # handled by task
-              "stratum", # not currently supported
-              "cmprsk", # not currently supported
-              "coupled.strata", # not currently supported
-              "parallel",
-              # handled by future
-              "upload.x",
-              # handled by future
-              "multicore", # handled by future
-              "parallel", # coerced internally
-              "stepno", # optimised in cv.CoxBoost
-              "object", # handled by mlr3
-              "times", # all times returned
-              "newdata", # handled by task
-              "newtime", # handled by newdata
-              "newstatus" # handled by newdata
-              )
-
-  paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_paramtest(paramtest)
+  )
 })

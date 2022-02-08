@@ -147,39 +147,3 @@ test_that("loglogistic", {
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
     matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })
-
-test_that("paramtest surv.parametric train", {
-  learner = lrn("surv.parametric")
-  fun = survival::survreg
-  exclude = c(
-    "maxiter",
-    # control parameter
-    "rel.tolerance",
-    # control parameter
-    "toler.chol",
-    # control parameter
-    "debug",
-    # control parameter
-    "outer.max",
-    # control parameter
-    "control",
-    # control parameter
-    "weights",
-    # handled in mlr3
-    "subset",
-    # handled in mlr3
-    "x",
-    # x,y,data are all coerced to formula internally
-    "y",
-    # x,y,data are all coerced to formula internally
-    "model",
-    # model always returned
-    "data",
-    # x,y,data are all coerced to formula internally
-    "formula", # x,y,data are all coerced to formula internally
-    "type" #
-  )
-
-  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
-  expect_paramtest(paramtest)
-})

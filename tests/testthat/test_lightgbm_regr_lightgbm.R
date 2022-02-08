@@ -16,7 +16,3 @@ test_that("manual validation", {
   task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
   expect_true(inherits(learner$train(task)$predict(task), "PredictionRegr"))
 })
-# NOTE - Most parameters not in formals, all listed here:
-#   https://github.com/microsoft/LightGBM/blob/master/docs/Parameters.rst
-# --> Paramtest does not make sense
-

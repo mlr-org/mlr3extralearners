@@ -7,14 +7,3 @@ test_that("autotest", {
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
-
-test_that("paramtest dens.logspline", {
-  learner = lrn("dens.logspline")
-  fun = logspline::logspline
-  exclude = c(
-    "x" # handled internally
-  )
-
-  paramtest = run_paramtest(learner, fun, exclude)
-  expect_paramtest(paramtest)
-})

@@ -10,21 +10,3 @@ test_that("autotest", {
   result = run_autotest(learner, exclude = "feat_single_multiclass || weights_binary")
   expect_true(result, info = result$error)
 })
-
-test_that("classif.gbm", {
-  learner = lrn("classif.gbm")
-  fun_list = list(gbm::gbm, gbm::predict.gbm)
-  exclude = c(
-    "formula", # handled by mlr3
-    "data", # handled by mlr3
-    "weights", # handled by mlr3
-    "class.stratify.cv", # handled by mlr3
-    "single.tree", # we don't allow for single trees
-    "newdata", # handled by mlr3
-    "object", # handled by mlr3
-    "type" # we only allow type "link" to get the response prediction
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_paramtest(paramtest)
-})

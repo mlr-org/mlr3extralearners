@@ -29,7 +29,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         family = p_fct(default = "coxph",
           levels = c(
             "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
-            "custom"), tags = "train"),
+            "custom"), tags = c("train", "predict")),
         custom.family = p_uty(tags = "train"),
         nuirange = p_uty(default = c(0, 100), tags = "train"),
         offset = p_dbl(tags = "train"),

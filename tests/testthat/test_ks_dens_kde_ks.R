@@ -7,15 +7,3 @@ test_that("autotest", {
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
-
-test_that("dens.kde_ks", {
-  learner = lrn("dens.kde_ks")
-  fun_list = list(ks::kde)
-  exclude = c(
-    "x", # handled internally
-    "eval.points" # handled by predict
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_paramtest(paramtest)
-})

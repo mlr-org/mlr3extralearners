@@ -7,21 +7,3 @@ test_that("autotest", {
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
-
-test_that("regr.mars train", {
-  learner = lrn("regr.mars")
-  fun_list = list(mda::mars, mda:::predict.mars)
-  exclude = c(
-    "x", # handled internally
-    "y", # handled internally
-    "w", # handled internally
-    "wp", # ignored
-    "prevfit", # ignored
-    "object", # handled internally
-    "newdata" # handled internally
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude)
-  expect_paramtest(paramtest)
-})
-

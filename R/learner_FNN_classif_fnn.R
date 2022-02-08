@@ -17,9 +17,9 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        k = p_int(default = 1L, lower = 1L, tags = "train"),
+        k = p_int(default = 1L, lower = 1L, tags = "predict"),
         algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"),
-                          tags = "train")
+          tags = "predict")
       )
 
       super$initialize(
@@ -51,7 +51,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
           train = self$model$train,
           cl = self$model$cl,
           test = task$data(cols = self$state$feature_names),
-          .args = self$param_set$get_values(tags = "train")
+          .args = self$param_set$get_values(tags = "predict")
         )
         list(response = p)
       } else {
@@ -64,7 +64,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
           cl = self$model$cl,
           test = task$data(cols = self$state$feature_names),
           prob = TRUE,
-          .args = self$param_set$get_values(tags = "train")
+          .args = self$param_set$get_values(tags = "predict")
         )
 
         attr(p, "prob")[p == task$negative] = 1 - attr(p, "prob")[p == task$negative]

@@ -38,36 +38,3 @@ test_that("convert_ratio", {
   learner$param_set$values$mtry.ratio = NULL
   expect_equal(learner$train(task)$model$mtry, 10)
 })
-
-test_that("train classif.rfsrc", {
-  learner = lrn("classif.rfsrc")
-  fun_list = list(randomForestSRC::rfsrc)
-  exclude = c(
-    "formula", # handled internally
-    "data", # handled internally
-    "ytry", # for unsupervised forests only
-    "yvar.wt", # not yet implemented
-    "case.wt", # handled by task weights
-    "mtry.ratio",
-    "sampsize.ratio",
-    "cores" # is set as option(rf.cores)
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
-  expect_paramtest(paramtest)
-})
-
-
-test_that("predict classif.rfsrc", {
-  learner = lrn("classif.rfsrc")
-  fun_list = list(randomForestSRC:::predict.rfsrc)
-  exclude = c(
-    "object", # handled internally
-    "newdata", # handled internally
-    "m.target", # all classes returned
-    "cores" # is set as option(rf.cores)
-  )
-
-  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
-  expect_paramtest(paramtest)
-})
