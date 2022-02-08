@@ -2,6 +2,8 @@ on:
   pull_request:
     branches: main
     paths: '**LiblineaR*'
+  push:
+    paths: '**LiblineaR*'
 
 name: LiblineaR (ubuntu-latest, release)
 
