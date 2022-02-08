@@ -78,7 +78,7 @@ jobs:
       - name: Learner test
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("^_"))
         shell: Rscript {0}
 
       - name: Parameter test
