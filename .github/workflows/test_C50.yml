@@ -4,7 +4,7 @@ on:
     paths: '**C50*'
   push:
     branches: change_tests
-    paths: '**C50'
+    paths: '**C50*'
   # schedule:
   #   - cron '0 0 4 ? * SUN'
 
