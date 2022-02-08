@@ -20,8 +20,8 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          - { test: "Learner"}
-          - { test: "Param"}
+          - { test: "Complete"}
+          # - { test: "Param"}
         config:
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
@@ -80,7 +80,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Learner test
-        if: ${{ matrix.env.test == 'Learner' }}
+        if: ${{ matrix.env.test == 'Complete' }}
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
