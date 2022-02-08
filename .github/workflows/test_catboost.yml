@@ -1,8 +1,12 @@
 on:
   pull_request:
     branches: main
-    paths: '**catboost*'
-
+    paths: '**C50*'
+  push:
+    paths: '**C50*'
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "0 4 * * SUN"
 name: catboost (ubuntu-latest, release)
 
 jobs:
@@ -15,8 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         env:
-          - { test: "Learner"}
-          - { test: "Param"}
+          - { test: "Complete"}
         config:
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
@@ -77,10 +80,15 @@ jobs:
         shell: Rscript {0}
 
       - name: Learner test
-        if: ${{ matrix.env.test == 'Learner' }}
         run: |
           options(crayon.enabled = TRUE)
           testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
+      - name: Parameter test
+        run: |
+          options(crayon.enabled = TRUE)
+          testthat::test_local(filter = sprintf("paramtest_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Upload check results
