@@ -6,7 +6,7 @@ on:
     paths: '**C50*'
   schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron: "0 4 * * 7"
+    - cron: "0 4 * * SUN"
 
 name: C50 (ubuntu-latest, release)
 
