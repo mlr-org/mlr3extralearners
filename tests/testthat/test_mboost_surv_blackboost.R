@@ -29,4 +29,3 @@ test_that("ctrlpars", {
   p = learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100)
   expect_true(inherits(p, "PredictionSurv"))
 })
-)
