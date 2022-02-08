@@ -86,6 +86,13 @@ jobs:
           testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
+      - name: Parameter test
+        if: ${{ matrix.env.test == 'Param' }}
+        run: |
+          options(crayon.enabled = TRUE)
+          testthat::test_local(filter = sprintf("paramtest_%s_", "${{ env.PKG }}"))
+        shell: Rscript {0}
+
       - name: Upload check results
         if: failure()
         uses: actions/upload-artifact@main
