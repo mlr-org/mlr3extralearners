@@ -3,10 +3,9 @@ on:
     branches: main
     paths: '**C50*'
   push:
-    branches: change_tests
     paths: '**C50*'
-  # schedule:
-  #   - cron '0 0 4 ? * SUN'
+  schedule:
+    - cron '0 0 4 * * SUN'
 
 name: C50 (ubuntu-latest, release)
 
