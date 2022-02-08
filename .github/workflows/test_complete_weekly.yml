@@ -1,21 +1,23 @@
 on:
-  pull_request:
-    branches: main
-    paths: '**C50*'
-  push:
-    paths: '**C50*'
+  workflow_dispatch:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "0 4 * * SUN"
 
-name: C50 (ubuntu-latest, release)
+name: Package test (ubuntu-latest, release)
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: Learner and Parameter Test
+    name: ${{ matrix.env.test }} Test
 
     strategy:
       fail-fast: false
       matrix:
+        env:
+          - { test: "Complete"}
+          # - { test: "Param"}
         config:
           - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
@@ -76,13 +78,13 @@ jobs:
       - name: Learner test
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("^%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Parameter test
         run: |
           options(crayon.enabled = TRUE)
-          testthat::test_local(filter = sprintf("^paramtest_%s_", "${{ env.PKG }}"))
+          testthat::test_local(filter = sprintf("paramtest_%s_", "${{ env.PKG }}"))
         shell: Rscript {0}
 
       - name: Upload check results
