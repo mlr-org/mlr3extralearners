@@ -1,0 +1,80 @@
+on:
+  push:
+  pull_request:
+  # for now, CRON jobs only run on the default branch of the repo (i.e. usually on master)
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "0 4 * * *"
+
+name: Parameter Check
+
+jobs:
+  R-CMD-check:
+    runs-on: ${{ matrix.config.os }}
+
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: "release", paramtest: "true" }
+
+    env:
+      # otherwise remotes::fun() errors cause the build to fail. Example: Unavailability of binaries
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      CRAN: ${{ matrix.config.cran }}
+      # env for ParamTest
+      PARAMTEST: ${{ matrix.config.paramtest }}
+      # prevent rgl issues because no X11 display is available
+      RGL_USE_NULL: true
+      # use GITHUB_TOKEN from GitHub to workaround rate limits in {remotes}
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@master
+        with:
+          r-version: ${{ matrix.config.r }}
+          Ncpus: 4
+
+      # set date/week for use in cache creation
+      # https://github.community/t5/GitHub-Actions/How-to-set-and-access-a-Workflow-variable/m-p/42970
+      # - cache R packages daily
+      # - cache ccache weekly -> 'ccache' helps rebuilding the package cache faster
+      - name: "[Cache] Prepare daily timestamp for cache"
+        if: runner.os != 'Windows'
+        id: date
+        run: echo "::set-output name=date::$(date '+%d-%m')"
+
+      - name: "[Cache] Prepare weekly timestamp for cache"
+        if: runner.os != 'Windows'
+        id: datew
+        run: echo "::set-output name=datew::$(date '+%Y-%V')"
+
+      - name: "[Cache] Cache R packages"
+        if: runner.os != 'Windows'
+        uses: pat-s/always-upload-cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-${{steps.date.outputs.date}}
+
+      - name: "[Custom Stage] [Linux] Install system libs for learners"
+        if: runner.os == 'Linux'
+        run: sudo apt install libglpk-dev libcurl4-openssl-dev
+
+      # for some strange Windows reason this step and the next one need to be decoupled
+      - name: "[Stage] Prepare"
+        run: |
+          Rscript -e "if (!requireNamespace('remotes')) install.packages('remotes', type = 'source')"
+          Rscript -e "if (getRversion() < '3.2' && !requireNamespace('curl')) install.packages('curl', type = 'source')"
+      - name: "[Stage] Install"
+        if: matrix.config.os != 'macOS-latest' || matrix.config.r != 'devel'
+        run: Rscript -e "remotes::install_github('ropensci/tic')" -e "print(tic::dsl_load())" -e "tic::prepare_all_stages()" -e "tic::before_install()" -e "tic::install()"
+
+      - name: "[Stage] Parameter test"
+        run: |
+          R CMD INSTALL .
+          Rscript -e "tic::script()"
