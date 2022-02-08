@@ -37,7 +37,7 @@ Authors@R:
              email = "geshter@hotmail.com"),
       person(given = "Sebastian",
              family = "Fischer",
-             role = c("aut", "ctb"),
+             role = c("cre", "aut"),
              email = "sebf.fischer@gmail.com"))
 Description: Extra learners for use in mlr3.
 License: LGPL-3
