@@ -9,10 +9,10 @@ test_that("<type>.<key> train", {
     "data" # handled internally
   )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
+  # note that you can also pass a list of functions in case $.train calls more than one
+  # function, e.g. for control arguments
+  paramtest = run_paramtest(learner, fun, exclude)
+  expect_paramtest(paramtest)
 })
 
 test_that("<type>.<key> predict", {
@@ -24,8 +24,6 @@ test_that("<type>.<key> predict", {
       "newdata" # handled internally
     )
 
-  ParamTest = run_paramtest(learner, fun, exclude)
-  expect_true(ParamTest, info = paste0(
-    "Missing parameters:",
-    paste0("- '", ParamTest$missing, "'", collapse = "")))
+  paramtest = run_paramtest(learner, fun, exclude)
+  expect_paramtest(paramtest)
 })

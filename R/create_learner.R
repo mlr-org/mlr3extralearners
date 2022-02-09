@@ -189,7 +189,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   }
 
   # ADD PARAM TESTS
-  file_name_ptest = file.path(path, "inst", "paramtest", paste0("test_paramtest_", package, "_",
+  file_name_ptest = file.path(path, "tests", "testthat", paste0("test_paramtest_", package, "_",
                                                                 type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
                 overwrite = FALSE)
