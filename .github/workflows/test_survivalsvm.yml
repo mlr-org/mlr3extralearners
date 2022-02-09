@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**survivalsvm*'
-  push:
-    branches: main
-    paths: '**survivalsvm*'
   workflow_dispatch:
 
 name: survivalsvm (ubuntu-latest, release)

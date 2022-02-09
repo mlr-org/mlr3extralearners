@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**LiblineaR*'
-  push:
-    branches: main
-    paths: '**LiblineaR*'
   workflow_dispatch:
 
 name: LiblineaR (ubuntu-latest, release)

@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**extraTrees*'
-  push:
-    branches: main
-    paths: '**extraTrees*'
   workflow_dispatch:
 
 name: extraTrees (ubuntu-latest, release)

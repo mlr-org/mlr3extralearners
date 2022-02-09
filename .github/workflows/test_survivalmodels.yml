@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**survivalmodels*'
-  push:
-    branches: main
-    paths: '**survivalmodels*'
   workflow_dispatch:
 
 name: survivalmodels (ubuntu-latest, release)

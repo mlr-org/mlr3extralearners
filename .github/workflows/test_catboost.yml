@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**catboost*'
-  push:
-    branches: main
-    paths: '**catboost*'
   workflow_dispatch:
 
 name: catboost (ubuntu-latest, release)

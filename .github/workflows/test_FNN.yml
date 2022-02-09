@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**FNN*'
-  push:
-    branches: main
-    paths: '**FNN*'
   workflow_dispatch:
 
 name: FNN (ubuntu-latest, release)

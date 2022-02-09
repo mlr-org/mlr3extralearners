@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**locfit*'
-  push:
-    branches: main
-    paths: '**locfit*'
   workflow_dispatch:
 
 name: locfit (ubuntu-latest, release)

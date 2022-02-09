@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**pendensity*'
-  push:
-    branches: main
-    paths: '**pendensity*'
   workflow_dispatch:
 
 name: pendensity (ubuntu-latest, release)

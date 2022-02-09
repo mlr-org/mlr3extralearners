@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**ks*'
-  push:
-    branches: main
-    paths: '**ks*'
   workflow_dispatch:
 
 name: ks (ubuntu-latest, release)

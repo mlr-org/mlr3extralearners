@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**obliqueRSF*'
-  push:
-    branches: main
-    paths: '**obliqueRSF*'
   workflow_dispatch:
 
 name: obliqueRSF (ubuntu-latest, release)

@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**C50*'
-  push:
-    branches: main
-    paths: '**C50*'
   workflow_dispatch:
 
 name: C50 (ubuntu-latest, release)
