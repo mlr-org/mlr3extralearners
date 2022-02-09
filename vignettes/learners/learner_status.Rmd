@@ -35,7 +35,8 @@ upstream_status = upstream_pkgs |>
   mlr3misc::map_chr(function(x) mlr3misc::str_collapse(x, sep = "<br />"))
 
 upstream_pkgs = upstream_pkgs |>
-  mlr3misc::map(function(x) mlr3misc::str_collapse(x, sep = "<br />"))
+  mlr3misc::map(function(x) mlr3misc::str_collapse(x, sep = "<br />")) |>
+  unlist()
 
 mlr3_pkgs = tbl$mlr3_package
 
@@ -65,7 +66,9 @@ tbl$author = apply(tbl, 1, function(row) {
 tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg) {
   url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s", pkg, gsub("\\.", "_", pkg))
   paste0("<a href=\"", url, "\">", id, "</a>")
-})
+}) |>
+  unlist()
+
 
 # edge cases
 # tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"

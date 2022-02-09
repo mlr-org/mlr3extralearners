@@ -19,9 +19,10 @@ d$required_packages = sapply(d$required_packages, function(x) paste0(setdiff(x, 
 d$properties = sapply(d$properties, paste0, collapse = "\n")
 d$feature_types = sapply(d$feature_types, paste0, collapse = "\n")
 d$predict_types = sapply(d$predict_types, paste0, collapse = "\n")
-d$name = mlr3misc::pmap(list(d$name, d$mlr3_package), function(id, pkg) {
-  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s", pkg, gsub("\\.", "_", pkg))
-  paste0("<a href=\"", url, "\">", id, "</a>")
+d$name = mlr3misc::pmap(list(d[["name"]], d[["mlr3_package"]], d[["id"]]), function(name, pkg, id) {
+  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s.html",
+    pkg, id)
+  paste0("<a href=\"", url, "\">", name, "</a>")
 })
 
 DT::datatable(d, filter = "top",
