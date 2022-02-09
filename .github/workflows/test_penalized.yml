@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**penalized*'
-  push:
-    branches: main
-    paths: '**penalized*'
   workflow_dispatch:
 
 name: penalized (ubuntu-latest, release)

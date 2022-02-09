@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**earth*'
-  push:
-    branches: main
-    paths: '**earth*'
   workflow_dispatch:
 
 name: earth (ubuntu-latest, release)

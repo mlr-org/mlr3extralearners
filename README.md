@@ -1,7 +1,7 @@
 
 # mlr3extralearners
 
-[Package website](https://mlr3extralearners.mlr-org.com/) 
+[Package website](https://mlr3extralearners.mlr-org.com/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
@@ -34,7 +34,7 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   3:        classif.C50 mlr3extralearners                    C50
 #>   4:   classif.catboost mlr3extralearners               catboost
 #>   5:    classif.cforest mlr3extralearners partykit,sandwich,coin
-#>  ---                                                            
+#>  ---
 #> 128:        surv.ranger      mlr3learners                 ranger
 #> 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
 #> 130:         surv.rpart         mlr3proba  rpart,distr6,survival
@@ -86,6 +86,7 @@ request](https://github.com/mlr-org/mlr3extralearners/pulls) with the
 “New Learner” template.
 
 ``` r
+library(mlr3proba)
 create_learner(classname = "Locfit",
                algorithm = "localised fit",
                type = "dens",
@@ -95,8 +96,6 @@ create_learner(classname = "Locfit",
                feature_types = c("integer", "numeric"),
                predict_types = c("pdf", "cdf"),
                properties = NULL,
-               importance = FALSE,
-               oob_error = FALSE,
                references = FALSE,
                gh_name = "RaphaelS1")
 ```

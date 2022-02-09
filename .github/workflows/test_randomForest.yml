@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**randomForest*'
-  push:
-    branches: main
-    paths: '**randomForest*'
   workflow_dispatch:
 
 name: randomForest (ubuntu-latest, release)

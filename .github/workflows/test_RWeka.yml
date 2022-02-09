@@ -2,9 +2,6 @@ on:
   pull_request:
     branches: main
     paths: '**RWeka*'
-  push:
-    branches: main
-    paths: '**RWeka*'
   workflow_dispatch:
 
 name: RWeka (ubuntu-latest, release)
