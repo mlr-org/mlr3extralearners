@@ -64,7 +64,7 @@ tbl$author = apply(tbl, 1, function(row) {
 })
 
 tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg) {
-  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s", pkg, gsub("\\.", "_", pkg))
+  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s.html", pkg, id)
   paste0("<a href=\"", url, "\">", id, "</a>")
 }) |>
   unlist()
