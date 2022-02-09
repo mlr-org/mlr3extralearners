@@ -9,7 +9,7 @@ path = mlr3extralearners:::pkg_root(".")
 
 tbl = list_mlr3learners(select = c("id", "required_packages", "mlr3_package"))
 
-remove_mlr3 = function(pkgs)   {
+remove_mlr3 = function(pkgs) {
   pkgs = pkgs[!grepl("mlr3", pkgs)]
   return(pkgs)
 }
@@ -17,9 +17,11 @@ remove_mlr3 = function(pkgs)   {
 no_badges = c("CoxBoost", "catboost", "stats", "stats4")
 
 make_badge = function(pkg) {
-  if (pkg %in% no_badges) return("")
+  if (pkg %in% no_badges) {
+    return("")
+  }
   paste0(sprintf("[![cran checks](https://cranchecks.info/badges/worst/%s)]", pkg),
-         sprintf("(https://cran.r-project.org/web/checks/check_results_%s.html)", pkg))
+    sprintf("(https://cran.r-project.org/web/checks/check_results_%s.html)", pkg))
 }
 
 make_badges = function(pkgs) {
@@ -37,12 +39,12 @@ upstream_pkgs = upstream_pkgs |>
 
 mlr3_pkgs = tbl$mlr3_package
 
-#mlr3_status = mlr3_pkgs |>
+# mlr3_status = mlr3_pkgs |>
 #  mlr3misc::map(make_badges)
 
 tbl = tbl[, "id"]
 tbl[["mlr3"]] = mlr3_pkgs
-#tbl[["mlr3_status"]] = mlr3_status
+# tbl[["mlr3_status"]] = mlr3_status
 tbl[["upstream"]] = upstream_pkgs
 tbl[["upstream_status"]] = upstream_status
 
@@ -60,12 +62,16 @@ tbl$author = apply(tbl, 1, function(row) {
   paste0("<a href=\"", url, "\">", author, "</a>")
 })
 
+tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg) {
+  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s", pkg, gsub("\\.", "_", pkg))
+  paste0("<a href=\"", url, "\">", id, "</a>")
+})
+
 # edge cases
-#tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
-#tbl[grepl("debug|featureless", id) & mlr3 == "mlr3cluster", "mlr3"] = "mlr3cluster"
+# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
+# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3cluster", "mlr3"] = "mlr3cluster"
 tbl = tbl[order(tbl, tolower(mlr3), id)]
 colnames(tbl) = c("Key", "Package", "Upstream", "Upstream Status", "Author")
 knitr::kable(tbl, "html", escape = FALSE)
-
 ```
 
