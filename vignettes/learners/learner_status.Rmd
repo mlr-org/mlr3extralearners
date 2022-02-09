@@ -47,15 +47,18 @@ tbl[["upstream"]] = upstream_pkgs
 tbl[["upstream_status"]] = upstream_status
 
 tbl$author = apply(tbl, 1, function(row) {
-  switch(row[[2]],
-         "mlr3extralearners" = {
-               x = readLines(file.path(path, "man", paste0("mlr_learners_", row[[1]], ".Rd")))
-               paste0("@", x[which(grepl("author", x)) + 1])
-         },
-         "mlr3proba" = "@RaphaelS1",
-         "mlr3cluster" = "@damirpolat",
-         "@mllg"
-  )})
+  author = switch(row[[2]],
+    mlr3extralearners = {
+      x = readLines(file.path(path, "man", paste0("mlr_learners_", row[[1]], ".Rd")))
+      x[which(grepl("author", x)) + 1]
+    },
+    mlr3proba = "RaphaelS1",
+    mlr3cluster = "damirpolat",
+    "mllg"
+  )
+  url = sprintf("https://github.com/%s", author)
+  paste0("<a href=\"", url, "\">", author, "</a>")
+})
 
 # edge cases
 #tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
