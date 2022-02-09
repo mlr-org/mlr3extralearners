@@ -52,36 +52,36 @@
 #' \dontrun{
 #' # Simpler linear regression example
 #' create_learner(
-#'  classname = "LM",
-#'  algorithm = "linear regression",
-#'  type = "regr",
-#'  package = "stats",
-#'  caller = "lm",
-#'  feature_types = c("logical", "integer", "numeric", "factor"),
-#'  predict_types = c("response", "se"),
-#'  properties = "weights",
-#'  gh_name = "RaphaelS1"
+#'   classname = "LM",
+#'   algorithm = "linear regression",
+#'   type = "regr",
+#'   package = "stats",
+#'   caller = "lm",
+#'   feature_types = c("logical", "integer", "numeric", "factor"),
+#'   predict_types = c("response", "se"),
+#'   properties = "weights",
+#'   gh_name = "RaphaelS1"
 #' )
 #'
 #' # Slightly more complex random forest learner
 #' create_learner(
-#'  classname = "RandomForestSRC",
-#'  algorithm = "random forest",
-#'  type = "surv",
-#'  package = "randomForestSRC",
-#'  caller = "rfsrc",
-#'  feature_types = c("logical", "integer", "numeric", "factor"),
-#'  predict_types = c("crank", "distr"),
-#'  properties = c("importance", "missings", "oob_error", "weights"),
-#'  references = TRUE,
-#'  gh_name = "RaphaelS1"
+#'   classname = "RandomForestSRC",
+#'   algorithm = "random forest",
+#'   type = "surv",
+#'   package = "randomForestSRC",
+#'   caller = "rfsrc",
+#'   feature_types = c("logical", "integer", "numeric", "factor"),
+#'   predict_types = c("crank", "distr"),
+#'   properties = c("importance", "missings", "oob_error", "weights"),
+#'   references = TRUE,
+#'   gh_name = "RaphaelS1"
 #' )
 #' }
 #' @export
 create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(classname),
-                          package = tolower(classname), caller,
-                          feature_types, predict_types, properties = NULL,
-                          references = FALSE, gh_name) {
+  package = tolower(classname), caller,
+  feature_types, predict_types, properties = NULL,
+  references = FALSE, gh_name) {
   path = pkg_root(pkg)
   if (!grepl("mlr3extralearners", path, fixed = TRUE)) {
     mlr3misc::stopf("mlr3extralearners is not in 'path' (%s), set `pkg` argument to the mlr3extralearners directory.", path) # nolint
@@ -104,22 +104,22 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   assert_subset(feature_types, unname(mlr3::mlr_reflections$task_feature_types))
   assert_subset(predict_types,
-                           names(mlr3::mlr_reflections$learner_predict_types[[type]]))
+    names(mlr3::mlr_reflections$learner_predict_types[[type]]))
   assert_subset(properties, mlr3::mlr_reflections$learner_properties[[type]])
   importance = "importance" %in% properties
   oob_error = "oob_error" %in% properties
   assert_flag(references)
 
   type_lng = switch(type,
-                    classif = "Classification",
-                    regr = "Regression",
-                    surv = "Survival",
-                    dens = "Density")
+    classif = "Classification",
+    regr = "Regression",
+    surv = "Survival",
+    dens = "Density")
 
   # ADD LEARNER
   file_name_lrn = file.path(path, "R", paste0("learner_", package, "_", type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "learner_template.R"),
-                to = file_name_lrn, overwrite = FALSE)
+    to = file_name_lrn, overwrite = FALSE)
   add_str = c()
   if (!x) {
     mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_lrn)
@@ -173,9 +173,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   # ADD TESTS
   file_name_test = file.path(path, "tests", "testthat", paste0("test_", package, "_", type, "_",
-                                                               key, ".R"))
+    key, ".R"))
   x = file.copy(file.path(path, "templates", "test_template.R"), to = file_name_test,
-                overwrite = FALSE)
+    overwrite = FALSE)
   if (!x) {
     mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_test)
   } else {
@@ -190,9 +190,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   # ADD PARAM TESTS
   file_name_ptest = file.path(path, "tests", "testthat", paste0("test_paramtest_", package, "_",
-                                                                type, "_", key, ".R"))
+    type, "_", key, ".R"))
   x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
-                overwrite = FALSE)
+    overwrite = FALSE)
   if (!x) {
     mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_ptest)
   } else {
@@ -209,9 +209,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   # CREATE YAML
   file_name = file.path(path, ".github", "workflows", paste0("test_", package, ".yml"))
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
-                overwrite = FALSE)
+    overwrite = FALSE)
   if (!x) {
-    mlr3misc::messagef("Learner test YAML for {%s} already exists.", package)
+    mlr3misc::messagef("Learner test YAML for package {%s} already exists.", package)
   } else {
     mlr3misc::catf("Creating {%s} learner test YAML file from template.\n", package)
     x = readLines(file_name)
@@ -226,7 +226,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     x = gsub("testthat", paste0(c("testthat", package), collapse = ",\n    "), x)
     cat(x, file = file.path(path, "DESCRIPTION"), sep = "\n")
   } else {
-    mlr3misc::messagef("{%s} already exists in DESCRIPTION.", package)
+    mlr3misc::messagef("Package {%s} already exists in DESCRIPTION.", package)
   }
 
   # UPDATE USER
@@ -257,7 +257,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   # OPEN FILES
   cat(file_name_lrn)
-  x <- readline("\nDo you want to open the new files now? (Y/N) ")
+  x = readline("\nDo you want to open the new files now? (Y/N) ")
   if (x == "Y") {
     utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
   } else {
