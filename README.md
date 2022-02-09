@@ -87,15 +87,18 @@ request](https://github.com/mlr-org/mlr3extralearners/pulls) with the
 
 ``` r
 library(mlr3proba)
-create_learner(classname = "Locfit",
-               algorithm = "localised fit",
-               type = "dens",
-               key = "locfit",
-               package = "locfit",
-               caller = "density.lf",
-               feature_types = c("integer", "numeric"),
-               predict_types = c("pdf", "cdf"),
-               properties = NULL,
-               references = FALSE,
-               gh_name = "RaphaelS1")
+create_learner(
+  classname = "Locfit",
+  algorithm = "localised fit",
+  type = "dens",
+  key = "locfit",
+  package = "locfit",
+  caller = "density.lf",
+  feature_types = c("integer", "numeric"),
+  predict_types = c("pdf", "cdf"),
+  properties = NULL,
+  references = FALSE,
+  gh_name = "RaphaelS1"
+)
+
 ```
