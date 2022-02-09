@@ -8,7 +8,7 @@
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages",
-".SD"))
+  ".SD"))
 
 # nocov start
 register_mlr3 = function(libname, pkgname) {

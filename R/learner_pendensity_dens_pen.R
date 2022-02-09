@@ -21,16 +21,16 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          base = p_fct(default = "bspline",
-            levels = c("bspline", "gaussian"), tags = "train"),
-          no.base = p_dbl(default = 41, tags = "train"),
-          max.iter = p_dbl(default = 20, tags = "train"),
-          lambda0 = p_dbl(default = 500, tags = "train"),
-          q = p_dbl(default = 3, tags = "train"),
-          sort = p_lgl(default = TRUE, tags = "train"),
-          with.border = p_uty(tags = "train"),
-          m = p_dbl(default = 3, tags = "train"),
-          eps = p_dbl(default = 0.01, tags = "train")
+        base = p_fct(default = "bspline",
+          levels = c("bspline", "gaussian"), tags = "train"),
+        no.base = p_dbl(default = 41, tags = "train"),
+        max.iter = p_dbl(default = 20, tags = "train"),
+        lambda0 = p_dbl(default = 500, tags = "train"),
+        q = p_dbl(default = 3, tags = "train"),
+        sort = p_lgl(default = TRUE, tags = "train"),
+        with.border = p_uty(tags = "train"),
+        m = p_dbl(default = 3, tags = "train"),
+        eps = p_dbl(default = 0.01, tags = "train")
       )
 
       super$initialize(
@@ -49,8 +49,8 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
 
       pars = self$param_set$get_values(tag = "train")
       fit = mlr3misc::invoke(pendensity::pendensity,
-                             form = task$data()[[1]] ~ 1,
-                             .args = pars)
+        form = task$data()[[1]] ~ 1,
+        .args = pars)
 
       pdf = function(x) {} # nolint
       body(pdf) = substitute({

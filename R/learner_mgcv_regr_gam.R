@@ -40,7 +40,6 @@
 #' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 #' l$train(t)
 #' l$model
-#'
 #' @export
 LearnerRegrGam = R6Class("LearnerRegrGam",
   inherit = LearnerRegr,
@@ -113,8 +112,6 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         man = "mlr3extralearners::mlr_learners_regr.gam"
       )
     }
-
-
   ),
 
   private = list(

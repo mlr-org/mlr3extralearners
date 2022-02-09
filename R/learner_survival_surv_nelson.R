@@ -47,8 +47,8 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSur
 
       times = self$model$time
       surv = matrix(rep(exp(-self$model$cumhaz), task$nrow),
-                    ncol = length(times), nrow = task$nrow,
-                    byrow = TRUE)
+        ncol = length(times), nrow = task$nrow,
+        byrow = TRUE)
 
       mlr3proba::.surv_return(times = times, surv = surv)
     }

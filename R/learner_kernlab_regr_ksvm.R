@@ -64,7 +64,8 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
         properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.ksvm"
       )
-    }),
+    }
+  ),
 
   private = list(
     .train = function(task) {

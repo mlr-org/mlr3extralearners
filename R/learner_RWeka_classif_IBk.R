@@ -35,23 +35,23 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          subset = p_uty(tags = c("train", "pars")),
-          na.action = p_uty(tags = c("train", "pars")),
-          I = p_lgl(default = FALSE, tags = c("train", "control")),
-          F = p_lgl(default = FALSE, tags = c("train", "control")),
-          K = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
-          E = p_lgl(default = FALSE, tags = c("train", "control")),
-          W = p_int(default = 0L, lower = 0L, tags = c("train", "control")),
-          X = p_lgl(default = FALSE, tags = c("train", "control")),
-          A = p_uty(default = "weka.core.neighboursearch.LinearNNSearch",
-            tags = c("train", "control")),
-          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
-          do_not_check_capabilities = p_lgl(default = FALSE,
-            tags = c("train", "control")),
-          num_decimal_places = p_int(default = 2L, lower = 1L,
-            tags = c("train", "control")),
-          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-          options = p_uty(default = NULL, tags = c("train", "pars"))
+        subset = p_uty(tags = c("train", "pars")),
+        na.action = p_uty(tags = c("train", "pars")),
+        I = p_lgl(default = FALSE, tags = c("train", "control")),
+        F = p_lgl(default = FALSE, tags = c("train", "control")),
+        K = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+        E = p_lgl(default = FALSE, tags = c("train", "control")),
+        W = p_int(default = 0L, lower = 0L, tags = c("train", "control")),
+        X = p_lgl(default = FALSE, tags = c("train", "control")),
+        A = p_uty(default = "weka.core.neighboursearch.LinearNNSearch",
+          tags = c("train", "control")),
+        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+        do_not_check_capabilities = p_lgl(default = FALSE,
+          tags = c("train", "control")),
+        num_decimal_places = p_int(default = 2L, lower = 1L,
+          tags = c("train", "control")),
+        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+        options = p_uty(default = NULL, tags = c("train", "pars"))
       )
 
       super$initialize(

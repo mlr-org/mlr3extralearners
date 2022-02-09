@@ -52,14 +52,12 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
         id = "regr.rvm",
         packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
-                          "factor", "ordered"),
+          "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.rvm"
       )
     }
-
-
   ),
 
   private = list(
@@ -86,10 +84,10 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::rvm,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {

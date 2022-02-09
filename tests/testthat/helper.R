@@ -13,14 +13,14 @@ load_tests = function(key) {
       remotes::install_github("mlr-org/mlr3proba", upgrade = "always")
     }
     invisible(lapply(list.files(system.file("testthat", package = "mlr3proba"),
-                      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
     require("mlr3proba")
   } else if (class == "clust") {
     if (!requireNamespace("mlr3cluster", quietly = TRUE)) {
       remotes::install_github("mlr-org/mlr3cluster", upgrade = "always")
     }
     invisible(lapply(list.files(system.file("testthat", package = "mlr3cluster"),
-                      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
     require("mlr3cluster")
   }
 }
@@ -54,4 +54,3 @@ s4_helper = function(x) {
   formals(f) = pairlist()
   return(f())
 }
-

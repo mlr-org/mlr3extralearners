@@ -81,7 +81,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars_ctrl = self$param_set$get_values(tags = "control")
       pars_train = self$param_set$get_values(tags = "train")
       pars_train = pars_train[pars_train %nin% pars_ctrl]
-      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl) #nolint
+      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl) # nolint
 
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight
@@ -119,8 +119,8 @@ predict_flexsurvreg = function(object, task, ...) {
 
   newdata = task$data(cols = task$feature_names)
   X = stats::model.matrix(formulate(rhs = task$feature_names),
-                          data = newdata,
-                          xlev = task$levels())
+    data = newdata,
+    xlev = task$levels())
 
   # collect the auxiliary arguments for the fitted object
   args = object$aux
@@ -131,8 +131,8 @@ predict_flexsurvreg = function(object, task, ...) {
 
   # collect fitted parameters
   pars = matrix(object$res.t[object$dlist$pars, "est"],
-                nrow = nrow(newdata),
-                ncol = length(object$dlist$pars), byrow = TRUE)
+    nrow = nrow(newdata),
+    ncol = length(object$dlist$pars), byrow = TRUE)
   colnames(pars) = object$dlist$pars
 
   # calculate the linear predictor as X\beta, note intercept not included in model.matrix
@@ -182,7 +182,7 @@ predict_flexsurvreg = function(object, task, ...) {
     ),
     param6::prm("scale", set6::Set$new("hazard", "odds", "normal"), "hazard"),
     param6::prm("timescale", set6::Set$new("log", "identity"), "log")),
-    lapply(object$dlist$pars, function(x) param6::prm(x, "reals", 0))
+  lapply(object$dlist$pars, function(x) param6::prm(x, "reals", 0))
   ))
 
   pars = data.table::data.table(t(pars))

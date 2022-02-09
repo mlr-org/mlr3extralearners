@@ -23,26 +23,26 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     #' Create a `LearnerClassifGLMBoost` object.
     initialize = function() {
       ps = ps(
-          offset = p_dbl(default = NULL,
-            special_vals = list(NULL), tags = "train"),
-          family = p_fct(default = c("Binomial"),
-            levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
-          custom.family = p_uty(tags = "train"),
-          link = p_fct(default = "logit",
-            levels = c("logit", "probit"), tags = "train"),
-          type = p_fct(default = "adaboost",
-            levels = c("glm", "adaboost"), tags = "train"),
-          center = p_lgl(default = TRUE, tags = "train"),
-          mstop = p_int(default = 100L, tags = "train"),
-          nu = p_dbl(default = 0.1, tags = "train"),
-          risk = p_fct(
-            default = "inbag",
-            levels = c("inbag", "oobag", "none"), tags = "train"),
-          oobweights = p_uty(default = NULL, tags = "train"),
-          trace = p_lgl(default = FALSE, tags = "train"),
-          stopintern = p_uty(default = FALSE, tags = "train"),
-          na.action = p_uty(default = stats::na.omit, tags = "train"),
-          contrasts.arg = p_uty(tags = "train")
+        offset = p_dbl(default = NULL,
+          special_vals = list(NULL), tags = "train"),
+        family = p_fct(default = c("Binomial"),
+          levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
+        custom.family = p_uty(tags = "train"),
+        link = p_fct(default = "logit",
+          levels = c("logit", "probit"), tags = "train"),
+        type = p_fct(default = "adaboost",
+          levels = c("glm", "adaboost"), tags = "train"),
+        center = p_lgl(default = TRUE, tags = "train"),
+        mstop = p_int(default = 100L, tags = "train"),
+        nu = p_dbl(default = 0.1, tags = "train"),
+        risk = p_fct(
+          default = "inbag",
+          levels = c("inbag", "oobag", "none"), tags = "train"),
+        oobweights = p_uty(default = NULL, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        stopintern = p_uty(default = FALSE, tags = "train"),
+        na.action = p_uty(default = stats::na.omit, tags = "train"),
+        contrasts.arg = p_uty(tags = "train")
       )
       ps$add_dep("link", "family", CondEqual$new("Binomial"))
       ps$add_dep("type", "family", CondEqual$new("Binomial"))
@@ -77,11 +77,11 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-                                methods::formalArgs(mboost::boost_control))]
+        methods::formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::gamboost))]
+        methods::formalArgs(mboost::gamboost))]
       pars_binomial = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::Binomial))]
+        methods::formalArgs(mboost::Binomial))]
 
       f = task$formula()
       data = task$data()

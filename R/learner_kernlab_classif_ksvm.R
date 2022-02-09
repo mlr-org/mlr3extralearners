@@ -65,7 +65,8 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         properties = c("weights", "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.ksvm"
       )
-    }),
+    }
+  ),
 
   private = list(
     .train = function(task) {

@@ -21,44 +21,44 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          bws = p_uty(tags = "train"),
-          ckertype = p_fct(
-            default = "gaussian",
-            levels = c("gaussian", "epanechnikov", "uniform"),
-            tags = c("train")),
-          bwscaling = p_lgl(default = FALSE, tags = "train"),
-          bwmethod = p_fct(
-            default = "cv.ml",
-            levels = c("cv.ml", "cv.ls", "normal-reference"),
-            tags = "train"),
-          bwtype = p_fct(
-            default = "fixed",
-            levels = c("fixed", "generalized_nn", "adaptive_nn"),
-            tags = "train"),
-          bandwidth.compute = p_lgl(default = FALSE, tags = "train"),
-          ckerorder = p_int(default = 2, lower = 2, upper = 8, tags = "train"),
-          remin = p_lgl(default = TRUE, tags = "train"),
-          itmax = p_int(lower = 1, default = 10000, tags = "train"),
-          nmulti = p_int(lower = 1, tags = "train"),
-          ftol = p_dbl(default = 1.490116e-07, tags = "train"),
-          tol = p_dbl(default = 1.490116e-04, tags = "train"),
-          small = p_dbl(default = 1.490116e-05, tags = "train"),
-          lbc.dir = p_dbl(default = 0.5, tags = "train"),
-          dfc.dir = p_dbl(default = 0.5, tags = "train"),
-          cfac.dir = p_uty(default = 2.5 * (3.0 - sqrt(5)), tags = "train"),
-          initc.dir = p_dbl(default = 1.0, tags = "train"),
-          lbd.dir = p_dbl(default = 0.1, tags = "train"),
-          hbd.dir = p_dbl(default = 1, tags = "train"),
-          dfac.dir = p_uty(default = 0.25 * (3.0 - sqrt(5)), tags = "train"),
-          initd.dir = p_dbl(default = 1.0, tags = "train"),
-          lbc.init = p_dbl(default = 0.1, tags = "train"),
-          hbc.init = p_dbl(default = 2.0, tags = "train"),
-          cfac.init = p_dbl(default = 0.5, tags = "train"),
-          lbd.init = p_dbl(default = 0.1, tags = "train"),
-          hbd.init = p_dbl(default = 0.9, tags = "train"),
-          dfac.init = p_dbl(default = 0.37, tags = "train"),
-          ukertype = p_fct(levels = c("aitchisonaitken", "liracine"), tags = "train"),
-          okertype = p_fct(levels = c("wangvanryzin", "liracine"), tags = "train")
+        bws = p_uty(tags = "train"),
+        ckertype = p_fct(
+          default = "gaussian",
+          levels = c("gaussian", "epanechnikov", "uniform"),
+          tags = c("train")),
+        bwscaling = p_lgl(default = FALSE, tags = "train"),
+        bwmethod = p_fct(
+          default = "cv.ml",
+          levels = c("cv.ml", "cv.ls", "normal-reference"),
+          tags = "train"),
+        bwtype = p_fct(
+          default = "fixed",
+          levels = c("fixed", "generalized_nn", "adaptive_nn"),
+          tags = "train"),
+        bandwidth.compute = p_lgl(default = FALSE, tags = "train"),
+        ckerorder = p_int(default = 2, lower = 2, upper = 8, tags = "train"),
+        remin = p_lgl(default = TRUE, tags = "train"),
+        itmax = p_int(lower = 1, default = 10000, tags = "train"),
+        nmulti = p_int(lower = 1, tags = "train"),
+        ftol = p_dbl(default = 1.490116e-07, tags = "train"),
+        tol = p_dbl(default = 1.490116e-04, tags = "train"),
+        small = p_dbl(default = 1.490116e-05, tags = "train"),
+        lbc.dir = p_dbl(default = 0.5, tags = "train"),
+        dfc.dir = p_dbl(default = 0.5, tags = "train"),
+        cfac.dir = p_uty(default = 2.5 * (3.0 - sqrt(5)), tags = "train"),
+        initc.dir = p_dbl(default = 1.0, tags = "train"),
+        lbd.dir = p_dbl(default = 0.1, tags = "train"),
+        hbd.dir = p_dbl(default = 1, tags = "train"),
+        dfac.dir = p_uty(default = 0.25 * (3.0 - sqrt(5)), tags = "train"),
+        initd.dir = p_dbl(default = 1.0, tags = "train"),
+        lbc.init = p_dbl(default = 0.1, tags = "train"),
+        hbc.init = p_dbl(default = 2.0, tags = "train"),
+        cfac.init = p_dbl(default = 0.5, tags = "train"),
+        lbd.init = p_dbl(default = 0.1, tags = "train"),
+        hbd.init = p_dbl(default = 0.9, tags = "train"),
+        dfac.init = p_dbl(default = 0.37, tags = "train"),
+        ukertype = p_fct(levels = c("aitchisonaitken", "liracine"), tags = "train"),
+        okertype = p_fct(levels = c("wangvanryzin", "liracine"), tags = "train")
       )
 
       super$initialize(
@@ -77,8 +77,8 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
       pars = self$param_set$get_values(tag = "train")
       data = task$data()[[1]]
 
-      pdf <- function(x) {} #nolint
-      body(pdf) <- substitute({
+      pdf = function(x) {} # nolint
+      body(pdf) = substitute({
         with_package("np", mlr3misc::invoke(np::npudens,
           tdat = data.frame(data),
           edat = data.frame(x), .args = pars)$dens)

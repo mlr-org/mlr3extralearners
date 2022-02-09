@@ -36,15 +36,15 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
     initialize = function() {
 
       ps = ps(
-          type = p_int(default = 0, lower = 0, upper = 7, tags = "train"),
-          cost = p_dbl(default = 1, lower = 0, tags = "train"),
-          epsilon = p_dbl(lower = 0, tags = "train"),
-          bias = p_dbl(default = 1, tags = "train"),
-          cross = p_int(default = 0L, lower = 0L, tags = "train"),
-          verbose = p_lgl(default = FALSE, tags = "train"),
-          wi = p_uty(default = NULL, tags = "train"),
-          findC = p_lgl(default = FALSE, tags = "train"),
-          useInitC = p_lgl(default = TRUE, tags = "train")
+        type = p_int(default = 0, lower = 0, upper = 7, tags = "train"),
+        cost = p_dbl(default = 1, lower = 0, tags = "train"),
+        epsilon = p_dbl(lower = 0, tags = "train"),
+        bias = p_dbl(default = 1, tags = "train"),
+        cross = p_int(default = 0L, lower = 0L, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        wi = p_uty(default = NULL, tags = "train"),
+        findC = p_lgl(default = FALSE, tags = "train"),
+        useInitC = p_lgl(default = TRUE, tags = "train")
       )
 
       # 50 is an arbitrary choice here

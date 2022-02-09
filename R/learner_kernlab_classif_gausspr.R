@@ -45,15 +45,13 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
         id = "classif.gausspr",
         packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
-                          "factor", "ordered"),
+          "factor", "ordered"),
         predict_types = c("response", "prob"),
         properties = c("twoclass", "multiclass"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_classif.gausspr"
       )
     }
-
-
   ),
 
   private = list(
@@ -79,10 +77,10 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::gausspr,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {

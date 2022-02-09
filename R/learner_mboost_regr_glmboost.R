@@ -24,26 +24,26 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
     #' Create a `LearnerRegrGLMBoost` object.
     initialize = function() {
       ps = ps(
-          offset = p_dbl(default = NULL,
-            special_vals = list(NULL), tags = "train"),
-          family = p_fct(default = c("Gaussian"),
-            levels = c(
-              "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
-              "NBinomial", "Hurdle", "custom"), tags = "train"),
-          custom.family = p_uty(tags = "train"),
-          nuirange = p_uty(default = c(0, 100), tags = "train"),
-          d = p_dbl(default = NULL, special_vals = list(NULL),
-            tags = "train"),
-          center = p_lgl(default = TRUE, tags = "train"),
-          mstop = p_int(default = 100, tags = "train"),
-          nu = p_dbl(default = 0.1, tags = "train"),
-          risk = p_fct(default = "inbag",
-            levels = c("inbag", "oobag", "none"), tags = "train"),
-          oobweights = p_uty(default = NULL, tags = "train"),
-          trace = p_lgl(default = FALSE, tags = "train"),
-          stopintern = p_uty(default = FALSE, tags = "train"),
-          na.action = p_uty(default = stats::na.omit, tags = "train"),
-          contrasts.arg = p_uty(tags = "train")
+        offset = p_dbl(default = NULL,
+          special_vals = list(NULL), tags = "train"),
+        family = p_fct(default = c("Gaussian"),
+          levels = c(
+            "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
+            "NBinomial", "Hurdle", "custom"), tags = "train"),
+        custom.family = p_uty(tags = "train"),
+        nuirange = p_uty(default = c(0, 100), tags = "train"),
+        d = p_dbl(default = NULL, special_vals = list(NULL),
+          tags = "train"),
+        center = p_lgl(default = TRUE, tags = "train"),
+        mstop = p_int(default = 100, tags = "train"),
+        nu = p_dbl(default = 0.1, tags = "train"),
+        risk = p_fct(default = "inbag",
+          levels = c("inbag", "oobag", "none"), tags = "train"),
+        oobweights = p_uty(default = NULL, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        stopintern = p_uty(default = FALSE, tags = "train"),
+        na.action = p_uty(default = stats::na.omit, tags = "train"),
+        contrasts.arg = p_uty(tags = "train")
       )
       ps$add_dep("oobweights", "risk", CondEqual$new("oobag"))
 
@@ -76,15 +76,15 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-                                methods::formalArgs(mboost::boost_control))]
+        methods::formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-                                   methods::formalArgs(mboost::gamboost))]
+        methods::formalArgs(mboost::gamboost))]
 
       if (self$param_set$values$family != "custom") {
         pars_family = pars[which(names(pars) %in%
-                                   methods::formalArgs(utils::getFromNamespace(
-                                     pars_glmboost$family,
-                                     asNamespace("mboost"))))]
+          methods::formalArgs(utils::getFromNamespace(
+            pars_glmboost$family,
+            asNamespace("mboost"))))]
       }
 
       f = task$formula()
@@ -97,20 +97,20 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
       }
 
       pars_glmboost$family = switch(pars$family,
-                                    Gaussian = mboost::Gaussian(),
-                                    Laplace = mboost::Laplace(),
-                                    Huber = invoke(mboost::Huber, .args = pars_family),
-                                    Poisson = mboost::Poisson(),
-                                    GammaReg = invoke(mboost::GammaReg, .args = pars_family),
-                                    NBinomial = invoke(mboost::NBinomial, .args = pars_family),
-                                    Hurdle = invoke(mboost::Hurdle, .args = pars_family),
-                                    custom = pars$custom.family
+        Gaussian = mboost::Gaussian(),
+        Laplace = mboost::Laplace(),
+        Huber = invoke(mboost::Huber, .args = pars_family),
+        Poisson = mboost::Poisson(),
+        GammaReg = invoke(mboost::GammaReg, .args = pars_family),
+        NBinomial = invoke(mboost::NBinomial, .args = pars_family),
+        Hurdle = invoke(mboost::Hurdle, .args = pars_family),
+        custom = pars$custom.family
       )
 
       ctrl = invoke(mboost::boost_control, .args = pars_boost)
       invoke(mboost::glmboost, f,
-             data = data, control = ctrl,
-             .args = pars_glmboost)
+        data = data, control = ctrl,
+        .args = pars_glmboost)
     },
 
     .predict = function(task) {
