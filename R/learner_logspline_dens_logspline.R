@@ -20,15 +20,15 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          lbound = p_dbl(tags = "train"),
-          ubound = p_dbl(tags = "train"),
-          maxknots = p_dbl(default = 0, lower = 0, tags = "train"),
-          knots = p_uty(tags = "train"),
-          nknots = p_dbl(default = 0, lower = 0, tags = "train"),
-          penalty = p_uty(tags = "train"),
-          silent = p_lgl(default = TRUE, tags = "train"),
-          mind = p_dbl(default = -1, tags = "train"),
-          error.action = p_int(default = 2, lower = 0, upper = 2, tags = "train")
+        lbound = p_dbl(tags = "train"),
+        ubound = p_dbl(tags = "train"),
+        maxknots = p_dbl(default = 0, lower = 0, tags = "train"),
+        knots = p_uty(tags = "train"),
+        nknots = p_dbl(default = 0, lower = 0, tags = "train"),
+        penalty = p_uty(tags = "train"),
+        silent = p_lgl(default = TRUE, tags = "train"),
+        mind = p_dbl(default = -1, tags = "train"),
+        error.action = p_int(default = 2, lower = 0, upper = 2, tags = "train")
       )
 
 
@@ -52,22 +52,22 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
 
       fit = mlr3misc::invoke(logspline::logspline, x = data, .args = pars)
 
-      pdf = function(x) {} #nolint
+      pdf = function(x) {} # nolint
       body(pdf) = substitute({
         mlr3misc::invoke(logspline::dlogspline, q = x, fit = fit)
       })
 
-      cdf = function(x) {} #nolint
+      cdf = function(x) {} # nolint
       body(cdf) = substitute({
         mlr3misc::invoke(logspline::plogspline, q = x, fit = fit)
       })
 
-      quantile = function(p) {} #nolint
+      quantile = function(p) {} # nolint
       body(quantile) = substitute({
         mlr3misc::invoke(logspline::qlogspline, p = p, fit = fit)
       })
 
-      rand = function(n) {} #nolint
+      rand = function(n) {} # nolint
       body(rand) = substitute({
         mlr3misc::invoke(logspline::rlogspline, n = n, fit = fit)
       })

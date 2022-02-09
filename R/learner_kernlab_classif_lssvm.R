@@ -58,8 +58,6 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         man = "mlr3extralearners::mlr_learners_classif.lssvm"
       )
     }
-
-
   ),
 
   private = list(
@@ -86,10 +84,10 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::lssvm,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {

@@ -43,30 +43,30 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          type = p_fct(
-            default = "regression",
-            levels = c("regression", "vanbelle1", "vanbelle2", "hybrid"),
-            tags = "train"),
-          diff.meth = p_fct(
-            levels = c("makediff1", "makediff2", "makediff3"),
-            tags = c("train")),
-          gamma.mu = p_uty(tags = c("train", "required")),
-          opt.meth = p_fct(
-            default = "quadprog", levels = c("quadprog", "ipop"),
-            tags = "train"),
-          kernel = p_fct(
-            default = "lin_kernel",
-            levels = c("lin_kernel", "add_kernel", "rbf_kernel", "poly_kernel"),
-            tags = "train"),
-          kernel.pars = p_uty(tags = "train"),
-          sgf.sv = p_int(default = 5L, lower = 0L, tags = "train"),
-          sigf = p_int(default = 7L, lower = 0L, tags = "train"),
-          maxiter = p_int(default = 20L, lower = 0L, tags = "train"),
-          margin = p_dbl(default = 0.05, lower = 0, tags = "train"),
-          bound = p_dbl(default = 10, lower = 0, tags = "train"),
-          eig.tol = p_dbl(default = 1e-06, lower = 0, tags = "train"),
-          conv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
-          posd.tol = p_dbl(default = 1e-08, lower = 0, tags = "train")
+        type = p_fct(
+          default = "regression",
+          levels = c("regression", "vanbelle1", "vanbelle2", "hybrid"),
+          tags = "train"),
+        diff.meth = p_fct(
+          levels = c("makediff1", "makediff2", "makediff3"),
+          tags = c("train")),
+        gamma.mu = p_uty(tags = c("train", "required")),
+        opt.meth = p_fct(
+          default = "quadprog", levels = c("quadprog", "ipop"),
+          tags = "train"),
+        kernel = p_fct(
+          default = "lin_kernel",
+          levels = c("lin_kernel", "add_kernel", "rbf_kernel", "poly_kernel"),
+          tags = "train"),
+        kernel.pars = p_uty(tags = "train"),
+        sgf.sv = p_int(default = 5L, lower = 0L, tags = "train"),
+        sigf = p_int(default = 7L, lower = 0L, tags = "train"),
+        maxiter = p_int(default = 20L, lower = 0L, tags = "train"),
+        margin = p_dbl(default = 0.05, lower = 0, tags = "train"),
+        bound = p_dbl(default = 10, lower = 0, tags = "train"),
+        eig.tol = p_dbl(default = 1e-06, lower = 0, tags = "train"),
+        conv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
+        posd.tol = p_dbl(default = 1e-08, lower = 0, tags = "train")
       )
 
       ps$add_dep("diff.meth", "type", CondAnyOf$new(c("vanbelle1", "vanbelle2", "hybrid")))
@@ -97,7 +97,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
       crank = as.numeric(fit$predicted)
 
       if (is.null(self$param_set$values$type) ||
-          (self$param_set$values$type %in% c("regression", "hybrid"))) {
+        (self$param_set$values$type %in% c("regression", "hybrid"))) {
         # higher survival time = lower risk
         response = crank
       } else {

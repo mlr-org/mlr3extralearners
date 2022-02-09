@@ -17,22 +17,22 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          h = p_dbl(lower = 0, tags = "train"),
-          H = p_uty(tags = "train"),
-          gridsize = p_uty(tags = "train"),
-          gridtype = p_uty(tags = "train"),
-          xmin = p_dbl(tags = "train"),
-          xmax = p_dbl(tags = "train"),
-          supp = p_dbl(default = 3.7, tags = "train"),
-          binned = p_dbl(tags = "train"),
-          bgridsize = p_uty(tags = "train"),
-          positive = p_lgl(default = FALSE, tags = "train"),
-          adj.positive = p_uty(tags = "train"),
-          w = p_uty(tags = "train"),
-          compute.cont = p_lgl(default = TRUE, tags = "train"),
-          approx.cont = p_lgl(default = TRUE, tags = "train"),
-          unit.interval = p_lgl(default = FALSE, tags = "train"),
-          verbose = p_lgl(default = FALSE, tags = "train")
+        h = p_dbl(lower = 0, tags = "train"),
+        H = p_uty(tags = "train"),
+        gridsize = p_uty(tags = "train"),
+        gridtype = p_uty(tags = "train"),
+        xmin = p_dbl(tags = "train"),
+        xmax = p_dbl(tags = "train"),
+        supp = p_dbl(default = 3.7, tags = "train"),
+        binned = p_dbl(tags = "train"),
+        bgridsize = p_uty(tags = "train"),
+        positive = p_lgl(default = FALSE, tags = "train"),
+        adj.positive = p_uty(tags = "train"),
+        w = p_uty(tags = "train"),
+        compute.cont = p_lgl(default = TRUE, tags = "train"),
+        approx.cont = p_lgl(default = TRUE, tags = "train"),
+        unit.interval = p_lgl(default = FALSE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -52,9 +52,9 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
 
       data = task$data()[[1]]
 
-      pdf <- function(x) {
+      pdf = function(x) {
       }
-      body(pdf) <- substitute({
+      body(pdf) = substitute({
         invoke(ks::kde, x = data, eval.points = x, .args = pars)$estimate
       })
 

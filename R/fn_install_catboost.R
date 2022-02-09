@@ -12,10 +12,10 @@
 #' @param ... `ANY` \cr
 #' Other arguments passed to [devtools::install_url]
 #' @export
-install_catboost <- function(version = NULL, os = NULL,
-                             install_required = TRUE,
-                             INSTALL_opts = c("--no-multiarch",
-                                              "--no-test-load"), ...) {
+install_catboost = function(version = NULL, os = NULL,
+  install_required = TRUE,
+  INSTALL_opts = c("--no-multiarch",
+    "--no-test-load"), ...) {
 
   if (is.null(version)) {
 
@@ -27,18 +27,18 @@ install_catboost <- function(version = NULL, os = NULL,
       utils::install.packages("curl", repos = "https://cloud.r-project.org")
     }
 
-    version <-  jsonlite::fromJSON(
-        "https://api.github.com/repos/catboost/catboost/releases"
+    version = jsonlite::fromJSON(
+      "https://api.github.com/repos/catboost/catboost/releases"
     )$tag_name[1]
   }
 
-  version <- gsub("v", "", version)
+  version = gsub("v", "", version)
 
   if (is.null(os)) {
-    os <- as.character(Sys.info()["sysname"])
+    os = as.character(Sys.info()["sysname"])
   }
 
-  url <- sprintf(
+  url = sprintf(
     "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-%s-%s.tgz",
     version, os, version)
 

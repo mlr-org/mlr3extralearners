@@ -1,5 +1,5 @@
 bibentries = c( # nolint start
-  breiman_2001  = bibentry("article",
+  breiman_2001 = bibentry("article",
     title       = "Random Forests",
     author      = "Breiman, Leo",
     year        = "2001",
@@ -22,9 +22,9 @@ bibentries = c( # nolint start
     author      = "Hemant Ishwaran and Udaya B. Kogalur and Eugene H. Blackstone and Michael S. Lauer",
     title       = "Random survival forests",
     journal     = "The Annals of Applied Statistics"
-    ),
+  ),
 
-  hothorn_2015  = bibentry("article",
+  hothorn_2015 = bibentry("article",
     author      = "Torsten Hothorn and Achim Zeileis",
     title       = "partykit: A Modular Toolkit for Recursive Partytioning in R",
     journal     = "Journal of Machine Learning Research",
@@ -33,9 +33,9 @@ bibentries = c( # nolint start
     number      = "118",
     pages       = "3905-3909",
     url         = "http://jmlr.org/papers/v16/hothorn15a.html"
-    ),
+  ),
 
-  hothorn_2006  = bibentry("article",
+  hothorn_2006 = bibentry("article",
     doi         = "10.1198/106186006x133933",
     url         = "https://doi.org/10.1198/106186006x133933",
     year        = "2006",
@@ -49,15 +49,15 @@ bibentries = c( # nolint start
     journal     = "Journal of Computational and Graphical Statistics"
   ),
 
-  jaeger_2019   = bibentry("article",
-  doi           = "10.1214/19-aoas1261",
-  year          = "2019",
-  month         = "9",
-  publisher     = "Institute of Mathematical Statistics",
-  volume        = "13",
-  number        = "3",
-  author        = "Byron C. Jaeger and D. Leann Long and Dustin M. Long and Mario Sims and Jeff M. Szychowski and Yuan-I Min and Leslie A. Mcclure and George Howard and Noah Simon",
-  title         = "Oblique random survival forests",
-  journal       = "The Annals of Applied Statistics"
+  jaeger_2019 = bibentry("article",
+    doi           = "10.1214/19-aoas1261",
+    year          = "2019",
+    month         = "9",
+    publisher     = "Institute of Mathematical Statistics",
+    volume        = "13",
+    number        = "3",
+    author        = "Byron C. Jaeger and D. Leann Long and Dustin M. Long and Mario Sims and Jeff M. Szychowski and Yuan-I Min and Leslie A. Mcclure and George Howard and Noah Simon",
+    title         = "Oblique random survival forests",
+    journal       = "The Annals of Applied Statistics"
   )
 ) # nolint end

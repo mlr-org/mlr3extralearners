@@ -161,8 +161,8 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         times = sort(unique(self$model$time)))
 
       mlr3proba::.surv_return(times = sort(unique(self$model$time)),
-                              surv = surv,
-                              lp = lp)
+        surv = surv,
+        lp = lp)
     }
   )
 )

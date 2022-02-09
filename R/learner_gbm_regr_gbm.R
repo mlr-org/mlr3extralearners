@@ -30,7 +30,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
     initialize = function() {
       ps = ps(
         distribution = p_fct(default = "gaussian", levels = c("gaussian", "laplace", "poisson",
-                             "tdist"), tags = "train"),
+          "tdist"), tags = "train"),
         n.trees = p_int(default = 100L, lower = 1L, tags = c("train", "predict", "importance")),
         interaction.depth = p_int(default = 1L, lower = 1L, tags = "train"),
         n.minobsinnode = p_int(default = 10L, lower = 1L, tags = "train"),

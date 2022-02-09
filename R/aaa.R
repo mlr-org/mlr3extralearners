@@ -9,5 +9,6 @@
       lst = list(key = learn)
       names(lst) = key
       self$lrns = mlr3misc::insert_named(self$lrns, lst)
-    })
+    }
+  )
 )$new()

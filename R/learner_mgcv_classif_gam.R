@@ -42,7 +42,6 @@
 #' l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 #' l$train(t)
 #' l$model
-#'
 #' @export
 LearnerClassifGam = R6Class("LearnerClassifGam",
   inherit = LearnerClassif,
