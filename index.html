@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.20</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.21</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -123,7 +123,7 @@
 <span class="co">#&gt;   3:        classif.C50 mlr3extralearners                    C50</span>
 <span class="co">#&gt;   4:   classif.catboost mlr3extralearners               catboost</span>
 <span class="co">#&gt;   5:    classif.cforest mlr3extralearners partykit,sandwich,coin</span>
-<span class="co">#&gt;  ---                                                            </span>
+<span class="co">#&gt;  ---</span>
 <span class="co">#&gt; 128:        surv.ranger      mlr3learners                 ranger</span>
 <span class="co">#&gt; 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma</span>
 <span class="co">#&gt; 130:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
@@ -157,7 +157,8 @@
 </h2>
 <p>New learners can be created with the <code>create_learner</code> function. This assumes you have a local copy of <code>mlr3extralearners</code>. This function will automatically create the learner, learner tests, parameter tests, YAML files for CI if required, and update the DESCRIPTION if required. Once all tests are passing locally, open a <a href="https://github.com/mlr-org/mlr3extralearners/pulls" class="external-link">pull request</a> with the “New Learner” template.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span>classname <span class="op">=</span> <span class="st">"Locfit"</span>,
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3proba.mlr-org.com" class="external-link">mlr3proba</a></span><span class="op">)</span>
+<span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span>classname <span class="op">=</span> <span class="st">"Locfit"</span>,
                algorithm <span class="op">=</span> <span class="st">"localised fit"</span>,
                type <span class="op">=</span> <span class="st">"dens"</span>,
                key <span class="op">=</span> <span class="st">"locfit"</span>,
@@ -166,8 +167,6 @@
                feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"integer"</span>, <span class="st">"numeric"</span><span class="op">)</span>,
                predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pdf"</span>, <span class="st">"cdf"</span><span class="op">)</span>,
                properties <span class="op">=</span> <span class="cn">NULL</span>,
-               importance <span class="op">=</span> <span class="cn">FALSE</span>,
-               oob_error <span class="op">=</span> <span class="cn">FALSE</span>,
                references <span class="op">=</span> <span class="cn">FALSE</span>,
                gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span><span class="op">)</span></code></pre></div>
 </div>
