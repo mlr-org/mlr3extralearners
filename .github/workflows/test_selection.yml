@@ -5,7 +5,7 @@ on:
         description: "pattern passed to test_local"
         required: true
 
-name: Test pattern $ {{ github.event.inputs.pattern }}
+name: Run selected tests
 
 jobs:
   R-CMD-check:
