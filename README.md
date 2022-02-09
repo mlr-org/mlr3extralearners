@@ -11,6 +11,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
+[![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
