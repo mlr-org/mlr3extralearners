@@ -79,11 +79,12 @@ lrn("regr.gbm")
 
 New learners can be created with the `create_learner` function. This
 assumes you have a local copy of `mlr3extralearners`. This function will
-automatically create the learner, learner tests, parameter tests, YAML
-files for CI if required, and update the DESCRIPTION if required. Once
+automatically create the learner, learner tests, parameter tests and 
+update the DESCRIPTION if required. Once
 all tests are passing locally, open a [pull
 request](https://github.com/mlr-org/mlr3extralearners/pulls) with the
-“New Learner” template.
+“New Learner” template. More detailed instructions can be found in 
+the [mlr3 book](https://mlr3book.mlr-org.com/extending.html).
 
 ``` r
 library(mlr3proba)
