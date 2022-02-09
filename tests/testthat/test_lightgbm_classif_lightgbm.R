@@ -24,3 +24,10 @@ test_that("manual validation multiclass", {
   task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
   expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })
+
+
+test_that("Can pass parameters", {
+  task = tsk("iris")
+  learner = lrn("classif.lightgbm", nrounds = 5L, max_bin = 10L)
+  expect_warning(learner$train(task), regexp = NA)
+})
