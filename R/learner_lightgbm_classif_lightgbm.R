@@ -331,10 +331,14 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           dtrain$setinfo("weight", task$weights$weight)
         }
 
+        args = pars[which(names(pars) %in% formalArgs(lightgbm::lgb.train))]
+        params = pars[which(names(pars) %nin% formalArgs(lightgbm::lgb.train))]
+
         mlr3misc::invoke(
           lightgbm::lgb.train,
           data = dtrain,
-          params = pars
+          .args = args,
+          params = params
         )
       }
 
