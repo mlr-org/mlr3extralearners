@@ -79,7 +79,7 @@ jobs:
           )$tag_name[1]
           url = sprintf(
             "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-Linux-%s.tgz",
-            version, os, version
+            version, version
           )
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
         shell: Rscript {0}
