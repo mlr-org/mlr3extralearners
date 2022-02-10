@@ -3,8 +3,9 @@ on:
     branches: main
   schedule:
     - cron: "0 4 * * *"
+  workflow_dispatch:
 
-name: Check/Codecov/Update Table
+name: RCMD Check
 
 jobs:
   R-CMD-check:
@@ -64,8 +65,23 @@ jobs:
 
       - name: Install catboost
         run: |
-          install.packages("remotes")
-          remotes::install_url('https://github.com/catboost/catboost/releases/download/v0.26.1/catboost-R-Linux-0.26.1.tgz', INSTALL_opts = c("--no-multiarch"))
+          if (!requireNamespace("jsonlite", quietly = TRUE) && install_required) {
+            utils::install.packages("jsonlite", repos = "https://cloud.r-project.org")
+          }
+          if (!requireNamespace("remotes", quietly = TRUE) && install_required) {
+            utils::install.packages("remotes", repos = "https://cloud.r-project.org")
+          }
+          if (!requireNamespace("curl", quietly = TRUE) && install_required) {
+            utils::install.packages("curl", repos = "https://cloud.r-project.org")
+          }
+          version = jsonlite::fromJSON(
+            "https://api.github.com/repos/catboost/catboost/releases"
+          )$tag_name[1]
+          url = sprintf(
+            "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-Linux-%s.tgz",
+            version, version
+          )
+          remotes::install_url(url, INSTALL_opts = "--no-multiarch")
         shell: Rscript {0}
 
       - name: Install Python
@@ -73,14 +89,14 @@ jobs:
           pak::pkg_install('rstudio/reticulate')
           reticulate::install_miniconda()
           install.packages('keras')
-          keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))
+          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'))
           reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
         shell: Rscript {0}
 
       - name: Session info
         run: |
           options(width = 100)
-          pkgs <- installed.packages()[, "Package"]
+          pkgs = installed.packages()[, "Package"]
           sessioninfo::session_info(pkgs, include_base = TRUE)
         shell: Rscript {0}
 
@@ -103,16 +119,6 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
-
-      - name: Install covr
-        if: ${{ github.event_name == 'pull_request' }}
-        run: install.packages('covr')
-        shell: Rscript {0}
-
-      - name: Test coverage
-        if: ${{ github.event_name == 'pull_request' }}
-        run: covr::codecov()
-        shell: Rscript {0}
 
       - name: Update learner table
         if: ${{ github.event_name == 'pull_request' && success() }}

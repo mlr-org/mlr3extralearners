@@ -17,26 +17,26 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          window = p_fct(levels = c(
-            "tcub", "rect", "trwt",
-            "tria", "epan", "bisq",
-            "gaus"), default = "gaus", tags = "train"),
-          width = p_dbl(tags = "train"),
-          from = p_dbl(tags = "train"),
-          to = p_dbl(tags = "train"),
-          cut = p_dbl(tags = "train"),
-          deg = p_dbl(default = 0, tags = "train"),
-          link = p_fct(default = "ident", tags = "train",
-            levels = c("ident", "log", "logit", "inverse", "sqrt", "arcsin")),
-          kern = p_fct(default = "tcub", tags = "train",
-            levels = c("rect", "trwt", "tria", "epan", "bisq", "gauss", "tcub")),
-          kt = p_fct(default = "sph", tags = "train",
-            levels = c("sph", "prod")),
-          renorm = p_lgl(default = FALSE, tags = "train"),
-          maxk = p_int(default = 100, lower = 0, tags = "train"),
-          itype = p_fct(levels = c("prod", "mult", "mlin", "haz"), tags = "train"),
-          mint = p_int(default = 20, lower = 1, tags = "train"),
-          maxit = p_int(default = 20, lower = 1, tags = "train")
+        window = p_fct(levels = c(
+          "tcub", "rect", "trwt",
+          "tria", "epan", "bisq",
+          "gaus"), default = "gaus", tags = "train"),
+        width = p_dbl(tags = "train"),
+        from = p_dbl(tags = "train"),
+        to = p_dbl(tags = "train"),
+        cut = p_dbl(tags = "train"),
+        deg = p_dbl(default = 0, tags = "train"),
+        link = p_fct(default = "ident", tags = "train",
+          levels = c("ident", "log", "logit", "inverse", "sqrt", "arcsin")),
+        kern = p_fct(default = "tcub", tags = "train",
+          levels = c("rect", "trwt", "tria", "epan", "bisq", "gauss", "tcub")),
+        kt = p_fct(default = "sph", tags = "train",
+          levels = c("sph", "prod")),
+        renorm = p_lgl(default = FALSE, tags = "train"),
+        maxk = p_int(default = 100, lower = 0, tags = "train"),
+        itype = p_fct(levels = c("prod", "mult", "mlin", "haz"), tags = "train"),
+        mint = p_int(default = 20, lower = 1, tags = "train"),
+        maxit = p_int(default = 20, lower = 1, tags = "train")
       )
 
       super$initialize(
@@ -56,9 +56,9 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
 
       data = task$data()[[1]]
 
-      pdf <- function(x) {
+      pdf = function(x) {
       }
-      body(pdf) <- substitute({
+      body(pdf) = substitute({
         mlr3misc::invoke(locfit::density.lf, x = data, ev = x, .args = pars)$y
       })
 

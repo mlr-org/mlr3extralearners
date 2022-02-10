@@ -49,7 +49,6 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         minsize = p_int(lower = 1L, tags = "train"),
         minsplit = p_int(lower = 1L, tags = "train"),
         minbucket = p_int(lower = 1L, tags = "train"),
-        maxvar = p_int(lower = 1L, tags = "train"),
         maxdepth = p_int(default = Inf, lower = 0L,
           special_vals = list(Inf), tags = "train"),
         mtry = p_int(default = Inf, lower = 0L,
@@ -113,12 +112,11 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
 
   private = list(
     .train = function(task) {
-
       # FIXME: check if rhs variables are present in data?
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-                                  methods::formalArgs(partykit::mob_control))]
+        methods::formalArgs(partykit::mob_control))]
       pars_additional = self$param_set$values$additional
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]

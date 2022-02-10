@@ -35,30 +35,30 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          subset = p_uty(tags = c("train", "pars")),
-          na.action = p_uty(tags = c("train", "pars")),
-          U = p_lgl(default = FALSE, tags = c("train", "control")),
-          O = p_lgl(default = FALSE, tags = c("train", "control")),
-          C = p_dbl(default = 0.25, lower = .Machine$double.eps,
-            upper = 1 - .Machine$double.eps, tags = c("train", "control")),
-          M = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
-          R = p_lgl(default = FALSE, tags = c("train", "control")),
-          N = p_int(default = 3L, lower = 2L, tags = c("train", "control")),
-          B = p_lgl(default = FALSE, tags = c("train", "control")),
-          S = p_lgl(default = FALSE, tags = c("train", "control")),
-          L = p_lgl(default = FALSE, tags = c("train", "control")),
-          A = p_lgl(default = FALSE, tags = c("train", "control")),
-          J = p_lgl(default = FALSE, tags = c("train", "control")),
-          Q = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
-          doNotMakeSplitPointActualValue = p_lgl(default = FALSE,
-            tags = c("train", "control")),
-          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
-          do_not_check_capabilities = p_lgl(default = FALSE,
-            tags = c("train", "control")),
-          num_decimal_places = p_int(default = 2L, lower = 1L,
-            tags = c("train", "control")),
-          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-          options = p_uty(default = NULL, tags = c("train", "pars"))
+        subset = p_uty(tags = c("train", "pars")),
+        na.action = p_uty(tags = c("train", "pars")),
+        U = p_lgl(default = FALSE, tags = c("train", "control")),
+        O = p_lgl(default = FALSE, tags = c("train", "control")),
+        C = p_dbl(default = 0.25, lower = .Machine$double.eps,
+          upper = 1 - .Machine$double.eps, tags = c("train", "control")),
+        M = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+        R = p_lgl(default = FALSE, tags = c("train", "control")),
+        N = p_int(default = 3L, lower = 2L, tags = c("train", "control")),
+        B = p_lgl(default = FALSE, tags = c("train", "control")),
+        S = p_lgl(default = FALSE, tags = c("train", "control")),
+        L = p_lgl(default = FALSE, tags = c("train", "control")),
+        A = p_lgl(default = FALSE, tags = c("train", "control")),
+        J = p_lgl(default = FALSE, tags = c("train", "control")),
+        Q = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
+        doNotMakeSplitPointActualValue = p_lgl(default = FALSE,
+          tags = c("train", "control")),
+        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+        do_not_check_capabilities = p_lgl(default = FALSE,
+          tags = c("train", "control")),
+        num_decimal_places = p_int(default = 2L, lower = 1L,
+          tags = c("train", "control")),
+        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+        options = p_uty(default = NULL, tags = c("train", "pars"))
       )
       ps$add_dep("C", "U", CondEqual$new(FALSE))
       ps$add_dep("C", "R", CondEqual$new(FALSE))
@@ -89,7 +89,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
       pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
-      mlr3misc::invoke(RWeka::J48, formula = f, data = data, control = ctrl, .args = pars)
+      mlr3misc::invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {

@@ -39,8 +39,8 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
 
   private = list(
     .train = function(task) {
-      pdf <- function(x) {} # nolint
-      body(pdf) <- substitute({
+      pdf = function(x) {} # nolint
+      body(pdf) = substitute({
         mlr3misc::invoke(plugdensity::plugin.density, x = data, xout = x, na.rm = TRUE)$y
       }, list(data = task$data()[[1]]))
 

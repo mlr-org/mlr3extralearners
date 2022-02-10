@@ -24,8 +24,9 @@ install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
     cran = cran[!mlr3misc::map_lgl(cran, requireNamespace, quietly = TRUE)]
     if (length(cran)) utils::install.packages(cran, repos = repos, ...)
 
-    gh = gh[!mlr3misc::map_lgl(gh, function(.x)
-      requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE))]
+    gh = gh[!mlr3misc::map_lgl(gh, function(.x) {
+      requireNamespace(strsplit(.x, "/", TRUE)[[1]][2], quietly = TRUE)
+    })]
     if (length(gh)) sapply(gh, remotes::install_github, upgrade = "always", ...)
   })
 

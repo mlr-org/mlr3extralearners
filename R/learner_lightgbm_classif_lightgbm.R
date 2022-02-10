@@ -32,152 +32,152 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          # lgb.train core functions
-          nrounds = p_int(default = 5L, lower = 1L, tags = "train"),
-          objective = p_fct(default = "binary", levels = c("binary",
-            "multiclass", "multiclassova", "cross_entropy", "cross_entropy_lambda", "lambdarank",
-             "rank_xendcg"), tags = "train"),
-          metric = p_fct(default = "", levels = c("", "None", "ndcg",
-            "map", "auc", "average_precision", "binary_logloss", "binary_error", "auc_mu",
-            "multi_logloss", "multi_error", "cross_entropy", "cross_entropy_lambda",
-            "kullback_leibler"), tags = "train"),
-          custom_eval = p_uty(default = NULL, tags = "train"),
-          verbose = p_int(default = 1L, tags = "train"),
-          record = p_lgl(default = TRUE, tags = "train"),
-          eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
-          init_model = p_uty(default = NULL, tags = "train"),
-          early_stopping_rounds = p_int(lower = 1L, tags = "train"),
-          callbacks = p_uty(tags = "train"),
-          reset_data = p_lgl(default = FALSE, tags = "train"),
-          categorical_feature = p_uty(default = "", tags = "train"),
-          # other core functions
-          boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart",
-            "goss"), tags = "train"),
-          linear_tree = p_lgl(default = FALSE, tags = "train"),
-          num_iterations = p_int(default = 100L, lower = 0L, tags = "train"),
-          learning_rate = p_dbl(default = 0.1, lower = 0.0, tags = "train"),
-          num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L,
-            tags = "train"),
-          tree_learner = p_fct(default = "serial", levels = c("serial", "feature",
-            "data", "voting"), tags = "train"),
-          num_threads = p_int(default = 0L, lower = 0L, tags = "train"),
-          device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"),
-            tags = "train"),
-          seed = p_int(tags = "train"),
-          deterministic = p_lgl(default = FALSE, tags = "train"),
-          # Learning control parameters
-          force_col_wise = p_lgl(default = FALSE, tags = "train"),
-          force_row_wise = p_lgl(default = FALSE, tags = "train"),
-          histogram_pool_size = p_int(default = -1L, tags = "train"),
-          max_depth = p_int(default = -1L, tags = "train"),
-          min_data_in_leaf = p_int(default = 20L, lower = 0L, tags = "train"),
-          min_sum_hessian_in_leaf = p_dbl(default = 1e-3, lower = 0, tags = "train"),
-          bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-            tags = "train"),
-          pos_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-            tags = "train"),
-          neg_bagging_fraction = p_dbl(default = 1.0, lower = 0, upper = 1.0,
-            tags = "train"),
-          bagging_freq = p_int(default = 0L, lower = 0L, tags = "train"),
-          bagging_seed = p_int(default = 3L, tags = "train"),
-          feature_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-            tags = "train"),
-          feature_fraction_bynode = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-            tags = "train"),
-          feature_fraction_seed = p_int(default = 2L, tags = "train"),
-          extra_trees = p_lgl(default = FALSE, tags = "train"),
-          extra_seed = p_int(default = 6L, tags = "train"),
-          first_metric_only = p_lgl(default = FALSE, tags = "train"),
-          max_delta_step = p_dbl(default = 0.0, tags = "train"),
-          lambda_l1 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          lambda_l2 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          linear_lambda = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          min_gain_to_split = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          drop_rate = p_dbl(default = 0.1, lower = 0.0, upper = 1.0, tags = "train"),
-          max_drop = p_int(default = 50L, tags = "train"),
-          skip_drop = p_dbl(default = 0.5, lower = 0.0, upper = 1.0, tags = "train"),
-          xgboost_dart_mode = p_lgl(default = FALSE, tags = "train"),
-          uniform_drop = p_lgl(default = FALSE, tags = "train"),
-          drop_seed = p_int(default = 4L, tags = "train"),
-          top_rate = p_dbl(default = 0.2, lower = 0.0, upper = 1.0, tags = "train"),
-          other_rate = p_dbl(default = 0.1, lower = 0.0, upper = 1.0, tags = "train"),
-          min_data_per_group = p_int(default = 100L, lower = 1L, tags = "train"),
-          max_cat_threshold = p_int(default = 32L, lower = 1L, tags = "train"),
-          cat_l2 = p_dbl(default = 10.0, lower = 0.0, tags = "train"),
-          cat_smooth = p_dbl(default = 10.0, lower = 0.0, tags = "train"),
-          max_cat_to_onehot = p_int(default = 4L, lower = 1L, tags = "train"),
-          top_k = p_int(default = 20L, lower = 1L, tags = "train"),
-          monotone_constraints = p_uty(default = NULL, tags = "train"),
-          monotone_constraints_method = p_fct(default = "basic", levels = c("basic",
-            "intermediate", "advanced"), tags = "train"),
-          monotone_penalty = p_dbl(default = 0, lower = 0, tags = "train"),
-          feature_contri = p_uty(default = NULL, tags = "train"),
-          forcedsplits_filename = p_uty(default = "", tags = "train"),
-          refit_decay_rate = p_dbl(default = 0.9, lower = 0, upper = 1,
-            tags = "train"),
-          cegb_tradeoff = p_dbl(default = 1.0, lower = 0.0, tags = "train"),
-          cegb_penalty_split = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          cegb_penalty_feature_lazy = p_uty(tags = "train"),
-          cegb_penalty_feature_coupled = p_uty(tags = "train"),
-          path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
-          interaction_constraints = p_uty(tags = "train"),
-          input_model = p_uty(default = "", tags = "train"),
-          output_model = p_uty(default = "LightGBM_model.txt", tags = "train"),
-          saved_feature_importance_type = p_int(default = 0L, lower = 0L, upper = 1L,
-            tags = "train"),
-          snapshot_freq = p_int(default = -1L, tags = "train"),
-          # dataset parameters
-          max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
-          max_bin_by_feature = p_uty(default = NULL, tags = "train"),
-          min_data_in_bin = p_int(default = 3L, lower = 1L, tags = "train"),
-          bin_construct_sample_cnt = p_int(default = 200000L, lower = 1L,
-            tags = "train"),
-          data_random_seed = p_int(default = 1L, tags = "train"),
-          is_enable_sparse = p_lgl(default = TRUE, tags = "train"),
-          enable_bundle = p_lgl(default = TRUE, tags = "train"),
-          use_missing = p_lgl(default = TRUE, tags = "train"),
-          zero_as_missing = p_lgl(default = FALSE, tags = "train"),
-          feature_pre_filter = p_lgl(default = TRUE, tags = "train"),
-          pre_partition = p_lgl(default = FALSE, tags = "train"),
-          two_round = p_lgl(default = FALSE, tags = "train"),
-          header = p_lgl(default = FALSE, tags = "train"),
-          group_column = p_uty(default = "", tags = "train"),
-          forcedbins_filename = p_uty(default = "", tags = "train"),
-          save_binary = p_lgl(default = FALSE, tags = "train"),
-          # objective parameters
-          objective_seed = p_int(default = 5L, tags = "train"),
-          is_unbalance = p_lgl(default = FALSE, tags = "train"),
-          scale_pos_weight = p_dbl(default = 1, lower = 0, tags = "train"),
-          sigmoid = p_dbl(default = 1, lower = 0, tags = "train"),
-          boost_from_average = p_lgl(default = TRUE, tags = "train"),
-          lambdarank_truncation_level = p_int(default = 30L, lower = 1L,
-            tags = "train"),
-          lambdarank_norm = p_lgl(default = TRUE, tags = "train"),
-          label_gain = p_uty(tags = "train"),
-          # metric parameters
-          metric_freq = p_int(default = 1L, lower = 1L, tags = "train"),
-          is_provide_training_metric = p_lgl(default = FALSE, tags = "train"),
-          eval_at = p_uty(default = 1:5, tags = "train"),
-          multi_error_top_k = p_int(default = 1L, lower = 1L, tags = "train"),
-          auc_mu_weights = p_uty(default = NULL, tags = "train"),
-          # network parameters
-          num_machines = p_int(default = 1L, lower = 1L, tags = "train"),
-          local_listen_port = p_int(default = 12400L, lower = 1L, tags = "train"),
-          time_out = p_int(default = 120L, lower = 1L, tags = "train"),
-          machine_list_filename = p_uty(default = "", tags = "train"),
-          machines = p_uty(default = "", tags = "train"),
-          # GPU parameters
-          gpu_platform_id = p_int(default = -1L, tags = "train"),
-          gpu_device_id = p_int(default = -1L, tags = "train"),
-          gpu_use_dp = p_lgl(default = FALSE, tags = "train"),
-          num_gpu = p_int(default = 1L, lower = 1L, tags = "train"),
-          # predict parameters
-          start_iteration = p_int(default = 0L, tags = "predict"),
-          num_iteration = p_int(default = -1L, tags = "predict"),
-          pred_early_stop = p_lgl(default = FALSE, tags = "predict"),
-          pred_early_stop_freq = p_int(default = 10L, tags = "predict"),
-          pred_early_stop_margin = p_dbl(default = 10, tags = "predict"),
-          output_result = p_uty(default = "LightGBM_predict_result.txt", tags = "predict")
+        # lgb.train core functions
+        nrounds = p_int(default = 5L, lower = 1L, tags = "train"),
+        objective = p_fct(default = "binary", levels = c("binary",
+          "multiclass", "multiclassova", "cross_entropy", "cross_entropy_lambda", "lambdarank",
+          "rank_xendcg"), tags = "train"),
+        metric = p_fct(default = "", levels = c("", "None", "ndcg",
+          "map", "auc", "average_precision", "binary_logloss", "binary_error", "auc_mu",
+          "multi_logloss", "multi_error", "cross_entropy", "cross_entropy_lambda",
+          "kullback_leibler"), tags = "train"),
+        custom_eval = p_uty(default = NULL, tags = "train"),
+        verbose = p_int(default = 1L, tags = "train"),
+        record = p_lgl(default = TRUE, tags = "train"),
+        eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
+        init_model = p_uty(default = NULL, tags = "train"),
+        early_stopping_rounds = p_int(lower = 1L, tags = "train"),
+        callbacks = p_uty(tags = "train"),
+        reset_data = p_lgl(default = FALSE, tags = "train"),
+        categorical_feature = p_uty(default = "", tags = "train"),
+        # other core functions
+        boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart",
+          "goss"), tags = "train"),
+        linear_tree = p_lgl(default = FALSE, tags = "train"),
+        num_iterations = p_int(default = 100L, lower = 0L, tags = "train"),
+        learning_rate = p_dbl(default = 0.1, lower = 0.0, tags = "train"),
+        num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L,
+          tags = "train"),
+        tree_learner = p_fct(default = "serial", levels = c("serial", "feature",
+          "data", "voting"), tags = "train"),
+        num_threads = p_int(default = 0L, lower = 0L, tags = "train"),
+        device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"),
+          tags = "train"),
+        seed = p_int(tags = "train"),
+        deterministic = p_lgl(default = FALSE, tags = "train"),
+        # Learning control parameters
+        force_col_wise = p_lgl(default = FALSE, tags = "train"),
+        force_row_wise = p_lgl(default = FALSE, tags = "train"),
+        histogram_pool_size = p_int(default = -1L, tags = "train"),
+        max_depth = p_int(default = -1L, tags = "train"),
+        min_data_in_leaf = p_int(default = 20L, lower = 0L, tags = "train"),
+        min_sum_hessian_in_leaf = p_dbl(default = 1e-3, lower = 0, tags = "train"),
+        bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
+          tags = "train"),
+        pos_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
+          tags = "train"),
+        neg_bagging_fraction = p_dbl(default = 1.0, lower = 0, upper = 1.0,
+          tags = "train"),
+        bagging_freq = p_int(default = 0L, lower = 0L, tags = "train"),
+        bagging_seed = p_int(default = 3L, tags = "train"),
+        feature_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
+          tags = "train"),
+        feature_fraction_bynode = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
+          tags = "train"),
+        feature_fraction_seed = p_int(default = 2L, tags = "train"),
+        extra_trees = p_lgl(default = FALSE, tags = "train"),
+        extra_seed = p_int(default = 6L, tags = "train"),
+        first_metric_only = p_lgl(default = FALSE, tags = "train"),
+        max_delta_step = p_dbl(default = 0.0, tags = "train"),
+        lambda_l1 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        lambda_l2 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        linear_lambda = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        min_gain_to_split = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        drop_rate = p_dbl(default = 0.1, lower = 0.0, upper = 1.0, tags = "train"),
+        max_drop = p_int(default = 50L, tags = "train"),
+        skip_drop = p_dbl(default = 0.5, lower = 0.0, upper = 1.0, tags = "train"),
+        xgboost_dart_mode = p_lgl(default = FALSE, tags = "train"),
+        uniform_drop = p_lgl(default = FALSE, tags = "train"),
+        drop_seed = p_int(default = 4L, tags = "train"),
+        top_rate = p_dbl(default = 0.2, lower = 0.0, upper = 1.0, tags = "train"),
+        other_rate = p_dbl(default = 0.1, lower = 0.0, upper = 1.0, tags = "train"),
+        min_data_per_group = p_int(default = 100L, lower = 1L, tags = "train"),
+        max_cat_threshold = p_int(default = 32L, lower = 1L, tags = "train"),
+        cat_l2 = p_dbl(default = 10.0, lower = 0.0, tags = "train"),
+        cat_smooth = p_dbl(default = 10.0, lower = 0.0, tags = "train"),
+        max_cat_to_onehot = p_int(default = 4L, lower = 1L, tags = "train"),
+        top_k = p_int(default = 20L, lower = 1L, tags = "train"),
+        monotone_constraints = p_uty(default = NULL, tags = "train"),
+        monotone_constraints_method = p_fct(default = "basic", levels = c("basic",
+          "intermediate", "advanced"), tags = "train"),
+        monotone_penalty = p_dbl(default = 0, lower = 0, tags = "train"),
+        feature_contri = p_uty(default = NULL, tags = "train"),
+        forcedsplits_filename = p_uty(default = "", tags = "train"),
+        refit_decay_rate = p_dbl(default = 0.9, lower = 0, upper = 1,
+          tags = "train"),
+        cegb_tradeoff = p_dbl(default = 1.0, lower = 0.0, tags = "train"),
+        cegb_penalty_split = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        cegb_penalty_feature_lazy = p_uty(tags = "train"),
+        cegb_penalty_feature_coupled = p_uty(tags = "train"),
+        path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
+        interaction_constraints = p_uty(tags = "train"),
+        input_model = p_uty(default = "", tags = "train"),
+        output_model = p_uty(default = "LightGBM_model.txt", tags = "train"),
+        saved_feature_importance_type = p_int(default = 0L, lower = 0L, upper = 1L,
+          tags = "train"),
+        snapshot_freq = p_int(default = -1L, tags = "train"),
+        # dataset parameters
+        max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
+        max_bin_by_feature = p_uty(default = NULL, tags = "train"),
+        min_data_in_bin = p_int(default = 3L, lower = 1L, tags = "train"),
+        bin_construct_sample_cnt = p_int(default = 200000L, lower = 1L,
+          tags = "train"),
+        data_random_seed = p_int(default = 1L, tags = "train"),
+        is_enable_sparse = p_lgl(default = TRUE, tags = "train"),
+        enable_bundle = p_lgl(default = TRUE, tags = "train"),
+        use_missing = p_lgl(default = TRUE, tags = "train"),
+        zero_as_missing = p_lgl(default = FALSE, tags = "train"),
+        feature_pre_filter = p_lgl(default = TRUE, tags = "train"),
+        pre_partition = p_lgl(default = FALSE, tags = "train"),
+        two_round = p_lgl(default = FALSE, tags = "train"),
+        header = p_lgl(default = FALSE, tags = "train"),
+        group_column = p_uty(default = "", tags = "train"),
+        forcedbins_filename = p_uty(default = "", tags = "train"),
+        save_binary = p_lgl(default = FALSE, tags = "train"),
+        # objective parameters
+        objective_seed = p_int(default = 5L, tags = "train"),
+        is_unbalance = p_lgl(default = FALSE, tags = "train"),
+        scale_pos_weight = p_dbl(default = 1, lower = 0, tags = "train"),
+        sigmoid = p_dbl(default = 1, lower = 0, tags = "train"),
+        boost_from_average = p_lgl(default = TRUE, tags = "train"),
+        lambdarank_truncation_level = p_int(default = 30L, lower = 1L,
+          tags = "train"),
+        lambdarank_norm = p_lgl(default = TRUE, tags = "train"),
+        label_gain = p_uty(tags = "train"),
+        # metric parameters
+        metric_freq = p_int(default = 1L, lower = 1L, tags = "train"),
+        is_provide_training_metric = p_lgl(default = FALSE, tags = "train"),
+        eval_at = p_uty(default = 1:5, tags = "train"),
+        multi_error_top_k = p_int(default = 1L, lower = 1L, tags = "train"),
+        auc_mu_weights = p_uty(default = NULL, tags = "train"),
+        # network parameters
+        num_machines = p_int(default = 1L, lower = 1L, tags = "train"),
+        local_listen_port = p_int(default = 12400L, lower = 1L, tags = "train"),
+        time_out = p_int(default = 120L, lower = 1L, tags = "train"),
+        machine_list_filename = p_uty(default = "", tags = "train"),
+        machines = p_uty(default = "", tags = "train"),
+        # GPU parameters
+        gpu_platform_id = p_int(default = -1L, tags = "train"),
+        gpu_device_id = p_int(default = -1L, tags = "train"),
+        gpu_use_dp = p_lgl(default = FALSE, tags = "train"),
+        num_gpu = p_int(default = 1L, lower = 1L, tags = "train"),
+        # predict parameters
+        start_iteration = p_int(default = 0L, tags = "predict"),
+        num_iteration = p_int(default = -1L, tags = "predict"),
+        pred_early_stop = p_lgl(default = FALSE, tags = "predict"),
+        pred_early_stop_freq = p_int(default = 10L, tags = "predict"),
+        pred_early_stop_margin = p_dbl(default = 10, tags = "predict"),
+        output_result = p_uty(default = "LightGBM_predict_result.txt", tags = "predict")
       )
 
       ps$add_dep("pos_bagging_fraction", "objective", CondEqual$new("binary"))
@@ -232,7 +232,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         return(mlr3misc::named_vector(self$state$feature_names, 0))
       }
     }
-
   ),
 
   private = list(
@@ -252,13 +251,13 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       # catch incorrect objective setting
       if (!is.null(pars$objective) && pars$objective %in% c("multiclass", "multiclassova") &&
-          !("multiclass" %in% task$properties)) {
-            stop("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
+        !("multiclass" %in% task$properties)) {
+        stop("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
       }
 
       # set default objective
       if (is.null(pars$objective)) {
-        if ("multiclass" %in% task$properties)  {
+        if ("multiclass" %in% task$properties) {
           pars$objective = "multiclass"
         } else {
           pars$objective = "binary"
@@ -290,7 +289,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           categorical_feature = pars$categorical_feature
         )
 
-        pars$categorical_feature <- NULL
+        pars$categorical_feature = NULL
 
         dtest = lightgbm::lgb.Dataset.create.valid(
           dataset = dtrain,
@@ -326,16 +325,20 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           categorical_feature = pars$categorical_feature
         )
 
-        pars$categorical_feature <- NULL
+        pars$categorical_feature = NULL
 
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", task$weights$weight)
         }
 
+        args = pars[which(names(pars) %in% formalArgs(lightgbm::lgb.train))]
+        params = pars[which(names(pars) %nin% formalArgs(lightgbm::lgb.train))]
+
         mlr3misc::invoke(
           lightgbm::lgb.train,
           data = dtrain,
-          params = pars
+          .args = args,
+          params = params
         )
       }
 

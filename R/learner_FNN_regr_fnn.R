@@ -18,8 +18,9 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        k = p_int(default = 1L, lower = 1L, tags = "train"),
-        algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"), tags = "train")
+        k = p_int(default = 1L, lower = 1L, tags = "predict"),
+        algorithm = p_fct(default = "kd_tree", levels = c("kd_tree", "cover_tree", "brute"),
+          tags = "predict")
       )
 
       super$initialize(
@@ -48,7 +49,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         train = self$model$train,
         y = self$model$y,
         test = task$data(cols = self$state$feature_names),
-        .args = self$param_set$get_values(tags = "train")
+        .args = self$param_set$get_values(tags = "predict")
       )
 
       list(response = response$pred)

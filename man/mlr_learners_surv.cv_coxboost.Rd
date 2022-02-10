@@ -31,7 +31,7 @@ lrn("surv.cv_coxboost")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}, \CRANpkg{pracma}
 }
 }
 
@@ -40,24 +40,24 @@ lrn("surv.cv_coxboost")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    maxstepno \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    K \tab integer \tab 10 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
-   type \tab character \tab verweij \tab verweij, naive \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   folds \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type \tab character \tab verweij \tab verweij, naive \tab - \cr
+   folds \tab list \tab NULL \tab  \tab - \cr
    minstepno \tab integer \tab 50 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    start.penalty \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    iter.max \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    upper.margin \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   unpen.index \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   unpen.index \tab list \tab - \tab  \tab - \cr
+   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    penalty \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   criterion \tab character \tab pscore \tab pscore, score, hpscore, hscore \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   criterion \tab character \tab pscore \tab pscore, score, hpscore, hscore \tab - \cr
    stepsize.factor \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sf.scheme \tab character \tab sigmoid \tab sigmoid, linear \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   pendistmat \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   connected.index \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   x.is.01 \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   return.score \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   at.step \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sf.scheme \tab character \tab sigmoid \tab sigmoid, linear \tab - \cr
+   pendistmat \tab list \tab - \tab  \tab - \cr
+   connected.index \tab list \tab - \tab  \tab - \cr
+   x.is.01 \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   return.score \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   at.step \tab list \tab - \tab  \tab - \cr
 }
 }
 

@@ -33,7 +33,8 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
         wp = p_uty(default = NULL, tags = "train"),
         offset = p_uty(default = NULL, tags = "train"),
         keepxy = p_lgl(default = FALSE, tags = "train"),
-        trace = p_fct(default = "0", levels = c("0", ".3", ".5", "1", "2", "3", "4", "5"), tags = "train"),
+        trace = p_fct(default = "0", levels = c("0", ".3", ".5", "1", "2", "3", "4", "5"),
+          tags = "train"),
         degree = p_int(default = 1L, lower = 1L, tags = "train"),
         penalty = p_dbl(default = 2L, lower = -1L, tags = "train"),
         nk = p_uty(default = NULL, tags = "train"),
@@ -45,12 +46,15 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
         fast.beta = p_int(lower = 0L, upper = 1L, default = 1L, tags = "train"),
         linpreds = p_uty(default = FALSE, tags = "train"),
         allowed = p_uty(tags = "train"),
-        pmethod = p_fct(default = "backward", levels = c("backward", "none", "exhaustive", "forward", "seqrep", "cv"), tags = "train"),
+        pmethod = p_fct(default = "backward", levels = c("backward", "none", "exhaustive",
+          "forward", "seqrep", "cv"), tags = "train"),
         nprune = p_int(lower = 0L, tags = "train"),
         nfold = p_int(default = 0L, lower = 0L, tags = "train"),
         ncross = p_int(default = 1L, lower = 0L, tags = "train"),
         stratify = p_lgl(default = TRUE, tags = "train"),
-        varmod.method = p_fct(default = "none", levels = c("none", "const", "lm", "rlm", "earth", "gam", "power", "power0", "x.lm", "x.rlm", "x.earth", "x.gam"), tags = "train"),
+        varmod.method = p_fct(default = "none", levels = c("none", "const", "lm", "rlm", "earth",
+          "gam", "power", "power0", "x.lm", "x.rlm", "x.earth", "x.gam"),
+        tags = "train"),
         varmod.exponent = p_dbl(default = 1, tags = "train"),
         varmod.conv = p_dbl(lower = 0, upper = 1, default = 1, tags = "train"),
         varmod.clamp = p_dbl(default = 0.1, tags = "train"),
@@ -91,8 +95,8 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
 
       if (self$predict_type == "se" &&
         (is.null(pars$varmod.method) || pars$varmod.method == "none")) {
-          stop("'varmod.method' parameter must not be 'none' if predict_type is 'se'.")
-        }
+        stop("'varmod.method' parameter must not be 'none' if predict_type is 'se'.")
+      }
 
       mlr3misc::invoke(
         earth::earth,

@@ -20,28 +20,28 @@ lrn("classif.JRip")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
+\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}, \dQuote{integer}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   subset \tab list \tab - \tab  \tab - \cr
+   na.action \tab list \tab - \tab  \tab - \cr
    F \tab integer \tab 3 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    N \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    O \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   D \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   D \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    S \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   E \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   P \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   E \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   P \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   options \tab list \tab NULL \tab  \tab - \cr
 }
 }
 

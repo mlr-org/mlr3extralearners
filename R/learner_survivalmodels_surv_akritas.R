@@ -22,9 +22,9 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps <- ps(
-          lambda = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "predict"),
-          reverse = p_lgl(default = FALSE, tags = "train")
+      ps = ps(
+        lambda = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "predict"),
+        reverse = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -40,7 +40,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
 
   private = list(
     .train = function(task) {
-      pars <- self$param_set$get_values(tags = "train")
+      pars = self$param_set$get_values(tags = "train")
       mlr3misc::invoke(
         survivalmodels::akritas,
         data = data.table::setDF(task$data()),
@@ -51,10 +51,10 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     },
 
     .predict = function(task) {
-      pars <- self$param_set$get_values(tags = "predict")
-      newdata <- task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
+      newdata = task$data(cols = task$feature_names)
 
-      pred <- mlr3misc::invoke(
+      pred = mlr3misc::invoke(
         predict,
         self$model,
         newdata = newdata,

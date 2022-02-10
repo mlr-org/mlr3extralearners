@@ -40,7 +40,8 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
         properties = c("weights", "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.extratrees"
       )
-    }),
+    }
+  ),
 
   private = list(
     .train = function(task) {

@@ -11,6 +11,7 @@ test_that("autotest", {
 test_that("classif.gausspr sigma", {
   learner = lrn("classif.gausspr", tol = 0.1, kpar = list(sigma = 0.2))
   t = tsk("iris")
+
   learner$train(t)
   expect_equal(learner$model@kernelf@kpar$sigma, 0.2)
 

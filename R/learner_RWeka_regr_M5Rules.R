@@ -38,17 +38,17 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
     initialize = function() {
 
       ps = ps(
-          subset = p_uty(tags = c("train", "pars")),
-          na.action = p_uty(tags = c("train", "pars")),
-          N = p_lgl(default = FALSE, tags = c("train", "control")),
-          U = p_lgl(default = FALSE, tags = c("train", "control")),
-          R = p_lgl(default = FALSE, tags = c("train", "control")),
-          M = p_int(default = 4L, tags = c("train", "control")),
-          output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
-          do_not_check_capabilities = p_lgl(default = FALSE, tags = c("train", "control")),
-          num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
-          batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-          options = p_uty(default = NULL, tags = c("train", "pars"))
+        subset = p_uty(tags = c("train", "pars")),
+        na.action = p_uty(tags = c("train", "pars")),
+        N = p_lgl(default = FALSE, tags = c("train", "control")),
+        U = p_lgl(default = FALSE, tags = c("train", "control")),
+        R = p_lgl(default = FALSE, tags = c("train", "control")),
+        M = p_int(default = 4L, tags = c("train", "control")),
+        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+        do_not_check_capabilities = p_lgl(default = FALSE, tags = c("train", "control")),
+        num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
+        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
+        options = p_uty(default = NULL, tags = c("train", "pars"))
       )
 
       super$initialize(

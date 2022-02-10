@@ -21,47 +21,47 @@ lrn("regr.mob")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}, \dQuote{se}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   rhs \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   fit \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cluster \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   rhs \tab list \tab - \tab  \tab - \cr
+   fit \tab list \tab - \tab  \tab - \cr
+   offset \tab list \tab - \tab  \tab - \cr
+   cluster \tab list \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   bonferroni \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bonferroni \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    minsize \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    minsplit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    minbucket \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxdepth \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mtry \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    trim \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   breakties \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   parm \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   breakties \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   parm \tab list \tab - \tab  \tab - \cr
    dfsplit \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   prune \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   restart \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   prune \tab list \tab - \tab  \tab - \cr
+   restart \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    maxvar \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   ytype \tab character \tab vector \tab vector, matrix, data.frame \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   xtype \tab character \tab matrix \tab vector, matrix, data.frame \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   terminal \tab list \tab object \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   inner \tab list \tab object \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   model \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   numsplit \tab character \tab left \tab left, center \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   catsplit \tab character \tab binary \tab binary, multiway \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   vcov \tab character \tab opg \tab opg, info, sandwich \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   ordinal \tab character \tab chisq \tab chisq, max, L2 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   ytype \tab character \tab vector \tab vector, matrix, data.frame \tab - \cr
+   xtype \tab character \tab matrix \tab vector, matrix, data.frame \tab - \cr
+   terminal \tab list \tab object \tab  \tab - \cr
+   inner \tab list \tab object \tab  \tab - \cr
+   model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   numsplit \tab character \tab left \tab left, center \tab - \cr
+   catsplit \tab character \tab binary \tab binary, multiway \tab - \cr
+   vcov \tab character \tab opg \tab opg, info, sandwich \tab - \cr
+   ordinal \tab character \tab chisq \tab chisq, max, L2 \tab - \cr
    nrep \tab integer \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   applyfun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   applyfun \tab list \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   additional \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict_fun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   additional \tab list \tab - \tab  \tab - \cr
+   predict_fun \tab list \tab - \tab  \tab - \cr
 }
 }
 

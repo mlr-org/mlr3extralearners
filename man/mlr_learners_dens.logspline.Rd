@@ -21,7 +21,7 @@ lrn("dens.logspline")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{logspline}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{logspline}
 }
 }
 
@@ -31,10 +31,10 @@ lrn("dens.logspline")
    lbound \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    ubound \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxknots \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   knots \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   knots \tab list \tab - \tab  \tab - \cr
    nknots \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   penalty \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   silent \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   penalty \tab list \tab - \tab  \tab - \cr
+   silent \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mind \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    error.action \tab integer \tab 2 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
 }

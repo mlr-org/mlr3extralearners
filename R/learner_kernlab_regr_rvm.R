@@ -45,7 +45,6 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
         minmaxdiff = p_dbl(lower = 0, default = 1e-3, tag = "train"),
         verbosity = p_lgl(default = FALSE, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
         na.action = p_uty(default = na.omit, tag = "train")
       )
 
@@ -53,14 +52,12 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
         id = "regr.rvm",
         packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
-                          "factor", "ordered"),
+          "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.rvm"
       )
     }
-
-
   ),
 
   private = list(
@@ -87,10 +84,10 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::rvm,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {

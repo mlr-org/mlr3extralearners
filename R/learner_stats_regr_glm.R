@@ -68,8 +68,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         man = "mlr3extralearners::mlr_learners_regr.glm"
       )
     }
-
-
   ),
 
   private = list(
@@ -82,8 +80,8 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
       }
       # add family to parameters
-      fam <- mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
-      pars <- mlr3misc::insert_named(pars, list(family = fam))
+      fam = mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
+      pars = mlr3misc::insert_named(pars, list(family = fam))
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 

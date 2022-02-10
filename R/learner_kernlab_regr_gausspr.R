@@ -39,25 +39,19 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
         variance.model = p_lgl(default = FALSE, tag = "train"),
         tol = p_dbl(lower = 0, default = 0.001, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train"),
-        type = p_fct(default = "regression",
-                     levels = c("regression", "variance", "sdeviation"),
-                     tag = "train")
+        na.action = p_uty(default = na.omit, tag = "train")
       )
 
       super$initialize(
         id = "regr.gausspr",
         packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
-                          "factor", "ordered"),
+          "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.gausspr"
       )
     }
-
-
   ),
 
   private = list(
@@ -78,16 +72,17 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
       }
 
       pars = pars[setdiff(names(pars), c("kpar", names(kpars)))]
+      pars$type = "regression"
 
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::gausspr,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {

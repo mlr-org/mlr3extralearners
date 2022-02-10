@@ -37,23 +37,21 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
         kpar = p_uty(default = "automatic", tag = "train"),
         tol = p_dbl(lower = 0, default = 0.001, tag = "train"),
         fit = p_lgl(default = TRUE, tag = "train"),
-        cross = p_int(lower = 0, default = 0, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train")
+        na.action = p_uty(default = na.omit, tag = "train"),
+        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tag = "predict")
       )
 
       super$initialize(
         id = "classif.gausspr",
         packages = c("mlr3extralearners", "kernlab"),
         feature_types = c("numeric", "integer", "logical", "character",
-                          "factor", "ordered"),
+          "factor", "ordered"),
         predict_types = c("response", "prob"),
         properties = c("twoclass", "multiclass"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_classif.gausspr"
       )
     }
-
-
   ),
 
   private = list(
@@ -79,19 +77,21 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
       self$state$feature_names = task$feature_names
 
       mlr3misc::invoke(kernlab::gausspr,
-                       x = task$formula(),
-                       data = task$data(),
-                       kpar = kpar,
-                       .args = pars)
+        x = task$formula(),
+        data = task$data(),
+        kpar = kpar,
+        .args = pars)
     },
 
     .predict = function(task) {
       out = setNames(vector("list", 1L), self$predict_type)
+      pars = self$param_set$get_values(tags = "predict")
       out[[1]] = mlr3misc::invoke(
         getMethod("predict", "gausspr"),
         self$model,
         task$data(cols = self$state$feature_names),
-        type = self$predict_type
+        type = self$predict_type,
+        .args = pars
       )
       out
     }

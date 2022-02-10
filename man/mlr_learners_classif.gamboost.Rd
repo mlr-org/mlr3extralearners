@@ -21,27 +21,27 @@ lrn("classif.gamboost")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab - \cr
    dfbase \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   family \tab character \tab Binomial \tab Binomial, AdaExp, AUC, custom \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   custom.family \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   link \tab character \tab logit \tab logit, probit \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   type \tab character \tab adaboost \tab glm, adaboost \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   family \tab character \tab Binomial \tab Binomial, AdaExp, AUC, custom \tab - \cr
+   custom.family \tab list \tab - \tab  \tab - \cr
+   link \tab character \tab logit \tab logit, probit \tab - \cr
+   type \tab character \tab adaboost \tab glm, adaboost \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   risk \tab character \tab inbag \tab inbag, oobag, none \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   oobweights \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   stopintern \tab list \tab FALSE \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
+   oobweights \tab list \tab NULL \tab  \tab - \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   stopintern \tab list \tab FALSE \tab  \tab - \cr
+   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
 }
 }
 

@@ -22,15 +22,15 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          h = p_dbl(tags = "train"),
-          group = p_uty(tags = "train"),
-          delta = p_dbl(tags = "train"),
-          h.weights = p_dbl(default = 1, tags = "train"),
-          hmult = p_uty(default = 1, tags = "train"),
-          method = p_fct(default = "normal",
-            levels = c("normal", "cv", "sj", "df", "aicc"), tags = "train"),
-          positive = p_lgl(default = FALSE, tags = "train"),
-          verbose = p_uty(default = 1, tags = "train")
+        h = p_dbl(tags = "train"),
+        group = p_uty(tags = "train"),
+        delta = p_dbl(tags = "train"),
+        h.weights = p_dbl(default = 1, tags = "train"),
+        hmult = p_uty(default = 1, tags = "train"),
+        method = p_fct(default = "normal",
+          levels = c("normal", "cv", "sj", "df", "aicc"), tags = "train"),
+        positive = p_lgl(default = FALSE, tags = "train"),
+        verbose = p_uty(default = 1, tags = "train")
       )
 
       super$initialize(
@@ -53,6 +53,7 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
         pars$weights = task$weights$weight
       }
 
+      # TODO: Why is it done that way??
       pdf = function(x) {} # nolint
       body(pdf) = substitute({
         mlr3misc::invoke(sm::sm.density,

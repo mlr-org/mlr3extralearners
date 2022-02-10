@@ -25,29 +25,29 @@ lrn("regr.glm")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}, \dQuote{se}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, 'stats'
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, 'stats'
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   singular.ok \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   x \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   y \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   model \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   etastart \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   mustart \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   start \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   link \tab character \tab - \tab logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   singular.ok \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   y \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   etastart \tab list \tab - \tab  \tab - \cr
+   mustart \tab list \tab - \tab  \tab - \cr
+   start \tab list \tab NULL \tab  \tab - \cr
+   offset \tab list \tab - \tab  \tab - \cr
+   family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab - \cr
+   na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab - \cr
+   link \tab character \tab - \tab logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse \tab - \cr
    epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxit \tab numeric \tab 25 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   dispersion \tab list \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   type \tab character \tab link \tab response, link, terms \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   dispersion \tab list \tab NULL \tab  \tab - \cr
+   type \tab character \tab link \tab response, link, terms \tab - \cr
 }
 }
 

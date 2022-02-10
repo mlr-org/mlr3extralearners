@@ -59,27 +59,27 @@ lrn("surv.parametric")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{lp}, \dQuote{crank}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab character \tab aft \tab aft, ph, po, tobit \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   na.action \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   dist \tab character \tab weibull \tab weibull, exponential, gaussian, lognormal, loglogistic \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   parms \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   init \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
+   na.action \tab list \tab - \tab  \tab - \cr
+   dist \tab character \tab weibull \tab weibull, exponential, gaussian, lognormal, loglogistic \tab - \cr
+   parms \tab list \tab - \tab  \tab - \cr
+   init \tab list \tab - \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    toler.chol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    debug \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    outer.max \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   robust \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   score \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cluster \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   cluster \tab list \tab - \tab  \tab - \cr
 }
 }
 

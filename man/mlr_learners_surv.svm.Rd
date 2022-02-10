@@ -30,19 +30,19 @@ lrn("surv.svm")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{survivalsvm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalsvm}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab character \tab regression \tab regression, vanbelle1, vanbelle2, hybrid \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   diff.meth \tab character \tab - \tab makediff1, makediff2, makediff3 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   gamma.mu \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   opt.meth \tab character \tab quadprog \tab quadprog, ipop \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kernel \tab character \tab lin_kernel \tab lin_kernel, add_kernel, rbf_kernel, poly_kernel \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kernel.pars \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   type \tab character \tab regression \tab regression, vanbelle1, vanbelle2, hybrid \tab - \cr
+   diff.meth \tab character \tab - \tab makediff1, makediff2, makediff3 \tab - \cr
+   gamma.mu \tab list \tab - \tab  \tab - \cr
+   opt.meth \tab character \tab quadprog \tab quadprog, ipop \tab - \cr
+   kernel \tab character \tab lin_kernel \tab lin_kernel, add_kernel, rbf_kernel, poly_kernel \tab - \cr
+   kernel.pars \tab list \tab - \tab  \tab - \cr
    sgf.sv \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigf \tab integer \tab 7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxiter \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

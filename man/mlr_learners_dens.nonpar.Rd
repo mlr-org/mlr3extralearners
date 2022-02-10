@@ -21,7 +21,7 @@ lrn("dens.nonpar")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{sm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{sm}
 }
 }
 
@@ -29,13 +29,13 @@ lrn("dens.nonpar")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    h \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   group \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   group \tab list \tab - \tab  \tab - \cr
    delta \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    h.weights \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   hmult \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   method \tab character \tab normal \tab normal, cv, sj, df, aicc \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab list \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   hmult \tab list \tab 1 \tab  \tab - \cr
+   method \tab character \tab normal \tab normal, cv, sj, df, aicc \tab - \cr
+   positive \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   verbose \tab list \tab 1 \tab  \tab - \cr
 }
 }
 

@@ -21,7 +21,7 @@ lrn("classif.cforest")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
 }
 }
 
@@ -29,51 +29,51 @@ lrn("classif.cforest")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   replace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   replace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mtryratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   applyfun \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   applyfun \tab list \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   offset \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cluster \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   scores \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   teststat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   splitstat \tab character \tab quadratic \tab quadratic, maximum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   testtype \tab character \tab Univariate \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nmax \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   pargs \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   offset \tab list \tab - \tab  \tab - \cr
+   cluster \tab list \tab - \tab  \tab - \cr
+   scores \tab list \tab - \tab  \tab - \cr
+   teststat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
+   splitstat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
+   splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   testtype \tab character \tab Univariate \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab - \cr
+   nmax \tab list \tab - \tab  \tab - \cr
+   pargs \tab list \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mincriterion \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    logmincriterion \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    minsplit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    minbucket \tab integer \tab 7 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    minprob \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   stump \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   lookahead \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   MIA \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stump \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   lookahead \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   MIA \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nresample \tab integer \tab 9999 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxsurrogate \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   numsurrogate \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   numsurrogate \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    maxdepth \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   multiway \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   multiway \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    splittry \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   intersplit \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   majority \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   saveinfo \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   update \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   splitflavour \tab character \tab ctree \tab ctree, exhaustive \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   intersplit \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   majority \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   saveinfo \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   update \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   splitflavour \tab character \tab ctree \tab ctree, exhaustive \tab - \cr
    maxvar \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   OOB \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   simplify \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   scale \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   OOB \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   simplify \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   scale \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nperm \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   risk \tab character \tab loglik \tab loglik, misclassification \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   conditional \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   risk \tab character \tab loglik \tab loglik, misclassification \tab - \cr
+   conditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    threshold \tab numeric \tab 0.2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }

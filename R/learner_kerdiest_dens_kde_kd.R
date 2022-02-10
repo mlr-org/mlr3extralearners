@@ -18,7 +18,7 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
       ps = ps(
         bw = p_dbl(lower = 0, tags = "train"),
         type_kernel = p_fct(levels = c("n", "e", "t", "b"),
-                            default = "n", tags = "train")
+          default = "n", tags = "train")
       )
 
       super$initialize(
@@ -39,9 +39,9 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
 
       data = task$data()[[1]]
 
-      pdf <- function(x) {
+      pdf = function(x) {
       }
-      body(pdf) <- substitute({
+      body(pdf) = substitute({
         mlr3misc::invoke(kerdiest::kde, vec_data = data, y = x, .args = pars)$Estimated_values
       })
 

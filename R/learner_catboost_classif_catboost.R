@@ -52,25 +52,30 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         # catboost.train
         # https://catboost.ai/docs/concepts/r-reference_catboost-train.html
         # Common parameters
-        loss_function_twoclass = p_fct(levels = c("Logloss", "CrossEntropy"), default = "Logloss", tags = "train"),
-        loss_function_multiclass = p_fct(levels = c("MultiClass", "MultiClassOneVsAll"), default = "MultiClass", tags = "train"),
+        loss_function_twoclass = p_fct(levels = c("Logloss", "CrossEntropy"), default = "Logloss",
+          tags = "train"),
+        loss_function_multiclass = p_fct(levels = c("MultiClass", "MultiClassOneVsAll"),
+          default = "MultiClass", tags = "train"),
         # custom_loss missing
         # eval_metric missing
         iterations = p_int(lower = 1L, upper = Inf, default = 1000, tags = "train"),
         learning_rate = p_dbl(lower = 0.001, upper = 1, default = 0.03, tags = "train"),
         random_seed = p_int(lower = 0, upper = Inf, default = 0, tags = "train"),
         l2_leaf_reg = p_dbl(lower = 0, upper = Inf, default = 3, tags = "train"),
-        bootstrap_type = p_fct(levels = c("Bayesian", "Bernoulli", "MVS", "Poisson", "No"), tags = "train"),
+        bootstrap_type = p_fct(levels = c("Bayesian", "Bernoulli", "MVS", "Poisson", "No"),
+          tags = "train"),
         bagging_temperature = p_dbl(lower = 0, upper = Inf, default = 1, tags = "train"),
         subsample = p_dbl(lower = 0, upper = 1, tags = "train"),
-        sampling_frequency = p_fct(levels = c("PerTree", "PerTreeLevel"), default = "PerTreeLevel", tags = "train"),
+        sampling_frequency = p_fct(levels = c("PerTree", "PerTreeLevel"), default = "PerTreeLevel",
+          tags = "train"),
         sampling_unit = p_fct(levels = c("Object", "Group"), default = "Object", tags = "train"),
         mvs_reg = p_dbl(lower = 0, upper = Inf, tags = "train"),
         random_strength = p_dbl(lower = 0, upper = Inf, default = 1, tags = "train"),
         # use_best_model missing
         # best_model_min_trees missing
         depth = p_int(lower = 1L, upper = 16L, default = 6L, tags = "train"),
-        grow_policy = p_fct(levels = c("SymmetricTree", "Depthwise", "Lossguide"), default = "SymmetricTree", tags = "train"),
+        grow_policy = p_fct(levels = c("SymmetricTree", "Depthwise", "Lossguide"),
+          default = "SymmetricTree", tags = "train"),
         min_data_in_leaf = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
         max_leaves = p_int(lower = 1L, upper = Inf, default = 31L, tags = "train"),
         ignored_features = p_uty(default = NULL, tags = "train"),
@@ -81,18 +86,21 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         fold_permutation_block = p_int(lower = 1L, upper = 256L, tags = "train"),
         leaf_estimation_method = p_fct(levels = c("Newton", "Gradient", "Exact"), tags = "train"),
         leaf_estimation_iterations = p_int(lower = 1L, upper = Inf, tags = "train"),
-        leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"), default = "AnyImprovement", tags = "train"),
+        leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"),
+          default = "AnyImprovement", tags = "train"),
         # name missin
         fold_len_multiplier = p_dbl(lower = 1.001, upper = Inf, default = 2, tags = "train"),
         approx_on_full_history = p_lgl(default = TRUE, tags = "train"),
         class_weights = p_uty(tags = "train"),
-        auto_class_weights = p_fct(levels = c("None", "Balanced", "SqrtBalanced"), default = "None", tags = "train"),
+        auto_class_weights = p_fct(levels = c("None", "Balanced", "SqrtBalanced"), default = "None",
+          tags = "train"),
         boosting_type = p_fct(levels = c("Ordered", "Plain"), tags = "train"),
         boost_from_average = p_lgl(tags = "train"),
         langevin = p_lgl(default = FALSE, tags = "train"),
         diffusion_temperature = p_dbl(lower = 0, upper = Inf, default = 10000, tags = "train"),
         # allow_const_label missing
-        score_function = p_fct(levels = c("Cosine", "L2", "NewtonCosine", "NewtonL2"), default = "Cosine", tags = "train"),
+        score_function = p_fct(levels = c("Cosine", "L2", "NewtonCosine", "NewtonL2"),
+          default = "Cosine", tags = "train"),
         # cat_features missing
         monotone_constraints = p_uty(tags = "train", custom_check = check_string),
         feature_weights = p_uty(tags = "train", custom_check = check_string),
@@ -105,17 +113,21 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         # Quantization settings
         target_border = p_dbl(tags = "train"),
         border_count = p_int(lower = 1L, upper = 65535L, tags = "train"),
-        feature_border_type = p_fct(levels = c( "Median", "Uniform", "UniformAndQuantiles", "MaxLogSum", "MinEntropy", "GreedyLogSum"), default = "GreedyLogSum", tags = "train"),
+        feature_border_type = p_fct(levels = c("Median", "Uniform", "UniformAndQuantiles",
+          "MaxLogSum", "MinEntropy", "GreedyLogSum"),
+        default = "GreedyLogSum", tags = "train"),
         per_float_feature_quantization = p_uty(tags = "train", custom_check = check_string),
         # Multiclassification settings
         classes_count = p_int(lower = 1L, upper = Inf, tags = "train"),
         # Performance Settings
-        thread_count = p_int(lower = -1L, upper = Inf, default = 1L, tags = c("train", "predict", "importance")),
+        thread_count = p_int(lower = -1L, upper = Inf, default = 1L, tags = c("train", "predict",
+          "importance")),
         # Processing units settings
         task_type = p_fct(levels = c("CPU", "GPU"), default = "CPU", tags = "train"),
         devices = p_uty(tags = "train"),
         # Output settings
-        logging_level = p_fct(levels = c("Silent", "Verbose", "Info", "Debug"), default = "Silent", tags = "train"),
+        logging_level = p_fct(levels = c("Silent", "Verbose", "Info", "Debug"), default = "Silent",
+          tags = "train"),
         metric_period = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
         # verbose missing
         train_dir = p_uty(default = "catboost_info", tags = "train", custom_check = check_string),
@@ -128,11 +140,13 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         simple_ctr = p_uty(tags = "train", custom_check = check_string),
         combinations_ctr = p_uty(tags = "train", custom_check = check_string),
         ctr_target_border_count = p_int(lower = 1L, upper = 255L, tags = "train"),
-        counter_calc_method = p_fct(levels = c("SkipTest", "Full"), default = "Full", tags = "train"),
+        counter_calc_method = p_fct(levels = c("SkipTest", "Full"), default = "Full",
+          tags = "train"),
         max_ctr_complexity = p_int(lower = 1L, upper = Inf, tags = "train"),
         ctr_leaf_count_limit = p_int(lower = 1L, upper = Inf, tags = "train"),
         store_all_simple_ctr = p_lgl(default = FALSE, tags = "train"),
-        final_ctr_computation_mode = p_fct(levels = c("Default", "Skip"), default = "Default", tags = "train"),
+        final_ctr_computation_mode = p_fct(levels = c("Default", "Skip"), default = "Default",
+          tags = "train"),
         # catboost.predict
         # https://catboost.ai/docs/concepts/r-reference_catboost-predict.html
         verbose = p_lgl(default = FALSE, tags = "predict"),
@@ -187,8 +201,8 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   private = list(
     .train = function(task) {
 
-      if (packageVersion('catboost') < '0.21') {
-        stop('catboost v0.21 or greater is required, update with install_catboost')
+      if (packageVersion("catboost") < "0.21") {
+        stop("catboost v0.21 or greater is required, update with install_catboost")
       }
 
       # target is encoded as integer values from 0

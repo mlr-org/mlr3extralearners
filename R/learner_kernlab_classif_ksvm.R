@@ -36,7 +36,8 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
           tags = "train"),
         scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
         order = p_int(default = NO_DEF, tags = "train"),
-        offset = p_dbl(default = NO_DEF, tags = "train")
+        offset = p_dbl(default = NO_DEF, tags = "train"),
+        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tag = "predict")
       )
 
       ps$add_dep(
@@ -64,7 +65,8 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         properties = c("weights", "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.ksvm"
       )
-    }),
+    }
+  ),
 
   private = list(
     .train = function(task) {
@@ -92,12 +94,14 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
       predict_type = ifelse(self$predict_type == "prob",
         "probabilities", "response")
       p = invoke(kernlab::predict, self$model,
         newdata = newdata,
-        type = predict_type)
+        type = predict_type,
+        .args = pars)
 
       if (self$predict_type == "response") {
         list(response = p)

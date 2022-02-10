@@ -21,74 +21,74 @@ lrn("regr.catboost")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3extralearners}, \CRANpkg{catboost}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{catboost}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   loss_function \tab character \tab RMSE \tab MAE, MAPE, Poisson, Quantile, RMSE, LogLinQuantile, Lq, Huber, Expectile, Tweedie \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   loss_function \tab character \tab RMSE \tab MAE, MAPE, Poisson, Quantile, RMSE, LogLinQuantile, Lq, Huber, Expectile, Tweedie \tab - \cr
    iterations \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    learning_rate \tab numeric \tab 0.03 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
    random_seed \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    l2_leaf_reg \tab numeric \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   bootstrap_type \tab character \tab - \tab Bayesian, Bernoulli, MVS, Poisson, No \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bootstrap_type \tab character \tab - \tab Bayesian, Bernoulli, MVS, Poisson, No \tab - \cr
    bagging_temperature \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    subsample \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   sampling_frequency \tab character \tab PerTreeLevel \tab PerTree, PerTreeLevel \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sampling_unit \tab character \tab Object \tab Object, Group \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   sampling_frequency \tab character \tab PerTreeLevel \tab PerTree, PerTreeLevel \tab - \cr
+   sampling_unit \tab character \tab Object \tab Object, Group \tab - \cr
    mvs_reg \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    random_strength \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    depth \tab integer \tab 6 \tab  \tab \eqn{[1, 16]}{[1, 16]} \cr
-   grow_policy \tab character \tab SymmetricTree \tab SymmetricTree, Depthwise, Lossguide \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   grow_policy \tab character \tab SymmetricTree \tab SymmetricTree, Depthwise, Lossguide \tab - \cr
    min_data_in_leaf \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   has_time \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   has_time \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    rsm \tab numeric \tab 1 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
-   nan_mode \tab character \tab Min \tab Min, Max \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nan_mode \tab character \tab Min \tab Min, Max \tab - \cr
    fold_permutation_block \tab integer \tab - \tab  \tab \eqn{[1, 256]}{[1, 256]} \cr
-   leaf_estimation_method \tab character \tab - \tab Newton, Gradient, Exact \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   leaf_estimation_method \tab character \tab - \tab Newton, Gradient, Exact \tab - \cr
    leaf_estimation_iterations \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   leaf_estimation_backtracking \tab character \tab AnyImprovement \tab No, AnyImprovement, Armijo \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   leaf_estimation_backtracking \tab character \tab AnyImprovement \tab No, AnyImprovement, Armijo \tab - \cr
    fold_len_multiplier \tab numeric \tab 2 \tab  \tab \eqn{[1.001, \infty)}{[1.001, Inf)} \cr
-   approx_on_full_history \tab logical \tab TRUE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   boosting_type \tab character \tab - \tab Ordered, Plain \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   boost_from_average \tab logical \tab - \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   langevin \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   approx_on_full_history \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   boosting_type \tab character \tab - \tab Ordered, Plain \tab - \cr
+   boost_from_average \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   langevin \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    diffusion_temperature \tab numeric \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   score_function \tab character \tab Cosine \tab Cosine, L2, NewtonCosine, NewtonL2 \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   monotone_constraints \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   feature_weights \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   first_feature_use_penalties \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   score_function \tab character \tab Cosine \tab Cosine, L2, NewtonCosine, NewtonL2 \tab - \cr
+   monotone_constraints \tab list \tab - \tab  \tab - \cr
+   feature_weights \tab list \tab - \tab  \tab - \cr
+   first_feature_use_penalties \tab list \tab - \tab  \tab - \cr
    penalties_coefficient \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   per_object_feature_penalties \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   per_object_feature_penalties \tab list \tab - \tab  \tab - \cr
    model_shrink_rate \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   model_shrink_mode \tab character \tab - \tab Constant, Decreasing \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   model_shrink_mode \tab character \tab - \tab Constant, Decreasing \tab - \cr
    target_border \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    border_count \tab integer \tab - \tab  \tab \eqn{[1, 65535]}{[1, 65535]} \cr
-   feature_border_type \tab character \tab GreedyLogSum \tab Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   per_float_feature_quantization \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   feature_border_type \tab character \tab GreedyLogSum \tab Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum \tab - \cr
+   per_float_feature_quantization \tab list \tab - \tab  \tab - \cr
    thread_count \tab integer \tab 1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   task_type \tab character \tab CPU \tab CPU, GPU \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   devices \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   logging_level \tab character \tab Silent \tab Silent, Verbose, Info, Debug \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   task_type \tab character \tab CPU \tab CPU, GPU \tab - \cr
+   devices \tab list \tab - \tab  \tab - \cr
+   logging_level \tab character \tab Silent \tab Silent, Verbose, Info, Debug \tab - \cr
    metric_period \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   train_dir \tab list \tab catboost_info \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   train_dir \tab list \tab catboost_info \tab  \tab - \cr
    model_size_reg \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   allow_writing_files \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   save_snapshot \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   snapshot_file \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   allow_writing_files \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   save_snapshot \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   snapshot_file \tab list \tab - \tab  \tab - \cr
    snapshot_interval \tab integer \tab 600 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   simple_ctr \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   combinations_ctr \tab list \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   simple_ctr \tab list \tab - \tab  \tab - \cr
+   combinations_ctr \tab list \tab - \tab  \tab - \cr
    ctr_target_border_count \tab integer \tab - \tab  \tab \eqn{[1, 255]}{[1, 255]} \cr
-   counter_calc_method \tab character \tab Full \tab SkipTest, Full \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   counter_calc_method \tab character \tab Full \tab SkipTest, Full \tab - \cr
    max_ctr_complexity \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ctr_leaf_count_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   store_all_simple_ctr \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   final_ctr_computation_mode \tab character \tab Default \tab Default, Skip \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   store_all_simple_ctr \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   final_ctr_computation_mode \tab character \tab Default \tab Default, Skip \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ntree_start \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ntree_end \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }

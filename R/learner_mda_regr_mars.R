@@ -55,9 +55,9 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
 
       # use the mlr3misc::invoke function (it's similar to do.call())
       mlr3misc::invoke(mda::mars,
-                       x = x,
-                       y = y,
-                       .args = pars)
+        x = x,
+        y = y,
+        .args = pars)
     },
 
     .predict = function(task) {

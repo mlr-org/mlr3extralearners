@@ -26,28 +26,27 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-          family = p_fct(default = "coxph",
-            levels = c(
-              "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
-              "custom"), tags = "train"),
-          custom.family = p_uty(tags = "train"),
-          nuirange = p_uty(default = c(0, 100), tags = "train"),
-          offset = p_dbl(tags = "train"),
-          center = p_lgl(default = TRUE, tags = "train"),
-          mstop = p_int(default = 100L, lower = 0L, tags = "train"),
-          nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
-          risk = p_fct(default = "inbag",
-            levels = c("inbag", "oobag", "none"), tags = "train"),
-          stopintern = p_lgl(default = FALSE, tags = "train"),
-          trace = p_lgl(default = FALSE, tags = "train"),
-          oobweights = p_uty(default = NULL, tags = "train"),
-          baselearner = p_fct(default = "bbs",
-            levels = c("bbs", "bols", "btree"), tags = "train"),
-          sigma = p_dbl(default = 0.1, lower = 0, upper = 1,
-            tags = "train"),
-          ipcw = p_uty(default = 1, tags = "train"),
-          na.action = p_uty(default = stats::na.omit, tags = "train"),
-          contrasts.args = p_uty(tags = "train")
+        family = p_fct(default = "coxph",
+          levels = c(
+            "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
+            "custom"), tags = c("train", "predict")),
+        custom.family = p_uty(tags = "train"),
+        nuirange = p_uty(default = c(0, 100), tags = "train"),
+        offset = p_dbl(tags = "train"),
+        center = p_lgl(default = TRUE, tags = "train"),
+        mstop = p_int(default = 100L, lower = 0L, tags = "train"),
+        nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
+        risk = p_fct(default = "inbag",
+          levels = c("inbag", "oobag", "none"), tags = "train"),
+        stopintern = p_lgl(default = FALSE, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        oobweights = p_uty(default = NULL, tags = "train"),
+        baselearner = p_fct(default = "bbs",
+          levels = c("bbs", "bols", "btree"), tags = "train"),
+        sigma = p_dbl(default = 0.1, lower = 0, upper = 1,
+          tags = "train"),
+        ipcw = p_uty(default = 1, tags = "train"),
+        na.action = p_uty(default = stats::na.omit, tags = "train")
       )
 
       ps$values = list(family = "coxph")
@@ -155,8 +154,8 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         survfit = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
 
         mlr3proba::.surv_return(times = survfit$time,
-                                surv = t(survfit$surv),
-                                lp = lp)
+          surv = t(survfit$surv),
+          lp = lp)
       } else {
         mlr3proba::.surv_return(lp = -lp)
       }

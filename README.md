@@ -1,17 +1,16 @@
 
 # mlr3extralearners
 
-[Package website](https://mlr3extralearners.mlr-org.com/) 
+[Package website](https://mlr3extralearners.mlr-org.com/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
 
-[![R CMD
-Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
+[![RCMD Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
+[![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -34,7 +33,7 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   3:        classif.C50 mlr3extralearners                    C50
 #>   4:   classif.catboost mlr3extralearners               catboost
 #>   5:    classif.cforest mlr3extralearners partykit,sandwich,coin
-#>  ---                                                            
+#>  ---
 #> 128:        surv.ranger      mlr3learners                 ranger
 #> 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma
 #> 130:         surv.rpart         mlr3proba  rpart,distr6,survival
@@ -79,24 +78,27 @@ lrn("regr.gbm")
 
 New learners can be created with the `create_learner` function. This
 assumes you have a local copy of `mlr3extralearners`. This function will
-automatically create the learner, learner tests, parameter tests, YAML
-files for CI if required, and update the DESCRIPTION if required. Once
+automatically create the learner, learner tests, parameter tests and 
+update the DESCRIPTION if required. Once
 all tests are passing locally, open a [pull
 request](https://github.com/mlr-org/mlr3extralearners/pulls) with the
-“New Learner” template.
+“New Learner” template. More detailed instructions can be found in 
+the [mlr3 book](https://mlr3book.mlr-org.com/extending.html).
 
 ``` r
-create_learner(classname = "Locfit",
-               algorithm = "localised fit",
-               type = "dens",
-               key = "locfit",
-               package = "locfit",
-               caller = "density.lf",
-               feature_types = c("integer", "numeric"),
-               predict_types = c("pdf", "cdf"),
-               properties = NULL,
-               importance = FALSE,
-               oob_error = FALSE,
-               references = FALSE,
-               gh_name = "RaphaelS1")
+library(mlr3proba)
+create_learner(
+  classname = "Locfit",
+  algorithm = "localised fit",
+  type = "dens",
+  key = "locfit",
+  package = "locfit",
+  caller = "density.lf",
+  feature_types = c("integer", "numeric"),
+  predict_types = c("pdf", "cdf"),
+  properties = NULL,
+  references = FALSE,
+  gh_name = "RaphaelS1"
+)
+
 ```
