@@ -74,7 +74,7 @@ jobs:
           pak::pkg_install('rstudio/reticulate')
           reticulate::install_miniconda()
           install.packages('keras')
-          keras::install_keras(tensorflow = '2.0.1', extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet==0.1.4.1'))
+          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'))
           reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
         shell: Rscript {0}
 
