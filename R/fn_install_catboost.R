@@ -6,11 +6,11 @@
 #' Operating system to install on, if `NULL` automatically detected
 #' @param install_required `(logical(1))` \cr
 #' If `TRUE` (default) then installs required packages: {curl}, {jsonlite},
-#' {devtools}
+#' {remotes}
 #' @param INSTALL_opts `(character())` \cr
-#' Passed to [devtools::install_url]
+#' Passed to [remotes::install_url]
 #' @param ... `ANY` \cr
-#' Other arguments passed to [devtools::install_url]
+#' Other arguments passed to [remotes::install_url]
 #' @export
 install_catboost = function(version = NULL, os = NULL,
   install_required = TRUE,
@@ -42,9 +42,9 @@ install_catboost = function(version = NULL, os = NULL,
     "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-%s-%s.tgz",
     version, os, version)
 
-  if (!requireNamespace("devtools", quietly = TRUE) && install_required) {
-    utils::install.packages("devtools", repos = "https://cloud.r-project.org")
+  if (!requireNamespace("remotes", quietly = TRUE) && install_required) {
+    utils::install.packages("remotes", repos = "https://cloud.r-project.org")
   }
 
-  devtools::install_url(url, INSTALL_opts = INSTALL_opts, ...)
+  remotes::install_url(url, INSTALL_opts = INSTALL_opts, ...)
 }
