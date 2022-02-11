@@ -28,7 +28,7 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
       super$initialize(
         id = "dens.plug",
         packages = c("mlr3extralearners", "plugdensity"),
-        feature_types = c("numeric"),
+        feature_types = "numeric",
         predict_types = "pdf",
         param_set = ps,
         properties = "missings",
