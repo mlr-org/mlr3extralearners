@@ -58,7 +58,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         predict,
         self$model,
         newdata = newdata,
-        distr6 = TRUE,
+        distr6 = FALSE,
         type = "all",
         .args = pars
       )
