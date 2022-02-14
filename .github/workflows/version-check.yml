@@ -1,0 +1,45 @@
+on:
+  pull_request:
+    branches: main
+
+name: Version Check
+
+jobs:
+  all:
+    runs-on: ${{ matrix.config.os }}
+
+    name: Check Version Test
+
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: "release" }
+
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      RGL_USE_NULL: true
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2.1.1
+
+      - name: New version
+        run: |
+          echo "NEW_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Old version
+        run: |
+          echo "OLD_VERSION=$(grep '^Version' DESCRIPTION  | sed 's/.*: *//')" >> $GITHUB_ENV
+
+      - name: Compare versions
+        run: |
+          Rscript -e "if (commandArgs(TRUE)[1] <= commandArgs(TRUE)[2]) stop('Package version has not been updated.')" ${{ env.NEW_VERSION }} ${{ env.OLD_VERSION }}
+
+      - name: Check version format
+        run: |
+          Rscript -e "if (!grepl('^[0-9]*\\\.[0-9]*\\\.[0-9]*$', commandArgs(TRUE)[1])) stop('Format of package version must be major.minor.patch.')" ${{ env.NEW_VERSION }}
