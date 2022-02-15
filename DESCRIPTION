@@ -1,44 +1,21 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.24
-Authors@R:
-    c(person(given = "Raphael",
-             family = "Sonabend",
-             role = "aut",
-             email = "raphaelsonabend@gmail.com",
-             comment = c(ORCID = "0000-0001-9225-4654")),
-      person(given = "Patrick",
-             family = "Schratz",
-             role = "aut",
-             email = "patrick.schratz@gmail.com",
-             comment = c(ORCID = "0000-0003-0748-6624")),
-      person(given = "Lorenz A.",
-             family = "Kapsner",
-             role = "ctb",
-             email = "lorenz.kapsner@gmail.com",
-             comment = c(ORCID = "0000-0003-1866-860X")),
-      person(given = "Lennart",
-             family = "Schneider",
-             role = "ctb",
-             email = "lennart.sch@web.de",
-             comment = c(ORCID = "0000-0003-4152-5308")),
-      person(given = "Stephen A",
-             family = "Lauer",
-             role = "ctb",
-             email = "stephenalauer@gmail.com",
-             comment = c(ORCID = "0000-0003-2948-630X")),
-      person(given = "Pierre",
-             family = "Camilleri",
-             role = "ctb",
-             email = "camilleri_pierre@hotmail.fr"),
-      person(given = "Javier",
-             family = "García",
-             role = "ctb",
-             email = "geshter@hotmail.com"),
-      person(given = "Sebastian",
-             family = "Fischer",
-             role = c("cre", "aut"),
-             email = "sebf.fischer@gmail.com"))
+Version: 0.5.25
+Authors@R:c(
+    person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0001-9225-4654")),
+    person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = "aut",
+           comment = c(ORCID = "0000-0003-0748-6624")),
+    person("Lorenz A.", "Kapsner", , "lorenz.kapsner@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0003-1866-860X")),
+    person("Lennart", "Schneider", , "lennart.sch@web.de", role = "ctb",
+           comment = c(ORCID = "0000-0003-4152-5308")),
+    person("Stephen A", "Lauer", , "stephenalauer@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0003-2948-630X")),
+    person("Pierre", "Camilleri", , "camilleri_pierre@hotmail.fr", role = "ctb"),
+    person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"))
+  )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
