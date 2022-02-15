@@ -9,7 +9,8 @@ test_that("paramtest surv.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio" # alternative to mtry
+    "mtry.ratio", # alternative to mtry
+    "perf.type" # scoring is done with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -25,7 +26,8 @@ test_that("paramtest surv.rfsrc predict", {
     "newdata", # handled internally
     "m.target", # for multivariate families only
     "cores", # set as option(rf.cores)
-    "estimator" # additionaly implemented by author
+    "estimator", # additionaly implemented by author
+    "perf.type" # scoring is done with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, "predict")

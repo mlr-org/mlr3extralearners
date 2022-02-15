@@ -9,7 +9,8 @@ test_that("paramtest regr.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio" # alternative to mtry
+    "mtry.ratio", # alternative to mtry
+    "perf.type" # scoring is done with mlr3 measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -24,7 +25,8 @@ test_that("paramtest regr.rfsrc predict", {
     "object", # handled internally
     "newdata", # handled internally
     "m.target", # for multivariate families only
-    "cores" # set as option(rf.cores)
+    "cores", # set as option(rf.cores)
+    "perf.type" # scoring is done with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, "predict")

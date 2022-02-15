@@ -9,7 +9,8 @@ test_that("paramtest classif.rfsrc train", {
     "case.wt", # handled by task weights
     "mtry.ratio",
     "sampsize.ratio",
-    "cores" # is set as option(rf.cores)
+    "cores", # is set as option(rf.cores)
+    "perf.type" # scoring is done with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -24,7 +25,8 @@ test_that("paramtest classif.rfsrc predict", {
     "object", # handled internally
     "newdata", # handled internally
     "m.target", # all classes returned
-    "cores" # is set as option(rf.cores)
+    "cores", # is set as option(rf.cores)
+    "perf.type" # scoring is done with measures
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")

@@ -378,6 +378,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         }
       }
 
+      browser()
       list(prob = pred_mat, response = response)
     }
   )
