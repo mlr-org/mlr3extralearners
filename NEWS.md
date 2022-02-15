@@ -1,4 +1,4 @@
-# mlr3extralearners 0.5.24
+# mlr3extralearners 0.5.25
 
 * Introduce parameter `early_stopping_split` for lightgbm learners
 * Tidy description of R package
