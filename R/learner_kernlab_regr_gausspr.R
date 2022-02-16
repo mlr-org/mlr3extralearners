@@ -11,6 +11,9 @@
 #' new parameters are ignored. If none are provided then the default
 #' "automatic" is used for `kpar`.
 #'
+#' @references
+#' `r format_bib("karatzoglou2004kernlab")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

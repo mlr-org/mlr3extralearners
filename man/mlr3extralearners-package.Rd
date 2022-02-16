@@ -9,7 +9,7 @@
 Extra learners for use in mlr3.
 }
 \author{
-\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com} [contributor]
+\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com}
 
 Authors:
 \itemize{

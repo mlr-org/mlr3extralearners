@@ -6,6 +6,9 @@
 #' @templateVar id regr.cubist
 #' @templateVar caller cubist
 #'
+#' @references
+#' `r format_bib("quinlan1992learning", "quinlan1993combining")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

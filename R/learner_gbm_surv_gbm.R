@@ -22,6 +22,9 @@
 #'   - Reason for change: Suppressing the automatic internal parallelization if
 #'     `cv.folds` > 0.
 #'
+#' @references
+#' `r format_bib("friedman2002stochastic")`
+#'
 #' @export
 #' @template seealso_learner
 #' @template example

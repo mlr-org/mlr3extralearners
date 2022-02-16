@@ -13,10 +13,7 @@
 #'  the parameters `cuts` or `cutpoints`.
 #'
 #' @references
-#' Changhee Lee, William R Zame, Jinsung Yoon, and Mihaela van der Schaar.
-#' Deephit: A deep learning approach to survival analysis with competing risks.
-#' In Thirty-Second AAAI Conference on Artificial Intelligence, 2018.
-#' http://medianetlab.ee.ucla.edu/papers/AAAI_2018_DeepHit
+#' `r format_bib("lee2018deephit")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -117,7 +114,7 @@ LearnerSurvDeephit = R6::R6Class("LearnerSurvDeephit",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.deephit",
+        man = "mlr3extralearners::mlr_learners_surv.deephit",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }

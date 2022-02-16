@@ -10,15 +10,7 @@
 #' Methods for variance estimations are not yet implemented.
 #'
 #' @references
-#' Stephen Milborrow (2014)
-#' Earth: multivariate adaptive regression spline models
-#' R package version 3
-#' \url{https://cran.r-project.org/web/packages/earth/earth.pdf}
-#'
-#' Jerome H. Friedman (1991)
-#' Multivariate Adaptive Regression Splines
-#' The Annals of Statistics
-#' \url{https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963}
+#' `r format_bib("milborrow2014earth", "friedman1991multivariate")`
 #'
 #' @template seealso_learner
 #' @template example

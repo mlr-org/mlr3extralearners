@@ -16,21 +16,7 @@
 #' `makediff3` is recommended when using `type = "hybrid"`.
 #'
 #' @references
-#' Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
-#' “Improved performance on high-dimensional survival data by application of Survival-SVM.”
-#' Bioinformatics, 27(1), 87–94.
-#' doi: 10.1093/bioinformatics/btq617.
-#'
-#' Belle VV, Pelckmans K, Huffel SV, Suykens JA (2011).
-#' “Support vector methods for survival analysis: a comparison between ranking and regression
-#' approaches."
-#' Artificial Intelligence in Medicine, 53(2), 107–118.
-#' doi: 10.1016/j.artmed.2011.06.006.
-#'
-#' Shivaswamy, P. K., Chu, W., & Jansche, M. (2007).
-#' A support vector approach to censored targets.
-#' In Proceedings - IEEE International Conference on Data Mining, ICDM (pp. 655–660).
-#' https://doi.org/10.1109/ICDM.2007.93
+#' `r format_bib("van2011improved", "van2011support", "shivaswamy2007support")`
 #'
 #' @template seealso_learner
 #' @template example

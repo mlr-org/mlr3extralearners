@@ -6,6 +6,9 @@
 #' @templateVar id regr.ksvm
 #' @templateVar caller ksvm
 #'
+#' @references
+#' `r format_bib("karatzoglou2004kernlab")`
+#'
 #' @export
 #' @template seealso_learner
 #' @template example

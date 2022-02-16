@@ -7,9 +7,7 @@
 #' @templateVar caller coxtime
 #'
 #' @references
-#' Kvamme, H., Borgan, Ø., & Scheel, I. (2019).
-#' Time-to-event prediction with neural networks and Cox regression.
-#' Journal of Machine Learning Research, 20(129), 1–30.
+#' `r format_bib("kvamme2019time")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -102,7 +100,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.coxtime",
+        man = "mlr3extralearners::mlr_learners_surv.coxtime",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }

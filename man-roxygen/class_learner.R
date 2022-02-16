@@ -1,6 +1,6 @@
 <%
 lrn = mlr3::lrn(id)
-pkgs = setdiff(lrn$packages, c("mlr3", "mlr3extralearners"))
+pkgs = setdiff(lrn$packages, c("mlr3", "mlr3extralearners", "mlr3proba"))
 %>
 #' @description
 #' Calls [<%= pkgs[1] %>::<%=caller%>] from package \CRANpkg{<%= pkgs[1] %>}.

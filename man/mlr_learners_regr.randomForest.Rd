@@ -31,8 +31,8 @@ lrn("regr.randomForest")
    ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    replace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   strata \tab list \tab - \tab  \tab - \cr
-   sampsize \tab list \tab - \tab  \tab - \cr
+   strata \tab untyped \tab - \tab  \tab - \cr
+   sampsize \tab untyped \tab - \tab  \tab - \cr
    nodesize \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxnodes \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    importance \tab character \tab FALSE \tab mse, nudepurity, none, FALSE \tab - \cr
@@ -58,10 +58,10 @@ if (requireNamespace("randomForest", quietly = TRUE)) {
 }
 }
 \references{
-Breiman, L. (2001).
-Random Forests
-Machine Learning
-\url{https://doi.org/10.1023/A:1010933404324}
+Breiman, Leo (2001).
+\dQuote{Random Forests.}
+\emph{Machine Learning}, \bold{45}(1), 5--32.
+ISSN 1573-0565, \doi{10.1023/A:1010933404324}.
 }
 \seealso{
 \itemize{

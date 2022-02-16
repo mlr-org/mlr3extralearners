@@ -21,7 +21,7 @@ lrn("dens.pen")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{pendensity}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{pendensity}
 }
 }
 
@@ -34,14 +34,14 @@ lrn("dens.pen")
    lambda0 \tab numeric \tab 500 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    q \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sort \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   with.border \tab list \tab - \tab  \tab - \cr
+   with.border \tab untyped \tab - \tab  \tab - \cr
    m \tab numeric \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    eps \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \examples{
-if (requireNamespace("pendensity", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("pendensity", quietly = TRUE)) {
   learner = mlr3::lrn("dens.pen")
   print(learner)
 
@@ -50,8 +50,9 @@ if (requireNamespace("pendensity", quietly = TRUE)) {
 }
 }
 \references{
-Density Estimation with a Penalized Mixture Approach, Schellhase C. and Kauermann G. (2012),
-Computational Statistics 27 (4), p. 757-777.
+Schellhase, Christian, Kauermann, Göran (2012).
+\dQuote{Density estimation and comparison with a penalized mixture approach.}
+\emph{Computational Statistics}, \bold{27}(4), 757--777.
 }
 \seealso{
 \itemize{

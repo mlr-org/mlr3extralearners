@@ -6,9 +6,7 @@
 #' @templateVar caller C5.0
 #'
 #' @references
-#' Quinlan R (1993).
-#' C4.5: Programs for Machine Learning
-#' \url{http://www.rulequest.com/see5-unix.html}
+#' `r format_bib("quinlan2014c4")`
 #'
 #' @export
 LearnerClassifC50 = R6Class("LearnerClassifC50",

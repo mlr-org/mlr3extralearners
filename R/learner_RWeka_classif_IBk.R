@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Aha D, Kibbler D, Alber M (1991).
-#' Instance-based learning algorithms
-#' \url{https://link.springer.com/content/pdf/10.1007/BF00153759.pdf}
+#' `r format_bib("aha1991instance")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifIBk = R6Class("LearnerClassifIBk",
   inherit = LearnerClassif,

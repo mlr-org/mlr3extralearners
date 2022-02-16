@@ -23,9 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Frank E, Witten I (1998).
-#' Generating Accurate Rule Sets Without Global Optimization
+#' `r format_bib("frank1998generating")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifPART = R6Class("LearnerClassifPART",
   inherit = LearnerClassif,

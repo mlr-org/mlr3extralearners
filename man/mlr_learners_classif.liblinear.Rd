@@ -24,7 +24,6 @@ If number of records > number of features, \code{type = 2} is faster than \code{
 (Hsu et al. 2003).
 
 Note that probabilistic predictions are only available for types \code{0}, \code{6}, and \code{7}.
-
 The default \code{epsilon} value depends on the \code{type} parameter, see \link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR}.
 }
 \section{Dictionary}{
@@ -54,7 +53,7 @@ lrn("classif.liblinear")
    bias \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   wi \tab list \tab NULL \tab  \tab - \cr
+   wi \tab untyped \tab  \tab  \tab - \cr
    findC \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    useInitC \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
@@ -68,6 +67,11 @@ if (requireNamespace("LiblineaR", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).
+\dQuote{LIBLINEAR: A library for large linear classification.}
+\emph{the Journal of machine Learning research}, \bold{9}, 1871--1874.
 }
 \seealso{
 \itemize{

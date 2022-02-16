@@ -5,6 +5,9 @@
 #' @templateVar id dens.kde_kd
 #' @templateVar caller kde
 #'
+#' @references
+#' `r format_bib("quintela2012nonparametric")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

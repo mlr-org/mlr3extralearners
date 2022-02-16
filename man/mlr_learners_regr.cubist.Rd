@@ -33,9 +33,9 @@ lrn("regr.cubist")
    rules \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    extrapolation \tab numeric \tab 100 \tab  \tab \eqn{[0, 100]}{[0, 100]} \cr
    sample \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   seed \tab integer \tab 508 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   label \tab list \tab outcome \tab  \tab - \cr
-   neighbors \tab integer \tab 0 \tab  \tab \eqn{[0, 0]}{[0, 0]} \cr
+   seed \tab integer \tab 686 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   label \tab untyped \tab outcome \tab  \tab - \cr
+   neighbors \tab integer \tab 0 \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
 }
 }
 
@@ -47,6 +47,16 @@ if (requireNamespace("Cubist", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Quinlan, R J, others (1992).
+\dQuote{Learning with continuous classes.}
+In \emph{5th Australian joint conference on artificial intelligence}, volume 92, 343--348.
+World Scientific.
+
+Quinlan, Ross J (1993).
+\dQuote{Combining instance-based and model-based learning.}
+In \emph{Proceedings of the tenth international conference on machine learning}, 236--243.
 }
 \seealso{
 \itemize{

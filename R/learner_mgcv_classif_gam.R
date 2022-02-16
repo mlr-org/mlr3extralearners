@@ -20,19 +20,7 @@
 #' @templateVar caller gam
 #'
 #' @references
-#'
-#' Wood, S.N. (2017) Generalized Additive Models: An Introduction with R (2nd edition). Chapman
-#' & Hall/ CRC, Boca Raton, Florida
-#'
-#' Key Reference on GAMs generally:
-#'
-#' Hastie (1993) in Chambers and Hastie (1993) Statistical Models in S. Chapman
-#' and Hall.
-#'
-#' Hastie and Tibshirani (1990) Generalized Additive Models. Chapman and Hall.
-#'
-#' @template seealso_learner
-#' @template example
+#' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
 #' @examples
 #'

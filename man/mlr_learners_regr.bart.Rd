@@ -29,7 +29,7 @@ lrn("regr.bart")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 200 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   sigest \tab list \tab NULL \tab  \tab - \cr
+   sigest \tab untyped \tab  \tab  \tab - \cr
    sigdf \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sigquant \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    k \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -47,8 +47,8 @@ lrn("regr.bart")
    keeptrees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   proposalprobs \tab list \tab NULL \tab  \tab - \cr
+   seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   proposalprobs \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -82,6 +82,11 @@ if (requireNamespace("dbarts", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Sparapani, Rodney, Spanbauer, Charles, McCulloch, Robert (2021).
+\dQuote{Nonparametric machine learning and efficient computation with bayesian additive regression trees: the BART R package.}
+\emph{Journal of Statistical Software}, \bold{97}, 1--66.
 }
 \seealso{
 \itemize{

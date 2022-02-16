@@ -34,21 +34,19 @@ lrn("regr.gausspr")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   scaled \tab list \tab TRUE \tab  \tab - \cr
+   scaled \tab untyped \tab TRUE \tab  \tab - \cr
    kernel \tab character \tab rbfdot \tab rbfdot, polydot, vanilladot, tanhdot, laplacedot, besseldot, anovadot, splinedot \tab - \cr
    sigma \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    degree \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    scale \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    order \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kpar \tab list \tab automatic \tab  \tab - \cr
+   kpar \tab untyped \tab automatic \tab  \tab - \cr
    var \tab numeric \tab 0.001 \tab  \tab \eqn{[0.001, \infty)}{[0.001, Inf)} \cr
    variance.model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    tol \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    fit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
-   type \tab character \tab regression \tab regression, variance, sdeviation \tab - \cr
+   na.action \tab untyped \tab na.omit \tab  \tab - \cr
 }
 }
 
@@ -60,6 +58,11 @@ if (requireNamespace("kernlab", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).
+\dQuote{kernlab-an S4 package for kernel methods in R.}
+\emph{Journal of statistical software}, \bold{11}(9), 1--20.
 }
 \seealso{
 \itemize{

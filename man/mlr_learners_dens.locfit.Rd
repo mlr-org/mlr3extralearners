@@ -21,7 +21,7 @@ lrn("dens.locfit")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{locfit}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{locfit}
 }
 }
 
@@ -46,13 +46,18 @@ lrn("dens.locfit")
 }
 
 \examples{
-if (requireNamespace("locfit", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("locfit", quietly = TRUE)) {
   learner = mlr3::lrn("dens.locfit")
   print(learner)
 
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Loader, Clive (2006).
+\emph{Local regression and likelihood}.
+Springer Science & Business Media.
 }
 \seealso{
 \itemize{

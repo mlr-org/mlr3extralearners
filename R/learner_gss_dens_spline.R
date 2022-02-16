@@ -7,9 +7,7 @@
 #' @templateVar caller ssden
 #'
 #' @references
-#' Gu, C. and Wang, J. (2003),
-#' Penalized likelihood density estimation: Direct cross-validation and scalable approximation.
-#' Statistica Sinica, 13, 811–826.
+#' `r format_bib("gu2003penalized")`
 #'
 #' @template seealso_learner
 #' @template example

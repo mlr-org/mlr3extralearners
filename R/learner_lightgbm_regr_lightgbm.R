@@ -23,6 +23,9 @@
 #' `early_stopping_split` determines the proportion of the training data that is used for early
 #' stopping.
 #'
+#' @references
+#' `r format_bib("ke2017lightgbm")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

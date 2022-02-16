@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#'  Freund Y, Schapire, R (1993).
-#' Experiments with a New Boosting Algorithm
-#' \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&rep=rep1&type=pdf}
+#' `r format_bib("freund1996experiments")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
   inherit = LearnerClassif,

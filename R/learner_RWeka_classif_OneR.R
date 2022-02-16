@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Holte R (1993).
-#' Very Simple Classification Rules Perform Well on Most Commonly Used Datasets
-#' \url{https://link.springer.com/content/pdf/10.1023/A:1022631118932.pdf}
+#' `r format_bib("holte1993very")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifOneR = R6Class("LearnerClassifOneR",
   inherit = LearnerClassif,

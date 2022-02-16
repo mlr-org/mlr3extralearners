@@ -13,13 +13,7 @@
 #'  the parameters `cuts` or `cutpoints`.
 #'
 #' @references
-#' Gensheimer, M. F., & Narasimhan, B. (2018).
-#' A Simple Discrete-Time Survival Model for Neural Networks, 1–17.
-#' https://doi.org/arXiv:1805.00917v3
-#'
-#' Kvamme, H., & Borgan, Ø. (2019).
-#' Continuous and discrete-time survival prediction with neural networks.
-#' https://doi.org/arXiv:1910.06724.
+#' `r format_bib("gensheimer2018simple", "kvamme2019time")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -118,7 +112,7 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.loghaz",
+        man = "mlr3extralearners::mlr_learners_surv.loghaz",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }

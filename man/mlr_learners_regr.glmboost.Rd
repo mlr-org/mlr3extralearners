@@ -30,18 +30,18 @@ lrn("regr.glmboost")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    family \tab character \tab Gaussian \tab Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom \tab - \cr
-   custom.family \tab list \tab - \tab  \tab - \cr
-   nuirange \tab list \tab 0, 100 \tab  \tab - \cr
+   custom.family \tab untyped \tab - \tab  \tab - \cr
+   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
    d \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
-   oobweights \tab list \tab NULL \tab  \tab - \cr
+   oobweights \tab untyped \tab  \tab  \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   stopintern \tab list \tab FALSE \tab  \tab - \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
-   contrasts.arg \tab list \tab - \tab  \tab - \cr
+   stopintern \tab untyped \tab FALSE \tab  \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   contrasts.arg \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -55,10 +55,9 @@ if (requireNamespace("mboost", quietly = TRUE)) {
 }
 }
 \references{
-Bühlmann P, Yu B (2003).
-“Boosting With the L2 Loss.”
-Journal of the American Statistical Association, 98(462), 324–339.
-\doi{10.1198/016214503000125}
+Bühlmann, Peter, Yu, Bin (2003).
+\dQuote{Boosting with the L 2 loss: regression and classification.}
+\emph{Journal of the American Statistical Association}, \bold{98}(462), 324--339.
 }
 \seealso{
 \itemize{

@@ -9,7 +9,7 @@
 #' @inheritSection mlr_learners_classif.cforest Custom mlr3 defaults
 #'
 #' @references
-#' `r format_bib(c("hothorn_2015", "hothorn_2006"))
+#' `r format_bib("hothorn_2015", "hothorn_2006")`
 #'
 #' @export
 #' @template seealso_learner

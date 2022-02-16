@@ -42,9 +42,7 @@
 #' * dist = "loglogistic"; type = "po";
 #'
 #' @references
-#' Kalbfleisch, J. D., & Prentice, R. L. (2011).
-#' The statistical analysis of failure time data (Vol. 360).
-#' John Wiley & Sons.
+#' `r format_bib("kalbfleisch2011statistical")`
 #'
 #' @template seealso_learner
 #' @template example

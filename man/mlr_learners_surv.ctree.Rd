@@ -21,7 +21,7 @@ lrn("surv.ctree")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{coin}, \CRANpkg{sandwich}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{coin}, \CRANpkg{sandwich}
 }
 }
 
@@ -32,7 +32,7 @@ lrn("surv.ctree")
    splitstat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    testtype \tab character \tab Bonferroni \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab - \cr
-   nmax \tab list \tab - \tab  \tab - \cr
+   nmax \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mincriterion \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    logmincriterion \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -54,14 +54,14 @@ lrn("surv.ctree")
    intersplit \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    majority \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    caseweights \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   applyfun \tab list \tab - \tab  \tab - \cr
+   applyfun \tab untyped \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    saveinfo \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    update \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    splitflavour \tab character \tab ctree \tab ctree, exhaustive \tab - \cr
-   offset \tab list \tab - \tab  \tab - \cr
-   cluster \tab list \tab - \tab  \tab - \cr
-   scores \tab list \tab - \tab  \tab - \cr
+   offset \tab untyped \tab - \tab  \tab - \cr
+   cluster \tab untyped \tab - \tab  \tab - \cr
+   scores \tab untyped \tab - \tab  \tab - \cr
    doFit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    maxpts \tab integer \tab 25000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    abseps \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -70,7 +70,7 @@ lrn("surv.ctree")
 }
 
 \examples{
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("coin", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("partykit", quietly = TRUE) && requireNamespace("coin", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE)) {
   learner = mlr3::lrn("surv.ctree")
   print(learner)
 
@@ -80,14 +80,14 @@ if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("coin", qui
 }
 \references{
 Hothorn T, Zeileis A (2015).
-“partykit: A Modular Toolkit for Recursive Partytioning in R.”
-Journal of Machine Learning Research, 16(118), 3905-3909.
-\url{http://jmlr.org/papers/v16/hothorn15a.html}
+\dQuote{partykit: A Modular Toolkit for Recursive Partytioning in R.}
+\emph{Journal of Machine Learning Research}, \bold{16}(118), 3905-3909.
+\url{http://jmlr.org/papers/v16/hothorn15a.html}.
 
 Hothorn T, Hornik K, Zeileis A (2006).
-“Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-Journal of Computational and Graphical Statistics, 15(3), 651–674.
-\doi{10.1198/106186006x133933}
+\dQuote{Unbiased Recursive Partitioning: A Conditional Inference Framework.}
+\emph{Journal of Computational and Graphical Statistics}, \bold{15}(3), 651--674.
+\doi{10.1198/106186006x133933}, \url{https://doi.org/10.1198/106186006x133933}.
 }
 \seealso{
 \itemize{

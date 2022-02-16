@@ -27,16 +27,16 @@ lrn("surv.penalized")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{penalized}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{penalized}, \CRANpkg{pracma}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   unpenalized \tab list \tab - \tab  \tab - \cr
-   lambda1 \tab list \tab 0 \tab  \tab - \cr
-   lambda2 \tab list \tab 0 \tab  \tab - \cr
+   unpenalized \tab untyped \tab - \tab  \tab - \cr
+   lambda1 \tab untyped \tab 0 \tab  \tab - \cr
+   lambda2 \tab untyped \tab 0 \tab  \tab - \cr
    positive \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    fusedl \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    startbeta \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -50,7 +50,7 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.penalized")
   print(learner)
 
@@ -59,9 +59,9 @@ if (requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", 
 }
 }
 \references{
-Goeman JJ (2009). “L1Penalized Estimation in the Cox Proportional Hazards Model.”
-Biometrical Journal
-doi: 10.1002/bimj.200900028.
+Goeman, J J (2010).
+\dQuote{L1 penalized estimation in the Cox proportional hazards model.}
+\emph{Biometrical journal}, \bold{52}(1), 70--84.
 }
 \seealso{
 \itemize{

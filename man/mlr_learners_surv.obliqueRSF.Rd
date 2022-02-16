@@ -21,7 +21,7 @@ lrn("surv.obliqueRSF")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{obliqueRSF}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{obliqueRSF}, \CRANpkg{pracma}
 }
 }
 
@@ -30,7 +30,7 @@ lrn("surv.obliqueRSF")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    alpha \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    ntree \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   eval_times \tab list \tab - \tab  \tab - \cr
+   eval_times \tab untyped \tab - \tab  \tab - \cr
    min_events_to_split_node \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_obs_to_split_node \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_obs_in_leaf_node \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -67,7 +67,7 @@ Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("obliqueRSF", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("obliqueRSF", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.obliqueRSF")
   print(learner)
 

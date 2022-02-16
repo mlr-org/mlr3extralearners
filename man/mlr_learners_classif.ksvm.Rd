@@ -41,6 +41,7 @@ lrn("classif.ksvm")
    scale \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    order \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   coupler \tab character \tab minpair \tab minpair, pkpd \tab - \cr
 }
 }
 
@@ -52,6 +53,11 @@ if (requireNamespace("kernlab", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).
+\dQuote{kernlab-an S4 package for kernel methods in R.}
+\emph{Journal of statistical software}, \bold{11}(9), 1--20.
 }
 \seealso{
 \itemize{

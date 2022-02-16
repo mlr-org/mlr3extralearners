@@ -45,8 +45,8 @@ lrn("classif.catboost")
    grow_policy \tab character \tab SymmetricTree \tab SymmetricTree, Depthwise, Lossguide \tab - \cr
    min_data_in_leaf \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ignored_features \tab list \tab NULL \tab  \tab - \cr
-   one_hot_max_size \tab list \tab FALSE \tab  \tab - \cr
+   ignored_features \tab untyped \tab  \tab  \tab - \cr
+   one_hot_max_size \tab untyped \tab FALSE \tab  \tab - \cr
    has_time \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    rsm \tab numeric \tab 1 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
    nan_mode \tab character \tab Min \tab Min, Max \tab - \cr
@@ -56,38 +56,38 @@ lrn("classif.catboost")
    leaf_estimation_backtracking \tab character \tab AnyImprovement \tab No, AnyImprovement, Armijo \tab - \cr
    fold_len_multiplier \tab numeric \tab 2 \tab  \tab \eqn{[1.001, \infty)}{[1.001, Inf)} \cr
    approx_on_full_history \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   class_weights \tab list \tab - \tab  \tab - \cr
+   class_weights \tab untyped \tab - \tab  \tab - \cr
    auto_class_weights \tab character \tab None \tab None, Balanced, SqrtBalanced \tab - \cr
    boosting_type \tab character \tab - \tab Ordered, Plain \tab - \cr
    boost_from_average \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    langevin \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    diffusion_temperature \tab numeric \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    score_function \tab character \tab Cosine \tab Cosine, L2, NewtonCosine, NewtonL2 \tab - \cr
-   monotone_constraints \tab list \tab - \tab  \tab - \cr
-   feature_weights \tab list \tab - \tab  \tab - \cr
-   first_feature_use_penalties \tab list \tab - \tab  \tab - \cr
+   monotone_constraints \tab untyped \tab - \tab  \tab - \cr
+   feature_weights \tab untyped \tab - \tab  \tab - \cr
+   first_feature_use_penalties \tab untyped \tab - \tab  \tab - \cr
    penalties_coefficient \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   per_object_feature_penalties \tab list \tab - \tab  \tab - \cr
+   per_object_feature_penalties \tab untyped \tab - \tab  \tab - \cr
    model_shrink_rate \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    model_shrink_mode \tab character \tab - \tab Constant, Decreasing \tab - \cr
    target_border \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    border_count \tab integer \tab - \tab  \tab \eqn{[1, 65535]}{[1, 65535]} \cr
    feature_border_type \tab character \tab GreedyLogSum \tab Median, Uniform, UniformAndQuantiles, MaxLogSum, MinEntropy, GreedyLogSum \tab - \cr
-   per_float_feature_quantization \tab list \tab - \tab  \tab - \cr
+   per_float_feature_quantization \tab untyped \tab - \tab  \tab - \cr
    classes_count \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    thread_count \tab integer \tab 1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    task_type \tab character \tab CPU \tab CPU, GPU \tab - \cr
-   devices \tab list \tab - \tab  \tab - \cr
+   devices \tab untyped \tab - \tab  \tab - \cr
    logging_level \tab character \tab Silent \tab Silent, Verbose, Info, Debug \tab - \cr
    metric_period \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   train_dir \tab list \tab catboost_info \tab  \tab - \cr
+   train_dir \tab untyped \tab catboost_info \tab  \tab - \cr
    model_size_reg \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    allow_writing_files \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    save_snapshot \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   snapshot_file \tab list \tab - \tab  \tab - \cr
+   snapshot_file \tab untyped \tab - \tab  \tab - \cr
    snapshot_interval \tab integer \tab 600 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   simple_ctr \tab list \tab - \tab  \tab - \cr
-   combinations_ctr \tab list \tab - \tab  \tab - \cr
+   simple_ctr \tab untyped \tab - \tab  \tab - \cr
+   combinations_ctr \tab untyped \tab - \tab  \tab - \cr
    ctr_target_border_count \tab integer \tab - \tab  \tab \eqn{[1, 255]}{[1, 255]} \cr
    counter_calc_method \tab character \tab Full \tab SkipTest, Full \tab - \cr
    max_ctr_complexity \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -146,13 +146,9 @@ if (requireNamespace("catboost", quietly = TRUE)) {
 }
 }
 \references{
-catboost: unbiased boosting with categorical features.
-Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
-2017. https://arxiv.org/abs/1706.09516.
-
-catboost: gradient boosting with categorical features support.
-Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
-2018. https://arxiv.org/abs/1810.11363.
+Dorogush, Veronika A, Ershov, Vasily, Gulin, Andrey (2018).
+\dQuote{CatBoost: gradient boosting with categorical features support.}
+\emph{arXiv preprint arXiv:1810.11363}.
 }
 \seealso{
 \itemize{

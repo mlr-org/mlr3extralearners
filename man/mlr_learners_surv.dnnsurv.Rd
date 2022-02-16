@@ -27,7 +27,7 @@ lrn("surv.dnnsurv")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{keras}, \CRANpkg{pseudo}, \CRANpkg{tensorflow}, \CRANpkg{distr6}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{keras}, \CRANpkg{pseudo}, \CRANpkg{tensorflow}, \CRANpkg{distr6}
 }
 }
 
@@ -35,8 +35,8 @@ lrn("surv.dnnsurv")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    cuts \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   cutpoints \tab list \tab - \tab  \tab - \cr
-   custom_model \tab list \tab - \tab  \tab - \cr
+   cutpoints \tab untyped \tab - \tab  \tab - \cr
+   custom_model \tab untyped \tab - \tab  \tab - \cr
    optimizer \tab character \tab adam \tab adadelta, adagrad, adamax, adam, nadam, rmsprop, sgd \tab - \cr
    lr \tab numeric \tab 0.02 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    beta_1 \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -48,8 +48,8 @@ lrn("surv.dnnsurv")
    schedule_decay \tab numeric \tab 0.04 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   loss_weights \tab list \tab - \tab  \tab - \cr
-   weighted_metrics \tab list \tab - \tab  \tab - \cr
+   loss_weights \tab untyped \tab - \tab  \tab - \cr
+   weighted_metrics \tab untyped \tab - \tab  \tab - \cr
    early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    min_delta \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    patience \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -60,12 +60,12 @@ lrn("surv.dnnsurv")
    epochs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    validation_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    shuffle \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   sample_weight \tab list \tab - \tab  \tab - \cr
+   sample_weight \tab untyped \tab - \tab  \tab - \cr
    initial_epoch \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    steps_per_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    validation_steps \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    steps \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   callbacks \tab list \tab - \tab  \tab - \cr
+   callbacks \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -82,7 +82,7 @@ lrn("surv.dnnsurv")
 }
 
 \examples{
-if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("keras", quietly = TRUE) && requireNamespace("pseudo", quietly = TRUE) && requireNamespace("tensorflow", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("keras", quietly = TRUE) && requireNamespace("pseudo", quietly = TRUE) && requireNamespace("tensorflow", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
   learner = mlr3::lrn("surv.dnnsurv")
   print(learner)
 
@@ -91,9 +91,9 @@ if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("kera
 }
 }
 \references{
-Zhao, L., & Feng, D. (2020).
-DNNSurv: Deep Neural Networks for Survival Analysis Using Pseudo Values.
-https://arxiv.org/abs/1908.02337
+Zhao, Lili, Feng, Dai (2019).
+\dQuote{Dnnsurv: Deep neural networks for survival analysis using pseudo values.}
+\emph{arXiv preprint arXiv:1908.02337}.
 }
 \seealso{
 \itemize{

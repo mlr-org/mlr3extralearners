@@ -6,6 +6,9 @@
 #' @templateVar id dens.kde_ks
 #' @templateVar caller kde
 #'
+#' @references
+#' `r format_bib("gramacki2017fft")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

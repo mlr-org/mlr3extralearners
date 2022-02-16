@@ -30,7 +30,7 @@ lrn("surv.svm")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalsvm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalsvm}
 }
 }
 
@@ -39,10 +39,10 @@ lrn("surv.svm")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    type \tab character \tab regression \tab regression, vanbelle1, vanbelle2, hybrid \tab - \cr
    diff.meth \tab character \tab - \tab makediff1, makediff2, makediff3 \tab - \cr
-   gamma.mu \tab list \tab - \tab  \tab - \cr
+   gamma.mu \tab untyped \tab - \tab  \tab - \cr
    opt.meth \tab character \tab quadprog \tab quadprog, ipop \tab - \cr
    kernel \tab character \tab lin_kernel \tab lin_kernel, add_kernel, rbf_kernel, poly_kernel \tab - \cr
-   kernel.pars \tab list \tab - \tab  \tab - \cr
+   kernel.pars \tab untyped \tab - \tab  \tab - \cr
    sgf.sv \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigf \tab integer \tab 7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxiter \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -55,7 +55,7 @@ lrn("surv.svm")
 }
 
 \examples{
-if (requireNamespace("survivalsvm", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalsvm", quietly = TRUE)) {
   learner = mlr3::lrn("surv.svm")
   print(learner)
 
@@ -64,21 +64,18 @@ if (requireNamespace("survivalsvm", quietly = TRUE)) {
 }
 }
 \references{
-Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
-“Improved performance on high-dimensional survival data by application of Survival-SVM.”
-Bioinformatics, 27(1), 87–94.
-doi: 10.1093/bioinformatics/btq617.
+Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
+\dQuote{Improved performance on high-dimensional survival data by application of Survival-SVM.}
+\emph{Bioinformatics}, \bold{27}(1), 87--94.
 
-Belle VV, Pelckmans K, Huffel SV, Suykens JA (2011).
-“Support vector methods for survival analysis: a comparison between ranking and regression
-approaches."
-Artificial Intelligence in Medicine, 53(2), 107–118.
-doi: 10.1016/j.artmed.2011.06.006.
+Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
+\dQuote{Support vector methods for survival analysis: a comparison between ranking and regression approaches.}
+\emph{Artificial intelligence in medicine}, \bold{53}(2), 107--118.
 
-Shivaswamy, P. K., Chu, W., & Jansche, M. (2007).
-A support vector approach to censored targets.
-In Proceedings - IEEE International Conference on Data Mining, ICDM (pp. 655–660).
-https://doi.org/10.1109/ICDM.2007.93
+Shivaswamy, K P, Chu, Wei, Jansche, Martin (2007).
+\dQuote{A support vector approach to censored targets.}
+In \emph{Seventh IEEE international conference on data mining (ICDM 2007)}, 655--660.
+IEEE.
 }
 \seealso{
 \itemize{

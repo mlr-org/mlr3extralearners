@@ -43,8 +43,8 @@ lrn("regr.rvm")
    length \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    normalized \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   kpar \tab list \tab automatic \tab  \tab - \cr
-   alpha \tab list \tab 5 \tab  \tab - \cr
+   kpar \tab untyped \tab automatic \tab  \tab - \cr
+   alpha \tab untyped \tab 5 \tab  \tab - \cr
    var \tab numeric \tab 0.1 \tab  \tab \eqn{[0.001, \infty)}{[0.001, Inf)} \cr
    var.fix \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -52,8 +52,7 @@ lrn("regr.rvm")
    minmaxdiff \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    verbosity \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    fit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   na.action \tab untyped \tab na.omit \tab  \tab - \cr
 }
 }
 
@@ -65,6 +64,11 @@ if (requireNamespace("kernlab", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).
+\dQuote{kernlab-an S4 package for kernel methods in R.}
+\emph{Journal of statistical software}, \bold{11}(9), 1--20.
 }
 \seealso{
 \itemize{

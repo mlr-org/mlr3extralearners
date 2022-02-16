@@ -21,13 +21,13 @@ Operating system to install on, if \code{NULL} automatically detected}
 
 \item{install_required}{\code{(logical(1))} \cr
 If \code{TRUE} (default) then installs required packages: {curl}, {jsonlite},
-{devtools}}
+{remotes}}
 
 \item{INSTALL_opts}{\code{(character())} \cr
-Passed to \link[devtools:remote-reexports]{devtools::install_url}}
+Passed to \link[remotes:install_url]{remotes::install_url}}
 
 \item{...}{\code{ANY} \cr
-Other arguments passed to \link[devtools:remote-reexports]{devtools::install_url}}
+Other arguments passed to \link[remotes:install_url]{remotes::install_url}}
 }
 \description{
 Helper function to install catboost

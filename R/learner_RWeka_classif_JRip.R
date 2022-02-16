@@ -23,11 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Cohen W (1995).
-#' Fast effective rule induction
-#' In: Proceedings of the 12th International Conference on Machine Learning, pages 115–123.
-#' \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.50.8204}
+#' `r format_bib("cohen1995fast")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifJRip = R6Class("LearnerClassifJRip",
   inherit = LearnerClassif,

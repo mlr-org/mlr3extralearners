@@ -23,12 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Hall M, Et al. (1999)
-#' Generating rule sets from model trees
-#' In: Proceedings of the Twelfth Australian Joint Conference on
-#'     Artificial Intelligence, pages 1- 12.
-#' \url{http://citeseer.ist.psu.edu/holmes99generating.html}
+#' `r format_bib("holmes1999generating")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
   inherit = LearnerRegr,

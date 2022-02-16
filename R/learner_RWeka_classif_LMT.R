@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Landwehr N, Hall M, Frank E (2005).
-#' Logistic Model Trees
-#' \url{https://link.springer.com/content/pdf/10.1007/s10994-005-0466-3.pdf}
+#' `r format_bib("landwehr2005logistic")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifLMT = R6Class("LearnerClassifLMT",
   inherit = LearnerClassif,

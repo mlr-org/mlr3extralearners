@@ -20,6 +20,9 @@
 #'   by the mlr3learner. The default value is set to th default of the respective
 #'   "type".
 #'
+#' @references
+#' `r format_bib("fan2008liblinear")`
+#'
 #' @export
 #' @template seealso_learner
 #' @template example

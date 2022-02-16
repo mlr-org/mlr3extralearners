@@ -21,7 +21,7 @@ lrn("dens.kde_kd")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kerdiest}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{kerdiest}
 }
 }
 
@@ -34,13 +34,18 @@ lrn("dens.kde_kd")
 }
 
 \examples{
-if (requireNamespace("kerdiest", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("kerdiest", quietly = TRUE)) {
   learner = mlr3::lrn("dens.kde_kd")
   print(learner)
 
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Quintela-del-Río, Alejandro, Estévez-Pérez G (2012).
+\dQuote{Nonparametric kernel distribution function estimation with kerdiest: an R package for bandwidth choice and applications.}
+\emph{Journal of Statistical Software}, \bold{50}, 1--21.
 }
 \seealso{
 \itemize{

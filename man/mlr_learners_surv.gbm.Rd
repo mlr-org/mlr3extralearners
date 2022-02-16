@@ -21,7 +21,7 @@ lrn("surv.gbm")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{gbm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{gbm}
 }
 }
 
@@ -38,7 +38,7 @@ lrn("surv.gbm")
    train.fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    keep.data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   var.monotone \tab list \tab - \tab  \tab - \cr
+   var.monotone \tab untyped \tab - \tab  \tab - \cr
    n.cores \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    single.tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
@@ -68,13 +68,18 @@ lrn("surv.gbm")
 }
 
 \examples{
-if (requireNamespace("gbm", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("gbm", quietly = TRUE)) {
   learner = mlr3::lrn("surv.gbm")
   print(learner)
 
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Friedman, H J (2002).
+\dQuote{Stochastic gradient boosting.}
+\emph{Computational statistics & data analysis}, \bold{38}(4), 367--378.
 }
 \seealso{
 \itemize{

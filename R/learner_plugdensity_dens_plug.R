@@ -7,9 +7,7 @@
 #' @templateVar caller plugin.density
 #'
 #' @references
-#' J. Engel, Eva Herrmann and Theo Gasser (1994).
-#' An iterative bandwidth selector for kernel estimation of densities and their derivatives.
-#' Journal of Nonparametric Statistics 4, 21–34.
+#' `r format_bib("engel1994iterative")`
 #'
 #' @template seealso_learner
 #' @template example

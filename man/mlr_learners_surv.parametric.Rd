@@ -59,7 +59,7 @@ lrn("surv.parametric")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{lp}, \dQuote{crank}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
 }
 }
 
@@ -67,10 +67,10 @@ lrn("surv.parametric")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    type \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    dist \tab character \tab weibull \tab weibull, exponential, gaussian, lognormal, loglogistic \tab - \cr
-   parms \tab list \tab - \tab  \tab - \cr
-   init \tab list \tab - \tab  \tab - \cr
+   parms \tab untyped \tab - \tab  \tab - \cr
+   init \tab untyped \tab - \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -79,12 +79,12 @@ lrn("surv.parametric")
    outer.max \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   cluster \tab list \tab - \tab  \tab - \cr
+   cluster \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
 \examples{
-if (requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.parametric")
   print(learner)
 
@@ -93,8 +93,8 @@ if (requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", q
 }
 }
 \references{
-Kalbfleisch, J. D., & Prentice, R. L. (2011).
-The statistical analysis of failure time data (Vol. 360).
+Kalbfleisch, D J, Prentice, L R (2011).
+\emph{The statistical analysis of failure time data}.
 John Wiley & Sons.
 }
 \seealso{

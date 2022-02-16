@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Quinlan R (1993).
-#' C4.5: Programs for Machine Learning
-#' \url{http://www.rulequest.com/see5-unix.html}
+#' `r format_bib("quinlan2014c4")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifJ48 = R6Class("LearnerClassifJ48",
   inherit = LearnerClassif,

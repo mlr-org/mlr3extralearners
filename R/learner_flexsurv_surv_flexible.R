@@ -26,11 +26,7 @@
 #'   implementation of, [LearnerSurvParametric].
 #'
 #' @references
-#' Royston P, Parmar MKB (2002).
-#' “Flexible parametric proportional-hazards and proportional-odds models for censored survival
-#' data, with application to prognostic modelling and estimation of treatment effects.”
-#' Statistics in Medicine, 21(15), 2175–2197.
-#' doi: 10.1002/sim.1203.
+#' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
 #' @template example

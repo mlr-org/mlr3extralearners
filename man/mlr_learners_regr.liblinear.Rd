@@ -70,6 +70,11 @@ if (requireNamespace("LiblineaR", quietly = TRUE)) {
   learner$param_set$ids()
 }
 }
+\references{
+Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).
+\dQuote{LIBLINEAR: A library for large linear classification.}
+\emph{the Journal of machine Learning research}, \bold{9}, 1871--1874.
+}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.

@@ -13,9 +13,7 @@
 #' results.
 #'
 #' @references
-#' Binder, H., Allignol, A., Schumacher, M., and Beyersmann, J. (2009).
-#' Boosting for high-dimensional time-to-event data with competing risks.
-#' Bioinformatics, 25:890-896.
+#' `r format_bib("binder2009boosting")`
 #'
 #' @template seealso_learner
 #' @template example

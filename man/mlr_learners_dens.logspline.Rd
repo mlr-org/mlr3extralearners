@@ -21,7 +21,7 @@ lrn("dens.logspline")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{logspline}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{logspline}
 }
 }
 
@@ -31,9 +31,9 @@ lrn("dens.logspline")
    lbound \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    ubound \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxknots \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   knots \tab list \tab - \tab  \tab - \cr
+   knots \tab untyped \tab - \tab  \tab - \cr
    nknots \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   penalty \tab list \tab - \tab  \tab - \cr
+   penalty \tab untyped \tab - \tab  \tab - \cr
    silent \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mind \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    error.action \tab integer \tab 2 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
@@ -41,7 +41,7 @@ lrn("dens.logspline")
 }
 
 \examples{
-if (requireNamespace("logspline", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("logspline", quietly = TRUE)) {
   learner = mlr3::lrn("dens.logspline")
   print(learner)
 
@@ -50,9 +50,9 @@ if (requireNamespace("logspline", quietly = TRUE)) {
 }
 }
 \references{
-Charles Kooperberg and Charles J. Stone.
-Logspline density estimation for censored data (1992).
-Journal of Computational and Graphical Statistics, 1, 301–328.
+Kooperberg, Charles, Stone, J C (1992).
+\dQuote{Logspline density estimation for censored data.}
+\emph{Journal of Computational and Graphical Statistics}, \bold{1}(4), 301--328.
 }
 \seealso{
 \itemize{

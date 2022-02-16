@@ -6,6 +6,9 @@
 #' @templateVar id regr.extratrees
 #' @templateVar caller extraTrees
 #'
+#' @references
+#' `r format_bib("geurts2006extremely")`
+#'
 #' @export
 #' @template seealso_learner
 #' @template example

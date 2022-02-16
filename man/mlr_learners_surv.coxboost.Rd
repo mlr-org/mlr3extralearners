@@ -28,31 +28,31 @@ lrn("surv.coxboost")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}, \CRANpkg{pracma}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   unpen.index \tab list \tab - \tab  \tab - \cr
+   unpen.index \tab untyped \tab - \tab  \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    stepno \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    penalty \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    criterion \tab character \tab pscore \tab pscore, score, hpscore, hscore \tab - \cr
    stepsize.factor \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sf.scheme \tab character \tab sigmoid \tab sigmoid, linear \tab - \cr
-   pendistmat \tab list \tab - \tab  \tab - \cr
-   connected.index \tab list \tab - \tab  \tab - \cr
+   pendistmat \tab untyped \tab - \tab  \tab - \cr
+   connected.index \tab untyped \tab - \tab  \tab - \cr
    x.is.01 \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    return.score \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   at.step \tab list \tab - \tab  \tab - \cr
+   at.step \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
 \examples{
-if (requireNamespace("CoxBoost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("CoxBoost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.coxboost")
   print(learner)
 
@@ -61,9 +61,9 @@ if (requireNamespace("CoxBoost", quietly = TRUE) && requireNamespace("pracma", q
 }
 }
 \references{
-Binder, H., Allignol, A., Schumacher, M., and Beyersmann, J. (2009).
-Boosting for high-dimensional time-to-event data with competing risks.
-Bioinformatics, 25:890-896.
+Binder, Harald, Allignol, Arthur, Schumacher, Martin, Beyersmann, Jan (2009).
+\dQuote{Boosting for high-dimensional time-to-event data with competing risks.}
+\emph{Bioinformatics}, \bold{25}(7), 890--896.
 }
 \seealso{
 \itemize{

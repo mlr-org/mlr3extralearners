@@ -7,10 +7,7 @@
 #' @templateVar caller gamboost
 #'
 #' @references
-#' Bühlmann P, Yu B (2003).
-#' “Boosting With the L2 Loss.”
-#' Journal of the American Statistical Association, 98(462), 324–339.
-#' \doi{10.1198/016214503000125}
+#' `r format_bib("buhlmann2003boosting")`
 #'
 #' @export
 #' @template seealso_learner
