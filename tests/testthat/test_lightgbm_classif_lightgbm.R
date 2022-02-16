@@ -14,16 +14,16 @@ test_that("manual validation binary", {
   task = tsk("sonar")
   expect_error(learner$train(task), regexp = NA)
   # TODO: Fix with test validation renaming
-  task$row_roles$test = sample(seq(task$nrow), task$nrow * 0.3)
+  task$row_roles$holdout = sample(seq(task$nrow), task$nrow * 0.3)
   expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })
 
 test_that("manual validation multiclass", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 1)
+  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping_split = 0.3)
   task = tsk("iris")
-  expect_error(learner$train(task))
+  expect_error(learner$train(task), regexp = NA)
   # TODO: Fix with test validation renaming
-  task$row_roles$test = sample(seq(task$nrow), task$nrow * 0.3)
+  task$row_roles$holdout = sample(seq(task$nrow), task$nrow * 0.3)
   expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
 })
 

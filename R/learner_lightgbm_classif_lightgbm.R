@@ -277,7 +277,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       early_stopping_split = pars$early_stopping_split
       pars$early_stopping_split = NULL
 
-      if (early_stopping_split > 0 %??% FALSE) {
+      if (!is.null(early_stopping_split) > 0 %??% FALSE) {
         # task$nrow = length(task$row_roles$use)
         valid_ids = sample(task$row_roles$use, floor(early_stopping_split * task$nrow))
         train_ids = setdiff(task$row_roles$use, valid_ids)
