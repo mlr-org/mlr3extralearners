@@ -132,27 +132,14 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>offset</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>method</td><td>character</td><td>GCV.Cp</td><td>GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML</td><td>-</td></tr><tr><td>optimizer</td><td>list</td><td>outer , newton</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>select</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>knots</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>sp</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>min.sp</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>H</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>paraPen</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>G</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>in.out</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>drop.unused.levels</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>drop.intercept</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>irls.reg</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxit</td><td>integer</td><td>200</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mgcv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>mgcv.half</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>rank.tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nlm</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>optim</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>newton</td><td>list</td><td>NULL</td><td></td><td>-</td></tr><tr><td>outerPIsteps</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>idLinksBases</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scalePenalty</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>efs.lspmax</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>efs.tol</td><td>numeric</td><td>0.1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale.est</td><td>character</td><td>fletcher</td><td>fletcher, pearson, deviance</td><td>-</td></tr><tr><td>edge.correct</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>1000</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>unconditional</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>offset</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>method</td><td>character</td><td>GCV.Cp</td><td>GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML</td><td>-</td></tr><tr><td>optimizer</td><td>untyped</td><td>c     , outer , newton</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>select</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>knots</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>sp</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>min.sp</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>H</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>paraPen</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>G</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>in.out</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>drop.unused.levels</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>drop.intercept</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>irls.reg</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxit</td><td>integer</td><td>200</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mgcv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>mgcv.half</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>rank.tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nlm</td><td>untyped</td><td>list</td><td></td><td>-</td></tr><tr><td>optim</td><td>untyped</td><td>list</td><td></td><td>-</td></tr><tr><td>newton</td><td>untyped</td><td>list</td><td></td><td>-</td></tr><tr><td>outerPIsteps</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>idLinksBases</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scalePenalty</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>efs.lspmax</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>efs.tol</td><td>numeric</td><td>0.1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale.est</td><td>character</td><td>fletcher</td><td>fletcher, pearson, deviance</td><td>-</td></tr><tr><td>edge.correct</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>1000</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>unconditional</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Wood, S.N. (2017) Generalized Additive Models: An Introduction with R (2nd edition). Chapman
-&amp; Hall/ CRC, Boca Raton, Florida</p>
-<p>Key Reference on GAMs generally:</p>
-<p>Hastie (1993) in Chambers and Hastie (1993) Statistical Models in S. Chapman
-and Hall.</p>
-<p>Hastie and Tibshirani (1990) Generalized Additive Models. Chapman and Hall.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index">
-<ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
-<li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
-<li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
-<li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
-<li><p><a href="https://CRAN.R-project.org/package=mlr3tuning" class="external-link"><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href="https://CRAN.R-project.org/package=mlr3tuningspaces" class="external-link"><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
-</ul></div>
+    <p>Hastie, J T, Tibshirani, J R (2017).
+<em>Generalized additive models</em>.
+Routledge.</p>
+<p>Wood, Simon (2012).
+“mgcv: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation.”</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -208,33 +195,7 @@ and Hall.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"mgcv"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.gam"</span><span class="op">)</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in">  <span class="co"># available parameters:</span></span>
-<span class="r-in">  <span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifGam:classif.gam&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, mgcv</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Type: prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature types: logical, integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: twoclass, weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "formula"            "offset"             "method"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "optimizer"          "scale"              "select"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "knots"              "sp"                 "min.sp"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "H"                  "gamma"              "paraPen"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "G"                  "in.out"             "drop.unused.levels"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "drop.intercept"     "nthreads"           "irls.reg"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "epsilon"            "maxit"              "trace"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "mgcv.tol"           "mgcv.half"          "rank.tol"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "nlm"                "optim"              "newton"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "outerPIsteps"       "idLinksBases"       "scalePenalty"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "efs.lspmax"         "efs.tol"            "scale.est"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "edge.correct"       "block.size"         "unconditional"     </span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="co"># simple example</span></span>
 <span class="r-in"><span class="va">t</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"spam"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">l</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.gam"</span><span class="op">)</span></span>
@@ -252,7 +213,6 @@ and Hall.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1.00 5.42 1.00 5.05  total = 13.47 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> UBRE score: -0.1759489     </span>
-<span class="r-in"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

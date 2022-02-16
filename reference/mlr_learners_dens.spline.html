@@ -100,17 +100,17 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
 <ul><li><p>Task type: “dens”</p></li>
 <li><p>Predict Types: “pdf”, “cdf”</p></li>
 <li><p>Feature Types: “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=gss" class="external-link"><span class="pkg">gss</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=gss" class="external-link"><span class="pkg">gss</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>alpha</td><td>numeric</td><td>1.4</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>weights</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>list</td><td>function (object, ...) , UseMethod("na.omit")</td><td></td><td>-</td></tr><tr><td>id.basis</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>nbasis</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>domain</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>quad</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>qdsz.depth</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>bias</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>prec</td><td>numeric</td><td>1e-07</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>skip.iter</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>alpha</td><td>numeric</td><td>1.4</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>weights</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>::     , stats  , na.omit</td><td></td><td>-</td></tr><tr><td>id.basis</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>nbasis</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>domain</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>quad</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>qdsz.depth</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>bias</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>prec</td><td>numeric</td><td>1e-07</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>skip.iter</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Gu, C. and Wang, J. (2003),
-Penalized likelihood density estimation: Direct cross-validation and scalable approximation.
-Statistica Sinica, 13, 811–826.</p>
+    <p>Gu, Chong, Wang, Jingyuan (2003).
+“Penalized likelihood density estimation: Direct cross-validation and scalable approximation.”
+<em>Statistica Sinica</em>, 811--826.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -178,7 +178,7 @@ Statistica Sinica, 13, 811–826.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"gss"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"mlr3proba"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"gss"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"dens.spline"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span class="r-in"></span>

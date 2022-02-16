@@ -109,27 +109,24 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “response”</p></li>
 <li><p>Feature Types: “integer”, “numeric”, “character”, “factor”, “logical”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=survivalsvm" class="external-link"><span class="pkg">survivalsvm</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=survivalsvm" class="external-link"><span class="pkg">survivalsvm</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>regression</td><td>regression, vanbelle1, vanbelle2, hybrid</td><td>-</td></tr><tr><td>diff.meth</td><td>character</td><td>-</td><td>makediff1, makediff2, makediff3</td><td>-</td></tr><tr><td>gamma.mu</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>opt.meth</td><td>character</td><td>quadprog</td><td>quadprog, ipop</td><td>-</td></tr><tr><td>kernel</td><td>character</td><td>lin_kernel</td><td>lin_kernel, add_kernel, rbf_kernel, poly_kernel</td><td>-</td></tr><tr><td>kernel.pars</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>sgf.sv</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>sigf</td><td>integer</td><td>7</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>margin</td><td>numeric</td><td>0.05</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bound</td><td>numeric</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eig.tol</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>conv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>posd.tol</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>regression</td><td>regression, vanbelle1, vanbelle2, hybrid</td><td>-</td></tr><tr><td>diff.meth</td><td>character</td><td>-</td><td>makediff1, makediff2, makediff3</td><td>-</td></tr><tr><td>gamma.mu</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>opt.meth</td><td>character</td><td>quadprog</td><td>quadprog, ipop</td><td>-</td></tr><tr><td>kernel</td><td>character</td><td>lin_kernel</td><td>lin_kernel, add_kernel, rbf_kernel, poly_kernel</td><td>-</td></tr><tr><td>kernel.pars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sgf.sv</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>sigf</td><td>integer</td><td>7</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>margin</td><td>numeric</td><td>0.05</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bound</td><td>numeric</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eig.tol</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>conv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>posd.tol</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Belle VV, Pelckmans K, Huffel SV, Suykens JAK (2010).
+    <p>Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
 “Improved performance on high-dimensional survival data by application of Survival-SVM.”
-Bioinformatics, 27(1), 87–94.
-doi: 10.1093/bioinformatics/btq617.</p>
-<p>Belle VV, Pelckmans K, Huffel SV, Suykens JA (2011).
-“Support vector methods for survival analysis: a comparison between ranking and regression
-approaches."
-Artificial Intelligence in Medicine, 53(2), 107–118.
-doi: 10.1016/j.artmed.2011.06.006.</p>
-<p>Shivaswamy, P. K., Chu, W., &amp; Jansche, M. (2007).
-A support vector approach to censored targets.
-In Proceedings - IEEE International Conference on Data Mining, ICDM (pp. 655–660).
-https://doi.org/10.1109/ICDM.2007.93</p>
+<em>Bioinformatics</em>, <b>27</b>(1), 87--94.</p>
+<p>Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
+“Support vector methods for survival analysis: a comparison between ranking and regression approaches.”
+<em>Artificial intelligence in medicine</em>, <b>53</b>(2), 107--118.</p>
+<p>Shivaswamy, K P, Chu, Wei, Jansche, Martin (2007).
+“A support vector approach to censored targets.”
+In <em>Seventh IEEE international conference on data mining (ICDM 2007)</em>, 655--660.
+IEEE.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -197,7 +194,7 @@ https://doi.org/10.1109/ICDM.2007.93</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"survivalsvm"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"mlr3proba"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"survivalsvm"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.svm"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span class="r-in"></span>

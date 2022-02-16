@@ -100,17 +100,17 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
 <ul><li><p>Task type: “dens”</p></li>
 <li><p>Predict Types: “pdf”, “cdf”</p></li>
 <li><p>Feature Types: “integer”, “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=logspline" class="external-link"><span class="pkg">logspline</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=logspline" class="external-link"><span class="pkg">logspline</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>lbound</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>ubound</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxknots</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>nknots</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>penalty</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>silent</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mind</td><td>numeric</td><td>-1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>error.action</td><td>integer</td><td>2</td><td></td><td>\([0, 2]\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>lbound</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>ubound</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxknots</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>nknots</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>penalty</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>silent</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mind</td><td>numeric</td><td>-1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>error.action</td><td>integer</td><td>2</td><td></td><td>\([0, 2]\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Charles Kooperberg and Charles J. Stone.
-Logspline density estimation for censored data (1992).
-Journal of Computational and Graphical Statistics, 1, 301–328.</p>
+    <p>Kooperberg, Charles, Stone, J C (1992).
+“Logspline density estimation for censored data.”
+<em>Journal of Computational and Graphical Statistics</em>, <b>1</b>(4), 301--328.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -178,7 +178,7 @@ Journal of Computational and Graphical Statistics, 1, 301–328.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"logspline"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"mlr3proba"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"logspline"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in">  <span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"dens.logspline"</span><span class="op">)</span></span>
 <span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span class="r-in"></span>

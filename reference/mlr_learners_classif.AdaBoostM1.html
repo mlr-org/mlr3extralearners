@@ -105,7 +105,7 @@ sugar function <code><a href="lrn.html">lrn()</a></code>:</p><div class="sourceC
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>list</td><td>-</td><td></td><td>-</td></tr><tr><td>P</td><td>integer</td><td>100</td><td></td><td>\([90, 100]\)</td></tr><tr><td>Q</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>S</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>I</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>W</td><td>list</td><td>DecisionStump</td><td></td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>list</td><td>NULL</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>P</td><td>integer</td><td>100</td><td></td><td>\([90, 100]\)</td></tr><tr><td>Q</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>S</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>I</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>W</td><td>untyped</td><td>DecisionStump</td><td></td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>untyped</td><td></td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
     
@@ -123,9 +123,22 @@ since their ids contain irregular pattern</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Freund Y, Schapire, R (1993).
-Experiments with a New Boosting Algorithm
-<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&amp;rep=rep1&amp;type=pdf" class="external-link">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&amp;rep=rep1&amp;type=pdf</a></p>
+    <p>Freund, Yoav, Schapire, E R, others (1996).
+“Experiments with a new boosting algorithm.”
+In <em>icml</em>, volume 96, 148--156.
+Citeseer.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
+    <div class="dont-index">
+<ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
+<li><p><a href="https://CRAN.R-project.org/package=mlr3tuning" class="external-link"><span class="pkg">mlr3tuning</span></a> for tuning of hyperparameters, <a href="https://CRAN.R-project.org/package=mlr3tuningspaces" class="external-link"><span class="pkg">mlr3tuningspaces</span></a> for established default tuning spaces.</p></li>
+</ul></div>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
@@ -179,6 +192,30 @@ Experiments with a New Boosting Algorithm
 
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"RWeka"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span class="r-in">  <span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.AdaBoostM1"</span><span class="op">)</span></span>
+<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
+<span class="r-in"></span>
+<span class="r-in">  <span class="co"># available parameters:</span></span>
+<span class="r-in">  <span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span class="op">}</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifAdaBoostM1:classif.AdaBoostM1&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, RWeka</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Type: response</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature types: numeric, factor, ordered, integer</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: multiclass, twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "P"                         "Q"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "S"                         "I"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "W"                         "output_debug_info"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "do_not_check_capabilities" "num_decimal_places"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "batch_size"                "options"                  </span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
