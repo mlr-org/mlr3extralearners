@@ -95,3 +95,12 @@ convert_ratio = function(pv, target, ratio, n) {
     stopf("Hyperparameters '%s' and '%s' are mutually exclusive", target, ratio)
   )
 }
+
+# Get the RWeka control arguments for function f and translate them into mlr3 style
+weka_control_args = function(f) {
+  arg_desc = RWeka::WOW(f)
+  arg_names = arg_desc$Name
+  exclude = format_rweka(arg_names)
+  exclude = unique(exclude)
+  return(exclude)
+}
