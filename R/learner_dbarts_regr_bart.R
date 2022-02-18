@@ -20,6 +20,9 @@
 #' * Parameter: nthread, nchain, combineChains, combinechains
 #'   * The parameters are removed as parallelization of multiple models is handled by future.
 #'
+#' @references
+#' `r format_bib("sparapani2021nonparametric")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

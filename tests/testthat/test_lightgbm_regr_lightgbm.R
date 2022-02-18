@@ -10,11 +10,10 @@ test_that("autotest", {
 })
 
 test_that("manual validation", {
-  learner = lrn("regr.lightgbm", early_stopping_rounds = 1)
+  learner = lrn("regr.lightgbm", early_stopping_rounds = 1, early_stopping_split = 0.1)
   task = tsk("mtcars")
-  expect_error(learner$train(task))
-  task$row_roles$validation = sample(seq(task$nrow), task$nrow * 0.3)
-  expect_true(inherits(learner$train(task)$predict(task), "PredictionRegr"))
+  learner$train(task)
+  expect_error(learner$train(task), regex = NA)
 })
 
 test_that("Can pass parameters", {

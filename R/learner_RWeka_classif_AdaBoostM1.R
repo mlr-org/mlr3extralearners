@@ -23,10 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#'  Freund Y, Schapire, R (1993).
-#' Experiments with a New Boosting Algorithm
-#' \url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.51.6252&rep=rep1&type=pdf}
+#' `r format_bib("freund1996experiments")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
   inherit = LearnerClassif,
@@ -38,19 +38,19 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
         subset = p_uty(tags = c("train", "pars")),
         na.action = p_uty(tags = c("train", "pars")),
         P = p_int(default = 100L, lower = 90L, upper = 100L,
-          tags = c("train", "control")),
-        Q = p_lgl(default = FALSE, tags = c("train", "control")),
-        S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
-        I = p_int(default = 10L, lower = 1L, tags = c("train", "control")),
+          tags = "train"),
+        Q = p_lgl(default = FALSE, tags = "train"),
+        S = p_int(default = 1L, lower = 1L, tags = "train"),
+        I = p_int(default = 10L, lower = 1L, tags = "train"),
         W = p_uty(default = "DecisionStump",
-          tags = c("train", "control")),
-        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          tags = "train"),
+        output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = c("train", "control")),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = c("train", "control")),
-        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-        options = p_uty(default = NULL, tags = c("train", "pars"))
+          tags = "train"),
+        batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
+        options = p_uty(default = NULL, tags = "train")
       )
 
       super$initialize(
@@ -67,13 +67,17 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
 
   private = list(
     .train = function(task) {
-      ctrl = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "control")
+      ctrl_arg_names = weka_control_args(RWeka::AdaBoostM1)
+      arg_names = setdiff(names(params), ctrl_arg_names)
+      ctrl = params[which(names(params) %in% ctrl_arg_names)]
+      pars = params[which(names(params) %nin% ctrl_arg_names)]
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
       }
 
-      pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
       mlr3misc::invoke(RWeka::AdaBoostM1, formula = f, data = data, control = ctrl, .args = pars)

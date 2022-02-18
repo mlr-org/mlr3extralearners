@@ -28,10 +28,10 @@ lrn("regr.mob")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   rhs \tab list \tab - \tab  \tab - \cr
-   fit \tab list \tab - \tab  \tab - \cr
-   offset \tab list \tab - \tab  \tab - \cr
-   cluster \tab list \tab - \tab  \tab - \cr
+   rhs \tab untyped \tab - \tab  \tab - \cr
+   fit \tab untyped \tab - \tab  \tab - \cr
+   offset \tab untyped \tab - \tab  \tab - \cr
+   cluster \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    bonferroni \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    minsize \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -41,27 +41,26 @@ lrn("regr.mob")
    mtry \tab integer \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    trim \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    breakties \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   parm \tab list \tab - \tab  \tab - \cr
+   parm \tab untyped \tab - \tab  \tab - \cr
    dfsplit \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   prune \tab list \tab - \tab  \tab - \cr
+   prune \tab untyped \tab - \tab  \tab - \cr
    restart \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   maxvar \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    ytype \tab character \tab vector \tab vector, matrix, data.frame \tab - \cr
    xtype \tab character \tab matrix \tab vector, matrix, data.frame \tab - \cr
-   terminal \tab list \tab object \tab  \tab - \cr
-   inner \tab list \tab object \tab  \tab - \cr
+   terminal \tab untyped \tab object \tab  \tab - \cr
+   inner \tab untyped \tab object \tab  \tab - \cr
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    numsplit \tab character \tab left \tab left, center \tab - \cr
    catsplit \tab character \tab binary \tab binary, multiway \tab - \cr
    vcov \tab character \tab opg \tab opg, info, sandwich \tab - \cr
    ordinal \tab character \tab chisq \tab chisq, max, L2 \tab - \cr
    nrep \tab integer \tab 10000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   applyfun \tab list \tab - \tab  \tab - \cr
+   applyfun \tab untyped \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   additional \tab list \tab - \tab  \tab - \cr
-   predict_fun \tab list \tab - \tab  \tab - \cr
+   additional \tab untyped \tab - \tab  \tab - \cr
+   predict_fun \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -76,19 +75,14 @@ if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich",
 }
 \references{
 Hothorn T, Zeileis A (2015).
-“partykit: A Modular Toolkit for Recursive Partytioning in R.”
-Journal of Machine Learning Research, 16(118), 3905-3909.
-\url{http://jmlr.org/papers/v16/hothorn15a.html}
+\dQuote{partykit: A Modular Toolkit for Recursive Partytioning in R.}
+\emph{Journal of Machine Learning Research}, \bold{16}(118), 3905-3909.
+\url{http://jmlr.org/papers/v16/hothorn15a.html}.
 
 Hothorn T, Hornik K, Zeileis A (2006).
-“Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-Journal of Computational and Graphical Statistics, 15(3), 651–674.
-\doi{10.1198/106186006x133933}
-
-Zeileis A, Hothorn T, Hornik K (2008).
-“Model-Based Recursive Partitioning.”
-Journal of Computational and Graphical Statistics, 17(2), 492–514.
-\doi{10.1198/106186008X319331}
+\dQuote{Unbiased Recursive Partitioning: A Conditional Inference Framework.}
+\emph{Journal of Computational and Graphical Statistics}, \bold{15}(3), 651--674.
+\doi{10.1198/106186006x133933}, \url{https://doi.org/10.1198/106186006x133933}.
 }
 \seealso{
 \itemize{

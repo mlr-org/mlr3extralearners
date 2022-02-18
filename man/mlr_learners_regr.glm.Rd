@@ -36,17 +36,17 @@ lrn("regr.glm")
    x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    y \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   etastart \tab list \tab - \tab  \tab - \cr
-   mustart \tab list \tab - \tab  \tab - \cr
-   start \tab list \tab NULL \tab  \tab - \cr
-   offset \tab list \tab - \tab  \tab - \cr
+   etastart \tab untyped \tab - \tab  \tab - \cr
+   mustart \tab untyped \tab - \tab  \tab - \cr
+   start \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab - \tab  \tab - \cr
    family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab - \cr
    na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab - \cr
    link \tab character \tab - \tab logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse \tab - \cr
    epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxit \tab numeric \tab 25 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   dispersion \tab list \tab NULL \tab  \tab - \cr
+   dispersion \tab untyped \tab  \tab  \tab - \cr
    type \tab character \tab link \tab response, link, terms \tab - \cr
 }
 }
@@ -71,8 +71,30 @@ if (requireNamespace("stats", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+if (requireNamespace("stats", quietly = TRUE)) {
+  learner = mlr3::lrn("regr.glm")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
+\references{
+Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).
+\emph{Applied logistic regression}, volume 398.
+John Wiley & Sons.
 }
 \seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
+
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).

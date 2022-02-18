@@ -37,12 +37,11 @@ lrn("classif.rfsrc")
    nsplit \tab integer \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    importance \tab character \tab FALSE \tab FALSE, TRUE, none, permute, random, anti \tab - \cr
    block.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ensemble \tab character \tab all \tab all, oob, inbag \tab - \cr
    bootstrap \tab character \tab by.root \tab by.root, by.node, none, by.user \tab - \cr
    samptype \tab character \tab swor \tab swor, swr \tab - \cr
-   samp \tab list \tab - \tab  \tab - \cr
+   samp \tab untyped \tab - \tab  \tab - \cr
    membership \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   sampsize \tab list \tab - \tab  \tab - \cr
+   sampsize \tab untyped \tab - \tab  \tab - \cr
    sampsize.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    na.action \tab character \tab na.omit \tab na.omit, na.impute \tab - \cr
    nimpute \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -51,15 +50,15 @@ lrn("classif.rfsrc")
    proximity \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    distance \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    forest.wt \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
-   xvar.wt \tab list \tab - \tab  \tab - \cr
-   split.wt \tab list \tab - \tab  \tab - \cr
+   xvar.wt \tab untyped \tab - \tab  \tab - \cr
+   split.wt \tab untyped \tab - \tab  \tab - \cr
    forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    var.used \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
    split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
    do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    statistics \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   get.tree \tab list \tab - \tab  \tab - \cr
+   get.tree \tab untyped \tab - \tab  \tab - \cr
    outcome \tab character \tab train \tab train, test \tab - \cr
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

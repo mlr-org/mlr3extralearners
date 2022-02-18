@@ -6,6 +6,9 @@
 #' @templateVar id classif.fnn
 #' @templateVar caller knn
 #'
+#' @references
+#' `r format_bib("boltz2007knn")`
+#'
 #' @export
 #' @template seealso_learner
 #' @template example

@@ -40,20 +40,20 @@ lrn("classif.gam")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   formula \tab list \tab - \tab  \tab - \cr
-   offset \tab list \tab NULL \tab  \tab - \cr
+   formula \tab untyped \tab - \tab  \tab - \cr
+   offset \tab untyped \tab  \tab  \tab - \cr
    method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab - \cr
-   optimizer \tab list \tab outer , newton \tab  \tab - \cr
+   optimizer \tab untyped \tab c     , outer , newton \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    select \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   knots \tab list \tab NULL \tab  \tab - \cr
-   sp \tab list \tab NULL \tab  \tab - \cr
-   min.sp \tab list \tab NULL \tab  \tab - \cr
-   H \tab list \tab NULL \tab  \tab - \cr
+   knots \tab untyped \tab  \tab  \tab - \cr
+   sp \tab untyped \tab  \tab  \tab - \cr
+   min.sp \tab untyped \tab  \tab  \tab - \cr
+   H \tab untyped \tab  \tab  \tab - \cr
    gamma \tab numeric \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   paraPen \tab list \tab NULL \tab  \tab - \cr
-   G \tab list \tab NULL \tab  \tab - \cr
-   in.out \tab list \tab NULL \tab  \tab - \cr
+   paraPen \tab untyped \tab  \tab  \tab - \cr
+   G \tab untyped \tab  \tab  \tab - \cr
+   in.out \tab untyped \tab  \tab  \tab - \cr
    drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -64,9 +64,9 @@ lrn("classif.gam")
    mgcv.tol \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mgcv.half \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    rank.tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   nlm \tab list \tab NULL \tab  \tab - \cr
-   optim \tab list \tab NULL \tab  \tab - \cr
-   newton \tab list \tab NULL \tab  \tab - \cr
+   nlm \tab untyped \tab list \tab  \tab - \cr
+   optim \tab untyped \tab list \tab  \tab - \cr
+   newton \tab untyped \tab list \tab  \tab - \cr
    outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -80,13 +80,6 @@ lrn("classif.gam")
 }
 
 \examples{
-if (requireNamespace("mgcv", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.gam")
-  print(learner)
-
-  # available parameters:
-  learner$param_set$ids()
-}
 
 # simple example
 t = mlr3::tsk("spam")
@@ -94,29 +87,14 @@ l = mlr3::lrn("classif.gam")
 l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 l$train(t)
 l$model
-
 }
 \references{
-Wood, S.N. (2017) Generalized Additive Models: An Introduction with R (2nd edition). Chapman
-& Hall/ CRC, Boca Raton, Florida
+Hastie, J T, Tibshirani, J R (2017).
+\emph{Generalized additive models}.
+Routledge.
 
-Key Reference on GAMs generally:
-
-Hastie (1993) in Chambers and Hastie (1993) Statistical Models in S. Chapman
-and Hall.
-
-Hastie and Tibshirani (1990) Generalized Additive Models. Chapman and Hall.
-}
-\seealso{
-\itemize{
-\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
-\item \CRANpkg{mlr3learners} for a selection of recommended learners.
-\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
-\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
-\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
-}
+Wood, Simon (2012).
+\dQuote{mgcv: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation.}
 }
 \author{
 JazzyPierrot

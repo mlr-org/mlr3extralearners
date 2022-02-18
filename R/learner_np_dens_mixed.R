@@ -7,9 +7,7 @@
 #' @templateVar caller npudens
 #'
 #' @references
-#' Li, Q. and J.S. Racine (2003),
-#' “Nonparametric estimation of distributions with categorical and continuous data,”
-#' Journal of Multivariate Analysis, 86, 266-292.
+#' `r format_bib("li2003nonparametric")`
 #'
 #' @template seealso_learner
 #' @template example

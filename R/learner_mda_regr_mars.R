@@ -6,6 +6,9 @@
 #' @templateVar id regr.mars
 #' @templateVar caller mars
 #'
+#' @references
+#' `r format_bib("hastie2017generalized")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

@@ -7,10 +7,7 @@
 #' @templateVar caller randomForest
 #'
 #' @references
-#' Breiman, L. (2001).
-#' Random Forests
-#' Machine Learning
-#' \url{https://doi.org/10.1023/A:1010933404324}
+#' `r format_bib("breiman_2001")`
 #'
 #' @export
 #' @template seealso_learner

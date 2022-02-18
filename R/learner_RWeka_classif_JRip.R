@@ -23,11 +23,10 @@
 #' since their ids contain irregular pattern
 #'
 #' @references
-#' Cohen W (1995).
-#' Fast effective rule induction
-#' In: Proceedings of the 12th International Conference on Machine Learning, pages 115–123.
-#' \url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.50.8204}
+#' `r format_bib("cohen1995fast")`
 #'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerClassifJRip = R6Class("LearnerClassifJRip",
   inherit = LearnerClassif,
@@ -38,20 +37,20 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
       ps = ps(
         subset = p_uty(tags = c("train", "pars")),
         na.action = p_uty(tags = c("train", "pars")),
-        F = p_int(default = 3L, lower = 2L, tags = c("train", "control")),
-        N = p_dbl(default = 2, lower = 0, tags = c("train", "control")),
-        O = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
-        D = p_lgl(default = FALSE, tags = c("train", "control")),
-        S = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
-        E = p_lgl(default = FALSE, tags = c("train", "control")),
-        P = p_lgl(default = FALSE, tags = c("train", "control")),
-        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+        F = p_int(default = 3L, lower = 2L, tags = "train"),
+        N = p_dbl(default = 2, lower = 0, tags = "train"),
+        O = p_int(default = 2L, lower = 1L, tags = "train"),
+        D = p_lgl(default = FALSE, tags = "train"),
+        S = p_int(default = 1L, lower = 1L, tags = "train"),
+        E = p_lgl(default = FALSE, tags = "train"),
+        P = p_lgl(default = FALSE, tags = "train"),
+        output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = c("train", "control")),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = c("train", "control")),
-        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-        options = p_uty(default = NULL, tags = c("train", "pars"))
+          tags = "train"),
+        batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
+        options = p_uty(default = NULL, tags = "train")
       )
 
       super$initialize(
@@ -68,13 +67,17 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
 
   private = list(
     .train = function(task) {
-      ctrl = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "control")
+      ctrl_arg_names = weka_control_args(RWeka::JRip)
+      arg_names = setdiff(names(params), ctrl_arg_names)
+      ctrl = params[which(names(params) %in% ctrl_arg_names)]
+      pars = params[which(names(params) %nin% ctrl_arg_names)]
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
       }
 
-      pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
       mlr3misc::invoke(RWeka::JRip, formula = f, data = data, control = ctrl, .args = pars)

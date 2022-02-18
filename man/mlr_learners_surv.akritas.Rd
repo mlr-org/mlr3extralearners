@@ -21,7 +21,7 @@ lrn("surv.akritas")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{character}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
 }
 }
 
@@ -34,7 +34,7 @@ lrn("surv.akritas")
 }
 
 \examples{
-if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
   learner = mlr3::lrn("surv.akritas")
   print(learner)
 
@@ -43,10 +43,9 @@ if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("dist
 }
 }
 \references{
-Akritas, M. G. (1994).
-Nearest Neighbor Estimation of a Bivariate Distribution Under Random Censoring.
-Ann. Statist., 22(3), 1299–1327.
-\doi{10.1214/aos/1176325630}
+Akritas, G M (1994).
+\dQuote{Nearest neighbor estimation of a bivariate distribution under random censoring.}
+\emph{The Annals of Statistics}, 1299--1327.
 }
 \seealso{
 \itemize{

@@ -19,6 +19,12 @@
 #' For categorical features either pre-process data by encoding columns or
 #' specify the categorical columns with the `categorical_feature` parameter.
 #' For this learner please do not prefix the categorical feature with `name:`.
+#' Instead of providing the data that is used for early stopping explicitly, the parameter
+#' `early_stopping_split` determines the proportion of the training data that is used for early
+#' stopping.
+#'
+#' @references
+#' `r format_bib("ke2017lightgbm")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -45,6 +51,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
         init_model = p_uty(default = NULL, tags = "train"),
         early_stopping_rounds = p_int(lower = 1L, tags = "train"),
+        early_stopping_split = p_dbl(default = 0, lower = 0, upper = 1, tag = "train"),
         callbacks = p_uty(tags = "train"),
         reset_data = p_lgl(default = FALSE, tags = "train"),
         categorical_feature = p_uty(default = "", tags = "train"),
@@ -215,6 +222,9 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
   private = list(
 
     .train = function(task) {
+      # set column names to ensure consistency in fit and predict
+      self$state$feature_names = task$feature_names
+
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
@@ -223,11 +233,14 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         pars$custom_eval = NULL
       }
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
+      early_stopping_split = pars$early_stopping_split
+      pars$early_stopping_split = NULL
 
-      if (length(task$row_roles$validation)) {
-        train_ids = setdiff(seq(task$nrow), task$row_roles$validation)
+      if (!is.null(early_stopping_split) && early_stopping_split) {
+        # task$nrow = length(task$row_roles$use)
+        valid_ids = sample(task$row_roles$use, floor(early_stopping_split * task$nrow))
+        train_ids = setdiff(task$row_roles$use, valid_ids)
+        # TODO: Update this when the names in mlr3 are changed to test / validation
 
         dtrain = lightgbm::lgb.Dataset(
           data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
@@ -238,8 +251,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
         pars$categorical_feature = NULL
 
-        valid_ids = task$row_roles$validation
-        dtest = lightgbm::lgb.Dataset.create.valid(
+
+        dvalid = lightgbm::lgb.Dataset.create.valid(
           dataset = dtrain,
           data = as.matrix(task$data(rows = valid_ids, cols = task$feature_names)),
           label = as.matrix(task$data(rows = valid_ids, cols = task$target_names))
@@ -248,12 +261,12 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         row_id = NULL
         if ("weights" %in% task$properties) {
           dtrain$setinfo("weight", subset(task$weights, row_id %in% train_ids)$weight)
-          dtest$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
+          dvalid$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
         }
 
         mlr3misc::invoke(lightgbm::lgb.train,
           data = dtrain,
-          valids = list(test = dtest),
+          valids = list(test = dvalid),
           params = pars
         )
       } else {

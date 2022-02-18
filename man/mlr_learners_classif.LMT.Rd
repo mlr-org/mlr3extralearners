@@ -28,8 +28,8 @@ lrn("classif.LMT")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    B \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    C \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -43,7 +43,7 @@ lrn("classif.LMT")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab - \cr
+   options \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -71,10 +71,30 @@ since their ids contain irregular pattern
 }
 }
 
+\examples{
+if (requireNamespace("RWeka", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.LMT")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
-Landwehr N, Hall M, Frank E (2005).
-Logistic Model Trees
-\url{https://link.springer.com/content/pdf/10.1007/s10994-005-0466-3.pdf}
+Landwehr, Niels, Hall, Mark, Frank, Eibe (2005).
+\dQuote{Logistic model trees.}
+\emph{Machine learning}, \bold{59}(1), 161--205.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 henrifnk

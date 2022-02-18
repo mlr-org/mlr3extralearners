@@ -30,7 +30,7 @@ lrn("classif.C50")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    trials \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    rules \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   costs \tab list \tab NULL \tab  \tab - \cr
+   costs \tab untyped \tab  \tab  \tab - \cr
    subset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    bands \tab integer \tab - \tab  \tab \eqn{[0, 1000]}{[0, 1000]} \cr
    winnow \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -41,15 +41,15 @@ lrn("classif.C50")
    sample \tab numeric \tab 0 \tab  \tab \eqn{[0, 0.999]}{[0, 0.999]} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    earlyStopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   label \tab list \tab outcome \tab  \tab - \cr
-   na.action \tab list \tab function (object, ...) , object \tab  \tab - \cr
+   label \tab untyped \tab outcome \tab  \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
 }
 }
 
 \references{
-Quinlan R (1993).
-C4.5: Programs for Machine Learning
-\url{http://www.rulequest.com/see5-unix.html}
+Quinlan, Ross J (2014).
+\emph{C4. 5: programs for machine learning}.
+Elsevier.
 }
 \author{
 henrifnk

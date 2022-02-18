@@ -6,6 +6,9 @@
 #' @templateVar id dens.locfit
 #' @templateVar caller density.lf
 #'
+#' @references
+#' `r format_bib("loader2006local")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

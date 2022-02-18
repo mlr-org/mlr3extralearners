@@ -44,8 +44,8 @@ lrn("classif.bart")
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   proposalprobs \tab list \tab NULL \tab  \tab - \cr
+   seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   proposalprobs \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -75,6 +75,11 @@ if (requireNamespace("dbarts", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Sparapani, Rodney, Spanbauer, Charles, McCulloch, Robert (2021).
+\dQuote{Nonparametric machine learning and efficient computation with bayesian additive regression trees: the BART R package.}
+\emph{Journal of Statistical Software}, \bold{97}, 1--66.
 }
 \seealso{
 \itemize{

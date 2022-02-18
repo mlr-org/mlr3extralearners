@@ -7,10 +7,7 @@
 #' @templateVar caller akritas
 #'
 #' @references
-#' Akritas, M. G. (1994).
-#' Nearest Neighbor Estimation of a Bivariate Distribution Under Random Censoring.
-#' Ann. Statist., 22(3), 1299–1327.
-#' \doi{10.1214/aos/1176325630}
+#' `r format_bib("akritas1994nearest")`
 #'
 #' @template seealso_learner
 #' @template example

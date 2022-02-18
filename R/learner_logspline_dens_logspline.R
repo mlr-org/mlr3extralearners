@@ -6,9 +6,7 @@
 #' @templateVar caller logspline
 #'
 #' @references
-#' Charles Kooperberg and Charles J. Stone.
-#' Logspline density estimation for censored data (1992).
-#' Journal of Computational and Graphical Statistics, 1, 301–328.
+#' `r format_bib("kooperberg1992logspline")`
 #'
 #' @template seealso_learner
 #' @template example

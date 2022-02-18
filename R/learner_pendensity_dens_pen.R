@@ -7,8 +7,7 @@
 #' @templateVar caller pendensity
 #'
 #' @references
-#' Density Estimation with a Penalized Mixture Approach, Schellhase C. and Kauermann G. (2012),
-#' Computational Statistics 27 (4), p. 757-777.
+#' `r format_bib("schellhase2012density")`
 #'
 #' @template seealso_learner
 #' @template example

@@ -24,7 +24,7 @@ lrn("surv.blackboost")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
 }
 }
 
@@ -32,16 +32,16 @@ lrn("surv.blackboost")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
-   custom.family \tab list \tab - \tab  \tab - \cr
-   nuirange \tab list \tab 0, 100 \tab  \tab - \cr
-   offset \tab list \tab - \tab  \tab - \cr
+   custom.family \tab untyped \tab - \tab  \tab - \cr
+   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
+   offset \tab untyped \tab - \tab  \tab - \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    risk \tab character \tab - \tab inbag, oobag, none \tab - \cr
    stopintern \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   oobweights \tab list \tab - \tab  \tab - \cr
+   oobweights \tab untyped \tab - \tab  \tab - \cr
    teststat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splitstat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -49,7 +49,7 @@ lrn("surv.blackboost")
    maxpts \tab integer \tab 25000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    abseps \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    releps \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nmax \tab list \tab - \tab  \tab - \cr
+   nmax \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mincriterion \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    logmincriterion \tab numeric \tab -0.05129329 \tab  \tab \eqn{(-\infty, 0]}{(-Inf, 0]} \cr
@@ -70,13 +70,13 @@ lrn("surv.blackboost")
    majority \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   ipcw \tab list \tab 1 \tab  \tab - \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
+   ipcw \tab untyped \tab 1 \tab  \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
 }
 }
 
 \examples{
-if (requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.blackboost")
   print(learner)
 
@@ -85,10 +85,9 @@ if (requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", qui
 }
 }
 \references{
-Bühlmann P, Yu B (2003).
-“Boosting With the L2 Loss.”
-Journal of the American Statistical Association, 98(462), 324–339.
-\doi{10.1198/016214503000125}
+Bühlmann, Peter, Yu, Bin (2003).
+\dQuote{Boosting with the L 2 loss: regression and classification.}
+\emph{Journal of the American Statistical Association}, \bold{98}(462), 324--339.
 }
 \seealso{
 \itemize{

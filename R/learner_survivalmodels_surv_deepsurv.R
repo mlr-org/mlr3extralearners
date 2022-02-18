@@ -7,10 +7,7 @@
 #' @templateVar caller deepsurv
 #'
 #' @references
-#' Katzman, J. L., Shaham, U., Cloninger, A., Bates, J., Jiang, T., & Kluger, Y. (2018).
-#' DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural
-#' network.
-#' BMC Medical Research Methodology, 18(1), 24. https://doi.org/10.1186/s12874-018-0482-1
+#' `r format_bib("katzman2018deepsurv")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -96,7 +93,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.deepsurv",
+        man = "mlr3extralearners::mlr_learners_surv.deepsurv",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }

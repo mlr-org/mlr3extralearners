@@ -28,8 +28,8 @@ lrn("regr.M5Rules")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    N \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    U \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -38,7 +38,7 @@ lrn("regr.M5Rules")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab - \cr
+   options \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -66,12 +66,31 @@ since their ids contain irregular pattern
 }
 }
 
+\examples{
+if (requireNamespace("RWeka", quietly = TRUE)) {
+  learner = mlr3::lrn("regr.M5Rules")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
-Hall M, Et al. (1999)
-Generating rule sets from model trees
-In: Proceedings of the Twelfth Australian Joint Conference on
-Artificial Intelligence, pages 1- 12.
-\url{http://citeseer.ist.psu.edu/holmes99generating.html}
+Holmes, Geoffrey, Hall, Mark, Prank, Eibe (1999).
+\dQuote{Generating rule sets from model trees.}
+In \emph{Australasian joint conference on artificial intelligence}, 1--12.
+Springer.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 henrifnk

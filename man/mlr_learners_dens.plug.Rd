@@ -20,8 +20,8 @@ lrn("dens.plug")
 \itemize{
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{plugdensity}
+\item Feature Types: \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{plugdensity}
 }
 }
 
@@ -33,7 +33,7 @@ lrn("dens.plug")
 }
 
 \examples{
-if (requireNamespace("plugdensity", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("plugdensity", quietly = TRUE)) {
   learner = mlr3::lrn("dens.plug")
   print(learner)
 
@@ -42,9 +42,9 @@ if (requireNamespace("plugdensity", quietly = TRUE)) {
 }
 }
 \references{
-J. Engel, Eva Herrmann and Theo Gasser (1994).
-An iterative bandwidth selector for kernel estimation of densities and their derivatives.
-Journal of Nonparametric Statistics 4, 21–34.
+Engel, Joachim, Herrmann, Eva, Gasser, Theo (1994).
+\dQuote{An iterative bandwidth selector for kernel estimation of densities and their derivatives.}
+\emph{Journaltitle of Nonparametric Statistics}, \bold{4}(1), 21--34.
 }
 \seealso{
 \itemize{

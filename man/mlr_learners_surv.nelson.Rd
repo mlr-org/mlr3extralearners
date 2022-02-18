@@ -21,7 +21,7 @@ lrn("surv.nelson")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
 }
 }
 
@@ -31,7 +31,7 @@ Empty ParamSet
 }
 
 \examples{
-if (requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.nelson")
   print(learner)
 
@@ -40,17 +40,17 @@ if (requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", q
 }
 }
 \references{
-Nelson W (1969).
-Hazard Plotting for Incomplete Failure Data.
-Journal of Quality Technology, 1(1), 27–52. doi: 10.1080/00224065.1969.11980344.
+Nelson, Wayne (1969).
+\dQuote{Hazard plotting for incomplete failure data.}
+\emph{Journal of Quality Technology}, \bold{1}(1), 27--52.
 
-Nelson, W. (1972).
-Theory and Applications of Hazard Plotting for Censored Failure Data.
-Technometrics, 14(4), 945–966.
+Nelson, Wayne (1972).
+\dQuote{Theory and applications of hazard plotting for censored failure data.}
+\emph{Technometrics}, \bold{14}(4), 945--966.
 
-Aalen, O. (1978).
-Nonparametric Inference for a Family of Counting Processes.
-The Annals of Statistics, 6(4), 701–726.
+Aalen, Odd (1978).
+\dQuote{Nonparametric inference for a family of counting processes.}
+\emph{The Annals of Statistics}, 701--726.
 }
 \seealso{
 \itemize{

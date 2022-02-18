@@ -1,3 +1,59 @@
+# mlr3extralearners 0.5.25
+
+* Introduce parameter `early_stopping_split` for lightgbm learners
+* Tidy description of R package
+* Udpate NEWS.md for previous releases
+
+# mlr3extralearners 0.5.24
+
+* Don't allow integer for density estimator `dens.plug`
+
+# mlr3extralearners 0.5.23
+
+* Fix bug in lightgbm
+
+# mlr3extralearners 0.5.22
+
+* Style package using the mlr3 style
+
+# mlr3extralearners 0.5.21
+
+* Update files for creation of new learner
+* Fixes regarding `create_learner`
+* CI modifications
+
+# mlr3extralearners 0.5.20
+
+* Fix all parameter tests (run_paramtest was updated in mlr3 in November 2021)
+* paramtests were moved from inst/paramtest to tests/testthat
+* Change in the CI files: parameter tests and learner tests are now run together
+* formatting and other minor corrections
+
+# mlr3extralearners 0.5.19
+
+* Provide correct range for neighors argument for Cubist
+
+# mlr3extralearners 0.5.18
+
+* Allow integer as feature types for RWeka learners
+* Correction of RWeka tests
+
+# mlr3extralearners 0.5.17
+
+* Improve vignette
+
+# mlr3extralearners 0.5.16
+
+* Fix bug in AdaBoostM1 (control arg)
+
+# mlr3extralearners 0.5.15
+
+* Change in maintainer
+
+# mlr3extralearners 0.5.14
+
+* Fix bug regarding Weka control args.
+
 # mlr3extralearners 0.5.13
 
 * Fix `categorical_features` in {lightgbm} learners

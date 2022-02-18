@@ -21,7 +21,7 @@ lrn("surv.cforest")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{partykit}, \CRANpkg{sandwich}, \CRANpkg{coin}
 }
 }
 
@@ -33,18 +33,18 @@ lrn("surv.cforest")
    fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mtryratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   applyfun \tab list \tab - \tab  \tab - \cr
+   applyfun \tab untyped \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   offset \tab list \tab - \tab  \tab - \cr
-   cluster \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab function (object, ...) , object \tab  \tab - \cr
-   scores \tab list \tab - \tab  \tab - \cr
+   offset \tab untyped \tab - \tab  \tab - \cr
+   cluster \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
+   scores \tab untyped \tab - \tab  \tab - \cr
    teststat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splitstat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splittest \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    testtype \tab character \tab Univariate \tab Bonferroni, MonteCarlo, Univariate, Teststatistic \tab - \cr
-   nmax \tab list \tab - \tab  \tab - \cr
+   nmax \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 0.05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    mincriterion \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    logmincriterion \tab numeric \tab -0.05129329 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -71,10 +71,6 @@ lrn("surv.cforest")
    OOB \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    simplify \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scale \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   nperm \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   risk \tab character \tab loglik \tab loglik, misclassification \tab - \cr
-   conditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   threshold \tab numeric \tab 0.2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxpts \tab integer \tab 25000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    abseps \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    releps \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -94,7 +90,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
   learner = mlr3::lrn("surv.cforest")
   print(learner)
 
@@ -103,7 +99,15 @@ if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich",
 }
 }
 \references{
-`r format_bib(c("hothorn_2015", "hothorn_2006"))
+Hothorn T, Zeileis A (2015).
+\dQuote{partykit: A Modular Toolkit for Recursive Partytioning in R.}
+\emph{Journal of Machine Learning Research}, \bold{16}(118), 3905-3909.
+\url{http://jmlr.org/papers/v16/hothorn15a.html}.
+
+Hothorn T, Hornik K, Zeileis A (2006).
+\dQuote{Unbiased Recursive Partitioning: A Conditional Inference Framework.}
+\emph{Journal of Computational and Graphical Statistics}, \bold{15}(3), 651--674.
+\doi{10.1198/106186006x133933}, \url{https://doi.org/10.1198/106186006x133933}.
 }
 \seealso{
 \itemize{

@@ -31,21 +31,21 @@ lrn("classif.earth")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   wp \tab list \tab NULL \tab  \tab - \cr
-   offset \tab list \tab NULL \tab  \tab - \cr
+   wp \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab  \tab  \tab - \cr
    keepxy \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace \tab character \tab 0 \tab 0, .3, .5, 1, 2, 3, 4, 5 \tab - \cr
    degree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    penalty \tab numeric \tab 2 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   nk \tab list \tab NULL \tab  \tab - \cr
+   nk \tab untyped \tab  \tab  \tab - \cr
    thresh \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    minspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    endspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    newvar.penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    fast.k \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    fast.beta \tab integer \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   linpreds \tab list \tab FALSE \tab  \tab - \cr
-   allowed \tab list \tab - \tab  \tab - \cr
+   linpreds \tab untyped \tab FALSE \tab  \tab - \cr
+   allowed \tab untyped \tab - \tab  \tab - \cr
    pmethod \tab character \tab backward \tab backward, none, exhaustive, forward, seqrep, cv \tab - \cr
    nprune \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nfold \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -77,15 +77,13 @@ if (requireNamespace("earth", quietly = TRUE)) {
 }
 }
 \references{
-Stephen Milborrow (2014)
-Earth: multivariate adaptive regression spline models
-R package version 3
-\url{https://cran.r-project.org/web/packages/earth/earth.pdf}
+Milborrow, Stephen, Hastie, T, Tibshirani, R (2014).
+\dQuote{Earth: multivariate adaptive regression spline models.}
+\emph{R package version}, \bold{3}(7).
 
-Jerome H. Friedman (1991)
-Multivariate Adaptive Regression Splines
-The Annals of Statistics
-\url{https://projecteuclid.org/download/pdf_1/euclid.aos/1176347963}
+Friedman, H J (1991).
+\dQuote{Multivariate adaptive regression splines.}
+\emph{The annals of statistics}, \bold{19}(1), 1--67.
 }
 \seealso{
 \itemize{

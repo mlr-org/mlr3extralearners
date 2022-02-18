@@ -21,7 +21,7 @@ lrn("dens.nonpar")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{sm}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{sm}
 }
 }
 
@@ -29,18 +29,18 @@ lrn("dens.nonpar")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    h \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   group \tab list \tab - \tab  \tab - \cr
+   group \tab untyped \tab - \tab  \tab - \cr
    delta \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    h.weights \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   hmult \tab list \tab 1 \tab  \tab - \cr
+   hmult \tab untyped \tab 1 \tab  \tab - \cr
    method \tab character \tab normal \tab normal, cv, sj, df, aicc \tab - \cr
    positive \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verbose \tab list \tab 1 \tab  \tab - \cr
+   verbose \tab untyped \tab 1 \tab  \tab - \cr
 }
 }
 
 \examples{
-if (requireNamespace("sm", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("sm", quietly = TRUE)) {
   learner = mlr3::lrn("dens.nonpar")
   print(learner)
 
@@ -49,9 +49,10 @@ if (requireNamespace("sm", quietly = TRUE)) {
 }
 }
 \references{
-Bowman, A.W. and Azzalini, A. (1997).
-Applied Smoothing Techniques for Data Analysis: the Kernel Approach with S-Plus Illustrations.
-Oxford University Press, Oxford.
+Bowman, A.W., Azzalini, A. (1997).
+\emph{Applied Smoothing Techniques for Data Analysis: The Kernel Approach with S-Plus Illustrations},  series Oxford Statistical Science Series.
+OUP Oxford.
+ISBN 9780191545696, \url{https://books.google.de/books?id=7WBMrZ9umRYC}.
 }
 \seealso{
 \itemize{

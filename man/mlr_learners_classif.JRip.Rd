@@ -28,8 +28,8 @@ lrn("classif.JRip")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    F \tab integer \tab 3 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    N \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    O \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -41,7 +41,7 @@ lrn("classif.JRip")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab - \cr
+   options \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -69,11 +69,31 @@ since their ids contain irregular pattern
 }
 }
 
+\examples{
+if (requireNamespace("RWeka", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.JRip")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
-Cohen W (1995).
-Fast effective rule induction
-In: Proceedings of the 12th International Conference on Machine Learning, pages 115–123.
-\url{http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.50.8204}
+Cohen, W W (1995).
+\dQuote{Fast effective rule induction.}
+In \emph{Machine learning proceedings 1995}, 115--123.
+Elsevier.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 henrifnk

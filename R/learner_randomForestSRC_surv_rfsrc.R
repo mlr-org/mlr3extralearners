@@ -16,7 +16,6 @@
 #' `estimator` hyper-parameter, default is `nelson`.
 #'
 #' @references
-#' @references
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
 #'
 #' @template seealso_learner

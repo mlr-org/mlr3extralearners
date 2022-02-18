@@ -39,7 +39,7 @@ lrn("classif.gbm")
    keep.data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    n.cores \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   var.monotone \tab list \tab - \tab  \tab - \cr
+   var.monotone \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -70,6 +70,11 @@ if (requireNamespace("gbm", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Friedman, H J (2002).
+\dQuote{Stochastic gradient boosting.}
+\emph{Computational statistics & data analysis}, \bold{38}(4), 367--378.
 }
 \seealso{
 \itemize{

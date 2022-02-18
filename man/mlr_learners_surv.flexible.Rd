@@ -33,22 +33,22 @@ lrn("surv.flexible")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{factor}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{flexsurv}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{flexsurv}, \CRANpkg{pracma}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   bhazard \tab list \tab - \tab  \tab - \cr
+   bhazard \tab untyped \tab - \tab  \tab - \cr
    k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   knots \tab list \tab - \tab  \tab - \cr
-   bknots \tab list \tab - \tab  \tab - \cr
+   knots \tab untyped \tab - \tab  \tab - \cr
+   bknots \tab untyped \tab - \tab  \tab - \cr
    scale \tab character \tab hazard \tab hazard, odds, normal \tab - \cr
    timescale \tab character \tab log \tab log, identity \tab - \cr
-   inits \tab list \tab - \tab  \tab - \cr
-   rtrunc \tab list \tab - \tab  \tab - \cr
-   fixedpars \tab list \tab - \tab  \tab - \cr
+   inits \tab untyped \tab - \tab  \tab - \cr
+   rtrunc \tab untyped \tab - \tab  \tab - \cr
+   fixedpars \tab untyped \tab - \tab  \tab - \cr
    cl \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -72,7 +72,7 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-if (requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
   learner = mlr3::lrn("surv.flexible")
   print(learner)
 
@@ -81,11 +81,9 @@ if (requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", q
 }
 }
 \references{
-Royston P, Parmar MKB (2002).
-“Flexible parametric proportional-hazards and proportional-odds models for censored survival
-data, with application to prognostic modelling and estimation of treatment effects.”
-Statistics in Medicine, 21(15), 2175–2197.
-doi: 10.1002/sim.1203.
+Royston, Patrick, Parmar, KB M (2002).
+\dQuote{Flexible parametric proportional-hazards and proportional-odds models for censored survival data, with application to prognostic modelling and estimation of treatment effects.}
+\emph{Statistics in medicine}, \bold{21}(15), 2175--2197.
 }
 \seealso{
 \itemize{

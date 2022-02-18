@@ -28,8 +28,8 @@ lrn("classif.J48")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    U \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    O \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    C \tab numeric \tab 0.25 \tab  \tab \eqn{[2.22044604925031e-16, 1]}{[2.22044604925031e-16, 1]} \cr
@@ -47,7 +47,7 @@ lrn("classif.J48")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab - \cr
+   options \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -75,10 +75,30 @@ since their ids contain irregular pattern
 }
 }
 
+\examples{
+if (requireNamespace("RWeka", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.J48")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
-Quinlan R (1993).
-C4.5: Programs for Machine Learning
-\url{http://www.rulequest.com/see5-unix.html}
+Quinlan, Ross J (2014).
+\emph{C4. 5: programs for machine learning}.
+Elsevier.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 henrifnk

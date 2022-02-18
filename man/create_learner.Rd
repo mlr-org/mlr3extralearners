@@ -90,29 +90,29 @@ learner template.
 \dontrun{
 # Simpler linear regression example
 create_learner(
- classname = "LM",
- algorithm = "linear regression",
- type = "regr",
- package = "stats",
- caller = "lm",
- feature_types = c("logical", "integer", "numeric", "factor"),
- predict_types = c("response", "se"),
- properties = "weights",
- gh_name = "RaphaelS1"
+  classname = "LM",
+  algorithm = "linear regression",
+  type = "regr",
+  package = "stats",
+  caller = "lm",
+  feature_types = c("logical", "integer", "numeric", "factor"),
+  predict_types = c("response", "se"),
+  properties = "weights",
+  gh_name = "RaphaelS1"
 )
 
 # Slightly more complex random forest learner
 create_learner(
- classname = "RandomForestSRC",
- algorithm = "random forest",
- type = "surv",
- package = "randomForestSRC",
- caller = "rfsrc",
- feature_types = c("logical", "integer", "numeric", "factor"),
- predict_types = c("crank", "distr"),
- properties = c("importance", "missings", "oob_error", "weights"),
- references = TRUE,
- gh_name = "RaphaelS1"
+  classname = "RandomForestSRC",
+  algorithm = "random forest",
+  type = "surv",
+  package = "randomForestSRC",
+  caller = "rfsrc",
+  feature_types = c("logical", "integer", "numeric", "factor"),
+  predict_types = c("crank", "distr"),
+  properties = c("importance", "missings", "oob_error", "weights"),
+  references = TRUE,
+  gh_name = "RaphaelS1"
 )
 }
 }

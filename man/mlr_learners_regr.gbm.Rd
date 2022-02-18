@@ -28,7 +28,7 @@ lrn("regr.gbm")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   distribution \tab character \tab gaussian \tab gaussian, laplace, poisson, tdist, quantile \tab - \cr
+   distribution \tab character \tab gaussian \tab gaussian, laplace, poisson, tdist \tab - \cr
    n.trees \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    interaction.depth \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n.minobsinnode \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -36,11 +36,10 @@ lrn("regr.gbm")
    bag.fraction \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    train.fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cv.folds \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    keep.data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    n.cores \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   var.monotone \tab list \tab - \tab  \tab - \cr
+   var.monotone \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -71,6 +70,11 @@ if (requireNamespace("gbm", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Friedman, H J (2002).
+\dQuote{Stochastic gradient boosting.}
+\emph{Computational statistics & data analysis}, \bold{38}(4), 367--378.
 }
 \seealso{
 \itemize{

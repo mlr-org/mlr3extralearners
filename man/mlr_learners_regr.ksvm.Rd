@@ -42,6 +42,8 @@ lrn("regr.ksvm")
    scale \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    order \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   na.action \tab untyped \tab na.omit \tab  \tab - \cr
+   fit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -53,6 +55,11 @@ if (requireNamespace("kernlab", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).
+\dQuote{kernlab-an S4 package for kernel methods in R.}
+\emph{Journal of statistical software}, \bold{11}(9), 1--20.
 }
 \seealso{
 \itemize{

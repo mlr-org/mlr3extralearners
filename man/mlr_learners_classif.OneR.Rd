@@ -28,14 +28,14 @@ lrn("classif.OneR")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab - \tab  \tab - \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
    B \tab integer \tab 6 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab list \tab NULL \tab  \tab - \cr
+   options \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
@@ -63,10 +63,30 @@ since their ids contain irregular pattern
 }
 }
 
+\examples{
+if (requireNamespace("RWeka", quietly = TRUE)) {
+  learner = mlr3::lrn("classif.OneR")
+  print(learner)
+
+  # available parameters:
+  learner$param_set$ids()
+}
+}
 \references{
-Holte R (1993).
-Very Simple Classification Rules Perform Well on Most Commonly Used Datasets
-\url{https://link.springer.com/content/pdf/10.1023/A:1022631118932.pdf}
+Holte, C R (1993).
+\dQuote{Very simple classification rules perform well on most commonly used datasets.}
+\emph{Machine learning}, \bold{11}(1), 63--90.
+}
+\seealso{
+\itemize{
+\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
+\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
+\item \CRANpkg{mlr3learners} for a selection of recommended learners.
+\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
+\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
+\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
+}
 }
 \author{
 henrifnk

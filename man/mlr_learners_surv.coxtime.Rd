@@ -21,7 +21,7 @@ lrn("surv.coxtime")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}, \CRANpkg{reticulate}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}, \CRANpkg{reticulate}
 }
 }
 
@@ -33,11 +33,11 @@ lrn("surv.coxtime")
    log_duration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    with_mean \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    with_std \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   num_nodes \tab list \tab 32, 32 \tab  \tab - \cr
+   num_nodes \tab untyped \tab c , 32, 32 \tab  \tab - \cr
    batch_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    dropout \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    activation \tab character \tab relu \tab celu, elu, gelu, glu, hardshrink, hardsigmoid, hardswish, hardtanh, relu6, leakyrelu, \link{...} \tab - \cr
-   device \tab list \tab - \tab  \tab - \cr
+   device \tab untyped \tab - \tab  \tab - \cr
    shrink \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    optimizer \tab character \tab adam \tab adadelta, adagrad, adam, adamax, adamw, asgd, rmsprop, rprop, sgd, sparse_adam \tab - \cr
    rho \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -46,15 +46,15 @@ lrn("surv.coxtime")
    weight_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    learning_rate \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lr_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   betas \tab list \tab 0.900, 0.999 \tab  \tab - \cr
+   betas \tab untyped \tab c    , 0.9  , 0.999 \tab  \tab - \cr
    amsgrad \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambd \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    alpha \tab numeric \tab 0.75 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    t0 \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    centered \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   etas \tab list \tab 0.5, 1.2 \tab  \tab - \cr
-   step_sizes \tab list \tab 1e-06, 5e+01 \tab  \tab - \cr
+   etas \tab untyped \tab c  , 0.5, 1.2 \tab  \tab - \cr
+   step_sizes \tab untyped \tab c    , 1e-06, 50 \tab  \tab - \cr
    dampening \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    batch_size \tab integer \tab 256 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -70,7 +70,7 @@ lrn("surv.coxtime")
 }
 
 \examples{
-if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
   learner = mlr3::lrn("surv.coxtime")
   print(learner)
 
@@ -79,9 +79,9 @@ if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("dist
 }
 }
 \references{
-Kvamme, H., Borgan, Ø., & Scheel, I. (2019).
-Time-to-event prediction with neural networks and Cox regression.
-Journal of Machine Learning Research, 20(129), 1–30.
+Kvamme, Håvard, Borgan Ø, Scheel I (2019).
+\dQuote{Time-to-event prediction with neural networks and Cox regression.}
+\emph{arXiv preprint arXiv:1907.00825}.
 }
 \seealso{
 \itemize{

@@ -42,6 +42,12 @@ if (requireNamespace("FNN", quietly = TRUE)) {
   learner$param_set$ids()
 }
 }
+\references{
+Boltz, Sylvain, Debreuve, Eric, Barlaud, Michel (2007).
+\dQuote{kNN-based high-dimensional Kullback-Leibler distance for tracking.}
+In \emph{Eighth International Workshop on Image Analysis for Multimedia Interactive Services (WIAMIS'07)}, 16--16.
+IEEE.
+}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.

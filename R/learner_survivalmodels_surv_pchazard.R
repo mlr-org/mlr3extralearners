@@ -13,9 +13,7 @@
 #'  the parameters `cuts` or `cutpoints`.
 #'
 #' @references
-#' Kvamme, H., & Borgan, Ø. (2019).
-#' Continuous and discrete-time survival prediction with neural networks.
-#' ArXiv Preprint ArXiv:1910.06724.
+#' `r format_bib("kvamme2019continuous")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -113,7 +111,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::surv.pchazard",
+        man = "mlr3extralearners::mlr_learners_surv.pchazard",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )
     }

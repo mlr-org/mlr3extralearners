@@ -35,9 +35,9 @@ lrn("regr.extratrees")
    evenCuts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numThreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    quantile \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   subsetSizes \tab list \tab - \tab  \tab - \cr
-   subsetGroups \tab list \tab - \tab  \tab - \cr
-   tasks \tab list \tab - \tab  \tab - \cr
+   subsetSizes \tab untyped \tab - \tab  \tab - \cr
+   subsetGroups \tab untyped \tab - \tab  \tab - \cr
+   tasks \tab untyped \tab - \tab  \tab - \cr
    probOfTaskCuts \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    numRandomTaskCuts \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    na.action \tab character \tab stop \tab stop, zero, fuse \tab - \cr
@@ -52,6 +52,11 @@ if (requireNamespace("extraTrees", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
+}
+\references{
+Geurts, Pierre, Ernst, Damien, Wehenkel, Louis (2006).
+\dQuote{Extremely randomized trees.}
+\emph{Machine learning}, \bold{63}(1), 3--42.
 }
 \seealso{
 \itemize{

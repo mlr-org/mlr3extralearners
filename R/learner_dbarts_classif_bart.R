@@ -24,6 +24,9 @@
 #' * Parameter: sigest, sigdf, sigquant, keeptres
 #'  * Regression only.
 #'
+#' @references
+#' `r format_bib("sparapani2021nonparametric")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export

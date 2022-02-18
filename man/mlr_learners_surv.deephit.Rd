@@ -27,7 +27,7 @@ lrn("surv.deephit")
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}, \CRANpkg{reticulate}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}, \CRANpkg{reticulate}
 }
 }
 
@@ -36,18 +36,17 @@ lrn("surv.deephit")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    frac \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cuts \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   cutpoints \tab list \tab - \tab  \tab - \cr
+   cutpoints \tab untyped \tab - \tab  \tab - \cr
    scheme \tab character \tab equidistant \tab equidistant, quantiles \tab - \cr
    cut_min \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   num_nodes \tab list \tab 32, 32 \tab  \tab - \cr
+   num_nodes \tab untyped \tab c , 32, 32 \tab  \tab - \cr
    batch_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    dropout \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    activation \tab character \tab relu \tab celu, elu, gelu, glu, hardshrink, hardsigmoid, hardswish, hardtanh, relu6, leakyrelu, \link{...} \tab - \cr
-   custom_net \tab list \tab - \tab  \tab - \cr
-   device \tab list \tab - \tab  \tab - \cr
+   custom_net \tab untyped \tab - \tab  \tab - \cr
+   device \tab untyped \tab - \tab  \tab - \cr
    mod_alpha \tab numeric \tab 0.2 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   shrink \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    optimizer \tab character \tab adam \tab adadelta, adagrad, adam, adamax, adamw, asgd, rmsprop, rprop, sgd, sparse_adam \tab - \cr
    rho \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    eps \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -55,15 +54,15 @@ lrn("surv.deephit")
    weight_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    learning_rate \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lr_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   betas \tab list \tab 0.900, 0.999 \tab  \tab - \cr
+   betas \tab untyped \tab c    , 0.9  , 0.999 \tab  \tab - \cr
    amsgrad \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambd \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    alpha \tab numeric \tab 0.75 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    t0 \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    centered \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   etas \tab list \tab 0.5, 1.2 \tab  \tab - \cr
-   step_sizes \tab list \tab 1e-06, 5e+01 \tab  \tab - \cr
+   etas \tab untyped \tab c  , 0.5, 1.2 \tab  \tab - \cr
+   step_sizes \tab untyped \tab c    , 1e-06, 50 \tab  \tab - \cr
    dampening \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    batch_size \tab integer \tab 256 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -82,7 +81,7 @@ lrn("surv.deephit")
 }
 
 \examples{
-if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
   learner = mlr3::lrn("surv.deephit")
   print(learner)
 
@@ -91,10 +90,9 @@ if (requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("dist
 }
 }
 \references{
-Changhee Lee, William R Zame, Jinsung Yoon, and Mihaela van der Schaar.
-Deephit: A deep learning approach to survival analysis with competing risks.
-In Thirty-Second AAAI Conference on Artificial Intelligence, 2018.
-http://medianetlab.ee.ucla.edu/papers/AAAI_2018_DeepHit
+Lee, Changhee, Zame, William, Yoon, Jinsung, Van Der Schaar, Mihaela (2018).
+\dQuote{Deephit: A deep learning approach to survival analysis with competing risks.}
+In \emph{Proceedings of the AAAI conference on artificial intelligence}, volume 32 number 1.
 }
 \seealso{
 \itemize{

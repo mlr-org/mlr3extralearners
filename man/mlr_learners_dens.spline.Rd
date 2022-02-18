@@ -21,24 +21,24 @@ lrn("dens.spline")
 \item Task type: \dQuote{dens}
 \item Predict Types: \dQuote{pdf}, \dQuote{cdf}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{gss}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{gss}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab list \tab - \tab  \tab - \cr
+   type \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 1.4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   weights \tab list \tab - \tab  \tab - \cr
-   na.action \tab list \tab function (object, ...) , UseMethod("na.omit") \tab  \tab - \cr
-   id.basis \tab list \tab - \tab  \tab - \cr
+   weights \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   id.basis \tab untyped \tab - \tab  \tab - \cr
    nbasis \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    seed \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   domain \tab list \tab - \tab  \tab - \cr
-   quad \tab list \tab - \tab  \tab - \cr
+   domain \tab untyped \tab - \tab  \tab - \cr
+   quad \tab untyped \tab - \tab  \tab - \cr
    qdsz.depth \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   bias \tab list \tab - \tab  \tab - \cr
+   bias \tab untyped \tab - \tab  \tab - \cr
    prec \tab numeric \tab 1e-07 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    skip.iter \tab logical \tab - \tab TRUE, FALSE \tab - \cr
@@ -46,7 +46,7 @@ lrn("dens.spline")
 }
 
 \examples{
-if (requireNamespace("gss", quietly = TRUE)) {
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("gss", quietly = TRUE)) {
   learner = mlr3::lrn("dens.spline")
   print(learner)
 
@@ -55,9 +55,9 @@ if (requireNamespace("gss", quietly = TRUE)) {
 }
 }
 \references{
-Gu, C. and Wang, J. (2003),
-Penalized likelihood density estimation: Direct cross-validation and scalable approximation.
-Statistica Sinica, 13, 811–826.
+Gu, Chong, Wang, Jingyuan (2003).
+\dQuote{Penalized likelihood density estimation: Direct cross-validation and scalable approximation.}
+\emph{Statistica Sinica}, 811--826.
 }
 \seealso{
 \itemize{

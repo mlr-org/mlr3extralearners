@@ -13,7 +13,7 @@
 #'     Note that `mtry` and `mtryratio` are mutually exclusive.
 #'
 #' @references
-#' `r format_bib(c("hothorn_2015", "hothorn_2006"))
+#' `r format_bib("hothorn_2015", "hothorn_2006")`
 #'
 #' @export
 #' @template seealso_learner
@@ -134,7 +134,6 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     #' @description
     #' The importance scores are calculated using `partykit::varimp()`.
     #'
-    #' @return Named `numeric()`.
     # FIXME: needs fix in partykit, WIP, either this function is corrected or the parameters have
     # to be removed
     # importance = function() {

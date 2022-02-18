@@ -14,9 +14,7 @@
 #' parameter, see examples.
 #'
 #' @references
-#' Goeman JJ (2009). “L1Penalized Estimation in the Cox Proportional Hazards Model.”
-#' Biometrical Journal
-#' doi: 10.1002/bimj.200900028.
+#' `r format_bib("goeman2010l1")`
 #'
 #' @template seealso_learner
 #' @template example

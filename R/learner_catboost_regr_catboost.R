@@ -29,13 +29,7 @@
 #'   - Reason for change: consistent with other mlr3 learners
 #'
 #' @references
-#' catboost: unbiased boosting with categorical features.
-#' Liudmila Prokhorenkova, Gleb Guse, Aleksandr Vorobev, Anna Veronika Dorogush and Andrey Gulin.
-#' 2017. https://arxiv.org/abs/1706.09516.
-#'
-#' catboost: gradient boosting with categorical features support.
-#' Anna Veronika Dorogush, Vasily Ershov and Andrey Gulin.
-#' 2018. https://arxiv.org/abs/1810.11363.
+#' `r format_bib("dorogush2018catboost")`
 #'
 #' @export
 #' @template seealso_learner

@@ -47,6 +47,11 @@ if (requireNamespace("mda", quietly = TRUE)) {
   learner$param_set$ids()
 }
 }
+\references{
+Hastie, J T, Tibshirani, J R (2017).
+\emph{Generalized additive models}.
+Routledge.
+}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.

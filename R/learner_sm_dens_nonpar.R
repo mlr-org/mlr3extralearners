@@ -7,9 +7,7 @@
 #' @templateVar caller sm.density
 #'
 #' @references
-#' Bowman, A.W. and Azzalini, A. (1997).
-#' Applied Smoothing Techniques for Data Analysis: the Kernel Approach with S-Plus Illustrations.
-#' Oxford University Press, Oxford.
+#' `r format_bib("bowman1997applied")`
 #'
 #' @template seealso_learner
 #' @template example

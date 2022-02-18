@@ -7,20 +7,7 @@
 #' @templateVar caller mob
 #'
 #' @references
-#' Hothorn T, Zeileis A (2015).
-#' “partykit: A Modular Toolkit for Recursive Partytioning in R.”
-#' Journal of Machine Learning Research, 16(118), 3905-3909.
-#' \url{http://jmlr.org/papers/v16/hothorn15a.html}
-#'
-#' Hothorn T, Hornik K, Zeileis A (2006).
-#' “Unbiased Recursive Partitioning: A Conditional Inference Framework.”
-#' Journal of Computational and Graphical Statistics, 15(3), 651–674.
-#' \doi{10.1198/106186006x133933}
-#'
-#' Zeileis A, Hothorn T, Hornik K (2008).
-#' “Model-Based Recursive Partitioning.”
-#' Journal of Computational and Graphical Statistics, 17(2), 492–514.
-#' \doi{10.1198/106186008X319331}
+#' `r format_bib("hothorn_2015", "hothorn_2006")`
 #'
 #' @export
 #' @template seealso_learner

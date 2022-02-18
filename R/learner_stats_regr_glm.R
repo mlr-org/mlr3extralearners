@@ -17,6 +17,11 @@
 #'   - Actual default: "link"
 #'   - Adjusted default: "response"
 #'   - Reason for change: Response scale more natural for predictions.
+#' @references
+#' `r format_bib("hosmer2013applied")`
+#'
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerRegrGlm = R6Class("LearnerRegrGlm",
   inherit = LearnerRegr,

@@ -19,9 +19,7 @@
 #'   - Reason for change: Prevents plotting.
 #'
 #' @references
-#' Zhao, L., & Feng, D. (2020).
-#' DNNSurv: Deep Neural Networks for Survival Analysis Using Pseudo Values.
-#' https://arxiv.org/abs/1908.02337
+#' `r format_bib("zhao2019dnnsurv")`
 #'
 #' @template seealso_learner
 #' @template example
