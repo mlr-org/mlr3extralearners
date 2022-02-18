@@ -59,7 +59,7 @@ Suggests:
     CoxBoost,
     Cubist,
     dbarts,
-    distr6 (>= 1.6.0),
+    distr6 (>= 1.6.6),
     earth,
     extraTrees,
     flexsurv,
@@ -79,7 +79,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.4.3),
+    mlr3proba (>= 0.4.4),
     mvtnorm,
     nnet,
     np,
@@ -107,9 +107,7 @@ Suggests:
     testthat,
     usethis
 Remotes:
-    binderh/CoxBoost,
-    RaphaelS1/survivalmodels,
-    mlr-org/mlr3proba
+    binderh/CoxBoost
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
