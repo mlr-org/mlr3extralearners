@@ -38,15 +38,15 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
       ps = ps(
         subset = p_uty(tags = c("train", "pars")),
         na.action = p_uty(tags = c("train", "pars")),
-        N = p_lgl(default = FALSE, tags = c("train", "control")),
-        U = p_lgl(default = FALSE, tags = c("train", "control")),
-        R = p_lgl(default = FALSE, tags = c("train", "control")),
-        M = p_int(default = 4L, tags = c("train", "control")),
-        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
-        do_not_check_capabilities = p_lgl(default = FALSE, tags = c("train", "control")),
-        num_decimal_places = p_int(default = 2L, lower = 1L, tags = c("train", "control")),
-        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-        options = p_uty(default = NULL, tags = c("train", "pars"))
+        N = p_lgl(default = FALSE, tags = "train"),
+        U = p_lgl(default = FALSE, tags = "train"),
+        R = p_lgl(default = FALSE, tags = "train"),
+        M = p_int(default = 4L, tags = "train"),
+        output_debug_info = p_lgl(default = FALSE, tags = "train"),
+        do_not_check_capabilities = p_lgl(default = FALSE, tags = "train"),
+        num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
+        batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
+        options = p_uty(default = NULL, tags = "train")
       )
 
       super$initialize(
@@ -63,13 +63,17 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
 
   private = list(
     .train = function(task) {
-      ctrl = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "control")
+      ctrl_arg_names = weka_control_args(RWeka::M5Rules)
+      arg_names = setdiff(names(params), ctrl_arg_names)
+      ctrl = params[which(names(params) %in% ctrl_arg_names)]
+      pars = params[which(names(params) %nin% ctrl_arg_names)]
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
       }
 
-      pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
       mlr3misc::invoke(RWeka::M5Rules, formula = f, data = data, control = ctrl, .args = pars)

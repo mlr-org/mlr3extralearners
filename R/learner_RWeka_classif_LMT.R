@@ -35,25 +35,25 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
-        B = p_lgl(default = FALSE, tags = c("train", "control")),
-        R = p_lgl(default = FALSE, tags = c("train", "control")),
-        C = p_lgl(default = FALSE, tags = c("train", "control")),
-        P = p_lgl(default = FALSE, tags = c("train", "control")),
-        I = p_int(lower = 1L, tags = c("train", "control")),
-        M = p_int(default = 15L, lower = 1L, tags = c("train", "control")),
-        W = p_dbl(default = 0, lower = 0, upper = 1, tags = c("train", "control")),
-        A = p_lgl(default = FALSE, tags = c("train", "control")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
+        B = p_lgl(default = FALSE, tags = "train"),
+        R = p_lgl(default = FALSE, tags = "train"),
+        C = p_lgl(default = FALSE, tags = "train"),
+        P = p_lgl(default = FALSE, tags = "train"),
+        I = p_int(lower = 1L, tags = "train"),
+        M = p_int(default = 15L, lower = 1L, tags = "train"),
+        W = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        A = p_lgl(default = FALSE, tags = "train"),
         doNotMakeSplitPointActualValue = p_lgl(default = FALSE,
-          tags = c("train", "control")),
-        output_debug_info = p_lgl(default = FALSE, tags = c("train", "control")),
+          tags = "train"),
+        output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = c("train", "control")),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = c("train", "control")),
-        batch_size = p_int(default = 100L, lower = 1L, tags = c("train", "control")),
-        options = p_uty(default = NULL, tags = c("train", "pars"))
+          tags = "train"),
+        batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
+        options = p_uty(default = NULL, tags = "train")
       )
       ps$add_dep("I", "C", CondEqual$new(FALSE))
       super$initialize(
@@ -70,13 +70,17 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
 
   private = list(
     .train = function(task) {
-      ctrl = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "control")
+      ctrl_arg_names = weka_control_args(RWeka::LMT)
+      arg_names = setdiff(names(params), ctrl_arg_names)
+      ctrl = params[which(names(params) %in% ctrl_arg_names)]
+      pars = params[which(names(params) %nin% ctrl_arg_names)]
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
       }
 
-      pars = self$param_set$get_values(tags = "pars")
       f = task$formula()
       data = task$data()
       mlr3misc::invoke(RWeka::LMT, formula = f, data = data, control = ctrl, .args = pars)
