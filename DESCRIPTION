@@ -56,7 +56,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.4.4),
+    mlr3proba (>= 0.4.4.9000),
     mvtnorm,
     nnet,
     np,
@@ -78,13 +78,15 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels (>= 0.1.11),
+    survivalmodels (>= 0.1.11.9000),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
     usethis
 Remotes:
-    binderh/CoxBoost
+    binderh/CoxBoost,
+    RaphaelS1/survivalmodels,
+    mlr-org/mlr3proba#252
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
