@@ -129,7 +129,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
         predict,
         self$model,
         newdata = newdata,
-        distr6 = TRUE,
+        distr6 = FALSE,
         type = "all",
         .args = pars
       )

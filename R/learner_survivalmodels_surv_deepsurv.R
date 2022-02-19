@@ -122,7 +122,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
         predict,
         self$model,
         newdata = newdata,
-        distr6 = TRUE,
+        distr6 = FALSE,
         type = "all",
         .args = pars
       )

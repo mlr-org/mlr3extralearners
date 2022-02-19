@@ -122,7 +122,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
         predict,
         self$model,
         newdata = newdata,
-        distr6 = TRUE,
+        distr6 = FALSE,
         type = "all",
         .args = pars
       )
