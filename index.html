@@ -114,7 +114,7 @@
 <div class="section level2">
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
-<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for the respective upstream packages and their CRAN status.</p>
+<p>This mlr3 extension contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for the respective upstream packages and their CRAN status.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
@@ -129,7 +129,8 @@
 <span class="co">#&gt; 130:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
 <span class="co">#&gt; 131:           surv.svm mlr3extralearners            survivalsvm</span>
 <span class="co">#&gt; 132:       surv.xgboost      mlr3learners                xgboost</span></code></pre></div>
-<p>mlr3extralearners lives on GitHub and will not be on CRAN. Install with:</p>
+<p><code>mlr3extralearners</code> lives on GitHub and will not be on CRAN. The reason for this is that it contains learners such as <a href="https://lightgbm.readthedocs.io/en/latest/" class="external-link">lightgbm</a> or <a href="https://catboost.ai/" class="external-link">catboost</a>, which are not on CRAN either.</p>
+<p>Install with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></code></pre></div>
 </div>
