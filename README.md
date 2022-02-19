@@ -15,12 +15,11 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 ## What is mlr3extralearners?
 
-`mlr3extralearners` contains all learners from mlr3 that are not in
-`mlr3learners` or the core packages. `mlr3extralearners` contains helper
-functions to find where all the learners, across the mlr3verse, live and
-to install required packages to run these learners. See the interactive
-[learner
-list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
+This mlr3 extension contains all learners from mlr3 that are not in
+`mlr3learners` or the core packages. 
+Besides, it contains helper functions to list all learners from the mlr3verse and
+install their required packages. See the interactive
+[learner list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
 page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 for the respective upstream packages and their CRAN status.
@@ -41,7 +40,11 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #> 132:       surv.xgboost      mlr3learners                xgboost
 ```
 
-mlr3extralearners lives on GitHub and will not be on CRAN. Install with:
+`mlr3extralearners` lives on GitHub and will not be on CRAN. The reason for this is that 
+it contains learners such as [lightgbm](https://lightgbm.readthedocs.io/en/latest/) 
+or [catboost](https://catboost.ai/), which are not on CRAN either. 
+
+Install with:
 
 ``` r
 remotes::install_github("mlr-org/mlr3extralearners")
