@@ -1,0 +1,202 @@
+* using log directory ‘/home/sebi/mlr/mlr3extralearners/check/mlr3extralearners.Rcheck’
+* using R version 4.1.2 (2021-11-01)
+* using platform: x86_64-pc-linux-gnu (64-bit)
+* using session charset: UTF-8
+* checking for file ‘mlr3extralearners/DESCRIPTION’ ... OK
+* this is package ‘mlr3extralearners’ version ‘0.5.25’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘mlr3extralearners’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... WARNING
+Found the following file with non-ASCII characters:
+  bibentries.R
+Portable packages must use only ASCII characters in their R code,
+except perhaps in comments.
+Use \uxxxx escapes for other characters.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... WARNING
+'::' or ':::' imports not declared from:
+  ‘catboost’ ‘jsonlite’
+'loadNamespace' or 'requireNamespace' calls not declared from:
+  ‘curl’ ‘jsonlite’
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+.__LearnerClassifGausspr__initialize: warning in p_uty(default = TRUE,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifGausspr__initialize: warning in p_dbl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerClassifGausspr__initialize: warning in p_uty(default =
+  "automatic", tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerClassifGausspr__initialize: warning in p_dbl(lower = 0,
+  default = 0.001, tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerClassifGausspr__initialize: warning in p_lgl(default = TRUE,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifGausspr__initialize: warning in p_uty(default =
+  na.omit, tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifGausspr__initialize: warning in p_fct(default =
+  "minpair", levels = c("minpair", "pkpd"), tag = "predict"): partial
+  argument match of 'tag' to 'tags'
+.__LearnerClassifKSVM__initialize: warning in p_fct(default =
+  "minpair", levels = c("minpair", "pkpd"), tag = "predict"): partial
+  argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_uty(default = TRUE,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_dbl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_int(lower = 0, tag =
+  c("train", "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_lgl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_uty(default =
+  "automatic", tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_dbl(default = 0.01,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_lgl(default = TRUE,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_int(tag = "train"):
+  partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_int(default = 40, tag
+  = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_dbl(default = 1e-04,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_uty(default = na.omit,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifLSSVM__initialize: warning in p_fct(default =
+  "minpair", levels = c("minpair", "pkpd"), tag = "predict"): partial
+  argument match of 'tag' to 'tags'
+.__LearnerClassifLightGBM__initialize: warning in p_dbl(default = 0,
+  lower = 0, upper = 1, tag = "train"): partial argument match of 'tag'
+  to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_uty(default = TRUE, tag
+  = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_dbl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_uty(default =
+  "automatic", tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerRegrGausspr__initialize: warning in p_dbl(lower = 10^-3,
+  default = 0.001, tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerRegrGausspr__initialize: warning in p_lgl(default = FALSE,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_dbl(lower = 0, default
+  = 0.001, tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_lgl(default = TRUE, tag
+  = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrGausspr__initialize: warning in p_uty(default = na.omit,
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrLightGBM__initialize: warning in p_dbl(default = 0, lower
+  = 0, upper = 1, tag = "train"): partial argument match of 'tag' to
+  'tags'
+.__LearnerRegrRVM__initialize: warning in p_dbl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_int(lower = 0, tag =
+  c("train", "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_lgl(tag = c("train",
+  "kpar")): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_uty(default = "automatic",
+  tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_uty(default = 5, tag =
+  "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_dbl(lower = 10^-3, default
+  = 0.1, tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_lgl(default = FALSE, tag =
+  "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_dbl(lower = 0, default =
+  .Machine$double.eps, tag = "train"): partial argument match of 'tag'
+  to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_dbl(lower = 0, default =
+  0.001, tag = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_lgl(default = TRUE, tag =
+  "train"): partial argument match of 'tag' to 'tags'
+.__LearnerRegrRVM__initialize: warning in p_uty(default = na.omit, tag
+  = "train"): partial argument match of 'tag' to 'tags'
+.__LearnerClassifCatboost__.train: no visible global function
+  definition for ‘packageVersion’
+.__LearnerClassifGausspr__.predict: no visible global function
+  definition for ‘setNames’
+.__LearnerClassifGausspr__.predict: no visible global function
+  definition for ‘getMethod’
+.__LearnerClassifLSSVM__.predict: no visible global function definition
+  for ‘setNames’
+.__LearnerClassifLSSVM__.predict: no visible global function definition
+  for ‘getMethod’
+.__LearnerClassifLightGBM__.train: no visible global function
+  definition for ‘formalArgs’
+.__LearnerRegrCatboost__.train: no visible global function definition
+  for ‘packageVersion’
+.__LearnerRegrGausspr__.predict: no visible global function definition
+  for ‘getMethod’
+.__LearnerRegrLightGBM__.train: no visible global function definition
+  for ‘formalArgs’
+.__LearnerRegrRVM__.predict: no visible global function definition for
+  ‘getMethod’
+predict_flexsurvreg : <anonymous>: no visible global function
+  definition for ‘setNames’
+Undefined global functions or variables:
+  formalArgs getMethod packageVersion setNames
+Consider adding
+  importFrom("methods", "formalArgs", "getMethod")
+  importFrom("stats", "setNames")
+  importFrom("utils", "packageVersion")
+to your NAMESPACE file (and ensure that your DESCRIPTION Imports field
+contains 'methods').
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... WARNING
+'library' or 'require' call not declared from: ‘catboost’
+* checking R/sysdata.rda ... OK
+* checking examples ... OK
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... ERROR
+  Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  ══ Skipped tests ═══════════════════════════════════════════════════════════════
+  • On CRAN (3)
+  • One of torch, numpy, pycox not available for testing. (5)
+  
+  ══ Failed tests ════════════════════════════════════════════════════════════════
+  ── Failure (test_survivalmodels_surv_akritas.R:8:3): autotest ──────────────────
+  `result` is not TRUE
+  
+  `actual` is a list
+  `expected` is a logical vector (TRUE)
+  [score()] learner 'surv.akritas:crank' on task 'sanity' failed: sanity check failed
+  
+  [ FAIL 1 | WARN 0 | SKIP 8 | PASS 2073 ]
+  Error: Test failures
+  Execution halted
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 3 WARNINGs, 1 NOTE

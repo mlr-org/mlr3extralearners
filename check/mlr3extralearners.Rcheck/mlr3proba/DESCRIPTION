@@ -1,0 +1,86 @@
+Package: mlr3proba
+Title: Probabilistic Supervised Learning for 'mlr3'
+Version: 0.4.4
+Authors@R: 
+    c(person(given = "Raphael",
+             family = "Sonabend",
+             role = c("aut", "cre"),
+             email = "raphaelsonabend@gmail.com",
+             comment = c(ORCID = "0000-0001-9225-4654")),
+      person(given = "Franz",
+             family = "Kiraly",
+             role = "aut",
+             email = "f.kiraly@ucl.ac.uk"),
+      person(given = "Michel",
+             family = "Lang",
+             role = "aut",
+             email = "michellang@gmail.com",
+             comment = c(ORCID = "0000-0001-9754-0393")),
+      person(given = "Nurul Ain",
+             family = "Toha",
+             role = "ctb",
+             email = "nurul.toha.15@ucl.ac.uk"),
+      person(given = "Andreas",
+             family = "Bender",
+             role = "ctb",
+             email = "bender.at.R@gmail.com",
+             comment = c(ORCID = "0000-0001-5628-8611")))
+Description: Provides extensions for probabilistic supervised learning for
+    'mlr3'.  This includes extending the regression task to probabilistic
+    and interval regression, adding a survival task, and other specialized
+    models, predictions, and measures.
+License: LGPL-3
+URL: https://mlr3proba.mlr-org.com,
+        https://github.com/mlr-org/mlr3proba
+BugReports: https://github.com/mlr-org/mlr3proba/issues
+Depends: mlr3 (>= 0.13.0), R (>= 3.5.0)
+Imports: checkmate, data.table, distr6 (>= 1.6.6), mlr3misc (>= 0.7.0),
+        paradox (>= 0.1.0), R6, Rcpp (>= 1.0.4), survival
+Suggests: bujar, cubature, ggplot2, knitr, lgr, mlr3pipelines (>=
+        0.3.4), param6 (>= 0.2.4), pracma, rpart, set6 (>= 0.1.7),
+        simsurv, survAUC, testthat
+LinkingTo: Rcpp
+ByteCompile: true
+Encoding: UTF-8
+LazyData: true
+NeedsCompilation: yes
+RoxygenNote: 7.1.2
+Collate: 'LearnerDens.R' 'LearnerDensHistogram.R' 'LearnerDensKDE.R'
+        'LearnerRegrGaussian.R' 'LearnerSurv.R' 'LearnerSurvCoxPH.R'
+        'LearnerSurvKaplan.R' 'LearnerSurvRpart.R' 'MeasureDens.R'
+        'MeasureDensLogloss.R' 'MeasureRegrLogloss.R' 'MeasureSurv.R'
+        'MeasureSurvAUC.R' 'MeasureSurvCalibrationAlpha.R'
+        'MeasureSurvCalibrationBeta.R' 'MeasureSurvChamblessAUC.R'
+        'MeasureSurvCindex.R' 'MeasureSurvDCalibration.R'
+        'MeasureSurvGraf.R' 'MeasureSurvHungAUC.R'
+        'MeasureSurvIntLogloss.R' 'MeasureSurvLogloss.R'
+        'MeasureSurvMAE.R' 'MeasureSurvMSE.R' 'MeasureSurvNagelkR2.R'
+        'MeasureSurvOQuigleyR2.R' 'MeasureSurvRMSE.R'
+        'MeasureSurvSchmid.R' 'MeasureSurvSongAUC.R'
+        'MeasureSurvSongTNR.R' 'MeasureSurvSongTPR.R'
+        'MeasureSurvUnoAUC.R' 'MeasureSurvUnoTNR.R'
+        'MeasureSurvUnoTPR.R' 'MeasureSurvXuR2.R'
+        'PipeOpCrankCompositor.R' 'PipeOpDistrCompositor.R'
+        'PipeOpTransformer.R' 'PipeOpPredTransformer.R'
+        'PipeOpPredRegrSurv.R' 'PipeOpPredSurvRegr.R'
+        'PipeOpProbregrCompositor.R' 'PipeOpSurvAvg.R'
+        'PipeOpTaskRegrSurv.R' 'PipeOpTaskSurvRegr.R'
+        'PipeOpTaskTransformer.R' 'PredictionDataDens.R'
+        'PredictionDataSurv.R' 'PredictionDens.R' 'PredictionSurv.R'
+        'RcppExports.R' 'TaskDens.R' 'TaskDens_X.R'
+        'TaskGeneratorSimdens.R' 'TaskGeneratorSimsurv.R' 'TaskSurv.R'
+        'TaskSurv_X.R' 'as_prediction_dens.R' 'as_prediction_surv.R'
+        'as_task_dens.R' 'as_task_surv.R' 'assertions.R' 'bibentries.R'
+        'cindex.R' 'data.R' 'helpers.R' 'histogram.R'
+        'integrated_scores.R' 'partition.R' 'pecs.R' 'pipelines.R'
+        'plot.R' 'surv_measures.R' 'surv_return.R' 'zzz.R'
+Packaged: 2022-02-15 21:05:58 UTC; rsonaben
+Author: Raphael Sonabend [aut, cre] (<https://orcid.org/0000-0001-9225-4654>),
+  Franz Kiraly [aut],
+  Michel Lang [aut] (<https://orcid.org/0000-0001-9754-0393>),
+  Nurul Ain Toha [ctb],
+  Andreas Bender [ctb] (<https://orcid.org/0000-0001-5628-8611>)
+Maintainer: Raphael Sonabend <raphaelsonabend@gmail.com>
+Repository: CRAN
+Date/Publication: 2022-02-16 10:20:18 UTC
+Built: R 4.1.2; x86_64-pc-linux-gnu; 2022-02-18 14:09:15 UTC; unix

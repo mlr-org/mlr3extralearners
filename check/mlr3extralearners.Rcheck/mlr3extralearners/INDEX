@@ -1,0 +1,184 @@
+create_learner          Create a New Learner
+install_catboost        Install catboost
+install_learners        Install Learner Dependencies
+list_mlr3learners       List Learners in mlr3verse
+lrn                     Syntactic Sugar for Learner Construction
+mlr3extralearners-package
+                        mlr3extralearners: Extra Learners For mlr3
+mlr_learners_classif.AdaBoostM1
+                        Classification AdaBoostM1 Learner
+mlr_learners_classif.C50
+                        Classification C5.0 Learner
+mlr_learners_classif.IBk
+                        Classification IBk Learner
+mlr_learners_classif.J48
+                        Classification J48 Learner
+mlr_learners_classif.JRip
+                        Classification JRip Learner
+mlr_learners_classif.LMT
+                        Classification Logistic Model Trees Learner
+mlr_learners_classif.OneR
+                        Classification OneR Learner
+mlr_learners_classif.PART
+                        Classification PART Learner
+mlr_learners_classif.bart
+                        Classification BART (Bayesian Additive
+                        Regression Trees) Learner
+mlr_learners_classif.catboost
+                        Gradient Boosted Decision Trees Classification
+                        Learner
+mlr_learners_classif.cforest
+                        Classification Conditional Random Forest
+                        Learner
+mlr_learners_classif.ctree
+                        Classification Conditional Inference Tree
+                        Learner
+mlr_learners_classif.earth
+                        Classification MARS (Multivariate Adaptive
+                        Regression Splines) Learner
+mlr_learners_classif.extratrees
+                        Classification ExtraTrees Learner
+mlr_learners_classif.fnn
+                        Classification Fast Nearest Neighbor Search
+                        Learner
+mlr_learners_classif.gam
+                        Classification Generalized Additive Model
+                        Learner
+mlr_learners_classif.gamboost
+                        Boosted Generalized Additive Classification
+                        Learner
+mlr_learners_classif.gausspr
+                        Classifession Gaussian Process Learner
+mlr_learners_classif.gbm
+                        Classification Gradient Boosting Machine
+                        Learner
+mlr_learners_classif.glmboost
+                        Boosted Generalized Linear Classification
+                        Learner
+mlr_learners_classif.ksvm
+                        Classification Kernlab Support Vector Machine
+mlr_learners_classif.liblinear
+                        LiblineaR Classification Learner
+mlr_learners_classif.lightgbm
+                        Classification Light GBM Learner
+mlr_learners_classif.lssvm
+                        Classification Least Squares Support Vector
+                        Machine Learner
+mlr_learners_classif.mob
+                        Classification Model-based Recursive
+                        Partitioning Learner
+mlr_learners_classif.randomForest
+                        Classification Random Forest Learner
+mlr_learners_classif.rfsrc
+                        Classification Random Forest SRC Learner
+mlr_learners_dens.kde_kd
+                        Density Kerdiest Kernel Learner
+mlr_learners_dens.kde_ks
+                        Density KS Kernel Learner
+mlr_learners_dens.locfit
+                        Density Locfit Learner
+mlr_learners_dens.logspline
+                        Density Logspline Learner
+mlr_learners_dens.mixed
+                        Density Mixed Data Kernel Learner
+mlr_learners_dens.nonpar
+                        Density Nonparametric Learner
+mlr_learners_dens.pen   Density Penalized Learner
+mlr_learners_dens.plug
+                        Density Plug-In Kernel Learner
+mlr_learners_dens.spline
+                        Density Smoothing Splines Learner
+mlr_learners_regr.IBk   Regression IBk Learner
+mlr_learners_regr.M5Rules
+                        Regression M5Rules Learner
+mlr_learners_regr.bart
+                        Regression BART (Bayesian Additive Regression
+                        Trees) Learner
+mlr_learners_regr.catboost
+                        Gradient Boosted Decision Trees Regression
+                        Learner
+mlr_learners_regr.cforest
+                        Regression Conditional Random Forest Learner
+mlr_learners_regr.ctree
+                        Regression Conditional Inference Tree Learner
+mlr_learners_regr.cubist
+                        Regression Cubist Learner
+mlr_learners_regr.earth
+                        Regression MARS (Multivariate Adaptive
+                        Regression Splines) Learner
+mlr_learners_regr.extratrees
+                        Regression ExtraTrees Learner
+mlr_learners_regr.fnn   Regression Fast Nearest Neighbor Search Learner
+mlr_learners_regr.gam   Regression Generalized Additive Model Learner
+mlr_learners_regr.gamboost
+                        Boosted Generalized Additive Regression Learner
+mlr_learners_regr.gausspr
+                        Regression Gaussian Process Learner
+mlr_learners_regr.gbm   Regression Gradient Boosting Machine Learner
+mlr_learners_regr.glm   Regression Generalized Linear Model Regression
+                        Learner
+mlr_learners_regr.glmboost
+                        Boosted Generalized Linear Regression Learner
+mlr_learners_regr.ksvm
+                        Regression Kernlab Support Vector Machine
+mlr_learners_regr.liblinear
+                        L2-Regularized Support Vector Regression
+                        Learner
+mlr_learners_regr.lightgbm
+                        Regression Light GBM Learner
+mlr_learners_regr.mars
+                        Regression Mars Learner
+mlr_learners_regr.mob   Regression Model-based Recursive Partitioning
+                        Learner
+mlr_learners_regr.randomForest
+                        Regression Random Forest Learner
+mlr_learners_regr.rfsrc
+                        Regression Random Forest SRC Learner
+mlr_learners_regr.rvm   Regression Relevance Vector Machine Learner
+mlr_learners_surv.akritas
+                        Survival Akritas Estimator Learner
+mlr_learners_surv.blackboost
+                        Gradient Boosting with Regression Trees
+                        Survival Learner
+mlr_learners_surv.cforest
+                        Survival Conditional Random Forest Learner
+mlr_learners_surv.coxboost
+                        Survival Cox Model with Likelihood Based
+                        Boosting Learner
+mlr_learners_surv.coxtime
+                        Survival Cox-Time Learner
+mlr_learners_surv.ctree
+                        Survival Conditional Inference Tree Learner
+mlr_learners_surv.cv_coxboost
+                        Survival Cox Model with Cross-Validation
+                        Likelihood Based Boosting Learner
+mlr_learners_surv.deephit
+                        Survival DeepHit Learner
+mlr_learners_surv.deepsurv
+                        Survival DeepSurv Learner
+mlr_learners_surv.dnnsurv
+                        Survival DNNSurv Learner
+mlr_learners_surv.flexible
+                        Survival Flexible Parametric Spline Learner
+mlr_learners_surv.gamboost
+                        Boosted Generalized Additive Survival Learner
+mlr_learners_surv.gbm   Survival Gradient Boosting Machine Learner
+mlr_learners_surv.glmboost
+                        Boosted Generalized Linear Survival Learner
+mlr_learners_surv.loghaz
+                        Survival Logistic-Hazard Learner
+mlr_learners_surv.mboost
+                        Boosted Generalized Additive Survival Learner
+mlr_learners_surv.nelson
+                        Survival Nelson-Aalen Estimator Learner
+mlr_learners_surv.obliqueRSF
+                        Survival Oblique Random Survival Forest Learner
+mlr_learners_surv.parametric
+                        Survival Fully Parametric Learner
+mlr_learners_surv.pchazard
+                        Survival PC-Hazard Learner
+mlr_learners_surv.penalized
+                        Survival L1 and L2 Penalized Regression Learner
+mlr_learners_surv.rfsrc
+                        Survival Random Forest SRC Learner
+mlr_learners_surv.svm   Survival Support Vector Machine Learner

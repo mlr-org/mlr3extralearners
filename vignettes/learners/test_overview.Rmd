@@ -1,0 +1,144 @@
+---
+title: "Learner Status"
+output: html_document
+---
+
+```{r, echo = FALSE}
+library(mlr3extralearners)
+library(mlr3misc)
+library(data.table)
+library(formattable)
+path = mlr3extralearners:::pkg_root(".")
+
+tbl = list_mlr3learners(
+  select = c("id", "required_packages", "mlr3_package"),
+  filter = list(mlr3_package = "mlr3extralearners")
+)
+
+remove_mlr3 = function(pkgs) {
+  pkgs = pkgs[!grepl("mlr3", pkgs)]
+  return(pkgs)
+}
+
+no_badges = c("CoxBoost", "catboost", "stats", "stats4", "gbm", "partykit")
+
+make_badge = function(pkg) {
+  if (pkg %in% no_badges) {
+    return("")
+  }
+  paste0(sprintf("[![cran checks](https://cranchecks.info/badges/worst/%s)]", pkg),
+    sprintf("(https://cran.r-project.org/web/checks/check_results_%s.html)", pkg))
+}
+
+make_badges = function(pkgs) {
+  mlr3misc::map_chr(pkgs, make_badge)
+}
+
+upstream_pkgs = mlr3misc::map(tbl$required_packages, remove_mlr3)
+
+upstream_status = upstream_pkgs |>
+  mlr3misc::map(make_badges) |>
+  mlr3misc::map_chr(function(x) mlr3misc::str_collapse(x, sep = "<br />"))
+
+upstream_pkgs = upstream_pkgs |>
+  mlr3misc::map(function(x) mlr3misc::str_collapse(x, sep = "<br />")) |>
+  unlist()
+
+mlr3_pkgs = tbl$mlr3_package
+
+# mlr3_status = mlr3_pkgs |>
+#  mlr3misc::map(make_badges)
+
+tbl = tbl[, "id"]
+tbl[["mlr3"]] = mlr3_pkgs
+# tbl[["mlr3_status"]] = mlr3_status
+tbl[["upstream"]] = upstream_pkgs
+tbl[["upstream_status"]] = upstream_status
+
+tbl$author = apply(tbl, 1, function(row) {
+  author = switch(row[[2]],
+    mlr3extralearners = {
+      x = readLines(file.path(path, "man", paste0("mlr_learners_", row[[1]], ".Rd")))
+      x[which(grepl("author", x)) + 1]
+    },
+    mlr3proba = "RaphaelS1",
+    mlr3cluster = "damirpolat",
+    "mllg"
+  )
+  url = sprintf("https://github.com/%s", author)
+  paste0("<a href=\"", url, "\">", author, "</a>")
+})
+tbl = tbl[order(tbl, tolower(id))]
+tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg) {
+  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s.html", pkg, id)
+  paste0("<a href=\"", url, "\">", id, "</a>")
+}) |>
+  unlist()
+
+# now we obtain the individual learner status list.files(spritnf("%s/check/mlr3extralearners.Rcheck/tests"))
+files = list.files(sprintf("%s/check/mlr3extralearners.Rcheck/tests", path))
+file = files[startsWith(files, "testthat.Rout")]
+check_file = readLines(sprintf("%s/check/mlr3extralearners.Rcheck/tests/%s", path, file))
+test_files = list.files(sprintf("%s/tests/testthat", path))
+test_files = test_files[grepl(pattern = "test_", fixed = TRUE, x = test_files)]
+
+test_files = list(
+  param = sort(test_files[startsWith(test_files, "test_paramtest_")]),
+  learner = test_files[!startsWith(test_files, "test_paramtest_")]
+)
+
+query_failure = function(test) {
+  line_failed = grepl(
+    pattern = sprintf("Failure (%s", test),
+    x = check_file,
+    fixed = TRUE
+  )
+  failed = sum(line_failed) > 0
+  return(failed)
+}
+
+keys = map_chr(
+  test_files[["learner"]],
+  function(x) {
+    parts = strsplit(x, split = "_")[[1]][3:4]
+    paste(parts[[1]], strsplit(parts[[2]], split = "\\.")[[1]][1], sep = ".")
+  }
+)
+
+status = map(
+  test_files,
+  function(x) !map_lgl(x, query_failure)
+)
+
+status_table = data.table(
+  learner_status = status[["learner"]],
+  param_status = status[["param"]]
+)
+status_table[["id"]] = keys
+status_table = status_table[order(status_table, tolower(id))]
+status_table[["id"]] = NULL
+tbl = tbl[order(status_table, tolower(id))]
+tbl = cbind(status_table, tbl)
+tbl = tbl[, c("id", "learner_status", "param_status", "upstream", "author")]
+colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", "Author")
+
+# edge cases
+# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
+# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3cluster", "mlr3"] = "mlr3cluster"
+# tbl = tbl[order(tbl, tolower(mlr3), id)]
+tbl[["upstream_status"]] = NULL
+format_table(
+  tbl, 
+  list(
+    "Learner Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))), 
+    "Parameter Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing")))
+  )
+)
+
+# knitr::kable(tbl, "html", escape = FALSE)
+```
+

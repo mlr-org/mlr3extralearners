@@ -1,0 +1,8 @@
+install_learners("regr.ctree")
+
+test_that("autotest", {
+  learner = LearnerRegrCTree$new()
+  expect_learner(learner)
+  result = run_autotest(learner)
+  expect_true(result, info = result$error)
+})
