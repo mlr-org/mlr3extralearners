@@ -87,7 +87,7 @@ Suggests:
 Remotes:
     binderh/CoxBoost,
     RaphaelS1/survivalmodels,
-    mlr-org/mlr3proba#252
+    mlr-org/mlr3proba
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
