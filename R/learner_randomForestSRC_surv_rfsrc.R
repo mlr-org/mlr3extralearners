@@ -160,6 +160,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       pars_predict = self$param_set$get_values(tags = "predict")
       pars_distr = self$param_set$get_values(tags = "distr")
       pars_predict = pars_predict[names(pars_predict) %nin% names(pars_distr)]
+      pars_predict$var.used = "FALSE"
       cores = pars_predict$cores %??% 1L # additionaly implemented by author
 
       p = mlr3misc::invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
