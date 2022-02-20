@@ -128,11 +128,6 @@ tbl = cbind(status_table, tbl)
 tbl = tbl[, c("id", "learner_status", "param_status", "upstream", "upstream_status", "author")]
 colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", "Upstream Status", "Author")
 
-# edge cases
-# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
-# tbl[grepl("debug|featureless", id) & mlr3 == "mlr3cluster", "mlr3"] = "mlr3cluster"
-# tbl = tbl[order(tbl, tolower(mlr3), id)]
-tbl[["upstream_status"]] = NULL
 format_table(
   tbl,
   list(
