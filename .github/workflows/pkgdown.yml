@@ -24,8 +24,6 @@ jobs:
         branch: master
         # Optional, defaults to all types
         event: push
-        # Optional, will use specified workflow run
-        run_number: 34
         # Optional, uploaded artifact name,
         # will download all artifacts if not specified
         # and extract them in respective subdirectories
