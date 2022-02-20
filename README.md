@@ -15,14 +15,16 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 ## What is mlr3extralearners?
 
-This mlr3 extension contains all learners from mlr3 that are not in
+This mlr3 extension contains all mlr3 learners that are not in
 `mlr3learners` or the core packages. 
 Besides, it contains helper functions to list all learners from the mlr3verse and
 install their required packages. See the interactive
 [learner list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
-for the full list of learners in the mlr3verse and the [learner status
-page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-for the respective upstream packages and their CRAN status.
+for the full list of learners in the mlr3verse. Due to large amount of dependencies, some 
+learners in this package might occasionally be broken due to failures in the upstream packages, 
+[this table](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) gives an overview
+of the current status of all extralearners.
+
 
 ``` r
 list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
@@ -64,9 +66,6 @@ lrn("regr.gbm")
 
 ``` r
 install_learners("regr.gbm")
-```
-
-``` r
 lrn("regr.gbm")
 #> <LearnerRegrGBM:regr.gbm>
 #> * Model: -
