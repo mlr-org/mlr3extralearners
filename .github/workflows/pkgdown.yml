@@ -18,7 +18,7 @@ jobs:
           # Required, workflow file name or ID
           workflow: RCMD Check
           # Optional, will use the branch
-          branch: master
+          branch: main
 
       - uses: r-lib/actions/setup-r@master
 
