@@ -1,12 +1,6 @@
 ---
 title: Learner Status
-author: "Kun Ren"
-date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Formattable data frame}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: html_document
 ---
 
 ```{r, echo = FALSE}
@@ -81,7 +75,7 @@ tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg)
 }) |>
   unlist()
 
-artifact_path = "Linux-rrelease-results/mlr3extralearners.Rcheck/tests"
+artifact_path = "/Linux-rrelease-results/mlr3extralearners.Rcheck/tests"
 
 # now we obtain the individual learner status list.files(spritnf("%s/check/mlr3extralearners.Rcheck/tests"))
 files = list.files(artifact_path)
