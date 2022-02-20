@@ -75,7 +75,7 @@ tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg)
 }) |>
   unlist()
 
-artifact_path = "/Linux-rrelease-results/mlr3extralearners.Rcheck/tests"
+artifact_path = "/Users/runner/work/mlr3extralearners/mlr3extralearners/Linux-rrelease-results/mlr3extralearners.Rcheck/tests"
 
 # now we obtain the individual learner status list.files(spritnf("%s/check/mlr3extralearners.Rcheck/tests"))
 files = list.files(artifact_path)
