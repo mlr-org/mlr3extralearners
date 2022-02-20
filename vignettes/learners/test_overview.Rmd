@@ -75,10 +75,12 @@ tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg)
 }) |>
   unlist()
 
+artifact_path = "Linux-rrelease-results/mlr3extralearners.Rcheck/tests"
+
 # now we obtain the individual learner status list.files(spritnf("%s/check/mlr3extralearners.Rcheck/tests"))
-files = list.files(sprintf("%s/check/mlr3extralearners.Rcheck/tests", path))
+files = list.files(artifact_path)
 file = files[startsWith(files, "testthat.Rout")]
-check_file = readLines(sprintf("%s/check/mlr3extralearners.Rcheck/tests/%s", path, file))
+check_file = readLines(sprintf("%s/%s", artifact_path, file))
 test_files = list.files(sprintf("%s/tests/testthat", path))
 test_files = test_files[grepl(pattern = "test_", fixed = TRUE, x = test_files)]
 
@@ -128,11 +130,11 @@ colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", 
 # tbl = tbl[order(tbl, tolower(mlr3), id)]
 tbl[["upstream_status"]] = NULL
 format_table(
-  tbl, 
+  tbl,
   list(
     "Learner Test" = formatter("span",
       style = x ~ style(color = ifelse(x, "green", "red")),
-      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))), 
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))),
     "Parameter Test" = formatter("span",
       style = x ~ style(color = ifelse(x, "green", "red")),
       x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing")))
