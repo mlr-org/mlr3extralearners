@@ -121,8 +121,8 @@ status_table = status_table[order(status_table, tolower(id))]
 status_table[["id"]] = NULL
 tbl = tbl[order(status_table, tolower(id))]
 tbl = cbind(status_table, tbl)
-tbl = tbl[, c("id", "learner_status", "param_status", "upstream", "author")]
-colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", "Author")
+tbl = tbl[, c("id", "learner_status", "param_status", "upstream", "upstream_status", "author")]
+colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", "Upstream Status", "Author")
 
 # edge cases
 # tbl[grepl("debug|featureless", id) & mlr3 == "mlr3", "mlr3"] = "mlr3"
@@ -141,7 +141,5 @@ format_table(
   ),
   format = "html"
 )
-
-# knitr::kable(tbl, "html", escape = FALSE)
 ```
 
