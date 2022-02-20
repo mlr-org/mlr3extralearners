@@ -20,7 +20,7 @@ jobs:
           workflow: rcmdcheck.yml
           run_id: 1870829721
       - run: |
-          ls        
+          ls ~
 
       - uses: r-lib/actions/setup-r@master
 
