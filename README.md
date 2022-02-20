@@ -42,9 +42,8 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #> 132:       surv.xgboost      mlr3learners                xgboost
 ```
 
-`mlr3extralearners` lives on GitHub and will not be on CRAN. This enables us to include learners such 
-as [lightgbm](https://lightgbm.readthedocs.io/en/latest/) 
-or [catboost](https://catboost.ai/) which are not on CRAN either. 
+`mlr3extralearners` lives on GitHub and will not be on CRAN. This enables us to include packages such 
+as [catboost](https://catboost.ai/), which is not on CRAN either. 
 
 Install with:
 
