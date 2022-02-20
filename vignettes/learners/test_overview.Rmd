@@ -3,6 +3,10 @@ title: Learner Status
 output: html_document
 ---
 
+The table below gives an overview of the current status of all extralearners. 
+The *Parameter Test* indicates whether the parameters of the algorithm are covered. 
+The *Learner Test* shows whether the learner is working. 
+
 ```{r, echo = FALSE}
 library(mlr3extralearners)
 library(mlr3misc)
