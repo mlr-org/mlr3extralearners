@@ -16,9 +16,7 @@ jobs:
         uses: dawidd6/action-download-artifact@v2
         with:
           # Required, workflow file name or ID
-          workflow: RCMD Check
-          # Optional, will use the branch
-          branch: main
+          workflow: rcmdcheck.yml
 
       - uses: r-lib/actions/setup-r@master
 
