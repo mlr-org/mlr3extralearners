@@ -24,7 +24,7 @@ remove_mlr3 = function(pkgs) {
   return(pkgs)
 }
 
-no_badges = c("CoxBoost", "catboost", "stats", "stats4", "gbm", "partykit")
+no_badges = c("CoxBoost", "catboost", "stats", "stats4")
 
 make_badge = function(pkg) {
   if (pkg %in% no_badges) {
