@@ -19,6 +19,8 @@ jobs:
           # Required, workflow file name or ID
           workflow: rcmdcheck.yml
           run_id: 1870829721
+      - run: |
+          ls        
 
       - uses: r-lib/actions/setup-r@master
 
