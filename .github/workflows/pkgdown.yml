@@ -1,7 +1,7 @@
 on:
   push:
     branches: main
-  workflow_dispatch: 
+  workflow_dispatch:
 
 name: pkgdown
 
@@ -18,9 +18,10 @@ jobs:
         with:
           # Required, workflow file name or ID
           workflow: rcmdcheck.yml
-          run_id: 1870829721
-      - run: |
-          ls Linux-rrelease-results/mlr3extralearners.Rcheck
+          workflow_conclusion: completed
+          branch: main
+          #check_artifacts: true
+          #run_id: 1870829721
 
       - uses: r-lib/actions/setup-r@master
 
