@@ -129,19 +129,19 @@ colnames(tbl) = c("Key", "Learner Test", "Parameter Test", "Upstream Packages", 
 # tbl[grepl("debug|featureless", id) & mlr3 == "mlr3cluster", "mlr3"] = "mlr3cluster"
 # tbl = tbl[order(tbl, tolower(mlr3), id)]
 tbl[["upstream_status"]] = NULL
-# format_table(
-#   tbl,
-#   list(
-#     "Learner Test" = formatter("span",
-#       style = x ~ style(color = ifelse(x, "green", "red")),
-#       x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))),
-#     "Parameter Test" = formatter("span",
-#       style = x ~ style(color = ifelse(x, "green", "red")),
-#       x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing")))
-#   ),
-#   format = "html"
-# )
+format_table(
+  tbl,
+  list(
+    "Learner Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))),
+    "Parameter Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing")))
+  ),
+  format = "html"
+)
 
-knitr::kable(tbl, "html", escape = FALSE)
+# knitr::kable(tbl, "html", escape = FALSE)
 ```
 
