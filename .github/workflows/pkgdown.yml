@@ -17,8 +17,7 @@ jobs:
         with:
           # Required, workflow file name or ID
           workflow: rcmdcheck.yml
-          # Optional, will use the branch
-          branch: master
+          run_id: 1870829721
 
       - uses: r-lib/actions/setup-r@master
 
