@@ -17,7 +17,7 @@ jobs:
         # Optional, GitHub token, a Personal Access Token with `public_repo` scope if needed
         # Required, if artifact is from a different repo
         # Required, if repo is private a Personal Access Token with `repo` scope is needed
-        github_token: ${{secrets.GITHUB_TOKEN}}
+        # github_token: ${{secrets.GITHUB_TOKEN}}
         # Required, workflow file name or ID
         workflow: Linux-rrelease-results
         # Optional, will use the branch
