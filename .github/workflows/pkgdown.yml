@@ -1,6 +1,6 @@
 on:
   push:
-    branches: vignette
+    branches: main
   workflow_dispatch:
 
 name: pkgdown
@@ -18,7 +18,8 @@ jobs:
         with:
           # Required, workflow file name or ID
           workflow: rcmdcheck.yml
-          run_id: 1870829721
+          #check_artifacts: true
+          #run_id: 1870829721
 
       - uses: r-lib/actions/setup-r@master
 
