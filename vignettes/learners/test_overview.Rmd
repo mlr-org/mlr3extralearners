@@ -1,6 +1,12 @@
 ---
 title: Learner Status
-output: html_document
+author: "Kun Ren"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Formattable data frame}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, echo = FALSE}
