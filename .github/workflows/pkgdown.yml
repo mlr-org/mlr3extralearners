@@ -20,7 +20,8 @@ jobs:
           workflow: rcmdcheck.yml
           run_id: 1870829721
       - run: |
-          ls Linux-rrelease-results/mlr3extralearners.Rcheck
+          pwd
+
 
 
       - uses: r-lib/actions/setup-r@master
