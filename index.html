@@ -114,7 +114,7 @@
 <div class="section level2">
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
-<p>This mlr3 extension contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for the respective upstream packages and their CRAN status.</p>
+<p>This mlr3 extension contains all mlr3 learners that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse. Due to large amount of dependencies, some learners in this package might occasionally be broken due to failures in the upstream packages, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html">this table</a> gives an overview of the current status of all extralearners.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
@@ -142,9 +142,8 @@
 <code class="sourceCode R"><span class="fu"><a href="reference/lrn.html">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
 <span class="co">#&gt; Error: Required packages not installed, please run `install_learners("regr.gbm")`.</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/lrn.html">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
+<span class="fu"><a href="reference/lrn.html">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
 <span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;</span>
 <span class="co">#&gt; * Model: -</span>
 <span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span>
@@ -157,7 +156,7 @@
 <h2 id="extending-mlr3extralearners">Extending mlr3extralearners<a class="anchor" aria-label="anchor" href="#extending-mlr3extralearners"></a>
 </h2>
 <p>New learners can be created with the <code>create_learner</code> function. This assumes you have a local copy of <code>mlr3extralearners</code>. This function will automatically create the learner, learner tests, parameter tests and update the DESCRIPTION if required. Once all tests are passing locally, open a <a href="https://github.com/mlr-org/mlr3extralearners/pulls" class="external-link">pull request</a> with the “New Learner” template. More detailed instructions can be found in the <a href="https://mlr3book.mlr-org.com/extending.html" class="external-link">mlr3 book</a>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3proba.mlr-org.com" class="external-link">mlr3proba</a></span><span class="op">)</span>
 <span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span>
   classname <span class="op">=</span> <span class="st">"Locfit"</span>,
