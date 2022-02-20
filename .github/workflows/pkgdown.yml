@@ -19,7 +19,7 @@ jobs:
         # Required, if repo is private a Personal Access Token with `repo` scope is needed
         # github_token: ${{secrets.GITHUB_TOKEN}}
         # Required, workflow file name or ID
-        workflow: Linux-rrelease-results
+        workflow: R CMD Check (ubuntu-20.04 (release))
         # Optional, will use the branch
         branch: master
         # Optional, defaults to all types
