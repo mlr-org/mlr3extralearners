@@ -1,7 +1,7 @@
 on:
   push:
-    branches: main
-  workflow_dispatch: 
+    branches: vignette
+  workflow_dispatch:
 
 name: pkgdown
 
@@ -21,6 +21,9 @@ jobs:
           run_id: 1870829721
       - run: |
           ls Linux-rrelease-results/mlr3extralearners.Rcheck
+
+      - run: |
+          Rscript test_overview.R
 
       - uses: r-lib/actions/setup-r@master
 
