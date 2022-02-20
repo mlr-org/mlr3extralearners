@@ -19,10 +19,6 @@ jobs:
           # Required, workflow file name or ID
           workflow: rcmdcheck.yml
           run_id: 1870829721
-      - run: |
-          pwd
-
-
 
       - uses: r-lib/actions/setup-r@master
 
@@ -51,9 +47,6 @@ jobs:
 
       - name: Install package
         run: R CMD INSTALL .
-
-      - run: |
-          Rscript test_overview.R
 
       - name: Deploy package
         run: |
