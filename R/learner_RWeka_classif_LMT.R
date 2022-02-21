@@ -70,7 +70,7 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
 
   private = list(
     .train = function(task) {
-      params = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(RWeka::LMT)
       arg_names = setdiff(names(params), ctrl_arg_names)
       ctrl = params[which(names(params) %in% ctrl_arg_names)]

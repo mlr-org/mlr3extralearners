@@ -80,7 +80,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
 
   private = list(
     .train = function(task) {
-      params = self$param_set$get_values(tags = "control")
+      params = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(RWeka::J48)
       arg_names = setdiff(names(params), ctrl_arg_names)
       ctrl = params[which(names(params) %in% ctrl_arg_names)]
