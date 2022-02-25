@@ -70,7 +70,6 @@ Suggests:
     pracma,
     pseudo,
     randomForest,
-    randomForestSRC,
     remotes,
     reticulate (>= 1.16),
     RWeka,
@@ -87,7 +86,8 @@ Suggests:
 Remotes:
     binderh/CoxBoost,
     RaphaelS1/survivalmodels,
-    mlr-org/mlr3proba
+    mlr-org/mlr3proba,
+    kogalur/randomForestSRC/src/main/resources/cran
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
