@@ -70,6 +70,7 @@ Suggests:
     pracma,
     pseudo,
     randomForest,
+    randomForestSRC,
     remotes,
     reticulate (>= 1.16),
     RWeka,
