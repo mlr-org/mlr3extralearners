@@ -26,7 +26,7 @@ lrn("classif.lssvm")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{numeric}, \dQuote{integer}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{kernlab}
 }
 }

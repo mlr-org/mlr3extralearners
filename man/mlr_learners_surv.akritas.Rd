@@ -20,7 +20,7 @@ lrn("surv.akritas")
 \itemize{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{character}, \dQuote{numeric}, \dQuote{factor}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
 }
 }

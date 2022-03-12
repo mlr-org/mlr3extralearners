@@ -2,13 +2,19 @@
 #' @import paradox
 #' @import mlr3misc
 #' @importFrom R6 R6Class
-#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr
+#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns
 #' @importFrom stats predict na.omit
 #' @importFrom data.table :=
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages",
   ".SD"))
+
+#' @export
+mlr3::lrn
+
+#' @export
+mlr3::lrns
 
 # nocov start
 register_mlr3 = function(libname, pkgname) {

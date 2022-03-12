@@ -23,35 +23,6 @@ pkg_root = function(path = ".") {
   }
 }
 
-#' @title Syntactic Sugar for Learner Construction
-#' @description Overloads [mlr3::lrn] to automatically detect if required packages are installed.
-#' @param .key `(character(1))` \cr Key passed to [mlr_learners][mlr3::mlr_learners] to retrieve
-#' the learner.
-#' @param ... `ANY` \cr Passed to [mlr3::lrn]
-#' @export
-lrn = function(.key, ...) {
-  # FIXME - currently just discards .key if not in dictionary
-  pkgs = suppressWarnings(mlr3::lrn(.key))$packages
-  tryCatch(mlr3misc::require_namespaces(pkgs),
-    packageNotFoundError = function(e) {
-      mlr3misc::stopf(
-        "Required packages not installed, please run `install_learners('%s')`",
-        .key
-      ) # nolint
-    }
-  )
-
-  mlr3misc::dictionary_sugar_get(mlr_learners, .key, ...)
-}
-
-#' @rdname lrn
-#' @param .keys `(character())` \cr Keys passed to [mlr_learners][mlr3::mlr_learners] to retrieve
-#' the learners.
-#' @param ... `ANY` \cr Passed to [mlr3::lrns]
-#' @export
-lrns = function(.keys, ...) {
-  lapply(.keys, lrn, ...)
-}
 
 pprob_to_matrix = function(pp, task) {
   y = matrix(c(pp, 1 - pp), ncol = 2L, nrow = length(pp))
@@ -125,11 +96,3 @@ weka_control_args = function(f) {
   return(exclude)
 }
 
-# Get the RWeka control arguments for function f and translate them into mlr3 style
-weka_control_args = function(f) {
-  arg_desc = RWeka::WOW(f)
-  arg_names = arg_desc$Name
-  exclude = format_rweka(arg_names)
-  exclude = unique(exclude)
-  return(exclude)
-}

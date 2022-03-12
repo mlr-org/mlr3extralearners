@@ -23,7 +23,7 @@ lrn("regr.earth")
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}, \dQuote{se}
-\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{integer}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{earth}
 }
 }
