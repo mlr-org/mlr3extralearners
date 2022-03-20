@@ -87,8 +87,8 @@
 
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
-    <p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the
-<a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated
+    <p>This Learner can be instantiated via the
+<a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated
 sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p><div class="sourceCode"><pre><code><span class="va">mlr_learners</span><span class="op">$</span><span class="fu">get</span><span class="op">(</span><span class="st">"dens.kde_ks"</span><span class="op">)</span>
 <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"dens.kde_ks"</span><span class="op">)</span></code></pre></div>
 
@@ -116,7 +116,7 @@ sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html"
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -185,17 +185,6 @@ sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html"
 <span class="r-in">  <span class="co"># available parameters:</span></span>
 <span class="r-in">  <span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerDensKDEks:dens.kde_ks&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, ks</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Type: pdf</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature types: integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "h"             "H"             "gridsize"      "gridtype"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "xmin"          "xmax"          "supp"          "binned"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "bgridsize"     "positive"      "adj.positive"  "w"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "compute.cont"  "approx.cont"   "unit.interval" "verbose"      </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
