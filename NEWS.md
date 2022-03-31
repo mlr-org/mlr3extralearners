@@ -1,3 +1,23 @@
+# mlr3extralearners 0.5.30
+
+* Revert to using mlr3proba and survivalmodels CRAN version
+
+# mlr3extralearners 0.5.29
+
+* Change in vignette
+
+# mlr3extralearners 0.5.28
+
+* update randomForestSRC
+
+# mlr3extralearners 0.5.27
+
+* Update learner status page
+
+# mlr3extralearners 0.5.26
+
+* Fixed survivalmodel learners
+
 # mlr3extralearners 0.5.25
 
 * Introduce parameter `early_stopping_split` for lightgbm learners

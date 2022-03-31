@@ -1,7 +1,7 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.29
-Authors@R:c(
+Version: 0.5.30
+Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
     person("Patrick", "Schratz", , "patrick.schratz@gmail.com", role = "aut",
@@ -40,8 +40,8 @@ Suggests:
     earth,
     extraTrees,
     flexsurv,
-    formattable,
     FNN,
+    formattable,
     gbm,
     gss,
     keras (>= 2.3.0),
@@ -57,6 +57,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
+    mlr3proba,
     mlr3proba (>= 0.4.4.9000),
     mvtnorm,
     nnet,
@@ -79,15 +80,14 @@ Suggests:
     sm,
     stats,
     survival,
+    survivalmodels,
     survivalmodels (>= 0.1.11.9000),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
     usethis
 Remotes:
-    binderh/CoxBoost,
-    RaphaelS1/survivalmodels,
-    mlr-org/mlr3proba
+    binderh/CoxBoost
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
