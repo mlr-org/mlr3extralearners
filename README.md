@@ -1,9 +1,8 @@
 
 # mlr3extralearners
 
-[Package website](https://mlr3extralearners.mlr-org.com/)
-
-Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
+[Package website](https://mlr3extralearners.mlr-org.com/) |
+Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**  
 
 <!-- badges: start -->
 
