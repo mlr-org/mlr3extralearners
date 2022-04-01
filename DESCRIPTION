@@ -57,7 +57,6 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba,
     mlr3proba (>= 0.4.7),
     mvtnorm,
     nnet,
