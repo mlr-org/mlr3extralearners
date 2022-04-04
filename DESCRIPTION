@@ -86,8 +86,11 @@ Suggests:
     usethis
 Remotes:
     binderh/CoxBoost
-    RaphaelS1/survivalmodels
-    mlr-org/mlr3proba
+    xoopR/param6, 
+    alan-turing-institute/distr6, 
+    RaphaelS1/survivalmodels, 
+    mlr-org/mlr3proba, 
+    xoopR/set6
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
