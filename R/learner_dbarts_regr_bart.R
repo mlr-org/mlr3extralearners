@@ -55,7 +55,8 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         keepcall = p_lgl(default = TRUE, tags = "train"),
         sampleronly = p_lgl(default = FALSE, tags = "train"),
         seed = p_int(default = NA_integer_, tags = "train", special_vals = list(NA_integer_)),
-        proposalprobs = p_uty(default = NULL, tags = "train")
+        proposalprobs = p_uty(default = NULL, tags = "train"),
+        splitprobs = p_uty(default = NULL, tags = "train")
       )
 
       ps$values = list(keeptrees = TRUE)
