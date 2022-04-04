@@ -12,7 +12,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
-NOTE: A failing RCMD check means usually that one of the many upstream packages or learners is failing, but that everything else is still working. Consult the [learner status table](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) for a more finegrained overview about the learners' current status.
+**NOTE** A failing RCMD check means usually that one of the many upstream packages or learners is failing, but that everything else is still working. Consult the [learner status table](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) for a more finegrained overview about the learners' current status.
 
 ## What is mlr3extralearners?
 
