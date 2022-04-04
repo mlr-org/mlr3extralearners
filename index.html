@@ -110,10 +110,11 @@
 <p><a href="https://mlr3extralearners.mlr-org.com/">Package website</a> | Extra Learners for <strong><a href="https://github.com/mlr-org/mlr3/" class="external-link">mlr3</a></strong></p>
 <!-- badges: start -->
 
+<p><strong>NOTE</strong> A failing RCMD check means usually that one of the many suggested packages is causing problems, but that everything else is still working. Consult the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html">learner status table</a> for a more finegrained overview about the learners’ current status.</p>
 <div class="section level2">
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
-<p>This mlr3 extension contains all mlr3 learners that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse. Due to large amount of dependencies, some learners in this package might occasionally be broken due to failures in the upstream packages, <a href="https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html">this table</a> gives an overview of the current status of all extralearners.</p>
+<p>This mlr3 extension contains all mlr3 learners that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt;                      id      mlr3_package      required_packages</span>
@@ -139,7 +140,7 @@
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
-<span class="co">#&gt; Error: Required packages not installed, please run `install_learners("regr.gbm")`.</span></code></pre></div>
+<span class="co">#&gt; Package 'gbm' required but not installed for Learner 'regr.gbm'</span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
 <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
@@ -201,7 +202,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml" class="external-link"><img src="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg" alt="RCMD Check"></a></li>
+<li><a href="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmd-check.yml" class="external-link"><img src="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmd-check.yml/badge.svg" alt="RCMD Check"></a></li>
 <li><a href="https://stackoverflow.com/questions/tagged/mlr3" class="external-link"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners" class="external-link"><img src="https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge" alt="CodeFactor"></a></li>
 <li><a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/" class="external-link"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a></li>
