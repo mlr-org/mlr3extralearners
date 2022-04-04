@@ -12,6 +12,8 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
+NOTE: A failing RCMD check means usually that one of the many upstream packages or learners is failing, but that everything else is still working. Consult the [learner status table](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) for a more finegrained information about the learner's current status.
+
 ## What is mlr3extralearners?
 
 This mlr3 extension contains all mlr3 learners that are not in
@@ -19,11 +21,7 @@ This mlr3 extension contains all mlr3 learners that are not in
 Besides, it contains helper functions to list all learners from the mlr3verse and
 install their required packages. See the interactive
 [learner list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
-for the full list of learners in the mlr3verse. Due to large amount of dependencies, some 
-learners in this package might occasionally be broken due to failures in the upstream packages, 
-[this table](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) gives an overview
-of the current status of all extralearners.
-
+for the full list of learners in the mlr3verse. 
 
 ``` r
 list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
