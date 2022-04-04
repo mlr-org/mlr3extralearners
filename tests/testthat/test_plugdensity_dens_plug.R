@@ -1,4 +1,3 @@
-# FIXME: For some reason these tests were commented out?
 install_learners("dens.plug")
 load_tests("dens.plug")
 

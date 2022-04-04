@@ -85,11 +85,11 @@ Suggests:
     testthat,
     usethis
 Remotes:
-    binderh/CoxBoost
-    xoopR/param6, 
-    alan-turing-institute/distr6, 
-    RaphaelS1/survivalmodels, 
-    mlr-org/mlr3proba, 
+    binderh/CoxBoost,
+    xoopR/param6,
+    alan-turing-institute/distr6,
+    RaphaelS1/survivalmodels,
+    mlr-org/mlr3proba,
     xoopR/set6
 Config/testthat/edition: 3
 Encoding: UTF-8

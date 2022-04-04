@@ -1,4 +1,3 @@
-library(mlr3extralearners)
 install_learners("regr.glm")
 
 test_that("autotest", {
