@@ -5,7 +5,7 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch:
 
-name: RCMD Check
+name: Complete Test 
 
 jobs:
   R-CMD-check:
