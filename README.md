@@ -59,7 +59,7 @@ dependencies.
 
 ``` r
 lrn("regr.gbm")
-#> Error: Required packages not installed, please run `install_learners("regr.gbm")`.
+#> Package 'gbm' required but not installed for Learner 'regr.gbm'
 ```
 
 ``` r
