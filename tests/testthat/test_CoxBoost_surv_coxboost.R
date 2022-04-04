@@ -1,5 +1,3 @@
-remotes::install_github("binderh/CoxBoost")
-install.packages(c("mlr3proba", "pracma"), repos = "https://cloud.r-project.org")
 load_tests("surv.coxboost")
 
 test_that("autotest surv.coxboost", {

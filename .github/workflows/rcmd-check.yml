@@ -5,7 +5,7 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch:
 
-name: RCMD Check 
+name: RCMD Check
 
 jobs:
   R-CMD-check:
@@ -83,7 +83,7 @@ jobs:
           )
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
         shell: Rscript {0}
-        
+
       - name: Install Python
         run: |
           pak::pkg_install('rstudio/reticulate')
