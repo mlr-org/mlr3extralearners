@@ -5,13 +5,13 @@ on:
     - cron: "0 4 * * *"
   workflow_dispatch:
 
-name: Complete Test 
+name: RCMD Check 
 
 jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: COMPLETE TEST (${{ matrix.config.os }} (${{ matrix.config.r }}))
+    name: RCMD Check (${{ matrix.config.os }} (${{ matrix.config.r }}))
 
     strategy:
       fail-fast: false
