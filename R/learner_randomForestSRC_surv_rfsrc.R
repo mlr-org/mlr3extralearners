@@ -89,7 +89,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
           tags = "predict"),
         ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
         estimator = p_fct(default = "nelson", levels = c("nelson", "kaplan"),
-          tags = c("predict", "distr")),
+          tags = "predict"),
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads"))
       )
 
@@ -154,12 +154,11 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     },
 
     .predict = function(task) {
-
       newdata = task$data(cols = task$feature_names)
-
       pars_predict = self$param_set$get_values(tags = "predict")
-      pars_distr = self$param_set$get_values(tags = "distr")
-      pars_predict = pars_predict[names(pars_predict) %nin% names(pars_distr)]
+      # default estimator is nelson, hence nelson selected if NULL
+      estimator = pars_predict$estimator %??% "nelson"
+      pars_predict$estimator = NULL
       pars_predict$var.used = "FALSE"
       cores = pars_predict$cores %??% 1L # additionaly implemented by author
 
@@ -170,8 +169,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # don't give equivalent results one must be chosen and the relevant functions are transformed
       # as required.
 
-      # default estimator is nelson, hence nelson selected if NULL
-      estimator = if (is.null(pars_predict$estimator)) "nelson" else pars_predict$estimator
 
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 

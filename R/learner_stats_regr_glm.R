@@ -50,18 +50,16 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
           levels = c(
             "logit", "probit", "cauchit", "cloglog", "identity",
             "log", "sqrt", "1/mu^2", "inverse"),
-          tags = c("train", "family")),
-        epsilon = p_dbl(default = 1e-8, tags = c("train", "control")),
-        maxit = p_dbl(default = 25, tags = c("train", "control")),
-        trace = p_lgl(default = FALSE, tags = c("train", "control")),
+          tags = "train"),
+        epsilon = p_dbl(default = 1e-8, tags = "train"),
+        maxit = p_dbl(default = 25, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
         dispersion = p_uty(default = NULL, tags = "predict"),
         type = p_fct(default = "link", levels = c("response", "link", "terms"),
           tags = "predict")
       )
 
-      ps$values = mlr3misc::insert_named(ps$values, list(
-        family = "gaussian",
-        type = "response"))
+      ps$values = list(family = "gaussian", type = "response")
 
       super$initialize(
         id = "regr.glm",
@@ -78,26 +76,22 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
   private = list(
     .train = function(task) {
       # get parameters for training
-
       pars = self$param_set$get_values(tags = "train")
-      pars = mlr3misc::remove_named(pars, "link")
+      family_args = pars[names(pars) == "link"]
+      pars$link = NULL
       if ("weights" %in% task$properties) {
-        pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
+        pars$weight = task$weights$weight
       }
       # add family to parameters
-      fam = mlr3misc::invoke(get(pars$family), .args = self$param_set$get_values(tags = "family"))
-      pars = mlr3misc::insert_named(pars, list(family = fam))
+      family_fn = getFromNamespace(pars$family, ns = "stats")
+      pars$family = invoke(family_fn, .args = famil_args)
+
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
-
       formula = task$formula()
       data = task$data()
 
-      # use the mlr3misc::invoke function (it's similar to do.call())
-      mlr3misc::invoke(stats::glm,
-        formula = formula,
-        data = data,
-        .args = pars)
+      mlr3misc::invoke(stats::glm, formula = formula, data = data, .args = pars)
     },
 
     .predict = function(task) {
@@ -105,7 +99,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       pars = self$param_set$get_values(tags = "predict")
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
-
 
       if (self$predict_type == "response") {
         response = mlr3misc::invoke(stats::predict.glm,

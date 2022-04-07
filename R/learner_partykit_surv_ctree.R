@@ -61,15 +61,15 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
           tags = "train"),
         saveinfo = p_lgl(default = TRUE, tags = "train"),
         update = p_lgl(default = FALSE, tags = "train"),
-        splitflavour = p_fct(default = "ctree",
-          levels = c("ctree", "exhaustive"), tags = c("train", "control")),
+        splitflavour = p_fct(default = "ctree", # goes into control
+          levels = c("ctree", "exhaustive"), tags = "train"),
         offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         scores = p_uty(tags = "train"),
         doFit = p_lgl(default = TRUE, tags = "train"),
-        maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
-        abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
-        releps = p_dbl(default = 0, lower = 0, tags = c("train", "pargs"))
+        maxpts = p_int(default = 25000L, tags = "train"),
+        abseps = p_dbl(default = 0.001, lower = 0, tags = "train"),
+        releps = p_dbl(default = 0, lower = 0, tags = "train")
       )
 
       ps$add_dep("nresample", "testtype", CondEqual$new("MonteCarlo"))
@@ -89,14 +89,14 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
+      pars_pargs = pars[names(pars) %in% formalArgs(mvtnorm::GenzBretz)]
+      pars = pars[names(pars) %nin% formalArgs(mvtnorm::GenzBretz)]
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
 
-      pars_pargs = self$param_set$get_values(tags = "pargs")
       pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
-      pars = pars[!(names(pars) %in% names(pars_pargs))]
 
       mlr3misc::invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)

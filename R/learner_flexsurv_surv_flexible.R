@@ -49,11 +49,11 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         rtrunc = p_uty(tags = "train"),
         fixedpars = p_uty(tags = "train"),
         cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
-        maxiter = p_int(default = 30L, tags = c("train", "control")),
-        rel.tolerance = p_dbl(default = 1e-09, tags = c("train", "control")),
-        toler.chol = p_dbl(default = 1e-10, tags = c("train", "control")),
-        debug = p_int(default = 0, lower = 0, upper = 1, tags = c("train", "control")),
-        outer.max = p_int(default = 10L, tags = c("train", "control"))
+        maxiter = p_int(default = 30L, tags = "train"),
+        rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
+        toler.chol = p_dbl(default = 1e-10, tags = "train"),
+        debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
+        outer.max = p_int(default = 10L, tags = "train")
       )
 
       # value of k is changed as the default is equivalent (and a much more inefficient)
@@ -74,10 +74,11 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
 
   private = list(
     .train = function(task) {
-      pars_ctrl = self$param_set$get_values(tags = "control")
       pars_train = self$param_set$get_values(tags = "train")
-      pars_train = pars_train[pars_train %nin% pars_ctrl]
-      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl) # nolint
+      args_ctrl = formalArgs(survival::survreg.control)
+      pars_ctrl = pars_train[names(pars_train) %in% args_ctrl]
+      pars_train = pars_train[names(pars_train) %nin% args_ctrl]
+      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl)
 
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight

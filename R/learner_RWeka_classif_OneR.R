@@ -35,8 +35,8 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
         B = p_int(default = 6L, lower = 1L, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
