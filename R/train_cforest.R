@@ -16,7 +16,6 @@ train_cforest = function(self, task) {
   pars = pars[names(pars) %nin%
     c("replace", "fraction", names(pars_control))]
   control = mlr3misc::invoke(partykit::ctree_control, .args = pars_control)
-  # perturb parameters need special handling; FIXME: easier way?
   perturb = list(
     replace = self$param_set$values$replace %??% FALSE,
     fraction = self$param_set$values$fraction %??% 0.632
