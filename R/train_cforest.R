@@ -1,4 +1,3 @@
-#' all 3 cforest learners have the same .train call: DRY
 train_cforest = function(self, task) {
   # explanation for the argument assignment
   # the cforest function has control = ctree_control(teststat = "quad", ...)
