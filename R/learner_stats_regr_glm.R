@@ -84,7 +84,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       }
       # add family to parameters
       family_fn = getFromNamespace(pars$family, ns = "stats")
-      pars$family = invoke(family_fn, .args = famil_args)
+      pars$family = invoke(family_fn, .args = family_args)
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names

@@ -76,9 +76,9 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
       optim_args = c("minstepno", "start.penalty", "iter.max", "upper.margin", "penalty")
       cv_args = c("maxstepno", "K", "type", "folds")
 
-      opt_pars = pars[names(pars) %in% penalty_args]
-      cv_pars = pars[names(pars) %in% penalty_args]
-      cox_pars = pars[!(names(pars) %in% c(names(opt_pars), names(cv_pars)))]
+      opt_pars = pars[names(pars) %in% optim_args]
+      cv_pars = pars[names(pars) %in% cv_args]
+      cox_pars = pars[names(pars) %nin% c(names(opt_pars), names(cv_pars))]
 
       if ("weights" %in% task$properties) {
         cox_pars$weights = as.numeric(task$weights$weight)

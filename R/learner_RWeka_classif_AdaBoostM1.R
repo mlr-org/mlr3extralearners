@@ -95,7 +95,7 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
         )
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob",
-          .agrs = pars
+          .args = pars
         )
       }
       list(response = response, prob = prob)

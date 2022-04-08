@@ -74,7 +74,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       # kpars and pars are treated seperately
       kpars = pars[names(pars) %in% kpars_names]
       pars = pars[names(pars) %nin% kpars_names]
-      pars$type = "regrssion"
+      pars$type = "regression"
 
       if (is.null(kpar)) {
         if (length(kpars)) {

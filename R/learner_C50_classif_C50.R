@@ -52,9 +52,9 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
       args_ctrl = formalArgs(C50::C5.0Control)
       pars = self$param_set$get_values(tags = "train")
       pars_ctrl = pars[names(pars) %in% args_ctrl]
-      pars_train = pars[names(pars) %nin% agrs_ctrl]
+      pars_train = pars[names(pars) %nin% args_ctrl]
 
-      ctrl = do.call(C50::C5.0Contorl, pars_ctrl)
+      ctrl = do.call(C50::C5.0Control, pars_ctrl)
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
