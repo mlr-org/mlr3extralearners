@@ -5,6 +5,7 @@
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns
 #' @importFrom stats predict na.omit
 #' @importFrom data.table :=
+#' @importFrom methods formalArgs
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages",

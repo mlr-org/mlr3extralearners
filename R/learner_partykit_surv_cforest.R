@@ -120,32 +120,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
   private = list(
     .train = function(task) {
-
-      pars = self$param_set$get_values(tags = "train")
-      pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
-      pars_ctrl = pars[names(pars) %in% formalArgs(partykit::ctree_control)]
-      pars_pargs = pars[names(pars) %in% formalArgs(mvtnorm::GenzBretz)]
-      pars_perturb = pars[names(pars) %in% c("replace", "fractoin")]
-      pars_perturb$replace = pars_perturb$replace %??% FALSE
-      pars_perturb$fraction = pars_perturb$fractoin %??% 0.632
-
-      control = mlr3misc::invoke(partykit::ctree_control, .args = pars_ctrl)
-      control$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
-
-      pars = pars[!(names(pars) %in% c(names(pars_perturb), names(pars_ctrl), names(pars_pargs)))]
-
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
-
-      mlr3misc::invoke(partykit::cforest,
-        formula = task$formula(),
-        data = task$data(),
-        # FIXME: strata handling
-        control = control,
-        perturb = perturb,
-        .args = pars
-      )
+      train_cforest(self, task)
     },
 
     .predict = function(task) {

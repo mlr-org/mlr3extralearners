@@ -74,11 +74,11 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-        methods::formalArgs(mboost::boost_control))]
+        formalArgs(mboost::boost_control))]
       pars_glmboost = pars[which(names(pars) %in%
-        methods::formalArgs(mboost::gamboost))]
+        formalArgs(mboost::gamboost))]
       pars_binomial = pars[which(names(pars) %in%
-        methods::formalArgs(mboost::Binomial))]
+        formalArgs(mboost::Binomial))]
 
       f = task$formula()
       data = task$data()

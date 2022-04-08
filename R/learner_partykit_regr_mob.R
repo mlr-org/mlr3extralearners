@@ -104,7 +104,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")
       pars_control = pars[which(names(pars) %in%
-        methods::formalArgs(partykit::mob_control))]
+        formalArgs(partykit::mob_control))]
       pars_additional = self$param_set$values$additional
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]

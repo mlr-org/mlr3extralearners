@@ -164,30 +164,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
 
   private = list(
     .train = function(task) {
-      pars = self$param_set$get_values(tags = "train")
-      pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
-      pars_control = pars[which(names(pars) %in%
-        setdiff(methods::formalArgs(partykit::ctree_control),
-          c("mtry", "applyfun", "cores")
-        ))] # see ctree_control
-      pars = pars[names(pars) %nin%
-        c("replace", "fraction", names(pars_control))]
-      control = mlr3misc::invoke(partykit::ctree_control, .args = pars_control)
-      # perturb parameters need special handling; FIXME: easier way?
-      perturb = list(
-        replace = self$param_set$values$replace %??% FALSE,
-        fraction = self$param_set$values$fraction %??% 0.632
-      )
-
-      mlr3misc::invoke(partykit::cforest,
-        formula = task$formula(),
-        data = task$data(),
-        weights = task$weights$weight, # weights are handled here
-        # FIXME: strata handling
-        control = control,
-        perturb = perturb,
-        .args = pars
-      )
+      train_cforest(self, task)
     },
 
     .predict = function(task) {
