@@ -23,9 +23,9 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
       ps = ps(
         ntree = p_int(default = 500L, lower = 1L, tags = "train"),
-        replace = p_lgl(default = FALSE, tags = c("train", "perturb")),
+        replace = p_lgl(default = FALSE, tags = "train"),
         fraction = p_dbl(default = 0.632, lower = 0, upper = 1,
-          tags = c("train", "perturb")),
+          tags = "train"),
         mtry = p_int(lower = 0L, special_vals = list(Inf),
           tags = "train"), # default actually "ceiling(sqrt(nvar))"
         mtryratio = p_dbl(lower = 0, upper = 1, tags = "train"),
@@ -39,43 +39,43 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         scores = p_uty(tags = "train"),
 
         teststat = p_fct(default = "quadratic",
-          levels = c("quadratic", "maximum"), tags = c("train", "ctrl")),
+          levels = c("quadratic", "maximum"), tags = "train"),
         splitstat = p_fct(default = "quadratic",
-          levels = c("quadratic", "maximum"), tags = c("train", "ctrl")),
-        splittest = p_lgl(default = FALSE, tags = c("train", "ctrl")),
+          levels = c("quadratic", "maximum"), tags = "train"),
+        splittest = p_lgl(default = FALSE, tags = "train"),
         testtype = p_fct(default = "Univariate",
           levels = c("Bonferroni", "MonteCarlo", "Univariate", "Teststatistic"),
-          tags = c("train", "ctrl")),
-        nmax = p_uty(tags = c("train", "ctrl")),
+          tags = "train"),
+        nmax = p_uty(tags = "train"),
         alpha = p_dbl(default = 0.05, lower = 0, upper = 1,
-          tags = c("train", "ctrl")),
+          tags = "train"),
         mincriterion = p_dbl(default = 0.95, lower = 0, upper = 1,
-          tags = c("train", "ctrl")),
-        logmincriterion = p_dbl(default = log(0.95), tags = c("train", "ctrl")),
-        minsplit = p_int(lower = 1L, default = 20L, tags = c("train", "ctrl")),
-        minbucket = p_int(lower = 1L, default = 7L, tags = c("train", "ctrl")),
+          tags = "train"),
+        logmincriterion = p_dbl(default = log(0.95), tags = "train"),
+        minsplit = p_int(lower = 1L, default = 20L, tags = "train"),
+        minbucket = p_int(lower = 1L, default = 7L, tags = "train"),
         minprob = p_dbl(default = 0.01, lower = 0, upper = 1,
-          tags = c("train", "ctrl")),
-        stump = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        lookahead = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        MIA = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        nresample = p_int(default = 9999L, lower = 1L, tags = c("train", "ctrl")),
+          tags = "train"),
+        stump = p_lgl(default = FALSE, tags = "train"),
+        lookahead = p_lgl(default = FALSE, tags = "train"),
+        MIA = p_lgl(default = FALSE, tags = "train"),
+        nresample = p_int(default = 9999L, lower = 1L, tags = "train"),
         tol = p_dbl(default = sqrt(.Machine$double.eps), lower = 0,
-          tags = c("train", "ctrl")),
-        maxsurrogate = p_int(default = 0L, lower = 0L, tags = c("train", "ctrl")),
-        numsurrogate = p_lgl(default = FALSE, tags = c("train", "ctrl")),
+          tags = "train"),
+        maxsurrogate = p_int(default = 0L, lower = 0L, tags = "train"),
+        numsurrogate = p_lgl(default = FALSE, tags = "train"),
         maxdepth = p_int(default = Inf, lower = 0L,
-          special_vals = list(Inf), tags = c("train", "ctrl")),
-        multiway = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        splittry = p_int(default = 2L, lower = 0L, tags = c("train", "ctrl")),
-        intersplit = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        majority = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        caseweights = p_lgl(default = TRUE, tags = c("train", "ctrl")),
-        saveinfo = p_lgl(default = FALSE, tags = c("train", "ctrl")),
-        update = p_lgl(default = FALSE, tags = c("train", "ctrl")),
+          special_vals = list(Inf), tags = "train"),
+        multiway = p_lgl(default = FALSE, tags = "train"),
+        splittry = p_int(default = 2L, lower = 0L, tags = "train"),
+        intersplit = p_lgl(default = FALSE, tags = "train"),
+        majority = p_lgl(default = FALSE, tags = "train"),
+        caseweights = p_lgl(default = TRUE, tags = "train"),
+        saveinfo = p_lgl(default = FALSE, tags = "train"),
+        update = p_lgl(default = FALSE, tags = "train"),
         splitflavour = p_fct(default = "ctree",
-          levels = c("ctree", "exhaustive"), tags = c("train", "ctrl")),
-        maxvar = p_int(lower = 1L, tags = c("train", "ctrl")),
+          levels = c("ctree", "exhaustive"), tags = "train"),
+        maxvar = p_int(lower = 1L, tags = "train"),
 
         # predict; missing FUN and simplify (not needed here)
         OOB = p_lgl(default = FALSE, tags = c("predict", "importance")),
@@ -89,9 +89,9 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         # conditional = p_lgl(default = FALSE, tags = c("train", "importance")),
         # threshold = p_dbl(default = 0.2, tags = c("train", "importance")),
 
-        maxpts = p_int(default = 25000L, tags = c("train", "pargs")),
-        abseps = p_dbl(default = 0.001, lower = 0, tags = c("train", "pargs")),
-        releps = p_dbl(default = 0, lower = 0, tags = c("train", "pargs"))
+        maxpts = p_int(default = 25000L, tags = "train"),
+        abseps = p_dbl(default = 0.001, lower = 0, tags = "train"),
+        releps = p_dbl(default = 0, lower = 0, tags = "train")
       )
 
       ps$add_dep("nresample", on = "testtype",
@@ -120,37 +120,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
   private = list(
     .train = function(task) {
-
-      pars = self$param_set$get_values(tags = "train")
-      pars = convert_ratio(pars, "mtry", "mtryratio", length(task$feature_names))
-
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
-
-      pars_perturb = self$param_set$get_values(tags = "perturb")
-      perturb = list(
-        replace = ifelse(is.null(pars_perturb$replace), FALSE, pars_perturb$replace),
-        fraction = ifelse(is.null(pars_perturb$fraction), 0.632, pars_perturb$fraction)
-      )
-
-      pars_ctrl = self$param_set$get_values(tags = "ctrl")
-      control = mlr3misc::invoke(partykit::ctree_control, .args = pars_ctrl)
-
-      pars_pargs = self$param_set$get_values(tags = "pargs")
-      control$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
-
-      pars = pars[!(names(pars) %in% c(names(pars_perturb), names(pars_ctrl), names(pars_pargs)))]
-
-
-      mlr3misc::invoke(partykit::cforest,
-        formula = task$formula(),
-        data = task$data(),
-        # FIXME: strata handling
-        control = control,
-        perturb = perturb,
-        .args = pars
-      )
+      train_cforest(self, task)
     },
 
     .predict = function(task) {

@@ -35,8 +35,8 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
         P = p_int(default = 100L, lower = 90L, upper = 100L,
           tags = "train"),
         Q = p_lgl(default = FALSE, tags = "train"),
@@ -95,7 +95,7 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
         )
       } else {
         prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob",
-          .agrs = pars
+          .args = pars
         )
       }
       list(response = response, prob = prob)

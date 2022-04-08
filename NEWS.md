@@ -1,3 +1,10 @@
+# mlr3extralearners 0.5.31
+* Many non-standard tags were included in the learners, these are removed
+* Some bugs in learners were fixed (survival rfsrc: "estimator" was incorrectly handled in .predict)
+* Minor refactorings in train methods of learners
+* Avoid partial argument matching: Some learners used "tag = ..." instead of the
+  correct "tags = ..."
+
 # mlr3extralearners 0.5.30
 
 * Revert to using mlr3proba and survivalmodels CRAN version

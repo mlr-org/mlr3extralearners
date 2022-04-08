@@ -26,29 +26,29 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
     initialize = function() {
 
       ps = ps(
-        scaled = p_uty(default = TRUE, tag = "train"),
+        scaled = p_uty(default = TRUE, tags = "train"),
         kernel = p_fct(default = "rbfdot",
           levels = c(
             "rbfdot", "polydot", "vanilladot", "tanhdot",
             "laplacedot", "besseldot", "anovadot", "splinedot", "stringdot"),
           tags = "train"),
-        sigma = p_dbl(tag = c("train", "kpar")),
-        degree = p_dbl(tag = c("train", "kpar")),
-        scale = p_dbl(tag = c("train", "kpar")),
-        offset = p_dbl(tag = c("train", "kpar")),
-        order = p_dbl(tag = c("train", "kpar")),
-        length = p_int(lower = 0, tag = c("train", "kpar")),
-        lambda = p_dbl(tag = c("train", "kpar")),
-        normalized = p_lgl(tag = c("train", "kpar")),
-        kpar = p_uty(default = "automatic", tag = "train"),
-        tau = p_dbl(default = 0.01, tag = "train"),
-        reduced = p_lgl(default = TRUE, tag = "train"),
-        rank = p_int(tag = "train"),
-        delta = p_int(default = 40, tag = "train"),
-        tol = p_dbl(default = 0.0001, tag = "train"),
-        fit = p_lgl(default = TRUE, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train"),
-        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tag = "predict")
+        sigma = p_dbl(tags = "train"),
+        degree = p_dbl(tags = "train"),
+        scale = p_dbl(tags = "train"),
+        offset = p_dbl(tags = "train"),
+        order = p_dbl(tags = "train"),
+        length = p_int(lower = 0, tags = "train"),
+        lambda = p_dbl(tags = "train"),
+        normalized = p_lgl(tags = "train"),
+        kpar = p_uty(default = "automatic", tags = "train"),
+        tau = p_dbl(default = 0.01, tags = "train"),
+        reduced = p_lgl(default = TRUE, tags = "train"),
+        rank = p_int(tags = "train"),
+        delta = p_int(default = 40, tags = "train"),
+        tol = p_dbl(default = 0.0001, tags = "train"),
+        fit = p_lgl(default = TRUE, tags = "train"),
+        na.action = p_uty(default = na.omit, tags = "train"),
+        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tags = "predict")
       )
 
       super$initialize(
@@ -66,11 +66,15 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
   private = list(
 
     .train = function(task) {
-
-      # get parameters for training
+      kpars_names = c("sigma", "degree", "scale", "offset", "order", "length", "lambda", "normalized")
       pars = self$param_set$get_values(tags = "train")
-      kpars = self$param_set$get_values(tags = "kpar")
-      kpar = self$param_set$values$kpar
+
+      # these were added by the authors
+      kpars = pars[names(pars) %in% kpars_names]
+      kpar = pars$kpar
+
+      # remove kernel parameters
+      pars = pars[setdiff(names(pars), c("kpar", names(kpars)))]
 
       if (is.null(kpar)) {
         if (length(kpars)) {
@@ -80,7 +84,6 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         }
       }
 
-      pars = pars[setdiff(names(pars), c("kpar", names(kpars)))]
 
 
       # set column names to ensure consistency in fit and predict

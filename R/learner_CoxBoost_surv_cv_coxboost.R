@@ -30,17 +30,17 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        maxstepno = p_int(default = 100, lower = 0, tags = c("train", "cvpars")),
-        K = p_int(default = 10, lower = 2, tags = c("train", "cvpars")),
-        type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = c("train", "cvpars")),
-        folds = p_uty(default = NULL, tags = c("train", "cvpars")),
-        minstepno = p_int(default = 50, lower = 0, tags = c("train", "optimPenalty")),
-        start.penalty = p_dbl(tags = c("train", "optimPenalty")),
-        iter.max = p_int(default = 10, lower = 1, tags = c("train", "optimPenalty")),
-        upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = c("train", "optimPenalty")),
+        maxstepno = p_int(default = 100, lower = 0, tags = "train"),
+        K = p_int(default = 10, lower = 2, tags = "train"),
+        type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = "train"),
+        folds = p_uty(default = NULL, tags = "train"),
+        minstepno = p_int(default = 50, lower = 0, tags = "train"),
+        start.penalty = p_dbl(tags = "train"),
+        iter.max = p_int(default = 10, lower = 1, tags = "train"),
+        upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = "train"),
         unpen.index = p_uty(tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
-        penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = c("train", "optimPenalty")),
+        penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = "train"),
         criterion = p_fct(default = "pscore", levels = c("pscore", "score", "hpscore", "hscore"), tags = "train"),
         stepsize.factor = p_dbl(default = 1, tags = "train"),
         sf.scheme = p_fct(default = "sigmoid", levels = c("sigmoid", "linear"), tags = "train"),
@@ -71,12 +71,14 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
+      pars = self$param_set$get_values(tags = "train")
 
-      opt_pars = self$param_set$get_values(tags = "optimPenalty")
-      cv_pars = self$param_set$get_values(tags = "cvpars")
-      cox_pars = setdiff(
-        self$param_set$get_values(tags = "train"),
-        c(opt_pars, cv_pars))
+      optim_args = c("minstepno", "start.penalty", "iter.max", "upper.margin", "penalty")
+      cv_args = c("maxstepno", "K", "type", "folds")
+
+      opt_pars = pars[names(pars) %in% optim_args]
+      cv_pars = pars[names(pars) %in% cv_args]
+      cox_pars = pars[names(pars) %nin% c(names(opt_pars), names(cv_pars))]
 
       if ("weights" %in% task$properties) {
         cox_pars$weights = as.numeric(task$weights$weight)

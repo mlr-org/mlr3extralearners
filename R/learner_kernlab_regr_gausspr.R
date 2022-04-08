@@ -26,23 +26,23 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
     initialize = function() {
 
       ps = ps(
-        scaled = p_uty(default = TRUE, tag = "train"),
+        scaled = p_uty(default = TRUE, tags = "train"),
         kernel = p_fct(default = "rbfdot",
           levels = c(
             "rbfdot", "polydot", "vanilladot", "tanhdot",
             "laplacedot", "besseldot", "anovadot", "splinedot"),
           tags = "train"),
-        sigma = p_dbl(tag = c("train", "kpar")),
-        degree = p_dbl(tag = c("train", "kpar")),
-        scale = p_dbl(tag = c("train", "kpar")),
-        offset = p_dbl(tag = c("train", "kpar")),
-        order = p_dbl(tag = c("train", "kpar")),
-        kpar = p_uty(default = "automatic", tag = "train"),
-        var = p_dbl(lower = 10^-3, default = 0.001, tag = "train"),
-        variance.model = p_lgl(default = FALSE, tag = "train"),
-        tol = p_dbl(lower = 0, default = 0.001, tag = "train"),
-        fit = p_lgl(default = TRUE, tag = "train"),
-        na.action = p_uty(default = na.omit, tag = "train")
+        sigma = p_dbl(tags = "train"),
+        degree = p_dbl(tags = "train"),
+        scale = p_dbl(tags = "train"),
+        offset = p_dbl(tags = "train"),
+        order = p_dbl(tags = "train"),
+        kpar = p_uty(default = "automatic", tags = "train"),
+        var = p_dbl(lower = 10^-3, default = 0.001, tags = "train"),
+        variance.model = p_lgl(default = FALSE, tags = "train"),
+        tol = p_dbl(lower = 0, default = 0.001, tags = "train"),
+        fit = p_lgl(default = TRUE, tags = "train"),
+        na.action = p_uty(default = na.omit, tags = "train")
       )
 
       super$initialize(
@@ -60,11 +60,15 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
   private = list(
 
     .train = function(task) {
-
-      # get parameters for training
+      # these were additionally added to make tuning easier (see help page)
+      kpars_names = c("sigma", "degree", "scale", "offset", "order")
       pars = self$param_set$get_values(tags = "train")
-      kpars = self$param_set$get_values(tags = "kpar")
-      kpar = self$param_set$values$kpar
+      kpar = pars$kpar
+      pars$kpar = NULL
+      # kpars and pars are treated seperately
+      kpars = pars[names(pars) %in% kpars_names]
+      pars = pars[names(pars) %nin% kpars_names]
+      pars$type = "regression"
 
       if (is.null(kpar)) {
         if (length(kpars)) {
@@ -73,10 +77,6 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
           kpar = "automatic"
         }
       }
-
-      pars = pars[setdiff(names(pars), c("kpar", names(kpars)))]
-      pars$type = "regression"
-
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names

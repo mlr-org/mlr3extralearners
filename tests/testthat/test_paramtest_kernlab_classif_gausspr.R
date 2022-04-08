@@ -37,9 +37,7 @@ test_that("paramtest classif.gausspr predict", {
   learner = lrn("classif.gausspr")
   # The Learner actually calls the S4 method with class "formula", but this only creates the matrix
   # and then calls the method for the class "matrix"
-  fun_list = list(
-    s4_helper(getMethod("predict", "gausspr"))
-  )
+  fun_list = list(s4_helper(getMethod("predict", "gausspr")))
 
   exclude = c(
     # predict

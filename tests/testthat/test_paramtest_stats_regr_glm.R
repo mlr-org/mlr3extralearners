@@ -32,12 +32,3 @@ test_that("paramtest regr.glm predict", {
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
 })
-
-test_that("paramtest regr.glm control", {
-  learner = lrn("regr.glm")
-  fun = stats:::glm.control # nolint
-  exclude = c()
-
-  paramtest = run_paramtest(learner, fun, exclude, tag = "control")
-  expect_paramtest(paramtest)
-})

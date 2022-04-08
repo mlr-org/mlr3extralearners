@@ -35,8 +35,8 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
         F = p_int(default = 3L, lower = 2L, tags = "train"),
         N = p_dbl(default = 2, lower = 0, tags = "train"),
         O = p_int(default = 2L, lower = 1L, tags = "train"),

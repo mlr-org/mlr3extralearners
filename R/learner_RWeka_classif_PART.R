@@ -35,8 +35,8 @@ LearnerClassifPART = R6Class("LearnerClassifPART",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
         C = p_dbl(default = 0.25, lower = .Machine$double.eps,
           upper = 1 - .Machine$double.eps, tags = "train"),
         M = p_int(default = 2L, lower = 1L, tags = "train"),

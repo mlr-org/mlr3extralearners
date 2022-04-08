@@ -36,8 +36,8 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
     initialize = function() {
 
       ps = ps(
-        subset = p_uty(tags = c("train", "pars")),
-        na.action = p_uty(tags = c("train", "pars")),
+        subset = p_uty(tags = "train"),
+        na.action = p_uty(tags = "train"),
         N = p_lgl(default = FALSE, tags = "train"),
         U = p_lgl(default = FALSE, tags = "train"),
         R = p_lgl(default = FALSE, tags = "train"),

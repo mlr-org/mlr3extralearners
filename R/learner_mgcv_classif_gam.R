@@ -59,30 +59,25 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         in.out = p_uty(default = NULL, tags = "train"),
         drop.unused.levels = p_lgl(default = TRUE, tags = "train"),
         drop.intercept = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(default = 1L, lower = 1L, tags = c("train", "control")),
-        irls.reg = p_dbl(default = 0.0, lower = 0, tags = c("train", "control")),
-        epsilon = p_dbl(default = 1e-07, lower = 0, tags = c("train", "control")),
-        maxit = p_int(default = 200L, tags = c("train", "control")),
-        trace = p_lgl(default = FALSE, tags = c("train", "control")),
-        mgcv.tol = p_dbl(default = 1e-07, lower = 0, tags = c("train", "control")),
-        mgcv.half = p_int(default = 15L, lower = 0L, tags = c("train", "control")),
-        rank.tol = p_dbl(default = .Machine$double.eps^0.5,
-          lower = 0,
-          tags = c("train", "control")
-        ),
-        nlm = p_uty(default = list(), tags = c("train", "control")),
-        optim = p_uty(default = list(), tags = c("train", "control")),
-        newton = p_uty(default = list(), tags = c("train", "control")),
-        outerPIsteps = p_int(default = 0L, lower = 0L, tags = c("train", "control")),
-        idLinksBases = p_lgl(default = TRUE, tags = c("train", "control")),
-        scalePenalty = p_lgl(default = TRUE, tags = c("train", "control")),
-        efs.lspmax = p_int(default = 15L, lower = 0L, tags = c("train", "control")),
-        efs.tol = p_dbl(default = .1, lower = 0, tags = c("train", "control")),
-        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"),
-          default = "fletcher",
-          tags = c("train", "control")
-        ),
-        edge.correct = p_lgl(default = FALSE, tags = c("train", "control")),
+        nthreads = p_int(default = 1L, lower = 1L, tags = "train"),
+        irls.reg = p_dbl(default = 0.0, lower = 0, tags = "train"),
+        epsilon = p_dbl(default = 1e-07, lower = 0, tags = "train"),
+        maxit = p_int(default = 200L, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
+        mgcv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
+        mgcv.half = p_int(default = 15L, lower = 0L, tags = "train"),
+        rank.tol = p_dbl(default = .Machine$double.eps^0.5, lower = 0, tags = "train"),
+        nlm = p_uty(default = list(), tags = "train"),
+        optim = p_uty(default = list(), tags = "train"),
+        newton = p_uty(default = list(), tags = "train"),
+        outerPIsteps = p_int(default = 0L, lower = 0L, tags = "train"),
+        idLinksBases = p_lgl(default = TRUE, tags = "train"),
+        scalePenalty = p_lgl(default = TRUE, tags = "train"),
+        efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
+        efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
+        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher",
+          tags = "train"),
+        edge.correct = p_lgl(default = FALSE, tags = "train"),
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
@@ -101,8 +96,9 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
 
   private = list(
     .train = function(task) {
-
       pars = self$param_set$get_values(tags = "train")
+      control_pars = pars[names(pars) %in% formalArgs(mgcv::gam.control)]
+      pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
@@ -121,7 +117,6 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       }
       pars$family = "binomial"
 
-      control_pars = self$param_set$get_values(tags = "control")
       if (length(control_pars)) {
         control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
         pars = pars[!names(pars) %in% names(control_pars)]

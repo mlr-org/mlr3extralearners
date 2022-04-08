@@ -40,7 +40,7 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         scale = p_dbl(default = NO_DEF, lower = 0, tags = "train"),
         order = p_int(default = NO_DEF, tags = "train"),
         offset = p_dbl(default = NO_DEF, tags = "train"),
-        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tag = "predict")
+        coupler = p_fct(default = "minpair", levels = c("minpair", "pkpd"), tags = "predict")
       )
 
       ps$add_dep(

@@ -72,13 +72,13 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
 
       pars = self$param_set$get_values(tags = "train")
       pars_boost = pars[which(names(pars) %in%
-        methods::formalArgs(mboost::boost_control))]
+        formalArgs(mboost::boost_control))]
       pars_gamboost = pars[which(names(pars) %in%
-        methods::formalArgs(mboost::gamboost))]
+        formalArgs(mboost::gamboost))]
 
       if (self$param_set$values$family != "custom") {
         pars_family = pars[which(names(pars) %in%
-          methods::formalArgs(utils::getFromNamespace(
+          formalArgs(utils::getFromNamespace(
             pars_gamboost$family,
             asNamespace("mboost"))))]
       }

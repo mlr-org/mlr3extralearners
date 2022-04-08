@@ -16,20 +16,20 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        trials = p_int(default = 1L, lower = 1L, tags = c("train", "pars", "predict")),
-        rules = p_lgl(default = FALSE, tags = c("train", "pars")),
-        costs = p_uty(default = NULL, tags = c("train", "pars")),
-        subset = p_lgl(default = TRUE, tags = c("train", "C5.0Control")),
-        bands = p_int(lower = 0, upper = 1000L, tags = c("train", "C5.0Control")),
-        winnow = p_lgl(default = FALSE, tags = c("train", "C5.0Control")),
-        noGlobalPruning = p_lgl(default = FALSE, tags = c("train", "C5.0Control")),
-        CF = p_dbl(default = 0.25, lower = 0, upper = 1, tags = c("train", "C5.0Control")),
-        minCases = p_int(default = 2L, lower = 0L, upper = Inf, tags = c("train", "C5.0Control")),
-        fuzzyThreshold = p_lgl(default = FALSE, tags = c("train", "C5.0Control")),
-        sample = p_dbl(default = 0, lower = 0, upper = .999, tags = c("train", "C5.0Control")),
-        seed = p_int(lower = -Inf, upper = Inf, tags = c("train", "C5.0Control")),
-        earlyStopping = p_lgl(default = TRUE, tags = c("train", "C5.0Control")),
-        label = p_uty(default = "outcome", tags = c("train", "C5.0Control")),
+        trials = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
+        rules = p_lgl(default = FALSE, tags = "train"),
+        costs = p_uty(default = NULL, tags = "train"),
+        subset = p_lgl(default = TRUE, tags = "train"),
+        bands = p_int(lower = 0, upper = 1000L, tags = "train"),
+        winnow = p_lgl(default = FALSE, tags = "train"),
+        noGlobalPruning = p_lgl(default = FALSE, tags = "train"),
+        CF = p_dbl(default = 0.25, lower = 0, upper = 1, tags = "train"),
+        minCases = p_int(default = 2L, lower = 0L, upper = Inf, tags = "train"),
+        fuzzyThreshold = p_lgl(default = FALSE, tags = "train"),
+        sample = p_dbl(default = 0, lower = 0, upper = .999, tags = "train"),
+        seed = p_int(lower = -Inf, upper = Inf, tags = "train"),
+        earlyStopping = p_lgl(default = TRUE, tags = "train"),
+        label = p_uty(default = "outcome", tags = "train"),
         na.action = p_uty(default = stats::na.pass, tags = "predict")
       )
       ps$add_dep("bands", "rules", CondEqual$new(TRUE))
@@ -49,19 +49,20 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
 
   private = list(
     .train = function(task) {
-      c5control = do.call(
-        C50::C5.0Control,
-        self$param_set$get_values(tags = "C5.0Control")
-      )
+      args_ctrl = formalArgs(C50::C5.0Control)
+      pars = self$param_set$get_values(tags = "train")
+      pars_ctrl = pars[names(pars) %in% args_ctrl]
+      pars_train = pars[names(pars) %nin% args_ctrl]
 
-      pars = self$param_set$get_values(tags = "pars")
+      ctrl = do.call(C50::C5.0Control, pars_ctrl)
+
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
 
       f = task$formula()
       data = task$data()
-      invoke(C50::C5.0.formula, formula = f, data = data, control = c5control, .args = pars)
+      invoke(C50::C5.0.formula, formula = f, data = data, control = ctrl, .args = pars_train)
     },
 
     .predict = function(task) {

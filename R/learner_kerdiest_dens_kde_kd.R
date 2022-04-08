@@ -38,7 +38,7 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
   private = list(
     .train = function(task) {
 
-      pars = self$param_set$get_values(tag = "train")
+      pars = self$param_set$get_values(tags = "train")
 
       data = task$data()[[1]]
 

@@ -46,7 +46,7 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
   private = list(
     .train = function(task) {
 
-      pars = self$param_set$get_values(tag = "train")
+      pars = self$param_set$get_values(tags = "train")
       fit = mlr3misc::invoke(pendensity::pendensity,
         form = task$data()[[1]] ~ 1,
         .args = pars)
