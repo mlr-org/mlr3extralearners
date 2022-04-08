@@ -46,6 +46,7 @@ lrn("classif.bart")
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    proposalprobs \tab untyped \tab  \tab  \tab - \cr
+   splitprobs \tab untyped \tab  \tab  \tab - \cr
 }
 }
 
