@@ -6,7 +6,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**
 
 <!-- badges: start -->
 
-[![RCMD Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmd-check.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmd-check.yml)
+[![RCMD Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
