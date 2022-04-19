@@ -20,7 +20,7 @@ jobs:
         with:
           # Required, workflow file name or ID
           workflow: rcmd-check.yml
-          workflow_conclusion: completed
+          #workflow_conclusion: completed
           branch: main
           #check_artifacts: true
           #run_id: 1870829721
