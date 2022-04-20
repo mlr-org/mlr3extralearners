@@ -48,7 +48,8 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
         use.cv = p_lgl(default = FALSE, tags = "train"),
         verbose = p_lgl(default = TRUE, tags = "train"),
         compute_oob_predictions = p_lgl(default = FALSE, tags = "train"),
-        random_seed = p_int(tags = "train")
+        random_seed = p_int(tags = "train"),
+        density = p_lgl(default = FALSE, tags = "train")
       )
 
       ps$values = list(verbose = FALSE)
@@ -63,7 +64,6 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
         man = "mlr3extralearners::mlr_learners_surv.obliqueRSF"
       )
     },
-
 
     #' @description
     #' Integrated brier score OOB error extracted from the model slot `oob_error`.

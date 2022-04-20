@@ -90,7 +90,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
         estimator = p_fct(default = "nelson", levels = c("nelson", "kaplan"),
           tags = "predict"),
-        cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads"))
+        cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        save.memory = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -105,7 +106,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         man = "mlr3extralearners::mlr_learners_surv.rfsrc"
       )
     },
-
 
     #' @description
     #' The importance scores are extracted from the model slot `importance`.
