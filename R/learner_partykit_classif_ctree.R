@@ -102,14 +102,12 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
 
+      prediction = invoke(predict, self$model, newdata = newdata, type = self$predict_type)
+
       if (self$predict_type == "response") {
-        response = mlr3misc::invoke(predict, self$model, newdata = newdata,
-          type = "response")
-        list(response = unname(response))
-      } else {
-        prob = mlr3misc::invoke(predict, self$model, newdata = newdata,
-          type = "prob")
-        list(prob = prob)
+        return(list(response = unname(prediction)))
+      }
+      return(list(prob = prediction))
       }
     }
   )

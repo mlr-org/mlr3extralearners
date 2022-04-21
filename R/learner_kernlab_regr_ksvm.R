@@ -94,10 +94,13 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
       p = invoke(kernlab::predict, self$model,
         newdata = newdata,
-        type = "response")
+        type = "response",
+        .args = pars
+      )
       list(response = p)
     }
   )

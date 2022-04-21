@@ -95,12 +95,13 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
     },
 
     .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
       p = mlr3misc::invoke(
         predict,
         self$model,
         newdata = task$data(cols = task$feature_names),
         type = "response",
-        .args = self$param_set$get_values(tags = "predict")
+        .args = pars
       )
 
       if (self$predict_type == "response") {

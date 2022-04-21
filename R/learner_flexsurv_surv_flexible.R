@@ -90,6 +90,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     },
 
     .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
 
       # As we are using a custom predict method the missing assertions are performed here manually
       # (as opposed to the automatic assertions that take place after prediction)
@@ -102,7 +103,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
             collapse = ", "))
       }
 
-      pred = mlr3misc::invoke(predict_flexsurvreg, self$model, task)
+      pred = mlr3misc::invoke(predict_flexsurvreg, self$model, task, .args = pars)
 
       # crank is defined as the mean of the survival distribution
       list(distr = pred$distr, lp = pred$lp, crank = pred$lp)

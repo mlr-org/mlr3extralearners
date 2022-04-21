@@ -63,12 +63,13 @@ LearnerClassifExtraTrees = R6Class("LearnerClassifExtraTrees",
 
     .predict = function(task) {
       newdata = task$data(cols = self$state$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
       if (self$predict_type == "response") {
-        p = invoke(predict, self$model, newdata = newdata)
+        p = invoke(predict, self$model, newdata = newdata, .args = pars)
         list(response = p)
       } else {
-        p = invoke(predict, self$model, newdata = newdata, probability = TRUE)
+        p = invoke(predict, self$model, newdata = newdata, probability = TRUE, .args = pars)
         list(prob = p)
       }
     }

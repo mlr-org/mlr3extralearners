@@ -95,10 +95,12 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
     },
 
     .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
       list(response = as.numeric(mlr3misc::invoke(
         getMethod("predict", "rvm"),
         self$model,
-        task$data(cols = self$state$feature_names)
+        task$data(cols = self$state$feature_names),
+        .args = pars
       )))
     }
   )

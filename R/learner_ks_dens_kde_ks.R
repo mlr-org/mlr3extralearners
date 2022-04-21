@@ -68,7 +68,8 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
     },
 
     .predict = function(task) {
-      list(pdf = self$model$pdf(task$data()[[1]]))
+      pars = self$param_set$get_values(tags = "predict")
+      invoke(list, pdf = self$model$pdf(task$data()[[1]]), .args = pars)
     }
   )
 )

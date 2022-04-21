@@ -66,8 +66,9 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
     .predict = function(task) {
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
-      pred = mlr3misc::invoke(predict, self$model, newdata = newdata)[, 1L]
+      pred = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)[, 1L]
 
       list(response = pred)
     }

@@ -81,7 +81,8 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
 
     .predict = function(task) {
       newdata = task$data()[[1]]
-      list(pdf = self$model$pdf(newdata), cdf = self$model$cdf(newdata))
+      pars = self$param_set$get_values(tags = "predict")
+      invoke(list, pdf = self$model$pdf(newdata), cdf = self$model$cdf(newdata), .args = pars)
     }
   )
 )

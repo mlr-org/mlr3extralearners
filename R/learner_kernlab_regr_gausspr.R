@@ -89,10 +89,12 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
     },
 
     .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
       list(response = as.numeric(mlr3misc::invoke(
         getMethod("predict", "gausspr"),
         self$model,
-        task$data(cols = self$state$feature_names)
+        task$data(cols = self$state$feature_names),
+        .args = pars
       )))
     }
   )

@@ -30,7 +30,10 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSur
 
   private = list(
     .train = function(task) {
-      mlr3misc::invoke(survival::survfit, formula = task$formula(1), data = task$data())
+      pars = self$param_set$get_values(tags = "train")
+      invoke(survival::survfit, formula = task$formula(1), data = task$data(),
+        .args = pars
+      )
     },
 
     .predict = function(task) {
