@@ -6,6 +6,7 @@ expect_learner(learner)
 task = generate_tasks(learner)$feat_all
 learner$train(task)
 p = learner$predict(task)
+print(p)
 print(p$score(msr("surv.cindex")))
 
 # test_that("autotest", {
