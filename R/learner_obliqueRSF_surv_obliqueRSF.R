@@ -48,8 +48,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
         use.cv = p_lgl(default = FALSE, tags = "train"),
         verbose = p_lgl(default = TRUE, tags = "train"),
         compute_oob_predictions = p_lgl(default = FALSE, tags = "train"),
-        random_seed = p_int(tags = "train"),
-        density = p_lgl(default = FALSE, tags = "train")
+        random_seed = p_int(tags = "train")
       )
 
       ps$values = list(verbose = FALSE)

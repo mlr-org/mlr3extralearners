@@ -35,7 +35,8 @@ LearnerDensKDEks = R6Class("LearnerDensKDEks",
         compute.cont = p_lgl(default = TRUE, tags = "train"),
         approx.cont = p_lgl(default = TRUE, tags = "train"),
         unit.interval = p_lgl(default = FALSE, tags = "train"),
-        verbose = p_lgl(default = FALSE, tags = "train")
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        density = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
