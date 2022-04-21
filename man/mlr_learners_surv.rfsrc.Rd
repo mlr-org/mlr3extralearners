@@ -70,6 +70,7 @@ lrn("surv.rfsrc")
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    estimator \tab character \tab nelson \tab nelson, kaplan \tab - \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

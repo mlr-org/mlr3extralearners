@@ -20,7 +20,7 @@ lrn("regr.lightgbm")
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Feature Types: \dQuote{numeric}, \dQuote{integer}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{lightgbm}
 }
 }
