@@ -64,7 +64,6 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
       )
     },
 
-
     #' @description
     #' Integrated brier score OOB error extracted from the model slot `oob_error`.
     #' Concordance is also available.
