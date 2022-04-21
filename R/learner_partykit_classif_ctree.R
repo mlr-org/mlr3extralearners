@@ -108,7 +108,6 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
         return(list(response = unname(prediction)))
       }
       return(list(prob = prediction))
-      }
     }
   )
 )
