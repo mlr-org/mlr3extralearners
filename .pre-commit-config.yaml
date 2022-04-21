@@ -5,13 +5,13 @@ repos:
     hooks:
     # any R project
     -   id: style-files
-        args: [--style_pkg=styler, --style_fun=mlr_style]
+        args: [--style_pkg=styler.mlr, --style_fun=mlr_style]
+        # additional_dependencies: mlr-org/styler.mlr
     -   id: lintr
     -   id: parsable-R
     -   id: no-browser-statement
     -   id: readme-rmd-rendered
     #  R package development
-    -   id: roxygenize
     -   id: use-tidy-description
     -   id: deps-in-desc
 -   repo: https://github.com/pre-commit/pre-commit-hooks
