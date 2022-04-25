@@ -91,7 +91,7 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      invoke(list, pdf = self$model$pdf(task$data()[[1]]))
+      invoke(list, pdf = self$model$pdf(task$data()[[1]]), .args = pars)
     }
   )
 )
