@@ -99,12 +99,12 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
     },
 
     .predict = function(task) {
-
+      pars = self$param_set$get_values(tags = "predict")
       response = mlr3misc::invoke(
         predict, self$model,
         newdata = task$data(cols = task$feature_names),
         type = "response",
-        .args = self$param_set$get_values(tags = "predict")
+        .args = pars
       )
 
       se = NULL
@@ -115,7 +115,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
           newdata = task$data(cols = task$feature_names),
           type = "response",
           interval = "se",
-          .args = self$param_set$get_values(tags = "predict")
+          .args = pars
         )
       }
 

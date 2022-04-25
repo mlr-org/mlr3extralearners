@@ -141,10 +141,13 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     },
 
     .predict = function(task) {
-
       newdata = task$data(cols = task$feature_names)
       # predict linear predictor
-      lp = as.numeric(mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link"))
+      pars = self$param_set$get_values(tags = "predict")
+      lp = as.numeric(
+        mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link",
+          .args = pars
+      ))
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {

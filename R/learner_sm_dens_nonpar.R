@@ -67,7 +67,8 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
     },
 
     .predict = function(task) {
-      list(pdf = self$model$pdf(task$data(cols = task$feature_names)[[1]]))
+      pars = self$param_set$get_values(tags = "predict")
+      invoke(list, pdf = self$model$pdf(task$data(cols = task$feature_names)[[1]]), .args = pars)
     }
   )
 )

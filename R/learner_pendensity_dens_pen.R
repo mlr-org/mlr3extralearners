@@ -78,7 +78,8 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
 
     .predict = function(task) {
       newdata = task$data()[[1]]
-      list(pdf = self$model$pdf(newdata), cdf = self$model$pdf(newdata))
+      pars = self$param_set$get_values(tags = "predict")
+      invoke(list, pdf = self$model$pdf(newdata), cdf = self$model$pdf(newdata), .args = pars)
     }
   )
 )

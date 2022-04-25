@@ -85,7 +85,8 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
-      response = mlr3misc::invoke(predict, self$model, newdata = newdata)
+      pars = self$param_set$get_values(tags = "predict")
+      response = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = response)
     }
   )

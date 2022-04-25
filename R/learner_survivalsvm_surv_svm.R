@@ -79,7 +79,10 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
     },
 
     .predict = function(task) {
-      fit = predict(self$model, newdata = task$data(cols = task$feature_names))
+      pars = self$param_set$get_values(tags = "predict")
+      fit = predict(self$model, newdata = task$data(cols = task$feature_names),
+        .args = pars
+      )
       crank = as.numeric(fit$predicted)
 
       if (is.null(self$param_set$values$type) ||

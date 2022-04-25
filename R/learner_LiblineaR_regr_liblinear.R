@@ -81,8 +81,9 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, self$model, newx = newdata)
+      p = invoke(predict, self$model, newx = newdata, .args = pars)
       list(response = p$predictions)
     }
   )

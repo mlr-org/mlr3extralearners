@@ -79,6 +79,7 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
       type = ifelse(is.null(self$param_set$values$type), 0, self$param_set$values$type)
 
@@ -87,9 +88,11 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
       }
 
       if (self$predict_type == "prob") {
-        return(list(prob = invoke(predict, self$model, newx = newdata, proba = TRUE)$probabilities))
+        pred = invoke(predict, self$model, newx = newdata, proba = TRUE, .args = pars)
+        return(list(prob = pred$probabilities))
       } else {
-        return(list(response = invoke(predict, self$model, newx = newdata)$predictions))
+        pred = invoke(predict, self$model, newx = newdata, .args = pars)
+        return(list(response = pred$predictions))
       }
     }
   )

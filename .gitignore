@@ -129,3 +129,6 @@ catboost_info/
 
 # nvim-R
 *.R.tmp.R
+
+# TODO
+TODO.md

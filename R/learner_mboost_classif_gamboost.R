@@ -112,6 +112,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
     .predict = function(task) {
       family = self$param_set$values$family
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "predict")
 
       if (self$predict_type == "prob" && (family == "AdaExp" ||
         family == "AUC")) {
@@ -119,12 +120,11 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
       }
 
       if (self$predict_type == "response") {
-        p = invoke(predict, self$model, newdata = newdata, type = "class")
+        p = invoke(predict, self$model, newdata = newdata, type = "class", .args = pars)
         list(response = p)
       } else {
-        p = mlr3misc::invoke(predict, self$model,
-          newdata = newdata,
-          type = "response")
+        p = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+
         p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
         colnames(p) = task$class_names
         list(prob = p)

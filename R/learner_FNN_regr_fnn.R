@@ -40,19 +40,22 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
   private = list(
     .train = function(task) {
       self$state$feature_names = task$feature_names
-      list(
+      pars = self$param_set$get_values(tags = "train")
+      invoke(list,
         train = task$data(cols = task$feature_names),
-        y = task$truth()
+        y = task$truth(),
+        .args = pars
       )
     },
 
     .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
       response = mlr3misc::invoke(
         FNN::knn.reg,
         train = self$model$train,
         y = self$model$y,
         test = task$data(cols = self$state$feature_names),
-        .args = self$param_set$get_values(tags = "predict")
+        .args = pars
       )
 
       list(response = response$pred)
