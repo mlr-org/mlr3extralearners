@@ -101,8 +101,11 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
+      pars = self$param_set$get_values(tags = "train")
 
-      prediction = invoke(predict, self$model, newdata = newdata, type = self$predict_type)
+      prediction = invoke(predict, self$model, newdata = newdata, type = self$predict_type,
+        .args = pars
+      )
 
       if (self$predict_type == "response") {
         return(list(response = unname(prediction)))
