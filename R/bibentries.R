@@ -181,7 +181,7 @@ bibentries = c( # nolint start
   ),
   quintela2012nonparametric = bibentry("article",
     title = "Nonparametric kernel distribution function estimation with kerdiest: an R package for bandwidth choice and applications",
-    author = "Quintela-del-Río, Alejandro, and Graciela Estévez-Pérez",
+    author = "Quintela-del-R\xc3\xado, Alejandro, and Graciela Est\xc3\xa9vez-P\xc3\xa9rez",
     journal = "Journal of Statistical Software",
     volume = "50",
     pages = "1--21",
@@ -199,7 +199,7 @@ bibentries = c( # nolint start
   ),
   gramacki2017fft = bibentry("article",
     title = "FFT-based fast computation of multivariate kernel density estimators with unconstrained bandwidth matrices",
-    author = "Gramacki, Artur and Gramacki, Jarosław",
+    author = "Gramacki, Artur and Gramacki, Jaros\xc5\x82aw",
     journal = "Journal of Computational and Graphical Statistics",
     volume = "26",
     number = "2",
@@ -241,7 +241,7 @@ bibentries = c( # nolint start
   ),
   buhlmann2003boosting = bibentry("article",
     title = "Boosting with the L 2 loss: regression and classification",
-    author = "Bühlmann, Peter and Yu, Bin",
+    author = "B\xc3\xbchlmann, Peter and Yu, Bin",
     journal = "Journal of the American Statistical Association",
     volume = "98",
     number = "462",
@@ -282,7 +282,7 @@ bibentries = c( # nolint start
   ),
   schellhase2012density = bibentry("article",
     title = "Density estimation and comparison with a penalized mixture approach",
-    author = "Schellhase, Christian and Kauermann, Göran",
+    author = "Schellhase, Christian and Kauermann, G\xc3\xb6ran",
     journal = "Computational Statistics",
     volume = "27",
     number = "4",
@@ -421,7 +421,7 @@ bibentries = c( # nolint start
   ),
   kvamme2019time = bibentry("article",
     title = "Time-to-event prediction with neural networks and Cox regression",
-    author = "Kvamme, Håvard, Ørnulf Borgan, and Ida Scheel",
+    author = "Kvamme, H\xc3\xa5vard, \xc3\x98rnulf Borgan, and Ida Scheel",
     journal = "arXiv preprint arXiv:1907.00825",
     year = "2019"
   ),
@@ -457,7 +457,7 @@ bibentries = c( # nolint start
   ),
   kvamme2019continuous = bibentry("article",
     title = "Continuous and discrete-time survival prediction with neural networks",
-    author = "Kvamme, Håvard, and Ørnulf Borgan",
+    author = "Kvamme, H\xc3\xa5vard, and \xc3\x98rnulf Borgan",
     journal = "arXiv preprint arXiv:1910.06724",
     year = "2019"
   ),
@@ -490,44 +490,4 @@ bibentries = c( # nolint start
     year = "2007",
     organization = "IEEE"
   )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ) # nolint end) # nolint end
