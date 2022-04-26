@@ -76,12 +76,12 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
+        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
 
       f = task$formula()
       data = task$data()
-      mlr3misc::invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
+      invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {
@@ -91,11 +91,11 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
       pars = self$param_set$get_values(tags = "predict")
 
       if (self$predict_type == "response") {
-        response = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "class",
+        response = invoke(predict, self$model, newdata = newdata, type = "class",
           .args = pars
         )
       } else {
-        prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob",
+        prob = invoke(predict, self$model, newdata = newdata, type = "prob",
           .args = pars
         )
       }

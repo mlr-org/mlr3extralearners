@@ -49,7 +49,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
     .predict = function(task) {
 
       if (self$predict_type == "response") {
-        p = mlr3misc::invoke(
+        p = invoke(
           FNN::knn,
           train = self$model$train,
           cl = self$model$cl,
@@ -61,7 +61,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         if (task$properties != "twoclass") {
           stop("Probabilities are not available for multiclass")
         }
-        p = mlr3misc::invoke(
+        p = invoke(
           FNN::knn,
           train = self$model$train,
           cl = self$model$cl,

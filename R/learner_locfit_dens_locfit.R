@@ -62,7 +62,7 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
       pdf = function(x) {
       }
       body(pdf) = substitute({
-        mlr3misc::invoke(locfit::density.lf, x = data, ev = x, .args = pars)$y
+        invoke(locfit::density.lf, x = data, ev = x, .args = pars)$y
       })
 
       distr6::Distribution$new(

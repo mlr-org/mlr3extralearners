@@ -55,21 +55,21 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
 
       data = task$data()[[1]]
 
-      fit = mlr3misc::invoke(gss::ssden, formula = ~data, .args = pars)
+      fit = invoke(gss::ssden, formula = ~data, .args = pars)
 
       pdf = function(x) {} # nolint
       body(pdf) = substitute({
-        mlr3misc::invoke(gss::dssden, object = fit, x = x)
+        invoke(gss::dssden, object = fit, x = x)
       })
 
       cdf = function(x) {} # nolint
       body(cdf) = substitute({
-        mlr3misc::invoke(gss::pssden, object = fit, q = x)
+        invoke(gss::pssden, object = fit, q = x)
       })
 
       quantile = function(p) {} # nolint
       body(quantile) = substitute({
-        mlr3misc::invoke(gss::qssden, object = fit, p = p)
+        invoke(gss::qssden, object = fit, p = p)
       })
 
 

@@ -214,7 +214,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         names(imp) = dt_imp$Feature
         return(imp)
       } else {
-        return(mlr3misc::named_vector(self$state$feature_names, 0))
+        return(named_vector(self$state$feature_names, 0))
       }
     }
   ),
@@ -264,7 +264,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           dvalid$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
         }
 
-        mlr3misc::invoke(lightgbm::lgb.train,
+        invoke(lightgbm::lgb.train,
           data = dtrain,
           valids = list(test = dvalid),
           params = pars
@@ -286,7 +286,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         args = pars[which(names(pars) %in% formalArgs(lightgbm::lgb.train))]
         params = pars[which(names(pars) %nin% formalArgs(lightgbm::lgb.train))]
 
-        mlr3misc::invoke(
+        invoke(
           lightgbm::lgb.train,
           data = dtrain,
           .args = args,
@@ -303,7 +303,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       # get newdata and ensure same ordering in train and predict
       newdata = as.matrix(task$data(cols = self$state$feature_names))
 
-      pred = mlr3misc::invoke(predict,
+      pred = invoke(predict,
         object = self$model,
         data = newdata,
         params = pars

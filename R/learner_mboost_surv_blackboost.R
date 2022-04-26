@@ -141,14 +141,14 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
 
       family = switch(pars$family,
         coxph = mboost::CoxPH(),
-        weibull = mlr3misc::invoke(mboost::Weibull,
+        weibull = invoke(mboost::Weibull,
           .args = pars[names(pars) %in% formalArgs(mboost::Weibull)]),
-        loglog = mlr3misc::invoke(mboost::Loglog,
+        loglog = invoke(mboost::Loglog,
           .args = pars[names(pars) %in% formalArgs(mboost::Loglog)]),
-        lognormal = mlr3misc::invoke(mboost::Lognormal,
+        lognormal = invoke(mboost::Lognormal,
           .args = pars[names(pars) %in% formalArgs(mboost::Lognormal)]),
         gehan = mboost::Gehan(),
-        cindex = mlr3misc::invoke(mboost::Cindex,
+        cindex = invoke(mboost::Cindex,
           .args = pars[names(pars) %in% formalArgs(mboost::Cindex)]),
         custom = pars$custom.family
       )
@@ -158,7 +158,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
       pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
-      mlr3misc::invoke(mboost::blackboost,
+      invoke(mboost::blackboost,
         formula = task$formula(task$feature_names),
         data = task$data(), family = family, .args = pars)
     },
@@ -167,13 +167,13 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
       # predict linear predictor
-      lp = as.numeric(mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link",
+      lp = as.numeric(invoke(predict, self$model, newdata = newdata, type = "link",
         .args = pars
       ))
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
-        survfit = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
+        survfit = invoke(mboost::survFit, self$model, newdata = newdata)
 
         mlr3proba::.surv_return(times = survfit$time,
           surv = t(survfit$surv),

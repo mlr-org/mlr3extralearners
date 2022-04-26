@@ -14,13 +14,13 @@ train_cforest = function(self, task) {
     ))] # see ctree_control
   pars = pars[names(pars) %nin%
     c("replace", "fraction", names(pars_control))]
-  control = mlr3misc::invoke(partykit::ctree_control, .args = pars_control)
+  control = invoke(partykit::ctree_control, .args = pars_control)
   perturb = list(
     replace = self$param_set$values$replace %??% FALSE,
     fraction = self$param_set$values$fraction %??% 0.632
   )
 
-  mlr3misc::invoke(partykit::cforest,
+  invoke(partykit::cforest,
     formula = task$formula(),
     data = task$data(),
     weights = task$weights$weight, # weights are handled here

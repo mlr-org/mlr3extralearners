@@ -112,7 +112,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' @return Named `numeric()`.
     importance = function() {
       if (is.null(self$model$importance) & !is.null(self$model)) {
-        mlr3misc::stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
+        stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 
       sort(self$model$importance, decreasing = TRUE)
@@ -123,7 +123,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        mlr3misc::stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
       }
 
       self$model$var.used
@@ -148,7 +148,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         pv$case.wt = as.numeric(task$weights$weight) # nolint
       }
 
-      mlr3misc::invoke(randomForestSRC::rfsrc,
+      invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = task$data(),
         .args = pv, .opts = list(rf.cores = cores))
     },
@@ -162,7 +162,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       pars_predict$var.used = "FALSE"
       cores = pars_predict$cores %??% 1L # additionaly implemented by author
 
-      p = mlr3misc::invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
+      p = invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
         .opts = list(rf.cores = cores))
 
       # rfsrc uses Nelson-Aalen in chf and Kaplan-Meier for survival, as these

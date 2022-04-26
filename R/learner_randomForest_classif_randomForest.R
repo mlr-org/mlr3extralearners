@@ -118,7 +118,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         is.null(names(cutoff))) {
         names(cutoff) = levs
       }
-      mlr3misc::invoke(randomForest::randomForest,
+      invoke(randomForest::randomForest,
         formula = formula,
         data = data, classwt = classwt, cutoff = cutoff, .args = pars)
     },
@@ -128,7 +128,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
       newdata = task$data(cols = task$feature_names)
       type = ifelse(self$predict_type == "response", "response", "prob")
 
-      pred = mlr3misc::invoke(predict, self$model,
+      pred = invoke(predict, self$model,
         newdata = newdata,
         type = type, .args = pars)
 

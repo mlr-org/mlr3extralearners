@@ -29,7 +29,7 @@ register_mlr3 = function(libname, pkgname) {
 }
 
 .onLoad = function(libname, pkgname) { # nolint
-  mlr3misc::register_namespace_callback(pkgname, "mlr3", register_mlr3)
+  register_namespace_callback(pkgname, "mlr3", register_mlr3)
 }
 # nocov end
 

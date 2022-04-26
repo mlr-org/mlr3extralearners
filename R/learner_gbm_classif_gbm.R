@@ -98,7 +98,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
           as.numeric(data[[task$target_names]] == task$positive)
       }
 
-      mlr3misc::invoke(gbm::gbm, formula = f, data = data, .args = pars)
+      invoke(gbm::gbm, formula = f, data = data, .args = pars)
     },
 
     .predict = function(task) {
@@ -110,7 +110,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
       }
       newdata = task$data(cols = task$feature_names)
 
-      p = mlr3misc::invoke(predict, self$model,
+      p = invoke(predict, self$model,
         newdata = newdata,
         type = "response", .args = pars)
 

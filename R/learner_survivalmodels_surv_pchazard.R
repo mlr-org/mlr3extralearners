@@ -121,7 +121,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
-      mlr3misc::invoke(
+      invoke(
         survivalmodels::pchazard,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
@@ -136,7 +136,7 @@ LearnerSurvPCHazard = R6::R6Class("LearnerSurvPCHazard",
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model,
         newdata = newdata,

@@ -47,20 +47,20 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
-      fit = mlr3misc::invoke(pendensity::pendensity,
+      fit = invoke(pendensity::pendensity,
         form = task$data()[[1]] ~ 1,
         .args = pars)
 
       pdf = function(x) {} # nolint
       body(pdf) = substitute({
-        mlr3misc::invoke(pendensity::dpendensity,
+        invoke(pendensity::dpendensity,
           x = fit,
           val = x)
       })
 
       cdf = function(x) {} # nolint
       body(cdf) = substitute({
-        mlr3misc::invoke(pendensity::ppendensity,
+        invoke(pendensity::ppendensity,
           x = fit,
           val = x)
       })

@@ -78,13 +78,13 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       args_ctrl = formalArgs(survival::survreg.control)
       pars_ctrl = pars_train[names(pars_train) %in% args_ctrl]
       pars_train = pars_train[names(pars_train) %nin% args_ctrl]
-      pars_train$sr.control = mlr3misc::invoke(survival::survreg.control, .args = pars_ctrl)
+      pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
 
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight
       }
 
-      mlr3misc::invoke(flexsurv::flexsurvspline,
+      invoke(flexsurv::flexsurvspline,
         formula = task$formula(task$feature_names),
         data = task$data(), .args = pars_train)
     },
@@ -95,7 +95,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       # As we are using a custom predict method the missing assertions are performed here manually
       # (as opposed to the automatic assertions that take place after prediction)
       if (any(is.na(data.frame(task$data(cols = task$feature_names))))) {
-        mlr3misc::stopf(
+        stopf(
           "Learner %s on task %s failed to predict: Missing values in new data
                      (line(s) %s)\n",
           self$id, task$id,
@@ -103,7 +103,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
             collapse = ", "))
       }
 
-      pred = mlr3misc::invoke(predict_flexsurvreg, self$model, task, .args = pars)
+      pred = invoke(predict_flexsurvreg, self$model, task, .args = pars)
 
       # crank is defined as the mean of the survival distribution
       list(distr = pred$distr, lp = pred$lp, crank = pred$lp)

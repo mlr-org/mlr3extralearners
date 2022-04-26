@@ -48,7 +48,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       pars[["committees"]] = NULL
-      control = mlr3misc::invoke(Cubist::cubistControl, .args = pars)
+      control = invoke(Cubist::cubistControl, .args = pars)
 
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
@@ -56,7 +56,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
       x = task$data(cols = self$state$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
 
-      mlr3misc::invoke(Cubist::cubist,
+      invoke(Cubist::cubist,
         x = x,
         y = y,
         committees = self$param_set$values$committees,
@@ -68,7 +68,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 
-      pred = mlr3misc::invoke(predict, self$model,
+      pred = invoke(predict, self$model,
         newdata = newdata,
         neighbors = self$param_set$values$neighbors)
 

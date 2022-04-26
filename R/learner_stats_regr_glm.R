@@ -91,7 +91,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       formula = task$formula()
       data = task$data()
 
-      mlr3misc::invoke(stats::glm, formula = formula, data = data, .args = pars)
+      invoke(stats::glm, formula = formula, data = data, .args = pars)
     },
 
     .predict = function(task) {
@@ -101,14 +101,14 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       newdata = task$data(cols = self$state$feature_names)
 
       if (self$predict_type == "response") {
-        response = mlr3misc::invoke(stats::predict.glm,
+        response = invoke(stats::predict.glm,
           object = self$model,
           newdata = newdata,
           se.fit = FALSE,
           .args = pars)
         list(response = response)
       } else {
-        pred = mlr3misc::invoke(stats::predict.glm,
+        pred = invoke(stats::predict.glm,
           object = self$model,
           newdata = newdata,
           se.fit = TRUE,

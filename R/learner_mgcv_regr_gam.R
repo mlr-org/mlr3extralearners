@@ -117,13 +117,13 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       }
 
       if (length(control_pars)) {
-        control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
+        control_obj = invoke(mgcv::gam.control, .args = control_pars)
         pars = pars[!names(pars) %in% names(control_pars)]
       } else {
         control_obj = mgcv::gam.control()
       }
 
-      mlr3misc::invoke(
+      invoke(
         mgcv::gam,
         data = data,
         .args = pars,
@@ -141,7 +141,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
 
       include_se = (self$predict_type == "se")
 
-      preds = mlr3misc::invoke(
+      preds = invoke(
         predict,
         self$model,
         newdata = newdata,

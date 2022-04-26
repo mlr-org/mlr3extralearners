@@ -71,7 +71,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
   private = list(
     .train = function(task) {
       with_package("survivalsvm", {
-        mlr3misc::invoke(survivalsvm::survivalsvm,
+        invoke(survivalsvm::survivalsvm,
           formula = task$formula(),
           data = task$data(),
           .args = self$param_set$get_values(tags = "train"))

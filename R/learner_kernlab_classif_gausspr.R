@@ -81,7 +81,7 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      mlr3misc::invoke(kernlab::gausspr,
+      invoke(kernlab::gausspr,
         x = task$formula(),
         data = task$data(),
         kpar = kpar,
@@ -91,7 +91,7 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
     .predict = function(task) {
       out = setNames(vector("list", 1L), self$predict_type)
       pars = self$param_set$get_values(tags = "predict")
-      out[[1]] = mlr3misc::invoke(
+      out[[1]] = invoke(
         getMethod("predict", "gausspr"),
         self$model,
         task$data(cols = self$state$feature_names),

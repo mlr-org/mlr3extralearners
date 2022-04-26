@@ -8,7 +8,7 @@
       assert_class(learn, "R6ClassGenerator")
       lst = list(key = learn)
       names(lst) = key
-      self$lrns = mlr3misc::insert_named(self$lrns, lst)
+      self$lrns = insert_named(self$lrns, lst)
     }
   )
 )$new()

@@ -1,8 +1,10 @@
 toproper = function(str, split = " ", fixed = TRUE) {
   str = strsplit(str, split, fixed)
-  str = lapply(str, function(x) {
-    paste0(toupper(substr(x, 1, 1)), tolower(substr(x, 2, 1000)), collapse = split)
-  })
+  str = lapply(str,
+    function(x) {
+      paste0(toupper(substr(x, 1, 1)), tolower(substr(x, 2, 1000)), collapse = split)
+    }
+  )
   return(unlist(str))
 }
 
@@ -53,7 +55,7 @@ convert_ratio = function(pv, target, ratio, n) {
     pv,
 
     # !mtry && mtry.ratio
-    {
+    { # nolint
       pv[[target]] = max(ceiling(pv[[ratio]] * n), 1)
       remove_named(pv, ratio)
     },
@@ -83,7 +85,7 @@ format_rweka_once = function(x) {
 # Vectorized formatting
 format_rweka = function(x) {
   x = x[(nchar(x) > 0)]
-  x = mlr3misc::map_chr(x, format_rweka_once)
+  x = map_chr(x, format_rweka_once)
   return(x)
 }
 
@@ -95,4 +97,3 @@ weka_control_args = function(f) {
   exclude = unique(exclude)
   return(exclude)
 }
-

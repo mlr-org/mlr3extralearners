@@ -71,18 +71,18 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
+        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
 
       f = task$formula()
       data = task$data()
-      mlr3misc::invoke(RWeka::M5Rules, formula = f, data = data, control = ctrl, .args = pars)
+      invoke(RWeka::M5Rules, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
       pars = self$param_set$get_values(tags = "predict")
-      response = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)
+      response = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = response)
     }
   )

@@ -96,16 +96,16 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
         pars$weights = task$weights$weight
       }
 
-      pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
+      pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
 
-      mlr3misc::invoke(partykit::ctree, formula = task$formula(),
+      invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)
     },
 
     .predict = function(task) {
       newdata = task$data(cols = task$feature_names)
       pars = self$param_set$get_values(tags = "predict")
-      preds = mlr3misc::invoke(predict, self$model, type = "prob", newdata = newdata,
+      preds = invoke(predict, self$model, type = "prob", newdata = newdata,
         .args = pars
       )
 

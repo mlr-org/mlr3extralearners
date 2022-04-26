@@ -85,7 +85,7 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
         pars = insert_named(pars, list(weights = task$weights$weight))
       }
 
-      mlr3misc::invoke(
+      invoke(
         earth::earth,
         x = task$data(cols = task$feature_names),
         y = as.integer(task$data(cols = task$target_names) == task$positive),
@@ -96,7 +96,7 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      p = mlr3misc::invoke(
+      p = invoke(
         predict,
         self$model,
         newdata = task$data(cols = task$feature_names),
