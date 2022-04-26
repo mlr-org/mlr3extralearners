@@ -118,13 +118,13 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       pars$family = "binomial"
 
       if (length(control_pars)) {
-        control_obj = mlr3misc::invoke(mgcv::gam.control, .args = control_pars)
+        control_obj = invoke(mgcv::gam.control, .args = control_pars)
         pars = pars[!names(pars) %in% names(control_pars)]
       } else {
         control_obj = mgcv::gam.control()
       }
 
-      mlr3misc::invoke(
+      invoke(
         mgcv::gam,
         data = data,
         .args = pars,
@@ -141,7 +141,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 
-      prob = mlr3misc::invoke(
+      prob = invoke(
         predict,
         self$model,
         newdata = newdata,

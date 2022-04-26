@@ -56,8 +56,7 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
       x = task$data(cols = self$state$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
 
-      # use the mlr3misc::invoke function (it's similar to do.call())
-      mlr3misc::invoke(mda::mars,
+      invoke(mda::mars,
         x = x,
         y = y,
         .args = pars)
@@ -68,7 +67,7 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
       newdata = task$data(cols = self$state$feature_names)
       pars = self$param_set$get_values(tags = "predict")
 
-      pred = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)[, 1L]
+      pred = invoke(predict, self$model, newdata = newdata, .args = pars)[, 1L]
 
       list(response = pred)
     }

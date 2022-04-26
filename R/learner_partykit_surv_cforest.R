@@ -126,7 +126,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
+      preds = invoke(predict, object = self$model, newdata = newdata,
         type = "prob", .args = pars)
 
       # Define WeightedDiscrete distr6 distribution from the survival function

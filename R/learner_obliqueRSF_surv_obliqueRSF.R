@@ -79,7 +79,7 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
       pv = convert_ratio(pv, "mtry", "mtry_ratio", length(task$feature_names))
       targets = task$target_names
 
-      mlr3misc::invoke(
+      invoke(
         obliqueRSF::ORSF,
         data     = data.table::setDF(task$data()),
         time     = targets[1L],

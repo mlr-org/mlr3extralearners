@@ -69,12 +69,12 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = mlr3misc::invoke(RWeka::Weka_control, .args = ctrl)
+        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
 
       f = task$formula()
       data = task$data()
-      mlr3misc::invoke(RWeka::OneR, formula = f, data = data, control = ctrl, .args = pars)
+      invoke(RWeka::OneR, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {

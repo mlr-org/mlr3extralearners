@@ -87,7 +87,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
         pars$weights = task$weights$weight
       }
 
-      mlr3misc::invoke(
+      invoke(
         dbarts::bart,
         x.train = x_train,
         y.train = y_train,
@@ -104,7 +104,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.
-      p = colMeans(mlr3misc::invoke(
+      p = colMeans(invoke(
         predict,
         self$model,
         newdata = newdata,

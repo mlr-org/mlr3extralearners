@@ -88,7 +88,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
       }
 
       pars_gamboost$family = switch(pars_gamboost$family,
-        Binomial = mlr3misc::invoke(mboost::Binomial, .args = pars_binomial),
+        Binomial = invoke(mboost::Binomial, .args = pars_binomial),
         AdaExp = mboost::AdaExp(),
         AUC = mboost::AUC(),
         custom = pars$custom.family)
@@ -99,11 +99,11 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
         data[[task$target_names]] = factor(data[[task$target_names]], levs)
       }
 
-      ctrl = mlr3misc::invoke(mboost::boost_control, .args = pars_boost)
+      ctrl = invoke(mboost::boost_control, .args = pars_boost)
 
       # baselearner argument requires attached mboost package
-      mlr3misc::with_package("mboost", {
-        mlr3misc::invoke(mboost::gamboost,
+      with_package("mboost", {
+        invoke(mboost::gamboost,
           formula = f, data = data,
           control = ctrl, .args = pars_gamboost)
       })
@@ -123,7 +123,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
         p = invoke(predict, self$model, newdata = newdata, type = "class", .args = pars)
         list(response = p)
       } else {
-        p = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+        p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
 
         p = matrix(c(p, 1 - p), ncol = 2L, nrow = length(p))
         colnames(p) = task$class_names

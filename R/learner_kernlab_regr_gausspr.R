@@ -81,7 +81,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      mlr3misc::invoke(kernlab::gausspr,
+      invoke(kernlab::gausspr,
         x = task$formula(),
         data = task$data(),
         kpar = kpar,
@@ -90,7 +90,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      list(response = as.numeric(mlr3misc::invoke(
+      list(response = as.numeric(invoke(
         getMethod("predict", "gausspr"),
         self$model,
         task$data(cols = self$state$feature_names),

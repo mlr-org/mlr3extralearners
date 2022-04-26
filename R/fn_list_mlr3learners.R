@@ -29,17 +29,17 @@ list_mlr3learners = function(select = NULL, filter = NULL) {
       dt = subset(dt, required_packages %in% filter$required_packages)
     }
     if (!is.null(filter$properties)) {
-      dt = subset(dt, mlr3misc::map_lgl(
+      dt = subset(dt, map_lgl(
         dt$properties,
         function(.x) any(filter$properties %in% .x)))
     }
     if (!is.null(filter$feature_types)) {
-      dt = subset(dt, mlr3misc::map_lgl(
+      dt = subset(dt, map_lgl(
         dt$feature_types,
         function(.x) any(filter$feature_types %in% .x)))
     }
     if (!is.null(filter$predict_types)) {
-      dt = subset(dt, mlr3misc::map_lgl(
+      dt = subset(dt, map_lgl(
         dt$predict_types,
         function(.x) any(filter$predict_types %in% .x)))
     }

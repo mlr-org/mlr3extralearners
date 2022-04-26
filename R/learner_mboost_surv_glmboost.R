@@ -104,7 +104,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       pars = self$param_set$get_values(tags = "train")
 
       saved_ctrl = mboost::boost_control()
-      on.exit(mlr3misc::invoke(mboost::boost_control, .args = saved_ctrl))
+      on.exit(invoke(mboost::boost_control, .args = saved_ctrl))
       is_ctrl_pars = (names(pars) %in% names(saved_ctrl))
 
       # ensure only relevant pars passed to fitted model
@@ -119,14 +119,14 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
 
       family = switch(pars$family,
         coxph = mboost::CoxPH(),
-        weibull = mlr3misc::invoke(mboost::Weibull,
+        weibull = invoke(mboost::Weibull,
           .args = pars[names(pars) %in% formalArgs(mboost::Weibull)]),
-        loglog = mlr3misc::invoke(mboost::Loglog,
+        loglog = invoke(mboost::Loglog,
           .args = pars[names(pars) %in% formalArgs(mboost::Loglog)]),
-        lognormal = mlr3misc::invoke(mboost::Lognormal,
+        lognormal = invoke(mboost::Lognormal,
           .args = pars[names(pars) %in% formalArgs(mboost::Lognormal)]),
         gehan = mboost::Gehan(),
-        cindex = mlr3misc::invoke(mboost::Cindex,
+        cindex = invoke(mboost::Cindex,
           .args = pars[names(pars) %in% formalArgs(mboost::Cindex)]),
         custom = pars$custom.family
       )
@@ -136,7 +136,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
-      mlr3misc::invoke(mboost::glmboost, task$formula(task$feature_names),
+      invoke(mboost::glmboost, task$formula(task$feature_names),
         data = task$data(), family = family, .args = pars)
     },
 
@@ -145,13 +145,13 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       # predict linear predictor
       pars = self$param_set$get_values(tags = "predict")
       lp = as.numeric(
-        mlr3misc::invoke(predict, self$model, newdata = newdata, type = "link",
+        invoke(predict, self$model, newdata = newdata, type = "link",
           .args = pars
       ))
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
-        survfit = mlr3misc::invoke(mboost::survFit, self$model, newdata = newdata)
+        survfit = invoke(mboost::survFit, self$model, newdata = newdata)
 
         mlr3proba::.surv_return(times = survfit$time,
           surv = t(survfit$surv),

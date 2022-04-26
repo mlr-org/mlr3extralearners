@@ -77,7 +77,7 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
 
       pdf = function(x) {} # nolint
       body(pdf) = substitute({
-        with_package("np", mlr3misc::invoke(np::npudens,
+        with_package("np", invoke(np::npudens,
           tdat = data.frame(data),
           edat = data.frame(x), .args = pars)$dens)
       })

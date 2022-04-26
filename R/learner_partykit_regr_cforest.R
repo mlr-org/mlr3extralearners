@@ -145,7 +145,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
     #'
     #' @return `numeric(1)`.
     oob_error = function() {
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = NULL,
+      preds = invoke(predict, object = self$model, newdata = NULL,
         type = "response", OOB = TRUE, FUN = NULL, simplify = TRUE,
         scale = TRUE)
       mean((self$model$data[[as.character(attr(self$model$data,
@@ -161,7 +161,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = newdata,
+      preds = invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
       list(response = preds)
     }

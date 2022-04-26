@@ -83,7 +83,7 @@ format_rweka_once = function(x) {
 # Vectorized formatting
 format_rweka = function(x) {
   x = x[(nchar(x) > 0)]
-  x = mlr3misc::map_chr(x, format_rweka_once)
+  x = map_chr(x, format_rweka_once)
   return(x)
 }
 

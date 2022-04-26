@@ -84,7 +84,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   references = FALSE, gh_name) {
   path = pkg_root(pkg)
   if (!grepl("mlr3extralearners", path, fixed = TRUE)) {
-    mlr3misc::stopf("mlr3extralearners is not in 'path' (%s), set `pkg` argument to the mlr3extralearners directory.", path) # nolint
+    stopf("mlr3extralearners is not in 'path' (%s), set `pkg` argument to the mlr3extralearners directory.", path) # nolint
   }
 
   assert_choice(type, names(mlr3::mlr_reflections$task_properties))
@@ -92,7 +92,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
 
   assert_character(key, len = 1)
   if (paste(type, key, sep = ".") %in% names(mlr_learners$items)) {
-    mlr3misc::stopf(
+    stopf(
       "%s already exists in learner dictionary, please choose a different key.",
       paste(type, key, sep = "."))
   }
@@ -122,9 +122,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
     to = file_name_lrn, overwrite = FALSE)
   add_str = c()
   if (!x) {
-    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_lrn)
+    warningf("File %s already exists. Manually edit the file.", file_name_lrn)
   } else {
-    mlr3misc::catf("Creating %s from template.\n", paste(type, key, sep = "_"))
+    catf("Creating %s from template.\n", paste(type, key, sep = "_"))
     x = readLines(file_name_lrn)
     x = gsub("<algorithm>", algorithm, x)
     x = gsub("<Type_lng>", type_lng, x)
@@ -177,9 +177,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "test_template.R"), to = file_name_test,
     overwrite = FALSE)
   if (!x) {
-    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_test)
+    warningf("File %s already exists. Manually edit the file.", file_name_test)
   } else {
-    mlr3misc::catf("Creating %s tests from template.\n", paste(type, key, sep = "_"))
+    catf("Creating %s tests from template.\n", paste(type, key, sep = "_"))
     x = readLines(file_name_test)
     x = gsub("<type>", type, x)
     x = gsub("<Type>", Type, x)
@@ -194,9 +194,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "param_test_template.R"), to = file_name_ptest,
     overwrite = FALSE)
   if (!x) {
-    mlr3misc::warningf("File %s already exists. Manually edit the file.", file_name_ptest)
+    warningf("File %s already exists. Manually edit the file.", file_name_ptest)
   } else {
-    mlr3misc::catf("Creating %s paramtests from template.\n", paste(type, key, sep = "_"))
+    catf("Creating %s paramtests from template.\n", paste(type, key, sep = "_"))
     x = readLines(file_name_ptest)
     x = gsub("<type>", type, x)
     x = gsub("<key>", key, x)
@@ -211,9 +211,9 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   x = file.copy(file.path(path, "templates", "test_template.yml"), to = file_name,
     overwrite = FALSE)
   if (!x) {
-    mlr3misc::messagef("Learner test YAML for package {%s} already exists.", package)
+    messagef("Learner test YAML for package {%s} already exists.", package)
   } else {
-    mlr3misc::catf("Creating {%s} learner test YAML file from template.\n", package)
+    catf("Creating {%s} learner test YAML file from template.\n", package)
     x = readLines(file_name)
     x = gsub("<package>", package, x)
     cat(x, file = file_name, sep = "\n")
@@ -222,16 +222,16 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   # UPDATE DESCRIPTION
   x = readLines(file.path(path, "DESCRIPTION"))
   if (!any(grepl(package, x))) {
-    mlr3misc::catf("Adding %s to DESCRIPTION Suggests.\n\n", package)
+    catf("Adding %s to DESCRIPTION Suggests.\n\n", package)
     x = gsub("testthat", paste0(c("testthat", package), collapse = ",\n    "), x)
     cat(x, file = file.path(path, "DESCRIPTION"), sep = "\n")
   } else {
-    mlr3misc::messagef("Package {%s} already exists in DESCRIPTION.", package)
+    messagef("Package {%s} already exists in DESCRIPTION.", package)
   }
 
   # UPDATE USER
   # nolint start
-  mlr3misc::catf(
+  catf(
     "Now manually do the following:
   1) For %s:
     a) Add .train and .predict private methods.
@@ -261,7 +261,7 @@ create_learner = function(pkg = ".", classname, algorithm, type, key = tolower(c
   if (x == "Y") {
     utils::file.edit(c(file_name_lrn, file_name_test, file_name_ptest))
   } else {
-    mlr3misc::catf(
+    catf(
       "\nEdit the following files when ready:\n %s",
       paste0(c(file_name_lrn, file_name_test, file_name_ptest),
         collapse = "\n "

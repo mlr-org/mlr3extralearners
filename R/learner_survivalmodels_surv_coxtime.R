@@ -110,7 +110,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
-      mlr3misc::invoke(
+      invoke(
         survivalmodels::coxtime,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
@@ -125,7 +125,7 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model,
         newdata = newdata,

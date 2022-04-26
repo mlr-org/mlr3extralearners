@@ -96,9 +96,8 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         pars$weights = task$weights$weight
       }
 
-      # Use the mlr3misc::invoke function (it's similar to do.call())
       # y.train should either be a binary factor or have values {0, 1}
-      mlr3misc::invoke(dbarts::bart,
+      invoke(dbarts::bart,
         x.train = data, y.train = outcome,
         .args = pars
       )

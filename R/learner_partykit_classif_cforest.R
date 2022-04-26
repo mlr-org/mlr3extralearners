@@ -151,7 +151,7 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
     #'
     #' @return `numeric(1)`.
     oob_error = function() {
-      preds = mlr3misc::invoke(predict, object = self$model, newdata = NULL,
+      preds = invoke(predict, object = self$model, newdata = NULL,
         type = "response", OOB = TRUE, FUN = NULL, simplify = TRUE,
         scale = TRUE)
       confusion = table(self$model$data[[as.character(attr(self$model$data,

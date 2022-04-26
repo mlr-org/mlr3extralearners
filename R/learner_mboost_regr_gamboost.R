@@ -104,7 +104,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
       )
 
       ctrl = invoke(mboost::boost_control, .args = pars_boost)
-      mlr3misc::with_package("mboost", { # baselearner argument requires attached mboost package
+      with_package("mboost", { # baselearner argument requires attached mboost package
         invoke(mboost::gamboost,
           formula = f, data = data, control = ctrl,
           .args = pars_gamboost)

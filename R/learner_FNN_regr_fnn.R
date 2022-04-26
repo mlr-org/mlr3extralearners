@@ -50,7 +50,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      response = mlr3misc::invoke(
+      response = invoke(
         FNN::knn.reg,
         train = self$model$train,
         y = self$model$y,

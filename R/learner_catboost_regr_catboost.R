@@ -176,7 +176,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     #' @return Named `numeric()`.
     importance = function() {
       # https://catboost.ai/docs/concepts/r-reference_catboost-get_feature_importance.html
-      imp = mlr3misc::invoke(catboost::catboost.get_feature_importance,
+      imp = invoke(catboost::catboost.get_feature_importance,
         model = self$model,
         type = "FeatureImportance",
         thread_count = self$param_set$values$thread_count)
@@ -195,13 +195,13 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
       self$state$feature_names = task$feature_names
 
       # data must be a dataframe
-      learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
+      learn_pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
         label = task$data(cols = task$target_names)[[1L]],
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
 
-      mlr3misc::invoke(catboost::catboost.train,
+      invoke(catboost::catboost.train,
         learn_pool = learn_pool,
         test_pool = NULL,
         params = self$param_set$get_values(tags = "train"))
@@ -209,11 +209,11 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
     .predict = function(task) {
 
-      pool = mlr3misc::invoke(catboost::catboost.load_pool,
+      pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = self$state$feature_names),
         thread_count = self$param_set$values$thread_count)
 
-      preds = mlr3misc::invoke(catboost::catboost.predict,
+      preds = invoke(catboost::catboost.predict,
         model = self$model,
         pool = pool,
         prediction_type = "RawFormulaVal",
