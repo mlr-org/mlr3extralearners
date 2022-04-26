@@ -99,7 +99,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
         pars$importance = TRUE
       }
 
-      mlr3misc::invoke(randomForest::randomForest,
+      invoke(randomForest::randomForest,
         formula = formula,
         data = data, .args = pars)
     },
@@ -109,7 +109,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
       newdata = task$data(cols = task$feature_names)
       type = self$predict_type
 
-      pred = mlr3misc::invoke(predict, self$model,
+      pred = invoke(predict, self$model,
         newdata = newdata,
         type = type, .args = pars)
 

@@ -73,7 +73,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
       data = as.matrix(data[, !tn, with = FALSE])
 
       with_package("CoxBoost", {
-        mlr3misc::invoke(
+        invoke(
           CoxBoost::CoxBoost,
           time = time,
           status = status,
@@ -90,13 +90,13 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
       # get newdata and ensure same ordering in train and predict
       newdata = as.matrix(task$data(cols = self$state$feature_names))
 
-      lp = as.numeric(mlr3misc::invoke(predict,
+      lp = as.numeric(invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,
         type = "lp"))
 
-      surv = mlr3misc::invoke(predict,
+      surv = invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,

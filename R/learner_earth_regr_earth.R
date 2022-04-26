@@ -90,7 +90,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
         stop("'varmod.method' parameter must not be 'none' if predict_type is 'se'.")
       }
 
-      mlr3misc::invoke(
+      invoke(
         earth::earth,
         x = task$data(cols = task$feature_names),
         y = task$data(cols = task$target_names),
@@ -100,7 +100,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      response = mlr3misc::invoke(
+      response = invoke(
         predict, self$model,
         newdata = task$data(cols = task$feature_names),
         type = "response",
@@ -110,7 +110,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
       se = NULL
 
       if (self$predict_type == "se") {
-        se = mlr3misc::invoke(
+        se = invoke(
           predict, self$model,
           newdata = task$data(cols = task$feature_names),
           type = "response",

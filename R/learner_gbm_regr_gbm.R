@@ -77,7 +77,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         pars$n.trees = self$param_set$default$n.trees # nolint
       }
 
-      imp = mlr3misc::invoke(gbm::relative.influence, self$model, .args = pars)
+      imp = invoke(gbm::relative.influence, self$model, .args = pars)
       sort(imp, decreasing = TRUE)
     }
   ),
@@ -89,10 +89,10 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       data = task$data()
 
       if ("weights" %in% task$properties) {
-        pars = mlr3misc::insert_named(pars, list(weights = task$weights$weight))
+        pars = insert_named(pars, list(weights = task$weights$weight))
       }
 
-      mlr3misc::invoke(gbm::gbm, formula = f, data = data, .args = pars)
+      invoke(gbm::gbm, formula = f, data = data, .args = pars)
     },
 
     .predict = function(task) {
@@ -104,7 +104,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       }
       newdata = task$data(cols = task$feature_names)
 
-      p = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)
+      p = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = p)
     }
   )

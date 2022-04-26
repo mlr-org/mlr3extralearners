@@ -75,10 +75,10 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # train call. Check other learners for what can be done here>
 
       # use the mlr3misc::invoke function (it's similar to do.call())
-      mlr3misc::invoke(<package>::<caller>,
-                       formula = formula,
-                       data = data,
-                       .args = pars)
+      invoke(<package>::<caller>,
+             formula = formula,
+             data = data,
+             .args = pars)
     },
 
     .predict = function(task) {
@@ -88,8 +88,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 
-      pred = mlr3misc::invoke(predict, self$model, newdata = newdata,
-                              type = type, .args = pars)
+      pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
 
       # FIXME - ADD PREDICTIONS TO LIST BELOW
       list(...)

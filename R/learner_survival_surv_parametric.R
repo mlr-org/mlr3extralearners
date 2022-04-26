@@ -93,7 +93,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
         pv$weights = task$weights$weight
       }
 
-      fit = mlr3misc::invoke(survival::survreg, formula = task$formula(), data = task$data(),
+      fit = invoke(survival::survreg, formula = task$formula(), data = task$data(),
         .args = pv)
 
       self$state$feature_names = task$feature_names
@@ -146,7 +146,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
       pv = self$param_set$get_values(tags = "predict")
 
       # Call the predict method defined here
-      pred = mlr3misc::invoke(.predict_survreg, object = self$model, task = task,
+      pred = invoke(.predict_survreg, object = self$model, task = task,
         feature_names = feature_names, .args = pv)
 
       # lp is aft-style, where higher value = lower risk, opposite needed for crank

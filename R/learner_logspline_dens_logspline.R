@@ -48,26 +48,26 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
 
       pars = self$param_set$get_values(tags = "train")
 
-      fit = mlr3misc::invoke(logspline::logspline, x = data, .args = pars)
+      fit = invoke(logspline::logspline, x = data, .args = pars)
 
       pdf = function(x) {} # nolint
       body(pdf) = substitute({
-        mlr3misc::invoke(logspline::dlogspline, q = x, fit = fit)
+        invoke(logspline::dlogspline, q = x, fit = fit)
       })
 
       cdf = function(x) {} # nolint
       body(cdf) = substitute({
-        mlr3misc::invoke(logspline::plogspline, q = x, fit = fit)
+        invoke(logspline::plogspline, q = x, fit = fit)
       })
 
       quantile = function(p) {} # nolint
       body(quantile) = substitute({
-        mlr3misc::invoke(logspline::qlogspline, p = p, fit = fit)
+        invoke(logspline::qlogspline, p = p, fit = fit)
       })
 
       rand = function(n) {} # nolint
       body(rand) = substitute({
-        mlr3misc::invoke(logspline::rlogspline, n = n, fit = fit)
+        invoke(logspline::rlogspline, n = n, fit = fit)
       })
 
       distr6::Distribution$new(

@@ -104,7 +104,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
     #' @return Named `numeric()`.
     importance = function() {
       if (is.null(self$model$importance) & !is.null(self$model)) {
-        mlr3misc::stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
+        stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 
       sort(self$model$importance, decreasing = TRUE)
@@ -115,7 +115,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        mlr3misc::stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
       }
 
       self$model$var.used
@@ -140,7 +140,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
         pv$case.wt = as.numeric(task$weights$weight) # nolint
       }
 
-      mlr3misc::invoke(randomForestSRC::rfsrc,
+      invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = task$data(),
         .args = pv, .opts = list(rf.cores = cores))
     },
@@ -151,7 +151,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       cores = pars$cores %??% 1L
 
       list(
-        response = mlr3misc::invoke(predict,
+        response = invoke(predict,
           object = self$model, newdata = newdata,
           .args = pars, .opts = list(rf.cores = cores))$predicted
       )

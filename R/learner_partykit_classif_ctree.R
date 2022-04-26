@@ -93,9 +93,9 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
         pars$weights = task$weights$weight
       }
 
-      pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
+      pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
 
-      mlr3misc::invoke(partykit::ctree, formula = task$formula(),
+      invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)
     },
 

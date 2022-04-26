@@ -102,7 +102,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       with_package("CoxBoost", {
         if (pen_optim) {
-          optim = mlr3misc::invoke(
+          optim = invoke(
             CoxBoost::optimCoxBoostPenalty,
             time = time,
             status = status,
@@ -110,7 +110,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             .args = c(opt_pars, cv_pars)
           )
 
-          return(mlr3misc::invoke(
+          return(invoke(
             CoxBoost::CoxBoost,
             time = time,
             status = status,
@@ -120,7 +120,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             .args = cox_pars
           ))
         } else {
-          optimal_step = mlr3misc::invoke(
+          optimal_step = invoke(
             CoxBoost::cv.CoxBoost,
             time = time,
             status = status,
@@ -128,7 +128,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
             .args = c(cv_pars, cox_pars)
           )$optimal.step
 
-          return(mlr3misc::invoke(
+          return(invoke(
             CoxBoost::CoxBoost,
             time = time,
             status = status,
@@ -147,13 +147,13 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
       # get newdata and ensure same ordering in train and predict
       newdata = as.matrix(task$data(cols = self$state$feature_names))
 
-      lp = as.numeric(mlr3misc::invoke(predict,
+      lp = as.numeric(invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,
         type = "lp"))
 
-      surv = mlr3misc::invoke(predict,
+      surv = invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,

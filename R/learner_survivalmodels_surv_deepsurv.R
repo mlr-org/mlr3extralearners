@@ -103,7 +103,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "fit")
-      mlr3misc::invoke(
+      invoke(
         survivalmodels::deepsurv,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
@@ -118,7 +118,7 @@ LearnerSurvDeepsurv = R6::R6Class("LearnerSurvDeepsurv",
       pars = self$param_set$get_values(tags = "predict")
       newdata = task$data(cols = task$feature_names)
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model,
         newdata = newdata,

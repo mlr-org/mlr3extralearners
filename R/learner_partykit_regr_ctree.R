@@ -94,9 +94,9 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
       }
-      pars$pargs = mlr3misc::invoke(mvtnorm::GenzBretz, pars_pargs)
+      pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
 
-      mlr3misc::invoke(partykit::ctree, formula = task$formula(),
+      invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)
     },
 
@@ -104,7 +104,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
       newdata = task$data(cols = task$feature_names)
       pars = self$param_set$get_values(tags = "predict")
 
-      p = mlr3misc::invoke(predict, self$model, newdata = newdata, .args = pars)
+      p = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = p)
     }
   )

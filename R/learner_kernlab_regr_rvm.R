@@ -87,7 +87,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      mlr3misc::invoke(kernlab::rvm,
+      invoke(kernlab::rvm,
         x = task$formula(),
         data = task$data(),
         kpar = kpar,
@@ -96,7 +96,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      list(response = as.numeric(mlr3misc::invoke(
+      list(response = as.numeric(invoke(
         getMethod("predict", "rvm"),
         self$model,
         task$data(cols = self$state$feature_names),

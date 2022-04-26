@@ -45,7 +45,7 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
       pdf = function(x) {
       }
       body(pdf) = substitute({
-        mlr3misc::invoke(kerdiest::kde, vec_data = data, y = x, .args = pars)$Estimated_values
+        invoke(kerdiest::kde, vec_data = data, y = x, .args = pars)$Estimated_values
       })
 
       if (is.null(pars$type_kernel)) {

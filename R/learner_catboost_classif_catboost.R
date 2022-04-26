@@ -183,7 +183,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     #' @return Named `numeric()`.
     importance = function() {
       # https://catboost.ai/docs/concepts/r-reference_catboost-get_feature_importance.html
-      imp = mlr3misc::invoke(catboost::catboost.get_feature_importance,
+      imp = invoke(catboost::catboost.get_feature_importance,
         model = self$model,
         type = "FeatureImportance",
         thread_count = self$param_set$values$thread_count)
@@ -211,7 +211,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       }
 
       # data must be a dataframe
-      learn_pool = mlr3misc::invoke(catboost::catboost.load_pool,
+      learn_pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
         label = label,
         weight = task$weights$weight,
@@ -235,7 +235,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       is_binary = (length(task$class_names) == 2L)
 
       # data must be a dataframe
-      pool = mlr3misc::invoke(catboost::catboost.load_pool,
+      pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
         thread_count = self$param_set$values$thread_count)
 
@@ -244,7 +244,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       } else {
         "Probability"
       }
-      preds = mlr3misc::invoke(catboost::catboost.predict,
+      preds = invoke(catboost::catboost.predict,
         model = self$model,
         pool = pool,
         prediction_type = prediction_type,

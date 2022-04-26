@@ -74,8 +74,8 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         pars$unpenalized = formulate(rhs = pars$unpenalized)
       }
 
-      mlr3misc::with_package("penalized", {
-        mlr3misc::invoke(penalized::penalized,
+      with_package("penalized", {
+        invoke(penalized::penalized,
           response = task$truth(), penalized = penalized,
           data = task$data(cols = task$feature_names), model = "cox", .args = pars)
       })
@@ -93,8 +93,8 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         pars$unpenalized = formulate(rhs = pars$unpenalized)
       }
 
-      surv = mlr3misc::with_package("penalized", {
-        mlr3misc::invoke(penalized::predict, self$model,
+      surv = with_package("penalized", {
+        invoke(penalized::predict, self$model,
           penalized = penalized,
           data = task$data(cols = task$feature_names),
           .args = pars)
