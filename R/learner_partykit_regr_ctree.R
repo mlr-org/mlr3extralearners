@@ -58,7 +58,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
         caseweights = p_lgl(default = FALSE, tags = "train"),
         applyfun = p_uty(tags = "train"),
         cores = p_int(special_vals = list(NULL), default = NULL,
-          tags = "train"),
+          tags = c("train", "threads")),
         saveinfo = p_lgl(default = TRUE, tags = "train"),
         update = p_lgl(default = FALSE, tags = "train"),
         splitflavour = p_fct(default = "ctree", # goes into control

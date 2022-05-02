@@ -66,7 +66,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         nrep = p_int(default = 10000, lower = 0L, tags = "train"),
         applyfun = p_uty(tags = "train"),
         cores = p_int(default = NULL, special_vals = list(NULL),
-          tags = "train"),
+          tags = c("train", "threads")),
         # additional arguments passed to fitting function
         additional = p_uty(custom_check = check_list,
           tags = "train"),

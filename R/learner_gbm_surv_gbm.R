@@ -46,7 +46,7 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
         keep.data = p_lgl(default = TRUE, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train"),
         var.monotone = p_uty(tags = "train"),
-        n.cores = p_int(default = 1, tags = "train"),
+        n.cores = p_int(default = 1, tags = c("train", "threads")),
         single.tree = p_lgl(default = FALSE, tags = "predict")
       )
       ps$values = list(distribution = "coxph", keep.data = FALSE, n.cores = 1)

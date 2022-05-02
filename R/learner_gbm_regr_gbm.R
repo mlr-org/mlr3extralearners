@@ -45,7 +45,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         keep.data = p_lgl(default = FALSE, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train"),
         # Set to 1 to suppress parallelization by the package
-        n.cores = p_int(default = 1, tags = "train"),
+        n.cores = p_int(default = 1, tags = c("train", "threads")),
         var.monotone = p_uty(tags = "train")
       )
       ps$values = list(keep.data = FALSE, n.cores = 1)
