@@ -115,7 +115,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         classes_count = p_int(lower = 1L, upper = Inf, tags = "train"),
         # Performance Settings
         thread_count = p_int(lower = -1L, upper = Inf, default = 1L, tags = c("train", "predict",
-          "importance")),
+          "importance", "threads")),
         # Processing units settings
         task_type = p_fct(levels = c("CPU", "GPU"), default = "CPU", tags = "train"),
         devices = p_uty(tags = "train"),
