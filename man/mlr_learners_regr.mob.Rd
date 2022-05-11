@@ -65,6 +65,7 @@ lrn("regr.mob")
 }
 
 \examples{
+library(mlr3)
 lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   lm(y ~ 1, ...)
 }
