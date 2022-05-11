@@ -89,8 +89,8 @@ predict_fun = function(object, newdata, task, .type) {
 task = tsk("iris")
 learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
-task$train(task, row_ids = ids$train)
-task$predict(task, row_ids = ids$test)
+learner$train(task, row_ids = ids$train)
+learner$predict(task, row_ids = ids$test)
 }
 \references{
 Hothorn T, Zeileis A (2015).
