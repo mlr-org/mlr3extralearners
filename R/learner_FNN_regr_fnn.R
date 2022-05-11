@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fast Nearest Neighbour Regression.
-#' Calls [FNN:knn.reg()] from \CRANpkg{FNN}.
+#' Calls [FNN::knn.reg()] from \CRANpkg{FNN}.
 #'
 #' @templateVar id regr.fnn
 #' @template learner

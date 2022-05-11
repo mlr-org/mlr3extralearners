@@ -21,8 +21,7 @@
 #' Tuning the `s` parameter is, therefore, currently discouraged.
 #'
 #' When the data are i.i.d. and efficiency is key, we recommend using the respective
-#' auto-tuning counterparts in [mlr_learners_classif.cv_glmnet()],
-#' [mlr_learners_regr.cv_glmnet()], or [mlr_learners_surv.cv_glmnet()].
+#' auto-tuning counterpart in [mlr_learners_surv.cv_glmnet()].
 #' However, in some situations this is not applicable, usually when data are
 #' imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 #' custom resampling strategies (blocked design, stratification).

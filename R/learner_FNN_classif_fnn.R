@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fast Nearest Neighbour Classification.
-#' Calls [FNN:knn()] from \CRANpkg{FNN}.
+#' Calls [FNN::knn()] from \CRANpkg{FNN}.
 #'
 #'
 #' @template learner

@@ -6,7 +6,7 @@
 \title{Regression Fast Nearest Neighbor Search Learner}
 \description{
 Fast Nearest Neighbour Regression.
-Calls \code{\link[=FNN:knn.reg]{FNN:knn.reg()}} from \CRANpkg{FNN}.
+Calls \code{\link[FNN:knn.reg]{FNN::knn.reg()}} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{
 
