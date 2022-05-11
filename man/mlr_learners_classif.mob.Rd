@@ -6,7 +6,7 @@
 \title{Classification Model-based Recursive Partitioning Learner}
 \description{
 Model-based recursive partitioning algorithm.
-Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANPkg{mob}.
+Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANpkg{mob}.
 }
 \section{Dictionary}{
 
@@ -65,6 +65,7 @@ lrn("classif.mob")
 }
 
 \examples{
+library(mlr3)
 logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   glm(y ~ 1, family = binomial, start = start, ...)
 }

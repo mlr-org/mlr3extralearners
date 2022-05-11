@@ -6,7 +6,7 @@
 \title{Regression Model-based Recursive Partitioning Learner}
 \description{
 Model-based recursive partitioning algorithm.
-Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANPkg{mob}.
+Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANpkg{mob}.
 }
 \section{Dictionary}{
 
@@ -65,6 +65,7 @@ lrn("regr.mob")
 }
 
 \examples{
+library(mlr3)
 lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   lm(y ~ 1, ...)
 }
@@ -82,13 +83,6 @@ task = tsk("mtcars")
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.mob")
-  print(learner)
-
-  # available parameters:
-  learner$param_set$ids()
-}
 }
 \references{
 Hothorn T, Zeileis A (2015).
