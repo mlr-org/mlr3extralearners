@@ -24,7 +24,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3 (>= 0.6.0),
+    mlr3 (>= 0.13.1),
     mlr3misc (>= 0.9.4),
     paradox,
     R6

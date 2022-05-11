@@ -65,7 +65,6 @@ lrn("regr.mob")
 }
 
 \examples{
-library(mlr3)
 lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   lm(y ~ 1, ...)
 }
@@ -80,7 +79,7 @@ predict_fun = function(object, newdata, task, .type) {
 }
 learner$param_set$values$predict_fun = predict_fun
 task = tsk("mtcars")
-ids = partition(task)
+ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
 }

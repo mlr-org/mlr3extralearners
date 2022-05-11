@@ -37,7 +37,7 @@
 #'   }
 #' }
 #' learner$param_set$values$predict_fun = predict_fun
-#' ids = partition(task)
+#' ids = mlr3::partition(task)
 #' task = tsk("iris")
 #' task$train(task, row_ids = ids$train)
 #' task$predict(task, row_ids = ids$test)
