@@ -15,6 +15,7 @@
 #' @export
 #' @template seealso_learner
 #' @examples
+#' library(mlr3)
 #' logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   glm(y ~ 1, family = binomial, start = start, ...)
 #' }

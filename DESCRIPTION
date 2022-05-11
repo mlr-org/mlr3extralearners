@@ -75,6 +75,7 @@ Suggests:
     ranger,
     remotes,
     reticulate (>= 1.16),
+    rvest,
     RWeka,
     sandwich,
     set6,

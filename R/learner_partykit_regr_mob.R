@@ -15,6 +15,7 @@
 #' @export
 #' @template seealso_learner
 #' @examples
+#' library(mlr3)
 #' lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   lm(y ~ 1, ...)
 #' }
@@ -32,7 +33,6 @@
 #' ids = partition(task)
 #' learner$train(task, row_ids = ids$train)
 #' learner$predict(task, row_ids = ids$test)
-#' @template example
 LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
   public = list(
 

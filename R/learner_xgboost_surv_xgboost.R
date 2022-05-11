@@ -131,7 +131,7 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         feature_types = c("integer", "numeric"),
         properties = c("weights", "missings", "importance"),
         packages = c("mlr3extralearners", "xgboost"),
-        man = "mlr3learners::mlr_learners_surv.xgboost"
+        man = "mlr3extralearners::mlr_learners_surv.xgboost"
       )
     },
 

@@ -1,5 +1,3 @@
-library(mlr3learners)
-
 test_that("surv.ranger", {
   learner = LearnerSurvRanger$new()
   fun = ranger::ranger
@@ -21,7 +19,7 @@ test_that("surv.ranger", {
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
-  expect_paramtest(paramtes)
+  expect_paramtest(paramtest)
 })
 
 test_that("predict surv.ranger", {

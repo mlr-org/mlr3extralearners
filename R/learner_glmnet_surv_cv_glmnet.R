@@ -78,7 +78,7 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
         predict_types = c("crank", "lp"),
         properties = c("weights", "selected_features"),
         packages = c("mlr3extralearners", "glmnet"),
-        man = "mlr3learners::mlr_learners_surv.cv_glmnet"
+        man = "mlr3extralearners::mlr_learners_surv.cv_glmnet"
       )
     },
 

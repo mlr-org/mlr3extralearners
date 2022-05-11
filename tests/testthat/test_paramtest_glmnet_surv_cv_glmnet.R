@@ -1,5 +1,3 @@
-library(mlr3learners)
-
 test_that("surv.cv_glmnet", {
   learner = lrn("surv.cv_glmnet")
   fun = list(glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)
@@ -13,7 +11,7 @@ test_that("surv.cv_glmnet", {
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
-  expect_paramtest(paramtes)
+  expect_paramtest(paramtest)
 })
 
 test_that("predict surv.cv_glmnet", {

@@ -1,20 +1,17 @@
-library(mlr3learners)
-library(rvest)
-library(magrittr)
-
-add_params_xgboost = read_html("https://xgboost.readthedocs.io/en/latest/parameter.html") %>%
-  html_elements(c("li", "p")) %>%
-  html_text2() %>%
-  grep("default=", ., value = T) %>%
-  strsplit(., split = " ") %>%
-  mlr3misc::map_chr(., function(x) x[1]) %>%
-  gsub(",", replacement = "", .) %>%
-  ## these are defined on the same line as colsample_bytree and cannot be scraped therefore
-  append(values = c("colsample_bylevel", "colsample_bynode")) %>%
-  # valyes which do not match regex
-  append(values = c("interaction_constraints", "monotone_constraints")) %>%
-  # only defined in help page but not in signature or website
-  append(values = c("lambda_bias"))
+x = rvest::read_html("https://xgboost.readthedocs.io/en/latest/parameter.html")
+x = html_elements(x, c("li", "p"))
+x = html_text2(x)
+x = grep("default=", x, value = TRUE)
+x = strsplit(x, split = " ")
+x = mlr3misc::map_chr(x, function(x) x[1])
+x = gsub(",", replacement = "", x)
+# these are defined on the same line as colsample_bytree and cannot be scraped therefore
+x = append(x, values = c("colsample_bylevel", "colsample_bynode"))
+# valyes which do not match regex
+x = append(x, values = c("interaction_constraints", "monotone_constraints"))
+# only defined in help page but not in signature or website
+x = append(x, values = c("lambda_bias"))
+add_params_xgboost = x
 
 test_that("surv.xgboost", {
   learner = lrn("surv.xgboost", nrounds = 1)

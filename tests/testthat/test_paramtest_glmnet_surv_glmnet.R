@@ -1,5 +1,3 @@
-library(mlr3learners)
-
 test_that("surv.glmnet", {
   learner = lrn("surv.glmnet")
   fun = list(glmnet::glmnet, glmnet::cv.glmnet, glmnet::glmnet.control)
