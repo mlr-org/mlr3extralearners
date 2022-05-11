@@ -37,5 +37,5 @@ test_that("predict surv.ranger", {
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
-  expect_paramtest(paramtes)
+  expect_paramtest(paramtest)
 })
