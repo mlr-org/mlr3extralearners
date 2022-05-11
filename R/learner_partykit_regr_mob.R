@@ -29,7 +29,7 @@
 #' }
 #' learner$param_set$values$predict_fun = predict_fun
 #' task = tsk("mtcars")
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #' learner$train(task, row_ids = ids$train)
 #' learner$predict(task, row_ids = ids$test)
 LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,

@@ -79,7 +79,7 @@ predict_fun = function(object, newdata, task, .type) {
 }
 learner$param_set$values$predict_fun = predict_fun
 task = tsk("mtcars")
-ids = mlr3::partition(task)
+ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
 }

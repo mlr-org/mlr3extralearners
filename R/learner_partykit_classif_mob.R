@@ -36,9 +36,9 @@
 #'     prob_vector_to_matrix(p, levs)
 #'   }
 #' }
-#' learner$param_set$values$predict_fun = predict_fun
-#' ids = mlr3::partition(task)
 #' task = tsk("iris")
+#' learner$param_set$values$predict_fun = predict_fun
+#' ids = partition(task)
 #' task$train(task, row_ids = ids$train)
 #' task$predict(task, row_ids = ids$test)
 LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
