@@ -45,7 +45,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         fit = p_uty(custom_check = function(x) {
           check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
-        }, tags = "train"),
+        }, tags = c("train", "required")),
         offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         # all in mob_control()
@@ -98,7 +98,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
         predict_fun = p_uty(custom_check = function(x) {
           check_function(x,
             args = c("object", "newdata", "task", ".type"))
-        }, tags = "predict")
+        }, tags = c("predict", "required"))
       )
 
       ps$add_dep("nrep", on = "ordinal", cond = CondEqual$new("L2"))
