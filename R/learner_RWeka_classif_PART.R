@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_classif.PART
 #'
-#' @template class_learner
+#' @description
+#' Regression partition tree.
+#' Calls [RWeka::PART()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id classif.PART
-#' @templateVar caller PART
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

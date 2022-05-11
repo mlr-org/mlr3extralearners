@@ -2,15 +2,36 @@
 #' @author sumny
 #' @name mlr_learners_regr.mob
 #'
-#' @template class_learner
+#' @description
+#' Model-based recursive partitioning algorithm.
+#' Calls [partykit::mob()] from \CRANPkg{mob}.
+#'
+#' @template learner
 #' @templateVar id regr.mob
-#' @templateVar caller mob
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`
 #'
 #' @export
 #' @template seealso_learner
+#' @examples
+#' lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
+#'   lm(y ~ 1, ...)
+#' }
+#' learner = LearnerRegrMob$new()
+#' learner$param_set$values$rhs = "."
+#' learner$param_set$values$fit = lm_
+#' learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
+#'
+#' predict_fun = function(object, newdata, task, .type) {
+#'   preds = predict(object, newdata = newdata, type = "response", se.fit = TRUE)
+#'   cbind(preds$fit, preds$se.fit)
+#' }
+#' learner$param_set$values$predict_fun = predict_fun
+#' task = tsk("mtcars")
+#' ids = partition(task)
+#' learner$train(task, row_ids = ids$train)
+#' learner$predict(task, row_ids = ids$test)
 #' @template example
 LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
   public = list(
@@ -99,7 +120,6 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
 
   private = list(
     .train = function(task) {
-
       # FIXME: check if rhs variables are present in data?
       formula = task$formula(self$param_set$values$rhs)
       pars = self$param_set$get_values(tags = "train")

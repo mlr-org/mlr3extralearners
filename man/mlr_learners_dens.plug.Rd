@@ -5,12 +5,12 @@
 \alias{LearnerDensPlugin}
 \title{Density Plug-In Kernel Learner}
 \description{
-Calls \link[plugdensity:plugin.density]{plugdensity::plugin.density} from package \CRANpkg{plugdensity}.
+Kernel density estimation with global bandwidth selection via "plug-in".
+Calls \code{\link[plugdensity:plugin.density]{plugdensity::plugin.density()}} from \CRANpkg{plugdensity}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.plug")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.plug")
 lrn("dens.plug")
 }
 }

@@ -2,9 +2,13 @@
 #' @author sumny
 #' @name mlr_learners_regr.ctree
 #'
+#' @description
+#' Regression Partition Tree where a significance test is used to determine the univariate splits.
+#' Calls [partykit::ctree()] from \CRANpkg{partykit}.
+#'
+#'
 #' @template class_learner
 #' @templateVar id regr.ctree
-#' @templateVar caller ctree
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`

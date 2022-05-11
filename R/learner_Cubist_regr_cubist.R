@@ -2,9 +2,13 @@
 #' @author sumny
 #' @name mlr_learners_regr.cubist
 #'
-#' @template class_learner
+#' @description
+#' Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
+#' linear regression models at the terminal leaves.
+#' Calls [Cubist::cubist()] from \CRANpkg{Cubist}.
+#'
+#' @template learner
 #' @templateVar id regr.cubist
-#' @templateVar caller cubist
 #'
 #' @references
 #' `r format_bib("quinlan1992learning", "quinlan1993combining")`

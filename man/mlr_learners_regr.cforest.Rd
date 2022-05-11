@@ -5,12 +5,12 @@
 \alias{LearnerRegrCForest}
 \title{Regression Conditional Random Forest Learner}
 \description{
-Calls \link[partykit:cforest]{partykit::cforest} from package \CRANpkg{partykit}.
+A random forest based on conditional inference trees (\link[partykit:ctree]{ctree}).
+Calls \code{\link[partykit:cforest]{partykit::cforest()}} from \CRANpkg{partykit}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.cforest")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.cforest")
 lrn("regr.cforest")
 }
 }

@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_regr.IBk
 #'
-#' @template class_learner
+#' @description
+#' Instance based algorithm: K-nearest neighbours regression.
+#' Calls [RWeka::IBk()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id regr.IBk
-#' @templateVar caller IBk
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

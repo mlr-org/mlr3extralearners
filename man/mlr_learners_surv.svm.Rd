@@ -5,7 +5,8 @@
 \alias{LearnerSurvSVM}
 \title{Survival Support Vector Machine Learner}
 \description{
-Calls \link[survivalsvm:survivalsvm]{survivalsvm::survivalsvm} from package \CRANpkg{survivalsvm}.
+Survival support vector machine.
+Calls \code{\link[survivalsvm:survivalsvm]{survivalsvm::survivalsvm()}} from \CRANpkg{survivalsvm}.
 }
 \details{
 Four possible SVMs can be implemented, dependent on the \code{type} parameter. These correspond
@@ -17,9 +18,8 @@ but in any case all can be considered a valid continuous ranking.
 \code{makediff3} is recommended when using \code{type = "hybrid"}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.svm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.svm")
 lrn("surv.svm")
 }
 }

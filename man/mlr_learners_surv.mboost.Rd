@@ -5,15 +5,15 @@
 \alias{LearnerSurvMBoost}
 \title{Boosted Generalized Additive Survival Learner}
 \description{
-Calls \link[mboost:gamboost]{mboost::mboost} from package \CRANpkg{mboost}.
+Model-based boosting for survival analysis.
+Calls \code{\link[mboost:gamboost]{mboost::mboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.mboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.mboost")
 lrn("surv.mboost")
 }
 }

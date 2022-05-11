@@ -5,12 +5,12 @@
 \alias{LearnerRegrLightGBM}
 \title{Regression Light GBM Learner}
 \description{
-Calls \link[lightgbm:lgb.train]{lightgbm::lgb.train} from package \CRANpkg{lightgbm}.
+Gradient boosting algorithm.
+Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.lightgbm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.lightgbm")
 lrn("regr.lightgbm")
 }
 }

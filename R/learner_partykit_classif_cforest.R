@@ -2,9 +2,12 @@
 #' @author sumny
 #' @name mlr_learners_classif.cforest
 #'
-#' @template class_learner
+#' @description
+#' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
+#' Calls [partykit::cforest()] from \CRANpkg{partykit}.
+#'
+#' @template learner
 #' @templateVar id classif.cforest
-#' @templateVar caller cforest
 #'
 #' @section Custom mlr3 defaults:
 #' - `mtry`:

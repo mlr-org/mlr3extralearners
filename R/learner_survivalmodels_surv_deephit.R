@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.deephit
 #'
-#' @template class_learner
+#' @description
+#' Neural network 'Deephit' for survival analysis.
+#' Calls [survivalmodels::deephit()] from pacakge 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.deephit
-#' @templateVar caller deephit
+#'
+#' @template install_survivalmodels
 #'
 #' @details
 #' Custom nets can be used in this learner either using the

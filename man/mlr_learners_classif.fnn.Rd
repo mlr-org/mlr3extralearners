@@ -5,12 +5,12 @@
 \alias{LearnerClassifFNN}
 \title{Classification Fast Nearest Neighbor Search Learner}
 \description{
-Calls \link[FNN:knn]{FNN::knn} from package \CRANpkg{FNN}.
+Fast Nearest Neighbour Classification.
+Calls \code{\link[=FNN:knn]{FNN:knn()}} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.fnn")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.fnn")
 lrn("classif.fnn")
 }
 }

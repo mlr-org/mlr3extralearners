@@ -5,7 +5,9 @@
 \alias{LearnerSurvCVCoxboost}
 \title{Survival Cox Model with Cross-Validation Likelihood Based Boosting Learner}
 \description{
-Calls \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost} from package \CRANpkg{CoxBoost}.
+Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+number of steps.
+Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} or \code{\link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost()}} from package 'CoxBoost'.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
@@ -18,9 +20,8 @@ If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPen
 the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.cv_coxboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.cv_coxboost")
 lrn("surv.cv_coxboost")
 }
 }
@@ -59,6 +60,12 @@ lrn("surv.cv_coxboost")
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    at.step \tab untyped \tab - \tab  \tab - \cr
 }
+}
+
+\section{Installation}{
+
+The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
+\code{remotes::install_github("binderh/CoxBoost")}.
 }
 
 \examples{

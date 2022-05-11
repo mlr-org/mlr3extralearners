@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.36
+Version: 0.5.37
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -43,6 +43,7 @@ Suggests:
     FNN,
     formattable,
     gbm,
+    glmnet,
     gss,
     keras (>= 2.3.0),
     kerdiest,
@@ -71,6 +72,7 @@ Suggests:
     pseudo,
     randomForest,
     randomForestSRC,
+    ranger,
     remotes,
     reticulate (>= 1.16),
     RWeka,
@@ -83,7 +85,8 @@ Suggests:
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
-    usethis
+    usethis,
+    xgboost
 Remotes:
     binderh/CoxBoost,
     mlr-org/mlr3proba,

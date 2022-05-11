@@ -5,12 +5,12 @@
 \alias{LearnerSurvNelson}
 \title{Survival Nelson-Aalen Estimator Learner}
 \description{
-Calls \link[survival:survfit]{survival::survfit} from package \CRANpkg{survival}.
+Non-parametric estimator of the cumulative hazard rate function.
+Calls \code{\link[survival:survfit]{survival::survfit()}}  from \CRANpkg{survival}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.nelson")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.nelson")
 lrn("surv.nelson")
 }
 }

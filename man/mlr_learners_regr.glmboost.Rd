@@ -5,12 +5,12 @@
 \alias{LearnerRegrGLMBoost}
 \title{Boosted Generalized Linear Regression Learner}
 \description{
-Calls \link[mboost:glmboost]{mboost::glmboost} from package \CRANpkg{mboost}.
+Fit a generalized linear regression model using a boosting algorithm.
+Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.glmboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.glmboost")
 lrn("regr.glmboost")
 }
 }

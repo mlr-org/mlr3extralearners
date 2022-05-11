@@ -5,12 +5,12 @@
 \alias{LearnerRegrCatboost}
 \title{Gradient Boosted Decision Trees Regression Learner}
 \description{
-Calls \link[catboost:catboost.train]{catboost::catboost.train} from package \CRANpkg{catboost}.
+Gradient boosting algorithm that also supports categorical data.
+Calls \code{\link[catboost:catboost.train]{catboost::catboost.train()}} from package 'catboost'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.catboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.catboost")
 lrn("regr.catboost")
 }
 }

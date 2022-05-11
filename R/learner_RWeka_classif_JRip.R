@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_classif.JRip
 #'
-#' @template class_learner
+#' @description
+#' Repeated Incremental Pruning to Produce Error Reduction.
+#' Calls [RWeka::JRip()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id classif.JRip
-#' @templateVar caller JRip
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

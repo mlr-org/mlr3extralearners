@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_dens.spline
 #'
-#' @template class_learner
+#' @description
+#' Density Smoothing Splines Learner.
+#' Calls [gss::ssden()] from \CRANpkg{gss}.
+#'
+#' @template learner
 #' @templateVar id dens.spline
-#' @templateVar caller ssden
 #'
 #' @references
 #' `r format_bib("gu2003penalized")`

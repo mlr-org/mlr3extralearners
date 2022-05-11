@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.svm
 #'
-#' @template class_learner
+#' @description
+#' Survival support vector machine.
+#' Calls [survivalsvm::survivalsvm()] from \CRANpkg{survivalsvm}.
+#'
+#' @template learner
 #' @templateVar id surv.svm
-#' @templateVar caller survivalsvm
 #'
 #' @details
 #' Four possible SVMs can be implemented, dependent on the `type` parameter. These correspond

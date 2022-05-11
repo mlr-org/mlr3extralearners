@@ -1,11 +1,13 @@
 #' @title Survival L1 and L2 Penalized Regression Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.penalized
 #'
-#' @template class_learner
+#' @description
+#' Penalized (L1 and L2) generalized linear models.
+#' Calls [penalized::penalized()] from \CRANpkg{penalized}.
+#'
+#' @template learner
 #' @templateVar id surv.penalized
-#' @templateVar caller penalized
 #'
 #' @details
 #' The `penalized` and `unpenalized` arguments in the learner are implemented slightly

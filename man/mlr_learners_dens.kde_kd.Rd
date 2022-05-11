@@ -5,12 +5,12 @@
 \alias{LearnerDensKDEkd}
 \title{Density Kerdiest Kernel Learner}
 \description{
-Calls \link[kerdiest:kde]{kerdiest::kde} from package \CRANpkg{kerdiest}.
+Kernel Density Estimator of the distribution function.
+Calls \code{\link[kerdiest:kde]{kerdiest::kde()}} from \CRANpkg{kerdiest}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.kde_kd")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.kde_kd")
 lrn("dens.kde_kd")
 }
 }

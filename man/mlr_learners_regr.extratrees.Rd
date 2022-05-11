@@ -5,12 +5,13 @@
 \alias{LearnerRegrExtraTrees}
 \title{Regression ExtraTrees Learner}
 \description{
-Calls \link[extraTrees:extraTrees]{extraTrees::extraTrees} from package \CRANpkg{extraTrees}.
+Extra Trees are similar to random forests but don't use bootstrapped samples and select the
+split points randomly.
+Calls \code{\link[extraTrees:extraTrees]{extraTrees::extraTrees()}} from \CRANpkg{extraTrees}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.extratrees")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.extratrees")
 lrn("regr.extratrees")
 }
 }

@@ -5,12 +5,12 @@
 \alias{LearnerDensLocfit}
 \title{Density Locfit Learner}
 \description{
-Calls \link[locfit:density.lf]{locfit::density.lf} from package \CRANpkg{locfit}.
+Local density estimation.
+Calls \code{\link[locfit:density.lf]{locfit::density.lf()}} from \CRANpkg{locfit}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.locfit")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.locfit")
 lrn("dens.locfit")
 }
 }

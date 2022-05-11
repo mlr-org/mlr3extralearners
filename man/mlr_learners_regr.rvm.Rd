@@ -5,18 +5,16 @@
 \alias{LearnerRegrRVM}
 \title{Regression Relevance Vector Machine Learner}
 \description{
-Calls \link[kernlab:rvm]{kernlab::rvm} from package \CRANpkg{kernlab}.
-}
-\details{
+Bayesian version of the support vector machine.
 Parameters \code{sigma}, \code{degree}, \code{scale}, \code{offset}, \code{order}, \code{length},
 \code{lambda}, and \code{normalized} are added to make tuning \code{kpar} easier.
 If \code{kpar} is provided then these new parameters are ignored. If none are
 provided then the default "automatic" is used for \code{kpar}.
+Calls \code{\link[kernlab:rvm]{kernlab::rvm()}} from package \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.rvm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.rvm")
 lrn("regr.rvm")
 }
 }

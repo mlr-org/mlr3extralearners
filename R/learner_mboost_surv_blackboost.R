@@ -1,11 +1,12 @@
 #' @title Gradient Boosting with Regression Trees Survival Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.blackboost
 #'
-#' @template class_learner
+#' @description
+#'
+#'
+#' @template learner
 #' @templateVar id surv.blackboost
-#' @templateVar caller blackboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].

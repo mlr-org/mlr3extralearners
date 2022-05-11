@@ -2,9 +2,12 @@
 #' @name mlr_learners_surv.parametric
 #' @author RaphaelS1
 #'
-#' @template class_learner
+#' @description
+#' Parametric survival model.
+#' Calls [survival::survreg()] from \CRANpkg{survival}.
+#'
+#' @template learner
 #' @templateVar id surv.parametric
-#' @templateVar caller survreg
 #'
 #' @details
 #' This learner allows you to choose a distribution and a model form to compose a predicted

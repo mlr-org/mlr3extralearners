@@ -5,12 +5,12 @@
 \alias{LearnerDensLogspline}
 \title{Density Logspline Learner}
 \description{
-Calls \link[logspline:logspline]{logspline::logspline} from package \CRANpkg{logspline}.
+Density logspline learner.
+Calls \code{\link[logspline:logspline]{logspline::logspline()}} from \CRANpkg{logspline}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.logspline")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.logspline")
 lrn("dens.logspline")
 }
 }

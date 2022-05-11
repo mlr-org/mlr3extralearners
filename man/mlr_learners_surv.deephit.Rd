@@ -5,7 +5,8 @@
 \alias{LearnerSurvDeephit}
 \title{Survival DeepHit Learner}
 \description{
-Calls \link[survivalmodels:deephit]{survivalmodels::deephit} from package \CRANpkg{survivalmodels}.
+Neural network 'Deephit' for survival analysis.
+Calls \code{\link[survivalmodels:deephit]{survivalmodels::deephit()}} from pacakge 'survivalmodels'.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -14,9 +15,8 @@ The number of output channels depends on the number of discretised time-points, 
 the parameters \code{cuts} or \code{cutpoints}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.deephit")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.deephit")
 lrn("surv.deephit")
 }
 }
@@ -78,6 +78,12 @@ lrn("surv.deephit")
    inter_scheme \tab character \tab const_hazard \tab const_hazard, const_pdf \tab - \cr
    sub \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
+}
+
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
 \examples{

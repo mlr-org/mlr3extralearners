@@ -2,9 +2,13 @@
 #' @author sumny
 #' @name mlr_learners_classif.ctree
 #'
-#' @template class_learner
+#' @description
+#' Classification Partition Tree where a significance test is used to determine the univariate
+#' splits. Calls [partykit::ctree()] from \CRANpkg{partykit}.
+#'
+#'
+#' @template learner
 #' @templateVar id classif.ctree
-#' @templateVar caller ctree
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`

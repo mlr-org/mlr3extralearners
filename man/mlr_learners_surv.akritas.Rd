@@ -5,12 +5,12 @@
 \alias{LearnerSurvAkritas}
 \title{Survival Akritas Estimator Learner}
 \description{
-Calls \link[survivalmodels:akritas]{survivalmodels::akritas} from package \CRANpkg{survivalmodels}.
+Survival akritas estimator.
+Calls \code{\link[survivalmodels:akritas]{survivalmodels::akritas()}} from package 'survivalmodels'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.akritas")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.akritas")
 lrn("surv.akritas")
 }
 }
@@ -31,6 +31,12 @@ lrn("surv.akritas")
    lambda \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    reverse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
 \examples{

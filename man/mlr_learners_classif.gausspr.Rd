@@ -5,18 +5,16 @@
 \alias{LearnerClassifGausspr}
 \title{Classifession Gaussian Process Learner}
 \description{
-Calls \link[kernlab:gausspr]{kernlab::gausspr} from package \CRANpkg{kernlab}.
-}
-\details{
+Gaussian process for classification.
+Calls \code{\link[kernlab:gausspr]{kernlab::gausspr()}} from \CRANpkg{kernlab}.
 Parameters \code{sigma}, \code{degree}, \code{scale}, \code{offset} and \code{order} are
 added to make tuning \code{kpar} easier. If \code{kpar} is provided then these
 new parameters are ignored. If none are provided then the default
 "automatic" is used for \code{kpar}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gausspr")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gausspr")
 lrn("classif.gausspr")
 }
 }

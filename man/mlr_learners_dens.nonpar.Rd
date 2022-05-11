@@ -5,12 +5,12 @@
 \alias{LearnerDensNonparametric}
 \title{Density Nonparametric Learner}
 \description{
-Calls \link[sm:sm.density]{sm::sm.density} from package \CRANpkg{sm}.
+Nonparametric density estimation.
+Calls \code{\link[sm:sm.density]{sm::sm.density()}} from \CRANpkg{sm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.nonpar")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.nonpar")
 lrn("dens.nonpar")
 }
 }

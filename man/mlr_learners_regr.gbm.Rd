@@ -5,12 +5,12 @@
 \alias{LearnerRegrGBM}
 \title{Regression Gradient Boosting Machine Learner}
 \description{
-Calls \link[gbm:gbm]{gbm::gbm} from package \CRANpkg{gbm}.
+Gradient Boosting Regression Algorithm.
+Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.gbm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.gbm")
 lrn("regr.gbm")
 }
 }

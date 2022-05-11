@@ -5,7 +5,8 @@
 \alias{LearnerSurvParametric}
 \title{Survival Fully Parametric Learner}
 \description{
-Calls \link[survival:survreg]{survival::survreg} from package \CRANpkg{survival}.
+Parametric survival model.
+Calls \code{\link[survival:survreg]{survival::survreg()}} from \CRANpkg{survival}.
 }
 \details{
 This learner allows you to choose a distribution and a model form to compose a predicted
@@ -46,9 +47,8 @@ necessarily create a sensible or interpretable prediction. The following combina
 }
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.parametric")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.parametric")
 lrn("surv.parametric")
 }
 }

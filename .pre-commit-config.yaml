@@ -6,14 +6,21 @@ repos:
     # any R project
     -   id: style-files
         args: [--style_pkg=styler.mlr, --style_fun=mlr_style]
+        exclude: ^(man-roxygen/|templates/)
         # additional_dependencies: mlr-org/styler.mlr
     -   id: lintr
+        exclude: ^(man-roxygen/|templates/)
+
     -   id: parsable-R
+        exclude: ^templates/
     -   id: no-browser-statement
+        exclude: ^templates/
+
     -   id: readme-rmd-rendered
     #  R package development
     -   id: use-tidy-description
     -   id: deps-in-desc
+        exclude: ^(templates/|R/learner_catboost_regr_catboost.R|R/learner_catboost_classif_catboost.R|tests/testthat/)
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v3.1.0
     hooks:

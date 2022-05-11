@@ -1,4 +1,37 @@
+# mlr3extralearners 0.5.37
+
+* Improve docs and change doc layout
+* Fix typo in man-roxygen templates
+* Port mlr3proba learners (mlr3proba is no longer on CRAN)
+* Exclude relevant files in precommit
+
+# mlr3extralearners 0.5.36
+
+* Add missing 'threads' tag to respective parameters.
+
+# mlr3extralearners 0.5.35
+
+* Full installatio in workflow 'test_selection' (is faster than the previous
+  approach, where selected packages were installed from CRAN)
+
+# mlr3extralearners 0.5.34
+
+* remove explicit mlr3misc:: (is imported)
+
+# mlr3extralearners 0.5.33
+
+* consistency: Use params in train and predict calls, even in learners that currently don't
+have predict / train params. This allows easier correction of parameters by
+users.
+
+# mlr3extralearners 0.5.32
+
+* chore: add new parameters for kde and rfsrc
+
+* temporarily disable feat_all test for obliqeRSF (failed in $score() stage, because issue only happened in CI and could not be reproduced
+
 # mlr3extralearners 0.5.31
+
 * Many non-standard tags were included in the learners, these are removed
 * Some bugs in learners were fixed (survival rfsrc: "estimator" was incorrectly handled in .predict)
 * Minor refactorings in train methods of learners

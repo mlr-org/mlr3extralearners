@@ -5,12 +5,13 @@
 \alias{LearnerRegrM5Rules}
 \title{Regression M5Rules Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_rules]{RWeka::M5Rules} from package \CRANpkg{RWeka}.
+Algorithm for inducing \href{https://en.wikipedia.org/wiki/Decision_list}{decision lists} from
+model trees.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::M5Rules()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.M5Rules")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.M5Rules")
 lrn("regr.M5Rules")
 }
 }

@@ -5,12 +5,12 @@
 \alias{LearnerClassifRandomForest}
 \title{Classification Random Forest Learner}
 \description{
-Calls \link[randomForest:randomForest]{randomForest::randomForest} from package \CRANpkg{randomForest}.
+Random forest for classification.
+Calls \code{\link[randomForest:randomForest]{randomForest::randomForest()}} from \CRANpkg{randomForest}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.randomForest")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.randomForest")
 lrn("classif.randomForest")
 }
 }

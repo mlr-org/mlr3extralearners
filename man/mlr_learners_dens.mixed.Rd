@@ -5,12 +5,12 @@
 \alias{LearnerDensMixed}
 \title{Density Mixed Data Kernel Learner}
 \description{
-Calls \link[np:np.density]{np::npudens} from package \CRANpkg{np}.
+Density estimator for discrete and continuous variables.
+Calls \code{\link[np:np.density]{np::npudens()}} from \CRANpkg{np}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.mixed")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.mixed")
 lrn("dens.mixed")
 }
 }

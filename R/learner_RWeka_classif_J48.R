@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_classif.J48
 #'
-#' @template class_learner
+#' @description
+#' Decision tree algorithm.
+#' Callsu [RWeka::IBk()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id classif.J48
-#' @templateVar caller J48
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

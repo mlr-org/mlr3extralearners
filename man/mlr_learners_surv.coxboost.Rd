@@ -5,7 +5,8 @@
 \alias{LearnerSurvCoxboost}
 \title{Survival Cox Model with Likelihood Based Boosting Learner}
 \description{
-Calls \link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost} from package \CRANpkg{CoxBoost}.
+Fit a Survival Cox model with a likelihood based boosting algorithm.
+Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} from package 'CoxBoost'.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
@@ -15,9 +16,8 @@ multiple hyperparameters, \CRANpkg{mlr3tuning} and \link{LearnerSurvCoxboost} wi
 results.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxboost")
 lrn("surv.coxboost")
 }
 }
@@ -49,6 +49,12 @@ lrn("surv.coxboost")
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    at.step \tab untyped \tab - \tab  \tab - \cr
 }
+}
+
+\section{Installation}{
+
+The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
+\code{remotes::install_github("binderh/CoxBoost")}.
 }
 
 \examples{

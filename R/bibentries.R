@@ -489,5 +489,44 @@ bibentries = c( # nolint start
     pages = "655--660",
     year = "2007",
     organization = "IEEE"
+  ),
+  friedman_2010 = bibentry("article",
+    title            = "Regularization Paths for Generalized Linear Models via Coordinate Descent",
+    author           = "Jerome Friedman and Trevor Hastie and Robert Tibshirani",
+    year             = "2010",
+    journal          = "Journal of Statistical Software",
+    volume           = "33",
+    number           = "1",
+    pages            = "1--22",
+    doi              = "10.18637/jss.v033.i01"
+  ),
+  wright_2017 = bibentry("article",
+    title            = "{ranger}: A Fast Implementation of Random Forests for High Dimensional Data in {C++} and {R}",
+    author           = "Wright, Marvin N. and Ziegler, Andreas",
+    year             = "2017",
+    journal          = "Journal of Statistical Software",
+    volume           = "77",
+    number           = "1",
+    pages            = "1--17",
+    doi              = "10.18637/jss.v077.i01"
+  ),
+  chen_2016 = bibentry("inproceedings",
+    title            = "Xgboost: A scalable tree boosting system",
+    author           = "Chen, Tianqi and Guestrin, Carlos",
+    year             = "2016",
+    booktitle        = "Proceedings of the 22nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    pages            = "785--794",
+    doi              = "10.1145/2939672.2939785",
+    organization     = "ACM"
+  ),
+  chipman2010bart = bibentry("article",
+    title = "BART: Bayesian additive regression trees",
+    author = "Chipman, Hugh A and George, Edward I and McCulloch, Robert E",
+    journal = "The Annals of Applied Statistics",
+    volume = "4",
+    number = "1",
+    pages = "266--298",
+    year = "2010",
+    publisher = "Institute of Mathematical Statistics"
   )
-) # nolint end) # nolint end
+) # nolint end

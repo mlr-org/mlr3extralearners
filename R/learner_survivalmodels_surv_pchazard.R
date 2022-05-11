@@ -2,9 +2,15 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.pchazard
 #'
-#' @template class_learner
+#' @description
+#' Logistic-Hazard fits a discrete neural network based on a cross-entropy loss and
+#' predictions of a discrete hazard function, also known as Nnet-Survival.
+#' Calls [survivalmodels::pchazard()] from package 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.pchazard
-#' @templateVar caller pchazard
+#'
+#' @template install_survivalmodels
 #'
 #' @details
 #' Custom nets can be used in this learner either using the

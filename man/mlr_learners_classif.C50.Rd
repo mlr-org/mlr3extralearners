@@ -5,12 +5,12 @@
 \alias{LearnerClassifC50}
 \title{Classification C5.0 Learner}
 \description{
-Calls \link[C50:C5.0]{C50::C5.0} from package \CRANpkg{C50}.
+Decision Tree Algorithm.
+Calls \code{\link[C50:C5.0]{C50::C5.0.formula()}} from \CRANpkg{C50}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.C50")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.C50")
 lrn("classif.C50")
 }
 }

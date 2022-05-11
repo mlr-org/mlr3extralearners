@@ -5,12 +5,12 @@
 \alias{LearnerSurvObliqueRSF}
 \title{Survival Oblique Random Survival Forest Learner}
 \description{
-Calls \link[obliqueRSF:ORSF]{obliqueRSF::ORSF} from package \CRANpkg{obliqueRSF}.
+Oblique random forest.
+Calls \code{\link[obliqueRSF:ORSF]{obliqueRSF::ORSF()}} from \CRANpkg{obliqueRSF}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.obliqueRSF")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.obliqueRSF")
 lrn("surv.obliqueRSF")
 }
 }
@@ -45,7 +45,6 @@ lrn("surv.obliqueRSF")
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    compute_oob_predictions \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    random_seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   density \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

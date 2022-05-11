@@ -5,16 +5,13 @@
 \alias{LearnerRegrGlm}
 \title{Regression Generalized Linear Model Regression Learner}
 \description{
-Calls \link[stats:glm]{stats::glm} from package \CRANpkg{stats}.
-}
-\details{
-For logistic regression please use
-\code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
+Generalized linear model.
+Calls \code{\link[stats:glm]{stats::glm()}} from base package 'stats'.
+For logistic regression please use \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.glm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.glm")
 lrn("regr.glm")
 }
 }
@@ -71,13 +68,6 @@ if (requireNamespace("stats", quietly = TRUE)) {
   # available parameters:
   learner$param_set$ids()
 }
-if (requireNamespace("stats", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.glm")
-  print(learner)
-
-  # available parameters:
-  learner$param_set$ids()
-}
 }
 \references{
 Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).
@@ -85,16 +75,6 @@ Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).
 John Wiley & Sons.
 }
 \seealso{
-\itemize{
-\item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
-\item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
-\item \CRANpkg{mlr3learners} for a selection of recommended learners.
-\item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
-\item \CRANpkg{mlr3pipelines} to combine learners with pre- and postprocessing steps.
-\item \CRANpkg{mlr3tuning} for tuning of hyperparameters, \CRANpkg{mlr3tuningspaces} for established default tuning spaces.
-}
-
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
 \item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).

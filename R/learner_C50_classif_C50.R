@@ -1,9 +1,14 @@
 #' @title Classification C5.0 Learner
 #' @author henrifnk
 #' @name mlr_learners_classif.C50
-#' @template class_learner
+#'
+#' @description
+#' Decision Tree Algorithm.
+#' Calls [C50::C5.0.formula()] from \CRANpkg{C50}.
+#'
+#'
+#' @template learner
 #' @templateVar id classif.C50
-#' @templateVar caller C5.0
 #'
 #' @references
 #' `r format_bib("quinlan2014c4")`

@@ -1,11 +1,13 @@
 #' @title Boosted Generalized Additive Survival Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.mboost
 #'
-#' @template class_learner
+#' @description
+#' Model-based boosting for survival analysis.
+#' Calls [mboost::mboost()] from \CRANpkg{mboost}.
+#'
+#' @template learner
 #' @templateVar id surv.mboost
-#' @templateVar caller mboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].

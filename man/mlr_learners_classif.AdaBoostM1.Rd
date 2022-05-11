@@ -5,12 +5,12 @@
 \alias{LearnerClassifAdaBoostM1}
 \title{Classification AdaBoostM1 Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_meta]{RWeka::AdaBoostM1} from package \CRANpkg{RWeka}.
+Adaptive boosting algorithm for classification.
+Calls \code{\link[RWeka:Weka_classifier_meta]{RWeka::AdaBoostM1()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.AdaBoostM1")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.AdaBoostM1")
 lrn("classif.AdaBoostM1")
 }
 }

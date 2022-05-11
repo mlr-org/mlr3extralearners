@@ -2,9 +2,12 @@
 #' @author be-marc
 #' @name mlr_learners_classif.liblinear
 #'
-#' @template class_learner
+#' @description
+#' L2 regularized support vector classification.
+#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#'
+#' @template learner
 #' @templateVar id classif.liblinear
-#' @templateVar caller LiblineaR
 #'
 #' @details Type of SVC depends on `type` argument:
 #'

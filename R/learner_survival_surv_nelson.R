@@ -2,9 +2,12 @@
 #' @name mlr_learners_surv.nelson
 #' @author RaphaelS1
 #'
-#' @template class_learner
+#' @description
+#' Non-parametric estimator of the cumulative hazard rate function.
+#' Calls [survival::survfit()]  from \CRANpkg{survival}.
+#'
+#' @template learner
 #' @templateVar id surv.nelson
-#' @templateVar caller survfit
 #'
 #' @references
 #' `r format_bib("nelson1969hazard", "nelson1972theory", "aalen1978nonparametric")`

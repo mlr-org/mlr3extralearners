@@ -5,12 +5,12 @@
 \alias{LearnerSurvCoxtime}
 \title{Survival Cox-Time Learner}
 \description{
-Calls \link[survivalmodels:coxtime]{survivalmodels::coxtime} from package \CRANpkg{survivalmodels}.
+Cox-Time survival model.
+Calls \code{\link[survivalmodels:coxtime]{survivalmodels::coxtime()}} from package 'survivalmodels'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxtime")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxtime")
 lrn("surv.coxtime")
 }
 }
@@ -67,6 +67,12 @@ lrn("surv.coxtime")
    min_delta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    patience \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
+}
+
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
 \examples{

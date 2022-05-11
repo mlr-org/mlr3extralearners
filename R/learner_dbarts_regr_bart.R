@@ -2,9 +2,12 @@
 #' @author ck37
 #' @name mlr_learners_regr.bart
 #'
-#' @template class_learner
+#' @description
+#' Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
+#' Calls [dbarts::bart()] from \CRANpkg{dbarts}.
+#'
+#' @template learner
 #' @templateVar id regr.bart
-#' @templateVar caller bart
 #'
 #' @section Custom mlr3 defaults:
 #' * Parameter: keeptrees
@@ -21,7 +24,7 @@
 #'   * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' @references
-#' `r format_bib("sparapani2021nonparametric")`
+#' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
 #' @template example

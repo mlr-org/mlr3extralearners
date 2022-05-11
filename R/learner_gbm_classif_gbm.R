@@ -1,11 +1,13 @@
 #' @title Classification Gradient Boosting Machine Learner
-#'
 #' @name mlr_learners_classif.gbm
 #' @author be-marc
 #'
-#' @template class_learner
+#' @description
+#' Gradient Boosting Classification Algorithm.
+#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#'
+#' @template learner
 #' @templateVar id classif.gbm
-#' @templateVar caller gbm
 #'
 #' @section Custom mlr3 defaults:
 #' - `keep_data`:

@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.rfsrc
 #'
-#' @template class_learner
+#' @description
+#' Random survival forest.
+#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#'
+#' @template learner
 #' @templateVar id surv.rfsrc
-#' @templateVar caller rfsrc
 #'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 defaults
 #'

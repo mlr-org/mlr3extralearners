@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.loghaz
 #'
-#' @template class_learner
+#' @description
+#' Survival logistic hazard learner.
+#' Calls [survivalmodels::loghaz()] from package 'survivalmodels'.
+#'
 #' @templateVar id surv.loghaz
-#' @templateVar caller loghaz
+#' @template learner
+#'
+#' @template install_survivalmodels
 #'
 #' @details
 #' Custom nets can be used in this learner either using the
@@ -26,7 +31,7 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ps(
+      param_set = ps(
         frac = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
         cuts = p_int(default = 10L, lower = 1L, tags = "train"),
         cutpoints = p_uty(tags = "train"),
@@ -79,39 +84,39 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
         sub = p_int(default = 10L, lower = 1L, tags = "predict")
       )
 
-      ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
+      param_set$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
+      param_set$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
         "adamw", "rmsprop", "sparse_adam")))
-      ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("weight_decay", "optimizer",
+      param_set$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
+      param_set$add_dep("weight_decay", "optimizer",
         CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw",
           "asgd", "rmsprop", "sgd")))
-      ps$add_dep("learning_rate", "optimizer",
+      param_set$add_dep("learning_rate", "optimizer",
         CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
           "sgd", "sparse_adam")))
-      ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
-      ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
-      ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
-      ps$add_dep("lambd", "optimizer", CondEqual$new("asgd"))
-      ps$add_dep("t0", "optimizer", CondEqual$new("asgd"))
-      ps$add_dep("momentum", "optimizer", CondAnyOf$new(c("sgd", "rmsprop")))
-      ps$add_dep("centered", "optimizer", CondEqual$new("rmsprop"))
-      ps$add_dep("etas", "optimizer", CondEqual$new("rprop"))
-      ps$add_dep("step_sizes", "optimizer", CondEqual$new("rprop"))
-      ps$add_dep("dampening", "optimizer", CondEqual$new("sgd"))
-      ps$add_dep("nesterov", "optimizer", CondEqual$new("sgd"))
+      param_set$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
+      param_set$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
+      param_set$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
+      param_set$add_dep("lambd", "optimizer", CondEqual$new("asgd"))
+      param_set$add_dep("t0", "optimizer", CondEqual$new("asgd"))
+      param_set$add_dep("momentum", "optimizer", CondAnyOf$new(c("sgd", "rmsprop")))
+      param_set$add_dep("centered", "optimizer", CondEqual$new("rmsprop"))
+      param_set$add_dep("etas", "optimizer", CondEqual$new("rprop"))
+      param_set$add_dep("step_sizes", "optimizer", CondEqual$new("rprop"))
+      param_set$add_dep("dampening", "optimizer", CondEqual$new("sgd"))
+      param_set$add_dep("nesterov", "optimizer", CondEqual$new("sgd"))
 
-      ps$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
-      ps$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
+      param_set$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
+      param_set$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
 
-      ps$add_dep("sub", "interpolate", CondEqual$new(TRUE))
-      ps$add_dep("inter_scheme", "interpolate", CondEqual$new(TRUE))
+      param_set$add_dep("sub", "interpolate", CondEqual$new(TRUE))
+      param_set$add_dep("inter_scheme", "interpolate", CondEqual$new(TRUE))
 
       super$initialize(
         id = "surv.loghaz",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
-        param_set = ps,
+        param_set = param_set,
         man = "mlr3extralearners::mlr_learners_surv.loghaz",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
       )

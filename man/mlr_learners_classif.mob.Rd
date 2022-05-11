@@ -5,12 +5,12 @@
 \alias{LearnerClassifMob}
 \title{Classification Model-based Recursive Partitioning Learner}
 \description{
-Calls \link[partykit:mob]{partykit::mob} from package \CRANpkg{partykit}.
+Model-based recursive partitioning algorithm.
+Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANPkg{mob}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.mob")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.mob")
 lrn("classif.mob")
 }
 }
@@ -65,13 +65,31 @@ lrn("classif.mob")
 }
 
 \examples{
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.mob")
-  print(learner)
-
-  # available parameters:
-  learner$param_set$ids()
+logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
+  glm(y ~ 1, family = binomial, start = start, ...)
 }
+learner = LearnerClassifMob$new()
+learner$param_set$values$rhs = "."
+learner$param_set$values$fit = logit_
+learner$param_set$values$additional = list(maxit = 100)
+learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
+learner$properties = c("twoclass", "weights")
+
+predict_fun = function(object, newdata, task, .type) {
+  p = unname(predict(object, newdata = newdata, type = "response"))
+  levs = task$levels(task$target_names)[[1L]]
+
+  if (.type == "response") {
+    ifelse(p < 0.5, levs[1L], levs[2L])
+  } else {
+    prob_vector_to_matrix(p, levs)
+  }
+}
+learner$param_set$values$predict_fun = predict_fun
+ids = partition(task)
+task = tsk("iris")
+task$train(task, row_ids = ids$train)
+task$predict(task, row_ids = ids$test)
 }
 \references{
 Hothorn T, Zeileis A (2015).

@@ -5,15 +5,18 @@
 \alias{LearnerClassifEarth}
 \title{Classification MARS (Multivariate Adaptive Regression Splines) Learner}
 \description{
-Calls \link[earth:earth]{earth::earth} from package \CRANpkg{earth}.
+This is an alternative implementation of MARS (Multivariate Adaptive Regression Splines).
+The classification problem is solved by 0-1 encoding of the two-class targets and setting the
+decision threshold to p = 0.5 during the prediction phase.
+MARS is trademarked and thus not used as the name. The name "earth" stands for
+"Enhanced Adaptive Regression Through Hinges".
 }
 \details{
 Methods for variance estimations are not yet implemented.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.earth")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.earth")
 lrn("classif.earth")
 }
 }

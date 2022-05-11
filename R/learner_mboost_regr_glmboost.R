@@ -1,11 +1,13 @@
 #' @title Boosted Generalized Linear Regression Learner
 #' @author be-marc
-#'
 #' @name mlr_learners_regr.glmboost
 #'
-#' @template class_learner
+#' @description
+#' Fit a generalized linear regression model using a boosting algorithm.
+#' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
+#'
+#' @template learner
 #' @templateVar id regr.glmboost
-#' @templateVar caller glmboost
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`

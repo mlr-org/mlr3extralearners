@@ -1,11 +1,13 @@
 #' @title Regression Fast Nearest Neighbor Search Learner
 #' @author be-marc
-#'
 #' @name mlr_learners_regr.fnn
 #'
-#' @template class_learner
+#' @description
+#' Fast Nearest Neighbour Regression.
+#' Calls [FNN:knn.reg()] from \CRANpkg{FNN}.
+#'
 #' @templateVar id regr.fnn
-#' @templateVar caller knn.reg
+#' @template learner
 #'
 #' @references
 #' `r format_bib("boltz2007knn")`

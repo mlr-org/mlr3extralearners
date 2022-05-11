@@ -2,9 +2,12 @@
 #' @author be-marc
 #' @name mlr_learners_regr.liblinear
 #'
-#' @template class_learner
+#' @description
+#' L2 regularized support vector regression.
+#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#'
+#' @template learner
 #' @templateVar id regr.liblinear
-#' @templateVar caller LiblineaR
 #'
 #' @details Type of SVR depends on `type` argument:
 #'

@@ -2,9 +2,12 @@
 #' @name mlr_learners_dens.nonpar
 #' @author RaphaelS1
 #'
-#' @template class_learner
+#' @description
+#' Nonparametric density estimation.
+#' Calls [sm::sm.density()] from \CRANpkg{sm}.
+#'
+#' @template learner
 #' @templateVar id dens.nonpar
-#' @templateVar caller sm.density
 #'
 #' @references
 #' `r format_bib("bowman1997applied")`

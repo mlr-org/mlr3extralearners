@@ -6,7 +6,7 @@
 \title{Classification Generalized Additive Model Learner}
 \description{
 Generalized additive models.
-Calls \link[mgcv:gam]{mgcv::gam} from package \CRANpkg{mgcv}.
+Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
 
 Multiclass classification is not implemented yet.
 
@@ -16,13 +16,10 @@ provided, a fallback formula is used that will make the gam behave like a
 glm (this behavior is required for the unit tests). Only features specified
 in the formula will be used, superseding columns with col_roles "feature"
 in the task.
-
-Calls \link[mgcv:gam]{mgcv::gam} from package \CRANpkg{mgcv}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gam")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gam")
 lrn("classif.gam")
 }
 }

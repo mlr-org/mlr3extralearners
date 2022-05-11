@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.akritas
 #'
-#' @template class_learner
+#' @description
+#' Survival akritas estimator.
+#' Calls [survivalmodels::akritas()] from package 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.akritas
-#' @templateVar caller akritas
+#'
+#' @template install_survivalmodels
 #'
 #' @references
 #' `r format_bib("akritas1994nearest")`

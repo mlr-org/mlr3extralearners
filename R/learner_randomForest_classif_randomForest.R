@@ -2,9 +2,12 @@
 #' @author pat-s
 #' @name mlr_learners_classif.randomForest
 #'
-#' @template class_learner
+#' @description
+#' Random forest for classification.
+#' Calls [randomForest::randomForest()] from \CRANpkg{randomForest}.
+#'
+#' @template learner
 #' @templateVar id classif.randomForest
-#' @templateVar caller randomForest
 #'
 #' @references
 #' `r format_bib("breiman_2001")`

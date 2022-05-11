@@ -1,9 +1,13 @@
 #' @title Density Logspline Learner
 #' @author RaphaelS1
 #' @name mlr_learners_dens.logspline
-#' @template class_learner
+#'
+#' @description
+#' Density logspline learner.
+#' Calls [logspline::logspline()] from \CRANpkg{logspline}.
+#'
+#' @template learner
 #' @templateVar id dens.logspline
-#' @templateVar caller logspline
 #'
 #' @references
 #' `r format_bib("kooperberg1992logspline")`

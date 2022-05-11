@@ -2,15 +2,13 @@
 #' @author salauer
 #' @name mlr_learners_regr.glm
 #'
-#' @template class_learner
+#' @description
+#' Generalized linear model.
+#' Calls [stats::glm()] from base package 'stats'.
+#' For logistic regression please use \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
+#'
 #' @templateVar id regr.glm
-#' @templateVar caller glm
-#'
-#'
-#' @template seealso_learner
-#' @template example
-#' @details For logistic regression please use
-#' \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
+#' @template learner
 #'
 #' @section Custom mlr3 defaults:
 #' - `type`

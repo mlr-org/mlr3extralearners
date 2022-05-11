@@ -5,12 +5,12 @@
 \alias{LearnerClassifOneR}
 \title{Classification OneR Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_rules]{RWeka::OneR} from package \CRANpkg{RWeka}.
+One Rule classification algorithm that yields an extremely simple model.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::OneR()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.OneR")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.OneR")
 lrn("classif.OneR")
 }
 }

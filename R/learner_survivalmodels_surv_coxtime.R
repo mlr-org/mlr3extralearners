@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.coxtime
 #'
-#' @template class_learner
+#' @description
+#' Cox-Time survival model.
+#' Calls [survivalmodels::coxtime()] from package 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.coxtime
-#' @templateVar caller coxtime
+#'
+#' @template install_survivalmodels
 #'
 #' @references
 #' `r format_bib("kvamme2019time")`

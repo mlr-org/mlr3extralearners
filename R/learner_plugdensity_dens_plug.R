@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_dens.plug
 #'
-#' @template class_learner
+#' @description
+#' Kernel density estimation with global bandwidth selection via "plug-in".
+#' Calls [plugdensity::plugin.density()] from \CRANpkg{plugdensity}.
+#'
+#' @template learner
 #' @templateVar id dens.plug
-#' @templateVar caller plugin.density
 #'
 #' @references
 #' `r format_bib("engel1994iterative")`

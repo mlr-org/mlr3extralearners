@@ -5,12 +5,12 @@
 \alias{LearnerDensPenalized}
 \title{Density Penalized Learner}
 \description{
-Calls \link[pendensity:pendensity]{pendensity::pendensity} from package \CRANpkg{pendensity}.
+Density estimation using penalized B-splines with automatic selection of smoothing parameter.
+Calls \code{\link[pendensity:pendensity]{pendensity::pendensity()}} from \CRANpkg{pendensity}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.pen")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.pen")
 lrn("dens.pen")
 }
 }
