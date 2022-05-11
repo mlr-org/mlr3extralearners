@@ -39,8 +39,8 @@
 #' task = tsk("iris")
 #' learner$param_set$values$predict_fun = predict_fun
 #' ids = partition(task)
-#' task$train(task, row_ids = ids$train)
-#' task$predict(task, row_ids = ids$test)
+#' learner$train(task, row_ids = ids$train)
+#' learner$predict(task, row_ids = ids$test)
 LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
   public = list(
 
