@@ -1,6 +1,6 @@
 x = rvest::read_html("https://xgboost.readthedocs.io/en/latest/parameter.html")
-x = html_elements(x, c("li", "p"))
-x = html_text2(x)
+x = rvest::html_elements(x, c("li", "p"))
+x = rvest::html_text2(x)
 x = grep("default=", x, value = TRUE)
 x = strsplit(x, split = " ")
 x = mlr3misc::map_chr(x, function(x) x[1])
@@ -10,7 +10,7 @@ x = append(x, values = c("colsample_bylevel", "colsample_bynode"))
 # valyes which do not match regex
 x = append(x, values = c("interaction_constraints", "monotone_constraints"))
 # only defined in help page but not in signature or website
-x = append(x, values = c("lambda_bias"))
+x = append(x, values = "lambda_bias")
 add_params_xgboost = x
 
 test_that("surv.xgboost", {
@@ -46,7 +46,7 @@ test_that("surv.xgboost", {
 
 test_that("predict surv.xgboost", {
   learner = lrn("surv.xgboost")
-  fun = xgboost:::predict.xgb.Booster
+  fun = xgboost:::predict.xgb.Booster # nolint
   exclude = c(
     "object", # handled by mlr3
     "newdata", # handled by mlr3

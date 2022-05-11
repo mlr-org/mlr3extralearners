@@ -24,7 +24,7 @@ test_that("surv.ranger", {
 
 test_that("predict surv.ranger", {
   learner = LearnerSurvRanger$new()
-  fun = ranger:::predict.ranger
+  fun = ranger:::predict.ranger # nolint
   exclude = c(
     "quantiles", # required type not supported in mlr3
     "what", # required type (quantiles) not supported in mlr3

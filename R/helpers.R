@@ -97,3 +97,15 @@ weka_control_args = function(f) {
   exclude = unique(exclude)
   return(exclude)
 }
+
+ordered_features = function(task, learner) {
+  task$data(cols = intersect(names(learner$state$task_prototype), task$feature_names))
+}
+
+as_numeric_matrix = function(x) { # for svm / #181
+  x = as.matrix(x)
+  if (is.logical(x)) {
+    storage.mode(x) = "double"
+  }
+  x
+}
