@@ -109,3 +109,11 @@ as_numeric_matrix = function(x) { # for svm / #181
   }
   x
 }
+
+rename = function(x, old, new) {
+  if (length(x)) {
+    ii = match(names(x), old, nomatch = 0L)
+    names(x)[ii > 0L] = new[ii]
+  }
+  x
+}
