@@ -86,7 +86,7 @@ predict_fun = function(object, newdata, task, .type) {
     prob_vector_to_matrix(p, levs)
   }
 }
-task = tsk("iris")
+task = tsk("breast_cancer")
 learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
