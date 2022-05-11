@@ -76,13 +76,11 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 
 \examples{
-if (requireNamespace("dbarts", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.bart")
-  print(learner)
+learner = mlr3::lrn("regr.bart")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Sparapani, Rodney, Spanbauer, Charles, McCulloch, Robert (2021).

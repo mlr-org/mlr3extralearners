@@ -63,13 +63,11 @@ lrn("regr.gbm")
 }
 
 \examples{
-if (requireNamespace("gbm", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.gbm")
-  print(learner)
+learner = mlr3::lrn("regr.gbm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Friedman, H J (2002).

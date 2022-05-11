@@ -49,13 +49,11 @@ lrn("regr.gausspr")
 }
 
 \examples{
-if (requireNamespace("kernlab", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.gausspr")
-  print(learner)
+learner = mlr3::lrn("regr.gausspr")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).

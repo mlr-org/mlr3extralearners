@@ -33,13 +33,11 @@ lrn("dens.plug")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("plugdensity", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.plug")
-  print(learner)
+learner = mlr3::lrn("dens.plug")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Engel, Joachim, Herrmann, Eva, Gasser, Theo (1994).

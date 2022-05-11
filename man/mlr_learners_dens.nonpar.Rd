@@ -40,13 +40,11 @@ lrn("dens.nonpar")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("sm", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.nonpar")
-  print(learner)
+learner = mlr3::lrn("dens.nonpar")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bowman, A.W., Azzalini, A. (1997).

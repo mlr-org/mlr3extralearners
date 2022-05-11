@@ -39,13 +39,11 @@ lrn("regr.mars")
 }
 
 \examples{
-if (requireNamespace("mda", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.mars")
-  print(learner)
+learner = mlr3::lrn("regr.mars")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Friedman, H J (1991).

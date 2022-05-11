@@ -55,13 +55,11 @@ lrn("surv.svm")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalsvm", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.svm")
-  print(learner)
+learner = mlr3::lrn("surv.svm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).

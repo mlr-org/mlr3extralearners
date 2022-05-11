@@ -68,13 +68,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.M5Rules")
-  print(learner)
+learner = mlr3::lrn("regr.M5Rules")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Holmes, Geoffrey, Hall, Mark, Prank, Eibe (1999).

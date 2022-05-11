@@ -71,13 +71,11 @@ lrn("classif.earth")
 }
 
 \examples{
-if (requireNamespace("earth", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.earth")
-  print(learner)
+learner = mlr3::lrn("classif.earth")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Milborrow, Stephen, Hastie, T, Tibshirani, R (2014).

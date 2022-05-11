@@ -61,13 +61,11 @@ lrn("dens.mixed")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("np", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.mixed")
-  print(learner)
+learner = mlr3::lrn("dens.mixed")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Li, Qi, Racine, Jeff (2003).

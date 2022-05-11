@@ -51,13 +51,11 @@ lrn("classif.randomForest")
 }
 
 \examples{
-if (requireNamespace("randomForest", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.randomForest")
-  print(learner)
+learner = mlr3::lrn("classif.randomForest")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Breiman, Leo (2001).

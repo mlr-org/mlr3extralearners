@@ -46,13 +46,11 @@ lrn("dens.locfit")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("locfit", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.locfit")
-  print(learner)
+learner = mlr3::lrn("dens.locfit")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Loader, Clive (2006).

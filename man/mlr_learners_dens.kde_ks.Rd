@@ -49,13 +49,11 @@ lrn("dens.kde_ks")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("ks", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.kde_ks")
-  print(learner)
+learner = mlr3::lrn("dens.kde_ks")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gramacki, Artur, Gramacki, Jarosław (2017).

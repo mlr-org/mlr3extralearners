@@ -34,13 +34,11 @@ lrn("dens.kde_kd")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("kerdiest", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.kde_kd")
-  print(learner)
+learner = mlr3::lrn("dens.kde_kd")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Quintela-del-Río, Alejandro, Estévez-Pérez G (2012).

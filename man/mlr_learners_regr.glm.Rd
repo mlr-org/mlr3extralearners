@@ -61,13 +61,11 @@ lrn("regr.glm")
 }
 
 \examples{
-if (requireNamespace("stats", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.glm")
-  print(learner)
+learner = mlr3::lrn("regr.glm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).

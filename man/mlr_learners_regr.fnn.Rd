@@ -34,13 +34,11 @@ lrn("regr.fnn")
 }
 
 \examples{
-if (requireNamespace("FNN", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.fnn")
-  print(learner)
+learner = mlr3::lrn("regr.fnn")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Boltz, Sylvain, Debreuve, Eric, Barlaud, Michel (2007).

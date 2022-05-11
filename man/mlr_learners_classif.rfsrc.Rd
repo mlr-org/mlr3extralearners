@@ -91,13 +91,11 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("randomForestSRC", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.rfsrc")
-  print(learner)
+learner = mlr3::lrn("classif.rfsrc")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Breiman, Leo (2001).

@@ -71,13 +71,11 @@ lrn("regr.earth")
 }
 
 \examples{
-if (requireNamespace("earth", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.earth")
-  print(learner)
+learner = mlr3::lrn("regr.earth")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Milborrow, Stephen, Hastie, T, Tibshirani, R (2014).

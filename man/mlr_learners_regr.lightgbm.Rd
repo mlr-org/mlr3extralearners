@@ -169,13 +169,11 @@ stopping.
 }
 
 \examples{
-if (requireNamespace("lightgbm", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.lightgbm")
-  print(learner)
+learner = mlr3::lrn("regr.lightgbm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ke, Guolin, Meng, Qi, Finley, Thomas, Wang, Taifeng, Chen, Wei, Ma, Weidong, Ye, Qiwei, Liu, Tie-Yan (2017).

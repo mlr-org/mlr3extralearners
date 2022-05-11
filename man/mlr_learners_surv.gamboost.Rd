@@ -51,13 +51,11 @@ lrn("surv.gamboost")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.gamboost")
-  print(learner)
+learner = mlr3::lrn("surv.gamboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

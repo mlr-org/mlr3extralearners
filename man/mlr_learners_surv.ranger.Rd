@@ -76,13 +76,11 @@ lrn("surv.ranger")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("ranger", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.ranger")
-  print(learner)
+learner = mlr3::lrn("surv.ranger")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Wright, N. M, Ziegler, Andreas (2017).

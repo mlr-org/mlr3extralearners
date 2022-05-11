@@ -46,13 +46,11 @@ lrn("classif.gamboost")
 }
 
 \examples{
-if (requireNamespace("mboost", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.gamboost")
-  print(learner)
+learner = mlr3::lrn("classif.gamboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

@@ -62,13 +62,11 @@ by the mlr3learner. The default value is set to th default of the respective
 }
 
 \examples{
-if (requireNamespace("LiblineaR", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.liblinear")
-  print(learner)
+learner = mlr3::lrn("regr.liblinear")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).

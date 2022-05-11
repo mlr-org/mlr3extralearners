@@ -31,13 +31,11 @@ Empty ParamSet
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.nelson")
-  print(learner)
+learner = mlr3::lrn("surv.nelson")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Nelson, Wayne (1969).

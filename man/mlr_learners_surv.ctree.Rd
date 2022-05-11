@@ -70,13 +70,11 @@ lrn("surv.ctree")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("partykit", quietly = TRUE) && requireNamespace("coin", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.ctree")
-  print(learner)
+learner = mlr3::lrn("surv.ctree")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).

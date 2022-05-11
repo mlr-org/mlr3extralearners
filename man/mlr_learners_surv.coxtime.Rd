@@ -76,13 +76,11 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.coxtime")
-  print(learner)
+learner = mlr3::lrn("surv.coxtime")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kvamme, Håvard, Borgan Ø, Scheel I (2019).

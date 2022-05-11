@@ -40,13 +40,11 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.akritas")
-  print(learner)
+learner = mlr3::lrn("surv.akritas")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Akritas, G M (1994).

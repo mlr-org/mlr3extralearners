@@ -84,13 +84,11 @@ lrn("surv.parametric")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.parametric")
-  print(learner)
+learner = mlr3::lrn("surv.parametric")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kalbfleisch, D J, Prentice, L R (2011).

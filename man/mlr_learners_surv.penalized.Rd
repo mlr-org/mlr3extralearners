@@ -50,13 +50,11 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.penalized")
-  print(learner)
+learner = mlr3::lrn("surv.penalized")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Goeman, J J (2010).

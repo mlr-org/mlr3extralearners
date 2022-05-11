@@ -41,13 +41,11 @@ lrn("dens.pen")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("pendensity", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.pen")
-  print(learner)
+learner = mlr3::lrn("dens.pen")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Schellhase, Christian, Kauermann, Göran (2012).

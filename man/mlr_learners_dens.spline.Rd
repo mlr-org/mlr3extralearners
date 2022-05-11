@@ -46,13 +46,11 @@ lrn("dens.spline")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("gss", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.spline")
-  print(learner)
+learner = mlr3::lrn("dens.spline")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gu, Chong, Wang, Jingyuan (2003).

@@ -49,13 +49,11 @@ lrn("regr.randomForest")
 }
 
 \examples{
-if (requireNamespace("randomForest", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.randomForest")
-  print(learner)
+learner = mlr3::lrn("regr.randomForest")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Breiman, Leo (2001).

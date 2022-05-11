@@ -88,13 +88,11 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("keras", quietly = TRUE) && requireNamespace("pseudo", quietly = TRUE) && requireNamespace("tensorflow", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.dnnsurv")
-  print(learner)
+learner = mlr3::lrn("surv.dnnsurv")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Zhao, Lili, Feng, Dai (2019).

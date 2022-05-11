@@ -70,13 +70,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.JRip")
-  print(learner)
+learner = mlr3::lrn("classif.JRip")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Cohen, W W (1995).

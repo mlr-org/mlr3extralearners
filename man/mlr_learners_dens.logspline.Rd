@@ -41,13 +41,11 @@ lrn("dens.logspline")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("logspline", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.logspline")
-  print(learner)
+learner = mlr3::lrn("dens.logspline")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kooperberg, Charles, Stone, J C (1992).

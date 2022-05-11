@@ -131,13 +131,11 @@ The easiest way to install catboost is with the helper function
 }
 
 \examples{
-if (requireNamespace("catboost", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.catboost")
-  print(learner)
+learner = mlr3::lrn("regr.catboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Dorogush, Veronika A, Ershov, Vasily, Gulin, Andrey (2018).

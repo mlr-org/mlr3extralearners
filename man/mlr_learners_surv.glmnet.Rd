@@ -94,13 +94,11 @@ lrn("surv.glmnet")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("glmnet", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.glmnet")
-  print(learner)
+learner = mlr3::lrn("surv.glmnet")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Friedman J, Hastie T, Tibshirani R (2010).

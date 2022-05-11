@@ -3,6 +3,8 @@
 #' @name mlr_learners_surv.blackboost
 #'
 #' @description
+#' Gradient boosting with regression trees for survival analysis.
+#' Calls [mboost::blackboost()] from \CRANpkg{mboost}.
 #'
 #'
 #' @template learner

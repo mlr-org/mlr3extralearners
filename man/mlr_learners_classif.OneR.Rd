@@ -64,13 +64,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.OneR")
-  print(learner)
+learner = mlr3::lrn("classif.OneR")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Holte, C R (1993).

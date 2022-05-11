@@ -67,13 +67,11 @@ Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("obliqueRSF", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.obliqueRSF")
-  print(learner)
+learner = mlr3::lrn("surv.obliqueRSF")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).

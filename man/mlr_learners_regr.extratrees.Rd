@@ -46,13 +46,11 @@ lrn("regr.extratrees")
 }
 
 \examples{
-if (requireNamespace("extraTrees", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.extratrees")
-  print(learner)
+learner = mlr3::lrn("regr.extratrees")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Geurts, Pierre, Ernst, Damien, Wehenkel, Louis (2006).

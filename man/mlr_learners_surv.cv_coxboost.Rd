@@ -69,13 +69,11 @@ The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("CoxBoost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.cv_coxboost")
-  print(learner)
+learner = mlr3::lrn("surv.cv_coxboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Binder, Harald, Allignol, Arthur, Schumacher, Martin, Beyersmann, Jan (2009).

@@ -99,13 +99,11 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("randomForestSRC", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.rfsrc")
-  print(learner)
+learner = mlr3::lrn("surv.rfsrc")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).

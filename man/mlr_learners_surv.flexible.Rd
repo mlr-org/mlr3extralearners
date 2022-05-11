@@ -72,13 +72,11 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.flexible")
-  print(learner)
+learner = mlr3::lrn("surv.flexible")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Royston, Patrick, Parmar, KB M (2002).

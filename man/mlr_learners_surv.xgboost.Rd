@@ -127,13 +127,11 @@ lrn("surv.xgboost")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("xgboost", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.xgboost")
-  print(learner)
+learner = mlr3::lrn("surv.xgboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Chen, Tianqi, Guestrin, Carlos (2016).

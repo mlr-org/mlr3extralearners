@@ -71,13 +71,11 @@ lrn("regr.ctree")
 }
 
 \examples{
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.ctree")
-  print(learner)
+learner = mlr3::lrn("regr.ctree")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).
