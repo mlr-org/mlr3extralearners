@@ -1,13 +1,22 @@
-#' @title <Type_lng> <algorithm> Learner
+#' @title <FIXME : Title for the Learner>
 #' @author <gh_name>
 #' @name mlr_learners_<type>.<key>
 #'
+#' @description
+#' FIXME: Brief description of the learner.
+#' Calls [<package>::<caller>()] from <FIXME (CRAN vs no CRAN): \CRANpkg{<package>} | '<package>'>.
+#'
+#' @section Custom mlr3 defaults:
+#' <FIXME: Deviations from upstream defaults>
+#'
+#' @section Installation:
+#' <FIXME (ONLY IF UNUSUAL INSTALLATION) : INSTRUCTIONS ON INSTALLATION
+#'
 #' @template learner
 #' @templateVar id <type>.<key>
-#' @templateVar caller <caller>
 #'
 #' @references
-#' <FIXME - DELETE THIS AND LINE ABOVE IF OMITTED>
+#' `r format_bib(<FIXME: One or more references from bibentries>)`
 #'
 #' @template seealso_learner
 #' @template example
@@ -19,37 +28,51 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      # FIXME - MANUALLY ADD PARAM_SET BELOW AND THEN DELETE THIS LINE
-      ps = <param_set>
+      # FIXME - MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
+      param_set = ps()
 
       # FIXME - MANUALLY UPDATE PARAM VALUES BELOW IF APPLICABLE THEN DELETE THIS LINE.
       # OTHERWISE DELETE THIS AND LINE BELOW.
-      ps$values = list(<param_vals>)
+      param_set$values = list()
 
       super$initialize(
         id = "<type>.<key>",
         packages = "<package>",
         feature_types = c("<feature_types>"),
         predict_types = c("<predict_types>"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("<properties>"),
-        man = "mlr3extralearners::mlr_learners_<type>.<key>"
+        man = "mlr3extralearners::mlr_learners_<type>.<key>",
+        label = "<label>"
       )
     },
 
-    # FIXME - ADD IMPORTANCE METHOD HERE AND DELETE THIS LINE.
-    # <See LearnerRegrRandomForest for an example>
+    # FIXME - ADD IMPORTANCE METHOD IF APPLICABLE AND DELETE OTHERWISE
+    # <See mlr3extralearners::LearnerRegrRandomForest for an example>
     #' @description
     #' The importance scores are extracted from the slot <FIXME>.
     #' @return Named `numeric()`.
-    importance = function() { },
+    importance = function() {
+      pars = self$param_set$get_values(tags = "importance")
+    },
 
-    # FIXME - ADD OOB_ERROR METHOD HERE AND DELETE THIS LINE.
-    # <See LearnerRegrRandomForest for an example>
+    # FIXME - ADD OOB_ERROR METHOD IF APPLICABLE AND DELETE OTHERWISE
+    # <See mlr3extralearners::LearnerRegrRandomForest for an example>
     #' @description
     #' OOB errors are extracted from the model slot <FIXME>.
     #' @return `numeric(1)`.
-    oob_error = function() { }
+    oob_error = function() {
+      pars = self$param_set$get_values(tags = "oob_error")
+    },
+
+    # FIXME - ADD SELECTED_FEATURES METHOD HERE AND DELETE OTHERWISE
+    # <See mlr3learners::LearnerRegrLM for an example>
+    #' @description
+    #' Selected features are obtained by <FIXME>.
+    #' @return `character()`.
+    selected_features = function() {
+      pars = self$param_set$get_values(tags = "selected_features")
+    }
   ),
 
   private = list(
@@ -75,10 +98,12 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # train call. Check other learners for what can be done here>
 
       # use the mlr3misc::invoke function (it's similar to do.call())
-      invoke(<package>::<caller>,
-             formula = formula,
-             data = data,
-             .args = pars)
+      invoke(
+        <package>::<caller>,
+        formula = formula,
+        data = data,
+        .args = pars
+      )
     },
 
     .predict = function(task) {
@@ -92,7 +117,14 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
 
       # FIXME - ADD PREDICTIONS TO LIST BELOW
       list(...)
+    },
+
+    .hotstart = function(task) {
+      # <FIXME: ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE>
+      # <See  mlr3learners::LearnerClassifXgboost for an example>
+      pars = self$param_set$get_values(tags = "hotstard")
     }
+
   )
 )
 
