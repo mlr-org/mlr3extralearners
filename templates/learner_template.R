@@ -2,7 +2,7 @@
 #' @author <gh_name>
 #' @name mlr_learners_<type>.<key>
 #'
-#' @template class_learner
+#' @template learner
 #' @templateVar id <type>.<key>
 #' @templateVar caller <caller>
 #'

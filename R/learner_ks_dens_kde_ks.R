@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_dens.kde_ks
 #'
-#' @template class_learner
+#' @description
+#' Kernel density estimator.
+#' Calls [ks::kde()] from \CRANpkg{ks}.
+#'
+#' @template learner
 #' @templateVar id dens.kde_ks
-#' @templateVar caller kde
 #'
 #' @references
 #' `r format_bib("gramacki2017fft")`

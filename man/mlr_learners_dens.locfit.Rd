@@ -5,12 +5,12 @@
 \alias{LearnerDensLocfit}
 \title{Density Locfit Learner}
 \description{
-Calls \link[locfit:density.lf]{locfit::density.lf} from package \CRANpkg{locfit}.
+Local density estimation.
+Calls \code{\link[locfit:density.lf]{locfit::density.lf()}} from \CRANpkg{locfit}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.locfit")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.locfit")
 lrn("dens.locfit")
 }
 }
@@ -46,13 +46,11 @@ lrn("dens.locfit")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("locfit", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.locfit")
-  print(learner)
+learner = mlr3::lrn("dens.locfit")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Loader, Clive (2006).

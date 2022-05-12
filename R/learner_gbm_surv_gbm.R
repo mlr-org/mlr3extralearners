@@ -1,11 +1,13 @@
 #' @title Survival Gradient Boosting Machine Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.gbm
 #'
-#' @template class_learner
+#' @description
+#' Gradient Boosting for Survival Analysis.
+#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#'
 #' @templateVar id surv.gbm
-#' @templateVar caller gbm
+#' @template learner
 #'
 #' @section Custom mlr3 defaults:
 #'  - `distribution`:

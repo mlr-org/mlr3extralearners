@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized additive models.
-#' Calls [mgcv::gam] from package \CRANpkg{mgcv}.
+#' Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
 #'
 #' A gam formula specific to the task at hand is required for the `formula`
 #' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is provided, a fallback formula is
@@ -13,9 +13,8 @@
 #' superseding columns with col_roles "feature" in the task.
 #'
 #'
-#' @template class_learner
+#' @template learner
 #' @templateVar id regr.gam
-#' @templateVar caller gam
 #'
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`

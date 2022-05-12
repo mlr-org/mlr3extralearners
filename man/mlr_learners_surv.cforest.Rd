@@ -5,12 +5,12 @@
 \alias{LearnerSurvCForest}
 \title{Survival Conditional Random Forest Learner}
 \description{
-Calls \link[partykit:cforest]{partykit::cforest} from package \CRANpkg{partykit}.
+A random forest based on conditional inference trees (\link[partykit:ctree]{ctree}).
+Calls \code{\link[partykit:cforest]{partykit::cforest()}} from \CRANpkg{partykit}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.cforest")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.cforest")
 lrn("surv.cforest")
 }
 }
@@ -90,13 +90,11 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.cforest")
-  print(learner)
+learner = mlr3::lrn("surv.cforest")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).

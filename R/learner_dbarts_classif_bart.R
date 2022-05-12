@@ -2,9 +2,14 @@
 #' @author ck37
 #' @name mlr_learners_classif.bart
 #'
-#' @template class_learner
+#' @description
+#' Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
+#' The classification problem is solved by 0-1 encoding of the two-class targets and setting the
+#' decision threshold to p = 0.5 during the prediction phase.
+#' Calls [dbarts::bart()] from \CRANpkg{dbarts}.
+#'
+#' @template learner
 #' @templateVar id classif.bart
-#' @templateVar caller bart
 #'
 #' @section Custom mlr3 defaults:
 #' * Parameter: keeptrees
@@ -25,7 +30,7 @@
 #'  * Regression only.
 #'
 #' @references
-#' `r format_bib("sparapani2021nonparametric")`
+#' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
 #' @template example

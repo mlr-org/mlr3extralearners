@@ -5,12 +5,12 @@
 \alias{LearnerClassifJ48}
 \title{Classification J48 Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_trees]{RWeka::J48} from package \CRANpkg{RWeka}.
+Decision tree algorithm.
+Callsu \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.J48")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.J48")
 lrn("classif.J48")
 }
 }
@@ -76,13 +76,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.J48")
-  print(learner)
+learner = mlr3::lrn("classif.J48")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Quinlan, Ross J (2014).

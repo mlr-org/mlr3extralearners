@@ -2,9 +2,12 @@
 #' @name mlr_learners_dens.locfit
 #' @author RaphaelS1
 #'
-#' @template class_learner
+#' @description
+#' Local density estimation.
+#' Calls [locfit::density.lf()] from \CRANpkg{locfit}.
+#'
+#' @template learner
 #' @templateVar id dens.locfit
-#' @templateVar caller density.lf
 #'
 #' @references
 #' `r format_bib("loader2006local")`

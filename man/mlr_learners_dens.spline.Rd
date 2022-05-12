@@ -5,12 +5,12 @@
 \alias{LearnerDensSpline}
 \title{Density Smoothing Splines Learner}
 \description{
-Calls \link[gss:ssden]{gss::ssden} from package \CRANpkg{gss}.
+Density Smoothing Splines Learner.
+Calls \code{\link[gss:ssden]{gss::ssden()}} from \CRANpkg{gss}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.spline")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.spline")
 lrn("dens.spline")
 }
 }
@@ -46,13 +46,11 @@ lrn("dens.spline")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("gss", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.spline")
-  print(learner)
+learner = mlr3::lrn("dens.spline")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gu, Chong, Wang, Jingyuan (2003).

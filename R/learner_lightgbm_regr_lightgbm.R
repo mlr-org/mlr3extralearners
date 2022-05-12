@@ -2,9 +2,12 @@
 #' @author kapsner
 #' @name mlr_learners_regr.lightgbm
 #'
-#' @template class_learner
+#' @description
+#' Gradient boosting algorithm.
+#' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
+#'
+#' @template learner
 #' @templateVar id regr.lightgbm
-#' @templateVar caller lgb.train
 #'
 #' @section Custom mlr3 defaults:
 #' - `num_threads`:

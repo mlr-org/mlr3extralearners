@@ -5,12 +5,12 @@
 \alias{LearnerSurvNelson}
 \title{Survival Nelson-Aalen Estimator Learner}
 \description{
-Calls \link[survival:survfit]{survival::survfit} from package \CRANpkg{survival}.
+Non-parametric estimator of the cumulative hazard rate function.
+Calls \code{\link[survival:survfit]{survival::survfit()}}  from \CRANpkg{survival}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.nelson")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.nelson")
 lrn("surv.nelson")
 }
 }
@@ -31,13 +31,11 @@ Empty ParamSet
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survival", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.nelson")
-  print(learner)
+learner = mlr3::lrn("surv.nelson")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Nelson, Wayne (1969).

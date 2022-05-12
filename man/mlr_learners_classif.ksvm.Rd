@@ -5,12 +5,12 @@
 \alias{LearnerClassifKSVM}
 \title{Classification Kernlab Support Vector Machine}
 \description{
-Calls \link[kernlab:ksvm]{kernlab::ksvm} from package \CRANpkg{kernlab}.
+Support vector machine for classification.
+Calls \code{\link[kernlab:ksvm]{kernlab::ksvm()}} from \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.ksvm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.ksvm")
 lrn("classif.ksvm")
 }
 }
@@ -46,13 +46,11 @@ lrn("classif.ksvm")
 }
 
 \examples{
-if (requireNamespace("kernlab", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.ksvm")
-  print(learner)
+learner = mlr3::lrn("classif.ksvm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).

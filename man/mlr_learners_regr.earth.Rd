@@ -3,17 +3,20 @@
 \name{mlr_learners_regr.earth}
 \alias{mlr_learners_regr.earth}
 \alias{LearnerRegrEarth}
-\title{Regression MARS (Multivariate Adaptive Regression Splines) Learner}
+\title{Implementation of Multivariate Adaptive Regression Splines}
 \description{
-Calls \link[earth:earth]{earth::earth} from package \CRANpkg{earth}.
+This is an alternative implementation of MARS (Multivariate Adaptive Regression Splines).
+MARS is trademarked and thus not used as the name. The name "earth" stands for
+"Enhanced Adaptive Regression Through Hinges".
+
+Calls \code{\link[earth:earth]{earth::earth()}} from \CRANpkg{earth}.
 }
 \details{
 Methods for variance estimations are not yet implemented.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.earth")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.earth")
 lrn("regr.earth")
 }
 }
@@ -68,13 +71,11 @@ lrn("regr.earth")
 }
 
 \examples{
-if (requireNamespace("earth", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.earth")
-  print(learner)
+learner = mlr3::lrn("regr.earth")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Milborrow, Stephen, Hastie, T, Tibshirani, R (2014).

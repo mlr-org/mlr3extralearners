@@ -5,7 +5,8 @@
 \alias{LearnerClassifLiblineaR}
 \title{LiblineaR Classification Learner}
 \description{
-Calls \link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR} from package \CRANpkg{LiblineaR}.
+L2 regularized support vector classification.
+Calls \code{\link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR()}} from \CRANpkg{LiblineaR}.
 }
 \details{
 Type of SVC depends on \code{type} argument:
@@ -27,9 +28,8 @@ Note that probabilistic predictions are only available for types \code{0}, \code
 The default \code{epsilon} value depends on the \code{type} parameter, see \link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.liblinear")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.liblinear")
 lrn("classif.liblinear")
 }
 }
@@ -60,13 +60,11 @@ lrn("classif.liblinear")
 }
 
 \examples{
-if (requireNamespace("LiblineaR", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.liblinear")
-  print(learner)
+learner = mlr3::lrn("classif.liblinear")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).

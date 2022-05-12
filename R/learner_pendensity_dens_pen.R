@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_dens.pen
 #'
-#' @template class_learner
+#' @description
+#' Density estimation using penalized B-splines with automatic selection of smoothing parameter.
+#' Calls [pendensity::pendensity()] from \CRANpkg{pendensity}.
+#'
+#' @template learner
 #' @templateVar id dens.pen
-#' @templateVar caller pendensity
 #'
 #' @references
 #' `r format_bib("schellhase2012density")`

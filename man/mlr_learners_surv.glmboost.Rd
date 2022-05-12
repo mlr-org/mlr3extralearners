@@ -5,15 +5,15 @@
 \alias{LearnerSurvGLMBoost}
 \title{Boosted Generalized Linear Survival Learner}
 \description{
-Calls \link[mboost:glmboost]{mboost::glmboost} from package \CRANpkg{mboost}.
+Fits a generalized linear survival model using a boosting algorithm.
+Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.glmboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.glmboost")
 lrn("surv.glmboost")
 }
 }
@@ -50,13 +50,11 @@ lrn("surv.glmboost")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.glmboost")
-  print(learner)
+learner = mlr3::lrn("surv.glmboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

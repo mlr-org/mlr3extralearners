@@ -2,9 +2,12 @@
 #' @author sumny
 #' @name mlr_learners_classif.catboost
 #'
-#' @template class_learner
+#' @description
+#' Gradient boosting algorithm that also supports categorical data.
+#' Calls [catboost::catboost.train()] from package 'catboost'.
+#'
+#' @template learner
 #' @templateVar id classif.catboost
-#' @templateVar caller catboost.train
 #'
 #' @section Installation:
 #' The easiest way to install catboost is with the helper function

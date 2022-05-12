@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.flexible
 #'
-#' @template class_learner
+#' @description
+#' Flexible parametric spline learner.
+#' Calls [flexsurv::flexsurvspline()] from \CRANpkg{flexsurv}.
+#'
+#' @template learner
 #' @templateVar id surv.flexible
-#' @templateVar caller flexsurvspline
 #'
 #' @details
 #' The `distr` prediction is estimated using the fitted custom distributions

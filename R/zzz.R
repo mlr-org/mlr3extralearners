@@ -3,9 +3,10 @@
 #' @import mlr3misc
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns
-#' @importFrom stats predict na.omit
+#' @importFrom stats predict na.omit setNames
 #' @importFrom data.table :=
-#' @importFrom methods formalArgs
+#' @importFrom methods formalArgs getMethod
+#' @importFrom utils getFromNamespace packageVersion
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages",

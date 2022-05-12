@@ -2,9 +2,13 @@
 #' @author henrifnk
 #' @name mlr_learners_regr.M5Rules
 #'
-#' @template class_learner
+#' @description
+#' Algorithm for inducing [decision lists](https://en.wikipedia.org/wiki/Decision_list) from
+#' model trees.
+#' Calls [RWeka::M5Rules()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id regr.M5Rules
-#' @templateVar caller M5Rules
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

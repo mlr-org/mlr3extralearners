@@ -5,12 +5,12 @@
 \alias{LearnerSurvAkritas}
 \title{Survival Akritas Estimator Learner}
 \description{
-Calls \link[survivalmodels:akritas]{survivalmodels::akritas} from package \CRANpkg{survivalmodels}.
+Survival akritas estimator.
+Calls \code{\link[survivalmodels:akritas]{survivalmodels::akritas()}} from package 'survivalmodels'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.akritas")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.akritas")
 lrn("surv.akritas")
 }
 }
@@ -33,14 +33,18 @@ lrn("surv.akritas")
 }
 }
 
-\examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.akritas")
-  print(learner)
+\section{Installation}{
 
-  # available parameters:
-  learner$param_set$ids()
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
+
+\examples{
+learner = mlr3::lrn("surv.akritas")
+print(learner)
+
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Akritas, G M (1994).

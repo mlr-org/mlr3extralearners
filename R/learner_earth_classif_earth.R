@@ -2,9 +2,15 @@
 #' @author pkopper
 #' @name mlr_learners_classif.earth
 #'
-#' @template class_learner
+#' @description
+#' This is an alternative implementation of MARS (Multivariate Adaptive Regression Splines).
+#' The classification problem is solved by 0-1 encoding of the two-class targets and setting the
+#' decision threshold to p = 0.5 during the prediction phase.
+#' MARS is trademarked and thus not used as the name. The name "earth" stands for
+#' "Enhanced Adaptive Regression Through Hinges".
+#'
+#' @template learner
 #' @templateVar id classif.earth
-#' @templateVar caller earth
 #'
 #' @details
 #' Methods for variance estimations are not yet implemented.

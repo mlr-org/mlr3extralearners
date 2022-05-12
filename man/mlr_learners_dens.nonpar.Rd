@@ -5,12 +5,12 @@
 \alias{LearnerDensNonparametric}
 \title{Density Nonparametric Learner}
 \description{
-Calls \link[sm:sm.density]{sm::sm.density} from package \CRANpkg{sm}.
+Nonparametric density estimation.
+Calls \code{\link[sm:sm.density]{sm::sm.density()}} from \CRANpkg{sm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.nonpar")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.nonpar")
 lrn("dens.nonpar")
 }
 }
@@ -40,13 +40,11 @@ lrn("dens.nonpar")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("sm", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.nonpar")
-  print(learner)
+learner = mlr3::lrn("dens.nonpar")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bowman, A.W., Azzalini, A. (1997).

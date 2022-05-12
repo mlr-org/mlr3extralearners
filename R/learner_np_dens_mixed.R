@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_dens.mixed
 #'
-#' @template class_learner
+#' @description
+#' Density estimator for discrete and continuous variables.
+#' Calls [np::npudens()] from \CRANpkg{np}.
+#'
+#' @template learner
 #' @templateVar id dens.mixed
-#' @templateVar caller npudens
 #'
 #' @references
 #' `r format_bib("li2003nonparametric")`

@@ -5,12 +5,12 @@
 \alias{LearnerRegrFNN}
 \title{Regression Fast Nearest Neighbor Search Learner}
 \description{
-Calls \link[FNN:knn.reg]{FNN::knn.reg} from package \CRANpkg{FNN}.
+Fast Nearest Neighbour Regression.
+Calls \code{\link[FNN:knn.reg]{FNN::knn.reg()}} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.fnn")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.fnn")
 lrn("regr.fnn")
 }
 }
@@ -34,13 +34,11 @@ lrn("regr.fnn")
 }
 
 \examples{
-if (requireNamespace("FNN", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.fnn")
-  print(learner)
+learner = mlr3::lrn("regr.fnn")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Boltz, Sylvain, Debreuve, Eric, Barlaud, Michel (2007).

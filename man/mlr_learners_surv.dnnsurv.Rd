@@ -5,7 +5,8 @@
 \alias{LearnerSurvDNNSurv}
 \title{Survival DNNSurv Learner}
 \description{
-Calls \link[survivalmodels:dnnsurv]{survivalmodels::dnnsurv} from package \CRANpkg{survivalmodels}.
+Fits a neural network based on pseudo-conditional survival probabilities.
+Calls \code{\link[survivalmodels:dnnsurv]{survivalmodels::dnnsurv()}} from package 'survivalmodels'.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -14,9 +15,8 @@ The number of output channels should be of length \code{1} and number of input c
 the number of features plus number of cuts.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.dnnsurv")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.dnnsurv")
 lrn("surv.dnnsurv")
 }
 }
@@ -69,6 +69,12 @@ lrn("surv.dnnsurv")
 }
 }
 
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
+}
+
 \section{Custom mlr3 defaults}{
 
 \itemize{
@@ -82,13 +88,11 @@ lrn("surv.dnnsurv")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("keras", quietly = TRUE) && requireNamespace("pseudo", quietly = TRUE) && requireNamespace("tensorflow", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.dnnsurv")
-  print(learner)
+learner = mlr3::lrn("surv.dnnsurv")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Zhao, Lili, Feng, Dai (2019).

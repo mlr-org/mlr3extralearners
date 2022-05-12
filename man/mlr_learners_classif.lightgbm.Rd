@@ -5,7 +5,8 @@
 \alias{LearnerClassifLightGBM}
 \title{Classification Light GBM Learner}
 \description{
-Calls \link[lightgbm:lgb.train]{lightgbm::lgb.train} from package \CRANpkg{lightgbm}.
+Gradient boosting algorithm.
+Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
 }
 \details{
 For categorical features either pre-process data by encoding columns or
@@ -16,9 +17,8 @@ Instead of providing the data that is used for early stopping explicitly, the pa
 stopping.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.lightgbm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.lightgbm")
 lrn("classif.lightgbm")
 }
 }
@@ -177,13 +177,11 @@ lrn("classif.lightgbm")
 }
 
 \examples{
-if (requireNamespace("lightgbm", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.lightgbm")
-  print(learner)
+learner = mlr3::lrn("classif.lightgbm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ke, Guolin, Meng, Qi, Finley, Thomas, Wang, Taifeng, Chen, Wei, Ma, Weidong, Ye, Qiwei, Liu, Tie-Yan (2017).

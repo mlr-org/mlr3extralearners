@@ -1,11 +1,14 @@
 #' @title Gradient Boosting with Regression Trees Survival Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.blackboost
 #'
-#' @template class_learner
+#' @description
+#' Gradient boosting with regression trees for survival analysis.
+#' Calls [mboost::blackboost()] from \CRANpkg{mboost}.
+#'
+#'
+#' @template learner
 #' @templateVar id surv.blackboost
-#' @templateVar caller blackboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].

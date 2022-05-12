@@ -5,7 +5,8 @@
 \alias{LearnerRegrLiblineaR}
 \title{L2-Regularized Support Vector Regression Learner}
 \description{
-Calls \link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR} from package \CRANpkg{LiblineaR}.
+L2 regularized support vector regression.
+Calls \code{\link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR()}} from \CRANpkg{LiblineaR}.
 }
 \details{
 Type of SVR depends on \code{type} argument:
@@ -16,9 +17,8 @@ Type of SVR depends on \code{type} argument:
 }
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.liblinear")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.liblinear")
 lrn("regr.liblinear")
 }
 }
@@ -62,13 +62,11 @@ by the mlr3learner. The default value is set to th default of the respective
 }
 
 \examples{
-if (requireNamespace("LiblineaR", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.liblinear")
-  print(learner)
+learner = mlr3::lrn("regr.liblinear")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).

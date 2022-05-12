@@ -5,7 +5,8 @@
 \alias{LearnerRegrCTree}
 \title{Regression Conditional Inference Tree Learner}
 \description{
-Calls \link[partykit:ctree]{partykit::ctree} from package \CRANpkg{partykit}.
+Regression Partition Tree where a significance test is used to determine the univariate splits.
+Calls \code{\link[partykit:ctree]{partykit::ctree()}} from \CRANpkg{partykit}.
 }
 \section{Dictionary}{
  This \link{Learner} can be instantiated via the
@@ -70,13 +71,11 @@ lrn("regr.ctree")
 }
 
 \examples{
-if (requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.ctree")
-  print(learner)
+learner = mlr3::lrn("regr.ctree")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Hothorn T, Zeileis A (2015).

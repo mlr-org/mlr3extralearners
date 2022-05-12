@@ -5,12 +5,12 @@
 \alias{LearnerClassifGBM}
 \title{Classification Gradient Boosting Machine Learner}
 \description{
-Calls \link[gbm:gbm]{gbm::gbm} from package \CRANpkg{gbm}.
+Gradient Boosting Classification Algorithm.
+Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gbm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gbm")
 lrn("classif.gbm")
 }
 }
@@ -63,13 +63,11 @@ lrn("classif.gbm")
 }
 
 \examples{
-if (requireNamespace("gbm", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.gbm")
-  print(learner)
+learner = mlr3::lrn("classif.gbm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Friedman, H J (2002).

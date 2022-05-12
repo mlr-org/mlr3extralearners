@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_classif.OneR
 #'
-#' @template class_learner
+#' @description
+#' One Rule classification algorithm that yields an extremely simple model.
+#' Calls [RWeka::OneR()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id classif.OneR
-#' @templateVar caller OneR
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

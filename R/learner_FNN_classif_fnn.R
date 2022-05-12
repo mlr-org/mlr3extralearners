@@ -2,9 +2,13 @@
 #' @author be-marc
 #' @name mlr_learners_classif.fnn
 #'
-#' @template class_learner
+#' @description
+#' Fast Nearest Neighbour Classification.
+#' Calls [FNN::knn()] from \CRANpkg{FNN}.
+#'
+#'
+#' @template learner
 #' @templateVar id classif.fnn
-#' @templateVar caller knn
 #'
 #' @references
 #' `r format_bib("boltz2007knn")`

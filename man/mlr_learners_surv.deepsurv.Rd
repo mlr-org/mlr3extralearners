@@ -5,12 +5,12 @@
 \alias{LearnerSurvDeepsurv}
 \title{Survival DeepSurv Learner}
 \description{
-Calls \link[survivalmodels:deepsurv]{survivalmodels::deepsurv} from package \CRANpkg{survivalmodels}.
+DeepSurv fits a neural network based on the partial likelihood from a Cox PH.
+Calls \code{\link[survivalmodels:dnnsurv]{survivalmodels::dnnsurv()}} from package 'survivalmodels'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.deepsurv")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.deepsurv")
 lrn("surv.deepsurv")
 }
 }
@@ -64,14 +64,18 @@ lrn("surv.deepsurv")
 }
 }
 
-\examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.deepsurv")
-  print(learner)
+\section{Installation}{
 
-  # available parameters:
-  learner$param_set$ids()
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
+
+\examples{
+learner = mlr3::lrn("surv.deepsurv")
+print(learner)
+
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Katzman, L J, Shaham, Uri, Cloninger, Alexander, Bates, Jonathan, Jiang, Tingting, Kluger, Yuval (2018).

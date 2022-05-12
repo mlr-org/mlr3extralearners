@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized additive models.
-#' Calls [mgcv::gam] from package \CRANpkg{mgcv}.
+#' Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
 #'
 #' Multiclass classification is not implemented yet.
 #'
@@ -15,9 +15,8 @@
 #' in the formula will be used, superseding columns with col_roles "feature"
 #' in the task.
 #'
-#' @template class_learner
+#' @template learner
 #' @templateVar id classif.gam
-#' @templateVar caller gam
 #'
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`

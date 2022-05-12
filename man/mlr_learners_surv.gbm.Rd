@@ -5,12 +5,12 @@
 \alias{LearnerSurvGBM}
 \title{Survival Gradient Boosting Machine Learner}
 \description{
-Calls \link[gbm:gbm]{gbm::gbm} from package \CRANpkg{gbm}.
+Gradient Boosting for Survival Analysis.
+Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gbm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gbm")
 lrn("surv.gbm")
 }
 }
@@ -68,13 +68,11 @@ lrn("surv.gbm")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("gbm", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.gbm")
-  print(learner)
+learner = mlr3::lrn("surv.gbm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Friedman, H J (2002).

@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.dnnsurv
 #'
-#' @template class_learner
+#' @description
+#' Fits a neural network based on pseudo-conditional survival probabilities.
+#' Calls [survivalmodels::dnnsurv()] from package 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.dnnsurv
-#' @templateVar caller dnnsurv
+#'
+#' @template install_survivalmodels
 #'
 #' @details
 #' Custom nets can be used in this learner either using the

@@ -5,12 +5,13 @@
 \alias{LearnerRegrCubist}
 \title{Regression Cubist Learner}
 \description{
-Calls \link[Cubist:cubist.default]{Cubist::cubist} from package \CRANpkg{Cubist}.
+Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
+linear regression models at the terminal leaves.
+Calls \code{\link[Cubist:cubist.default]{Cubist::cubist()}} from \CRANpkg{Cubist}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.cubist")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.cubist")
 lrn("regr.cubist")
 }
 }
@@ -33,20 +34,18 @@ lrn("regr.cubist")
    rules \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    extrapolation \tab numeric \tab 100 \tab  \tab \eqn{[0, 100]}{[0, 100]} \cr
    sample \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   seed \tab integer \tab 847 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab 412 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    label \tab untyped \tab outcome \tab  \tab - \cr
    neighbors \tab integer \tab 0 \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
 }
 }
 
 \examples{
-if (requireNamespace("Cubist", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.cubist")
-  print(learner)
+learner = mlr3::lrn("regr.cubist")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Quinlan, R J, others (1992).

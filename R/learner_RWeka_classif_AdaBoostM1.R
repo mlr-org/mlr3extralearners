@@ -2,9 +2,12 @@
 #' @author henrifnk
 #' @name mlr_learners_classif.AdaBoostM1
 #'
-#' @template class_learner
+#' @description
+#' Adaptive boosting algorithm for classification.
+#' Calls [RWeka::AdaBoostM1()] from \CRANpkg{RWeka}.
+#'
+#' @template learner
 #' @templateVar id classif.AdaBoostM1
-#' @templateVar caller AdaBoostM1
 #'
 #' @section Custom mlr3 defaults:
 #' - `output_debug_info`:

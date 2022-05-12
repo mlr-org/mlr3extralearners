@@ -1,9 +1,13 @@
 #' @title Density Kerdiest Kernel Learner
 #' @author RaphaelS1
 #' @name mlr_learners_dens.kde_kd
-#' @template class_learner
+#'
+#' @description
+#' Kernel Density Estimator of the distribution function.
+#' Calls [kerdiest::kde()] from \CRANpkg{kerdiest}.
+#'
+#' @template learner
 #' @templateVar id dens.kde_kd
-#' @templateVar caller kde
 #'
 #' @references
 #' `r format_bib("quintela2012nonparametric")`

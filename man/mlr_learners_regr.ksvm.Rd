@@ -5,12 +5,12 @@
 \alias{LearnerRegrKSVM}
 \title{Regression Kernlab Support Vector Machine}
 \description{
-Calls \link[kernlab:ksvm]{kernlab::ksvm} from package \CRANpkg{kernlab}.
+Support Vector Regression.
+Calls \code{\link[kernlab:ksvm]{kernlab::ksvm()}} from \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.ksvm")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.ksvm")
 lrn("regr.ksvm")
 }
 }
@@ -48,13 +48,11 @@ lrn("regr.ksvm")
 }
 
 \examples{
-if (requireNamespace("kernlab", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.ksvm")
-  print(learner)
+learner = mlr3::lrn("regr.ksvm")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Karatzoglou, Alexandros, Smola, Alex, Hornik, Kurt, Zeileis, Achim (2004).

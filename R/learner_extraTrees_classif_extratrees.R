@@ -2,9 +2,14 @@
 #' @author be-marc
 #' @name mlr_learners_classif.extratrees
 #'
-#' @template class_learner
+#' @description
+#' Extra Trees are similar to random forests but don't use bootstrapped samples and select the
+#' split points randomly.
+#' Calls [extraTrees::extraTrees()] from \CRANpkg{extraTrees}.
+#'
+#'
+#' @template learner
 #' @templateVar id classif.extratrees
-#' @templateVar caller extraTrees
 #'
 #' @references
 #' `r format_bib("geurts2006extremely")`

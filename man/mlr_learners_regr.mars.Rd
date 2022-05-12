@@ -5,12 +5,12 @@
 \alias{LearnerRegrMars}
 \title{Regression Mars Learner}
 \description{
-Calls \link[mda:mars]{mda::mars} from package \CRANpkg{mda}.
+Multivariate Adaptive Regression Splines.
+Calls \code{\link[mda:mars]{mda::mars()}} from \CRANpkg{mda}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.mars")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.mars")
 lrn("regr.mars")
 }
 }
@@ -39,18 +39,16 @@ lrn("regr.mars")
 }
 
 \examples{
-if (requireNamespace("mda", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.mars")
-  print(learner)
+learner = mlr3::lrn("regr.mars")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
-Hastie, J T, Tibshirani, J R (2017).
-\emph{Generalized additive models}.
-Routledge.
+Friedman, H J (1991).
+\dQuote{Multivariate adaptive regression splines.}
+\emph{The annals of statistics}, \bold{19}(1), 1--67.
 }
 \seealso{
 \itemize{

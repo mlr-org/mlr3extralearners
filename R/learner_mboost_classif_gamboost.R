@@ -2,9 +2,12 @@
 #' @author be-marc
 #' @name mlr_learners_classif.gamboost
 #'
-#' @template class_learner
+#' @description
+#' Fit a generalized additive classification model using a boosting algorithm.
+#' Calls [mboost::gamboost()]  from \CRANpkg{mboost}.
+#'
+#' @template learner
 #' @templateVar id classif.gamboost
-#' @templateVar caller gamboost
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`

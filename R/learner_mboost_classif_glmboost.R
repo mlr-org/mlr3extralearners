@@ -2,9 +2,13 @@
 #' @author be-marc
 #' @name mlr_learners_classif.glmboost
 #'
-#' @template class_learner
+#' @description
+#' Fit a generalized linear classification model using a boosting algorithm.
+#' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
+#'
+#'
+#' @template learner
 #' @templateVar id classif.glmboost
-#' @templateVar caller glmboost
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`

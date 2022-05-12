@@ -5,7 +5,8 @@
 \alias{LearnerSurvPenalized}
 \title{Survival L1 and L2 Penalized Regression Learner}
 \description{
-Calls \link[penalized:penalized]{penalized::penalized} from package \CRANpkg{penalized}.
+Penalized (L1 and L2) generalized linear models.
+Calls \code{\link[penalized:penalized]{penalized::penalized()}} from \CRANpkg{penalized}.
 }
 \details{
 The \code{penalized} and \code{unpenalized} arguments in the learner are implemented slightly
@@ -14,9 +15,8 @@ instead it is assumed that every variable is penalized unless stated in the \cod
 parameter, see examples.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.penalized")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.penalized")
 lrn("surv.penalized")
 }
 }
@@ -50,13 +50,11 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.penalized")
-  print(learner)
+learner = mlr3::lrn("surv.penalized")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Goeman, J J (2010).

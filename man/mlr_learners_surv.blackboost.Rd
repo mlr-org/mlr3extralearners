@@ -5,15 +5,15 @@
 \alias{LearnerSurvBlackBoost}
 \title{Gradient Boosting with Regression Trees Survival Learner}
 \description{
-Calls \link[mboost:blackboost]{mboost::blackboost} from package \CRANpkg{mboost}.
+Gradient boosting with regression trees for survival analysis.
+Calls \code{\link[mboost:blackboost]{mboost::blackboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.blackboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.blackboost")
 lrn("surv.blackboost")
 }
 }
@@ -76,13 +76,11 @@ lrn("surv.blackboost")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.blackboost")
-  print(learner)
+learner = mlr3::lrn("surv.blackboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

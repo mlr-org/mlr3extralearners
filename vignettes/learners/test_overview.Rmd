@@ -3,9 +3,9 @@ title: Learner Status
 output: html_document
 ---
 
-The table below gives an overview of the current status of all extralearners. 
-The *Parameter Test* indicates whether the parameters of the algorithm are covered. 
-The *Learner Test* shows whether the learner is working. 
+The table below gives an overview of the current status of all extralearners.
+The *Parameter Test* indicates whether the parameters of the algorithm are covered.
+The *Learner Test* shows whether the learner is working.
 
 ```{r, echo = FALSE}
 library(mlr3extralearners)
@@ -24,7 +24,7 @@ remove_mlr3 = function(pkgs) {
   return(pkgs)
 }
 
-no_badges = c("CoxBoost", "catboost", "stats", "stats4")
+no_badges = c("CoxBoost", "catboost", "stats", "stats4", "mlr3proba", "survivalmodels")
 
 make_badge = function(pkg) {
   if (pkg %in% no_badges) {

@@ -2,14 +2,16 @@
 #' @author RaphaelS1
 #' @name mlr_learners_classif.gausspr
 #'
-#' @template class_learner
-#' @templateVar id classif.gausspr
-#' @templateVar caller gausspr
-#'
-#' @details Parameters `sigma`, `degree`, `scale`, `offset` and `order` are
+#' @description
+#' Gaussian process for classification.
+#' Calls [kernlab::gausspr()] from \CRANpkg{kernlab}.
+#' Parameters `sigma`, `degree`, `scale`, `offset` and `order` are
 #' added to make tuning `kpar` easier. If `kpar` is provided then these
 #' new parameters are ignored. If none are provided then the default
 #' "automatic" is used for `kpar`.
+#'
+#' @template learner
+#' @templateVar id classif.gausspr
 #'
 #' @references
 #' `r format_bib("karatzoglou2004kernlab")`

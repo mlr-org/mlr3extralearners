@@ -5,12 +5,12 @@
 \alias{LearnerDensKDEks}
 \title{Density KS Kernel Learner}
 \description{
-Calls \link[ks:kde]{ks::kde} from package \CRANpkg{ks}.
+Kernel density estimator.
+Calls \code{\link[ks:kde]{ks::kde()}} from \CRANpkg{ks}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.kde_ks")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.kde_ks")
 lrn("dens.kde_ks")
 }
 }
@@ -44,17 +44,16 @@ lrn("dens.kde_ks")
    approx.cont \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    unit.interval \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   density \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("ks", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.kde_ks")
-  print(learner)
+learner = mlr3::lrn("dens.kde_ks")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gramacki, Artur, Gramacki, Jarosław (2017).

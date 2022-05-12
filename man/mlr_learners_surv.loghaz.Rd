@@ -5,7 +5,8 @@
 \alias{LearnerSurvLogisticHazard}
 \title{Survival Logistic-Hazard Learner}
 \description{
-Calls \link[survivalmodels:loghaz]{survivalmodels::loghaz} from package \CRANpkg{survivalmodels}.
+Survival logistic hazard learner.
+Calls \code{\link[survivalmodels:loghaz]{survivalmodels::loghaz()}} from package 'survivalmodels'.
 }
 \details{
 Custom nets can be used in this learner either using the
@@ -14,9 +15,8 @@ The number of output channels depends on the number of discretised time-points, 
 the parameters \code{cuts} or \code{cutpoints}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.loghaz")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.loghaz")
 lrn("surv.loghaz")
 }
 }
@@ -78,14 +78,18 @@ lrn("surv.loghaz")
 }
 }
 
-\examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.loghaz")
-  print(learner)
+\section{Installation}{
 
-  # available parameters:
-  learner$param_set$ids()
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
+
+\examples{
+learner = mlr3::lrn("surv.loghaz")
+print(learner)
+
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Gensheimer, F M, Narasimhan, BA (2018).

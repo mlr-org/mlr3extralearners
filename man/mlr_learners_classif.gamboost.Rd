@@ -5,12 +5,12 @@
 \alias{LearnerClassifGAMBoost}
 \title{Boosted Generalized Additive Classification Learner}
 \description{
-Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
+Fit a generalized additive classification model using a boosting algorithm.
+Calls \code{\link[mboost:gamboost]{mboost::gamboost()}}  from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gamboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.gamboost")
 lrn("classif.gamboost")
 }
 }
@@ -46,13 +46,11 @@ lrn("classif.gamboost")
 }
 
 \examples{
-if (requireNamespace("mboost", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.gamboost")
-  print(learner)
+learner = mlr3::lrn("classif.gamboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

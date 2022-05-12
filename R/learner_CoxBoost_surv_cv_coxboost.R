@@ -2,9 +2,15 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.cv_coxboost
 #'
-#' @template class_learner
+#' @description
+#' Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+#' number of steps.
+#' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
+#'
+#' @template learner
 #' @templateVar id surv.cv_coxboost
-#' @templateVar caller cv.CoxBoost
+#'
+#' @template install_coxboost
 #'
 #' @details
 #' Use [LearnerSurvCoxboost] and [LearnerSurvCVCoxboost] for Cox boosting without and with internal

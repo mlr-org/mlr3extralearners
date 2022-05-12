@@ -1,11 +1,13 @@
 #' @title Regression Gradient Boosting Machine Learner
 #' @author be-marc
-#'
 #' @name mlr_learners_regr.gbm
 #'
-#' @template class_learner
+#' @description
+#' Gradient Boosting Regression Algorithm.
+#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#'
 #' @templateVar id regr.gbm
-#' @templateVar caller gbm
+#' @template learner
 #'
 #' @section Custom mlr3 defaults:
 #' - `keep_data`:

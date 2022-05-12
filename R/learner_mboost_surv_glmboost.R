@@ -1,11 +1,13 @@
 #' @title Boosted Generalized Linear Survival Learner
 #' @author RaphaelS1
-#'
 #' @name mlr_learners_surv.glmboost
 #'
-#' @template class_learner
+#' @description
+#' Fits a generalized linear survival model using a boosting algorithm.
+#' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
+#'
+#' @template learner
 #' @templateVar id surv.glmboost
-#' @templateVar caller glmboost
 #'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].

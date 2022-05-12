@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.cforest
 #'
-#' @template class_learner
+#' @description
+#' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
+#' Calls [partykit::cforest()] from \CRANpkg{partykit}.
+#'
+#' @template learner
 #' @templateVar id surv.cforest
-#' @templateVar caller cforest
 #'
 #' @inheritSection mlr_learners_classif.cforest Custom mlr3 defaults
 #'

@@ -5,12 +5,12 @@
 \alias{LearnerClassifIBk}
 \title{Classification IBk Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_lazy]{RWeka::IBk} from package \CRANpkg{RWeka}.
+Instance based algorithm: K-nearest neighbours regression.
+Calls \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.IBk")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.IBk")
 lrn("classif.IBk")
 }
 }
@@ -70,13 +70,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.IBk")
-  print(learner)
+learner = mlr3::lrn("classif.IBk")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Aha, W D, Kibler, Dennis, Albert, K M (1991).

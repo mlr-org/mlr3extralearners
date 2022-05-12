@@ -5,12 +5,12 @@
 \alias{LearnerSurvCoxtime}
 \title{Survival Cox-Time Learner}
 \description{
-Calls \link[survivalmodels:coxtime]{survivalmodels::coxtime} from package \CRANpkg{survivalmodels}.
+Cox-Time survival model.
+Calls \code{\link[survivalmodels:coxtime]{survivalmodels::coxtime()}} from package 'survivalmodels'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxtime")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.coxtime")
 lrn("surv.coxtime")
 }
 }
@@ -69,14 +69,18 @@ lrn("surv.coxtime")
 }
 }
 
-\examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.coxtime")
-  print(learner)
+\section{Installation}{
 
-  # available parameters:
-  learner$param_set$ids()
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
+
+\examples{
+learner = mlr3::lrn("surv.coxtime")
+print(learner)
+
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Kvamme, Håvard, Borgan Ø, Scheel I (2019).

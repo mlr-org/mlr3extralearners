@@ -5,12 +5,12 @@
 \alias{LearnerRegrRandomForestSRC}
 \title{Regression Random Forest SRC Learner}
 \description{
-Calls \link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc} from package \CRANpkg{randomForestSRC}.
+Random forest for regression.
+Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.rfsrc")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.rfsrc")
 lrn("regr.rfsrc")
 }
 }
@@ -91,13 +91,11 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("randomForestSRC", quietly = TRUE)) {
-  learner = mlr3::lrn("regr.rfsrc")
-  print(learner)
+learner = mlr3::lrn("regr.rfsrc")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Breiman, Leo (2001).

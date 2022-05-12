@@ -5,12 +5,14 @@
 \alias{LearnerClassifBart}
 \title{Classification BART (Bayesian Additive Regression Trees) Learner}
 \description{
-Calls \link[dbarts:bart]{dbarts::bart} from package \CRANpkg{dbarts}.
+Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
+The classification problem is solved by 0-1 encoding of the two-class targets and setting the
+decision threshold to p = 0.5 during the prediction phase.
+Calls \code{\link[dbarts:bart]{dbarts::bart()}} from \CRANpkg{dbarts}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.bart")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.bart")
 lrn("classif.bart")
 }
 }
@@ -69,18 +71,20 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 
 \examples{
-if (requireNamespace("dbarts", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.bart")
-  print(learner)
+learner = mlr3::lrn("classif.bart")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Sparapani, Rodney, Spanbauer, Charles, McCulloch, Robert (2021).
 \dQuote{Nonparametric machine learning and efficient computation with bayesian additive regression trees: the BART R package.}
 \emph{Journal of Statistical Software}, \bold{97}, 1--66.
+
+Chipman, A H, George, I E, McCulloch, E R (2010).
+\dQuote{BART: Bayesian additive regression trees.}
+\emph{The Annals of Applied Statistics}, \bold{4}(1), 266--298.
 }
 \seealso{
 \itemize{

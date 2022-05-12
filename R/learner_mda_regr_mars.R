@@ -2,12 +2,15 @@
 #' @author sumny
 #' @name mlr_learners_regr.mars
 #'
-#' @template class_learner
+#' @description
+#' Multivariate Adaptive Regression Splines.
+#' Calls [mda::mars()] from \CRANpkg{mda}.
+#'
 #' @templateVar id regr.mars
-#' @templateVar caller mars
+#' @template learner
 #'
 #' @references
-#' `r format_bib("hastie2017generalized")`
+#' `r format_bib("friedman1991multivariate")`
 #'
 #' @template seealso_learner
 #' @template example

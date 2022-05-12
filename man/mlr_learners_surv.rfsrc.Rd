@@ -5,7 +5,8 @@
 \alias{LearnerSurvRandomForestSRC}
 \title{Survival Random Forest SRC Learner}
 \description{
-Calls \link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc} from package \CRANpkg{randomForestSRC}.
+Random survival forest.
+Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
 }
 \details{
 \code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} returns both cumulative hazard function (chf) and
@@ -15,9 +16,8 @@ Kaplan-Meier estimator. The choice of which estimator to use is given by the ext
 \code{estimator} hyper-parameter, default is \code{nelson}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.rfsrc")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.rfsrc")
 lrn("surv.rfsrc")
 }
 }
@@ -99,13 +99,11 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("randomForestSRC", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.rfsrc")
-  print(learner)
+learner = mlr3::lrn("surv.rfsrc")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).

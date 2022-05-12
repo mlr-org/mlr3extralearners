@@ -1,10 +1,16 @@
-#' @title Regression MARS (Multivariate Adaptive Regression Splines) Learner
+#' @title Implementation of Multivariate Adaptive Regression Splines
 #' @author pkopper
 #' @name mlr_learners_regr.earth
 #'
-#' @template class_learner
+#' @description
+#' This is an alternative implementation of MARS (Multivariate Adaptive Regression Splines).
+#' MARS is trademarked and thus not used as the name. The name "earth" stands for
+#' "Enhanced Adaptive Regression Through Hinges".
+#'
+#' Calls [earth::earth()] from \CRANpkg{earth}.
+#'
+#' @template learner
 #' @templateVar id regr.earth
-#' @templateVar caller earth
 #'
 #' @details
 #' Methods for variance estimations are not yet implemented.

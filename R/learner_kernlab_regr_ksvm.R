@@ -2,9 +2,12 @@
 #' @author mboecker
 #' @name mlr_learners_regr.ksvm
 #'
-#' @template class_learner
+#' @description
+#' Support Vector Regression.
+#' Calls [kernlab::ksvm()] from \CRANpkg{kernlab}.
+#'
+#' @template learner
 #' @templateVar id regr.ksvm
-#' @templateVar caller ksvm
 #'
 #' @references
 #' `r format_bib("karatzoglou2004kernlab")`

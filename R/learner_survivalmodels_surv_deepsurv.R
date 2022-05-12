@@ -2,9 +2,14 @@
 #' @author RaphaelS1
 #' @name mlr_learners_surv.deepsurv
 #'
-#' @template class_learner
+#' @description
+#' DeepSurv fits a neural network based on the partial likelihood from a Cox PH.
+#' Calls [survivalmodels::dnnsurv()] from package 'survivalmodels'.
+#'
+#' @template learner
 #' @templateVar id surv.deepsurv
-#' @templateVar caller deepsurv
+#'
+#' @template install_survivalmodels
 #'
 #' @references
 #' `r format_bib("katzman2018deepsurv")`

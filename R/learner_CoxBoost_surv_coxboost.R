@@ -1,9 +1,15 @@
 #' @title Survival Cox Model with Likelihood Based Boosting Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.coxboost
-#' @template class_learner
+#'
+#' @description
+#' Fit a Survival Cox model with a likelihood based boosting algorithm.
+#' Calls [CoxBoost::CoxBoost()] from package 'CoxBoost'.
+#'
+#' @template learner
 #' @templateVar id surv.coxboost
-#' @templateVar caller CoxBoost
+#'
+#' @template install_coxboost
 #'
 #' @details
 #' Use [LearnerSurvCoxboost] and [LearnerSurvCVCoxboost] for Cox boosting without and with internal

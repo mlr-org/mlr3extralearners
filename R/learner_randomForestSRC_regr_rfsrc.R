@@ -2,9 +2,12 @@
 #' @author RaphaelS1
 #' @name mlr_learners_regr.rfsrc
 #'
-#' @template class_learner
+#' @description
+#' Random forest for regression.
+#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#'
+#' @template learner
 #' @templateVar id regr.rfsrc
-#' @templateVar caller rfsrc
 #'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 defaults
 #'

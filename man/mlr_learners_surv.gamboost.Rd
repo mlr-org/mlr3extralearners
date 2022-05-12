@@ -5,36 +5,20 @@
 \alias{LearnerSurvGAMBoost}
 \title{Boosted Generalized Additive Survival Learner}
 \description{
-Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
-
-Calls \link[mboost:gamboost]{mboost::gamboost} from package \CRANpkg{mboost}.
+Fits a generalized additive survival model using a boosting algorithm.
+Calls \code{\link[mboost:gamboost]{mboost::gamboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gamboost")
-lrn("surv.gamboost")
-}
 
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gamboost")
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.gamboost")
 lrn("surv.gamboost")
 }
 }
 
 \section{Meta Information}{
-
-\itemize{
-\item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{distr}, \dQuote{crank}, \dQuote{lp}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{logical}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
-}
-
 
 \itemize{
 \item Task type: \dQuote{surv}
@@ -64,36 +48,14 @@ lrn("surv.gamboost")
    ipcw \tab untyped \tab 1 \tab  \tab - \cr
    na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
 }
-
-\tabular{lllll}{
-   Id \tab Type \tab Default \tab Levels \tab Range \cr
-   family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
-   custom.family \tab untyped \tab - \tab  \tab - \cr
-   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
-   offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
-   stopintern \tab untyped \tab FALSE \tab  \tab - \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   oobweights \tab untyped \tab  \tab  \tab - \cr
-   baselearner \tab character \tab bbs \tab bbs, bols, btree \tab - \cr
-   dfbase \tab integer \tab 4 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   ipcw \tab untyped \tab 1 \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
-}
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.gamboost")
-  print(learner)
+learner = mlr3::lrn("surv.gamboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

@@ -1,11 +1,12 @@
 #' @title Survival Oblique Random Survival Forest Learner
-#'
 #' @name mlr_learners_surv.obliqueRSF
 #' @author adibender
 #'
-#' @template class_learner
+#' @description
+#' Oblique random forest.
+#' Calls [obliqueRSF::ORSF()] from \CRANpkg{obliqueRSF}.
+#' @template learner
 #' @templateVar id surv.obliqueRSF
-#' @templateVar caller ORSF
 #'
 #' @section Custom mlr3 defaults:
 #' - `verbose`:

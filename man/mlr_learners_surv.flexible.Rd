@@ -5,7 +5,8 @@
 \alias{LearnerSurvFlexible}
 \title{Survival Flexible Parametric Spline Learner}
 \description{
-Calls \link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline} from package \CRANpkg{flexsurv}.
+Flexible parametric spline learner.
+Calls \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} from \CRANpkg{flexsurv}.
 }
 \details{
 The \code{distr} prediction is estimated using the fitted custom distributions
@@ -20,9 +21,8 @@ and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}
 of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.flexible")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.flexible")
 lrn("surv.flexible")
 }
 }
@@ -72,13 +72,11 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("flexsurv", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
-  learner = mlr3::lrn("surv.flexible")
-  print(learner)
+learner = mlr3::lrn("surv.flexible")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Royston, Patrick, Parmar, KB M (2002).

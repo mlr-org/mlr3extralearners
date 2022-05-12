@@ -5,12 +5,12 @@
 \alias{LearnerDensPlugin}
 \title{Density Plug-In Kernel Learner}
 \description{
-Calls \link[plugdensity:plugin.density]{plugdensity::plugin.density} from package \CRANpkg{plugdensity}.
+Kernel density estimation with global bandwidth selection via "plug-in".
+Calls \code{\link[plugdensity:plugin.density]{plugdensity::plugin.density()}} from \CRANpkg{plugdensity}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.plug")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("dens.plug")
 lrn("dens.plug")
 }
 }
@@ -33,13 +33,11 @@ lrn("dens.plug")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("plugdensity", quietly = TRUE)) {
-  learner = mlr3::lrn("dens.plug")
-  print(learner)
+learner = mlr3::lrn("dens.plug")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Engel, Joachim, Herrmann, Eva, Gasser, Theo (1994).

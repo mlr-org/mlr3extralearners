@@ -2,9 +2,12 @@
 #' @author mboecker
 #' @name mlr_learners_classif.ksvm
 #'
-#' @template class_learner
+#' @description
+#' Support vector machine for classification.
+#' Calls [kernlab::ksvm()] from \CRANpkg{kernlab}.
+#'
+#' @template learner
 #' @templateVar id classif.ksvm
-#' @templateVar caller ksvm
 #'
 #' @references
 #' `r format_bib("karatzoglou2004kernlab")`

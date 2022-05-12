@@ -2,16 +2,45 @@
 #' @author sumny
 #' @name mlr_learners_classif.mob
 #'
-#' @template class_learner
+#' @description
+#' Model-based recursive partitioning algorithm.
+#' Calls [partykit::mob()] from \CRANpkg{mob}.
+#'
 #' @templateVar id classif.mob
-#' @templateVar caller mob
+#' @template learner
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' library(mlr3)
+#' logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
+#'   glm(y ~ 1, family = binomial, start = start, ...)
+#' }
+#' learner = LearnerClassifMob$new()
+#' learner$param_set$values$rhs = "."
+#' learner$param_set$values$fit = logit_
+#' learner$param_set$values$additional = list(maxit = 100)
+#' learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
+#' learner$properties = c("twoclass", "weights")
+#'
+#' predict_fun = function(object, newdata, task, .type) {
+#'   p = unname(predict(object, newdata = newdata, type = "response"))
+#'   levs = task$levels(task$target_names)[[1L]]
+#'
+#'   if (.type == "response") {
+#'     ifelse(p < 0.5, levs[1L], levs[2L])
+#'   } else {
+#'     prob_vector_to_matrix(p, levs)
+#'   }
+#' }
+#' task = tsk("breast_cancer")
+#' learner$param_set$values$predict_fun = predict_fun
+#' ids = partition(task)
+#' learner$train(task, row_ids = ids$train)
+#' learner$predict(task, row_ids = ids$test)
 LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
   public = list(
 
@@ -25,7 +54,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         fit = p_uty(custom_check = function(x) {
           check_function(x,
             args = c("y", "x", "start", "weights", "offset", "..."))
-        }, tags = "train"),
+        }, tags = c("train", "required")),
         offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         # all in mob_control()
@@ -78,7 +107,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
         predict_fun = p_uty(custom_check = function(x) {
           check_function(x,
             args = c("object", "newdata", "task", ".type"))
-        }, tags = "predict")
+        }, tags = c("predict", "required"))
       )
 
       ps$add_dep("nrep", on = "ordinal", cond = CondEqual$new("L2"))

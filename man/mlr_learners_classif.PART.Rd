@@ -5,12 +5,12 @@
 \alias{LearnerClassifPART}
 \title{Classification PART Learner}
 \description{
-Calls \link[RWeka:Weka_classifier_rules]{RWeka::PART} from package \CRANpkg{RWeka}.
+Regression partition tree.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::PART()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.PART")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.PART")
 lrn("classif.PART")
 }
 }
@@ -72,13 +72,11 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("RWeka", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.PART")
-  print(learner)
+learner = mlr3::lrn("classif.PART")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Frank, Eibe, Witten, H I (1998).

@@ -2,14 +2,16 @@
 #' @author RaphaelS1
 #' @name mlr_learners_classif.lssvm
 #'
-#' @template class_learner
-#' @templateVar id classif.lssvm
-#' @templateVar caller lssvm
-#'
-#' @details Parameters `sigma`, `degree`, `scale`, `offset`, `order`, `length`,
+#' @description
+#' Least squares support vector machine for classification.
+#' Calls [kernlab::lssvm()] from \CRANpkg{kernlab}.
+#' Parameters `sigma`, `degree`, `scale`, `offset`, `order`, `length`,
 #' `lambda`, and `normalized` are added to make tuning `kpar` easier.
 #' If `kpar` is provided then these new parameters are ignored. If none are
 #' provided then the default "automatic" is used for `kpar`.
+#'
+#' @template learner
+#' @templateVar id classif.lssvm
 #'
 #' @references
 #' `r format_bib("karatzoglou2004kernlab")`

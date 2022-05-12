@@ -5,12 +5,12 @@
 \alias{LearnerClassifCatboost}
 \title{Gradient Boosted Decision Trees Classification Learner}
 \description{
-Calls \link[catboost:catboost.train]{catboost::catboost.train} from package \CRANpkg{catboost}.
+Gradient boosting algorithm that also supports categorical data.
+Calls \code{\link[catboost:catboost.train]{catboost::catboost.train()}} from package 'catboost'.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.catboost")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("classif.catboost")
 lrn("classif.catboost")
 }
 }
@@ -137,13 +137,11 @@ The easiest way to install catboost is with the helper function
 }
 
 \examples{
-if (requireNamespace("catboost", quietly = TRUE)) {
-  learner = mlr3::lrn("classif.catboost")
-  print(learner)
+learner = mlr3::lrn("classif.catboost")
+print(learner)
 
-  # available parameters:
-  learner$param_set$ids()
-}
+# available parameters:
+learner$param_set$ids()
 }
 \references{
 Dorogush, Veronika A, Ershov, Vasily, Gulin, Andrey (2018).
