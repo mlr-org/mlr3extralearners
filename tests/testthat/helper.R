@@ -1,6 +1,8 @@
 library(checkmate)
 library(mlr3)
 library(mlr3extralearners)
+library(mlr3cluster)
+library(mlr3proba)
 
 .f = function(pkg) {
   lapply(list.files(system.file("testthat", package = pkg),
