@@ -32,7 +32,8 @@ install_catboost = function(version = NULL, os = NULL,
 
   url = sprintf(
     "https://github.com/catboost/catboost/releases/download/v%s/catboost-R-%s-%s.tgz",
-    version, os, version)
+    version, os, version
+  )
 
   if (!requireNamespace("remotes", quietly = TRUE) && install_required) {
     utils::install.packages("remotes", repos = "https://cloud.r-project.org")
