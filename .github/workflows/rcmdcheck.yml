@@ -67,23 +67,7 @@ jobs:
 
       - name: Install catboost
         run: |
-          if (!requireNamespace("jsonlite", quietly = TRUE) && install_required) {
-            utils::install.packages("jsonlite", repos = "https://cloud.r-project.org")
-          }
-          if (!requireNamespace("remotes", quietly = TRUE) && install_required) {
-            utils::install.packages("remotes", repos = "https://cloud.r-project.org")
-          }
-          if (!requireNamespace("curl", quietly = TRUE) && install_required) {
-            utils::install.packages("curl", repos = "https://cloud.r-project.org")
-          }
-          version = jsonlite::fromJSON(
-            "https://api.github.com/repos/catboost/catboost/releases"
-          )$tag_name[1]
-          url = sprintf(
-            "https://github.com/catboost/catboost/releases/download/%s/catboost-R-Linux-%s.tgz",
-            version, version
-          )
-          remotes::install_url(url, INSTALL_opts = "--no-multiarch")
+          mlr3extralearners::install_catboost()
         shell: Rscript {0}
 
       - name: Install Python
