@@ -37,7 +37,8 @@ test_that("surv.xgboost", {
     "weight", # handled by mlr3
     "nthread", # handled by mlr3
     "aft_loss_distribution", # survival specific
-    "aft_loss_distribution_scale" # survival specific
+    "aft_loss_distribution_scale", # survival specific
+    "single_precision_histogram" # experimental, add when issue is raised / when it is stable
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

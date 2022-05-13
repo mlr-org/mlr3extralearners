@@ -17,7 +17,6 @@ install_catboost = function(version = NULL, os = NULL,
   INSTALL_opts = c("--no-multiarch",
     "--no-test-load"), ...) {
 
-
   if (is.null(version)) {
     require_namespaces(c("jsonlite", "curl"))
     version = jsonlite::fromJSON(
