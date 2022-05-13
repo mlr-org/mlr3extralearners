@@ -1,6 +1,3 @@
-install_learners("regr.mars")
-load_tests("regr.mars")
-
 test_that("paramtest regr.mars train", {
   learner = lrn("regr.mars")
   fun = mda::mars

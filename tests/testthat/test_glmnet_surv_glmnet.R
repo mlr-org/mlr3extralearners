@@ -1,5 +1,4 @@
 skip_on_os("solaris") # glmnet not working properly on solaris
-skip_if_not_installed("glmnet")
 
 test_that("autotest", {
   learner = mlr3::lrn("surv.glmnet", lambda = .1)

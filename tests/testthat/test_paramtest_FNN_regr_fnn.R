@@ -1,5 +1,3 @@
-install_learners("regr.fnn")
-
 # knn has no real training phase
 
 test_that("paramtest regr.fnn predict", {

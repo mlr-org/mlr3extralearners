@@ -1,5 +1,3 @@
-install_learners("classif.liblinear")
-
 test_that("autotest", {
   learner = LearnerClassifLiblineaR$new()
   expect_learner(learner)

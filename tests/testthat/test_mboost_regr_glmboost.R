@@ -1,5 +1,3 @@
-install_learners("regr.glmboost")
-
 test_that("autotest", {
   learner = LearnerRegrGLMBoost$new()
   expect_learner(learner)

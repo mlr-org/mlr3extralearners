@@ -1,5 +1,3 @@
-install_learners("regr.gbm")
-
 test_that("autotest", {
   learner = LearnerRegrGBM$new()
   learner$param_set$values = mlr3misc::insert_named(

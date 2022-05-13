@@ -1,6 +1,3 @@
-install_learners("dens.plug")
-load_tests("dens.plug")
-
 test_that("dens.plug", {
   learner = lrn("dens.plug")
   fun = plugdensity::plugin.density

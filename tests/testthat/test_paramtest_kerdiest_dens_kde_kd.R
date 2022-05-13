@@ -1,6 +1,3 @@
-install_learners("dens.kde_kd")
-load_tests("dens.kde_kd")
-
 test_that("paramtest dens.kde_kd train", {
   learner = lrn("dens.kde_kd")
   fun = kerdiest::kde

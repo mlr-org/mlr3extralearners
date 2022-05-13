@@ -1,5 +1,3 @@
-install_learners("classif.OneR")
-
 test_that("paramtest classif.OneR train", {
   learner = lrn("classif.OneR")
   fun = RWeka::OneR
@@ -17,7 +15,8 @@ test_that("paramtest classif.OneR predict", {
   # Here we test that the learner implements those arguments that are passed via the
   # control argument to RWeka::OneR
   learner = lrn("classif.OneR")
-  exclude = c( # all handled by mlr3
+  exclude = c(
+    # all handled by mlr3
     "object",
     "newdata",
     "type"

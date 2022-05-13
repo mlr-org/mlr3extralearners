@@ -1,6 +1,3 @@
-install_learners("surv.glmboost")
-load_tests("surv.glmboost")
-
 test_that("paramtest surv.glmboost train", {
   learner = lrn("surv.glmboost")
   fun_list = list(mboost:::glmboost.formula, mboost::boost_control) # nolint

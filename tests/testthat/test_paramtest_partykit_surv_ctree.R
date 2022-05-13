@@ -1,6 +1,3 @@
-install_learners("surv.ctree")
-load_tests("surv.ctree")
-
 test_that("paramtest surv.ctree train", {
   learner = lrn("surv.ctree")
   fun_list = list(partykit::ctree, partykit::ctree_control, partykit::predict.party,

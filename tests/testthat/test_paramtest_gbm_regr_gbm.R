@@ -1,5 +1,3 @@
-install_learners("regr.gbm")
-
 test_that("regr.gbm", {
   learner = lrn("regr.gbm")
   fun = gbm::gbm

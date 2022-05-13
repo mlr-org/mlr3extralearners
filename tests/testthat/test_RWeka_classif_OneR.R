@@ -1,6 +1,4 @@
-install_learners("classif.OneR")
-
-skip_on_os("windows")
+kip_on_os("windows")
 
 test_that("autotest", {
   learner = LearnerClassifOneR$new()

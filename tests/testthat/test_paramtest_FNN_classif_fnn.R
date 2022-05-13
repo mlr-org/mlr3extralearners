@@ -1,7 +1,3 @@
-install_learners("classif.fnn")
-
-# No train parameters
-
 test_that("paramtest classif.fnn predict", {
   learner = lrn("classif.fnn")
   fun = FNN::knn # replace!

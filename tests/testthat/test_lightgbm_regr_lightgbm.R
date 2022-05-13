@@ -1,6 +1,3 @@
-install_learners("regr.lightgbm")
-load_tests("regr.lightgbm")
-
 test_that("autotest", {
   set.seed(1)
   learner = lrn("regr.lightgbm", nrounds = 50)

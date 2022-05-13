@@ -1,5 +1,3 @@
-install_learners("regr.M5Rules")
-
 test_that("paramtest regr.M5Rules train", {
   learner = lrn("regr.M5Rules")
   fun = RWeka::M5Rules
@@ -17,7 +15,8 @@ test_that("paramtest regr.M5Rules predict", {
   # Here we test that the learner implements those arguments that are passed via the
   # control argument to RWeka::M5Rules
   learner = lrn("regr.M5Rules")
-  exclude = c( # all handled by mlr3
+  exclude = c(
+    # all handled by mlr3
     "object",
     "newdata",
     "type"

@@ -1,6 +1,3 @@
-install_learners("surv.rfsrc")
-load_tests("surv.rfsrc")
-
 test_that("autotest", {
   learner = lrn("surv.rfsrc")
   learner$param_set$values = insert_named(

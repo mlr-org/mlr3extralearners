@@ -1,6 +1,3 @@
-install_learners("classif.rfsrc")
-
-
 test_that("importance/selected", {
   set.seed(1)
   task = tsk("iris")
@@ -26,15 +23,15 @@ test_that("convert_ratio", {
   learner = lrn("classif.rfsrc", ntree = 5, mtry.ratio = .5)
   expect_equal(learner$train(task)$model$mtry, 30)
 
-  learner$param_set$values$mtry.ratio = 0
+  learner$param_set$values$mtry.ratio = 0 # nolint
   expect_equal(learner$train(task)$model$mtry, 1)
 
-  learner$param_set$values$mtry.ratio = 1
+  learner$param_set$values$mtry.ratio = 1 # nolint
   expect_equal(learner$train(task)$model$mtry, 60)
 
   learner$param_set$values$mtry = 10
   expect_error(learner$train(task), "exclusive")
 
-  learner$param_set$values$mtry.ratio = NULL
+  learner$param_set$values$mtry.ratio = NULL # nolint
   expect_equal(learner$train(task)$model$mtry, 10)
 })

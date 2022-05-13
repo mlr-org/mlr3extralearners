@@ -1,5 +1,3 @@
-install_learners("classif.gbm")
-
 test_that("paramtest classif.gbm train", {
   learner = lrn("classif.gbm")
   fun = gbm::gbm

@@ -1,6 +1,3 @@
-install_learners("classif.gam")
-load_tests("classif.gam")
-
 test_that("classif.gam train", {
   learner = lrn("classif.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)

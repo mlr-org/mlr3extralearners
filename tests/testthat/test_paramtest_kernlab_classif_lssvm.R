@@ -1,6 +1,3 @@
-install_learners("classif.lssvm")
-load_tests("classif.lssvm")
-
 test_that("paramtest classif.lssvm train", {
   learner = lrn("classif.lssvm")
   # The Learner actually calls the S4 method with class "formula", but this only creates the matrix

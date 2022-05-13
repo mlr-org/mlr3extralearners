@@ -1,6 +1,3 @@
-install_learners("surv.mboost")
-load_tests("surv.mboost")
-
 test_that("paramtest surv.mboost train", {
   learner = lrn("surv.mboost")
   fun_list = list(mboost::boost_control, mboost::mboost, mboost::Weibull, mboost::Loglog,

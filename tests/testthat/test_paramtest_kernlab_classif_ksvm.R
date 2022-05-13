@@ -1,5 +1,3 @@
-install_learners("classif.ksvm")
-
 test_that("paramtest classif.ksvm train", {
   learner = lrn("classif.ksvm")
   fun_list = list(

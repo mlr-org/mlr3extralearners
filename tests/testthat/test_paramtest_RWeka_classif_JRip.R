@@ -1,5 +1,3 @@
-install_learners("classif.JRip")
-
 test_that("paramtest classif.JRip train", {
   learner = lrn("classif.JRip")
   fun = RWeka::JRip
@@ -17,7 +15,8 @@ test_that("paramtest classif.JRip predict", {
   # Here we test that the learner implements those arguments that are passed via the
   # control argument to RWeka::JRip
   learner = lrn("classif.JRip")
-  exclude = c( # all handled by mlr3
+  exclude = c(
+    # all handled by mlr3
     "object",
     "newdata",
     "type"

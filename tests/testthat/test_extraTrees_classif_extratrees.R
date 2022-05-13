@@ -1,5 +1,3 @@
-install_learners("classif.extratrees")
-
 test_that("autotest", {
   learner = lrn("classif.extratrees")
   expect_learner(learner)

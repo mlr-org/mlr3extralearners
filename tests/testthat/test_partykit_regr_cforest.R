@@ -1,5 +1,3 @@
-install_learners("regr.cforest")
-
 test_that("autotest", {
   learner = LearnerRegrCForest$new()
   learner$param_set$values = list(ntree = 30L)

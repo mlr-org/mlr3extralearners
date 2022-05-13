@@ -1,5 +1,3 @@
-install_learners("classif.gamboost")
-
 test_that("autotest", {
   learner = LearnerClassifGAMBoost$new()
   learner$param_set$values = list(baselearner = "btree", family = "Binomial")

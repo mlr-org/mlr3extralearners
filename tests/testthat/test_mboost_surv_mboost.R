@@ -1,6 +1,3 @@
-install_learners("surv.mboost")
-load_tests("surv.mboost")
-
 test_that("autotest ph", {
   learner = lrn("surv.mboost", baselearner = "bols", family = "coxph", center = TRUE)
   expect_learner(learner)

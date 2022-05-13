@@ -1,5 +1,3 @@
-install_learners("regr.randomForest")
-
 test_that("autotest", {
   learner = LearnerRegrRandomForest$new()
   learner$param_set$values = list("importance" = "mse")

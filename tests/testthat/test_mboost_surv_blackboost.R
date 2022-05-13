@@ -1,13 +1,12 @@
-install_learners("surv.blackboost")
-load_tests("surv.blackboost")
-
 test_that("autotest aft", {
   skip_on_cran()
   set.seed(1)
   learner = lrn("surv.blackboost", family = "loglog")
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
-  result = run_autotest(learner, N = 50, exclude = "weights|utf8_feature_names", check_replicable = FALSE)
+  result = run_autotest(learner, N = 50, exclude = "weights|utf8_feature_names",
+    check_replicable = FALSE
+  )
   expect_true(result, info = result$error)
 })
 
@@ -17,7 +16,9 @@ test_that("autotest ph", {
   learner = lrn("surv.blackboost")
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
-  result = run_autotest(learner, N = 50, exclude = "weights|utf8_feature_names", check_replicable = FALSE)
+  result = run_autotest(learner, N = 50, exclude = "weights|utf8_feature_names",
+    check_replicable = FALSE
+  )
   expect_true(result, info = result$error)
 })
 

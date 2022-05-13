@@ -1,6 +1,3 @@
-install_learners("surv.penalized")
-load_tests("surv.penalized")
-
 test_that("paramtest surv.penalized train", {
   learner = lrn("surv.penalized")
   fun_list = list(penalized::penalized)

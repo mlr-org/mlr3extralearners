@@ -1,6 +1,3 @@
-install_learners("regr.mars")
-load_tests("regr.mars")
-
 test_that("autotest", {
   learner = lrn("regr.mars")
   expect_learner(learner)

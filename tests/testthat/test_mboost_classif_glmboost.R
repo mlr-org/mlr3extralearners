@@ -1,5 +1,3 @@
-install_learners("classif.glmboost")
-
 test_that("autotest", {
   learner = LearnerClassifGLMBoost$new()
   expect_learner(learner)

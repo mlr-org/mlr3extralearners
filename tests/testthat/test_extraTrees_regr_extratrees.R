@@ -1,5 +1,3 @@
-install_learners("regr.extratrees")
-
 test_that("autotest", {
   learner = lrn("regr.extratrees")
   expect_learner(learner)
