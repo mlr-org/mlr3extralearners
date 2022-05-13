@@ -17,16 +17,9 @@ install_catboost = function(version = NULL, os = NULL,
   INSTALL_opts = c("--no-multiarch",
     "--no-test-load"), ...) {
 
+
   if (is.null(version)) {
-
-    if (!requireNamespace("jsonlite", quietly = TRUE) && install_required) {
-      utils::install.packages("jsonlite", repos = "https://cloud.r-project.org")
-    }
-
-    if (!requireNamespace("curl", quietly = TRUE) && install_required) {
-      utils::install.packages("curl", repos = "https://cloud.r-project.org")
-    }
-
+    require_namespaces(c("jsonlite", "curl"))
     version = jsonlite::fromJSON(
       "https://api.github.com/repos/catboost/catboost/releases"
     )$tag_name[1]
