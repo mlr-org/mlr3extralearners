@@ -1,5 +1,4 @@
-if (!requireNamespace("catboost", quiet = TRUE)) {
-  print("catboost is missing")
+if (!requireNamespace("catboost", quietly = TRUE)) {
   install_catboost()
 }
 
