@@ -76,6 +76,7 @@ jobs:
             version, version
           )
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
+          library(catboost)
         shell: Rscript {0}
 
       - name: Install Python
