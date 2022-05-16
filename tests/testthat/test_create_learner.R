@@ -21,8 +21,7 @@ test_that("create_learner works for tempfile", {
     predict_types = c("response", "se"),
     properties = "weights",
     gh_name = "RaphaelS1",
-    label = "Linear Regression",
-    ask = FALSE
+    label = "Linear Regression"
   )
   # just check whether the file was created
   lines = readLines(files)
@@ -38,8 +37,7 @@ test_that("create_learner works for tempfile", {
       predict_types = c("response", "se"),
       properties = "weights",
       gh_name = "RaphaelS1",
-      label = "Linear Regression",
-      ask = FALSE
+      label = "Linear Regression"
     )
   )
 })
@@ -60,8 +58,7 @@ test_that("create_learner works for 'mlr3extralearners': clean plate", {
     predict_types = c("response", "se"),
     properties = "weights",
     gh_name = "RaphaelS1",
-    label = "Linear Regression",
-    ask = FALSE
+    label = "Linear Regression"
   )
   files_expected = c(
     "learner_stats_regr_lm.R",
@@ -91,8 +88,7 @@ test_that("create_learner works for 'mlr3extralearners': clean plate", {
     predict_types = c("response", "se"),
     properties = "weights",
     gh_name = "RaphaelS1",
-    label = "Linear Regression",
-    ask = FALSE
+    label = "Linear Regression"
   )
   expect_true(readLines(p1)[[1L]] == "1")
   expect_true(readLines(p2)[[1L]] == "2")
