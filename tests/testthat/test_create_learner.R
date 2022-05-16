@@ -25,7 +25,7 @@ test_that("create_learner works for tempfile", {
   )
   # just check whether the file was created
   lines = readLines(files)
-  expect_true(lines[[1L]] == "#' @title <FIXME : Title for the Learner>")
+  expect_true(lines[[1L]] == "#' @title FIXME: Title for the Learner>")
   expect_error(
     create_learner(path = file,
       classname = "LM",

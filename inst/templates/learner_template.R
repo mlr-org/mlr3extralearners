@@ -1,4 +1,4 @@
-#' @title FIXME : Title for the Learner
+#' @title FIXME: Title for the Learner
 #' @author <gh_name>
 #' @name mlr_learners_<type>.<key>
 #'
