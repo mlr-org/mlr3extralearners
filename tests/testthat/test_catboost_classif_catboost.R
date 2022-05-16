@@ -1,3 +1,8 @@
+if (!requireNamespace("catboost", quiet = TRUE)) {
+  print("catboost is missing")
+  install_catboost()
+}
+
 test_that("autotest", {
   learner = lrn("classif.catboost", iterations = 10)
   expect_learner(learner)

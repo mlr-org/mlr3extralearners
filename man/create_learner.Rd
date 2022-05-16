@@ -5,114 +5,78 @@
 \title{Create a New Learner}
 \usage{
 create_learner(
-  pkg = ".",
+  path = ".",
   classname,
-  algorithm,
   type,
-  key = tolower(classname),
-  package = tolower(classname),
+  key,
+  package,
   caller,
   feature_types,
   predict_types,
-  properties = NULL,
-  references = FALSE,
-  gh_name
+  properties,
+  gh_name,
+  label,
+  data_formats = "data.table"
 )
 }
 \arguments{
-\item{pkg}{\code{character(1)} \cr Path to the mlr3extralearners package.}
+\item{path}{(\code{character(1)}) Either a child directory to mlr3extralearners or to a writeable
+file
+where the learner is created (in this case no test-files are created).
+learners.}
 
-\item{classname}{\code{character(1)} \cr Suffix for R6 class name passed to LearnerTypeclassname.}
+\item{classname}{(\code{character(1)})\cr
+Suffix for R6 class name passed to LearnerType'classname'.}
 
-\item{algorithm}{\code{character(1)} \cr Brief description of algorithm for documentation title.}
+\item{type}{(\code{character(1)})\cr
+See \code{mlr3::mlr_reflections$task_types$type}.}
 
-\item{type}{\code{character(1)} \cr See \code{mlr3::mlr_reflections$task_types$type}.}
+\item{key}{(\code{character(1)})\cr
+Id for learner, if not provided defaults to the \code{classname} in all lower case.}
 
-\item{key}{\code{character(1)} \cr id for learner, if not provided defaults to the \code{classname}
-in all lower case.}
+\item{package}{(\code{character(1)})\cr
+Package from which the learner is implemented, defaults to the \code{classname} in all lower case.}
 
-\item{package}{\code{character(1)} \cr Package from which the learner is implemented, defaults to
-the \code{classname} in all lower case.}
+\item{caller}{\code{character(1)}\cr
+Training function called from the implemented package.}
 
-\item{caller}{\code{character(1)} \cr Training function called from the implemented package.}
+\item{feature_types}{(\code{character()})\cr
+Feature types that can be handled by the learner, see
+\code{mlr3::mlr_reflections$task_feature_types}.}
 
-\item{feature_types}{\code{character()} \cr Feature types that can be handled by the learner,
-see \code{mlr3::mlr_reflections$task_feature_types}.}
+\item{predict_types}{(\code{character()})\cr
+Prediction types that can be made by the learner, see
+\code{mlr3::mlr_reflections$learner_predict_types}.}
 
-\item{predict_types}{\code{character()} \cr Prediction types that can be made by the learner,
-see \code{mlr3::mlr_reflections$learner_predict_types}.}
+\item{properties}{(\code{character()})\cr
+Properties that can be handled by the learner, see \code{mlr3::mlr_reflections$learner_properties}.}
 
-\item{properties}{\code{character()} \cr Properties that can be handled by the learner,
-see \code{mlr3::mlr_reflections$learner_properties}.}
+\item{gh_name}{(\code{character(1)})\cr
+Your GitHub handle, used to add you as the maintainer of the learner.}
 
-\item{references}{\code{logical(1)} \cr Set to \code{TRUE} if you want to add references for the learner.}
+\item{label}{(\code{character(1)})\cr
+Label for the learner.}
 
-\item{gh_name}{\code{character(1)} \cr Your GitHub handle, used to add you as the maintainer of
-the learner.}
+\item{data_formats}{(\code{character(1)})\cr
+The data format the learner can deal with (see \code{mlr_reflections$data_formats}).}
 }
 \description{
-Helper function to generate all required files, and fill in fields, for new
-learners.
-}
-\details{
-This function does the following:
-\enumerate{
-\item Creates a learner_package_type_key.R file for the implemented learner.
-\item Creates a test_package_type_key.R file for unit testing the learner.
-\item Creates a test_paramtest_package_type_key.R file for testing correct implementation of
-learner parameters.
-\item Creates a test_package.yml file for running unit tests in GitHub actions
-\item Automatically completes the test (2), and yaml files (4)
-\item Automatically adds the learner package to the DESCRIPTION file
-\item For the learner file all fields are automatically filled but methods must be manually added
-along with the parameter set, this is clearly marked up in the files.
-}
-
-To create a learner you must follow these steps:
-\enumerate{
-\item Run this function with as many arguments as possible
-\item Manually add \code{.train}, \code{.predict} private methods for the learner, as well as adding the
-\code{param_set} and possibly \code{param_vals}. If properties include \code{"oob_error"} and/or \code{"importance"}
-then add these public methods manually.
-\item Check the paramtests and unit tests pass locally.
-\item Run
-\enumerate{
-\item \code{devtools::document(roclets = c('rd', 'collate', 'namespace'))}
-\item \code{styler::style_pkg(style = styler::mlr_style)} (you may need to first run \verb{remotes::})
-\item \code{usethis::use_tidy_description()}
-\item \code{lintr::lint_package()}
-}
-\item Open a pull request to \url{https://github.com/mlr-org/mlr3extralearners/pulls} with the new
-learner template.
-}
+Helper function to create a new Learner.
+For more details see the \href{https://mlr3book.mlr-org.com/extending.html}{mlr3book}.
 }
 \examples{
 \dontrun{
 # Simpler linear regression example
 create_learner(
   classname = "LM",
-  algorithm = "linear regression",
   type = "regr",
   package = "stats",
   caller = "lm",
   feature_types = c("logical", "integer", "numeric", "factor"),
   predict_types = c("response", "se"),
   properties = "weights",
-  gh_name = "RaphaelS1"
-)
-
-# Slightly more complex random forest learner
-create_learner(
-  classname = "RandomForestSRC",
-  algorithm = "random forest",
-  type = "surv",
-  package = "randomForestSRC",
-  caller = "rfsrc",
-  feature_types = c("logical", "integer", "numeric", "factor"),
-  predict_types = c("crank", "distr"),
-  properties = c("importance", "missings", "oob_error", "weights"),
-  references = TRUE,
-  gh_name = "RaphaelS1"
+  gh_name = "RaphaelS1",
+  label = "Linear Regression"
 )
 }
 }

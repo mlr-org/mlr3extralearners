@@ -9,7 +9,7 @@
 #' where the learner is created (in this case no test-files are created).
 #' learners.
 #' @param classname (`character(1)`)\cr
-#'   Suffix for R6 class name passed to LearnerType<classname>.
+#'   Suffix for R6 class name passed to LearnerType'classname'.
 #' @param type (`character(1)`)\cr
 #'   See `mlr3::mlr_reflections$task_types$type`.
 #' @param key (`character(1)`)\cr
@@ -21,12 +21,12 @@
 #' @param feature_types (`character()`)\cr
 #'   Feature types that can be handled by the learner, see
 #'   `mlr3::mlr_reflections$task_feature_types`.
-#' @param predict_types ()`character()`)\cr
+#' @param predict_types (`character()`)\cr
 #'   Prediction types that can be made by the learner, see
 #'   `mlr3::mlr_reflections$learner_predict_types`.
-#' @param properties ()`character()`)\cr
+#' @param properties (`character()`)\cr
 #'   Properties that can be handled by the learner, see `mlr3::mlr_reflections$learner_properties`.
-#' @param gh_name ()`character(1)`)\cr
+#' @param gh_name (`character(1)`)\cr
 #'   Your GitHub handle, used to add you as the maintainer of the learner.
 #' @param label (`character(1)`)\cr
 #'   Label for the learner.
@@ -50,8 +50,8 @@
 #' }
 #' @export
 create_learner = function(path = ".", classname, type, key, package, caller,
-  feature_types, predict_types, properties, gh_name, label, data_formats = "data.table",
-  ask = TRUE) {
+  feature_types, predict_types, properties, gh_name, label, data_formats = "data.table") {
+
   path = normalizePath(path)
   in_package = grepl("mlr3extralearners", path)
 
@@ -74,10 +74,6 @@ create_learner = function(path = ".", classname, type, key, package, caller,
         "The files will be added to the R-package."
       )
     )
-  }
-
-  if (ask && tolower(readline("Do you want to continue creating the files? (y/n)")) != "y") {
-    return(NULL)
   }
 
   assert_character(label, all.missing = FALSE, len = 1L)
