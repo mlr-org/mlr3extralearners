@@ -53,6 +53,7 @@ Suggests:
     ks,
     LiblineaR,
     lightgbm (>= 3.0.0),
+    lme4,
     locfit,
     logspline,
     mboost,
