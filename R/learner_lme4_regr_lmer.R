@@ -140,7 +140,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         id = "regr.lmer",
         packages = "lme4",
         feature_types = c("logical", "integer", "numeric", "factor"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.lmer"
       )
