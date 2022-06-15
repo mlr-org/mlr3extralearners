@@ -5,16 +5,16 @@
 \alias{LearnerRegrLmer}
 \title{Regression Linear Mixed Effects Learner}
 \description{
-Regression Linear Mixed Effects Learner
-
-Regression Linear Mixed Effects Learner
+Linear model with random effects.
+Calls \code{\link[lme4:lmer]{lme4::lmer()}} from \CRANpkg{lme4}.
 }
 \section{Dictionary}{
- This \link{Learner} can be instantiated via the
-\link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated
-sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("regr.lmer")
+
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("regr.lmer")
 lrn("regr.lmer")
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Meta Information}{
@@ -30,13 +30,12 @@ lrn("regr.lmer")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   formula \tab untyped \tab  \tab  \tab - \cr
+   formula \tab untyped \tab formula \tab  \tab - \cr
    REML \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    start \tab untyped \tab  \tab  \tab - \cr
    verbose \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    offset \tab untyped \tab  \tab  \tab - \cr
    contrasts \tab untyped \tab  \tab  \tab - \cr
-   devFunOnly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    optimizer \tab character \tab nloptwrap \tab Nelder_Mead, bobyqa, nlminbwrap, nloptwrap \tab - \cr
    restart_edge \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    boundary.tol \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -49,16 +48,23 @@ lrn("regr.lmer")
    check.rankX \tab character \tab message+drop.cols \tab message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore \tab - \cr
    check.scaleX \tab character \tab warning \tab warning, stop, silent.rescale, message+rescale, warn+rescale, ignore \tab - \cr
    check.formula.LHS \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
-   check.conv.grad \tab untyped \tab lme4::.makeCC, warning      , 0.002        , NULL \tab  \tab - \cr
-   check.conv.singular \tab untyped \tab lme4::.makeCC                , message                      , formals(lme4::isSingular)$tol \tab  \tab - \cr
-   check.conv.hess \tab untyped \tab lme4::.makeCC, warning      , 1e-06 \tab  \tab - \cr
-   optCtrl \tab untyped \tab list \tab  \tab - \cr
-   newparams \tab untyped \tab  \tab  \tab - \cr
-   re.form \tab untyped \tab  \tab  \tab - \cr
-   random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
+   check.conv.grad \tab untyped \tab lme4::.makeCC("warning", tol = 2e-3, relTol = NULL) \tab  \tab - \cr
+   check.conv.singular \tab untyped \tab lme4::.makeCC( \tab  \tab  \cr
 }
+
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{        action = "message",
+        tol = formals(lme4::isSingular)$tol
+      ) |                                                                            |-                           |
+}\if{html}{\out{</div>}}
+
+|check.conv.hess     |untyped   |lme4::.makeCC(action = "warning", tol = 1e-6)                                                           |                                                                            |-                           |
+|optCtrl             |untyped   |list                                                                                                    |                                                                            |-                           |
+|newparams           |untyped   |                                                                                                        |                                                                            |-                           |
+|re.form             |untyped   |                                                                                                        |                                                                            |-                           |
+|random.only         |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
+|allow.new.levels    |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
+|na.action           |untyped   |::     , stats  , na.pass                                                                               |                                                                            |-                           |
 }
 
 \examples{
@@ -67,6 +73,10 @@ print(learner)
 
 # available parameters:
 learner$param_set$ids()
+}
+\references{
+Bates, M D (2010).
+\dQuote{lme4: Mixed-effects modeling with R.}
 }
 \seealso{
 \itemize{
@@ -88,27 +98,27 @@ s-kganz
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{LearnerRegrLmer$new()}}
-\item \href{#method-clone}{\code{LearnerRegrLmer$clone()}}
+\item \href{#method-LearnerRegrLmer-new}{\code{LearnerRegrLmer$new()}}
+\item \href{#method-LearnerRegrLmer-clone}{\code{LearnerRegrLmer$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner">}\href{../../mlr3/html/Learner.html#method-base_learner}{\code{mlr3::Learner$base_learner()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format">}\href{../../mlr3/html/Learner.html#method-format}{\code{mlr3::Learner$format()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help">}\href{../../mlr3/html/Learner.html#method-help}{\code{mlr3::Learner$help()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict">}\href{../../mlr3/html/Learner.html#method-predict}{\code{mlr3::Learner$predict()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata">}\href{../../mlr3/html/Learner.html#method-predict_newdata}{\code{mlr3::Learner$predict_newdata()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print">}\href{../../mlr3/html/Learner.html#method-print}{\code{mlr3::Learner$print()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset">}\href{../../mlr3/html/Learner.html#method-reset}{\code{mlr3::Learner$reset()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train">}\href{../../mlr3/html/Learner.html#method-train}{\code{mlr3::Learner$train()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-LearnerRegrLmer-new"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrLmer-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
@@ -117,8 +127,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-LearnerRegrLmer-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrLmer-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
