@@ -14,7 +14,8 @@ test_that("regr.lmer train", {
     "use.last.params", # used in lme4 for "backwards bug-compatibility"
     "sparseX", # currently inactive
     "standardize.X", # not implemented
-    "mod.type" # handled internally by lme4
+    "mod.type", # handled internally by lme4
+    "devFunOnly" # if set, no prediction is possible
   )
 
   # note that you can also pass a list of functions in case $.train calls more than one
