@@ -7,9 +7,9 @@
 #' ```
 #'
 #' @section Meta Information:
-#' `r mlr3misc::rd_info(mlr3::lrn("<%= id %>"))`
+#' `r paste(mlr3misc::rd_info(mlr3::lrn("<%= id %>")), collapse = "\n")`
 #' @md
 #'
 #' @section Parameters:
-#' `r mlr3misc::rd_info(mlr3::lrn("<%= id %>")$param_set)`
+#' `r paste(mlr3misc::rd_info(mlr3::lrn("<%= id %>")$param_set), collapse = "\n")`
 #' @md

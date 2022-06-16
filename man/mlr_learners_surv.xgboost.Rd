@@ -47,9 +47,11 @@ would error. Just setting a nonsense default to workaround this.
 
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:\preformatted{mlr_learners$get("surv.xgboost")
+This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost")
 lrn("surv.xgboost")
-}
+}\if{html}{\out{</div>}}
 }
 
 \section{Meta Information}{
@@ -113,7 +115,6 @@ lrn("surv.xgboost")
    seed_per_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sketch_eps \tab numeric \tab 0.03 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    skip_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   single_precision_histogram \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    strict_shape \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    subsample \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    top_k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -160,28 +161,28 @@ be-marc
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{LearnerSurvXgboost$new()}}
-\item \href{#method-importance}{\code{LearnerSurvXgboost$importance()}}
-\item \href{#method-clone}{\code{LearnerSurvXgboost$clone()}}
+\item \href{#method-LearnerSurvXgboost-new}{\code{LearnerSurvXgboost$new()}}
+\item \href{#method-LearnerSurvXgboost-importance}{\code{LearnerSurvXgboost$importance()}}
+\item \href{#method-LearnerSurvXgboost-clone}{\code{LearnerSurvXgboost$clone()}}
 }
 }
-\if{html}{
-\out{<details ><summary>Inherited methods</summary>}
-\itemize{
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner">}\href{../../mlr3/html/Learner.html#method-base_learner}{\code{mlr3::Learner$base_learner()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format">}\href{../../mlr3/html/Learner.html#method-format}{\code{mlr3::Learner$format()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help">}\href{../../mlr3/html/Learner.html#method-help}{\code{mlr3::Learner$help()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict">}\href{../../mlr3/html/Learner.html#method-predict}{\code{mlr3::Learner$predict()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata">}\href{../../mlr3/html/Learner.html#method-predict_newdata}{\code{mlr3::Learner$predict_newdata()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print">}\href{../../mlr3/html/Learner.html#method-print}{\code{mlr3::Learner$print()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset">}\href{../../mlr3/html/Learner.html#method-reset}{\code{mlr3::Learner$reset()}}\out{</span>}
-\item \out{<span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train">}\href{../../mlr3/html/Learner.html#method-train}{\code{mlr3::Learner$train()}}\out{</span>}
-}
-\out{</details>}
-}
+\if{html}{\out{
+<details><summary>Inherited methods</summary>
+<ul>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></li>
+</ul>
+</details>
+}}
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-LearnerSurvXgboost-new"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvXgboost-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
@@ -190,8 +191,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-importance}{}}}
+\if{html}{\out{<a id="method-LearnerSurvXgboost-importance"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvXgboost-importance}{}}}
 \subsection{Method \code{importance()}}{
 The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xgboost::xgb.importance()}}.
 \subsection{Usage}{
@@ -203,8 +204,8 @@ Named \code{numeric()}.
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-LearnerSurvXgboost-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvXgboost-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

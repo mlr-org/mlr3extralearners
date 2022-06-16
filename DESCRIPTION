@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.37
+Version: 0.5.38
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -14,6 +14,7 @@ Authors@R: c(
            comment = c(ORCID = "0000-0003-2948-630X")),
     person("Pierre", "Camilleri", , "camilleri_pierre@hotmail.fr", role = "ctb"),
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
+    person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"))
   )
 Description: Extra learners for use in mlr3.
@@ -53,6 +54,7 @@ Suggests:
     ks,
     LiblineaR,
     lightgbm (>= 3.0.0),
+    lme4,
     locfit,
     logspline,
     mboost,
@@ -98,4 +100,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
