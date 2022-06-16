@@ -1,6 +1,14 @@
+
+# mlr3extralearners 0.5.38
+
+* Updated the create_learner function
+
+* Temporarily removed the Remotes because of pak bug (https://github.com/r-lib/actions/issues/534)
+
 # mlr3extralearners 0.5.38
 
 * Added `regr.lmer`
+
 
 # mlr3extralearners 0.5.37
 
