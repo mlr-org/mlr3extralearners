@@ -24,6 +24,7 @@ Other contributors:
   \item Stephen A Lauer \email{stephenalauer@gmail.com} (\href{https://orcid.org/0000-0003-2948-630X}{ORCID}) [contributor]
   \item Pierre Camilleri \email{camilleri_pierre@hotmail.fr} [contributor]
   \item Javier García \email{geshter@hotmail.com} [contributor]
+  \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
 }
 
 }

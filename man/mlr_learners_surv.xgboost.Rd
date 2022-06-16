@@ -115,7 +115,6 @@ lrn("surv.xgboost")
    seed_per_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sketch_eps \tab numeric \tab 0.03 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    skip_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   single_precision_histogram \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    strict_shape \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    subsample \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    top_k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

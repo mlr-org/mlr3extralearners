@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.38
+
+* Added `regr.lmer`
+
 # mlr3extralearners 0.5.37
 
 * Improve docs and change doc layout

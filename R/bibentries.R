@@ -528,5 +528,11 @@ bibentries = c( # nolint start
     pages = "266--298",
     year = "2010",
     publisher = "Institute of Mathematical Statistics"
+  ),
+  bates2010lme4 = bibentry("misc",
+    title="lme4: Mixed-effects modeling with R",
+    author="Bates, Douglas M",
+    year="2010",
+    publisher="Springer New York"
   )
 ) # nolint end
