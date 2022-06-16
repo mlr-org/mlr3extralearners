@@ -90,12 +90,8 @@ Suggests:
     testthat,
     usethis,
     xgboost
-Remotes:
-    binderh/CoxBoost,
-    mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
