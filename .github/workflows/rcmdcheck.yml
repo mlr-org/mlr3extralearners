@@ -43,14 +43,6 @@ jobs:
           saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
 
-      - name: Install remotes
-        run: |
-          pak::pkg_install("remotes")
-          remotes::install_github("binderh/CoxBoost")
-          remotes::install_github("mlr-org/mlr3proba")
-          remotes::install_github("RaphaelS1/survivalmodels")
-        shell: Rscript {0}
-
       - name: Restore R package cache
         uses: actions/cache@v2
         with:
