@@ -94,6 +94,8 @@ Suggests:
     xgboost
 Remotes:
     binderh/CoxBoost,
+    catboost/catboost/catboost/R-package,
+    jaak-s/extraTrees/R-skeleton,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels
 Config/testthat/edition: 3
