@@ -91,7 +91,6 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         save_period                 = p_int(0L, tags = "train"),
         scale_pos_weight            = p_dbl(default = 1, tags = "train"),
         seed_per_iteration          = p_lgl(default = FALSE, tags = "train"),
-        sketch_eps                  = p_dbl(0, 1, default = 0.03, tags = "train"),
         skip_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
         strict_shape                = p_lgl(default = FALSE, tags = "predict"),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
@@ -114,7 +113,6 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
       ps$add_dep("grow_policy", "tree_method", CondEqual$new("hist"))
       ps$add_dep("max_leaves", "grow_policy", CondEqual$new("lossguide"))
       ps$add_dep("max_bin", "tree_method", CondEqual$new("hist"))
-      ps$add_dep("sketch_eps", "tree_method", CondEqual$new("approx"))
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))

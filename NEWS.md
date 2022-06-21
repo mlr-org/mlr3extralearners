@@ -1,3 +1,12 @@
+
+# mlr3extralearners 0.5.39
+
+* Remove extraTrees because it is no longer on CRAN and GH version has errors
+
+* Remove sketch_eps parameter from xgboost because it is no longer listed in the
+  docs
+
+
 # mlr3extralearners 0.5.38
 
 * Added `regr.lmer`
