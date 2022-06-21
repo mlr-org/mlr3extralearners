@@ -77,6 +77,11 @@ jobs:
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
         shell: Rscript {0}
 
+      - name: Install extraTrees
+        run: |
+          remotes::install_gitub("jaak-s/extraTrees/R-skeleton")
+        shell: Rscript {0}
+
       - name: Install Python
         run: |
           pak::pkg_install('rstudio/reticulate')

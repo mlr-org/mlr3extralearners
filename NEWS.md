@@ -1,3 +1,9 @@
+
+# mlr3extralearners 0.5.39
+
+* Temporarily remove extraTrees from DESCRIPTION as it is no longer on CRAN
+
+
 # mlr3extralearners 0.5.38
 
 * Added `regr.lmer`
