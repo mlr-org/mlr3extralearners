@@ -1,7 +1,7 @@
 
 # mlr3extralearners 0.5.39
 
-* Temporarily remove extraTrees from DESCRIPTION as it is no longer on CRAN
+* Remove extraTrees because it is no longer on CRAN and GH version has errors
 
 
 # mlr3extralearners 0.5.38
