@@ -79,7 +79,7 @@ jobs:
 
       - name: Install extraTrees
         run: |
-          remotes::install_gitub("jaak-s/extraTrees/R-skeleton")
+          remotes::install_github("jaak-s/extraTrees/R-skeleton")
         shell: Rscript {0}
 
       - name: Install Python
