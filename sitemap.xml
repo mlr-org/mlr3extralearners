@@ -82,9 +82,6 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.earth.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.extratrees.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.fnn.html</loc>
   </url>
   <url>
@@ -175,9 +172,6 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.earth.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.extratrees.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.fnn.html</loc>
   </url>
   <url>
@@ -206,6 +200,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.lightgbm.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.lmer.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.mars.html</loc>
