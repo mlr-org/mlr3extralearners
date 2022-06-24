@@ -148,7 +148,8 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.lmer"
+        man = "mlr3extralearners::mlr_learners_regr.lmer",
+        label = "Linear Mixed Effects"
       )
     }
   ),

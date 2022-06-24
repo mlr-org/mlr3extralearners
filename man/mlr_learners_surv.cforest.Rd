@@ -79,7 +79,7 @@ lrn("surv.cforest")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{mtry}:

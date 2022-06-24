@@ -82,7 +82,8 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.ctree"
+        man = "mlr3extralearners::mlr_learners_classif.ctree",
+        label = "Conditional Inference Tree"
       )
     }
   ),

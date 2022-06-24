@@ -55,7 +55,8 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_surv.coxboost"
+        man = "mlr3extralearners::mlr_learners_surv.coxboost",
+        label = "Likelihood-based Boosting"
       )
     }
   ),

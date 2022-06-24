@@ -8,7 +8,7 @@
 #' @template learner
 #' @templateVar id surv.obliqueRSF
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `verbose`:
 #'   - Actual default: `TRUE`
 #'   - Adjusted default: `FALSE`
@@ -61,7 +61,8 @@ LearnerSurvObliqueRSF = R6Class("LearnerSurvObliqueRSF",
         predict_types = c("crank", "distr"),
         param_set = ps,
         properties = c("missings", "oob_error"),
-        man = "mlr3extralearners::mlr_learners_surv.obliqueRSF"
+        man = "mlr3extralearners::mlr_learners_surv.obliqueRSF",
+        label = "Oblique Random Forest"
       )
     },
 

@@ -41,7 +41,8 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
         predict_types = "pdf",
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_dens.nonpar"
+        man = "mlr3extralearners::mlr_learners_dens.nonpar",
+        label = "Nonparametric Density Estimation"
       )
     }
   ),

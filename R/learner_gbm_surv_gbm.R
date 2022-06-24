@@ -9,7 +9,7 @@
 #' @templateVar id surv.gbm
 #' @template learner
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter changes:
 #'  - `distribution`:
 #'   - Actual default: "bernoulli"
 #'   - Adjusted default: "coxph"
@@ -60,7 +60,8 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("missings", "weights", "importance"),
         man = "mlr3extralearners::mlr_learners_surv.gbm",
-        packages = c("mlr3extralearners", "gbm")
+        packages = c("mlr3extralearners", "gbm"),
+        label = "Gradient Boosting"
       )
     },
 

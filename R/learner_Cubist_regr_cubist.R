@@ -42,7 +42,8 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         feature_types = c("integer", "numeric", "character", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
-        man = "mlr3extralearners::mlr_learners_regr.cubist"
+        man = "mlr3extralearners::mlr_learners_regr.cubist",
+        label = "Rule-based model"
       )
     }
   ),

@@ -69,7 +69,8 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.ksvm"
+        man = "mlr3extralearners::mlr_learners_classif.ksvm",
+        labe = "Support Vector Machine"
       )
     }
   ),

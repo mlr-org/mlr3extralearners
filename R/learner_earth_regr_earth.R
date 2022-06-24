@@ -77,7 +77,8 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
         predict_types = c("response", "se"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.earth"
+        man = "mlr3extralearners::mlr_learners_regr.earth",
+        label = "Multivariate Adaptive Regression Splines"
       )
     }
   ),

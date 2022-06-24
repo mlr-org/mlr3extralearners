@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.OneR
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -57,7 +57,8 @@ LearnerClassifOneR = R6Class("LearnerClassifOneR",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.OneR"
+        man = "mlr3extralearners::mlr_learners_classif.OneR",
+        label = "One Rule"
       )
     }
   ),

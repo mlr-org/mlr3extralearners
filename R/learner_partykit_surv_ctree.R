@@ -85,7 +85,8 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
         predict_types = c("distr", "crank"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_surv.ctree"
+        man = "mlr3extralearners::mlr_learners_surv.ctree",
+        label = "Conditional Inference Tree"
       )
     }
   ),

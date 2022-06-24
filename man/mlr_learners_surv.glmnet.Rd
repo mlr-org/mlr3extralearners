@@ -25,7 +25,7 @@ However, in some situations this is not applicable, usually when data are
 imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 custom resampling strategies (blocked design, stratification).
 }
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 The default for hyperparameter \code{family} is set to \code{"cox"}.
 }

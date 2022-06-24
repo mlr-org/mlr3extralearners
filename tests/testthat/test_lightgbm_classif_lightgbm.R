@@ -33,3 +33,45 @@ test_that("Can pass parameters", {
   learner = lrn("classif.lightgbm", nrounds = 5L, max_bin = 10L)
   expect_warning(learner$train(task), regexp = NA)
 })
+
+test_that("categorical_feature works correctly", {
+
+  dat1 = data.table::data.table(
+    y = factor(sample(c("hello", "world", 100, TRUE))),
+    x_dbl = rnorm(100),
+    x_fct = factor(sample(letters, 100, TRUE)),
+    x_lgl = sample(c(TRUE, FALSE), 100, TRUE)
+  )
+
+  dat2 = dat1
+  dat2$x_fct = as.integer(dat2$x_fct)
+  dat2$x_lgl = as.integer(dat2$x_lgl)
+
+  task1 = as_task_classif(dat1, target = "y")
+  task2 = as_task_classif(dat2, target = "y")
+
+  # we test that:
+  # 1. Manually converting + giving the categorical_feature is the same as setting
+  # convert_categorical to TRUE
+  # 2.
+
+  set.seed(1)
+  learner = lrn("classif.lightgbm")
+  learner$train(task1)
+  p1 = learner$predict(task1)
+
+  set.seed(1)
+  learner = lrn("classif.lightgbm", convert_categorical = FALSE,
+    categorical_feature = c("x_lgl", "x_fct")
+  )
+  learner$train(task2)
+  p2 = learner$predict(task2)
+
+  expect_true(all.equal(p1, p2))
+
+  set.seed(1)
+  learner = lrn("classif.lightgbm", convert_categorical = FALSE)
+  learner$train(task2)
+  p2wrong = learner$predict(task2)
+  expect_true(is.character(all.equal(p2, p2wrong)))
+})

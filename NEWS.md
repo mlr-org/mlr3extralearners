@@ -1,4 +1,15 @@
 
+# mlr3extralearners 0.5.40
+
+* lightgbm:
+    * Add parameter convert_categoricals
+    * Validation split not respects grouping / stratification
+    * Fixed bug
+
+* Docs: Renamed section "Custom mlr3 defaults" to "Parameter Changes"
+
+* Added labels to learners
+
 # mlr3extralearners 0.5.39
 
 * Remove extraTrees because it is no longer on CRAN and GH version has errors

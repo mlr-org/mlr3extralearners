@@ -33,7 +33,8 @@ LearnerDensPlugin = R6Class("LearnerDensPlugin",
         predict_types = "pdf",
         param_set = ps,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_dens.plug"
+        man = "mlr3extralearners::mlr_learners_dens.plug",
+        label = "Kernel Density Estimator"
       )
     }
   ),

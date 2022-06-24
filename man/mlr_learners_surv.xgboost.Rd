@@ -13,7 +13,7 @@ To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and lin
 against CUDA.
 See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
 }
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{nrounds}:

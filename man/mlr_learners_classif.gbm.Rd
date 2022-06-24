@@ -3,7 +3,7 @@
 \name{mlr_learners_classif.gbm}
 \alias{mlr_learners_classif.gbm}
 \alias{LearnerClassifGBM}
-\title{Classification Gradient Boosting Machine Learner}
+\title{Gradient Boosting Classification Learner}
 \description{
 Gradient Boosting Classification Algorithm.
 Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
@@ -45,7 +45,7 @@ lrn("classif.gbm")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{keep_data}:

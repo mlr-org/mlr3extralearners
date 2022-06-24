@@ -13,7 +13,7 @@
 #' The easiest way to install catboost is with the helper function
 #' [install_catboost].
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
 #'   - Adjusted default: "Silent"
@@ -168,7 +168,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         param_set = ps,
         properties = c(
           "missings", "weights", "importance"), # FIXME: parallel
-        man = "mlr3extralearners::mlr_learners_regr.catboost"
+        man = "mlr3extralearners::mlr_learners_regr.catboost",
+        label = "Gradient Boosting"
       )
     },
 

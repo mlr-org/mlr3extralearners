@@ -77,7 +77,8 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.earth"
+        man = "mlr3extralearners::mlr_learners_classif.earth",
+        label = "Multivariate Adaptive Splines"
       )
     }
   ),

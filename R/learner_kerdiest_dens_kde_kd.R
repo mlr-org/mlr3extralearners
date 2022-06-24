@@ -34,7 +34,8 @@ LearnerDensKDEkd = R6Class("LearnerDensKDEkd",
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_dens.kde_kd"
+        man = "mlr3extralearners::mlr_learners_dens.kde_kd",
+        label = "Kernel Density Estimator"
       )
     }
   ),

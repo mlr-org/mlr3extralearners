@@ -47,7 +47,7 @@ lrn("classif.JRip")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter changes}{
 
 \itemize{
 \item \code{output_debug_info}:

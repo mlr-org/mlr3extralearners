@@ -10,7 +10,7 @@
 #' @template learner
 #' @templateVar id classif.IBk
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -65,7 +65,8 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.IBk"
+        man = "mlr3extralearners::mlr_learners_classif.IBk",
+        label = "Nearest Neighbour"
       )
     }
   ),

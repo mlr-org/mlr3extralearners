@@ -34,7 +34,8 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.fnn"
+        man = "mlr3extralearners::mlr_learners_regr.fnn",
+        label = "Fast Nearest Neighbour"
       )
     }
   ),

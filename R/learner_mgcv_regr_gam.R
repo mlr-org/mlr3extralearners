@@ -3,8 +3,7 @@
 #' @name mlr_learners_regr.gam
 #'
 #' @description
-#' Generalized additive models.
-#' Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
+#' Generalized additive models. Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
 #'
 #' A gam formula specific to the task at hand is required for the `formula`
 #' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is provided, a fallback formula is
@@ -87,7 +86,8 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         predict_types = c("response", "se"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.gam"
+        man = "mlr3extralearners::mlr_learners_regr.gam",
+        label = "Generalized Additive Regression Model"
       )
     }
   ),

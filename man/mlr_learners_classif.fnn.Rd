@@ -3,7 +3,7 @@
 \name{mlr_learners_classif.fnn}
 \alias{mlr_learners_classif.fnn}
 \alias{LearnerClassifFNN}
-\title{Classification Fast Nearest Neighbor Search Learner}
+\title{Fast Nearest Neighbour Classification}
 \description{
 Fast Nearest Neighbour Classification.
 Calls \code{\link[FNN:knn]{FNN::knn()}} from \CRANpkg{FNN}.

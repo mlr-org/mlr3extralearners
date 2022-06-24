@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id surv.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 defaults
+#' @inheritSection mlr_learners_classif.rfsrc Parameter Changes
 #'
 #' @details
 #' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and
@@ -106,7 +106,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         # selected features is possible but there's a bug somewhere in rfsrc so that the model
         # can be trained but not predicted. so public method retained but property not included
         properties = c("weights", "missings", "importance", "oob_error"),
-        man = "mlr3extralearners::mlr_learners_surv.rfsrc"
+        man = "mlr3extralearners::mlr_learners_surv.rfsrc",
+        label = "Random Forest"
       )
     },
 

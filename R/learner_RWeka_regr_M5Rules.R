@@ -10,7 +10,7 @@
 #' @template learner
 #' @templateVar id regr.M5Rules
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -60,7 +60,8 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
         predict_types = "response",
         param_set = ps,
         properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.M5Rules"
+        man = "mlr3extralearners::mlr_learners_regr.M5Rules",
+        label = "Rule-based Algorithm"
       )
     }
   ),

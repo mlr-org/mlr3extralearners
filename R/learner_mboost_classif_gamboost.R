@@ -55,7 +55,8 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.gamboost"
+        man = "mlr3extralearners::mlr_learners_classif.gamboost",
+        label = "Boosted Generalized Additive Model"
       )
     }
   ),

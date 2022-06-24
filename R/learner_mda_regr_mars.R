@@ -38,7 +38,8 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,
-        man = "mlr3extralearners::mlr_learners_regr.mars"
+        man = "mlr3extralearners::mlr_learners_regr.mars",
+        label = "Multivariate Adaptive Regression Splines"
       )
     }
   ),

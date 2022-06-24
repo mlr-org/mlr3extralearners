@@ -45,7 +45,7 @@ lrn("regr.gbm")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter changes}{
 
 \itemize{
 \item \code{keep_data}:

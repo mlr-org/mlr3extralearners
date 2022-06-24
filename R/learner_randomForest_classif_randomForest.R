@@ -56,7 +56,8 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass", "importance", "oob_error"),
-        man = "mlr3extralearners::mlr_learners_classif.randomForest"
+        man = "mlr3extralearners::mlr_learners_classif.randomForest",
+        label = "Random Forest"
       )
     },
 

@@ -76,7 +76,7 @@ lrn("surv.rfsrc")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{cores}:

@@ -106,7 +106,8 @@ LearnerSurvCoxtime = R6::R6Class("LearnerSurvCoxtime",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.coxtime",
-        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
+        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"),
+        label = "Cox-Time Estimator"
       )
     }
   ),

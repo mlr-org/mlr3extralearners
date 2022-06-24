@@ -1,4 +1,4 @@
-#' @title Regression Generalized Linear Model Regression Learner
+#' @title Generalized Linear Regression
 #' @author salauer
 #' @name mlr_learners_regr.glm
 #'
@@ -10,7 +10,7 @@
 #' @templateVar id regr.glm
 #' @template learner
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `type`
 #'   - Actual default: "link"
 #'   - Adjusted default: "response"
@@ -66,7 +66,8 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         predict_types = c("response", "se"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.glm"
+        man = "mlr3extralearners::mlr_learners_regr.glm",
+        label = "Generalized Linear Regression"
       )
     }
   ),
