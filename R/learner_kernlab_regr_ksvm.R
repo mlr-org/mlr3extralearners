@@ -68,7 +68,8 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
         predict_types = "response",
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.ksvm"
+        man = "mlr3extralearners::mlr_learners_regr.ksvm",
+        label = "Support Vector Machine"
       )
     }
   ),

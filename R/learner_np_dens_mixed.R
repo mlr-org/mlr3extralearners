@@ -68,7 +68,8 @@ LearnerDensMixed = R6Class("LearnerDensMixed",
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_dens.mixed"
+        man = "mlr3extralearners::mlr_learners_dens.mixed",
+        label = "Kernel Density Estimator"
       )
     }
   ),

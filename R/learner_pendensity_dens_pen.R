@@ -41,7 +41,8 @@ LearnerDensPenalized = R6Class("LearnerDensPenalized",
         feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_dens.pen"
+        man = "mlr3extralearners::mlr_learners_dens.pen",
+        label = "Penalized Density Estimation"
       )
     }
   ),

@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.lightgbm
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `num_threads`:
 #'   - Actual default: 0L
 #'   - Adjusted default: 1L
@@ -18,13 +18,15 @@
 #'   - Actual default: 1L
 #'   - Adjusted default: -1L
 #'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
-#'
-#' For categorical features either pre-process data by encoding columns or
-#' specify the categorical columns with the `categorical_feature` parameter.
-#' For this learner please do not prefix the categorical feature with `name:`.
-#' Instead of providing the data that is used for early stopping explicitly, the parameter
-#' `early_stopping_split` determines the proportion of the training data that is used for early
-#' stopping.
+#' - `convert_categorical`:
+#'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
+#'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+#'   those columns.
+#' - `early_stopping_split`:
+#'  Additional parameter. Instead of providing the data that is used for early stopping explicitly,
+#'  the parameter `early_stopping_split` determines the proportion of the training data that is
+#'  used for early stopping. Here, stratification on the target variable is used if there is no
+#'  grouping variable, as one cannot simultaneously stratify and group.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -58,6 +60,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         callbacks = p_uty(tags = "train"),
         reset_data = p_lgl(default = FALSE, tags = "train"),
         categorical_feature = p_uty(default = "", tags = "train"),
+        convert_categorical = p_lgl(default = TRUE, tags = "train"),
         # other core functions
         boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart",
           "goss"), tags = "train"),
@@ -193,17 +196,21 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       ps$add_dep("drop_seed", "boosting", CondEqual$new("dart"))
       ps$add_dep("top_rate", "boosting", CondEqual$new("goss"))
       ps$add_dep("other_rate", "boosting", CondEqual$new("goss"))
+      ps$add_dep("categorical_feature", "convert_categorical", CondEqual$new(FALSE))
 
-      ps$values = list(num_threads = 1L, verbose = -1L, objective = "regression")
+      ps$values = list(num_threads = 1L, verbose = -1L, objective = "regression",
+        convert_categorical = TRUE
+      )
 
       super$initialize(
         id = "regr.lightgbm",
         packages = c("mlr3extralearners", "lightgbm"),
-        feature_types = c("numeric", "integer"),
+        feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response"),
         param_set = ps,
         properties = c("weights", "missings", "importance"),
-        man = "mlr3extralearners::mlr_learners_regr.lightgbm"
+        man = "mlr3extralearners::mlr_learners_regr.lightgbm",
+        label = "Gradient Boosting"
       )
     },
 
@@ -223,92 +230,17 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
   ),
 
   private = list(
-
     .train = function(task) {
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
-      # get parameters for training
-      pars = self$param_set$get_values(tags = "train")
-
-      if (!is.null(pars$custom_eval)) {
-        pars$metric = pars$custom_eval
-        pars$custom_eval = NULL
-      }
-
-      early_stopping_split = pars$early_stopping_split
-      pars$early_stopping_split = NULL
-
-      if (!is.null(early_stopping_split) && early_stopping_split) {
-        # task$nrow = length(task$row_roles$use)
-        valid_ids = sample(task$row_roles$use, floor(early_stopping_split * task$nrow))
-        train_ids = setdiff(task$row_roles$use, valid_ids)
-        # TODO: Update this when the names in mlr3 are changed to test / validation
-
-        dtrain = lightgbm::lgb.Dataset(
-          data = as.matrix(task$data(rows = train_ids, cols = task$feature_names)),
-          label = as.matrix(task$data(rows = train_ids, cols = task$target_names)),
-          free_raw_data = FALSE,
-          categorical_feature = pars$categorical_feature
-        )
-
-        pars$categorical_feature = NULL
-
-
-        dvalid = lightgbm::lgb.Dataset.create.valid(
-          dataset = dtrain,
-          data = as.matrix(task$data(rows = valid_ids, cols = task$feature_names)),
-          label = as.matrix(task$data(rows = valid_ids, cols = task$target_names))
-        )
-
-        row_id = NULL
-        if ("weights" %in% task$properties) {
-          dtrain$setinfo("weight", subset(task$weights, row_id %in% train_ids)$weight)
-          dvalid$setinfo("weight", subset(task$weights, row_id %in% valid_ids)$weight)
-        }
-
-        invoke(lightgbm::lgb.train,
-          data = dtrain,
-          valids = list(test = dvalid),
-          params = pars
-        )
-      } else {
-        dtrain = lightgbm::lgb.Dataset(
-          data = as.matrix(task$data(cols = task$feature_names)),
-          label = as.matrix(task$data(cols = task$target_names)),
-          free_raw_data = FALSE,
-          categorical_feature = pars$categorical_feature
-        )
-
-        pars$categorical_feature = NULL
-
-        if ("weights" %in% task$properties) {
-          dtrain$setinfo("weight", task$weights$weight)
-        }
-
-        args = pars[which(names(pars) %in% formalArgs(lightgbm::lgb.train))]
-        params = pars[which(names(pars) %nin% formalArgs(lightgbm::lgb.train))]
-
-        invoke(
-          lightgbm::lgb.train,
-          data = dtrain,
-          .args = args,
-          params = params
-        )
-      }
-
+      train_lightgbm(self, task, "regr")
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
-      newdata = as.matrix(task$data(cols = self$state$feature_names))
+      X = encode_lightgbm_predict(task, self$state$data_prototype)$X
 
       pred = invoke(predict,
         object = self$model,
-        data = newdata,
+        data = X,
         params = pars
       )
 

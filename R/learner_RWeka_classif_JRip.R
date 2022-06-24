@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.JRip
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -63,7 +63,8 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.JRip"
+        man = "mlr3extralearners::mlr_learners_classif.JRip",
+        label = "Propositional Rule Learner."
       )
     }
   ),

@@ -60,7 +60,8 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         predict_types = "response",
         properties = c("twoclass", "multiclass"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_classif.lssvm"
+        man = "mlr3extralearners::mlr_learners_classif.lssvm",
+        label = "Support Vector Machine"
       )
     }
   ),

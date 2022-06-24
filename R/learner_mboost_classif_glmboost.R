@@ -56,7 +56,8 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.glmboost"
+        man = "mlr3extralearners::mlr_learners_classif.glmboost",
+        label = "Boosted Generalized Linear Model"
       )
     }
   ),

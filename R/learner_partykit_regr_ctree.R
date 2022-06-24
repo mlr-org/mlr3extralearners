@@ -84,7 +84,8 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
         predict_types = "response",
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.ctree"
+        man = "mlr3extralearners::mlr_learners_regr.ctree",
+        label = "Conditional Inference Tree"
       )
     }
   ),

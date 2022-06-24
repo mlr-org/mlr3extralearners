@@ -82,7 +82,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
         feature_types = c("logical", "integer", "numeric", "factor"),
         properties = "weights",
         packages = c("mlr3extralearners", "survival", "pracma"),
-        man = "mlr3extralearners::mlr_learners_surv.parametric"
+        man = "mlr3extralearners::mlr_learners_surv.parametric",
+        label = "Fully Parametric Learner"
       )
     }
   ),

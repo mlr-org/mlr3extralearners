@@ -121,7 +121,8 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
           "factor", "ordered"),
         properties = c("weights", "twoclass", "multiclass"),
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
-        man = "mlr3extralearners::mlr_learners_classif.mob"
+        man = "mlr3extralearners::mlr_learners_classif.mob",
+        label = "Recursive Partitioning"
       )
     }
   ),

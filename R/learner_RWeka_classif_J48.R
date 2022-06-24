@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.J48
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -76,7 +76,8 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings"),
-        man = "mlr3extralearners::mlr_learners_classif.J48"
+        man = "mlr3extralearners::mlr_learners_classif.J48",
+        label = "Tree-based Model"
       )
     }
   ),

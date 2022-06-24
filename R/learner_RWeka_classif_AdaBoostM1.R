@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.AdaBoostM1
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -63,7 +63,8 @@ LearnerClassifAdaBoostM1 = R6Class("LearnerClassifAdaBoostM1",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.AdaBoostM1"
+        man = "mlr3extralearners::mlr_learners_classif.AdaBoostM1",
+        label = "Adaptive Boosting"
       )
     }
   ),

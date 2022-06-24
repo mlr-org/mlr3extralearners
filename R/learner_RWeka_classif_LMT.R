@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.LMT
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -66,7 +66,8 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.LMT"
+        man = "mlr3extralearners::mlr_learners_classif.LMT",
+        label = "Tree-based Model"
       )
     }
   ),

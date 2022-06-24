@@ -46,7 +46,8 @@ LearnerDensSpline = R6Class("LearnerDensSpline",
         predict_types = c("pdf", "cdf"),
         param_set = ps,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_dens.spline"
+        man = "mlr3extralearners::mlr_learners_dens.spline",
+        label = "Density Smoothing Splines"
       )
     }
   ),

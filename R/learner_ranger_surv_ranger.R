@@ -6,7 +6,7 @@
 #' Random survival forest.
 #' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `num.threads`:
 #'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
 #'   - Adjusted value: 1.
@@ -69,7 +69,8 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = c("weights", "importance", "oob_error"),
         packages = c("mlr3extralearners", "ranger"),
-        man = "mlr3extralearners::mlr_learners_surv.ranger"
+        man = "mlr3extralearners::mlr_learners_surv.ranger",
+        label = "Random Forest"
       )
     },
 

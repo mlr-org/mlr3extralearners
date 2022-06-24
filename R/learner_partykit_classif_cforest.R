@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.cforest
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtryratio`
 #'     as `mtry = max(ceiling(mtryratio * n_features), 1)`.
@@ -130,7 +130,8 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         # FIXME: importance after bug fixes, strata?
         properties = c("weights", "twoclass", "multiclass", "oob_error"),
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
-        man = "mlr3extralearners::mlr_learners_classif.cforest"
+        man = "mlr3extralearners::mlr_learners_classif.cforest",
+        label = "Conditional Random Forest"
       )
     },
 

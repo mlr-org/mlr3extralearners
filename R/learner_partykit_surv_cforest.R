@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id surv.cforest
 #'
-#' @inheritSection mlr_learners_classif.cforest Custom mlr3 defaults
+#' @inheritSection mlr_learners_classif.cforest Parameter Changes
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`
@@ -116,7 +116,8 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
-        man = "mlr3extralearners::mlr_learners_surv.cforest"
+        man = "mlr3extralearners::mlr_learners_surv.cforest",
+        label = "Conditional Random Forest"
       )
     }
   ),

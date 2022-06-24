@@ -8,7 +8,7 @@
 #'
 #' @template note_xgboost
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `nrounds`:
 #'   - Actual default: no default.
 #'   - Adjusted default: 1.
@@ -128,7 +128,8 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         feature_types = c("integer", "numeric"),
         properties = c("weights", "missings", "importance"),
         packages = c("mlr3extralearners", "xgboost"),
-        man = "mlr3extralearners::mlr_learners_surv.xgboost"
+        man = "mlr3extralearners::mlr_learners_surv.xgboost",
+        label = "Gradient Boosting"
       )
     },
 

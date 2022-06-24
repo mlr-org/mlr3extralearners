@@ -21,7 +21,7 @@
 #' and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
 #' of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `k`:
 #'   - Actual default: `0`
 #'   - Adjusted default: `1`
@@ -70,7 +70,8 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_surv.flexible"
+        man = "mlr3extralearners::mlr_learners_surv.flexible",
+        label = "Flexible Parametric Splines"
       )
     }
   ),

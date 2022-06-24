@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.rfsrc
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `cores`:
 #'   - Actual default: Auto-detecting the number of cores
 #'   - Adjusted default: 1
@@ -111,7 +111,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         properties = c(
           "weights", "missings", "importance", "oob_error",
           "twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.rfsrc"
+        man = "mlr3extralearners::mlr_learners_classif.rfsrc",
+        label = "Random Forest"
       )
     },
 

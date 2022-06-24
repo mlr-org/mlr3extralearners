@@ -8,14 +8,6 @@
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
 }
-\details{
-For categorical features either pre-process data by encoding columns or
-specify the categorical columns with the \code{categorical_feature} parameter.
-For this learner please do not prefix the categorical feature with \verb{name:}.
-Instead of providing the data that is used for early stopping explicitly, the parameter
-\code{early_stopping_split} determines the proportion of the training data that is used for early
-stopping.
-}
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -30,7 +22,7 @@ lrn("classif.lightgbm")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{lightgbm}
 }
 }
@@ -51,6 +43,7 @@ lrn("classif.lightgbm")
    callbacks \tab untyped \tab - \tab  \tab - \cr
    reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    categorical_feature \tab untyped \tab  \tab  \tab - \cr
+   convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -160,7 +153,7 @@ lrn("classif.lightgbm")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{num_threads}:
@@ -175,6 +168,15 @@ lrn("classif.lightgbm")
 \item Adjusted default: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
+\item \code{convert_categorical}:
+Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.
+\item \code{early_stopping_split}:
+Additional parameter. Instead of providing the data that is used for early stopping explicitly,
+the parameter \code{early_stopping_split} determines the proportion of the training data that is
+used for early stopping. Here, stratification on the target variable is used if there is no
+grouping variable, as one cannot simultaneously stratify and group.
 }
 }
 

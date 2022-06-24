@@ -88,7 +88,8 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         predict_types = c("prob", "response"),
         param_set = ps,
         properties = c("twoclass", "weights"),
-        man = "mlr3extralearners::mlr_learners_classif.gam"
+        man = "mlr3extralearners::mlr_learners_classif.gam",
+        label = "Generalized Additive Model"
       )
     }
   ),

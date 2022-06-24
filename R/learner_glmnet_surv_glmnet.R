@@ -6,7 +6,7 @@
 #' Generalized linear models with elastic net regularization.
 #' Calls [glmnet::glmnet()] from package \CRANpkg{glmnet}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' The default for hyperparameter `family` is set to `"cox"`.
 #'
 #' @details
@@ -92,7 +92,8 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         predict_types = c("crank", "lp"),
         properties = c("weights", "selected_features"),
         packages = c("mlr3extralearners", "glmnet"),
-        man = "mlr3extralearners::mlr_learners_surv.glmnet"
+        man = "mlr3extralearners::mlr_learners_surv.glmnet",
+        label = "Regularized Generalized Linear Model"
       )
     },
 

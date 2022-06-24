@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.bart
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' * Parameter: keeptrees
 #'   * Original: FALSE
 #'   * New: TRUE
@@ -72,7 +72,8 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         predict_types = c("response"),
         param_set = ps,
         properties = c("weights"),
-        man = "mlr3extralearners::mlr_learners_regr.bart"
+        man = "mlr3extralearners::mlr_learners_regr.bart",
+        label = "Bayesian Additive Regression Trees"
       )
     }
   ),

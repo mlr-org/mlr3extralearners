@@ -9,7 +9,7 @@
 #' @templateVar id regr.gbm
 #' @template learner
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter changes:
 #' - `keep_data`:
 #'   - Actual default: TRUE
 #'   - Adjusted default: FALSE
@@ -59,7 +59,8 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         predict_types = "response",
         param_set = ps,
         properties = c("weights", "importance", "missings"),
-        man = "mlr3extralearners::mlr_learners_regr.gbm"
+        man = "mlr3extralearners::mlr_learners_regr.gbm",
+        label = "Gradient Boosting"
       )
     },
 

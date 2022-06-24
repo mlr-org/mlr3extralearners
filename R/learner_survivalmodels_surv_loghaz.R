@@ -118,7 +118,8 @@ LearnerSurvLogisticHazard = R6::R6Class("LearnerSurvLogisticHazard",
         predict_types = c("crank", "distr"),
         param_set = param_set,
         man = "mlr3extralearners::mlr_learners_surv.loghaz",
-        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
+        packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"),
+        label = "Logistic-Hazard Learner"
       )
     }
   ),

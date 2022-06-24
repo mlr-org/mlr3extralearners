@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.IBk
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -63,7 +63,8 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
         predict_types = "response",
         param_set = ps,
         properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.IBk"
+        man = "mlr3extralearners::mlr_learners_regr.IBk",
+        label = "K-nearest neighbour"
       )
     }
   ),

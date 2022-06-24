@@ -54,7 +54,8 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
         predict_types = c("response", "prob"),
         properties = c("twoclass", "multiclass"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_classif.gausspr"
+        man = "mlr3extralearners::mlr_learners_classif.gausspr",
+        label = "Gaussian Process"
       )
     }
   ),

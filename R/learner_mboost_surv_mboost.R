@@ -59,7 +59,8 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         predict_types = c("distr", "crank", "lp"),
         properties = c("weights", "importance", "selected_features"),
         packages = c("mlr3extralearners", "mboost"),
-        man = "mlr3extralearners::mlr_learners_surv.mboost"
+        man = "mlr3extralearners::mlr_learners_surv.mboost",
+        label = "Boosted Generalized Additive Model"
       )
     },
 

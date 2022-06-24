@@ -1,4 +1,4 @@
-#' @title Classification Fast Nearest Neighbor Search Learner
+#' @title Fast Nearest Neighbour Classification
 #' @author be-marc
 #' @name mlr_learners_classif.fnn
 #'
@@ -36,7 +36,8 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.fnn"
+        man = "mlr3extralearners::mlr_learners_classif.fnn",
+        label = "Fast Nearest Neighbour"
       )
     }
   ),

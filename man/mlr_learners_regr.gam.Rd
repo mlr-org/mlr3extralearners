@@ -5,8 +5,7 @@
 \alias{LearnerRegrGam}
 \title{Regression Generalized Additive Model Learner}
 \description{
-Generalized additive models.
-Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
+Generalized additive models. Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
 
 A gam formula specific to the task at hand is required for the \code{formula}
 parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is provided, a fallback formula is

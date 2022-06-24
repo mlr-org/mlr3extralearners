@@ -113,7 +113,8 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
           "factor", "ordered"),
         properties = "weights",
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
-        man = "mlr3extralearners::mlr_learners_regr.mob"
+        man = "mlr3extralearners::mlr_learners_regr.mob",
+        label = "Model-based Recursive Partitioning"
       )
     }
   ),

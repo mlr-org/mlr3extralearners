@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.PART
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
@@ -69,7 +69,8 @@ LearnerClassifPART = R6Class("LearnerClassifPART",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings"),
-        man = "mlr3extralearners::mlr_learners_classif.PART"
+        man = "mlr3extralearners::mlr_learners_classif.PART",
+        label = "Tree-based Model"
       )
     }
   ),

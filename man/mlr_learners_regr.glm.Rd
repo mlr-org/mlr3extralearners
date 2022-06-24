@@ -3,7 +3,7 @@
 \name{mlr_learners_regr.glm}
 \alias{mlr_learners_regr.glm}
 \alias{LearnerRegrGlm}
-\title{Regression Generalized Linear Model Regression Learner}
+\title{Generalized Linear Regression}
 \description{
 Generalized linear model.
 Calls \code{\link[stats:glm]{stats::glm()}} from base package 'stats'.
@@ -50,7 +50,7 @@ lrn("regr.glm")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Parameter Changes}{
 
 \itemize{
 \item \code{type}

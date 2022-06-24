@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.cforest
 #'
-#' @inheritSection mlr_learners_classif.cforest Custom mlr3 defaults
+#' @inheritSection mlr_learners_classif.cforest Parameter Changes
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`
@@ -126,7 +126,8 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
         # FIXME: importance after bug fixes, strata?
         properties = c("weights", "oob_error"),
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
-        man = "mlr3extralearners::mlr_learners_regr.cforest"
+        man = "mlr3extralearners::mlr_learners_regr.cforest",
+        label = "Conditional Random Forest"
       )
     },
     # #' @description

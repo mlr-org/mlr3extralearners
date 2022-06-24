@@ -15,7 +15,7 @@
 #' * `type = 12` – L2-regularized L2-loss support vector regression (dual)
 #' * `type = 13` – L2-regularized L1-loss support vector regression (dual)
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `svr_eps`:
 #'   - Actual default: `NULL`
 #'   - Adjusted default: 0.001
@@ -65,7 +65,8 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_regr.liblinear"
+        man = "mlr3extralearners::mlr_learners_regr.liblinear",
+        label = "Support Vector Machine"
       )
     }
   ),

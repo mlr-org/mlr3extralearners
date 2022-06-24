@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 defaults
+#' @inheritSection mlr_learners_classif.rfsrc Parameter Changes
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
@@ -97,7 +97,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
         # selected features is possible but there's a bug somewhere in rfsrc so that the model
         # can be trained but not predicted. so public method retained but property not included
         properties = c("weights", "missings", "importance", "oob_error"),
-        man = "mlr3extralearners::mlr_learners_regr.rfsrc"
+        man = "mlr3extralearners::mlr_learners_regr.rfsrc",
+        label = "Random Forest"
       )
     },
 

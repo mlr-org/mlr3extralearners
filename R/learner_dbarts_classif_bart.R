@@ -11,7 +11,7 @@
 #' @template learner
 #' @templateVar id classif.bart
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' * Parameter: keeptrees
 #'
 #'  * Original: FALSE
@@ -72,7 +72,8 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.bart"
+        man = "mlr3extralearners::mlr_learners_classif.bart",
+        label = "Bayesian Additive Regression Trees"
       )
     }
   ),

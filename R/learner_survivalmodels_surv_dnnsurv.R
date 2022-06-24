@@ -17,7 +17,7 @@
 #'  The number of output channels should be of length `1` and number of input channels is
 #'  the number of features plus number of cuts.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `verbose`:
 #'   - Actual default: `1L`
 #'   - Adjusted default: `0L`
@@ -99,7 +99,8 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
         predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.dnnsurv",
-        packages = c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
+        packages = c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6"),
+        label = "Neural Network"
       )
     }
   ),

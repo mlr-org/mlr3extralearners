@@ -40,7 +40,8 @@ LearnerDensLogspline = R6Class("LearnerDensLogspline",
         feature_types = c("integer", "numeric"),
         predict_types = c("pdf", "cdf"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_dens.logspline"
+        man = "mlr3extralearners::mlr_learners_dens.logspline",
+        label = "Logspline Density Estimation"
       )
     }
   ),

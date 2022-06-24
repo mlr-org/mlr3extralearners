@@ -1,4 +1,4 @@
-#' @title Classification Gradient Boosting Machine Learner
+#' @title Gradient Boosting Classification Learner
 #' @name mlr_learners_classif.gbm
 #' @author be-marc
 #'
@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.gbm
 #'
-#' @section Custom mlr3 defaults:
+#' @section Parameter Changes:
 #' - `keep_data`:
 #'   - Actual default: TRUE
 #'   - Adjusted default: FALSE
@@ -59,7 +59,8 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
         param_set = ps,
         properties = c(
           "weights", "twoclass", "multiclass", "importance", "missings"),
-        man = "mlr3extralearners::mlr_learners_regr.gbm"
+        man = "mlr3extralearners::mlr_learners_regr.gbm",
+        label = "Gradient Boosting"
       )
     },
 

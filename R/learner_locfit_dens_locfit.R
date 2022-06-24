@@ -51,7 +51,8 @@ LearnerDensLocfit = R6Class("LearnerDensLocfit",
         feature_types = c("integer", "numeric"),
         predict_types = "pdf",
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_dens.locfit"
+        man = "mlr3extralearners::mlr_learners_dens.locfit",
+        label = "Local Density Estimation"
       )
     }
   ),

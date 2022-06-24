@@ -26,7 +26,8 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson", inherit = mlr3proba::LearnerSur
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = "missings",
         packages = c("mlr3extralearners", "survival", "pracma"),
-        man = "mlr3extralearners::mlr_learners_surv.nelson"
+        man = "mlr3extralearners::mlr_learners_surv.nelson",
+        label = "Nelson-Aalen Estimator"
       )
     }
   ),

@@ -63,7 +63,8 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass"),
-        man = "mlr3extralearners::mlr_learners_classif.liblinear"
+        man = "mlr3extralearners::mlr_learners_classif.liblinear",
+        label = "Support Vector Machine"
       )
     }
   ),
