@@ -37,7 +37,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
         param_set = ps,
         properties = c("twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.fnn",
-        label = "Nearest Neighbour"
+        label = "Fast Nearest Neighbour"
       )
     }
   ),

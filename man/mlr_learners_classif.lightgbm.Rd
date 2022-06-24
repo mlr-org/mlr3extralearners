@@ -8,14 +8,6 @@
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
 }
-\details{
-For categorical features either pre-process data by encoding columns or
-specify the categorical columns with the \code{categorical_feature} parameter.
-For this learner please do not prefix the categorical feature with \verb{name:}.
-Instead of providing the data that is used for early stopping explicitly, the parameter
-\code{early_stopping_split} determines the proportion of the training data that is used for early
-stopping.
-}
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
