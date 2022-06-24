@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.39</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.40</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,61 +115,61 @@
 </h2>
 <p>This mlr3 extension contains all mlr3 learners that are not in <code>mlr3learners</code> or the core packages. Besides, it contains helper functions to list all learners from the mlr3verse and install their required packages. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;                      id      mlr3_package      required_packages</span>
-<span class="co">#&gt;   1: classif.AdaBoostM1 mlr3extralearners                  RWeka</span>
-<span class="co">#&gt;   2:       classif.bart mlr3extralearners                 dbarts</span>
-<span class="co">#&gt;   3:        classif.C50 mlr3extralearners                    C50</span>
-<span class="co">#&gt;   4:   classif.catboost mlr3extralearners               catboost</span>
-<span class="co">#&gt;   5:    classif.cforest mlr3extralearners partykit,sandwich,coin</span>
-<span class="co">#&gt;  ---</span>
-<span class="co">#&gt; 128:        surv.ranger      mlr3learners                 ranger</span>
-<span class="co">#&gt; 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma</span>
-<span class="co">#&gt; 130:         surv.rpart         mlr3proba  rpart,distr6,survival</span>
-<span class="co">#&gt; 131:           surv.svm mlr3extralearners            survivalsvm</span>
-<span class="co">#&gt; 132:       surv.xgboost      mlr3learners                xgboost</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                      id      mlr3_package      required_packages</span></span>
+<span><span class="co">#&gt;   1: classif.AdaBoostM1 mlr3extralearners                  RWeka</span></span>
+<span><span class="co">#&gt;   2:       classif.bart mlr3extralearners                 dbarts</span></span>
+<span><span class="co">#&gt;   3:        classif.C50 mlr3extralearners                    C50</span></span>
+<span><span class="co">#&gt;   4:   classif.catboost mlr3extralearners               catboost</span></span>
+<span><span class="co">#&gt;   5:    classif.cforest mlr3extralearners partykit,sandwich,coin</span></span>
+<span><span class="co">#&gt;  ---</span></span>
+<span><span class="co">#&gt; 128:        surv.ranger      mlr3learners                 ranger</span></span>
+<span><span class="co">#&gt; 129:         surv.rfsrc mlr3extralearners randomForestSRC,pracma</span></span>
+<span><span class="co">#&gt; 130:         surv.rpart         mlr3proba  rpart,distr6,survival</span></span>
+<span><span class="co">#&gt; 131:           surv.svm mlr3extralearners            survivalsvm</span></span>
+<span><span class="co">#&gt; 132:       surv.xgboost      mlr3learners                xgboost</span></span></code></pre></div>
 <p><code>mlr3extralearners</code> lives on GitHub and will not be on CRAN. This enables us to include packages such as <a href="https://catboost.ai/" class="external-link">catboost</a>, which is not on CRAN either.</p>
 <p>Install with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installing-and-loading-learners">Installing and Loading Learners<a class="anchor" aria-label="anchor" href="#installing-and-loading-learners"></a>
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
-<span class="co">#&gt; Package 'gbm' required but not installed for Learner 'regr.gbm'</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Package 'gbm' required but not installed for Learner 'regr.gbm'</span></span></code></pre></div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
-<span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span>
-<span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;</span>
-<span class="co">#&gt; * Model: -</span>
-<span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span>
-<span class="co">#&gt; * Packages: gbm</span>
-<span class="co">#&gt; * Predict Type: response</span>
-<span class="co">#&gt; * Feature types: integer, numeric, factor, ordered</span>
-<span class="co">#&gt; * Properties: importance, missings, weights</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;</span></span>
+<span><span class="co">#&gt; * Model: -</span></span>
+<span><span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span></span>
+<span><span class="co">#&gt; * Packages: gbm</span></span>
+<span><span class="co">#&gt; * Predict Type: response</span></span>
+<span><span class="co">#&gt; * Feature types: integer, numeric, factor, ordered</span></span>
+<span><span class="co">#&gt; * Properties: importance, missings, weights</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="extending-mlr3extralearners">Extending mlr3extralearners<a class="anchor" aria-label="anchor" href="#extending-mlr3extralearners"></a>
 </h2>
 <p>New learners can be created with the <code>create_learner</code> function. This assumes you have a local copy of <code>mlr3extralearners</code>. This function will automatically create the learner, learner tests, parameter tests and update the DESCRIPTION if required. Once all tests are passing locally, open a <a href="https://github.com/mlr-org/mlr3extralearners/pulls" class="external-link">pull request</a> with the “New Learner” template. More detailed instructions can be found in the <a href="https://mlr3book.mlr-org.com/extending.html" class="external-link">mlr3 book</a>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3proba.mlr-org.com" class="external-link">mlr3proba</a></span><span class="op">)</span>
-<span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span>
-  classname <span class="op">=</span> <span class="st">"Locfit"</span>,
-  algorithm <span class="op">=</span> <span class="st">"localised fit"</span>,
-  type <span class="op">=</span> <span class="st">"dens"</span>,
-  key <span class="op">=</span> <span class="st">"locfit"</span>,
-  package <span class="op">=</span> <span class="st">"locfit"</span>,
-  caller <span class="op">=</span> <span class="st">"density.lf"</span>,
-  feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"integer"</span>, <span class="st">"numeric"</span><span class="op">)</span>,
-  predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pdf"</span>, <span class="st">"cdf"</span><span class="op">)</span>,
-  properties <span class="op">=</span> <span class="cn">NULL</span>,
-  references <span class="op">=</span> <span class="cn">FALSE</span>,
-  gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3proba.mlr-org.com" class="external-link">mlr3proba</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span></span>
+<span>  classname <span class="op">=</span> <span class="st">"Locfit"</span>,</span>
+<span>  algorithm <span class="op">=</span> <span class="st">"localised fit"</span>,</span>
+<span>  type <span class="op">=</span> <span class="st">"dens"</span>,</span>
+<span>  key <span class="op">=</span> <span class="st">"locfit"</span>,</span>
+<span>  package <span class="op">=</span> <span class="st">"locfit"</span>,</span>
+<span>  caller <span class="op">=</span> <span class="st">"density.lf"</span>,</span>
+<span>  feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"integer"</span>, <span class="st">"numeric"</span><span class="op">)</span>,</span>
+<span>  predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pdf"</span>, <span class="st">"cdf"</span><span class="op">)</span>,</span>
+<span>  properties <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  references <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">

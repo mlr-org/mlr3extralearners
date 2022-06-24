@@ -12,7 +12,7 @@ Calls flexsurv::flexsurvspline() from flexsurv."><!-- mathjax --><script src="ht
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.39</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.40</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,7 +122,7 @@ of \(1\)s: \(lp = \beta X\).</p>
     
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bknots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>character</td><td>hazard</td><td>hazard, odds, normal</td><td>-</td></tr><tr><td>timescale</td><td>character</td><td>log</td><td>log, identity</td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
     <div class="section level2">
-    <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
+    <h2 id="parameter-changes">Parameter Changes<a class="anchor" aria-label="anchor" href="#parameter-changes"></a></h2>
     
 
 <ul><li><p><code>k</code>:</p><ul><li><p>Actual default: <code>0</code></p></li>
@@ -177,7 +177,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va"><a href="../reference/mlr_learners_surv.flexible.html">LearnerSurvFlexible</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_surv.flexible.html">LearnerSurvFlexible</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
@@ -185,7 +185,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span class="va">LearnerSurvFlexible</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvFlexible</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
@@ -203,18 +203,18 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.flexible"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvFlexible:surv.flexible&gt;</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.flexible"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvFlexible:surv.flexible&gt;: Flexible Parametric Splines</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: k=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, flexsurv, pracma</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Type: distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature types: logical, integer, factor, numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># available parameters:</span></span>
-<span class="r-in"><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "bhazard"       "k"             "knots"         "bknots"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "scale"         "timescale"     "inits"         "rtrunc"       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "fixedpars"     "cl"            "maxiter"       "rel.tolerance"</span>
