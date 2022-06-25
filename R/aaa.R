@@ -5,7 +5,6 @@
     lrns = list(),
     add = function(key, learn) {
       assert_character(key, len = 1)
-      assert_class(learn, "R6ClassGenerator")
       lst = list(key = learn)
       names(lst) = key
       self$lrns = insert_named(self$lrns, lst)

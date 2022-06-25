@@ -295,4 +295,4 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric", inherit = mlr3proba::Le
   list(lp = as.numeric(lp), distr = distr)
 }
 
-.extralrns_dict$add("surv.parametric", LearnerSurvParametric)
+.extralrns_dict$add("surv.parametric", function() LearnerSurvParametric$new())

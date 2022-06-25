@@ -175,4 +175,4 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
   )
 )
 
-.extralrns_dict$add("surv.glmboost", LearnerSurvGLMBoost)
+.extralrns_dict$add("surv.glmboost", function() LearnerSurvGLMBoost$new())
