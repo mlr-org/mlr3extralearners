@@ -73,7 +73,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
         id = "classif.J48",
         packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered", "integer"),
-        predict_types = c("response", "prob"),
+        predict_types = "response",
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings"),
         man = "mlr3extralearners::mlr_learners_classif.J48",
@@ -97,7 +97,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
 
       f = task$formula()
       data = task$data()
-      invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
+      invoke(RWeka::J48, formula = f, data = data, control = ctrl, .args = pars)
     },
 
     .predict = function(task) {
