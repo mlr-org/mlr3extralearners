@@ -1,3 +1,10 @@
+# mlr3extralearners 0.5.41
+
+* Fix bugs in learners lmer and J48
+
+* Remove predict type proba from J48
+
+* Delay loading of mlr3proba learners
 
 # mlr3extralearners 0.5.40
 

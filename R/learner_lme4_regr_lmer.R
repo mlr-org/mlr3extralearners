@@ -160,7 +160,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
 
       pars_train = self$param_set$get_values(tags = "train")
 
-      ii = pars_train %in% formalArgs(lme4::lmerControl)
+      ii = names(pars_train) %in% formalArgs(lme4::lmerControl)
 
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
