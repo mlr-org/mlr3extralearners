@@ -67,7 +67,6 @@ jobs:
 
       - name: Install catboost
         run: |
-          pak::op
           version = jsonlite::fromJSON(
             "https://api.github.com/repos/catboost/catboost/releases"
           )$tag_name[1]
