@@ -48,7 +48,6 @@ Suggests:
     gss,
     jsonlite,
     keras (>= 2.3.0),
-    kerdiest,
     kernlab,
     ks,
     LiblineaR,
