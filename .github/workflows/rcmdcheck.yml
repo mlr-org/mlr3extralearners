@@ -59,8 +59,15 @@ jobs:
           pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
         shell: Rscript {0}
 
+      - name: Install dependencies
+        run: |
+          pak::local_install_dev_deps(upgrade = TRUE)
+          pak::pkg_install("rcmdcheck")
+        shell: Rscript {0}
+
       - name: Install catboost
         run: |
+          pak::op
           version = jsonlite::fromJSON(
             "https://api.github.com/repos/catboost/catboost/releases"
           )$tag_name[1]
@@ -70,13 +77,6 @@ jobs:
           )
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
         shell: Rscript {0}
-
-      - name: Install dependencies
-        run: |
-          pak::local_install_dev_deps(upgrade = TRUE)
-          pak::pkg_install("rcmdcheck")
-        shell: Rscript {0}
-
 
       - name: Install Python
         run: |
