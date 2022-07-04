@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.41
+Version: 0.5.42
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -48,7 +48,6 @@ Suggests:
     gss,
     jsonlite,
     keras (>= 2.3.0),
-    kerdiest,
     kernlab,
     ks,
     LiblineaR,

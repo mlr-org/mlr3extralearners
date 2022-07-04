@@ -1,3 +1,9 @@
+# mlr3extralearners 0.5.42
+
+* Fix bug in C50 learner: Weights were not passed correctly
+
+* Remove kerdiest Learner because it is not being maintained on CRAN anymore
+
 # mlr3extralearners 0.5.41
 
 * Fix bugs in learners lmer and J48

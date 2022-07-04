@@ -22,7 +22,7 @@ lrn("classif.J48")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}, \dQuote{integer}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
 }
 }

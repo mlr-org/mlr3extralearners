@@ -39,7 +39,7 @@ jobs:
 
       - name: Install pak and query dependencies
         run: |
-          install.packages("pak")
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           saveRDS(pak::pkg_deps("local::.", dependencies = TRUE), ".github/r-depends.rds")
         shell: Rscript {0}
 
@@ -75,11 +75,6 @@ jobs:
             version, version
           )
           remotes::install_url(url, INSTALL_opts = "--no-multiarch")
-        shell: Rscript {0}
-
-      - name: Install extraTrees
-        run: |
-          remotes::install_github("jaak-s/extraTrees/R-skeleton")
         shell: Rscript {0}
 
       - name: Install Python

@@ -63,7 +63,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
       ctrl = do.call(C50::C5.0Control, pars_ctrl)
 
       if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
+        pars_train$weights = task$weights$weight
       }
 
       f = task$formula()
