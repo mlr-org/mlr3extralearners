@@ -59,7 +59,7 @@ lrn("surv.parametric")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
+\item Predict Types: \dQuote{distr}, \dQuote{lp}, \dQuote{crank}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
 }
