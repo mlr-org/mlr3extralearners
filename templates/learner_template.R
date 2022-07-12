@@ -2,12 +2,24 @@
 #' @author <gh_name>
 #' @name mlr_learners_<type>.<key>
 #'
+#' @description
+#' <FIXME> BRIEF DESCRIPTION OF THE LEARNER.
+#' Calls [<package>::<caller>()] from <FIXME> (CRAN VS NO CRAN): \CRANpkg{<package>} | '<package>'.
+#'
+#' @section Custom mlr3 defaults:
+#' <FIXME> DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
+#'
+#' @section Custom mlr3 defaults:
+#' <FIXME> DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
+#'
+#' @section Installation:
+#' <FIXME> IF THERE ARE IMPORTANT INSTALLATION INSTRUCTIONS ADD THEM HERE AND DELETE OTHERWISE.
+#'
 #' @template learner
 #' @templateVar id <type>.<key>
-#' @templateVar caller <caller>
 #'
 #' @references
-#' <FIXME - DELETE THIS AND LINE ABOVE IF OMITTED>
+#' `r format_bib(<FIXME> ONE OR MORE REFERENCES FROM BIBENTRIES)`
 #'
 #' @template seealso_learner
 #' @template example
@@ -19,37 +31,59 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      # FIXME - MANUALLY ADD PARAM_SET BELOW AND THEN DELETE THIS LINE
-      ps = <param_set>
+      # FIXME - MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
+      param_set = ps()
 
       # FIXME - MANUALLY UPDATE PARAM VALUES BELOW IF APPLICABLE THEN DELETE THIS LINE.
-      # OTHERWISE DELETE THIS AND LINE BELOW.
-      ps$values = list(<param_vals>)
+      param_set$values = list()
 
       super$initialize(
         id = "<type>.<key>",
         packages = "<package>",
         feature_types = c("<feature_types>"),
         predict_types = c("<predict_types>"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("<properties>"),
-        man = "mlr3extralearners::mlr_learners_<type>.<key>"
+        man = "mlr3extralearners::mlr_learners_<type>.<key>",
+        label = "<label>"
       )
-    },
+    }
 
-    # FIXME - ADD IMPORTANCE METHOD HERE AND DELETE THIS LINE.
-    # <See LearnerRegrRandomForest for an example>
+    # <FIXME: IMPORTANCE>
+    # ADD IMPORTANCE METHOD IF APPLICABLE AND DELETE OTHERWISE
+    # SEE mlr3extralearners::LearnerRegrRandomForest FOR AN EXAMPLE
     #' @description
     #' The importance scores are extracted from the slot <FIXME>.
     #' @return Named `numeric()`.
-    importance = function() { },
+    importance = function() {
+      pars = self$param_set$get_values(tags = "importance")
+    },
 
-    # FIXME - ADD OOB_ERROR METHOD HERE AND DELETE THIS LINE.
-    # <See LearnerRegrRandomForest for an example>
+    # <FIXME> ADD OOB_ERROR METHOD IF APPLICABLE AND DELETE OTHERWISE
+    # SEE mlr3extralearners::LearnerRegrRandomForest FOR AN EXAMPLE
     #' @description
     #' OOB errors are extracted from the model slot <FIXME>.
     #' @return `numeric(1)`.
-    oob_error = function() { }
+    oob_error = function() {
+      pars = self$param_set$get_values(tags = "oob_error")
+    },
+
+    # <FIXME> ADD SELECTED_FEATURES METHOD HERE AND DELETE OTHERWISE
+    # SEE mlr3extralearners::LearnerRegrRandomForestSRC FOR AN EXAMPLE
+    #' @description
+    #' Selected features are obtained by <FIXME>.
+    #' @return `character()`.
+    selected_features = function() {
+      pars = self$param_set$get_values(tags = "selected_features")
+    },
+    # <FIXME> ADD LOGLIK METHOD HERE AND DELETE OTHERWISE
+    # SEE mlr3learners::LearnerRegrLM FOR AN EXAMPLE
+    #' @description
+    #' Log-Likelihood is obtained by <FIXME>.
+    #' @return `character()`.
+    loglik = function() {
+      pars = self$param_set$get_values(tags = "loglik")
+    }
   ),
 
   private = list(
@@ -61,24 +95,25 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # set column names to ensure consistency in fit and predict
       self$state$feature_names = task$feature_names
 
-      # FIXME - If learner does not have 'weights' property then delete these lines.
+      # <FIXME> IF LEARNER DOES NOT HAVE 'weights' PROPERTY THEN DELETE THESE LINES.
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))
       }
 
-      # FIXME - <Create objects for the train call>
-      # <At least "data" and "formula" are required>
+      # <FIXME> CREATE OBJECTS FOR THE TRAIN CALL
+      # AT LEAST "data" AND "formula" ARE REQUIRED
       formula = task$formula()
       data = task$data()
 
-      # FIXME - <here is space for some custom adjustments before proceeding to the
-      # train call. Check other learners for what can be done here>
+      # <FIXME> HERE IS SPACE FOR SOME CUSTOM ADJUSTMENTS BEFORE PROCEEDING TO THE
+      # TRAIN CALL. CHECK OTHER LEARNERS FOR WHAT CAN BE DONE HERE
+      # USE THE mlr3misc::invoke FUNCTION (IT'S SIMILAR TO DO.CALL())
 
-      # use the mlr3misc::invoke function (it's similar to do.call())
       invoke(<package>::<caller>,
-             formula = formula,
-             data = data,
-             .args = pars)
+        formula = formula,
+        data = data,
+        .args = pars
+      )
     },
 
     .predict = function(task) {
@@ -90,8 +125,13 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
 
       pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
 
-      # FIXME - ADD PREDICTIONS TO LIST BELOW
+      # <FIXME> ADD PREDICTIONS TO LIST BELOW
       list(...)
+    },
+
+    .hotstart = function(task) {
+      # <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE
+      # SEE mlr3learners::LearnerClassifXgboost FOR AN EXAMPLE
     }
   )
 )
