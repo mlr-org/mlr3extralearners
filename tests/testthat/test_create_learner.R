@@ -158,7 +158,7 @@ test_that("Commas are fixed properly", {
   path = tempfile()
   dir.create(path, recursive = TRUE)
 
-  properties = c("weights")
+  properties = "weights"
   methods = c("importance", "loglik", "oob_error", "selected_features")
   for (method in methods) {
     if (runif(1) < 0.5) {
