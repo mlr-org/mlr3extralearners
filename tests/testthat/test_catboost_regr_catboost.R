@@ -1,3 +1,6 @@
+if (!requireNamespace("catboost")) {
+  install_catboost()
+}
 test_that("autotest", {
   learner = lrn("regr.catboost", iterations = 10)
   expect_learner(learner)
