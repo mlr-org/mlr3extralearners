@@ -118,7 +118,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
 
       # <FIXME> ADD PREDICTIONS TO LIST BELOW
-      list(...)
+      list()
     }, # <PREDICT>
     # <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE
     # SEE mlr3learners::LearnerClassifXgboost FOR AN EXAMPLE
