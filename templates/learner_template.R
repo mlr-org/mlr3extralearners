@@ -26,7 +26,6 @@
 #' @export
 Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
   inherit = Learner<Type>,
-
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -47,10 +46,8 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
         man = "mlr3extralearners::mlr_learners_<type>.<key>",
         label = "<label>"
       )
-    }
-
-    # <FIXME: IMPORTANCE>
-    # ADD IMPORTANCE METHOD IF APPLICABLE AND DELETE OTHERWISE
+    }, # <INIT>
+    # <FIXME> ADD IMPORTANCE METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3extralearners::LearnerRegrRandomForest FOR AN EXAMPLE
     #' @description
     #' The importance scores are extracted from the slot <FIXME>.
@@ -58,7 +55,6 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     importance = function() {
       pars = self$param_set$get_values(tags = "importance")
     },
-
     # <FIXME> ADD OOB_ERROR METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3extralearners::LearnerRegrRandomForest FOR AN EXAMPLE
     #' @description
@@ -67,8 +63,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     oob_error = function() {
       pars = self$param_set$get_values(tags = "oob_error")
     },
-
-    # <FIXME> ADD SELECTED_FEATURES METHOD HERE AND DELETE OTHERWISE
+    # <FIXME> ADD SELECTED_FEATURES METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3extralearners::LearnerRegrRandomForestSRC FOR AN EXAMPLE
     #' @description
     #' Selected features are obtained by <FIXME>.
@@ -76,7 +71,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     selected_features = function() {
       pars = self$param_set$get_values(tags = "selected_features")
     },
-    # <FIXME> ADD LOGLIK METHOD HERE AND DELETE OTHERWISE
+    # <FIXME> ADD LOGLIK METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3learners::LearnerRegrLM FOR AN EXAMPLE
     #' @description
     #' Log-Likelihood is obtained by <FIXME>.
@@ -85,9 +80,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       pars = self$param_set$get_values(tags = "loglik")
     }
   ),
-
   private = list(
-
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
@@ -115,7 +108,6 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
         .args = pars
       )
     },
-
     .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
@@ -127,11 +119,11 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
 
       # <FIXME> ADD PREDICTIONS TO LIST BELOW
       list(...)
-    },
-
+    }, # <PREDICT>
+    # <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE
+    # SEE mlr3learners::LearnerClassifXgboost FOR AN EXAMPLE
     .hotstart = function(task) {
-      # <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE
-      # SEE mlr3learners::LearnerClassifXgboost FOR AN EXAMPLE
+      pars = self$param_set$get_values(tags = "hotstart")
     }
   )
 )

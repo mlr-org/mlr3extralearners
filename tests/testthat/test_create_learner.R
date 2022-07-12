@@ -1,13 +1,90 @@
 test_that("create_learner works for tempdir", {
-
   on.exit({
-    rm(file)
+    rm(path)
   }, add = TRUE)
 
-  file = tempdir()
+  path = tempfile()
+  dir.create(path, recursive = TRUE)
 
   files = create_learner(
-    path = file,
+    path = path,
+    classname = "LM",
+    type = "regr",
+    id = "lm",
+    algorithm = "Linear Model",
+    package = "stats",
+    caller = "lm",
+    feature_types = c("logical", "integer", "numeric", "factor"),
+    predict_types = c("response", "se"),
+    properties = "weights",
+    gh_name = "RaphaelS1",
+    label = "Linear Model"
+  )
+
+  # just check whether the file was created
+  template_lrn = readLines(files[["learner"]])
+  template_test = readLines(files[["test"]])
+  template_ptest = readLines(files[["param_test"]])
+
+  # skip the last line (adds the learner to dict)
+  code_learner = paste(template_lrn[seq(1, length(template_lrn) - 1L)], collapse = "\n")
+  e = parse(text = code_learner)
+  Learner = eval(e)
+  expect_error(learner <<- Learner$new(), regexp = NA)
+  expect_true(all(learner$predict_types == c("response", "se")))
+  expect_true("stats" %in% learner$packages)
+  expect_true(learner$label == "Linear Model")
+  expect_true(class(learner)[1L] == "LearnerRegrLM")
+
+  expect_true(template_lrn[1L] == "#' @title Regression Linear Model Learner")
+  expect_true(template_test[1L] == "test_that(\"autotest\", {")
+  expect_true(template_ptest[1L] == "test_that(\"regr.lm train\", {")
+
+  # check whether the files can be parsed
+  expect_error(parse(files[1L]), regexp = NA)
+  expect_error(parse(files[2L]), regexp = NA)
+  expect_error(parse(files[3L]), regexp = NA)
+
+  # when the files exist we don't modify them.
+  expect_message(
+    expect_message(
+      expect_message(
+        create_learner(
+          path = path,
+          classname = "LM",
+          type = "regr",
+          id = "lm",
+          algorithm = "Linear Model",
+          package = "stats",
+          caller = "lm",
+          feature_types = c("logical", "integer", "numeric", "factor"),
+          predict_types = c("response", "se"),
+          properties = "weights",
+          gh_name = "RaphaelS1",
+          label = "Linear Regression"
+        ),
+        regexp = "File learner_stats_regr_lm.R already exists. Manually edit the file.",
+        fixed = TRUE
+      ),
+      regexp = "File test_paramtest_stats_regr_lm.R already exists. Manually edit the file.",
+      fixed = TRUE
+    ),
+    regexp = "File test_stats_regr_lm.R already exists. Manually edit the file.",
+    fixed = TRUE
+  )
+})
+
+test_that("create_learner works for an R package", {
+  on.exit({
+    rm(path)
+  }, add = TRUE)
+
+  path = tempfile()
+  dir.create(path, recursive = TRUE)
+  file.create(sprintf("%s/DESCRIPTION", path))
+
+  files = create_learner(
+    path = path,
     classname = "LM",
     type = "regr",
     id = "lm",
@@ -20,66 +97,105 @@ test_that("create_learner works for tempdir", {
     gh_name = "RaphaelS1",
     label = "Linear Regression"
   )
+  files_expected = paste0(path, "/",
+    c(
+      "R/learner_stats_regr_lm.R",
+      "tests/testthat/test_stats_regr_lm.R",
+      "tests/testthat/test_paramtest_stats_regr_lm.R"
+    )
+  )
+
+  expect_set_equal(
+    files,
+    files_expected
+  )
+
   # just check whether the file was created
   template_lrn = readLines(files[["learner"]])
   template_test = readLines(files[["test"]])
   template_ptest = readLines(files[["param_test"]])
 
-  expect_true(templates[[]] == "#' @title FIXME: Title for the Learner")
-  expect_true(template_lrn[1] == "#' @title <Type_lng> <algorithm> Learner")
-  expect_true(template_lrn[2] == "#' @title <Type_lng> <algorithm> Learner")
-  expect_true(template_lrn[3] == "#' @title <Type_lng> <algorithm> Learner")
+
+  expect_true(template_lrn[1L] == "#' @title Regression Linear Model Learner")
+  expect_true(template_test[1L] == "test_that(\"autotest\", {")
+  expect_true(template_ptest[1L] == "test_that(\"regr.lm train\", {")
+
+
+  expect_message(
+    expect_message(
+      expect_message(
+        create_learner(
+          path = path,
+          classname = "LM",
+          type = "regr",
+          id = "lm",
+          algorithm = "Linear Model",
+          package = "stats",
+          caller = "lm",
+          feature_types = c("logical", "integer", "numeric", "factor"),
+          predict_types = c("response", "se"),
+          properties = "weights",
+          gh_name = "RaphaelS1",
+          label = "Linear Regression"
+        ),
+        regexp = "File learner_stats_regr_lm.R already exists. Manually edit the file.",
+        fixed = TRUE
+      ),
+      regexp = "File test_paramtest_stats_regr_lm.R already exists. Manually edit the file.",
+      fixed = TRUE
+    ),
+    regexp = "File test_stats_regr_lm.R already exists. Manually edit the file.",
+    fixed = TRUE
+  )
 })
 
-test_that("create_learner works for 'mlr3extralearners': clean plate", {
+
+test_that("Commas are fixed properly", {
   on.exit({
-    rm(tempdir)
+    rm(path)
   }, add = TRUE)
 
-  tempdir = tempdir()
-  files = create_learner(path = tempdir,
+  path = tempfile()
+  dir.create(path, recursive = TRUE)
+
+  properties = c("weights")
+  methods = c("importance", "loglik", "oob_error", "selected_features")
+  for (method in methods) {
+    if (runif(1) < 0.5) {
+      properties = c(properties, method)
+    }
+  }
+  u = sample(3, 1)
+  if (u == 1) {
+    properties = c(properties, "hotstart_forward")
+  } else if (u == 2) {
+    properties = c(properties, "hotstart_backward")
+  }
+
+  files = create_learner(
+    path = path,
     classname = "LM",
     type = "regr",
-    key = "lm",
+    id = "lm",
+    algorithm = "Linear Model",
     package = "stats",
     caller = "lm",
     feature_types = c("logical", "integer", "numeric", "factor"),
     predict_types = c("response", "se"),
-    properties = "weights",
+    properties = properties,
     gh_name = "RaphaelS1",
-    label = "Linear Regression"
+    label = "Linear Model"
   )
-  files_expected = c(
-    "learner_stats_regr_lm.R",
-    "test_stats_regr_lm.R",
-    "test_paramtest_stats_regr_lm.R"
-  )
-  p1 = sprintf("%s/R/%s", tempdir, files[[1L]])
-  p2 = sprintf("%s/tests/testthat/%s", tempdir, files[[2L]])
-  p3 = sprintf("%s/tests/testthat/%s", tempdir, files[[3L]])
 
-  expect_true(all.equal(files, files_expected))
-  expect_true(file.exists(p1))
-  expect_true(file.exists(p2))
-  expect_true(file.exists(p3))
+  # just check whether the file was created
+  template_lrn = readLines(files[["learner"]])
 
-  cat("1\n", file = p1)
-  cat("2\n", file = p2)
-  cat("3\n", file = p3)
+  # skip the last line (adds the learner to dict)
+  code_learner = paste(template_lrn[seq(1, length(template_lrn) - 1L)], collapse = "\n")
+  e = parse(text = code_learner)
+  Learner = eval(e)
+  expect_error(learner <<- Learner$new(), regexp = NA)
+  expect_set_equal(learner$properties, properties)
 
-  create_learner(path = tempdir,
-    classname = "LM",
-    type = "regr",
-    key = "lm",
-    package = "stats",
-    caller = "lm",
-    feature_types = c("logical", "integer", "numeric", "factor"),
-    predict_types = c("response", "se"),
-    properties = "weights",
-    gh_name = "RaphaelS1",
-    label = "Linear Regression"
-  )
-  expect_true(readLines(p1)[[1L]] == "1")
-  expect_true(readLines(p2)[[1L]] == "2")
-  expect_true(readLines(p3)[[1L]] == "3")
+
 })

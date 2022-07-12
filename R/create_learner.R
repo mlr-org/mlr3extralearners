@@ -43,7 +43,7 @@
 #' \dontrun{
 #' # Simpler linear regression example
 #' create_learner(
-#'   path = "~/r/tmp",
+#'   path = tempdir(),
 #'   classname = "LM",
 #'   type = "regr",
 #'   algorithm = "Linear Model",
@@ -97,6 +97,16 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
   assert_character(classname, any.missing = FALSE,len = 1)
   assert_character(caller, any.missing = FALSE,len = 1)
 
+  algorithm = toproper(algorithm)
+
+  type_lng = switch(type,
+    classif = "Classification",
+    regr = "Regression",
+    surv = "Survival",
+    dens = "Density",
+    clust = "Cluster"
+  )
+
   # Get the paths where the files (learner, test, parameter) test will be created.
 
   file_lrn = paste0("learner_", package, "_", type, "_", id, ".R")
@@ -128,6 +138,8 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     x = gsub("<type>", type, x)
     x = gsub("<Type>", Type, x)
     x = gsub("<key>", id, x)
+    x = gsub("<algorithm>", algorithm, x)
+    x = gsub("<Type_lng>", type_lng, x)
     x = gsub("<package>", package, x)
     x = gsub("<caller>", caller, x)
     x = gsub("<Classname>", classname, x)
@@ -138,9 +150,55 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     if (length(properties)) {
       x = gsub("<properties>", paste0(properties, collapse = '", "'), x)
     }
-    cat(x, file = path_lrn, sep = "\n")
     messagef("Created %s from template.", file_lrn)
+    # Remove unused methods
+
+
+    remove_method = function(method, x) {
+      if (method %nin% properties) {
+        start = grep(
+          sprintf("# <FIXME> ADD %s METHOD IF APPLICABLE AND DELETE OTHERWISE", toupper(method)),
+          x,
+          fixed = TRUE
+        )
+        end = grep(sprintf("%s = function()", method), x) + 2L
+        return(x[-seq(start, end)])
+      }
+      x
+    }
+
+    x = remove_method("importance", x)
+    x = remove_method("oob_error", x)
+    x = remove_method("selected_features", x)
+    x = remove_method("loglik", x)
+
+    # Fix commas
+    methods = c("importance", "oob_error", "selected_features", "loglik")
+    methods_existing = methods[methods %in% properties]
+    init_ends = grep("# <INIT>", x)
+    if (length(methods_existing) == 0L) {
+      x[init_ends] = "    }"
+    } else {
+      # remove the <INIT> comment used to located the line
+      x[init_ends] = "    },"
+      # remove the comma from the last existing method
+      method_last = methods_existing[length(methods_existing)]
+      line = grep(sprintf("%s = function()", method_last), x, fixed = TRUE) + 2L
+      x[line] = gsub(",", "", x[line], fixed = TRUE)
+
+    }
+    # Now for hotstart
+    if (!("hotstart_forward" %in% properties || "hotstart_backward" %in% properties)) {
+      start = grep("# <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE", x, fixed = TRUE)
+      end = grep(".hotstart = function(task)", x, fixed = TRUE) + 2L
+      x = x[-seq(start, end)]
+      predict_ends = grep("<PREDICT>", x)
+      x[predict_ends] = gsub(",", "", x[predict_ends])
+    }
+
+    cat(x, file = path_lrn, sep = "\n")
   }
+
 
   # ADD TEST
   if (file.exists(path_test)) {
@@ -162,13 +220,13 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     messagef("File %s already exists. Manually edit the file.", file_ptest)
   } else {
     file.create(path_ptest)
-    messagef("Creating %s paramtests from template.", paste(type, id, sep = "_"))
     x = readLines(template_ptest)
     x = gsub("<type>", type, x)
     x = gsub("<key>", id, x)
     x = gsub("<package>", package, x)
     x = gsub("<caller>", caller, x)
     cat(x, file = path_ptest, sep = "\n")
+    messagef("Created %s paramtests from template.", paste(type, id, sep = "_"))
   }
 
   c(learner = path_lrn, test = path_test, param_test = path_ptest)
