@@ -1,6 +1,3 @@
-install_learners("regr.gausspr")
-load_tests("regr.gausspr")
-
 test_that("autotest", {
   learner = lrn("regr.gausspr")
   expect_learner(learner)

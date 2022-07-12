@@ -1,5 +1,3 @@
-install_learners("regr.gamboost")
-
 test_that("autotest", {
   learner = LearnerRegrGAMBoost$new()
   learner$param_set$values = list(baselearner = "btree")

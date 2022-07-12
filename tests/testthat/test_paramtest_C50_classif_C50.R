@@ -1,5 +1,3 @@
-install_learners("classif.C50")
-
 test_that("paramtest classif.C50 train", {
   learner = lrn("classif.C50")
   fun_list = list(C50::C5.0, C50::C5.0Control, C50::C5.0.default)

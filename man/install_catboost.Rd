@@ -6,22 +6,14 @@
 \usage{
 install_catboost(
   version = NULL,
-  os = NULL,
-  install_required = TRUE,
   INSTALL_opts = c("--no-multiarch", "--no-test-load"),
   ...
 )
 }
 \arguments{
 \item{version}{\code{(character(1))}
-Version to install, if \code{NULL} installs latest}
-
-\item{os}{\code{(character(1))} \cr
-Operating system to install on, if \code{NULL} automatically detected}
-
-\item{install_required}{\code{(logical(1))} \cr
-If \code{TRUE} (default) then installs required packages: {curl}, {jsonlite},
-{remotes}}
+Version to install, if \code{NULL} installs latest.
+Can e.g. be \code{"1.0.6"}.}
 
 \item{INSTALL_opts}{\code{(character())} \cr
 Passed to \link[remotes:install_url]{remotes::install_url}}
@@ -30,5 +22,6 @@ Passed to \link[remotes:install_url]{remotes::install_url}}
 Other arguments passed to \link[remotes:install_url]{remotes::install_url}}
 }
 \description{
-Helper function to install catboost
+Helper function to install catboost.
+Installs the latest version if no version is provided.
 }

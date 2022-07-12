@@ -1,6 +1,3 @@
-install_learners("dens.locfit")
-load_tests("dens.locfit")
-
 test_that("paramtest dens.locfit train", {
   learner = lrn("dens.locfit")
   # density.lf calls locfit.raw internally (this is where the ... go)

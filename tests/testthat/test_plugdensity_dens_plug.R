@@ -1,6 +1,3 @@
-install_learners("dens.plug")
-load_tests("dens.plug")
-
 test_that("autotest", {
   set.seed(1)
   learner = LearnerDensPlugin$new()

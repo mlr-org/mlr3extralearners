@@ -1,5 +1,3 @@
-install_learners("classif.bart")
-
 test_that("autotest", {
   learner = lrn("classif.bart")
 

@@ -1,5 +1,3 @@
-install_learners("classif.LMT")
-
 test_that("paramtest classif.LMT train", {
   learner = lrn("classif.LMT")
   fun = RWeka::LMT

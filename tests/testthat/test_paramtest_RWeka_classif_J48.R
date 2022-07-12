@@ -1,5 +1,3 @@
-install_learners("classif.J48")
-
 test_that("paramtest classif.J48 train", {
   learner = lrn("classif.J48")
   fun = RWeka::J48

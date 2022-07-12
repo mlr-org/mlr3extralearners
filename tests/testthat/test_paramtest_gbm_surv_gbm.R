@@ -1,6 +1,3 @@
-install_learners("surv.gbm")
-load_tests("surv.gbm")
-
 test_that("surv.gbm", {
   learner = lrn("surv.gbm")
   fun = fun_list = gbm::gbm

@@ -1,5 +1,3 @@
-install_learners("classif.OneR")
-
 test_that("paramtest classif.OneR train", {
   learner = lrn("classif.OneR")
   fun = RWeka::OneR

@@ -1,6 +1,3 @@
-install_learners("surv.ctree")
-load_tests("surv.ctree")
-
 test_that("autotest", {
   set.seed(1)
   learner = LearnerSurvCTree$new()

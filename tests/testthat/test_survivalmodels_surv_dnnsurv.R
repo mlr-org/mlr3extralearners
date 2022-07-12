@@ -1,6 +1,3 @@
-install_learners("surv.dnnsurv")
-load_tests("surv.dnnsurv")
-
 skip_on_os("windows")
 
 test_that("autotest", {

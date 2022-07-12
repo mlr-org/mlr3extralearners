@@ -1,6 +1,3 @@
-install_learners("surv.blackboost")
-load_tests("surv.blackboost")
-
 test_that("paramtest surv.blackboost train", {
   learner = lrn("surv.blackboost")
   fun_list = list(mboost::blackboost, mboost::boost_control, partykit::ctree_control)

@@ -1,6 +1,3 @@
-install_learners("surv.blackboost")
-load_tests("surv.blackboost")
-
 test_that("autotest aft", {
   skip_on_cran()
   set.seed(1)

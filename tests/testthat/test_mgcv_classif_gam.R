@@ -1,6 +1,3 @@
-install_learners("classif.gam")
-load_tests("classif.gam")
-
 test_that("autotest", {
   learner = LearnerClassifGam$new()
   expect_learner(learner)

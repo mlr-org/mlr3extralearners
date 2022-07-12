@@ -1,6 +1,3 @@
-install_learners("surv.nelson")
-load_tests("surv.nelson")
-
 test_that("autotest", {
   learner = lrn("surv.nelson")
   expect_learner(learner)

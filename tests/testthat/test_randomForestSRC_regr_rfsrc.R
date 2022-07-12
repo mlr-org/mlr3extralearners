@@ -1,5 +1,3 @@
-install_learners("regr.rfsrc")
-
 test_that("importance/selected", {
   set.seed(1)
   task = tsk("boston_housing")

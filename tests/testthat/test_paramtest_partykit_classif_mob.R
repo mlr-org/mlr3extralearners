@@ -1,5 +1,3 @@
-install_learners("classif.mob")
-
 test_that("paramtest classif.mob train", {
   learner = lrn("classif.mob")
   fun_list = list(partykit::mob, partykit::mob_control)

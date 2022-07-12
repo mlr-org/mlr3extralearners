@@ -1,6 +1,3 @@
-install_learners("regr.gam")
-load_tests("regr.gam")
-
 test_that("paramtest regr.gam train", {
   learner = lrn("regr.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)

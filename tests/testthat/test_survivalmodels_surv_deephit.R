@@ -1,6 +1,3 @@
-install_learners("surv.deephit")
-load_tests("surv.deephit")
-
 skip_on_os("windows")
 
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||

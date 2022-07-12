@@ -1,6 +1,3 @@
-install_learners("regr.rvm")
-load_tests("regr.rvm")
-
 test_that("autotest", {
   set.seed(2)
   learner = lrn("regr.rvm")

@@ -1,6 +1,4 @@
-install_learners("classif.fnn")
-
-# No train parameters
+# no real training phase
 
 test_that("paramtest classif.fnn predict", {
   learner = lrn("classif.fnn")
