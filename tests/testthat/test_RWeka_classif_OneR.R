@@ -1,5 +1,3 @@
-install_learners("classif.OneR")
-
 skip_on_os("windows")
 
 test_that("autotest", {

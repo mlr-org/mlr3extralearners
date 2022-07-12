@@ -1,5 +1,3 @@
-load_tests("surv.coxboost")
-
 test_that("paramtest surv.coxboost train", {
   learner = lrn("surv.coxboost")
   fun_list = list(CoxBoost::CoxBoost)

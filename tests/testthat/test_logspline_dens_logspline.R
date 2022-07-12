@@ -1,6 +1,3 @@
-install_learners("dens.logspline")
-load_tests("dens.logspline")
-
 test_that("autotest", {
   learner = LearnerDensLogspline$new()
   expect_learner(learner)

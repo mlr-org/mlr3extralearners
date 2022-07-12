@@ -1,5 +1,3 @@
-install_learners("classif.cforest")
-
 test_that("autotest", {
   learner = LearnerClassifCForest$new()
   learner$param_set$values = list(ntree = 30L)

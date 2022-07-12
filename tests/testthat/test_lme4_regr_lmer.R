@@ -1,6 +1,3 @@
-install_learners("regr.lmer")
-load_tests("regr.lmer")
-
 test_that("autotest", {
   learner = lrn("regr.lmer")
   expect_learner(learner)

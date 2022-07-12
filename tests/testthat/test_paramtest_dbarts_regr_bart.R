@@ -1,5 +1,3 @@
-install_learners("regr.bart")
-
 test_that("paramtest regr.bart train", {
   learner = lrn("regr.bart")
   fun_list = list(dbarts::bart)

@@ -1,6 +1,3 @@
-install_learners("regr.lmer")
-load_tests("regr.lmer")
-
 test_that("regr.lmer train", {
   learner = lrn("regr.lmer")
   fun = c(lme4::lmer, lme4::lmerControl)

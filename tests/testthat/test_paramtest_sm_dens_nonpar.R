@@ -1,6 +1,3 @@
-install_learners("dens.nonpar")
-load_tests("dens.nonpar")
-
 test_that("paramtest dens.nonpar train", {
   learner = lrn("dens.nonpar")
   fun = sm::sm.density

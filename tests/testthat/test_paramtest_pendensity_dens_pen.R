@@ -1,6 +1,3 @@
-install_learners("dens.pen")
-load_tests("dens.pen")
-
 test_that("paramtest dens.pen train", {
   learner = lrn("dens.pen")
   fun_list = list(pendensity::pendensity)

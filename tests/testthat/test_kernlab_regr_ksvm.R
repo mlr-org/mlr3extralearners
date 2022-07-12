@@ -1,5 +1,3 @@
-install_learners("regr.ksvm")
-
 test_that("autotest", {
   learner = LearnerRegrKSVM$new()
   expect_learner(learner)

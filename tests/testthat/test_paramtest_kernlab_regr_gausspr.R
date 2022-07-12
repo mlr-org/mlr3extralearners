@@ -1,6 +1,3 @@
-install_learners("regr.gausspr")
-load_tests("regr.gausspr")
-
 test_that("paramtest regr.gausspr train", {
   learner = lrn("regr.gausspr")
   # The Learner actually calls the S4 method with class "formula", but this only creates the matrix

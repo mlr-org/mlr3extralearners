@@ -1,6 +1,3 @@
-install_learners("dens.mixed")
-load_tests("dens.mixed")
-
 test_that("paramtest dens.mixed train", {
   learner = lrn("dens.mixed")
   fun_list = list(np::npudens, np:::npudensbw.default) # nolint

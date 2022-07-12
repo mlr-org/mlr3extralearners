@@ -1,5 +1,3 @@
-load_tests("surv.coxboost")
-
 test_that("autotest surv.coxboost", {
   learner = LearnerSurvCoxboost$new()
   expect_learner(learner)

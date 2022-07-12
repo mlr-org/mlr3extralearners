@@ -1,5 +1,3 @@
-install_learners("regr.liblinear")
-
 test_that("paramtest regr.liblinear train", {
   learner = lrn("regr.liblinear")
   fun_list = list(LiblineaR::LiblineaR)

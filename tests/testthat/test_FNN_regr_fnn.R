@@ -1,5 +1,3 @@
-install_learners("regr.fnn")
-
 test_that("autotest", {
   learner = LearnerRegrFNN$new()
   learner$param_set$values = list(k = 10)

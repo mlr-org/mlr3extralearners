@@ -1,6 +1,3 @@
-install_learners("surv.obliqueRSF")
-load_tests("surv.obliqueRSF")
-
 test_that("autotest", {
   set.seed(1) # there was presumable a weird bug
   learner = lrn("surv.obliqueRSF", compute_oob_predictions = TRUE)

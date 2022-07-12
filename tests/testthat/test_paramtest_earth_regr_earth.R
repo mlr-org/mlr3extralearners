@@ -1,5 +1,3 @@
-install_learners("regr.earth")
-
 test_that("paramtest regr.earth train", {
   learner = lrn("regr.earth")
   fun = earth:::earth.default # nolint

@@ -1,5 +1,3 @@
-install_learners("classif.mob")
-
 test_that("autotest", {
   # use a senseless logit model and partition with respect to all features
   logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {

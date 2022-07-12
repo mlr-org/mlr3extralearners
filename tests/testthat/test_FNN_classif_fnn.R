@@ -1,5 +1,3 @@
-install_learners("classif.fnn")
-
 test_that("autotest", {
   learner = LearnerClassifFNN$new()
   learner$param_set$values = list(k = 10)

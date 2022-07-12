@@ -1,5 +1,3 @@
-install_learners("regr.liblinear")
-
 test_that("autotest", {
   learner = LearnerRegrLiblineaR$new()
   expect_learner(learner)

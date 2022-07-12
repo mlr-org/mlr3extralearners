@@ -1,5 +1,3 @@
-install_learners("regr.bart")
-
 test_that("autotest", {
   learner = lrn("regr.bart")
 

@@ -1,6 +1,3 @@
-install_learners("classif.lightgbm")
-load_tests("classif.lightgbm")
-
 test_that("autotest", {
   set.seed(1)
   learner = lrn("classif.lightgbm", nrounds = 50)

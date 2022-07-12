@@ -1,5 +1,3 @@
-install_learners("regr.cforest")
-
 test_that("paramtest regr.cforest train", {
   learner = lrn("regr.cforest")
   fun_list = list(partykit::cforest, partykit::ctree_control)

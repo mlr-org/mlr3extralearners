@@ -1,5 +1,3 @@
-install_learners("classif.cforest")
-
 test_that("paramtest classif.cforest train", {
   learner = lrn("classif.cforest")
   fun_list = list(partykit::cforest, partykit::ctree_control, partykit::varimp.cforest)

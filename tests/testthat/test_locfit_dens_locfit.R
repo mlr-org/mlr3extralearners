@@ -1,6 +1,3 @@
-install_learners("dens.locfit")
-load_tests("dens.locfit")
-
 test_that("autotest", {
   learner = LearnerDensLocfit$new()
   expect_learner(learner)

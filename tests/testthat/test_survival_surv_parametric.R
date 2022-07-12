@@ -1,6 +1,3 @@
-install_learners("surv.parametric")
-load_tests("surv.parametric")
-
 test_that("autotest aft", {
   set.seed(1)
   learner = lrn("surv.parametric")
