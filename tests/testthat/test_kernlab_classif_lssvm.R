@@ -1,6 +1,3 @@
-install_learners("classif.lssvm")
-load_tests("classif.lssvm")
-
 test_that("autotest", {
   set.seed(1)
   learner = lrn("classif.lssvm")

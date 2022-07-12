@@ -1,5 +1,3 @@
-install_learners("classif.PART")
-
 test_that("paramtest classif.PART train", {
   learner = lrn("classif.PART")
   fun = RWeka::PART

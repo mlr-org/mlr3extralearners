@@ -1,5 +1,3 @@
-install_learners("classif.earth")
-
 test_that("paramtest classif.earth train", {
   learner = lrn("classif.earth")
   fun_list = list(earth:::earth.default, earth:::earth.fit) # nolint

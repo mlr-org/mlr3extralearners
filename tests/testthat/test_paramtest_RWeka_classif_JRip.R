@@ -1,5 +1,3 @@
-install_learners("classif.JRip")
-
 test_that("paramtest classif.JRip train", {
   learner = lrn("classif.JRip")
   fun = RWeka::JRip

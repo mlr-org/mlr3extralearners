@@ -1,5 +1,3 @@
-load_tests("surv.cv_coxboost")
-
 test_that("autotest", {
   set.seed(1)
   learner = lrn("surv.cv_coxboost", maxstepno = 1, K = 2)

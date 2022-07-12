@@ -1,5 +1,3 @@
-install_learners("classif.IBk")
-
 test_that("paramtest classif.IBk train", {
   learner = lrn("classif.IBk")
   fun = RWeka::IBk

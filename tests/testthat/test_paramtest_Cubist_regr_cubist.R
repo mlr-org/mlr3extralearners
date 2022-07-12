@@ -1,6 +1,3 @@
-install_learners("regr.cubist")
-load_tests("regr.cubist")
-
 test_that("paramtest regr.cubist train", {
   learner = lrn("regr.cubist")
   fun_list = list(Cubist::cubist, Cubist::cubistControl, Cubist:::cubist.default) # nolint

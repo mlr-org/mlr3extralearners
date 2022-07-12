@@ -1,5 +1,3 @@
-install_learners("classif.randomForest")
-
 test_that("autotest", {
   learner = LearnerClassifRandomForest$new()
   learner$param_set$values = list(importance = "gini")

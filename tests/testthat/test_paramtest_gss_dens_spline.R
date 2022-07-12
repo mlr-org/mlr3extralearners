@@ -1,6 +1,3 @@
-install_learners("dens.spline")
-load_tests("dens.spline")
-
 test_that("paramtest dens.spline train", {
   learner = lrn("dens.spline")
   fun = gss::ssden

@@ -1,6 +1,3 @@
-install_learners("surv.flexible")
-load_tests("surv.flexible")
-
 test_that("autotest", {
   set.seed(200)
   learner = lrn("surv.flexible", k = 1, scale = "normal", inits = c(0.1, 1))

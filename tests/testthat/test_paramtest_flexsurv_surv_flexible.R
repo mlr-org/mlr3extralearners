@@ -1,6 +1,3 @@
-install_learners("surv.flexible")
-load_tests("surv.flexible")
-
 test_that("paramtest surv.flexible train", {
   task = tsk("rats")
   learner = lrn("surv.flexible")

@@ -1,5 +1,3 @@
-install_learners("classif.bart")
-
 test_that("paramtest classif.bart train", {
   learner = lrn("classif.bart")
   fun_list = list(dbarts::bart)

@@ -1,5 +1,3 @@
-install_learners("classif.AdaBoostM1")
-
 test_that("paramtest classif.AdaBoostM1 train", {
   learner = lrn("classif.AdaBoostM1")
   fun = RWeka::AdaBoostM1

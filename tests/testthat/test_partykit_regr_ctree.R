@@ -1,5 +1,3 @@
-install_learners("regr.ctree")
-
 test_that("autotest", {
   learner = LearnerRegrCTree$new()
   expect_learner(learner)

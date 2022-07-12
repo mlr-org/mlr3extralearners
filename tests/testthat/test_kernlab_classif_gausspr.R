@@ -1,6 +1,3 @@
-install_learners("classif.gausspr")
-load_tests("classif.gausspr")
-
 test_that("autotest", {
   learner = lrn("classif.gausspr")
   expect_learner(learner)

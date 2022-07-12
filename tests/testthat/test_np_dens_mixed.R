@@ -1,6 +1,3 @@
-install_learners("dens.mixed")
-load_tests("dens.mixed")
-
 test_that("autotest", {
   learner = LearnerDensMixed$new()
   expect_learner(learner)

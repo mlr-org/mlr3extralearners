@@ -1,7 +1,3 @@
-if (!requireNamespace("catboost", quietly = TRUE)) {
-  install_catboost()
-}
-
 test_that("autotest", {
   learner = lrn("classif.catboost", iterations = 10)
   expect_learner(learner)

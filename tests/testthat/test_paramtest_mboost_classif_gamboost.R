@@ -1,5 +1,3 @@
-install_learners("classif.gamboost")
-
 test_that("paramtest classif.gamboost train", {
   learner = lrn("classif.gamboost")
   fun_list = list(mboost::gamboost, mboost::boost_control)

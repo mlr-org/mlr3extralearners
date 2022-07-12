@@ -1,5 +1,3 @@
-install_learners("classif.C50")
-
 test_that("autotest", {
   learner = LearnerClassifC50$new()
   learner$param_set$values = list(trials = 30L)

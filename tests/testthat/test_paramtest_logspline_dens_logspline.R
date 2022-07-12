@@ -1,6 +1,3 @@
-install_learners("dens.logspline")
-load_tests("dens.logspline")
-
 test_that("paramtest dens.logspline", {
   learner = lrn("dens.logspline")
   fun = logspline::logspline

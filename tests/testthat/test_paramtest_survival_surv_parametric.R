@@ -1,6 +1,3 @@
-install_learners("surv.parametric")
-load_tests("surv.parametric")
-
 test_that("paramtest surv.parametric train", {
   learner = lrn("surv.parametric")
   fun = survival::survreg

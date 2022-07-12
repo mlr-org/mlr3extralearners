@@ -1,6 +1,3 @@
-install_learners("classif.rfsrc")
-
-
 test_that("importance/selected", {
   set.seed(1)
   task = tsk("iris")

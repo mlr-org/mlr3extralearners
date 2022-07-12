@@ -1,5 +1,3 @@
-install_learners("regr.IBk")
-
 skip_on_os("windows")
 
 test_that("paramtest regr.IBk train", {

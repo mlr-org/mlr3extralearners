@@ -1,6 +1,3 @@
-install_learners("surv.loghaz")
-load_tests("surv.loghaz")
-
 skip_on_os("windows")
 
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||

@@ -1,6 +1,3 @@
-library(mlr3extralearners)
-install_learners("regr.glm")
-
 test_that("paramtest regr.glm train", {
   learner = lrn("regr.glm")
   fun_list = list(stats::glm, stats::glm.control)

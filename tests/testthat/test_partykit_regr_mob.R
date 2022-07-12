@@ -1,5 +1,3 @@
-install_learners("regr.mob")
-
 test_that("autotest", {
   set.seed(1)
   # use a senseless linear model and partition with respect to all features

@@ -1,6 +1,3 @@
-install_learners("regr.cubist")
-load_tests("regr.cubist")
-
 test_that("autotest", {
   learner = lrn("regr.cubist")
   expect_learner(learner)
