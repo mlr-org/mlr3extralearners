@@ -29,7 +29,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         rules = p_int(lower = 1L, default = 100L, tags = "train"),
         extrapolation = p_dbl(lower = 0, upper = 100, default = 100, tags = "train"),
         sample = p_int(lower = 0L, default = 0L, tags = "train"),
-        seed = p_int(default = sample.int(4096, size = 1), tags = "train"),
+        seed = p_uty(default = "sample.int(4096, size = 1)", tags = "train", custom_check = check_int),
         label = p_uty(default = "outcome", tags = "train"),
         neighbors = p_int(lower = 0L, upper = 9L, default = 0L, tags = c("predict", "required"))
       )
