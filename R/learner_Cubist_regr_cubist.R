@@ -23,15 +23,23 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      param_set = ps(
-        committees = p_int(lower = 1L, upper = 100L, default = 1L, tags = c("train", "required")),
-        unbiased = p_lgl(default = FALSE, tags = "train"),
-        rules = p_int(lower = 1L, default = 100L, tags = "train"),
-        extrapolation = p_dbl(lower = 0, upper = 100, default = 100, tags = "train"),
-        sample = p_int(lower = 0L, default = 0L, tags = "train"),
-        seed = p_uty(default = "sample.int(4096, size = 1)", tags = "train", custom_check = check_int),
-        label = p_uty(default = "outcome", tags = "train"),
-        neighbors = p_int(lower = 0L, upper = 9L, default = 0L, tags = c("predict", "required"))
+      # FIXME:
+      # currently symbolic defaults like sample.int(4096, size = 1) are not really well supported
+      # in paradox. The default value of untyped parameters is ignored when "repr" is provided.
+      # Is default / repr are only used for creating the learner docs, we can se the default
+      # of seed to 1 (arbitrary) and the repr to the string representing the default
+      # This is currently not possible with the shorthand ps(...)
+      param_set = ParamSet$new(
+        list(
+          ParamInt$new("committees", lower = 1L, upper = 100L, default = 1L, tags = c("train", "required")),
+          ParamLgl$new("unbiased", default = FALSE, tags = "train"),
+          ParamInt$new("rules", lower = 1L, default = 100L, tags = "train"),
+          ParamDbl$new("extrapolation", lower = 0, upper = 100, default = 100, tags = "train"),
+          ParamInt$new("sample", lower = 0L, default = 0L, tags = "train"),
+          ParamUty$new("seed", default = 0, repr = "sample.int(4096, size = 1)", custom_check = check_int, tags = "train"),
+          ParamUty$new("label", default = "outcome", tags = "train"),
+          ParamInt$new("neighbors", lower = 0L, upper = 9L, default = 0L, tags = c("predict", "required"))
+        )
       )
       param_set$values$committees = 1L
       param_set$values$neighbors = 0L
