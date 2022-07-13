@@ -8,7 +8,7 @@ create_learner(
   path = ".",
   classname,
   type,
-  id = tolower(classname),
+  key = tolower(classname),
   algorithm,
   package,
   caller,
@@ -33,8 +33,9 @@ Suffix for R6 class name passed to LearnerType 'classname'.}
 \item{type}{(\code{character(1)})\cr
 See \code{mlr3::mlr_reflections$task_types$type}.}
 
-\item{id}{(\code{character(1)})\cr
-Id for learner, if not provided defaults to the \code{classname} in all lower case.}
+\item{key}{(\code{character(1)})\cr
+key for learner, if not provided defaults to the \code{classname} in all lower case.
+In combination with \code{type} it creates the learner's id.}
 
 \item{algorithm}{(\code{character(1)})\cr
 Brief description of the algorithm, like "Linear Model" or "Random Forest".
@@ -64,7 +65,7 @@ Defaults to \code{"Unknown"}.}
 \item{label}{(\code{character(1)})\cr
 Label for the learner, default is the value of the parameter \code{algorithm}.}
 
-\item{data_formats}{(\code{character(1)})\r
+\item{data_formats}{(\code{character(1)})\cr
 The data format the learner can deal with (see \code{mlr_reflections$data_formats}).
 Default is \code{"data.table"}.}
 }
@@ -74,19 +75,21 @@ For more details see the \href{https://mlr3book.mlr-org.com/extending.html}{mlr3
 }
 \examples{
 \dontrun{
-# Simpler linear regression example
 create_learner(
-  path = tempdir(),
-  classname = "LM",
-  type = "regr",
-  algorithm = "Linear Model",
-  package = "stats",
-  caller = "lm",
-  feature_types = c("logical", "integer", "numeric", "factor"),
-  predict_types = c("response", "se"),
-  properties = "weights",
+  path = "path/to/a/folder/or/package",
+  classname = "Rpart",
+  type = "classif",
+  key = "rpart",
+  algorithm = "Decision Tree"
+  package = "rpart",
+  caller = "rpart",
+  feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+  predict_types = c("response", "prob"),
+  properties = c("importance", "missings", "multiclass",
+    "selected_features", "twoclass", "weights"),
   gh_name = "RaphaelS1",
-  label = "Linear Regression"
+  label = "Regression and Partition Tree",
+  data_formats = "data.table"
 )
 }
 }

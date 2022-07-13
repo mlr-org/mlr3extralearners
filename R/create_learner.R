@@ -13,8 +13,9 @@
 #'   Suffix for R6 class name passed to LearnerType 'classname'.
 #' @param type (`character(1)`)\cr
 #'   See `mlr3::mlr_reflections$task_types$type`.
-#' @param id (`character(1)`)\cr
-#'   Id for learner, if not provided defaults to the `classname` in all lower case.
+#' @param key (`character(1)`)\cr
+#'   key for learner, if not provided defaults to the `classname` in all lower case.
+#'   In combination with `type` it creates the learner's id.
 #' @param algorithm (`character(1)`)\cr
 #'   Brief description of the algorithm, like "Linear Model" or "Random Forest".
 #'   Is used for the title of the help package and as the label (if no other label is provided).
@@ -35,29 +36,31 @@
 #'   Defaults to `"Unknown"`.
 #' @param label (`character(1)`)\cr
 #'   Label for the learner, default is the value of the parameter `algorithm`.
-#' @param data_formats (`character(1)`)\r
+#' @param data_formats (`character(1)`)\cr
 #'   The data format the learner can deal with (see `mlr_reflections$data_formats`).
 #'   Default is `"data.table"`.
 #'
 #' @examples
 #' \dontrun{
-#' # Simpler linear regression example
 #' create_learner(
-#'   path = tempdir(),
-#'   classname = "LM",
-#'   type = "regr",
-#'   algorithm = "Linear Model",
-#'   package = "stats",
-#'   caller = "lm",
-#'   feature_types = c("logical", "integer", "numeric", "factor"),
-#'   predict_types = c("response", "se"),
-#'   properties = "weights",
+#'   path = "path/to/a/folder/or/package",
+#'   classname = "Rpart",
+#'   type = "classif",
+#'   key = "rpart",
+#'   algorithm = "Decision Tree"
+#'   package = "rpart",
+#'   caller = "rpart",
+#'   feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+#'   predict_types = c("response", "prob"),
+#'   properties = c("importance", "missings", "multiclass",
+#'     "selected_features", "twoclass", "weights"),
 #'   gh_name = "RaphaelS1",
-#'   label = "Linear Regression"
+#'   label = "Regression and Partition Tree",
+#'   data_formats = "data.table"
 #' )
 #' }
 #' @export
-create_learner = function(path = ".", classname, type, id = tolower(classname), algorithm,
+create_learner = function(path = ".", classname, type, key = tolower(classname), algorithm,
   package, caller,
   feature_types, predict_types, properties, gh_name = "Unknown", label = toproper(algorithm), data_formats = "data.table") {
 
@@ -77,7 +80,7 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
   }
   assert_character(classname, len = 1L)
   assert_choice(type, mlr3::mlr_reflections$task_types$type)
-  assert_character(id, len = 1L)
+  assert_character(key, len = 1L)
   assert_character(algorithm, any.missing = FALSE, len = 1L)
   assert_character(package, any.missing = FALSE, len = 1L)
   assert_character(caller, any.missing = FALSE, len = 1L)
@@ -109,9 +112,9 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
 
   # Get the paths where the files (learner, test, parameter) test will be created.
 
-  file_lrn = paste0("learner_", package, "_", type, "_", id, ".R")
-  file_ptest = paste0("test_paramtest_", package, "_", type, "_", id, ".R")
-  file_test = paste0("test_", package, "_", type, "_", id, ".R")
+  file_lrn = paste0("learner_", package, "_", type, "_", key, ".R")
+  file_ptest = paste0("test_paramtest_", package, "_", type, "_", key, ".R")
+  file_test = paste0("test_", package, "_", type, "_", key, ".R")
 
   template_lrn = system.file("templates", "learner_template.R", package = "mlr3extralearners")
   template_test = system.file("templates", "test_template.R", package = "mlr3extralearners")
@@ -137,7 +140,7 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     x = readLines(template_lrn)
     x = gsub("<type>", type, x)
     x = gsub("<Type>", Type, x)
-    x = gsub("<key>", id, x)
+    x = gsub("<key>", key, x)
     x = gsub("<algorithm>", algorithm, x)
     x = gsub("<Type_lng>", type_lng, x)
     x = gsub("<package>", package, x)
@@ -208,10 +211,10 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     x = readLines(template_test)
     x = gsub("<type>", type, x)
     x = gsub("<Type>", Type, x)
-    x = gsub("<key>", id, x)
+    x = gsub("<key>", key, x)
     x = gsub("<Classname>", classname, x)
     cat(x, file = path_test, sep = "\n")
-    messagef("Created %s tests from template.", paste(type, id, sep = "_"))
+    messagef("Created %s tests from template.", paste(type, key, sep = "_"))
   }
 
   # ADD PARAM TESTS
@@ -222,11 +225,11 @@ create_learner = function(path = ".", classname, type, id = tolower(classname), 
     file.create(path_ptest)
     x = readLines(template_ptest)
     x = gsub("<type>", type, x)
-    x = gsub("<key>", id, x)
+    x = gsub("<key>", key, x)
     x = gsub("<package>", package, x)
     x = gsub("<caller>", caller, x)
     cat(x, file = path_ptest, sep = "\n")
-    messagef("Created %s paramtests from template.", paste(type, id, sep = "_"))
+    messagef("Created %s paramtests from template.", paste(type, key, sep = "_"))
   }
 
   c(learner = path_lrn, test = path_test, param_test = path_ptest)

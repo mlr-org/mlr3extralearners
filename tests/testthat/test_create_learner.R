@@ -10,7 +10,7 @@ test_that("create_learner works for tempdir", {
     path = path,
     classname = "LM",
     type = "regr",
-    id = "lm",
+    key = "lm",
     algorithm = "Linear Model",
     package = "stats",
     caller = "lm",
@@ -22,7 +22,7 @@ test_that("create_learner works for tempdir", {
   )
 
   # just check whether the file was created
-  template_lrn = readLines(files[["learner"]])
+  template_lrn = suppressWarnings(readLines(files[["learner"]]))
   template_test = readLines(files[["test"]])
   template_ptest = readLines(files[["param_test"]])
 
@@ -53,7 +53,7 @@ test_that("create_learner works for tempdir", {
           path = path,
           classname = "LM",
           type = "regr",
-          id = "lm",
+          key = "lm",
           algorithm = "Linear Model",
           package = "stats",
           caller = "lm",
@@ -87,7 +87,7 @@ test_that("create_learner works for an R package", {
     path = path,
     classname = "LM",
     type = "regr",
-    id = "lm",
+    key = "lm",
     algorithm = "Linear Model",
     package = "stats",
     caller = "lm",
@@ -128,7 +128,7 @@ test_that("create_learner works for an R package", {
           path = path,
           classname = "LM",
           type = "regr",
-          id = "lm",
+          key = "lm",
           algorithm = "Linear Model",
           package = "stats",
           caller = "lm",
@@ -176,7 +176,7 @@ test_that("Commas are fixed properly", {
     path = path,
     classname = "LM",
     type = "regr",
-    id = "lm",
+    key = "lm",
     algorithm = "Linear Model",
     package = "stats",
     caller = "lm",
@@ -196,6 +196,4 @@ test_that("Commas are fixed properly", {
   Learner = eval(e)
   expect_error(learner <<- Learner$new(), regexp = NA)
   expect_set_equal(learner$properties, properties)
-
-
 })
