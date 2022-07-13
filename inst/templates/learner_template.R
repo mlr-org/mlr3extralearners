@@ -75,7 +75,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     # SEE mlr3learners::LearnerRegrLM FOR AN EXAMPLE
     #' @description
     #' Log-Likelihood is obtained by <FIXME>.
-    #' @return `character()`.
+    #' @return `numeric(1)`.
     loglik = function() {
       pars = self$param_set$get_values(tags = "loglik")
     }
