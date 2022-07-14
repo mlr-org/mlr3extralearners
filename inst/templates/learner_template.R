@@ -30,10 +30,10 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      # FIXME - MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
+      # <FIXME> - MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
       param_set = ps()
 
-      # FIXME - MANUALLY UPDATE PARAM VALUES BELOW IF APPLICABLE THEN DELETE THIS LINE.
+      # <FIXME> - MANUALLY UPDATE PARAM VALUES BELOW IF APPLICABLE THEN DELETE THIS LINE.
       param_set$values = list()
 
       super$initialize(
