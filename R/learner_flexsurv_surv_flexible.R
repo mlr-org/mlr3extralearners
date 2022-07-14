@@ -21,7 +21,7 @@
 #' and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
 #' of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 defaults:
 #' - `k`:
 #'   - Actual default: `0`
 #'   - Adjusted default: `1`

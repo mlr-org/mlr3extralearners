@@ -80,7 +80,7 @@ lrn("regr.cforest")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:

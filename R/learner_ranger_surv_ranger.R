@@ -6,15 +6,17 @@
 #' Random survival forest.
 #' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
 #'
-#' @section Parameter Changes:
-#' - `num.threads`:
-#'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
-#'   - Adjusted value: 1.
-#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
+#' @section Custom mlr3 parameters:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via our hyperparameter `mtry.ratio`
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#'
+#' @section Custom mlr3 defaults:
+#' - `num.threads`:
+#'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
+#'   - Adjusted value: 1.
+#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
 #'
 #' @templateVar id surv.ranger
 #' @template learner

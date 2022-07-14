@@ -8,7 +8,19 @@
 Random survival forest.
 Calls \code{\link[ranger:ranger]{ranger::ranger()}} from package \CRANpkg{ranger}.
 }
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via our hyperparameter \code{mtry.ratio}
+as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+}
+}
+
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{num.threads}:
@@ -16,12 +28,6 @@ Calls \code{\link[ranger:ranger]{ranger::ranger()}} from package \CRANpkg{ranger
 \item Actual default: \code{NULL}, triggering auto-detection of the number of CPUs.
 \item Adjusted value: 1.
 \item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-}
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via our hyperparameter \code{mtry.ratio}
-as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
-Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 }
 }
 }

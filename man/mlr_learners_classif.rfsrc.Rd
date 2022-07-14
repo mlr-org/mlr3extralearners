@@ -68,15 +68,9 @@ lrn("classif.rfsrc")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{cores}:
-\itemize{
-\item Actual default: Auto-detecting the number of cores
-\item Adjusted default: 1
-\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
-}
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
@@ -88,6 +82,18 @@ Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
 as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
+}
+}
+}
+
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item \code{cores}:
+\itemize{
+\item Actual default: Auto-detecting the number of cores
+\item Adjusted default: 1
+\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
 }
 }
 }

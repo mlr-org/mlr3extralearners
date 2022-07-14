@@ -50,7 +50,7 @@ lrn("regr.glm")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{type}

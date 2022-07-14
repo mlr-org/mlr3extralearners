@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.gbm
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 defaults:
 #' - `keep_data`:
 #'   - Actual default: TRUE
 #'   - Adjusted default: FALSE

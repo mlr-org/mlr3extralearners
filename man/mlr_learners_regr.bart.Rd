@@ -55,15 +55,9 @@ lrn("regr.bart")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
-\item Parameter: keeptrees
-\itemize{
-\item Original: FALSE
-\item New: TRUE
-\item Reason: Required for prediction
-}
 \item Parameter: offset
 \itemize{
 \item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
@@ -73,6 +67,18 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 \item Parameter: nthread, nchain, combineChains, combinechains
 \itemize{
 \item The parameters are removed as parallelization of multiple models is handled by future.
+}
+}
+}
+
+\section{Custom mlr3 defaults}{
+
+\itemize{
+\item Parameter: keeptrees
+\itemize{
+\item Original: FALSE
+\item New: TRUE
+\item Reason: Required for prediction
 }
 }
 }

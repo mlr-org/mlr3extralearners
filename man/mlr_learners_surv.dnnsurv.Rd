@@ -77,7 +77,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{verbose}:

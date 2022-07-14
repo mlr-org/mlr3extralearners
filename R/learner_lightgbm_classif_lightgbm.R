@@ -10,15 +10,7 @@
 #' @template learner
 #' @templateVar id classif.lightgbm
 #'
-#' @section Parameter Changes:
-#' - `num_threads`:
-#'   - Actual default: 0L
-#'   - Adjusted default: 1L
-#'   - Reason for change: Prevents accidental conflicts with `future`.
-#' - `verbose`:
-#'   - Actual default: 1L
-#'   - Adjusted default: -1L
-#'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
+#' @section Custom mlr3 parameters:
 #' - `convert_categorical`:
 #'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
 #'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
@@ -28,6 +20,16 @@
 #'  the parameter `early_stopping_split` determines the proportion of the training data that is
 #'  used for early stopping. Here, stratification on the target variable is used if there is no
 #'  grouping variable, as one cannot simultaneously stratify and group.
+#'
+#' @section Custom mlr3 defaults:
+#' - `num_threads`:
+#'   - Actual default: 0L
+#'   - Adjusted default: 1L
+#'   - Reason for change: Prevents accidental conflicts with `future`.
+#' - `verbose`:
+#'   - Actual default: 1L
+#'   - Adjusted default: -1L
+#'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`

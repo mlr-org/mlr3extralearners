@@ -13,7 +13,7 @@
 #' The easiest way to install catboost is with the helper function
 #' [install_catboost].
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 defaults:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
 #'   - Adjusted default: "Silent"
