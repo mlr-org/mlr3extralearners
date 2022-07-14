@@ -8,7 +8,7 @@
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{glmnet}.
 }
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 The default for hyperparameter \code{family} is set to \code{"cox"}.
 }

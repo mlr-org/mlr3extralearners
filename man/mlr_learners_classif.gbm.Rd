@@ -45,7 +45,7 @@ lrn("classif.gbm")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{keep_data}:

@@ -8,15 +8,17 @@
 #' @template learner
 #' @templateVar id surv.obliqueRSF
 #'
-#' @section Parameter Changes:
-#' - `verbose`:
-#'   - Actual default: `TRUE`
-#'   - Adjusted default: `FALSE`
-#'   - Reason for change: mlr3 already has it's own verbose set to `TRUE` by default
+#' @section Custom mlr3 parameters:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry_ratio`
 #'     as `mtry = max(ceiling(mtry_ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry_ratio` are mutually exclusive.
+#'
+#' @section Custom mlr3 defaults:
+#' - `verbose`:
+#'   - Actual default: `TRUE`
+#'   - Adjusted default: `FALSE`
+#'   - Reason for change: mlr3 already has it's own verbose set to `TRUE` by default
 #'
 #' @references
 #' `r format_bib("jaeger_2019")`

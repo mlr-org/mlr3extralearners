@@ -15,7 +15,7 @@
 #' * `type = 12` – L2-regularized L2-loss support vector regression (dual)
 #' * `type = 13` – L2-regularized L1-loss support vector regression (dual)
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 defaults:
 #' - `svr_eps`:
 #'   - Actual default: `NULL`
 #'   - Adjusted default: 0.001

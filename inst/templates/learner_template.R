@@ -15,11 +15,11 @@
 #' @section Installation:
 #' <FIXME> IF THERE ARE IMPORTANT INSTALLATION INSTRUCTIONS ADD THEM HERE AND DELETE OTHERWISE.
 #'
-#' @template learner
 #' @templateVar id <type>.<key>
+#' @template learner
 #'
 #' @references
-#' `r format_bib(<FIXME> ONE OR MORE REFERENCES FROM BIBENTRIES)`
+#' `r format_bib(<FIXME> ONE OR MORE REFERENCES FROM bibentries.R)`
 #'
 #' @template seealso_learner
 #' @template example
@@ -102,7 +102,8 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # TRAIN CALL. CHECK OTHER LEARNERS FOR WHAT CAN BE DONE HERE
       # USE THE mlr3misc::invoke FUNCTION (IT'S SIMILAR TO DO.CALL())
 
-      invoke(<package>::<caller>,
+      invoke(
+        <package>::<caller>,
         formula = formula,
         data = data,
         .args = pars

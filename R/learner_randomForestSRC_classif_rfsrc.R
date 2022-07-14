@@ -9,11 +9,7 @@
 #' @template learner
 #' @templateVar id classif.rfsrc
 #'
-#' @section Parameter Changes:
-#' - `cores`:
-#'   - Actual default: Auto-detecting the number of cores
-#'   - Adjusted default: 1
-#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' @section Custom mlr3 parameters:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
@@ -22,6 +18,12 @@
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
 #'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
 #'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
+#'
+#' @section Custom mlr3 defaults:
+#' - `cores`:
+#'   - Actual default: Auto-detecting the number of cores
+#'   - Adjusted default: 1
+#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`

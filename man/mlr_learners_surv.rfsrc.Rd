@@ -76,15 +76,9 @@ lrn("surv.rfsrc")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{cores}:
-\itemize{
-\item Actual default: Auto-detecting the number of cores
-\item Adjusted default: 1
-\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
-}
 \item \code{mtry}:
 \itemize{
 \item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}

@@ -9,19 +9,19 @@
 #' @template learner
 #' @templateVar id regr.bart
 #'
-#' @section Parameter Changes:
-#' * Parameter: keeptrees
-#'   * Original: FALSE
-#'   * New: TRUE
-#'   * Reason: Required for prediction
-#'
+#' @section Custom mlr3 parameters:
 #' * Parameter: offset
 #'   * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
 #'     and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
 #'     `dbarts::dbart`.
-#'
 #' * Parameter: nthread, nchain, combineChains, combinechains
 #'   * The parameters are removed as parallelization of multiple models is handled by future.
+#'
+#' @section Custom mlr3 defaults:
+#' * Parameter: keeptrees
+#'   * Original: FALSE
+#'   * New: TRUE
+#'   * Reason: Required for prediction
 #'
 #' @references
 #' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`

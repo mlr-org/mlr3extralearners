@@ -60,7 +60,7 @@ lrn("surv.flexible")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{k}:

@@ -3,6 +3,9 @@
 * Clean up test files
 * Fix installation of catboost in CI
 * Fix the create_learner function
+* Adjust templates for creation of learner
+* Split up "Parameter Changes" in sections "Custom mlr3 parameters" and
+  "Custom mlr3 defaults"
 
 # mlr3extralearners 0.5.42
 

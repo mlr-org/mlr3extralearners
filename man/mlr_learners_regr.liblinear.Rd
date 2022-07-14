@@ -49,7 +49,7 @@ lrn("regr.liblinear")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{svr_eps}:

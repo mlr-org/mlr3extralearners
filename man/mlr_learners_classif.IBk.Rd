@@ -47,7 +47,7 @@ lrn("classif.IBk")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{output_debug_info}:

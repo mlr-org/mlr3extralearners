@@ -50,7 +50,19 @@ lrn("surv.obliqueRSF")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
+as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
+}
+}
+}
+
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{verbose}:
@@ -58,12 +70,6 @@ lrn("surv.obliqueRSF")
 \item Actual default: \code{TRUE}
 \item Adjusted default: \code{FALSE}
 \item Reason for change: mlr3 already has it's own verbose set to \code{TRUE} by default
-}
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
-as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
-Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 }
 }
 }

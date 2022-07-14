@@ -146,7 +146,22 @@ lrn("regr.lightgbm")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{convert_categorical}:
+Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.
+\item \code{early_stopping_split}:
+Additional parameter. Instead of providing the data that is used for early stopping explicitly,
+the parameter \code{early_stopping_split} determines the proportion of the training data that is
+used for early stopping. Here, stratification on the target variable is used if there is no
+grouping variable, as one cannot simultaneously stratify and group.
+}
+}
+
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{num_threads}:
@@ -161,15 +176,6 @@ lrn("regr.lightgbm")
 \item Adjusted default: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
-\item \code{early_stopping_split}:
-Additional parameter. Instead of providing the data that is used for early stopping explicitly,
-the parameter \code{early_stopping_split} determines the proportion of the training data that is
-used for early stopping. Here, stratification on the target variable is used if there is no
-grouping variable, as one cannot simultaneously stratify and group.
 }
 }
 

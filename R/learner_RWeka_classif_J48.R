@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.J48
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'

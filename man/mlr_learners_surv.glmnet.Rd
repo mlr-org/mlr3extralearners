@@ -25,9 +25,11 @@ However, in some situations this is not applicable, usually when data are
 imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 custom resampling strategies (blocked design, stratification).
 }
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
-The default for hyperparameter \code{family} is set to \code{"cox"}.
+\itemize{
+\item \code{family} The default is set to \code{"cox"}.
+}
 }
 
 \section{Dictionary}{

@@ -47,7 +47,7 @@ lrn("regr.IBk")
 }
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{output_debug_info}:

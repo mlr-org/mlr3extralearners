@@ -108,7 +108,7 @@ The easiest way to install catboost is with the helper function
 \link{install_catboost}.
 }
 
-\section{Parameter Changes}{
+\section{Custom mlr3 defaults}{
 
 \itemize{
 \item \code{logging_level}:

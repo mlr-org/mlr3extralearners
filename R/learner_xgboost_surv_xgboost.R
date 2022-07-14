@@ -8,7 +8,7 @@
 #'
 #' @template note_xgboost
 #'
-#' @section Parameter Changes:
+#' @section Custom mlr3 defaults:
 #' - `nrounds`:
 #'   - Actual default: no default.
 #'   - Adjusted default: 1.

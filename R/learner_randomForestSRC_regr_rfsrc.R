@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Parameter Changes
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
