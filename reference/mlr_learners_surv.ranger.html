@@ -89,16 +89,21 @@ Calls <code><a href="https://rdrr.io/pkg/ranger/man/ranger.html" class="external
 
 
     <div class="section level2">
-    <h2 id="parameter-changes">Parameter Changes<a class="anchor" aria-label="anchor" href="#parameter-changes"></a></h2>
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+    
+
+<ul><li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via our hyperparameter <code>mtry.ratio</code>
+as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
+Note that <code>mtry</code> and <code>mtry.ratio</code> are mutually exclusive.</p></li>
+</ul></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
     
 
 <ul><li><p><code>num.threads</code>:</p><ul><li><p>Actual default: <code>NULL</code>, triggering auto-detection of the number of CPUs.</p></li>
 <li><p>Adjusted value: 1.</p></li>
 <li><p>Reason for change: Conflicting with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
-</ul></li>
-<li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via our hyperparameter <code>mtry.ratio</code>
-as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
-Note that <code>mtry</code> and <code>mtry.ratio</code> are mutually exclusive.</p></li>
 </ul></li>
 </ul></div>
     <div class="section level2">
