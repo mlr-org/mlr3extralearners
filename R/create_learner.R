@@ -47,7 +47,7 @@
 #'   classname = "Rpart",
 #'   type = "classif",
 #'   key = "rpart",
-#'   algorithm = "Decision Tree"
+#'   algorithm = "Decision Tree",
 #'   package = "rpart",
 #'   caller = "rpart",
 #'   feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
