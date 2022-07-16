@@ -10,7 +10,9 @@ Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{
 }
 \section{Custom mlr3 defaults}{
 
-The default for hyperparameter \code{family} is set to \code{"cox"}.
+\itemize{
+\item \code{family} The default is set to \code{"cox"}.
+}
 }
 
 \section{Dictionary}{

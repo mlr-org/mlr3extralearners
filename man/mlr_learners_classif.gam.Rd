@@ -30,7 +30,7 @@ lrn("classif.gam")
 
 \itemize{
 \item Task type: \dQuote{classif}
-\item Predict Types: \dQuote{prob}, \dQuote{response}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{mgcv}
 }
