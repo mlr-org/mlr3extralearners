@@ -7,11 +7,6 @@ train_lightgbm = function(self, task, task_type) {
   convert_categorical = pars$convert_categorical
   pars$convert_categorical = NULL
 
-  if (!is.null(pars$custom_eval)) {
-    pars$metric = pars$custom_eval
-    pars$custom_eval = NULL
-  }
-
   early_stopping_split = pars$early_stopping_split
   pars$early_stopping_split = NULL
 
@@ -100,8 +95,9 @@ train_lightgbm = function(self, task, task_type) {
     }
   }
 
-  args = pars[which(names(pars) %in% formalArgs(lightgbm::lgb.train))]
-  params = pars[which(names(pars) %nin% formalArgs(lightgbm::lgb.train))]
+  ii = names(pars) %in% formalArgs(lightgbm::lgb.train)
+  args = pars[ii]
+  params = pars[!ii]
 
   invoke(
     lightgbm::lgb.train,

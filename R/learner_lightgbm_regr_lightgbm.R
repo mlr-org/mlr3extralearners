@@ -5,6 +5,8 @@
 #' @description
 #' Gradient boosting algorithm.
 #' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
+#' Note that lightgbm models have to be saved using `lightgbm::lgb.save`, so you cannot simpliy
+#' save the learner using `saveRDS`.
 #'
 #' @template learner
 #' @templateVar id regr.lightgbm
@@ -52,7 +54,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         metric = p_fct(default = "", levels = c("", "None", "l1", "l2", "rmse",
           "quantile", "mape", "huber", "fair", "poisson", "gamma", "gamma_deviance", "tweedie",
           "ndcg"), tags = "train"),
-        custom_eval = p_uty(default = NULL, tags = "train"),
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),

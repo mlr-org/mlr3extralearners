@@ -7,6 +7,8 @@
 \description{
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
+Note that lightgbm models have to be saved using \code{lightgbm::lgb.save}, so you cannot simpliy
+save the learner using \code{saveRDS}.
 }
 \section{Dictionary}{
 
@@ -33,7 +35,6 @@ lrn("regr.lightgbm")
    nrounds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    objective \tab character \tab regression \tab regression, regression_l1, huber, fair, poisson, quantile, mape, gamma, tweedie \tab - \cr
    metric \tab character \tab  \tab , None, l1, l2, rmse, quantile, mape, huber, fair, poisson, \link{...} \tab - \cr
-   custom_eval \tab untyped \tab  \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
