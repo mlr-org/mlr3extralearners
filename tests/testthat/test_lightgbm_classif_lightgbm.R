@@ -1,6 +1,6 @@
 test_that("autotest", {
   set.seed(1)
-  learner = lrn("classif.lightgbm", nrounds = 50)
+  learner = lrn("classif.lightgbm", num_iterations = 50)
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
@@ -27,7 +27,7 @@ test_that("manual validation multiclass", {
 
 test_that("Can pass parameters", {
   task = tsk("iris")
-  learner = lrn("classif.lightgbm", nrounds = 5L, max_bin = 10L)
+  learner = lrn("classif.lightgbm", num_iterations = 5L, max_bin = 10L)
   expect_warning(learner$train(task), regexp = NA)
 })
 
