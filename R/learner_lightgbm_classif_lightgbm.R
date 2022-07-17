@@ -259,11 +259,10 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = encode_lightgbm_predict(task, self$state$data_prototype)$X
-
+      data = encode_lightgbm_predict(task, self$state$data_prototype)$X
       pred = invoke(predict,
         object = self$model,
-        data = newdata,
+        newdata = data,
         params = pars
       )
 
