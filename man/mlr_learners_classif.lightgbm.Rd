@@ -8,7 +8,7 @@
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
 Note that lightgbm models have to be saved using \code{lightgbm::lgb.save}, so you cannot simpliy
-save the learner using \code{saveRDS}.
+save the learner using \code{saveRDS}. This will change in future versions of lightgbm.
 }
 \section{Dictionary}{
 
@@ -33,8 +33,8 @@ lrn("classif.lightgbm")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   objective \tab character \tab binary \tab binary, multiclass, multiclassova, cross_entropy, cross_entropy_lambda, lambdarank, rank_xendcg \tab - \cr
-   metric \tab character \tab  \tab , None, ndcg, map, auc, average_precision, binary_logloss, binary_error, auc_mu, multi_logloss, \link{...} \tab - \cr
+   objective \tab character \tab - \tab binary, multiclass, multiclassova \tab - \cr
+   metric \tab character \tab - \tab , None, ndcg, map, auc, average_precision, binary_logloss, binary_error, auc_mu, multi_logloss, \link{...} \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -122,9 +122,6 @@ lrn("classif.lightgbm")
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigmoid \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   lambdarank_truncation_level \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   lambdarank_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   label_gain \tab untyped \tab - \tab  \tab - \cr
    eval_at \tab untyped \tab :, 1, 5 \tab  \tab - \cr
    multi_error_top_k \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    auc_mu_weights \tab untyped \tab  \tab  \tab - \cr
@@ -157,7 +154,7 @@ the parameter \code{early_stopping_split} determines the proportion of the train
 used for early stopping. Here, stratification on the target variable is used if there is no
 grouping variable, as one cannot simultaneously stratify and group.
 \item \code{num_class}:
-This parameter is automatically inferred and does not have to be set.
+This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
 }
 
@@ -176,6 +173,9 @@ This parameter is automatically inferred and does not have to be set.
 \item Adjusted default: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
+\item \code{objective}:
+Depending if the task is binary / multiclass, the default is set to \code{"binary"} or
+\code{"multiclasss"}.
 }
 }
 

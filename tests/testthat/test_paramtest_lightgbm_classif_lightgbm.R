@@ -61,6 +61,10 @@ test_that("paramtest classif.lightgbm train", {
     "convert_model", # only cli version
     "metric_freq", # only cli version
     "is_provide_training_metric", # only cli version
+    # rank parameters
+    "lambdarank_truncation_level", # ranking
+    "lambdarank_norm", # ranking
+    "label_gain", # ranking
 
     # custom parameters
     "early_stopping_split",

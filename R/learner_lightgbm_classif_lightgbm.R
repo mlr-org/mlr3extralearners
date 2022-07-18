@@ -6,32 +6,36 @@
 #' Gradient boosting algorithm.
 #' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
 #' Note that lightgbm models have to be saved using `lightgbm::lgb.save`, so you cannot simpliy
-#' save the learner using `saveRDS`.
+#' save the learner using `saveRDS`. This will change in future versions of lightgbm.
 #'
 #' @template learner
 #' @templateVar id classif.lightgbm
 #'
 #' @section Custom mlr3 parameters:
-#' - `convert_categorical`:
+#' * `convert_categorical`:
 #'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
 #'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
 #'   those columns.
-#' - `early_stopping_split`:
+#' * `early_stopping_split`:
 #'  Additional parameter. Instead of providing the data that is used for early stopping explicitly,
 #'  the parameter `early_stopping_split` determines the proportion of the training data that is
 #'  used for early stopping. Here, stratification on the target variable is used if there is no
 #'  grouping variable, as one cannot simultaneously stratify and group.
-#' - `num_class`:
-#'  This parameter is automatically inferred and does not have to be set.
+#' * `num_class`:
+#'  This parameter is automatically inferred for multiclass tasks and does not have to be set.
 #' @section Custom mlr3 defaults:
-#' - `num_threads`:
-#'   - Actual default: 0L
-#'   - Adjusted default: 1L
-#'   - Reason for change: Prevents accidental conflicts with `future`.
-#' - `verbose`:
-#'   - Actual default: 1L
-#'   - Adjusted default: -1L
-#'   - Reason for change: Prevents accidental conflicts with mlr messaging system.
+#' * `num_threads`:
+#'   * Actual default: 0L
+#'   * Adjusted default: 1L
+#'   * Reason for change: Prevents accidental conflicts with `future`.
+#' * `verbose`:
+#'   * Actual default: 1L
+#'   * Adjusted default: -1L
+#'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
+#' * `objective`:
+#'   Depending if the task is binary / multiclass, the default is set to `"binary"` or
+#'   `"multiclasss"`.
+#'
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -49,9 +53,9 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       ps = ps(
         # lgb.train core functions
         num_iterations = p_int(default = 100L, lower = 0L, tags = "train"),
-        objective = p_fct(default = "binary", levels = c("binary", "multiclass", "multiclassova",
-            "cross_entropy", "cross_entropy_lambda", "lambdarank", "rank_xendcg"), tags = "train"),
-        metric = p_fct(default = "", levels = c("", "None", "ndcg",
+        objective = p_fct(levels = c("binary", "multiclass", "multiclassova"),
+          tags = "train"),
+        metric = p_fct(levels = c("", "None", "ndcg",
           "map", "auc", "average_precision", "binary_logloss", "binary_error", "auc_mu",
           "multi_logloss", "multi_error", "cross_entropy", "cross_entropy_lambda",
           "kullback_leibler"), tags = "train"),
@@ -161,10 +165,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         scale_pos_weight = p_dbl(default = 1, lower = 0, tags = "train"),
         sigmoid = p_dbl(default = 1, lower = 0, tags = "train"),
         boost_from_average = p_lgl(default = TRUE, tags = "train"),
-        lambdarank_truncation_level = p_int(default = 30L, lower = 1L,
-          tags = "train"),
-        lambdarank_norm = p_lgl(default = TRUE, tags = "train"),
-        label_gain = p_uty(tags = "train"),
 
         # metric parameters
         eval_at = p_uty(default = 1:5, tags = "train"),
@@ -193,17 +193,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       ps$add_dep("pos_bagging_fraction", "objective", CondEqual$new("binary"))
       ps$add_dep("neg_bagging_fraction", "objective", CondEqual$new("binary"))
-      ps$add_dep("objective_seed", "objective", CondEqual$new("rank_xendcg"))
       ps$add_dep("is_unbalance", "objective", CondAnyOf$new(c("binary", "multiclassova")))
       ps$add_dep("scale_pos_weight", "objective", CondAnyOf$new(c("binary", "multiclassova")))
-      ps$add_dep("sigmoid", "objective", CondAnyOf$new(c("binary", "multiclassova", "lambdarank")))
-      ps$add_dep("lambdarank_truncation_level", "objective", CondEqual$new("lambdarank"))
-      ps$add_dep("lambdarank_norm", "objective", CondEqual$new("lambdarank"))
-      ps$add_dep("label_gain", "objective", CondEqual$new("lambdarank"))
+      ps$add_dep("sigmoid", "objective", CondAnyOf$new(c("binary", "multiclassova")))
       ps$add_dep("boost_from_average", "objective", CondAnyOf$new(c(
-        "binary", "multiclassova",
-        "cross_entropy"
-      )))
+        "binary", "multiclassova")))
       ps$add_dep("eval_at", "metric", CondAnyOf$new(c("ndcg", "map")))
       ps$add_dep("multi_error_top_k", "metric", CondEqual$new("multi_error"))
       ps$add_dep("auc_mu_weights", "metric", CondEqual$new("auc_mu"))
@@ -260,11 +254,20 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       # get newdata and ensure same ordering in train and predict
       data = encode_lightgbm_predict(task, self$state$data_prototype)$X
-      pred = invoke(predict,
-        object = self$model,
-        newdata = data,
-        params = pars
-      )
+      # lightgbm renamed data -> newdata after 3.3.2
+      if ("newdata" %in% formalArgs(lightgbm:::predict.lgb.Booster)) {
+        pred = invoke(predict,
+          object = self$model,
+          newdata = data,
+          params = pars
+        )
+      } else {
+        pred = invoke(predict,
+          object = self$model,
+          data = data,
+          params = pars
+        )
+      }
 
       response = NULL
 
