@@ -24,7 +24,7 @@ to install required packages to run these learners. See the interactive
 [learner
 list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
-page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html)
 for a live build status.
 
 ``` r
