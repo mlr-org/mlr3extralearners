@@ -226,13 +226,21 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      X = encode_lightgbm_predict(task, self$state$data_prototype)$X
+      data = encode_lightgbm_predict(task, self$state$data_prototype)$X
 
-      pred = invoke(predict,
-        object = self$model,
-        data = X,
-        params = pars
-      )
+      if ("newdata" %in% formalArgs(lightgbm:::predict.lgb.Booster)) {
+        pred = invoke(predict,
+          object = self$model,
+          newdata = data,
+          params = pars
+        )
+      } else {
+        pred = invoke(predict,
+          object = self$model,
+          data = data,
+          params = pars
+        )
+      }
 
       list(response = pred)
     },
