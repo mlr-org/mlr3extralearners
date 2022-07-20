@@ -61,6 +61,12 @@ test_that("paramtest classif.lightgbm train", {
     "convert_model", # only cli version
     "metric_freq", # only cli version
     "is_provide_training_metric", # only cli version
+    "snapshoq_freq", # only cli version
+    "header", # we don't load data from the text file
+    "objective_seed", # only in ranking applications
+    "metric", # we use the lgb.train-only argument "eval"
+
+
     # rank parameters
     "lambdarank_truncation_level", # ranking
     "lambdarank_norm", # ranking
@@ -74,8 +80,8 @@ test_that("paramtest classif.lightgbm train", {
     "nrounds", # alias for num_iterations
     "valids", # handled internally
     "obj", # alias for objective
-    "eval", # alias for objective, currently no support for custom_metric
-    "colnames" # we don't want to allow overwriting any names
+    "colnames", # we don't want to allow overwriting any names
+    "init_model" # handled internally via hotstarting
 
   )
 

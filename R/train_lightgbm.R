@@ -1,8 +1,6 @@
-train_lightgbm = function(self, task, task_type) {
+train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
   assert_choice(task_type, c("regr", "classif"))
   self$state$feature_names = task$feature_names
-  pars = self$param_set$get_values(tags = "train")
-
   convert_categorical = pars$convert_categorical
   pars$convert_categorical = NULL
 
@@ -104,7 +102,7 @@ train_lightgbm = function(self, task, task_type) {
     valids = valids,
     .args = args,
     params = params,
-    categorical_feature = categorical_feature
+    categorical_feature = categorical_feature,
+    init_model = init_model
   )
-
 }

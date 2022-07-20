@@ -3,10 +3,12 @@
 \name{mlr_learners_classif.lightgbm}
 \alias{mlr_learners_classif.lightgbm}
 \alias{LearnerClassifLightGBM}
-\title{Classification Light GBM Learner}
+\title{Classification LightGBM Learner}
 \description{
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
+The list of parameters can be found \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#}{here}
+and in the documentation of \code{\link[lightgbm:lgb.train]{lightgbm::lgb.train()}}.
 Note that lightgbm models have to be saved using \code{lightgbm::lgb.save}, so you cannot simpliy
 save the learner using \code{saveRDS}. This will change in future versions of lightgbm.
 }
@@ -34,11 +36,10 @@ lrn("classif.lightgbm")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    objective \tab character \tab - \tab binary, multiclass, multiclassova \tab - \cr
-   metric \tab character \tab - \tab , None, ndcg, map, auc, average_precision, binary_logloss, binary_error, auc_mu, multi_logloss, \link{...} \tab - \cr
+   eval \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   init_model \tab untyped \tab  \tab  \tab - \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
@@ -102,7 +103,6 @@ lrn("classif.lightgbm")
    cegb_penalty_feature_coupled \tab untyped \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
-   snapshot_freq \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -115,9 +115,7 @@ lrn("classif.lightgbm")
    feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   header \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    forcedbins_filename \tab untyped \tab  \tab  \tab - \cr
-   objective_seed \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    is_unbalance \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigmoid \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

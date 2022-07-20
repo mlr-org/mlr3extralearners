@@ -1,10 +1,12 @@
-#' @title Classification Light GBM Learner
+#' @title Classification LightGBM Learner
 #' @author kapsner
 #' @name mlr_learners_classif.lightgbm
 #'
 #' @description
 #' Gradient boosting algorithm.
 #' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
+#' The list of parameters can be found [here](https://lightgbm.readthedocs.io/en/latest/Parameters.html#)
+#' and in the documentation of [lightgbm::lgb.train()].
 #' Note that lightgbm models have to be saved using `lightgbm::lgb.save`, so you cannot simpliy
 #' save the learner using `saveRDS`. This will change in future versions of lightgbm.
 #'
@@ -36,7 +38,6 @@
 #'   Depending if the task is binary / multiclass, the default is set to `"binary"` or
 #'   `"multiclasss"`.
 #'
-#'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
 #'
@@ -52,17 +53,12 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
     initialize = function() {
       ps = ps(
         # lgb.train core functions
-        num_iterations = p_int(default = 100L, lower = 0L, tags = "train"),
-        objective = p_fct(levels = c("binary", "multiclass", "multiclassova"),
-          tags = "train"),
-        metric = p_fct(levels = c("", "None", "ndcg",
-          "map", "auc", "average_precision", "binary_logloss", "binary_error", "auc_mu",
-          "multi_logloss", "multi_error", "cross_entropy", "cross_entropy_lambda",
-          "kullback_leibler"), tags = "train"),
+        num_iterations = p_int(default = 100L, lower = 0L, tags = c("train", "hotstart")),
+        objective = p_fct(levels = c("binary", "multiclass", "multiclassova"), tags = "train"),
+        eval = p_uty(tags = "train"),
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
-        init_model = p_uty(default = NULL, tags = "train"),
         early_stopping_rounds = p_int(lower = 1L, tags = "train"),
         early_stopping_split = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
         callbacks = p_uty(tags = "train"),
@@ -70,17 +66,14 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         categorical_feature = p_uty(default = "", tags = "train"),
         convert_categorical = p_lgl(default = TRUE, tags = "train"),
         # other core functions
-        boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart",
-          "goss"), tags = "train"),
+        boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart", "goss"), tags = "train"),
         linear_tree = p_lgl(default = FALSE, tags = "train"),
         learning_rate = p_dbl(default = 0.1, lower = 0.0, tags = "train"),
-        num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L,
-          tags = "train"),
+        num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L, tags = "train"),
         tree_learner = p_fct(default = "serial", levels = c("serial", "feature",
           "data", "voting"), tags = "train"),
         num_threads = p_int(default = 0L, lower = 0L, tags = c("train", "threads")),
-        device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"),
-          tags = "train"),
+        device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"), tags = "train"),
         seed = p_int(tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
 
@@ -91,18 +84,13 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         max_depth = p_int(default = -1L, tags = "train"),
         min_data_in_leaf = p_int(default = 20L, lower = 0L, tags = "train"),
         min_sum_hessian_in_leaf = p_dbl(default = 1e-3, lower = 0, tags = "train"),
-        bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-          tags = "train"),
-        pos_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-          tags = "train"),
-        neg_bagging_fraction = p_dbl(default = 1.0, lower = 0, upper = 1.0,
-          tags = "train"),
+        bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
+        pos_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
+        neg_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
         bagging_freq = p_int(default = 0L, lower = 0L, tags = "train"),
         bagging_seed = p_int(default = 3L, tags = "train"),
-        feature_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-          tags = "train"),
-        feature_fraction_bynode = p_dbl(default = 1.0, lower = 0.0, upper = 1.0,
-          tags = "train"),
+        feature_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
+        feature_fraction_bynode = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
         feature_fraction_seed = p_int(default = 2L, tags = "train"),
         extra_trees = p_lgl(default = FALSE, tags = "train"),
         extra_seed = p_int(default = 6L, tags = "train"),
@@ -132,22 +120,19 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         monotone_penalty = p_dbl(default = 0, lower = 0, tags = "train"),
         feature_contri = p_uty(default = NULL, tags = "train"),
         forcedsplits_filename = p_uty(default = "", tags = "train"),
-        refit_decay_rate = p_dbl(default = 0.9, lower = 0, upper = 1,
-          tags = "train"),
+        refit_decay_rate = p_dbl(default = 0.9, lower = 0, upper = 1, tags = "train"),
         cegb_tradeoff = p_dbl(default = 1.0, lower = 0.0, tags = "train"),
         cegb_penalty_split = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         cegb_penalty_feature_lazy = p_uty(tags = "train"),
         cegb_penalty_feature_coupled = p_uty(tags = "train"),
         path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         interaction_constraints = p_uty(tags = "train"),
-        snapshot_freq = p_int(default = -1L, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
         max_bin_by_feature = p_uty(default = NULL, tags = "train"),
         min_data_in_bin = p_int(default = 3L, lower = 1L, tags = "train"),
-        bin_construct_sample_cnt = p_int(default = 200000L, lower = 1L,
-          tags = "train"),
+        bin_construct_sample_cnt = p_int(default = 200000L, lower = 1L, tags = "train"),
         data_random_seed = p_int(default = 1L, tags = "train"),
         is_enable_sparse = p_lgl(default = TRUE, tags = "train"),
         enable_bundle = p_lgl(default = TRUE, tags = "train"),
@@ -156,11 +141,9 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         feature_pre_filter = p_lgl(default = TRUE, tags = "train"),
         pre_partition = p_lgl(default = FALSE, tags = "train"),
         two_round = p_lgl(default = FALSE, tags = "train"),
-        header = p_lgl(default = FALSE, tags = "train"),
         forcedbins_filename = p_uty(default = "", tags = "train"),
 
         # objective parameters
-        objective_seed = p_int(default = 5L, tags = "train"),
         is_unbalance = p_lgl(default = FALSE, tags = "train"),
         scale_pos_weight = p_dbl(default = 1, lower = 0, tags = "train"),
         sigmoid = p_dbl(default = 1, lower = 0, tags = "train"),
@@ -198,9 +181,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       ps$add_dep("sigmoid", "objective", CondAnyOf$new(c("binary", "multiclassova")))
       ps$add_dep("boost_from_average", "objective", CondAnyOf$new(c(
         "binary", "multiclassova")))
-      ps$add_dep("eval_at", "metric", CondAnyOf$new(c("ndcg", "map")))
-      ps$add_dep("multi_error_top_k", "metric", CondEqual$new("multi_error"))
-      ps$add_dep("auc_mu_weights", "metric", CondEqual$new("auc_mu"))
+      ps$add_dep("top_k", "tree_learner", CondEqual$new("voting"))
 
       ps$add_dep("drop_rate", "boosting", CondEqual$new("dart"))
       ps$add_dep("max_drop", "boosting", CondEqual$new("dart"))
@@ -222,7 +203,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         feature_types = c("numeric", "integer", "factor", "logical"),
         predict_types = c("prob", "response"),
         param_set = ps,
-        properties = c("weights", "missings", "importance", "twoclass", "multiclass"),
+        properties = c("weights", "missings", "importance", "twoclass", "multiclass", "hotstart_forward"),
         man = "mlr3extralearners::mlr_learners_classif.lightgbm",
         label = "Gradient Boosting"
       )
@@ -245,7 +226,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
   private = list(
     .train = function(task) {
-      train_lightgbm(self, task, "classif")
+      pars = self$param_set$get_values(tags = "train")
+      train_lightgbm(self, task, "classif", pars)
     },
 
     .predict = function(task) {
@@ -291,6 +273,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       }
 
       list(prob = pred_mat, response = response)
+    },
+    .hotstart = function(task) {
+      pars = self$param_set$get_values(tags = "train")
+      pars$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
+      train_lightgbm(self, task, "classif", pars, self$model)
     }
   )
 )
