@@ -3,10 +3,14 @@
 \name{mlr_learners_classif.lightgbm}
 \alias{mlr_learners_classif.lightgbm}
 \alias{LearnerClassifLightGBM}
-\title{Classification Light GBM Learner}
+\title{Classification LightGBM Learner}
 \description{
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
+The list of parameters can be found \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#}{here}
+and in the documentation of \code{\link[lightgbm:lgb.train]{lightgbm::lgb.train()}}.
+Note that lightgbm models have to be saved using \code{lightgbm::lgb.save}, so you cannot simpliy
+save the learner using \code{saveRDS}. This will change in future versions of lightgbm.
 }
 \section{Dictionary}{
 
@@ -30,14 +34,12 @@ lrn("classif.lightgbm")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   nrounds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   objective \tab character \tab binary \tab binary, multiclass, multiclassova, cross_entropy, cross_entropy_lambda, lambdarank, rank_xendcg \tab - \cr
-   metric \tab character \tab  \tab , None, ndcg, map, auc, average_precision, binary_logloss, binary_error, auc_mu, multi_logloss, \link{...} \tab - \cr
-   custom_eval \tab untyped \tab  \tab  \tab - \cr
+   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   objective \tab character \tab - \tab binary, multiclass, multiclassova \tab - \cr
+   eval \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   init_model \tab untyped \tab  \tab  \tab - \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
@@ -46,7 +48,6 @@ lrn("classif.lightgbm")
    convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    num_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, 131072]}{[1, 131072]} \cr
    tree_learner \tab character \tab serial \tab serial, feature, data, voting \tab - \cr
@@ -56,7 +57,7 @@ lrn("classif.lightgbm")
    deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    force_col_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    force_row_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   histogram_pool_size \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   histogram_pool_size \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_depth \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    min_data_in_leaf \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    min_sum_hessian_in_leaf \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -102,10 +103,6 @@ lrn("classif.lightgbm")
    cegb_penalty_feature_coupled \tab untyped \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
-   input_model \tab untyped \tab  \tab  \tab - \cr
-   output_model \tab untyped \tab LightGBM_model.txt \tab  \tab - \cr
-   saved_feature_importance_type \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   snapshot_freq \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -118,38 +115,27 @@ lrn("classif.lightgbm")
    feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   header \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   group_column \tab untyped \tab  \tab  \tab - \cr
    forcedbins_filename \tab untyped \tab  \tab  \tab - \cr
-   save_binary \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   objective_seed \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    is_unbalance \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigmoid \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   lambdarank_truncation_level \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   lambdarank_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   label_gain \tab untyped \tab - \tab  \tab - \cr
-   metric_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   is_provide_training_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    eval_at \tab untyped \tab :, 1, 5 \tab  \tab - \cr
    multi_error_top_k \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    auc_mu_weights \tab untyped \tab  \tab  \tab - \cr
    num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   machine_list_filename \tab untyped \tab  \tab  \tab - \cr
    machines \tab untyped \tab  \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_gpu \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   start_iteration \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   num_iteration \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   start_iteration_predict \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iteration_predict \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_result \tab untyped \tab LightGBM_predict_result.txt \tab  \tab - \cr
 }
 }
 
@@ -165,6 +151,8 @@ Additional parameter. Instead of providing the data that is used for early stopp
 the parameter \code{early_stopping_split} determines the proportion of the training data that is
 used for early stopping. Here, stratification on the target variable is used if there is no
 grouping variable, as one cannot simultaneously stratify and group.
+\item \code{num_class}:
+This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
 }
 
@@ -183,6 +171,9 @@ grouping variable, as one cannot simultaneously stratify and group.
 \item Adjusted default: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
+\item \code{objective}:
+Depending if the task is binary / multiclass, the default is set to \code{"binary"} or
+\code{"multiclasss"}.
 }
 }
 

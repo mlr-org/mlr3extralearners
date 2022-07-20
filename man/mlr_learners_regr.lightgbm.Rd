@@ -3,10 +3,14 @@
 \name{mlr_learners_regr.lightgbm}
 \alias{mlr_learners_regr.lightgbm}
 \alias{LearnerRegrLightGBM}
-\title{Regression Light GBM Learner}
+\title{Regression LightGBM Learner}
 \description{
 Gradient boosting algorithm.
 Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
+The list of parameters can be found \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#}{here}
+and in the documentation of \code{\link[lightgbm:lgb.train]{lightgbm::lgb.train()}}.
+Note that lightgbm models have to be saved using \code{lightgbm::lgb.save}, so you cannot simpliy
+save the learner using \code{saveRDS}. This will change in future versions of lightgbm.
 }
 \section{Dictionary}{
 
@@ -30,14 +34,12 @@ lrn("regr.lightgbm")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   nrounds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    objective \tab character \tab regression \tab regression, regression_l1, huber, fair, poisson, quantile, mape, gamma, tweedie \tab - \cr
-   metric \tab character \tab  \tab , None, l1, l2, rmse, quantile, mape, huber, fair, poisson, \link{...} \tab - \cr
-   custom_eval \tab untyped \tab  \tab  \tab - \cr
+   eval \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   init_model \tab untyped \tab  \tab  \tab - \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
@@ -46,7 +48,6 @@ lrn("regr.lightgbm")
    convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    num_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, 131072]}{[1, 131072]} \cr
    tree_learner \tab character \tab serial \tab serial, feature, data, voting \tab - \cr
@@ -100,10 +101,6 @@ lrn("regr.lightgbm")
    cegb_penalty_feature_coupled \tab untyped \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
-   input_model \tab untyped \tab  \tab  \tab - \cr
-   output_model \tab untyped \tab LightGBM_model.txt \tab  \tab - \cr
-   saved_feature_importance_type \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   snapshot_freq \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -116,10 +113,7 @@ lrn("regr.lightgbm")
    feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   header \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   group_column \tab untyped \tab  \tab  \tab - \cr
    forcedbins_filename \tab untyped \tab  \tab  \tab - \cr
-   save_binary \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    reg_sqrt \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -127,22 +121,19 @@ lrn("regr.lightgbm")
    poisson_max_delta_step \tab numeric \tab 0.7 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    metric_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   is_provide_training_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   machine_list_filename \tab untyped \tab  \tab  \tab - \cr
    machines \tab untyped \tab  \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_gpu \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   start_iteration \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   num_iteration \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   start_iteration_predict \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iteration_predict \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   output_result \tab untyped \tab LightGBM_predict_result.txt \tab  \tab - \cr
 }
 }
 

@@ -1,6 +1,6 @@
 test_that("autotest", {
   set.seed(1)
-  learner = lrn("regr.lightgbm", nrounds = 50)
+  learner = lrn("regr.lightgbm", num_iterations = 50)
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
@@ -15,7 +15,7 @@ test_that("manual validation", {
 
 test_that("Can pass parameters", {
   task = tsk("iris")
-  learner = lrn("classif.lightgbm", nrounds = 5L, max_bin = 10L)
+  learner = lrn("classif.lightgbm", num_iterations = 5L, max_bin = 10L)
   expect_warning(learner$train(task), regexp = NA)
 })
 
@@ -59,4 +59,14 @@ test_that("categorical_feature works correctly", {
   learner$train(task2)
   p2wrong = learner$predict(task2)
   expect_true(is.character(all.equal(p2, p2wrong)))
+})
+
+test_that("hotstarting works", {
+  task = tsk("mtcars")
+  learner = lrn("regr.lightgbm", num_iterations = 2000L)
+  learner$train(task)
+  stack = HotstartStack$new(list(learner))
+  learner_hs = lrn("classif.lightgbm", num_iterations = 2001L)
+  learner_hs$hotstart_stack = stack
+  expect_true(is.null(get_private(learner_hs$model)$init_predictor))
 })

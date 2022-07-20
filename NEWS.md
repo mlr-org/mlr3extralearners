@@ -1,3 +1,12 @@
+# mlr3extralearners 0.5.44
+
+* Corrected parameters in lightgbm learners
+* Implemented hotstarting for lightgbm learners
+* Adjusted lightgbm train and predict methods to changes in lightgbm dev version
+  (https://github.com/mlr-org/mlr3extralearners/issues/217)
+* Added paramtests for lightgbm through webscraping
+
+
 # mlr3extralearners 0.5.43
 
 * Clean up test files
