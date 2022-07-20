@@ -60,3 +60,13 @@ test_that("categorical_feature works correctly", {
   p2wrong = learner$predict(task2)
   expect_true(is.character(all.equal(p2, p2wrong)))
 })
+
+test_that("hotstarting works", {
+  task = tsk("mtcars")
+  learner = lrn("regr.lightgbm", num_iterations = 2000L)
+  learner$train(task)
+  stack = HotstartStack$new(list(learner))
+  learner_hs = lrn("classif.lightgbm", num_iterations = 2001L)
+  learner_hs$hotstart_stack = stack
+  expect_true(is.null(get_private(learner_hs$model)$init_predictor))
+})

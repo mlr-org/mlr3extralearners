@@ -197,7 +197,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response"),
         param_set = ps,
-        properties = c("weights", "missings", "importance"),
+        properties = c("weights", "missings", "importance", "hotstart_forward"),
         man = "mlr3extralearners::mlr_learners_regr.lightgbm",
         label = "Gradient Boosting"
       )
