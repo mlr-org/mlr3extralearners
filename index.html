@@ -113,7 +113,7 @@
 <div class="section level2">
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
-<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html">learner status page</a> for a live build status.</p>
+<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html">learner status page</a> for a live build status.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"mlr3_package"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                      id      mlr3_package</span></span>
@@ -175,21 +175,7 @@
 <div class="section level2">
 <h2 id="extending-mlr3extralearners">Extending mlr3extralearners<a class="anchor" aria-label="anchor" href="#extending-mlr3extralearners"></a>
 </h2>
-<p>New learners can be created with the <code>create_learner</code> function. This assumes you have a local copy of <code>mlr3extralearners</code>. This function will automatically create the learner, learner tests, parameter tests, YAML files for CI if required, and update the DESCRIPTION if required. Once all tests are passing locally, open a <a href="https://github.com/mlr-org/mlr3extralearners/pulls" class="external-link">pull request</a> with the “New Learner” template.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/create_learner.html">create_learner</a></span><span class="op">(</span>classname <span class="op">=</span> <span class="st">"Locfit"</span>,</span>
-<span>               algorithm <span class="op">=</span> <span class="st">"localised fit"</span>,</span>
-<span>               type <span class="op">=</span> <span class="st">"dens"</span>,</span>
-<span>               key <span class="op">=</span> <span class="st">"locfit"</span>,</span>
-<span>               package <span class="op">=</span> <span class="st">"locfit"</span>,</span>
-<span>               caller <span class="op">=</span> <span class="st">"density.lf"</span>,</span>
-<span>               feature_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"integer"</span>, <span class="st">"numeric"</span><span class="op">)</span>,</span>
-<span>               predict_types <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"pdf"</span>, <span class="st">"cdf"</span><span class="op">)</span>,</span>
-<span>               properties <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>               importance <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>               oob_error <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>               references <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>               gh_name <span class="op">=</span> <span class="st">"RaphaelS1"</span><span class="op">)</span></span></code></pre></div>
+<p>New learners - either for personal use or to extend mlr3extralearners - can be created with the <code>create_learner</code> function. An in-depth tutorial on how to do this can be found in the <a href="https://mlr3book.mlr-org.com/07-extending-learners.html" class="external-link">mlr3 book</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
