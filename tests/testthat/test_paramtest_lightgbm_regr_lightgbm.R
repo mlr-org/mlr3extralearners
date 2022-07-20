@@ -46,7 +46,6 @@ test_that("paramtest regr.lightgbm train", {
     "num_class", # automatically inferred
     "params", # handled internally
     "saved_feature_importance_type", # cli version
-    "snapshoq_freq", # cli version
     "input_model", # cli version
     "output_model", # cli version
     "machine_list_filename", # cli version

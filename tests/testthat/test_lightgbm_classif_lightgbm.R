@@ -108,7 +108,7 @@ test_that("Can set eval parameter", {
     list(name = "hallo", value = runif(1), higher_better = TRUE)
   }
   task = tsk("iris")
-  learner = lrn("classif.lightgbm", early_stopping_split = 0.2, verbose = 0L, record = TRUE,
+  learner = lrn("classif.lightgbm", early_stopping_split = 0.2, record = TRUE,
     eval = list(evalerror, "auc_mu")
   )
   expect_error(learner$train(task), regexp = NA)

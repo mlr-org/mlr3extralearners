@@ -51,7 +51,6 @@ test_that("paramtest classif.lightgbm train", {
     "tweedie_variance_power", # only tweedie regression
     "params", # handled internally
     "saved_feature_importance_type", # cli version
-    "snapshoq_freq", # cli version
     "input_model", # cli version
     "output_model", # cli version
     "machine_list_filename", # cli version
@@ -61,7 +60,7 @@ test_that("paramtest classif.lightgbm train", {
     "convert_model", # only cli version
     "metric_freq", # only cli version
     "is_provide_training_metric", # only cli version
-    "snapshoq_freq", # only cli version
+    "snapshot_freq", # only cli version
     "header", # we don't load data from the text file
     "objective_seed", # only in ranking applications
     "metric", # we use the lgb.train-only argument "eval"
