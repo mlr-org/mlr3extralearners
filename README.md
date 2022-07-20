@@ -24,7 +24,7 @@ to install required packages to run these learners. See the interactive
 [learner
 list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
-page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html)
+page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
 for a live build status.
 
 ``` r
@@ -99,26 +99,7 @@ lrn("regr.gbm")
 
 ## Extending mlr3extralearners
 
-New learners can be created with the `create_learner` function. This
-assumes you have a local copy of `mlr3extralearners`. This function will
-automatically create the learner, learner tests, parameter tests, YAML
-files for CI if required, and update the DESCRIPTION if required. Once
-all tests are passing locally, open a [pull
-request](https://github.com/mlr-org/mlr3extralearners/pulls) with the
-“New Learner” template.
-
-``` r
-create_learner(classname = "Locfit",
-               algorithm = "localised fit",
-               type = "dens",
-               key = "locfit",
-               package = "locfit",
-               caller = "density.lf",
-               feature_types = c("integer", "numeric"),
-               predict_types = c("pdf", "cdf"),
-               properties = NULL,
-               importance = FALSE,
-               oob_error = FALSE,
-               references = FALSE,
-               gh_name = "RaphaelS1")
-```
+New learners - either for personal use or to extend mlr3extralearners -
+can be created with the `create_learner` function. An in-depth tutorial
+on how to do this can be found in the [mlr3
+book](https://mlr3book.mlr-org.com/07-extending-learners.html).
