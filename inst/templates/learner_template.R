@@ -85,12 +85,9 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       # FIXME: IF LEARNER DOES NOT HAVE 'weights' PROPERTY THEN DELETE THESE LINES.
       if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(weights = task$weights$weight))
+        # Add weights to learner
       }
 
       # FIXME: CREATE OBJECTS FOR THE TRAIN CALL
@@ -114,7 +111,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = task$data(cols = names(self$state$data_prototype))
 
       # Calculate predictions for the selected predict type.
       type = self$predict_type
