@@ -160,7 +160,7 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
     remove_method = function(method, x) {
       if (method %nin% properties) {
         start = grep(
-          sprintf("# <FIXME> ADD %s METHOD IF APPLICABLE AND DELETE OTHERWISE", toupper(method)),
+          sprintf("# FIXME: ADD %s METHOD IF APPLICABLE AND DELETE OTHERWISE", toupper(method)),
           x,
           fixed = TRUE
         )
@@ -192,11 +192,12 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
     }
     # Now for hotstart
     if (!("hotstart_forward" %in% properties || "hotstart_backward" %in% properties)) {
-      start = grep("# <FIXME> ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE", x, fixed = TRUE)
-      end = grep(".hotstart = function(task)", x, fixed = TRUE) + 2L
+      start = grep("# FIXME: ADD HOTSTART METHOD IF APPLICABLE AND DELETE METHOD OTHERWISE", x, fixed = TRUE)
+      end = grep(".hotstart = function(task)", x, fixed = TRUE) + 3L
       x = x[-seq(start, end)]
       predict_ends = grep("<PREDICT>", x)
       x[predict_ends] = gsub(",", "", x[predict_ends])
+      x = gsub(" # <PREDICT>", "", x, fixed = TRUE)
     }
 
     cat(x, file = path_lrn, sep = "\n")
