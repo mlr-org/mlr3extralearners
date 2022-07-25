@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.45
+
+* Minor corrections in `create_learner` and the learner template.
+
 # mlr3extralearners 0.5.44
 
 * Corrected parameters in lightgbm learners
