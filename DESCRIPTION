@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.45
+Version: 0.5.45-9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -25,7 +25,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3 (>= 0.13.1),
+    mlr3 (>= 0.13.4-9000),
     mlr3misc (>= 0.9.4),
     paradox,
     R6
@@ -92,6 +92,7 @@ Suggests:
     xgboost
 Remotes:
     binderh/CoxBoost,
+    mlr-org/mlr3,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels
 Config/testthat/edition: 3
