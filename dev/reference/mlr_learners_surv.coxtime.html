@@ -140,7 +140,7 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/coxtime.html" class=
     </div>
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3proba.mlr-org.com/reference/LearnerSurv.html" class="external-link">mlr3proba::LearnerSurv</a></code> -&gt; <code>LearnerSurvCoxtime</code></p>
+    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code>mlr3proba::LearnerSurv</code> -&gt; <code>LearnerSurvCoxtime</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -189,28 +189,13 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/coxtime.html" class=
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.coxtime"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘mlr3proba’</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvCoxtime:surv.coxtime&gt;: Cox-Time Estimator</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, survivalmodels, distr6,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   reticulate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print(learner):</span> object 'learner' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "frac"             "standardize_time" "log_duration"     "with_mean"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "with_std"         "num_nodes"        "batch_norm"       "dropout"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "activation"       "device"           "shrink"           "optimizer"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "rho"              "eps"              "lr"               "weight_decay"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "learning_rate"    "lr_decay"         "betas"            "amsgrad"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "lambd"            "alpha"            "t0"               "momentum"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "centered"         "etas"             "step_sizes"       "dampening"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "nesterov"         "batch_size"       "epochs"           "verbose"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "num_workers"      "shuffle"          "best_weights"     "early_stopping"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "min_delta"        "patience"        </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'learner' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

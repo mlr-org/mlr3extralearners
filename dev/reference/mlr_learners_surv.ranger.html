@@ -158,7 +158,7 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
     </div>
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3proba.mlr-org.com/reference/LearnerSurv.html" class="external-link">mlr3proba::LearnerSurv</a></code> -&gt; <code>LearnerSurvRanger</code></p>
+    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code>mlr3proba::LearnerSurv</code> -&gt; <code>LearnerSurvRanger</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -233,30 +233,13 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.ranger"</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘mlr3proba’</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvRanger:surv.ranger&gt;: Random Forest</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: num.threads=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, ranger</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, character, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, oob_error, weights</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print(learner):</span> object 'learner' not found</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "alpha"                        "always.split.variables"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "holdout"                      "importance"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "keep.inbag"                   "max.depth"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "min.node.size"                "minprop"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "mtry"                         "mtry.ratio"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "num.random.splits"            "num.threads"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "num.trees"                    "oob.error"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "regularization.factor"        "regularization.usedepth"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "replace"                      "respect.unordered.factors"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "sample.fraction"              "save.memory"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "scale.permutation.importance" "seed"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "split.select.weights"         "splitrule"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "verbose"                      "write.forest"                </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'learner' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
