@@ -47,7 +47,7 @@ delayedAssign(
           shrinkage = p_dbl(default = 0.001, lower = 0, tags = "train"),
           bag.fraction = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
           train.fraction = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
-          keep.data = p_lgl(default = TRUE, tags = "train"),
+          keep.data = p_lgl(default = FALSE, tags = "train"),
           verbose = p_lgl(default = FALSE, tags = "train"),
           var.monotone = p_uty(tags = "train"),
           n.cores = p_int(default = 1, tags = c("train", "threads")),
