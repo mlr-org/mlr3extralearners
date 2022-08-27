@@ -88,10 +88,12 @@ check_file = readLines(sprintf("%s/%s", artifact_path, file))
 test_files = list.files(sprintf("%s/tests/testthat", path))
 test_files = test_files[grepl(pattern = "test_", fixed = TRUE, x = test_files)]
 
+# there are some test files (test_create_learner) that are not learner tests, but every learner
+# has a paramtest
 test_files = list(
-  param = sort(test_files[startsWith(test_files, "test_paramtest_")]),
-  learner = test_files[!startsWith(test_files, "test_paramtest_")]
+  param = sort(test_files[startsWith(test_files, "test_paramtest_")])
 )
+test_files$learner = gsub("paramtest_", "", test_files$param, fixed = TRUE)
 
 query_failure = function(test) {
   line_failed = grepl(
