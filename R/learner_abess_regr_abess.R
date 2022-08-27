@@ -59,7 +59,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
         id = "regr.abess",
         packages = "abess",
         feature_types = c("numeric", "integer"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
         properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_regr.abess",
@@ -95,7 +95,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
     },
     .predict = function(task) {
       response = invoke(
-        abess:::predict.abess,
+        predict,
         self$model,
         newx = task$data(cols = self$state$feature_names),
         support.size = self$param_set$values$support.size.predict)

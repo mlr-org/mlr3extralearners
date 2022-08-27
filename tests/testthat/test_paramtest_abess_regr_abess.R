@@ -15,7 +15,7 @@ test_that("regr.abess train", {
 
 test_that("regr.abess predict", {
   learner = lrn("regr.abess")
-  fun = abess:::predict.abess # nolint
+  fun = predict # nolint
   exclude = c(
     "support.size", # handled by mlr3
     "type", # regr needn't type
