@@ -15,7 +15,8 @@ Authors@R: c(
     person("Pierre", "Camilleri", , "camilleri_pierre@hotmail.fr", role = "ctb"),
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
-    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"))
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
+    person(given = "Zezhi", family = "Wang", email = "homura@mail.ustc.edu.cn", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3

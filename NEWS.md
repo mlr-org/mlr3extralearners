@@ -1,3 +1,7 @@
+# mlr3extralearners 0.5.47
+
+* add new learner 'regr.abess'
+  
 # mlr3extralearners 0.5.46
 
 * Addresses https://github.com/mlr-org/mlr3extralearners/issues/225
