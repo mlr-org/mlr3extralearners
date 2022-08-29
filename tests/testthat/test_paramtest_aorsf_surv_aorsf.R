@@ -3,8 +3,8 @@ test_that("paramtest surv.aorsf train", {
   learner = lrn("surv.aorsf")
   fun_list = list(aorsf::orsf)
   exclude = c(
-    "control",# handled internally
-    "weights",# handled internally
+    "control", # handled internally
+    "weights", # handled internally
     "oobag_fun", # handled internally
     "data", # handled internally
     "formula", # handled internally
