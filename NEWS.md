@@ -4,6 +4,8 @@
 * Fix link in README
 * Fix learner status overview
 
+* Added `LearnerSurvAorsf` with key `surv.aorsf`. See https://github.com/bcjaeger/aorsf for more details on `aorsf`
+
 # mlr3extralearners 0.5.45
 
 * Minor corrections in `create_learner` and the learner template.
