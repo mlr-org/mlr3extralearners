@@ -141,7 +141,7 @@ delayedAssign(
 
                 param_set = ps,
 
-                properties = c("oob_error"),
+                properties = c("oob_error", "importance"),
 
                 man = "mlr3extralearners::mlr_learners_surv.aorsf",
 
