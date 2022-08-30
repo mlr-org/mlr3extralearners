@@ -54,6 +54,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @return Named `numeric()`.
     importance = function() {
       pars = self$param_set$get_values(tags = "importance")
+      # FIXME: Implement importance
     },
     # FIXME: ADD OOB_ERROR METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3extralearners::LearnerRegrRandomForest FOR AN EXAMPLE
@@ -62,6 +63,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @return `numeric(1)`.
     oob_error = function() {
       pars = self$param_set$get_values(tags = "oob_error")
+      # FIXME: Implement oob_error
     },
     # FIXME: ADD SELECTED_FEATURES METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3extralearners::LearnerRegrRandomForestSRC FOR AN EXAMPLE
@@ -70,6 +72,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @return `character()`.
     selected_features = function() {
       pars = self$param_set$get_values(tags = "selected_features")
+      # FIXME: Implement selected_features
     },
     # FIXME: ADD LOGLIK METHOD IF APPLICABLE AND DELETE OTHERWISE
     # SEE mlr3learners::LearnerRegrLM FOR AN EXAMPLE
@@ -78,6 +81,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
     #' @return `numeric(1)`.
     loglik = function() {
       pars = self$param_set$get_values(tags = "loglik")
+      # FIXME: Implement loglik
     }
   ),
   private = list(
@@ -111,7 +115,7 @@ Learner<Type><Classname> = R6Class("Learner<Type><Classname>",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = names(self$state$data_prototype))
+      newdata = ordered_features(task, self)
 
       # Calculate predictions for the selected predict type.
       type = self$predict_type

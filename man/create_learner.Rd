@@ -75,8 +75,10 @@ For more details see the \href{https://mlr3book.mlr-org.com/extending.html}{mlr3
 }
 \examples{
 \dontrun{
+path = tempfile()
+dir.create(path)
 create_learner(
-  path = "path/to/a/folder/or/package",
+  path = path,
   classname = "Rpart",
   type = "classif",
   key = "rpart",
@@ -85,8 +87,7 @@ create_learner(
   caller = "rpart",
   feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
   predict_types = c("response", "prob"),
-  properties = c("importance", "missings", "multiclass",
-    "selected_features", "twoclass", "weights"),
+  properties = c("importance", "missings", "multiclass", "twoclass", "weights"),
   gh_name = "RaphaelS1",
   label = "Regression and Partition Tree",
   data_formats = "data.table"
