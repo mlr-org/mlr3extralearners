@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.5.46
+Version: 0.5.47
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -96,9 +96,9 @@ Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
+    RaphaelS1/survivalmodels,
     xoopR/param6,
-    xoopR/set6,
-    RaphaelS1/survivalmodels
+    xoopR/set6
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
