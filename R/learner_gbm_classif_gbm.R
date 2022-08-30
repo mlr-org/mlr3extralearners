@@ -10,10 +10,10 @@
 #' @templateVar id classif.gbm
 #'
 #' @section Custom mlr3 defaults:
-#' - `keep_data`:
+#' - `keep.data`:
 #'   - Actual default: TRUE
 #'   - Adjusted default: FALSE
-#'   - Reason for change: `keep_data = FALSE` saves memory during model fitting.
+#'   - Reason for change: `keep.data = FALSE` saves memory during model fitting.
 #' - `n.cores`:
 #'   - Actual default: NULL
 #'   - Adjusted default: 1
