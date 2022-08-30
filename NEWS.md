@@ -1,3 +1,10 @@
+# mlr3extralearners 0.5.47
+
+* Add mlr3proba dependencies into remotes (no longer on CRAN)
+* Correct documentation of gbm learner: default was incorrectly documented and
+  the parameter was incorrectly referred to as `keep_data` instead of `keep.data`
+* Add catboost to the dependencies
+
 # mlr3extralearners 0.5.46
 
 * Addresses https://github.com/mlr-org/mlr3extralearners/issues/225

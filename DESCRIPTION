@@ -35,6 +35,7 @@ Suggests:
     actuar,
     apcluster,
     C50,
+    catboost,
     coin,
     CoxBoost,
     Cubist,
@@ -93,9 +94,13 @@ Suggests:
     usethis,
     xgboost
 Remotes:
+    alan-turing-institute/distr6,
     binderh/CoxBoost,
+    catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels
+    RaphaelS1/survivalmodels,
+    xoopR/param6,
+    xoopR/set6
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
