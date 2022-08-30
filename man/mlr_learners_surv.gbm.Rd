@@ -38,7 +38,7 @@ lrn("surv.gbm")
    shrinkage \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    bag.fraction \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    train.fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   keep.data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   keep.data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    var.monotone \tab untyped \tab - \tab  \tab - \cr
    n.cores \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -53,11 +53,11 @@ lrn("surv.gbm")
 \item Actual default: "bernoulli"
 \item Adjusted default: "coxph"
 \item Reason for change: This is the only distribution available for survival.
-\item \code{keep_data}:
+\item \code{keep.data}:
 \itemize{
 \item Actual default: TRUE
 \item Adjusted default: FALSE
-\item Reason for change: \code{keep_data = FALSE} saves memory during model fitting.
+\item Reason for change: \code{keep.data = FALSE} saves memory during model fitting.
 }
 \item \code{n.cores}:
 \itemize{

@@ -48,11 +48,11 @@ lrn("regr.gbm")
 \section{Parameter changes}{
 
 \itemize{
-\item \code{keep_data}:
+\item \code{keep.data}:
 \itemize{
 \item Actual default: TRUE
 \item Adjusted default: FALSE
-\item Reason for change: \code{keep_data = FALSE} saves memory during model fitting.
+\item Reason for change: \code{keep.data = FALSE} saves memory during model fitting.
 }
 \item \code{n.cores}:
 \itemize{
