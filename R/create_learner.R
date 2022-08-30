@@ -42,8 +42,10 @@
 #'
 #' @examples
 #' \dontrun{
+#' path = tempfile()
+#' dir.create(path)
 #' create_learner(
-#'   path = "path/to/a/folder/or/package",
+#'   path = path,
 #'   classname = "Rpart",
 #'   type = "classif",
 #'   key = "rpart",
@@ -52,8 +54,7 @@
 #'   caller = "rpart",
 #'   feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
 #'   predict_types = c("response", "prob"),
-#'   properties = c("importance", "missings", "multiclass",
-#'     "selected_features", "twoclass", "weights"),
+#'   properties = c("importance", "missings", "multiclass", "twoclass", "weights"),
 #'   gh_name = "RaphaelS1",
 #'   label = "Regression and Partition Tree",
 #'   data_formats = "data.table"
@@ -164,7 +165,7 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
           x,
           fixed = TRUE
         )
-        end = grep(sprintf("%s = function()", method), x) + 2L
+        end = grep(sprintf("%s = function()", method), x) + 3L
         return(x[-seq(start, end)])
       }
       x
@@ -186,7 +187,7 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
       x[init_ends] = "    },"
       # remove the comma from the last existing method
       method_last = methods_existing[length(methods_existing)]
-      line = grep(sprintf("%s = function()", method_last), x, fixed = TRUE) + 2L
+      line = grep(sprintf("%s = function()", method_last), x, fixed = TRUE) + 3L
       x[line] = gsub(",", "", x[line], fixed = TRUE)
 
     }
