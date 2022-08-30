@@ -91,8 +91,11 @@ Suggests:
     usethis,
     xgboost
 Remotes:
+    alan-turing-institute/distr6,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
+    xoopR/param6,
+    xoopR/set6,
     RaphaelS1/survivalmodels
 Config/testthat/edition: 3
 Encoding: UTF-8
