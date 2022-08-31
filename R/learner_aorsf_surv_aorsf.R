@@ -17,11 +17,7 @@
 #' @references
 #' `r format_bib("jaeger_2019")`
 #'
-#' Jaeger BC, Welden S, Lenoir K, Speiser JL, Segar MW, Pandey A, Pajewski NM (2022).
-#'  "Accelerated and interpretable oblique random survival forests."
-#'  _arXiv e-prints_. Aug 3:arXiv-2208.
-#'  doi: 10.48550/arXiv.2208.01129
-#'  (URL: https://doi.org/10.48550/arXiv.2208.01129)
+#' `r format_bib("jaeger_2022")`
 #'
 #'
 #' @template seealso_learner
