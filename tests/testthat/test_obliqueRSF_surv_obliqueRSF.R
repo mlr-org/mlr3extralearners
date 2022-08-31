@@ -1,5 +1,5 @@
 test_that("autotest", {
-  set.seed(1) # there was presumable a weird bug
+  set.seed(1)
   learner = lrn("surv.obliqueRSF", compute_oob_predictions = TRUE)
   expect_learner(learner)
   # for some reason the feat_all test randomly stopped working, check later if the
