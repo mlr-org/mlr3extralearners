@@ -75,7 +75,8 @@ delayedAssign(
             },
 
             #' @description
-            #' OOB concordance error extracted from the model slot `oob_error`.
+            #' OOB concordance error extracted from the model slot
+            #' `eval_oobag$stat_values`
             #' @return `numeric()`.
             oob_error = function() {
               nrows <- nrow(self$model$eval_oobag$stat_values)
