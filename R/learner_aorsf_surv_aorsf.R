@@ -144,15 +144,10 @@ delayedAssign(
               ps$control_net_alpha <- NULL
               ps$control_net_df_target <- NULL
 
-              tn = task$target_names
-              lhs = paste(tn, collapse = ' + ')
-              f = formulate(lhs = lhs,
-                            rhs = task$feature_names)
-
               invoke(
                 aorsf::orsf,
                 data = task$data(),
-                formula = f,
+                formula = task$formula(),
                 control = control,
                 no_fit = FALSE,
                 .args = ps
