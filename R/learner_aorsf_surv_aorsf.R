@@ -163,7 +163,7 @@ delayedAssign(
 
               surv = mlr3misc::invoke(predict,
                                       self$model,
-                                      new_data = task$data(cols = task$feature_names),
+                                      new_data = ordered_features(task, self),
                                       pred_horizon = utime,
                                       pred_type = 'surv')
 
