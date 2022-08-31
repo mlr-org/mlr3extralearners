@@ -89,7 +89,8 @@ delayedAssign(
               if (is.null(self$model)) {
                 stopf("No model stored")
               }
-              aorsf::orsf_vi(self$model, group_factors = TRUE)
+              sort(aorsf::orsf_vi(self$model, group_factors = TRUE),
+                   decreasing = TRUE)
             }
           ),
 
