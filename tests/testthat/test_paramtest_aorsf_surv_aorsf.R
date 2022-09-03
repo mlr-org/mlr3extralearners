@@ -30,7 +30,7 @@ test_that("paramtest surv.aorsf train", {
 
 test_that("paramtest surv.aorsf predict", {
   learner = lrn("surv.aorsf")
-  fun_list = list(aorsf:::predict.orsf_fit)
+  fun_list = list(predict)
   exclude = c(
     "object", # handled internally
     "new_data", # handled internally
