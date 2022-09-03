@@ -60,12 +60,12 @@ delayedAssign(
                                         default = "surv", tags = "train"),
                 importance = p_fct(levels = c("none", "anova", "negate", "permute"),
                                    default = "anova", tags = "train"),
-                oobag_pred_horizon = p_uty(default = NULL, tags = "train"),
+                oobag_pred_horizon = p_dbl(default = NULL, special_vals = list(NULL),
+                                           tags = "train", lower = 0),
                 oobag_eval_every = p_int(default = NULL, special_vals = list(NULL),
                                          lower = 1, tags = "train"),
                 attach_data = p_lgl(default = TRUE, tags = "train")
               )
-
               super$initialize(
                 id = "surv.aorsf",
                 packages = c("mlr3extralearners", "aorsf", "pracma"),
