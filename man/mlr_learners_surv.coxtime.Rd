@@ -85,7 +85,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Kvamme, Håvard, Borgan Ø, Scheel I (2019).
+Kvamme, HÃ¥vard, Borgan Ã, Scheel I (2019).
 \dQuote{Time-to-event prediction with neural networks and Cox regression.}
 \emph{arXiv preprint arXiv:1907.00825}.
 }

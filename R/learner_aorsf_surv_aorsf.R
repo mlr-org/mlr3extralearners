@@ -31,7 +31,7 @@ delayedAssign(
             #' @description
             #' Creates a new instance of this [R6][R6::R6Class] class.
             initialize = function() {
-              ps = ps(
+              ps <- ps(
                 n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
                 n_split = p_int(default = 5L, lower = 1L, tags = "train"),
                 n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
@@ -77,7 +77,6 @@ delayedAssign(
                 label = "Oblique Random Forest"
               )
             },
-
             #' @description
             #' OOB concordance error extracted from the model slot
             #' `eval_oobag$stat_values`
@@ -86,7 +85,6 @@ delayedAssign(
               nrows <- nrow(self$model$eval_oobag$stat_values)
               1 - self$model$eval_oobag$stat_values[nrows, 1L]
             },
-
             #' @description
             #' The importance scores are extracted from the model.
             #' @return Named `numeric()`.
@@ -98,7 +96,6 @@ delayedAssign(
                    decreasing = TRUE)
             }
           ),
-
           private = list(
             .train = function(task) {
               # initialize
@@ -158,23 +155,17 @@ delayedAssign(
                 .args = pv
               )
             },
-
             .predict = function(task) {
-
-              time = self$model$data[[task$target_names[1]]]
-              status = self$model$data[[task$target_names[2]]]
-              utime = sort(unique(time[status == 1]), decreasing = FALSE)
-
-              surv = mlr3misc::invoke(predict,
-                                      self$model,
-                                      new_data = ordered_features(task, self),
-                                      pred_horizon = utime,
-                                      pred_type = "surv")
-
+              time <- self$model$data[[task$target_names[1]]]
+              status <- self$model$data[[task$target_names[2]]]
+              utime <- sort(unique(time[status == 1]), decreasing = FALSE)
+              surv <- mlr3misc::invoke(predict,
+                                       self$model,
+                                       new_data = ordered_features(task, self),
+                                       pred_horizon = utime,
+                                       pred_type = "surv")
               mlr3proba::.surv_return(times = utime, surv = surv)
-
             }
-
           )
   )
 )

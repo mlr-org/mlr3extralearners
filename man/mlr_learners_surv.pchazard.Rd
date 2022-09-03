@@ -95,7 +95,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Kvamme, Håvard, Borgan Ø (2019).
+Kvamme, HÃ¥vard, Borgan Ã (2019).
 \dQuote{Continuous and discrete-time survival prediction with neural networks.}
 \emph{arXiv preprint arXiv:1910.06724}.
 }

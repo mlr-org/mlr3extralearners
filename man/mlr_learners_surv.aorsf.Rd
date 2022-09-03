@@ -82,10 +82,8 @@ Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G,
 \doi{10.1214/19-aoas1261}.
 
 Jaeger BC, Welden S, Lenoir K, Speiser JL, Segar MW, Pandey A, Pajewski NM (2022).
-"Accelerated and interpretable oblique random survival forests."
-\emph{arXiv e-prints}. Aug 3:arXiv-2208.
-doi: 10.48550/arXiv.2208.01129
-(URL: https://doi.org/10.48550/arXiv.2208.01129)
+\dQuote{Accelerated and interpretable oblique random survival forests.}
+\emph{arXiv preprint arXiv:2208.01129}.
 }
 \seealso{
 \itemize{
