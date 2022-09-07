@@ -12,7 +12,7 @@ Calls gbm::gbm() from gbm."><!-- mathjax --><script src="https://cdnjs.cloudflar
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.46</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.47</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,7 +108,7 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>distribution</td><td>character</td><td>coxph</td><td>coxph</td><td>-</td></tr><tr><td>n.trees</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv.folds</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>interaction.depth</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n.minobsinnode</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>shrinkage</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bag.fraction</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>train.fraction</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>keep.data</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.monotone</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>n.cores</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>single.tree</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>distribution</td><td>character</td><td>coxph</td><td>coxph</td><td>-</td></tr><tr><td>n.trees</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv.folds</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>interaction.depth</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n.minobsinnode</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>shrinkage</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bag.fraction</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>train.fraction</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>keep.data</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.monotone</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>n.cores</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>single.tree</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="parameter-changes">Parameter changes<a class="anchor" aria-label="anchor" href="#parameter-changes"></a></h2>
     
@@ -117,9 +117,9 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 <li><p>Actual default: "bernoulli"</p></li>
 <li><p>Adjusted default: "coxph"</p></li>
 <li><p>Reason for change: This is the only distribution available for survival.</p></li>
-<li><p><code>keep_data</code>:</p><ul><li><p>Actual default: TRUE</p></li>
+<li><p><code>keep.data</code>:</p><ul><li><p>Actual default: TRUE</p></li>
 <li><p>Adjusted default: FALSE</p></li>
-<li><p>Reason for change: <code>keep_data = FALSE</code> saves memory during model fitting.</p></li>
+<li><p>Reason for change: <code>keep.data = FALSE</code> saves memory during model fitting.</p></li>
 </ul></li>
 <li><p><code>n.cores</code>:</p><ul><li><p>Actual default: NULL</p></li>
 <li><p>Adjusted default: 1</p></li>
@@ -151,7 +151,7 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
     </div>
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
-    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code>mlr3proba::LearnerSurv</code> -&gt; <code>LearnerSurvGBM</code></p>
+    <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3proba.mlr-org.com/reference/LearnerSurv.html" class="external-link">mlr3proba::LearnerSurv</a></code> -&gt; <code>LearnerSurvGBM</code></p>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -213,13 +213,22 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.gbm"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in loadNamespace(x):</span> there is no package called ‘mlr3proba’</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in print(learner):</span> object 'learner' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvGBM:surv.gbm&gt;: Gradient Boosting</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: distribution=coxph, keep.data=FALSE, n.cores=1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, gbm</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, missings, weights</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'learner' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "distribution"      "n.trees"           "cv.folds"         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "interaction.depth" "n.minobsinnode"    "shrinkage"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "bag.fraction"      "train.fraction"    "keep.data"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "verbose"           "var.monotone"      "n.cores"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "single.tree"      </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
