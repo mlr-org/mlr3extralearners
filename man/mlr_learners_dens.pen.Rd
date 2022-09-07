@@ -50,7 +50,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Schellhase, Christian, Kauermann, Göran (2012).
+Schellhase, Christian, Kauermann, GÃ¶ran (2012).
 \dQuote{Density estimation and comparison with a penalized mixture approach.}
 \emph{Computational Statistics}, \bold{27}(4), 757--777.
 }

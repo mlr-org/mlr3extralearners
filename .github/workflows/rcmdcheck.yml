@@ -64,6 +64,11 @@ jobs:
           try(pak::local_install_dev_deps(upgrade = TRUE), silent = TRUE)
           pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
+      
+      - name: install aorsf
+        run: |
+          install.packages("aorsf")
+        shell: Rscript {0}
 
       - name: Install catboost
         run: |

@@ -25,6 +25,7 @@ Other contributors:
   \item Pierre Camilleri \email{camilleri_pierre@hotmail.fr} [contributor]
   \item Javier García \email{geshter@hotmail.com} [contributor]
   \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
+  \item Byron Jaeger \email{bjaeger@wakehealth.edu} [contributor]
 }
 
 }

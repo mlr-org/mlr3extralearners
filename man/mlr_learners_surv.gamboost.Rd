@@ -60,7 +60,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Bühlmann, Peter, Yu, Bin (2003).
+BÃ¼hlmann, Peter, Yu, Bin (2003).
 \dQuote{Boosting with the L 2 loss: regression and classification.}
 \emph{Journal of the American Statistical Association}, \bold{98}(462), 324--339.
 }

@@ -58,7 +58,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Gramacki, Artur, Gramacki, Jarosław (2017).
+Gramacki, Artur, Gramacki, JarosÅ‚aw (2017).
 \dQuote{FFT-based fast computation of multivariate kernel density estimators with unconstrained bandwidth matrices.}
 \emph{Journal of Computational and Graphical Statistics}, \bold{26}(2), 459--462.
 }

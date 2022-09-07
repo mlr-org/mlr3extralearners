@@ -15,6 +15,7 @@ Authors@R: c(
     person("Pierre", "Camilleri", , "camilleri_pierre@hotmail.fr", role = "ctb"),
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
+    person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"))
   )
 Description: Extra learners for use in mlr3.
@@ -30,6 +31,7 @@ Imports:
     paradox,
     R6
 Suggests:
+    aorsf,
     actuar,
     apcluster,
     C50,

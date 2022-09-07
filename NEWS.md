@@ -4,6 +4,7 @@
 * Correct documentation of gbm learner: default was incorrectly documented and
   the parameter was incorrectly referred to as `keep_data` instead of `keep.data`
 * Add catboost to the dependencies
+* Added `LearnerSurvAorsf` with key `surv.aorsf`. See https://github.com/bcjaeger/aorsf for more details on `aorsf`
 
 # mlr3extralearners 0.5.46
 
