@@ -6,7 +6,7 @@
 \title{Classification J48 Learner}
 \description{
 Decision tree algorithm.
-Callsu \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

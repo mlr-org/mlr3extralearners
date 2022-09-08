@@ -6,7 +6,7 @@
 #' FIXME: BRIEF DESCRIPTION OF THE LEARNER.
 #' Calls [<package>::<caller>()] from FIXME: (CRAN VS NO CRAN): \CRANpkg{<package>} | '<package>'.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Custom mlr3 parameters:
 #' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
 #'
 #' @section Custom mlr3 defaults:
