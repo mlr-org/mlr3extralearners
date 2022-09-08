@@ -7,7 +7,7 @@
 \description{
 Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
 linear regression models at the terminal leaves.
-Calls \code{\link[Cubist:cubist]{Cubist::cubist()}} from \CRANpkg{Cubist}.
+Calls \code{\link[Cubist:cubist.default]{Cubist::cubist()}} from \CRANpkg{Cubist}.
 }
 \section{Dictionary}{
 
@@ -36,7 +36,7 @@ lrn("regr.cubist")
    rules \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    extrapolation \tab numeric \tab 100 \tab  \tab \eqn{[0, 100]}{[0, 100]} \cr
    sample \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   seed \tab untyped \tab sample.int(4096, size = 1) \tab  \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    label \tab untyped \tab outcome \tab  \tab - \cr
    neighbors \tab integer \tab 0 \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
 }

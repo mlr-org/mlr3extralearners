@@ -98,7 +98,7 @@ Gensheimer, F M, Narasimhan, BA (2018).
 \dQuote{Simple discrete-time survival model for neural networks.}
 \emph{arXiv}.
 
-Kvamme, HÃ¥vard, Borgan Ã, Scheel I (2019).
+Kvamme, Håvard, Borgan Ø, Scheel I (2019).
 \dQuote{Time-to-event prediction with neural networks and Cox regression.}
 \emph{arXiv preprint arXiv:1907.00825}.
 }

@@ -58,13 +58,13 @@ lrn("regr.lmer")
       ) |                                                                            |-                           |
 }\if{html}{\out{</div>}}
 
-|check.conv.hess     |untyped   |lme4::.makeCC(action = "warning", tol = 1e-6)                                                              |                                                                            |-                           |
-|optCtrl             |untyped   |list                                                                                                       |                                                                            |-                           |
-|newparams           |untyped   |                                                                                                           |                                                                            |-                           |
-|re.form             |untyped   |                                                                                                           |                                                                            |-                           |
-|random.only         |logical   |FALSE                                                                                                      |TRUE, FALSE                                                                 |-                           |
-|allow.new.levels    |logical   |FALSE                                                                                                      |TRUE, FALSE                                                                 |-                           |
-|na.action           |untyped   |::     , stats  , na.pass                                                                                  |                                                                            |-                           |
+|check.conv.hess     |untyped   |lme4::.makeCC(action = "warning", tol = 1e-6)                                                           |                                                                            |-                           |
+|optCtrl             |untyped   |list                                                                                                    |                                                                            |-                           |
+|newparams           |untyped   |                                                                                                        |                                                                            |-                           |
+|re.form             |untyped   |                                                                                                        |                                                                            |-                           |
+|random.only         |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
+|allow.new.levels    |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
+|na.action           |untyped   |::     , stats  , na.pass                                                                               |                                                                            |-                           |
 }
 
 \examples{

@@ -33,16 +33,16 @@ lrn("surv.aorsf")
    n_tree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_split \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_retry \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    control_type \tab character \tab fast \tab fast, cph, net \tab - \cr
    control_fast_do_scale \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   control_fast_method \tab character \tab breslow \tab efron, breslow \tab - \cr
-   control_cph_method \tab character \tab breslow \tab efron, breslow \tab - \cr
+   control_fast_method \tab character \tab efron \tab efron, breslow \tab - \cr
+   control_cph_method \tab character \tab efron \tab efron, breslow \tab - \cr
    control_cph_eps \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    control_cph_iter_max \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    control_net_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   control_net_df_target \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   control_net_df_target \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    leaf_min_events \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    leaf_min_obs \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_min_events \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -50,8 +50,8 @@ lrn("surv.aorsf")
    split_min_stat \tab numeric \tab 3.841459 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_pred_type \tab character \tab surv \tab none, surv, risk, chf \tab - \cr
    importance \tab character \tab anova \tab none, anova, negate, permute \tab - \cr
-   oobag_pred_horizon \tab untyped \tab - \tab  \tab - \cr
-   oobag_eval_every \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   oobag_pred_horizon \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
@@ -139,7 +139,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvAorsf-oob_error"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvAorsf-oob_error}{}}}
 \subsection{Method \code{oob_error()}}{
-OOB concordance error extracted from the model slot \code{oob_error}.
+OOB concordance error extracted from the model slot
+\code{eval_oobag$stat_values}
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvAorsf$oob_error()}\if{html}{\out{</div>}}
 }
