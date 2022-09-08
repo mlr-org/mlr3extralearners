@@ -80,6 +80,7 @@ Suggests:
     ranger,
     remotes,
     reticulate (>= 1.16),
+    rsm,
     rvest,
     RWeka,
     sandwich,
