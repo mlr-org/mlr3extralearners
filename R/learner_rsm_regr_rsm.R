@@ -46,7 +46,6 @@ LearnerRegrRSM = R6Class("LearnerRegrRSM",
   ),
   private = list(
     .train = function(task) {
-      browser()
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       vs = paste(task$feature_names, collapse = ",", sep = " ")
