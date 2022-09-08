@@ -61,7 +61,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          try(pak::local_install_dev_deps(upgrade = TRUE), silent = TRUE)
+          res = try(pak::local_install_dev_deps(upgrade = TRUE), silent = TRUE)
+          print(res)
           pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
       
