@@ -10,7 +10,24 @@
 #'   filter = list(class = "surv", predict_types = "distr"))
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
-  dt = data.table::copy(mlr3learners_table)
+  require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cluster"), quietly = TRUE)
+  messagef("This will take a few seconds.")
+  keys = mlr3::mlr_learners$keys()
+  all_lrns = suppressWarnings(mlr3::lrns(keys))
+
+  mlr3learners_table = data.table::data.table(t(data.table::rbindlist(list(
+    mlr3misc::map(all_lrns, function(.x) {
+      idsplt = strsplit(.x$id, ".", TRUE)[[1]]
+      list(idsplt[[2]], idsplt[[1]], .x$id, strsplit(.x$man, "::", TRUE)[[1]][1],
+        .x$packages, .x$properties, .x$feature_types, .x$predict_types)
+    })))))
+  colnames(mlr3learners_table) = c("name", "class", "id", "mlr3_package", "required_packages",
+    "properties", "feature_types", "predict_types")
+  mlr3learners_table[, 1:4] = lapply(mlr3learners_table[, 1:4], as.character)
+  mlr3learners_table[mlr3learners_table$class == "clust", "mlr3_package"] = "mlr3cluster"
+  mlr3learners_table
+
+  dt = mlr3learners_table # for readability
 
   if (!is.null(filter)) {
     if (!is.null(filter$name)) {

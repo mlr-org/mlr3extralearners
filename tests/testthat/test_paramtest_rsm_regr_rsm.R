@@ -1,9 +1,11 @@
-test_that("<type>.<key> train", {
-  learner = lrn("<type>.<key>")
-  fun = <package>::<caller>
+test_that("regr.rsm train", {
+  learner = lrn("regr.rsm")
+  fun = rsm::rsm
   exclude = c(
     "object", # handled internally
-    "data" # handled internally
+    "data", # handled internally
+    "modelfun", # custom parameter
+    "formula"
   )
 
   # note that you can also pass a list of functions in case $.train calls more than one
@@ -12,13 +14,14 @@ test_that("<type>.<key> train", {
   expect_paramtest(paramtest)
 })
 
-test_that("<type>.<key> predict", {
-  learner = lrn("<type>.<key>")
-  fun = <package>::predict # nolint
+test_that("regr.rsm predict", {
+  learner = lrn("regr.rsm")
+  fun = predict
   exclude = c(
     "object", # handled internally
     "data", # handled internally
     "newdata" # handled internally
+
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

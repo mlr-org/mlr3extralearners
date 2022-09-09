@@ -1,3 +1,12 @@
+# mlr3extralearners 0.5.48
+
+* Add rsm learner
+* fix `list_mlr3learners()` function. Now slower but correct.
+* Remove catboost from DESCRIPTION until it can be installed with pak
+* Fix typos in test templates
+* Update README
+
+
 # mlr3extralearners 0.5.47
 
 * Add mlr3proba dependencies into remotes (no longer on CRAN)

@@ -541,5 +541,13 @@ bibentries = c( # nolint start
     author = "Bates, Douglas M",
     year = "2010",
     publisher = "Springer New York"
+  ),
+  lenth2010response = bibentry("article",
+    title="Response-surface methods in R, using rsm",
+    author="Lenth, Russell V",
+    journal="Journal of Statistical Software",
+    volume="32",
+    pages="1--17",
+    year="2010"
   )
 ) # nolint end
