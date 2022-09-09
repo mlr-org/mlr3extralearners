@@ -14,10 +14,10 @@ library(data.table)
 library(formattable)
 path = mlr3extralearners:::pkg_root(".")
 
-tbl = list_mlr3learners(
+tbl = suppressMessages(list_mlr3learners(
   select = c("id", "required_packages", "mlr3_package"),
   filter = list(mlr3_package = "mlr3extralearners")
-)
+))
 
 remove_mlr3 = function(pkgs) {
   pkgs = pkgs[!grepl("mlr3", pkgs)]
