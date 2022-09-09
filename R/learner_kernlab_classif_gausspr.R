@@ -1,4 +1,4 @@
-#' @title Classifession Gaussian Process Learner
+#' @title Classification Gaussian Process Learner
 #' @author RaphaelS1
 #' @name mlr_learners_classif.gausspr
 #'

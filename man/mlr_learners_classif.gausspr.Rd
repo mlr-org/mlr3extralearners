@@ -3,7 +3,7 @@
 \name{mlr_learners_classif.gausspr}
 \alias{mlr_learners_classif.gausspr}
 \alias{LearnerClassifGausspr}
-\title{Classifession Gaussian Process Learner}
+\title{Classification Gaussian Process Learner}
 \description{
 Gaussian process for classification.
 Calls \code{\link[kernlab:gausspr]{kernlab::gausspr()}} from \CRANpkg{kernlab}.
