@@ -12,7 +12,7 @@ filtered and queried."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.47</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.48</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,59 +109,62 @@ names in table.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">list_mlr3learners</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"properties"</span>, <span class="st">"predict_types"</span><span class="op">)</span>,</span></span>
 <span class="r-in"><span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>class <span class="op">=</span> <span class="st">"surv"</span>, predict_types <span class="op">=</span> <span class="st">"distr"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> This will take a few seconds.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   id                                    properties</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:     surv.akritas                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:  surv.blackboost                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:     surv.cforest                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:    surv.coxboost                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:       surv.coxph                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:     surv.coxtime                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:       surv.ctree                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: surv.cv_coxboost                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:     surv.deephit                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:    surv.deepsurv                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:     surv.dnnsurv                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:    surv.flexible                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:    surv.gamboost          importance,selected_features,weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:    surv.glmboost                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:      surv.kaplan                                      missings</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:      surv.loghaz                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:      surv.mboost          importance,selected_features,weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:      surv.nelson                                      missings</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:  surv.obliqueRSF                            missings,oob_error</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:  surv.parametric                                       weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:    surv.pchazard                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:   surv.penalized                                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:      surv.ranger                  importance,oob_error,weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:       surv.rfsrc         importance,missings,oob_error,weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:       surv.rpart importance,missings,selected_features,weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:       surv.aorsf                          importance,oob_error</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:  surv.blackboost                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:     surv.cforest                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:    surv.coxboost                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:       surv.coxph                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:     surv.coxtime                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:       surv.ctree                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: surv.cv_coxboost                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10:     surv.deephit                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:    surv.deepsurv                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:     surv.dnnsurv                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:    surv.flexible                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:    surv.gamboost          importance,selected_features,weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    surv.glmboost                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:      surv.kaplan                                      missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:      surv.loghaz                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:      surv.mboost          importance,selected_features,weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:      surv.nelson                                      missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:  surv.obliqueRSF                            missings,oob_error</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:  surv.parametric                                       weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22:    surv.pchazard                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:   surv.penalized                                              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:      surv.ranger                  importance,oob_error,weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25:       surv.rfsrc         importance,missings,oob_error,weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26:       surv.rpart importance,missings,selected_features,weights</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   id                                    properties</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      predict_types</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4: crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3: crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  5: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  7:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 11:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12: crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 13: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 14: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 16:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 19:    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20: crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21: crank,distr,lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 22:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 23:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 24:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 25:    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26:    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      predict_types</span>
 </code></pre></div>
     </div>
