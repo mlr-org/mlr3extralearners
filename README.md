@@ -24,7 +24,7 @@ to install required packages to run these learners. See the interactive
 [learner
 list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
 for the full list of learners in the mlr3verse and the [learner status
-page](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html)
 for a live build status.
 
 ``` r
@@ -37,11 +37,11 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   4:   classif.catboost mlr3extralearners
 #>   5:    classif.cforest mlr3extralearners
 #>  ---                                     
-#> 130:        surv.ranger mlr3extralearners
-#> 131:         surv.rfsrc mlr3extralearners
-#> 132:         surv.rpart         mlr3proba
-#> 133:           surv.svm mlr3extralearners
-#> 134:       surv.xgboost mlr3extralearners
+#> 131:        surv.ranger mlr3extralearners
+#> 132:         surv.rfsrc mlr3extralearners
+#> 133:         surv.rpart         mlr3proba
+#> 134:           surv.svm mlr3extralearners
+#> 135:       surv.xgboost mlr3extralearners
 #>                                            required_packages
 #>                                                       <list>
 #>   1:                            mlr3,mlr3extralearners,RWeka
@@ -50,17 +50,26 @@ list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
 #>   4:                         mlr3,mlr3extralearners,catboost
 #>   5:           mlr3,mlr3extralearners,partykit,sandwich,coin
 #>  ---                                                        
-#> 130:                 mlr3,mlr3proba,mlr3extralearners,ranger
-#> 131: mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
-#> 132:                    mlr3,mlr3proba,rpart,distr6,survival
-#> 133:            mlr3,mlr3proba,mlr3extralearners,survivalsvm
-#> 134:                mlr3,mlr3proba,mlr3extralearners,xgboost
+#> 131:                 mlr3,mlr3proba,mlr3extralearners,ranger
+#> 132: mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
+#> 133:                    mlr3,mlr3proba,rpart,distr6,survival
+#> 134:            mlr3,mlr3proba,mlr3extralearners,survivalsvm
+#> 135:                mlr3,mlr3proba,mlr3extralearners,xgboost
 ```
 
-mlr3extralearners lives on GitHub and will not be on CRAN. Install with:
+mlr3extralearners lives on GitHub and will not be on CRAN. You can
+download the latest release from
+[here](https://github.com/mlr-org/mlr3extralearners/releases) and
+install it locally.
 
 ``` r
-remotes::install_github("mlr-org/mlr3extralearners")
+devtools::install_local()
+```
+
+If you want to download the development version, run
+
+``` r
+devtools::install_github("mlr-org/mlr3extralearners")
 ```
 
 ## Installing and Loading Learners
@@ -102,4 +111,4 @@ lrn("regr.gbm")
 New learners - either for personal use or to extend mlr3extralearners -
 can be created with the `create_learner` function. An in-depth tutorial
 on how to do this can be found in the [mlr3
-book](https://mlr3book.mlr-org.com/07-extending-learners.html).
+book](https://mlr3book.mlr-org.com/extending.html#sec-extending-learners).
