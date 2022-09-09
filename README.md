@@ -1,7 +1,8 @@
 
 # mlr3extralearners
 
-[Package website](https://mlr3extralearners.mlr-org.com/)
+Package website: [release](https://mlr3extralearners.mlr-org.com/) |
+[dev](https://mlr3extralearners.mlr-org.com/dev/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
@@ -26,6 +27,7 @@ for a live build status.
 
 ``` r
 list_mlr3learners(select = c("id", "required_packages"))
+#> This will take a few seconds.
 #>                      id                                       required_packages
 #>                  <char>                                                  <list>
 #>   1: classif.AdaBoostM1                            mlr3,mlr3extralearners,RWeka
@@ -34,11 +36,11 @@ list_mlr3learners(select = c("id", "required_packages"))
 #>   4:   classif.catboost                         mlr3,mlr3extralearners,catboost
 #>   5:    classif.cforest           mlr3,mlr3extralearners,partykit,sandwich,coin
 #>  ---                                                                           
-#> 131:        surv.ranger                 mlr3,mlr3proba,mlr3extralearners,ranger
-#> 132:         surv.rfsrc mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
-#> 133:         surv.rpart                    mlr3,mlr3proba,rpart,distr6,survival
-#> 134:           surv.svm            mlr3,mlr3proba,mlr3extralearners,survivalsvm
-#> 135:       surv.xgboost                mlr3,mlr3proba,mlr3extralearners,xgboost
+#> 133:        surv.ranger                 mlr3,mlr3proba,mlr3extralearners,ranger
+#> 134:         surv.rfsrc mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
+#> 135:         surv.rpart                    mlr3,mlr3proba,rpart,distr6,survival
+#> 136:           surv.svm            mlr3,mlr3proba,mlr3extralearners,survivalsvm
+#> 137:       surv.xgboost                mlr3,mlr3proba,mlr3extralearners,xgboost
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN. You can
