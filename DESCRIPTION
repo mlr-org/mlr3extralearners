@@ -91,7 +91,6 @@ Suggests:
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
-    usethis,
     xgboost
 Remotes:
     alan-turing-institute/distr6,
