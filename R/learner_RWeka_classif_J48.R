@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Decision tree algorithm.
-#' Callsu [RWeka::IBk()] from \CRANpkg{RWeka}.
+#' Calls [RWeka::IBk()] from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.J48
