@@ -8,7 +8,7 @@
 Fit a linear model with a response-surface component.
 Calls \code{\link[rsm:rsm]{rsm::rsm()}} from FIXME: \CRANpkg{rsm}.
 }
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{modelfun}: This parameter controls how the formula for \code{\link[rsm:rsm]{rsm::rsm()}} is created. Possible values are:

@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.cforest
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtryratio`
 #'     as `mtry = max(ceiling(mtryratio * n_features), 1)`.

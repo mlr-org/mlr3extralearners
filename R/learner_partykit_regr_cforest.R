@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.cforest
 #'
-#' @inheritSection mlr_learners_classif.cforest Custom mlr3 parameters
+#' @inheritSection mlr_learners_classif.cforest Initial parameter values
 #'
 #' @references
 #' `r format_bib("hothorn_2015", "hothorn_2006")`

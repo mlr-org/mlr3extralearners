@@ -139,7 +139,7 @@ lrn("classif.lightgbm")
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{convert_categorical}:

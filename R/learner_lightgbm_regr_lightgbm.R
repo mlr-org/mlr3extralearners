@@ -13,7 +13,7 @@
 #' @template learner
 #' @templateVar id regr.lightgbm
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' * `convert_categorical`:
 #'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
 #'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to

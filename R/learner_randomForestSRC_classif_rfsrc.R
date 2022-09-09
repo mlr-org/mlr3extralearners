@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.rfsrc
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
