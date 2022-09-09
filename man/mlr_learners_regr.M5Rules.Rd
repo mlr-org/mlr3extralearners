@@ -45,7 +45,7 @@ lrn("regr.M5Rules")
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{output_debug_info}:

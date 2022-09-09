@@ -8,7 +8,7 @@
 #' @template learner
 #' @templateVar id surv.obliqueRSF
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry_ratio`
 #'     as `mtry = max(ceiling(mtry_ratio * n_features), 1)`.

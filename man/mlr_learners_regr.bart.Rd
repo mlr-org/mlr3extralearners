@@ -55,7 +55,7 @@ lrn("regr.bart")
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
 \item Parameter: offset

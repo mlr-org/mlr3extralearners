@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.bart
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' * Parameter: offset
 #'   * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
 #'     and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for

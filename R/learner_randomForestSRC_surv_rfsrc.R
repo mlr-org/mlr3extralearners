@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id surv.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
+#' @inheritSection mlr_learners_classif.rfsrc Initial parameter values
 #'
 #' @details
 #' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and

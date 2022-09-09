@@ -10,7 +10,7 @@
 #' @template learner
 #' @templateVar id regr.M5Rules
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'
