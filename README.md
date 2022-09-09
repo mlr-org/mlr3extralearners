@@ -1,8 +1,7 @@
 
 # mlr3extralearners
 
-Package website: [release](https://mlr3extralearners.mlr-org.com/) |
-[dev](https://mlr3extralearners.mlr-org.com/dev/)
+[Package website](https://mlr3extralearners.mlr-org.com/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
@@ -10,9 +9,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 [![R CMD
 Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
-[![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -28,42 +25,29 @@ page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html
 for a live build status.
 
 ``` r
-list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
-#>                      id      mlr3_package
-#>                  <char>            <char>
-#>   1: classif.AdaBoostM1 mlr3extralearners
-#>   2:       classif.bart mlr3extralearners
-#>   3:        classif.C50 mlr3extralearners
-#>   4:   classif.catboost mlr3extralearners
-#>   5:    classif.cforest mlr3extralearners
-#>  ---                                     
-#> 131:        surv.ranger mlr3extralearners
-#> 132:         surv.rfsrc mlr3extralearners
-#> 133:         surv.rpart         mlr3proba
-#> 134:           surv.svm mlr3extralearners
-#> 135:       surv.xgboost mlr3extralearners
-#>                                            required_packages
-#>                                                       <list>
-#>   1:                            mlr3,mlr3extralearners,RWeka
-#>   2:                           mlr3,mlr3extralearners,dbarts
-#>   3:                              mlr3,mlr3extralearners,C50
-#>   4:                         mlr3,mlr3extralearners,catboost
-#>   5:           mlr3,mlr3extralearners,partykit,sandwich,coin
-#>  ---                                                        
-#> 131:                 mlr3,mlr3proba,mlr3extralearners,ranger
-#> 132: mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
-#> 133:                    mlr3,mlr3proba,rpart,distr6,survival
-#> 134:            mlr3,mlr3proba,mlr3extralearners,survivalsvm
-#> 135:                mlr3,mlr3proba,mlr3extralearners,xgboost
+list_mlr3learners(select = c("id", "required_packages"))
+#>                      id                                       required_packages
+#>                  <char>                                                  <list>
+#>   1: classif.AdaBoostM1                            mlr3,mlr3extralearners,RWeka
+#>   2:       classif.bart                           mlr3,mlr3extralearners,dbarts
+#>   3:        classif.C50                              mlr3,mlr3extralearners,C50
+#>   4:   classif.catboost                         mlr3,mlr3extralearners,catboost
+#>   5:    classif.cforest           mlr3,mlr3extralearners,partykit,sandwich,coin
+#>  ---                                                                           
+#> 131:        surv.ranger                 mlr3,mlr3proba,mlr3extralearners,ranger
+#> 132:         surv.rfsrc mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
+#> 133:         surv.rpart                    mlr3,mlr3proba,rpart,distr6,survival
+#> 134:           surv.svm            mlr3,mlr3proba,mlr3extralearners,survivalsvm
+#> 135:       surv.xgboost                mlr3,mlr3proba,mlr3extralearners,xgboost
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN. You can
 download the latest release from
 [here](https://github.com/mlr-org/mlr3extralearners/releases) and
-install it locally.
+install it locally with
 
 ``` r
-devtools::install_local()
+devtools::install_local("path/to/mlr3extralearners")
 ```
 
 If you want to download the development version, run

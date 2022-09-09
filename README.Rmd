@@ -15,15 +15,13 @@ library(magrittr)
 
 # mlr3extralearners
 
-Package website: [release](https://mlr3extralearners.mlr-org.com/) | [dev](https://mlr3extralearners.mlr-org.com/dev/)
+[Package website](https://mlr3extralearners.mlr-org.com/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
 [![R CMD Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
-[![codecov](https://codecov.io/gh/mlr-org/mlr3extralearners/branch/main/graph/badge.svg)](https://codecov.io/gh/mlr-org/mlr3extralearners)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
-[![CodeFactor](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners/badge)](https://www.codefactor.io/repository/github/mlr-org/mlr3extralearners)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -32,14 +30,14 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 core packages. `mlr3extralearners` contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive [learner list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html) for the full list of learners in the mlr3verse and the [learner status page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) for a live build status.
 
 ```{r}
-list_mlr3learners(select = c("id", "mlr3_package", "required_packages"))
+list_mlr3learners(select = c("id", "required_packages"))
 ```
 
 mlr3extralearners lives on GitHub and will not be on CRAN.
-You can download the latest release from [here](https://github.com/mlr-org/mlr3extralearners/releases) and install it locally.
+You can download the latest release from [here](https://github.com/mlr-org/mlr3extralearners/releases) and install it locally with
 
 ```{r, eval = FALSE}
-devtools::install_local()
+devtools::install_local("path/to/mlr3extralearners")
 ```
 
 If you want to download the development version, run
