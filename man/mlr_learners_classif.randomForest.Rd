@@ -22,7 +22,7 @@ lrn("classif.randomForest")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForest}
 }
 }
@@ -39,7 +39,7 @@ lrn("classif.randomForest")
    sampsize \tab untyped \tab - \tab  \tab - \cr
    nodesize \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxnodes \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   importance \tab character \tab FALSE \tab accuracy, gini, none, FALSE \tab - \cr
+   importance \tab character \tab FALSE \tab accuracy, gini, none \tab - \cr
    localImp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    proximity \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    oob.prox \tab logical \tab - \tab TRUE, FALSE \tab - \cr
