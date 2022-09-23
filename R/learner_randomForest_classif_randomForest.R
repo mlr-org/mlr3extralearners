@@ -52,7 +52,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
       super$initialize(
         id = "classif.randomForest",
         packages = c("mlr3extralearners", "randomForest"),
-        feature_types = c("integer", "numeric", "factor", "ordered"),
+        feature_types = c("integer", "numeric", "factor", "ordered", "logical"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass", "importance", "oob_error"),

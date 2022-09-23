@@ -1,6 +1,7 @@
 # mlr3extralearners 0.5.49
 
 * Added missing feature type `"integer"` to `classif.randomForest`
+* Added missing feature type `"logical"` to {classif, regr}.randomForest
 
 # mlr3extralearners 0.5.48
 
