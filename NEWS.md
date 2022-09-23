@@ -1,3 +1,8 @@
+# mlr3extralearners 0.5.49
+
+* Added missing feature type `"integer"` to `classif.randomForest`
+* catboost can now be included in the DESCRIPTION because of pak 0.3.1 https://github.com/r-lib/pak/releases/tag/v0.3.1
+
 # mlr3extralearners 0.5.48
 
 * Add rsm learner
