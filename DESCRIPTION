@@ -35,7 +35,6 @@ Suggests:
     actuar,
     apcluster,
     C50,
-    catboost,
     coin,
     CoxBoost,
     Cubist,
@@ -95,7 +94,6 @@ Suggests:
     xgboost
 Remotes:
     alan-turing-institute/distr6,
-    catboost/catboost/catboost/R-package,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,

@@ -65,6 +65,20 @@ jobs:
           pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
 
+      - name: Install catboost
+        run: |
+          version = jsonlite::fromJSON(
+            "https://api.github.com/repos/catboost/catboost/releases"
+          )$tag_name[1]
+          version = gsub("v", "", version)
+          os = as.character(Sys.info()["sysname"])
+          url = sprintf(
+            "https://github.com/catboost/catboost/releases/download/v%1$s/catboost-R-%2$s-%1$s.tgz",
+            version, os
+          )
+          remotes::install_url(url, INSTALL_opts = "--no-multiarch")
+        shell: Rscript {0}
+
       - name: Install Python
         run: |
           pak::pkg_install('rstudio/reticulate')
