@@ -22,7 +22,7 @@ lrn("regr.randomForest")
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForest}
 }
 }
@@ -37,7 +37,7 @@ lrn("regr.randomForest")
    sampsize \tab untyped \tab - \tab  \tab - \cr
    nodesize \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxnodes \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   importance \tab character \tab FALSE \tab mse, nudepurity, none, FALSE \tab - \cr
+   importance \tab character \tab FALSE \tab mse, nudepurity, none \tab - \cr
    localImp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    proximity \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    oob.prox \tab logical \tab - \tab TRUE, FALSE \tab - \cr
