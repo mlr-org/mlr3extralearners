@@ -53,13 +53,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         check.conv.hess = p_uty(default = 'lme4::.makeCC(action = "warning", tol = 1e-6)', tags = "train"),
         # Additional optimizer controls
         optCtrl = p_uty(default = list(), tags = "train"),
-
-        # Prediction params
-        newparams = p_uty(default = NULL, tags = "predict"),
-        re.form = p_uty(default = NULL, tags = "predict"),
-        random.only = p_lgl( default = FALSE, tags = "predict"),
-        allow.new.levels = p_lgl(default = FALSE, tags = "predict"),
-        na.action = p_uty( default = stats::na.pass, tags = "predict"),
         family = p_uty(default = "stats::binomial(link = \"logit\")", tags = "train"),
         nAGQ = p_int(default = 1L, lower = 0, tags = "train"),
         mustart = p_uty(tags = "train"),
@@ -67,7 +60,14 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         tolPwrss = p_uty(tags = "train"),
         compDev = p_lgl(default = TRUE, tags = "train"),
         nAGQ0initStep = p_lgl(default = TRUE, tags = "train"),
-        check.response.not.const = p_uty(default = "stop", tags = "train")
+        check.response.not.const = p_uty(default = "stop", tags = "train"),
+
+        # Prediction params
+        newparams = p_uty(default = NULL, tags = "predict"),
+        re.form = p_uty(default = NULL, tags = "predict"),
+        random.only = p_lgl( default = FALSE, tags = "predict"),
+        allow.new.levels = p_lgl(default = FALSE, tags = "predict"),
+        na.action = p_uty( default = stats::na.pass, tags = "predict")
       )
 
       param_set$values = list(family = stats::binomial(link = "logit"))
@@ -104,8 +104,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight
       }
-
-      positive = task$positive
       data = task$data()
 
       # use the mlr3misc::invoke function (it's similar to do.call())
@@ -130,6 +128,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         .args = pars
       )
 
+      # glmer counts the second level as a 'success'
       levels = levels(self$state$task_prototype[[task$target_names]])
       success = levels[[2L]]
       failure = levels[[1L]]

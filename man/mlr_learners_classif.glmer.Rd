@@ -58,11 +58,6 @@ lrn("classif.glmer")
    check.conv.singular \tab untyped \tab lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol) \tab  \tab - \cr
    check.conv.hess \tab untyped \tab lme4::.makeCC(action = "warning", tol = 1e-6) \tab  \tab - \cr
    optCtrl \tab untyped \tab list \tab  \tab - \cr
-   newparams \tab untyped \tab  \tab  \tab - \cr
-   re.form \tab untyped \tab  \tab  \tab - \cr
-   random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
    family \tab untyped \tab stats::binomial(link = "logit") \tab  \tab - \cr
    nAGQ \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
@@ -71,6 +66,11 @@ lrn("classif.glmer")
    compDev \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nAGQ0initStep \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    check.response.not.const \tab untyped \tab stop \tab  \tab - \cr
+   newparams \tab untyped \tab  \tab  \tab - \cr
+   re.form \tab untyped \tab  \tab  \tab - \cr
+   random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
 }
 }
 
