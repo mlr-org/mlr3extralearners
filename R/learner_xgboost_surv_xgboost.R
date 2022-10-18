@@ -49,7 +49,6 @@ delayedAssign(
           aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
           aft_loss_distribution_scale = p_dbl(tags = "train"),
           alpha                       = p_dbl(0, default = 0, tags = "train"),
-          base_score                  = p_dbl(default = 0.5, tags = "train"),
           booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
           callbacks                   = p_uty(default = list(), tags = "train"),
           colsample_bylevel           = p_dbl(0, 1, default = 1, tags = "train"),
