@@ -89,7 +89,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       # get parameters for training and control of the fitting process
       pars_train = self$param_set$get_values(tags = "train")
 
-      ii = names(pars_train) %in% formalArgs(lme4::lmerControl)
+      ii = names(pars_train) %in% formalArgs(lme4::glmerControl)
 
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
