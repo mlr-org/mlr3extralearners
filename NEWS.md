@@ -1,6 +1,6 @@
 # mlr3extralearners 0.5.50
 
-* Added learner `LegrClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
+* Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
 
 # mlr3extralearners 0.5.49
 
