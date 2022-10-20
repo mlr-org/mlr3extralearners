@@ -97,9 +97,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
       pars_train[["formula"]] = NULL
@@ -121,7 +118,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = task$data(cols = ordered_features(task, self))
 
       prob = invoke(
         predict,
@@ -149,5 +146,3 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
 )
 
 .extralrns_dict$add("classif.glmer", LearnerClassifGlmer)
-
-
