@@ -8,6 +8,16 @@
 Linear model with random effects.
 Calls \code{\link[lme4:lmer]{lme4::lmer()}} from \CRANpkg{lme4}.
 }
+\section{Formula}{
+
+Although most mlr3 learners don't allow to specify the formula manually, and automatically
+set it by valling \code{task$formula()}, this learner allows to set the \code{formula} because it's core
+functionality depends it. This means that it might not always use all features that are available
+in the \link[mlr3:Task]{task}.
+Be aware, that this can sometimes lead to unexpected error messages,
+because mlr3 checks the compatibility between the learner and the task on \strong{all} available features.
+}
+
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
