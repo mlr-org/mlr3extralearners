@@ -118,7 +118,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = ordered_features(task, self))
+      newdata =ordered_features(task, self)
 
       prob = invoke(
         predict,
