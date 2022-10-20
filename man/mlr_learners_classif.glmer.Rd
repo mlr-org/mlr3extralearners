@@ -11,8 +11,18 @@ Calls \code{\link[lme4:glmer]{lme4::glmer()}} from \CRANpkg{lme4}.
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{family} - Is set to \code{binomial(link = "logit")}
+\item \code{family} - Is set to \code{stats::binomial(link = "logit")}.
 }
+}
+
+\section{Formula}{
+
+Although most mlr3 learners don't allow to specify the formula manually, and automatically
+set it by valling \code{task$formula()}, this learner allows to set the \code{formula} because it's core
+functionality depends it. This means that it might not always use all features that are available
+in the \link[mlr3:Task]{task}.
+Be aware, that this can sometimes lead to unexpected error messages,
+because mlr3 checks the compatibility between the learner and the task on \strong{all} available features.
 }
 
 \section{Dictionary}{
@@ -54,14 +64,14 @@ lrn("classif.glmer")
    check.rankX \tab character \tab message+drop.cols \tab message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore \tab - \cr
    check.scaleX \tab character \tab warning \tab warning, stop, silent.rescale, message+rescale, warn+rescale, ignore \tab - \cr
    check.formula.LHS \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
-   check.conv.grad \tab untyped \tab lme4::.makeCC("warning", tol = 2e-3, relTol = NULL) \tab  \tab - \cr
-   check.conv.singular \tab untyped \tab lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol) \tab  \tab - \cr
-   check.conv.hess \tab untyped \tab lme4::.makeCC(action = "warning", tol = 1e-6) \tab  \tab - \cr
-   optCtrl \tab untyped \tab list \tab  \tab - \cr
    family \tab untyped \tab stats::binomial(link = "logit") \tab  \tab - \cr
    nAGQ \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
    etastart \tab untyped \tab - \tab  \tab - \cr
+   check.conv.grad \tab untyped \tab lme4::.makeCC("warning", tol = 2e-3, relTol = NULL) \tab  \tab - \cr
+   check.conv.singular \tab untyped \tab lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol) \tab  \tab - \cr
+   check.conv.hess \tab untyped \tab lme4::.makeCC(action = "warning", tol = 1e-6) \tab  \tab - \cr
+   optCtrl \tab untyped \tab list \tab  \tab - \cr
    tolPwrss \tab untyped \tab - \tab  \tab - \cr
    compDev \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nAGQ0initStep \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr

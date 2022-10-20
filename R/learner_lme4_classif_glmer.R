@@ -5,8 +5,11 @@
 #' @description
 #' Generalized linear model with random effects.
 #' Calls [lme4::glmer()] from \CRANpkg{lme4}.
+#'
 #' @section Initial parameter values:
-#' * `family` - Is set to `binomial(link = "logit")`
+#' * `family` - Is set to `stats::binomial(link = "logit")`.
+#'
+#' @template section_formula
 #'
 #' @templateVar id classif.glmer
 #' @template learner
@@ -36,7 +39,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         calc.derivs = p_lgl(default = TRUE, tags = "train"),
         check.nobs.vs.rankZ = p_fct(levels = action_levels, default = "ignore", tags = "train"),
         check.nobs.vs.nlev = p_fct(levels = action_levels, default = "stop", tags = "train"),
-          check.nlev.gtreq.5 = p_fct(levels = action_levels, default = "ignore", tags = "train"),
+        check.nlev.gtreq.5 = p_fct(levels = action_levels, default = "ignore", tags = "train"),
         check.nlev.gtr.1 = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.nobs.vs.nRE = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.rankX = p_fct(
@@ -46,6 +49,10 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
           levels = c( "warning", "stop", "silent.rescale", "message+rescale", "warn+rescale", "ignore"),
           default = "warning", tags = "train"),
         check.formula.LHS  = p_fct(levels = action_levels, default = "stop", tags = "train"),
+        family = p_uty(default = "stats::binomial(link = \"logit\")", tags = "train"),
+        nAGQ = p_int(default = 1L, lower = 0, tags = "train"),
+        mustart = p_uty(tags = "train"),
+        etastart = p_uty(tags = "train"),
         # Convergence checks
         check.conv.grad = p_uty(default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)', tags = "train"),
         check.conv.singular = p_uty(default = 'lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol)',
@@ -53,10 +60,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         check.conv.hess = p_uty(default = 'lme4::.makeCC(action = "warning", tol = 1e-6)', tags = "train"),
         # Additional optimizer controls
         optCtrl = p_uty(default = list(), tags = "train"),
-        family = p_uty(default = "stats::binomial(link = \"logit\")", tags = "train"),
-        nAGQ = p_int(default = 1L, lower = 0, tags = "train"),
-        mustart = p_uty(tags = "train"),
-        etastart = p_uty(tags = "train"),
         tolPwrss = p_uty(tags = "train"),
         compDev = p_lgl(default = TRUE, tags = "train"),
         nAGQ0initStep = p_lgl(default = TRUE, tags = "train"),
@@ -78,7 +81,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("twoclass", "multiclass"),
+        properties = "twoclass",
         man = "mlr3extralearners::mlr_learners_classif.glmer",
         label = "Generalized Linear Mixed Effect Regression"
       )
@@ -146,3 +149,5 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
 )
 
 .extralrns_dict$add("classif.glmer", LearnerClassifGlmer)
+
+
