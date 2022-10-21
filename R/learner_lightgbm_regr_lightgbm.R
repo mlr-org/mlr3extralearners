@@ -228,7 +228,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       pars = self$param_set$get_values(tags = "predict")
       data = encode_lightgbm_predict(task, self$state$data_prototype)$X
 
-      if ("newdata" %in% formalArgs(lightgbm:::predict.lgb.Booster)) {
+      if (compareVersion(as.character(packageVersion("lightgbm")), "3.3.1")) {
         pred = invoke(predict,
           object = self$model,
           newdata = data,
@@ -246,8 +246,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     },
     .hotstart = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
-      train_lightgbm(self, task, "regr", pars, self$model)
     }
   )
 )
