@@ -76,6 +76,8 @@ lrn("classif.gam")
    efs.tol \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab - \cr
    edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nei \tab untyped \tab - \tab  \tab - \cr
+   ncv.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }

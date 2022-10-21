@@ -80,7 +80,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         # prediction
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
-      ),
+      )
 
       super$initialize(
         id = "regr.gam",
