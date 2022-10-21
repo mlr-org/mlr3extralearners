@@ -1,9 +1,16 @@
 # mlr3extralearners 0.5.49-9000
 
-* Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
-* Removed `base_score` parameter from `LearnerSurvXgboost`
-* Add arguments `nei` and  `ncv.thread` that were added to `mgcv::gam()` in
+* Feat: Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
+* Fix: Removed `base_score` parameter from `LearnerSurvXgboost` as this is no
+  longer supported by the latest
+* Fix: Add arguments `nei` and  `ncv.thread` that were added to `mgcv::gam()` in
   version 1.8.41
+* Fix: Added missing property `"weights"` to `LearnerClassifGlmer` and
+  `LearnerRegrLmer`
+* Fix: `lightgbm` uses the `param_vals` stored in the `state` for hotstarting
+* Fix: Rely on `state$data_prototype` to get ordering of features via
+  `ordered_features()` like in `mlr3learners` and therefore obviate the need to
+  store `feature_names` in the `state`
 
 # mlr3extralearners 0.5.49
 
