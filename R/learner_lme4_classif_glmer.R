@@ -112,6 +112,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
     },
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
+      newdata = ordered_features(task, self)
 
       prob = invoke(
         predict,
