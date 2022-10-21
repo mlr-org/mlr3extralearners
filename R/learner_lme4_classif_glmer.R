@@ -81,6 +81,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
+        properties = c("twoclass", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.glmer",
         label = "Generalized Linear Mixed Effect Regression"
       )
