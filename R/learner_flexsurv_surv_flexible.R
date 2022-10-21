@@ -97,7 +97,7 @@ delayedAssign(
 
       .predict = function(task) {
         pars = self$param_set$get_values(tags = "predict")
-        pred = invoke(predict_flexsurvreg, self$model, task, .args = pars)
+        pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
 
         # crank is defined as the mean of the survival distribution
         list(distr = pred$distr, lp = pred$lp, crank = pred$lp)
@@ -107,14 +107,7 @@ delayedAssign(
 )
 
 predict_flexsurvreg = function(object, task, ...) {
-
-  # define newdata from the supplied task and convert to model matrix
-
-  newdata = ordered_features(task, self)
-
-  if (any(is.na(newdata))) {
-    stopf( "Learner %s on task %s failed to predict: Missing values in new data", self$id, task$id)
-  }
+  newdata = ordered_features(task, learner)
   X = stats::model.matrix(formulate(rhs = task$feature_names),
     data = newdata,
     xlev = task$levels())

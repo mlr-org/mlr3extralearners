@@ -74,8 +74,7 @@ delayedAssign(
 
       .predict = function(task) {
         pars = self$param_set$get_values(tags = "predict")
-        newdata = ordered_features(task, self)
-        invoke(list, pdf = self$model$pdf(newdata), .args = pars)
+        invoke(list, pdf = self$model$pdf(task$data(cols = task$feature_names)[[1]]), .args = pars)
       }
     )
   )
