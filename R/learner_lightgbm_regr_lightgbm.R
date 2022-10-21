@@ -226,9 +226,9 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      data = encode_lightgbm_predict(task, self$state$data_prototype)$X
+      data = encode_lightgbm_predict(task, self$state$data_prototype, self)$X
 
-      if (compareVersion(as.character(packageVersion("lightgbm")), "3.3.1")) {
+      if (utils::compareVersion(as.character(packageVersion("lightgbm")), "3.3.1")) {
         pred = invoke(predict,
           object = self$model,
           newdata = data,

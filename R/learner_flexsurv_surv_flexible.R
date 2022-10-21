@@ -106,7 +106,7 @@ delayedAssign(
   )
 )
 
-predict_flexsurvreg = function(object, task, ...) {
+predict_flexsurvreg = function(object, task, learner, ...) {
   newdata = ordered_features(task, learner)
   X = stats::model.matrix(formulate(rhs = task$feature_names),
     data = newdata,
