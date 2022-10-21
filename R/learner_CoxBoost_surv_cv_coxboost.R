@@ -77,9 +77,6 @@ delayedAssign(
 
     private = list(
       .train = function(task) {
-
-        # set column names to ensure consistency in fit and predict
-        self$state$feature_names = task$feature_names
         pars = self$param_set$get_values(tags = "train")
 
         optim_args = c("minstepno", "start.penalty", "iter.max", "upper.margin", "penalty")

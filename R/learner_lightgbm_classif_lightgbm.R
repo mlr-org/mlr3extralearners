@@ -219,7 +219,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         names(imp) = dt_imp$Feature
         return(imp)
       } else {
-        return(named_vector(self$state$feature_names, 0))
+        feature_names = self$state$train_task$feature_names
+        return(named_vector(feature_names, 0))
       }
     }
   ),

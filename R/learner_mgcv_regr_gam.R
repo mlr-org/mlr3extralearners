@@ -98,9 +98,6 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       control_pars = pars[names(pars) %in% formalArgs(mgcv::gam.control)]
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       data = task$data(cols = c(task$feature_names, task$target_names))
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))

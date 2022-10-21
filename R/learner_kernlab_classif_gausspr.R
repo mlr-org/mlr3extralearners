@@ -81,9 +81,6 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
         }
       }
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       invoke(kernlab::gausspr,
         x = task$formula(),
         data = task$data(),

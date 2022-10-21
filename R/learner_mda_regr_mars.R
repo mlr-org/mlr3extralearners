@@ -50,14 +50,11 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(w = task$weights$weight))
       }
 
-      x = task$data(cols = self$state$feature_names)
+      x = task$data(cols = task$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
 
       invoke(mda::mars,

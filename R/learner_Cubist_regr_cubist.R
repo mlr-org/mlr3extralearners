@@ -58,10 +58,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
       pars[["committees"]] = NULL
       control = invoke(Cubist::cubistControl, .args = pars)
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
-      x = task$data(cols = self$state$feature_names)
+      x = task$data(cols = task$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
 
       invoke(Cubist::cubist,

@@ -165,9 +165,6 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
       pars_train[["formula"]] = NULL

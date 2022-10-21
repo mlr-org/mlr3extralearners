@@ -87,11 +87,6 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         }
       }
 
-
-
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       invoke(kernlab::lssvm,
         x = task$formula(),
         data = task$data(),

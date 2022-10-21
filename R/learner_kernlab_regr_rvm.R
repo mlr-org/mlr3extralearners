@@ -88,9 +88,6 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
         }
       }
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       invoke(kernlab::rvm,
         x = task$formula(),
         data = task$data(),

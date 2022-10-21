@@ -103,8 +103,6 @@ delayedAssign(
         fit = invoke(survival::survreg, formula = task$formula(), data = task$data(),
           .args = pv)
 
-        self$state$feature_names = task$feature_names
-
         # Fits the baseline distribution by reparameterising the fitted coefficients.
         # These were mostly derived numerically as precise documentation on the parameterisations is
         # hard to find.
@@ -140,14 +138,8 @@ delayedAssign(
       },
 
       .predict = function(task) {
-
-        feature_names = self$state$feature_names
-
         pv = self$param_set$get_values(tags = "predict")
-
-        # Call the predict method defined here
         pred = invoke(.predict_survreg, object = self$model, task = task, learner = self, .args = pv)
-
         # lp is aft-style, where higher value = lower risk, opposite needed for crank
         list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
       }
