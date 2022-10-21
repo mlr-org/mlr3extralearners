@@ -150,7 +150,7 @@ delayedAssign(
 
       .predict = function(task) {
         pars = self$param_set$get_values(tags = "predict")
-        newdata = task$data(cols = task$feature_names)
+        newdata = ordered_features(task, self)
         # predict linear predictor
         lp = as.numeric(invoke(predict, self$model, newdata = newdata, type = "link",
           .args = pars

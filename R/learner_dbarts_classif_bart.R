@@ -106,7 +106,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
 
-      newdata = task$data(cols = task$feature_names) # get newdata
+      newdata = ordered_features(task, self)
 
       # This will return a matrix of predictions, where each column is an observation
       # and each row is a sample from the posterior.

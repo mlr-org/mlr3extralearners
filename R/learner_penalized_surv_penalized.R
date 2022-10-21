@@ -99,7 +99,7 @@ delayedAssign(
         surv = with_package("penalized", {
           invoke(penalized::predict, self$model,
             penalized = penalized,
-            data = task$data(cols = task$feature_names),
+            data = ordered_features(task, self),
             .args = pars)
         })
 

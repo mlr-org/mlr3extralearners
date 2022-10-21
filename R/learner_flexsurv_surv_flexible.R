@@ -97,18 +97,6 @@ delayedAssign(
 
       .predict = function(task) {
         pars = self$param_set$get_values(tags = "predict")
-
-        # As we are using a custom predict method the missing assertions are performed here manually
-        # (as opposed to the automatic assertions that take place after prediction)
-        if (any(is.na(data.frame(task$data(cols = task$feature_names))))) {
-          stopf(
-            "Learner %s on task %s failed to predict: Missing values in new data
-                     (line(s) %s)\n",
-            self$id, task$id,
-            paste0(which(is.na(data.frame(task$data(cols = task$feature_names)))),
-              collapse = ", "))
-        }
-
         pred = invoke(predict_flexsurvreg, self$model, task, .args = pars)
 
         # crank is defined as the mean of the survival distribution
@@ -122,7 +110,11 @@ predict_flexsurvreg = function(object, task, ...) {
 
   # define newdata from the supplied task and convert to model matrix
 
-  newdata = task$data(cols = task$feature_names)
+  newdata = ordered_features(task, self)
+
+  if (any(is.na(newdata))) {
+    stopf( "Learner %s on task %s failed to predict: Missing values in new data", self$id, task$id)
+  }
   X = stats::model.matrix(formulate(rhs = task$feature_names),
     data = newdata,
     xlev = task$levels())

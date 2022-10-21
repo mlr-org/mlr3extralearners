@@ -139,7 +139,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       lvls = task$class_names
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       prob = invoke(
         predict,

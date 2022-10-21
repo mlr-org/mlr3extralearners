@@ -129,7 +129,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       type = ifelse(self$predict_type == "response", "response", "prob")
 
       pred = invoke(predict, self$model,

@@ -142,19 +142,12 @@ delayedAssign(
       .predict = function(task) {
 
         feature_names = self$state$feature_names
-        # As we are using a custom predict method the missing assertions are performed here manually
-        # (as opposed to the automatic assertions that take place after prediction)
-        if (any(is.na(data.frame(task$data(cols = feature_names))))) {
-          stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n",
-            self$id, task$id,
-            paste0(which(is.na(data.frame(task$data(cols = feature_names)))), collapse = ", "))
-        }
 
         pv = self$param_set$get_values(tags = "predict")
 
         # Call the predict method defined here
         pred = invoke(.predict_survreg, object = self$model, task = task,
-          feature_names = feature_names, .args = pv)
+          learner = self, .args = pv)
 
         # lp is aft-style, where higher value = lower risk, opposite needed for crank
         list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
@@ -163,7 +156,8 @@ delayedAssign(
   )
 )
 
-.predict_survreg = function(object, task, feature_names, type = "aft", tobit = FALSE) {
+.predict_survreg = function(object, task, learner, type = "aft", tobit = FALSE) {
+  feature_names = intersect(names(learner$state$task_prototype), task$feature_names)
 
   # Extracts baseline distribution and the model fit, performs assertions
   basedist = object$basedist
@@ -172,7 +166,10 @@ delayedAssign(
   assertClass(fit, "survreg")
 
   # define newdata from the supplied task and convert to model matrix
-  newdata = task$data(cols = feature_names)
+  newdata = ordered_features(task, learner)
+  if (any(is.na(newdata))) {
+    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", self$id, task$id)
+  }
   x = stats::model.matrix(formulate(rhs = feature_names), data = newdata,
     xlev = task$levels())[, -1]
 

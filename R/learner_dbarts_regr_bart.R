@@ -111,7 +111,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
 
       pars = self$param_set$get_values(tags = "predict") # get parameters with tag "predict"
 
-      newdata = task$data(cols = task$feature_names) # get newdata
+      newdata = ordered_features(task, self)
 
       # Other possible vars: offset.test, combineChains, ...
       data.table::setDF(newdata)

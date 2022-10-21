@@ -214,7 +214,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     .predict = function(task) {
 
       pool = invoke(catboost::catboost.load_pool,
-        data = task$data(cols = self$state$feature_names),
+        data = ordered_features(task, self),
         thread_count = self$param_set$values$thread_count)
 
       preds = invoke(catboost::catboost.predict,

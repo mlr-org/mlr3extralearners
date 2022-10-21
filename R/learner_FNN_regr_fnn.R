@@ -57,7 +57,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         FNN::knn.reg,
         train = self$model$train,
         y = self$model$y,
-        test = task$data(cols = self$state$feature_names),
+        test = ordered_features(task, self),
         .args = pars
       )
 

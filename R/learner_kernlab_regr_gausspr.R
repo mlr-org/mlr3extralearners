@@ -96,7 +96,7 @@ LearnerRegrGausspr = R6Class("LearnerRegrGausspr",
       list(response = as.numeric(invoke(
         getMethod("predict", "gausspr"),
         self$model,
-        task$data(cols = self$state$feature_names),
+        ordered_features(task, self),
         .args = pars
       )))
     }

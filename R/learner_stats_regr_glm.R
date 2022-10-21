@@ -94,10 +94,8 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-      # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       if (self$predict_type == "response") {
         response = invoke(stats::predict.glm,

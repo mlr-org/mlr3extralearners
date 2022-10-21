@@ -103,7 +103,7 @@ LearnerRegrRVM = R6Class("LearnerRegrRVM",
       list(response = as.numeric(invoke(
         getMethod("predict", "rvm"),
         self$model,
-        task$data(cols = self$state$feature_names),
+        ordered_features(task, self),
         .args = pars
       )))
     }

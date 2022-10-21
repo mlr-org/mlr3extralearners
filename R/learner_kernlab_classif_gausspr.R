@@ -97,7 +97,7 @@ LearnerClassifGausspr = R6Class("LearnerClassifGausspr",
       out[[1]] = invoke(
         getMethod("predict", "gausspr"),
         self$model,
-        task$data(cols = self$state$feature_names),
+        ordered_features(task, self),
         type = self$predict_type,
         .args = pars
       )

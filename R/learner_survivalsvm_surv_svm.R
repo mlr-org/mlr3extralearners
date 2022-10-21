@@ -86,7 +86,7 @@ delayedAssign(
 
       .predict = function(task) {
         pars = self$param_set$get_values(tags = "predict")
-        fit = predict(self$model, newdata = task$data(cols = task$feature_names),
+        fit = predict(self$model, newdata = ordered_features(task, self),
           .args = pars
         )
         crank = as.numeric(fit$predicted)

@@ -154,7 +154,7 @@ delayedAssign(
         pars = self$param_set$get_values(tags = "predict")
 
         # get newdata and ensure same ordering in train and predict
-        newdata = as.matrix(task$data(cols = self$state$feature_names))
+        newdata = as.matrix(ordered_features(task, self))
 
         lp = as.numeric(invoke(predict,
           self$model,

@@ -110,7 +110,7 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       type = self$predict_type
 
       pred = invoke(predict, self$model,

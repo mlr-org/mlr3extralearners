@@ -105,7 +105,7 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
       prediction = invoke(predict, self$model, newdata = newdata, type = self$predict_type,

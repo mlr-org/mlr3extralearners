@@ -73,8 +73,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
     },
 
     .predict = function(task) {
-      # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model,
         newdata = newdata,

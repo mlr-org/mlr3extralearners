@@ -164,7 +164,7 @@ LearnerRegrCForest = R6Class("LearnerRegrCForest",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       preds = invoke(predict, object = self$model, newdata = newdata,
         type = self$predict_type, .args = pars)
       list(response = preds)

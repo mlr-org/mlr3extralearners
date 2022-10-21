@@ -106,7 +106,7 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
       p = invoke(
         predict,
         self$model,
-        newdata = task$data(cols = task$feature_names),
+        newdata = ordered_features(task, self),
         type = "response",
         .args = pars
       )
