@@ -53,7 +53,7 @@ Suggests:
     kernlab,
     ks,
     LiblineaR,
-    lightgbm (>= 3.3.2),
+    lightgbm (>= 3.0.0),
     lme4,
     locfit,
     logspline,
