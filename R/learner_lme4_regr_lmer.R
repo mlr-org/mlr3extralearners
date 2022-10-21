@@ -6,6 +6,8 @@
 #' Linear model with random effects.
 #' Calls [lme4::lmer()] from \CRANpkg{lme4}.
 #'
+#' @template section_formula
+#'
 #' @templateVar id regr.lmer
 #' @template learner
 #'
