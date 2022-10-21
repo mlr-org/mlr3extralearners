@@ -89,7 +89,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
   ),
   private = list(
     .train = function(task) {
-      # get parameters for training and control of the fitting process
       pars_train = self$param_set$get_values(tags = "train")
 
       ii = names(pars_train) %in% formalArgs(lme4::glmerControl)
@@ -97,7 +96,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
 
-      # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
       pars_train[["formula"]] = NULL
 
@@ -106,7 +104,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       }
       data = task$data()
 
-      # use the mlr3misc::invoke function (it's similar to do.call())
       invoke(lme4::glmer,
         formula = formula,
         data = data,
@@ -114,10 +111,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         control = invoke(lme4::glmerControl, .args = pars_ctrl))
     },
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
       newdata =ordered_features(task, self)
 
       prob = invoke(
