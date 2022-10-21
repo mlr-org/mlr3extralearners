@@ -1,8 +1,7 @@
 # mlr3extralearners 0.5.49-9000
 
 * Feat: Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
-* Fix: Removed `base_score` parameter from `LearnerSurvXgboost` as this is no
-  longer supported by the latest
+* Fix: Failing xgboost parameter test
 * Fix: Add arguments `nei` and  `ncv.thread` that were added to `mgcv::gam()` in
   version 1.8.41
 * Fix: Added missing property `"weights"` to `LearnerClassifGlmer` and
