@@ -216,7 +216,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       # data must be a dataframe
       learn_pool = invoke(catboost::catboost.load_pool,
-        data = ordered_features(task, self),
+        data = task$data(cols = task$feature_names),
         label = label,
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)

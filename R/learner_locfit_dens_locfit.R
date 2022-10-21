@@ -79,8 +79,7 @@ delayedAssign(
       },
 
       .predict = function(task) {
-        newdata = ordered_features(task, self)
-        list(pdf = self$model$pdf(newdata))
+        list(pdf = self$model$pdf(task$data()[[1]]))
       }
     )
   )

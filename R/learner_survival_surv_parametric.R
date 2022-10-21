@@ -146,8 +146,7 @@ delayedAssign(
         pv = self$param_set$get_values(tags = "predict")
 
         # Call the predict method defined here
-        pred = invoke(.predict_survreg, object = self$model, task = task,
-          learner = self, .args = pv)
+        pred = invoke(.predict_survreg, object = self$model, task = task, learner = self, .args = pv)
 
         # lp is aft-style, where higher value = lower risk, opposite needed for crank
         list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
@@ -168,7 +167,7 @@ delayedAssign(
   # define newdata from the supplied task and convert to model matrix
   newdata = ordered_features(task, learner)
   if (any(is.na(newdata))) {
-    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", self$id, task$id)
+    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
   }
   x = stats::model.matrix(formulate(rhs = feature_names), data = newdata,
     xlev = task$levels())[, -1]
