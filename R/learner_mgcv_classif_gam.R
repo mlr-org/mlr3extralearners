@@ -78,6 +78,9 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher",
           tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
+        ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
+        edge.correct = p_lgl(default = FALSE, tags = "train"),
+        # prediction
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )

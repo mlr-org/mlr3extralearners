@@ -73,12 +73,14 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         scalePenalty = p_lgl(default = TRUE, tags = "train"),
         efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
         efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
-        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"),
-          default = "fletcher", tags = "train"),
+        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher", tags = "train"),
+        nei = p_uty(tags = "train"),
+        ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
+        # prediction
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
-      )
+      ),
 
       super$initialize(
         id = "regr.gam",
