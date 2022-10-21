@@ -167,12 +167,12 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     },
 
     .predict = function(task) {
-      newdata = data.table::setDF(ordered_features(task, self))
+      data = data.table::setDF(ordered_features(task, self))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
       pred = invoke(predict,
         object = self$model,
-        newdata = newdata,
+        data = data,
         .args = pars,
         .opts = list(rf.cores = cores))
 

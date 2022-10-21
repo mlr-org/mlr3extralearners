@@ -235,20 +235,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       pars = self$param_set$get_values(tags = "predict")
       data = encode_lightgbm_predict(task, self$state$data_prototype, self)$X
 
-      # lightgbm renamed data -> newdata after 3.3.2
-      if (utils::compareVersion(as.character(packageVersion("lightgbm")), "3.3.1")) {
-        pred = invoke(predict,
-          object = self$model,
-          newdata = data,
-          params = pars
-        )
-      } else {
-        pred = invoke(predict,
-          object = self$model,
-          data = data,
-          params = pars
-        )
-      }
+      pred = invoke(predict,
+        object = self$model,
+        data = data,
+        params = pars
+      )
 
       response = NULL
 
