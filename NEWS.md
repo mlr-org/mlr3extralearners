@@ -1,3 +1,8 @@
+# mlr3extralearners 0.5.49-9000
+
+* Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
+* Removed `base_score` parameter from `LearnerSurvXgboost`
+
 # mlr3extralearners 0.5.49
 
 * Added missing feature type `"integer"` to `classif.randomForest`

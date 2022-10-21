@@ -8,6 +8,7 @@
 #'
 #' Multiclass classification is not implemented yet.
 #'
+#' @section Formula:
 #' A gam formula specific to the task at hand is required for the `formula`
 #' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is
 #' provided, a fallback formula is used that will make the gam behave like a

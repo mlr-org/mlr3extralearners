@@ -70,7 +70,6 @@ lrn("surv.xgboost")
    aft_loss_distribution \tab character \tab normal \tab normal, logistic, extreme \tab - \cr
    aft_loss_distribution_scale \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    alpha \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
    callbacks \tab untyped \tab list \tab  \tab - \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr

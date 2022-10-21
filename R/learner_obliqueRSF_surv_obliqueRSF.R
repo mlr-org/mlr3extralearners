@@ -36,8 +36,7 @@ delayedAssign(
       #' Creates a new instance of this [R6][R6::R6Class] class.
       initialize = function() {
 
-        messagef("obliqueRSF has been superseded by aorsf. We highly recommend you use aorsf to fit oblique random survival forests: see https://github.com/bcjaeger/aorsf or install from CRAN with install.packages('aorsf')",
-                call. = FALSE)
+        messagef("obliqueRSF has been superseded by aorsf. We highly recommend you use aorsf to fit oblique random survival forests: see https://github.com/bcjaeger/aorsf or install from CRAN with install.packages('aorsf')")
 
         ps = ps(
           alpha = p_dbl(default = 0.5, tags = "train"),
