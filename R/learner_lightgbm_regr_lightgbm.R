@@ -246,6 +246,9 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     },
     .hotstart = function(task) {
       pars = self$param_set$get_values(tags = "train")
+      pars_train = self$state$param_vals
+      pars_train$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
+      train_lightgbm(self, task, "classif", pars_train, self$model)
     }
   )
 )
