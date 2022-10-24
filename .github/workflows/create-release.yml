@@ -2,7 +2,7 @@ on:
   push:
     tags:
       - "*"
-  workflow_dispatch: 
+  workflow_dispatch:
 
 name: Create Release
 
@@ -13,7 +13,7 @@ jobs:
     steps:
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Extract version
         run: |
