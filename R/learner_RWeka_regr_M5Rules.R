@@ -85,7 +85,7 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
       response = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = response)

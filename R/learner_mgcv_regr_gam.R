@@ -73,9 +73,11 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         scalePenalty = p_lgl(default = TRUE, tags = "train"),
         efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
         efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
-        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"),
-          default = "fletcher", tags = "train"),
+        scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher", tags = "train"),
+        nei = p_uty(tags = "train"),
+        ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
+        # prediction
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
@@ -98,9 +100,6 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       pars = self$param_set$get_values(tags = "train")
       control_pars = pars[names(pars) %in% formalArgs(mgcv::gam.control)]
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
-
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
 
       data = task$data(cols = c(task$feature_names, task$target_names))
       if ("weights" %in% task$properties) {
@@ -137,7 +136,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       include_se = (self$predict_type == "se")
 

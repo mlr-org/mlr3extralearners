@@ -8,10 +8,10 @@ encode_lightgbm_train = function(task) {
 
 # this does the same as the encode_lightgbm_train but checks that the levels did not permute
 # or a new level was added or a level was removed
-encode_lightgbm_predict = function(task, data_prototype) {
+encode_lightgbm_predict = function(task, data_prototype, self) {
   factor_columns = task$feature_types$id[task$feature_types$type == "factor"]
 
-  dat = task$data(cols = task$feature_names)
+  dat = ordered_features(task, self)
 
   walk(
     factor_columns,
@@ -27,9 +27,7 @@ encode_lightgbm_predict = function(task, data_prototype) {
 }
 
 encode_lightgbm = function(data, task) {
-  categorical_feature = task$feature_types$id[
-    task$feature_types$type %in% c("factor", "logical")
-  ]
+  categorical_feature = task$feature_types$id[task$feature_types$type %in% c("factor", "logical")]
 
   X = data.matrix(data)
 

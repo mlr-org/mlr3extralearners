@@ -6,9 +6,9 @@ x = strsplit(x, split = " ")
 x = mlr3misc::map_chr(x, function(x) x[1])
 x = gsub(",", replacement = "", x)
 # these are defined on the same line as colsample_bytree and cannot be scraped therefore
-x = append(x, values = c("colsample_bylevel", "colsample_bynode"))
+x = append(x, values = c("colsample_bylevel", "colsample_bynode", "base_score"))
 # valyes which do not match regex
-x = append(x, values = c("interaction_constraints", "monotone_constraints"))
+x = append(x, values = c("interaction_constraints", "monotone_constraints", "base_score"))
 # only defined in help page but not in signature or website
 x = append(x, values = "lambda_bias")
 add_params_xgboost = x

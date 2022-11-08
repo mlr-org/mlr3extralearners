@@ -1,6 +1,5 @@
 train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
   assert_choice(task_type, c("regr", "classif"))
-  self$state$feature_names = task$feature_names
   convert_categorical = pars$convert_categorical
   pars$convert_categorical = NULL
 

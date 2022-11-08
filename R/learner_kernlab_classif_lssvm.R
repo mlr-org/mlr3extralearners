@@ -87,11 +87,6 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
         }
       }
 
-
-
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
-
       invoke(kernlab::lssvm,
         x = task$formula(),
         data = task$data(),
@@ -105,7 +100,7 @@ LearnerClassifLSSVM = R6Class("LearnerClassifLSSVM",
       out[[1]] = invoke(
         getMethod("predict", "lssvm"),
         self$model,
-        task$data(cols = self$state$feature_names),
+        ordered_features(task, self),
         type = self$predict_type,
         .args = pars
       )

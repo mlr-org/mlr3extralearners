@@ -44,11 +44,8 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
 
   private = list(
     .train = function(task) {
-      self$state$feature_names = task$feature_names
       pars = self$param_set$get_values(tags = "train")
-      invoke(list, train = task$data(cols = task$feature_names), cl = task$truth(),
-        .args = pars
-      )
+      invoke(list, train = task$data(cols = task$feature_names), cl = task$truth(), .args = pars)
     },
 
     .predict = function(task) {
@@ -58,7 +55,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
           FNN::knn,
           train = self$model$train,
           cl = self$model$cl,
-          test = task$data(cols = self$state$feature_names),
+          test = ordered_features(task, self),
           .args = self$param_set$get_values(tags = "predict")
         )
         list(response = p)
@@ -70,7 +67,7 @@ LearnerClassifFNN = R6Class("LearnerClassifFNN",
           FNN::knn,
           train = self$model$train,
           cl = self$model$cl,
-          test = task$data(cols = self$state$feature_names),
+          test = ordered_features(task, self),
           prob = TRUE,
           .args = self$param_set$get_values(tags = "predict")
         )

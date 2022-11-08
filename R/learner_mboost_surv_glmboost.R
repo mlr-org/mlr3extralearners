@@ -146,7 +146,7 @@ delayedAssign(
       },
 
       .predict = function(task) {
-        newdata = task$data(cols = task$feature_names)
+        newdata = ordered_features(task, self)
         # predict linear predictor
         pars = self$param_set$get_values(tags = "predict")
         lp = as.numeric(

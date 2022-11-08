@@ -42,8 +42,8 @@ test_that("paramtest surv.parametric predict", {
     "object",
     "task",
     "feature_names",
-    "tobit"
-
+    "tobit",
+    "learner"
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

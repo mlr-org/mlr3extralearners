@@ -103,7 +103,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
     .predict = function(task) {
       response = NULL
       prob = NULL
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
       if (self$predict_type == "response") {

@@ -106,7 +106,7 @@ LearnerRegrCTree = R6Class("LearnerRegrCTree",
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
       p = invoke(predict, self$model, newdata = newdata, .args = pars)

@@ -77,9 +77,6 @@ delayedAssign(
 
     private = list(
       .train = function(task) {
-
-        # set column names to ensure consistency in fit and predict
-        self$state$feature_names = task$feature_names
         pars = self$param_set$get_values(tags = "train")
 
         optim_args = c("minstepno", "start.penalty", "iter.max", "upper.margin", "penalty")
@@ -154,7 +151,7 @@ delayedAssign(
         pars = self$param_set$get_values(tags = "predict")
 
         # get newdata and ensure same ordering in train and predict
-        newdata = as.matrix(task$data(cols = self$state$feature_names))
+        newdata = as.matrix(ordered_features(task, self))
 
         lp = as.numeric(invoke(predict,
           self$model,

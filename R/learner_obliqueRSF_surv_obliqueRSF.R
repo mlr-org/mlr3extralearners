@@ -105,7 +105,7 @@ delayedAssign(
 
         surv = mlr3misc::invoke(predict,
           self$model,
-          newdata = task$data(cols = task$feature_names),
+          newdata = ordered_features(task, self),
           times = utime,
           .args = self$param_set$get_values(tags = "predict"))
 

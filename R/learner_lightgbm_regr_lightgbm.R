@@ -213,7 +213,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         names(imp) = dt_imp$Feature
         return(imp)
       } else {
-        return(named_vector(self$state$feature_names, 0))
+        return(named_vector(self$state$train_task$feature_names, 0))
       }
     }
   ),
@@ -226,28 +226,17 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      data = encode_lightgbm_predict(task, self$state$data_prototype)$X
+      data = encode_lightgbm_predict(task, self$state$data_prototype, self)$X
 
-      if ("newdata" %in% formalArgs(lightgbm:::predict.lgb.Booster)) {
-        pred = invoke(predict,
-          object = self$model,
-          newdata = data,
-          params = pars
-        )
-      } else {
-        pred = invoke(predict,
-          object = self$model,
-          data = data,
-          params = pars
-        )
-      }
+      pred = invoke(predict, self$model, data, params = pars)
 
       list(response = pred)
     },
     .hotstart = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
-      train_lightgbm(self, task, "regr", pars, self$model)
+      pars_train = self$state$param_vals
+      pars_train$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
+      train_lightgbm(self, task, "classif", pars_train, self$model)
     }
   )
 )

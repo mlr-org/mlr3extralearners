@@ -146,7 +146,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       # type is the type argument passed to predict.modelparty
       # (actually a predict function used to compute the predictions as we
       # want) this should return a two column matrix holding the responses in

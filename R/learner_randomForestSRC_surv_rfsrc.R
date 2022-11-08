@@ -160,7 +160,7 @@ delayedAssign(
       },
 
       .predict = function(task) {
-        newdata = task$data(cols = task$feature_names)
+        newdata = ordered_features(task, self)
         pars_predict = self$param_set$get_values(tags = "predict")
         # default estimator is nelson, hence nelson selected if NULL
         estimator = pars_predict$estimator %??% "nelson"

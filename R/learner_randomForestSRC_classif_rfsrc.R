@@ -167,7 +167,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     },
 
     .predict = function(task) {
-      newdata = data.table::setDF(task$data(cols = task$feature_names))
+      newdata = data.table::setDF(ordered_features(task, self))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
       pred = invoke(predict,

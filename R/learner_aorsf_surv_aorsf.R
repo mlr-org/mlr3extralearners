@@ -5,6 +5,8 @@
 #' @description
 #' Accelerated oblique random survival forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
+#' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
+#' the behaviour has to be configured using the parameter `na_action`.
 #' @template learner
 #' @templateVar id surv.aorsf
 #'
@@ -64,15 +66,17 @@ delayedAssign(
             tags = "train", lower = 0),
           oobag_eval_every = p_int(default = NULL, special_vals = list(NULL),
             lower = 1, tags = "train"),
-          attach_data = p_lgl(default = TRUE, tags = "train")
-        )
+          attach_data = p_lgl(default = TRUE, tags = "train"),
+          verbose_progress = p_lgl(default = FALSE, tags = "train"),
+          na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+
         super$initialize(
           id = "surv.aorsf",
           packages = c("mlr3extralearners", "aorsf", "pracma"),
           feature_types = c("integer", "numeric", "factor", "ordered"),
           predict_types = c("crank", "distr"),
           param_set = ps,
-          properties = c("oob_error", "importance"),
+          properties = c("oob_error", "importance", "missings"),
           man = "mlr3extralearners::mlr_learners_surv.aorsf",
           label = "Oblique Random Forest"
         )
@@ -156,6 +160,7 @@ delayedAssign(
         )
       },
       .predict = function(task) {
+        pv = self$param_set$get_values(tags = "predict")
         time = self$model$data[[task$target_names[1]]]
         status = self$model$data[[task$target_names[2]]]
         utime = sort(unique(time[status == 1]), decreasing = FALSE)
@@ -163,7 +168,9 @@ delayedAssign(
           self$model,
           new_data = ordered_features(task, self),
           pred_horizon = utime,
-          pred_type = "surv")
+          pred_type = "surv",
+          .args = pv
+        )
         mlr3proba::.surv_return(times = utime, surv = surv)
       }
     )

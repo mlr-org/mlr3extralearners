@@ -109,7 +109,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
       pars = self$param_set$get_values(tags = "predict")
       response = invoke(
         predict, self$model,
-        newdata = task$data(cols = task$feature_names),
+        newdata = ordered_features(task, self),
         type = "response",
         .args = pars
       )
@@ -119,7 +119,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
       if (self$predict_type == "se") {
         se = invoke(
           predict, self$model,
-          newdata = task$data(cols = task$feature_names),
+          newdata = ordered_features(task, self),
           type = "response",
           interval = "se",
           .args = pars

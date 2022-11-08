@@ -82,7 +82,7 @@ LearnerClassifLiblineaR = R6Class("LearnerClassifLiblineaR", # nolint
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
       type = ifelse(is.null(self$param_set$values$type), 0, self$param_set$values$type)

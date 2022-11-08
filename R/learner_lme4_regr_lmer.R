@@ -148,6 +148,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         id = "regr.lmer",
         packages = "lme4",
         feature_types = c("logical", "integer", "numeric", "factor"),
+        properties = "weights",
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.lmer",
@@ -166,9 +167,6 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
 
       pars_ctrl = pars_train[ii]
       pars_train[ii] = NULL
-
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
 
       # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
@@ -193,7 +191,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       list(response = invoke(
         predict,

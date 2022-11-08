@@ -99,7 +99,7 @@ weka_control_args = function(f) {
 }
 
 ordered_features = function(task, learner) {
-  task$data(cols = intersect(names(learner$state$task_prototype), task$feature_names))
+  task$data(cols = intersect(names(learner$state$data_prototype), task$feature_names))
 }
 
 as_numeric_matrix = function(x) { # for svm / #181

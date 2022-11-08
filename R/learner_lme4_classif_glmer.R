@@ -81,7 +81,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = "twoclass",
+        properties = c("twoclass", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.glmer",
         label = "Generalized Linear Mixed Effect Regression"
       )
@@ -112,7 +112,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
     },
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      newdata =ordered_features(task, self)
+      newdata = ordered_features(task, self)
 
       prob = invoke(
         predict,
@@ -123,7 +123,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       )
 
       # glmer counts the second level as a 'success'
-      levels = levels(self$state$task_prototype[[task$target_names]])
+      levels = levels(self$state$data_prototype[[task$target_names]])
       success = levels[[2L]]
       failure = levels[[1L]]
 

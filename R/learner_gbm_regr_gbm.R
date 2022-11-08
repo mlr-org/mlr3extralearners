@@ -105,7 +105,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       if (is.null(self$param_set$values$n.trees)) {
         pars$n.trees = self$param_set$default$n.trees # nolint
       }
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
 
       p = invoke(predict, self$model, newdata = newdata, .args = pars)
       list(response = p)

@@ -110,7 +110,7 @@ delayedAssign(
       },
 
       .predict = function(task) {
-        newdata = task$data(cols = task$feature_names)
+        newdata = ordered_features(task, self)
         pars = self$param_set$get_values(tags = "predict")
         preds = invoke(predict, self$model, type = "prob", newdata = newdata,
           .args = pars

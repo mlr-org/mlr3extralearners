@@ -85,8 +85,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       family_fn = getFromNamespace(pars$family, ns = "stats")
       pars$family = invoke(family_fn, .args = family_args)
 
-      # set column names to ensure consistency in fit and predict
-      self$state$feature_names = task$feature_names
       formula = task$formula()
       data = task$data()
 
@@ -94,10 +92,8 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-      # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = self$state$feature_names)
+      newdata = ordered_features(task, self)
 
       if (self$predict_type == "response") {
         response = invoke(stats::predict.glm,

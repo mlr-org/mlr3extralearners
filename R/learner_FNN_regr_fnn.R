@@ -42,7 +42,6 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
 
   private = list(
     .train = function(task) {
-      self$state$feature_names = task$feature_names
       pars = self$param_set$get_values(tags = "train")
       invoke(list,
         train = task$data(cols = task$feature_names),
@@ -57,7 +56,7 @@ LearnerRegrFNN = R6Class("LearnerRegrFNN",
         FNN::knn.reg,
         train = self$model$train,
         y = self$model$y,
-        test = task$data(cols = self$state$feature_names),
+        test = ordered_features(task, self),
         .args = pars
       )
 

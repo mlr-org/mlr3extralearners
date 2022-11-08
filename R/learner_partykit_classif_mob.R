@@ -154,7 +154,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
     },
 
     .predict = function(task) {
-      newdata = task$data(cols = task$feature_names)
+      newdata = ordered_features(task, self)
       # type is the type argument passed to predict.modelparty
       # (actually a predict function used to compute the predictions as we want)
       # .type is then the actual predict type as set for the learner
