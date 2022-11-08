@@ -5,6 +5,8 @@
 #' @description
 #' Accelerated oblique random survival forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
+#' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
+#' the behaviour has to be configured using the parameter `na_action`.
 #' @template learner
 #' @templateVar id surv.aorsf
 #'
@@ -64,7 +66,9 @@ delayedAssign(
             tags = "train", lower = 0),
           oobag_eval_every = p_int(default = NULL, special_vals = list(NULL),
             lower = 1, tags = "train"),
-          attach_data = p_lgl(default = TRUE, tags = "train")
+          attach_data = p_lgl(default = TRUE, tags = "train"),
+          verbose_progress = p_lgl(default = FALSE, tags = "train"),
+          na_action = p_fct(default = "fail", c("fail", "omit", "impute_meanmode"), tags = c("train", "predict"))
         )
         super$initialize(
           id = "surv.aorsf",
@@ -72,7 +76,7 @@ delayedAssign(
           feature_types = c("integer", "numeric", "factor", "ordered"),
           predict_types = c("crank", "distr"),
           param_set = ps,
-          properties = c("oob_error", "importance"),
+          properties = c("oob_error", "importance", "missings"),
           man = "mlr3extralearners::mlr_learners_surv.aorsf",
           label = "Oblique Random Forest"
         )

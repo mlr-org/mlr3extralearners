@@ -7,6 +7,8 @@
 \description{
 Accelerated oblique random survival forest.
 Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Note that although the learner has the property \code{"missing"} and it can in principle deal with missing values,
+the behaviour has to be configured using the parameter \code{na_action}.
 }
 \section{Dictionary}{
 
@@ -53,6 +55,8 @@ lrn("surv.aorsf")
    oobag_pred_horizon \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr
 }
 }
 
