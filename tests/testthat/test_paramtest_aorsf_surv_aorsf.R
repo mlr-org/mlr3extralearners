@@ -30,12 +30,14 @@ test_that("paramtest surv.aorsf train", {
 
 test_that("paramtest surv.aorsf predict", {
   learner = lrn("surv.aorsf")
-  fun_list = list(predict)
+  fun_list = list(aorsf:::predict.orsf_fit)
   exclude = c(
     "object", # handled internally
     "new_data", # handled internally
     "pred_horizon", # all times required for distr
-    "pred_type" # handled internally
+    "pred_type", # handled internally
+    "na_action", # not implemented
+    "boundary_checks" # not implemented
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
   expect_paramtest(paramtest)

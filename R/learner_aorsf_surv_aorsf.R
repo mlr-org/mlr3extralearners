@@ -68,8 +68,8 @@ delayedAssign(
             lower = 1, tags = "train"),
           attach_data = p_lgl(default = TRUE, tags = "train"),
           verbose_progress = p_lgl(default = FALSE, tags = "train"),
-          na_action = p_fct(default = "fail", c("fail", "omit", "impute_meanmode"), tags = c("train", "predict"))
-        )
+          na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+
         super$initialize(
           id = "surv.aorsf",
           packages = c("mlr3extralearners", "aorsf", "pracma"),
@@ -160,6 +160,7 @@ delayedAssign(
         )
       },
       .predict = function(task) {
+        pv = self$param_set$get_values(tags = "predict")
         time = self$model$data[[task$target_names[1]]]
         status = self$model$data[[task$target_names[2]]]
         utime = sort(unique(time[status == 1]), decreasing = FALSE)
@@ -167,7 +168,9 @@ delayedAssign(
           self$model,
           new_data = ordered_features(task, self),
           pred_horizon = utime,
-          pred_type = "surv")
+          pred_type = "surv",
+          .args = pv
+        )
         mlr3proba::.surv_return(times = utime, surv = surv)
       }
     )
