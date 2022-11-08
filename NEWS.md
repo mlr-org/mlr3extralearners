@@ -1,4 +1,4 @@
-# mlr3extralearners 0.5.49-9000
+# mlr3extralearners 0.6.0
 
 * Feat: Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
 * Fix: Failing xgboost parameter test
@@ -10,6 +10,9 @@
 * Fix: Rely on `state$data_prototype` to get ordering of features via
   `ordered_features()` like in `mlr3learners` and therefore obviate the need to
   store `feature_names` in the `state`
+* Internal: Predict methods of learners now use the correctly ordered features
+  to improve robustness against reordering of features between the train and
+  predict stages.
 
 # mlr3extralearners 0.5.49
 
