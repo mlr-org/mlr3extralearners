@@ -108,6 +108,10 @@ delayedAssign(
 
 predict_flexsurvreg = function(object, task, learner, ...) {
   newdata = ordered_features(task, learner)
+  if (any(is.na(newdata))) {
+    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
+  }
+
   X = stats::model.matrix(formulate(rhs = task$feature_names),
     data = newdata,
     xlev = task$levels())
