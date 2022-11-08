@@ -44,7 +44,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Restore R package cache
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             ${{ env.R_LIBS_USER }}/*
@@ -110,7 +110,7 @@ jobs:
 
       - name: Upload check results
         if: always()
-        uses: actions/upload-artifact@main
+        uses: actions/upload-artifact@main@v3
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
