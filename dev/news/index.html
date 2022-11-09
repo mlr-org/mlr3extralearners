@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.49-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.5.49-000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,6 +80,17 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.5.49-9000" id="mlr3extralearners-0549-9000">mlr3extralearners 0.5.49-9000<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0549-9000"></a></h2>
+<ul><li>Feat: Added learner <code>LearnerClassifGlmer</code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/243" class="external-link uri">https://github.com/mlr-org/mlr3extralearners/issues/243</a>)</li>
+<li>Fix: Failing xgboost parameter test</li>
+<li>Fix: Add arguments <code>nei</code> and <code>ncv.thread</code> that were added to <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html" class="external-link">mgcv::gam()</a></code> in version 1.8.41</li>
+<li>Fix: Added missing property <code>"weights"</code> to <code>LearnerClassifGlmer</code> and <code>LearnerRegrLmer</code>
+</li>
+<li>Fix: <code>lightgbm</code> uses the <code>param_vals</code> stored in the <code>state</code> for hotstarting</li>
+<li>Fix: Rely on <code>state$data_prototype</code> to get ordering of features via <code>ordered_features()</code> like in <code>mlr3learners</code> and therefore obviate the need to store <code>feature_names</code> in the <code>state</code>
+</li>
+</ul></div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.49" id="mlr3extralearners-0549">mlr3extralearners 0.5.49<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0549"></a></h2>
 <ul><li>Added missing feature type <code>"integer"</code> to <code>classif.randomForest</code>
 </li>
@@ -111,7 +122,8 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.45" id="mlr3extralearners-0545">mlr3extralearners 0.5.45<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0545"></a></h2>
-<ul><li>Minor corrections in <code>create_learner</code> and the learner template.</li></ul></div>
+<ul><li>Minor corrections in <code>create_learner</code> and the learner template.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.44" id="mlr3extralearners-0544">mlr3extralearners 0.5.44<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0544"></a></h2>
 <ul><li>Corrected parameters in lightgbm learners</li>
@@ -157,7 +169,8 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.38" id="mlr3extralearners-0538">mlr3extralearners 0.5.38<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0538"></a></h2>
 <ul><li>Added <code>regr.lmer</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.37" id="mlr3extralearners-0537">mlr3extralearners 0.5.37<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0537"></a></h2>
 <ul><li>Improve docs and change doc layout</li>
@@ -167,16 +180,20 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.36" id="mlr3extralearners-0536">mlr3extralearners 0.5.36<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0536"></a></h2>
-<ul><li>Add missing ‘threads’ tag to respective parameters.</li></ul></div>
+<ul><li>Add missing ‘threads’ tag to respective parameters.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.35" id="mlr3extralearners-0535">mlr3extralearners 0.5.35<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0535"></a></h2>
-<ul><li>Full installatio in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li></ul></div>
+<ul><li>Full installatio in workflow ‘test_selection’ (is faster than the previous approach, where selected packages were installed from CRAN)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.34" id="mlr3extralearners-0534">mlr3extralearners 0.5.34<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0534"></a></h2>
-<ul><li>remove explicit mlr3misc:: (is imported)</li></ul></div>
+<ul><li>remove explicit mlr3misc:: (is imported)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.33" id="mlr3extralearners-0533">mlr3extralearners 0.5.33<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0533"></a></h2>
-<ul><li>consistency: Use params in train and predict calls, even in learners that currently don’t have predict / train params. This allows easier correction of parameters by users.</li></ul></div>
+<ul><li>consistency: Use params in train and predict calls, even in learners that currently don’t have predict / train params. This allows easier correction of parameters by users.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.32" id="mlr3extralearners-0532">mlr3extralearners 0.5.32<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0532"></a></h2>
 <ul><li><p>chore: add new parameters for kde and rfsrc</p></li>
@@ -191,19 +208,24 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.30" id="mlr3extralearners-0530">mlr3extralearners 0.5.30<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0530"></a></h2>
-<ul><li>Revert to using mlr3proba and survivalmodels CRAN version</li></ul></div>
+<ul><li>Revert to using mlr3proba and survivalmodels CRAN version</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.29" id="mlr3extralearners-0529">mlr3extralearners 0.5.29<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0529"></a></h2>
-<ul><li>Change in vignette</li></ul></div>
+<ul><li>Change in vignette</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.28" id="mlr3extralearners-0528">mlr3extralearners 0.5.28<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0528"></a></h2>
-<ul><li>update randomForestSRC</li></ul></div>
+<ul><li>update randomForestSRC</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.27" id="mlr3extralearners-0527">mlr3extralearners 0.5.27<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0527"></a></h2>
-<ul><li>Update learner status page</li></ul></div>
+<ul><li>Update learner status page</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.26" id="mlr3extralearners-0526">mlr3extralearners 0.5.26<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0526"></a></h2>
-<ul><li>Fixed survivalmodel learners</li></ul></div>
+<ul><li>Fixed survivalmodel learners</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.25" id="mlr3extralearners-0525">mlr3extralearners 0.5.25<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0525"></a></h2>
 <ul><li>Introduce parameter <code>early_stopping_split</code> for lightgbm learners</li>
@@ -213,13 +235,16 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.24" id="mlr3extralearners-0524">mlr3extralearners 0.5.24<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0524"></a></h2>
 <ul><li>Don’t allow integer for density estimator <code>dens.plug</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.23" id="mlr3extralearners-0523">mlr3extralearners 0.5.23<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0523"></a></h2>
-<ul><li>Fix bug in lightgbm</li></ul></div>
+<ul><li>Fix bug in lightgbm</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.22" id="mlr3extralearners-0522">mlr3extralearners 0.5.22<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0522"></a></h2>
-<ul><li>Style package using the mlr3 style</li></ul></div>
+<ul><li>Style package using the mlr3 style</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.21" id="mlr3extralearners-0521">mlr3extralearners 0.5.21<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0521"></a></h2>
 <ul><li>Update files for creation of new learner</li>
@@ -236,7 +261,8 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.19" id="mlr3extralearners-0519">mlr3extralearners 0.5.19<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0519"></a></h2>
-<ul><li>Provide correct range for neighors argument for Cubist</li></ul></div>
+<ul><li>Provide correct range for neighors argument for Cubist</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.18" id="mlr3extralearners-0518">mlr3extralearners 0.5.18<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0518"></a></h2>
 <ul><li>Allow integer as feature types for RWeka learners</li>
@@ -244,51 +270,65 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.17" id="mlr3extralearners-0517">mlr3extralearners 0.5.17<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0517"></a></h2>
-<ul><li>Improve vignette</li></ul></div>
+<ul><li>Improve vignette</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.16" id="mlr3extralearners-0516">mlr3extralearners 0.5.16<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0516"></a></h2>
-<ul><li>Fix bug in AdaBoostM1 (control arg)</li></ul></div>
+<ul><li>Fix bug in AdaBoostM1 (control arg)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.15" id="mlr3extralearners-0515">mlr3extralearners 0.5.15<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0515"></a></h2>
-<ul><li>Change in maintainer</li></ul></div>
+<ul><li>Change in maintainer</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.14" id="mlr3extralearners-0514">mlr3extralearners 0.5.14<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0514"></a></h2>
-<ul><li>Fix bug regarding Weka control args.</li></ul></div>
+<ul><li>Fix bug regarding Weka control args.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.13" id="mlr3extralearners-0513">mlr3extralearners 0.5.13<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0513"></a></h2>
-<ul><li>Fix <code>categorical_features</code> in {lightgbm} learners</li></ul></div>
+<ul><li>Fix <code>categorical_features</code> in {lightgbm} learners</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.12" id="mlr3extralearners-0512">mlr3extralearners 0.5.12<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0512"></a></h2>
-<ul><li>Patch for <code>lightgbm</code> updates</li></ul></div>
+<ul><li>Patch for <code>lightgbm</code> updates</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.11" id="mlr3extralearners-0511">mlr3extralearners 0.5.11<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0511"></a></h2>
 <ul><li>Add option to not open files with <code>create_learner</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.10" id="mlr3extralearners-0510">mlr3extralearners 0.5.10<a class="anchor" aria-label="anchor" href="#mlr3extralearners-0510"></a></h2>
 <ul><li>Added params <code>ignored_features</code> and <code>one_hot_max_size</code> to <code>classif.catboost</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.9" id="mlr3extralearners-059">mlr3extralearners 0.5.9<a class="anchor" aria-label="anchor" href="#mlr3extralearners-059"></a></h2>
-<ul><li>Fixed bug that didn’t allow C parameter to be set for nu-regression</li></ul></div>
+<ul><li>Fixed bug that didn’t allow C parameter to be set for nu-regression</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.8" id="mlr3extralearners-058">mlr3extralearners 0.5.8<a class="anchor" aria-label="anchor" href="#mlr3extralearners-058"></a></h2>
 <ul><li>Add <code>regr.rvm</code> and <code>classif.lssvm</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.7" id="mlr3extralearners-057">mlr3extralearners 0.5.7<a class="anchor" aria-label="anchor" href="#mlr3extralearners-057"></a></h2>
-<ul><li>Introduced new custom hyperparameters for <code><a href="https://www.randomforestsrc.org//reference/rfsrc.html" class="external-link">randomForestSRC::rfsrc()</a></code>, <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="external-link">partykit::cforest()</a></code> and <code><a href="https://rdrr.io/pkg/obliqueRSF/man/ORSF.html" class="external-link">obliqueRSF::ORSF()</a></code> to conveniently tune hyperparameters whose upper limit depends on data dimensions.</li></ul></div>
+<ul><li>Introduced new custom hyperparameters for <code><a href="https://www.randomforestsrc.org//reference/rfsrc.html" class="external-link">randomForestSRC::rfsrc()</a></code>, <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="external-link">partykit::cforest()</a></code> and <code><a href="https://rdrr.io/pkg/obliqueRSF/man/ORSF.html" class="external-link">obliqueRSF::ORSF()</a></code> to conveniently tune hyperparameters whose upper limit depends on data dimensions.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.6" id="mlr3extralearners-056">mlr3extralearners 0.5.6<a class="anchor" aria-label="anchor" href="#mlr3extralearners-056"></a></h2>
-<ul><li>Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests</li></ul></div>
+<ul><li>Fix learners requiring distr6. distr6 1.6.0 now forced and param6 added to suggests</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.5" id="mlr3extralearners-055">mlr3extralearners 0.5.5<a class="anchor" aria-label="anchor" href="#mlr3extralearners-055"></a></h2>
 <ul><li>Bugfix <code>regr.gausspr</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.4" id="mlr3extralearners-054">mlr3extralearners 0.5.4<a class="anchor" aria-label="anchor" href="#mlr3extralearners-054"></a></h2>
 <ul><li>Add <code>regr.gausspr</code> and <code>classif.gausspr</code> from <code><a href="https://rdrr.io/pkg/kernlab/man/gausspr.html" class="external-link">kernlab::gausspr</a></code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.5.3" id="mlr3extralearners-053">mlr3extralearners 0.5.3<a class="anchor" aria-label="anchor" href="#mlr3extralearners-053"></a></h2>
 <ul><li>Fixed bugs in catboost for classification</li>
@@ -308,43 +348,54 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.9" id="mlr3extralearners-049">mlr3extralearners 0.4.9<a class="anchor" aria-label="anchor" href="#mlr3extralearners-049"></a></h2>
-<ul><li>Minor internal changes</li></ul></div>
+<ul><li>Minor internal changes</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.8" id="mlr3extralearners-048">mlr3extralearners 0.4.8<a class="anchor" aria-label="anchor" href="#mlr3extralearners-048"></a></h2>
 <ul><li>Added <code>LearnerRegrCubist</code> and <code>LearnerRegrMars</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.7" id="mlr3extralearners-047">mlr3extralearners 0.4.7<a class="anchor" aria-label="anchor" href="#mlr3extralearners-047"></a></h2>
 <ul><li>Moved <code>nnet</code> learners to <a href="https://github.com/mlr-org/mlr3learners" class="external-link">mlr3learners</a>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.6" id="mlr3extralearners-046">mlr3extralearners 0.4.6<a class="anchor" aria-label="anchor" href="#mlr3extralearners-046"></a></h2>
 <ul><li>Updates default cores for <code>rfsrc</code> learners to <code>1</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.5" id="mlr3extralearners-045">mlr3extralearners 0.4.5<a class="anchor" aria-label="anchor" href="#mlr3extralearners-045"></a></h2>
-<ul><li>Fix RWeka tests (stochastic failures, implementation unaffected)</li></ul></div>
+<ul><li>Fix RWeka tests (stochastic failures, implementation unaffected)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.3" id="mlr3extralearners-043">mlr3extralearners 0.4.3<a class="anchor" aria-label="anchor" href="#mlr3extralearners-043"></a></h2>
-<ul><li>Add support for custom families in all remaining mboost learners</li></ul></div>
+<ul><li>Add support for custom families in all remaining mboost learners</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.2" id="mlr3extralearners-042">mlr3extralearners 0.4.2<a class="anchor" aria-label="anchor" href="#mlr3extralearners-042"></a></h2>
-<ul><li>Fix broken partykit tests</li></ul></div>
+<ul><li>Fix broken partykit tests</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.4.0" id="mlr3extralearners-040">mlr3extralearners 0.4.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-040"></a></h2>
-<ul><li>Added <code>LearnerRegrGam</code> and <code>LearnerClassifGam</code> with keys <code>regr.gam</code> and <code>classif.gam</code> from package <code>mgcv</code>.</li></ul></div>
+<ul><li>Added <code>LearnerRegrGam</code> and <code>LearnerClassifGam</code> with keys <code>regr.gam</code> and <code>classif.gam</code> from package <code>mgcv</code>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.6" id="mlr3extralearners-036">mlr3extralearners 0.3.6<a class="anchor" aria-label="anchor" href="#mlr3extralearners-036"></a></h2>
 <ul><li>
-<code>surv.coxboost</code> now uses the GitHub version instead of CRAN (archived)</li></ul></div>
+<code>surv.coxboost</code> now uses the GitHub version instead of CRAN (archived)</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.4" id="mlr3extralearners-034">mlr3extralearners 0.3.4<a class="anchor" aria-label="anchor" href="#mlr3extralearners-034"></a></h2>
 <ul><li>Add support for custom families to <code>regr.glmboost</code>
-</li></ul></div>
+</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="mlr3extralearners-031">mlr3extralearners 0.3.1<a class="anchor" aria-label="anchor" href="#mlr3extralearners-031"></a></h2>
 <ul><li>
-<code>surv.svm</code> now supports all feature types</li></ul></div>
+<code>surv.svm</code> now supports all feature types</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.0" id="mlr3extralearners-030">mlr3extralearners 0.3.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-030"></a></h2>
 <ul><li>Added <code>LearnerRegrLightGBM</code> and <code>LearnerClassifLightGBM</code> with keys <code>regr.lightgbm</code> and <code>classif.lightgbm</code> respectively. Copied from <a href="https://github.com/mlr3learners/mlr3learners.lightgbm" class="external-link">mlr3learners.lightgbm</a>
@@ -384,7 +435,8 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.2" id="mlr3extralearners-012">mlr3extralearners 0.1.2<a class="anchor" aria-label="anchor" href="#mlr3extralearners-012"></a></h2>
-<ul><li>Fixes in <code>crank</code> and <code>distr</code> computation of all survival learners</li></ul></div>
+<ul><li>Fixes in <code>crank</code> and <code>distr</code> computation of all survival learners</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.1" id="mlr3extralearners-011">mlr3extralearners 0.1.1<a class="anchor" aria-label="anchor" href="#mlr3extralearners-011"></a></h2>
 <ul><li>Patch for bugs in <code>surv</code> learners that were reversing the order of <code>crank</code>, see this issue for full details: <a href="https://github.com/mlr-org/mlr3proba/issues/165" class="external-link uri">https://github.com/mlr-org/mlr3proba/issues/165</a>
@@ -400,7 +452,8 @@
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="mlr3extralearners-010">mlr3extralearners 0.1.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-010"></a></h2>
-<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organisation, which is now archived.</li></ul></div>
+<ul><li>Initial release. mlr3extralearners contains all learners from the mlr3learners organisation, which is now archived.</li>
+</ul></div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
