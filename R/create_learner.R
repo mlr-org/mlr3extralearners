@@ -98,8 +98,8 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
   assert_choice(data_formats, mlr3::mlr_reflections$data_formats)
   Type = toproper(type)
 
-  assert_character(classname, any.missing = FALSE,len = 1)
-  assert_character(caller, any.missing = FALSE,len = 1)
+  assert_character(classname, any.missing = FALSE, len = 1)
+  assert_character(caller, any.missing = FALSE, len = 1)
 
   algorithm = toproper(algorithm)
 

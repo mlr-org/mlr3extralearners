@@ -95,7 +95,7 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
   args = pars[ii]
   params = pars[!ii]
 
- invoke(
+  invoke(
     lightgbm::lgb.train,
     data = dtrain,
     valids = valids,
