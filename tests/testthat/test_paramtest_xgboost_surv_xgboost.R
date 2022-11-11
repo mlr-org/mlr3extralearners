@@ -36,6 +36,7 @@ test_that("surv.xgboost", {
     "label", # handled by mlr3
     "weight", # handled by mlr3
     "nthread", # handled by mlr3
+    "early_stopping_set", # handled by mlr3
     "aft_loss_distribution", # survival specific
     "aft_loss_distribution_scale" # survival specific
   )

@@ -27,6 +27,14 @@
 #'   - Actual default: `reg:squarederror`.
 #'   - Adjusted default: `survival:cox`.
 #'   - Reason for change: Changed to a survival objective.
+#' @section Early stopping:
+#' Early stopping can be used to find the optimal number of boosting rounds.
+#' The `early_stopping_set` parameter controls which set is used to monitor the performance.
+#' Set `early_stopping_set = "test"` to monitor the performance of the model on the test set while training.
+#' The test set for early stopping can be set with the `"test"` row role in the [mlr3::Task].
+#' Additionally, the range must be set in which the performance must increase with `early_stopping_rounds` and the maximum number of boosting rounds with `nrounds`.
+#' While resampling, the test set is automatically applied from the [mlr3::Resampling].
+#' Not that using the test set for early stopping can potentially bias the performance scores.
 #'
 #' @templateVar id surv.xgboost
 #' @template learner
@@ -57,6 +65,7 @@ delayedAssign(
           colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
           disable_default_eval_metric = p_lgl(default = FALSE, tags = "train"),
           early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
+          early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
           eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
           feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"),
           feval                       = p_uty(default = NULL, tags = "train"),
@@ -120,7 +129,8 @@ delayedAssign(
         ps$add_dep("aft_loss_distribution", "objective", CondEqual$new("survival:aft"))
         ps$add_dep("aft_loss_distribution_scale", "objective", CondEqual$new("survival:aft"))
 
-        ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L)
+        # custom defaults
+        ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
 
         super$initialize(
           id = "surv.xgboost",
@@ -185,9 +195,32 @@ delayedAssign(
           xgboost::setinfo(data, "weight", task$weights$weight)
         }
 
-        if (is.null(pv$watchlist)) {
-          pv$watchlist = list(train = data)
+        if (pv$early_stopping_set != "none") {
+          pv$watchlist = c(pv$watchlist, list(train = data))
         }
+
+        if (pv$early_stopping_set == "test" && !is.null(task$row_roles$test)) {
+          test_data = task$data(rows = task$row_roles$test, cols = task$feature_names)
+          test_target = task$data(rows = task$row_roles$test, cols = task$target_names)
+          test_label = test_target[[task$target_names[1]]] # time
+          test_status = test_target[[task$target_names[2]]]
+
+          if (pv$objective == "survival:cox") {
+            test_label[test_status != 1] = -1L * test_label[test_status != 1]
+            test_data = xgboost::xgb.DMatrix(
+              data = as_numeric_matrix(test_data),
+              label = test_label)
+          } else {
+            y_lower_bound = y_upper_bound = test_label
+            y_upper_bound[test_status == 0] = Inf
+
+            test_data = xgboost::xgb.DMatrix(as_numeric_matrix(test_data))
+            xgboost::setinfo(test_data, "label_lower_bound", y_lower_bound)
+            xgboost::setinfo(test_data, "label_upper_bound", y_upper_bound)
+          }
+          pv$watchlist = c(pv$watchlist, list(test = test_data))
+        }
+        pv$early_stopping_set = NULL
 
         invoke(xgboost::xgb.train, data = data, .args = pv)
       },
