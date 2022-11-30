@@ -31,6 +31,15 @@ register_mlr3 = function(libname, pkgname) {
 .onLoad = function(libname, pkgname) { # nolint
   register_namespace_callback(pkgname, "mlr3", register_mlr3)
 }
+
+.onUnload = function(libpath) { # nolint
+  lrns = .extralrns_dict$lrns
+  mlr_learners = mlr3::mlr_learners
+  for (i in seq_along(lrns)) {
+    mlr_learners$remove(names(lrns)[[i]])
+  }
+}
+
 # nocov end
 
 leanify_package()
