@@ -162,9 +162,9 @@ delayedAssign(
 
     private = list(
       # helper function to construct an `xgb.DMatrix` object
-      .get_data = function(task, pv, row_ids) {
+      .get_data = function(task, pv, row_ids = NULL) {
         # use all task rows if `rows_ids` is not specified
-        if (missing(row_ids))
+        if (is.null(row_ids))
           row_ids = task$row_ids
 
         data = task$data(rows = row_ids, cols = task$feature_names)
