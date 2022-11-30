@@ -161,6 +161,34 @@ delayedAssign(
     ),
 
     private = list(
+      # helper function to construct an `xgb.DMatrix` object
+      .get_data = function(task, pv, row_ids) {
+        # use all task rows if `rows_ids` is not specified
+        if (missing(row_ids))
+          row_ids = task$row_ids
+
+        data = task$data(rows = row_ids, cols = task$feature_names)
+        target = task$data(rows = row_ids, cols = task$target_names)
+        targets = task$target_names
+        label = target[[targets[1]]] # time
+        status = target[[targets[2]]]
+
+        if (pv$objective == "survival:cox") {
+          label[status != 1] = -1L * label[status != 1]
+          data = xgboost::xgb.DMatrix(
+            data = as_numeric_matrix(data),
+            label = label)
+        } else {
+          y_lower_bound = y_upper_bound = label
+          y_upper_bound[status == 0] = Inf
+
+          data = xgboost::xgb.DMatrix(as_numeric_matrix(data))
+          xgboost::setinfo(data, "label_lower_bound", y_lower_bound)
+          xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
+        }
+        data
+      },
+
       .train = function(task) {
 
         pv = self$param_set$get_values(tags = "train")
@@ -169,27 +197,13 @@ delayedAssign(
           pv$objective = "survival:cox"
         }
 
-        data = task$data(cols = task$feature_names)
-        target = task$data(cols = task$target_names)
-        targets = task$target_names
-        label = target[[targets[1]]]
-        status = target[[targets[2]]]
-
         if (pv$objective == "survival:cox") {
           pv$eval_metric = "cox-nloglik"
-          label[status != 1] = -1L * label[status != 1]
-          data = xgboost::xgb.DMatrix(
-            data = as_numeric_matrix(data),
-            label = label)
         } else {
           pv$eval_metric = "aft-nloglik"
-          y_lower_bound = y_upper_bound = label
-          y_upper_bound[status == 0] = Inf
-
-          data = xgboost::xgb.DMatrix(as_numeric_matrix(data))
-          xgboost::setinfo(data, "label_lower_bound", y_lower_bound)
-          xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
         }
+
+        data = private$.get_data(task, pv)
 
         if ("weights" %in% task$properties) {
           xgboost::setinfo(data, "weight", task$weights$weight)
@@ -202,24 +216,7 @@ delayedAssign(
         }
 
         if (pv$early_stopping_set == "test" && !is.null(task$row_roles$test)) {
-          test_data = task$data(rows = task$row_roles$test, cols = task$feature_names)
-          test_target = task$data(rows = task$row_roles$test, cols = task$target_names)
-          test_label = test_target[[task$target_names[1]]] # time
-          test_status = test_target[[task$target_names[2]]]
-
-          if (pv$objective == "survival:cox") {
-            test_label[test_status != 1] = -1L * test_label[test_status != 1]
-            test_data = xgboost::xgb.DMatrix(
-              data = as_numeric_matrix(test_data),
-              label = test_label)
-          } else {
-            y_lower_bound = y_upper_bound = test_label
-            y_upper_bound[test_status == 0] = Inf
-
-            test_data = xgboost::xgb.DMatrix(as_numeric_matrix(test_data))
-            xgboost::setinfo(test_data, "label_lower_bound", y_lower_bound)
-            xgboost::setinfo(test_data, "label_upper_bound", y_upper_bound)
-          }
+          test_data = private$.get_data(task, pv, task$row_roles$test)
           pv$watchlist = c(pv$watchlist, list(test = test_data))
         }
         pv$early_stopping_set = NULL
