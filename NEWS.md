@@ -10,6 +10,8 @@
 * Fix: Rely on `state$data_prototype` to get ordering of features via
   `ordered_features()` like in `mlr3learners` and therefore obviate the need to
   store `feature_names` in the `state`
+* Fix: extralearners are removed from `mlr_learners` when unloading
+  `mlr3extralearners`
 
 # mlr3extralearners 0.5.49
 
