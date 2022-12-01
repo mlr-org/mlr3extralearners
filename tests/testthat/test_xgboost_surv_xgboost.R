@@ -18,3 +18,20 @@ test_that("manual aft", {
   expect_true(inherits(p, "PredictionSurv"))
   expect_true(p$score() >= 0.5)
 })
+
+test_that("early stopping on the test set works", {
+  task = tsk("lung")
+  task = mlr3pipelines::po("encode")$train(list(task))[[1]]
+
+  split = partition(task, ratio = 0.8)
+  task$set_row_roles(split$test, "test")
+  learner = lrn("surv.xgboost",
+    nrounds = 20,
+    early_stopping_rounds = 5,
+    early_stopping_set = "test"
+  )
+
+  learner$train(task)
+  expect_named(learner$model$evaluation_log, c("iter", "train_cox_nloglik",
+    "test_cox_nloglik"))
+})

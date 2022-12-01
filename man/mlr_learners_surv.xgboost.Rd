@@ -45,6 +45,17 @@ would error. Just setting a nonsense default to workaround this.
 }
 }
 
+\section{Early stopping}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+The \code{early_stopping_set} parameter controls which set is used to monitor the performance.
+Set \code{early_stopping_set = "test"} to monitor the performance of the model on the test set while training.
+The test set for early stopping can be set with the \code{"test"} row role in the \link[mlr3:Task]{mlr3::Task}.
+Additionally, the range must be set in which the performance must increase with \code{early_stopping_rounds} and the maximum number of boosting rounds with \code{nrounds}.
+While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
+Not that using the test set for early stopping can potentially bias the performance scores.
+}
+
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -78,6 +89,7 @@ lrn("surv.xgboost")
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    disable_default_eval_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    early_stopping_rounds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   early_stopping_set \tab character \tab none \tab none, train, test \tab - \cr
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
    feval \tab untyped \tab  \tab  \tab - \cr

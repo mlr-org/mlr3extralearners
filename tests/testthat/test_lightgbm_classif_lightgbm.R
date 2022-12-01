@@ -104,7 +104,7 @@ test_that("Can pass categorical_feature and convert_categorical = TRUE", {
 })
 
 test_that("Can set eval parameter", {
-  evalerror <- function(preds, dtrain) {
+  evalerror = function(preds, dtrain) {
     list(name = "hallo", value = runif(1), higher_better = TRUE)
   }
   task = tsk("iris")

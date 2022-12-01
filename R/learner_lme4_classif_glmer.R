@@ -43,12 +43,12 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         check.nlev.gtr.1 = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.nobs.vs.nRE = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.rankX = p_fct(
-          levels = c( "message+drop.cols", "silent.drop.cols", "warn+drop.cols", "stop.deficient", "ignore"),
+          levels = c("message+drop.cols", "silent.drop.cols", "warn+drop.cols", "stop.deficient", "ignore"),
           default = "message+drop.cols", tags = "train"),
         check.scaleX = p_fct(
-          levels = c( "warning", "stop", "silent.rescale", "message+rescale", "warn+rescale", "ignore"),
+          levels = c("warning", "stop", "silent.rescale", "message+rescale", "warn+rescale", "ignore"),
           default = "warning", tags = "train"),
-        check.formula.LHS  = p_fct(levels = action_levels, default = "stop", tags = "train"),
+        check.formula.LHS = p_fct(levels = action_levels, default = "stop", tags = "train"),
         family = p_uty(default = "stats::binomial(link = \"logit\")", tags = "train"),
         nAGQ = p_int(default = 1L, lower = 0, tags = "train"),
         mustart = p_uty(tags = "train"),
@@ -68,9 +68,9 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         # Prediction params
         newparams = p_uty(default = NULL, tags = "predict"),
         re.form = p_uty(default = NULL, tags = "predict"),
-        random.only = p_lgl( default = FALSE, tags = "predict"),
+        random.only = p_lgl(default = FALSE, tags = "predict"),
         allow.new.levels = p_lgl(default = FALSE, tags = "predict"),
-        na.action = p_uty( default = stats::na.pass, tags = "predict")
+        na.action = p_uty(default = stats::na.pass, tags = "predict")
       )
 
       param_set$values = list(family = stats::binomial(link = "logit"))

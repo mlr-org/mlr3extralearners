@@ -63,6 +63,7 @@ Suggests:
     mlr3cluster,
     mlr3learners (>= 0.4.2),
     mlr3proba,
+    mlr3pipelines,
     mvtnorm,
     nnet,
     np,

@@ -33,7 +33,7 @@ test_that("paramtest regr.lightgbm train", {
   exclude = c(
     "config", # only used in cli version
     "task", # automatically set to "train"
-    "data", #handled internally
+    "data", # handled internally
     "valid", # handled internally
     "verbosity", # using alias verbose
     "early_stopping_round", # using alias early_stopping_round[s]

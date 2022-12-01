@@ -32,4 +32,3 @@ install_catboost = function(version = NULL,
 
   remotes::install_url(url, INSTALL_opts = INSTALL_opts, ...)
 }
-
