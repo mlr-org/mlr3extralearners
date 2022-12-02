@@ -1,20 +1,26 @@
 train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
-  assert_choice(task_type, c("regr", "classif"))
   convert_categorical = pars$convert_categorical
   pars$convert_categorical = NULL
+  early_stopping = pars$early_stopping %??% FALSE
+  pars$early_stopping = NULL
 
-  if (convert_categorical) {
-    encoding = encode_lightgbm_train(task)
-    X = encoding$X
-    categorical_feature = c(encoding$categorical_feature, pars$categorical_feature)
-  } else {
+  if (!convert_categorical) {
     assert_true(all(task$feature_types$type %in% c("integer", "numeric")))
-    X = data.matrix(task$data(cols = task$feature_names))
     categorical_feature = pars$categorical_feature
-  }
-  pars$categorical_feature = NULL
+  } else {
+    categorical_feature = c(task$feature_types$id[task$feature_types$type %in% c("factor", "logical")], # nolint
+      pars$categorical_feature)
 
-  y = task$data(cols = task$target_names)[[1L]]
+  }
+
+  x_train = data.matrix(task$data(rows = "test", cols = task$feature_names))
+  y_train = task$data(rows = "use", cols = task$target_names)[[1L]]
+
+  x_valid = y_valid = NULL
+  if (early_stopping && !is.null(task$row_roles$test)) {
+    x_valid = data.matrix(task$data(rows = "test", cols = task$feature_names))
+    y_valid = task$data(rows = "test", cols = task$target_names)[[1L]]
+  }
 
   if (task_type == "classif") {
     # catch incorrect objective setting
@@ -39,33 +45,39 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
     }
 
     if (pars$objective %in% c("multiclass", "multiclassova")) {
-      y = as.integer(y) - 1L
+      y_train = as.integer(y_train) - 1L
     } else {
       y = as.integer(y == task$positive)
     }
 
   }
 
-  early_stopping_split = pars$early_stopping_split
-  pars$early_stopping_split = NULL
+  if (!is.null(task$row_roles$test)) {
 
-  if (isTRUE(early_stopping_split > 0)) {
-    # we cannot simultaneously do stratification and grouping
-    ids = mlr3::partition(task, ratio = 1 - early_stopping_split, stratify = is.null(task$groups))
+    if (convert_categorical) {
+      X_test = encode_lightgbm_train(task, "test")$test
+      X = encoding$X
+      categorical_feature = c(encoding$categorical_feature, pars$categorical_feature)
+    } else {
+      assert_true(all(task$feature_types$type %in% c("integer", "numeric")))
+      X = data.matrix(task$data(cols = task$feature_names))
+      categorical_feature = pars$categorical_feature
+    }
 
-    self$state$valid_ids = ids$test
+    train_ids = task$row_roles$use
+    test_ids = task$row_roles$test
 
     dtrain = lightgbm::lgb.Dataset(
-      data = X[ids$train, , drop = FALSE],
-      label = y[ids$train],
+      data = X[train_ids, , drop = FALSE],
+      label = y[train_ids],
       free_raw_data = FALSE,
       categorical_feature = categorical_feature
     )
 
     dvalid = lightgbm::lgb.Dataset.create.valid(
       dataset = dtrain,
-      data = X[ids$test, , drop = FALSE],
-      label = y[ids$test],
+      data = X[test_ids, , drop = FALSE],
+      label = y[test_ids],
       params = list(
         categorical_feature = categorical_feature
       )
@@ -74,8 +86,8 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
 
     row_id = NULL
     if ("weights" %in% task$properties) {
-      dtrain$set_field("weight", subset(task$weights, row_id %in% ids$train)$weight)
-      dvalid$set_field("weight", subset(task$weights, row_id %in% ids$test)$weight)
+      dtrain$set_field("weight", subset(task$weights, row_id %in% train_ids)$weight)
+      dvalid$set_field("weight", subset(task$weights, row_id %in% test_ids)$weight)
     }
   } else {
     dtrain = lightgbm::lgb.Dataset(

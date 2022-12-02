@@ -70,3 +70,12 @@ test_that("hotstarting works", {
   learner_hs$hotstart_stack = stack
   expect_true(is.null(get_private(learner_hs$model)$init_predictor))
 })
+
+test_that("early stopping works", {
+  learner = lrn("regr.lightgbm")
+  task = tsk("mtcars")
+  task$set_row_roles(1:10, "test")
+  task$set_row_roles(11:32, "use")
+  learner$train(task)
+
+})

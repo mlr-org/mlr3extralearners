@@ -18,11 +18,6 @@
 #'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
 #'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
 #'   those columns.
-#' * `early_stopping_split`:
-#'  Additional parameter. Instead of providing the data that is used for early stopping explicitly,
-#'  the parameter `early_stopping_split` determines the proportion of the training data that is
-#'  used for early stopping. Here, stratification on the target variable is used if there is no
-#'  grouping variable, as one cannot simultaneously stratify and group.
 #' @section Custom mlr3 defaults:
 #' * `num_threads`:
 #'   * Actual default: 0L
@@ -57,7 +52,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
         early_stopping_rounds = p_int(lower = 1L, tags = "train"),
-        early_stopping_split = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
         callbacks = p_uty(tags = "train"),
         reset_data = p_lgl(default = FALSE, tags = "train"),
         categorical_feature = p_uty(default = "", tags = "train"),
