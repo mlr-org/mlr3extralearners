@@ -15,9 +15,9 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../../apple-touch-icon-60x60.png">
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../../deps/Roboto-0.4.2/font.css" rel="stylesheet">
-<link href="../../deps/JetBrains_Mono-0.4.2/font.css" rel="stylesheet">
-<link href="../../deps/Roboto_Slab-0.4.2/font.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><link href="../../deps/Roboto-0.4.4/font.css" rel="stylesheet">
+<link href="../../deps/JetBrains_Mono-0.4.4/font.css" rel="stylesheet">
+<link href="../../deps/Roboto_Slab-0.4.4/font.css" rel="stylesheet">
 <!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Learner Status">
@@ -35,7 +35,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.5.49</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.6.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -106,7 +106,8 @@
 
 
 
-<script src="test_overview_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Learner Status</h1>
             
@@ -117,7 +118,10 @@
 
     
     
-<p>The table below gives an overview of the current status of all extralearners. The <em>Parameter Test</em> indicates whether the parameters of the algorithm are covered. The <em>Learner Test</em> shows whether the learner is working.</p>
+<p>The table below gives an overview of the current status of all
+extralearners. The <em>Parameter Test</em> indicates whether the
+parameters of the algorithm are covered. The <em>Learner Test</em> shows
+whether the learner is working.</p>
 <table class="table table table-condensed">
 <thead><tr>
 <th style="text-align:right;">
@@ -145,10 +149,12 @@ Author
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.AdaBoostM1.html">classif.AdaBoostM1</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -165,10 +171,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.bart.html">classif.bart</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 dbarts
@@ -185,10 +193,12 @@ dbarts
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.C50.html">classif.C50</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 C50
@@ -205,10 +215,12 @@ C50
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.catboost.html">classif.catboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 catboost
@@ -224,10 +236,12 @@ catboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.cforest.html">classif.cforest</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -244,10 +258,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ctree.html">classif.ctree</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -264,10 +280,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.earth.html">classif.earth</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 earth
@@ -284,10 +302,12 @@ earth
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.fnn.html">classif.fnn</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 FNN
@@ -304,10 +324,12 @@ FNN
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gam.html">classif.gam</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mgcv
@@ -324,10 +346,12 @@ mgcv
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gamboost.html">classif.gamboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost
@@ -344,10 +368,12 @@ mboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gausspr.html">classif.gausspr</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -364,10 +390,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.gbm.html">classif.gbm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 gbm
@@ -384,10 +412,12 @@ gbm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmboost.html">classif.glmboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost
@@ -401,13 +431,37 @@ mboost
 </tr>
 <tr>
 <td style="text-align:right;">
+<a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmer.html">classif.glmer</a>
+</td>
+<td style="text-align:right;">
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
+</td>
+<td style="text-align:right;">
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
+</td>
+<td style="text-align:right;">
+lme4
+</td>
+<td style="text-align:right;">
+<a href="https://cran.r-project.org/web/checks/check_results_lme4.html" class="external-link"><img src="https://cranchecks.info/badges/worst/lme4" alt="cran checks"></a>
+</td>
+<td style="text-align:right;">
+<a href="https://github.com/sebffischer" class="external-link">sebffischer</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.IBk.html">classif.IBk</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -424,10 +478,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.J48.html">classif.J48</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -444,10 +500,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.JRip.html">classif.JRip</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -464,10 +522,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ksvm.html">classif.ksvm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -484,10 +544,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.liblinear.html">classif.liblinear</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 LiblineaR
@@ -504,10 +566,12 @@ LiblineaR
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lightgbm.html">classif.lightgbm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 lightgbm
@@ -524,10 +588,12 @@ lightgbm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.LMT.html">classif.LMT</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -544,10 +610,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lssvm.html">classif.lssvm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -564,10 +632,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.html">classif.mob</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -584,10 +654,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.OneR.html">classif.OneR</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -604,10 +676,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.PART.html">classif.PART</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -624,10 +698,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.randomForest.html">classif.randomForest</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 randomForest
@@ -644,10 +720,12 @@ randomForest
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.rfsrc.html">classif.rfsrc</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 randomForestSRC
@@ -664,10 +742,12 @@ randomForestSRC
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.kde_ks.html">dens.kde_ks</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 ks
@@ -684,10 +764,12 @@ ks
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.locfit.html">dens.locfit</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 locfit
@@ -704,10 +786,12 @@ locfit
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.logspline.html">dens.logspline</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 logspline
@@ -724,10 +808,12 @@ logspline
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.mixed.html">dens.mixed</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 np
@@ -744,10 +830,12 @@ np
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.nonpar.html">dens.nonpar</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 sm
@@ -764,10 +852,12 @@ sm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.pen.html">dens.pen</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 pendensity
@@ -784,10 +874,12 @@ pendensity
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.plug.html">dens.plug</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 plugdensity
@@ -804,10 +896,12 @@ plugdensity
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_dens.spline.html">dens.spline</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 gss
@@ -824,10 +918,12 @@ gss
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.bart.html">regr.bart</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 dbarts
@@ -844,10 +940,12 @@ dbarts
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.catboost.html">regr.catboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 catboost
@@ -863,10 +961,12 @@ catboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.cforest.html">regr.cforest</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -883,10 +983,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.ctree.html">regr.ctree</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -903,10 +1005,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.cubist.html">regr.cubist</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 Cubist
@@ -923,10 +1027,12 @@ Cubist
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.earth.html">regr.earth</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 earth
@@ -943,10 +1049,12 @@ earth
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.fnn.html">regr.fnn</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 FNN
@@ -963,10 +1071,12 @@ FNN
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gam.html">regr.gam</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mgcv
@@ -983,10 +1093,12 @@ mgcv
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gamboost.html">regr.gamboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost
@@ -1003,10 +1115,12 @@ mboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gausspr.html">regr.gausspr</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -1023,10 +1137,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gbm.html">regr.gbm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 gbm
@@ -1043,10 +1159,12 @@ gbm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glm.html">regr.glm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 stats
@@ -1062,10 +1180,12 @@ stats
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glmboost.html">regr.glmboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost
@@ -1082,10 +1202,12 @@ mboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.IBk.html">regr.IBk</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -1102,10 +1224,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.ksvm.html">regr.ksvm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -1122,10 +1246,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.liblinear.html">regr.liblinear</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 LiblineaR
@@ -1142,10 +1268,12 @@ LiblineaR
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.lightgbm.html">regr.lightgbm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 lightgbm
@@ -1162,10 +1290,12 @@ lightgbm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.lmer.html">regr.lmer</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 lme4
@@ -1182,10 +1312,12 @@ lme4
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.M5Rules.html">regr.M5Rules</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 RWeka
@@ -1202,10 +1334,12 @@ RWeka
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.mars.html">regr.mars</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mda
@@ -1222,10 +1356,12 @@ mda
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.mob.html">regr.mob</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -1242,10 +1378,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.randomForest.html">regr.randomForest</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 randomForest
@@ -1262,10 +1400,12 @@ randomForest
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.rfsrc.html">regr.rfsrc</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 randomForestSRC
@@ -1282,10 +1422,12 @@ randomForestSRC
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.rsm.html">regr.rsm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 rsm
@@ -1302,10 +1444,12 @@ rsm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.rvm.html">regr.rvm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 kernlab
@@ -1322,10 +1466,12 @@ kernlab
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.akritas.html">surv.akritas</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6
@@ -1342,10 +1488,12 @@ survivalmodels<br>distr6
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.aorsf.html">surv.aorsf</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 aorsf<br>pracma
@@ -1362,10 +1510,12 @@ aorsf<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.blackboost.html">surv.blackboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost<br>pracma
@@ -1382,10 +1532,12 @@ mboost<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.cforest.html">surv.cforest</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>sandwich<br>coin
@@ -1402,10 +1554,12 @@ partykit<br>sandwich<br>coin
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.coxboost.html">surv.coxboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 CoxBoost<br>pracma
@@ -1422,10 +1576,12 @@ CoxBoost<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.coxtime.html">surv.coxtime</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6<br>reticulate
@@ -1442,10 +1598,12 @@ survivalmodels<br>distr6<br>reticulate
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.ctree.html">surv.ctree</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 partykit<br>coin<br>sandwich
@@ -1462,10 +1620,12 @@ partykit<br>coin<br>sandwich
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.cv_coxboost.html">surv.cv_coxboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 CoxBoost<br>pracma
@@ -1482,10 +1642,12 @@ CoxBoost<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.cv_glmnet.html">surv.cv_glmnet</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 glmnet
@@ -1502,10 +1664,12 @@ glmnet
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.deephit.html">surv.deephit</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6<br>reticulate
@@ -1522,10 +1686,12 @@ survivalmodels<br>distr6<br>reticulate
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.deepsurv.html">surv.deepsurv</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6<br>reticulate
@@ -1542,10 +1708,12 @@ survivalmodels<br>distr6<br>reticulate
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.dnnsurv.html">surv.dnnsurv</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>keras<br>pseudo<br>tensorflow<br>distr6
@@ -1562,10 +1730,12 @@ survivalmodels<br>keras<br>pseudo<br>tensorflow<br>distr6
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.flexible.html">surv.flexible</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 flexsurv<br>pracma
@@ -1582,10 +1752,12 @@ flexsurv<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.gamboost.html">surv.gamboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost<br>pracma
@@ -1602,10 +1774,12 @@ mboost<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.gbm.html">surv.gbm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 gbm
@@ -1622,10 +1796,12 @@ gbm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.glmboost.html">surv.glmboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost<br>pracma
@@ -1642,10 +1818,12 @@ mboost<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.glmnet.html">surv.glmnet</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 glmnet
@@ -1662,10 +1840,12 @@ glmnet
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.loghaz.html">surv.loghaz</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6<br>reticulate
@@ -1682,10 +1862,12 @@ survivalmodels<br>distr6<br>reticulate
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.mboost.html">surv.mboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 mboost
@@ -1702,10 +1884,12 @@ mboost
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.nelson.html">surv.nelson</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survival<br>pracma
@@ -1722,10 +1906,12 @@ survival<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.obliqueRSF.html">surv.obliqueRSF</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 obliqueRSF<br>pracma
@@ -1742,10 +1928,12 @@ obliqueRSF<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.parametric.html">surv.parametric</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survival<br>pracma
@@ -1762,10 +1950,12 @@ survival<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.pchazard.html">surv.pchazard</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalmodels<br>distr6<br>reticulate
@@ -1782,10 +1972,12 @@ survivalmodels<br>distr6<br>reticulate
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.penalized.html">surv.penalized</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 penalized<br>pracma
@@ -1802,10 +1994,12 @@ penalized<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.ranger.html">surv.ranger</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 ranger
@@ -1822,10 +2016,12 @@ ranger
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.rfsrc.html">surv.rfsrc</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 randomForestSRC<br>pracma
@@ -1842,10 +2038,12 @@ randomForestSRC<br>pracma
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.svm.html">surv.svm</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 survivalsvm
@@ -1862,10 +2060,12 @@ survivalsvm
 <a href="https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.xgboost.html">surv.xgboost</a>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
-<span style="color: green"> <i class="glyphicon glyphicon-ok"></i> Passing </span>
+<span style="color: green"> <i class="glyphicon glyphicon-ok"></i>
+Passing </span>
 </td>
 <td style="text-align:right;">
 xgboost

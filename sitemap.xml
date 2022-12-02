@@ -100,6 +100,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmboost.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmer.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.ksvm.html</loc>
   </url>
   <url>
