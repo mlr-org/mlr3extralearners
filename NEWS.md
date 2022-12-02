@@ -1,3 +1,5 @@
+# mlr3extralearners 0.6.0-9000
+
 # mlr3extralearners 0.6.0
 
 * Feat: Added learner `LearnerClassifGlmer` (https://github.com/mlr-org/mlr3extralearners/issues/243)
