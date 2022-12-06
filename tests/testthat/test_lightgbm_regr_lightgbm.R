@@ -7,8 +7,9 @@ test_that("autotest", {
 })
 
 test_that("manual validation", {
-  learner = lrn("regr.lightgbm", early_stopping_rounds = 1, early_stopping_split = 0.1)
+  learner = lrn("regr.lightgbm", early_stopping_rounds = 1, early_stopping = TRUE)
   task = tsk("mtcars")
+  task$set_row_roles(1:10, "test")
   learner$train(task)
   expect_error(learner$train(task), regex = NA)
 })
@@ -71,11 +72,16 @@ test_that("hotstarting works", {
   expect_true(is.null(get_private(learner_hs$model)$init_predictor))
 })
 
+
 test_that("early stopping works", {
-  learner = lrn("regr.lightgbm")
+  learner = lrn("regr.lightgbm", early_stopping_rounds = 10, early_stopping = TRUE)
   task = tsk("mtcars")
   task$set_row_roles(1:10, "test")
-  task$set_row_roles(11:32, "use")
   learner$train(task)
 
+  dvalid = get_private(learner$model)$valid_sets
+  dtrain = get_private(learner$model)$train_set
+
+  expect_true(nrow(get_private(dvalid[[1L]])$raw_data) == 10)
+  expect_true(nrow(get_private(dtrain)$raw_data) == 22)
 })

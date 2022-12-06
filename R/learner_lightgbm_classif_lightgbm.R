@@ -32,8 +32,9 @@
 #' * `objective`:
 #'   Depending if the task is binary / multiclass, the default is set to `"binary"` or
 #'   `"multiclasss"`.
+#' @section Custom mlr3 parameters:
 #' * `early_stopping`
-#'   Whether to use the test set for early stopping. Default is `TRUE`.
+#'   Whether to use the test set for early stopping. Default is `FALSE`.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
