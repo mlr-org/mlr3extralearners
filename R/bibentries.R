@@ -549,5 +549,21 @@ bibentries = c( # nolint start
     volume = "32",
     pages = "1--17",
     year = "2010"
+  ),
+  obrien2019imbrfsrc = bibentry("article",
+    title = "A random forests quantile classifier for class imbalanced data",
+    author = "Robert O’Brien and Hemant Ishwaran",
+    journal = "Pattern Recognition",
+    volume = "90",
+    pages = "232--249",
+    year = "2019",
+    doi = "10.1016/j.patcog.2019.01.036"
+  ),
+  chen2004imbrf = bibentry("article",
+    title = "Using Random Forest to Learn Imbalanced Data",
+    author = "Chen Chao and Breiman Leo",
+    year = "2004",
+    month = "01",
+    journal = "University of California, Berkeley"
   )
 ) # nolint end

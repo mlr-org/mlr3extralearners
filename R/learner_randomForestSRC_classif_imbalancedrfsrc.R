@@ -1,5 +1,5 @@
 #' @title Classification Imbalanced Random Forest Src Learner
-#' @author RaphaelS1
+#' @author
 #' @name mlr_learners_classif.imbalancedrfsrc
 #'
 #' @description
@@ -7,19 +7,20 @@
 #' Calls [randomForestSRC::imbalanced.rfsrc()] from from \CRANpkg{randomForestSRC}.
 #'
 #' @section Initial parameter values:
-#' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
-#'
-#' @section Custom mlr3 defaults:
-#' FIXME: DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
-#'
-#' @section Installation:
-#' FIXME: CUSTOM INSTALLATION INSTRUCTIONS. DELETE IF NOT APPLICABLE.
+#' - `mtry`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
+#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
+#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `sampsize`:
+#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
+#'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
+#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
 #' @templateVar id classif.imbalancedrfsrc
 #' @template learner
 #'
 #' @references
-#' `r format_bib(FIXME: ONE OR MORE REFERENCES FROM bibentries.R)`
+#' `r format_bib("obrien2019imbrfsrc", "chen2004imbrf")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -41,28 +42,28 @@ LearnerClassifLearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifL
         fast = p_lgl(default = FALSE, tags = c("train")),
         ratio = p_dbl(0, 1, tags = "train"),
 
-        mtry = p_int(lower = 1L, tags = "train"), +
-        mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"), -
-        nodesize = p_int(default = 15L, lower = 1L, tags = "train"), +
-        nodedepth = p_int(lower = 1L, tags = "train"), +
+        mtry = p_int(lower = 1L, tags = "train"),
+        mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
+        nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
+        nodedepth = p_int(lower = 1L, tags = "train"),
         splitrule = p_fct(
             levels = c("gini", "auc", "entropy"),
-            default = "gini", tags = "train"), +
-        nsplit = p_int(lower = 0, default = 10, tags = "train"), +
+            default = "gini", tags = "train"),
+        nsplit = p_int(lower = 0, default = 10, tags = "train"),
         importance = p_fct(
             default = "FALSE",
             levels = c("FALSE", "TRUE", "none", "permute", "random", "anti"),
-            tags = c("train", "predict")), +
+            tags = c("train", "predict")),
         bootstrap = p_fct(
             default = "by.root",
-            levels = c("by.root", "by.node", "none", "by.user"), tags = "train"), +
+            levels = c("by.root", "by.node", "none", "by.user"), tags = "train"),
         samptype = p_fct(
             default = "swor", levels = c("swor", "swr"),
-            tags = "train"), +
-        samp = p_uty(tags = "train"), +
+            tags = "train"),
+        samp = p_uty(tags = "train"),
         membership = p_lgl(default = FALSE, tags = c("train", "predict")),
         sampsize = p_uty(tags = "train"),
-        sampsize.ratio = p_dbl(0, 1, tags = "train"), -
+        sampsize.ratio = p_dbl(0, 1, tags = "train"),
           na.action = p_fct(
             default = "na.omit", levels = c("na.omit", "na.impute"),
             tags = c("train", "predict")),
@@ -93,21 +94,21 @@ LearnerClassifLearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifL
         seed = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
         statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
-        get.tree = p_uty(tags = "predict"), -
+        get.tree = p_uty(tags = "predict"),
           outcome = p_fct(
             default = "train", levels = c("train", "test"),
-            tags = "predict"), -
-          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"), -
-          cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")), -
+            tags = "predict"),
+          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
+          cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
           save.memory = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
         id = "classif.imbalancedrfsrc",
         packages = "randomForestSRC",
-        feature_types = c("logical", "integer", "numeric", "factor"),
+        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
-        param_set = param_set,
+        param_set = ps,
         properties = c("weights", "missings", "importance", "oob_error", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.imbalancedrfsrc",
         label = "Imbalanced Random Forest"

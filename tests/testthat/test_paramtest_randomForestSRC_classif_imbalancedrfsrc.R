@@ -1,26 +1,62 @@
-test_that("classif.imbalancedrfsrc train", {
+test_that("paramtest classif.imbalancedrfsrc train", {
   learner = lrn("classif.imbalancedrfsrc")
-  fun = randomForestSRC::imbalanced.rfsrc
+  fun_list = list(randomForestSRC::imbalanced)
   exclude = c(
-    "object", # handled internally
-    "data" # handled internally
+    "formula", # handled internally
+    "data", # handled internally
+    "perf.type", # scoring is done with measure
+    # all other parameters are ones inherited from rfsrc
+    "mtry",
+    "mtry.ratio",
+    "nodesize",
+    "nodedepth",
+    "splitrule",
+    "nsplit",
+    "importance",
+    "bootstrap",
+    "samptype",
+    "samp",
+    "membership",
+    "sampsize",
+    "sampsize.ratio",
+    "na.action",
+    "nimpute",
+    "ntime",
+    "cause",
+    "proximity",
+    "distance",
+    "forest.wt",
+    "xvar.wt",
+    "split.wt",
+    "forest",
+    "var.used",
+    "split.depth",
+    "seed",
+    "do.trace",
+    "statistics",
+    "get.tree",
+    "outcome",
+    "ptn.count",
+    "cores",
+    "save.memory"
   )
 
-  # note that you can also pass a list of functions in case $.train calls more than one
-  # function, e.g. for control arguments
-  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
-test_that("classif.imbalancedrfsrc predict", {
+
+test_that("paramtest classif.imbalancedrfsrc predict", {
   learner = lrn("classif.imbalancedrfsrc")
-  fun = randomForestSRC::predict # nolint
+  fun_list = list(randomForestSRC:::predict.rfsrc) # nolint
   exclude = c(
     "object", # handled internally
-    "data", # handled internally
-    "newdata" # handled internally
+    "newdata", # handled internally
+    "m.target", # all classes returned
+    "cores", # is set as option(rf.cores)
+    "perf.type" # scoring is done with measures
   )
 
-  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
   expect_paramtest(paramtest)
 })
