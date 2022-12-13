@@ -25,7 +25,7 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifLearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifLearnerClassifImbalancedRandomForestSRC",
+LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRandomForestSRC",
   inherit = LearnerClassif,
   public = list(
     #' @description
@@ -176,4 +176,4 @@ LearnerClassifLearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifL
   )
 )
 
-.extralrns_dict$add("classif.imbalancedrfsrc", LearnerClassifLearnerClassifImbalancedRandomForestSRC)
+.extralrns_dict$add("classif.imbalancedrfsrc", LearnerClassifImbalancedRandomForestSRC)
