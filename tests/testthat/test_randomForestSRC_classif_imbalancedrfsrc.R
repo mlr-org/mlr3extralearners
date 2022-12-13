@@ -13,9 +13,9 @@ test_that("autotest", {
     importance = "random", na.action = "na.impute",
     do.trace = TRUE)
   expect_learner(learner)
-  # set.seed(1)
-  # result = run_autotest(learner, exclude = "uf8_feature_names")
-  # expect_true(result, info = result$error)
+  set.seed(1)
+  result = run_autotest(learner, exclude = "uf8_feature_names")
+  expect_true(result, info = result$error)
 })
 
 test_that("convert_ratio", {
