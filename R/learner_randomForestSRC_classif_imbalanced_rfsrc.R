@@ -1,6 +1,6 @@
 #' @title Classification Imbalanced Random Forest Src Learner
-#' @author
-#' @name mlr_learners_classif.imbalancedrfsrc
+#' @author HarutyunyanLiana
+#' @name mlr_learners_classif.imbalanced_rfsrc
 #'
 #' @description
 #' Imbalanced Random forest for classification between two classes.
@@ -16,7 +16,13 @@
 #'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
 #'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
-#' @templateVar id classif.imbalancedrfsrc
+#' @section Custom mlr3 defaults:
+#' - `cores`:
+#'   - Actual default: Auto-detecting the number of cores
+#'   - Adjusted default: 1
+#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#'
+#' @templateVar id classif.imbalanced_rfsrc
 #' @template learner
 #'
 #' @references
@@ -36,10 +42,10 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         method = p_fct(
           default = "rfc",
           levels = c("rfc", "brf", "standard"),
-          tags = c("train")
+          tags = "train"
         ),
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
-        fast = p_lgl(default = FALSE, tags = c("train")),
+        fast = p_lgl(default = FALSE, tags = "train"),
         ratio = p_dbl(0, 1, tags = "train"),
 
         mtry = p_int(lower = 1L, tags = "train"),
@@ -104,13 +110,13 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       )
 
       super$initialize(
-        id = "classif.imbalancedrfsrc",
+        id = "classif.imbalanced_rfsrc",
         packages = "randomForestSRC",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("weights", "missings", "importance", "oob_error", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.imbalancedrfsrc",
+        man = "mlr3extralearners::mlr_learners_classif.imbalanced_rfsrc",
         label = "Imbalanced Random Forest"
       )
     },
@@ -176,4 +182,4 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
   )
 )
 
-.extralrns_dict$add("classif.imbalancedrfsrc", LearnerClassifImbalancedRandomForestSRC)
+.extralrns_dict$add("classif.imbalanced_rfsrc", LearnerClassifImbalancedRandomForestSRC)

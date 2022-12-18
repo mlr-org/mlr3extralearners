@@ -1,14 +1,14 @@
 test_that("importance/selected", {
   set.seed(1)
   task = tsk("breast_cancer")
-  learner = lrn("classif.imbalancedrfsrc")
+  learner = lrn("classif.imbalanced_rfsrc")
   learner$train(task)
   expect_error(learner$importance(), "Set 'importance'")
   expect_error(learner$selected_features(), "Set 'var.used'")
 })
 
 test_that("autotest", {
-  learner = lrn("classif.imbalancedrfsrc")
+  learner = lrn("classif.imbalanced_rfsrc")
   learner$param_set$values = list(
     importance = "random", na.action = "na.impute",
     do.trace = TRUE)
@@ -20,7 +20,7 @@ test_that("autotest", {
 
 test_that("convert_ratio", {
   task = tsk("sonar")
-  learner = lrn("classif.imbalancedrfsrc", ntree = 5, mtry.ratio = .5)
+  learner = lrn("classif.imbalanced_rfsrc", ntree = 5, mtry.ratio = .5)
   expect_equal(learner$train(task)$model$mtry, 30)
 
   learner$param_set$values$mtry.ratio = 0

@@ -1,3 +1,7 @@
+# mlr3extralearners 0.6.1
+
+* Feat: Added learner `LearnerClassifImbalancedRandomForestSRC` (https://github.com/mlr-org/mlr3extralearners/issues/48)
+
 # mlr3extralearners 0.6.0-9000
 
 # mlr3extralearners 0.6.0

@@ -1,5 +1,5 @@
-test_that("paramtest classif.imbalancedrfsrc train", {
-  learner = lrn("classif.imbalancedrfsrc")
+test_that("paramtest classif.imbalanced_rfsrc train", {
+  learner = lrn("classif.imbalanced_rfsrc")
   fun_list = list(randomForestSRC::imbalanced)
   exclude = c(
     "formula", # handled internally
@@ -46,8 +46,8 @@ test_that("paramtest classif.imbalancedrfsrc train", {
 })
 
 
-test_that("paramtest classif.imbalancedrfsrc predict", {
-  learner = lrn("classif.imbalancedrfsrc")
+test_that("paramtest classif.imbalanced_rfsrc predict", {
+  learner = lrn("classif.imbalanced_rfsrc")
   fun_list = list(randomForestSRC:::predict.rfsrc) # nolint
   exclude = c(
     "object", # handled internally
