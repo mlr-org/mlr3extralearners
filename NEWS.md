@@ -1,3 +1,8 @@
+# mlr3extralearners 0.6.2
+
+ * Feat: Added learners `LearnerClassifPriorityLasso`, `LearnerRegrPriorityLasso`, `LearnerSurvPriorityLasso` (https://github.com/mlr-org/mlr3extralearners/issues/227)
+
+
 # mlr3extralearners 0.6.0-9000
 
 # mlr3extralearners 0.6.0
