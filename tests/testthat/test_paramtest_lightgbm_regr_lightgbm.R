@@ -77,7 +77,7 @@ test_that("paramtest regr.lightgbm train", {
     "label_gain", # ranking
 
     # custom parameters
-    "early_stopping_split",
+    "early_stopping",
     "convert_categorical",
 
     # lgb.train
@@ -93,7 +93,7 @@ test_that("paramtest regr.lightgbm train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest regr.lightgbm train", {
+test_that("paramtest regr.lightgbm predict", {
   learner = lrn("regr.lightgbm")
   fun = list(lightgbm:::predict.lgb.Booster, x_predict)
   exclude = c(

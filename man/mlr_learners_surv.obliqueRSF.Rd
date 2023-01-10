@@ -7,6 +7,8 @@
 \description{
 Oblique random forest.
 Calls \code{\link[obliqueRSF:ORSF]{obliqueRSF::ORSF()}} from \CRANpkg{obliqueRSF}.
+Note that \code{obliqueRSF} has been superseded by \code{aorsf.}
+We highly recommend you use aorsf to fit oblique random survival forests: see https://github.com/bcjaeger/aorsf or install from CRAN with install.packages('aorsf').
 }
 \section{Dictionary}{
 

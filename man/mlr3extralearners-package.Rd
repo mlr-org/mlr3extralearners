@@ -26,6 +26,7 @@ Other contributors:
   \item Javier García \email{geshter@hotmail.com} [contributor]
   \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
   \item Byron Jaeger \email{bjaeger@wakehealth.edu} [contributor]
+  \item Zezhi Wang \email{homura@mail.ustc.edu.cn} [contributor]
 }
 
 }

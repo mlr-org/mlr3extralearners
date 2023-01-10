@@ -6,5 +6,5 @@ linters: with_defaults(
     cyclocomp_linter = NULL, # do not check function complexity
     commented_code_linter = NULL, # allow code in comments
     todo_comment_linter = NULL, # allow todo in comments
-    line_length_linter = line_length_linter(100)
+    line_length_linter = line_length_linter(120)
     )
