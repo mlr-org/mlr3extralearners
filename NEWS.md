@@ -1,10 +1,8 @@
-# mlr3extralearners 0.6.1
-
-* Add two new learners `regr.abess` and `classif.abess`
-
 # mlr3extralearners 0.6.0-9000
 
 * BREAKING CHANGE: lightgbm's early stopping mechanism now uses the task's test set.
+* Add two new learners `regr.abess` and `classif.abess` (thanks to @bbayukari)
+
 
 # mlr3extralearners 0.6.0
 

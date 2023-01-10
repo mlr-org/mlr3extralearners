@@ -30,12 +30,11 @@ lrn("classif.abess")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   family \tab character \tab binomial \tab binomial, multinomial, ordinal \tab - \cr
+   family \tab character \tab - \tab binomial, multinomial, ordinal \tab - \cr
    tune.path \tab character \tab sequence \tab sequence, gsection \tab - \cr
    tune.type \tab character \tab gic \tab gic, aic, bic, ebic, cv \tab - \cr
    normalize \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    support.size \tab untyped \tab  \tab  \tab - \cr
-   support.size.predict \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    c.max \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    gs.range \tab untyped \tab  \tab  \tab - \cr
    lambda \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -56,7 +55,22 @@ lrn("classif.abess")
    early.stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ic.scale \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    num.threads \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
+}
+
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{num.threads}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} - Depending on the task type, if the parameter \code{family} is \code{NULL}, it is set to \code{"binomial"} for binary
+classification tasks and to \code{"multinomial"} for multiclass classification problems.
 }
 }
 
@@ -120,20 +134,13 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Select features.
+Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features(support.size = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{support.size}}{an integer which indicates the number of selected features.}
-}
-\if{html}{\out{</div>}}
-}
 \subsection{Returns}{
-Selected features
+The names of selected features
 }
 }
 \if{html}{\out{<hr>}}

@@ -41,7 +41,7 @@ lrn("classif.lightgbm")
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   early_stopping_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
    reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    categorical_feature \tab untyped \tab  \tab  \tab - \cr
@@ -146,11 +146,6 @@ lrn("classif.lightgbm")
 Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
 columns are converted to integers and the parameter categorical_feature of lightgbm is set to
 those columns.
-\item \code{early_stopping_split}:
-Additional parameter. Instead of providing the data that is used for early stopping explicitly,
-the parameter \code{early_stopping_split} determines the proportion of the training data that is
-used for early stopping. Here, stratification on the target variable is used if there is no
-grouping variable, as one cannot simultaneously stratify and group.
 \item \code{num_class}:
 This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
@@ -174,6 +169,14 @@ This parameter is automatically inferred for multiclass tasks and does not have 
 \item \code{objective}:
 Depending if the task is binary / multiclass, the default is set to \code{"binary"} or
 \code{"multiclasss"}.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{early_stopping}
+Whether to use the test set for early stopping. Default is \code{FALSE}.
 }
 }
 

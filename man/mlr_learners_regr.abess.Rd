@@ -35,7 +35,6 @@ lrn("regr.abess")
    tune.type \tab character \tab gic \tab gic, aic, bic, ebic, cv \tab - \cr
    normalize \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    support.size \tab untyped \tab  \tab  \tab - \cr
-   support.size.predict \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    c.max \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    gs.range \tab untyped \tab  \tab  \tab - \cr
    lambda \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -57,6 +56,13 @@ lrn("regr.abess")
    ic.scale \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    num.threads \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
+}
+
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{num.threads}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 }
 }
 
@@ -120,20 +126,13 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerRegrAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Select features.
+Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrAbess$selected_features(support.size = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrAbess$selected_features()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{support.size}}{an integer which indicates the number of selected features.}
-}
-\if{html}{\out{</div>}}
-}
 \subsection{Returns}{
-Selected features
+The names of selected features
 }
 }
 \if{html}{\out{<hr>}}

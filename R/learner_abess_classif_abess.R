@@ -8,11 +8,14 @@
 #'
 #' @templateVar id classif.abess
 #' @template learner
-#' @section Custom mlr3 defaults:
-#' * `num.threads`:
-#'   * Actual default: 0L
-#'   * Adjusted default: 1L
-#'   * Reason for change: avoid clashes between the mlr3 parallelization and the learner's internal parallelization.
+#'
+#' @section Initial parameter values:
+#' * `num.threads`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+#'
+#' @section Custom mlr3 parameters:
+#' * `family` - Depending on the task type, if the parameter `family` is `NULL`, it is set to `"binomial"` for binary
+#' classification tasks and to `"multinomial"` for multiclass classification problems.
+#'
 #'
 #' @template seealso_learner
 #' @template example
@@ -25,7 +28,6 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
     initialize = function() {
       param_set = ps(
         family = p_fct(
-          default = "binomial",
           levels = c("binomial", "multinomial", "ordinal"),
           tags = "train"
         ),
@@ -52,7 +54,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         screening.num = p_int(default = NULL, lower = 0, special_vals = list(NULL), tags = "train"),
         important.search = p_int(default = NULL, lower = 0, special_vals = list(NULL), tags = "train"),
         warm.start = p_lgl(default = TRUE, tags = "train"),
-        nfolds = p_int(default = 5,  tags = "train"),
+        nfolds = p_int(default = 5, tags = "train"),
         foldid = p_uty(default = NULL, tags = "train"),
         cov.update = p_lgl(default = FALSE, tags = "train"),
         newton = p_fct(default = "exact", levels = c("exact", "approx"), tags = "train"),
@@ -61,8 +63,10 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         early.stop = p_lgl(default = FALSE, tags = "train"),
         ic.scale = p_dbl(default = 1.0, lower = 0.0, tags = "train"),
         num.threads = p_int(default = 0L, lower = 0L, tags = c("train", "threads")),
-        seed = p_int(default = 1, tags = "train")
+        seed = p_int(default = 0L, tags = "train")
       )
+
+      param_set$values$num.threads = 1L
 
       super$initialize(
         id = "classif.abess",
@@ -77,7 +81,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
     },
     #' @description
     #' Extract the name of selected features from the model by [abess::extract()].
-    #' @return The name of selected features
+    #' @return The names of selected features
     selected_features = function() {
       abess::extract(self$model)$support.vars
     }
@@ -90,12 +94,10 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
 
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      pars$num.threads = 1L
       if (is.null(pars$family)) {
-        if(length(self$state$class_names) == 2){
+        if (length(self$state$class_names) == 2) {
           pars$family = "binomial"
-        }
-        else {
+        } else {
           pars$family = "multinomial"
         }
       }
@@ -117,29 +119,23 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         newx = as.matrix(ordered_features(task, self)),
         type = "response")
 
-      family = self$param_set$values$family
+      family = self$state$param_vals$family
       if (is.null(family)) {
-        if(length(self$state$class_names) == 2){
+        if (length(self$state$class_names) == 2) {
           family = "binomial"
-        }
-        else {
+        } else {
           family = "multinomial"
         }
       }
-      if(family == "binomial"){
-        prob = cbind(1-prob, prob)
-      }
-      if(family == "ordinal"){
-        prob = prob[[1]]
-      }
-      if(family == "multinomial"){
+      if (family == "binomial") {
+        prob = cbind(1 - prob, prob)
+      } else {
         prob = prob[[1]]
       }
 
       if (self$predict_type == "response") {
         list(response = self$state$class_names[apply(prob, 1, which.max)])
-      }
-      else {
+      } else {
         colnames(prob) = self$state$class_names
         list(prob = prob)
       }

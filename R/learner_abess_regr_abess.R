@@ -9,11 +9,7 @@
 #' @templateVar id regr.abess
 #' @template learner
 #'
-#' @section Custom mlr3 defaults:
-#' * `num.threads`:
-#'   * Actual default: 0L
-#'   * Adjusted default: 1L
-#'   * Reason for change: avoid clashes between the mlr3 parallelization and the learner's internal parallelization.
+#' @inheritSection mlr_learners_classif.abess Initial parameter values
 #'
 #' @template seealso_learner
 #' @template example
@@ -53,7 +49,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
         screening.num = p_int(default = NULL, lower = 0, special_vals = list(NULL), tags = "train"),
         important.search = p_int(default = NULL, lower = 0, special_vals = list(NULL), tags = "train"),
         warm.start = p_lgl(default = TRUE, tags = "train"),
-        nfolds = p_int(default = 5,  tags = "train"),
+        nfolds = p_int(default = 5, tags = "train"),
         foldid = p_uty(default = NULL, tags = "train"),
         cov.update = p_lgl(default = FALSE, tags = "train"),
         newton = p_fct(default = "exact", levels = c("exact", "approx"), tags = "train"),
@@ -64,6 +60,8 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
         num.threads = p_int(default = 0L, lower = 0L, tags = c("train", "threads")),
         seed = p_int(default = 1, tags = "train")
       )
+
+      param_set$values$num.threads = 1L
 
       super$initialize(
         id = "regr.abess",
@@ -78,8 +76,8 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
     },
     #' @description
     #' Extract the name of selected features from the model by [abess::extract()].
-    #' @return The name of selected features
-    selected_features = function(support.size = NULL) {
+    #' @return The names of selected features
+    selected_features = function() {
       abess::extract(self$model)$support.vars
     }
   ),
@@ -87,7 +85,6 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      pars$num.threads = 1L
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weight = task$weights$weight))
       }
@@ -103,7 +100,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
       prob = invoke(
         predict,
         self$model,
-        newx = as.matrix(ordered_features(task, self)),
+        newx = ordered_features(task, self),
         type = "response")
       list(response = prob)
     }
