@@ -108,7 +108,20 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>family</td><td>character</td><td>binomial</td><td>binomial, multinomial, ordinal</td><td>-</td></tr><tr><td>tune.path</td><td>character</td><td>sequence</td><td>sequence, gsection</td><td>-</td></tr><tr><td>tune.type</td><td>character</td><td>gic</td><td>gic, aic, bic, ebic, cv</td><td>-</td></tr><tr><td>normalize</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>support.size</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>support.size.predict</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>c.max</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>gs.range</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>always.include</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>group.index</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>init.active.set</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>splicing.type</td><td>integer</td><td>2</td><td></td><td>\([1, 2]\)</td></tr><tr><td>max.splicing.iter</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>screening.num</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>important.search</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>warm.start</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>cov.update</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>newton</td><td>character</td><td>exact</td><td>exact, approx</td><td>-</td></tr><tr><td>newton.thresh</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max.newton.iter</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>early.stop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ic.scale</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>num.threads</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>seed</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>family</td><td>character</td><td>-</td><td>binomial, multinomial, ordinal</td><td>-</td></tr><tr><td>tune.path</td><td>character</td><td>sequence</td><td>sequence, gsection</td><td>-</td></tr><tr><td>tune.type</td><td>character</td><td>gic</td><td>gic, aic, bic, ebic, cv</td><td>-</td></tr><tr><td>normalize</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>support.size</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>c.max</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>gs.range</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>always.include</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>group.index</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>init.active.set</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>splicing.type</td><td>integer</td><td>2</td><td></td><td>\([1, 2]\)</td></tr><tr><td>max.splicing.iter</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>screening.num</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>important.search</td><td>integer</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>warm.start</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nfolds</td><td>integer</td><td>5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>foldid</td><td>untyped</td><td></td><td></td><td>-</td></tr><tr><td>cov.update</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>newton</td><td>character</td><td>exact</td><td>exact, approx</td><td>-</td></tr><tr><td>newton.thresh</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max.newton.iter</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>early.stop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ic.scale</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>num.threads</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>seed</td><td>integer</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+    
+
+<ul><li><p><code>num.threads</code>: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.</p></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+    
+
+<ul><li><p><code>family</code> - Depending on the task type, if the parameter <code>family</code> is <code>NULL</code>, it is set to <code>"binomial"</code> for binary
+classification tasks and to <code>"multinomial"</code> for multiclass classification problems.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
@@ -156,22 +169,14 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
 
 </div><p></p><hr><a id="method-LearnerClassifAbess-selected_features"></a><div class="section">
 <h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
-<p>Select features.</p><div class="section">
+<p>Extract the name of selected features from the model by <code><a href="https://abess-team.github.io/abess/reference/extract.abess.html" class="external-link">abess::extract()</a></code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifAbess</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span>support.size <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifAbess</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
-<div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>support.size</code></dt>
-<dd><p>an integer which indicates the number of selected features.</p></dd>
-
-
-</dl><p></p></div>
-</div>
 <div class="section">
 <h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
-<p>Selected features</p>
+<p>The names of selected features</p>
 </div>
 
 </div><p></p><hr><a id="method-LearnerClassifAbess-clone"></a><div class="section">
@@ -182,7 +187,7 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
 </div>
 
 <div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -200,7 +205,7 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifAbess:classif.abess&gt;: Fast Best Subset Selection for Classification</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: num.threads=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, abess</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
