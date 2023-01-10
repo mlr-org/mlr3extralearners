@@ -72,7 +72,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"), tags = "train"),
         seed = p_int(tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        data_sample_strategy = p_fct(default = "bagging", levels =  c("bagging", "goss")),
+        data_sample_strategy = p_fct(default = "bagging", levels =  c("bagging", "goss"), tags = "train"),
 
         # Learning control parameters
         force_col_wise = p_lgl(default = FALSE, tags = "train"),
