@@ -55,6 +55,7 @@ lrn("regr.lightgbm")
    device_type \tab character \tab cpu \tab cpu, gpu \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   data_sample_strategy \tab character \tab bagging \tab bagging, goss \tab - \cr
    force_col_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    force_row_wise \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    histogram_pool_size \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
