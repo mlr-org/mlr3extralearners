@@ -7,17 +7,20 @@ test_that("autotest", {
 })
 
 test_that("manual validation binary", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping_split = 0.2)
+  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping = TRUE)
   task = tsk("sonar")
+  ids = partition(task, 0.7)
+  task$set_row_roles(ids$test, "test")
   expect_error(learner$train(task), regexp = NA)
-  # TODO: Fix with test validation renaming
-  task$row_roles$holdout = sample(seq(task$nrow), task$nrow * 0.3)
-  expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
+
 })
 
 test_that("manual validation multiclass", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping_split = 0.3)
+  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping = TRUE)
   task = tsk("iris")
+  ids = partition(task)
+  task$set_row_roles(ids$test, "test")
+
   expect_error(learner$train(task), regexp = NA)
   # TODO: Fix with test validation renaming
   task$row_roles$holdout = sample(seq(task$nrow), task$nrow * 0.3)
@@ -103,13 +106,15 @@ test_that("Can pass categorical_feature and convert_categorical = TRUE", {
   expect_true(length(learner2$model$params$categorical_feature) == 1L)
 })
 
-test_that("Can set eval parameter", {
-  evalerror = function(preds, dtrain) {
-    list(name = "hallo", value = runif(1), higher_better = TRUE)
-  }
+test_that("early stopping works", {
+  learner = lrn("classif.lightgbm", early_stopping_rounds = 10, early_stopping = TRUE)
   task = tsk("iris")
-  learner = lrn("classif.lightgbm", early_stopping_split = 0.2, record = TRUE,
-    eval = list(evalerror, "auc_mu")
-  )
-  expect_error(learner$train(task), regexp = NA)
+  task$set_row_roles(1:10, "test")
+  learner$train(task)
+
+  dvalid = get_private(learner$model)$valid_sets
+  dtrain = get_private(learner$model)$train_set
+
+  expect_true(nrow(get_private(dvalid[[1L]])$raw_data) == 10)
+  expect_true(nrow(get_private(dtrain)$raw_data) == 140)
 })

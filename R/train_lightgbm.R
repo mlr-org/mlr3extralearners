@@ -1,26 +1,34 @@
 train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
-  assert_choice(task_type, c("regr", "classif"))
   convert_categorical = pars$convert_categorical
   pars$convert_categorical = NULL
-
-  if (convert_categorical) {
-    encoding = encode_lightgbm_train(task)
-    X = encoding$X
-    categorical_feature = c(encoding$categorical_feature, pars$categorical_feature)
-  } else {
+  early_stopping = pars$early_stopping %??% FALSE
+  pars$early_stopping = NULL
+  if (early_stopping && !length(task$row_roles$test)) {
+    stopf("Can't do early stopping if no test data is available.")
+  }
+  if (!convert_categorical) {
     assert_true(all(task$feature_types$type %in% c("integer", "numeric")))
-    X = data.matrix(task$data(cols = task$feature_names))
     categorical_feature = pars$categorical_feature
+  } else {
+    categorical_feature = c(task$feature_types$id[task$feature_types$type %in% c("factor", "logical")], # nolint
+      pars$categorical_feature)
   }
   pars$categorical_feature = NULL
 
-  y = task$data(cols = task$target_names)[[1L]]
+  x_train = data.matrix(task$data(rows = task$row_roles$use, cols = task$feature_names))
+  y_train = task$data(rows = task$row_roles$use, cols = task$target_names)[[1L]]
+
+  x_valid = y_valid = NULL
+  if (early_stopping) {
+    x_valid = data.matrix(task$data(rows = task$row_roles$test, cols = task$feature_names))
+    y_valid = task$data(rows = task$row_roles$test, cols = task$target_names)[[1L]]
+  }
 
   if (task_type == "classif") {
     # catch incorrect objective setting
     if (!is.null(pars$objective) && pars$objective %in% c("multiclass", "multiclassova") &&
       !("multiclass" %in% task$properties)) {
-      stop("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
+      stopf("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
     }
 
     # set default objective
@@ -39,55 +47,42 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
     }
 
     if (pars$objective %in% c("multiclass", "multiclassova")) {
-      y = as.integer(y) - 1L
+      y_train = as.integer(y_train) - 1L
+      if (early_stopping) {
+        y_valid = as.integer(y_valid) - 1L
+      }
     } else {
-      y = as.integer(y == task$positive)
+      y_train = as.integer(y_train == task$positive)
+      if (early_stopping) {
+        y_valid = as.integer(y_valid == task$positive)
+      }
     }
 
   }
+  dtrain = lightgbm::lgb.Dataset(
+    data = x_train,
+    label = y_train,
+    free_raw_data = FALSE,
+    categorical_feature = categorical_feature
+  )
+  if ("weights" %in% task$properties) {
+    dtrain$set_field("weight", task$weights[get("row_id") %in% task$row_roles$use, "weight"][[1L]])
+  }
 
-  early_stopping_split = pars$early_stopping_split
-  pars$early_stopping_split = NULL
-
-  if (isTRUE(early_stopping_split > 0)) {
-    # we cannot simultaneously do stratification and grouping
-    ids = mlr3::partition(task, ratio = 1 - early_stopping_split, stratify = is.null(task$groups))
-
-    self$state$valid_ids = ids$test
-
-    dtrain = lightgbm::lgb.Dataset(
-      data = X[ids$train, , drop = FALSE],
-      label = y[ids$train],
-      free_raw_data = FALSE,
-      categorical_feature = categorical_feature
-    )
-
+  valids = list()
+  if (early_stopping) {
     dvalid = lightgbm::lgb.Dataset.create.valid(
       dataset = dtrain,
-      data = X[ids$test, , drop = FALSE],
-      label = y[ids$test],
+      data = x_valid,
+      label = y_valid,
       params = list(
         categorical_feature = categorical_feature
       )
     )
-    valids = list(test = dvalid)
-
-    row_id = NULL
-    if ("weights" %in% task$properties) {
-      dtrain$set_field("weight", subset(task$weights, row_id %in% ids$train)$weight)
-      dvalid$set_field("weight", subset(task$weights, row_id %in% ids$test)$weight)
-    }
-  } else {
-    dtrain = lightgbm::lgb.Dataset(
-      data = X,
-      label = y,
-      free_raw_data = FALSE,
-      categorical_feature = categorical_feature
-    )
-    valids = list()
+    valids[["test"]] = dvalid
 
     if ("weights" %in% task$properties) {
-      dtrain$set_field("weight", task$weights$weight)
+      dvalid$set_field("weight", task$weights[get("row_id") %in% task$row_roles$test, "weight"][[1L]]) # nolint
     }
   }
 

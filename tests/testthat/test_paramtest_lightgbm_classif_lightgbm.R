@@ -72,7 +72,7 @@ test_that("paramtest classif.lightgbm train", {
     "label_gain", # ranking
 
     # custom parameters
-    "early_stopping_split",
+    "early_stopping",
     "convert_categorical",
 
     # lgb.train
@@ -110,7 +110,8 @@ test_that("paramtest classif.lightgbm train", {
     "predcontrib", # shapely
     "header", # for prediction for text file
     "start_iteration", # alias for start_iteration_predict
-    "num_iteration" # alias for num_iteration_predict
+    "num_iteration", # alias for num_iteration_predict
+    "early_stopping" # custom parameter
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

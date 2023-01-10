@@ -18,11 +18,6 @@
 #'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
 #'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
 #'   those columns.
-#' * `early_stopping_split`:
-#'  Additional parameter. Instead of providing the data that is used for early stopping explicitly,
-#'  the parameter `early_stopping_split` determines the proportion of the training data that is
-#'  used for early stopping. Here, stratification on the target variable is used if there is no
-#'  grouping variable, as one cannot simultaneously stratify and group.
 #' @section Custom mlr3 defaults:
 #' * `num_threads`:
 #'   * Actual default: 0L
@@ -32,6 +27,10 @@
 #'   * Actual default: 1L
 #'   * Adjusted default: -1L
 #'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
+#'
+#' @section Custom mlr3 parameters:
+#' * `early_stopping`
+#'   Whether to use the test set for early stopping. Default is `FALSE`.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -57,7 +56,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
         early_stopping_rounds = p_int(lower = 1L, tags = "train"),
-        early_stopping_split = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        early_stopping = p_lgl(default = FALSE, tags = "train"),
         callbacks = p_uty(tags = "train"),
         reset_data = p_lgl(default = FALSE, tags = "train"),
         categorical_feature = p_uty(default = "", tags = "train"),
@@ -73,6 +72,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"), tags = "train"),
         seed = p_int(tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
+        data_sample_strategy = p_fct(default = "bagging", levels =  c("bagging", "goss")),
 
         # Learning control parameters
         force_col_wise = p_lgl(default = FALSE, tags = "train"),
