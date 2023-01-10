@@ -16,7 +16,8 @@ Authors@R: c(
     person("Javier", "García", , "geshter@hotmail.com", role = "ctb"),
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
-    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut"))
+    person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
+    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -31,6 +32,7 @@ Imports:
     paradox,
     R6
 Suggests:
+    abess,
     aorsf (>= 0.0.5),
     actuar,
     apcluster,
