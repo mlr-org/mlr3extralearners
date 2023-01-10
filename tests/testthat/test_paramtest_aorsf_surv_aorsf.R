@@ -22,7 +22,8 @@ test_that("paramtest surv.aorsf train", {
     "control_cph_eps", # handled internally
     "control_cph_iter_max", # handled internally
     "control_net_alpha", # handled internally
-    "control_net_df_target" # handled internally
+    "control_net_df_target", # handled internally
+    "group_factors" # is set correctly in the learner's importance method (is only relevant for that)
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
   expect_paramtest(paramtest)
