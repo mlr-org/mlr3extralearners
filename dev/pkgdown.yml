@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   list_learners: learners/list_learners.html
   test_overview: learners/test_overview.html
-last_built: 2023-01-10T06:10Z
+last_built: 2023-01-10T14:45Z
 urls:
   reference: https://mlr3extralearners.mlr-org.com/reference
   article: https://mlr3extralearners.mlr-org.com/articles

@@ -64,6 +64,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.PART.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.abess.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.html</loc>
   </url>
   <url>
@@ -149,6 +152,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.M5Rules.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.html</loc>
