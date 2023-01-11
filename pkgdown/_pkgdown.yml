@@ -43,12 +43,6 @@ navbar:
     rss:
       icon: fa-rss
       href: https://mlr-org.com/
-    search:
-      text: Search Learners
-      href: articles/learners/list_learners.html
-    status:
-      text: Learner Status
-      href: articles/learners/test_overview.html
 
 reference:
   - title: Helpers
