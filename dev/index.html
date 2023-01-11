@@ -115,35 +115,19 @@
 <div class="section level2">
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
-<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. <code>mlr3extralearners</code> contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive <a href="https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html">learner list</a> for the full list of learners in the mlr3verse and the <a href="https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html">learner status page</a> for a live build status.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/list_mlr3learners.html">list_mlr3learners</a></span><span class="op">(</span>select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"required_packages"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; This will take a few seconds.</span></span>
-<span><span class="co">#&gt;                      id                                       required_packages</span></span>
-<span><span class="co">#&gt;                  &lt;char&gt;                                                  &lt;list&gt;</span></span>
-<span><span class="co">#&gt;   1: classif.AdaBoostM1                            mlr3,mlr3extralearners,RWeka</span></span>
-<span><span class="co">#&gt;   2:       classif.bart                           mlr3,mlr3extralearners,dbarts</span></span>
-<span><span class="co">#&gt;   3:        classif.C50                              mlr3,mlr3extralearners,C50</span></span>
-<span><span class="co">#&gt;   4:   classif.catboost                         mlr3,mlr3extralearners,catboost</span></span>
-<span><span class="co">#&gt;   5:    classif.cforest           mlr3,mlr3extralearners,partykit,sandwich,coin</span></span>
-<span><span class="co">#&gt;  ---                                                                           </span></span>
-<span><span class="co">#&gt; 133:        surv.ranger                 mlr3,mlr3proba,mlr3extralearners,ranger</span></span>
-<span><span class="co">#&gt; 134:         surv.rfsrc mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma</span></span>
-<span><span class="co">#&gt; 135:         surv.rpart                    mlr3,mlr3proba,rpart,distr6,survival</span></span>
-<span><span class="co">#&gt; 136:           surv.svm            mlr3,mlr3proba,mlr3extralearners,survivalsvm</span></span>
-<span><span class="co">#&gt; 137:       surv.xgboost                mlr3,mlr3proba,mlr3extralearners,xgboost</span></span></code></pre></div>
+<p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. An overview of all learners within the <code>mlr3verse</code> can be found <a href="https://mlr-org.com/learners.html" class="external-link">here</a>.</p>
 <p>mlr3extralearners lives on GitHub and will not be on CRAN. You can download the latest release from <a href="https://github.com/mlr-org/mlr3extralearners/releases" class="external-link">here</a> and install it locally with</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_local</span><span class="op">(</span><span class="st">"path/to/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
 <p>If you want to download the development version, run</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installing-and-loading-learners">Installing and Loading Learners<a class="anchor" aria-label="anchor" href="#installing-and-loading-learners"></a>
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
@@ -153,9 +137,9 @@
 <span><span class="co">#&gt; * Predict Types:  [response]</span></span>
 <span><span class="co">#&gt; * Feature Types: integer, numeric, factor, ordered</span></span>
 <span><span class="co">#&gt; * Properties: importance, missings, weights</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
@@ -200,7 +184,7 @@
 <div class="dev-status">
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html"><img src="https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg" alt="R CMD Check"></a></li>
+<li><a href="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml" class="external-link"><img src="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg" alt="RCMD Check"></a></li>
 <li><a href="https://stackoverflow.com/questions/tagged/mlr3" class="external-link"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a></li>
 </ul>
 </div>
