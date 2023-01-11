@@ -21,18 +21,14 @@ Package website: [release](https://mlr3extralearners.mlr-org.com/) \|
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
-[![R CMD Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+[![RCMD Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
 
-`mlr3extralearners` contains all learners from mlr3 that are not in `mlr3learners` or the
-core packages. `mlr3extralearners` contains helper functions to find where all the learners, across the mlr3verse, live and to install required packages to run these learners. See the interactive [learner list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html) for the full list of learners in the mlr3verse and the [learner status page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html) for a live build status.
-
-```{r}
-list_mlr3learners(select = c("id", "required_packages"))
-```
+`mlr3extralearners` contains all learners from mlr3 that are not in `mlr3learners` or the core packages.
+An overview of all learners within the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 
 mlr3extralearners lives on GitHub and will not be on CRAN.
 You can download the latest release from [here](https://github.com/mlr-org/mlr3extralearners/releases) and install it locally with
