@@ -9,7 +9,7 @@
 Imbalanced Random forest for classification between two classes.
 Calls \code{\link[randomForestSRC:imbalanced.rfsrc]{randomForestSRC::imbalanced.rfsrc()}} from from \CRANpkg{randomForestSRC}.
 }
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:
