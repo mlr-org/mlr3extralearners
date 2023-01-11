@@ -101,7 +101,8 @@ Remotes:
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     xoopR/param6,
-    xoopR/set6
+    xoopR/set6,
+    ropensci/aorsf
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
