@@ -44,6 +44,10 @@ navbar:
       icon: fa-rss
       href: https://mlr-org.com/
 
+    status:
+      text: Learner Status
+      href: articles/learner_status.html
+
 reference:
   - title: Helpers
     contents:

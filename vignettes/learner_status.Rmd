@@ -1,0 +1,79 @@
+---
+title: Learner Status
+output: html_document
+---
+
+The table below gives an overview of the status of the upstream packages for all extralearners.
+
+```{r, echo = FALSE}
+library(mlr3extralearners)
+library(mlr3misc)
+library(data.table)
+library(formattable)
+path = mlr3extralearners:::pkg_root(".")
+tbl = suppressMessages(list_mlr3learners(
+  select = c("id", "required_packages", "mlr3_package"),
+  filter = list(mlr3_package = "mlr3extralearners")
+))
+remove_mlr3 = function(pkgs) {
+  pkgs = pkgs[!grepl("mlr3", pkgs)]
+  return(pkgs)
+}
+no_badges = c("CoxBoost", "catboost", "stats", "stats4", "mlr3proba", "survivalmodels")
+make_badge = function(pkg) {
+  if (pkg %in% no_badges) {
+    return("")
+  }
+  sprintf("[![CRAN Status](https://www.r-pkg.org/badges/version-ago/%s)](https://cran.r-project.org/package=%s)", pkg, pkg)
+}
+make_badges = function(pkgs) {
+  mlr3misc::map_chr(pkgs, make_badge)
+}
+upstream_pkgs = mlr3misc::map(tbl$required_packages, remove_mlr3)
+upstream_status = upstream_pkgs |>
+  mlr3misc::map(make_badges) |>
+  mlr3misc::map_chr(function(x) mlr3misc::str_collapse(x, sep = "<br />"))
+upstream_pkgs = upstream_pkgs |>
+  mlr3misc::map(function(x) mlr3misc::str_collapse(x, sep = "<br />")) |>
+  unlist()
+mlr3_pkgs = tbl$mlr3_package
+# mlr3_status = mlr3_pkgs |>
+#  mlr3misc::map(make_badges)
+tbl = tbl[, "id"]
+tbl[["mlr3"]] = mlr3_pkgs
+# tbl[["mlr3_status"]] = mlr3_status
+tbl[["upstream"]] = upstream_pkgs
+tbl[["upstream_status"]] = upstream_status
+tbl$author = apply(tbl, 1, function(row) {
+  author = switch(row[[2]],
+    mlr3extralearners = {
+      x = readLines(file.path(path, "man", paste0("mlr_learners_", row[[1]], ".Rd")))
+      x[which(grepl("author", x)) + 1]
+    },
+    mlr3proba = "RaphaelS1",
+    mlr3cluster = "damirpolat",
+    "mllg"
+  )
+  url = sprintf("https://github.com/%s", author)
+  paste0("<a href=\"", url, "\">", author, "</a>")
+})
+tbl = tbl[order(tbl, tolower(id))]
+tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg) {
+  url = sprintf("https://%s.mlr-org.com/reference/mlr_learners_%s.html", pkg, id)
+  paste0("<a href=\"", url, "\">", id, "</a>")
+}) |>
+  unlist()
+colnames(tbl) = c("Key", "mlr3", "Upstream Packages", "Upstream Status", "Author")
+format_table(
+  tbl,
+  list(
+    "Learner Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing"))),
+    "Parameter Test" = formatter("span",
+      style = x ~ style(color = ifelse(x, "green", "red")),
+      x ~ icontext(ifelse(x, "ok", "remove"), ifelse(x, "Passing", "Failing")))
+  ),
+  format = "html"
+)
+```
