@@ -552,7 +552,7 @@ bibentries = c( # nolint start
   ),
   obrien2019imbrfsrc = bibentry("article",
     title = "A random forests quantile classifier for class imbalanced data",
-    author = "Robert O’Brien and Hemant Ishwaran",
+    author = "Robert O\xe2\x80\x99Brien and Hemant Ishwaran",
     journal = "Pattern Recognition",
     volume = "90",
     pages = "232--249",
