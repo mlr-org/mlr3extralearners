@@ -30,7 +30,7 @@ make_badge = function(pkg) {
     return("")
   }
 
-  sprintf"([![CRAN status](https://www.r-pkg.org/badges/version/%s)](https://CRAN.R-project.org/package=%s)", pkg, pkg))
+  sprintf("[![CRAN status](https://www.r-pkg.org/badges/version/%s)](https://CRAN.R-project.org/package=%s)", pkg, pkg)
 }
 make_badges = function(pkgs) {
   mlr3misc::map_chr(pkgs, make_badge)
