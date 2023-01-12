@@ -1,9 +1,14 @@
 ---
 title: Learner Status
-output: html_document
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Learner Status}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 The table below gives an overview of the status of the upstream packages for all extralearners.
+A list of all `mlr3` learners can be found on the [mlr3 website](https://mlr-org.com/learners.html).
 
 ```{r, echo = FALSE}
 library(mlr3extralearners)
@@ -24,7 +29,8 @@ make_badge = function(pkg) {
   if (pkg %in% no_badges) {
     return("")
   }
-  sprintf("[![CRAN Status](https://www.r-pkg.org/badges/version-ago/%s)](https://cran.r-project.org/package=%s)", pkg, pkg)
+
+  sprintf"([![CRAN status](https://www.r-pkg.org/badges/version/%s)](https://CRAN.R-project.org/package=%s)", pkg, pkg))
 }
 make_badges = function(pkgs) {
   mlr3misc::map_chr(pkgs, make_badge)
@@ -63,7 +69,7 @@ tbl[["id"]] = mlr3misc::pmap(list(tbl[["id"]], tbl[["mlr3"]]), function(id, pkg)
   paste0("<a href=\"", url, "\">", id, "</a>")
 }) |>
   unlist()
-colnames(tbl) = c("Key", "mlr3", "Upstream Packages", "Upstream Status", "Author")
+colnames(tbl) = c("Key", "Base Backate", "Upstream Packages", "Upstream Status", "Author")
 format_table(
   tbl,
   list(
