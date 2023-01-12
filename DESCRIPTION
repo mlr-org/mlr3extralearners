@@ -47,12 +47,14 @@ Suggests:
     flexsurv,
     FNN,
     formattable,
+    future,
     gbm,
     glmnet,
     gss,
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
+    knitr,
     ks,
     LiblineaR,
     lightgbm (>= 3.0.0),
@@ -101,7 +103,10 @@ Remotes:
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     xoopR/param6,
-    xoopR/set6
+    xoopR/set6,
+    ropensci/aorsf
+VignetteBuilder:
+    knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no

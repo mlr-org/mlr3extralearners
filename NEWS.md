@@ -1,13 +1,11 @@
-# mlr3extralearners 0.6.2
-
- * Feat: Added learners `LearnerClassifPriorityLasso`, `LearnerRegrPriorityLasso`, `LearnerSurvPriorityLasso` (https://github.com/mlr-org/mlr3extralearners/issues/227)
-
-
 # mlr3extralearners 0.6.0-9000
 
 * BREAKING CHANGE: lightgbm's early stopping mechanism now uses the task's test set.
-* Add two new learners `regr.abess` and `classif.abess` (thanks to @bbayukari)
-
+* feat: Add two new learners `regr.abess` and `classif.abess` (thanks to @bbayukari)
+* feat: Added learner `LearnerClassifImbalancedRandomForestSRC` (thanks to
+  @HarutyunyanLiana)
+ * Feat: Added learners `LearnerClassifPriorityLasso`, `LearnerRegrPriorityLasso`, `LearnerSurvPriorityLasso` (thanks to
+  @HarutyunyanLiana)
 
 # mlr3extralearners 0.6.0
 

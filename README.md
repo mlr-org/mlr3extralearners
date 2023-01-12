@@ -8,40 +8,17 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 
 <!-- badges: start -->
 
-[![R CMD
-Check](https://github.com/mlr-org/mlr3extralearners/workflows/R%20CMD%20Check/badge.svg)](https://mlr3extralearners.mlr-org.com/articles/learners/learner_status.html)
+[![RCMD
+Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
+[![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
 
 `mlr3extralearners` contains all learners from mlr3 that are not in
-`mlr3learners` or the core packages. `mlr3extralearners` contains helper
-functions to find where all the learners, across the mlr3verse, live and
-to install required packages to run these learners. See the interactive
-[learner
-list](https://mlr3extralearners.mlr-org.com/articles/learners/list_learners.html)
-for the full list of learners in the mlr3verse and the [learner status
-page](https://mlr3extralearners.mlr-org.com/articles/learners/test_overview.html)
-for a live build status.
-
-``` r
-list_mlr3learners(select = c("id", "required_packages"))
-#> This will take a few seconds.
-#>                      id                                       required_packages
-#>                  <char>                                                  <list>
-#>   1: classif.AdaBoostM1                            mlr3,mlr3extralearners,RWeka
-#>   2:       classif.bart                           mlr3,mlr3extralearners,dbarts
-#>   3:        classif.C50                              mlr3,mlr3extralearners,C50
-#>   4:   classif.catboost                         mlr3,mlr3extralearners,catboost
-#>   5:    classif.cforest           mlr3,mlr3extralearners,partykit,sandwich,coin
-#>  ---                                                                           
-#> 133:        surv.ranger                 mlr3,mlr3proba,mlr3extralearners,ranger
-#> 134:         surv.rfsrc mlr3,mlr3proba,mlr3extralearners,randomForestSRC,pracma
-#> 135:         surv.rpart                    mlr3,mlr3proba,rpart,distr6,survival
-#> 136:           surv.svm            mlr3,mlr3proba,mlr3extralearners,survivalsvm
-#> 137:       surv.xgboost                mlr3,mlr3proba,mlr3extralearners,xgboost
-```
+`mlr3learners` or the core packages. An overview of all learners within
+the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 
 mlr3extralearners lives on GitHub and will not be on CRAN. You can
 download the latest release from
