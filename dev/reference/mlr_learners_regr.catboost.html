@@ -81,7 +81,7 @@ Calls catboost::catboost.train() from package 'catboost'."><meta name="robots" c
 
     <div class="ref-description section level2">
     <p>Gradient boosting algorithm that also supports categorical data.
-Calls <code>catboost::catboost.train()</code> from package 'catboost'.</p>
+Calls <code><a href="https://rdrr.io/pkg/catboost/man/catboost.train.html" class="external-link">catboost::catboost.train()</a></code> from package 'catboost'.</p>
     </div>
 
 
@@ -188,7 +188,7 @@ Calls <code>catboost::catboost.train()</code> from package 'catboost'.</p>
 </div><p></p><hr><a id="method-LearnerRegrCatboost-importance"></a><div class="section">
 <h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
 <p>The importance scores are calculated using
-<code>catboost.get_feature_importance</code>,
+<code><a href="https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html" class="external-link">catboost.get_feature_importance</a></code>,
 setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrCatboost</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
@@ -222,7 +222,6 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.catboost"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Package 'catboost' required but not installed for Learner 'regr.catboost'</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrCatboost:regr.catboost&gt;: Gradient Boosting</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
