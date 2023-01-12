@@ -1,6 +1,3 @@
-# see here: https://github.com/chjackson/flexsurv-dev/issues/149
-old_opts = options(warnPartialMatchArgs = FALSE)
-
 test_that("autotest", {
   set.seed(200)
   learner = lrn("surv.flexible", k = 1, scale = "normal", inits = c(0.1, 1))
@@ -35,5 +32,3 @@ test_that("missing", {
   learner$train(task)
   expect_error(learner$predict(tsk("lung")))
 })
-
-options(old_opts)
