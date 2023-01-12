@@ -54,6 +54,7 @@ Suggests:
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
+    knitr,
     ks,
     LiblineaR,
     lightgbm (>= 3.0.0),
