@@ -47,6 +47,7 @@ Suggests:
     flexsurv,
     FNN,
     formattable,
+    future,
     gbm,
     glmnet,
     gss,
