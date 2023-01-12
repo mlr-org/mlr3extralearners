@@ -1,5 +1,5 @@
 # see here: https://github.com/chjackson/flexsurv-dev/issues/149
-old_opts = options(warnPartialMatchArgs = TRUE)
+old_opts = options(warnPartialMatchArgs = FALSE)
 
 test_that("autotest", {
   set.seed(200)
