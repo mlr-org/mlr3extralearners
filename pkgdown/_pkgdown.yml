@@ -45,8 +45,10 @@ navbar:
       href: https://mlr-org.com/
 
     status:
-      text: Learner Status
+      text: learner status
       href: articles/learner_status.html
+      text: learner list
+      href: articles/list_learners.html
 
 reference:
   - title: Helpers
