@@ -101,13 +101,12 @@ Suggests:
     xgboost
 Remotes:
     alan-turing-institute/distr6,
+    catboost/catboost/catboost/R-package@*release,
     binderh/CoxBoost,
-    catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     xoopR/param6,
-    xoopR/set6,
-    ropensci/aorsf
+    xoopR/set6
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
