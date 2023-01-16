@@ -31,17 +31,23 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 `mlr3extralearners` contains all learners from mlr3 that are not in `mlr3learners` or the core packages.
 An overview of all learners within the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 
-mlr3extralearners lives on GitHub and will not be on CRAN.
-You can download the latest release from [here](https://github.com/mlr-org/mlr3extralearners/releases) and install it locally with
+`mlr3extralearners` lives on GitHub and will not be on CRAN.
+
+You can install the latest release using the code below
 
 ```{r, eval = FALSE}
-devtools::install_local("path/to/mlr3extralearners")
+remotes::install_github("mlr-org/mlr3extralearners@*release")
 ```
 
-If you want to download the development version, run
+Alternatively, you can add the following to your .Rprofile, which allows you to install `mlr3extralearners`
+via `install.packages()`.
 
 ```{r, eval = FALSE}
-devtools::install_github("mlr-org/mlr3extralearners")
+# .Rprofile
+options(repos = c(
+  mlrorg = "https://mlr-org.r-universe.dev",
+  CRAN = "https://cloud.r-project.org/"
+))
 ```
 
 ## Installing and Loading Learners
@@ -50,18 +56,27 @@ The package includes functionality for detecting if you have the required packag
 to use a learner, and ships with the function `install_learner` which can install all required
 learner dependencies.
 
-```{r, echo=FALSE, results='hide',error=TRUE,message=FALSE,warning=FALSE}
-remove.packages("gbm")
-unloadNamespace("gbm")
-```
-```{r,error=TRUE}
+```{r, echo=TRUE, eval = FALSE}
 lrn("regr.gbm")
-```
-```{r, results='hide',error=TRUE,message=FALSE,warning=FALSE}
+#> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
+#> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
+#> * Model: -
+#> * Parameters: keep.data=FALSE, n.cores=1
+#> * Packages: mlr3, mlr3extralearners, gbm
+#> * Predict Types:  [response]
+#> * Feature Types: integer, numeric, factor, ordered
+#> * Properties: importance, missings, weights
+
 install_learners("regr.gbm")
-```
-```{r}
+
 lrn("regr.gbm")
+#> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
+#> * Model: -
+#> * Parameters: keep.data=FALSE, n.cores=1
+#> * Packages: mlr3, mlr3extralearners, gbm
+#> * Predict Types:  [response]
+#> * Feature Types: integer, numeric, factor, ordered
+#> * Properties: importance, missings, weights
 ```
 
 ## Extending mlr3extralearners
