@@ -32,12 +32,11 @@ Alternatively, you can add the following to your .Rprofile, which allows
 you to install `mlr3extralearners` via `install.packages()`.
 
 ``` r
+# .Rprofile
 options(repos = c(
   mlrorg = "https://mlr-org.r-universe.dev",
   CRAN = "https://cloud.r-project.org/"
 ))
-
-install.packages("mlr3extralearners")
 ```
 
 ## Installing and Loading Learners
