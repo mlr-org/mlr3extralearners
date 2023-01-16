@@ -20,19 +20,23 @@ Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.
 `mlr3learners` or the core packages. An overview of all learners within
 the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 
-mlr3extralearners lives on GitHub and will not be on CRAN. You can
-download the latest release from
-[here](https://github.com/mlr-org/mlr3extralearners/releases) and
-install it locally with
+`mlr3extralearners` lives on GitHub and will not be on CRAN.
+
+You can install the latest release using the code below
 
 ``` r
-devtools::install_local("path/to/mlr3extralearners")
+remotes::install_github("mlr-org/mlr3extralearners@*release")
 ```
 
-If you want to download the development version, run
+Alternatively, you can add the following to your .Rprofile, which allows
+you to install `mlr3extralearners` via `install.packages()`.
 
 ``` r
-devtools::install_github("mlr-org/mlr3extralearners")
+# .Rprofile
+options(repos = c(
+  mlrorg = "https://mlr-org.r-universe.dev",
+  CRAN = "https://cloud.r-project.org/"
+))
 ```
 
 ## Installing and Loading Learners
@@ -52,13 +56,9 @@ lrn("regr.gbm")
 #> * Predict Types:  [response]
 #> * Feature Types: integer, numeric, factor, ordered
 #> * Properties: importance, missings, weights
-```
 
-``` r
 install_learners("regr.gbm")
-```
 
-``` r
 lrn("regr.gbm")
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
