@@ -113,18 +113,21 @@
 <h2 id="what-is-mlr3extralearners">What is mlr3extralearners?<a class="anchor" aria-label="anchor" href="#what-is-mlr3extralearners"></a>
 </h2>
 <p><code>mlr3extralearners</code> contains all learners from mlr3 that are not in <code>mlr3learners</code> or the core packages. An overview of all learners within the <code>mlr3verse</code> can be found <a href="https://mlr-org.com/learners.html" class="external-link">here</a>.</p>
-<p>mlr3extralearners lives on GitHub and will not be on CRAN. You can download the latest release from <a href="https://github.com/mlr-org/mlr3extralearners/releases" class="external-link">here</a> and install it locally with</p>
+<p>mlr3extralearners lives on GitHub and will not be on CRAN.</p>
+<p>You can for example install from <a href="https://r-universe.dev/search/" class="external-link">r-universe</a> as follows</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_local</span><span class="op">(</span><span class="st">"path/to/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
-<p>If you want to download the development version, run</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  mlrorg <span class="op">=</span> <span class="st">"https://mlr-org.r-universe.dev"</span>,</span>
+<span>  CRAN <span class="op">=</span> <span class="st">"https://cloud.r-project.org/"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="installing-and-loading-learners">Installing and Loading Learners<a class="anchor" aria-label="anchor" href="#installing-and-loading-learners"></a>
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
@@ -133,11 +136,11 @@
 <span><span class="co">#&gt; * Packages: mlr3, mlr3extralearners, gbm</span></span>
 <span><span class="co">#&gt; * Predict Types:  [response]</span></span>
 <span><span class="co">#&gt; * Feature Types: integer, numeric, factor, ordered</span></span>
-<span><span class="co">#&gt; * Properties: importance, missings, weights</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; * Properties: importance, missings, weights</span></span>
+<span></span>
+<span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
 <span><span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span></span>
