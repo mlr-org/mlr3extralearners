@@ -24,12 +24,7 @@ remove_mlr3 = function(pkgs) {
   pkgs = pkgs[!grepl("mlr3", pkgs)]
   return(pkgs)
 }
-no_badges = c("CoxBoost", "catboost", "stats", "stats4", "mlr3proba", "survivalmodels")
 make_badge = function(pkg) {
-  if (pkg %in% no_badges) {
-    return("")
-  }
-
   sprintf("[![CRAN status](https://www.r-pkg.org/badges/version/%s)](https://CRAN.R-project.org/package=%s)", pkg, pkg)
 }
 make_badges = function(pkgs) {
