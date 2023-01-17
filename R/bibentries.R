@@ -550,6 +550,14 @@ bibentries = c( # nolint start
     pages = "1--17",
     year = "2010"
   ),
+  klau2018priolasso = bibentry("article",
+    title = "Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data",
+    author = "Klau Simon, Jurinovic Vindi, Hornung Roman, Herold Tobias, Boulesteix Anne-Laure",
+    journal = "BMC Bioinformatics",
+    volume = "19",
+    year = "2018",
+    doi = "10.1186/s12859-018-2344-6"
+  ),
   obrien2019imbrfsrc = bibentry("article",
     title = "A random forests quantile classifier for class imbalanced data",
     author = "Robert O\xe2\x80\x99Brien and Hemant Ishwaran",
