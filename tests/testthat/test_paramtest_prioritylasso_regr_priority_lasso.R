@@ -23,10 +23,10 @@ test_that("regr.priority_lasso predict", {
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
-    "type",
-    "lambda.type",
-    "predict.gamma",
-    "s"
+    "type", # handled internally
+    "predict.gamma", # is passed as gamma to predict.glmnet
+    "lambda.type", # predict.glmnet
+    "s" # predict.glmnet
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
