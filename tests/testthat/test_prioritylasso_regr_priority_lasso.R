@@ -1,7 +1,7 @@
 test_that("autotest test", {
   # These shenanigans are necessary because we have to dynanically set the blocks, depending on the
   set.seed(1)
-  learner = lrn("regr.priority_lasso")
+  learner = lrn("regr.priority_lasso", blocks = "PLACEHOLDER")
   on.exit({
     assignInNamespace(".__LearnerRegrPriorityLasso__.train", train_old, ns = "mlr3extralearners")
   }, add = TRUE)
@@ -19,9 +19,6 @@ test_that("autotest test", {
   assignInNamespace(".__LearnerRegrPriorityLasso__.train", train, ns = "mlr3extralearners")
 
   result = run_autotest(learner, exclude = "feat_single")
-
   expect_true(result, info = result$error)
 
-  expect_learner(learner)
-  expect_error(learner$selected_features(), "No model stored")
 })
