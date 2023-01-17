@@ -5,7 +5,7 @@ test_that("autotest test", {
   on.exit({
     assignInNamespace(".__LearnerRegrPriorityLasso__.train", train_old, ns = "mlr3extralearners")
   }, add = TRUE)
-  train_old = mlr3extralearners:::.__LearnerRegrPriorityLasso__.train
+  train_old = mlr3extralearners:::.__LearnerRegrPriorityLasso__.train # nolint
 
   src = as.list(body(train_old))
   new_lines = list(

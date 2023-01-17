@@ -18,7 +18,6 @@ test_that("surv.priority_lasso train", {
 })
 
 test_that("surv.priority_lasso predict", {
-  library(prioritylasso)
   learner = lrn("surv.priority_lasso")
   fun = list(prioritylasso:::predict.prioritylasso) # nolint
   exclude = c(

@@ -19,7 +19,6 @@ test_that("classif.priority_lasso train", {
 })
 
 test_that("classif.priority_lasso predict", {
-  library(prioritylasso)
   learner = lrn("classif.priority_lasso")
   fun = list(prioritylasso:::predict.prioritylasso) # nolint
   exclude = c(

@@ -18,7 +18,6 @@ test_that("regr.priority_lasso train", {
 })
 
 test_that("regr.priority_lasso predict", {
-  library(prioritylasso)
   learner = lrn("regr.priority_lasso", predict_type = "response")
   fun = list(prioritylasso:::predict.prioritylasso) # nolint
   exclude = c(
