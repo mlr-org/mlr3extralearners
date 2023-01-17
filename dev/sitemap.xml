@@ -121,6 +121,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.priority_lasso.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.randomForest.html</loc>
   </url>
   <url>
@@ -217,6 +220,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mob.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.randomForest.html</loc>
   </url>
   <url>
@@ -299,6 +305,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.penalized.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.priority_lasso.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.ranger.html</loc>
