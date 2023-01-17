@@ -46,11 +46,7 @@ navbar:
     status:
       text: Learner Status
       href: articles/learner_status.html
-<<<<<<< HEAD
-    search: 
-=======
     search:
->>>>>>> main
       text: Learner List
       href: articles/list_learners.html
 
