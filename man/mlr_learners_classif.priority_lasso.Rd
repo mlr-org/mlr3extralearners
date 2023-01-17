@@ -21,7 +21,7 @@ lrn("classif.priority_lasso")
 
 \itemize{
 \item Task type: \dQuote{classif}
-\item Predict Types: \dQuote{response}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{prioritylasso}
 }

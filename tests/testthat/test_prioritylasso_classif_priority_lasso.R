@@ -1,4 +1,4 @@
-test_that("autotest test", {
+test_that("autotest", {
   # These shenanigans are necessary because we have to dynanically set the blocks, depending on the task
   set.seed(1)
   # blocks gets changed later anyway but is required

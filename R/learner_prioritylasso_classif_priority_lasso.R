@@ -78,7 +78,7 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
         id = "classif.priority_lasso",
         packages = "prioritylasso",
         feature_types = c("logical", "integer", "numeric"),
-        predict_types = "response",
+        predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("weights", "selected_features", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.priority_lasso",
@@ -122,16 +122,15 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
         newdata = newdata, type = "response",
         .args = pv)
       p = drop(p)
-      print(p)
       classnames = self$model$glmnet.fit[[1L]]$classnames
       if (self$predict_type == "response") {
         response = ifelse(p <= 0.5, classnames[1L], classnames[2L])
+        list(response = drop(response))
       } else {
         prob = cbind(1 - p, p)
         colnames(prob) = classnames
+        list(prob = prob)
       }
-
-      list(response = drop(response))
     }
   )
 )

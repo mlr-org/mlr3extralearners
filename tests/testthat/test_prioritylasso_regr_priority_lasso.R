@@ -1,4 +1,4 @@
-test_that("autotest test", {
+test_that("autotest", {
   # These shenanigans are necessary because we have to dynanically set the blocks, depending on the
   set.seed(1)
   learner = lrn("regr.priority_lasso", blocks = "PLACEHOLDER")
@@ -20,5 +20,4 @@ test_that("autotest test", {
 
   result = run_autotest(learner, exclude = "feat_single")
   expect_true(result, info = result$error)
-
 })
