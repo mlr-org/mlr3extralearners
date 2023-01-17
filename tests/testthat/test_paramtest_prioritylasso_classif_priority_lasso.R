@@ -8,6 +8,7 @@ test_that("classif.priority_lasso train", {
     "X", # handled internally
     "Y", # handled internally,
     "weights", # handled internally,
+    "family", # handled internally
     "itrace", # supported via param trace.it
     "factory" # only used in scripts, no effect within mlr3
   )
