@@ -10,7 +10,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(klau2018priolasso)`
+#' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -22,10 +22,10 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        blocks               = p_uty(default = NULL, tags = "train"), # FIXME not sure whether this should be here or as train() argument
+        blocks               = p_uty(default = NULL, tags = c("train", "required")),
         max.coef             = p_uty(default = NULL, tags = "train"),
         block1.penalization  = p_lgl(default = TRUE, tags = "train"),
-        lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")),
+        lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")), #nolint
         standardize          = p_lgl(default = TRUE, tags = "train"),
         nfolds               = p_int(default = 5L, lower = 1L, tags = "train"),
         foldid               = p_uty(default = NULL, tags = "train"),
@@ -61,9 +61,9 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         pmax                 = p_int(0L, tags = "train"),
         pmin                 = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
         prec                 = p_dbl(default = 1e-10, tags = "train"),
-        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
+        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), #nolint
         relax                = p_lgl(default = FALSE, tags = "train"),
-        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"), #nolint
         standardize.response = p_lgl(default = FALSE, tags = "train"),
         thresh               = p_dbl(0, default = 1e-07, tags = "train"),
         trace.it             = p_int(0, 1, default = 0, tags = "train"),
@@ -76,17 +76,17 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
       super$initialize(
         id = "surv.priority_lasso",
         packages = "prioritylasso",
-        feature_types = c("logical", "integer", "numeric", "factor"),
+        feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "lp"),
         param_set = param_set,
-        properties = c("missings", "weights", "selected_features"),
+        properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.priority_lasso",
         label = "Priority Lasso"
       )
     },
 
     #' @description
-    #' Selected features when coef is positive
+    #' Selected features, i.e. those where the coefficient is positive.
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model)) {

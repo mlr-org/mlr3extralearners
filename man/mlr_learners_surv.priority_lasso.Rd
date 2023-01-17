@@ -22,7 +22,7 @@ lrn("surv.priority_lasso")
 \itemize{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{lp}, \dQuote{response}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{prioritylasso}
 }
 }
@@ -88,7 +88,10 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-\verb{r format_bib(klau2018priolasso)}
+Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
+\dQuote{Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.}
+\emph{BMC Bioinformatics}, \bold{19}.
+\doi{10.1186/s12859-018-2344-6}.
 }
 \seealso{
 \itemize{
@@ -143,7 +146,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvPriorityLasso-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvPriorityLasso-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features when coef is positive
+Selected features, i.e. those where the coefficient is positive.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvPriorityLasso$selected_features()}\if{html}{\out{</div>}}
 }

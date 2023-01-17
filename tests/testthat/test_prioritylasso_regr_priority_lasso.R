@@ -1,12 +1,27 @@
-test_that("autotest", {
+test_that("autotest test", {
+  # These shenanigans are necessary because we have to dynanically set the blocks, depending on the
   set.seed(1)
-  learner = lrn("regr.priority_lasso",
-                blocks = list(bp1=1:75, bp2=76:200, bp3=201:500))
+  learner = lrn("regr.priority_lasso")
+  on.exit({
+    assignInNamespace(".__LearnerRegrPriorityLasso__.train", train_old, ns = "mlr3extralearners")
+  }, add = TRUE)
+  train_old = mlr3extralearners:::.__LearnerRegrPriorityLasso__.train
+
+  src = as.list(body(train_old))
+  new_lines = list(
+    quote(s <- seq_along(task$feature_names)),
+    quote(pars$blocks <- set_names(list(s), "bp1"))
+  )
+  src = c(src[1:2], new_lines, src[3:length(src)])
+  new_body = as.call(src)
+  train = train_old
+  body(train) = new_body
+  assignInNamespace(".__LearnerRegrPriorityLasso__.train", train, ns = "mlr3extralearners")
+
+  result = run_autotest(learner, exclude = "feat_single")
+
+  expect_true(result, info = result$error)
+
   expect_learner(learner)
   expect_error(learner$selected_features(), "No model stored")
-
-  task = as_task_regr(x=data.frame(matrix(rnorm(50*500),50,500),
-                                   y=rnorm(50)), target="y")
-  learner$train(task)$selected_features()
-  learner$predict(task)
 })

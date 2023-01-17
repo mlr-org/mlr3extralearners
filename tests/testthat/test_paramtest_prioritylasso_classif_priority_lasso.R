@@ -1,60 +1,26 @@
 test_that("classif.priority_lasso train", {
   learner = lrn("classif.priority_lasso")
-  fun = list(prioritylasso::prioritylasso)
+  fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)
+
   exclude = c(
+    "x", # handled internally
+    "y", # handled internally,
     "X", # handled internally
     "Y", # handled internally,
     "weights", # handled internally,
-    "family", # is "binomial" for continuous data
-    # all other parameters are ones inherited from cv.glmnet
-    "alignment",
-    "alpha",
-    "big",
-    "devmax",
-    "dfmax",
-    "eps",
-    "epsnr",
-    "exclude",
-    "exmx",
-    "fdev",
-    "gamma",
-    "grouped",
-    "intercept",
-    "keep",
-    "lambda",
-    "lambda.min.ratio",
-    "lower.limits",
-    "maxit",
-    "mnlam",
-    "mxit",
-    "mxitnr",
-    "nlambda",
-    "offset",
-    "parallel",
-    "penalty.factor",
-    "pmax",
-    "pmin",
-    "prec",
-    "predict.gamma",
-    "relax",
-    "s",
-    "standardize.response",
-    "thresh",
-    "trace.it",
-    "type.gaussian",
-    "type.logistic",
-    "type.measure",
-    "type.multinomial",
-    "upper.limits"
+    "family", # is "gaussian" for continuous data
+    "type.measure", # is "mse" for continuous data
+    "itrace", # supported via param trace.it
+    "factory" # only used in scripts, no effect within mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
-test_that("regr.priority_lasso predict", {
+test_that("classif.priority_lasso predict", {
   library(prioritylasso)
-  learner = lrn("regr.priority_lasso", predict_type="response")
+  learner = lrn("classif.priority_lasso")
   fun = list(prioritylasso:::predict.prioritylasso) # nolint
   exclude = c(
     "object", # handled internally

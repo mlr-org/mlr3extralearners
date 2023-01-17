@@ -22,7 +22,7 @@ lrn("regr.priority_lasso")
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{prioritylasso}
 }
 }
@@ -88,7 +88,10 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-\verb{r format_bib(klau2018priolasso)}
+Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
+\dQuote{Priority-Lasso: a simple hierarchical approach to the prediction of clinical outcome using multi-omics data.}
+\emph{BMC Bioinformatics}, \bold{19}.
+\doi{10.1186/s12859-018-2344-6}.
 }
 \seealso{
 \itemize{

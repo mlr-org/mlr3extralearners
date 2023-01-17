@@ -11,7 +11,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(klau2018priolasso)`
+#' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -23,7 +23,7 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        blocks               = p_uty(default = NULL, tags = "train"), # FIXME not sure whether this should be here or as train() argument
+        blocks               = p_uty(default = NULL, tags = c("train", "required")), 
         max.coef             = p_uty(default = NULL, tags = "train"),
         block1.penalization  = p_lgl(default = TRUE, tags = "train"),
         lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")),
@@ -77,10 +77,10 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
       super$initialize(
         id = "regr.priority_lasso",
         packages = "prioritylasso",
-        feature_types = c("logical", "integer", "numeric", "factor"),
+        feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response"),
         param_set = param_set,
-        properties = c("missings", "weights", "selected_features"),
+        properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_regr.priority_lasso",
         label = "Priority Lasso"
       )

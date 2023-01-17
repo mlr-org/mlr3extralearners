@@ -10,7 +10,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(klau2018priolasso)`
+#' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -22,11 +22,11 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        blocks               = p_uty(default = NULL, tags = "train"), # FIXME not sure whether this should be here or as train() argument
-        type.measure         = p_fct(default = "class", levels = c("class", "auc"), tags = "train"), # FIXME it has default value but if we dont specify it while creating the learner, not working
+        blocks               = p_uty(default = NULL, tags = c("train", "required")),
+        type.measure         = p_fct(default = "class", levels = c("class", "auc"), tags = c("train", "required")),
         max.coef             = p_uty(default = NULL, tags = "train"),
         block1.penalization  = p_lgl(default = TRUE, tags = "train"),
-        lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")),
+        lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")), #nolint
         standardize          = p_lgl(default = TRUE, tags = "train"),
         nfolds               = p_int(default = 5L, lower = 1L, tags = "train"),
         foldid               = p_uty(default = NULL, tags = "train"),
@@ -62,9 +62,9 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
         pmax                 = p_int(0L, tags = "train"),
         pmin                 = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
         prec                 = p_dbl(default = 1e-10, tags = "train"),
-        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
+        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), #nolint
         relax                = p_lgl(default = FALSE, tags = "train"),
-        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"), #nolint
         standardize.response = p_lgl(default = FALSE, tags = "train"),
         thresh               = p_dbl(0, default = 1e-07, tags = "train"),
         trace.it             = p_int(0, 1, default = 0, tags = "train"),
@@ -77,17 +77,17 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
       super$initialize(
         id = "classif.priority_lasso",
         packages = "prioritylasso",
-        feature_types = c("logical", "integer", "numeric", "factor"),
-        predict_types = c("response"),
+        feature_types = c("logical", "integer", "numeric"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings", "weights", "selected_features", "twoclass"),
+        properties = c("weights", "selected_features", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.priority_lasso",
         label = "Priority Lasso"
       )
     },
 
     #' @description
-    #' Selected features when coef is positive
+    #' Selected features, i.e. those where the coefficient is positive.
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model)) {
@@ -105,27 +105,33 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
       pars$family = "binomial"
 
       if ("weights" %in% task$properties) {
-        pars$weights = as.numeric(task$weights$weight)
+        pars$weights = task$weights$weight
       }
-      data = as.matrix(task$data(cols = task$feature_names))
+      data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
       invoke(prioritylasso::prioritylasso,
              X = data, Y = target,
              .args = pars)
     },
     .predict = function(task) {
-      # get parameters with tag "predict"
-      pars = self$param_set$get_values(tags = "predict")
-      pars = rename(pars, "predict.gamma", "gamma")
+      newdata = as_numeric_matrix(ordered_features(task, self))
+      pv = self$param_set$get_values(tags = "predict")
+      pv = rename(pv, "predict.gamma", "gamma")
 
-      # get newdata and ensure same ordering in train and predict
-      newdata = as.matrix(ordered_features(task, self))
+      p = invoke(predict, self$model,
+        newdata = newdata, type = "response",
+        .args = pv)
+      p = drop(p)
+      print(p)
+      classnames = self$model$glmnet.fit[[1L]]$classnames
+      if (self$predict_type == "response") {
+        response = ifelse(p <= 0.5, classnames[1L], classnames[2L])
+      } else {
+        prob = cbind(1 - p, p)
+        colnames(prob) = classnames
+      }
 
-      # Calculate predictions for the selected predict type.
-      pred = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
-      # FIXME when you print pred, they are valid probabilities,
-      #       but the result of this function (can check with test_prioritylasso_classif_priority_lasso.R) gives NAs
-      list(response = pred)
+      list(response = drop(response))
     }
   )
 )
