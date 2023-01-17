@@ -1,3 +1,5 @@
+# mlr3extralearners 0.6.1-9000
+
 # mlr3extralearners 0.6.1
 
 *   BREAKING CHANGE: lightgbm's early stopping mechanism now uses the task's test set.
