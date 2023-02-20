@@ -24,6 +24,14 @@ bibentries = c( # nolint start
     journal     = "The Annals of Applied Statistics"
   ),
 
+  hiabu_2019 = bibentry("article",
+    title   = "Random Planted Forest: a directly interpretable tree ensemble",
+    author  = "Hiabu, Munir and Mammen, Enno and Meyer, Joseph T.",
+    journal = "arXiv preprint arXiv:2012.14563",
+    doi     = "10.48550/ARXIV.2012.14563",
+    year    = "2020"
+  ),
+
   hothorn_2015 = bibentry("article",
     author      = "Torsten Hothorn and Achim Zeileis",
     title       = "partykit: A Modular Toolkit for Recursive Partytioning in R",

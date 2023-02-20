@@ -32,7 +32,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("hiabu2019rpf")`
+#' `r format_bib("hiabu_2019")`
 #'
 #' @template seealso_learner
 #' @template example
