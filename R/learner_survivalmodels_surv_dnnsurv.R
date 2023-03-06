@@ -53,7 +53,6 @@ delayedAssign(
           decay = p_dbl(default = 0, lower = 0, tags = "train"),
           clipnorm = p_dbl(tags = "train"),
           clipvalue = p_dbl(tags = "train"),
-          schedule_decay = p_dbl(default = 0.04, tags = "train"),
           momentum = p_dbl(default = 0, lower = 0, tags = "train"),
           nesterov = p_lgl(default = FALSE, tags = "train"),
           loss_weights = p_uty(tags = "train"),
@@ -73,7 +72,21 @@ delayedAssign(
           steps_per_epoch = p_int(lower = 1, tags = "train"),
           validation_steps = p_int(lower = 1, tags = "train"),
           steps = p_int(lower = 0, tags = "predict"),
-          callbacks = p_uty(tags = "predict")
+          callbacks = p_uty(tags = "predict"),
+          rho = p_dbl(default = 0.95, tags = "train"),
+          global_clipnorm = p_dbl(tags = "train"),
+          use_ema = p_lgl(tags = "train"),
+          ema_momentum = p_dbl(default = 0.99, tags = "train"),
+          ema_overwrite_frequency = p_dbl(tags = "train"),
+          jit_compile = p_lgl(default = TRUE, tags = "train"),
+          initial_accumultator_value = p_dbl(default = 0.1, tags = "train"),
+          amsgrad = p_lgl(default = FALSE, tags = "train"),
+          lr_power = p_dbl(default = -0.5, tags = "train"),
+          l1_regularization_strength = p_dbl(lower = 0, default = 0, tags = "train"),
+          l2_regularization_strength = p_dbl(lower = 0, default = 0, tags = "train"),
+          l2_shrinkage_regularization_strength = p_dbl(lower = 0, default = 0, tags = "train"),
+          beta = p_dbl(default = 0, tags = "train"),
+          centered = p_lgl(default = FALSE, tags = "train")
         )
 
         ps$add_dep("lr", "optimizer", CondAnyOf$new(c("adamax", "adam", "nadam", "rmsprop", "sgd")))
@@ -83,7 +96,6 @@ delayedAssign(
         ps$add_dep("decay", "optimizer", CondAnyOf$new(c("adamax", "adam", "sgd")))
         ps$add_dep("clipnorm", "optimizer", CondAnyOf$new(c("adamax", "adam", "nadam", "sgd")))
         ps$add_dep("clipvalue", "optimizer", CondAnyOf$new(c("adamax", "adam", "nadam", "sgd")))
-        ps$add_dep("schedule_decay", "optimizer", CondEqual$new("nadam"))
         ps$add_dep("momentum", "optimizer", CondEqual$new("sgd"))
         ps$add_dep("nesterov", "optimizer", CondEqual$new("sgd"))
 

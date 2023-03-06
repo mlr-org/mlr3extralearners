@@ -52,6 +52,7 @@ lrn("regr.bart")
    seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    proposalprobs \tab untyped \tab  \tab  \tab - \cr
    splitprobs \tab untyped \tab  \tab  \tab - \cr
+   keepsampler \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
