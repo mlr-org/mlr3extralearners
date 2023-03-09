@@ -23,7 +23,7 @@
 #'    and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
 #'    `dbarts::dbart`.
 #'
-#' * Parameter: nthread, nchain, combineChains, combinechains
+#' * Parameter: nchain, combineChains, combinechains
 #'  * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' * Parameter: sigest, sigdf, sigquant, keeptres
