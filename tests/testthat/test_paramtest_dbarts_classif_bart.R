@@ -6,7 +6,6 @@ test_that("paramtest classif.bart train", {
     "y.train", # handled internally
     "x.test", # handled internally
     "weights", # handled by task
-    "nthread", # handled by future
     "nchain", # unused (specifies how many independent tree sets and fits should be calculated
     # This can be done with future
     "combinechains", # only used if nchain > 1
