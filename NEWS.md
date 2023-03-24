@@ -1,6 +1,6 @@
 # mlr3extralearners 0.6.1-9000
 
-*   Fix: Add argument `nthreads` to `dbarts` learners; set verbose to false by default.
+*   Fix: Add argument `nthreads` to `dbarts` learners; set verbose to false by default (thanks to @ck37)
 
 # mlr3extralearners 0.6.1
 
