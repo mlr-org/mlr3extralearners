@@ -1,5 +1,7 @@
 # mlr3extralearners 0.6.1-9000
 
+*   Fix: Add argument `nthreads` to `dbarts` learners; set verbose to false by default.
+
 # mlr3extralearners 0.6.1
 
 *   BREAKING CHANGE: lightgbm's early stopping mechanism now uses the task's test set.

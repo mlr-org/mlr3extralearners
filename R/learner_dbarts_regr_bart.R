@@ -14,7 +14,7 @@
 #'   * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
 #'     and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
 #'     `dbarts::dbart`.
-#' * Parameter: nthread, nchain, combineChains, combinechains
+#' * Parameter: nchain, combineChains, combinechains
 #'   * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' @section Custom mlr3 defaults:
@@ -53,7 +53,8 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         usequants = p_lgl(default = FALSE, tags = "train"),
         numcut = p_int(default = 100L, lower = 1L, tags = "train"),
         printcutoffs = p_int(default = 0, tags = "train"),
-        verbose = p_lgl(default = TRUE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        nthread = p_int(default = 1L, tags = c("train", "threads")),
         keeptrees = p_lgl(default = FALSE, tags = "train"),
         keepcall = p_lgl(default = TRUE, tags = "train"),
         sampleronly = p_lgl(default = FALSE, tags = "train"),

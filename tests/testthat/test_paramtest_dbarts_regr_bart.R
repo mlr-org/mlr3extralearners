@@ -7,7 +7,6 @@ test_that("paramtest regr.bart train", {
     "x.test", # handled internally
     "binaryOffset", # classification only
     "weights", # handled by task
-    "nthread", # handled by future (
     "nchain", # unused (specifies how many independent tree sets and fits should be calculated
     # This can be done with future
     "combinechains", # only used if nchain > 1
