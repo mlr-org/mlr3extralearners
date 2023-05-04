@@ -70,7 +70,7 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
         param_set = ps,
         properties = c("weights", "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.ksvm",
-        labe = "Support Vector Machine"
+        label = "Support Vector Machine"
       )
     }
   ),
