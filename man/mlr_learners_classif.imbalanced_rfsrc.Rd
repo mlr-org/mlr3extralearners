@@ -62,7 +62,7 @@ lrn("classif.imbalanced_rfsrc")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 3000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   method \tab character \tab rfc \tab rfc, brf, standard \tab - \cr
+   method \tab character \tab rfq \tab rfq, brf, standard \tab - \cr
    block.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    fast \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr

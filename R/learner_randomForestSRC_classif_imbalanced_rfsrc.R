@@ -40,8 +40,8 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       ps = ps(
         ntree = p_int(default = 3000, lower = 1L, tags = "train"),
         method = p_fct(
-          default = "rfc",
-          levels = c("rfc", "brf", "standard"),
+          default = "rfq",
+          levels = c("rfq", "brf", "standard"),
           tags = "train"
         ),
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
