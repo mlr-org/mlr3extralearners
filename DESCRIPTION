@@ -101,7 +101,7 @@ Suggests:
     xgboost
 Remotes:
     alan-turing-institute/distr6,
-    catboost/catboost/catboost/R-package@*release,
+    catboost/catboost/catboost/R-package@,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
