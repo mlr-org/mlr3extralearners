@@ -85,7 +85,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       super$initialize(
         id = "regr.gam",
         packages = c("mlr3extralearners", "mgcv"),
-        feature_types = c("logical", "integer", "numeric"),
+        feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se"),
         param_set = ps,
         properties = "weights",
