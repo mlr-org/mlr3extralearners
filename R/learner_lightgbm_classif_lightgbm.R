@@ -127,6 +127,10 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         cegb_penalty_feature_coupled = p_uty(tags = "train"),
         path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         interaction_constraints = p_uty(tags = "train"),
+        use_quantized_grad = p_lgl(default = TRUE, tags = "train"),
+        num_grad_quant_bins = p_int(default = 4, depends = device_type == "cpu", tags = "train"),
+        quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
+        stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),

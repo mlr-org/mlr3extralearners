@@ -80,6 +80,7 @@ lrn("surv.ranger")
    splitrule \tab character \tab logrank \tab logrank, extratrees, C, maxstat \tab - \cr
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    write.forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   min.bucket \tab integer \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
