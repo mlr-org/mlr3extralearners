@@ -32,6 +32,9 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
         foldid               = p_uty(default = NULL, tags = "train"),
         cvoffset             = p_lgl(default = FALSE, tags = "train"),
         cvoffsetnfolds       = p_int(default = 10, lower = 1L, tags = "train"),
+        handle.missingtestdata = p_fct(c("none", "omit.prediction", "set.zero", "impute.block"), tags = "predict"),
+        include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
+        use.blocks = p_uty(default = "all", tags = "predict"),
 
         # params from cv.glmnet
         alignment            = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
@@ -62,16 +65,19 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
         pmax                 = p_int(0L, tags = "train"),
         pmin                 = p_dbl(0, 1, default = 1.0e-9, tags = "train"),
         prec                 = p_dbl(default = 1e-10, tags = "train"),
-        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
-        relax                = p_lgl(default = FALSE, tags = "train"),
-        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
         standardize.response = p_lgl(default = FALSE, tags = "train"),
         thresh               = p_dbl(0, default = 1e-07, tags = "train"),
         trace.it             = p_int(0, 1, default = 0, tags = "train"),
         type.gaussian        = p_fct(c("covariance", "naive"), tags = "train"),
         type.logistic        = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
         type.multinomial     = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
-        upper.limits         = p_uty(default = Inf, tags = "train")
+        upper.limits         = p_uty(default = Inf, tags = "train"),
+        scale.y              = p_lgl(default = FALSE, tags = "train"),
+        return.x             = p_lgl(default = TRUE, tags = "train"),
+        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), # nolint
+        relax                = p_lgl(default = FALSE, tags = "train"),
+        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict") # nolint
+
       )
 
       super$initialize(

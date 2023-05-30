@@ -10,10 +10,9 @@ test_that("regr.priority_lasso train", {
     "family", # is "gaussian" for continuous data
     "type.measure", # is "mse" for continuous data
     "itrace", # supported via param trace.it
-    "factory", # only used in scripts, no effect within mlr3
-    "mcontrol", # not implemented by author
-    "scale.y", # not implemented by author
-    "return.x" # not implemented by author
+    "factory",
+    "mcontrol" # this is tricky with the "missings" property as the learner still fails
+    # unless parameters are set correctly
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -29,10 +28,7 @@ test_that("regr.priority_lasso predict", {
     "type", # handled internally
     "predict.gamma", # is passed as gamma to predict.glmnet
     "lambda.type", # predict.glmnet
-    "s", # predict.glmnet
-    "handle.missingtestdata", # not implemented by author
-    "include.allintercepts", # not implemented by author
-    "use.blocks" # not implemented by author
+    "s" # predict.glmnet
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

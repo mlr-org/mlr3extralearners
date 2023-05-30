@@ -78,7 +78,7 @@ Suggests:
     pendensity,
     plugdensity,
     pracma,
-    prioritylasso,
+    prioritylasso (>= 0.3.1),
     pseudo,
     randomForest,
     randomForestSRC,

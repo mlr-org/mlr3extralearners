@@ -2,6 +2,9 @@ test_that("autotest", {
   # These shenanigans are necessary because we have to dynanically set the blocks, depending on the
   set.seed(1)
   learner = lrn("regr.priority_lasso", blocks = "PLACEHOLDER")
+  learner$param_set$set_values(
+    handle.missingdata = "set.zero"
+  )
   on.exit({
     assignInNamespace(".__LearnerRegrPriorityLasso__.train", train_old, ns = "mlr3extralearners")
   }, add = TRUE)

@@ -40,6 +40,10 @@ lrn("classif.priority_lasso")
    foldid \tab untyped \tab  \tab  \tab - \cr
    cvoffset \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cvoffsetnfolds \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   return.x \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   handle.missingtestdata \tab character \tab - \tab none, omit.prediction, set.zero, impute.block \tab - \cr
+   include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use.blocks \tab untyped \tab all \tab  \tab - \cr
    alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
    alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

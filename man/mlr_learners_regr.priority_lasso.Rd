@@ -39,6 +39,9 @@ lrn("regr.priority_lasso")
    foldid \tab untyped \tab  \tab  \tab - \cr
    cvoffset \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cvoffsetnfolds \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   handle.missingtestdata \tab character \tab - \tab none, omit.prediction, set.zero, impute.block \tab - \cr
+   include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use.blocks \tab untyped \tab all \tab  \tab - \cr
    alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
    alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -67,9 +70,6 @@ lrn("regr.priority_lasso")
    pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pmin \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    standardize.response \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    trace.it \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -77,6 +77,11 @@ lrn("regr.priority_lasso")
    type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
    type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   scale.y \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   return.x \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
 }
 }
 

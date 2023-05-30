@@ -3,9 +3,10 @@
 * Add missing parameters to lightgbm learners
 * Add feature type "factor" to gam learner
 * Add missing parameter `min.bucket` to ranger
-* Remove catboost learner
+* Remove catboost learner (they don't properly take care of their R package)
+* Add argument `nthreads` to `dbarts` learners; set verbose to false by default (thanks to @ck37)
+* Add missing parameters to prioritylasso
 * Fix: argument names of imbalanced random forest
-* Fix: Add argument `nthreads` to `dbarts` learners; set verbose to false by default (thanks to @ck37)
 
 # mlr3extralearners 0.6.1
 

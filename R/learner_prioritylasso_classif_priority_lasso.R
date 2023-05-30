@@ -32,6 +32,10 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
         foldid               = p_uty(default = NULL, tags = "train"),
         cvoffset             = p_lgl(default = FALSE, tags = "train"),
         cvoffsetnfolds       = p_int(default = 10, lower = 1L, tags = "train"),
+        return.x             = p_lgl(default = TRUE, tags = "train"),
+        handle.missingtestdata = p_fct(c("none", "omit.prediction", "set.zero", "impute.block"), tags = "predict"),
+        include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
+        use.blocks = p_uty(default = "all", tags = "predict"),
 
         # params from cv.glmnet
         alignment            = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
