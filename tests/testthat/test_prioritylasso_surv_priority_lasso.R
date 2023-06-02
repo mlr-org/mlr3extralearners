@@ -3,9 +3,6 @@ test_that("autotest", {
   set.seed(1)
   # blocks gets changed later anyway but is required
   learner = lrn("surv.priority_lasso", blocks = "PLACEHOLDER")
-  learner$param_set$set_values(
-    handle.missingdata = "set.zero"
-  )
   on.exit({
     assignInNamespace(".__LearnerSurvPriorityLasso__.train", train_old, ns = "mlr3extralearners")
   }, add = TRUE)

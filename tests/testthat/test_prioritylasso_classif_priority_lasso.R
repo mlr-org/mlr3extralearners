@@ -3,9 +3,6 @@ test_that("autotest", {
   set.seed(1)
   # blocks gets changed later anyway but is required
   learner = lrn("classif.priority_lasso", type.measure = "class", blocks = "PLACEHOLDER")
-  learner$param_set$set_values(
-    mcontrol = prioritylasso::missing.control(handle.missingdata = "impute.offset")
-  )
   on.exit({
     assignInNamespace(".__LearnerClassifPriorityLasso__.train", train_old, ns = "mlr3extralearners")
   }, add = TRUE)
