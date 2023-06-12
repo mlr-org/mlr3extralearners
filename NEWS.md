@@ -1,4 +1,5 @@
-# mlr3extralearners 0.6.1-9000
+# mlr3extralearners 0.7.0-9000
+# mlr3extralearners 0.7.0
 
 * Add new parameters to lightgbm learners
 * Add feature type `"factor"` to gam learners
