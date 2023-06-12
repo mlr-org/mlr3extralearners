@@ -123,7 +123,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         interaction_constraints = p_uty(tags = "train"),
         use_quantized_grad = p_lgl(default = TRUE, tags = "train"),
-        num_grad_quant_bins = p_int(default = 4, depends = device_type == "cpu", tags = "train"),
+        num_grad_quant_bins = p_int(default = 4, tags = "train"),
         quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
         stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
 
