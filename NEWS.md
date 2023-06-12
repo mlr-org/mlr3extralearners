@@ -1,6 +1,12 @@
 # mlr3extralearners 0.6.1-9000
 
-*   Fix: Add argument `nthreads` to `dbarts` learners; set verbose to false by default (thanks to @ck37)
+* Add new parameters to lightgbm learners
+* Add feature type `"factor"` to gam learners
+* Add new parameter `min.bucket` to ranger
+* Remove catboost learner (because the developers don't properly take care of the R package)
+* Add argument `nthreads` to `dbarts` learners; set verbose to `FALSE` by default (thanks to @ck37)
+* Add new parameters to prioritylasso
+* Fix: available levels for parameter of imbalanced random forest (typo)
 
 # mlr3extralearners 0.6.1
 

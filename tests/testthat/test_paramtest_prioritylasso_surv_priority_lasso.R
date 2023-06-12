@@ -10,7 +10,10 @@ test_that("surv.priority_lasso train", {
     "family", # is "cox" for survival data
     "type.measure", # is "deviance" for continuous data
     "itrace", # supported via param trace.it
-    "factory" # only used in scripts, no effect within mlr3
+    "factory", # only used in scripts, no effect within mlr3
+    "scale.y", # only applies to regression
+    "mcontrol" # this is tricky with the "missings" property as the learner still fails
+    # unless parameters are set correctly
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

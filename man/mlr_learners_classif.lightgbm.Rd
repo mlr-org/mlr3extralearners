@@ -104,6 +104,10 @@ lrn("classif.lightgbm")
    cegb_penalty_feature_coupled \tab untyped \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
+   use_quantized_grad \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   num_grad_quant_bins \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   quant_train_renew_leaf \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   stochastic_rounding \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

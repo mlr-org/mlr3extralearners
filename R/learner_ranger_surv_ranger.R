@@ -61,7 +61,8 @@ delayedAssign(
           split.select.weights         = p_dbl(0, 1, tags = "train"),
           splitrule                    = p_fct(c("logrank", "extratrees", "C", "maxstat"), default = "logrank", tags = "train"),
           verbose                      = p_lgl(default = TRUE, tags = c("train", "predict")),
-          write.forest                 = p_lgl(default = TRUE, tags = "train")
+          write.forest                 = p_lgl(default = TRUE, tags = "train"),
+          min.bucket                   = p_int(default = 3, tags = "train")
         )
 
         ps$values = list(num.threads = 1L)
