@@ -25,9 +25,6 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/install_catboost.html</loc>
-  </url>
-  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/install_learners.html</loc>
   </url>
   <url>
@@ -65,9 +62,6 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.catboost.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.cforest.html</loc>
@@ -161,9 +155,6 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.html</loc>
-  </url>
-  <url>
-    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cforest.html</loc>
