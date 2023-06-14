@@ -4,7 +4,6 @@ test_that("paramtest classif.imbalanced_rfsrc train", {
   exclude = c(
     "formula", # handled internally
     "data", # handled internally
-    "perf.type", # scoring is done with measure
     # all other parameters are ones inherited from rfsrc
     "mtry",
     "mtry.ratio",

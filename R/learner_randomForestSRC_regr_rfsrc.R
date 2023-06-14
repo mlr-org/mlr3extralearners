@@ -85,7 +85,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           tags = "predict"),
         ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
-        save.memory = p_lgl(default = FALSE, tags = "train")
+        save.memory = p_lgl(default = FALSE, tags = "train"),
+        perf.type = p_fct(levels = "none", tags = "train")
       )
 
       super$initialize(
