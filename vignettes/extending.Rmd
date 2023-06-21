@@ -1,7 +1,14 @@
 ---
 title: Creating a new Learner
-output: html_document
+output:
+  rmarkdown::html_vignette:
+    toc: true
+vignette: >
+  %\VignetteIndexEntry{Creating a new Learner}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
+
 
 Many learners are already included in the `mlr3` ecosystem, but there are still many more that have not been implemented and so in this vignette we will look at how to add a new `Learner` to `mlr3`.
 Here we will already assume a lot of knowledge, so it is best to read the [mlr3book](https://mlr3book.mlr-org.com/) first!
@@ -356,7 +363,7 @@ test_that("paramtest", {
   result = run_paramtest(learner, rpart:::predict.rpart, exclude, tag = "predict")
   expect_true(result, info = result$error)
 })
-
+```
 
 ## Contributing to mlr3extralearners
 
