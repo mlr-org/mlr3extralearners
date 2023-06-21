@@ -81,6 +81,5 @@ lrn("regr.gbm")
 
 ## Extending mlr3extralearners
 
-New learners - either for personal use or to extend mlr3extralearners - can be created with the `create_learner` function.
-An in-depth tutorial on how to do this can be found in the [mlr3 book](https://mlr3book.mlr-org.com/extending.html#sec-extending-learners).
+An in-depth tutorial on how to add learners can be found in the [package website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
 
