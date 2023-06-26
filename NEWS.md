@@ -1,5 +1,7 @@
 # mlr3extralearners 0.7.0-9000
 * Add parameter `perf.type` to rfsrc learners
+* Add vignette about "extending learners" which was previously in the mlr3book.
+
 # mlr3extralearners 0.7.0
 
 * Add new parameters to lightgbm learners
