@@ -17,7 +17,7 @@ As another side note, the `mlr3extralearner::create_learner()` function can be u
 We will not use it in this vignette for the sake of clarity, but recommend using it in practice to avoid writing a lot of boilerplate code.
 
 We will first demonstrate what the final class looks like and then we will explain it line by line (and method by method).
-As a working example we will implement a slightly stripped down version of `regr.rpart`.
+As a working example, we will implement a slightly stripped-down version of `regr.rpart`.
 
 ```{r}
 library(mlr3)
@@ -95,7 +95,7 @@ In the second line, we select the appropriate parent class from which we want to
 Because we are implementing a regression learner, we have to inherit from the `LearnerRegr` class.
 For classification we would inherit from `LearnerClassif`, for survival from `mlr3proba::LearnerSurv`, and for clustering from `mlr3cluster::LearnerClust`.
 
-In the constructor, the constructor of the super class (in this case `LearnerRegr`) is called with meta information about the learner which we are defining.
+In the constructor, the constructor of the super class (in this case `LearnerRegr`) is called with meta-information about the learner which we are defining.
 We strongly recommend reading the relevant class documentation to understand its arguments (see e.g. the [learner documentation](https://mlr3.mlr-org.com/reference/Learner.html)).
 These include:
 
@@ -110,7 +110,7 @@ These include:
 * `label`: The label of the learner.
   This should briefly describe the learner (similar to the description's title) and is for example used for printing.
 
-To fill some out this meta-information, one has to go through the manual pages of the upstream packages.
+To fill out some of this meta-information, one has to go through the manual pages of the upstream packages.
 In order to know e.g. which predict types or properties are available, reading the manual pages of the corresponding superclass(es) is indispensable.
 Furthermore, it is a good idea to look at already existing learner implementations for inspiration.
 
@@ -165,7 +165,7 @@ It is recommended to only change the defaults for good reasons and document this
 
 In `paradox` only integers, numerics, factors, and logicals have dedicated parameter types.
 For all other parameters, the `ParamUty` class has to be used, which is constructable via the `p_uty()` function.
-It has the argument `custom_check`, which allows to specify custom constraints.
+It has the argument `custom_check`, which allows specifying custom constraints.
 This function return `TRUE` if the input is valid and a `character(1)` with the error message otherwise.
 
 ## Train function
@@ -373,5 +373,5 @@ When adding a `Learner` to `mlr3extralearners` there are some additional require
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
 * The learner must be properly documented. When using `mlr3extralearners::create_learner()` this is automatically generated. Otherwise you can use and adapt the documentation of an already implemented learner.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
-* The tests must be pass in the CI.
+* The tests must pass in the CI.
 * Update the `NEWS.md` file and describe what you added the learner.
