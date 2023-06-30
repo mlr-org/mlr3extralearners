@@ -1,6 +1,7 @@
 # mlr3extralearners 0.7.0-9000
 * Add parameter `perf.type` to rfsrc learners
 * Add vignette about "extending learners" which was previously in the mlr3book.
+* Remove the `"multiclass"` property from `lrn("classif.gbm")`, as this feature is broken.
 
 # mlr3extralearners 0.7.0
 
