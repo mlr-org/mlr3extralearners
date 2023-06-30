@@ -58,7 +58,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c(
-          "weights", "twoclass", "multiclass", "importance", "missings"),
+          "weights", "twoclass", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.gbm",
         label = "Gradient Boosting"
       )
