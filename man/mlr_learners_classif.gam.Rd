@@ -69,7 +69,6 @@ lrn("classif.gam")
    nlm \tab untyped \tab list \tab  \tab - \cr
    optim \tab untyped \tab list \tab  \tab - \cr
    newton \tab untyped \tab list \tab  \tab - \cr
-   outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    efs.lspmax \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
