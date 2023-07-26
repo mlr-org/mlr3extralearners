@@ -110,7 +110,7 @@ delayedAssign(
           verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
           watchlist                   = p_uty(default = NULL, tags = "train"),
           xgb_model                   = p_uty(tags = "train"),
-          device                      = p_uty(tags = c("train", "predict"))
+          device                      = p_uty(tags = "train")
         )
         # param deps
         ps$add_dep("print_every_n", "verbose", CondEqual$new(1L))
