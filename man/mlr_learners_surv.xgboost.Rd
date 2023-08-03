@@ -114,7 +114,6 @@ lrn("surv.xgboost")
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    objective \tab character \tab survival:cox \tab survival:cox, survival:aft \tab - \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   predictor \tab character \tab cpu_predictor \tab cpu_predictor, gpu_predictor \tab - \cr
    print_every_n \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    process_type \tab character \tab default \tab default, update \tab - \cr
    rate_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -135,6 +134,7 @@ lrn("surv.xgboost")
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    watchlist \tab untyped \tab  \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
+   device \tab untyped \tab - \tab  \tab - \cr
 }
 }
 

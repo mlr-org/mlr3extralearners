@@ -90,7 +90,6 @@ delayedAssign(
           num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
           objective                   = p_fct(c("survival:cox", "survival:aft"), default = "survival:cox", tags = c("train", "predict")),
           one_drop                    = p_lgl(default = FALSE, tags = "train"),
-          predictor                   = p_fct(c("cpu_predictor", "gpu_predictor"), default = "cpu_predictor", tags = "train"),
           print_every_n               = p_int(1L, default = 1L, tags = "train"),
           process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
           rate_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
@@ -110,7 +109,8 @@ delayedAssign(
           updater                     = p_uty(tags = "train"), # Default depends on the selected booster
           verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
           watchlist                   = p_uty(default = NULL, tags = "train"),
-          xgb_model                   = p_uty(tags = "train")
+          xgb_model                   = p_uty(tags = "train"),
+          device                      = p_uty(tags = "train")
         )
         # param deps
         ps$add_dep("print_every_n", "verbose", CondEqual$new(1L))
