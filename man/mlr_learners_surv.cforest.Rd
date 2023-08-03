@@ -40,7 +40,7 @@ lrn("surv.cforest")
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    offset \tab untyped \tab - \tab  \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
    scores \tab untyped \tab - \tab  \tab - \cr
    teststat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
    splitstat \tab character \tab quadratic \tab quadratic, maximum \tab - \cr
