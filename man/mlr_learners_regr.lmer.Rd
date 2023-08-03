@@ -59,22 +59,15 @@ lrn("regr.lmer")
    check.scaleX \tab character \tab warning \tab warning, stop, silent.rescale, message+rescale, warn+rescale, ignore \tab - \cr
    check.formula.LHS \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
    check.conv.grad \tab untyped \tab lme4::.makeCC("warning", tol = 2e-3, relTol = NULL) \tab  \tab - \cr
-   check.conv.singular \tab untyped \tab lme4::.makeCC( \tab  \tab  \cr
+   check.conv.singular \tab untyped \tab lme4::.makeCC(action = "message", tol = formals(lme4::isSingular)$tol) \tab  \tab - \cr
+   check.conv.hess \tab untyped \tab lme4::.makeCC(action = "warning", tol = 1e-6) \tab  \tab - \cr
+   optCtrl \tab untyped \tab list \tab  \tab - \cr
+   newparams \tab untyped \tab  \tab  \tab - \cr
+   re.form \tab untyped \tab  \tab  \tab - \cr
+   random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
 }
-
-
-\if{html}{\out{<div class="sourceCode">}}\preformatted{        action = "message",
-        tol = formals(lme4::isSingular)$tol
-      ) |                                                                            |-                           |
-}\if{html}{\out{</div>}}
-
-|check.conv.hess     |untyped   |lme4::.makeCC(action = "warning", tol = 1e-6)                                                           |                                                                            |-                           |
-|optCtrl             |untyped   |list                                                                                                    |                                                                            |-                           |
-|newparams           |untyped   |                                                                                                        |                                                                            |-                           |
-|re.form             |untyped   |                                                                                                        |                                                                            |-                           |
-|random.only         |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
-|allow.new.levels    |logical   |FALSE                                                                                                   |TRUE, FALSE                                                                 |-                           |
-|na.action           |untyped   |::     , stats  , na.pass                                                                               |                                                                            |-                           |
 }
 
 \examples{

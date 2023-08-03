@@ -40,7 +40,7 @@ delayedAssign(
           trace = p_lgl(default = FALSE, tags = "train"),
           offset = p_uty(tags = "train"),
           cluster = p_uty(tags = "train"),
-          na.action = p_uty(default = stats::na.pass, tags = "train"),
+          na.action = p_uty(default = "stats::na.pass", tags = "train"),
           scores = p_uty(tags = "train"),
 
           teststat = p_fct(default = "quadratic",

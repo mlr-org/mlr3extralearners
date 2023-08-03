@@ -70,7 +70,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         re.form = p_uty(default = NULL, tags = "predict"),
         random.only = p_lgl(default = FALSE, tags = "predict"),
         allow.new.levels = p_lgl(default = FALSE, tags = "predict"),
-        na.action = p_uty(default = stats::na.pass, tags = "predict")
+        na.action = p_uty(default = "stats::na.pass", tags = "predict")
       )
 
       param_set$values = list(family = stats::binomial(link = "logit"))
