@@ -36,6 +36,7 @@ Suggests:
     aorsf (>= 0.0.5),
     actuar,
     apcluster,
+    BART (>= 2.9.4),
     C50,
     coin,
     CoxBoost,
