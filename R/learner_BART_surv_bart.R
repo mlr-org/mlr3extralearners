@@ -38,6 +38,7 @@
 #' @examples
 #' library(mlr3proba)
 #' library(dplyr)
+#' library(tidyr)
 #' library(ggplot2)
 #'
 #' learner = lrn("surv.bart", nskip = 10, ndpost = 20, keepevery = 2)
@@ -91,7 +92,7 @@
 #'     low_qi   = ~ quantile(., 0.025),
 #'     high_qi  = ~ quantile(., 0.975)
 #'   ))) %>%
-#'   tidyr::pivot_longer(
+#'   pivot_longer(
 #'     cols = everything(),
 #'     names_to = c("times", ".value"),
 #'     names_pattern = "(^[^_]+)_(.*)" # everything until the first underscore
@@ -102,7 +103,7 @@
 #' # Draw a survival curve for the first patient in the test set with
 #' # uncertainty quantified
 #' surv_data %>%
-#'   ggplot2::ggplot(aes(x = times, y = median)) +
+#'   ggplot(aes(x = times, y = median)) +
 #'   geom_step(col = 'black') +
 #'   xlab('Time (Days)') +
 #'   ylab('Survival Probability') +
@@ -111,7 +112,7 @@
 #' @export
 delayedAssign(
   "LearnerSurvLearnerSurvBART", R6Class("LearnerSurvLearnerSurvBART",
-    inherit = LearnerSurv,
+    inherit = mlr3proba::LearnerSurv,
     public = list(
       #' @description
       #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -249,7 +250,7 @@ delayedAssign(
 
         # don't print C++ generated info during prediction
         if (pars$quiet) {
-          capture.output({
+          utils::capture.output({
             pred = pred_fun()
           })
         } else {

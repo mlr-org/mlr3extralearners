@@ -316,7 +316,7 @@ test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
 
   # basic learner properties
-  expect_learner(learner, check_man = FALSE)
+  expect_learner(learner)
 
   # you can skip tests using the `exclude` argument
   result = run_autotest(learner)
