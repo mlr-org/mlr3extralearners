@@ -100,6 +100,7 @@ lrn("surv.bart")
 \examples{
 library(mlr3proba)
 library(dplyr)
+library(tidyr)
 library(ggplot2)
 
 learner = lrn("surv.bart", nskip = 10, ndpost = 20, keepevery = 2)
@@ -153,7 +154,7 @@ surv_data = post_surv \%>\%
     low_qi   = ~ quantile(., 0.025),
     high_qi  = ~ quantile(., 0.975)
   ))) \%>\%
-  tidyr::pivot_longer(
+  pivot_longer(
     cols = everything(),
     names_to = c("times", ".value"),
     names_pattern = "(^[^_]+)_(.*)" # everything until the first underscore
@@ -164,7 +165,7 @@ surv_data
 # Draw a survival curve for the first patient in the test set with
 # uncertainty quantified
 surv_data \%>\%
-  ggplot2::ggplot(aes(x = times, y = median)) +
+  ggplot(aes(x = times, y = median)) +
   geom_step(col = 'black') +
   xlab('Time (Days)') +
   ylab('Survival Probability') +
