@@ -43,6 +43,7 @@ Suggests:
     Cubist,
     curl,
     dbarts,
+    dplyr,
     distr6,
     earth,
     flexsurv,
@@ -50,6 +51,7 @@ Suggests:
     formattable,
     future,
     gbm,
+    ggplot2,
     glmnet,
     gss,
     jsonlite,
@@ -99,6 +101,7 @@ Suggests:
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
+    tidyr,
     xgboost
 Remotes:
     alan-turing-institute/distr6,
