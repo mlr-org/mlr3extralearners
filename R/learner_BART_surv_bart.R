@@ -173,7 +173,7 @@ delayedAssign(
       #'
       #' @param type Can be either `count` or `prob`.
       #' @return Named `numeric()`.
-      importance = function(type = 'count') {
+      importance = function(type = "count") {
 assert_choice(type, c("prob", "count"))
 
         if (is.null(self$model)) {
