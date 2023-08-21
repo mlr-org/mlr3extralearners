@@ -5,6 +5,7 @@
 #' @description
 #' Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
 #' survival data.
+#'
 #' For prediction, we return the mean posterior estimates of the survival
 #' function and the corresponding `crank` (expected mortality) using
 #' [mlr3proba::.surv_return].
@@ -12,7 +13,6 @@
 #' `learner$state$surv_test` slot, along with the number of test observations
 #' `N`, number of unique times in the train set `K` and number of posterior
 #' draws `M`.
-#' See example for more details.
 #'
 #' Calls [BART::mc.surv.bart()] from \CRANpkg{BART}.
 #'
@@ -30,80 +30,7 @@
 #' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
-#' @examples
-#' library(mlr3proba)
-#' library(dplyr)
-#' library(tidyr)
-#' library(ggplot2)
-#'
-#' learner = lrn("surv.bart", nskip = 10, ndpost = 20, keepevery = 2)
-#' task = tsk("lung")
-#' task$missings() # has missing values
-#'
-#' # split to train and test sets
-#' set.seed(42)
-#' part = partition(task)
-#'
-#' # Train
-#' learner$train(task, row_ids = part$train)
-#'
-#' # Importance: average number of times a feature has been used in the trees
-#' learner$importance()
-#'
-#' # Test
-#' p = learner$predict(task, row_ids = part$test)
-#' p$score() # C-index
-#'
-#' # Mean survival probabilities for the first 3 patients at given time points
-#' p$distr$survival(times = c(1,50,150))[,1:3]
-#'
-#' # number of posterior draws
-#' M = learner$state$M
-#' stopifnot(M == 20)
-#' # number of test observations
-#' N = learner$state$N
-#' stopifnot(N == length(part$test))
-#' # number of unique time points in the train set
-#' K = learner$state$K
-#' stopifnot(K == length(task$unique_times(rows = part$train)))
-#' # the actual times are also available in the `$model` slot:
-#' head(learner$model$times)
-#'
-#' # Full posterior prediction matrix
-#' surv_test = learner$state$surv_test
-#' stopifnot(all(dim(surv_test) == c(M, K * N)))
-#'
-#' # Posterior survival function estimates for the 1st test patient for all
-#' # time points (from the train set) - see Sparapani (2021), pages 34-35
-#' post_surv = surv_test[, 1:K]
-#'
-#' # For every time point, get the median survival estimate as well as
-#' # the lower and upper bounds of the 95% quantile credible interval
-#' surv_data = post_surv %>%
-#'   as.data.frame() %>%
-#'   `colnames<-` (learner$model$times) %>%
-#'   summarise(across(everything(), list(
-#'     median   = ~ median(.),
-#'     low_qi   = ~ quantile(., 0.025),
-#'     high_qi  = ~ quantile(., 0.975)
-#'   ))) %>%
-#'   pivot_longer(
-#'     cols = everything(),
-#'     names_to = c("times", ".value"),
-#'     names_pattern = "(^[^_]+)_(.*)" # everything until the first underscore
-#'   ) %>%
-#'   mutate(times = as.numeric(times))
-#' surv_data
-#'
-#' # Draw a survival curve for the first patient in the test set with
-#' # uncertainty quantified
-#' surv_data %>%
-#'   ggplot(aes(x = times, y = median)) +
-#'   geom_step(col = 'black') +
-#'   xlab('Time (Days)') +
-#'   ylab('Survival Probability') +
-#'   geom_ribbon(aes(ymin = low_qi, ymax = high_qi), alpha = 0.3) +
-#'   theme_bw()
+#' @template example
 #' @export
 delayedAssign(
   "LearnerSurvLearnerSurvBART", R6Class("LearnerSurvLearnerSurvBART",
