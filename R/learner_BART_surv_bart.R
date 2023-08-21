@@ -143,7 +143,7 @@ delayedAssign(
           nice       = p_int(default = 19L, lower = 0L, upper = 19L, tags = c("train", "predict")),
           openmp     = p_lgl(default = TRUE, tags = "predict"),
           quiet      = p_lgl(default = TRUE, tags = "predict"),
-          importance = p_fct(default = "count", levels = c("count", "prob"), tags = "imp")
+          importance = p_fct(default = "count", levels = c("count", "prob"), tags = "train")
         )
 
         # custom defaults
@@ -180,7 +180,7 @@ delayedAssign(
           stopf("No model stored")
         }
 
-        pars = self$param_set$get_values(tags = 'imp')
+        pars = self$param_set$get_values(tags = 'train')
 
         if (pars$importance == 'prob') {
           sort(self$model$varprob.mean[-1], decreasing = T)
@@ -193,6 +193,7 @@ delayedAssign(
     private = list(
       .train = function(task) {
         pars = self$param_set$get_values(tags = "train")
+        pars$importance = NULL # not used in the train function
 
         x_train = as.data.frame(task$data(cols = task$feature_names))
         times   = task$truth()[,1]
@@ -269,7 +270,7 @@ delayedAssign(
         self$state$surv_test = pred$surv.test
 
         # create mean posterior survival matrix (N obs x K times)
-        surv = matrix(bart_p2$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
+        surv = matrix(pred$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
 
         mlr3proba::.surv_return(times = pred$times, surv = surv)
       }
