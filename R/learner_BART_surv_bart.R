@@ -266,17 +266,8 @@ assert_choice(type, c("prob", "count"))
         # save the full posterior survival matrix
         self$state$surv_test = pred$surv.test
 
-        # create mean posterior survival matrix
-        surv = matrix(nrow = N, ncol = K) # obs x times
-        # check: output is flattened (column means)
-        stopifnot(length(pred$surv.test.mean) == N * K)
-
-        for (i in 1:N) {
-          # every K-size vector contains the mean survival estimates of the
-          # i-th test observation
-          indxs = ((i-1)*K + 1):(i*K)
-          surv[i,] = pred$surv.test.mean[indxs]
-        }
+        # create mean posterior survival matrix (N obs x K times)
+        surv = matrix(bart_p2$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
 
         mlr3proba::.surv_return(times = pred$times, surv = surv)
       }
