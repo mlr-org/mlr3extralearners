@@ -9,7 +9,8 @@ test_that("paramtest surv.bart train", {
     "x.test", # not used
     "xinfo",  # not used
     "tau.num", # not used, automatically calculated from `type` and `ntype`
-    "id" # only for `surv.bart`
+    "id", # only for `surv.bart`
+    "importance" # added to choose the type of importance
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
