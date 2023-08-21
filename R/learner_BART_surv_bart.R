@@ -18,7 +18,6 @@
 #'
 #' @section Custom mlr3 defaults:
 #' - `mc.cores` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.
-#'   - Actual default: 2
 #'   - Adjusted value: 1
 #'   - Reason for change: May conflict with parallelization via \CRANpkg{future}.
 #'
