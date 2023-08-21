@@ -54,13 +54,12 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Install venv
-        run: sudo apt-get install python3-venv
-
       - name: Install Python
         run: |
           pak::pkg_install('rstudio/reticulate')
+        reticulate::
           reticulate::install_miniconda()
+          reticulate::py_install('venv')
           install.packages('keras')
           keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'))
           reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
