@@ -10,9 +10,7 @@
 #' function and the corresponding `crank` (expected mortality) using
 #' [mlr3proba::.surv_return].
 #' The full posterior estimates are currently stored in the
-#' `learner$state$surv_test` slot, along with the number of test observations
-#' `N`, number of unique times in the train set `K` and number of posterior
-#' draws `M`.
+#' `learner$model$surv.test` slot.
 #'
 #' Calls [BART::mc.surv.bart()] from \CRANpkg{BART}.
 #'
@@ -103,16 +101,16 @@ delayedAssign(
       #'
       #' @return Named `numeric()`.
       importance = function() {
-        if (is.null(self$model)) {
+        if (is.null(self$model$model)) {
           stopf("No model stored")
         }
 
         pars = self$param_set$get_values(tags = 'train')
 
         if (pars$importance == 'prob') {
-          sort(self$model$varprob.mean[-1], decreasing = T)
+          sort(self$model$model$varprob.mean[-1], decreasing = T)
         } else {
-          sort(self$model$varcount.mean[-1], decreasing = T)
+          sort(self$model$model$varcount.mean[-1], decreasing = T)
         }
       }
     ),
@@ -122,19 +120,22 @@ delayedAssign(
         pars = self$param_set$get_values(tags = "train")
         pars$importance = NULL # not used in the train function
 
-        x_train = as.data.frame(task$data(cols = task$feature_names))
+        x.train = as.data.frame(task$data(cols = task$feature_names))
         times   = task$truth()[,1]
         delta   = task$truth()[,2] # delta => status
 
-        # need these for predict
-        self$state$train_data = list(x_train = x_train, times = times, delta = delta)
-
-        invoke(
-          BART::mc.surv.bart,
-          x.train = x_train,
+        list(
+          model = invoke(
+            BART::mc.surv.bart,
+            x.train = x.train,
+            times = times,
+            delta = delta,
+            .args = pars
+          ),
+          # need these for predict
+          x.train = x.train,
           times = times,
-          delta = delta,
-          .args = pars
+          delta = delta
         )
       },
 
@@ -143,20 +144,18 @@ delayedAssign(
         pars = self$param_set$get_values(tags = "predict")
 
         # get newdata and ensure same ordering in train and predict
-        x_test = as.data.frame(ordered_features(task, self))
-
-        # transform data to be suitable for BART survival analysis (needs train data)
-        train_data = self$state$train_data
+        x.test = as.data.frame(ordered_features(task, self))
 
         # subset parameters to use in `surv.pre.bart`
         pars_pre = pars[names(pars) %in% c('K', 'events', 'ztimes', 'zdelta')]
 
+        # transform data to be suitable for BART survival analysis (needs train data)
         trans_data = invoke(
           BART::surv.pre.bart,
-          times   = train_data$times,
-          delta   = train_data$delta,
-          x.train = train_data$x_train,
-          x.test  = x_test,
+          times   = self$model$times,
+          delta   = self$model$delta,
+          x.train = self$model$x.train,
+          x.test  = x.test,
           .args   = pars_pre
         )
 
@@ -166,7 +165,7 @@ delayedAssign(
         pred_fun = function() {
           invoke(
             predict,
-            self$model,
+            self$model$model,
             newdata = trans_data$tx.test,
             .args = pars_pred
           )
@@ -186,15 +185,13 @@ delayedAssign(
 
         # Number of test observations
         N = task$nrow
-        self$state$N = N
         # Number of unique times
         K = pred$K
-        self$state$K = K
         # Number of posterior draws
-        self$state$M = nrow(pred$surv.test)
+        M = nrow(pred$surv.test)
 
         # save the full posterior survival matrix
-        self$state$surv_test = pred$surv.test
+        self$model$surv.test = pred$surv.test
 
         # create mean posterior survival matrix (N obs x K times)
         surv = matrix(pred$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
