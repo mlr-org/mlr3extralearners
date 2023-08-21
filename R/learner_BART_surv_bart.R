@@ -15,7 +15,6 @@
 #' See example for more details.
 #'
 #' Calls [BART::mc.surv.bart()] from \CRANpkg{BART}.
-#' Based on BART version 2.9.4 (2023-03-25).
 #'
 #' @section Custom mlr3 defaults:
 #' - `mc.cores` (in general use as many as possible if no issues arise):
