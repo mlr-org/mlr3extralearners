@@ -16,11 +16,8 @@
 #'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
 #'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
-#' @section Custom mlr3 defaults:
-#' - `cores`:
-#'   - Actual default: Auto-detecting the number of cores
-#'   - Adjusted default: 1
-#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' @section Initial parameter values:
+#' - `cores` is initialized to 1 to avoid threading conflicts with explicit parallelization via \CRANpkg{future}.
 #'
 #' @templateVar id classif.imbalanced_rfsrc
 #' @template learner
@@ -109,6 +106,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
           save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train") # nolint
       )
+      ps$values = list(cores = 1L)
 
       super$initialize(
         id = "classif.imbalanced_rfsrc",
@@ -154,7 +152,6 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
-      cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint

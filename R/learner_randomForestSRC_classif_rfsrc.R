@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.rfsrc
 #'
-#' @section Initial parameter values:
+#' @section Custom mlr3 parameters:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
@@ -18,12 +18,8 @@
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
 #'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
 #'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
-#'
-#' @section Custom mlr3 defaults:
-#' - `cores`:
-#'   - Actual default: Auto-detecting the number of cores
-#'   - Adjusted default: 1
-#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' @section Initial parameter values:
+#' - `cores` is initialized to 1 to avoid threading conflicts with explicit parallelization via \CRANpkg{future}.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
@@ -103,6 +99,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train") # nolint
       )
 
+      ps$values = list(cores = 1)
+
       super$initialize(
         id = "classif.rfsrc",
         packages = c("mlr3extralearners", "randomForestSRC"),
@@ -156,7 +154,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
-      cores = pv$cores %??% 1L
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint

@@ -17,11 +17,8 @@
 #'  The number of output channels should be of length `1` and number of input channels is
 #'  the number of features plus number of cuts.
 #'
-#' @section Custom mlr3 defaults:
-#' - `verbose`:
-#'   - Actual default: `1L`
-#'   - Adjusted default: `0L`
-#'   - Reason for change: Prevents plotting.
+#' @section Initial parameter values:
+#' - `verbose` is initialized to 0.
 #'
 #' @references
 #' `r format_bib("zhao2019dnnsurv")`

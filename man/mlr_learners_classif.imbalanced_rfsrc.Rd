@@ -27,15 +27,10 @@ Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{cores}:
-\itemize{
-\item Actual default: Auto-detecting the number of cores
-\item Adjusted default: 1
-\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
-}
+\item \code{cores} is initialized to 1 to avoid threading conflicts with explicit parallelization via \CRANpkg{future}.
 }
 }
 

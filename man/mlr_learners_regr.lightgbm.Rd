@@ -145,26 +145,16 @@ lrn("regr.lightgbm")
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
-}
-}
-
-\section{Custom mlr3 defaults}{
-
-\itemize{
 \item \code{num_threads}:
 \itemize{
 \item Actual default: 0L
-\item Adjusted default: 1L
+\item Iniital value: 1L
 \item Reason for change: Prevents accidental conflicts with \code{future}.
 }
 \item \code{verbose}:
 \itemize{
 \item Actual default: 1L
-\item Adjusted default: -1L
+\item Initial value: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
 }
@@ -175,6 +165,10 @@ those columns.
 \itemize{
 \item \code{early_stopping}
 Whether to use the test set for early stopping. Default is \code{FALSE}.
+\item \code{convert_categorical}:
+Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.
 }
 }
 

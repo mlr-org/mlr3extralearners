@@ -52,7 +52,7 @@ lrn("surv.obliqueRSF")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:
@@ -64,15 +64,10 @@ Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{verbose}:
-\itemize{
-\item Actual default: \code{TRUE}
-\item Adjusted default: \code{FALSE}
-\item Reason for change: mlr3 already has it's own verbose set to \code{TRUE} by default
-}
+\item \code{verbose} is initialized to \code{FALSE}
 }
 }
 
