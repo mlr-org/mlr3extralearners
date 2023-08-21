@@ -176,7 +176,7 @@ delayedAssign(
       #' @param type Can be either `count` or `prob`.
       #' @return Named `numeric()`.
       importance = function(type = 'count') {
-        if (!type %in% c('prob', 'count')) stopf("type can be only 'prob' or 'count'")
+assert_choice(type, c("prob", "count"))
 
         if (is.null(self$model)) {
           stopf("No model stored")
