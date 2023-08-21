@@ -112,7 +112,7 @@ delayedAssign(
       #' Creates a new instance of this [R6][R6::R6Class] class.
       initialize = function() {
         param_set = ps(
-          K          = p_uty(default = NULL, tags = c("train", "predict")),
+          K          = p_dbl(default = NULL, special_vals = list(NULL), lower = 1, tags = c("train", "predict")),
           events     = p_uty(default = NULL, tags = c("train", "predict")),
           ztimes     = p_uty(default = NULL, tags = c("train", "predict")),
           zdelta     = p_uty(default = NULL, tags = c("train", "predict")),
