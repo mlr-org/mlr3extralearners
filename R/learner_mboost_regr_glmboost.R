@@ -82,7 +82,7 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
 
       if (self$param_set$values$family != "custom") {
         pars_family = pars[which(names(pars) %in%
-          formalArgs(utils::getFromNamespace(
+          formalArgs(getFromNamespace(
             pars_glmboost$family,
             asNamespace("mboost"))))]
       }
