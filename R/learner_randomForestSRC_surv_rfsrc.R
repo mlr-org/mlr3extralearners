@@ -149,6 +149,8 @@ delayedAssign(
         pv = self$param_set$get_values(tags = "train")
         pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
         pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
+        cores = pv$cores %??% 1L
+        pv$cores = NULL
 
         if ("weights" %in% task$properties) {
           pv$case.wt = as.numeric(task$weights$weight) # nolint

@@ -123,7 +123,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        sndtopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
       }
 
       names(self$model$var.used)
