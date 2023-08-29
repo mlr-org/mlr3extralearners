@@ -18,8 +18,8 @@
 #'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
 #'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
 #'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
-#' @section Initial parameter values:
-#' - `cores` is initialized to 1 to avoid threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' - `cores`:
+#'     This value is set as the option `rf.cores` during training and is set to 1 by default.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
@@ -99,8 +99,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train") # nolint
       )
 
-      ps$values = list(cores = 1)
-
       super$initialize(
         id = "classif.rfsrc",
         packages = c("mlr3extralearners", "randomForestSRC"),
@@ -154,6 +152,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
+      cores = pv$cores %??% 1L
+      pv$cores = NULL
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -168,6 +168,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       newdata = data.table::setDF(ordered_features(task, self))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
+      pars$cores = NULL
+
       pred = invoke(predict,
         object = self$model,
         newdata = newdata,

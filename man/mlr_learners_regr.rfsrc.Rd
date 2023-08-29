@@ -69,10 +69,23 @@ lrn("regr.rfsrc")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{cores} is initialized to 1 to avoid threading conflicts with explicit parallelization via \CRANpkg{future}.
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
+as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+\item \code{sampsize}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
+as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
+Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
+}
+\item \code{cores}:
+This value is set as the option \code{rf.cores} during training and is set to 1 by default.
 }
 }
 

@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id surv.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Initial parameter values
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @details
 #' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and
@@ -99,8 +99,6 @@ delayedAssign(
           save.memory = p_lgl(default = FALSE, tags = "train"),
           perf.type = p_fct(levels = "none", tags = "train")
         )
-
-        ps$values = list(cores = 1)
 
         super$initialize(
           id = "surv.rfsrc",
