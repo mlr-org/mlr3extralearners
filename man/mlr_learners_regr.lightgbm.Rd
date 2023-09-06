@@ -148,7 +148,7 @@ lrn("regr.lightgbm")
 \item \code{num_threads}:
 \itemize{
 \item Actual default: 0L
-\item Iniital value: 1L
+\item Initital value: 1L
 \item Reason for change: Prevents accidental conflicts with \code{future}.
 }
 \item \code{verbose}:
