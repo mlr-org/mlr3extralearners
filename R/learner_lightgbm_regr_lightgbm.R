@@ -16,7 +16,7 @@
 #' @section Initial parameter values:
 #' * `num_threads`:
 #'   * Actual default: 0L
-#'   * Iniital value: 1L
+#'   * Initital value: 1L
 #'   * Reason for change: Prevents accidental conflicts with `future`.
 #' * `verbose`:
 #'   * Actual default: 1L
