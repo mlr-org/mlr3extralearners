@@ -169,6 +169,7 @@ delayedAssign(
         pars_predict$estimator = NULL
         pars_predict$var.used = "FALSE"
         cores = pars_predict$cores %??% 1L # additionaly implemented by author
+        pars_predict$cores = NULL
 
         p = invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
           .opts = list(rf.cores = cores))
