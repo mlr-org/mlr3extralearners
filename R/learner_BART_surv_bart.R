@@ -180,23 +180,37 @@ delayedAssign(
           pred = pred_fun()
         }
 
-        # Build survival matrix using the mean posterior estimates of the survival
-        # function, see page 34-35 in Sparapani (2021) for more details
-
         # Number of test observations
         N = task$nrow
         # Number of unique times
         K = pred$K
+        times = pred$times
         # Number of posterior draws
         M = nrow(pred$surv.test)
 
-        # save the full posterior survival matrix
+        # save the full posterior survival matrix and the mean for checking
+        # TODO: remove next two lines
         self$model$surv.test = pred$surv.test
+        self$model$surv.test.mean = pred$surv.test.mean
 
-        # create mean posterior survival matrix (N obs x K times)
+        # Convert full posterior survival matrix to 3D survival array
+        # See page 34-35 in Sparapani (2021) for more details
+        surv.array = aperm(
+          array(pred$surv.test, dim = c(M, K, N), dimnames = list(NULL, times, NULL)),
+          c(3, 2, 1)
+        )
+
+        # Mean posterior survival matrix (N obs x K times)
         surv = matrix(pred$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
 
-        mlr3proba::.surv_return(times = pred$times, surv = surv)
+        # get crank as expected mortality using mean posterior
+        pred_list = mlr3proba::.surv_return(times = times, surv = surv)
+
+        # replace with the full survival posterior
+        pred_list$distr = surv.array
+
+        # return list with crank and distr
+        pred_list
       }
     )
   )
