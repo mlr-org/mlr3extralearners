@@ -85,7 +85,9 @@ test_that("paramtest regr.lightgbm train", {
     "valids", # handled internally
     "obj", # alias for objective
     "colnames", # we don't want to allow overwriting any names
-    "init_model" # handled internally via hotstarting
+    "init_model", # handled internally via hotstarting
+
+    "lambdarank_position_bias_regularization" # only for lambdarank
 
   )
 

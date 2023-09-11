@@ -69,7 +69,7 @@ lrn("classif.rfsrc")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:
@@ -84,18 +84,8 @@ Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
-}
-}
-
-\section{Custom mlr3 defaults}{
-
-\itemize{
 \item \code{cores}:
-\itemize{
-\item Actual default: Auto-detecting the number of cores
-\item Adjusted default: 1
-\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
-}
+This value is set as the option \code{rf.cores} during training and is set to 1 by default.
 }
 }
 

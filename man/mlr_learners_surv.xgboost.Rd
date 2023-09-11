@@ -13,35 +13,13 @@ To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and lin
 against CUDA.
 See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
 }
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{nrounds}:
-\itemize{
-\item Actual default: no default.
-\item Adjusted default: 1.
-\item Reason for change: Without a default construction of the learner
-would error. Just setting a nonsense default to workaround this.
-\code{nrounds} needs to be tuned by the user.
-}
-\item \code{nthread}:
-\itemize{
-\item Actual value: Undefined, triggering auto-detection of the number of CPUs.
-\item Adjusted value: 1.
-\item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-}
-\item \code{verbose}:
-\itemize{
-\item Actual default: 1.
-\item Adjusted default: 0.
-\item Reason for change: Reduce verbosity.
-}
-\item \code{objective}:
-\itemize{
-\item Actual default: \code{reg:squarederror}.
-\item Adjusted default: \code{survival:cox}.
-\item Reason for change: Changed to a survival objective.
-}
+\item \code{nrounds} is initialized to 1.
+\item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
+\item \code{verbose} is initialized to 0.
+\item \code{objective} is initialized to \code{survival:cox} for survival analysis.
 }
 }
 

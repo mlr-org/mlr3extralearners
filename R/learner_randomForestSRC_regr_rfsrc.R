@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id regr.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Initial parameter values
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
@@ -140,6 +140,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
+      pv$cores = NULL
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -154,6 +155,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
+      pars$cores = NULL
 
       list(
         response = invoke(predict,

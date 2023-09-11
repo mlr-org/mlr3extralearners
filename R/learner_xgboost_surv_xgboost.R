@@ -8,25 +8,11 @@
 #'
 #' @template note_xgboost
 #'
-#' @section Custom mlr3 defaults:
-#' - `nrounds`:
-#'   - Actual default: no default.
-#'   - Adjusted default: 1.
-#'   - Reason for change: Without a default construction of the learner
-#'     would error. Just setting a nonsense default to workaround this.
-#'     `nrounds` needs to be tuned by the user.
-#' - `nthread`:
-#'   - Actual value: Undefined, triggering auto-detection of the number of CPUs.
-#'   - Adjusted value: 1.
-#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-#' - `verbose`:
-#'   - Actual default: 1.
-#'   - Adjusted default: 0.
-#'   - Reason for change: Reduce verbosity.
-#' - `objective`:
-#'   - Actual default: `reg:squarederror`.
-#'   - Adjusted default: `survival:cox`.
-#'   - Reason for change: Changed to a survival objective.
+#' @section Initial parameter values:
+#' - `nrounds` is initialized to 1.
+#' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
+#' - `verbose` is initialized to 0.
+#' - `objective` is initialized to `survival:cox` for survival analysis.
 #' @section Early stopping:
 #' Early stopping can be used to find the optimal number of boosting rounds.
 #' The `early_stopping_set` parameter controls which set is used to monitor the performance.

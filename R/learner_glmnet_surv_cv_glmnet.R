@@ -6,8 +6,8 @@
 #' Generalized linear models with elastic net regularization.
 #' Calls [glmnet::cv.glmnet()] from package \CRANpkg{glmnet}.
 #'
-#' @section Custom mlr3 defaults:
-#' - `family` The default is set to `"cox"`.
+#' @section Custom mlr3 parameters:
+#' - `family` is set to `"cox"` and cannot be changed.
 #'
 #' @templateVar id surv.cv_glmnet
 #' @template learner

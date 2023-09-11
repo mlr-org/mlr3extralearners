@@ -90,15 +90,10 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{verbose}:
-\itemize{
-\item Actual default: \code{1L}
-\item Adjusted default: \code{0L}
-\item Reason for change: Prevents plotting.
-}
+\item \code{verbose} is initialized to 0.
 }
 }
 

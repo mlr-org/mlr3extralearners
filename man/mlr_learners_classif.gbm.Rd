@@ -45,22 +45,11 @@ lrn("classif.gbm")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{keep.data}:
-\itemize{
-\item Actual default: TRUE
-\item Adjusted default: FALSE
-\item Reason for change: \code{keep.data = FALSE} saves memory during model fitting.
-}
-\item \code{n.cores}:
-\itemize{
-\item Actual default: NULL
-\item Adjusted default: 1
-\item Reason for change: Suppressing the automatic internal parallelization if
-\code{cv.folds} > 0.
-}
+\item \code{keep.data} is initialized to \code{FALSE} to save memory.
+\item \code{n.cores} is initialized to 1 to avoid conflicts with parallelization through future.
 }
 }
 

@@ -18,17 +18,10 @@ as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 }
 }
-}
 
-\section{Custom mlr3 defaults}{
 
 \itemize{
-\item \code{num.threads}:
-\itemize{
-\item Actual default: \code{NULL}, triggering auto-detection of the number of CPUs.
-\item Adjusted value: 1.
-\item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-}
+\item \code{num.threads} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 }
 }
 

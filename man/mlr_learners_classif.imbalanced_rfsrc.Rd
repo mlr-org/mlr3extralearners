@@ -9,36 +9,6 @@
 Imbalanced Random forest for classification between two classes.
 Calls \code{\link[randomForestSRC:imbalanced.rfsrc]{randomForestSRC::imbalanced.rfsrc()}} from from \CRANpkg{randomForestSRC}.
 }
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
-Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
-}
-\item \code{sampsize}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
-as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
-Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
-}
-}
-}
-
-\section{Custom mlr3 defaults}{
-
-\itemize{
-\item \code{cores}:
-\itemize{
-\item Actual default: Auto-detecting the number of cores
-\item Adjusted default: 1
-\item Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
-}
-}
-}
-
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -100,6 +70,26 @@ lrn("classif.imbalanced_rfsrc")
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab gmean, misclass, brier, none \tab - \cr
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
+as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
+}
+\item \code{sampsize}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
+as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
+Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
+}
+\item \code{cores}:
+This value is set as the option \code{rf.cores} during training and is set to 1 by default.
 }
 }
 
