@@ -128,27 +128,21 @@ save the learner using <code>saveRDS</code>. This will change in future versions
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
     
 
-<ul><li><p><code>convert_categorical</code>:
-Additional parameter. If this parameter is set to <code>TRUE</code> (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.</p></li>
-<li><p><code>num_class</code>:
-This parameter is automatically inferred for multiclass tasks and does not have to be set.</p></li>
+<ul><li><p><code>num_threads</code>:</p><ul><li><p>Actual default: 0L</p></li>
+<li><p>Initial value: 1L</p></li>
+<li><p>Reason for change: Prevents accidental conflicts with <code>future</code>.</p></li>
+</ul></li>
+<li><p><code>verbose</code>:</p><ul><li><p>Actual default: 1L</p></li>
+<li><p>Initial value: -1L</p></li>
+<li><p>Reason for change: Prevents accidental conflicts with mlr messaging system.</p></li>
+</ul></li>
 </ul></div>
     <div class="section level2">
     <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
     
 
-<ul><li><p><code>num_threads</code>:</p><ul><li><p>Actual default: 0L</p></li>
-<li><p>Adjusted default: 1L</p></li>
-<li><p>Reason for change: Prevents accidental conflicts with <code>future</code>.</p></li>
-</ul></li>
-<li><p><code>verbose</code>:</p><ul><li><p>Actual default: 1L</p></li>
-<li><p>Adjusted default: -1L</p></li>
-<li><p>Reason for change: Prevents accidental conflicts with mlr messaging system.</p></li>
-</ul></li>
-<li><p><code>objective</code>:
-Depending if the task is binary / multiclass, the default is set to <code>"binary"</code> or
+<ul><li><p><code>objective</code>:
+Depending if the task is binary / multiclass, the default is <code>"binary"</code> or
 <code>"multiclasss"</code>.</p></li>
 </ul></div>
     <div class="section level2">
@@ -157,6 +151,12 @@ Depending if the task is binary / multiclass, the default is set to <code>"binar
 
 <ul><li><p><code>early_stopping</code>
 Whether to use the test set for early stopping. Default is <code>FALSE</code>.</p></li>
+<li><p><code>convert_categorical</code>:
+Additional parameter. If this parameter is set to <code>TRUE</code> (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.</p></li>
+<li><p><code>num_class</code>:
+This parameter is automatically inferred for multiclass tasks and does not have to be set.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>

@@ -99,15 +99,7 @@ Calls <code><a href="https://rdrr.io/pkg/ranger/man/ranger.html" class="external
 as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
 Note that <code>mtry</code> and <code>mtry.ratio</code> are mutually exclusive.</p></li>
 </ul></li>
-</ul></div>
-    <div class="section level2">
-    <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
-    
-
-<ul><li><p><code>num.threads</code>:</p><ul><li><p>Actual default: <code>NULL</code>, triggering auto-detection of the number of CPUs.</p></li>
-<li><p>Adjusted value: 1.</p></li>
-<li><p>Reason for change: Conflicting with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
-</ul></li>
+</ul><ul><li><p><code>num.threads</code> is initialized to 1 to avoid conflicts with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>

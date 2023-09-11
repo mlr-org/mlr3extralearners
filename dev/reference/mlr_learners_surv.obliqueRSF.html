@@ -119,7 +119,7 @@ We highly recommend you use aorsf to fit oblique random survival forests: see ht
     
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>ntree</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>eval_times</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>min_events_to_split_node</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>min_obs_to_split_node</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>min_obs_in_leaf_node</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>min_events_in_leaf_node</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nsplit</td><td>integer</td><td>25</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>gamma</td><td>numeric</td><td>0.5</td><td></td><td>\([1e-16, \infty)\)</td></tr><tr><td>max_pval_to_split_node</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>dfmax</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>use.cv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>compute_oob_predictions</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>random_seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
     <div class="section level2">
-    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
     
 
 <ul><li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry_ratio</code>
@@ -128,13 +128,10 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 </ul></li>
 </ul></div>
     <div class="section level2">
-    <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
     
 
-<ul><li><p><code>verbose</code>:</p><ul><li><p>Actual default: <code>TRUE</code></p></li>
-<li><p>Adjusted default: <code>FALSE</code></p></li>
-<li><p>Reason for change: mlr3 already has it's own verbose set to <code>TRUE</code> by default</p></li>
-</ul></li>
+<ul><li><p><code>verbose</code> is initialized to <code>FALSE</code></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>

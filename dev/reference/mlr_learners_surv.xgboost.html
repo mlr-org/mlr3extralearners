@@ -98,27 +98,13 @@ against CUDA.
 See <a href="https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support" class="external-link">https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support</a>.</p>
     </div>
     <div class="section level2">
-    <h2 id="custom-mlr-defaults">Custom mlr3 defaults<a class="anchor" aria-label="anchor" href="#custom-mlr-defaults"></a></h2>
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
     
 
-<ul><li><p><code>nrounds</code>:</p><ul><li><p>Actual default: no default.</p></li>
-<li><p>Adjusted default: 1.</p></li>
-<li><p>Reason for change: Without a default construction of the learner
-would error. Just setting a nonsense default to workaround this.
-<code>nrounds</code> needs to be tuned by the user.</p></li>
-</ul></li>
-<li><p><code>nthread</code>:</p><ul><li><p>Actual value: Undefined, triggering auto-detection of the number of CPUs.</p></li>
-<li><p>Adjusted value: 1.</p></li>
-<li><p>Reason for change: Conflicting with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
-</ul></li>
-<li><p><code>verbose</code>:</p><ul><li><p>Actual default: 1.</p></li>
-<li><p>Adjusted default: 0.</p></li>
-<li><p>Reason for change: Reduce verbosity.</p></li>
-</ul></li>
-<li><p><code>objective</code>:</p><ul><li><p>Actual default: <code>reg:squarederror</code>.</p></li>
-<li><p>Adjusted default: <code>survival:cox</code>.</p></li>
-<li><p>Reason for change: Changed to a survival objective.</p></li>
-</ul></li>
+<ul><li><p><code>nrounds</code> is initialized to 1.</p></li>
+<li><p><code>nthread</code> is initialized to 1 to avoid conflicts with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
+<li><p><code>verbose</code> is initialized to 0.</p></li>
+<li><p><code>objective</code> is initialized to <code>survival:cox</code> for survival analysis.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="early-stopping">Early stopping<a class="anchor" aria-label="anchor" href="#early-stopping"></a></h2>
