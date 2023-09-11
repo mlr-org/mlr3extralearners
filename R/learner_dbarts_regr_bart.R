@@ -68,7 +68,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         packages = c("mlr3extralearners", "dbarts"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         # TODO: add "se" to the list of predict types.
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = ps,
         properties = c("weights"),
         man = "mlr3extralearners::mlr_learners_regr.bart",
