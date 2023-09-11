@@ -57,7 +57,7 @@ lrn("regr.bart")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item Parameter: offset
@@ -73,15 +73,10 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item Parameter: keeptrees
-\itemize{
-\item Original: FALSE
-\item New: TRUE
-\item Reason: Required for prediction
-}
+\item \code{keeptrees} is initialized to \code{TRUE} because it is required for prediction.
 }
 }
 
