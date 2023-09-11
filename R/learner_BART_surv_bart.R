@@ -200,17 +200,9 @@ delayedAssign(
           c(3, 2, 1)
         )
 
-        # Mean posterior survival matrix (N obs x K times)
-        surv = matrix(pred$surv.test.mean, nrow = N, ncol = K, byrow = TRUE)
-
-        # get crank as expected mortality using mean posterior
-        pred_list = mlr3proba::.surv_return(times = times, surv = surv)
-
-        # replace with the full survival posterior
-        pred_list$distr = surv.array
-
-        # return list with crank and distr
-        pred_list
+        # distr => full survival array
+        # crank => expected mortality using the mean posterior survival matrix
+        mlr3proba::.surv_return(times = times, surv = surv.array, which.curve = 'mean')
       }
     )
   )
