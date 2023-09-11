@@ -21,10 +21,10 @@
 #' and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
 #' of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `k`:
 #'   - Actual default: `0`
-#'   - Adjusted default: `1`
+#'   - Initial value: `1`
 #'   - Reason for change: The default value of `0` is equivalent to, and a much less efficient
 #'   implementation of, [LearnerSurvParametric].
 #'

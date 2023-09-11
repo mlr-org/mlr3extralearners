@@ -52,7 +52,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         id = "regr.gamboost",
         packages = c("mlr3extralearners", "mboost"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = ps,
         properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.gamboost",
@@ -82,7 +82,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
 
       if (self$param_set$values$family != "custom") {
         pars_family = pars[which(names(pars) %in%
-          formalArgs(utils::getFromNamespace(
+          formalArgs(getFromNamespace(
             pars_gamboost$family,
             asNamespace("mboost"))))]
       }

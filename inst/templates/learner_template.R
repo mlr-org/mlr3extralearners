@@ -9,11 +9,8 @@
 #' @section Initial parameter values:
 #' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Custom mlr3 parameters:
 #' FIXME: DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
-#'
-#' @section Installation:
-#' FIXME: CUSTOM INSTALLATION INSTRUCTIONS. DELETE IF NOT APPLICABLE.
 #'
 #' @templateVar id <type>.<key>
 #' @template learner

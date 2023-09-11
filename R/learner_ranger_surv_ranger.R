@@ -12,11 +12,8 @@
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
 #'
-#' @section Custom mlr3 defaults:
-#' - `num.threads`:
-#'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
-#'   - Adjusted value: 1.
-#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
+#' @section Initial parameter values:
+#' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #'
 #' @templateVar id surv.ranger
 #' @template learner

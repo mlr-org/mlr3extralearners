@@ -147,32 +147,26 @@ lrn("classif.lightgbm")
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
-\item \code{num_class}:
-This parameter is automatically inferred for multiclass tasks and does not have to be set.
+\item \code{num_threads}:
+\itemize{
+\item Actual default: 0L
+\item Initial value: 1L
+\item Reason for change: Prevents accidental conflicts with \code{future}.
+}
+\item \code{verbose}:
+\itemize{
+\item Actual default: 1L
+\item Initial value: -1L
+\item Reason for change: Prevents accidental conflicts with mlr messaging system.
+}
 }
 }
 
 \section{Custom mlr3 defaults}{
 
 \itemize{
-\item \code{num_threads}:
-\itemize{
-\item Actual default: 0L
-\item Adjusted default: 1L
-\item Reason for change: Prevents accidental conflicts with \code{future}.
-}
-\item \code{verbose}:
-\itemize{
-\item Actual default: 1L
-\item Adjusted default: -1L
-\item Reason for change: Prevents accidental conflicts with mlr messaging system.
-}
 \item \code{objective}:
-Depending if the task is binary / multiclass, the default is set to \code{"binary"} or
+Depending if the task is binary / multiclass, the default is \code{"binary"} or
 \code{"multiclasss"}.
 }
 }
@@ -182,6 +176,12 @@ Depending if the task is binary / multiclass, the default is set to \code{"binar
 \itemize{
 \item \code{early_stopping}
 Whether to use the test set for early stopping. Default is \code{FALSE}.
+\item \code{convert_categorical}:
+Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.
+\item \code{num_class}:
+This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
 }
 

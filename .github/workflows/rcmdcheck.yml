@@ -56,11 +56,12 @@ jobs:
 
       - name: Install Python
         run: |
-          pak::pkg_install('rstudio/reticulate')
+          pak::pkg_install('reticulate')
           reticulate::install_miniconda()
+          reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
-          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'))
-          reticulate::py_install(c('torch', 'pycox'), pip = TRUE)
+          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'), method = "conda")
+          reticulate::py_install(c('pytorch', 'pycox'), method = "conda")
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2

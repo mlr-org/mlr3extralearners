@@ -49,13 +49,13 @@ lrn("regr.liblinear")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{svr_eps}:
 \itemize{
 \item Actual default: \code{NULL}
-\item Adjusted default: 0.001
+\item Initial value: 0.001
 \item Reason for change: \code{svr_eps} is type dependent and the "type" is handled
 by the mlr3learner. The default value is set to th default of the respective
 "type".
