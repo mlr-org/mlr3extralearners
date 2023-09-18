@@ -100,7 +100,7 @@ Suggests:
     testthat,
     xgboost
 Remotes:
-    alan-turing-institute/distr6,
+    xoopR/distr6,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
