@@ -29,7 +29,8 @@ test_that("paramset surv.bart predict", {
     "x.train", # handled internally, used in `surv.pre.bart`
     "x.test", # handled internally, used in `surv.pre.bart`
     "nice", # handled internally
-    "quiet" # added to suppress print messages
+    "quiet", # added to suppress print messages
+    "which.curve" # added to choose 3rd dimension (posterior draw) for crank calculation
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
