@@ -193,11 +193,6 @@ delayedAssign(
         # Number of posterior draws
         M = nrow(pred$surv.test)
 
-        # save the full posterior survival matrix and the mean for checking
-        # TODO: remove next two lines
-        self$model$surv.test = pred$surv.test
-        self$model$surv.test.mean = pred$surv.test.mean
-
         # Convert full posterior survival matrix to 3D survival array
         # See page 34-35 in Sparapani (2021) for more details
         surv.array = aperm(
