@@ -203,7 +203,7 @@ delayedAssign(
         # distr => 3d survival array
         # crank => expected mortality
         mlr3proba::.surv_return(times = times, surv = surv.array,
-          which.curve = pars_pred$which.curve)
+          which.curve = pars$which.curve)
       }
     )
   )
