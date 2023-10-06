@@ -72,7 +72,7 @@ delayedAssign(
           openmp = p_lgl(default = TRUE, tags = "predict"),
           quiet = p_lgl(default = TRUE, tags = "predict"),
           importance = p_fct(default = "count", levels = c("count", "prob"), tags = "train"),
-          which.curve = p_uty(tags = "predict")
+          which.curve = p_dbl(special_vals = list("mean"), tags = "predict")
         )
 
         # custom defaults
