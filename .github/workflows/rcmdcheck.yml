@@ -58,10 +58,9 @@ jobs:
         run: |
           pak::pkg_install('reticulate')
           reticulate::install_miniconda()
-          reticulate::conda_create('r-reticulate', python_version = '3.9')
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
-          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'), method = "conda")
+          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub'), method = "conda")
           reticulate::py_install(c('pytorch', 'pycox'), method = "conda")
         shell: Rscript {0}
 
