@@ -60,6 +60,7 @@ jobs:
           reticulate::install_miniconda()
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
+          reticulate::py_install("numpy")
           survivalmodels::install_pycox(pip = TRUE, install_torch = TRUE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = TRUE)
         shell: Rscript {0}
