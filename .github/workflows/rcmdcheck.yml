@@ -60,8 +60,8 @@ jobs:
           reticulate::install_miniconda()
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
-          keras::install_keras(method = "conda")
-          reticulate::py_install(c('pytorch', 'pycox', 'IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub'), method = "conda")
+          survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
+          survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
