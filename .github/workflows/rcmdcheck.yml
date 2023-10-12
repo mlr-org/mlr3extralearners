@@ -57,7 +57,7 @@ jobs:
       - name: Install Python
         run: |
           pak::pkg_install('reticulate')
-          reticulate::install_miniconda()
+          reticulate::install_miniconda(force = TRUE)
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
           reticulate::py_install("numpy")
