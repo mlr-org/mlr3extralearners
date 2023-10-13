@@ -124,6 +124,7 @@ These are:
 
 * **tags** that organize the parameters, e.g. whether they are used during training or prediction.
 * **default values** which give information about the value that is used by the upstream function when no value is set.
+  Note that this is not necessarily the default of the function signature but what is used internally: e.g. the default of parameter `a` for a function is `NULL`, but internally the value for `a` is set to `1` it is left as `NULL` by the caller.
 * **initial values** are the initial `$values` of the parameter set that are set during construction.
 * **custom checks** which allow to specify custom constraints for untyped parameters (`ParamUty`).
 
