@@ -162,8 +162,8 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvLearnerSurvBART-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvLearnerSurvBART-importance}{}}}
 \subsection{Method \code{importance()}}{
-Two types of importance scores are supported based on the initial value
-for the parameter \code{importance}:
+Two types of importance scores are supported based on the value
+of the parameter \code{importance}:
 \enumerate{
 \item \code{prob}: The mean selection probability of each feature in the trees,
 extracted from the slot \code{varprob.mean}.
