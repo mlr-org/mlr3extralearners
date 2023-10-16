@@ -38,6 +38,7 @@ test_that("paramtest surv.aorsf predict", {
     "pred_horizon", # all times required for distr
     "pred_type", # handled internally
     "na_action", # not implemented
+    "verbose_progress", # handled internally
     "boundary_checks" # not implemented
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
