@@ -272,7 +272,12 @@ are:</p>
 they are used during training or prediction.</li>
 <li>
 <strong>default values</strong> which give information about the
-value that is used by the upstream function when no value is set.</li>
+value that is used by the upstream function when no value is set. Note
+that this is not necessarily the default of the function signature but
+what is used internally: e.g. the default of parameter <code>a</code>
+for a function is <code>NULL</code>, but internally the value for
+<code>a</code> is set to <code>1</code> it is left as <code>NULL</code>
+by the caller.</li>
 <li>
 <strong>initial values</strong> are the initial <code>$values</code>
 of the parameter set that are set during construction.</li>
