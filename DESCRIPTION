@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.7.0-9000
+Version: 0.7.1
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -101,7 +101,7 @@ Suggests:
     testthat,
     xgboost
 Remotes:
-    alan-turing-institute/distr6,
+    xoopR/distr6,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
