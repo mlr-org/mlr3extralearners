@@ -169,8 +169,9 @@ for the parameter \code{importance}:
 extracted from the slot \code{varprob.mean}.
 If \code{sparse = FALSE} (default), this is a fixed constant.
 Recommended to use this option when \code{sparse = TRUE}.
-\item \code{count}: The observed count of each feature in the trees, extracted
-from the slot \code{varcount.mean}.
+\item \code{count}: The mean observed count of each feature in the trees (average
+number of times the feature was used in a tree decision rule across all
+posterior draws), extracted from the slot \code{varcount.mean}.
 This is the default importance scores.
 }
 
