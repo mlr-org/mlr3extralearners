@@ -10,7 +10,6 @@ test_that("paramtest surv.dnnsurv train", {
     "status_variable", # handled internally
     "x", # unused
     "y", # unused
-    "schedule_decay", # not used
     "rho", # handled internally
     "global_clipnorm", # handled internally
     "use_ema", # handled internally
