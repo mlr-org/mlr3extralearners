@@ -50,100 +50,97 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-delayedAssign(
-  "LearnerSurvParametric",
-  R6Class("LearnerSurvParametric",
-    inherit = mlr3proba::LearnerSurv,
-    public = list(
-      #' @description
-      #' Creates a new instance of this [R6][R6::R6Class] class.
-      initialize = function() {
-        ps = ps(
-          type = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
-            tags = "predict"),
-          na.action = p_uty(tags = "train"),
-          dist = p_fct(default = "weibull",
-            levels = c("weibull", "exponential", "gaussian",
-              "lognormal", "loglogistic"), tags = "train"),
-          parms = p_uty(tags = "train"),
-          init = p_uty(tags = "train"),
-          scale = p_dbl(default = 0, lower = 0, tags = "train"),
-          maxiter = p_int(default = 30L, tags = "train"),
-          rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
-          toler.chol = p_dbl(default = 1e-10, tags = "train"),
-          debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
-          outer.max = p_int(default = 10L, tags = "train"),
-          robust = p_lgl(default = FALSE, tags = "train"),
-          score = p_lgl(default = FALSE, tags = "train"),
-          cluster = p_uty(tags = "train")
-        )
+LearnerSurvParametric = R6Class("LearnerSurvParametric",
+  inherit = mlr3proba::LearnerSurv,
+  public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
+    initialize = function() {
+      ps = ps(
+        type = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
+          tags = "predict"),
+        na.action = p_uty(tags = "train"),
+        dist = p_fct(default = "weibull",
+          levels = c("weibull", "exponential", "gaussian",
+            "lognormal", "loglogistic"), tags = "train"),
+        parms = p_uty(tags = "train"),
+        init = p_uty(tags = "train"),
+        scale = p_dbl(default = 0, lower = 0, tags = "train"),
+        maxiter = p_int(default = 30L, tags = "train"),
+        rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
+        toler.chol = p_dbl(default = 1e-10, tags = "train"),
+        debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
+        outer.max = p_int(default = 10L, tags = "train"),
+        robust = p_lgl(default = FALSE, tags = "train"),
+        score = p_lgl(default = FALSE, tags = "train"),
+        cluster = p_uty(tags = "train")
+      )
 
-        super$initialize(
-          id = "surv.parametric",
-          param_set = ps,
-          predict_types = c("distr", "lp", "crank"),
-          feature_types = c("logical", "integer", "numeric", "factor"),
-          properties = "weights",
-          packages = c("mlr3extralearners", "survival", "pracma"),
-          man = "mlr3extralearners::mlr_learners_surv.parametric",
-          label = "Fully Parametric Learner"
-        )
+      super$initialize(
+        id = "surv.parametric",
+        param_set = ps,
+        predict_types = c("distr", "lp", "crank"),
+        feature_types = c("logical", "integer", "numeric", "factor"),
+        properties = "weights",
+        packages = c("mlr3extralearners", "survival", "pracma"),
+        man = "mlr3extralearners::mlr_learners_surv.parametric",
+        label = "Fully Parametric Learner"
+      )
+    }
+  ),
+
+  private = list(
+    .train = function(task) {
+
+      pv = self$param_set$get_values(tags = "train")
+
+      if ("weights" %in% task$properties) {
+        pv$weights = task$weights$weight
       }
-    ),
 
-    private = list(
-      .train = function(task) {
+      fit = invoke(survival::survreg, formula = task$formula(), data = task$data(),
+        .args = pv)
 
-        pv = self$param_set$get_values(tags = "train")
+      # Fits the baseline distribution by reparameterising the fitted coefficients.
+      # These were mostly derived numerically as precise documentation on the parameterisations is
+      # hard to find.
+      location = as.numeric(fit$coefficients[1])
+      scale = fit$scale
+      eps = 1e-15
 
-        if ("weights" %in% task$properties) {
-          pv$weights = task$weights$weight
-        }
-
-        fit = invoke(survival::survreg, formula = task$formula(), data = task$data(),
-          .args = pv)
-
-        # Fits the baseline distribution by reparameterising the fitted coefficients.
-        # These were mostly derived numerically as precise documentation on the parameterisations is
-        # hard to find.
-        location = as.numeric(fit$coefficients[1])
-        scale = fit$scale
-        eps = 1e-15
-
-        if (scale < eps) {
-          scale = eps
-        } else if (scale > .Machine$double.xmax) {
-          scale = .Machine$double.xmax
-        }
-
-        if (location < -709 & fit$dist %in% c("weibull", "exponential", "loglogistic")) {
-          location = -709
-        }
-
-        basedist = switch(fit$dist,
-          "weibull" = distr6::Weibull$new(shape = 1 / scale, scale = exp(location),
-            decorators = "ExoticStatistics"),
-          "exponential" = distr6::Exponential$new(scale = exp(location),
-            decorators = "ExoticStatistics"),
-          "gaussian" = distr6::Normal$new(mean = location, sd = scale,
-            decorators = "ExoticStatistics"),
-          "lognormal" = distr6::Lognormal$new(meanlog = location, sdlog = scale,
-            decorators = "ExoticStatistics"),
-          "loglogistic" = distr6::Loglogistic$new(scale = exp(location),
-            shape = 1 / scale,
-            decorators = "ExoticStatistics")
-        )
-
-        set_class(list(fit = fit, basedist = basedist), "surv.parametric")
-      },
-
-      .predict = function(task) {
-        pv = self$param_set$get_values(tags = "predict")
-        pred = invoke(.predict_survreg, object = self$model, task = task, learner = self, .args = pv)
-        # lp is aft-style, where higher value = lower risk, opposite needed for crank
-        list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
+      if (scale < eps) {
+        scale = eps
+      } else if (scale > .Machine$double.xmax) {
+        scale = .Machine$double.xmax
       }
-    )
+
+      if (location < -709 & fit$dist %in% c("weibull", "exponential", "loglogistic")) {
+        location = -709
+      }
+
+      basedist = switch(fit$dist,
+        "weibull" = distr6::Weibull$new(shape = 1 / scale, scale = exp(location),
+          decorators = "ExoticStatistics"),
+        "exponential" = distr6::Exponential$new(scale = exp(location),
+          decorators = "ExoticStatistics"),
+        "gaussian" = distr6::Normal$new(mean = location, sd = scale,
+          decorators = "ExoticStatistics"),
+        "lognormal" = distr6::Lognormal$new(meanlog = location, sdlog = scale,
+          decorators = "ExoticStatistics"),
+        "loglogistic" = distr6::Loglogistic$new(scale = exp(location),
+          shape = 1 / scale,
+          decorators = "ExoticStatistics")
+      )
+
+      set_class(list(fit = fit, basedist = basedist), "surv.parametric")
+    },
+
+    .predict = function(task) {
+      pv = self$param_set$get_values(tags = "predict")
+      pred = invoke(.predict_survreg, object = self$model, task = task, learner = self, .args = pv)
+      # lp is aft-style, where higher value = lower risk, opposite needed for crank
+      list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
+    }
   )
 )
 
@@ -287,4 +284,4 @@ delayedAssign(
   list(lp = as.numeric(lp), distr = distr)
 }
 
-.extralrns_dict$add("surv.parametric", function() LearnerSurvParametric$new())
+.extralrns_dict$add("surv.parametric", LearnerSurvParametric)
