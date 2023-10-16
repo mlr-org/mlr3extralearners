@@ -92,7 +92,7 @@ delayedAssign(
       },
 
       #' @description
-      #' Two types of importance scores are supported based on the initial value
+      #' Two types of importance scores are supported based on the value
       #' for the parameter `importance`:
       #' 1. `prob`: The mean selection probability of each feature in the trees,
       #' extracted from the slot `varprob.mean`.
