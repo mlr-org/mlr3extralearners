@@ -7,10 +7,6 @@ test_that("paramtest surv.aorsf train", {
     "weights", # handled internally
     "oobag_fun", # handled internally
     "data", # handled internally
-    "n_thread", # handled internally
-    "sample_with_replacement", # handled internally
-    "sample_fraction", # handled internally
-    "split_rule", # handled internally
     "formula", # handled internally
     "control", # handled internally
     "oobag_fun", # handled internally
@@ -40,10 +36,8 @@ test_that("paramtest surv.aorsf predict", {
     "object", # handled internally
     "new_data", # handled internally
     "pred_horizon", # all times required for distr
-    "pred_aggregate", # handled internally
     "pred_type", # handled internally
     "na_action", # not implemented
-    "n_thread", # handled internally
     "verbose_progress", # handled internally
     "boundary_checks" # not implemented
   )
