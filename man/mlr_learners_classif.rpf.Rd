@@ -15,9 +15,9 @@ Calls \code{\link[randomPlantedForest:rpf]{randomPlantedForest::rpf()}} from 'ra
 \item \code{loss}:
 \itemize{
 \item Actual default: \code{"L2"}.
-\item Adjusted default: \code{"logit"}.
+\item Adjusted default: \code{"exponential"}.
 \item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
-probabilities.
+probabilities and more akin to the linear predictor of a GLM.
 }
 \item \code{max_interaction}:
 \itemize{
@@ -68,11 +68,11 @@ lrn("classif.rpf")
    splits \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_try \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    t_try \tab numeric \tab 0.4 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   loss \tab character \tab logit \tab L1, L2, logit, exponential \tab - \cr
+   loss \tab character \tab exponential \tab L1, L2, logit, exponential \tab - \cr
    delta \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    epsilon \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    cv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    purify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
@@ -86,7 +86,7 @@ print(learner)
 learner$param_set$ids()
 }
 \references{
-Hiabu, Munir, Mammen, Enno, Meyer, T. J (2020).
+Hiabu, Munir, Mammen, Enno, Meyer, T. J (2023).
 \dQuote{Random Planted Forest: a directly interpretable tree ensemble.}
 \emph{arXiv preprint arXiv:2012.14563}.
 \doi{10.48550/ARXIV.2012.14563}.
