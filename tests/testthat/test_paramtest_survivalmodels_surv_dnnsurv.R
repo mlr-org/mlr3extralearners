@@ -9,21 +9,7 @@ test_that("paramtest surv.dnnsurv train", {
     "time_variable", # handled internally
     "status_variable", # handled internally
     "x", # unused
-    "y", # unused
-    "rho", # handled internally
-    "global_clipnorm", # handled internally
-    "use_ema", # handled internally
-    "ema_momentum", # handled internally
-    "ema_overwrite_frequency", # handled internally
-    "jit_compile", # handled internally
-    "initial_accumultator_value", # handled internally
-    "amsgrad", # handled internally
-    "lr_power", # handled internally
-    "l1_regularization_strength", # handled internally
-    "l2_regularization_strength", # handled internally
-    "l2_shrinkage_regularization_strength", # handled internally
-    "beta", # handled internally
-    "centered" # handled internally
+    "y" # unused
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
