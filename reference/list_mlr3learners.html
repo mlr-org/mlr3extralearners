@@ -116,29 +116,30 @@ names in table.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   id                            properties  predict_types</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  1:     surv.akritas                                          crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  2:       surv.aorsf         importance,missings,oob_error    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:  surv.blackboost                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:     surv.cforest                               weights    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:    surv.coxboost                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:       surv.coxph                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:     surv.coxtime                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:       surv.ctree                               weights    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9: surv.cv_coxboost                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10:     surv.deephit                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:    surv.deepsurv                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:     surv.dnnsurv                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:    surv.flexible                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:    surv.gamboost  importance,selected_features,weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    surv.glmboost                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:      surv.kaplan                              missings    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:      surv.loghaz                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:      surv.mboost  importance,selected_features,weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:      surv.nelson                              missings    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:  surv.obliqueRSF                    missings,oob_error    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:  surv.parametric                               weights crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:    surv.pchazard                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:   surv.penalized                                          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:      surv.ranger          importance,oob_error,weights    crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:       surv.rfsrc importance,missings,oob_error,weights    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3:        surv.bart                   importance,missings    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4:  surv.blackboost                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5:     surv.cforest                               weights    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6:    surv.coxboost                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7:       surv.coxph                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8:     surv.coxtime                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9:       surv.ctree                               weights    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10: surv.cv_coxboost                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11:     surv.deephit                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12:    surv.deepsurv                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13:     surv.dnnsurv                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14:    surv.flexible                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    surv.gamboost  importance,selected_features,weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16:    surv.glmboost                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17:      surv.kaplan                              missings    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18:      surv.loghaz                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19:      surv.mboost  importance,selected_features,weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20:      surv.nelson                              missings    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21:  surv.obliqueRSF                    missings,oob_error    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22:  surv.parametric                               weights crank,distr,lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23:    surv.pchazard                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24:   surv.penalized                                          crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25:      surv.ranger          importance,oob_error,weights    crank,distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26:       surv.rfsrc importance,missings,oob_error,weights    crank,distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                   id                            properties  predict_types</span>
 </code></pre></div>
     </div>

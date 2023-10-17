@@ -522,7 +522,7 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># basic learner properties</span></span>
-<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span>, check_man <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># you can skip tests using the `exclude` argument</span></span>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
