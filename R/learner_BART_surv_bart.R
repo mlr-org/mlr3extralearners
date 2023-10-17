@@ -82,7 +82,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       # custom defaults
       param_set$values = list(mc.cores = 1, quiet = TRUE, importance = "count",
-        which.curve = 0.5) # 0.5 quantile => median posterior
+                              which.curve = 0.5) # 0.5 quantile => median posterior
 
       super$initialize(
         id = "surv.bart",
@@ -210,7 +210,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       # distr => 3d survival array
       # crank => expected mortality
       mlr3proba::.surv_return(times = times, surv = surv_array,
-        which.curve = pars$which.curve)
+                              which.curve = pars$which.curve)
     }
   )
 )
