@@ -17,7 +17,9 @@ Authors@R: c(
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
-    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb")
+    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
+    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0002-3609-8674"))
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
