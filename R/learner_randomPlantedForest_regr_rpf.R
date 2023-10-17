@@ -13,7 +13,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("hiabu_2019")`
+#' `r format_bib("hiabu_2023")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -33,7 +33,7 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
         split_try = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
         t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        parallel = p_lgl(default = FALSE, tags = "train"),
+        nthreads = p_int(lower = 1, upper = Inf, default = 1, tags = "train"),
         cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train")
       )
@@ -62,9 +62,6 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
       pars[["max_interaction_limit"]] = NULL
       n_features = length(task$feature_names)
 
-      formula = task$formula()
-      data = task$data()
-
       pars = convert_ratio(
         pars, "max_interaction", "max_interaction_ratio",
         min(n_features, max_interaction_limit)
@@ -72,8 +69,8 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
 
       invoke(
         randomPlantedForest::rpf,
-        formula = formula,
-        data = data,
+        x = task$data(cols = task$feature_names),
+        y = task$data(cols = task$target_names),
         .args = pars
       )
     },

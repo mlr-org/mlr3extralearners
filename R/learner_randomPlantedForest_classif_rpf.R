@@ -10,9 +10,9 @@
 #' @section Custom mlr3 defaults:
 #' - `loss`:
 #'   - Actual default: `"L2"`.
-#'   - Adjusted default: `"logit"`.
+#'   - Adjusted default: `"exponential"`.
 #'   - Reason for change: Using `"L2"` (or `"L1"`) loss does not guarantee predictions are valid
-#'     probabilities.
+#'     probabilities and more akin to the linear predictor of a GLM.
 #' - `max_interaction`:
 #'   - This hyperparameter can alternatively be set via `max_interaction_ratio` as
 #'     `max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)`,
@@ -32,7 +32,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("hiabu_2019")`
+#' `r format_bib("hiabu_2023")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -51,16 +51,16 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
         splits = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
         split_try = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
         t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
-        loss = p_fct(c("L1", "L2", "logit", "exponential"), default = "logit", tags = "train"),
+        loss = p_fct(c("L1", "L2", "logit", "exponential"), default = "exponential", tags = "train"),
         delta = p_dbl(lower = 0, upper = 1, default = 1, tags = "train"),
         epsilon = p_dbl(lower = 0, upper = 1, default = 0.1, tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        parallel = p_lgl(default = FALSE, tags = "train"),
+        nthreads = p_int(lower = 1, upper = Inf, default = 1, tags = "train"),
         cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train")
       )
 
-      param_set$values = list(loss = "logit", max_interaction_limit = 30)
+      param_set$values = list(loss = "exponential", max_interaction_limit = 30)
 
       super$initialize(
         id = "classif.rpf",
@@ -84,9 +84,6 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       pars[["max_interaction_limit"]] = NULL
       n_features = length(task$feature_names)
 
-      formula = task$formula()
-      data = task$data()
-
       pars = convert_ratio(
         pars, "max_interaction", "max_interaction_ratio",
         min(n_features, max_interaction_limit)
@@ -94,8 +91,8 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
 
       invoke(
         randomPlantedForest::rpf,
-        formula = formula,
-        data = data,
+        x = task$data(cols = task$feature_names),
+        y = task$data(cols = task$target_names),
         .args = pars
       )
     },
