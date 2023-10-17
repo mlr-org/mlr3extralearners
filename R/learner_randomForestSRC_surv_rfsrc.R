@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id surv.rfsrc
 #'
-#' @inheritSection mlr_learners_classif.rfsrc Initial parameter values
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @details
 #' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and
@@ -96,7 +96,8 @@ delayedAssign(
           estimator = p_fct(default = "nelson", levels = c("nelson", "kaplan"),
             tags = "predict"),
           cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
-          save.memory = p_lgl(default = FALSE, tags = "train")
+          save.memory = p_lgl(default = FALSE, tags = "train"),
+          perf.type = p_fct(levels = "none", tags = "train")
         )
 
         super$initialize(
@@ -149,6 +150,7 @@ delayedAssign(
         pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
         pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
         cores = pv$cores %??% 1L
+        pv$cores = NULL
 
         if ("weights" %in% task$properties) {
           pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -167,6 +169,7 @@ delayedAssign(
         pars_predict$estimator = NULL
         pars_predict$var.used = "FALSE"
         cores = pars_predict$cores %??% 1L # additionaly implemented by author
+        pars_predict$cores = NULL
 
         p = invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
           .opts = list(rf.cores = cores))

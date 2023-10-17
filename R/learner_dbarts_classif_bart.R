@@ -23,7 +23,7 @@
 #'    and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
 #'    `dbarts::dbart`.
 #'
-#' * Parameter: nthread, nchain, combineChains, combinechains
+#' * Parameter: nchain, combineChains, combinechains
 #'  * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' * Parameter: sigest, sigdf, sigquant, keeptres
@@ -57,12 +57,14 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
         usequants = p_lgl(default = FALSE, tags = "train"),
         numcut = p_int(default = 100L, lower = 1L, tags = "train"),
         printcutoffs = p_int(default = 0, tags = "train"),
-        verbose = p_lgl(default = TRUE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        nthread = p_int(default = 1L, tags = c("train", "threads")),
         keepcall = p_lgl(default = TRUE, tags = "train"),
         sampleronly = p_lgl(default = FALSE, tags = "train"),
         seed = p_int(default = NA_integer_, tags = "train", special_vals = list(NA_integer_)),
         proposalprobs = p_uty(default = NULL, tags = "train"),
-        splitprobs = p_uty(default = NULL, tags = "train")
+        splitprobs = p_uty(default = NULL, tags = "train"),
+        keepsampler = p_lgl(default = NO_DEF, tags = "train")
       )
 
       super$initialize(

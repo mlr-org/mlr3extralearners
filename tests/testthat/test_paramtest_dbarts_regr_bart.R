@@ -7,10 +7,10 @@ test_that("paramtest regr.bart train", {
     "x.test", # handled internally
     "binaryOffset", # classification only
     "weights", # handled by task
-    "nthread", # handled by future (
     "nchain", # unused (specifies how many independent tree sets and fits should be calculated
     # This can be done with future
-    "combinechains" # only used if nchain > 1
+    "combinechains", # only used if nchain > 1
+    "weights" # train predict weights not clear from the documentation
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -25,7 +25,8 @@ test_that("paramtest regr.bart predict", {
     "newdata", # handled internally
     "object", # handled internally
     "type", # only allow the response
-    "offset" # we don't allow offsets (only using bart2 allows to train with offset, theoretically
+    "offset", # we don't allow offsets (only using bart2 allows to train with offset, theoretically
+    "weights" # train predict weights not clear from the documentation
     # the predict function still uses an offset but this will only be implemented if a user demands
     # it (https://cran.r-project.org/web/packages/dbarts/dbarts.pdf)
   )

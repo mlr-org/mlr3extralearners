@@ -1,10 +1,6 @@
 ---
 title: Learner Status
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Learner Status}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+output: html_document
 ---
 
 The table below gives an overview of the status of the upstream packages for all extralearners.

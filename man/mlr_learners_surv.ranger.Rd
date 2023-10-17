@@ -18,17 +18,10 @@ as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 }
 }
-}
 
-\section{Custom mlr3 defaults}{
 
 \itemize{
-\item \code{num.threads}:
-\itemize{
-\item Actual default: \code{NULL}, triggering auto-detection of the number of CPUs.
-\item Adjusted value: 1.
-\item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-}
+\item \code{num.threads} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 }
 }
 
@@ -80,6 +73,7 @@ lrn("surv.ranger")
    splitrule \tab character \tab logrank \tab logrank, extratrees, C, maxstat \tab - \cr
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    write.forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   min.bucket \tab integer \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 

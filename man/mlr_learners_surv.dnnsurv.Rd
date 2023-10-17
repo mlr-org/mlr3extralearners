@@ -47,7 +47,6 @@ lrn("surv.dnnsurv")
    decay \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    clipnorm \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    clipvalue \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   schedule_decay \tab numeric \tab 0.04 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    loss_weights \tab untyped \tab - \tab  \tab - \cr
@@ -68,6 +67,20 @@ lrn("surv.dnnsurv")
    validation_steps \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    steps \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
+   rho \tab numeric \tab 0.95 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   global_clipnorm \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   use_ema \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   ema_momentum \tab numeric \tab 0.99 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ema_overwrite_frequency \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   jit_compile \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   initial_accumultator_value \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   amsgrad \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   lr_power \tab numeric \tab -0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   l1_regularization_strength \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   l2_regularization_strength \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   l2_shrinkage_regularization_strength \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   centered \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -77,15 +90,10 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{verbose}:
-\itemize{
-\item Actual default: \code{1L}
-\item Adjusted default: \code{0L}
-\item Reason for change: Prevents plotting.
-}
+\item \code{verbose} is initialized to 0.
 }
 }
 

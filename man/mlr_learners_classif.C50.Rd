@@ -44,7 +44,7 @@ lrn("classif.C50")
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    earlyStopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    label \tab untyped \tab outcome \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
 }
 }
 

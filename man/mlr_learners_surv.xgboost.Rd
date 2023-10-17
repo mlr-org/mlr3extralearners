@@ -13,35 +13,13 @@ To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and lin
 against CUDA.
 See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
 }
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{nrounds}:
-\itemize{
-\item Actual default: no default.
-\item Adjusted default: 1.
-\item Reason for change: Without a default construction of the learner
-would error. Just setting a nonsense default to workaround this.
-\code{nrounds} needs to be tuned by the user.
-}
-\item \code{nthread}:
-\itemize{
-\item Actual value: Undefined, triggering auto-detection of the number of CPUs.
-\item Adjusted value: 1.
-\item Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-}
-\item \code{verbose}:
-\itemize{
-\item Actual default: 1.
-\item Adjusted default: 0.
-\item Reason for change: Reduce verbosity.
-}
-\item \code{objective}:
-\itemize{
-\item Actual default: \code{reg:squarederror}.
-\item Adjusted default: \code{survival:cox}.
-\item Reason for change: Changed to a survival objective.
-}
+\item \code{nrounds} is initialized to 1.
+\item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
+\item \code{verbose} is initialized to 0.
+\item \code{objective} is initialized to \code{survival:cox} for survival analysis.
 }
 }
 
@@ -114,7 +92,6 @@ lrn("surv.xgboost")
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    objective \tab character \tab survival:cox \tab survival:cox, survival:aft \tab - \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   predictor \tab character \tab cpu_predictor \tab cpu_predictor, gpu_predictor \tab - \cr
    print_every_n \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    process_type \tab character \tab default \tab default, update \tab - \cr
    rate_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -135,6 +112,7 @@ lrn("surv.xgboost")
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    watchlist \tab untyped \tab  \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
+   device \tab untyped \tab - \tab  \tab - \cr
 }
 }
 

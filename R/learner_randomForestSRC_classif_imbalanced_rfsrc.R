@@ -6,21 +6,8 @@
 #' Imbalanced Random forest for classification between two classes.
 #' Calls [randomForestSRC::imbalanced.rfsrc()] from from \CRANpkg{randomForestSRC}.
 #'
-#' @section Custom mlr3 parameters:
-#' - `mtry`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
-#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
-#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
-#' - `sampsize`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
-#'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
-#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
 #'
-#' @section Custom mlr3 defaults:
-#' - `cores`:
-#'   - Actual default: Auto-detecting the number of cores
-#'   - Adjusted default: 1
-#'   - Reason for change: Threading conflicts with explicit parallelization via \CRANpkg{future}.
+#' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @templateVar id classif.imbalanced_rfsrc
 #' @template learner
@@ -40,8 +27,8 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       ps = ps(
         ntree = p_int(default = 3000, lower = 1L, tags = "train"),
         method = p_fct(
-          default = "rfc",
-          levels = c("rfc", "brf", "standard"),
+          default = "rfq",
+          levels = c("rfq", "brf", "standard"),
           tags = "train"
         ),
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
@@ -101,12 +88,13 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
         statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree = p_uty(tags = "predict"),
-          outcome = p_fct(
-            default = "train", levels = c("train", "test"),
-            tags = "predict"),
-          ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
-          cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
-          save.memory = p_lgl(default = FALSE, tags = "train")
+        outcome = p_fct(
+          default = "train", levels = c("train", "test"),
+          tags = "predict"),
+        ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
+        cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        save.memory = p_lgl(default = FALSE, tags = "train"),
+        perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train") # nolint
       )
 
       super$initialize(
@@ -154,6 +142,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
+      pv$cores = NULL
 
       if ("weights" %in% task$properties) {
         pv$case.wt = as.numeric(task$weights$weight) # nolint
@@ -167,6 +156,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       newdata = data.table::setDF(ordered_features(task, self))
       pars = self$param_set$get_values(tags = "predict")
       cores = pars$cores %??% 1L
+      pars$cores = NULL
       pred = invoke(predict,
                     object = self$model,
                     newdata = newdata,

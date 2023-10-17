@@ -60,13 +60,13 @@ lrn("surv.flexible")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{k}:
 \itemize{
 \item Actual default: \code{0}
-\item Adjusted default: \code{1}
+\item Initial value: \code{1}
 \item Reason for change: The default value of \code{0} is equivalent to, and a much less efficient
 implementation of, \link{LearnerSurvParametric}.
 }

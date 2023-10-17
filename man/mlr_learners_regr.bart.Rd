@@ -45,17 +45,19 @@ lrn("regr.bart")
    usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numcut \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    printcutoffs \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nthread \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    keeptrees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    proposalprobs \tab untyped \tab  \tab  \tab - \cr
    splitprobs \tab untyped \tab  \tab  \tab - \cr
+   keepsampler \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item Parameter: offset
@@ -64,22 +66,17 @@ lrn("regr.bart")
 and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
 \code{dbarts::dbart}.
 }
-\item Parameter: nthread, nchain, combineChains, combinechains
+\item Parameter: nchain, combineChains, combinechains
 \itemize{
 \item The parameters are removed as parallelization of multiple models is handled by future.
 }
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
-\item Parameter: keeptrees
-\itemize{
-\item Original: FALSE
-\item New: TRUE
-\item Reason: Required for prediction
-}
+\item \code{keeptrees} is initialized to \code{TRUE} because it is required for prediction.
 }
 }
 

@@ -14,23 +14,22 @@
 #' @templateVar id regr.lightgbm
 #'
 #' @section Initial parameter values:
-#' * `convert_categorical`:
-#'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
-#'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-#'   those columns.
-#' @section Custom mlr3 defaults:
 #' * `num_threads`:
 #'   * Actual default: 0L
-#'   * Adjusted default: 1L
+#'   * Initital value: 1L
 #'   * Reason for change: Prevents accidental conflicts with `future`.
 #' * `verbose`:
 #'   * Actual default: 1L
-#'   * Adjusted default: -1L
+#'   * Initial value: -1L
 #'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
 #'
 #' @section Custom mlr3 parameters:
 #' * `early_stopping`
 #'   Whether to use the test set for early stopping. Default is `FALSE`.
+#' * `convert_categorical`:
+#'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
+#'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+#'   those columns.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -122,6 +121,10 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         cegb_penalty_feature_coupled = p_uty(tags = "train"),
         path_smooth = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         interaction_constraints = p_uty(tags = "train"),
+        use_quantized_grad = p_lgl(default = TRUE, tags = "train"),
+        num_grad_quant_bins = p_int(default = 4, tags = "train"),
+        quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
+        stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
@@ -195,7 +198,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         id = "regr.lightgbm",
         packages = c("mlr3extralearners", "lightgbm"),
         feature_types = c("numeric", "integer", "logical", "factor"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = ps,
         properties = c("weights", "missings", "importance", "hotstart_forward"),
         man = "mlr3extralearners::mlr_learners_regr.lightgbm",

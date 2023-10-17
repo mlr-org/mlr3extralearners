@@ -8,25 +8,11 @@
 #'
 #' @template note_xgboost
 #'
-#' @section Custom mlr3 defaults:
-#' - `nrounds`:
-#'   - Actual default: no default.
-#'   - Adjusted default: 1.
-#'   - Reason for change: Without a default construction of the learner
-#'     would error. Just setting a nonsense default to workaround this.
-#'     `nrounds` needs to be tuned by the user.
-#' - `nthread`:
-#'   - Actual value: Undefined, triggering auto-detection of the number of CPUs.
-#'   - Adjusted value: 1.
-#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
-#' - `verbose`:
-#'   - Actual default: 1.
-#'   - Adjusted default: 0.
-#'   - Reason for change: Reduce verbosity.
-#' - `objective`:
-#'   - Actual default: `reg:squarederror`.
-#'   - Adjusted default: `survival:cox`.
-#'   - Reason for change: Changed to a survival objective.
+#' @section Initial parameter values:
+#' - `nrounds` is initialized to 1.
+#' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
+#' - `verbose` is initialized to 0.
+#' - `objective` is initialized to `survival:cox` for survival analysis.
 #' @section Early stopping:
 #' Early stopping can be used to find the optimal number of boosting rounds.
 #' The `early_stopping_set` parameter controls which set is used to monitor the performance.
@@ -90,7 +76,6 @@ delayedAssign(
           num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
           objective                   = p_fct(c("survival:cox", "survival:aft"), default = "survival:cox", tags = c("train", "predict")),
           one_drop                    = p_lgl(default = FALSE, tags = "train"),
-          predictor                   = p_fct(c("cpu_predictor", "gpu_predictor"), default = "cpu_predictor", tags = "train"),
           print_every_n               = p_int(1L, default = 1L, tags = "train"),
           process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
           rate_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
@@ -110,7 +95,8 @@ delayedAssign(
           updater                     = p_uty(tags = "train"), # Default depends on the selected booster
           verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
           watchlist                   = p_uty(default = NULL, tags = "train"),
-          xgb_model                   = p_uty(tags = "train")
+          xgb_model                   = p_uty(tags = "train"),
+          device                      = p_uty(tags = "train")
         )
         # param deps
         ps$add_dep("print_every_n", "verbose", CondEqual$new(1L))

@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.6.1-9000
+Version: 0.7.1-9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -17,7 +17,9 @@ Authors@R: c(
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
-    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb")
+    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
+    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0002-3609-8674"))
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -36,8 +38,8 @@ Suggests:
     aorsf (>= 0.0.5),
     actuar,
     apcluster,
+    BART (>= 2.9.4),
     C50,
-    catboost,
     coin,
     CoxBoost,
     Cubist,
@@ -67,7 +69,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba,
+    mlr3proba (>= 0.5.3),
     mlr3pipelines,
     mvtnorm,
     nnet,
@@ -79,13 +81,14 @@ Suggests:
     pendensity,
     plugdensity,
     pracma,
-    prioritylasso,
+    prioritylasso (>= 0.3.1),
     pseudo,
     randomForest,
     randomForestSRC,
     ranger,
     remotes,
     reticulate (>= 1.16),
+    rpart,
     rsm,
     rvest,
     RWeka,
@@ -100,8 +103,7 @@ Suggests:
     testthat,
     xgboost
 Remotes:
-    alan-turing-institute/distr6,
-    catboost/catboost/catboost/R-package@*release,
+    xoopR/distr6,
     binderh/CoxBoost,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
@@ -115,3 +117,5 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.2.3
+Config/Needs/website: rmarkdown
+

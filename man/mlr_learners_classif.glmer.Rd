@@ -80,7 +80,7 @@ lrn("classif.glmer")
    re.form \tab untyped \tab  \tab  \tab - \cr
    random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.pass \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
 }
 }
 

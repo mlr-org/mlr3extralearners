@@ -118,10 +118,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         ),
         ParamUty$new(
           id = "check.conv.singular",
-          default = 'lme4::.makeCC(
-            action = "message",
-            tol = formals(lme4::isSingular)$tol
-          )',
+          default = 'lme4::.makeCC(action = "message", tol = formals(lme4::isSingular)$tol)',
           tags = "train"
         ),
         ParamUty$new(
@@ -141,7 +138,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         ParamUty$new(id = "re.form", default = NULL, tags = "predict"),
         ParamLgl$new(id = "random.only", default = FALSE, tags = "predict"),
         ParamLgl$new(id = "allow.new.levels", default = FALSE, tags = "predict"),
-        ParamUty$new(id = "na.action", default = stats::na.pass, tags = "predict")
+        ParamUty$new(id = "na.action", default = "stats::na.pass", tags = "predict")
       ))
 
       super$initialize(

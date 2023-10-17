@@ -65,10 +65,11 @@ lrn("regr.rfsrc")
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   perf.type \tab character \tab - \tab none \tab - \cr
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:
@@ -83,6 +84,8 @@ Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 }
+\item \code{cores}:
+This value is set as the option \code{rf.cores} during training and is set to 1 by default.
 }
 }
 

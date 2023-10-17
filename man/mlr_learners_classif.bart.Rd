@@ -45,12 +45,14 @@ lrn("classif.bart")
    usequants \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    numcut \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    printcutoffs \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nthread \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    proposalprobs \tab untyped \tab  \tab  \tab - \cr
    splitprobs \tab untyped \tab  \tab  \tab - \cr
+   keepsampler \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -65,7 +67,7 @@ lrn("classif.bart")
 \item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
 and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
 \code{dbarts::dbart}.
-\item Parameter: nthread, nchain, combineChains, combinechains
+\item Parameter: nchain, combineChains, combinechains
 \item The parameters are removed as parallelization of multiple models is handled by future.
 \item Parameter: sigest, sigdf, sigquant, keeptres
 \item Regression only.

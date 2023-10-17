@@ -12,11 +12,8 @@
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
 #'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
 #'
-#' @section Custom mlr3 defaults:
-#' - `num.threads`:
-#'   - Actual default: `NULL`, triggering auto-detection of the number of CPUs.
-#'   - Adjusted value: 1.
-#'   - Reason for change: Conflicting with parallelization via \CRANpkg{future}.
+#' @section Initial parameter values:
+#' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #'
 #' @templateVar id surv.ranger
 #' @template learner
@@ -61,7 +58,8 @@ delayedAssign(
           split.select.weights         = p_dbl(0, 1, tags = "train"),
           splitrule                    = p_fct(c("logrank", "extratrees", "C", "maxstat"), default = "logrank", tags = "train"),
           verbose                      = p_lgl(default = TRUE, tags = c("train", "predict")),
-          write.forest                 = p_lgl(default = TRUE, tags = "train")
+          write.forest                 = p_lgl(default = TRUE, tags = "train"),
+          min.bucket                   = p_int(default = 3, tags = "train")
         )
 
         ps$values = list(num.threads = 1L)
@@ -119,7 +117,7 @@ delayedAssign(
       .predict = function(task) {
         pv = self$param_set$get_values(tags = "predict")
         newdata = ordered_features(task, self)
-        prediction = predict(object = self$model, data = newdata)
+        prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
         mlr3proba::.surv_return(times = prediction$unique.death.times, surv = prediction$survival)
       }
     )

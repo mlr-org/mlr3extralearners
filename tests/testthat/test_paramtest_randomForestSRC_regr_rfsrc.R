@@ -9,8 +9,7 @@ test_that("paramtest regr.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio", # alternative to mtry
-    "perf.type" # scoring is done with mlr3 measures
+    "mtry.ratio" # alternative to mtry
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

@@ -9,16 +9,9 @@
 #' @template learner
 #' @templateVar id classif.gbm
 #'
-#' @section Custom mlr3 defaults:
-#' - `keep.data`:
-#'   - Actual default: TRUE
-#'   - Adjusted default: FALSE
-#'   - Reason for change: `keep.data = FALSE` saves memory during model fitting.
-#' - `n.cores`:
-#'   - Actual default: NULL
-#'   - Adjusted default: 1
-#'   - Reason for change: Suppressing the automatic internal parallelization if
-#'     `cv.folds` > 0.
+#' @section Initial parameter values:
+#' - `keep.data` is initialized to `FALSE` to save memory.
+#' - `n.cores` is initialized to 1 to avoid conflicts with parallelization through future.
 #'
 #' @references
 #' `r format_bib("friedman2002stochastic")`
@@ -58,7 +51,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
         predict_types = c("response", "prob"),
         param_set = ps,
         properties = c(
-          "weights", "twoclass", "multiclass", "importance", "missings"),
+          "weights", "twoclass", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.gbm",
         label = "Gradient Boosting"
       )

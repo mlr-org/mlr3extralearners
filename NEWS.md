@@ -1,4 +1,23 @@
-# mlr3extralearners 0.6.1-9000
+# mlr3extralearners 0.7.1-9000
+
+* `surv.ranger` now receives parameters during `$predict()` (thanks to @jemus42)
+* Feature: Learner `surv.bart` was added (thanks to @bblodfon)
+
+# mlr3extralearners 0.7.1
+
+* Add parameter `perf.type` to rfsrc learners
+* Add vignette about "extending learners" which was previously in the mlr3book.
+* Remove the `"multiclass"` property from `lrn("classif.gbm")`, as this feature is broken.
+
+# mlr3extralearners 0.7.0
+
+* Add new parameters to lightgbm learners
+* Add feature type `"factor"` to gam learners
+* Add new parameter `min.bucket` to ranger
+* Remove catboost learner (because the developers don't properly take care of the R package)
+* Add argument `nthreads` to `dbarts` learners; set verbose to `FALSE` by default (thanks to @ck37)
+* Add new parameters to prioritylasso
+* Fix: available levels for parameter of imbalanced random forest (typo)
 
 # mlr3extralearners 0.6.1
 

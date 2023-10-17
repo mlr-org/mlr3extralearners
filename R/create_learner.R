@@ -38,7 +38,7 @@
 #'   Label for the learner, default is the value of the parameter `algorithm`.
 #' @param data_formats (`character(1)`)\cr
 #'   The data format the learner can deal with (see `mlr_reflections$data_formats`).
-#'   Default is `"data.table"`.
+#'   Default is `"data.table"` and this rarely has to be changes.
 #'
 #' @examples
 #' \dontrun{

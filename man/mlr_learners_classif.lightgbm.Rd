@@ -104,6 +104,10 @@ lrn("classif.lightgbm")
    cegb_penalty_feature_coupled \tab untyped \tab - \tab  \tab - \cr
    path_smooth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
+   use_quantized_grad \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   num_grad_quant_bins \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   quant_train_renew_leaf \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   stochastic_rounding \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -143,32 +147,26 @@ lrn("classif.lightgbm")
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
-\item \code{num_class}:
-This parameter is automatically inferred for multiclass tasks and does not have to be set.
+\item \code{num_threads}:
+\itemize{
+\item Actual default: 0L
+\item Initial value: 1L
+\item Reason for change: Prevents accidental conflicts with \code{future}.
+}
+\item \code{verbose}:
+\itemize{
+\item Actual default: 1L
+\item Initial value: -1L
+\item Reason for change: Prevents accidental conflicts with mlr messaging system.
+}
 }
 }
 
 \section{Custom mlr3 defaults}{
 
 \itemize{
-\item \code{num_threads}:
-\itemize{
-\item Actual default: 0L
-\item Adjusted default: 1L
-\item Reason for change: Prevents accidental conflicts with \code{future}.
-}
-\item \code{verbose}:
-\itemize{
-\item Actual default: 1L
-\item Adjusted default: -1L
-\item Reason for change: Prevents accidental conflicts with mlr messaging system.
-}
 \item \code{objective}:
-Depending if the task is binary / multiclass, the default is set to \code{"binary"} or
+Depending if the task is binary / multiclass, the default is \code{"binary"} or
 \code{"multiclasss"}.
 }
 }
@@ -178,6 +176,12 @@ Depending if the task is binary / multiclass, the default is set to \code{"binar
 \itemize{
 \item \code{early_stopping}
 Whether to use the test set for early stopping. Default is \code{FALSE}.
+\item \code{convert_categorical}:
+Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
+columns are converted to integers and the parameter categorical_feature of lightgbm is set to
+those columns.
+\item \code{num_class}:
+This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
 }
 

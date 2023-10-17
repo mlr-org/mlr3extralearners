@@ -35,7 +35,7 @@ LearnerClassifC50 = R6Class("LearnerClassifC50",
         seed = p_int(lower = -Inf, upper = Inf, tags = "train"),
         earlyStopping = p_lgl(default = TRUE, tags = "train"),
         label = p_uty(default = "outcome", tags = "train"),
-        na.action = p_uty(default = stats::na.pass, tags = "predict")
+        na.action = p_uty(default = "stats::na.pass", tags = "predict")
       )
       ps$add_dep("bands", "rules", CondEqual$new(TRUE))
 
