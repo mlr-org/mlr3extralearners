@@ -36,7 +36,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.7.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.7.1-9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -273,7 +273,12 @@ are:</p>
 they are used during training or prediction.</li>
 <li>
 <strong>default values</strong> which give information about the
-value that is used by the upstream function when no value is set.</li>
+value that is used by the upstream function when no value is set. Note
+that this is not necessarily the default of the function signature but
+what is used internally: e.g. the default of parameter <code>a</code>
+for a function is <code>NULL</code>, but internally the value for
+<code>a</code> is set to <code>1</code> it is left as <code>NULL</code>
+by the caller.</li>
 <li>
 <strong>initial values</strong> are the initial <code>$values</code>
 of the parameter set that are set during construction.</li>
@@ -518,7 +523,7 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># basic learner properties</span></span>
-<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span>, check_man <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># you can skip tests using the `exclude` argument</span></span>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>

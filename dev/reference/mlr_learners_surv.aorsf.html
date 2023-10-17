@@ -16,7 +16,7 @@ the behaviour has to be configured using the parameter na_action.'><meta name="r
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.7.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.7.1-9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -243,15 +243,21 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "n_tree"                "n_split"               "n_retry"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "mtry"                  "mtry_ratio"            "control_type"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "control_fast_do_scale" "control_fast_method"   "control_cph_method"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "control_cph_eps"       "control_cph_iter_max"  "control_net_alpha"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "control_net_df_target" "leaf_min_events"       "leaf_min_obs"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "split_min_events"      "split_min_obs"         "split_min_stat"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "oobag_pred_type"       "importance"            "oobag_pred_horizon"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "oobag_eval_every"      "attach_data"           "verbose_progress"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "na_action"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "n_tree"                  "n_split"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "n_retry"                 "n_thread"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "pred_aggregate"          "mtry"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "mtry_ratio"              "sample_with_replacement"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "sample_fraction"         "control_type"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "split_rule"              "control_fast_do_scale"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "control_fast_method"     "control_cph_method"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "control_cph_eps"         "control_cph_iter_max"   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "control_net_alpha"       "control_net_df_target"  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "leaf_min_events"         "leaf_min_obs"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "split_min_events"        "split_min_obs"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "split_min_stat"          "oobag_pred_type"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "importance"              "oobag_pred_horizon"     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "oobag_eval_every"        "attach_data"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "verbose_progress"        "na_action"              </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
