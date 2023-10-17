@@ -86,6 +86,7 @@ Suggests:
     prioritylasso (>= 0.3.1),
     pseudo,
     randomForest,
+    randomPlantedForest,
     randomForestSRC,
     ranger,
     remotes,
