@@ -131,7 +131,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       pars = self$param_set$get_values(tags = "train")
       pars$importance = NULL # not used in the train function
 
-      x.train = as.data.frame(task$data(cols = task$feature_names))
+      x.train = as.data.frame(task$data(cols = task$feature_names)) # nolint
       truth = task$truth()
       times = truth[, 1]
       delta = truth[, 2] # delta => status
@@ -156,7 +156,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      x.test = as.data.frame(ordered_features(task, self))
+      x.test = as.data.frame(ordered_features(task, self)) # nolint
 
       # subset parameters to use in `surv.pre.bart`
       pars_pre = pars[names(pars) %in% c("K", "events", "ztimes", "zdelta")]
