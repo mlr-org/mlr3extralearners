@@ -21,7 +21,7 @@
 #'     since more deeply nested interactions are considered impractical.
 #'     This ensures that the value `max_interaction` passed to `rpf` never exceeds
 #'     `min(n_features, max_interaction_limit)`.
-#'     This is analougous to `mtry.ratio` in [`classif.ranger`][mlr_learners_classif.ranger], with
+#'     This is analogous to `mtry.ratio` in [`classif.ranger`][mlr3learners::mlr_learners_classif.ranger], with
 #'     `max_interaction_limit` adding to `n_features` as an additional constraint.
 #'
 #'
