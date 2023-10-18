@@ -81,7 +81,10 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = names(self$state$data_prototype))
 
-      pred = invoke(predict, self$model, new_data = newdata, type = "numeric", .args = pars)
+      pred = invoke(
+        predict, self$model, new_data = newdata,
+        type = "numeric", .args = pars
+      )
       list(response = pred[[".pred"]])
     }
   )

@@ -107,12 +107,16 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       # type = self$predict_type
 
       if (self$predict_type == "response") {
-        pred = invoke(predict, self$model, new_data = newdata,
-          type = "class", .args = pars)
+        pred = invoke(
+          predict, self$model, new_data = newdata,
+          type = "class", .args = pars
+        )
         list(response = pred[[".pred_class"]])
       } else {
-        pred = invoke(predict, self$model, new_data = newdata,
-          type = "prob", .args = pars)
+        pred = invoke(
+          predict, self$model, new_data = newdata,
+          type = "prob", .args = pars
+        )
         # Result will be a df with one column per variable with names '.pred_<level>'
         # we want the names without ".pred"
         names(pred) = sub(pattern = ".pred_", replacement = "", names(pred))
