@@ -33,7 +33,7 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
         split_try = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
         t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(lower = 1, upper = Inf, default = 1, tags = "train"),
+        nthreads = p_int(lower = 1, upper = Inf, default = 1, tags = c("train", "threads")),
         cv = p_lgl(default = FALSE, tags = "train"),
         purify = p_lgl(default = FALSE, tags = "train")
       )
