@@ -62,11 +62,32 @@ lrn("classif.liblinear")
 }
 
 \examples{
-learner = mlr3::lrn("classif.liblinear")
+if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("LiblineaR", quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("classif.liblinear")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = tsk("sonar")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+# importance method
+if("importance" \%in\% learner$properties) print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+}
 }
 \references{
 Fan, Rong-En, Chang, Kai-Wei, Hsieh, Cho-Jui, Wang, Xiang-Rui, Lin, Chih-Jen (2008).

@@ -63,11 +63,32 @@ lrn("regr.glm")
 }
 
 \examples{
-learner = mlr3::lrn("regr.glm")
+if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("stats", quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("regr.glm")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = tsk("mtcars")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+# importance method
+if("importance" \%in\% learner$properties) print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+}
 }
 \references{
 Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).

@@ -53,11 +53,32 @@ lrn("surv.gamboost")
 }
 
 \examples{
-learner = mlr3::lrn("surv.gamboost")
+if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("mboost", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("surv.gamboost")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = tsk("grace")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+# importance method
+if("importance" \%in\% learner$properties) print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+}
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

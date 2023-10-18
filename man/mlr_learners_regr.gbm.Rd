@@ -65,11 +65,24 @@ lrn("regr.gbm")
 }
 
 \examples{
-learner = mlr3::lrn("regr.gbm")
+if (requireNamespace("mboost", quietly = TRUE)) {
+# Define the Learner and set parameter values
+
+
+learner=lrn("regr.gamboost")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = tsk("boston_housing")
+
+
+# Train the learner on the training ids
+learner$train(task)
+
+# print the model
+print(learner$model)
+
+}
 }
 \references{
 Friedman, H J (2002).

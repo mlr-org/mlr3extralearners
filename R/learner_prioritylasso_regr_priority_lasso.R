@@ -14,7 +14,34 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (requireNamespace("prioritylasso", quietly = TRUE)) {
+#' # Define the Learner and set parameter values
+#'
+#'
+#' learner = lrn("regr.priority_lasso",
+#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
+#' print(learner)
+#'
+#' # Define a Task
+#' task = as_task_regr(prioritylasso::pl_data, target = "pl_out")
+#'
+#' # Create train and test set
+#' ids = partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' # print the model
+#' print(learner$model)
+#'
+#'  # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+#'
+#' }
 #' @export
 LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
   inherit = LearnerRegr,
@@ -23,7 +50,7 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        blocks               = p_uty(default = NULL, tags = c("train", "required")), 
+        blocks               = p_uty(default = NULL, tags = c("train", "required")),
         max.coef             = p_uty(default = NULL, tags = "train"),
         block1.penalization  = p_lgl(default = TRUE, tags = "train"),
         lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")),

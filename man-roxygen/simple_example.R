@@ -10,24 +10,4 @@ pkgs = setdiff(lrn$packages, c("mlr3", "mlr3learners"))
 #' <%= sprintf("learner = lrn(\"%s\")", id)%>
 #' print(learner)
 #'
-#' # Define a Task
-#' <%= sprintf("task = tsk(\"%s\")", task_id)%>
-#'
-#' # Create train and test set
-#' <%= sprintf("ids = partition(task)")%>
-#'
-#' # Train the learner on the training ids
-#' <%= sprintf("learner$train(task, row_ids = ids$train)")%>
-#'
-#' # print the model
-#' print(learner$model)
-#'
-#' # importance method
-#' if("importance" %in% learner$properties) print(learner$importance)
-#'
-#' # Make predictions for the test rows
-#' <%= sprintf("predictions = learner$predict(task, row_ids = ids$test)")%>
-#'
-#' # Score the predictions
-#' predictions$score()
-#' }
+#'}

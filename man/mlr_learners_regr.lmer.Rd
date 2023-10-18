@@ -71,11 +71,33 @@ lrn("regr.lmer")
 }
 
 \examples{
-learner = mlr3::lrn("regr.lmer")
+if (requireNamespace("lme4", quietly = TRUE)) {
+# Define the Learner and set parameter values
+
+
+learner=lrn("regr.lmer", formula = Reaction ~ Days + (Days | Subject))
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = as_task_regr(lme4::sleepstudy, target = "Reaction")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+
+}
 }
 \references{
 Bates, M D (2010).

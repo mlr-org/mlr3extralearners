@@ -14,7 +14,25 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (requireNamespace("mboost", quietly = TRUE)) {
+#' # Define the Learner and set parameter values
+#'
+#'
+#' learner=lrn("regr.gamboost")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = tsk("boston_housing")
+#'
+#'
+#' # Train the learner on the training ids
+#' learner$train(task)
+#'
+#' # print the model
+#' print(learner$model)
+#'
+#' }
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(

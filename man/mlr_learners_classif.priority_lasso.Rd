@@ -31,7 +31,7 @@ lrn("classif.priority_lasso")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    blocks \tab untyped \tab  \tab  \tab - \cr
-   type.measure \tab character \tab class \tab class, auc \tab - \cr
+   type.measure \tab character \tab auc \tab class, auc \tab - \cr
    max.coef \tab untyped \tab  \tab  \tab - \cr
    block1.penalization \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    lambda.type \tab character \tab lambda.min \tab lambda.min, lambda.1se \tab - \cr
@@ -86,11 +86,24 @@ lrn("classif.priority_lasso")
 }
 
 \examples{
-learner = mlr3::lrn("classif.priority_lasso")
+if (requireNamespace("prioritylasso", quietly = TRUE)) {
+# Define the Learner and set parameter values
+
+
+learner = lrn("classif.priority_lasso", type.measure = "auc",
+  blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = as_task_classif(prioritylasso::pl_data, target = "pl_out")
+
+# Train the learner on the training ids
+learner$train(task)
+
+# print the model
+print(learner$model)
+
+}
 }
 \references{
 Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).

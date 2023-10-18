@@ -85,11 +85,23 @@ lrn("classif.glmer")
 }
 
 \examples{
-learner = mlr3::lrn("classif.glmer")
+if (requireNamespace("lme4", quietly = TRUE)) {
+# Define the Learner and set parameter values
+
+
+learner = lrn("classif.glmer", formula = outcome ~ treatment * visit + (1 | ID))
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = as_task_classif(faraway::toenail, target = "outcome")
+
+# Train the learner on the training ids
+learner$train(task)
+
+# print the model
+print(learner$model)
+
+}
 }
 \references{
 Bates, M D (2010).
