@@ -10,7 +10,6 @@ if ("LearnerClassif" %in% class(lrn(id))) {
   task_id = "faithful"
 }
 %>
-#' <% if ("LearnerClassif" %in% class(lrn(id))) {task_id = "sonar"} else if ("LearnerRegr" %in% class(lrn(id))) {task_id = "mtcars"} else if ("LearnerSurv" %in% class(lrn(id))) {task_id = "grace"} else if ("LearnerDens" %in% class(lrn(id))) {task_id = "faithful"}%>
 #'
 #' @examples
 #' if (<%= paste0("requireNamespace(\"", pkgs, "\", quietly = TRUE)", collapse = " && ") %>) {
