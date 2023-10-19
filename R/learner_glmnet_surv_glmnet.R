@@ -10,7 +10,17 @@
 #' - `family` is set to `"cox"` and cannot be changed.
 #'
 #' @details
-#' Caution: This learner is different to learners calling [glmnet::cv.glmnet()]
+#' This learner returns two prediction types:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' Calculated using [glmnet::predict.coxnet()].
+#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using [glmnet::survfit.coxnet()].
+#' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
+#' into survival predictions and are described in [survival::survfit.coxph()].
+#'
+#' **Caution**: This learner is different to learners calling [glmnet::cv.glmnet()]
 #' in that it does not use the internal optimization of parameter `lambda`.
 #' Instead, `lambda` needs to be tuned by the user (e.g., via \CRANpkg{mlr3tuning}).
 #' When `lambda` is tuned, the `glmnet` will be trained for each tuning iteration.
@@ -70,7 +80,7 @@ delayedAssign(
           mxitnr           = p_int(1L, default = 25L, tags = "train"),
           newoffset        = p_uty(tags = "predict"),
           nlambda          = p_int(1L, default = 100L, tags = "train"),
-          offset           = p_uty(default = NULL, tags = "train"),
+          offset           = p_uty(default = NULL, tags = c("train", "predict")),
           parallel         = p_lgl(default = FALSE, tags = "train"),
           penalty.factor   = p_uty(tags = "train"),
           pmax             = p_int(0L, tags = "train"),
@@ -84,14 +94,16 @@ delayedAssign(
           trace.it         = p_int(0, 1, default = 0, tags = "train"),
           type.logistic    = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
           type.multinomial = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
-          upper.limits     = p_uty(default = Inf, tags = "train")
+          upper.limits     = p_uty(default = Inf, tags = "train"),
+          stype            = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
+          ctype            = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
         )
 
         super$initialize(
           id = "surv.glmnet",
           param_set = ps,
           feature_types = c("logical", "integer", "numeric"),
-          predict_types = c("crank", "lp"),
+          predict_types = c("crank", "lp", "distr"),
           properties = c("weights", "selected_features"),
           packages = c("mlr3extralearners", "glmnet"),
           man = "mlr3extralearners::mlr_learners_surv.glmnet",
@@ -122,7 +134,13 @@ delayedAssign(
           pv$weights = task$weights$weight
         }
 
-        glmnet_invoke(data, target, pv)
+        list(
+          model = glmnet_invoke(data, target, pv),
+          # need these for distr prediction
+          x = data,
+          y = target,
+          weights = pv$weights
+        )
       },
 
       .predict = function(task) {
@@ -131,9 +149,17 @@ delayedAssign(
         pv = rename(pv, "predict.gamma", "gamma")
         pv$s = glmnet_get_lambda(self, pv)
 
-        lp = invoke(predict, self$model, newx = newdata, type = "link", .args = pv)
+        # get survival matrix
+        fit = invoke(survival::survfit, formula = self$model$model,
+                     x = self$model$x, y = self$model$y, weights = self$model$weights,
+                     newx = newdata, se.fit = FALSE, .args = pv)
 
-        list(crank = lp, lp = lp)
+        # get linear predictor
+        lp = as.numeric(
+          invoke(predict, self$model$model, newx = newdata, type = "link", .args = pv)
+        )
+
+        mlr3proba::.surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
       }
     )
   )

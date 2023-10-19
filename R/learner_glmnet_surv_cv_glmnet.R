@@ -9,6 +9,17 @@
 #' @section Custom mlr3 parameters:
 #' - `family` is set to `"cox"` and cannot be changed.
 #'
+#' @details
+#' This learner returns two prediction types:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' Calculated using [glmnet::predict.cv.glmnet()].
+#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using [glmnet::survfit.cv.glmnet()].
+#' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
+#' into survival predictions and are described in [survival::survfit.coxph()].
+#'
 #' @templateVar id surv.cv_glmnet
 #' @template learner
 #'
@@ -53,7 +64,8 @@ delayedAssign(
           mxitnr               = p_int(1L, default = 25L, tags = "train"),
           nfolds               = p_int(3L, default = 10L, tags = "train"),
           nlambda              = p_int(1L, default = 100L, tags = "train"),
-          offset               = p_uty(default = NULL, tags = "train"),
+          offset               = p_uty(default = NULL, tags = c("train", "predict")),
+          newoffset            = p_uty(tags = "predict"),
           parallel             = p_lgl(default = FALSE, tags = "train"),
           penalty.factor       = p_uty(tags = "train"),
           pmax                 = p_int(0L, tags = "train"),
@@ -61,7 +73,7 @@ delayedAssign(
           prec                 = p_dbl(default = 1e-10, tags = "train"),
           predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
           relax                = p_lgl(default = FALSE, tags = "train"),
-          s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+          s                    = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
           standardize          = p_lgl(default = TRUE, tags = "train"),
           standardize.response = p_lgl(default = FALSE, tags = "train"),
           thresh               = p_dbl(0, default = 1e-07, tags = "train"),
@@ -70,14 +82,16 @@ delayedAssign(
           type.logistic        = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
           type.measure         = p_fct(c("deviance", "C"), default = "deviance", tags = "train"),
           type.multinomial     = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
-          upper.limits         = p_uty(default = Inf, tags = "train")
+          upper.limits         = p_uty(default = Inf, tags = "train"),
+          stype                = p_int(default = 2L, lower = 1L, upper = 2L, tags = "predict"), # default: Breslow
+          ctype                = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
         )
 
         super$initialize(
           id = "surv.cv_glmnet",
           param_set = ps,
           feature_types = c("logical", "integer", "numeric"),
-          predict_types = c("crank", "lp"),
+          predict_types = c("crank", "lp", "distr"),
           properties = c("weights", "selected_features"),
           packages = c("mlr3extralearners", "glmnet"),
           man = "mlr3extralearners::mlr_learners_surv.cv_glmnet",
@@ -108,7 +122,13 @@ delayedAssign(
           pv$weights = task$weights$weight
         }
 
-        glmnet_invoke(data, target, pv, cv = TRUE)
+        list(
+          model = glmnet_invoke(data, target, pv, cv = TRUE),
+          # need these for distr prediction
+          x = data,
+          y = target,
+          weights = pv$weights
+        )
       },
 
       .predict = function(task) {
@@ -116,8 +136,17 @@ delayedAssign(
         pv = self$param_set$get_values(tags = "predict")
         pv = rename(pv, "predict.gamma", "gamma")
 
-        lp = as.numeric(invoke(predict, self$model, newx = newdata, type = "link", .args = pv))
-        list(lp = lp, crank = lp)
+        # get survival matrix
+        fit = invoke(survival::survfit, formula = self$model$model,
+          x = self$model$x, y = self$model$y, weights = self$model$weights,
+          newx = newdata, se.fit = FALSE, .args = pv)
+
+        # get linear predictor
+        lp = as.numeric(
+          invoke(predict, self$model$model, newx = newdata, type = "link", .args = pv)
+        )
+
+        mlr3proba::.surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
       }
     )
   )
