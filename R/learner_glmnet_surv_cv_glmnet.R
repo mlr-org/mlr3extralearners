@@ -73,7 +73,7 @@ delayedAssign(
           prec                 = p_dbl(default = 1e-10, tags = "train"),
           predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"),
           relax                = p_lgl(default = FALSE, tags = "train"),
-          s                    = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"),
+          s                    = p_dbl(0, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict"), #nolint
           standardize          = p_lgl(default = TRUE, tags = "train"),
           standardize.response = p_lgl(default = FALSE, tags = "train"),
           thresh               = p_dbl(0, default = 1e-07, tags = "train"),
@@ -138,8 +138,8 @@ delayedAssign(
 
         # get survival matrix
         fit = invoke(survival::survfit, formula = self$model$model,
-          x = self$model$x, y = self$model$y, weights = self$model$weights,
-          newx = newdata, se.fit = FALSE, .args = pv)
+                     x = self$model$x, y = self$model$y, weights = self$model$weights,
+                     newx = newdata, se.fit = FALSE, .args = pv)
 
         # get linear predictor
         lp = as.numeric(
