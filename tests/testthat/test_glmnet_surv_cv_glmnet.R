@@ -12,7 +12,7 @@ test_that("autotest", {
 
 test_that("selected_features", {
   task = tsk("gbcs")
-  learner = lrn("surv.glmnet")
+  learner = lrn("surv.cv_glmnet")
   learner$train(task)
 
   expect_equal(
