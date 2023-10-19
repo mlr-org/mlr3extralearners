@@ -20,8 +20,9 @@ Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
-Parameters \code{stype} and \code{ctype} that define how \code{lp} predictions are transformed
-into survival predictions are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
+into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+By default the Breslow estimator is used.
 }
 
 \strong{Caution}: This learner is different to learners calling \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}

@@ -17,8 +17,9 @@ Calculated using \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.cv.glmnet]{glmnet::survfit.cv.glmnet()}}.
-Parameters \code{stype} and \code{ctype} that define how \code{lp} predictions are transformed
-into survival predictions are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
+into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+By default the Breslow estimator is used.
 }
 }
 \section{Custom mlr3 parameters}{

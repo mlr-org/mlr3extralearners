@@ -19,6 +19,7 @@
 #' Calculated using [glmnet::survfit.cv.glmnet()].
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
 #' into survival predictions and are described in [survival::survfit.coxph()].
+#' By default the Breslow estimator is used.
 #'
 #' @templateVar id surv.cv_glmnet
 #' @template learner
