@@ -46,13 +46,10 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-delayedAssign(
-  "LearnerSurvGlmnet",
-  R6Class("LearnerSurvGlmnet",
-    inherit = mlr3proba::LearnerSurv,
+LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
+  inherit = mlr3proba::LearnerSurv,
 
-    public = list(
-
+  public = list(
       #' @description
       #' Creates a new instance of this [R6][R6::R6Class] class.
       initialize = function() {
@@ -112,43 +109,43 @@ delayedAssign(
         )
       },
 
-      #' @description
-      #' Returns the set of selected features as reported by [glmnet::predict.glmnet()]
-      #' with `type` set to `"nonzero"`.
-      #'
-      #' @param lambda (`numeric(1)`)\cr
-      #' Custom `lambda`, defaults to the active lambda depending on parameter set.
-      #'
-      #' @return (`character()`) of feature names.
-      selected_features = function(lambda = NULL) {
-        glmnet_selected_features(self, lambda)
+    #' @description
+    #' Returns the set of selected features as reported by [glmnet::predict.glmnet()]
+    #' with `type` set to `"nonzero"`.
+    #'
+    #' @param lambda (`numeric(1)`)\cr
+    #' Custom `lambda`, defaults to the active lambda depending on parameter set.
+    #'
+    #' @return (`character()`) of feature names.
+    selected_features = function(lambda = NULL) {
+      glmnet_selected_features(self, lambda)
+    }
+  ),
+
+  private = list(
+    .train = function(task) {
+      data = as.matrix(task$data(cols = task$feature_names))
+      target = task$truth()
+      pv = self$param_set$get_values(tags = "train")
+      pv$family = "cox"
+      if ("weights" %in% task$properties) {
+        pv$weights = task$weights$weight
       }
-    ),
 
-    private = list(
-      .train = function(task) {
-        data = as.matrix(task$data(cols = task$feature_names))
-        target = task$truth()
-        pv = self$param_set$get_values(tags = "train")
-        pv$family = "cox"
-        if ("weights" %in% task$properties) {
-          pv$weights = task$weights$weight
-        }
+      list(
+        model = glmnet_invoke(data, target, pv),
+        # need these for distr prediction
+        x = data,
+        y = target,
+        weights = pv$weights
+      )
+    },
 
-        list(
-          model = glmnet_invoke(data, target, pv),
-          # need these for distr prediction
-          x = data,
-          y = target,
-          weights = pv$weights
-        )
-      },
-
-      .predict = function(task) {
-        newdata = as.matrix(ordered_features(task, self))
-        pv = self$param_set$get_values(tags = "predict")
-        pv = rename(pv, "predict.gamma", "gamma")
-        pv$s = glmnet_get_lambda(self, pv)
+    .predict = function(task) {
+      newdata = as.matrix(ordered_features(task, self))
+      pv = self$param_set$get_values(tags = "predict")
+      pv = rename(pv, "predict.gamma", "gamma")
+      pv$s = glmnet_get_lambda(self, pv)
 
         # get survival matrix
         fit = invoke(survival::survfit, formula = self$model$model,
@@ -166,4 +163,4 @@ delayedAssign(
   )
 )
 
-.extralrns_dict$add("surv.glmnet", function() LearnerSurvGlmnet$new())
+.extralrns_dict$add("surv.glmnet", LearnerSurvGlmnet)

@@ -1,19 +1,18 @@
-#' @title Gradient Boosted Decision Trees Regression Learner
+#' @title Gradient Boosted Decision Trees Classification Learner
 #' @author sumny
-#' @name mlr_learners_regr.catboost
+#' @name mlr_learners_classif.catboost
 #'
 #' @description
 #' Gradient boosting algorithm that also supports categorical data.
 #' Calls [catboost::catboost.train()] from package 'catboost'.
 #'
 #' @template learner
-#' @templateVar id regr.catboost
+#' @templateVar id classif.catboost
 #'
 #' @section Installation:
-#' The easiest way to install catboost is with the helper function
-#' [install_catboost].
+#' See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
 #'   - Adjusted default: "Silent"
@@ -37,21 +36,22 @@
 #' @export
 #' @template seealso_learner
 #' @template example
-LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
-  inherit = LearnerRegr,
+LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
+  inherit = LearnerClassif,
   public = list(
 
     #' @description
-    #' Create a `LearnerRegrCatboost` object.
+    #' Create a `LearnerClassifCatboost` object.
     initialize = function() {
 
       ps = ps(
         # catboost.train
         # https://catboost.ai/docs/concepts/r-reference_catboost-train.html
         # Common parameters
-        loss_function = p_fct(levels = c("MAE", "MAPE", "Poisson", "Quantile", "RMSE",
-          "LogLinQuantile", "Lq", "Huber", "Expectile", "Tweedie"),
-        default = "RMSE", tags = "train"),
+        loss_function_twoclass = p_fct(levels = c("Logloss", "CrossEntropy"), default = "Logloss",
+          tags = "train"),
+        loss_function_multiclass = p_fct(levels = c("MultiClass", "MultiClassOneVsAll"),
+          default = "MultiClass", tags = "train"),
         # custom_loss missing
         # eval_metric missing
         iterations = p_int(lower = 1L, upper = Inf, default = 1000, tags = "train"),
@@ -74,8 +74,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           default = "SymmetricTree", tags = "train"),
         min_data_in_leaf = p_int(lower = 1L, upper = Inf, default = 1L, tags = "train"),
         max_leaves = p_int(lower = 1L, upper = Inf, default = 31L, tags = "train"),
-        # ignored_features missing
-        # one_hot_max_size missing
+        ignored_features = p_uty(default = NULL, tags = "train"),
+        one_hot_max_size = p_uty(default = FALSE, tags = "train"),
         has_time = p_lgl(default = FALSE, tags = "train"),
         rsm = p_dbl(lower = 0.001, upper = 1, default = 1, tags = "train"),
         nan_mode = p_fct(levels = c("Min", "Max"), default = "Min", tags = "train"), # do not allow "Forbidden"
@@ -84,9 +84,12 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         leaf_estimation_iterations = p_int(lower = 1L, upper = Inf, tags = "train"),
         leaf_estimation_backtracking = p_fct(levels = c("No", "AnyImprovement", "Armijo"),
           default = "AnyImprovement", tags = "train"),
-        # name missing
+        # name missin
         fold_len_multiplier = p_dbl(lower = 1.001, upper = Inf, default = 2, tags = "train"),
         approx_on_full_history = p_lgl(default = TRUE, tags = "train"),
+        class_weights = p_uty(tags = "train"),
+        auto_class_weights = p_fct(levels = c("None", "Balanced", "SqrtBalanced"), default = "None",
+          tags = "train"),
         boosting_type = p_fct(levels = c("Ordered", "Plain"), tags = "train"),
         boost_from_average = p_lgl(tags = "train"),
         langevin = p_lgl(default = FALSE, tags = "train"),
@@ -110,6 +113,8 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           "MaxLogSum", "MinEntropy", "GreedyLogSum"),
         default = "GreedyLogSum", tags = "train"),
         per_float_feature_quantization = p_uty(tags = "train", custom_check = check_string),
+        # Multiclassification settings
+        classes_count = p_int(lower = 1L, upper = Inf, tags = "train"),
         # Performance Settings
         thread_count = p_int(lower = -1L, upper = Inf, default = 1L, tags = c("train", "predict",
           "importance", "threads")),
@@ -154,21 +159,22 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         id = "diffusion_temperature", on = "langevin",
         cond = CondEqual$new(TRUE))
 
-      ps$values$loss_function = "RMSE"
+      ps$values$loss_function_twoclass = "Logloss"
+      ps$values$loss_function_multiclass = "MultiClass"
       ps$values$logging_level = "Silent"
       ps$values$thread_count = 1L
       ps$values$allow_writing_files = FALSE
       ps$values$save_snapshot = FALSE
 
       super$initialize(
-        id = "regr.catboost",
+        id = "classif.catboost",
         packages = c("mlr3extralearners", "catboost"),
         feature_types = c("numeric", "factor", "ordered"),
-        predict_types = "response",
+        predict_types = c("response", "prob"),
         param_set = ps,
         properties = c(
-          "missings", "weights", "importance"), # FIXME: parallel
-        man = "mlr3extralearners::mlr_learners_regr.catboost",
+          "missings", "weights", "importance", "twoclass", "multiclass"), # FIXME: parallel
+        man = "mlr3extralearners::mlr_learners_classif.catboost",
         label = "Gradient Boosting"
       )
     },
@@ -193,37 +199,80 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     .train = function(task) {
 
       if (packageVersion("catboost") < "0.21") {
-        stop("catboost v0.21 or greater is required, update with install_catboost")
+        stop("catboost v0.21 or greater is required.")
+      }
+
+      # target is encoded as integer values from 0
+      # if binary, the positive class is 1
+      is_binary = length(task$class_names) == 2L
+      label = if (is_binary) {
+        ifelse(task$data(cols = task$target_names)[[1L]] == task$positive,
+          yes = 1L,
+          no = 0L)
+      } else {
+        as.integer(task$data(cols = task$target_names)[[1L]]) - 1L
       }
 
       # data must be a dataframe
       learn_pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
-        label = task$data(cols = task$target_names)[[1L]],
+        label = label,
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
 
-      invoke(catboost::catboost.train,
-        learn_pool = learn_pool,
-        test_pool = NULL,
-        params = self$param_set$get_values(tags = "train"))
+      # set loss_function correctly
+      pars = self$param_set$get_values(tags = "train")
+      pars$loss_function = if (is_binary) {
+        pars$loss_function_twoclass
+      } else {
+        pars$loss_function_multiclass
+      }
+      pars$loss_function_twoclass = NULL
+      pars$loss_function_multiclass = NULL
+
+      catboost::catboost.train(learn_pool, NULL, pars)
     },
 
     .predict = function(task) {
 
+      is_binary = (length(task$class_names) == 2L)
+
+      # data must be a dataframe
       pool = invoke(catboost::catboost.load_pool,
         data = ordered_features(task, self),
         thread_count = self$param_set$values$thread_count)
 
+      prediction_type = if (self$predict_type == "response") {
+        "Class"
+      } else {
+        "Probability"
+      }
       preds = invoke(catboost::catboost.predict,
         model = self$model,
         pool = pool,
-        prediction_type = "RawFormulaVal",
+        prediction_type = prediction_type,
         .args = self$param_set$get_values(tags = "predict"))
 
-      list(response = preds)
+      if (self$predict_type == "response") {
+        response = if (is_binary) {
+          ifelse(preds == 1L, yes = task$positive, no = task$negative)
+        } else {
+          task$class_names[preds + 1L]
+        }
+        list(response = as.character(unname(response)))
+      } else {
+
+        if (is_binary && is.null(dim(preds))) {
+          preds = matrix(c(preds, 1 - preds), ncol = 2L, nrow = length(preds))
+          colnames(preds) = c(task$positive, task$negative)
+        } else {
+          colnames(preds) = self$state$train_task$class_names
+        }
+
+        list(prob = preds)
+      }
     }
   )
 )
 
-.extralrns_dict$add("regr.catboost", LearnerRegrCatboost)
+.extralrns_dict$add("classif.catboost", LearnerClassifCatboost)

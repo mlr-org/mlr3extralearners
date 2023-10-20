@@ -49,7 +49,7 @@ lrn("classif.LMT")
 }
 }
 
-\section{Initial parameter values}{
+\section{CUstom mlr3 parameters}{
 
 \itemize{
 \item \code{output_debug_info}:

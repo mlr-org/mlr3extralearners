@@ -22,14 +22,19 @@ the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
 
 `mlr3extralearners` lives on GitHub and will not be on CRAN.
 
-You can install the latest release using the code below
+You can install the package as follows:
 
 ``` r
+# latest GitHub release
 remotes::install_github("mlr-org/mlr3extralearners@*release")
+
+# development version
+remotes::install_github("mlr-org/mlr3extralearners")
 ```
 
 Alternatively, you can add the following to your .Rprofile, which allows
-you to install `mlr3extralearners` via `install.packages()`.
+you to install `mlr3extralearners` via `install.packages()`. Note that
+this will install the development version.
 
 ``` r
 # .Rprofile
