@@ -105,7 +105,7 @@ Suggests:
     xgboost
 Remotes:
     binderh/CoxBoost,
-    catboost/catboost/R-package,
+    catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     xoopR/distr6,
