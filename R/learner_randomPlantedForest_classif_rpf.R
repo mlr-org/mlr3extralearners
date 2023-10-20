@@ -99,10 +99,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       )
     },
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
       if (self$predict_type == "response") {
@@ -118,7 +115,9 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
         )
         # Result will be a df with one column per variable with names '.pred_<level>'
         # we want the names without ".pred"
-        names(pred[, paste0(".pred_", task$class_names)]) <- task$class_names
+        xn = names(pred)
+        xn[which(xn == paste0(".pred_", task$class_names))] <- task$class_names
+        names(pred) = xn
 
         list(prob = as.matrix(pred))
       }
