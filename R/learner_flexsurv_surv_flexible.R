@@ -34,75 +34,72 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-delayedAssign(
-  "LearnerSurvFlexible",
-  R6Class("LearnerSurvFlexible",
-    inherit = mlr3proba::LearnerSurv,
+LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
+  inherit = mlr3proba::LearnerSurv,
 
-    public = list(
-      #' @description
-      #' Creates a new instance of this [R6][R6::R6Class] class.
-      initialize = function() {
-        ps = ps(
-          bhazard = p_uty(tags = "train"),
-          k = p_int(default = 0L, lower = 0L, tags = "train"),
-          knots = p_uty(tags = "train"),
-          bknots = p_uty(tags = "train"),
-          scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
-          timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
-          inits = p_uty(tags = "train"),
-          rtrunc = p_uty(tags = "train"),
-          fixedpars = p_uty(tags = "train"),
-          cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
-          maxiter = p_int(default = 30L, tags = "train"),
-          rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
-          toler.chol = p_dbl(default = 1e-10, tags = "train"),
-          debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
-          outer.max = p_int(default = 10L, tags = "train")
-        )
+  public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
+    initialize = function() {
+      ps = ps(
+        bhazard = p_uty(tags = "train"),
+        k = p_int(default = 0L, lower = 0L, tags = "train"),
+        knots = p_uty(tags = "train"),
+        bknots = p_uty(tags = "train"),
+        scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
+        timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
+        inits = p_uty(tags = "train"),
+        rtrunc = p_uty(tags = "train"),
+        fixedpars = p_uty(tags = "train"),
+        cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
+        maxiter = p_int(default = 30L, tags = "train"),
+        rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
+        toler.chol = p_dbl(default = 1e-10, tags = "train"),
+        debug = p_int(default = 0, lower = 0, upper = 1, tags = "train"),
+        outer.max = p_int(default = 10L, tags = "train")
+      )
 
-        # value of k is changed as the default is equivalent (and a much more inefficient)
-        # implementation of `surv.parametric`
-        ps$values = list(k = 1)
+      # value of k is changed as the default is equivalent (and a much more inefficient)
+      # implementation of `surv.parametric`
+      ps$values = list(k = 1)
 
-        super$initialize(
-          id = "surv.flexible",
-          packages = c("mlr3extralearners", "flexsurv", "pracma"),
-          feature_types = c("logical", "integer", "factor", "numeric"),
-          predict_types = c("distr", "crank", "lp"),
-          param_set = ps,
-          properties = "weights",
-          man = "mlr3extralearners::mlr_learners_surv.flexible",
-          label = "Flexible Parametric Splines"
-        )
+      super$initialize(
+        id = "surv.flexible",
+        packages = c("mlr3extralearners", "flexsurv", "pracma"),
+        feature_types = c("logical", "integer", "factor", "numeric"),
+        predict_types = c("distr", "crank", "lp"),
+        param_set = ps,
+        properties = "weights",
+        man = "mlr3extralearners::mlr_learners_surv.flexible",
+        label = "Flexible Parametric Splines"
+      )
+    }
+  ),
+
+  private = list(
+    .train = function(task) {
+      pars_train = self$param_set$get_values(tags = "train")
+      args_ctrl = formalArgs(survival::survreg.control)
+      pars_ctrl = pars_train[names(pars_train) %in% args_ctrl]
+      pars_train = pars_train[names(pars_train) %nin% args_ctrl]
+      pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
+
+      if ("weights" %in% task$properties) {
+        pars_train$weights = task$weights$weight
       }
-    ),
 
-    private = list(
-      .train = function(task) {
-        pars_train = self$param_set$get_values(tags = "train")
-        args_ctrl = formalArgs(survival::survreg.control)
-        pars_ctrl = pars_train[names(pars_train) %in% args_ctrl]
-        pars_train = pars_train[names(pars_train) %nin% args_ctrl]
-        pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
+      invoke(flexsurv::flexsurvspline,
+        formula = task$formula(task$feature_names),
+        data = task$data(), .args = pars_train)
+    },
 
-        if ("weights" %in% task$properties) {
-          pars_train$weights = task$weights$weight
-        }
+    .predict = function(task) {
+      pars = self$param_set$get_values(tags = "predict")
+      pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
 
-        invoke(flexsurv::flexsurvspline,
-          formula = task$formula(task$feature_names),
-          data = task$data(), .args = pars_train)
-      },
-
-      .predict = function(task) {
-        pars = self$param_set$get_values(tags = "predict")
-        pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
-
-        # crank is defined as the mean of the survival distribution
-        list(distr = pred$distr, lp = pred$lp, crank = pred$lp)
-      }
-    )
+      # crank is defined as the mean of the survival distribution
+      list(distr = pred$distr, lp = pred$lp, crank = pred$lp)
+    }
   )
 )
 
@@ -209,4 +206,4 @@ predict_flexsurvreg = function(object, task, learner, ...) {
   return(list(distr = distr, lp = lp))
 }
 
-.extralrns_dict$add("surv.flexible", function() LearnerSurvFlexible$new())
+.extralrns_dict$add("surv.flexible", LearnerSurvFlexible)
