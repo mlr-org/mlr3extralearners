@@ -104,11 +104,10 @@ lrn("classif.catboost")
 
 \section{Installation}{
 
-The easiest way to install catboost is with the helper function
-\link{install_catboost}.
+See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{logging_level}:
