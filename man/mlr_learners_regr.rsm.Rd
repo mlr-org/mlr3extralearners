@@ -6,9 +6,9 @@
 \title{Regression Response Surface Model Learner}
 \description{
 Fit a linear model with a response-surface component.
-Calls \code{\link[rsm:rsm]{rsm::rsm()}} from FIXME: \CRANpkg{rsm}.
+Calls \code{\link[rsm:rsm]{rsm::rsm()}} from \CRANpkg{rsm}.
 }
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{modelfun}: This parameter controls how the formula for \code{\link[rsm:rsm]{rsm::rsm()}} is created. Possible values are:

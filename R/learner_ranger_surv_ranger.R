@@ -6,7 +6,7 @@
 #' Random survival forest.
 #' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
 #'
-#' @section Initial parameter values:
+#' @section Custom mlr3 parameters:
 #' - `mtry`:
 #'   - This hyperparameter can alternatively be set via our hyperparameter `mtry.ratio`
 #'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
