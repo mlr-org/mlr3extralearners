@@ -57,11 +57,12 @@ jobs:
       - name: Install Python
         run: |
           pak::pkg_install('reticulate')
-          reticulate::install_miniconda()
+          reticulate::install_miniconda(force = TRUE)
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
-          keras::install_keras(extra_packages = c('IPython', 'requests', 'certifi', 'urllib3', 'tensorflow-hub', 'tabnet'), method = "conda")
-          reticulate::py_install(c('pytorch', 'pycox'), method = "conda")
+          reticulate::py_install("numpy")
+          survivalmodels::install_pycox(pip = TRUE, install_torch = TRUE)
+          survivalmodels::install_keras(pip = TRUE, install_tensorflow = TRUE)
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2

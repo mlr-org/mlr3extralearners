@@ -1,4 +1,10 @@
-# mlr3extralearners 0.7.0-9000
+# mlr3extralearners 0.7.1-9000
+
+* `surv.ranger` now receives parameters during `$predict()` (thanks to @jemus42)
+* Feature: Learner `surv.bart` was added (thanks to @bblodfon)
+
+# mlr3extralearners 0.7.1
+
 * Add parameter `perf.type` to rfsrc learners
 * Add vignette about "extending learners" which was previously in the mlr3book.
 * Remove the `"multiclass"` property from `lrn("classif.gbm")`, as this feature is broken.

@@ -124,6 +124,7 @@ These are:
 
 * **tags** that organize the parameters, e.g. whether they are used during training or prediction.
 * **default values** which give information about the value that is used by the upstream function when no value is set.
+  Note that this is not necessarily the default of the function signature but what is used internally: e.g. the default of parameter `a` for a function is `NULL`, but internally the value for `a` is set to `1` it is left as `NULL` by the caller.
 * **initial values** are the initial `$values` of the parameter set that are set during construction.
 * **custom checks** which allow to specify custom constraints for untyped parameters (`ParamUty`).
 
@@ -143,7 +144,6 @@ Furthermore, there are other tags that serve specific purposes:
 **Default Values**
 
 The default values of each parameter indicate which value the upstream function (in this case `rpart::rpart()`) uses if no parameter is specified.
-Essentially all `mlr3` learners call some upstream function (like `rpart::rpart()` in the example above), and this function has default values.
 These have to be retrieved from the package's documentation.
 If parameters have no default, they have to be tagged with the `"required"` tag.
 For such parameters, we recommended setting the parameter to a value in the initialize method, so that the learner can be executed after creation.
@@ -159,7 +159,8 @@ In some cases you want to change the parameter values during initialization.
 You can do this by changing the `param_set$values` during the learner's construction.
 You can see we have done this for `regr.rpart_simple` where the default for `xval` is changed to `0`.
 Note however that we still annotate the default of the `xval` parameter as 10.
-It is recommended to only change the defaults for good reasons and document this properly when doing so.
+It is recommended to initialize parameter values for good reasons and document this properly when doing so.
+When contributing a learner to `mlr3extralearners` this information should go into the *Initial parameter values* section.
 
 **Custom Checks**
 
@@ -167,6 +168,14 @@ In `paradox` only integers, numerics, factors, and logicals have dedicated param
 For all other parameters, the `ParamUty` class has to be used, which is constructable via the `p_uty()` function.
 It has the argument `custom_check`, which allows specifying custom constraints.
 This function return `TRUE` if the input is valid and a `character(1)` with the error message otherwise.
+
+**Custom Parameters**
+
+Sometimes you might want to add paramters that are not present in the upstream function.
+One example is the `mtry.ratio` parameter of `lrn("surv.ranger")`.
+Such parameters should usually not have `default` values (because we are here not calling an upstream function with a default behaviour) but instead have their value initialized during construction and have the `"required"` tag.
+This avoids having to deal with the case where this parameter has no value set.
+When contributing a learner to `mlr3extralearners` this information should go into the *Custom parameters* section.
 
 ## Train function
 
@@ -316,7 +325,7 @@ test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
 
   # basic learner properties
-  expect_learner(learner, check_man = FALSE)
+  expect_learner(learner)
 
   # you can skip tests using the `exclude` argument
   result = run_autotest(learner)
@@ -373,5 +382,6 @@ When adding a `Learner` to `mlr3extralearners` there are some additional require
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
 * The learner must be properly documented. When using `mlr3extralearners::create_learner()` this is automatically generated. Otherwise you can use and adapt the documentation of an already implemented learner.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
-* The tests must pass in the CI.
-* Update the `NEWS.md` file and describe what you added the learner.
+* The tests must pass in the CI (also check the CodeFactor results).
+* Update the `NEWS.md` file and describe that you added the learner.
+* Add yourself as a contributor
