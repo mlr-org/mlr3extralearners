@@ -27,6 +27,7 @@ Other contributors:
   \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
   \item Byron Jaeger \email{bjaeger@wakehealth.edu} [contributor]
   \item Zezhi Wang \email{homura@mail.ustc.edu.cn} [contributor]
+  \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID}) [contributor]
 }
 
 }

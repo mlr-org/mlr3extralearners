@@ -41,7 +41,7 @@ lrn("classif.OneR")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{output_debug_info}:

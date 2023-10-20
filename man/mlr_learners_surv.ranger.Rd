@@ -8,7 +8,7 @@
 Random survival forest.
 Calls \code{\link[ranger:ranger]{ranger::ranger()}} from package \CRANpkg{ranger}.
 }
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{mtry}:
@@ -18,7 +18,9 @@ as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 }
 }
+}
 
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{num.threads} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
