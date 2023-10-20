@@ -199,7 +199,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     .train = function(task) {
 
       if (packageVersion("catboost") < "0.21") {
-        stop("catboost v0.21 or greater is required, update with install_catboost")
+        stop("catboost v0.21 or greater is required.")
       }
 
       # target is encoded as integer values from 0
