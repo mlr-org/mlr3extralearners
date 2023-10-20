@@ -25,17 +25,17 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        max_interaction = p_int(lower = 0, upper = Inf, default = 1, tags = "train"),
-        max_interaction_ratio = p_dbl(lower = 0, upper = 1, default = 0, tags = "train"),
+        max_interaction       = p_int(lower = 0, upper = Inf, default = 1, tags = "train"),
+        max_interaction_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         max_interaction_limit = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
-        ntrees = p_int(lower = 1, upper = Inf, default = 50, tags = "train"),
-        splits = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
-        split_try = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
-        t_try = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
-        deterministic = p_lgl(default = FALSE, tags = "train"),
-        nthreads = p_int(lower = 1, upper = Inf, default = 1, tags = c("train", "threads")),
-        cv = p_lgl(default = FALSE, tags = "train"),
-        purify = p_lgl(default = FALSE, tags = "train")
+        ntrees                = p_int(lower = 1, upper = Inf, default = 50, tags = "train"),
+        splits                = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
+        split_try             = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
+        t_try                 = p_dbl(lower = 0, upper = 1, default = 0.4, tags = "train"),
+        deterministic         = p_lgl(default = FALSE, tags = "train"),
+        nthreads              = p_int(lower = 1, upper = Inf, default = 1, tags = c("train", "threads")),
+        cv                    = p_lgl(default = FALSE, tags = "train"),
+        purify                = p_lgl(default = FALSE, tags = "train")
       )
 
       param_set$values = list(max_interaction_limit = 30)
