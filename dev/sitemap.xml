@@ -22,6 +22,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/news/index.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/pull_request_template.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/create_learner.html</loc>
   </url>
   <url>
