@@ -7,10 +7,10 @@
 #'
 #' Calls [randomPlantedForest::rpf()] from 'randomPlantedForest'.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `loss`:
 #'   - Actual default: `"L2"`.
-#'   - Adjusted default: `"exponential"`.
+#'   - Initial value: `"exponential"`.
 #'   - Reason for change: Using `"L2"` (or `"L1"`) loss does not guarantee predictions are valid
 #'     probabilities and more akin to the linear predictor of a GLM.
 #' - `max_interaction`:
@@ -23,10 +23,6 @@
 #'     `min(n_features, max_interaction_limit)`.
 #'     This is analogous to `mtry.ratio` in [`classif.ranger`][mlr3learners::mlr_learners_classif.ranger], with
 #'     `max_interaction_limit` adding to `n_features` as an additional constraint.
-#'
-#'
-#' @section Installation:
-#' `remotes::install_github("PlantedML/randomPlantedForest")`
 #'
 #' @templateVar id classif.rpf
 #' @template learner
@@ -64,8 +60,8 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
 
       super$initialize(
         id = "classif.rpf",
-        packages = "randomPlantedForest",
-        feature_types = c("integer", "numeric", "factor", "ordered"),
+        packages = "PlantedML/randomPlantedForest",
+        feature_types = c("integer", "numeric", "factor", "ordered", "logical"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("twoclass", "multiclass"),

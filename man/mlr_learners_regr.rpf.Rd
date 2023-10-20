@@ -23,8 +23,8 @@ lrn("regr.rpf")
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{randomPlantedForest}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{PlantedML/randomPlantedForest}
 }
 }
 
@@ -45,13 +45,13 @@ lrn("regr.rpf")
 }
 }
 
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{loss}:
 \itemize{
 \item Actual default: \code{"L2"}.
-\item Adjusted default: \code{"exponential"}.
+\item Initial value: \code{"exponential"}.
 \item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
 probabilities and more akin to the linear predictor of a GLM.
 }

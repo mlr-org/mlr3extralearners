@@ -7,7 +7,7 @@
 #'
 #' Calls [randomPlantedForest::rpf()] from 'randomPlantedForest'.
 #'
-#' @inheritSection mlr_learners_classif.rpf Custom mlr3 defaults
+#' @inheritSection mlr_learners_classif.rpf Initial parameter values
 #'
 #' @templateVar id regr.rpf
 #' @template learner
@@ -42,8 +42,8 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
 
       super$initialize(
         id = "regr.rpf",
-        packages = "randomPlantedForest",
-        feature_types = c("integer", "numeric", "factor"),
+        packages = "PlantedML/randomPlantedForest",
+        feature_types = c("integer", "numeric", "factor", "ordered", "logical"),
         predict_types = c("response"),
         param_set = param_set,
         properties = character(0),

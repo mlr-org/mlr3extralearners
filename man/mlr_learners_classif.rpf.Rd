@@ -9,13 +9,13 @@ Random Planted Forest: A directly interpretable tree ensemble.
 
 Calls \code{\link[randomPlantedForest:rpf]{randomPlantedForest::rpf()}} from 'randomPlantedForest'.
 }
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{loss}:
 \itemize{
 \item Actual default: \code{"L2"}.
-\item Adjusted default: \code{"exponential"}.
+\item Initial value: \code{"exponential"}.
 \item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
 probabilities and more akin to the linear predictor of a GLM.
 }
@@ -34,11 +34,6 @@ This is analogous to \code{mtry.ratio} in \code{\link[mlr3learners:mlr_learners_
 }
 }
 
-\section{Installation}{
-
-\code{remotes::install_github("PlantedML/randomPlantedForest")}
-}
-
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -53,8 +48,8 @@ lrn("classif.rpf")
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{randomPlantedForest}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{PlantedML/randomPlantedForest}
 }
 }
 
