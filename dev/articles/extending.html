@@ -306,16 +306,14 @@ that must be provided for the algorithm to be executable.</li>
 <p><strong>Default Values</strong></p>
 <p>The default values of each parameter indicate which value the
 upstream function (in this case <code><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart::rpart()</a></code>) uses if no
-parameter is specified. Essentially all <code>mlr3</code> learners call
-some upstream function (like <code><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart::rpart()</a></code> in the example
-above), and this function has default values. These have to be retrieved
-from the package’s documentation. If parameters have no default, they
-have to be tagged with the <code>"required"</code> tag. For such
-parameters, we recommended setting the parameter to a value in the
-initialize method, so that the learner can be executed after creation.
-Note that setting a parameter value in the <code>$initialize()</code>
-method does not change the parameter’s default value (as the default
-denotes what happens when no value is set).</p>
+parameter is specified. These have to be retrieved from the package’s
+documentation. If parameters have no default, they have to be tagged
+with the <code>"required"</code> tag. For such parameters, we
+recommended setting the parameter to a value in the initialize method,
+so that the learner can be executed after creation. Note that setting a
+parameter value in the <code>$initialize()</code> method does not change
+the parameter’s default value (as the default denotes what happens when
+no value is set).</p>
 <p>Parameters expect the default values to be of their respective type,
 e.g. the default of <code>ParamInt</code> must be an integer. Some
 packages have R expressions as default values which cannot be properly
@@ -329,8 +327,10 @@ initialization. You can do this by changing the
 see we have done this for <code>regr.rpart_simple</code> where the
 default for <code>xval</code> is changed to <code>0</code>. Note however
 that we still annotate the default of the <code>xval</code> parameter as
-10. It is recommended to only change the defaults for good reasons and
-document this properly when doing so.</p>
+10. It is recommended to initialize parameter values for good reasons
+and document this properly when doing so. When contributing a learner to
+<code>mlr3extralearners</code> this information should go into the
+<em>Initial parameter values</em> section.</p>
 <p><strong>Custom Checks</strong></p>
 <p>In <code>paradox</code> only integers, numerics, factors, and
 logicals have dedicated parameter types. For all other parameters, the
@@ -339,6 +339,17 @@ the <code><a href="https://paradox.mlr-org.com/reference/Domain.html" class="ext
 <code>custom_check</code>, which allows specifying custom constraints.
 This function return <code>TRUE</code> if the input is valid and a
 <code>character(1)</code> with the error message otherwise.</p>
+<p><strong>Custom Parameters</strong></p>
+<p>Sometimes you might want to add paramters that are not present in the
+upstream function. One example is the <code>mtry.ratio</code> parameter
+of <code>lrn("surv.ranger")</code>. Such parameters should usually not
+have <code>default</code> values (because we are here not calling an
+upstream function with a default behaviour) but instead have their value
+initialized during construction and have the <code>"required"</code>
+tag. This avoids having to deal with the case where this parameter has
+no value set. When contributing a learner to
+<code>mlr3extralearners</code> this information should go into the
+<em>Custom parameters</em> section.</p>
 </div>
 <div class="section level2">
 <h2 id="train-function">Train function<a class="anchor" aria-label="anchor" href="#train-function"></a>
@@ -605,9 +616,11 @@ generated. Otherwise you can use and adapt the documentation of an
 already implemented learner.</li>
 <li>Conforming to the <code>mlr3</code> <a href="https://github.com/mlr-org/mlr3/wiki/Style-Guide" class="external-link">style
 guide</a>.</li>
-<li>The tests must pass in the CI.</li>
-<li>Update the <code>NEWS.md</code> file and describe what you added the
+<li>The tests must pass in the CI (also check the CodeFactor
+results).</li>
+<li>Update the <code>NEWS.md</code> file and describe that you added the
 learner.</li>
+<li>Add yourself as a contributor</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
