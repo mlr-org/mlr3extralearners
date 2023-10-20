@@ -34,7 +34,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       ps = ps(
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
-        nLearnerSurvAorsf_retry = p_int(default = 3L, lower = 0L, tags = "train"),
+        n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
         n_thread = p_int(default = 1, lower = 0, tags = c("train", "predict")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         mtry = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
