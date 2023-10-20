@@ -40,6 +40,7 @@ Suggests:
     apcluster,
     BART (>= 2.9.4),
     C50,
+    catboost,
     coin,
     CoxBoost,
     Cubist,
@@ -103,10 +104,11 @@ Suggests:
     testthat,
     xgboost
 Remotes:
-    xoopR/distr6,
     binderh/CoxBoost,
+    catboost/catboost/R-package,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
+    xoopR/distr6,
     xoopR/param6,
     xoopR/set6
 VignetteBuilder:
