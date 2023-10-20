@@ -35,11 +35,18 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
+        n_thread = p_int(default = 1, lower = 0, tags = c("train", "predict")),
+        pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         mtry = p_int(default = NULL, lower = 1L,
           special_vals = list(NULL), tags = "train"),
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
+        sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
+        sample_fraction = p_dbl(lower = 0, upper = 1, default = .632,
+          tags = "train"),
         control_type = p_fct(levels = c("fast", "cph", "net"),
           default = "fast", tags = "train"),
+        split_rule = p_fct(levels = c("logrank", "cstat"),
+          default = "logrank", tags = "train"),
         control_fast_do_scale = p_lgl(default = TRUE, tags = "train"),
         control_fast_method = p_fct(levels = c("efron", "breslow"),
           default = "efron", tags = "train"),
@@ -174,4 +181,4 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
   )
 )
 
-.extralrns_dict$add("surv.aorsf", LearnerSurvAorsf)
+.extralrns_dict$add("surv.aorsf", function() LearnerSurvAorsf$new())

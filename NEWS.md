@@ -1,6 +1,7 @@
 # mlr3extralearners 0.7.1-9000
 
 * `surv.ranger` now receives parameters during `$predict()` (thanks to @jemus42)
+* Feature: Learner `surv.bart` was added (thanks to @bblodfon)
 
 # mlr3extralearners 0.7.1
 
