@@ -24,7 +24,7 @@ test_that("regr.rpf predict", {
     "object", # handled internally
     "data", # handled internally
     "new_data", # handled internally
-    "type" # Not sure but handled by predict_type?
+    "type" # handled internally by predict_type
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
