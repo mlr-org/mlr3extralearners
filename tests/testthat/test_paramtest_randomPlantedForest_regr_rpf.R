@@ -3,22 +3,23 @@ test_that("regr.rpf train", {
   fun = randomPlantedForest:::rpf.data.frame
   exclude = c(
     "x", "y", # handled internally
-    "loss", # Not applicable for regression learner
-    "delta", # Not applicable for regression learner
-    "epsilon", # Not applicable for regression learner
+    "loss", # For regression, this parameter is redundant (only "L2" supported)
+    # The following 2 parameters are control parameters for
+    # classification only, and are ignored in the regression case
+    "delta",
+    "epsilon",
+    # The following 2 are custom mlr3 parameters
     "max_interaction_ratio",
     "max_interaction_limit"
   )
 
-  # note that you can also pass a list of functions in case $.train calls more than one
-  # function, e.g. for control arguments
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
 test_that("regr.rpf predict", {
   learner = lrn("regr.rpf")
-  fun = predict # nolint
+  fun = randomPlantedForest:::predict.rpf # nolint
   exclude = c(
     "object", # handled internally
     "data", # handled internally

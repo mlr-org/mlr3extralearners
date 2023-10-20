@@ -3,24 +3,23 @@ test_that("classif.rpf train", {
   fun = randomPlantedForest:::rpf.data.frame
   exclude = c(
     "x", "y", # handled internally
+    # The following 2 are custom mlr3 parameters
     "max_interaction_ratio",
     "max_interaction_limit"
   )
 
-  # note that you can also pass a list of functions in case $.train calls more than one
-  # function, e.g. for control arguments
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
 test_that("classif.rpf predict", {
   learner = lrn("classif.rpf")
-  fun = predict # nolint
+  fun = randomPlantedForest:::predict.rpf # nolint
   exclude = c(
     "object", # handled internally
     "data", # handled internally
     "new_data", # handled internally
-    "type" # Not sure but handled by predict_type?
+    "type" # handled internally via predict_type
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

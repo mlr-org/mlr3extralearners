@@ -24,7 +24,7 @@ lrn("regr.rpf")
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{PlantedML/randomPlantedForest}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{randomPlantedForest}
 }
 }
 
@@ -45,17 +45,28 @@ lrn("regr.rpf")
 }
 }
 
-\section{Initial parameter values}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{loss}:
+\item \code{max_interaction}:
 \itemize{
-\item Actual default: \code{"L2"}.
-\item Initial value: \code{"exponential"}.
-\item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
-probabilities and more akin to the linear predictor of a GLM.
+\item This hyperparameter can alternatively be set via \code{max_interaction_ratio} as
+\code{max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)},
+and lastly \code{max_interaction = min(max_interaction, max_interaction_limit)},
+where \code{max_interaction_limit} is a second additional hyperparameter defaulting to \code{30},
+since more deeply nested interactions are considered impractical.
+This ensures that the value \code{max_interaction} passed to \code{rpf} never exceeds
+\code{min(n_features, max_interaction_limit)}.
+This is analogous to \code{mtry.ratio} in \code{\link[mlr3learners:mlr_learners_classif.ranger]{classif.ranger}}, with
+\code{max_interaction_limit} adding to \code{n_features} as an additional constraint.
 }
 }
+}
+
+\section{Installation}{
+
+Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("PlantedML/randomPlantedForest")}.
 }
 
 \examples{

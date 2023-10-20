@@ -7,8 +7,7 @@
 #'
 #' Calls [randomPlantedForest::rpf()] from 'randomPlantedForest'.
 #'
-#' @inheritSection mlr_learners_classif.rpf Initial parameter values
-#' @inheritSection mlr_learners_classif.rpf Custom mlr3 parameters section name
+#' @inheritSection mlr_learners_classif.rpf Custom mlr3 parameters
 #' @templateVar id regr.rpf
 #' @template learner
 #' @inheritSection mlr_learners_classif.rpf Installation
@@ -43,9 +42,9 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
 
       super$initialize(
         id = "regr.rpf",
-        packages = "PlantedML/randomPlantedForest",
+        packages = "randomPlantedForest",
         feature_types = c("integer", "numeric", "factor", "ordered", "logical"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
         properties = character(0),
         man = "mlr3extralearners::mlr_learners_regr.rpf",
@@ -80,7 +79,7 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = names(self$state$data_prototype))
+      newdata = ordered_features(task, self)
 
       pred = invoke(
         predict, self$model, new_data = newdata,

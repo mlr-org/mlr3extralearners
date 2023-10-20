@@ -66,7 +66,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
 
       super$initialize(
         id = "classif.rpf",
-        packages = "PlantedML/randomPlantedForest",
+        packages = "randomPlantedForest",
         feature_types = c("integer", "numeric", "factor", "ordered", "logical"),
         predict_types = c("response", "prob"),
         param_set = param_set,
@@ -85,7 +85,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       max_interaction_limit = pars[["max_interaction_limit"]]
       pars[["max_interaction_limit"]] = NULL
       n_features = length(task$feature_names)
-browser()
+
       pars = convert_ratio(
         pars, "max_interaction", "max_interaction_ratio",
         min(n_features, max_interaction_limit)
@@ -103,10 +103,7 @@ browser()
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
-      newdata = task$data(cols = names(self$state$data_prototype))
-
-      # Calculate predictions for the selected predict type.
-      # type = self$predict_type
+      newdata = ordered_features(task, self)
 
       if (self$predict_type == "response") {
         pred = invoke(

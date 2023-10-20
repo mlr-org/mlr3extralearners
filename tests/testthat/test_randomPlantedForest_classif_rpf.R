@@ -1,7 +1,6 @@
 test_that("autotest", {
   learner = lrn("classif.rpf")
   expect_learner(learner)
-  # note that you can skip tests using the exclude argument
   result = run_autotest(learner)
   # FIXME: Response is different for different predict types
   # due to use of max.col() in both the learner and

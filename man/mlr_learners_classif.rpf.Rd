@@ -55,7 +55,7 @@ lrn("classif.rpf")
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{PlantedML/randomPlantedForest}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{randomPlantedForest}
 }
 }
 
