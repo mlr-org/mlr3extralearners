@@ -8,9 +8,10 @@
 #' Calls [randomPlantedForest::rpf()] from 'randomPlantedForest'.
 #'
 #' @inheritSection mlr_learners_classif.rpf Initial parameter values
-#'
+#' @inheritSection mlr_learners_classif.rpf Custom mlr3 parameters section name
 #' @templateVar id regr.rpf
 #' @template learner
+#' @inheritSection mlr_learners_classif.rpf Installation
 #'
 #' @references
 #' `r format_bib("hiabu_2023")`

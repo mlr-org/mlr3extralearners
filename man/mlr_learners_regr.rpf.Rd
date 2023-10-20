@@ -55,18 +55,6 @@ lrn("regr.rpf")
 \item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
 probabilities and more akin to the linear predictor of a GLM.
 }
-\item \code{max_interaction}:
-\itemize{
-\item This hyperparameter can alternatively be set via \code{max_interaction_ratio} as
-\code{max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)},
-and lastly \code{max_interaction = min(max_interaction, max_interaction_limit)},
-where \code{max_interaction_limit} is a second additional hyperparameter defaulting to \code{30},
-since more deeply nested interactions are considered impractical.
-This ensures that the value \code{max_interaction} passed to \code{rpf} never exceeds
-\code{min(n_features, max_interaction_limit)}.
-This is analogous to \code{mtry.ratio} in \code{\link[mlr3learners:mlr_learners_classif.ranger]{classif.ranger}}, with
-\code{max_interaction_limit} adding to \code{n_features} as an additional constraint.
-}
 }
 }
 

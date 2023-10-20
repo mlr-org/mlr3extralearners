@@ -13,6 +13,8 @@
 #'   - Initial value: `"exponential"`.
 #'   - Reason for change: Using `"L2"` (or `"L1"`) loss does not guarantee predictions are valid
 #'     probabilities and more akin to the linear predictor of a GLM.
+
+#' @section Custom mlr3 parameters:
 #' - `max_interaction`:
 #'   - This hyperparameter can alternatively be set via `max_interaction_ratio` as
 #'     `max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)`,
@@ -26,6 +28,10 @@
 #'
 #' @templateVar id classif.rpf
 #' @template learner
+#'
+#' @section Installation:
+#' Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+#' `remotes::install_github("PlantedML/randomPlantedForest")`.
 #'
 #' @references
 #' `r format_bib("hiabu_2023")`
@@ -79,7 +85,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       max_interaction_limit = pars[["max_interaction_limit"]]
       pars[["max_interaction_limit"]] = NULL
       n_features = length(task$feature_names)
-
+browser()
       pars = convert_ratio(
         pars, "max_interaction", "max_interaction_ratio",
         min(n_features, max_interaction_limit)

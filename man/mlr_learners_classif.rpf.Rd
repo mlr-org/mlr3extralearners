@@ -19,6 +19,12 @@ Calls \code{\link[randomPlantedForest:rpf]{randomPlantedForest::rpf()}} from 'ra
 \item Reason for change: Using \code{"L2"} (or \code{"L1"}) loss does not guarantee predictions are valid
 probabilities and more akin to the linear predictor of a GLM.
 }
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
 \item \code{max_interaction}:
 \itemize{
 \item This hyperparameter can alternatively be set via \code{max_interaction_ratio} as
@@ -71,6 +77,12 @@ lrn("classif.rpf")
    cv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    purify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Installation}{
+
+Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("PlantedML/randomPlantedForest")}.
 }
 
 \examples{
