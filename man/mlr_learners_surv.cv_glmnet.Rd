@@ -3,7 +3,7 @@
 \name{mlr_learners_surv.cv_glmnet}
 \alias{mlr_learners_surv.cv_glmnet}
 \alias{LearnerSurvCVGlmnet}
-\title{Cross-Validated  GLM with Elastic Net Regularization Survival Learner}
+\title{Cross-Validated GLM with Elastic Net Regularization Survival Learner}
 \description{
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{glmnet}.
