@@ -12,7 +12,20 @@ Calls \code{\link[glmnet:glmnet]{glmnet::glmnet()}} from package \CRANpkg{glmnet
 }
 }
 \details{
-Caution: This learner is different to learners calling \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
+This learner returns two prediction types:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
+Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
+into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+By default the Breslow estimator is used.
+}
+
+\strong{Caution}: This learner is different to learners calling \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
 in that it does not use the internal optimization of parameter \code{lambda}.
 Instead, \code{lambda} needs to be tuned by the user (e.g., via \CRANpkg{mlr3tuning}).
 When \code{lambda} is tuned, the \code{glmnet} will be trained for each tuning iteration.
@@ -41,7 +54,7 @@ lrn("surv.glmnet")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{lp}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{glmnet}
 }
@@ -89,6 +102,8 @@ lrn("surv.glmnet")
    type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
    type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
+   ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
 }
 }
 

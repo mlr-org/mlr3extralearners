@@ -26,7 +26,10 @@ test_that("predict surv.glmnet", {
     "object", # handled via mlr3
     "newx", # handled via mlr3
     "type", # handled via mlr3
-    "predict.gamma" # renamed from gamma
+    "predict.gamma", # renamed from gamma
+    "offset", # for distr prediction
+    "stype", # for distr prediction
+    "ctype" # for distr prediction
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
