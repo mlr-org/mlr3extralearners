@@ -112,6 +112,7 @@ Remotes:
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
+    xoopR/distr6,
     xoopR/param6,
     xoopR/set6
 VignetteBuilder:
