@@ -1,5 +1,7 @@
 glmnet_get_lambda = function(self, pv) {
-  if (is.null(self$model)) {
+  model = self$model$model
+
+  if (is.null(model)) {
     stopf("Learner '%s' has no model stored", self$id)
   }
 
@@ -7,14 +9,14 @@ glmnet_get_lambda = function(self, pv) {
   s = pv$s
 
   if (is.character(s)) {
-    self$model[[s]]
+    model[[s]]
   } else if (is.numeric(s)) {
     s
   } else { # null / missing
-    if (inherits(self$model, "cv.glmnet")) {
-      self$model[["lambda.1se"]]
-    } else if (length(self$model$lambda) == 1L) {
-      self$model$lambda
+    if (inherits(model, "cv.glmnet")) {
+      model[["lambda.1se"]]
+    } else if (length(model$lambda) == 1L) {
+      model$lambda
     } else {
       default = self$param_set$default$s
       warningf(
@@ -25,7 +27,6 @@ glmnet_get_lambda = function(self, pv) {
   }
 }
 
-
 glmnet_feature_names = function(model) {
   beta = model$beta
   if (is.null(beta)) {
@@ -35,15 +36,15 @@ glmnet_feature_names = function(model) {
   rownames(if (is.list(beta)) beta[[1L]] else beta)
 }
 
-
 glmnet_selected_features = function(self, lambda = NULL) {
-  if (is.null(self$model)) {
+  model = self$model$model
+  if (is.null(model)) {
     stopf("No model stored")
   }
 
   assert_number(lambda, null.ok = TRUE, lower = 0)
   lambda = lambda %??% glmnet_get_lambda(self)
-  nonzero = predict(self$model, type = "nonzero", s = lambda)
+  nonzero = predict(model, type = "nonzero", s = lambda)
   if (is.data.frame(nonzero)) {
     nonzero = nonzero[[1L]]
   } else {
@@ -51,9 +52,8 @@ glmnet_selected_features = function(self, lambda = NULL) {
     nonzero = if (length(nonzero)) sort(unique(nonzero)) else integer()
   }
 
-  glmnet_feature_names(self$model)[nonzero]
+  glmnet_feature_names(model)[nonzero]
 }
-
 
 glmnet_invoke = function(data, target, pv, cv = FALSE) {
   saved_ctrl = glmnet::glmnet.control()

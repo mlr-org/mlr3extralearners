@@ -1,7 +1,13 @@
 # mlr3extralearners 0.7.1-9000
 
+* re-added the catboost learner as it was requested (was previously removed
+  because of installation issues)
 * `surv.ranger` now receives parameters during `$predict()` (thanks to @jemus42)
 * Feature: Learner `surv.bart` was added (thanks to @bblodfon)
+* Parameters of `lrn("surv.aorsf")` were updated (thanks to @bcjaeger)
+* Various minor doc improvements
+* Added the `distr` predict type to the `surv.cv_glmnet` and `surv.glmnet`
+learners (thanks to @bblodfon)
 
 # mlr3extralearners 0.7.1
 

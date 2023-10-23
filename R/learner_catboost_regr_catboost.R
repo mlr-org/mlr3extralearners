@@ -10,10 +10,9 @@
 #' @templateVar id regr.catboost
 #'
 #' @section Installation:
-#' The easiest way to install catboost is with the helper function
-#' [install_catboost].
+#' See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `logging_level`:
 #'   - Actual default: "Verbose"
 #'   - Adjusted default: "Silent"
@@ -193,7 +192,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
     .train = function(task) {
 
       if (packageVersion("catboost") < "0.21") {
-        stop("catboost v0.21 or greater is required, update with install_catboost")
+        stop("catboost v0.21 or greater is required.")
       }
 
       # data must be a dataframe

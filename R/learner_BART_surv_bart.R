@@ -16,7 +16,7 @@
 #' by default used for the calculation of survival measures that require a `distr`
 #' prediction, see more info on [PredictionSurv][mlr3proba::PredictionSurv].
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `mc.cores` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.
 #'
 #' @section Custom mlr3 parameters:

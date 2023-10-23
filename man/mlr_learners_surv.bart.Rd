@@ -20,7 +20,7 @@ by default used for the calculation of survival measures that require a \code{di
 prediction, see more info on \link[mlr3proba:PredictionSurv]{PredictionSurv}.
 }
 }
-\section{Custom mlr3 defaults}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{mc.cores} is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.

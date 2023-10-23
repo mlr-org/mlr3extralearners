@@ -6,7 +6,7 @@
 #' @importFrom stats predict na.omit setNames formula as.formula
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
-#' @importFrom utils getFromNamespace
+#' @importFrom utils getFromNamespace packageVersion
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD"))
