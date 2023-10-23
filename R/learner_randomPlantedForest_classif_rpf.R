@@ -116,7 +116,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
         # Result will be a df with one column per variable with names '.pred_<level>'
         # we want the names without ".pred"
         xn = names(pred)
-        xn[which(xn == paste0(".pred_", task$class_names))] <- task$class_names
+        xn[which(xn == paste0(".pred_", task$class_names))] = task$class_names
         names(pred) = xn
 
         list(prob = as.matrix(pred))
