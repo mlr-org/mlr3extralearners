@@ -10,7 +10,7 @@
 #' @templateVar id regr.glm
 #' @template learner
 #'
-#' @section Custom mlr3 defaults:
+#' @section Initial parameter values:
 #' - `type`
 #'   - Actual default: "link"
 #'   - Adjusted default: "response"
