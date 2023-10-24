@@ -3,10 +3,24 @@
 \name{mlr_learners_surv.cv_glmnet}
 \alias{mlr_learners_surv.cv_glmnet}
 \alias{LearnerSurvCVGlmnet}
-\title{Cross-Validated  GLM with Elastic Net Regularization Survival Learner}
+\title{Cross-Validated GLM with Elastic Net Regularization Survival Learner}
 \description{
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{glmnet}.
+}
+\details{
+This learner returns two prediction types:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+Calculated using \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet()}}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{\link[glmnet:survfit.cv.glmnet]{glmnet::survfit.cv.glmnet()}}.
+Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
+into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+By default the Breslow estimator is used.
+}
 }
 \section{Custom mlr3 parameters}{
 
@@ -28,7 +42,7 @@ lrn("surv.cv_glmnet")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{lp}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{glmnet}
 }
@@ -62,6 +76,7 @@ lrn("surv.cv_glmnet")
    nfolds \tab integer \tab 10 \tab  \tab \eqn{[3, \infty)}{[3, Inf)} \cr
    nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    offset \tab untyped \tab  \tab  \tab - \cr
+   newoffset \tab untyped \tab - \tab  \tab - \cr
    parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    penalty.factor \tab untyped \tab - \tab  \tab - \cr
    pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -69,7 +84,7 @@ lrn("surv.cv_glmnet")
    prec \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    standardize.response \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    thresh \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -79,6 +94,8 @@ lrn("surv.cv_glmnet")
    type.measure \tab character \tab deviance \tab deviance, C \tab - \cr
    type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
+   stype \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
+   ctype \tab integer \tab - \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
 }
 }
 
