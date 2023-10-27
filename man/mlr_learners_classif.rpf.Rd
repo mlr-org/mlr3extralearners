@@ -28,14 +28,11 @@ probabilities and more akin to the linear predictor of a GLM.
 \item \code{max_interaction}:
 \itemize{
 \item This hyperparameter can alternatively be set via \code{max_interaction_ratio} as
-\code{max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)},
-and lastly \code{max_interaction = min(max_interaction, max_interaction_limit)},
-where \code{max_interaction_limit} is a second additional hyperparameter defaulting to \code{30},
-since more deeply nested interactions are considered impractical.
-This ensures that the value \code{max_interaction} passed to \code{rpf} never exceeds
-\code{min(n_features, max_interaction_limit)}.
+\code{max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)}.
+The parameter \code{max_interaction_limit} can optionally be set as an upper bound, such that
+\code{max_interaction_ratio * min(n_features, max_interaction_limit)} is used instead.
 This is analogous to \code{mtry.ratio} in \code{\link[mlr3learners:mlr_learners_classif.ranger]{classif.ranger}}, with
-\code{max_interaction_limit} adding to \code{n_features} as an additional constraint.
+\code{max_interaction_limit} as an additional constraint.
 }
 }
 }
@@ -63,8 +60,8 @@ lrn("classif.rpf")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    max_interaction \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_interaction_ratio \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   max_interaction_limit \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_interaction_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   max_interaction_limit \tab integer \tab Inf \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    splits \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_try \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
