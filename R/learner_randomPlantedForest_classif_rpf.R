@@ -17,14 +17,11 @@
 #' @section Custom mlr3 parameters:
 #' - `max_interaction`:
 #'   - This hyperparameter can alternatively be set via `max_interaction_ratio` as
-#'     `max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)`,
-#'     and lastly `max_interaction = min(max_interaction, max_interaction_limit)`,
-#'     where `max_interaction_limit` is a second additional hyperparameter defaulting to `30`,
-#'     since more deeply nested interactions are considered impractical.
-#'     This ensures that the value `max_interaction` passed to `rpf` never exceeds
-#'     `min(n_features, max_interaction_limit)`.
+#'     `max_interaction = max(ceiling(max_interaction_ratio * n_features), 1)`.
+#'     The parameter `max_interaction_limit` can optionally be set as an upper bound, such that
+#'     `max_interaction_ratio * min(n_features, max_interaction_limit)` is used instead.
 #'     This is analogous to `mtry.ratio` in [`classif.ranger`][mlr3learners::mlr_learners_classif.ranger], with
-#'     `max_interaction_limit` adding to `n_features` as an additional constraint.
+#'     `max_interaction_limit` as an additional constraint.
 #'
 #' @templateVar id classif.rpf
 #' @template learner
@@ -48,7 +45,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
       param_set = ps(
         max_interaction       = p_int(lower = 0, upper = Inf, default = 1, tags = "train"),
         max_interaction_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
-        max_interaction_limit = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
+        max_interaction_limit = p_int(lower = 1, upper = Inf, default = Inf, tags = "train", special_vals = list(Inf)),
         ntrees                = p_int(lower = 1, upper = Inf, default = 50, tags = "train"),
         splits                = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
         split_try             = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
@@ -62,7 +59,7 @@ LearnerClassifRandomPlantedForest = R6Class("LearnerClassifRandomPlantedForest",
         purify                = p_lgl(default = FALSE, tags = "train")
       )
 
-      param_set$values = list(loss = "exponential", max_interaction_limit = 30)
+      param_set$values = list(loss = "exponential", max_interaction_limit = Inf)
 
       super$initialize(
         id = "classif.rpf",
