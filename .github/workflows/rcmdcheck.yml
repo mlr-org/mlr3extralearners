@@ -54,6 +54,10 @@ jobs:
         with:
           limit-access-to-actor: true
 
+      - name: Show disc space
+        run: |
+          du -h
+
       - name: Install Python
         run: |
           pak::pkg_install('reticulate')
@@ -61,7 +65,9 @@ jobs:
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
           reticulate::py_install("numpy")
+          unlink(tempdir(), recursive = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = TRUE)
+          unlink(tempdir(), recursive = TRUE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = TRUE)
         shell: Rscript {0}
 
