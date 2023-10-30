@@ -56,7 +56,7 @@ jobs:
 
       - name: Show disc space
         run: |
-          du -h
+          du -h ..
 
       - name: Install Python
         run: |
@@ -66,9 +66,26 @@ jobs:
           install.packages('keras')
           reticulate::py_install("numpy")
           unlink(tempdir(), recursive = TRUE)
+        shell: Rscript {0}
+
+      - name: Show disc space 1
+        run: |
+          du -h ..
+
+      - name: Install PyCox
+        run: |
           survivalmodels::install_pycox(pip = TRUE, install_torch = TRUE)
           unlink(tempdir(), recursive = TRUE)
+        shell: Rscript {0}
+
+      - name: Show disc space 2
+        run: |
+          du -h ..
+
+      - name: Install keras
+        run: |
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = TRUE)
+          unlink(tempdir(), recursive = TRUE)
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
