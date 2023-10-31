@@ -54,36 +54,15 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Show disc space
-        run: |
-          du -h ..
-
-      - name: Install Python
+      - name: Install Python packages
         run: |
           pak::pkg_install('reticulate')
           reticulate::install_miniconda(force = TRUE)
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
-          reticulate::py_install("numpy")
-        shell: Rscript {0}
-
-      - name: Install torch
-        run: |
-          reticulate::py_install("torch", pip = TRUE)
-        shell: Rscript {0}
-
-      - name: Install PyCox
-        run: |
+          reticulate::py_install("pytorch-cpu")
+          reticulate::py_install("tensorflow-cpu", pip = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
-        shell: Rscript {0}
-
-      - name: Install tensorflow
-        run: |
-          reticulate::py_install("tensorflow", pip = TRUE)
-        shell: Rscript {0}
-
-      - name: Install keras
-        run: |
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
         shell: Rscript {0}
 
