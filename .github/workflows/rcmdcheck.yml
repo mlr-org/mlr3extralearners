@@ -65,27 +65,26 @@ jobs:
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
           reticulate::py_install("numpy")
-          unlink(tempdir(), recursive = TRUE)
         shell: Rscript {0}
 
-      - name: Show disc space 1
+      - name: Install torch
         run: |
-          du -h ..
+          reticulate::py_install("torch", pip = TRUE)
+        shell: Rscript {0}
 
       - name: Install PyCox
         run: |
-          survivalmodels::install_pycox(pip = TRUE, install_torch = TRUE)
-          unlink(tempdir(), recursive = TRUE)
+          survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
         shell: Rscript {0}
 
-      - name: Show disc space 2
+      - name: Install tensorflow
         run: |
-          du -h ..
+          reticulate::py_install("tensorflow", pip = TRUE)
+        shell: Rscript {0}
 
       - name: Install keras
         run: |
-          survivalmodels::install_keras(pip = TRUE, install_tensorflow = TRUE)
-          unlink(tempdir(), recursive = TRUE)
+          survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
