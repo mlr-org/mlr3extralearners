@@ -33,6 +33,7 @@ The parameter \code{max_interaction_limit} can optionally be set as an upper bou
 \code{max_interaction_ratio * min(n_features, max_interaction_limit)} is used instead.
 This is analogous to \code{mtry.ratio} in \code{\link[mlr3learners:mlr_learners_classif.ranger]{classif.ranger}}, with
 \code{max_interaction_limit} as an additional constraint.
+The parameter \code{max_interaction_limit} is initialized to \code{Inf}.
 }
 }
 }
@@ -61,12 +62,12 @@ lrn("classif.rpf")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    max_interaction \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_interaction_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   max_interaction_limit \tab integer \tab Inf \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_interaction_limit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    splits \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_try \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    t_try \tab numeric \tab 0.4 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   loss \tab character \tab exponential \tab L1, L2, logit, exponential \tab - \cr
+   loss \tab character \tab L2 \tab L1, L2, logit, exponential \tab - \cr
    delta \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    epsilon \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    deterministic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -78,7 +79,7 @@ lrn("classif.rpf")
 
 \section{Installation}{
 
-Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub via
 \code{remotes::install_github("PlantedML/randomPlantedForest")}.
 }
 
