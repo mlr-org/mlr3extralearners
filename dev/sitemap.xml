@@ -130,6 +130,9 @@
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rfsrc.html</loc>
   </url>
   <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rpf.html</loc>
+  </url>
+  <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_dens.kde_ks.html</loc>
   </url>
   <url>
@@ -227,6 +230,9 @@
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rfsrc.html</loc>
+  </url>
+  <url>
+    <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rpf.html</loc>
   </url>
   <url>
     <loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rsm.html</loc>
