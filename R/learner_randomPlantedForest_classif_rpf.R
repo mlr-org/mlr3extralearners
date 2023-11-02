@@ -22,6 +22,7 @@
 #'     `max_interaction_ratio * min(n_features, max_interaction_limit)` is used instead.
 #'     This is analogous to `mtry.ratio` in [`classif.ranger`][mlr3learners::mlr_learners_classif.ranger], with
 #'     `max_interaction_limit` as an additional constraint.
+#'     The parameter `max_interaction_limit` is initialized to `Inf`.
 #'
 #' @templateVar id classif.rpf
 #' @template learner
