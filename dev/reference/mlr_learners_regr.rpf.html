@@ -111,7 +111,7 @@ Calls randomPlantedForest::rpf() from 'randomPlantedForest'."><meta name="robots
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>max_interaction</td><td>integer</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_interaction_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>max_interaction_limit</td><td>integer</td><td>Inf</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntrees</td><td>integer</td><td>50</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splits</td><td>integer</td><td>30</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_try</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>t_try</td><td>numeric</td><td>0.4</td><td></td><td>\([0, 1]\)</td></tr><tr><td>deterministic</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>purify</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>max_interaction</td><td>integer</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_interaction_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>max_interaction_limit</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntrees</td><td>integer</td><td>50</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splits</td><td>integer</td><td>30</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_try</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>t_try</td><td>numeric</td><td>0.4</td><td></td><td>\([0, 1]\)</td></tr><tr><td>deterministic</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>purify</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
     
@@ -121,14 +121,15 @@ Calls randomPlantedForest::rpf() from 'randomPlantedForest'."><meta name="robots
 The parameter <code>max_interaction_limit</code> can optionally be set as an upper bound, such that
 <code>max_interaction_ratio * min(n_features, max_interaction_limit)</code> is used instead.
 This is analogous to <code>mtry.ratio</code> in <code><a href="https://mlr3learners.mlr-org.com/reference/mlr_learners_classif.ranger.html" class="external-link">classif.ranger</a></code>, with
-<code>max_interaction_limit</code> as an additional constraint.</p></li>
+<code>max_interaction_limit</code> as an additional constraint.
+The parameter <code>max_interaction_limit</code> is initialized to <code>Inf</code>.</p></li>
 </ul></li>
 </ul></div>
     <div class="section level2">
     <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
     
 
-<p>Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+<p>Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub via
 <code>remotes::install_github("PlantedML/randomPlantedForest")</code>.</p>
     </div>
     <div class="section level2">
