@@ -27,7 +27,7 @@ LearnerRegrRandomPlantedForest = R6Class("LearnerRegrRandomPlantedForest",
       param_set = ps(
         max_interaction       = p_int(lower = 0, upper = Inf, default = 1, tags = "train"),
         max_interaction_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
-        max_interaction_limit = p_int(lower = 1, upper = Inf, tags = c("required", "train")),
+        max_interaction_limit = p_int(lower = 1, upper = Inf, tags = c("required", "train"), special_vals = list(Inf)),
         ntrees                = p_int(lower = 1, upper = Inf, default = 50, tags = "train"),
         splits                = p_int(lower = 1, upper = Inf, default = 30, tags = "train"),
         split_try             = p_int(lower = 1, upper = Inf, default = 10, tags = "train"),
