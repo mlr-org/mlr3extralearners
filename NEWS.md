@@ -1,6 +1,6 @@
 # mlr3extralearners 0.7.1-9000
 
-* Added the Planted Forsest Learner (thanks to @jemus42)
+* Added the Random Planted Forest Learner (thanks to @jemus42)
 * re-added the catboost learner as it was requested (was previously removed
   because of installation issues)
 * `surv.ranger` now receives parameters during `$predict()` (thanks to @jemus42)
