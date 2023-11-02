@@ -28,7 +28,7 @@
 #' @template learner
 #'
 #' @section Installation:
-#' Package 'randomPlantedForest' is not on CRAN and has to be install from GitHub via
+#' Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub via
 #' `remotes::install_github("PlantedML/randomPlantedForest")`.
 #'
 #' @references
