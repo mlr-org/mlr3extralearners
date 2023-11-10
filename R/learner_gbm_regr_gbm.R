@@ -37,7 +37,7 @@
 #' task = tsk("boston_housing")
 #'
 #'
-#' # Train the learner on the training ids
+#' # Train the learner
 #' learner$train(task)
 #'
 #' # print the model

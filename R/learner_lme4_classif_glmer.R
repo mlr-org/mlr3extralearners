@@ -29,7 +29,7 @@
 #' # Define a Task
 #' task = as_task_classif(faraway::toenail, target = "outcome")
 #'
-#' # Train the learner on the training ids
+#' # Train the learner
 #' learner$train(task)
 #'
 #' # print the model
