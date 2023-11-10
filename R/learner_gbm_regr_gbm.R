@@ -30,7 +30,7 @@
 #' # Define the Learner and set parameter values
 #'
 #'
-#' learner =lrn("regr.gamboost")
+#' learner = lrn("regr.gamboost")
 #' print(learner)
 #'
 #' # Define a Task
