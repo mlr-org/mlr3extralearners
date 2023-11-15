@@ -33,7 +33,8 @@ test_that("regr.lmer predict", {
     "REForm", # alias of re.form
     "REform", # alias of re.form
     "terms", # unused
-    "type" # handled internally
+    "type", # handled internally
+    "se.fit" # not implemented
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
