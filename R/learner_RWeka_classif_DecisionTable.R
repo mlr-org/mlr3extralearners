@@ -27,7 +27,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(FIXME: ONE OR MORE REFERENCES FROM bibentries.R)`
+#' `r format_bib("Kohavi1995")`
 #'
 #' @template seealso_learner
 #' @template example

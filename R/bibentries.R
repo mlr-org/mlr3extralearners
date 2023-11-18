@@ -581,5 +581,13 @@ bibentries = c( # nolint start
     year = "2004",
     month = "01",
     journal = "University of California, Berkeley"
-  )
+  ),
+  Kohavi1995 = bibentry("inproceedings",
+    author = "Ron Kohavi",           
+    booktitle = "8th European Conference on Machine Learning",
+    pages = "174--189",
+    publisher = "Springer",
+    title = "The Power of Decision Tables",
+    year = "1995"
+  ),
 ) # nolint end
