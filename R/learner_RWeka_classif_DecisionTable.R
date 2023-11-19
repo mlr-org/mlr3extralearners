@@ -1,4 +1,4 @@
-#' @title Classification Simple Decision Table Majority Classifier Learner
+#' @title Classification Simple Decision Table Majority Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.DecisionTable
 #'
