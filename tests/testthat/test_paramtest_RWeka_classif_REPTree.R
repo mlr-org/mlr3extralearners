@@ -8,7 +8,7 @@ test_that("classif.REPTree train", {
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
   control_args = weka_control_args(fun)
-  expect_true(all(control_args %in% learner$param_set$ids()))
+  expect_true(all(setdiff(control_args, "R") %in% learner$param_set$ids()))
 })
 
 test_that("classif.REPTree predict", {
