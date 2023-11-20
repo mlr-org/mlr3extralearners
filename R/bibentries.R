@@ -590,4 +590,11 @@ bibentries = c( # nolint start
     title = "The Power of Decision Tables",
     year = "1995"
   ),
+  Cleary1995 = bibentry("inproceedings",
+    author = "John G. Cleary and Leonard E. Trigg",
+    booktitle = "12th International Conference on Machine Learning",
+    pages = "108-114",
+    title = "K*: An Instance-based Learner Using an Entropic Distance Measure",
+    year = "1995"
+  },
 ) # nolint end
