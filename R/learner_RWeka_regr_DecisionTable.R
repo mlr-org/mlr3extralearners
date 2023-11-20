@@ -5,6 +5,11 @@
 #' @description
 #' Simple Decision Table majority regressor
 #' Calls [RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')] from \CRANpkg{RWeka}.
+#' 
+#' @section Initial parameter values:
+#' - `E`:
+#'    - Has only 2 out of 4 original evaluation measures : rmse and mae with rmse being the default
+#'    - Reason for change: this learner should only contain evaluation measures appropriate for regression tasks
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -43,7 +48,7 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         na.action = p_uty(tags = "train"),
         S = p_uty(default = "weka.attributeSelection.BestFirst", tags = "train"),
         X = p_int(default = 1L, tags = "train"),
-        E = p_fct(default = "rmse", levels = c("acc", "rmse", "mae", "auc"), tags= "train"),
+        E = p_fct(default = "rmse", levels = c("rmse", "mae"), tags= "train"),
         I = p_lgl(tags = "train"),
         R = p_lgl(tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,

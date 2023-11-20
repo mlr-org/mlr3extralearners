@@ -6,6 +6,11 @@
 #' Simple Decision Table majority classifier.
 #' Calls [RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')] from \CRANpkg{RWeka}.
 #' 
+#' @section Initial parameter values:
+#' - `E`:
+#'    - Has only 2 out of 4 original evaluation measures : acc and auc with acc being the default
+#'    - Reason for change: this learner should only contain evaluation measures appropriate for classification tasks
+#'    
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
@@ -43,7 +48,7 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
         na.action = p_uty(tags = "train"),
         S = p_uty(default = "weka.attributeSelection.BestFirst", tags = "train"),
         X = p_int(default = 1L, tags = "train"),
-        E = p_fct(default = "acc", levels = c("acc", "rmse", "mae", "auc"), tags= "train"),
+        E = p_fct(default = "acc", levels = c("acc", "auc"), tags= "train"),
         I = p_lgl(tags = "train"),
         R = p_lgl(tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
