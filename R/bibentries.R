@@ -596,5 +596,21 @@ bibentries = c( # nolint start
     pages = "108-114",
     title = "K*: An Instance-based Learner Using an Entropic Distance Measure",
     year = "1995"
-  },
+  ),
+  Quinlan1992 = bibentry("inproceedings",
+    address = "Singapore",
+    author = "Ross J. Quinlan",
+    booktitle = "5th Australian Joint Conference on Artificial Intelligence",
+    pages = "343-348",
+    publisher = "World Scientific",
+    title = "Learning with Continuous Classes",
+    year = "1992"
+  ),
+  Wang1997 = bibentry("inproceedings",
+    author = "Y. Wang and I. H. Witten",
+    booktitle = "Poster papers of the 9th European Conference on Machine Learning",
+    publisher = "Springer",
+    title = "Induction of model trees for predicting continuous classes",
+    year = "1997"
+  ),
 ) # nolint end
