@@ -9,6 +9,7 @@
 #' @section Initial parameter values:
 #' - `F`:
 #'    - Has only 2 out of 5 original loss functions: 0 = hinge loss (SVM) and 1 = log loss (logistic regression)
+#'      with 0 (hinge loss) still being the default
 #'    - Reason for change: this learner should only contain loss functions appropriate for classification tasks
 #' 
 #' @section Custom mlr3 parameters:
