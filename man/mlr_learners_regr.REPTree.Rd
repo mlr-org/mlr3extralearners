@@ -60,7 +60,7 @@ lrn("regr.REPTree")
    V \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    N \tab integer \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    S \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   P \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   P \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    L \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    I \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

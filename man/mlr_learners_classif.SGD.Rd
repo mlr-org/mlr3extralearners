@@ -73,8 +73,8 @@ lrn("classif.SGD")
    R \tab numeric \tab 1e-04 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    E \tab integer \tab 500 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    C \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   N \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   M \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   N \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   M \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    S \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

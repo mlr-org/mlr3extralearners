@@ -8,6 +8,17 @@
 Simple Decision Table majority regressor
 Calls \link[RWeka:make_Weka_classifier('weka/classifiers/rules/DecisionTable')]{RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')} from \CRANpkg{RWeka}.
 }
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{E}:
+\itemize{
+\item Has only 2 out of 4 original evaluation measures : rmse and mae with rmse being the default
+\item Reason for change: this learner should only contain evaluation measures appropriate for regression tasks
+}
+}
+}
+
 \section{Custom mlr3 parameters}{
 
 \itemize{
@@ -43,12 +54,33 @@ lrn("regr.DecisionTable")
 
 \section{Meta Information}{
 
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("regr.DecisionTable")), collapse = "\\n")}
+\itemize{
+\item Task type: \dQuote{regr}
+\item Predict Types: \dQuote{response}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{RWeka}
+}
 }
 
 \section{Parameters}{
-
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("regr.DecisionTable")$param_set), collapse = "\\n")}
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   subset \tab untyped \tab - \tab  \tab - \cr
+   na.action \tab untyped \tab - \tab  \tab - \cr
+   S \tab untyped \tab weka.attributeSelection.BestFirst \tab  \tab - \cr
+   X \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   E \tab character \tab rmse \tab rmse, mae \tab - \cr
+   I \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   R \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   P \tab untyped \tab - \tab  \tab - \cr
+   D \tab character \tab 1 \tab 0, 1, 2 \tab - \cr
+   N \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   SBF \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   options \tab untyped \tab  \tab  \tab - \cr
+}
 }
 
 \examples{

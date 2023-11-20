@@ -56,7 +56,7 @@ lrn("classif.BayesNet")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    subset \tab untyped \tab - \tab  \tab - \cr
    na.action \tab untyped \tab - \tab  \tab - \cr
-   D \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   D \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    B \tab untyped \tab - \tab  \tab - \cr
    Q \tab untyped \tab - \tab  \tab - \cr
    E \tab untyped \tab - \tab  \tab - \cr
