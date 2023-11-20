@@ -38,7 +38,7 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
       param_set = ps(
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
-        D = p_lgl(default = FALSE, tags = "train"),
+        D = p_lgl(tags = "train"),
         B = p_uty(tags = "train"),
         Q = p_uty(tags = "train"),
         E = p_uty(tags = "train"),
