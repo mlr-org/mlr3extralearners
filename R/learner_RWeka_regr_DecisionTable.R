@@ -60,7 +60,7 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         D = p_fct(default = "1", levels = c("0", "1", "2"), 
                   depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         N = p_int(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
-        S = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+        SBF = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
 
