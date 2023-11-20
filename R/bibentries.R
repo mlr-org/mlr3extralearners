@@ -612,5 +612,5 @@ bibentries = c( # nolint start
     publisher = "Springer",
     title = "Induction of model trees for predicting continuous classes",
     year = "1997"
-  ),
+  )
 ) # nolint end
