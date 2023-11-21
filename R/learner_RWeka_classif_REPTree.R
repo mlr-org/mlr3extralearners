@@ -22,6 +22,11 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #' 
+#' - `R` removed:
+#'   - spread initial count over all class values (i.e. don't use 1 per value)
+#'   
+#' - Reason for change: The parameter is removed because it's unclear how to actually use it.
+#' 
 #'
 #' @templateVar id classif.REPTree
 #' @template learner
