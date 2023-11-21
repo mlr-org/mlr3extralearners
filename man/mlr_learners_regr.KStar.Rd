@@ -59,6 +59,7 @@ lrn("regr.KStar")
    B \tab numeric \tab 20 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    E \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    M \tab character \tab a \tab a, d, m, n \tab - \cr
+   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

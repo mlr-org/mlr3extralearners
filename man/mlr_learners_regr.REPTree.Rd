@@ -29,6 +29,11 @@ Calls \link[RWeka:make_Weka_classifier('weka/classifiers/trees/REPTree')]{RWeka:
 }
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
+\item \code{R} removed:
+\itemize{
+\item spread initial count over all class values (i.e. don't use 1 per value)
+}
+\item Reason for change: The parameter is removed because it's unclear how to actually use it.
 }
 }
 

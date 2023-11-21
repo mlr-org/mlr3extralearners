@@ -72,6 +72,7 @@ lrn("classif.DecisionTable")
    E \tab character \tab acc \tab acc, auc \tab - \cr
    I \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    R \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
