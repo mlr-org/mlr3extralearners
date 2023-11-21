@@ -60,6 +60,8 @@ LearnerRegrSGD = R6Class("LearnerRegrSGD",
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
+      
+      param_set$values = list(F = "2")
 
       super$initialize(
         id = "regr.SGD",
