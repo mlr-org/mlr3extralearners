@@ -44,10 +44,9 @@ LearnerRegrKStar = R6Class("LearnerRegrKStar",
         B = p_dbl(default = 20, tags = "train"),
         E = p_lgl(tags = "train"),
         M = p_fct(default = "a", levels = c("a", "d", "m", "n"), tags = "train"),
-        do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
-        num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+        output_debug_info = p_lgl(default = FALSE, tags = "train"),
+        do_not_check_capabilities = p_lgl(default = FALSE, tags = "train"),
+        num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
