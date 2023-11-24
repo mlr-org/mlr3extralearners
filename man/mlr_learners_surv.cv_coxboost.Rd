@@ -10,16 +10,6 @@ number of steps.
 Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} or \code{\link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost()}} from package 'CoxBoost'.
 }
 \details{
-Two prediction types are returned for this learner, using the internal
-\code{\link[CoxBoost:::predict.CoxBoost]{CoxBoost::::predict.CoxBoost()}} function:
-\enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
-\item \code{distr}: a 2d survival matrix, with observations as rows and time points
-as columns. The internal transformation uses the Breslow estimator to compose
-the survival distributions from the \code{lp} predictions.
-}
-
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
 cross-validation of boosting step number, respectively. Tuning using the internal optimizer in
 \link{LearnerSurvCVCoxboost} may be more efficient when tuning \code{stepno} only. However, for tuning
@@ -28,6 +18,17 @@ results.
 
 If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPenalty]{CoxBoost::optimCoxBoostPenalty} is used to determine
 the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
+
+Three prediction types are returned for this learner, using the internal
+\code{\link[CoxBoost:::predict.CoxBoost]{CoxBoost::::predict.CoxBoost()}} function:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a 2d survival matrix, with observations as rows and time points
+as columns. The internal transformation uses the Breslow estimator to compose
+the survival distributions from the \code{lp} predictions.
+}
 }
 \section{Dictionary}{
 

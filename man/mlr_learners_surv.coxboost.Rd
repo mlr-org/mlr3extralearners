@@ -15,11 +15,12 @@ cross-validation of boosting step number, respectively. Tuning using the interna
 multiple hyperparameters, \CRANpkg{mlr3tuning} and \link{LearnerSurvCoxboost} will likely give better
 results.
 
-Two prediction types are returned for this learner, using the internal
+Three prediction types are returned for this learner, using the internal
 \code{\link[CoxBoost:::predict.CoxBoost]{CoxBoost::::predict.CoxBoost()}} function:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
 observation.
+\item \code{crank}: same as \code{lp}.
 \item \code{distr}: a 2d survival matrix, with observations as rows and time points
 as columns. The internal transformation uses the Breslow estimator to compose
 the survival distributions from the \code{lp} predictions.
