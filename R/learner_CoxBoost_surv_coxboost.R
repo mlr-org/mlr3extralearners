@@ -19,7 +19,7 @@
 #' results.
 #'
 #' Three prediction types are returned for this learner, using the internal
-#' [CoxBoost:::predict.CoxBoost()] function:
+#' `predict.CoxBoost()` function:
 #' 1. `lp`: a vector of linear predictors (relative risk scores), one per
 #' observation.
 #' 2. `crank`: same as `lp`.
@@ -70,7 +70,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
 
     #' @description
     #' Returns the set of selected features which have non-zero coefficients.
-    #' Calls [CoxBoost:::coef.CoxBoost()].
+    #' Calls the internal `coef.CoxBoost()` function.
     #'
     #' @param at_step (`numeric(1)`)\cr
     #' Which boosting step to get the coefficients for. If no step is given
@@ -82,11 +82,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         stopf("No model stored")
       }
 
-      coefs = invoke(
-        CoxBoost:::coef.CoxBoost,
-        self$model,
-        at.step = at_step
-      )
+      coefs = invoke(coef, self$model, at.step = at_step)
       coefs = coefs[coefs != 0]
       names(coefs)
     }

@@ -20,7 +20,7 @@ If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPen
 the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
 
 Three prediction types are returned for this learner, using the internal
-\code{\link[CoxBoost:::predict.CoxBoost]{CoxBoost::::predict.CoxBoost()}} function:
+\code{predict.CoxBoost()} function:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
 observation.
@@ -147,7 +147,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{latex}{\out{\hypertarget{method-LearnerSurvCVCoxboost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
 Returns the set of selected features which have non-zero coefficients.
-Calls \code{\link[CoxBoost:::coef.CoxBoost]{CoxBoost::::coef.CoxBoost()}}.
+Calls the internal \code{coef.CoxBoost()} function.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCVCoxboost$selected_features(at_step = NULL)}\if{html}{\out{</div>}}
 }
