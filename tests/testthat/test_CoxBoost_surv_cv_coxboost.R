@@ -16,4 +16,7 @@ test_that("optim", {
   expect_prediction_surv(
     suppressWarnings(learner$train(task, row_ids = 1:50)$predict(task, row_ids = 51:100))
   )
+  expect_equal(learner$selected_features(at.step = 0), character())
+  expect_equal(learner$selected_features(), "litter")
+  expect_error(learner$selected_features(at.step = 2)) # maxstepno = 1
 })
