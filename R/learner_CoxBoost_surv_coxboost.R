@@ -82,7 +82,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         stopf("No model stored")
       }
 
-      coefs = invoke(coef, self$model, at.step = at_step)
+      coefs = invoke(stats::coef, self$model, at.step = at_step)
       coefs = coefs[coefs != 0]
       names(coefs)
     }
