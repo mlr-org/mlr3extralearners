@@ -148,13 +148,13 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 Returns the set of selected features which have non-zero coefficients.
 Calls \code{\link[CoxBoost:::coef.CoxBoost]{CoxBoost::::coef.CoxBoost()}}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCVCoxboost$selected_features(at.step = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCVCoxboost$selected_features(at_step = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{at.step}}{(\code{numeric(1)})\cr
+\item{\code{at_step}}{(\code{numeric(1)})\cr
 Which boosting step to get the coefficients for. If no step is given
 (default), the final boosting step is used.}
 }

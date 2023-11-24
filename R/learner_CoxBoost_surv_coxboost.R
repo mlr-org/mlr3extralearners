@@ -71,12 +71,12 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
     #' Returns the set of selected features which have non-zero coefficients.
     #' Calls [CoxBoost:::coef.CoxBoost()].
     #'
-    #' @param at.step (`numeric(1)`)\cr
+    #' @param at_step (`numeric(1)`)\cr
     #' Which boosting step to get the coefficients for. If no step is given
     #' (default), the final boosting step is used.
     #'
     #' @return (`character()`) vector of feature names.
-    selected_features = function(at.step = NULL) {
+    selected_features = function(at_step = NULL) {
       if (is.null(self$model)) {
         stopf("No model stored")
       }
@@ -84,7 +84,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
       coefs = invoke(
         CoxBoost:::coef.CoxBoost,
         self$model,
-        at.step = at.step
+        at.step = at_step
       )
       coefs = coefs[coefs != 0]
       names(coefs)
