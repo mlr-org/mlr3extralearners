@@ -7,6 +7,15 @@
 #' number of steps.
 #' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
 #'
+#' @details
+#' Two prediction types are returned for this learner, using the internal
+#' [CoxBoost:::predict.CoxBoost()] function:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' 2. `distr`: a 2d survival matrix, with observations as rows and time points
+#' as columns. The internal transformation uses the Breslow estimator to compose
+#' the survival distributions from the `lp` predictions.
+#'
 #' @template learner
 #' @templateVar id surv.cv_coxboost
 #'
@@ -64,10 +73,33 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         feature_types = c("integer", "numeric"),
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
-        properties = "weights",
+        properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.cv_coxboost",
         label = "Likelihood-based Boosting"
       )
+    },
+
+    #' @description
+    #' Returns the set of selected features which have non-zero coefficients.
+    #' Calls [CoxBoost:::coef.CoxBoost()].
+    #'
+    #' @param at.step (`numeric(1)`)\cr
+    #' Which boosting step to get the coefficients for. If no step is given
+    #' (default), the final boosting step is used.
+    #'
+    #' @return (`character()`) vector of feature names.
+    selected_features = function(at.step = NULL) {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      coefs = invoke(
+        CoxBoost:::coef.CoxBoost,
+        self$model,
+        at.step = at.step
+      )
+      coefs = coefs[coefs != 0]
+      names(coefs)
     }
   ),
 
