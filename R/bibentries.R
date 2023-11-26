@@ -612,5 +612,12 @@ bibentries = c( # nolint start
     publisher = "Springer",
     title = "Induction of model trees for predicting continuous classes",
     year = "1997"
+  ),
+  Mackay1998 = bibentry("misc",
+    address = "Dept. of Physics, Cambridge University, UK",
+    author = "David J.C. Mackay",
+    title = "Introduction to Gaussian Processes",
+    year = "1998",
+    PS = "http://wol.ra.phy.cam.ac.uk/mackay/gpB.ps.gz"
   )
 ) # nolint end
