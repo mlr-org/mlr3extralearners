@@ -619,5 +619,14 @@ bibentries = c( # nolint start
     title = "Introduction to Gaussian Processes",
     year = "1998",
     PS = "http://wol.ra.phy.cam.ac.uk/mackay/gpB.ps.gz"
+  ),
+  leCessie1992 = bibentry("article",
+    author = "le Cessie, S. and van Houwelingen, J.C.",
+    journal = "Applied Statistics",
+    number = "1",
+    pages = "191-201",
+    title = "Ridge Estimators in Logistic Regression",
+    volume = "41",
+    year = "1992"
   )
 ) # nolint end
