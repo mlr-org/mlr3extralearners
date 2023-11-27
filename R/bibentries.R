@@ -651,5 +651,36 @@ bibentries = c( # nolint start
     publisher = "Springer",
     title = "Speeding up Logistic Model Tree Induction",
     year = 2005
+  ),
+  Platt1998 = bibentry("incollection",
+    author = "J. Platt",
+    booktitle = "Advances in Kernel Methods - Support Vector Learning",
+    editor = "B. Schoelkopf and C. Burges and A. Smola",
+    publisher = "MIT Press",
+    title = "Fast Training of Support Vector Machines using Sequential Minimal Optimization",
+    year = "1998",
+    URL = "http://research.microsoft.com/\~jplatt/smo.html",
+    PS = "http://research.microsoft.com/\~jplatt/smo-book.ps.gz",
+    PDF = "http://research.microsoft.com/\~jplatt/smo-book.pdf"
+  ),
+  Keerthi2001 = bibentry("article",
+    author = "S.S. Keerthi and S.K. Shevade and C. Bhattacharyya and K.R.K. Murthy",
+    journal = "Neural Computation",
+    number = "3",
+    pages = "637-649",
+    title = "Improvements to Platt's SMO Algorithm for SVM Classifier Design",
+    volume = "13",
+    year = "2001",
+    PS = "http://guppy.mpe.nus.edu.sg/\~mpessk/svm/smo_mod_nc.ps.gz"
+  ),
+  Hastie1998 = bibentry("inproceedings",
+    author = "Trevor Hastie and Robert Tibshirani",
+    booktitle = "Advances in Neural Information Processing Systems",
+    editor = "Michael I. Jordan and Michael J. Kearns and Sara A. Solla",
+    publisher = "MIT Press",
+    title = "Classification by Pairwise Coupling",
+    volume = "10",
+    year = "1998",
+    PS = "http://www-stat.stanford.edu/\~hastie/Papers/2class.ps"
   )
 ) # nolint end
