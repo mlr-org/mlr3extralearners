@@ -695,5 +695,14 @@ bibentries = c( # nolint start
     note = "NeuroCOLT2 Technical Report NC2-TR-1998-030",
     title = "A tutorial on support vector regression",
     year = "1998"
+  ),
+  Freund1998 = bibentry("inproceedings",
+    address = "New York, NY",
+    author = "Y. Freund and R. E. Schapire",
+    booktitle = "11th Annual Conference on Computational Learning Theory",
+    pages = "209-217",
+    publisher = "ACM Press",
+    title = "Large margin classification using the perceptron algorithm",
+    year = "1998"
   )
 ) # nolint end
