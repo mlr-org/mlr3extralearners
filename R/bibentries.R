@@ -637,5 +637,11 @@ bibentries = c( # nolint start
     publisher = "Morgan Kaufmann",
     title = "Estimating Continuous Distributions in Bayesian Classifiers",
     year = "1995"
-  }
+  ),
+  Mccallum1998 = bibentry("inproceedings",
+    author = "Andrew Mccallum and Kamal Nigam",
+    booktitle = "AAAI-98 Workshop on 'Learning for Text Categorization'",
+    title = "A Comparison of Event Models for Naive Bayes Text Classification",
+    year = "1998"
+  )
 ) # nolint end
