@@ -643,5 +643,13 @@ bibentries = c( # nolint start
     booktitle = "AAAI-98 Workshop on 'Learning for Text Categorization'",
     title = "A Comparison of Event Models for Naive Bayes Text Classification",
     year = "1998"
+  ),
+  Sumner2005 = bibentry("inproceedings",
+    author = "Marc Sumner and Eibe Frank and Mark Hall",
+    booktitle = "9th European Conference on Principles and Practice of Knowledge Discovery in Databases",
+    pages = "675-683",
+    publisher = "Springer",
+    title = "Speeding up Logistic Model Tree Induction",
+    year = 2005
   )
 ) # nolint end
