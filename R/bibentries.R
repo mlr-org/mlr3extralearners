@@ -628,5 +628,14 @@ bibentries = c( # nolint start
     title = "Ridge Estimators in Logistic Regression",
     volume = "41",
     year = "1992"
-  )
+  ),
+  John1995 = bibentry("inproceedings",
+    address = "San Mateo",
+    author = "George H. John and Pat Langley",
+    booktitle = "Eleventh Conference on Uncertainty in Artificial Intelligence",
+    pages = "338-345",
+    publisher = "Morgan Kaufmann",
+    title = "Estimating Continuous Distributions in Bayesian Classifiers",
+    year = "1995"
+  }
 ) # nolint end
