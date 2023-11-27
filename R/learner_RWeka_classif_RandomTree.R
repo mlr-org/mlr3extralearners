@@ -19,6 +19,9 @@
 #' - `batch_size`:
 #'   - original id: batch-size
 #'   
+#' - Reason for change: This learner contains changed ids of the following control arguments
+#' since their ids contain irregular pattern
+#'   
 #'
 #' @templateVar id classif.RandomTree
 #' @template learner
