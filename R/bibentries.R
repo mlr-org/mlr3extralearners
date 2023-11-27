@@ -682,5 +682,18 @@ bibentries = c( # nolint start
     volume = "10",
     year = "1998",
     PS = "http://www-stat.stanford.edu/\~hastie/Papers/2class.ps"
+  ),
+  Shevade1999 = bibentry("inproceedings",
+    author = "S.K. Shevade and S.S. Keerthi and C. Bhattacharyya and K.R.K. Murthy",
+    booktitle = "IEEE Transactions on Neural Networks",
+    title = "Improvements to the SMO Algorithm for SVM Regression",
+    year = "1999",
+    PS = "http://guppy.mpe.nus.edu.sg/\~mpessk/svm/ieee_smo_reg.ps.gz"
+  ),
+  Smola1998 = bibentry("techreport",
+    author = "A.J. Smola and B. Schoelkopf",
+    note = "NeuroCOLT2 Technical Report NC2-TR-1998-030",
+    title = "A tutorial on support vector regression",
+    year = "1998"
   )
 ) # nolint end
