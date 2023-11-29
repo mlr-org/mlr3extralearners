@@ -47,7 +47,7 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
                   tags = "train"),
         K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel", 
                   tags = "train"),
-        T = p_dbl(default = 0.001, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved").
+        T = p_dbl(default = 0.001, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
                   tags = "train"),
         V = p_lgl(default = TRUE, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
                   tags = "train"),
