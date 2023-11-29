@@ -98,7 +98,14 @@ cross-validation of boosting step number, respectively. Tuning using the interna
 <a href="mlr_learners_surv.cv_coxboost.html">LearnerSurvCVCoxboost</a> may be more efficient when tuning <code>stepno</code> only. However, for tuning
 multiple hyperparameters, <a href="https://CRAN.R-project.org/package=mlr3tuning" class="external-link"><span class="pkg">mlr3tuning</span></a> and LearnerSurvCoxboost will likely give better
 results.</p>
-    </div>
+<p>Three prediction types are returned for this learner, using the internal
+<code>predict.CoxBoost()</code> function:</p><ol><li><p><code>lp</code>: a vector of linear predictors (relative risk scores), one per
+observation.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+<li><p><code>distr</code>: a 2d survival matrix, with observations as rows and time points
+as columns. The internal transformation uses the Breslow estimator to compose
+the survival distributions from the <code>lp</code> predictions.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
     
@@ -160,6 +167,7 @@ results.</p>
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerSurvCoxboost-new"><code>LearnerSurvCoxboost$new()</code></a></p></li>
+<li><p><a href="#method-LearnerSurvCoxboost-selected_features"><code>LearnerSurvCoxboost$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvCoxboost-clone"><code>LearnerSurvCoxboost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
@@ -177,15 +185,38 @@ results.</p>
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerSurvCoxboost-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerSurvCoxboost-selected_features"></a><div class="section">
+<h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
+<p>Returns the set of selected features which have non-zero coefficients.
+Calls the internal <code>coef.CoxBoost()</code> function.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvCoxboost</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvCoxboost</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span>at_step <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>at_step</code></dt>
+<dd><p>(<code>integer(1)</code>)<br>
+Which boosting step to get the coefficients for. If no step is given
+(default), the final boosting step is used.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>(<code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>) vector of feature names.</p>
+</div>
+
+</div><p></p><hr><a id="method-LearnerSurvCoxboost-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvCoxboost</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -207,7 +238,7 @@ results.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, CoxBoost, pracma</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: selected_features, weights</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
