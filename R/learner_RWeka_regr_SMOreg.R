@@ -27,7 +27,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(Shevade1999, Smola1998)`
+#' `r format_bib(Shevade1999)`
 #'
 #' @template seealso_learner
 #' @template example
