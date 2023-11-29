@@ -83,7 +83,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     #' Returns the set of selected features which have non-zero coefficients.
     #' Calls the internal `coef.CoxBoost()` function.
     #'
-    #' @param at_step (`numeric(1)`)\cr
+    #' @param at_step (`integer(1)`)\cr
     #' Which boosting step to get the coefficients for. If no step is given
     #' (default), the final boosting step is used.
     #'
