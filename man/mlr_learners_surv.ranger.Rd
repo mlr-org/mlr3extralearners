@@ -76,6 +76,8 @@ lrn("surv.ranger")
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    write.forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    min.bucket \tab integer \tab 3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   time.interest \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   node.stats \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
