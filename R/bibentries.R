@@ -659,9 +659,9 @@ bibentries = c( # nolint start
     publisher = "MIT Press",
     title = "Fast Training of Support Vector Machines using Sequential Minimal Optimization",
     year = "1998",
-    URL = "http://research.microsoft.com/\~jplatt/smo.html",
-    PS = "http://research.microsoft.com/\~jplatt/smo-book.ps.gz",
-    PDF = "http://research.microsoft.com/\~jplatt/smo-book.pdf"
+    URL = "http://research.microsoft.com/jplatt/smo.html",
+    PS = "http://research.microsoft.com/jplatt/smo-book.ps.gz",
+    PDF = "http://research.microsoft.com/jplatt/smo-book.pdf"
   ),
   Keerthi2001 = bibentry("article",
     author = "S.S. Keerthi and S.K. Shevade and C. Bhattacharyya and K.R.K. Murthy",
@@ -671,7 +671,7 @@ bibentries = c( # nolint start
     title = "Improvements to Platt's SMO Algorithm for SVM Classifier Design",
     volume = "13",
     year = "2001",
-    PS = "http://guppy.mpe.nus.edu.sg/\~mpessk/svm/smo_mod_nc.ps.gz"
+    PS = "http://guppy.mpe.nus.edu.sg/mpessk/svm/smo_mod_nc.ps.gz"
   ),
   Hastie1998 = bibentry("inproceedings",
     author = "Trevor Hastie and Robert Tibshirani",
@@ -681,14 +681,14 @@ bibentries = c( # nolint start
     title = "Classification by Pairwise Coupling",
     volume = "10",
     year = "1998",
-    PS = "http://www-stat.stanford.edu/\~hastie/Papers/2class.ps"
+    PS = "http://www-stat.stanford.edu/hastie/Papers/2class.ps"
   ),
   Shevade1999 = bibentry("inproceedings",
     author = "S.K. Shevade and S.S. Keerthi and C. Bhattacharyya and K.R.K. Murthy",
     booktitle = "IEEE Transactions on Neural Networks",
     title = "Improvements to the SMO Algorithm for SVM Regression",
     year = "1999",
-    PS = "http://guppy.mpe.nus.edu.sg/\~mpessk/svm/ieee_smo_reg.ps.gz"
+    PS = "http://guppy.mpe.nus.edu.sg/mpessk/svm/ieee_smo_reg.ps.gz"
   ),
   Smola1998 = bibentry("techreport",
     author = "A.J. Smola and B. Schoelkopf",
