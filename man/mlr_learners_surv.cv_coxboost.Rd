@@ -155,7 +155,7 @@ Calls the internal \code{coef.CoxBoost()} function.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{at_step}}{(\code{numeric(1)})\cr
+\item{\code{at_step}}{(\code{integer(1)})\cr
 Which boosting step to get the coefficients for. If no step is given
 (default), the final boosting step is used.}
 }
