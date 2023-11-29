@@ -690,12 +690,6 @@ bibentries = c( # nolint start
     year = "1999",
     PS = "http://guppy.mpe.nus.edu.sg/mpessk/svm/ieee_smo_reg.ps.gz"
   ),
-  Smola1998 = bibentry("techreport",
-    author = "A.J. Smola and B. Schoelkopf",
-    note = "NeuroCOLT2 Technical Report NC2-TR-1998-030",
-    title = "A tutorial on support vector regression",
-    year = "1998"
-  ),
   Freund1998 = bibentry("inproceedings",
     address = "New York, NY",
     author = "Y. Freund and R. E. Schapire",
