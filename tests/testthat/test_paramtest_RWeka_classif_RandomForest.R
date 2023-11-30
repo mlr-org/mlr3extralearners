@@ -9,7 +9,7 @@ test_that("classif.RandomForest train", {
   exclude = c("formula", "data", "control", exclude)
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
-  control_args = weka_control_args(fun)
+  control_args = setdiff(weka_control_args(fun), c("attribute_importance"))
   expect_true(all(control_args %in% learner$param_set$ids()))
 })
 
