@@ -1,5 +1,5 @@
 test_that("regr.RandomForest train", {
-  learner = lrn("regr.KStar")
+  learner = lrn("regr.RandomForest")
   fun = RWeka::make_Weka_classifier('weka/classifiers/trees/RandomForest')
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
@@ -7,7 +7,7 @@ test_that("regr.RandomForest train", {
   exclude = c("formula", "data", "control", exclude)
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
-  setdiff(weka_control_args(fun), c("attribute_importance"))
+  control_args = setdiff(weka_control_args(fun), c("attribute_importance"))
   expect_true(all(control_args %in% learner$param_set$ids()))
 })
 
