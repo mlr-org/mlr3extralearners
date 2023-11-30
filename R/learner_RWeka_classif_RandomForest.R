@@ -85,7 +85,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("importance", "missings", "multiclass", "twoclass"),
+        properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.RandomForest",
         label = "Forest Of Random Trees"
       )
