@@ -22,6 +22,11 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #' 
+#' - `G` removed:
+#'   - GUI will be opened
+#'   
+#' - Reason for change: The parameter is removed because it's unclear how to use actually use it.
+#' 
 #'
 #' @templateVar id regr.MultilayerPerceptron
 #' @template learner
