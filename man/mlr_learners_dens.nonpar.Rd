@@ -42,7 +42,8 @@ lrn("dens.nonpar")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("sm", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("sm", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("dens.nonpar")
 print(learner)

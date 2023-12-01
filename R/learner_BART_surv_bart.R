@@ -37,7 +37,12 @@
 #' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (mlr3misc::require_namespaces("BART", quietly = TRUE))  {
+#' # Define the Learner and set parameter values
+#' learner = lrn("surv.bart")
+#' print(learner)
+#' }
 #' @export
 LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
   inherit = mlr3proba::LearnerSurv,

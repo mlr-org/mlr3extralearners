@@ -43,7 +43,8 @@ lrn("dens.pen")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("pendensity", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("pendensity", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("dens.pen")
 print(learner)

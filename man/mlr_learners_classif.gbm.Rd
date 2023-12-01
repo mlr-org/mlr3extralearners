@@ -54,7 +54,8 @@ lrn("classif.gbm")
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("gbm", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("gbm", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.gbm")
 print(learner)

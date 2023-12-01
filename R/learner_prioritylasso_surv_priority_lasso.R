@@ -13,7 +13,12 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (mlr3misc::require_namespaces("prioritylasso", quietly = TRUE)) {
+#' # Define the Learner and set parameter values
+#' learner = lrn("surv.priority_lasso")
+#' print(learner)
+#' }
 #' @export
 LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
   inherit = mlr3proba::LearnerSurv,

@@ -12,7 +12,8 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 %>
 #'
 #' @examples
-#' if (<%= paste0("requireNamespace(\"", pkgs, "\", quietly = TRUE)", collapse = " && ") %>) {
+#' set.seed(123)
+#' <%= sprintf("if (mlr3misc::require_namespaces(\"%s\", quietly = TRUE)) ", pkgs) %> {
 #' # Define the Learner and set parameter values
 #' <%= sprintf("learner = lrn(\"%s\")", id)%>
 #' print(learner)
@@ -21,10 +22,10 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 #' <%= sprintf("task = tsk(\"%s\")", task_id)%>
 #'
 #' # Create train and test set
-#' <%= sprintf("ids = partition(task)")%>
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
-#' <%= sprintf("learner$train(task, row_ids = ids$train)")%>
+#' learner$train(task, row_ids = ids$train)
 #'
 #' # print the model
 #' print(learner$model)
@@ -33,7 +34,7 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 #' if("importance" %in% learner$properties) print(learner$importance)
 #'
 #' # Make predictions for the test rows
-#' <%= sprintf("predictions = learner$predict(task, row_ids = ids$test)")%>
+#' predictions = learner$predict(task, row_ids = ids$test)
 #'
 #' # Score the predictions
 #' predictions$score()

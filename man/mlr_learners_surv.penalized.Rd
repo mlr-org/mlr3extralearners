@@ -52,7 +52,8 @@ lrn("surv.penalized")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("penalized", quietly = TRUE) && requireNamespace("pracma", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("penalized", quietly = TRUE))  if (mlr3misc::require_namespaces("pracma", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.penalized")
 print(learner)

@@ -94,7 +94,8 @@ This value is set as the option \code{rf.cores} during training and is set to 1 
 }
 
 \examples{
-if (requireNamespace("randomForestSRC", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("randomForestSRC", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.imbalanced_rfsrc")
 print(learner)

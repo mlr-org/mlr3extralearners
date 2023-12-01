@@ -100,11 +100,11 @@ lrn("surv.bart")
 }
 
 \examples{
-learner = mlr3::lrn("surv.bart")
+if (mlr3misc::require_namespaces("BART", quietly = TRUE))  {
+# Define the Learner and set parameter values
+learner = lrn("surv.bart")
 print(learner)
-
-# available parameters:
-learner$param_set$ids()
+}
 }
 \references{
 Sparapani, Rodney, Spanbauer, Charles, McCulloch, Robert (2021).

@@ -90,7 +90,8 @@ This value is set as the option \code{rf.cores} during training and is set to 1 
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("randomForestSRC", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("randomForestSRC", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.rfsrc")
 print(learner)

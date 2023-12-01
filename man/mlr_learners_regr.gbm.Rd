@@ -69,14 +69,14 @@ if (requireNamespace("mboost", quietly = TRUE)) {
 # Define the Learner and set parameter values
 
 
-learner=lrn("regr.gamboost")
+learner = lrn("regr.gamboost")
 print(learner)
 
 # Define a Task
 task = tsk("boston_housing")
 
 
-# Train the learner on the training ids
+# Train the learner
 learner$train(task)
 
 # print the model

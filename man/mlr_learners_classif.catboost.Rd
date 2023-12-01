@@ -138,11 +138,33 @@ See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 }
 
 \examples{
-learner = mlr3::lrn("classif.catboost")
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("catboost", quietly = TRUE))  {
+# Define the Learner and set parameter values
+learner = lrn("classif.catboost")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = tsk("sonar")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+# importance method
+if("importance" \%in\% learner$properties) print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+}
 }
 \references{
 Dorogush, Veronika A, Ershov, Vasily, Gulin, Andrey (2018).

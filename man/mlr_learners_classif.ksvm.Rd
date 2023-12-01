@@ -48,7 +48,8 @@ lrn("classif.ksvm")
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("kernlab", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("kernlab", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.ksvm")
 print(learner)

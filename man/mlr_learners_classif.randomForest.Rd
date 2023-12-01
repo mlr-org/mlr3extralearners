@@ -53,7 +53,8 @@ lrn("classif.randomForest")
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("randomForest", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("randomForest", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.randomForest")
 print(learner)

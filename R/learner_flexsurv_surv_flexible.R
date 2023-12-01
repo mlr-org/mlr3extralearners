@@ -32,7 +32,12 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (mlr3misc::require_namespaces(c("mlr3extralearners", "flexsurv", "pracma"), quietly = TRUE))  {
+#' # Define the Learner and set parameter values
+#' learner = lrn("surv.flexible")
+#' print(learner)
+#' }
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   inherit = mlr3proba::LearnerSurv,

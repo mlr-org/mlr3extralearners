@@ -63,7 +63,8 @@ lrn("dens.mixed")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("np", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("np", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("dens.mixed")
 print(learner)

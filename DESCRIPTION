@@ -48,6 +48,7 @@ Suggests:
     dbarts,
     distr6,
     earth,
+    faraway,
     flexsurv,
     FNN,
     formattable,

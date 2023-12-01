@@ -47,7 +47,8 @@ lrn("regr.rsm")
 }
 
 \examples{
-if (requireNamespace("rsm", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("rsm", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.rsm")
 print(learner)

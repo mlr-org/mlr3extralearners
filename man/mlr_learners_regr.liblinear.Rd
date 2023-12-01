@@ -64,7 +64,8 @@ by the mlr3learner. The default value is set to th default of the respective
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("LiblineaR", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("LiblineaR", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.liblinear")
 print(learner)

@@ -117,7 +117,8 @@ lrn("surv.xgboost")
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("xgboost", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("xgboost", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.xgboost")
 print(learner)

@@ -72,7 +72,8 @@ since their ids contain irregular pattern
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("RWeka", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("RWeka", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.IBk")
 print(learner)

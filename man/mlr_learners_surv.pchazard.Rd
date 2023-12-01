@@ -88,31 +88,10 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
+if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"), quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.pchazard")
 print(learner)
-
-# Define a Task
-task = tsk("grace")
-
-# Create train and test set
-ids = partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-# print the model
-print(learner$model)
-
-# importance method
-if("importance" \%in\% learner$properties) print(learner$importance)
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
 }
 }
 \references{

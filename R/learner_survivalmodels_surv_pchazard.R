@@ -22,7 +22,12 @@
 #' `r format_bib("kvamme2019continuous")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"), quietly = TRUE)) {
+#' # Define the Learner and set parameter values
+#' learner = lrn("surv.pchazard")
+#' print(learner)
+#' }
 #' @export
 LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   inherit = mlr3proba::LearnerSurv,

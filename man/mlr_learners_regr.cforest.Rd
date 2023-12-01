@@ -93,7 +93,8 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("partykit", quietly = TRUE) && requireNamespace("sandwich", quietly = TRUE) && requireNamespace("coin", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("partykit", quietly = TRUE))  if (mlr3misc::require_namespaces("sandwich", quietly = TRUE))  if (mlr3misc::require_namespaces("coin", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.cforest")
 print(learner)

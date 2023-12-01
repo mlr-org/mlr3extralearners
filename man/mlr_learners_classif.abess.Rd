@@ -75,7 +75,8 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 }
 
 \examples{
-if (requireNamespace("abess", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("abess", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.abess")
 print(learner)

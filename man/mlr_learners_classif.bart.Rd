@@ -75,7 +75,8 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 
 \examples{
-if (requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("dbarts", quietly = TRUE)) {
+set.seed(123)
+if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("dbarts", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.bart")
 print(learner)
