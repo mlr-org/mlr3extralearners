@@ -53,7 +53,7 @@ LearnerClassifNaiveBayesMultinomial = R6Class("LearnerClassifNaiveBayesMultinomi
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("missings", "multiclass", "twoclass"),
+        properties = c("multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.NaiveBayesMultinomial",
         label = "Multinomial Naive Bayes Classifier"
       )
