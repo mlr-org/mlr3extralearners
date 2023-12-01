@@ -26,7 +26,9 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     initialize = function() {
       ps = ps(
         lambda = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "predict"),
-        reverse = p_lgl(default = FALSE, tags = "train")
+        reverse = p_lgl(default = FALSE, tags = "train"),
+        ntime = p_dbl(default = 150, lower = 1, tags = "predict"),
+        round_time = p_int(default = 2, lower = 0, special_vals = list(FALSE), tags = "predict")
       )
 
       super$initialize(

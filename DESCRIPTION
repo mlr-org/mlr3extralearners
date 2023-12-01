@@ -19,7 +19,9 @@ Authors@R: c(
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
     person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
     person("John", "Zobolas", ,"bblodfon@gmail.com", role = "ctb",
-           comment = c(ORCID = "0000-0002-3609-8674"))
+           comment = c(ORCID = "0000-0002-3609-8674")),
+    person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
+           comment = c(ORCID = "0000-0001-7528-3795"))
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -85,6 +87,7 @@ Suggests:
     prioritylasso (>= 0.3.1),
     pseudo,
     randomForest,
+    randomPlantedForest,
     randomForestSRC,
     ranger,
     remotes,
@@ -108,6 +111,7 @@ Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
+    PlantedML/randomPlantedForest,
     xoopR/distr6,
     xoopR/param6,
     xoopR/set6
@@ -117,5 +121,5 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.2.3.9000
 Config/Needs/website: rmarkdown

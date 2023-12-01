@@ -57,7 +57,9 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
         splitrule                    = p_fct(c("logrank", "extratrees", "C", "maxstat"), default = "logrank", tags = "train"),
         verbose                      = p_lgl(default = TRUE, tags = c("train", "predict")),
         write.forest                 = p_lgl(default = TRUE, tags = "train"),
-        min.bucket                   = p_int(default = 3, tags = "train")
+        min.bucket                   = p_int(default = 3, tags = "train"),
+        time.interest                = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
+        node.stats                   = p_lgl(default = FALSE, tags = "train")
       )
 
       ps$values = list(num.threads = 1L)

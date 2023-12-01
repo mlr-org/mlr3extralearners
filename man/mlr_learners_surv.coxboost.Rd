@@ -14,6 +14,17 @@ cross-validation of boosting step number, respectively. Tuning using the interna
 \link{LearnerSurvCVCoxboost} may be more efficient when tuning \code{stepno} only. However, for tuning
 multiple hyperparameters, \CRANpkg{mlr3tuning} and \link{LearnerSurvCoxboost} will likely give better
 results.
+
+Three prediction types are returned for this learner, using the internal
+\code{predict.CoxBoost()} function:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a 2d survival matrix, with observations as rows and time points
+as columns. The internal transformation uses the Breslow estimator to compose
+the survival distributions from the \code{lp} predictions.
+}
 }
 \section{Dictionary}{
 
@@ -113,6 +124,7 @@ RaphaelS1
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerSurvCoxboost-new}{\code{LearnerSurvCoxboost$new()}}
+\item \href{#method-LearnerSurvCoxboost-selected_features}{\code{LearnerSurvCoxboost$selected_features()}}
 \item \href{#method-LearnerSurvCoxboost-clone}{\code{LearnerSurvCoxboost$clone()}}
 }
 }
@@ -139,6 +151,29 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCoxboost$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerSurvCoxboost-selected_features"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvCoxboost-selected_features}{}}}
+\subsection{Method \code{selected_features()}}{
+Returns the set of selected features which have non-zero coefficients.
+Calls the internal \code{coef.CoxBoost()} function.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCoxboost$selected_features(at_step = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{at_step}}{(\code{integer(1)})\cr
+Which boosting step to get the coefficients for. If no step is given
+(default), the final boosting step is used.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Returns}{
+(\code{character()}) vector of feature names.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvCoxboost-clone"></a>}}

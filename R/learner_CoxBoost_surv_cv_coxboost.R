@@ -22,6 +22,15 @@
 #' If `penalty == "optimCoxBoostPenalty"` then [CoxBoost::optimCoxBoostPenalty] is used to determine
 #' the penalty value to be used in [CoxBoost::cv.CoxBoost].
 #'
+#' Three prediction types are returned for this learner, using the internal
+#' `predict.CoxBoost()` function:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' 2. `crank`: same as `lp`.
+#' 2. `distr`: a 2d survival matrix, with observations as rows and time points
+#' as columns. The internal transformation uses the Breslow estimator to compose
+#' the survival distributions from the `lp` predictions.
+#'
 #' @references
 #' `r format_bib("binder2009boosting")`
 #'
@@ -59,17 +68,34 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
       )
 
       super$initialize(
-        # see the mlr3book for a description: https://mlr3book.mlr-org.com/extending-mlr3.html
         id = "surv.cv_coxboost",
         packages = c("mlr3extralearners", "CoxBoost", "pracma"),
         feature_types = c("integer", "numeric"),
         predict_types = c("distr", "crank", "lp"),
         param_set = ps,
-        properties = "weights",
-        # the help file name is the one used as @name in the roxygen2 block
+        properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.cv_coxboost",
         label = "Likelihood-based Boosting"
       )
+    },
+
+    #' @description
+    #' Returns the set of selected features which have non-zero coefficients.
+    #' Calls the internal `coef.CoxBoost()` function.
+    #'
+    #' @param at_step (`integer(1)`)\cr
+    #' Which boosting step to get the coefficients for. If no step is given
+    #' (default), the final boosting step is used.
+    #'
+    #' @return (`character()`) vector of feature names.
+    selected_features = function(at_step = NULL) {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      coefs = invoke(stats::coef, self$model, at.step = at_step)
+      coefs = coefs[coefs != 0]
+      names(coefs)
     }
   ),
 
