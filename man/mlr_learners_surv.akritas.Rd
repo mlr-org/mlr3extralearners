@@ -32,6 +32,8 @@ lrn("surv.akritas")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    lambda \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    reverse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   ntime \tab numeric \tab 150 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   round_time \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
 
