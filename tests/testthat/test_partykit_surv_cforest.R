@@ -1,7 +1,7 @@
 test_that("autotest", {
   learner = lrn("surv.cforest", ntree = 5)
   expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = 'sanity')
+  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
 })
 
