@@ -15,6 +15,6 @@ test_that("correct prediction types", {
   learner = lrn("surv.cforest", ntree = 5)
   p = learner$train(task, part$train)$predict(task, part$test)
   expect_matrix(p$data$distr, nrows = length(test_rows),
-    max.cols = length(unique_times))
+                max.cols = length(unique_times))
   expect_numeric(p$crank, len = length(test_rows))
 })

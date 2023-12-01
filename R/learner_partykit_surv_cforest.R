@@ -133,7 +133,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       preds = invoke(predict, object = self$model, newdata = newdata,
         type = "prob", .args = pars)
 
-      times = lapply(preds, function(p) { p$time })
+      times = lapply(preds, function(p) p$time)
       utimes = sort(unique(unlist(times)))
       res = lapply(preds, function(p) {
         # p is a `survfit` object
