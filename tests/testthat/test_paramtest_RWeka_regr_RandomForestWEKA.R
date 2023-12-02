@@ -1,5 +1,5 @@
-test_that("regr.RandomForest train", {
-  learner = lrn("regr.RandomForest")
+test_that("regr.RandomForestWEKA train", {
+  learner = lrn("regr.RandomForestWEKA")
   fun = RWeka::make_Weka_classifier('weka/classifiers/trees/RandomForest')
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
@@ -11,10 +11,10 @@ test_that("regr.RandomForest train", {
   expect_true(all(control_args %in% learner$param_set$ids()))
 })
 
-test_that("regr.RandomForest predict", {
+test_that("regr.RandomForestWEKA predict", {
   # Here we test that the learner implements those arguments that are passed via the
   # control argument to RWeka::make_Weka_classifier('weka/classifiers/trees/RandomForest')
-  learner = lrn("regr.RandomForest")
+  learner = lrn("regr.RandomForestWEKA")
   exclude = c( # all handled by mlr3
     "object",
     "newdata",

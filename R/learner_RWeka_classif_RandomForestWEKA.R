@@ -1,6 +1,6 @@
-#' @title Regression Forest Of Random Trees From Weka
+#' @title Classification Forest Of Random Trees from WEKA
 #' @author damirpolat
-#' @name mlr_learners_regr.RandomForest
+#' @name mlr_learners_classif.RandomForestWEKA
 #'
 #' @description
 #' Class for constructing a forest of random trees
@@ -37,7 +37,7 @@
 #' - Reason for change: The parameter is removed because it's unclear how to actually use it.
 #' 
 #'
-#' @templateVar id regr.RandomForest
+#' @templateVar id classif.RandomForestWEKA
 #' @template learner
 #'
 #' @references
@@ -46,8 +46,8 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
-  inherit = LearnerRegr,
+LearnerClassifRandomForestWEKA = R6Class("LearnerClassifRandomForestWEKA",
+  inherit = LearnerClassif,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -80,14 +80,14 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
       )
 
       super$initialize(
-        id = "regr.RandomForest",
+        id = "classif.RandomForestWEKA",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.RandomForest",
-        label = "Forest Of Random Trees From Weka"
+        properties = c("missings", "multiclass", "twoclass"),
+        man = "mlr3extralearners::mlr_learners_classif.RandomForestWEKA",
+        label = "Forest Of Random Trees"
       )
     }
   ),
@@ -113,12 +113,23 @@ LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
     },
     
     .predict = function(task) {
-      newdata = ordered_features(task, self)
+      response = NULL
+      prob = NULL
       pars = self$param_set$get_values(tags = "predict")
-      response = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = response)
+      newdata = ordered_features(task, self)
+      
+      if (self$predict_type == "response") {
+        response = invoke(predict, self$model, newdata = newdata, type = "class",
+                          .args = pars
+        )
+      } else {
+        prob = invoke(predict, self$model, newdata = newdata, type = "prob",
+                      .args = pars
+        )
+      }
+      list(response = response, prob = prob)
     }
   )
 )
 
-.extralrns_dict$add("regr.RandomForest", LearnerRegrRandomForest)
+.extralrns_dict$add("classif.RandomForestWEKA", LearnerClassifRandomForestWEKA)
