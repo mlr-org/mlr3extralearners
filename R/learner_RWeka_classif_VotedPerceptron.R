@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Voted Perceptron Algorithm by Freund and Schapire
-#' Calls [RWeka::make_Weka_classifier('weka/classifiers/functions/VotedPerceptron')] from \CRANpkg{RWeka}.
+#' Calls [RWeka::make_Weka_classifier()]{RWeka::make_Weka_classifier('weka/classifiers/functions/VotedPerceptron')} from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
