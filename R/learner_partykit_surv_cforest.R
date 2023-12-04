@@ -135,11 +135,14 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
 
       times = lapply(preds, function(p) p$time)
       utimes = sort(unique(unlist(times)))
+
+      # to use non-exported function from `distr6`
+      extend_times = getFromNamespace("C_Vec_WeightedDiscreteCdf", ns = "distr6")
       res = lapply(preds, function(p) {
         # p is a `survfit` object
         cdf = matrix(data = 1 - p$surv, ncol = 1) # 1 observation (column), rows => times
         # extend cdf to 'utimes', return survival
-        distr6:::C_Vec_WeightedDiscreteCdf(utimes, p$time, cdf = cdf, FALSE, FALSE)
+        extend_times(utimes, p$time, cdf = cdf, FALSE, FALSE)
       })
       surv = do.call(cbind, res) # rows => times, columns => obs
 
