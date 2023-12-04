@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Regressor that uses backpropagation to learn a multi-layer perceptron
-#' Calls [RWeka::make_Weka_classifier()]{RWeka::make_Weka_classifier('weka/classifiers/functions/MultilayerPerceptron')} from \CRANpkg{RWeka}.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

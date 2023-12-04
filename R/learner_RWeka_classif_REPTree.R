@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fast decision tree learner
-#' Calls [RWeka::make_Weka_classifier()]{RWeka::make_Weka_classifier('weka/classifiers/trees/REPTree')} \CRANpkg{RWeka}.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

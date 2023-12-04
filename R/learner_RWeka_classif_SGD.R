@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Stochastic Gradient Descent for learning various linear models
-#' Calls [RWeka::make_Weka_classifier()]{RWeka::make_Weka_classifier('weka/classifiers/functions/SGD')} \CRANpkg{RWeka}'.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
 #'
 #' @section Initial parameter values:
 #' - `F`:
