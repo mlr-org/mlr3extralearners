@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Linear Regression learner that uses the Akaike criterion for model selection and is able to deal with weighted instances.
-#' Calls [RWeka::make_Weka_classifier('weka/classifiers/functions/LinearRegression')] \CRANpkg{RWeka}.
+#' Calls [RWeka::LinearRegression()] \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -74,10 +74,8 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
   
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/functions/LinearRegression')
-      
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(weka_learner)
+      ctrl_arg_names = weka_control_args(RWeka::LinearRegression)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
@@ -89,7 +87,7 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
       
       formula = task$formula()
       data = task$data()
-      invoke(weka_learner, formula = formula, data = data, control = ctrl)
+      invoke(RWeka::LinearRegression, formula = formula, data = data, control = ctrl)
     },
     
     .predict = function(task) {

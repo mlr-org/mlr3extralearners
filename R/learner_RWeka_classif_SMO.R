@@ -4,11 +4,8 @@
 #'
 #' @description
 #' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm
-#' Calls [RWeka::make_Weka_classifier('weka/classifiers/functions/SMO')] from \CRANpkg{RWeka}.
-#'
-#' @section Initial parameter values:
-#' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
-#'
+#' Calls [RWeka::SMO()] from \CRANpkg{RWeka}.
+#' 
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
@@ -81,10 +78,8 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
   
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/functions/SMO')
-      
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(weka_learner)
+      ctrl_arg_names = weka_control_args(RWeka::SMO)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
@@ -96,7 +91,7 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
       
       formula = task$formula()
       data = task$data()
-      invoke(weka_learner, formula = formula, data = data, control = ctrl)
+      invoke(RWeka::SMO, formula = formula, data = data, control = ctrl)
     },
     
     .predict = function(task) {

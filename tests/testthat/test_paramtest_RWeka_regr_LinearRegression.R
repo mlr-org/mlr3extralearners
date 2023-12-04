@@ -1,6 +1,6 @@
 test_that("regr.LinearRegression train", {
   learner = lrn("regr.LinearRegression")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/functions/LinearRegression')
+  fun = RWeka::LinearRegression
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly
@@ -13,7 +13,7 @@ test_that("regr.LinearRegression train", {
 
 test_that("regr.LinearRegression predict", {
   # Here we test that the learner implements those arguments that are passed via the
-  # control argument to RWeka::make_Weka_classifier('weka/classifiers/functions/LinearRegression')
+  # control argument to RWeka::LinearRegression
   learner = lrn("regr.LinearRegression")
   exclude = c( # all handled by mlr3
     "object",

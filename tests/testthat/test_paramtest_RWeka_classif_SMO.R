@@ -2,7 +2,7 @@ skip_on_os("windows")
 
 test_that("classif.SMO train", {
   learner = lrn("classif.SMO")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/functions/SMO')
+  fun = RWeka::SMO
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly
@@ -15,7 +15,7 @@ test_that("classif.SMO train", {
 
 test_that("classif.SMO predict", {
   # Here we test that the learner implements those arguments that are passed via the
-  # control argument to RWeka::make_Weka_classifier('weka/classifiers/functions/SMO')
+  # control argument to RWeka::SMO
   learner = lrn("classif.SMO")
   exclude = c( # all handled by mlr3
     "object",

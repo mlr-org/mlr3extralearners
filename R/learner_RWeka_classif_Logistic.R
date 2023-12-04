@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Multinomial Logistic Regression model with a ridge estimator
-#' Calls [RWeka::make_Weka_classifier('weka/classifiers/functions/Logistic')] from \CRANpkg{RWeka}.
+#' Calls [RWeka::Logistic()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -67,10 +67,8 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
   
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/functions/Logistic')
-      
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(weka_learner)
+      ctrl_arg_names = weka_control_args(RWeka::Logistic)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
@@ -82,7 +80,7 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
       
       formula = task$formula()
       data = task$data()
-      invoke(weka_learner, formula = formula, data = data, control = ctrl)
+      invoke(RWeka::Logistic, formula = formula, data = data, control = ctrl)
     },
     
     .predict = function(task) {
