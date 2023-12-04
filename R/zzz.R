@@ -9,7 +9,7 @@
 #' @importFrom utils getFromNamespace packageVersion
 "_PACKAGE"
 
-utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD"))
+utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
 
 #' @export
 mlr3::lrn
