@@ -6,13 +6,8 @@
 \title{Classification Support Vector Classifier Trained With John Platt's Sequential Minimal Optimization Algorithm}
 \description{
 Support Vector classifier trained with John Platt's sequential minimal optimization algorithm
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/functions/SMO')]{RWeka::make_Weka_classifier('weka/classifiers/functions/SMO')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_functions]{RWeka::SMO()}} from \CRANpkg{RWeka}.
 }
-\section{Initial parameter values}{
-
-FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
-}
-
 \section{Custom mlr3 parameters}{
 
 \itemize{

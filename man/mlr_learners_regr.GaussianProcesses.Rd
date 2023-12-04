@@ -6,7 +6,7 @@
 \title{Regression Gaussian Processes For Regression From Weka}
 \description{
 Gaussian Processes For Regression
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/functions/GaussianProcesses')]{RWeka::make_Weka_classifier('weka/classifiers/functions/GaussianProcesses')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 

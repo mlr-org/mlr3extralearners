@@ -6,7 +6,7 @@
 \title{Classification Voted Perceptron Algorithm By Freund And Schapire}
 \description{
 Voted Perceptron Algorithm by Freund and Schapire
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/functions/VotedPerceptron')]{RWeka::make_Weka_classifier('weka/classifiers/functions/VotedPerceptron')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 

@@ -6,7 +6,7 @@
 \title{Classification Bayes Network Learner}
 \description{
 Bayes Network learning using various search algorithms.
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/bayes/BayesNet')]{RWeka::make_Weka_classifier('weka/classifiers/bayes/BayesNet')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 

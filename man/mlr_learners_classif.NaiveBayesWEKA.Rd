@@ -6,7 +6,7 @@
 \title{Classification Naive Bayes Classifier Using Estimator Classes}
 \description{
 Naive Bayes Classifier Using Estimator Classes
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/bayes/NaiveBayes')]{RWeka::make_Weka_classifier('weka/classifiers/bayes/NaiveBayes')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 

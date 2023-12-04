@@ -6,7 +6,7 @@
 \title{Classification LogitBoost With Simple Regression Functions As Base Learners}
 \description{
 LogitBoost with simple regression functions as base learners
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/functions/SimpleLogistic')]{RWeka::make_Weka_classifier('weka/classifiers/functions/SimpleLogistic')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 

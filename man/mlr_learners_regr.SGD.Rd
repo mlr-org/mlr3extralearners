@@ -6,7 +6,7 @@
 \title{Regression Stochastic Gradient Descent For Learning Various Linear Models}
 \description{
 Stochastic Gradient Descent for learning various linear models
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/functions/SGD')]{RWeka::make_Weka_classifier('weka/classifiers/functions/SGD')} \CRANpkg{RWeka}'.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Initial parameter values}{
 

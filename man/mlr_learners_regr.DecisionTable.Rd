@@ -6,7 +6,7 @@
 \title{Regression Simple Decision Table Majority Learner}
 \description{
 Simple Decision Table majority regressor
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/rules/DecisionTable')]{RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Initial parameter values}{
 

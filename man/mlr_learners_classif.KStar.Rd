@@ -6,7 +6,7 @@
 \title{Classification An Instance-based Learner Using An Entropic Distance Measure}
 \description{
 Instance-based classifier which differs from other instance-based learners in that it uses an entropy-based distance function.
-Calls \link[RWeka:make_Weka_classifier('weka/classifiers/lazy/KStar')]{RWeka::make_Weka_classifier('weka/classifiers/lazy/KStar')} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}
 }
 \section{Custom mlr3 parameters}{
 
