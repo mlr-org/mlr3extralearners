@@ -133,21 +133,20 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       preds = invoke(predict, object = self$model, newdata = newdata,
         type = "prob", .args = pars)
 
-      # Define WeightedDiscrete distr6 distribution from the survival function
-      x = lapply(preds, function(z) {
-        time = c(0, z$time, max(z$time) + 1e-3)
-        surv = c(1, z$surv, 0)
-        data.frame(x = time, cdf = 1 - surv)
+      times = lapply(preds, function(p) p$time)
+      utimes = sort(unique(unlist(times)))
+
+      # to use non-exported function from `distr6`
+      extend_times = getFromNamespace("C_Vec_WeightedDiscreteCdf", ns = "distr6")
+      res = lapply(preds, function(p) {
+        # p is a `survfit` object
+        cdf = matrix(data = 1 - p$surv, ncol = 1) # 1 observation (column), rows => times
+        # extend cdf to 'utimes', return survival
+        extend_times(utimes, p$time, cdf = cdf, FALSE, FALSE)
       })
-      distr = distr6::VectorDistribution$new(
-        distribution = "WeightedDiscrete",
-        params       = x,
-        decorators   = c("CoreStatistics", "ExoticStatistics"))
+      surv = do.call(cbind, res) # rows => times, columns => obs
 
-      # Define crank as the mean of the survival distribution
-      crank = -vapply(x, function(z) sum(z[, 1] * c(z[, 2][1], diff(z[, 2]))), numeric(1))
-
-      list(crank = crank, distr = distr)
+      .surv_return(times = utimes, surv = t(surv))
     }
   )
 )
