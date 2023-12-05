@@ -14,7 +14,8 @@ Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \C
 \item \code{F}:
 \itemize{
 \item Has only 3 out of 5 original loss functions: 2 = squared loss (regression),
-3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression) with 2 (squared loss) being the new default
+3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression)
+with 2 (squared loss) being the new default
 \item Reason for change: this learner should only contain loss functions appropriate for regression tasks
 }
 }
