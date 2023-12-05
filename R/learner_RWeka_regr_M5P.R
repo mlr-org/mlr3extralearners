@@ -21,8 +21,8 @@
 #'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
-#' 
+#'
+#'
 #' @templateVar id regr.M5P
 #' @template learner
 #'
@@ -65,7 +65,7 @@ LearnerRegrM5P = R6Class("LearnerRegrM5P",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
       params = self$param_set$get_values(tags = "train")
@@ -73,17 +73,17 @@ LearnerRegrM5P = R6Class("LearnerRegrM5P",
       arg_names = setdiff(names(params), ctrl_arg_names)
       ctrl = params[which(names(params) %in% ctrl_arg_names)]
       pars = params[which(names(params) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       f = task$formula()
       data = task$data()
       invoke(RWeka::M5P, formula = f, data = data, control = ctrl, .args = pars)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

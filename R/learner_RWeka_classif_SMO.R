@@ -5,7 +5,7 @@
 #' @description
 #' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm
 #' Calls [RWeka::SMO()] from \CRANpkg{RWeka}.
-#' 
+#'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
@@ -18,10 +18,10 @@
 #'
 #' - `batch_size`:
 #'   - original id: batch-size
-#'   
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
+#'
 #'
 #' @templateVar id classif.SMO
 #' @template learner
@@ -51,18 +51,18 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
         W = p_int(default = 1L, tags = "train"),
         K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel", tags = "train"),
         calibrator = p_uty(default = "weka.classifiers.functions.Logistic", tags = "train"),
-        E = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"), 
-                  tags = "train"),
+        E = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+          tags = "train"),
         R = p_dbl(depends = (calibrator == "weka.classifiers.functions.Logistic"), tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
-      
+
       super$initialize(
         id = "classif.SMO",
         packages = "RWeka",
@@ -75,7 +75,7 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
@@ -83,30 +83,30 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(RWeka::SMO, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       response = NULL
       prob = NULL
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      
+
       if (self$predict_type == "response") {
         response = invoke(predict, self$model, newdata = newdata, type = "class",
-                          .args = pars
+          .args = pars
         )
       } else {
         prob = invoke(predict, self$model, newdata = newdata, type = "prob",
-                      .args = pars
+          .args = pars
         )
       }
       list(response = response, prob = prob)

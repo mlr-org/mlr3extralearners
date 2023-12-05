@@ -5,7 +5,7 @@
 #' @description
 #' Simple Decision Table majority regressor
 #' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
-#' 
+#'
 #' @section Initial parameter values:
 #' - `E`:
 #'    - Has only 2 out of 4 original evaluation measures : rmse and mae with rmse being the default
@@ -26,8 +26,8 @@
 #'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
-#' 
+#'
+#'
 #' @templateVar id regr.DecisionTable
 #' @template learner
 #'
@@ -48,7 +48,7 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         na.action = p_uty(tags = "train"),
         S = p_uty(default = "weka.attributeSelection.BestFirst", tags = "train"),
         X = p_int(default = 1L, tags = "train"),
-        E = p_fct(default = "rmse", levels = c("rmse", "mae"), tags= "train"),
+        E = p_fct(default = "rmse", levels = c("rmse", "mae"), tags = "train"),
         I = p_lgl(tags = "train"),
         R = p_lgl(tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
@@ -56,8 +56,8 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         P = p_uty(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
-        D = p_fct(default = "1", levels = c("0", "1", "2"), 
-                  depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+        D = p_fct(default = "1", levels = c("0", "1", "2"),
+          depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         N = p_int(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         SBF = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         options = p_uty(default = NULL, tags = "train")
@@ -75,27 +75,27 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')
-      
+      weka_learner = RWeka::make_Weka_classifier("weka/classifiers/rules/DecisionTable")
+
       pars = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(weka_learner, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

@@ -1,4 +1,4 @@
-#' @title Regression Linear Regression That Uses The Akaike Criterion For Model Selection 
+#' @title Regression Linear Regression That Uses The Akaike Criterion For Model Selection
 #' @author damirpolat
 #' @name mlr_learners_regr.LinearRegression
 #'
@@ -18,13 +18,13 @@
 #'
 #' - `batch_size`:
 #'   - original id: batch-size
-#'   
+#'
 #' - `additional_stats`:
 #'   - original id: additional-stats
-#'   
+#'
 #' - `use_qr`:
 #'   - original id: use-qr
-#'   
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
@@ -52,13 +52,13 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
         use_qr = p_lgl(default = FALSE, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
-      
+
       super$initialize(
         id = "regr.LinearRegression",
         packages = "RWeka",
@@ -71,7 +71,7 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
@@ -79,17 +79,17 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(RWeka::LinearRegression, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

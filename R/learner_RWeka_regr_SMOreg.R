@@ -18,10 +18,10 @@
 #'
 #' - `batch_size`:
 #'   - original id: batch-size
-#'   
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
+#'
 #'
 #' @templateVar id regr.SMOreg
 #' @template learner
@@ -43,31 +43,31 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
         na.action = p_uty(tags = "train"),
         C = p_dbl(default = 1L, tags = "train"),
         N = p_fct(default = "0", levels = c("0", "1", "2"), tags = "train"),
-        I = p_uty(default = "weka.classifiers.functions.supportVector.RegSMOImproved", 
-                  tags = "train"),
-        K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel", 
-                  tags = "train"),
+        I = p_uty(default = "weka.classifiers.functions.supportVector.RegSMOImproved",
+          tags = "train"),
+        K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel",
+          tags = "train"),
         T = p_dbl(default = 0.001, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
+          tags = "train"),
         V = p_lgl(default = TRUE, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
+          tags = "train"),
         P = p_dbl(default = 1e-12, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
+          tags = "train"),
         L = p_dbl(default = 1.0e-3, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
+          tags = "train"),
         W = p_int(default = 1L, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
+          tags = "train"),
         E = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
-                  tags = "train"),
+          tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
-      
+
       super$initialize(
         id = "regr.SMOreg",
         packages = "RWeka",
@@ -80,27 +80,27 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/functions/SMOreg')
-      
+      weka_learner = RWeka::make_Weka_classifier("weka/classifiers/functions/SMOreg")
+
       pars = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(weka_learner, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

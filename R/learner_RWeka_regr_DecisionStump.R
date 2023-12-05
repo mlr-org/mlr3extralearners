@@ -18,10 +18,10 @@
 #'
 #' - `batch_size`:
 #'   - original id: batch-size
-#'   
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
+#'
 #'
 #' @templateVar id regr.DecisionStump
 #' @template learner
@@ -40,9 +40,9 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
         na.action = p_uty(tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
@@ -59,7 +59,7 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
       params = self$param_set$get_values(tags = "train")
@@ -67,17 +67,17 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
       arg_names = setdiff(names(params), ctrl_arg_names)
       ctrl = params[which(names(params) %in% ctrl_arg_names)]
       pars = params[which(names(params) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       f = task$formula()
       data = task$data()
       invoke(RWeka::DecisionStump, formula = f, data = data, control = ctrl, .args = pars)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

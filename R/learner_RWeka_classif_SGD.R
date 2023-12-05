@@ -11,7 +11,7 @@
 #'    - Has only 2 out of 5 original loss functions: 0 = hinge loss (SVM) and 1 = log loss (logistic regression)
 #'      with 0 (hinge loss) still being the default
 #'    - Reason for change: this learner should only contain loss functions appropriate for classification tasks
-#' 
+#'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
@@ -27,7 +27,7 @@
 #'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#' 
+#'
 #'
 #' @templateVar id classif.SGD
 #' @template learner
@@ -54,9 +54,9 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
         S = p_int(default = 1L, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
@@ -73,40 +73,40 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/functions/SGD')
-      
+      weka_learner = RWeka::make_Weka_classifier("weka/classifiers/functions/SGD")
+
       pars = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(weka_learner, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       response = NULL
       prob = NULL
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
-      
+
       if (self$predict_type == "response") {
         response = invoke(predict, self$model, newdata = newdata, type = "class",
-                          .args = pars
+          .args = pars
         )
       } else {
         prob = invoke(predict, self$model, newdata = newdata, type = "prob",
-                      .args = pars
+          .args = pars
         )
       }
       list(response = response, prob = prob)

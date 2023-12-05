@@ -18,24 +18,24 @@
 #'
 #' - `batch_size`:
 #'   - original id: batch-size
-#'   
+#'
 #' - `store_out_of_bag_predictions`:
 #'   - original id: store-out-of-bag-predictions
-#'   
+#'
 #' - `output_out_of_bag_complexity_statistics`:
 #'   - original id: output-out-of-bag-complexity-statistics
-#'   
+#'
 #' - `num_slots`:
 #'   - original id: num-slots
 #'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
-#'  
+#'
 #' - `attribute-importance` removed:
 #'   - Compute and output attribute importance (mean impurity decrease method)
-#'   
+#'
 #' - Reason for change: The parameter is removed because it's unclear how to actually use it.
-#' 
+#'
 #'
 #' @templateVar id regr.RandomForestWEKA
 #' @template learner
@@ -72,9 +72,9 @@ LearnerRegrRandomForestWEKA = R6Class("LearnerRegrRandomForestWEKA",
         B = p_lgl(default = FALSE, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
@@ -91,27 +91,27 @@ LearnerRegrRandomForestWEKA = R6Class("LearnerRegrRandomForestWEKA",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
-      weka_learner = RWeka::make_Weka_classifier('weka/classifiers/trees/RandomForest')
-      
+      weka_learner = RWeka::make_Weka_classifier("weka/classifiers/trees/RandomForest")
+
       pars = self$param_set$get_values(tags = "train")
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(weka_learner, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")

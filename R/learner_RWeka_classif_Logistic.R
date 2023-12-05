@@ -45,9 +45,9 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
         M = p_int(default = -1, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-                                          tags = "train"),
+          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-                                   tags = "train"),
+          tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
@@ -64,7 +64,7 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
       )
     }
   ),
-  
+
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
@@ -72,30 +72,30 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
       pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-      
+
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
         ctrl = invoke(RWeka::Weka_control, .args = ctrl)
       }
-      
+
       formula = task$formula()
       data = task$data()
       invoke(RWeka::Logistic, formula = formula, data = data, control = ctrl)
     },
-    
+
     .predict = function(task) {
       response = NULL
       prob = NULL
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      
+
       if (self$predict_type == "response") {
         response = invoke(predict, self$model, newdata = newdata, type = "class",
-                          .args = pars
+          .args = pars
         )
       } else {
         prob = invoke(predict, self$model, newdata = newdata, type = "prob",
-                      .args = pars
+          .args = pars
         )
       }
       list(response = response, prob = prob)
