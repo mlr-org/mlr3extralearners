@@ -2,7 +2,7 @@ skip_on_os("windows")
 
 test_that("classif.VotedPerceptron train", {
   learner = lrn("classif.VotedPerceptron")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/functions/VotedPerceptron')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/functions/VotedPerceptron")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly

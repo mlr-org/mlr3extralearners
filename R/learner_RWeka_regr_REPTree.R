@@ -52,9 +52,9 @@ LearnerRegrREPTree = R6Class("LearnerRegrREPTree",
         I = p_int(default = 0L, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = "train"),
+                                          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = "train"),
+                                   tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )

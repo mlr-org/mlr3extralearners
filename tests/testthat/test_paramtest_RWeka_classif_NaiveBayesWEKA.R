@@ -2,7 +2,7 @@ skip_on_os("windows")
 
 test_that("classif.NaiveBayesWEKA train", {
   learner = lrn("classif.NaiveBayesWEKA")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/bayes/NaiveBayes')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/bayes/NaiveBayes")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly

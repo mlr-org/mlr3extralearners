@@ -2,7 +2,7 @@ skip_on_os("windows")
 
 test_that("classif.NaiveBayesMultinomial train", {
   learner = lrn("classif.NaiveBayesMultinomial")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/bayes/NaiveBayesMultinomial')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/bayes/NaiveBayesMultinomial")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly

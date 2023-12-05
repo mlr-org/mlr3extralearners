@@ -9,7 +9,8 @@
 #' @section Initial parameter values:
 #' - `F`:
 #'    - Has only 3 out of 5 original loss functions: 2 = squared loss (regression),
-#'      3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression) with 2 (squared loss) being the new default
+#'      3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression) 
+#'      with 2 (squared loss) being the new default
 #'    - Reason for change: this learner should only contain loss functions appropriate for regression tasks
 #'
 #' @section Custom mlr3 parameters:
@@ -54,9 +55,9 @@ LearnerRegrSGD = R6Class("LearnerRegrSGD",
         S = p_int(default = 1L, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = "train"),
+                                          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = "train"),
+                                   tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )

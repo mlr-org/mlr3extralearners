@@ -1,6 +1,6 @@
 test_that("regr.DecisionTable train", {
   learner = lrn("regr.DecisionTable")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/rules/DecisionTable')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/rules/DecisionTable")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly

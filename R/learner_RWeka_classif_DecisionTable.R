@@ -57,7 +57,7 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         P = p_uty(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         D = p_fct(default = "1", levels = c("0", "1", "2"),
-          depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+                  depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         N = p_int(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         SBF = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         options = p_uty(default = NULL, tags = "train")

@@ -1,6 +1,6 @@
 test_that("regr.REPTree train", {
   learner = lrn("regr.REPTree")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/trees/REPTree')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/trees/REPTree")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly

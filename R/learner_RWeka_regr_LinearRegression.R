@@ -3,7 +3,8 @@
 #' @name mlr_learners_regr.LinearRegression
 #'
 #' @description
-#' Linear Regression learner that uses the Akaike criterion for model selection and is able to deal with weighted instances.
+#' Linear Regression learner that uses the Akaike criterion for model selection and 
+#' is able to deal with weighted instances.
 #' Calls [RWeka::LinearRegression()] \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
@@ -52,9 +53,9 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
         use_qr = p_lgl(default = FALSE, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
-          tags = "train"),
+                                          tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L,
-          tags = "train"),
+                                   tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )

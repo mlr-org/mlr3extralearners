@@ -1,6 +1,6 @@
 test_that("regr.GaussianProcesses train", {
   learner = lrn("regr.GaussianProcesses")
-  fun = RWeka::make_Weka_classifier('weka/classifiers/functions/GaussianProcesses')
+  fun = RWeka::make_Weka_classifier("weka/classifiers/functions/GaussianProcesses")
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly
