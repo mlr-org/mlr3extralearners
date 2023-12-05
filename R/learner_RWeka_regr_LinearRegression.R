@@ -3,7 +3,7 @@
 #' @name mlr_learners_regr.LinearRegression
 #'
 #' @description
-#' Linear Regression learner that uses the Akaike criterion for model selection and 
+#' Linear Regression learner that uses the Akaike criterion for model selection and
 #' is able to deal with weighted instances.
 #' Calls [RWeka::LinearRegression()] \CRANpkg{RWeka}.
 #'

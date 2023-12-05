@@ -9,7 +9,7 @@
 #' @section Initial parameter values:
 #' - `F`:
 #'    - Has only 3 out of 5 original loss functions: 2 = squared loss (regression),
-#'      3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression) 
+#'      3 = epsilon insensitive loss (regression) and 4 = Huber loss (regression)
 #'      with 2 (squared loss) being the new default
 #'    - Reason for change: this learner should only contain loss functions appropriate for regression tasks
 #'

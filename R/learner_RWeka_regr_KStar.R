@@ -3,7 +3,7 @@
 #' @name mlr_learners_regr.KStar
 #'
 #' @description
-#' Instance-based regressor which differs from other instance-based learners in that 
+#' Instance-based regressor which differs from other instance-based learners in that
 #' it uses an entropy-based distance function.
 #' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
 #'
