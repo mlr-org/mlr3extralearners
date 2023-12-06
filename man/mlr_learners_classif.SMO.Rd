@@ -27,6 +27,30 @@ Calls \code{\link[RWeka:Weka_classifier_functions]{RWeka::SMO()}} from \CRANpkg{
 \itemize{
 \item original id: batch-size
 }
+\item \code{E_poly}:
+\itemize{
+\item original id: E
+}
+\item \code{L_poly}:
+\itemize{
+\item original id: L
+}
+\item \code{C_poly}:
+\itemize{
+\item original id: C
+}
+\item \code{C_logistic}:
+\itemize{
+\item original id: C
+}
+\item \code{R_logistic}:
+\itemize{
+\item original id: R
+}
+\item \code{M_logistic}:
+\itemize{
+\item original id: M
+}
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
 }
@@ -66,8 +90,12 @@ lrn("classif.SMO")
    W \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
    calibrator \tab untyped \tab weka.classifiers.functions.Logistic \tab  \tab - \cr
-   E \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   R \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   C_poly \tab integer \tab 25007 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   C_logistic \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   R_logistic \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   M_logistic \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

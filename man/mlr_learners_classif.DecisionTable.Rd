@@ -38,6 +38,22 @@ Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \C
 \itemize{
 \item original id: batch-size
 }
+\item \code{P_best}:
+\itemize{
+\item original id: P
+}
+\item \code{D_best}:
+\itemize{
+\item original id: D
+}
+\item \code{N_best}:
+\itemize{
+\item original id: N
+}
+\item \code{S_best}:
+\itemize{
+\item original id: S
+}
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
 }
@@ -76,10 +92,10 @@ lrn("classif.DecisionTable")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   P \tab untyped \tab - \tab  \tab - \cr
-   D \tab character \tab 1 \tab 0, 1, 2 \tab - \cr
-   N \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   SBF \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   P_best \tab untyped \tab - \tab  \tab - \cr
+   D_best \tab character \tab 1 \tab 0, 1, 2 \tab - \cr
+   N_best \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   S_best \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    options \tab untyped \tab  \tab  \tab - \cr
 }
 }
