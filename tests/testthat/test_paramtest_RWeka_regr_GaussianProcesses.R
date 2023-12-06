@@ -4,10 +4,10 @@ test_that("regr.GaussianProcesses train", {
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly
-  exclude = c("formula", "data", "control", exclude)
+  exclude = c("formula", "data", "control", "E_poly", "L_poly", "C_poly", exclude)
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
-  control_args = weka_control_args(fun)
+  control_args = setdiff(weka_control_args(fun), c("E", "C"))
   expect_true(all(control_args %in% learner$param_set$ids()))
 })
 

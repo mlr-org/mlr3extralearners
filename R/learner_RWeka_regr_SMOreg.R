@@ -19,6 +19,30 @@
 #' - `batch_size`:
 #'   - original id: batch-size
 #'
+#' - `T_improved`:
+#'   - original id: T
+#'
+#' - `V_improved`:
+#'   - original id: V
+#'
+#' - `P_improved`:
+#'   - original id: P
+#'
+#' - `L_improved`:
+#'   - original id: L (duplicated L for when I is set to RegSMOImproved)
+#'
+#' - `W_improved`:
+#'   - original id: W
+#'
+#' - `C_poly`:
+#'   - original id: C
+#'
+#' - `E_poly`:
+#'   - original id: E
+#'
+#' - `L_poly`:
+#'   - original id: L (duplicated L for when K is set to PolyKernel)
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
@@ -47,18 +71,22 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
                   tags = "train"),
         K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel",
                   tags = "train"),
-        T = p_dbl(default = 0.001, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
-        V = p_lgl(default = TRUE, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
-        P = p_dbl(default = 1e-12, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
-        L = p_dbl(default = 1.0e-3, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
-        W = p_int(default = 1L, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
-                  tags = "train"),
-        E = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
-                  tags = "train"),
+        T_improved = p_dbl(default = 0.001, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
+                           tags = "train"),
+        V_improved = p_lgl(default = TRUE, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
+                           tags = "train"),
+        P_improved = p_dbl(default = 1e-12, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
+                           tags = "train"),
+        L_improved = p_dbl(default = 1.0e-3, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
+                           tags = "train"),
+        W_improved = p_int(default = 1L, depends = (I == "weka.classifiers.functions.supportVector.RegSMOImproved"),
+                           tags = "train"),
+        C_poly = p_int(default = 250007, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        E_poly = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        L_poly = p_lgl(default = FALSE, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
                                           tags = "train"),
@@ -89,7 +117,20 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      pars = pars[which(names(pars) %nin% ctrl_arg_names)]
+      if (!is.null(ctrl$I) & length(arg_names) > 0) {
+        if (grepl("RegSMOImproved", ctrl$I) & any(grepl("_improved", arg_names))) {
+          arg_names_extra = arg_names[grepl("_improved", arg_names)]
+          ctrl$I = c(ctrl$I, pars[which(names(pars) %in% arg_names_extra)])
+          names(ctrl$I) = c("", gsub("_improved", replacement = "", x = arg_names_extra))
+        }
+      }
+      if (!is.null(ctrl$K) & length(arg_names) > 0) {
+        if (grepl("PolyKernel", ctrl$K) & any(grepl("_poly", arg_names))) {
+          arg_names_extra = arg_names[grepl("_poly", arg_names)]
+          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names_extra)])
+          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names_extra))
+        }
+      }
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))

@@ -19,6 +19,15 @@
 #' - `batch_size`:
 #'   - original id: batch-size
 #'
+#' - `E_poly`:
+#'   - original id: E
+#'
+#' - `L_poly`:
+#'   - original id: L (duplicated L for when K is set to PolyKernel)
+#'
+#' - `C_poly`:
+#'   - original id: C
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
@@ -50,10 +59,12 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
         N = p_fct(default = "0", levels = c("0", "1", "2"), tags = "train"),
         K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel", tags = "train"),
         S = p_int(default = 1L, tags = "train"),
-        E = p_dbl(default = 1.0, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
-                  tags = "train"),
-        C = p_int(default = 250007, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
-                  tags = "train"),
+        E_poly = p_dbl(default = 1.0, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        L_poly = p_lgl(default = FALSE, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        C_poly = p_int(default = 250007, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
                                           tags = "train"),
@@ -84,7 +95,12 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      pars = pars[which(names(pars) %nin% ctrl_arg_names)]
+      if (!is.null(ctrl$K) & length(arg_names) > 0) {
+        if (grepl("PolyKernel", ctrl$K)) {
+          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names)])
+          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names))
+        }
+      }
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
