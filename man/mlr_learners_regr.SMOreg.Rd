@@ -27,6 +27,38 @@ Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \C
 \itemize{
 \item original id: batch-size
 }
+\item \code{T_improved}:
+\itemize{
+\item original id: T
+}
+\item \code{V_improved}:
+\itemize{
+\item original id: V
+}
+\item \code{P_improved}:
+\itemize{
+\item original id: P
+}
+\item \code{L_improved}:
+\itemize{
+\item original id: L (duplicated L for when I is set to RegSMOImproved)
+}
+\item \code{W_improved}:
+\itemize{
+\item original id: W
+}
+\item \code{C_poly}:
+\itemize{
+\item original id: C
+}
+\item \code{E_poly}:
+\itemize{
+\item original id: E
+}
+\item \code{L_poly}:
+\itemize{
+\item original id: L (duplicated L for when K is set to PolyKernel)
+}
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
 }
@@ -60,12 +92,14 @@ lrn("regr.SMOreg")
    N \tab character \tab 0 \tab 0, 1, 2 \tab - \cr
    I \tab untyped \tab weka.classifiers.functions.supportVector.RegSMOImproved \tab  \tab - \cr
    K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
-   T \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   V \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   P \tab numeric \tab 1e-12 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   L \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   W \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   E \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   T_improved \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   V_improved \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   P_improved \tab numeric \tab 1e-12 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   L_improved \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   W_improved \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   C_poly \tab integer \tab 250007 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

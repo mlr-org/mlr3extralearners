@@ -27,6 +27,18 @@ Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \C
 \itemize{
 \item original id: batch-size
 }
+\item \code{E_poly}:
+\itemize{
+\item original id: E
+}
+\item \code{L_poly}:
+\itemize{
+\item original id: L (duplicated L for when K is set to PolyKernel)
+}
+\item \code{C_poly}:
+\itemize{
+\item original id: C
+}
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
 \item \code{output-debug-info} for kernel parameter removed:
@@ -65,8 +77,9 @@ lrn("regr.GaussianProcesses")
    N \tab character \tab 0 \tab 0, 1, 2 \tab - \cr
    K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
    S \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   E \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   C \tab integer \tab 250007 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   C_poly \tab integer \tab 250007 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
