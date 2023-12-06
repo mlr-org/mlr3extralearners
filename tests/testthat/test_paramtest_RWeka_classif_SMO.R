@@ -6,7 +6,8 @@ test_that("classif.SMO train", {
   exclude = weka_control_args(fun)
   # formula and data are handled via mlr3
   # mlr3 does not have the `control` argument because the parameters can be specified directly
-  exclude = c("formula", "data", "control", "E_poly", "L_poly", "C_poly", "C_logistic", "R_logistic", "M_logistic", exclude)
+  exclude = c("formula", "data", "control", "E_poly", "L_poly", "C_poly", "C_logistic", "R_logistic", "M_logistic",
+              exclude)
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
   control_args = setdiff(weka_control_args(fun), c("E", "L", "C", "R", "M"))
