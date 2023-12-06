@@ -19,6 +19,24 @@
 #' - `batch_size`:
 #'   - original id: batch-size
 #'
+#' - `E_poly`:
+#'   - original id: E
+#'
+#' - `L_poly`:
+#'   - original id: L
+#'
+#' - `C_poly`:
+#'   - original id: C
+#'
+#' - `C_logistic`:
+#'   - original id: C
+#'
+#' - `R_logistic`:
+#'   - original id: R
+#'
+#' - `M_logistic`:
+#'   - original id: M
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
@@ -51,9 +69,17 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
         W = p_int(default = 1L, tags = "train"),
         K = p_uty(default = "weka.classifiers.functions.supportVector.PolyKernel", tags = "train"),
         calibrator = p_uty(default = "weka.classifiers.functions.Logistic", tags = "train"),
-        E = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
-                  tags = "train"),
-        R = p_dbl(depends = (calibrator == "weka.classifiers.functions.Logistic"), tags = "train"),
+        E_poly = p_dbl(default = 1L, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        L_poly = p_lgl(default = FALSE, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        C_poly = p_int(default = 25007, depends = (K == "weka.classifiers.functions.supportVector.PolyKernel"),
+                       tags = "train"),
+        C_logistic = p_lgl(default = FALSE, depends = (calibrator == "weka.classifiers.functions.Logistic"),
+                           tags = "train"),
+        R_logistic = p_dbl(depends = (calibrator == "weka.classifiers.functions.Logistic"), tags = "train"),
+        M_logistic = p_int(default = -1L, depends = (calibrator == "weka.classifiers.functions.Logistic"),
+                           tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
                                           tags = "train"),
@@ -82,7 +108,20 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
       ctrl_arg_names = weka_control_args(RWeka::SMO)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      pars = pars[which(names(pars) %nin% ctrl_arg_names)]
+      if (!is.null(ctrl$K) & length(arg_names) > 0) {
+        if (grepl("PolyKernel", ctrl$K) & any(grepl("_poly", arg_names))) {
+          arg_names_extra = arg_names[grepl("_poly", arg_names)]
+          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names_extra)])
+          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names_extra))
+        }
+      }
+      if (!is.null(ctrl$calibrator) & length(arg_names) > 0) {
+        if (grepl("Logistic", ctrl$calibrator) & any(grepl("_logistic", arg_names))) {
+          arg_names_extra = arg_names[grepl("_logistic", arg_names)]
+          ctrl$calibrator = c(ctrl$calibrator, pars[which(names(pars) %in% arg_names_extra)])
+          names(ctrl$calibrator) = c("", gsub("_logistic", replacement = "", x = arg_names_extra))
+        }
+      }
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))

@@ -24,6 +24,18 @@
 #' - `batch_size`:
 #'   - original id: batch-size
 #'
+#' - `P_best`:
+#'   - original id: P
+#'
+#' - `D_best`:
+#'   - original id: D
+#'
+#' - `N_best`:
+#'   - original id: N
+#'
+#' - `S_best`:
+#'   - original id: S
+#'
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
@@ -55,11 +67,11 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         do_not_check_capabilities = p_lgl(default = FALSE, tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
-        P = p_uty(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
-        D = p_fct(default = "1", levels = c("0", "1", "2"),
-                  depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
-        N = p_int(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
-        SBF = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+        P_best = p_uty(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+        D_best = p_fct(default = "1", levels = c("0", "1", "2"), depends = (S == "weka.attributeSelection.BestFirst"),
+                       tags = "train"),
+        N_best = p_int(depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
+        S_best = p_int(default = 1L, depends = (S == "weka.attributeSelection.BestFirst"), tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
 
@@ -84,7 +96,13 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
       ctrl_arg_names = weka_control_args(weka_learner)
       arg_names = setdiff(names(pars), ctrl_arg_names)
       ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      pars = pars[which(names(pars) %nin% ctrl_arg_names)]
+      if (!is.null(ctrl$S) & length(arg_names) > 0) {
+        if (grepl("BestFirst", ctrl$S) & any(grepl("_best", arg_names))) {
+          arg_names_extra = arg_names[grepl("_best", arg_names)]
+          ctrl$S = c(ctrl$S, pars[which(names(pars) %in% arg_names_extra)])
+          names(ctrl$S) = c("", gsub("_best", replacement = "", x = arg_names_extra))
+        }
+      }
 
       if (length(ctrl) > 0L) {
         names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
