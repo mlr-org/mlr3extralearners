@@ -73,8 +73,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         outer.max = p_int(default = 10L, tags = "train"),
         robust = p_lgl(default = FALSE, tags = "train"),
         score = p_lgl(default = FALSE, tags = "train"),
-        cluster = p_uty(tags = "train")
+        cluster = p_uty(tags = "train"),
+        discrete = p_lgl(default = FALSE, tags = "predict")
       )
+
+      ps$values = list(discrete = FALSE, type = "aft")
 
       super$initialize(
         id = "surv.parametric",
@@ -137,14 +140,20 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      pred = invoke(.predict_survreg, object = self$model, task = task, learner = self, .args = pv)
+      if (pv$discrete) {
+        pred = invoke(.predict_survreg_discrete, object = self$model, task = task,
+          learner = self, type = pv$type)
+      } else {
+        pred = invoke(.predict_survreg_continuous, object = self$model, task = task,
+          learner = self, type = pv$type)
+      }
       # lp is aft-style, where higher value = lower risk, opposite needed for crank
       list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
     }
   )
 )
 
-.predict_survreg = function(object, task, learner, type = "aft", tobit = FALSE) {
+.predict_survreg_continuous = function(object, task, learner, type = "aft") {
   feature_names = intersect(names(learner$state$data_prototype), task$feature_names)
 
   # Extracts baseline distribution and the model fit, performs assertions
@@ -282,6 +291,53 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
   lp = lp + fit$coefficients[1]
 
   list(lp = as.numeric(lp), distr = distr)
+}
+
+
+.predict_survreg_discrete = function(object, task, learner, type = "aft") {
+  feature_names = intersect(names(learner$state$data_prototype), task$feature_names)
+
+  # Extracts baseline distribution and the model fit, performs assertions
+  basedist = object$basedist
+  fit = object$fit
+  distr6::assertDistribution(basedist)
+  assertClass(fit, "survreg")
+
+  # define newdata from the supplied task and convert to model matrix
+  newdata = mlr3extralearners:::ordered_features(task, learner)
+  if (any(is.na(newdata))) {
+    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
+  }
+
+  times = task$unique_times()
+
+  # PH: h(t) = h0(t)exp(lp)
+  # AFT: h(t) = exp(-lp)h0(t/exp(lp))
+  # PO: h(t)/h0(t) = {1 + (exp(lp)-1)S0(t)}^-1
+  if (type == "tobit") {
+    fun = function(y) pnorm((times - y - fit$coefficients[1]) / basedist$stdev())
+  } else if (type == "ph") {
+    fun = function(y) 1 - (basedist$survival(times)^exp(-y))
+  } else if (type == "aft") {
+    fun = function(y) 1 - (basedist$survival(times / exp(y)))
+  } else if (type == "po") {
+    fun = function(y) 1 - (basedist$survival(times) *
+        (exp(-y) + (1 - exp(-y)) * basedist$survival(times))^-1)
+  }
+
+  # linear predictor defined by the fitted cofficients multiplied by the model matrix
+  # (i.e. covariates)
+  x = stats::model.matrix(mlr3misc:::formulate(rhs = feature_names), data = newdata,
+    xlev = task$levels())[, -1]
+  lp = matrix(fit$coefficients[-1], nrow = 1) %*% t(x)
+
+  mat = t(vapply(lp, fun, numeric(length(times))))
+  colnames(mat) = times
+
+  list(
+    lp = as.numeric(lp + fit$coefficients[1]),
+    distr = distr6::as.Distribution(mat, fun = "cdf")
+  )
 }
 
 .extralrns_dict$add("surv.parametric", LearnerSurvParametric)
