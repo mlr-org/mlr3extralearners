@@ -21,12 +21,46 @@ lrn("classif.tabnet")
 
 \section{Meta Information}{
 
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.tabnet")), collapse = "\\n")}
+\itemize{
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{tabnet}
+}
 }
 
 \section{Parameters}{
-
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.tabnet")$param_set), collapse = "\\n")}
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   num_threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   batch_size \tab integer \tab 256 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   penalty \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   clip_value \tab untyped \tab  \tab  \tab - \cr
+   loss \tab character \tab auto \tab auto, mse, cross_entropy \tab - \cr
+   epochs \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   decision_width \tab integer \tab 8 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   attention_width \tab integer \tab 8 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   num_steps \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   feature_reusage \tab numeric \tab 1.3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   mask_type \tab character \tab sparsemax \tab sparsemax, entmax \tab - \cr
+   virtual_batch_size \tab integer \tab 128 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   valid_split \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   learn_rate \tab numeric \tab 0.02 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   optimizer \tab untyped \tab adam \tab  \tab - \cr
+   lr_scheduler \tab untyped \tab  \tab  \tab - \cr
+   lr_decay \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   step_size \tab integer \tab 30 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   checkpoint_epochs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   cat_emb_dim \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   num_independent \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   num_shared \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   momentum \tab numeric \tab 0.02 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   pretraining_ratio \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   device \tab character \tab auto \tab auto, cpu, cuda \tab - \cr
+   importance_sample_size \tab integer \tab - \tab  \tab \eqn{[0, 1e+05]}{[0, 1e+05]} \cr
+}
 }
 
 \examples{

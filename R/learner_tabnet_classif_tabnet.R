@@ -98,3 +98,5 @@ LearnerClassifTabNet = R6Class("LearnerClassifTabNet",
     }
   )
 )
+
+.extralrns_dict$add("classif.tabnet", LearnerClassifTabNet)

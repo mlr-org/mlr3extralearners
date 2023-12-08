@@ -59,7 +59,7 @@ s4_helper = function(x) {
   return(f())
 }
 
-$.R6 = function(x, name) {
+`$.R6` = function(x, name) {
   if (test_class(x, "nn_module") || test_class(x, "dataset") | test_class(x, "dataloader")) {
     return(get0(name, x, inherits = FALSE))
   }
