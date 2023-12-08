@@ -58,3 +58,12 @@ s4_helper = function(x) {
   formals(f) = pairlist()
   return(f())
 }
+
+$.R6 = function(x, name) {
+  if (test_class(x, "nn_module") || test_class(x, "dataset") | test_class(x, "dataloader")) {
+    return(get0(name, x, inherits = FALSE))
+  }
+  if (exists(name, envir = x, inherits = FALSE))
+    return(get(name, envir = x))
+  stop("R6 class ", paste0(class(x), collapse = "/") ," does not have slot '", name, "'!")
+}
