@@ -339,7 +339,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     xlev = task$levels())[, -1]
   lp = matrix(fit$coefficients[-1], nrow = 1) %*% t(x)
 
-  mat = t(vapply(lp, fun, numeric(length(times))))
+  if (length(times) == 1) { # edge case
+    mat = as.matrix(vapply(lp, fun, numeric(1)), ncol = 1)
+  } else {
+    mat = t(vapply(lp, fun, numeric(length(times))))
+  }
   colnames(mat) = times
 
   list(
