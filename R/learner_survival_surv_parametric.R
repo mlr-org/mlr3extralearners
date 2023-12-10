@@ -148,10 +148,10 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
       pv = self$param_set$get_values(tags = "predict")
       if (pv$discrete) {
         pred = invoke(.predict_survreg_discrete, object = self$model, task = task,
-          learner = self, type = pv$type)
+                      learner = self, type = pv$type)
       } else {
         pred = invoke(.predict_survreg_continuous, object = self$model, task = task,
-          learner = self, type = pv$type)
+                      learner = self, type = pv$type)
       }
       # lp is aft-style, where higher value = lower risk, opposite needed for crank
       list(distr = pred$distr, crank = -pred$lp, lp = -pred$lp)
@@ -174,7 +174,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
   }
   x = stats::model.matrix(formulate(rhs = feature_names), data = newdata,
-    xlev = task$levels())[, -1]
+                          xlev = task$levels())[, -1]
 
   # linear predictor defined by the fitted cofficients multiplied by the model matrix
   # (i.e. covariates)
@@ -278,7 +278,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
           (((exp(y) - 1)^-1) + basedist$survival(x))))) *
         (1 - self$cdf(x)), list(y = lp[i]))
       body(cdf) = substitute(1 - (basedist$survival(x) *
-        (exp(-y) + (1 - exp(-y)) * basedist$survival(x))^-1),
+        (exp(-y) + (1 - exp(-y)) * basedist$survival(x))^-1), # nolint
       list(y = lp[i]))
       body(quantile) = substitute(basedist$quantile(-p / ((exp(-y) * (p - 1)) - p)), # nolint
         list(y = lp[i]))
@@ -310,7 +310,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
   assertClass(fit, "survreg")
 
   # define newdata from the supplied task and convert to model matrix
-  newdata = mlr3extralearners:::ordered_features(task, learner)
+  newdata = ordered_features(task, learner)
   if (any(is.na(newdata))) {
     stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
   }
@@ -321,19 +321,21 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
   # AFT: h(t) = exp(-lp)h0(t/exp(lp))
   # PO: h(t)/h0(t) = {1 + (exp(lp)-1)S0(t)}^-1
   if (type == "tobit") {
-    fun = function(y) pnorm((times - y - fit$coefficients[1]) / basedist$stdev())
+    fun = function(y) stats::pnorm((times - y - fit$coefficients[1]) / basedist$stdev())
   } else if (type == "ph") {
     fun = function(y) 1 - (basedist$survival(times)^exp(-y))
   } else if (type == "aft") {
     fun = function(y) 1 - (basedist$survival(times / exp(y)))
   } else if (type == "po") {
-    fun = function(y) 1 - (basedist$survival(times) *
-        (exp(-y) + (1 - exp(-y)) * basedist$survival(times))^-1)
+    fun = function(y) {
+      1 - (basedist$survival(times) *
+      (exp(-y) + (1 - exp(-y)) * basedist$survival(times))^-1)
+    }
   }
 
   # linear predictor defined by the fitted cofficients multiplied by the model matrix
   # (i.e. covariates)
-  x = stats::model.matrix(mlr3misc:::formulate(rhs = feature_names), data = newdata,
+  x = stats::model.matrix(mlr3misc::formulate(rhs = feature_names), data = newdata,
     xlev = task$levels())[, -1]
   lp = matrix(fit$coefficients[-1], nrow = 1) %*% t(x)
 
