@@ -35,7 +35,6 @@ test_that("paramtest surv.parametric train", {
 
 test_that("paramtest surv.parametric predict", {
   learner = lrn("surv.parametric")
-  fun = .predict_survreg
   exclude = c(
     # handled via mlr3
     "type",
@@ -43,9 +42,11 @@ test_that("paramtest surv.parametric predict", {
     "task",
     "feature_names",
     "tobit",
-    "learner"
+    "learner",
+    "discrete"
   )
 
-  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, fun = .predict_survreg_continuous, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, fun = .predict_survreg_discrete, exclude, tag = "predict")
   expect_paramtest(paramtest)
 })
