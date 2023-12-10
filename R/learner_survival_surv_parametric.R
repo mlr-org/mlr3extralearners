@@ -83,7 +83,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         discrete = p_lgl(default = FALSE, tags = "predict")
       )
 
-      ps$values = list(discrete = FALSE, type = "aft")
+      ps$values = list(discrete = FALSE, dist = "weibull", type = "aft")
 
       super$initialize(
         id = "surv.parametric",
