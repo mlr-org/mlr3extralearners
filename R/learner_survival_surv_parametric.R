@@ -328,8 +328,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     fun = function(y) 1 - (basedist$survival(times / exp(y)))
   } else if (type == "po") {
     fun = function(y) {
-      1 - (basedist$survival(times) *
-      (exp(-y) + (1 - exp(-y)) * basedist$survival(times))^-1)
+      surv = basedist$survival(times)
+      1 - (surv * (exp(-y) + (1 - exp(-y)) * surv)^-1)
     }
   }
 
