@@ -7,9 +7,6 @@
 \description{
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:glmnet]{glmnet::glmnet()}} from package \CRANpkg{glmnet}.
-\itemize{
-\item \code{family} is set to \code{"cox"} and cannot be changed.
-}
 }
 \details{
 This learner returns two prediction types:
@@ -41,6 +38,13 @@ However, in some situations this is not applicable, usually when data are
 imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 custom resampling strategies (blocked design, stratification).
 }
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"cox"} and cannot be changed.
+}
+}
+
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
