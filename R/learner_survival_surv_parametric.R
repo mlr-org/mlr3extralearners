@@ -88,7 +88,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
       super$initialize(
         id = "surv.parametric",
         param_set = ps,
-        predict_types = c("distr", "lp", "crank"),
+        predict_types = c("crank", "distr", "lp"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         properties = "weights",
         packages = c("mlr3extralearners", "survival", "pracma"),
