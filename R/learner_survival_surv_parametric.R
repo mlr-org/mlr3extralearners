@@ -6,6 +6,12 @@
 #' Parametric survival model.
 #' Calls [survival::survreg()] from \CRANpkg{survival}.
 #'
+#' @section Custom mlr3 parameters:
+#' - `discrete` determines the class of the returned survival probability
+#' distribution. If `FALSE` (default) continuous probability
+#' distributions are returned using [distr6::VectorDistribution], otherwise
+#' [distr6::Matdist].
+#'
 #' @template learner
 #' @templateVar id surv.parametric
 #'
