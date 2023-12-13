@@ -10,16 +10,16 @@
 #' @templateVar id surv.flexible
 #'
 #' @details
-#' The `distr` prediction is estimated using the fitted custom distributions
-#' from [flexsurv::flexsurvspline()] and the estimated coefficients however the prediction takes
-#' place in this package and not in \CRANpkg{flexsurv} for a much faster and more efficient
-#' implementation.
-#'
-#' As flexible spline models estimate the baseline hazard as the intercept, the linear predictor,
-#' `lp`, can be calculated as in the classical setting. i.e. For fitted coefficients,
-#' \eqn{\beta = (\beta_0,...,\beta_P)}{\beta = (\beta0,...,\betaP)},
-#' and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
-#' of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
+#' This learner returns two prediction types:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), for each test
+#' observation.
+#' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
+#' For fitted coefficients, \eqn{\beta = (\beta_0,...,\beta_P)},
+#' and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
+#' is a column of \eqn{1}s, the linear predictor (`lp`) is \eqn{lp = \beta X}.
+#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using `predict.flexsurvreg()`
 #'
 #' @section Initial parameter values:
 #' - `k`:
