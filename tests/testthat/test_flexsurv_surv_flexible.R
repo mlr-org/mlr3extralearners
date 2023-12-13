@@ -19,13 +19,13 @@ test_that("manualtest", {
       p$lp[1:20],
       summary(learn$model,
         task$data(cols = task$feature_names),
-        se = F, ci = F, type = "link", tidy = T)[1:20, 2]
+        se = FALSE, ci = FALSE, type = "link", tidy = TRUE)[1:20, 2]
     )
     expect_equal(
       p$distr[2]$survival(1:23),
       summary(learn$model,
         task$data(cols = task$feature_names),
-        se = F, ci = F, type = "survival", tidy = T, t = 1:23)[24:46, 2],
+        se = FALSE, ci = FALSE, type = "survival", tidy = TRUE, t = 1:23)[24:46, 2],
       tolerance = 0.0001
     )
   })
