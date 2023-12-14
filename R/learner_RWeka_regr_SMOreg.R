@@ -112,34 +112,9 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
   private = list(
     .train = function(task) {
       weka_learner = RWeka::make_Weka_classifier("weka/classifiers/functions/SMOreg")
-
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(weka_learner)
-      arg_names = setdiff(names(pars), ctrl_arg_names)
-      ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      if (!is.null(ctrl$I) & length(arg_names) > 0) {
-        if (grepl("RegSMOImproved", ctrl$I) & any(grepl("_improved", arg_names))) {
-          arg_names_extra = arg_names[grepl("_improved", arg_names)]
-          ctrl$I = c(ctrl$I, pars[which(names(pars) %in% arg_names_extra)])
-          names(ctrl$I) = c("", gsub("_improved", replacement = "", x = arg_names_extra))
-        }
-      }
-      if (!is.null(ctrl$K) & length(arg_names) > 0) {
-        if (grepl("PolyKernel", ctrl$K) & any(grepl("_poly", arg_names))) {
-          arg_names_extra = arg_names[grepl("_poly", arg_names)]
-          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names_extra)])
-          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names_extra))
-        }
-      }
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      formula = task$formula()
-      data = task$data()
-      invoke(weka_learner, formula = formula, data = data, control = ctrl)
+      nested_pars = list(I = "_improved", K = "_poly")
+      rweka_train(task$data(), task$formula(), pars, weka_learner, nested_pars)
     },
 
     .predict = function(task) {

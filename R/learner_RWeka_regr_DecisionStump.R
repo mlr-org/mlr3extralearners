@@ -62,27 +62,15 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
 
   private = list(
     .train = function(task) {
-      params = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(RWeka::DecisionStump)
-      arg_names = setdiff(names(params), ctrl_arg_names)
-      ctrl = params[which(names(params) %in% ctrl_arg_names)]
-      pars = params[which(names(params) %nin% ctrl_arg_names)]
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      f = task$formula()
-      data = task$data()
-      invoke(RWeka::DecisionStump, formula = f, data = data, control = ctrl, .args = pars)
+      weka_learner = RWeka::DecisionStump
+      pars = self$param_set$get_values(tags = "train")
+      rweka_train(task$data(), task$formula(), pars, weka_learner)
     },
 
     .predict = function(task) {
-      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
-      response = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = response)
+      newdata = ordered_features(task, self)
+      rweka_predict(newdata, pars, self$predict_type, self$model)
     }
   )
 )

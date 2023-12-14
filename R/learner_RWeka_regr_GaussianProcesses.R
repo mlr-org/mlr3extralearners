@@ -90,33 +90,15 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
   private = list(
     .train = function(task) {
       weka_learner = RWeka::make_Weka_classifier("weka/classifiers/functions/GaussianProcesses")
-
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(weka_learner)
-      arg_names = setdiff(names(pars), ctrl_arg_names)
-      ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      if (!is.null(ctrl$K) & length(arg_names) > 0) {
-        if (grepl("PolyKernel", ctrl$K)) {
-          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names)])
-          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names))
-        }
-      }
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      formula = task$formula()
-      data = task$data()
-      invoke(weka_learner, formula = formula, data = data, control = ctrl)
+      nested_pars = list(K = "_poly")
+      rweka_train(task$data(), task$formula(), pars, weka_learner, nested_pars)
     },
 
     .predict = function(task) {
-      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
-      response = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = response)
+      newdata = ordered_features(task, self)
+      rweka_predict(newdata, pars, self$predict_type, self$model)
     }
   )
 )

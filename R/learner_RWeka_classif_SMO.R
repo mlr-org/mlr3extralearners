@@ -104,51 +104,16 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
 
   private = list(
     .train = function(task) {
+      weka_learner = RWeka::SMO
       pars = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(RWeka::SMO)
-      arg_names = setdiff(names(pars), ctrl_arg_names)
-      ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-      if (!is.null(ctrl$K) & length(arg_names) > 0) {
-        if (grepl("PolyKernel", ctrl$K) & any(grepl("_poly", arg_names))) {
-          arg_names_extra = arg_names[grepl("_poly", arg_names)]
-          ctrl$K = c(ctrl$K, pars[which(names(pars) %in% arg_names_extra)])
-          names(ctrl$K) = c("", gsub("_poly", replacement = "", x = arg_names_extra))
-        }
-      }
-      if (!is.null(ctrl$calibrator) & length(arg_names) > 0) {
-        if (grepl("Logistic", ctrl$calibrator) & any(grepl("_logistic", arg_names))) {
-          arg_names_extra = arg_names[grepl("_logistic", arg_names)]
-          ctrl$calibrator = c(ctrl$calibrator, pars[which(names(pars) %in% arg_names_extra)])
-          names(ctrl$calibrator) = c("", gsub("_logistic", replacement = "", x = arg_names_extra))
-        }
-      }
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      formula = task$formula()
-      data = task$data()
-      invoke(RWeka::SMO, formula = formula, data = data, control = ctrl)
+      nested_pars = list(K = "_poly", calibrator = "_logistic")
+      rweka_train(task$data(), task$formula(), pars, weka_learner, nested_pars)
     },
 
     .predict = function(task) {
-      response = NULL
-      prob = NULL
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-
-      if (self$predict_type == "response") {
-        response = invoke(predict, self$model, newdata = newdata, type = "class",
-          .args = pars
-        )
-      } else {
-        prob = invoke(predict, self$model, newdata = newdata, type = "prob",
-          .args = pars
-        )
-      }
-      list(response = response, prob = prob)
+      rweka_predict(newdata, pars, self$predict_type, self$model)
     }
   )
 )
