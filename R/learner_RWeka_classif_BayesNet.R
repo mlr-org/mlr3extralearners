@@ -46,7 +46,6 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
                   tags = "train"),
         E = p_fct(levels = c("estimate.SimpleEstimator", "estimate.BMAEstimator", "estimate.MultiNomialBMAEstimator"),
                   tags = "train"),
-        N_k2 = p_lgl(default = FALSE, )
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
                                           tags = "train"),
