@@ -3,7 +3,6 @@ rweka_train = function(data, formula, pars, weka_learner, nested_pars = NULL) {
   arg_names = setdiff(names(pars), ctrl_arg_names)
   ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
   pars = pars[which(names(pars) %nin% ctrl_arg_names)]
-  
   for (par in names(nested_pars)) {
     suffix = nested_pars[[par]]
     if (any(grepl(suffix, arg_names))) {
@@ -12,7 +11,6 @@ rweka_train = function(data, formula, pars, weka_learner, nested_pars = NULL) {
       names(ctrl[[par]]) = c("", gsub(suffix, replacement = "", x = arg_names_extra))
     }
   }
-  
   if (length(ctrl) > 0L) {
     names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
     ctrl = invoke(RWeka::Weka_control, .args = ctrl)
@@ -31,4 +29,3 @@ rweka_predict = function(newdata, pars, predict_type, model) {
   retval[[predict_type]] = p
   return(retval)
 }
-
