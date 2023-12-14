@@ -1,18 +1,17 @@
 test_that("autotest", {
   skip_on_cran()
   with_seed(1, {
-    learner = mlr_learners$get("surv.xgboost")
+    learner = mlr_learners$get("surv.xgboost.cox")
     expect_learner(learner)
     result = run_autotest(learner, N = 10, check_replicable = FALSE)
     expect_true(result, info = result$error)
   })
 })
 
-
 test_that("manual aft", {
   skip_on_cran()
   set.seed(2)
-  learner = lrn("surv.xgboost", objective = "survival:aft")
+  learner = lrn("surv.xgboost.aft")
   task = generate_tasks(learner, 30)$sanity
   p = learner$train(task)$predict(task)
   expect_true(inherits(p, "PredictionSurv"))
@@ -25,7 +24,7 @@ test_that("early stopping on the test set works", {
 
   split = partition(task, ratio = 0.8)
   task$set_row_roles(split$test, "test")
-  learner = lrn("surv.xgboost",
+  learner = lrn("surv.xgboost.cox",
     nrounds = 20,
     early_stopping_rounds = 5,
     early_stopping_set = "test"
@@ -34,4 +33,15 @@ test_that("early stopping on the test set works", {
   learner$train(task)
   expect_named(learner$model$evaluation_log, c("iter", "train_cox_nloglik",
     "test_cox_nloglik"))
+})
+
+test_that("two types of xgboost models can be initialized", {
+  cox = lrn("surv.xgboost.cox")
+  expect_equal(cox$param_set$values$objective, "survival:cox")
+  expect_equal(cox$predict_types, c("crank", "distr", "lp"))
+
+  aft = lrn("surv.xgboost.aft")
+  expect_equal(aft$param_set$values$objective, "survival:aft")
+  expect_equal(aft$predict_types, c("crank", "lp"))
+
 })

@@ -14,7 +14,7 @@ x = append(x, values = "lambda_bias")
 add_params_xgboost = x
 
 test_that("surv.xgboost", {
-  learner = lrn("surv.xgboost", nrounds = 1)
+  learner = lrn("surv.xgboost.cox", nrounds = 1)
   fun = list(xgboost::xgb.train, xgboost::xgboost, add_params_xgboost)
   exclude = c(
     "x", # handled by mlr3
@@ -46,7 +46,7 @@ test_that("surv.xgboost", {
 })
 
 test_that("predict surv.xgboost", {
-  learner = lrn("surv.xgboost")
+  learner = lrn("surv.xgboost.cox")
   fun = xgboost:::predict.xgb.Booster # nolint
   exclude = c(
     "object", # handled by mlr3
