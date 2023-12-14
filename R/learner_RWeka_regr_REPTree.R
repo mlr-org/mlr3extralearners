@@ -22,11 +22,6 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
-#' - `R` removed:
-#'   - spread initial count over all class values (i.e. don't use 1 per value)
-#'
-#' - Reason for change: The parameter is removed because it's unclear how to actually use it.
-#'
 #'
 #' @templateVar id regr.REPTree
 #' @template learner
@@ -50,6 +45,7 @@ LearnerRegrREPTree = R6Class("LearnerRegrREPTree",
         P = p_lgl(tags = "train"),
         L = p_int(default = -1L, tags = "train"),
         I = p_int(default = 0L, tags = "train"),
+        R = p_lgl(default = FALSE, tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE,
                                           tags = "train"),
