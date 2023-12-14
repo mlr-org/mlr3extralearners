@@ -19,7 +19,13 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \item \code{nrounds} is initialized to 1.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
-\item \code{objective} is initialized to \code{survival:cox} for survival analysis.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{type} is initialized to \code{cox}.
 }
 }
 
@@ -38,8 +44,8 @@ Not that using the test set for early stopping can potentially bias the performa
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost")
-lrn("surv.xgboost")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost.cox")
+lrn("surv.xgboost.cox")
 }\if{html}{\out{</div>}}
 }
 
@@ -47,7 +53,7 @@ lrn("surv.xgboost")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{lp}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{xgboost}
 }
@@ -117,7 +123,7 @@ lrn("surv.xgboost")
 }
 
 \examples{
-learner = mlr3::lrn("surv.xgboost")
+learner = mlr3::lrn("surv.xgboost.cox")
 print(learner)
 
 # available parameters:
@@ -129,6 +135,11 @@ Chen, Tianqi, Guestrin, Carlos (2016).
 In \emph{Proceedings of the 22nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining}, 785--794.
 ACM.
 \doi{10.1145/2939672.2939785}.
+
+Avinash B, Hyunsu C, Toby H (2022).
+\dQuote{Survival Regression with Accelerated Failure Time Model in XGBoost.}
+\emph{Journal of Computational and Graphical Statistics}.
+ISSN 15372715, \doi{10.1080/10618600.2022.2067548}.
 }
 \seealso{
 \itemize{
@@ -175,9 +186,17 @@ be-marc
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboost$new()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboost$new(type = "cox")}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{type}}{Type of survival modeling. Default is \code{cox} (Cox Proportional
+Hazards model), alternative \code{aft} (Accelerated Failure Time model)}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvXgboost-importance"></a>}}
