@@ -75,7 +75,7 @@ lrn("regr.GaussianProcesses")
    na.action \tab untyped \tab - \tab  \tab - \cr
    L \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    N \tab character \tab 0 \tab 0, 1, 2 \tab - \cr
-   K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
+   K \tab character \tab supportVector.PolyKernel \tab supportVector.NormalizedPolyKernel, supportVector.PolyKernel, supportVector.Puk, supportVector.RBFKernel, supportVector.StringKernel \tab - \cr
    S \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

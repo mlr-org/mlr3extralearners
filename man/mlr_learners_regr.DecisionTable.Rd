@@ -83,7 +83,7 @@ lrn("regr.DecisionTable")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    subset \tab untyped \tab - \tab  \tab - \cr
    na.action \tab untyped \tab - \tab  \tab - \cr
-   S \tab untyped \tab weka.attributeSelection.BestFirst \tab  \tab - \cr
+   S \tab character \tab BestFirst \tab BestFirst, GreedyStepwise \tab - \cr
    X \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    E \tab character \tab rmse \tab rmse, mae \tab - \cr
    I \tab logical \tab - \tab TRUE, FALSE \tab - \cr

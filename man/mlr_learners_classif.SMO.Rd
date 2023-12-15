@@ -88,7 +88,7 @@ lrn("classif.SMO")
    M \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    V \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    W \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
+   K \tab character \tab PolyKernel \tab NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel \tab - \cr
    calibrator \tab untyped \tab weka.classifiers.functions.Logistic \tab  \tab - \cr
    E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

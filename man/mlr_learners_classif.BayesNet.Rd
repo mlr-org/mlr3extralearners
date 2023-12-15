@@ -29,6 +29,32 @@ Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \C
 }
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
+\item \code{N} removed:
+\itemize{
+\item Initial structure is empty
+}
+\item \code{P} removed:
+\itemize{
+\item Maximum number of parents
+}
+\item \code{R} removed:
+\itemize{
+\item Random order
+}
+\item \code{mbc} removed:
+\itemize{
+\item Applies a Markov Blanket correction to the network structure, after a network structure is learned
+}
+\item \code{S} removed:
+\itemize{
+\item Score type
+}
+\item \code{A} removed:
+\itemize{
+\item Initial count (alpha)
+}
+\item Reason for change: The parameters are removed because they don't work out of the box
+and it's unclear how to use them.
 }
 }
 
@@ -58,18 +84,12 @@ lrn("classif.BayesNet")
    na.action \tab untyped \tab - \tab  \tab - \cr
    D \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    B \tab untyped \tab - \tab  \tab - \cr
-   Q \tab untyped \tab - \tab  \tab - \cr
-   E \tab untyped \tab - \tab  \tab - \cr
+   Q \tab character \tab - \tab global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, \link{...} \tab - \cr
+   E \tab character \tab - \tab estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   N \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   P \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   mbc \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   A \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   S \tab untyped \tab - \tab  \tab - \cr
    options \tab untyped \tab  \tab  \tab - \cr
 }
 }

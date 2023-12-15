@@ -38,7 +38,7 @@ lrn("regr.IBk")
    E \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    W \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    X \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   A \tab untyped \tab weka.core.neighboursearch.LinearNNSearch \tab  \tab - \cr
+   A \tab character \tab LinearNNSearch \tab BallTree, CoverTree, FilteredNeighbourSearch, KDTree, LinearNNSearch \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

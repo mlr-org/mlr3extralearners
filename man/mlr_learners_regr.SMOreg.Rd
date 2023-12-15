@@ -90,8 +90,8 @@ lrn("regr.SMOreg")
    na.action \tab untyped \tab - \tab  \tab - \cr
    C \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    N \tab character \tab 0 \tab 0, 1, 2 \tab - \cr
-   I \tab untyped \tab weka.classifiers.functions.supportVector.RegSMOImproved \tab  \tab - \cr
-   K \tab untyped \tab weka.classifiers.functions.supportVector.PolyKernel \tab  \tab - \cr
+   I \tab character \tab RegSMOImproved \tab RegSMO, RegSMOImproved \tab - \cr
+   K \tab character \tab PolyKernel \tab NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel \tab - \cr
    T_improved \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    V_improved \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    P_improved \tab numeric \tab 1e-12 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
