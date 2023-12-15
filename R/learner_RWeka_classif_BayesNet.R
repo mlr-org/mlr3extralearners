@@ -22,6 +22,27 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
+#' - `N` removed:
+#'   - Initial structure is empty
+#'
+#' - `P` removed:
+#'   - Maximum number of parents
+#'
+#' - `R` removed:
+#'   - Random order
+#'
+#' - `mbc` removed:
+#'   - Applies a Markov Blanket correction to the network structure, after a network structure is learned
+#'
+#' - `S` removed:
+#'   - Score type
+#'
+#' - `A` removed:
+#'   - Initial count (alpha)
+#'
+#' - Reason for change: The parameters are removed because they don't work out of the box
+#' and it's unclear how to use them.
+#'
 #'
 #' @templateVar id classif.BayesNet
 #' @template learner
@@ -52,12 +73,6 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
         num_decimal_places = p_int(default = 2L, lower = 1L,
                                    tags = "train"),
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
-        N = p_lgl(tags = "train"),
-        P = p_int(tags = "train"),
-        R = p_lgl(default = FALSE, tags = "train"),
-        mbc = p_lgl(tags = "train"),
-        A = p_int(tags = "train"),
-        S = p_uty(tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
 
