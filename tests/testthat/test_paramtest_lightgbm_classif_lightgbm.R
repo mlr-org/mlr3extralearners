@@ -91,7 +91,7 @@ test_that("paramtest classif.lightgbm train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest classif.lightgbm train", {
+test_that("paramtest classif.lightgbm predict", {
   learner = lrn("classif.lightgbm")
   fun = list(lightgbm:::predict.lgb.Booster, x_predict)
   exclude = c(
@@ -105,7 +105,8 @@ test_that("paramtest classif.lightgbm train", {
     # from the R function
     "params", # handled internally
     "object", # handled internally
-    "data", # handled internally
+    "newdata", # handled internally
+    "type", # not exposed
     "reshape", # not a user parameter in mlr3 (shapes output), also deprecate
     "rawscore", # not a user parameter in mlr3 (predict type, scores)
     "predleaf", # not a user parameter in mlr3 (predict type: leaf)

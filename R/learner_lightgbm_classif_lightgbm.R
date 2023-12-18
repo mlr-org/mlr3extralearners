@@ -131,6 +131,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         num_grad_quant_bins = p_int(default = 4, tags = "train"),
         quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
         stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
+        serializable = p_lgl(default = TRUE, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
@@ -244,7 +245,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       response = NULL
 
       if ("multiclass" %in% task$properties) {
-        pred = matrix(pred, ncol = length(task$class_names), byrow = TRUE)
         pred_mat = pred
         colnames(pred_mat) = self$state$labels
         if (self$predict_type == "response") {

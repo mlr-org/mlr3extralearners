@@ -1,6 +1,7 @@
 # mlr3extralearners 0.7.1-9000
 
-# Added method `selected_features()` to CoxBoost survival learners (thanks to @bblodfon)
+* Fix: Replace hardcoded `VectorDistribution`s from partykit survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
+* Added method `selected_features()` to CoxBoost survival learners (thanks to @bblodfon)
 * Added the Random Planted Forest Learner (thanks to @jemus42)
 * re-added the catboost learner as it was requested (was previously removed
   because of installation issues)

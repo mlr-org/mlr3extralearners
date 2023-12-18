@@ -121,11 +121,16 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       }
       data = task$data()
 
-      invoke(lme4::glmer,
+      model = invoke(lme4::glmer,
         formula = formula,
         data = data,
         .args = pars_train,
         control = invoke(lme4::glmerControl, .args = pars_ctrl))
+
+      list(
+        model = model,
+        target_levels = levels(data[[task$target_names]])
+      )
     },
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
@@ -133,14 +138,14 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
 
       prob = invoke(
         predict,
-        self$model,
+        self$model$model,
         type = "response",
         newdata = newdata,
         .args = pars
       )
 
       # glmer counts the second level as a 'success'
-      levels = levels(self$state$data_prototype[[task$target_names]])
+      levels = self$model$target_levels
       success = levels[[2L]]
       failure = levels[[1L]]
 

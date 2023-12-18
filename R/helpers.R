@@ -99,7 +99,9 @@ weka_control_args = function(f) {
 }
 
 ordered_features = function(task, learner) {
-  task$data(cols = intersect(names(learner$state$data_prototype), task$feature_names))
+  # the data_prototype is not present when calling the workhorse function, as it can blow up memory usage
+  cols = names(learner$state$data_prototype) %??% learner$state$feature_names
+  task$data(cols = intersect(cols, task$feature_names))
 }
 
 as_numeric_matrix = function(x) { # for svm / #181
