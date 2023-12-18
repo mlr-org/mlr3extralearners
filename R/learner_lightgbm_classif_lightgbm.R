@@ -238,7 +238,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      data = encode_lightgbm_predict(task, self)$X
+      data = encode_lightgbm_predict(task, self$state$data_prototype, self)$X
 
       pred = invoke(predict, self$model, data, params = pars)
 
