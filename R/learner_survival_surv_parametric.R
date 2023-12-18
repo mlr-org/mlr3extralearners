@@ -145,6 +145,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 )
 
 .predict_survreg = function(object, task, learner, type = "aft", tobit = FALSE) {
+  # the data_prototype is not present when calling the workhorse function, as it can blow up memory usage
   feature_names = intersect(names(learner$state$data_prototype) %??% learner$state$feature_names, task$feature_names)
 
   # Extracts baseline distribution and the model fit, performs assertions
