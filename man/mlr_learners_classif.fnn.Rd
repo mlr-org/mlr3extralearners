@@ -37,7 +37,7 @@ lrn("classif.fnn")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("FNN", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3extralearners, FNN)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.fnn")
 print(learner)

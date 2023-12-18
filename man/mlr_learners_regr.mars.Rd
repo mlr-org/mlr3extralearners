@@ -42,7 +42,7 @@ lrn("regr.mars")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("mda", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3extralearners, mda)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.mars")
 print(learner)

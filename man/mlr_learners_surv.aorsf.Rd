@@ -79,7 +79,7 @@ Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("aorsf", quietly = TRUE))  if (mlr3misc::require_namespaces("pracma", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, aorsf, pracma)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.aorsf")
 print(learner)

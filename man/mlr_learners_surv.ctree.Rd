@@ -73,7 +73,7 @@ lrn("surv.ctree")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("partykit", quietly = TRUE))  if (mlr3misc::require_namespaces("coin", quietly = TRUE))  if (mlr3misc::require_namespaces("sandwich", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, partykit, coin, sandwich)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.ctree")
 print(learner)

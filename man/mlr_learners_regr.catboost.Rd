@@ -133,7 +133,7 @@ See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("catboost", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3extralearners, catboost)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.catboost")
 print(learner)

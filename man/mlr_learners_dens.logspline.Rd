@@ -44,7 +44,7 @@ lrn("dens.logspline")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("logspline", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, logspline)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("dens.logspline")
 print(learner)

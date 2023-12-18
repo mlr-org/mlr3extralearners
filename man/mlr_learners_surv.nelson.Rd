@@ -34,7 +34,7 @@ Empty ParamSet
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("survival", quietly = TRUE))  if (mlr3misc::require_namespaces("pracma", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, survival, pracma)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.nelson")
 print(learner)

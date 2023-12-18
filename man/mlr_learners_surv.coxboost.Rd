@@ -72,7 +72,7 @@ The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE))  if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("CoxBoost", quietly = TRUE))  if (mlr3misc::require_namespaces("pracma", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, CoxBoost, pracma)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("surv.coxboost")
 print(learner)

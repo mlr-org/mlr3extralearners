@@ -94,7 +94,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("mlr3extralearners", quietly = TRUE))  if (mlr3misc::require_namespaces("partykit", quietly = TRUE))  if (mlr3misc::require_namespaces("sandwich", quietly = TRUE))  if (mlr3misc::require_namespaces("coin", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(mlr3extralearners, partykit, sandwich, coin)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("classif.cforest")
 print(learner)

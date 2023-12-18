@@ -69,7 +69,7 @@ Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("randomPlantedForest", quietly = TRUE))  {
+if (mlr3misc::require_namespaces("c(randomPlantedForest)", quietly = TRUE))  {
 # Define the Learner and set parameter values
 learner = lrn("regr.rpf")
 print(learner)
