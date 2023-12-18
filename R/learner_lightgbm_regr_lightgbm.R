@@ -125,6 +125,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         num_grad_quant_bins = p_int(default = 4, tags = "train"),
         quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
         stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
+        serializable = p_lgl(default = TRUE, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),

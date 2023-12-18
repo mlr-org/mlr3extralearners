@@ -106,6 +106,7 @@ lrn("regr.lightgbm")
    num_grad_quant_bins \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    quant_train_renew_leaf \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stochastic_rounding \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   serializable \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
