@@ -145,7 +145,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 )
 
 .predict_survreg = function(object, task, learner, type = "aft", tobit = FALSE) {
-  feature_names = intersect(names(learner$state$data_prototype), task$feature_names)
+  feature_names = intersect(names(learner$state$data_prototype) %??% learner$state$feature_names, task$feature_names)
 
   # Extracts baseline distribution and the model fit, performs assertions
   basedist = object$basedist

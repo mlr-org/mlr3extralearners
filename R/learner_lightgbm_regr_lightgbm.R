@@ -125,6 +125,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         num_grad_quant_bins = p_int(default = 4, tags = "train"),
         quant_train_renew_leaf = p_lgl(default = FALSE, tags = "train"),
         stochastic_rounding = p_lgl(default = TRUE, tags = "train"),
+        serializable = p_lgl(default = TRUE, tags = "train"),
 
         # dataset parameters
         max_bin = p_int(default = 255L, lower = 2L, tags = "train"),
@@ -229,7 +230,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      data = encode_lightgbm_predict(task, self$state$data_prototype, self)$X
+      data = encode_lightgbm_predict(task, self)$X
 
       pred = invoke(predict, self$model, data, params = pars)
 
