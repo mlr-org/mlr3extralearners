@@ -1,9 +1,9 @@
-#' @title Classification TabNet Learner
+#' @title Regression TabNet Learner
 #' @author Lukas Burk
-#' @name mlr_learners_classif.tabnet
+#' @name mlr_learners_regr.tabnet
 #'
 #' @template class_learner
-#' @templateVar id classif.tabnet
+#' @templateVar id regr.tabnet
 #' @templateVar caller tabnet
 #' @references
 #' `r format_bib("arik2021tabnet")`
@@ -14,28 +14,34 @@
 #' \dontrun{
 #' library(mlr3)
 #' library(mlr3torch)
-#' task = tsk("german_credit")
-#' lrn = lrn("classif.tabnet")
+#'
+#' task = tsk("boston_housing")
+#'
+#' # Creating a learner & training on example task
+#' lrn = lrn("regr.tabnet")
 #'
 #' lrn$param_set$values$epochs = 10
-#' lrn$param_set$values$attention_width = 8
 #' lrn$train(task)
+#'
+#' # Predict on training data, get RMSE
+#' predictions = lrn$predict(task)
+#' predictions$score(msr("regr.rmse"))
 #' }
-LearnerClassifTabNet = R6Class("LearnerClassifTabNet",
-  inherit = LearnerClassif,
+LearnerRegrTabNet = R6::R6Class("LearnerRegrTabnet",
+  inherit = LearnerRegr,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = params_tabnet()
+
       super$initialize(
-        id = "classif.tabnet",
+        id = "regr.tabnet",
         packages = "tabnet",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("importance", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.tabnet",
+        properties = c("importance"),
+        man = "mlr3torch::mlr_learners_regr.tabnet",
         label = "Attentive Interpretable Tabular Network"
       )
     },
@@ -66,12 +72,11 @@ LearnerClassifTabNet = R6Class("LearnerClassifTabNet",
 
       # use the mlr3misc::invoke function (it's similar to do.call())
       mlr3misc::invoke(tabnet::tabnet_fit,
-        x = task$data(cols = task$feature_names),
-        y = task$data(cols = task$target_names),
-        .args = pars
+                       x = task$data(cols = task$feature_names),
+                       y = task$data(cols = task$target_names),
+                       .args = pars
       )
     },
-
     .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
@@ -79,22 +84,12 @@ LearnerClassifTabNet = R6Class("LearnerClassifTabNet",
       # get newdata and ensure same ordering in train and predict
       newdata = task$data(cols = self$state$feature_names)
 
-      if (self$predict_type == "response") {
-        pred = mlr3misc::invoke(predict, self$model, new_data = newdata,
-          type = "class", .args = pars)
+      pred = mlr3misc::invoke(predict, self$model,
+                              new_data = newdata,
+                              .args = pars
+      )
 
-        list(response = pred[[".pred_class"]])
-      } else {
-        pred = mlr3misc::invoke(predict, self$model, new_data = newdata,
-          type = "prob", .args = pars)
-
-        # Result will be a df with one column per variable with names '.pred_<level>'
-        # we want the names without ".pred"
-        names(pred) = sub(pattern = ".pred_", replacement = "", names(pred))
-
-        list(prob = as.matrix(pred))
-      }
-
+      list(response = pred[[".pred"]])
     }
   )
 )
