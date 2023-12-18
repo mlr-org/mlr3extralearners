@@ -109,7 +109,8 @@ test_that("paramtest regr.lightgbm predict", {
     # from the R function
     "params", # handled internally
     "object", # handled internally
-    "data", # handled internally
+    "newdata", # handled internally
+    "type", # not exposed
     "reshape", # not a user parameter in mlr3 (shapes output), also deprecate
     "rawscore", # not a user parameter in mlr3 (predict type, scores)
     "predleaf", # not a user parameter in mlr3 (predict type: leaf)
