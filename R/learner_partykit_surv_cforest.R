@@ -146,7 +146,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       })
       surv = do.call(cbind, res) # rows => times, columns => obs
 
-      .surv_return(times = utimes, surv = t(surv))
+      mlr3proba::.surv_return(times = utimes, surv = t(surv))
     }
   )
 )
