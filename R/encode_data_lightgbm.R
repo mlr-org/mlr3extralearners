@@ -12,16 +12,19 @@ encode_lightgbm_predict = function(task, data_prototype, self) {
   factor_columns = task$feature_types$id[task$feature_types$type == "factor"]
 
   dat = ordered_features(task, self)
-
-  walk(
-    factor_columns,
-    function(nm) {
-      ok = all.equal(levels(dat[[nm]]), levels(data_prototype[[nm]]))
-      if (is.character(ok)) {
-        stopf("There is a mismatch with the factor levels of the training phase.")
+  if (!is.null(data_prototype)) {
+    # this happens when calling the workhorse, in which case this is anyway not a problem
+    walk(
+      factor_columns,
+      function(nm) {
+        ok = all.equal(levels(dat[[nm]]), levels(data_prototype[[nm]]))
+        if (is.character(ok)) {
+          stopf("There is a mismatch with the factor levels of the training phase.")
+        }
       }
-    }
-  )
+    )
+
+  }
 
   encode_lightgbm(dat, task)
 }

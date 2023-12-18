@@ -6,7 +6,7 @@
 \title{Density Mixed Data Kernel Learner}
 \description{
 Density estimator for discrete and continuous variables.
-Calls \code{\link[np:np.density]{np::npudens()}} from \CRANpkg{np}.
+Calls \code{\link[np:npudens]{np::npudens()}} from \CRANpkg{np}.
 }
 \section{Dictionary}{
 
