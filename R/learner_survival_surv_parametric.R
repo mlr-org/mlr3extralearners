@@ -80,7 +80,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         robust = p_lgl(default = FALSE, tags = "train"),
         score = p_lgl(default = FALSE, tags = "train"),
         cluster = p_uty(tags = "train"),
-        discrete = p_lgl(default = FALSE, tags = "predict")
+        discrete = p_lgl(default = FALSE, tags = c("required", "predict"))
       )
 
       ps$values = list(discrete = FALSE, dist = "weibull", type = "aft")
