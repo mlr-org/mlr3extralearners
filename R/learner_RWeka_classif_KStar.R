@@ -42,7 +42,7 @@ LearnerClassifKStar = R6Class("LearnerClassifKStar",
       param_set = ps(
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
-        B = p_dbl(default = 20, tags = "train"),
+        B = p_int(default = 20, tags = "train"),
         E = p_lgl(tags = "train"),
         M = p_fct(default = "a", levels = c("a", "d", "m", "n"), tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
