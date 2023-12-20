@@ -69,9 +69,9 @@ LearnerRegrMultilayerPerceptron = R6Class("LearnerRegrMultilayerPerceptron",
         id = "regr.MultilayerPerceptron",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.MultilayerPerceptron",
         label = "Regressor That Uses Backpropagation To Learn A Multi-layer Perceptron"
       )

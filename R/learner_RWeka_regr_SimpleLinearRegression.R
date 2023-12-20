@@ -55,9 +55,9 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
         id = "regr.SimpleLinearRegression",
         packages = "RWeka",
         feature_types = c("integer", "numeric"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.SimpleLinearRegression",
         label = "Simple Linear Regression Model"
       )

@@ -51,9 +51,9 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
         id = "regr.DecisionStump",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.DecisionStump",
         label = "Decision Stump"
       )

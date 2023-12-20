@@ -64,9 +64,9 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
         id = "regr.LinearRegression",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.LinearRegression",
         label = "Linear Regression That Uses The Akaike Criterion For Model Selection"
       )

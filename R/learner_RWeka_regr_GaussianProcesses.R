@@ -76,9 +76,9 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
         id = "regr.GaussianProcesses",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.GaussianProcesses",
         label = "Gaussian Processes For Regression From Weka"
       )

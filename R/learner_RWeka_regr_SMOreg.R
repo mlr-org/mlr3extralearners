@@ -90,9 +90,9 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
         id = "regr.SMOreg",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("missings"),
+        properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.SMOreg",
         label = "Support Vector Machine For Regression"
       )
