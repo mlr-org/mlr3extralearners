@@ -49,7 +49,7 @@ lrn("classif.ksvm")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, kernlab)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.ksvm")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.ksvm")
 print(learner)

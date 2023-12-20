@@ -73,7 +73,7 @@ lrn("classif.ctree")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, partykit, sandwich, coin)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.ctree")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.ctree")
 print(learner)

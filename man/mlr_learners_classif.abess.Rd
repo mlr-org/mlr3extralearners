@@ -76,7 +76,7 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(abess)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.abess")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.abess")
 print(learner)
@@ -156,7 +156,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract]{abess::extract()}}.
+Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features()}\if{html}{\out{</div>}}
 }

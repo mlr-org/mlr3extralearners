@@ -49,7 +49,7 @@ lrn("dens.locfit")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, locfit)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("dens.locfit")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("dens.locfit")
 print(learner)

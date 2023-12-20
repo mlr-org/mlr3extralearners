@@ -83,7 +83,7 @@ lrn("surv.ranger")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, ranger)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.ranger")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.ranger")
 print(learner)

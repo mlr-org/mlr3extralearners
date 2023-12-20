@@ -36,7 +36,7 @@ lrn("dens.plug")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, plugdensity)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("dens.plug")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("dens.plug")
 print(learner)

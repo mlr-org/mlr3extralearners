@@ -79,7 +79,7 @@ lrn("surv.blackboost")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, mboost, pracma)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.blackboost")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.blackboost")
 print(learner)

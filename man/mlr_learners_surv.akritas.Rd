@@ -45,7 +45,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, survivalmodels, distr6)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.akritas")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.akritas")
 print(learner)

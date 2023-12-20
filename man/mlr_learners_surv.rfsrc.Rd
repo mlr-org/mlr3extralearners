@@ -99,7 +99,7 @@ This value is set as the option \code{rf.cores} during training and is set to 1 
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, randomForestSRC, pracma)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.rfsrc")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.rfsrc")
 print(learner)

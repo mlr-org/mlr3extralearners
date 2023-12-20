@@ -52,7 +52,7 @@ lrn("regr.randomForest")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, randomForest)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("regr.randomForest")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("regr.randomForest")
 print(learner)

@@ -49,7 +49,7 @@ lrn("classif.gamboost")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, mboost)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.gamboost")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.gamboost")
 print(learner)

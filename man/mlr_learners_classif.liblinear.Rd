@@ -63,7 +63,7 @@ lrn("classif.liblinear")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, LiblineaR)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.liblinear")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.liblinear")
 print(learner)

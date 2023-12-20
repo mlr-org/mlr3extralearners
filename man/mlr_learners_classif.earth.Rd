@@ -74,7 +74,7 @@ lrn("classif.earth")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, earth)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.earth")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.earth")
 print(learner)

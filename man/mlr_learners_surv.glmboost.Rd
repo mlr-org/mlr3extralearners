@@ -53,7 +53,7 @@ lrn("surv.glmboost")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, mboost, pracma)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.glmboost")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.glmboost")
 print(learner)
@@ -138,7 +138,7 @@ matrix and original names can't be recovered.
 
 description
 Selected features are extracted with the function
-\code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+\code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 return \code{character()}.
 \subsection{Usage}{

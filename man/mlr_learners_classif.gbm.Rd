@@ -55,7 +55,7 @@ lrn("classif.gbm")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, gbm)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.gbm")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.gbm")
 print(learner)

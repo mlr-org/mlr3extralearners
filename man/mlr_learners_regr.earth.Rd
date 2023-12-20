@@ -74,7 +74,7 @@ lrn("regr.earth")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, earth)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("regr.earth")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("regr.earth")
 print(learner)

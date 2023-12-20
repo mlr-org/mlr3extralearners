@@ -58,7 +58,7 @@ lrn("regr.rvm")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, kernlab)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("regr.rvm")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("regr.rvm")
 print(learner)

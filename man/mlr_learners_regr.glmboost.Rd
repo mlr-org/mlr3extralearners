@@ -49,7 +49,7 @@ lrn("regr.glmboost")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, mboost)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("regr.glmboost")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("regr.glmboost")
 print(learner)

@@ -175,7 +175,7 @@ those columns.
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, lightgbm)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("regr.lightgbm")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("regr.lightgbm")
 print(learner)

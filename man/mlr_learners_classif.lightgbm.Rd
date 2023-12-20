@@ -188,7 +188,7 @@ This parameter is automatically inferred for multiclass tasks and does not have 
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3extralearners, lightgbm)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("classif.lightgbm")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("classif.lightgbm")
 print(learner)

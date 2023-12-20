@@ -109,7 +109,7 @@ lrn("surv.glmnet")
 
 \examples{
 set.seed(123)
-if (mlr3misc::require_namespaces("c(mlr3proba, mlr3extralearners, glmnet)", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.glmnet")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.glmnet")
 print(learner)

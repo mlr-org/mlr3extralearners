@@ -13,7 +13,7 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 #'
 #' @examples
 #' set.seed(123)
-#' <%= sprintf("if (mlr3misc::require_namespaces(\"c(%s)\", quietly = TRUE)) ", paste0(pkgs, collapse = ", ")) %> {
+#' <%= sprintf("if (mlr3misc::require_namespaces(lrn(\"%s\")$packages, quietly = TRUE))", id) %> {
 #' # Define the Learner and set parameter values
 #' <%= sprintf("learner = lrn(\"%s\")", id)%>
 #' print(learner)
