@@ -27,7 +27,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(John1995)`
+#' `r format_bib("John1995")`
 #'
 #' @template seealso_learner
 #' @template example

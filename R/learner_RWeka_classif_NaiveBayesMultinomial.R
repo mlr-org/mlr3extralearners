@@ -24,7 +24,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(Mccallum1998)`
+#' `r format_bib("Mccallum1998")`
 #'
 #' @template seealso_learner
 #' @template example

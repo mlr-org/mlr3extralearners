@@ -41,7 +41,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(breiman_2001)`
+#' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
 #' @template example

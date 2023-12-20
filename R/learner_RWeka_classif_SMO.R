@@ -45,7 +45,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(Platt1998, Keerthi2001, Hastie1998)`
+#' `r format_bib("Platt1998", "Keerthi2001", "Hastie1998")`
 #'
 #' @template seealso_learner
 #' @template example

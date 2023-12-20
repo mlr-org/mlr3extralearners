@@ -41,7 +41,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(Mackay1998)`
+#' `r format_bib("Mackay1998")`
 #'
 #' @template seealso_learner
 #' @template example

@@ -26,7 +26,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(landwehr2005logistic, Sumner2005)`
+#' `r format_bib("landwehr2005logistic", "Sumner2005")`
 #'
 #' @template seealso_learner
 #' @template example

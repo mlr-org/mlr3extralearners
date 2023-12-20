@@ -51,7 +51,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib(Shevade1999)`
+#' `r format_bib("Shevade1999")`
 #'
 #' @template seealso_learner
 #' @template example
