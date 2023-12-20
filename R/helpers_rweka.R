@@ -1,13 +1,34 @@
+#' @title Train RWeka learner
+#'
+#' @description
+#' Given tasks's data and formula, parameters, weka learner and optional nested parameters,
+#' preprocess mlr3 parameters to RWeka format and call train.
+#'
+#' @param data ([data.table::data.table()])
+#' @param formula ([stats::formula])
+#' @param pars (named `list()`)
+#' @param weka_learner (`R_Weka_classifier_interface`)
+#' @param nested_pars (named `list()`)
+#'   Parameters with dependencies, e.g., `SMO`'s `L_poly` can only be set when `K` is PolyKernel.
+#'   Nested params is a named list where names are parent params (e.g., `K`) and values are suffix
+#'   appended to RWeka's actual param name like 'poly' from `L_poly`.
+#'   For example, list(K = "_poly").
+#'
+#' @return (named `list()`) with RWeka model.
+#' @noRd
 rweka_train = function(data, formula, pars, weka_learner, nested_pars = NULL) {
   ctrl_arg_names = weka_control_args(weka_learner)
   arg_names = setdiff(names(pars), ctrl_arg_names)
   ctrl = pars[which(names(pars) %in% ctrl_arg_names)]
-  pars = pars[which(names(pars) %nin% ctrl_arg_names)]
+  pars_extra = pars[which(names(pars) %nin% ctrl_arg_names)]
+
+  # reformat nested pars to RWeka style
   for (par in names(nested_pars)) {
     suffix = nested_pars[[par]]
-    if (any(grepl(suffix, arg_names))) {
-      arg_names_extra = arg_names[grepl(suffix, arg_names)]
-      ctrl[[par]] = c(ctrl[[par]], pars[which(names(pars) %in% arg_names_extra)])
+    ind = grepl(suffix, arg_names)
+    if (any(ind)) {
+      arg_names_extra = arg_names[ind]
+      ctrl[[par]] = c(list(ctrl[[par]]), pars_extra[which(names(pars_extra) %in% arg_names_extra)])
       names(ctrl[[par]]) = c("", gsub(suffix, replacement = "", x = arg_names_extra))
     }
   }
