@@ -89,7 +89,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (requireNamespace("mlr3proba", quietly = TRUE) && requireNamespace("mlr3extralearners", quietly = TRUE) && requireNamespace("survivalmodels", quietly = TRUE) && requireNamespace("distr6", quietly = TRUE) && requireNamespace("reticulate", quietly = TRUE)) {
+if (mlr3misc::require_namespaces(lrn("surv.deephit")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.deephit")
 print(learner)
