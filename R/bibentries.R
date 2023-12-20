@@ -581,5 +581,13 @@ bibentries = c( # nolint start
     year = "2004",
     month = "01",
     journal = "University of California, Berkeley"
+  ),
+  arik2021tabnet = bibentry("inproceedings",
+    title = "Tabnet: Attentive interpretable tabular learning",
+    author = "Ar\xc4\xb1k, Sercan O and Pfister, Tomas",
+    booktitle = "AAAI",
+    volume = "35",
+    pages = "6679--6687",
+    year = "2021"
   )
 ) # nolint end

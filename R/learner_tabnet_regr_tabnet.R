@@ -94,4 +94,4 @@ LearnerRegrTabNet = R6::R6Class("LearnerRegrTabnet",
   )
 )
 
-.extralrns_dict$add("classif.tabnet", LearnerClassifTabNet)
+.extralrns_dict$add("regr.tabnet", LearnerRegrTabNet)

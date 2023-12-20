@@ -76,7 +76,9 @@ lrn$train(task)
 }
 }
 \references{
-\verb{r format_bib("arik2021tabnet")}
+Arık, O S, Pfister, Tomas (2021).
+\dQuote{Tabnet: Attentive interpretable tabular learning.}
+In \emph{AAAI}, volume 35, 6679--6687.
 }
 \seealso{
 \itemize{
