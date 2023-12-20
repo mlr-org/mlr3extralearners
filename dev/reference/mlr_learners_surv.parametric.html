@@ -120,6 +120,15 @@ necessarily create a sensible or interpretable prediction. The following combina
 <li><p>dist = "loglogistic"; type = "po";</p></li>
 </ul></div>
     <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+    
+
+<ul><li><p><code>discrete</code> determines the class of the returned survival probability
+distribution. If <code>FALSE</code> (default) continuous probability
+distributions are returned using <a href="https://rdrr.io/pkg/distr6/man/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a>, otherwise
+<a href="https://rdrr.io/pkg/distr6/man/Matdist.html" class="external-link">distr6::Matdist</a>.</p></li>
+</ul></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
     
 
@@ -139,7 +148,7 @@ necessarily create a sensible or interpretable prediction. The following combina
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>aft</td><td>aft, ph, po, tobit</td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>weibull</td><td>weibull, exponential, gaussian, lognormal, loglogistic</td><td>-</td></tr><tr><td>parms</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>init</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>robust</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>score</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cluster</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>aft</td><td>aft, ph, po, tobit</td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>weibull</td><td>weibull, exponential, gaussian, lognormal, loglogistic</td><td>-</td></tr><tr><td>parms</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>init</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>robust</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>score</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cluster</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>discrete</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Kalbfleisch, D J, Prentice, L R (2011).
@@ -216,9 +225,9 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvParametric:surv.parametric&gt;: Fully Parametric Learner</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: discrete=FALSE, dist=weibull, type=aft</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, survival, pracma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
 <span class="r-in"><span></span></span>
@@ -227,7 +236,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "type"          "na.action"     "dist"          "parms"        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "init"          "scale"         "maxiter"       "rel.tolerance"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "toler.chol"    "debug"         "outer.max"     "robust"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "score"         "cluster"      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "score"         "cluster"       "discrete"     </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
