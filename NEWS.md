@@ -2,7 +2,6 @@
 
 * Fix: Replace hardcoded `VectorDistribution`s from partykit and flexsurv survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
 * Feat: Add `discrete` parameter in `surv.parametric` learner to return `Matdist` survival predictions
-* Fix: Replace hardcoded `VectorDistribution`s from partykit survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
 * Added method `selected_features()` to CoxBoost survival learners (thanks to @bblodfon)
 * Added the Random Planted Forest Learner (thanks to @jemus42)
 * re-added the catboost learner as it was requested (was previously removed
