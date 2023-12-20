@@ -144,3 +144,50 @@ test_that("loglogistic", {
   expect_equal(unname(as.matrix(p$distr$cdf(data = t(cdf)))),
     matrix(c(rep(0.2, 50), rep(0.8, 50)), byrow = TRUE, nrow = 2))
 })
+
+task = tsk("rats")
+task$filter(sample(task$nrow, 100))
+
+test_that("discrete - aft", {
+  p_cont = lrn("surv.parametric", discrete = FALSE)$train(task)$predict(task)
+  p_disc = lrn("surv.parametric", discrete = TRUE)$train(task)$predict(task)
+  expect_equal(p_cont$lp, p_disc$lp)
+  expect_true(inherits(p_disc$distr, "Matdist"))
+  s_cont = as.matrix(p_cont$distr$survival(task$unique_times()))
+  dimnames(s_cont) = list(task$unique_times(), NULL)
+  s_disc = p_disc$distr$survival(task$unique_times())
+  expect_equal(s_cont, s_disc)
+})
+
+test_that("discrete - tobit", {
+  p_cont = lrn("surv.parametric", discrete = FALSE, type = "tobit")$train(task)$predict(task)
+  p_disc = lrn("surv.parametric", discrete = TRUE, type = "tobit")$train(task)$predict(task)
+  expect_equal(p_cont$lp, p_disc$lp)
+  expect_true(inherits(p_disc$distr, "Matdist"))
+  s_cont = as.matrix(p_cont$distr$survival(task$unique_times()))
+  dimnames(s_cont) = list(task$unique_times(), NULL)
+  s_disc = p_disc$distr$survival(task$unique_times())
+  expect_equal(s_cont, s_disc)
+})
+
+test_that("discrete - ph", {
+  p_cont = lrn("surv.parametric", discrete = FALSE, type = "ph")$train(task)$predict(task)
+  p_disc = lrn("surv.parametric", discrete = TRUE, type = "ph")$train(task)$predict(task)
+  expect_equal(p_cont$lp, p_disc$lp)
+  expect_true(inherits(p_disc$distr, "Matdist"))
+  s_cont = as.matrix(p_cont$distr$survival(task$unique_times()))
+  dimnames(s_cont) = list(task$unique_times(), NULL)
+  s_disc = p_disc$distr$survival(task$unique_times())
+  expect_equal(s_cont, s_disc)
+})
+
+test_that("discrete - po", {
+  p_cont = lrn("surv.parametric", discrete = FALSE, type = "po")$train(task)$predict(task)
+  p_disc = lrn("surv.parametric", discrete = TRUE, type = "po")$train(task)$predict(task)
+  expect_equal(p_cont$lp, p_disc$lp)
+  expect_true(inherits(p_disc$distr, "Matdist"))
+  s_cont = as.matrix(p_cont$distr$survival(task$unique_times()))
+  dimnames(s_cont) = list(task$unique_times(), NULL)
+  s_disc = p_disc$distr$survival(task$unique_times())
+  expect_equal(s_cont, s_disc)
+})
