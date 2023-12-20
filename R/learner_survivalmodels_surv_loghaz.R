@@ -22,7 +22,8 @@
 #'
 #' @template seealso_learner
 #' @examples
-#' if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"), quietly = TRUE))  {
+#' packages <- c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
+#' if (mlr3misc::require_namespaces(packages, quietly = TRUE))  {
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.loghaz")
 #' print(learner)

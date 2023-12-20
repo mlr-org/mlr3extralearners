@@ -25,7 +25,8 @@
 #'
 #' @template seealso_learner
 #' @examples
-#' if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6"), quietly = TRUE))  {
+#' packages <- c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
+#' if (mlr3misc::require_namespaces(packages, quietly = TRUE))  {
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.dnnsurv")
 #' print(learner)
