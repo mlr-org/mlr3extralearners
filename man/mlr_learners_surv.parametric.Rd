@@ -46,6 +46,16 @@ necessarily create a sensible or interpretable prediction. The following combina
 \item dist = "loglogistic"; type = "po";
 }
 }
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{discrete} determines the class of the returned survival probability
+distribution. If \code{FALSE} (default) continuous probability
+distributions are returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise
+\link[distr6:Matdist]{distr6::Matdist}.
+}
+}
+
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -82,6 +92,7 @@ lrn("surv.parametric")
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
+   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
