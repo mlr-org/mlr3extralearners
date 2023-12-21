@@ -3,7 +3,7 @@
 #' @name mlr_learners_classif.DecisionStump
 #'
 #' @description
-#' Decision Stump Learner
+#' Decision Stump Learner.
 #' Calls [RWeka::DecisionStump()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:

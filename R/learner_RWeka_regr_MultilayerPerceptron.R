@@ -1,10 +1,10 @@
-#' @title Regression Regressor That Uses Backpropagation To Learn A Multi-layer Perceptron
+#' @title Regression MultilayerPerceptron Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.MultilayerPerceptron
 #'
 #' @description
-#' Regressor that uses backpropagation to learn a multi-layer perceptron
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Regressor that uses backpropagation to learn a multi-layer perceptron.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -73,7 +73,7 @@ LearnerRegrMultilayerPerceptron = R6Class("LearnerRegrMultilayerPerceptron",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.MultilayerPerceptron",
-        label = "Regressor That Uses Backpropagation To Learn A Multi-layer Perceptron"
+        label = "MultilayerPerceptron"
       )
     }
   ),

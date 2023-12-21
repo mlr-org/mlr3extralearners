@@ -1,10 +1,10 @@
-#' @title Regression Simple Decision Table Majority Learner
+#' @title Regression Decision Table Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.DecisionTable
 #'
 #' @description
-#' Simple Decision Table majority regressor
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Simple Decision Table majority regressor.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Initial parameter values:
 #' - `E`:
@@ -83,7 +83,7 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         param_set = param_set,
         properties = character(0L),
         man = "mlr3extralearners::mlr_learners_regr.DecisionTable",
-        label = "Simple Decision Table Majority Regressor"
+        label = "Decision Table"
       )
     }
   ),

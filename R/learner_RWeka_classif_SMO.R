@@ -1,9 +1,9 @@
-#' @title Classification Support Vector Classifier Trained With John Platt's Sequential Minimal Optimization Algorithm
+#' @title Classification Support Vector Machine Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.SMO
 #'
 #' @description
-#' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm
+#' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm.
 #' Calls [RWeka::SMO()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
@@ -95,7 +95,7 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.SMO",
-        label = "Support Vector Classifier Trained With John Platt's Sequential Minimal Optimization Algorithm"
+        label = "Support Vector Machine"
       )
     }
   ),

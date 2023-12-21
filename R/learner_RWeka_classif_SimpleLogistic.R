@@ -1,10 +1,10 @@
-#' @title Classification LogitBoost With Simple Regression Functions As Base Learners
+#' @title Classification SimpleLogistic Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.SimpleLogistic
 #'
 #' @description
-#' LogitBoost with simple regression functions as base learners
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' LogitBoost with simple regression functions as base learners.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -64,7 +64,7 @@ LearnerClassifSimpleLogistic = R6Class("LearnerClassifSimpleLogistic",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.SimpleLogistic",
-        label = "Logitboost With Simple Regression Functions As Base Learners"
+        label = "LogitBoost Based Logistic Regression"
       )
     }
   ),

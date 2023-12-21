@@ -1,10 +1,10 @@
-#' @title Regression Tree That Considers K Randomly Chosen Attributes At Each Node
+#' @title Regression Random Tree Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.RandomTree
 #'
 #' @description
-#' Tree that considers K randomly chosen attributes at each node
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Tree that considers K randomly chosen attributes at each node.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -63,7 +63,7 @@ LearnerRegrRandomTree = R6Class("LearnerRegrRandomTree",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.RandomTree",
-        label = "Tree That Considers K Randomly Chosen Attributes At Each Node"
+        label = "Random Tree"
       )
     }
   ),

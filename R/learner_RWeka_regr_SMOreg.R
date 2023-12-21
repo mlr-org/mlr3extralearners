@@ -1,10 +1,10 @@
-#' @title Regression Support Vector Machine For Regression
+#' @title Regression Support Vector Machine Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.SMOreg
 #'
 #' @description
-#' Support Vector Machine for regression
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Support Vector Machine for regression.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -94,7 +94,7 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.SMOreg",
-        label = "Support Vector Machine For Regression"
+        label = "Support Vector Machine"
       )
     }
   ),

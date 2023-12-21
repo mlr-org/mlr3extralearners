@@ -1,10 +1,10 @@
-#' @title Regression Stochastic Gradient Descent For Learning Various Linear Models
+#' @title Regression Stochastic Gradient Descent Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.SGD
 #'
 #' @description
-#' Stochastic Gradient Descent for learning various linear models
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Stochastic Gradient Descent for learning various linear models.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Initial parameter values:
 #' - `F`:
@@ -72,7 +72,7 @@ LearnerRegrSGD = R6Class("LearnerRegrSGD",
         param_set = param_set,
         properties = character(0L),
         man = "mlr3extralearners::mlr_learners_regr.SGD",
-        label = "Stochastic Gradient Descent For Learning Various Linear Models"
+        label = "Stochastic Gradient Descent"
       )
     }
   ),

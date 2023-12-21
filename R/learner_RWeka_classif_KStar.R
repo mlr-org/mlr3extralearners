@@ -1,11 +1,11 @@
-#' @title Classification An Instance-based Learner Using An Entropic Distance Measure
+#' @title Classification KStar Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.KStar
 #'
 #' @description
 #' Instance-based classifier which differs from other instance-based learners in that
 #' it uses an entropy-based distance function.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -60,7 +60,7 @@ LearnerClassifKStar = R6Class("LearnerClassifKStar",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.KStar",
-        label = "An Instance-based Learner Using An Entropic Distance Measure"
+        label = "KStar"
       )
     }
   ),

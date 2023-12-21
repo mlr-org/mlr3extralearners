@@ -1,10 +1,10 @@
-#' @title Classification Multinomial Naive Bayes Classifier
+#' @title Classification Multinomial Naive Bayes Learner From Weka
 #' @author damirpolat
 #' @name mlr_learners_classif.NaiveBayesMultinomial
 #'
 #' @description
-#' Multinomial Naive Bayes classifier
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Multinomial Naive Bayes classifier.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -55,7 +55,7 @@ LearnerClassifNaiveBayesMultinomial = R6Class("LearnerClassifNaiveBayesMultinomi
         param_set = param_set,
         properties = c("multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.NaiveBayesMultinomial",
-        label = "Multinomial Naive Bayes Classifier"
+        label = "Multinomial Naive Bayes"
       )
     }
   ),

@@ -1,10 +1,10 @@
-#' @title Regression Fast Decision Tree Learner
+#' @title Regression Decision Tree Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.REPTree
 #'
 #' @description
-#' Fast decision tree learner
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Fast decision tree learner.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -63,7 +63,7 @@ LearnerRegrREPTree = R6Class("LearnerRegrREPTree",
         param_set = param_set,
         properties = character(0L),
         man = "mlr3extralearners::mlr_learners_regr.REPTree",
-        label = "Fast Decision Tree Learner"
+        label = "Decision Tree Learner"
       )
     }
   ),

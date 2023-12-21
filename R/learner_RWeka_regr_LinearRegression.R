@@ -1,4 +1,4 @@
-#' @title Regression Linear Regression That Uses The Akaike Criterion For Model Selection
+#' @title Regression Linear Regression Learner From Weka
 #' @author damirpolat
 #' @name mlr_learners_regr.LinearRegression
 #'
@@ -68,7 +68,7 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.LinearRegression",
-        label = "Linear Regression That Uses The Akaike Criterion For Model Selection"
+        label = "Linear Regression"
       )
     }
   ),

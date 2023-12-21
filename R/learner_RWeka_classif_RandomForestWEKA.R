@@ -1,10 +1,10 @@
-#' @title Classification Forest Of Random Trees from WEKA
+#' @title Classification Random Forest Learner from Weka
 #' @author damirpolat
 #' @name mlr_learners_classif.RandomForestWEKA
 #'
 #' @description
-#' Class for constructing a forest of random trees
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Class for constructing a random forest.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -87,7 +87,7 @@ LearnerClassifRandomForestWEKA = R6Class("LearnerClassifRandomForestWEKA",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.RandomForestWEKA",
-        label = "Forest Of Random Trees"
+        label = "Random Forest"
       )
     }
   ),

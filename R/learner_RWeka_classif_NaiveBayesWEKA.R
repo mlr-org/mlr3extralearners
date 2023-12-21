@@ -1,10 +1,10 @@
-#' @title Classification Naive Bayes Classifier Using Estimator Classes
+#' @title Classification Naive Bayes Learner From Weka
 #' @author damirpolat
 #' @name mlr_learners_classif.NaiveBayesWEKA
 #'
 #' @description
-#' Naive Bayes Classifier Using Estimator Classes
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Naive Bayes Classifier Using Estimator Classes.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -61,7 +61,7 @@ LearnerClassifNaiveBayesWEKA = R6Class("LearnerClassifNaiveBayesWEKA",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.NaiveBayesWEKA",
-        label = "Naive Bayes Classifier Using Estimator Classes"
+        label = "Naive Bayes"
       )
     }
   ),

@@ -1,10 +1,10 @@
-#' @title Regression Gaussian Processes For Regression From Weka
+#' @title Regression Gaussian Processes Learner From Weka
 #' @author damirpolat
 #' @name mlr_learners_regr.GaussianProcesses
 #'
 #' @description
-#' Gaussian Processes For Regression
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Gaussian Processes.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -80,7 +80,7 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.GaussianProcesses",
-        label = "Gaussian Processes For Regression From Weka"
+        label = "Gaussian Processes"
       )
     }
   ),

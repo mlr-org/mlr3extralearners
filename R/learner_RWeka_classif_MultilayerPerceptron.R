@@ -1,10 +1,10 @@
-#' @title Classification Classifier That Uses Backpropagation To Learn A Multi-layer Perceptron
+#' @title Classification MultilayerPerceptron Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.MultilayerPerceptron
 #'
 #' @description
-#' Classifier that uses backpropagation to learn a multi-layer perceptron
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Classifier that uses backpropagation to learn a multi-layer perceptron.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -73,7 +73,7 @@ LearnerClassifMultilayerPerceptron = R6Class("LearnerClassifMultilayerPerceptron
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.MultilayerPerceptron",
-        label = "Classifier That Uses Backpropagation To Learn A Multi-layer Perceptron"
+        label = "MultilayerPerceptron"
       )
     }
   ),

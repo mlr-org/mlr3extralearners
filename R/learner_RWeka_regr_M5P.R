@@ -1,9 +1,9 @@
-#' @title Regression Implements Base Routines For Generating M5 Model Trees And Rules
+#' @title Regression M5P Learner
 #' @author damirpolat
 #' @name mlr_learners_regr.M5P
 #'
 #' @description
-#' Implements base routines for generating M5 Model trees and rules
+#' Implements base routines for generating M5 Model trees and rules.
 #' Calls [RWeka::M5P()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
@@ -61,7 +61,7 @@ LearnerRegrM5P = R6Class("LearnerRegrM5P",
         param_set = param_set,
         properties = character(0L),
         man = "mlr3extralearners::mlr_learners_regr.M5P",
-        label = "Implements Base Routines For Generating M5 Model Trees And Rules"
+        label = "M5P"
       )
     }
   ),

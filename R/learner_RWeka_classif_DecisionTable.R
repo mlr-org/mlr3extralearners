@@ -1,10 +1,10 @@
-#' @title Classification Simple Decision Table Majority Learner
+#' @title Classification Decision Table Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.DecisionTable
 #'
 #' @description
 #' Simple Decision Table majority classifier.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Initial parameter values:
 #' - `E`:
@@ -83,7 +83,7 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.DecisionTable",
-        label = "Simple Decision Table Majority Classifier"
+        label = "Decision Table"
       )
     }
   ),

@@ -1,10 +1,10 @@
-#' @title Regression Simple Linear Regression Model
+#' @title Regression SimpleLinearRegression Learner from Weka
 #' @author damirpolat
 #' @name mlr_learners_regr.SimpleLinearRegression
 #'
 #' @description
-#' Simple linear regression model that picks the attribute that results in the lowest squared error
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Simple linear regression model that picks the attribute that results in the lowest squared error.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -59,7 +59,7 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
         param_set = param_set,
         properties = "missings",
         man = "mlr3extralearners::mlr_learners_regr.SimpleLinearRegression",
-        label = "Simple Linear Regression Model"
+        label = "Simple Linear Regression"
       )
     }
   ),

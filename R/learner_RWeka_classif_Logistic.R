@@ -1,9 +1,9 @@
-#' @title Classification Multinomial Logistic Regression Model With A Ridge Estimator
+#' @title Classification Logistic Regression Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.Logistic
 #'
 #' @description
-#' Multinomial Logistic Regression model with a ridge estimator
+#' Multinomial Logistic Regression model with a ridge estimator.
 #' Calls [RWeka::Logistic()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
@@ -60,7 +60,7 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.Logistic",
-        label = "Multinomial Logistic Regression Model With A Ridge Estimator"
+        label = "Multinomial Logistic Regression"
       )
     }
   ),

@@ -1,10 +1,10 @@
-#' @title Classification Voted Perceptron Algorithm By Freund And Schapire
+#' @title Classification Voted Perceptron Learner
 #' @author damirpolat
 #' @name mlr_learners_classif.VotedPerceptron
 #'
 #' @description
-#' Voted Perceptron Algorithm by Freund and Schapire
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}
+#' Voted Perceptron Algorithm by Freund and Schapire.
+#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
@@ -62,7 +62,7 @@ LearnerClassifVotedPerceptron = R6Class("LearnerClassifVotedPerceptron",
         param_set = param_set,
         properties = c("missings", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.VotedPerceptron",
-        label = "Voted Perceptron Algorithm By Freund And Schapire"
+        label = "Voted Perceptron"
       )
     }
   ),
