@@ -1,6 +1,6 @@
 #' @title Classification Decision Tree Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.REPTree
+#' @name mlr_learners_classif.reptree
 #'
 #' @description
 #' Fast decision tree learner.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.REPTree
+#' @templateVar id classif.reptree
 #' @template learner
 #'
 #' @template seealso_learner
@@ -56,13 +56,13 @@ LearnerClassifREPTree = R6Class("LearnerClassifREPTree",
       )
 
       super$initialize(
-        id = "classif.REPTree",
+        id = "classif.reptree",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.REPTree",
+        man = "mlr3extralearners::mlr_learners_classif.reptree",
         label = "Decision Tree Learner"
       )
     }
@@ -83,4 +83,4 @@ LearnerClassifREPTree = R6Class("LearnerClassifREPTree",
   )
 )
 
-.extralrns_dict$add("classif.REPTree", LearnerClassifREPTree)
+.extralrns_dict$add("classif.reptree", LearnerClassifREPTree)

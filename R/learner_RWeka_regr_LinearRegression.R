@@ -1,6 +1,6 @@
 #' @title Regression Linear Regression Learner From Weka
 #' @author damirpolat
-#' @name mlr_learners_regr.LinearRegression
+#' @name mlr_learners_regr.linear_regression
 #'
 #' @description
 #' Linear Regression learner that uses the Akaike criterion for model selection and
@@ -30,7 +30,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.LinearRegression
+#' @templateVar id regr.linear_regression
 #' @template learner
 #'
 #' @template seealso_learner
@@ -61,13 +61,13 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
       )
 
       super$initialize(
-        id = "regr.LinearRegression",
+        id = "regr.linear_regression",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.LinearRegression",
+        man = "mlr3extralearners::mlr_learners_regr.linear_regression",
         label = "Linear Regression"
       )
     }
@@ -88,4 +88,4 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
   )
 )
 
-.extralrns_dict$add("regr.LinearRegression", LearnerRegrLinearRegression)
+.extralrns_dict$add("regr.linear_regression", LearnerRegrLinearRegression)

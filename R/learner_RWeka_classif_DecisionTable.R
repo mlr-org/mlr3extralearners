@@ -1,6 +1,6 @@
 #' @title Classification Decision Table Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.DecisionTable
+#' @name mlr_learners_classif.decision_table
 #'
 #' @description
 #' Simple Decision Table majority classifier.
@@ -40,7 +40,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.DecisionTable
+#' @templateVar id classif.decision_table
 #' @template learner
 #'
 #' @references
@@ -76,13 +76,13 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
       )
 
       super$initialize(
-        id = "classif.DecisionTable",
+        id = "classif.decision_table",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.DecisionTable",
+        man = "mlr3extralearners::mlr_learners_classif.decision_table",
         label = "Decision Table"
       )
     }
@@ -104,4 +104,4 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
   )
 )
 
-.extralrns_dict$add("classif.DecisionTable", LearnerClassifDecisionTable)
+.extralrns_dict$add("classif.decision_table", LearnerClassifDecisionTable)

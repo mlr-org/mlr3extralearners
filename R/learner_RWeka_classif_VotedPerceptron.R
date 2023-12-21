@@ -1,6 +1,6 @@
 #' @title Classification Voted Perceptron Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.VotedPerceptron
+#' @name mlr_learners_classif.voted_perceptron
 #'
 #' @description
 #' Voted Perceptron Algorithm by Freund and Schapire.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.VotedPerceptron
+#' @templateVar id classif.voted_perceptron
 #' @template learner
 #'
 #' @references
@@ -55,13 +55,13 @@ LearnerClassifVotedPerceptron = R6Class("LearnerClassifVotedPerceptron",
       )
 
       super$initialize(
-        id = "classif.VotedPerceptron",
+        id = "classif.voted_perceptron",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.VotedPerceptron",
+        man = "mlr3extralearners::mlr_learners_classif.voted_perceptron",
         label = "Voted Perceptron"
       )
     }
@@ -82,4 +82,4 @@ LearnerClassifVotedPerceptron = R6Class("LearnerClassifVotedPerceptron",
   )
 )
 
-.extralrns_dict$add("classif.VotedPerceptron", LearnerClassifVotedPerceptron)
+.extralrns_dict$add("classif.voted_perceptron", LearnerClassifVotedPerceptron)

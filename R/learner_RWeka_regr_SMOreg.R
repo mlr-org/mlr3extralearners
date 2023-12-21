@@ -1,6 +1,6 @@
 #' @title Regression Support Vector Machine Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.SMOreg
+#' @name mlr_learners_regr.smo_reg
 #'
 #' @description
 #' Support Vector Machine for regression.
@@ -47,7 +47,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.SMOreg
+#' @templateVar id regr.smo_reg
 #' @template learner
 #'
 #' @references
@@ -87,13 +87,13 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
       )
 
       super$initialize(
-        id = "regr.SMOreg",
+        id = "regr.smo_reg",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.SMOreg",
+        man = "mlr3extralearners::mlr_learners_regr.smo_reg",
         label = "Support Vector Machine"
       )
     }
@@ -116,4 +116,4 @@ LearnerRegrSMOreg = R6Class("LearnerRegrSMOreg",
   )
 )
 
-.extralrns_dict$add("regr.SMOreg", LearnerRegrSMOreg)
+.extralrns_dict$add("regr.smo_reg", LearnerRegrSMOreg)

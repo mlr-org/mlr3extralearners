@@ -1,6 +1,6 @@
 #' @title Classification Decision Stump Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.DecisionStump
+#' @name mlr_learners_classif.decision_stump
 #'
 #' @description
 #' Decision Stump Learner.
@@ -22,7 +22,7 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
-#' @templateVar id classif.DecisionStump
+#' @templateVar id classif.decision_stump
 #' @template learner
 #'
 #' @template seealso_learner
@@ -47,13 +47,13 @@ LearnerClassifDecisionStump = R6Class("LearnerClassifDecisionStump",
       )
 
       super$initialize(
-        id = "classif.DecisionStump",
+        id = "classif.decision_stump",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.DecisionStump",
+        man = "mlr3extralearners::mlr_learners_classif.decision_stump",
         label = "Decision Stump"
       )
     }
@@ -74,4 +74,4 @@ LearnerClassifDecisionStump = R6Class("LearnerClassifDecisionStump",
   )
 )
 
-.extralrns_dict$add("classif.DecisionStump", LearnerClassifDecisionStump)
+.extralrns_dict$add("classif.decision_stump", LearnerClassifDecisionStump)

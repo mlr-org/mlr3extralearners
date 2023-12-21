@@ -1,6 +1,6 @@
 #' @title Classification Logistic Regression Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.Logistic
+#' @name mlr_learners_classif.logistic
 #'
 #' @description
 #' Multinomial Logistic Regression model with a ridge estimator.
@@ -22,7 +22,7 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
-#' @templateVar id classif.Logistic
+#' @templateVar id classif.logistic
 #' @template learner
 #'
 #' @references
@@ -53,13 +53,13 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
       )
 
       super$initialize(
-        id = "classif.Logistic",
+        id = "classif.logistic",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.Logistic",
+        man = "mlr3extralearners::mlr_learners_classif.logistic",
         label = "Multinomial Logistic Regression"
       )
     }
@@ -80,4 +80,4 @@ LearnerClassifLogistic = R6Class("LearnerClassifLogistic",
   )
 )
 
-.extralrns_dict$add("classif.Logistic", LearnerClassifLogistic)
+.extralrns_dict$add("classif.logistic", LearnerClassifLogistic)

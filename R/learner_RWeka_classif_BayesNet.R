@@ -1,6 +1,6 @@
 #' @title Classification Bayes Network Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.BayesNet
+#' @name mlr_learners_classif.bayes_net
 #'
 #' @description
 #' Bayes Network learning using various search algorithms.
@@ -44,7 +44,7 @@
 #' and it's unclear how to use them.
 #'
 #'
-#' @templateVar id classif.BayesNet
+#' @templateVar id classif.bayes_net
 #' @template learner
 #'
 #' @template seealso_learner
@@ -77,13 +77,13 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
       )
 
       super$initialize(
-        id = "classif.BayesNet",
+        id = "classif.bayes_net",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.BayesNet",
+        man = "mlr3extralearners::mlr_learners_classif.bayes_net",
         label = "Bayes Network"
       )
     }
@@ -104,4 +104,4 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
   )
 )
 
-.extralrns_dict$add("classif.BayesNet", LearnerClassifBayesNet)
+.extralrns_dict$add("classif.bayes_net, LearnerClassifBayesNet)

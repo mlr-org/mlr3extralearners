@@ -1,6 +1,6 @@
 #' @title Classification SimpleLogistic Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.SimpleLogistic
+#' @name mlr_learners_classif.simple_logistic
 #'
 #' @description
 #' LogitBoost with simple regression functions as base learners.
@@ -22,7 +22,7 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
-#' @templateVar id classif.SimpleLogistic
+#' @templateVar id classif.simple_logistic
 #' @template learner
 #'
 #' @references
@@ -57,13 +57,13 @@ LearnerClassifSimpleLogistic = R6Class("LearnerClassifSimpleLogistic",
       )
 
       super$initialize(
-        id = "classif.SimpleLogistic",
+        id = "classif.simple_logistic",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.SimpleLogistic",
+        man = "mlr3extralearners::mlr_learners_classif.simple_logistic",
         label = "LogitBoost Based Logistic Regression"
       )
     }
@@ -84,4 +84,4 @@ LearnerClassifSimpleLogistic = R6Class("LearnerClassifSimpleLogistic",
   )
 )
 
-.extralrns_dict$add("classif.SimpleLogistic", LearnerClassifSimpleLogistic)
+.extralrns_dict$add("classif.simple_logistic", LearnerClassifSimpleLogistic)

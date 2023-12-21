@@ -1,6 +1,6 @@
 #' @title Regression KStar Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.KStar
+#' @name mlr_learners_regr.kstar
 #'
 #' @description
 #' Instance-based regressor which differs from other instance-based learners in that
@@ -24,7 +24,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.KStar
+#' @templateVar id regr.kstar
 #' @template learner
 #'
 #' @references
@@ -53,13 +53,13 @@ LearnerRegrKStar = R6Class("LearnerRegrKStar",
       )
 
       super$initialize(
-        id = "regr.KStar",
+        id = "regr.kstar",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.KStar",
+        man = "mlr3extralearners::mlr_learners_regr.kstar",
         label = "KStar"
       )
     }
@@ -80,4 +80,4 @@ LearnerRegrKStar = R6Class("LearnerRegrKStar",
   )
 )
 
-.extralrns_dict$add("regr.KStar", LearnerRegrKStar)
+.extralrns_dict$add("regr.kstar", LearnerRegrKStar)

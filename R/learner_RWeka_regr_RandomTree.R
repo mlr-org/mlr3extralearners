@@ -1,6 +1,6 @@
 #' @title Regression Random Tree Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.RandomTree
+#' @name mlr_learners_regr.random_tree
 #'
 #' @description
 #' Tree that considers K randomly chosen attributes at each node.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.RandomTree
+#' @templateVar id regr.random_tree
 #' @template learner
 #'
 #' @template seealso_learner
@@ -56,13 +56,13 @@ LearnerRegrRandomTree = R6Class("LearnerRegrRandomTree",
       )
 
       super$initialize(
-        id = "regr.RandomTree",
+        id = "regr.random_tree",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.RandomTree",
+        man = "mlr3extralearners::mlr_learners_regr.random_tree",
         label = "Random Tree"
       )
     }
@@ -83,4 +83,4 @@ LearnerRegrRandomTree = R6Class("LearnerRegrRandomTree",
   )
 )
 
-.extralrns_dict$add("regr.RandomTree", LearnerRegrRandomTree)
+.extralrns_dict$add("regr.random_tree", LearnerRegrRandomTree)

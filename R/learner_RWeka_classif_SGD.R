@@ -1,6 +1,6 @@
 #' @title Classification Stochastic Gradient Descent Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.SGD
+#' @name mlr_learners_classif.sgd
 #'
 #' @description
 #' Stochastic Gradient Descent for learning various linear models.
@@ -29,7 +29,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.SGD
+#' @templateVar id classif.sgd
 #' @template learner
 #'
 #' @template seealso_learner
@@ -62,13 +62,13 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
       )
 
       super$initialize(
-        id = "classif.SGD",
+        id = "classif.sgd",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.SGD",
+        man = "mlr3extralearners::mlr_learners_classif.sgd",
         label = "Stochastic Gradient Descent"
       )
     }
@@ -89,4 +89,4 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
   )
 )
 
-.extralrns_dict$add("classif.SGD", LearnerClassifSGD)
+.extralrns_dict$add("classif.sgd", LearnerClassifSGD)

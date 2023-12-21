@@ -1,6 +1,6 @@
 #' @title Regression Gaussian Processes Learner From Weka
 #' @author damirpolat
-#' @name mlr_learners_regr.GaussianProcesses
+#' @name mlr_learners_regr.gaussian_processes
 #'
 #' @description
 #' Gaussian Processes.
@@ -37,7 +37,7 @@
 #' - Reason for change: The parameter is removed because it's unclear how to actually use it.
 #'
 #'
-#' @templateVar id regr.GaussianProcesses
+#' @templateVar id regr.gaussian_processes
 #' @template learner
 #'
 #' @references
@@ -73,13 +73,13 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
       )
 
       super$initialize(
-        id = "regr.GaussianProcesses",
+        id = "regr.gaussian_processes",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.GaussianProcesses",
+        man = "mlr3extralearners::mlr_learners_regr.gaussian_processes",
         label = "Gaussian Processes"
       )
     }
@@ -101,4 +101,4 @@ LearnerRegrGaussianProcesses = R6Class("LearnerRegrGaussianProcesses",
   )
 )
 
-.extralrns_dict$add("regr.GaussianProcesses", LearnerRegrGaussianProcesses)
+.extralrns_dict$add("regr.gaussian_processes", LearnerRegrGaussianProcesses)

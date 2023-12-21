@@ -1,6 +1,6 @@
 #' @title Classification KStar Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.KStar
+#' @name mlr_learners_classif.kstar
 #'
 #' @description
 #' Instance-based classifier which differs from other instance-based learners in that
@@ -24,7 +24,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.KStar
+#' @templateVar id classif.kstar
 #' @template learner
 #'
 #' @references
@@ -53,13 +53,13 @@ LearnerClassifKStar = R6Class("LearnerClassifKStar",
       )
 
       super$initialize(
-        id = "classif.KStar",
+        id = "classif.kstar",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.KStar",
+        man = "mlr3extralearners::mlr_learners_classif.kstar",
         label = "KStar"
       )
     }
@@ -80,4 +80,4 @@ LearnerClassifKStar = R6Class("LearnerClassifKStar",
   )
 )
 
-.extralrns_dict$add("classif.KStar", LearnerClassifKStar)
+.extralrns_dict$add("classif.kstar", LearnerClassifKStar)

@@ -1,6 +1,6 @@
 #' @title Regression Decision Stump Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.DecisionStump
+#' @name mlr_learners_regr.decision_stump
 #'
 #' @description
 #' Decision Stump Learner.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.DecisionStump
+#' @templateVar id regr.decision_stump
 #' @template learner
 #'
 #' @template seealso_learner
@@ -48,13 +48,13 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
       )
 
       super$initialize(
-        id = "regr.DecisionStump",
+        id = "regr.decision_stump",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.DecisionStump",
+        man = "mlr3extralearners::mlr_learners_regr.decision_stump",
         label = "Decision Stump"
       )
     }
@@ -75,4 +75,4 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
   )
 )
 
-.extralrns_dict$add("regr.DecisionStump", LearnerRegrDecisionStump)
+.extralrns_dict$add("regr.decision_stump", LearnerRegrDecisionStump)

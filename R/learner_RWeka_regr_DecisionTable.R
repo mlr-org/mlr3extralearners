@@ -1,6 +1,6 @@
 #' @title Regression Decision Table Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.DecisionTable
+#' @name mlr_learners_regr.decision_table
 #'
 #' @description
 #' Simple Decision Table majority regressor.
@@ -40,7 +40,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.DecisionTable
+#' @templateVar id regr.decision_table
 #' @template learner
 #'
 #' @references
@@ -76,13 +76,13 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
       )
 
       super$initialize(
-        id = "regr.DecisionTable",
+        id = "regr.decision_table",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.DecisionTable",
+        man = "mlr3extralearners::mlr_learners_regr.decision_table",
         label = "Decision Table"
       )
     }
@@ -104,4 +104,4 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
   )
 )
 
-.extralrns_dict$add("regr.DecisionTable", LearnerRegrDecisionTable)
+.extralrns_dict$add("regr.decision_table", LearnerRegrDecisionTable)

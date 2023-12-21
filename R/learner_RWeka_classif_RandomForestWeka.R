@@ -1,6 +1,6 @@
 #' @title Classification Random Forest Learner from Weka
 #' @author damirpolat
-#' @name mlr_learners_classif.RandomForestWEKA
+#' @name mlr_learners_classif.random_forest_weka
 #'
 #' @description
 #' Class for constructing a random forest.
@@ -37,7 +37,7 @@
 #' - Reason for change: The parameter is removed because it's unclear how to actually use it.
 #'
 #'
-#' @templateVar id classif.RandomForestWEKA
+#' @templateVar id classif.random_forest_weka
 #' @template learner
 #'
 #' @references
@@ -46,7 +46,7 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifRandomForestWEKA = R6Class("LearnerClassifRandomForestWEKA",
+LearnerClassifRandomForestWeka = R6Class("LearnerClassifRandomForestWeka",
   inherit = LearnerClassif,
   public = list(
     #' @description
@@ -80,13 +80,13 @@ LearnerClassifRandomForestWEKA = R6Class("LearnerClassifRandomForestWEKA",
       )
 
       super$initialize(
-        id = "classif.RandomForestWEKA",
+        id = "classif.random_forest_weka",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.RandomForestWEKA",
+        man = "mlr3extralearners::mlr_learners_classif.random_forest_weka",
         label = "Random Forest"
       )
     }
@@ -107,4 +107,4 @@ LearnerClassifRandomForestWEKA = R6Class("LearnerClassifRandomForestWEKA",
   )
 )
 
-.extralrns_dict$add("classif.RandomForestWEKA", LearnerClassifRandomForestWEKA)
+.extralrns_dict$add("classif.random_forest_weka", LearnerClassifRandomForestWeka)

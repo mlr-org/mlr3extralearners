@@ -1,6 +1,6 @@
 #' @title Classification Naive Bayes Learner From Weka
 #' @author damirpolat
-#' @name mlr_learners_classif.NaiveBayesWEKA
+#' @name mlr_learners_classif.naive_bayes_weka
 #'
 #' @description
 #' Naive Bayes Classifier Using Estimator Classes.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.NaiveBayesWEKA
+#' @templateVar id classif.naive_bayes_weka
 #' @template learner
 #'
 #' @references
@@ -32,7 +32,7 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifNaiveBayesWEKA = R6Class("LearnerClassifNaiveBayesWEKA",
+LearnerClassifNaiveBayesWeka = R6Class("LearnerClassifNaiveBayesWeka",
   inherit = LearnerClassif,
   public = list(
     #' @description
@@ -54,13 +54,13 @@ LearnerClassifNaiveBayesWEKA = R6Class("LearnerClassifNaiveBayesWEKA",
       )
 
       super$initialize(
-        id = "classif.NaiveBayesWEKA",
+        id = "classif.naive_bayes_weka",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.NaiveBayesWEKA",
+        man = "mlr3extralearners::mlr_learners_classif.naive_bayes_weka",
         label = "Naive Bayes"
       )
     }
@@ -81,4 +81,4 @@ LearnerClassifNaiveBayesWEKA = R6Class("LearnerClassifNaiveBayesWEKA",
   )
 )
 
-.extralrns_dict$add("classif.NaiveBayesWEKA", LearnerClassifNaiveBayesWEKA)
+.extralrns_dict$add("classif.naive_bayes_weka", LearnerClassifNaiveBayesWeka)

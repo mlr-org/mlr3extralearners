@@ -1,6 +1,6 @@
 #' @title Regression M5P Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.M5P
+#' @name mlr_learners_regr.m5p
 #'
 #' @description
 #' Implements base routines for generating M5 Model trees and rules.
@@ -23,7 +23,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.M5P
+#' @templateVar id regr.m5p
 #' @template learner
 #'
 #' @references
@@ -54,13 +54,13 @@ LearnerRegrM5P = R6Class("LearnerRegrM5P",
       )
 
       super$initialize(
-        id = "regr.M5P",
+        id = "regr.m5p",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = character(0L),
-        man = "mlr3extralearners::mlr_learners_regr.M5P",
+        man = "mlr3extralearners::mlr_learners_regr.m5p",
         label = "M5P"
       )
     }
@@ -81,4 +81,4 @@ LearnerRegrM5P = R6Class("LearnerRegrM5P",
   )
 )
 
-.extralrns_dict$add("regr.M5P", LearnerRegrM5P)
+.extralrns_dict$add("regr.m5p", LearnerRegrM5P)

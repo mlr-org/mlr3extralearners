@@ -1,6 +1,6 @@
 #' @title Classification Support Vector Machine Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.SMO
+#' @name mlr_learners_classif.smo
 #'
 #' @description
 #' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm.
@@ -41,7 +41,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id classif.SMO
+#' @templateVar id classif.smo
 #' @template learner
 #'
 #' @references
@@ -88,13 +88,13 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
       )
 
       super$initialize(
-        id = "classif.SMO",
+        id = "classif.smo",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.SMO",
+        man = "mlr3extralearners::mlr_learners_classif.smo",
         label = "Support Vector Machine"
       )
     }
@@ -116,4 +116,4 @@ LearnerClassifSMO = R6Class("LearnerClassifSMO",
   )
 )
 
-.extralrns_dict$add("classif.SMO", LearnerClassifSMO)
+.extralrns_dict$add("classif.smo", LearnerClassifSMO)

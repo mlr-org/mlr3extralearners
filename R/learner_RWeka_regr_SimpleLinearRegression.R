@@ -1,6 +1,6 @@
 #' @title Regression SimpleLinearRegression Learner from Weka
 #' @author damirpolat
-#' @name mlr_learners_regr.SimpleLinearRegression
+#' @name mlr_learners_regr.simple_linear_regression
 #'
 #' @description
 #' Simple linear regression model that picks the attribute that results in the lowest squared error.
@@ -26,7 +26,7 @@
 #' since their ids contain irregular pattern
 #'
 #'
-#' @templateVar id regr.SimpleLinearRegression
+#' @templateVar id regr.simple_linear_regression
 #' @template learner
 #'
 #' @template seealso_learner
@@ -52,13 +52,13 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
       )
 
       super$initialize(
-        id = "regr.SimpleLinearRegression",
+        id = "regr.simple_linear_regression",
         packages = "RWeka",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.SimpleLinearRegression",
+        man = "mlr3extralearners::mlr_learners_regr.simple_linear_regression",
         label = "Simple Linear Regression"
       )
     }
@@ -79,4 +79,4 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
   )
 )
 
-.extralrns_dict$add("regr.SimpleLinearRegression", LearnerRegrSimpleLinearRegression)
+.extralrns_dict$add("regr.simple_linear_regression", LearnerRegrSimpleLinearRegression)

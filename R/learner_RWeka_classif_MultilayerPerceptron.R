@@ -1,6 +1,6 @@
 #' @title Classification MultilayerPerceptron Learner
 #' @author damirpolat
-#' @name mlr_learners_classif.MultilayerPerceptron
+#' @name mlr_learners_classif.multilayer_perceptron
 #'
 #' @description
 #' Classifier that uses backpropagation to learn a multi-layer perceptron.
@@ -28,7 +28,7 @@
 #' - Reason for change: The parameter is removed because it's unclear how to use actually use it.
 #'
 #'
-#' @templateVar id classif.MultilayerPerceptron
+#' @templateVar id classif.multilayer_perceptron
 #' @template learner
 #'
 #' @template seealso_learner
@@ -66,13 +66,13 @@ LearnerClassifMultilayerPerceptron = R6Class("LearnerClassifMultilayerPerceptron
       )
 
       super$initialize(
-        id = "classif.MultilayerPerceptron",
+        id = "classif.multilayer_perceptron",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("missings", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.MultilayerPerceptron",
+        man = "mlr3extralearners::mlr_learners_classif.multilayer_perceptron",
         label = "MultilayerPerceptron"
       )
     }
@@ -93,4 +93,4 @@ LearnerClassifMultilayerPerceptron = R6Class("LearnerClassifMultilayerPerceptron
   )
 )
 
-.extralrns_dict$add("classif.MultilayerPerceptron", LearnerClassifMultilayerPerceptron)
+.extralrns_dict$add("classif.multilayer_perceptron", LearnerClassifMultilayerPerceptron)

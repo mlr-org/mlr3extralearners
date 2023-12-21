@@ -1,6 +1,6 @@
 #' @title Regression MultilayerPerceptron Learner
 #' @author damirpolat
-#' @name mlr_learners_regr.MultilayerPerceptron
+#' @name mlr_learners_regr.multilayer_perceptron
 #'
 #' @description
 #' Regressor that uses backpropagation to learn a multi-layer perceptron.
@@ -28,7 +28,7 @@
 #' - Reason for change: The parameter is removed because it's unclear how to use actually use it.
 #'
 #'
-#' @templateVar id regr.MultilayerPerceptron
+#' @templateVar id regr.multilayer_perceptron
 #' @template learner
 #'
 #' @template seealso_learner
@@ -66,13 +66,13 @@ LearnerRegrMultilayerPerceptron = R6Class("LearnerRegrMultilayerPerceptron",
       )
 
       super$initialize(
-        id = "regr.MultilayerPerceptron",
+        id = "regr.multilayer_perceptron",
         packages = "RWeka",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
         properties = "missings",
-        man = "mlr3extralearners::mlr_learners_regr.MultilayerPerceptron",
+        man = "mlr3extralearners::mlr_learners_regr.multilayer_perceptron",
         label = "MultilayerPerceptron"
       )
     }
@@ -93,4 +93,4 @@ LearnerRegrMultilayerPerceptron = R6Class("LearnerRegrMultilayerPerceptron",
   )
 )
 
-.extralrns_dict$add("regr.MultilayerPerceptron", LearnerRegrMultilayerPerceptron)
+.extralrns_dict$add("regr.multilayer_perceptron", LearnerRegrMultilayerPerceptron)

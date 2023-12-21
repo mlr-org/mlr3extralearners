@@ -1,6 +1,6 @@
 #' @title Classification Multinomial Naive Bayes Learner From Weka
 #' @author damirpolat
-#' @name mlr_learners_classif.NaiveBayesMultinomial
+#' @name mlr_learners_classif.naive_bayes_multinomial
 #'
 #' @description
 #' Multinomial Naive Bayes classifier.
@@ -20,7 +20,7 @@
 #'   - original id: batch-size
 #'
 #'
-#' @templateVar id classif.NaiveBayesMultinomial
+#' @templateVar id classif.naive_bayes_multinomial
 #' @template learner
 #'
 #' @references
@@ -48,13 +48,13 @@ LearnerClassifNaiveBayesMultinomial = R6Class("LearnerClassifNaiveBayesMultinomi
       )
 
       super$initialize(
-        id = "classif.NaiveBayesMultinomial",
+        id = "classif.naive_bayes_multinomial",
         packages = "RWeka",
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.NaiveBayesMultinomial",
+        man = "mlr3extralearners::mlr_learners_classif.naive_bayes_multinomial",
         label = "Multinomial Naive Bayes"
       )
     }
@@ -75,4 +75,4 @@ LearnerClassifNaiveBayesMultinomial = R6Class("LearnerClassifNaiveBayesMultinomi
   )
 )
 
-.extralrns_dict$add("classif.NaiveBayesMultinomial", LearnerClassifNaiveBayesMultinomial)
+.extralrns_dict$add("classif.naive_bayes_multinomial", LearnerClassifNaiveBayesMultinomial)
