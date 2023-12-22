@@ -104,4 +104,4 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
   )
 )
 
-.extralrns_dict$add("classif.bayes_net, LearnerClassifBayesNet)
+.extralrns_dict$add("classif.bayes_net", LearnerClassifBayesNet)
