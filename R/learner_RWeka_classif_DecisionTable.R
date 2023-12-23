@@ -75,6 +75,8 @@ LearnerClassifDecisionTable = R6Class("LearnerClassifDecisionTable",
         options = p_uty(default = NULL, tags = "train")
       )
 
+      param_set$values = list(E = "acc")
+
       super$initialize(
         id = "classif.decision_table",
         packages = "RWeka",

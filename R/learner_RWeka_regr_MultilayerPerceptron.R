@@ -25,7 +25,7 @@
 #' - `G` removed:
 #'   - GUI will be opened
 #'
-#' - Reason for change: The parameter is removed because it's unclear how to use actually use it.
+#' - Reason for change: The parameter is removed because we don't want to launch GUI.
 #'
 #'
 #' @templateVar id regr.multilayer_perceptron

@@ -75,6 +75,8 @@ LearnerRegrDecisionTable = R6Class("LearnerRegrDecisionTable",
         options = p_uty(default = NULL, tags = "train")
       )
 
+      param_set$values = list(E = "rmse")
+
       super$initialize(
         id = "regr.decision_table",
         packages = "RWeka",

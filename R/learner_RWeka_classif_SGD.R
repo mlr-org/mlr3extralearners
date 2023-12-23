@@ -61,6 +61,8 @@ LearnerClassifSGD = R6Class("LearnerClassifSGD",
         options = p_uty(default = NULL, tags = "train")
       )
 
+      param_set$values = list(F = "0")
+
       super$initialize(
         id = "classif.sgd",
         packages = "RWeka",
