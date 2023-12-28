@@ -72,8 +72,12 @@ bibentries = c( # nolint start
   jaeger_2022 = bibentry("article",
     title         = "Accelerated and interpretable oblique random survival forests",
     author        = "Byron C. Jaeger and Sawyer Welden and Kristin Lenoir and Jaime L. Speiser and Matthew W. Segar and Ambarish Pandey and Nicholas M. Pajewski",
-    journal       = "arXiv preprint arXiv:2208.01129",
-    year          = "2022"
+    journal       = "Journal of Computational and Graphical Statistics",
+    doi           = "10.1080/10618600.2023.2231048",
+    year          = "2023",
+    month         = "8",
+    publisher     = "Taylor & Francis",
+    pages         = "1--16"
   ),
 
   dorogush2018catboost = bibentry("article",
