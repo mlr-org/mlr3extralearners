@@ -37,7 +37,7 @@ Imports:
     R6
 Suggests:
     abess,
-    aorsf (>= 1.1.2),
+    aorsf (>= 0.1.2),
     actuar,
     apcluster,
     BART (>= 2.9.4),
