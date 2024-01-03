@@ -114,7 +114,8 @@ Remotes:
     PlantedML/randomPlantedForest,
     xoopR/distr6,
     xoopR/param6,
-    xoopR/set6
+    xoopR/set6,
+    ropensci/aorsf
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
