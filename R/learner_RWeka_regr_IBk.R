@@ -37,12 +37,10 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       ps = ps(
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
-        I = p_lgl(default = FALSE, tags = "train"),
-        F = p_lgl(default = FALSE, tags = "train"),
+        weight = p_fct(levels = c("I", "F"), tags = "train"),
         K = p_int(default = 1L, lower = 1L, tags = "train"),
         E = p_lgl(default = FALSE, tags = "train"),
         W = p_int(default = 0L, lower = 0L, tags = "train"),
