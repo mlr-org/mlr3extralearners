@@ -42,7 +42,7 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
         I = p_lgl(default = FALSE, tags = "train"),
-        F = p_lgl(default = FALSE, tags = "train"),
+        F = p_lgl(default = FALSE, depends = (I == FALSE), tags = "train"),
         K = p_int(default = 1L, lower = 1L, tags = "train"),
         E = p_lgl(default = FALSE, tags = "train"),
         W = p_int(default = 0L, lower = 0L, tags = "train"),
@@ -58,6 +58,7 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
         batch_size = p_int(default = 100L, lower = 1L, tags = "train"),
         options = p_uty(default = NULL, tags = "train")
       )
+      ps$values = list(I = FALSE, F = FALSE)
 
       super$initialize(
         id = "classif.IBk",
