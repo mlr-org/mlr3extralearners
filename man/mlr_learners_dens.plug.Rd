@@ -42,7 +42,7 @@ learner = lrn("dens.plug")
 print(learner)
 
 # Define a Task
-task = tsk("faithful")
+task = mlr3::tsk("faithful")
 
 # Create train and test set
 ids = partition(task)

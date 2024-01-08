@@ -93,7 +93,7 @@ learner = lrn("surv.parametric")
 print(learner)
 
 # Define a Task
-task = tsk("grace")
+task = mlr3::tsk("grace")
 
 # Create train and test set
 ids = partition(task)

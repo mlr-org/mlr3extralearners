@@ -55,7 +55,7 @@ learner = lrn("classif.gamboost")
 print(learner)
 
 # Define a Task
-task = tsk("sonar")
+task = mlr3::tsk("sonar")
 
 # Create train and test set
 ids = partition(task)

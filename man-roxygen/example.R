@@ -19,7 +19,7 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 #' print(learner)
 #'
 #' # Define a Task
-#' <%= sprintf("task = tsk(\"%s\")", task_id)%>
+#' <%= sprintf("task = mlr3::tsk(\"%s\")", task_id)%>
 #'
 #' # Create train and test set
 #' ids = partition(task)

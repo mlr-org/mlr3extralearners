@@ -79,7 +79,7 @@ learner = lrn("regr.IBk")
 print(learner)
 
 # Define a Task
-task = tsk("mtcars")
+task = mlr3::tsk("mtcars")
 
 # Create train and test set
 ids = partition(task)
