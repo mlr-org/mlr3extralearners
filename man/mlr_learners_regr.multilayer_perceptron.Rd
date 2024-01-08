@@ -69,7 +69,7 @@ lrn("regr.multilayer_perceptron")
    E \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    A \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    B \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   H \tab untyped \tab - \tab  \tab - \cr
+   H \tab untyped \tab a \tab  \tab - \cr
    C \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    I \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
