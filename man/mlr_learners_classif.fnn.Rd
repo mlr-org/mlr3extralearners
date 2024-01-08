@@ -39,14 +39,14 @@ lrn("classif.fnn")
 set.seed(123)
 if (mlr3misc::require_namespaces(lrn("classif.fnn")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
-learner = lrn("classif.fnn")
+learner = mlr3::lrn("classif.fnn")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("sonar")
 
 # Create train and test set
-ids = partition(task)
+ids = mlr3::partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

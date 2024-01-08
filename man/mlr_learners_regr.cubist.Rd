@@ -46,14 +46,14 @@ lrn("regr.cubist")
 set.seed(123)
 if (mlr3misc::require_namespaces(lrn("regr.cubist")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
-learner = lrn("regr.cubist")
+learner = mlr3::lrn("regr.cubist")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("mtcars")
 
 # Create train and test set
-ids = partition(task)
+ids = mlr3::partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

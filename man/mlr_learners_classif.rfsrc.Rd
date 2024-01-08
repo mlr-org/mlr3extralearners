@@ -93,14 +93,14 @@ This value is set as the option \code{rf.cores} during training and is set to 1 
 set.seed(123)
 if (mlr3misc::require_namespaces(lrn("classif.rfsrc")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
-learner = lrn("classif.rfsrc")
+learner = mlr3::lrn("classif.rfsrc")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("sonar")
 
 # Create train and test set
-ids = partition(task)
+ids = mlr3::partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

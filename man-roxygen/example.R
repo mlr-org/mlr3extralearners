@@ -15,14 +15,14 @@ if ("LearnerClassif" %in% class(lrn(id))) {
 #' set.seed(123)
 #' <%= sprintf("if (mlr3misc::require_namespaces(lrn(\"%s\")$packages, quietly = TRUE))", id) %> {
 #' # Define the Learner and set parameter values
-#' <%= sprintf("learner = lrn(\"%s\")", id)%>
+#' <%= sprintf("learner = mlr3::lrn(\"%s\")", id)%>
 #' print(learner)
 #'
 #' # Define a Task
 #' <%= sprintf("task = mlr3::tsk(\"%s\")", task_id)%>
 #'
 #' # Create train and test set
-#' ids = partition(task)
+#' ids = mlr3::partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)

@@ -111,14 +111,14 @@ lrn("surv.glmnet")
 set.seed(123)
 if (mlr3misc::require_namespaces(lrn("surv.glmnet")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
-learner = lrn("surv.glmnet")
+learner = mlr3::lrn("surv.glmnet")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("grace")
 
 # Create train and test set
-ids = partition(task)
+ids = mlr3::partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

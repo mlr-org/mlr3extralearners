@@ -85,14 +85,14 @@ lrn("surv.ranger")
 set.seed(123)
 if (mlr3misc::require_namespaces(lrn("surv.ranger")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
-learner = lrn("surv.ranger")
+learner = mlr3::lrn("surv.ranger")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("grace")
 
 # Create train and test set
-ids = partition(task)
+ids = mlr3::partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
