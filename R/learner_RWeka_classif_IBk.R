@@ -26,6 +26,14 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
+#' - `weight`:
+#'   - original id: I and F
+#'
+#' - Reason for change: original `I` and `F` params are interdependent
+#' (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
+#' The easiest way to encode this is to combine `I` and `F` into one factor param.
+#'
+#'
 #' @references
 #' `r format_bib("aha1991instance")`
 #'
@@ -41,8 +49,7 @@ LearnerClassifIBk = R6Class("LearnerClassifIBk",
       ps = ps(
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
-        I = p_lgl(default = FALSE, tags = "train"),
-        F = p_lgl(default = FALSE, tags = "train"),
+        weight = p_fct(levels = c("I", "F"), tags = "train"),
         K = p_int(default = 1L, lower = 1L, tags = "train"),
         E = p_lgl(default = FALSE, tags = "train"),
         W = p_int(default = 0L, lower = 0L, tags = "train"),
