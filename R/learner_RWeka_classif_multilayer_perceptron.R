@@ -51,7 +51,7 @@ LearnerClassifMultilayerPerceptron = R6Class("LearnerClassifMultilayerPerceptron
         E = p_int(default = 20L, lower = 1L, tags = "train"),
         A = p_lgl(default = FALSE, tags = "train"),
         B = p_lgl(default = FALSE, tags = "train"),
-        H = p_uty(tags = "train"),
+        H = p_uty(default = "a", tags = "train"),
         C = p_lgl(default = FALSE, tags = "train"),
         I = p_lgl(default = FALSE, tags = "train"),
         R = p_lgl(default = FALSE, tags = "train"),
