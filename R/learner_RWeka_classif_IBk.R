@@ -29,7 +29,8 @@
 #' - `weight`:
 #'   - original id: I and F
 #'
-#' - Reason for change: original `I` and `F` params are interdependent (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
+#' - Reason for change: original `I` and `F` params are interdependent
+#' (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
 #' The easiest way to encode this is to combine `I` and `F` into one factor param.
 #'
 #'
