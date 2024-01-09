@@ -17,8 +17,8 @@ test_that("paramtest surv.aorsf train", {
     "no_fit", # handled internally
     "control_type", # handled internally
     "control_fast_do_scale", # handled internally
-    "control_fast_method", # handled internally
-    "control_cph_method", # handled internally
+    "control_fast_ties", # handled internally
+    "control_cph_ties", # handled internally
     "control_cph_eps", # handled internally
     "control_cph_iter_max", # handled internally
     "control_net_alpha", # handled internally
@@ -31,7 +31,7 @@ test_that("paramtest surv.aorsf train", {
 
 test_that("paramtest surv.aorsf predict", {
   learner = lrn("surv.aorsf")
-  fun_list = list(aorsf:::predict.orsf_fit)
+  fun_list = list(aorsf:::predict.ObliqueForest)
   exclude = c(
     "object", # handled internally
     "new_data", # handled internally
