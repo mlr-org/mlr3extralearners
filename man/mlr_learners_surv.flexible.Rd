@@ -9,16 +9,18 @@ Flexible parametric spline learner.
 Calls \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} from \CRANpkg{flexsurv}.
 }
 \details{
-The \code{distr} prediction is estimated using the fitted custom distributions
-from \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients however the prediction takes
-place in this package and not in \CRANpkg{flexsurv} for a much faster and more efficient
-implementation.
-
-As flexible spline models estimate the baseline hazard as the intercept, the linear predictor,
-\code{lp}, can be calculated as in the classical setting. i.e. For fitted coefficients,
-\eqn{\beta = (\beta_0,...,\beta_P)}{\beta = (\beta0,...,\betaP)},
-and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
-of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
+This learner returns two prediction types:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), for each test
+observation.
+Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
+For fitted coefficients, \eqn{\beta = (\beta_0,...,\beta_P)},
+and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
+is a column of \eqn{1}s, the linear predictor (\code{lp}) is \eqn{lp = \beta X}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{predict.flexsurvreg()}
+}
 }
 \section{Dictionary}{
 
