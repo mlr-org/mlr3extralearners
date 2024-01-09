@@ -145,14 +145,14 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       )
       # these parameters are used to organize the control arguments
       # above but are not used directly by aorsf::orsf(), so:
-      pv$control_type = NULL
-      pv$control_fast_do_scale = NULL
-      pv$control_fast_ties = NULL
-      pv$control_cph_ties = NULL
-      pv$control_cph_eps = NULL
-      pv$control_cph_iter_max = NULL
-      pv$control_net_alpha = NULL
-      pv$control_net_df_target = NULL
+      mlr3misc::remove_named(pv, "control_type")
+      mlr3misc::remove_named(pv, "control_fast_do_scale")
+      mlr3misc::remove_named(pv, "control_fast_ties")
+      mlr3misc::remove_named(pv, "control_cph_ties")
+      mlr3misc::remove_named(pv, "control_cph_eps")
+      mlr3misc::remove_named(pv, "control_cph_iter_max")
+      mlr3misc::remove_named(pv, "control_net_alpha")
+      mlr3misc::remove_named(pv, "control_net_df_target")
       invoke(
         aorsf::orsf,
         data = task$data(),
