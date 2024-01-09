@@ -145,7 +145,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       )
       # these parameters are used to organize the control arguments
       # above but are not used directly by aorsf::orsf(), so:
-      mlr3misc::remove_named(pv, c("control_type",
+      pv = remove_named(pv, c("control_type",
                                    "control_fast_do_scale",
                                    "control_fast_ties",
                                    "control_cph_ties",
