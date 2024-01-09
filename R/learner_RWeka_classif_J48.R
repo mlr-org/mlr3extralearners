@@ -68,6 +68,7 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
       ps$add_dep("R", "U", CondEqual$new(FALSE))
       ps$add_dep("N", "U", CondEqual$new(FALSE))
       ps$add_dep("N", "R", CondEqual$new(TRUE))
+      ps$add_dep("S", "U", CondEqual$new(FALSE))
 
       super$initialize(
         id = "classif.J48",
