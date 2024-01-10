@@ -34,7 +34,7 @@
 #' print(learner)
 #'
 #' # Define a Task
-#' task = tsk("boston_housing")
+#' task = mlr3::tsk("boston_housing")
 #'
 #'
 #' # Train the learner
