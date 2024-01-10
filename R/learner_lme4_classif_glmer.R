@@ -19,7 +19,7 @@
 #'
 #' @template seealso_learner
 #' @examples
-#' if (requireNamespace("lme4", quietly = TRUE)) {
+#' if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
 #' # Define the Learner and set parameter values
 #'
 #'
@@ -27,7 +27,7 @@
 #' print(learner)
 #'
 #' # Define a Task
-#' task = as_task_classif(faraway::toenail, target = "outcome")
+#' task = mlr3::as_task_classif(faraway::toenail, target = "outcome")
 #'
 #' # Train the learner
 #' learner$train(task)

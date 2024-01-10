@@ -85,7 +85,7 @@ lrn("classif.glmer")
 }
 
 \examples{
-if (requireNamespace("lme4", quietly = TRUE)) {
+if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
 # Define the Learner and set parameter values
 
 
@@ -93,7 +93,7 @@ learner = lrn("classif.glmer", formula = outcome ~ treatment * visit + (1 | ID))
 print(learner)
 
 # Define a Task
-task = as_task_classif(faraway::toenail, target = "outcome")
+task = mlr3::as_task_classif(faraway::toenail, target = "outcome")
 
 # Train the learner
 learner$train(task)

@@ -95,7 +95,7 @@ learner = lrn("regr.priority_lasso",
 print(learner)
 
 # Define a Task
-task = as_task_regr(prioritylasso::pl_data, target = "pl_out")
+task = mlr3::as_task_regr(prioritylasso::pl_data, target = "pl_out")
 
 # Create train and test set
 ids = partition(task)

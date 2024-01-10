@@ -16,7 +16,7 @@
 #'
 #' @template seealso_learner
 #' @examples
-#' if (requireNamespace("lme4", quietly = TRUE)) {
+#' if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
 #' # Define the Learner and set parameter values
 #'
 #'
@@ -24,7 +24,7 @@
 #' print(learner)
 #'
 #' # Define a Task
-#' task = as_task_regr(lme4::sleepstudy, target = "Reaction")
+#' task = mlr3::as_task_regr(lme4::sleepstudy, target = "Reaction")
 #'
 #'# Create train and test set
 #' ids = partition(task)

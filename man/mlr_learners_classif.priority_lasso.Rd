@@ -93,7 +93,7 @@ learner = lrn("classif.priority_lasso", type.measure = "auc",
 print(learner)
 
 # Define a Task
-task = as_task_classif(prioritylasso::pl_data, target = "pl_out")
+task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
 
 # Train the learner on the training ids
 learner$train(task)
