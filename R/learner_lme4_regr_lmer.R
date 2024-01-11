@@ -20,14 +20,14 @@
 #' # Define the Learner and set parameter values
 #'
 #'
-#' learner=lrn("regr.lmer", formula = Reaction ~ Days + (Days | Subject))
+#' learner = lrn("regr.lmer", formula = Reaction ~ Days + (Days | Subject))
 #' print(learner)
 #'
 #' # Define a Task
 #' task = mlr3::as_task_regr(lme4::sleepstudy, target = "Reaction")
 #'
 #'# Create train and test set
-#' ids = partition(task)
+#' ids = mlr3::partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
