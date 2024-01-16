@@ -100,10 +100,11 @@ lrn("surv.bart")
 }
 
 \examples{
-if (mlr3misc::require_namespaces("BART", quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.bart")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.bart")
 print(learner)
+
 }
 }
 \references{

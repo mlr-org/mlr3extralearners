@@ -17,12 +17,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' if (mlr3misc::require_namespaces(c("mlr3extralearners", "mboost"), quietly = TRUE)) {
-#' # Define the Learner and set parameter values
-#' learner = lrn("surv.mboost")
-#' print(learner)
-#' }
+#' @template simple_example
 #' @export
 LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
   inherit = mlr3proba::LearnerSurv,

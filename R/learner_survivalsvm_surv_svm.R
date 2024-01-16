@@ -28,7 +28,6 @@
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.svm", gamma.mu = 0.1)
 #' print(learner)
-#' }
 #'
 #' # Define a Task
 #' task = mlr3::tsk("grace")
@@ -41,9 +40,6 @@
 #'
 #' # print the model
 #' print(learner$model)
-#'
-#' # importance method
-#' if("importance" %in% learner$properties) print(learner$importance)
 #'
 #' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)

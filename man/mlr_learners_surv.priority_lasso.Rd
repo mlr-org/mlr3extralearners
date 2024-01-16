@@ -85,10 +85,11 @@ lrn("surv.priority_lasso")
 }
 
 \examples{
-if (mlr3misc::require_namespaces("prioritylasso", quietly = TRUE)) {
+if (mlr3misc::require_namespaces(lrn("surv.priority_lasso")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.priority_lasso")
 print(learner)
+
 }
 }
 \references{

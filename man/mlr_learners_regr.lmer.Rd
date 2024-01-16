@@ -90,7 +90,6 @@ learner$train(task, row_ids = ids$train)
 # print the model
 print(learner$model)
 
-
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 

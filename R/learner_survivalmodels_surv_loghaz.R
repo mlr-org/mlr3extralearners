@@ -21,13 +21,7 @@
 #' `r format_bib("gensheimer2018simple", "kvamme2019time")`
 #'
 #' @template seealso_learner
-#' @examples
-#' packages <- c("mlr3extralearners", "survivalmodels", "distr6", "reticulate")
-#' if (mlr3misc::require_namespaces(packages, quietly = TRUE))  {
-#' # Define the Learner and set parameter values
-#' learner = lrn("surv.loghaz")
-#' print(learner)
-#' }
+#' @template simple_example
 #' @export
 LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
   inherit = mlr3proba::LearnerSurv,

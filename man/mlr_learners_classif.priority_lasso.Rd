@@ -95,7 +95,7 @@ print(learner)
 # Define a Task
 task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
 
-# Train the learner on the training ids
+# Train the learner
 learner$train(task)
 
 # print the model

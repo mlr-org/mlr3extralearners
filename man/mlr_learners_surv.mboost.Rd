@@ -52,10 +52,11 @@ lrn("surv.mboost")
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mlr3extralearners", "mboost"), quietly = TRUE)) {
+if (mlr3misc::require_namespaces(lrn("surv.mboost")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.mboost")
 print(learner)
+
 }
 }
 \references{

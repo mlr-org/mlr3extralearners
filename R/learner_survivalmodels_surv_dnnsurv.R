@@ -24,13 +24,7 @@
 #' `r format_bib("zhao2019dnnsurv")`
 #'
 #' @template seealso_learner
-#' @examples
-#' packages <- c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
-#' if (mlr3misc::require_namespaces(packages, quietly = TRUE))  {
-#' # Define the Learner and set parameter values
-#' learner = lrn("surv.dnnsurv")
-#' print(learner)
-#' }
+#' @template simple_example
 #' @export
 LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
   inherit = mlr3proba::LearnerSurv,

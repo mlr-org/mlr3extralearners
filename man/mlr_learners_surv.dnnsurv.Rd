@@ -98,11 +98,11 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-packages <- c("mlr3extralearners", "survivalmodels", "keras", "pseudo", "tensorflow", "distr6")
-if (mlr3misc::require_namespaces(packages, quietly = TRUE))  {
+if (mlr3misc::require_namespaces(lrn("surv.dnnsurv")$packages, quietly = TRUE)) {
 # Define the Learner and set parameter values
 learner = lrn("surv.dnnsurv")
 print(learner)
+
 }
 }
 \references{
