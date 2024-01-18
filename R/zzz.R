@@ -42,4 +42,4 @@ register_mlr3 = function(libname, pkgname) {
 
 # nocov end
 
-# leanify_package()
+leanify_package()
