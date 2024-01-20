@@ -28,7 +28,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
     initialize = function() {
       action_levels = c("ignore", "warning", "message", "stop")
       param_set = ps(
-        formula = p_uty(default = formula(), tags = c("train", "required"), custom_check = check_formula),
+        formula = p_uty(tags = c("train", "required"), custom_check = check_formula),
         start = p_uty(default = NULL, tags = "train"),
         verbose = p_int(default = 0, lower = 0, tags = "train"),
         offset = p_uty(default = NULL, tags = "train"),
