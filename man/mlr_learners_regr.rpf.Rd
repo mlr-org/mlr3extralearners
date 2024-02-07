@@ -68,11 +68,33 @@ Package 'randomPlantedForest' is not on CRAN and has to be installed from GitHub
 }
 
 \examples{
+set.seed(123)
+if (mlr3misc::require_namespaces(lrn("regr.rpf")$packages, quietly = TRUE)) {
+# Define the Learner and set parameter values
 learner = mlr3::lrn("regr.rpf")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = mlr3::tsk("mtcars")
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# print the model
+print(learner$model)
+
+# importance method
+if("importance" \%in\% learner$properties) print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+}
 }
 \references{
 Hiabu, Munir, Mammen, Enno, Meyer, T. J (2023).

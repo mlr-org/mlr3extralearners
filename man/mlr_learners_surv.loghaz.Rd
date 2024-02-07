@@ -87,11 +87,12 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-learner = mlr3::lrn("surv.loghaz")
+if (mlr3misc::require_namespaces(lrn("surv.loghaz")$packages, quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("surv.loghaz")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+}
 }
 \references{
 Gensheimer, F M, Narasimhan, BA (2018).

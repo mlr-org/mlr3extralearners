@@ -24,7 +24,7 @@
 #' `r format_bib("zhao2019dnnsurv")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
   inherit = mlr3proba::LearnerSurv,

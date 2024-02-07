@@ -52,11 +52,12 @@ lrn("surv.mboost")
 }
 
 \examples{
-learner = mlr3::lrn("surv.mboost")
+if (mlr3misc::require_namespaces(lrn("surv.mboost")$packages, quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("surv.mboost")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+}
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

@@ -13,7 +13,7 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
   inherit = mlr3proba::LearnerSurv,

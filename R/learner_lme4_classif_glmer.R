@@ -18,7 +18,24 @@
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
+#' # Define the Learner and set parameter values
+#'
+#'
+#' learner = lrn("classif.glmer", formula = outcome ~ treatment * visit + (1 | ID))
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::as_task_classif(faraway::toenail, target = "outcome")
+#'
+#' # Train the learner
+#' learner$train(task)
+#'
+#' # print the model
+#' print(learner$model)
+#'
+#' }
 #' @export
 LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
   inherit = LearnerClassif,

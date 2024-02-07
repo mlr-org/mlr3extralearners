@@ -89,11 +89,12 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-learner = mlr3::lrn("surv.deephit")
+if (mlr3misc::require_namespaces(lrn("surv.deephit")$packages, quietly = TRUE)) {
+# Define the Learner and set parameter values
+learner = lrn("surv.deephit")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+}
 }
 \references{
 Lee, Changhee, Zame, William, Yoon, Jinsung, Van Der Schaar, Mihaela (2018).

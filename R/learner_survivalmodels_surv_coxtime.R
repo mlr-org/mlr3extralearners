@@ -15,7 +15,7 @@
 #' `r format_bib("kvamme2019time")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
   inherit = mlr3proba::LearnerSurv,
