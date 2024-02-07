@@ -111,7 +111,7 @@ Calls <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_classifier_lazy.html" cl
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
     
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>I</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>F</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>K</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>E</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>W</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>X</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>A</td><td>untyped</td><td>weka.core.neighboursearch.LinearNNSearch</td><td></td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>untyped</td><td></td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>subset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>weight</td><td>character</td><td>-</td><td>I, F</td><td>-</td></tr><tr><td>K</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>E</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>W</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>X</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>A</td><td>character</td><td>LinearNNSearch</td><td>BallTree, CoverTree, FilteredNeighbourSearch, KDTree, LinearNNSearch</td><td>-</td></tr><tr><td>output_debug_info</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>do_not_check_capabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>num_decimal_places</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>batch_size</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>options</td><td>untyped</td><td></td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
     
@@ -126,6 +126,11 @@ Calls <code><a href="https://rdrr.io/pkg/RWeka/man/Weka_classifier_lazy.html" cl
 </ul></li>
 <li><p>Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern</p></li>
+<li><p><code>weight</code>:</p><ul><li><p>original id: I and F</p></li>
+</ul></li>
+<li><p>Reason for change: original <code>I</code> and <code>F</code> params are interdependent
+(<code>I</code> can only be <code>TRUE</code> when <code>F</code> is <code>FALSE</code> and vice versa).
+The easiest way to encode this is to combine <code>I</code> and <code>F</code> into one factor param.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -212,12 +217,12 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "I"                         "F"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "K"                         "E"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "W"                         "X"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "A"                         "output_debug_info"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "do_not_check_capabilities" "num_decimal_places"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "batch_size"                "options"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "weight"                    "K"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "E"                         "W"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "X"                         "A"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "output_debug_info"         "do_not_check_capabilities"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "num_decimal_places"        "batch_size"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "options"                  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
