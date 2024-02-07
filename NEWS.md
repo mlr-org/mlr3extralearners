@@ -12,6 +12,9 @@
 * Various minor doc improvements
 * Added the `distr` predict type to the `surv.cv_glmnet` and `surv.glmnet`
 learners (thanks to @bblodfon)
+* Fix: `I` and `F` params from IBk learner are too interdependent (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
+  Combined them into one factor param `weight` that has two levels -- `I` and `F`.
+* Fix: `U` must be `FALSE` for `S` to be tunable in J48 learner.
 
 # mlr3extralearners 0.7.1
 

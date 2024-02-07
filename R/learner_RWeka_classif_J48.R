@@ -68,12 +68,13 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
       ps$add_dep("R", "U", CondEqual$new(FALSE))
       ps$add_dep("N", "U", CondEqual$new(FALSE))
       ps$add_dep("N", "R", CondEqual$new(TRUE))
+      ps$add_dep("S", "U", CondEqual$new(FALSE))
 
       super$initialize(
         id = "classif.J48",
         packages = c("mlr3extralearners", "RWeka"),
         feature_types = c("numeric", "factor", "ordered", "integer"),
-        predict_types = "response",
+        predict_types = c("response", "prob"),
         param_set = ps,
         properties = c("twoclass", "multiclass", "missings"),
         man = "mlr3extralearners::mlr_learners_classif.J48",
@@ -84,38 +85,15 @@ LearnerClassifJ48 = R6Class("LearnerClassifJ48",
 
   private = list(
     .train = function(task) {
-      params = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(RWeka::J48)
-      arg_names = setdiff(names(params), ctrl_arg_names)
-      ctrl = params[which(names(params) %in% ctrl_arg_names)]
-      pars = params[which(names(params) %nin% ctrl_arg_names)]
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      f = task$formula()
-      data = task$data()
-      invoke(RWeka::J48, formula = f, data = data, control = ctrl, .args = pars)
+      weka_learner = RWeka::J48
+      pars = self$param_set$get_values(tags = "train")
+      rweka_train(task$data(), task$formula(), pars, weka_learner)
     },
 
     .predict = function(task) {
-      response = NULL
-      prob = NULL
-      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
-
-      if (self$predict_type == "response") {
-        response = invoke(predict, self$model, newdata = newdata, type = "class",
-          .args = pars
-        )
-      } else {
-        prob = mlr3misc::invoke(predict, self$model, newdata = newdata, type = "prob",
-          .args = pars
-        )
-      }
-      list(response = response, prob = prob)
+      newdata = ordered_features(task, self)
+      rweka_predict(newdata, pars, self$predict_type, self$model)
     }
   )
 )
