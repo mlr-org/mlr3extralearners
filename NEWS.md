@@ -1,6 +1,7 @@
 # mlr3extralearners 0.7.1-9000
 
-* Fix: Replace hardcoded `VectorDistribution`s from partykit survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
+* Fix: Replace hardcoded `VectorDistribution`s from partykit and flexsurv survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
+* Feat: Add `discrete` parameter in `surv.parametric` learner to return `Matdist` survival predictions
 * Added method `selected_features()` to CoxBoost survival learners (thanks to @bblodfon)
 * Added the Random Planted Forest Learner (thanks to @jemus42)
 * re-added the catboost learner as it was requested (was previously removed
@@ -11,6 +12,10 @@
 * Various minor doc improvements
 * Added the `distr` predict type to the `surv.cv_glmnet` and `surv.glmnet`
 learners (thanks to @bblodfon)
+* Feat: Added many new WEKA learners (thanks to @damirpolat)
+* Fix: `I` and `F` params from IBk learner are too interdependent (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
+  Combined them into one factor param `weight` that has two levels -- `I` and `F`.
+* Fix: `U` must be `FALSE` for `S` to be tunable in J48 learner.
 
 # mlr3extralearners 0.7.1
 

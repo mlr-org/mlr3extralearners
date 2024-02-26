@@ -6,7 +6,7 @@
 #' Generalized linear models with elastic net regularization.
 #' Calls [glmnet::glmnet()] from package \CRANpkg{glmnet}.
 #'
-# @section Custom mlr3 parameters:
+#' @section Custom mlr3 parameters:
 #' - `family` is set to `"cox"` and cannot be changed.
 #'
 #' @details

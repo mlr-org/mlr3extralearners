@@ -25,6 +25,14 @@
 #' - Reason for change: This learner contains changed ids of the following control arguments
 #' since their ids contain irregular pattern
 #'
+#' - `weight`:
+#'   - original id: I and F
+#'
+#' - Reason for change: original `I` and `F` params are interdependent
+#' (`I` can only be `TRUE` when `F` is `FALSE` and vice versa).
+#' The easiest way to encode this is to combine `I` and `F` into one factor param.
+#'
+#'
 #' @references
 #' `r format_bib("aha1991instance")`
 #'
@@ -37,18 +45,17 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       ps = ps(
         subset = p_uty(tags = "train"),
         na.action = p_uty(tags = "train"),
-        I = p_lgl(default = FALSE, tags = "train"),
-        F = p_lgl(default = FALSE, tags = "train"),
+        weight = p_fct(levels = c("I", "F"), tags = "train"),
         K = p_int(default = 1L, lower = 1L, tags = "train"),
         E = p_lgl(default = FALSE, tags = "train"),
         W = p_int(default = 0L, lower = 0L, tags = "train"),
         X = p_lgl(default = FALSE, tags = "train"),
-        A = p_uty(default = "weka.core.neighboursearch.LinearNNSearch",
-          tags = "train"),
+        A = p_fct(default = "LinearNNSearch",
+                  levels = c("BallTree", "CoverTree", "FilteredNeighbourSearch", "KDTree", "LinearNNSearch"),
+                  tags = "train"),
         output_debug_info = p_lgl(default = FALSE, tags = "train"),
         do_not_check_capabilities = p_lgl(default = FALSE, tags = "train"),
         num_decimal_places = p_int(default = 2L, lower = 1L, tags = "train"),
@@ -71,27 +78,15 @@ LearnerRegrIBk = R6Class("LearnerRegrIBk",
 
   private = list(
     .train = function(task) {
-      params = self$param_set$get_values(tags = "train")
-      ctrl_arg_names = weka_control_args(RWeka::IBk)
-      arg_names = setdiff(names(params), ctrl_arg_names)
-      ctrl = params[which(names(params) %in% ctrl_arg_names)]
-      pars = params[which(names(params) %nin% ctrl_arg_names)]
-
-      if (length(ctrl) > 0L) {
-        names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
-        ctrl = invoke(RWeka::Weka_control, .args = ctrl)
-      }
-
-      f = task$formula()
-      data = task$data()
-      invoke(RWeka::IBk, formula = f, data = data, control = ctrl, .args = pars)
+      weka_learner = RWeka::IBk
+      pars = self$param_set$get_values(tags = "train")
+      rweka_train(task$data(), task$formula(), pars, weka_learner)
     },
 
     .predict = function(task) {
-      newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
-      response = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = response)
+      newdata = ordered_features(task, self)
+      rweka_predict(newdata, pars, self$predict_type, self$model)
     }
   )
 )
