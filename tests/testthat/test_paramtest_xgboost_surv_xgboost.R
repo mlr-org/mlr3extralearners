@@ -7,14 +7,16 @@ x = mlr3misc::map_chr(x, function(x) x[1])
 x = gsub(",", replacement = "", x)
 # these are defined on the same line as colsample_bytree and cannot be scraped therefore
 x = append(x, values = c("colsample_bylevel", "colsample_bynode", "base_score"))
-# valyes which do not match regex
+# values which do not match regex
 x = append(x, values = c("interaction_constraints", "monotone_constraints", "base_score"))
 # only defined in help page but not in signature or website
 x = append(x, values = "lambda_bias")
 add_params_xgboost = x
 
 test_that("surv.xgboost", {
-  learner = lrn("surv.xgboost.cox", nrounds = 1)
+  learner = lrn("surv.xgboost")
+  learner_cox = lrn("surv.xgboost.cox")
+  learner_aft = lrn("surv.xgboost.aft")
   fun = list(xgboost::xgb.train, xgboost::xgboost, add_params_xgboost)
   exclude = c(
     "x", # handled by mlr3
@@ -43,10 +45,17 @@ test_that("surv.xgboost", {
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
+  paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
+  expect_paramtest(paramtest_cox)
+  paramtest_aft = run_paramtest(learner_aft, fun, exclude, tag = "train")
+  expect_paramtest(paramtest_aft)
 })
 
 test_that("predict surv.xgboost", {
-  learner = lrn("surv.xgboost.cox")
+  learner = lrn("surv.xgboost")
+  learner_cox = lrn("surv.xgboost.cox")
+  learner_aft = lrn("surv.xgboost.aft")
+
   fun = xgboost:::predict.xgb.Booster # nolint
   exclude = c(
     "object", # handled by mlr3
@@ -58,9 +67,14 @@ test_that("predict surv.xgboost", {
     "predinteraction", # always FALSE
     "reshape", # handled internally
     "training", # always FALSE
-    "objective" # survival specific
+    "objective", # survival specific
+    "ntreelimit" # doc says "deprecated, use 'iterationrange' instead"
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
+  paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest_cox)
+  paramtest_aft = run_paramtest(learner_aft, fun, exclude, tag = "predict")
+  expect_paramtest(paramtest_aft)
 })
