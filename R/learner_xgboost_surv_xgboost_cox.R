@@ -8,6 +8,15 @@
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:cox` by default.
 #'
+#' @details
+#' Three types of prediction are returned for this learner:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
+#'
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:

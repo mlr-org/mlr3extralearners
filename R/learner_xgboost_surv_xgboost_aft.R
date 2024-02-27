@@ -8,6 +8,14 @@
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:aft` by default.
 #'
+#' @details
+#' This learner returns three prediction types:
+#' 1. `response`: the mean survival time \eqn{T_{mean}} for each test observation
+#' 2. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation, equal to \eqn{-log(T_{mean})}.
+#' Higher survival time denotes lower risk.
+#' 3. `crank`: same as `lp`.
+#'
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:
@@ -171,13 +179,18 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       pv = self$param_set$get_values(tags = "predict")
       model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
-      lp = log(invoke(
-        predict, model,
+      # log(T) = lp + error => T = exp(lp) * exp(error)
+      # predict returns mean(T)
+      mean_time = invoke(
+        predict,
+        model,
         newdata = newdata,
         .args = pv
-      ))
+      )
+      # T ~ exp(lp), as exp(error) doesn't change the ranking
+      lp = -log(mean_time)
 
-      mlr3proba::.surv_return(lp = -lp, response = lp) # crank = -response
+      mlr3proba::.surv_return(crank = lp, lp = lp, response = mean_time)
     }
   )
 )
