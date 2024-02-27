@@ -14,7 +14,7 @@
 #' - `nrounds` is initialized to 1.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
-#' - `objective` is initialized to `survival:aft`.
+#' - `objective` is initialized to `survival:cox`.
 #'
 #' @template section_early_stopping
 #' @templateVar id surv.xgboost.cox
@@ -33,9 +33,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        # remove?
-        #aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
-        #aft_loss_distribution_scale = p_dbl(tags = "train"),
         alpha                       = p_dbl(0, default = 0, tags = "train"),
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
@@ -106,8 +103,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
-      #ps$add_dep("aft_loss_distribution", "objective", CondEqual$new("survival:aft"))
-      #ps$add_dep("aft_loss_distribution_scale", "objective", CondEqual$new("survival:aft"))
 
       # custom defaults
       ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none",
