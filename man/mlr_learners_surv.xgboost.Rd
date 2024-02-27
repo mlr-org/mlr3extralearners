@@ -19,33 +19,16 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \item \code{nrounds} is initialized to 1.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
+\item \code{objective} is initialized to \code{survival:cox} for survival analysis.
 }
-}
-
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{type} is initialized to \code{cox}.
-}
-}
-
-\section{Early stopping}{
-
-Early stopping can be used to find the optimal number of boosting rounds.
-The \code{early_stopping_set} parameter controls which set is used to monitor the performance.
-Set \code{early_stopping_set = "test"} to monitor the performance of the model on the test set while training.
-The test set for early stopping can be set with the \code{"test"} row role in the \link[mlr3:Task]{mlr3::Task}.
-Additionally, the range must be set in which the performance must increase with \code{early_stopping_rounds} and the maximum number of boosting rounds with \code{nrounds}.
-While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
-Not that using the test set for early stopping can potentially bias the performance scores.
 }
 
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost.cox")
-lrn("surv.xgboost.cox")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost")
+lrn("surv.xgboost")
 }\if{html}{\out{</div>}}
 }
 
@@ -53,7 +36,7 @@ lrn("surv.xgboost.cox")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
+\item Predict Types: \dQuote{crank}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{xgboost}
 }
@@ -94,7 +77,6 @@ lrn("surv.xgboost.cox")
    normalize_type \tab character \tab tree \tab tree, forest \tab - \cr
    nrounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nthread \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ntreelimit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    objective \tab character \tab survival:cox \tab survival:cox, survival:aft \tab - \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -122,8 +104,26 @@ lrn("surv.xgboost.cox")
 }
 }
 
+\section{Early stopping}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+The \code{early_stopping_set} parameter controls which set is used to monitor the
+performance.
+By default, \code{early_stopping_set = "none"} which disables early stopping.
+Set \code{early_stopping_set = "test"} to monitor the performance of the model on
+the test set while training.
+The test set for early stopping can be set with the \code{"test"} row role in the
+\link[mlr3:Task]{mlr3::Task}.
+Additionally, the range must be set in which the performance must increase
+with \code{early_stopping_rounds} and the maximum number of boosting rounds with
+\code{nrounds}.
+While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
+Not that using the test set for early stopping can potentially bias the
+performance scores.
+}
+
 \examples{
-learner = mlr3::lrn("surv.xgboost.cox")
+learner = mlr3::lrn("surv.xgboost")
 print(learner)
 
 # available parameters:
@@ -135,11 +135,6 @@ Chen, Tianqi, Guestrin, Carlos (2016).
 In \emph{Proceedings of the 22nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining}, 785--794.
 ACM.
 \doi{10.1145/2939672.2939785}.
-
-Avinash B, Hyunsu C, Toby H (2022).
-\dQuote{Survival Regression with Accelerated Failure Time Model in XGBoost.}
-\emph{Journal of Computational and Graphical Statistics}.
-ISSN 15372715, \doi{10.1080/10618600.2022.2067548}.
 }
 \seealso{
 \itemize{
@@ -186,17 +181,9 @@ be-marc
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboost$new(type = "cox")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboost$new()}\if{html}{\out{</div>}}
 }
 
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{type}}{Type of survival modeling. Default is \code{cox} (Cox Proportional
-Hazards model), alternative \code{aft} (Accelerated Failure Time model)}
-}
-\if{html}{\out{</div>}}
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvXgboost-importance"></a>}}
