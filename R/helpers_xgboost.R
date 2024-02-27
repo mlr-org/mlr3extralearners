@@ -1,0 +1,27 @@
+# helper function to construct an `xgb.DMatrix` object
+get_xgb_mat = function(task, objective, row_ids = NULL) {
+  # use all task rows if `rows_ids` is not specified
+  if (is.null(row_ids)) row_ids = task$row_ids
+
+  data = task$data(rows = row_ids, cols = task$feature_names)
+  truth = task$truth(rows = row_ids)
+  times = truth[, 1]
+  status = truth[, 2]
+
+  if (objective == "survival:cox") { # Cox
+    times[status != 1] = -1L * times[status != 1]
+    data = xgboost::xgb.DMatrix(
+      data = as_numeric_matrix(data),
+      label = times
+    )
+  } else { # AFT
+    y_lower_bound = y_upper_bound = times
+    y_upper_bound[status == 0] = Inf
+
+    data = xgboost::xgb.DMatrix(as_numeric_matrix(data))
+    xgboost::setinfo(data, "label_lower_bound", y_lower_bound)
+    xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
+  }
+
+  data
+}
