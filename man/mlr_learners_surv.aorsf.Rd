@@ -35,17 +35,18 @@ lrn("surv.aorsf")
    n_tree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_split \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_retry \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   n_thread \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_thread \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_aggregate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   pred_simplify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    mtry \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_with_replacement \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sample_fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    control_type \tab character \tab fast \tab fast, cph, net \tab - \cr
    split_rule \tab character \tab logrank \tab logrank, cstat \tab - \cr
-   control_fast_do_scale \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   control_fast_method \tab character \tab efron \tab efron, breslow \tab - \cr
-   control_cph_method \tab character \tab efron \tab efron, breslow \tab - \cr
+   control_fast_do_scale \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   control_fast_ties \tab character \tab efron \tab efron, breslow \tab - \cr
+   control_cph_ties \tab character \tab efron \tab efron, breslow \tab - \cr
    control_cph_eps \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    control_cph_iter_max \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    control_net_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -54,9 +55,10 @@ lrn("surv.aorsf")
    leaf_min_obs \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_min_events \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_min_obs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   split_min_stat \tab numeric \tab 3.841459 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   split_min_stat \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_pred_type \tab character \tab surv \tab none, surv, risk, chf \tab - \cr
    importance \tab character \tab anova \tab none, anova, negate, permute \tab - \cr
+   importance_max_pvalue \tab numeric \tab 0.01 \tab  \tab \eqn{[1e-04, 0.9999]}{[1e-04, 0.9999]} \cr
    oobag_pred_horizon \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -90,9 +92,10 @@ Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G,
 \emph{The Annals of Applied Statistics}, \bold{13}(3).
 \doi{10.1214/19-aoas1261}.
 
-Jaeger BC, Welden S, Lenoir K, Speiser JL, Segar MW, Pandey A, Pajewski NM (2022).
+Jaeger BC, Welden S, Lenoir K, Speiser JL, Segar MW, Pandey A, Pajewski NM (2023).
 \dQuote{Accelerated and interpretable oblique random survival forests.}
-\emph{arXiv preprint arXiv:2208.01129}.
+\emph{Journal of Computational and Graphical Statistics}, 1--16.
+\doi{10.1080/10618600.2023.2231048}.
 }
 \seealso{
 \itemize{
