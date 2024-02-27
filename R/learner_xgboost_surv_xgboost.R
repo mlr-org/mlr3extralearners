@@ -14,10 +14,9 @@
 #' - `verbose` is initialized to 0.
 #' - `objective` is initialized to `survival:cox` for survival analysis.
 #'
-#' @template section_early_stopping
-#'
 #' @templateVar id surv.xgboost
 #' @template learner
+#' @template section_early_stopping
 #'
 #' @references
 #' `r format_bib("chen_2016")`

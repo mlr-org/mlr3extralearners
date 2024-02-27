@@ -19,6 +19,7 @@
 #' @template section_early_stopping
 #' @templateVar id surv.xgboost.aft
 #' @template learner
+#' @template section_early_stopping
 #'
 #' @references
 #' `r format_bib("chen_2016", "barnwal2022")`
