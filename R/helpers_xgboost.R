@@ -27,3 +27,15 @@ get_xgb_mat = function(task, objective, row_ids = NULL) {
 
   data
 }
+
+# return vector of importance scores given an `xgb.Booster` model
+xgb_imp = function(model) {
+  if (is.null(model)) {
+    stopf("No model stored")
+  }
+
+  imp = xgboost::xgb.importance(model = model)
+  set_names(imp$Gain, imp$Feature)
+
+  imp
+}

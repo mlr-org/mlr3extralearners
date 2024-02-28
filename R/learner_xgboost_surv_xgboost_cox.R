@@ -134,14 +134,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-
-      imp = xgboost::xgb.importance(
-        model = self$model
-      )
-      set_names(imp$Gain, imp$Feature)
+      xgb_imp(self$model$model)
     }
   ),
 

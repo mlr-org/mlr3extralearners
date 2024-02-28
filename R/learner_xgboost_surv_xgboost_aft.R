@@ -139,14 +139,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-
-      imp = xgboost::xgb.importance(
-        model = self$model
-      )
-      set_names(imp$Gain, imp$Feature)
+      xgb_imp(self$model)
     }
   ),
 
@@ -187,7 +180,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         newdata = newdata,
         .args = pv
       )
-      # T ~ exp(lp), as exp(error) doesn't change the ranking
+      # T ~ exp(lp), as exp(error) > 0 doesn't change the ranking
       lp = -log(mean_time)
 
       mlr3proba::.surv_return(crank = lp, lp = lp, response = mean_time)
