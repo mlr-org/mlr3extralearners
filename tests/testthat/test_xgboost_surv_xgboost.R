@@ -76,3 +76,22 @@ test_that("two types of xgboost models can be initialized", {
   expect_true(all(p3$response > 0)) # predicted mean times
   expect_true(all(is.na(p4$response))) # no responses
 })
+
+test_that("surv.xgboost.cox distr via breslow works", {
+  with_seed(42, {
+    part = partition(task, ratio = 0.8)
+    cox = lrn("surv.xgboost.cox", nrounds = 3)
+    cox$train(task, part$train)
+    p_train = cox$predict(task, part$train)
+    p_test  = cox$predict(task, part$test)
+
+    surv = breslow(
+      times = task$times(part$train),
+      status = task$status(part$train),
+      lp_train = p_train$lp,
+      lp_test = p_test$lp
+    )
+
+    expect_equal(surv, p_test$data$distr)
+  })
+})
