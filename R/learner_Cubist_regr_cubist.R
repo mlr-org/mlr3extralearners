@@ -24,18 +24,16 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       # FIXME:
-      param_set = ParamSet$new(
-        list(
-          ParamInt$new("committees", lower = 1L, upper = 100L, default = 1L, tags = c("train", "required")),
-          ParamLgl$new("unbiased", default = FALSE, tags = "train"),
-          ParamInt$new("rules", lower = 1L, default = 100L, tags = "train"),
-          ParamDbl$new("extrapolation", lower = 0, upper = 100, default = 100, tags = "train"),
-          ParamInt$new("sample", lower = 0L, default = 0L, tags = "train"),
-          ParamInt$new("seed", default = NO_DEF, tags = "train"),
-          ParamUty$new("label", default = "outcome", tags = "train"),
-          ParamInt$new("neighbors", lower = 0L, upper = 9L, default = 0L, tags = c("predict", "required"))
+      param_set = ps(
+          committees = p_int(lower = 1L, upper = 100L, tags = c("train", "required")),
+          unbiased = p_lgl(default = FALSE, tags = "train"),
+          rules = p_int(lower = 1L, default = 100L, tags = "train"),
+          extrapolation = p_dbl(lower = 0, upper = 100, default = 100, tags = "train"),
+          sample = p_int(lower = 0L, default = 0L, tags = "train"),
+          seed = p_int(default = NO_DEF, tags = "train"),
+          label = p_uty(default = "outcome", tags = "train"),
+          neighbors = p_int(lower = 0L, upper = 9L, tags = c("predict", "required"))
         )
-      )
       param_set$values$committees = 1L
       param_set$values$neighbors = 0L
 
