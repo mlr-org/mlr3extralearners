@@ -6,7 +6,7 @@
 \title{Survival Bayesian Additive Regression Trees Learner}
 \description{
 Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-survival data. Calls \code{\link[BART:mc.surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
+survival data. Calls \code{\link[BART:surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
 }
 \details{
 Two types of prediction are returned for this learner:
