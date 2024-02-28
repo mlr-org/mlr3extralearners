@@ -186,7 +186,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ))
 
       # extract (times, status) from train data
-      truth = getinfo(train_data, "label")
+      truth = xgboost::getinfo(train_data, "label")
       times = abs(truth)
       status = as.integer(truth > 0) # negative times => censored
       surv = mlr3proba::breslow(times = times, status = status,
