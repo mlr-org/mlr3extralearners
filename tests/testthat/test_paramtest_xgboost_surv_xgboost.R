@@ -1,6 +1,6 @@
 x = rvest::read_html("https://xgboost.readthedocs.io/en/latest/parameter.html")
 xli = rvest::html_elements(x, "li")
-xp = rvest::html_elements(x, "li")
+xp = rvest::html_elements(x, "p")
 x = c(rvest::html_text2(xli), rvest::html_text2(xp))
 x = grep("default=", x, value = TRUE)
 x = strsplit(x, split = " ")
