@@ -31,14 +31,14 @@ lrn("regr.cubist")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   committees \tab integer \tab 1 \tab  \tab \eqn{[1, 100]}{[1, 100]} \cr
+   committees \tab integer \tab - \tab  \tab \eqn{[1, 100]}{[1, 100]} \cr
    unbiased \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    rules \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    extrapolation \tab numeric \tab 100 \tab  \tab \eqn{[0, 100]}{[0, 100]} \cr
    sample \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    label \tab untyped \tab outcome \tab  \tab - \cr
-   neighbors \tab integer \tab 0 \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
+   neighbors \tab integer \tab - \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
 }
 }
 

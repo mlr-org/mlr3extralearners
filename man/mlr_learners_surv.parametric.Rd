@@ -92,7 +92,7 @@ lrn("surv.parametric")
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
-   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 

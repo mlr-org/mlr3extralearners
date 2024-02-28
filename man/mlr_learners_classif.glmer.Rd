@@ -47,7 +47,7 @@ lrn("classif.glmer")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   formula \tab untyped \tab formula \tab  \tab - \cr
+   formula \tab untyped \tab - \tab  \tab - \cr
    start \tab untyped \tab  \tab  \tab - \cr
    verbose \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    offset \tab untyped \tab  \tab  \tab - \cr
