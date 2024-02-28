@@ -36,6 +36,4 @@ xgb_imp = function(model) {
 
   imp = xgboost::xgb.importance(model = model)
   set_names(imp$Gain, imp$Feature)
-
-  imp
 }
