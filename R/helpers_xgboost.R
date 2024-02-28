@@ -1,4 +1,5 @@
 # helper function to construct an `xgb.DMatrix` object
+# that has both features and target (label) data
 get_xgb_mat = function(task, objective, row_ids = NULL) {
   # use all task rows if `rows_ids` is not specified
   if (is.null(row_ids)) row_ids = task$row_ids
@@ -9,6 +10,7 @@ get_xgb_mat = function(task, objective, row_ids = NULL) {
   status = truth[, 2]
 
   if (objective == "survival:cox") { # Cox
+    # censored => negative times, dead/event => positive times
     times[status != 1] = -1L * times[status != 1]
     data = xgboost::xgb.DMatrix(
       data = as_numeric_matrix(data),
