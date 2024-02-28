@@ -160,20 +160,39 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       }
       pv$early_stopping_set = NULL
 
-      invoke(xgboost::xgb.train, data = data, .args = pv)
+      list(
+        model = invoke(xgboost::xgb.train, data = data, .args = pv),
+        train_data = data # for breslow
+      )
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      model = self$model
+      model = self$model$model
       newdata = as_numeric_matrix(ordered_features(task, self))
-      lp = log(invoke(
+      # linear predictor on the test set
+      lp_test = log(invoke(
         predict, model,
         newdata = newdata,
         .args = pv
       ))
 
-      mlr3proba::.surv_return(lp = lp) # crank = lp
+      # linear predictor on the train set
+      train_data = self$model$train_data
+      lp_train = log(invoke(
+        predict, model,
+        newdata = train_data,
+        .args = pv,
+      ))
+
+      # extract (times, status) from train data
+      truth = getinfo(train_data, "label")
+      times = abs(truth)
+      status = as.integer(truth > 0) # negative times => censored
+      surv = mlr3proba::breslow(times = times, status = status,
+                                lp_train = lp_train, lp_test = lp_test)
+
+      mlr3proba::.surv_return(surv = surv, crank = lp_test, lp = lp_test)
     }
   )
 )
