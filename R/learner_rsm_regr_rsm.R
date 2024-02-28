@@ -28,7 +28,7 @@ LearnerRegrRSM = R6Class("LearnerRegrRSM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        modelfun = p_fct(default = "FO", levels = c("FO", "TWI", "SO"), tags = c("train", "required"))
+        modelfun = p_fct(levels = c("FO", "TWI", "SO"), tags = c("train", "required"))
       )
       param_set$values = list(modelfun = "FO")
 

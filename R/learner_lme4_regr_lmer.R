@@ -26,120 +26,102 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
     initialize = function() {
       action_levels = c("ignore", "warning", "message", "stop")
 
-      ps = ParamSet$new(list(
+      ps = ps(
         # lmer gives a lot of freedom in the formula spec, so we ask
         # for the formula directly. The formula *must* be set.
-        ParamUty$new(
-          id = "formula",
+        formula = p_uty(
           tags = c("required", "train"),
-          default = formula(),
           custom_check = check_formula
         ),
-        ParamLgl$new(id = "REML", tags = "train", default = TRUE),
-        ParamUty$new(id = "start", tags = "train", default = NULL),
-        ParamInt$new(id = "verbose", tags = "train", default = 0, lower = 0),
-        ParamUty$new(id = "offset", tags = "train", default = NULL),
-        ParamUty$new(id = "contrasts", tags = "train", default = NULL),
+        REML = p_lgl(tags = "train", default = TRUE),
+        start = p_uty(tags = "train", default = NULL),
+        verbose = p_int(tags = "train", default = 0, lower = 0),
+        offset = p_uty(tags = "train", default = NULL),
+        contrasts = p_uty(tags = "train", default = NULL),
 
         # Params passed to lmerControl()
-        ParamFct$new(
-          id = "optimizer",
+        optimizer = p_fct(
           levels = c("Nelder_Mead", "bobyqa", "nlminbwrap", "nloptwrap"),
           default = "nloptwrap",
           tags = "train"
         ),
-        ParamLgl$new(
-          id = "restart_edge",
+        restart_edge = p_lgl(
           default = FALSE,
           tags = "train"),
-        ParamDbl$new(
-          id = "boundary.tol",
+        boundary.tol = p_dbl(
           default = 1e-5,
           lower = 0,
           tags = "train"
         ),
-        ParamLgl$new(
-          id = "calc.derivs",
+        calc.derivs = p_lgl(
           default = TRUE,
           tags = "train"),
         # Input checks
-        ParamFct$new(
-          id = "check.nobs.vs.rankZ",
+        check.nobs.vs.rankZ = p_fct(
           levels = action_levels,
           default = "ignore",
           tags = "train"),
-        ParamFct$new(
-          id = "check.nobs.vs.nlev",
+        check.nobs.vs.nlev = p_fct(
           levels = action_levels,
           default = "stop",
           tags = "train"),
-        ParamFct$new(
-          id = "check.nlev.gtreq.5",
+        check.nlev.gtreq.5 = p_fct(
           levels = action_levels,
           default = "ignore",
           tags = "train"),
-        ParamFct$new(
-          id = "check.nlev.gtr.1",
+        check.nlev.gtr.1 = p_fct(
           levels = action_levels,
           default = "stop",
           tags = "train"),
-        ParamFct$new(
-          id = "check.nobs.vs.nRE",
+        check.nobs.vs.nRE = p_fct(
           levels = action_levels,
           default = "stop",
           tags = "train"),
-        ParamFct$new(
-          id = "check.rankX",
+        check.rankX = p_fct(
           levels = c(
             "message+drop.cols", "silent.drop.cols", "warn+drop.cols",
             "stop.deficient", "ignore"),
           default = "message+drop.cols",
           tags = "train"
         ),
-        ParamFct$new(
-          id = "check.scaleX",
+        check.scaleX = p_fct(
           levels = c(
             "warning", "stop", "silent.rescale",
             "message+rescale", "warn+rescale", "ignore"),
           default = "warning",
           tags = "train"
         ),
-        ParamFct$new(
-          id = "check.formula.LHS",
+        check.formula.LHS = p_fct(
           levels = action_levels,
           default = "stop",
           tags = "train"
         ),
         # Convergence checks
-        ParamUty$new(
-          id = "check.conv.grad",
+        check.conv.grad = p_uty(
           default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)',
           tags = "train"
         ),
-        ParamUty$new(
-          id = "check.conv.singular",
+        check.conv.singular = p_uty(
           default = 'lme4::.makeCC(action = "message", tol = formals(lme4::isSingular)$tol)',
           tags = "train"
         ),
-        ParamUty$new(
-          id = "check.conv.hess",
+        check.conv.hess = p_uty(
           default = 'lme4::.makeCC(action = "warning", tol = 1e-6)',
           tags = "train"
         ),
         # Additional optimizer controls
-        ParamUty$new(
-          id = "optCtrl",
+        optCtrl = p_uty(
           default = list(),
           tags = "train"
         ),
 
         # Prediction params
-        ParamUty$new(id = "newparams", default = NULL, tags = "predict"),
-        ParamUty$new(id = "re.form", default = NULL, tags = "predict"),
-        ParamLgl$new(id = "random.only", default = FALSE, tags = "predict"),
-        ParamLgl$new(id = "allow.new.levels", default = FALSE, tags = "predict"),
-        ParamUty$new(id = "na.action", default = "stats::na.pass", tags = "predict")
-      ))
+        newparams = p_uty(default = NULL, tags = "predict"),
+        re.form = p_uty(default = NULL, tags = "predict"),
+        random.only = p_lgl(default = FALSE, tags = "predict"),
+        allow.new.levels = p_lgl(default = FALSE, tags = "predict"),
+        na.action = p_uty(default = "stats::na.pass", tags = "predict")
+      )
 
       super$initialize(
         id = "regr.lmer",
