@@ -37,8 +37,8 @@ test_that("early stopping on the test set works", {
   )
 
   learner$train(task)
-  expect_named(learner$model$evaluation_log, c("iter", "train_cox_nloglik",
-    "test_cox_nloglik"))
+  expect_named(learner$model$model$evaluation_log,
+               c("iter", "train_cox_nloglik", "test_cox_nloglik"))
 })
 
 test_that("two types of xgboost models can be initialized", {
@@ -56,16 +56,21 @@ test_that("two types of xgboost models can be initialized", {
   expect_error(lrn("surv.xgboost.aft", objective = "survival:cox"))
   expect_error(lrn("surv.xgboost.cox", objective = "survival:aft"))
 
-  # predictions are the same no matter how you specify the objective
+  # check predictions types
   xgb_cox = lrn("surv.xgboost", objective = "survival:cox", nrounds = 3)
   xgb_aft = lrn("surv.xgboost", objective = "survival:aft", nrounds = 3)
 
   p1 = cox$train(task)$predict(task, row_ids = 1:10)
   p2 = xgb_cox$train(task)$predict(task, row_ids = 1:10)
-  expect_equal(p1, p2)
+  expect_equal(xgb_cox$importance(), cox$importance())
+  expect_equal(p1$crank, p2$crank)
+  expect_equal(p1$lp, p2$lp)
+  expect_class(p1$distr, "Matdist") # we get distr predictions
+  expect_null(p2$distr)
 
   p3 = aft$train(task)$predict(task, row_ids = 1:10)
   p4 = xgb_aft$train(task)$predict(task, row_ids = 1:10)
+  expect_equal(xgb_aft$importance(), aft$importance())
   expect_equal(p3$crank, p4$crank)
   expect_equal(p3$lp, p4$lp)
   expect_true(all(p3$response > 0)) # predicted mean times
