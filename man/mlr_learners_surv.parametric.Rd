@@ -6,35 +6,45 @@
 \title{Survival Fully Parametric Learner}
 \description{
 Parametric survival model.
-Calls \code{\link[survival:survreg]{survival::survreg()}} from \CRANpkg{survival}.
+Calls \code{\link[survivalmodels:parametric]{survivalmodels::parametric()}} from 'survivalmodels'.
 }
 \details{
-This learner allows you to choose a distribution and a model form to compose a predicted
-survival probability distribution.
+This learner allows you to choose a distribution and a model form to compose
+a predicted survival probability distribution.
 
-The internal predict method is implemented in this package as our implementation is more
-efficient for composition to distributions than \code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
+The predict method is implemented in \code{\link[survivalmodels:predict.parametric]{survivalmodels::predict.parametric()}}.
+Our implementation is more efficient for composition to distributions than
+\code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
 
-\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the variables in the test
-data set and \eqn{\beta} are the fitted coefficients.
-
-The distribution \code{distr} is composed using the \code{lp} and specifying a model form in the
-\code{type} hyper-parameter. These are as follows, with respective survival functions,
+Three types of prediction are returned for this learner:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
+variables in the test data set and \eqn{\beta} are the fitted coefficients.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+The distribution \code{distr} is composed using the \code{lp} and specifying a model
+form in the \code{type} hyper-parameter. These are as follows, with respective
+survival functions:
+}
 \itemize{
 \item Accelerated Failure Time (\code{aft}) \deqn{S(t) = S_0(\frac{t}{exp(lp)})}{S(t) = S0(t/exp(lp))}
 \item Proportional Hazards (\code{ph}) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
 \item Proportional Odds (\code{po}) \deqn{S(t) =
 \frac{S_0(t)}{exp(-lp) + (1-exp(-lp)) S_0(t)}}{S(t) = S0(t) / [exp(-lp) + S0(t) (1-exp(-lp))]}
-\item Tobit (\code{tobit}) \deqn{S(t) = 1 - F((t - lp)/s)}
+\item Tobit (\code{tobit}) \deqn{S(t) = 1 - \Phi((t - lp)/s)}
 }
 
-where \eqn{S_0}{S0} is the estimated baseline survival distribution (in this case
-with a given parametric form), \eqn{lp} is the predicted linear predictor, \eqn{F} is the cdf
-of a N(0, 1) distribution, and \eqn{s} is the fitted scale parameter.
+where \eqn{S_0}{S0} is the estimated baseline survival distribution (in
+this case with a given parametric form), \eqn{lp} is the predicted linear
+predictor, \eqn{\Phi} is the cdf of a N(0, 1) distribution, and \eqn{s} is
+the fitted scale parameter.
 
-Whilst any combination of distribution and model form is possible, this does not mean it will
-necessarily create a sensible or interpretable prediction. The following combinations are
-'sensible':
+Whilst any combination of distribution and model form is possible, this does
+not mean it will necessarily create a sensible or interpretable prediction.
+The following combinations are 'sensible':
 \itemize{
 \item dist = "gaussian"; type = "tobit";
 \item dist = "weibull"; type = "ph";
@@ -92,8 +102,14 @@ lrn("surv.parametric")
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
-   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
 \examples{
