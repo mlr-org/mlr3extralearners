@@ -1,6 +1,6 @@
 #' @title Survival Fully Parametric Learner
 #' @name mlr_learners_surv.parametric
-#' @author RaphaelS1
+#' @author bblodfon
 #'
 #' @description
 #' Parametric survival model.
@@ -10,7 +10,8 @@
 #' - `discrete` determines the class of the returned survival probability
 #' distribution. If `FALSE` (default) continuous probability
 #' distributions are returned using [distr6::VectorDistribution], otherwise
-#' [distr6::Matdist].
+#' [distr6::Matdist] (faster to calculate survival measures that require a
+#' `distr` prediction type).
 #'
 #' @template learner
 #' @templateVar id surv.parametric
@@ -25,15 +26,15 @@
 #' [survival::predict.survreg()].
 #'
 #' Three types of prediction are returned for this learner:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per test
 #' observation.
 #' `lp` is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
 #' variables in the test data set and \eqn{\beta} are the fitted coefficients.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' The distribution `distr` is composed using the `lp` and specifying a model
-#' form in the `type` hyper-parameter. These are as follows, with respective
+#' The distribution `distr` is composed using the `lp` predictions and specifying
+#' a model form in the `form` hyper-parameter. These are as follows, with respective
 #' survival functions:
 #'
 #' - Accelerated Failure Time (`aft`) \deqn{S(t) = S_0(\frac{t}{exp(lp)})}{S(t) = S0(t/exp(lp))}
@@ -49,16 +50,17 @@
 #'
 #' Whilst any combination of distribution and model form is possible, this does
 #' not mean it will necessarily create a sensible or interpretable prediction.
-#' The following combinations are 'sensible':
+#' The following combinations are 'sensible' (we note that ones mostly used in
+#' the literature):
 #'
-#' * dist = "gaussian"; type = "tobit";
-#' * dist = "weibull"; type = "ph";
-#' * dist = "exponential"; type = "ph";
-#' * dist = "weibull"; type = "aft";
-#' * dist = "exponential"; type = "aft";
-#' * dist = "loglogistic"; type = "aft";
-#' * dist = "lognormal"; type = "aft";
-#' * dist = "loglogistic"; type = "po";
+#' - dist = "gaussian"; form = "tobit";
+#' - dist = "weibull"; form = "ph"; (fairly used)
+#' - dist = "exponential"; form = "ph";
+#' - dist = "weibull"; form = "aft"; (fairly used, **default option**)
+#' - dist = "exponential"; form = "aft";
+#' - dist = "loglogistic"; form = "aft"; (fairly used)
+#' - dist = "lognormal"; form = "aft";
+#' - dist = "loglogistic"; form = "po";
 #'
 #' @references
 #' `r format_bib("kalbfleisch2011statistical")`
@@ -73,12 +75,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        type = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
-          tags = "predict"),
+        form = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
+                     tags = "predict"),
         na.action = p_uty(tags = "train"),
-        dist = p_fct(default = "weibull",
-          levels = c("weibull", "exponential", "gaussian",
-            "lognormal", "loglogistic"), tags = "train"),
+        dist = p_fct(default = "weibull", levels = c("weibull", "exponential",
+                     "gaussian", "lognormal", "loglogistic"), tags = "train"),
         parms = p_uty(tags = "train"),
         init = p_uty(tags = "train"),
         scale = p_dbl(default = 0, lower = 0, tags = "train"),
@@ -93,7 +94,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         discrete = p_lgl(tags = c("required", "predict"))
       )
 
-      ps$values = list(discrete = FALSE, dist = "weibull", type = "aft")
+      ps$values = list(discrete = FALSE, dist = "weibull", form = "aft")
 
       super$initialize(
         id = "surv.parametric",
@@ -136,11 +137,12 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         newdata = newdata,
         distr6 = !pv$discrete,
         type = "all",
-        .args = pars
+        .args = pv
       )
 
-      # lp is aft-style, where higher value = lower risk
-      list(crank = pred$risk, distr = pred$surv)
+      #' returned `risk` from survivalmodels is hp-style
+      #' ie higher value => higher risk
+      list(crank = pred$risk, lp = pred$risk, distr = pred$surv)
     }
   )
 )
