@@ -6,6 +6,11 @@
 #' eXtreme Gradient Boosting regression.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost}.
 #'
+#' **Note:** We strongly advise to use the separate [Cox][LearnerSurvXgboostCox]
+#' and [AFT][LearnerSurvXgboostAFT] xgboost survival learners since they represent
+#' two very distinct survival modeling methods and we offer more prediction
+#' types in the respective learners compared to the ones available here.
+#'
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:
