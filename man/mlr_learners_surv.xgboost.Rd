@@ -7,6 +7,11 @@
 \description{
 eXtreme Gradient Boosting regression.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost}.
+
+\strong{Note:} We strongly advise to use the separate \link[=LearnerSurvXgboostCox]{Cox}
+and \link[=LearnerSurvXgboostAFT]{AFT} xgboost survival learners since they represent
+two very distinct survival modeling methods and we offer more prediction
+types in the respective learners compared to the ones available here.
 }
 \note{
 To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
@@ -50,7 +55,7 @@ lrn("surv.xgboost")
    alpha \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
-   callbacks \tab untyped \tab list \tab  \tab - \cr
+   callbacks \tab untyped \tab list() \tab  \tab - \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -59,7 +64,7 @@ lrn("surv.xgboost")
    early_stopping_set \tab character \tab none \tab none, train, test \tab - \cr
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab  \tab  \tab - \cr
+   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
@@ -98,7 +103,7 @@ lrn("surv.xgboost")
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab  \tab  \tab - \cr
+   watchlist \tab untyped \tab NULL \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
 }

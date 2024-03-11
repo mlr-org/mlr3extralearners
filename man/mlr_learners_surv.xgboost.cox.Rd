@@ -61,7 +61,7 @@ lrn("surv.xgboost.cox")
    alpha \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
-   callbacks \tab untyped \tab list \tab  \tab - \cr
+   callbacks \tab untyped \tab list() \tab  \tab - \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -71,7 +71,7 @@ lrn("surv.xgboost.cox")
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    eval_metric \tab character \tab cox-nloglik \tab cox-nloglik \tab - \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab  \tab  \tab - \cr
+   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
@@ -110,7 +110,7 @@ lrn("surv.xgboost.cox")
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab  \tab  \tab - \cr
+   watchlist \tab untyped \tab NULL \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
 }

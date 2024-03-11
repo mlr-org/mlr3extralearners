@@ -13,9 +13,9 @@ set to \code{survival:aft} by default.
 \details{
 This learner returns three prediction types:
 \enumerate{
-\item \code{response}: the mean survival time \eqn{T_{mean}} for each test observation
+\item \code{response}: the estimated survival time \eqn{T} for each test observation.
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation, equal to \eqn{-log(T_{mean})}.
+observation, estimated as \eqn{-log(T)}.
 Higher survival time denotes lower risk.
 \item \code{crank}: same as \code{lp}.
 }
@@ -96,7 +96,7 @@ lrn("surv.xgboost.aft")
    alpha \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
-   callbacks \tab untyped \tab list \tab  \tab - \cr
+   callbacks \tab untyped \tab list() \tab  \tab - \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -106,7 +106,7 @@ lrn("surv.xgboost.aft")
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    eval_metric \tab character \tab aft-nloglik \tab aft-nloglik \tab - \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab  \tab  \tab - \cr
+   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
@@ -146,7 +146,7 @@ lrn("surv.xgboost.aft")
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab  \tab  \tab - \cr
+   watchlist \tab untyped \tab NULL \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
 }
