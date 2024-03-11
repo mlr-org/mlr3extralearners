@@ -10,9 +10,9 @@
 #'
 #' @details
 #' This learner returns three prediction types:
-#' 1. `response`: the mean survival time \eqn{T_{mean}} for each test observation
+#' 1. `response`: the estimated survival time \eqn{T} for each test observation.
 #' 2. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation, equal to \eqn{-log(T_{mean})}.
+#' observation, estimated as \eqn{-log(T)}.
 #' Higher survival time denotes lower risk.
 #' 3. `crank`: same as `lp`.
 #'
@@ -172,18 +172,22 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       pv = self$param_set$get_values(tags = "predict")
       model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
-      # log(T) = lp + error => T = exp(lp) * exp(error)
-      # predict returns mean(T)
-      mean_time = invoke(
+
+      # prediction returns survival time, see discussion below:
+      # https://discuss.xgboost.ai/t/understanding-xgboost-aft-predictions-question/3544
+      surv_time = invoke(
         predict,
         model,
         newdata = newdata,
         .args = pv
       )
-      # T ~ exp(lp), as exp(error) > 0 doesn't change the ranking
-      lp = -log(mean_time)
 
-      mlr3proba::.surv_return(crank = lp, lp = lp, response = mean_time)
+      # AFT formula: log(T) = lp + error => T = exp(lp + error)
+      # the '-' is due to AFT-style prediction, since
+      # higher values (survival times) => lower risk
+      lp = -log(surv_time)
+
+      mlr3proba::.surv_return(crank = lp, lp = lp, response = surv_time)
     }
   )
 )
