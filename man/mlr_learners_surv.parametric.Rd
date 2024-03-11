@@ -18,15 +18,15 @@ Our implementation is more efficient for composition to distributions than
 
 Three types of prediction are returned for this learner:
 \enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per test
 observation.
 \code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
 variables in the test data set and \eqn{\beta} are the fitted coefficients.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-The distribution \code{distr} is composed using the \code{lp} and specifying a model
-form in the \code{type} hyper-parameter. These are as follows, with respective
+The distribution \code{distr} is composed using the \code{lp} predictions and specifying
+a model form in the \code{form} hyper-parameter. These are as follows, with respective
 survival functions:
 }
 \itemize{
@@ -44,16 +44,17 @@ the fitted scale parameter.
 
 Whilst any combination of distribution and model form is possible, this does
 not mean it will necessarily create a sensible or interpretable prediction.
-The following combinations are 'sensible':
+The following combinations are 'sensible' (we note that ones mostly used in
+the literature):
 \itemize{
-\item dist = "gaussian"; type = "tobit";
-\item dist = "weibull"; type = "ph";
-\item dist = "exponential"; type = "ph";
-\item dist = "weibull"; type = "aft";
-\item dist = "exponential"; type = "aft";
-\item dist = "loglogistic"; type = "aft";
-\item dist = "lognormal"; type = "aft";
-\item dist = "loglogistic"; type = "po";
+\item dist = "gaussian"; form = "tobit";
+\item dist = "weibull"; form = "ph"; (fairly used)
+\item dist = "exponential"; form = "ph";
+\item dist = "weibull"; form = "aft"; (fairly used, \strong{default option})
+\item dist = "exponential"; form = "aft";
+\item dist = "loglogistic"; form = "aft"; (fairly used)
+\item dist = "lognormal"; form = "aft";
+\item dist = "loglogistic"; form = "po";
 }
 }
 \section{Custom mlr3 parameters}{
@@ -62,7 +63,8 @@ The following combinations are 'sensible':
 \item \code{discrete} determines the class of the returned survival probability
 distribution. If \code{FALSE} (default) continuous probability
 distributions are returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise
-\link[distr6:Matdist]{distr6::Matdist}.
+\link[distr6:Matdist]{distr6::Matdist} (faster to calculate survival measures that require a
+\code{distr} prediction type).
 }
 }
 
@@ -88,7 +90,7 @@ lrn("surv.parametric")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
+   form \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
    na.action \tab untyped \tab - \tab  \tab - \cr
    dist \tab character \tab weibull \tab weibull, exponential, gaussian, lognormal, loglogistic \tab - \cr
    parms \tab untyped \tab - \tab  \tab - \cr
@@ -136,7 +138,7 @@ John Wiley & Sons.
 }
 }
 \author{
-RaphaelS1
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvParametric}
@@ -167,6 +169,8 @@ RaphaelS1
 \if{latex}{\out{\hypertarget{method-LearnerSurvParametric-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
+returned \code{risk} from survivalmodels is hp-style
+i.e. higher value => higher risk
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvParametric$new()}\if{html}{\out{</div>}}
 }
