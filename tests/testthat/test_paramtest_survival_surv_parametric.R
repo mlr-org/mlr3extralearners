@@ -1,32 +1,24 @@
 test_that("paramtest surv.parametric train", {
   learner = lrn("surv.parametric")
-  fun = survival::survreg
+  fun = list(survivalmodels::parametric, survival::survreg)
   exclude = c(
-    "maxiter",
-    # control parameter
-    "rel.tolerance",
-    # control parameter
-    "toler.chol",
-    # control parameter
-    "debug",
-    # control parameter
-    "outer.max",
-    # control parameter
-    "control",
-    # control parameter
-    "weights",
-    # handled in mlr3
-    "subset",
-    # handled in mlr3
-    "x",
-    # x,y,data are all coerced to formula internally
-    "y",
-    # x,y,data are all coerced to formula internally
-    "model",
-    # model always returned
-    "data",
-    # x,y,data are all coerced to formula internally
-    "formula" # x,y,data are all coerced to formula internally
+    "maxiter", # control parameter
+    "rel.tolerance", # control parameter
+    "toler.chol", # control parameter
+    "debug", # control parameter
+    "outer.max", # control parameter
+    "control", # control parameter
+    "weights", # handled in mlr3
+    "subset", # handled in mlr3
+    "x", # x,y,data are all coerced to formula internally
+    "y", # x,y,data are all coerced to formula internally
+    "model", # model always returned
+    "data", # x,y,data are all coerced to formula internally
+    "formula", # x,y,data are all coerced to formula internally
+    "reverse", # handled in mlr3
+    "time_variable", # handled in mlr3
+    "status_variable", # handled in mlr3
+    "eps" # handled in mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -35,15 +27,16 @@ test_that("paramtest surv.parametric train", {
 
 test_that("paramtest surv.parametric predict", {
   learner = lrn("surv.parametric")
-  fun = list(.predict_survreg_continuous, .predict_survreg_discrete)
+  fun = survivalmodels:::predict.parametric
   exclude = c(
-    # handled via mlr3
-    "type",
-    "object",
-    "task",
-    "feature_names",
-    "tobit",
-    "learner",
+    "object", # handled internally
+    "newdata", # handled internally
+    "type", # handled internally
+    "distr6", # handled internally
+    "form", # handled internally
+    "times", # handled internally
+    "ntime", # handled internally
+    "round_time", # handled internally
     "discrete"
   )
 

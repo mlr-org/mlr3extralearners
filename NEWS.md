@@ -1,5 +1,6 @@
 # mlr3extralearners 0.7.1-9000
 
+* Ported `surv.parametric` code to `survivalmodels`, changed `type` parameter to `form` to avoid conflict with survivalmodels's default parameter list
 * Fix: Replace hardcoded `VectorDistribution`s from partykit and flexsurv survival learners with survival matrices (`Matdist`) (thanks to @bblodfon)
 * Feat: Add `discrete` parameter in `surv.parametric` learner to return `Matdist` survival predictions
 * Added method `selected_features()` to CoxBoost survival learners (thanks to @bblodfon)
