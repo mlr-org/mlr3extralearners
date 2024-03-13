@@ -78,8 +78,8 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         form = p_fct(default = "aft", levels = c("aft", "ph", "po", "tobit"),
                      tags = "predict"),
         na.action = p_uty(tags = "train"),
-        dist = p_fct(default = "weibull", levels = c("weibull", "exponential",
-                     "gaussian", "lognormal", "loglogistic"), tags = "train"),
+        dist = p_fct(default = "weibull", levels = c("weibull", "exponential", # nolint
+                     "gaussian", "lognormal", "loglogistic"), tags = "train"),# nolint
         parms = p_uty(tags = "train"),
         init = p_uty(tags = "train"),
         scale = p_dbl(default = 0, lower = 0, tags = "train"),
