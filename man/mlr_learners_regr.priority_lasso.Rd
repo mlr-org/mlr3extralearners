@@ -30,7 +30,7 @@ lrn("regr.priority_lasso")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   blocks \tab untyped \tab  \tab  \tab - \cr
+   blocks \tab untyped \tab - \tab  \tab - \cr
    max.coef \tab untyped \tab  \tab  \tab - \cr
    block1.penalization \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    lambda.type \tab character \tab lambda.min \tab lambda.min, lambda.1se \tab - \cr

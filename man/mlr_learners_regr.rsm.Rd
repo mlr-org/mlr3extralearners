@@ -42,7 +42,7 @@ lrn("regr.rsm")
 \section{Parameters}{
 \tabular{llll}{
    Id \tab Type \tab Default \tab Levels \cr
-   modelfun \tab character \tab FO \tab FO, TWI, SO \cr
+   modelfun \tab character \tab - \tab FO, TWI, SO \cr
 }
 }
 
