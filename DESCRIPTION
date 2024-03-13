@@ -101,7 +101,7 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels,
+    survivalmodels (>= 0.1.19),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
@@ -122,5 +122,5 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.2.3.9000
+RoxygenNote: 7.3.1.9000
 Config/Needs/website: rmarkdown

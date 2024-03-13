@@ -6,44 +6,55 @@
 \title{Survival Fully Parametric Learner}
 \description{
 Parametric survival model.
-Calls \code{\link[survival:survreg]{survival::survreg()}} from \CRANpkg{survival}.
+Calls \code{\link[survivalmodels:parametric]{survivalmodels::parametric()}} from 'survivalmodels'.
 }
 \details{
-This learner allows you to choose a distribution and a model form to compose a predicted
-survival probability distribution.
+This learner allows you to choose a distribution and a model form to compose
+a predicted survival probability distribution.
 
-The internal predict method is implemented in this package as our implementation is more
-efficient for composition to distributions than \code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
+The predict method is implemented in \code{\link[survivalmodels:predict.parametric]{survivalmodels::predict.parametric()}}.
+Our implementation is more efficient for composition to distributions than
+\code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
 
-\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the variables in the test
-data set and \eqn{\beta} are the fitted coefficients.
-
-The distribution \code{distr} is composed using the \code{lp} and specifying a model form in the
-\code{type} hyper-parameter. These are as follows, with respective survival functions,
+Three types of prediction are returned for this learner:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per test
+observation.
+\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
+variables in the test data set and \eqn{\beta} are the fitted coefficients.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+The distribution \code{distr} is composed using the \code{lp} predictions and specifying
+a model form in the \code{form} hyper-parameter. These are as follows, with respective
+survival functions:
+}
 \itemize{
 \item Accelerated Failure Time (\code{aft}) \deqn{S(t) = S_0(\frac{t}{exp(lp)})}{S(t) = S0(t/exp(lp))}
 \item Proportional Hazards (\code{ph}) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
 \item Proportional Odds (\code{po}) \deqn{S(t) =
 \frac{S_0(t)}{exp(-lp) + (1-exp(-lp)) S_0(t)}}{S(t) = S0(t) / [exp(-lp) + S0(t) (1-exp(-lp))]}
-\item Tobit (\code{tobit}) \deqn{S(t) = 1 - F((t - lp)/s)}
+\item Tobit (\code{tobit}) \deqn{S(t) = 1 - \Phi((t - lp)/s)}
 }
 
-where \eqn{S_0}{S0} is the estimated baseline survival distribution (in this case
-with a given parametric form), \eqn{lp} is the predicted linear predictor, \eqn{F} is the cdf
-of a N(0, 1) distribution, and \eqn{s} is the fitted scale parameter.
+where \eqn{S_0}{S0} is the estimated baseline survival distribution (in
+this case with a given parametric form), \eqn{lp} is the predicted linear
+predictor, \eqn{\Phi} is the cdf of a N(0, 1) distribution, and \eqn{s} is
+the fitted scale parameter.
 
-Whilst any combination of distribution and model form is possible, this does not mean it will
-necessarily create a sensible or interpretable prediction. The following combinations are
-'sensible':
+Whilst any combination of distribution and model form is possible, this does
+not mean it will necessarily create a sensible or interpretable prediction.
+The following combinations are 'sensible' (we note that ones mostly used in
+the literature):
 \itemize{
-\item dist = "gaussian"; type = "tobit";
-\item dist = "weibull"; type = "ph";
-\item dist = "exponential"; type = "ph";
-\item dist = "weibull"; type = "aft";
-\item dist = "exponential"; type = "aft";
-\item dist = "loglogistic"; type = "aft";
-\item dist = "lognormal"; type = "aft";
-\item dist = "loglogistic"; type = "po";
+\item dist = "gaussian"; form = "tobit";
+\item dist = "weibull"; form = "ph"; (fairly used)
+\item dist = "exponential"; form = "ph";
+\item dist = "weibull"; form = "aft"; (fairly used, \strong{default option})
+\item dist = "exponential"; form = "aft";
+\item dist = "loglogistic"; form = "aft"; (fairly used)
+\item dist = "lognormal"; form = "aft";
+\item dist = "loglogistic"; form = "po";
 }
 }
 \section{Custom mlr3 parameters}{
@@ -52,7 +63,8 @@ necessarily create a sensible or interpretable prediction. The following combina
 \item \code{discrete} determines the class of the returned survival probability
 distribution. If \code{FALSE} (default) continuous probability
 distributions are returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise
-\link[distr6:Matdist]{distr6::Matdist}.
+\link[distr6:Matdist]{distr6::Matdist} (faster to calculate survival measures that require a
+\code{distr} prediction type).
 }
 }
 
@@ -78,7 +90,7 @@ lrn("surv.parametric")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   type \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
+   form \tab character \tab aft \tab aft, ph, po, tobit \tab - \cr
    na.action \tab untyped \tab - \tab  \tab - \cr
    dist \tab character \tab weibull \tab weibull, exponential, gaussian, lognormal, loglogistic \tab - \cr
    parms \tab untyped \tab - \tab  \tab - \cr
@@ -94,6 +106,12 @@ lrn("surv.parametric")
    cluster \tab untyped \tab - \tab  \tab - \cr
    discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Installation}{
+
+Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
+\code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
 \examples{
@@ -120,7 +138,7 @@ John Wiley & Sons.
 }
 }
 \author{
-RaphaelS1
+bblodfon
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerSurv]{mlr3proba::LearnerSurv}} -> \code{LearnerSurvParametric}
@@ -151,6 +169,8 @@ RaphaelS1
 \if{latex}{\out{\hypertarget{method-LearnerSurvParametric-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
+returned \code{risk} from survivalmodels is hp-style
+i.e. higher value => higher risk
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvParametric$new()}\if{html}{\out{</div>}}
 }
