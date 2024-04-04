@@ -4,7 +4,7 @@ task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100)
 test_that("autotest", {
   skip_on_cran()
   with_seed(1, {
-    learner = lrn("surv.xgboost")
+    learner = suppressWarnings(lrn("surv.xgboost"))
     expect_learner(learner)
     result = run_autotest(learner, N = 10, check_replicable = FALSE)
     expect_true(result, info = result$error)
@@ -14,7 +14,7 @@ test_that("autotest", {
 test_that("manual aft", {
   skip_on_cran()
   set.seed(2)
-  learner = lrn("surv.xgboost", objective = "survival:aft")
+  learner = suppressWarnings(lrn("surv.xgboost", objective = "survival:aft"))
   task = generate_tasks(learner, 30)$sanity
   p = learner$train(task)$predict(task)
   expect_true(inherits(p, "PredictionSurv"))
@@ -57,8 +57,8 @@ test_that("two types of xgboost models can be initialized", {
   expect_error(lrn("surv.xgboost.cox", objective = "survival:aft"))
 
   # check predictions types
-  xgb_cox = lrn("surv.xgboost", objective = "survival:cox", nrounds = 3)
-  xgb_aft = lrn("surv.xgboost", objective = "survival:aft", nrounds = 3)
+  xgb_cox = suppressWarnings(lrn("surv.xgboost", objective = "survival:cox", nrounds = 3))
+  xgb_aft = suppressWarnings(lrn("surv.xgboost", objective = "survival:aft", nrounds = 3))
 
   p1 = cox$train(task)$predict(task, row_ids = 1:10)
   p2 = xgb_cox$train(task)$predict(task, row_ids = 1:10)

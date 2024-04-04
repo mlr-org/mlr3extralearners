@@ -15,7 +15,7 @@ x = append(x, values = "lambda_bias")
 add_params_xgboost = x
 
 test_that("surv.xgboost", {
-  learner = lrn("surv.xgboost")
+  learner = suppressWarnings(lrn("surv.xgboost"))
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
   fun = list(xgboost::xgb.train, xgboost::xgboost, add_params_xgboost)
@@ -53,7 +53,7 @@ test_that("surv.xgboost", {
 })
 
 test_that("predict surv.xgboost", {
-  learner = lrn("surv.xgboost")
+  learner = suppressWarnings(lrn("surv.xgboost"))
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
 
