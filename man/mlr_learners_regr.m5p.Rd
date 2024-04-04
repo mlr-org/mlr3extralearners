@@ -65,7 +65,7 @@ lrn("regr.m5p")
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    L \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

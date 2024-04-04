@@ -47,7 +47,7 @@ lrn("classif.catboost")
    grow_policy \tab character \tab SymmetricTree \tab SymmetricTree, Depthwise, Lossguide \tab - \cr
    min_data_in_leaf \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ignored_features \tab untyped \tab  \tab  \tab - \cr
+   ignored_features \tab untyped \tab NULL \tab  \tab - \cr
    one_hot_max_size \tab untyped \tab FALSE \tab  \tab - \cr
    has_time \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    rsm \tab numeric \tab 1 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
@@ -82,7 +82,7 @@ lrn("classif.catboost")
    devices \tab untyped \tab - \tab  \tab - \cr
    logging_level \tab character \tab Silent \tab Silent, Verbose, Info, Debug \tab - \cr
    metric_period \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   train_dir \tab untyped \tab catboost_info \tab  \tab - \cr
+   train_dir \tab untyped \tab "catboost_info" \tab  \tab - \cr
    model_size_reg \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    allow_writing_files \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    save_snapshot \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

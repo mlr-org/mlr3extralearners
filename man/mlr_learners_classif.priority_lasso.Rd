@@ -32,18 +32,18 @@ lrn("classif.priority_lasso")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    blocks \tab untyped \tab - \tab  \tab - \cr
    type.measure \tab character \tab - \tab class, auc \tab - \cr
-   max.coef \tab untyped \tab  \tab  \tab - \cr
+   max.coef \tab untyped \tab NULL \tab  \tab - \cr
    block1.penalization \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    lambda.type \tab character \tab lambda.min \tab lambda.min, lambda.1se \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nfolds \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   foldid \tab untyped \tab  \tab  \tab - \cr
+   foldid \tab untyped \tab NULL \tab  \tab - \cr
    cvoffset \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cvoffsetnfolds \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    return.x \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    handle.missingtestdata \tab character \tab - \tab none, omit.prediction, set.zero, impute.block \tab - \cr
    include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   use.blocks \tab untyped \tab all \tab  \tab - \cr
+   use.blocks \tab untyped \tab "all" \tab  \tab - \cr
    alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
    alpha \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    big \tab numeric \tab 9.9e+35 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -60,13 +60,13 @@ lrn("classif.priority_lasso")
    keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda \tab untyped \tab - \tab  \tab - \cr
    lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -  , Inf \tab  \tab - \cr
+   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
    parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    penalty.factor \tab untyped \tab - \tab  \tab - \cr
    pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

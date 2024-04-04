@@ -37,7 +37,7 @@ lrn("regr.cubist")
    extrapolation \tab numeric \tab 100 \tab  \tab \eqn{[0, 100]}{[0, 100]} \cr
    sample \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   label \tab untyped \tab outcome \tab  \tab - \cr
+   label \tab untyped \tab "outcome" \tab  \tab - \cr
    neighbors \tab integer \tab - \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
 }
 }

@@ -96,7 +96,7 @@ lrn("classif.decision_table")
    D_best \tab character \tab 1 \tab 0, 1, 2 \tab - \cr
    N_best \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    S_best \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

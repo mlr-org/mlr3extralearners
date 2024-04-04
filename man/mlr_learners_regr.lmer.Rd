@@ -42,10 +42,10 @@ lrn("regr.lmer")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    formula \tab untyped \tab - \tab  \tab - \cr
    REML \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   start \tab untyped \tab  \tab  \tab - \cr
+   start \tab untyped \tab NULL \tab  \tab - \cr
    verbose \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
-   contrasts \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
+   contrasts \tab untyped \tab NULL \tab  \tab - \cr
    optimizer \tab character \tab nloptwrap \tab Nelder_Mead, bobyqa, nlminbwrap, nloptwrap \tab - \cr
    restart_edge \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    boundary.tol \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -58,15 +58,15 @@ lrn("regr.lmer")
    check.rankX \tab character \tab message+drop.cols \tab message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore \tab - \cr
    check.scaleX \tab character \tab warning \tab warning, stop, silent.rescale, message+rescale, warn+rescale, ignore \tab - \cr
    check.formula.LHS \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
-   check.conv.grad \tab untyped \tab lme4::.makeCC("warning", tol = 2e-3, relTol = NULL) \tab  \tab - \cr
-   check.conv.singular \tab untyped \tab lme4::.makeCC(action = "message", tol = formals(lme4::isSingular)$tol) \tab  \tab - \cr
-   check.conv.hess \tab untyped \tab lme4::.makeCC(action = "warning", tol = 1e-6) \tab  \tab - \cr
-   optCtrl \tab untyped \tab list \tab  \tab - \cr
-   newparams \tab untyped \tab  \tab  \tab - \cr
-   re.form \tab untyped \tab  \tab  \tab - \cr
+   check.conv.grad \tab untyped \tab "lme4::.makeCC(\"warning\", tol = 2e-3, relTol = NULL)" \tab  \tab - \cr
+   check.conv.singular \tab untyped \tab "lme4::.makeCC(action = \"message\", tol = formals(lme4::isSingular)$tol)" \tab  \tab - \cr
+   check.conv.hess \tab untyped \tab "lme4::.makeCC(action = \"warning\", tol = 1e-6)" \tab  \tab - \cr
+   optCtrl \tab untyped \tab list() \tab  \tab - \cr
+   newparams \tab untyped \tab NULL \tab  \tab - \cr
+   re.form \tab untyped \tab NULL \tab  \tab - \cr
    random.only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
+   na.action \tab untyped \tab "stats::na.pass" \tab  \tab - \cr
 }
 }
 
