@@ -23,6 +23,7 @@
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
 #' - `objective` is initialized to `survival:aft`.
+#' - `eval_metric` is initialized to `aft-nloglik`.
 #'
 #' @template section_early_stopping
 #' @templateVar id surv.xgboost.aft

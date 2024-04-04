@@ -10,6 +10,7 @@
 #' and [AFT][LearnerSurvXgboostAFT] xgboost survival learners since they represent
 #' two very distinct survival modeling methods and we offer more prediction
 #' types in the respective learners compared to the ones available here.
+#' This learner will be deprecated in the future.
 #'
 #' @template note_xgboost
 #'
@@ -35,6 +36,9 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      .Deprecated(
+        msg = "'surv.xgboost' will be deprecated in the future. Use 'surv.xgboost.cox' or 'surv.xgboost.aft' learners instead." #nolint
+      )
 
       ps = ps(
         aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),

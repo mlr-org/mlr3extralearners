@@ -24,6 +24,7 @@
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
 #' - `objective` is initialized to `survival:cox`.
+#' - `eval_metric` is initialized to `cox-nloglik`.
 #'
 #' @templateVar id surv.xgboost.cox
 #' @template learner

@@ -32,6 +32,7 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
 \item \code{objective} is initialized to \code{survival:aft}.
+\item \code{eval_metric} is initialized to \code{aft-nloglik}.
 }
 }
 

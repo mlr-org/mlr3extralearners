@@ -12,6 +12,7 @@ Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpk
 and \link[=LearnerSurvXgboostAFT]{AFT} xgboost survival learners since they represent
 two very distinct survival modeling methods and we offer more prediction
 types in the respective learners compared to the ones available here.
+This learner will be deprecated in the future.
 }
 \note{
 To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
