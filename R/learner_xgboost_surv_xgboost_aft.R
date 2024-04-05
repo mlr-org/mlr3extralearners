@@ -6,7 +6,7 @@
 #' eXtreme Gradient Boosting regression using an **Accelerated Failure Time**
 #' objective.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:aft` by default.
+#' set to `survival:aft` and `eval_metric` to `aft-nloglik` by default.
 #'
 #' @details
 #' This learner returns three prediction types:
@@ -22,8 +22,6 @@
 #' - `nrounds` is initialized to 1.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
-#' - `objective` is initialized to `survival:aft`.
-#' - `eval_metric` is initialized to `aft-nloglik`.
 #'
 #' @template section_early_stopping
 #' @templateVar id surv.xgboost.aft
@@ -56,7 +54,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
         early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
         eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
-        eval_metric                 = p_fct("aft-nloglik", default = "aft-nloglik", tags = "train"),
         feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
         feval                       = p_uty(default = NULL, tags = "train"),
         gamma                       = p_dbl(0, default = 0, tags = "train"),
@@ -78,7 +75,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
         ntreelimit                  = p_int(1L, tags = "predict"),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
-        objective                   = p_fct("survival:aft", default = "survival:aft", tags = c("train", "predict")),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
         print_every_n               = p_int(1L, default = 1L, tags = "train"),
         process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
@@ -116,12 +112,9 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
-      ps$add_dep("aft_loss_distribution", "objective", CondEqual$new("survival:aft"))
-      ps$add_dep("aft_loss_distribution_scale", "objective", CondEqual$new("survival:aft"))
 
       # custom defaults
-      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none",
-                       objective = "survival:aft", eval_metric = "aft-nloglik")
+      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
 
       super$initialize(
         id = "surv.xgboost.aft",
@@ -147,6 +140,8 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      # manually add 'objective' and 'eval_metric'
+      pv = c(pv, objective = "survival:aft", eval_metric = "aft-nloglik")
 
       data = get_xgb_mat(task, pv$objective)
 
@@ -171,6 +166,8 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
+      # manually add 'objective'
+      pv = c(pv, objective = "survival:aft")
       model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
 

@@ -36,6 +36,7 @@ test_that("surv.xgboost", {
     "name_pred", # CLI parameter, not for R package
     "pred_margin", # CLI parameter, not for R package
     "eval_metric", # handled by mlr3
+    "objective", # handled by mlr3
     "label", # handled by mlr3
     "weight", # handled by mlr3
     "nthread", # handled by mlr3
@@ -68,7 +69,7 @@ test_that("predict surv.xgboost", {
     "predinteraction", # always FALSE
     "reshape", # handled internally
     "training", # always FALSE
-    "objective", # survival specific
+    "objective", # handled by mlr3
     "ntreelimit" # doc says "deprecated, use 'iterationrange' instead"
   )
 

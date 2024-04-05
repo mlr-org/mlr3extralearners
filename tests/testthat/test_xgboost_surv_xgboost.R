@@ -43,18 +43,20 @@ test_that("early stopping on the test set works", {
 
 test_that("two types of xgboost models can be initialized", {
   cox = lrn("surv.xgboost.cox", nrounds = 3)
-  expect_equal(cox$param_set$values$objective, "survival:cox")
-  expect_equal(cox$param_set$values$eval_metric, "cox-nloglik")
+  expect_null(cox$param_set$values$objective)
+  expect_null(cox$param_set$values$eval_metric)
   expect_equal(cox$predict_types, c("crank", "distr", "lp"))
 
   aft = lrn("surv.xgboost.aft", nrounds = 3)
-  expect_equal(aft$param_set$values$objective, "survival:aft")
-  expect_equal(aft$param_set$values$eval_metric, "aft-nloglik")
+  expect_null(aft$param_set$values$objective)
+  expect_null(aft$param_set$values$eval_metric)
   expect_equal(aft$predict_types, c("crank", "lp", "response"))
 
-  # can't change objective
+  # can't set objective
   expect_error(lrn("surv.xgboost.aft", objective = "survival:cox"))
+  expect_error(lrn("surv.xgboost.aft", objective = "survival:aft"))
   expect_error(lrn("surv.xgboost.cox", objective = "survival:aft"))
+  expect_error(lrn("surv.xgboost.cox", objective = "survival:cox"))
 
   # check predictions types
   xgb_cox = suppressWarnings(lrn("surv.xgboost", objective = "survival:cox", nrounds = 3))

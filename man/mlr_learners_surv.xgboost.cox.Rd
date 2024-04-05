@@ -8,7 +8,7 @@
 eXtreme Gradient Boosting regression using a \strong{Cox Proportional Hazards}
 objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
-set to \code{survival:cox} by default.
+set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik} by default.
 }
 \details{
 Three types of prediction are returned for this learner:
@@ -32,8 +32,6 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \item \code{nrounds} is initialized to 1.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
-\item \code{objective} is initialized to \code{survival:cox}.
-\item \code{eval_metric} is initialized to \code{cox-nloglik}.
 }
 }
 
@@ -70,7 +68,6 @@ lrn("surv.xgboost.cox")
    early_stopping_rounds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_set \tab character \tab none \tab none, train, test \tab - \cr
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   eval_metric \tab character \tab cox-nloglik \tab cox-nloglik \tab - \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
    feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -91,7 +88,6 @@ lrn("surv.xgboost.cox")
    nrounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nthread \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   objective \tab character \tab survival:cox \tab survival:cox \tab - \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    print_every_n \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    process_type \tab character \tab default \tab default, update \tab - \cr

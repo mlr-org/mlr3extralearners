@@ -6,7 +6,7 @@
 #' eXtreme Gradient Boosting regression using a **Cox Proportional Hazards**
 #' objective.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:cox` by default.
+#' set to `survival:cox` and `eval_metric` to `cox-nloglik` by default.
 #'
 #' @details
 #' Three types of prediction are returned for this learner:
@@ -23,8 +23,6 @@
 #' - `nrounds` is initialized to 1.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
-#' - `objective` is initialized to `survival:cox`.
-#' - `eval_metric` is initialized to `cox-nloglik`.
 #'
 #' @templateVar id surv.xgboost.cox
 #' @template learner
@@ -54,7 +52,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
         early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
         eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
-        eval_metric                 = p_fct("cox-nloglik", default = "cox-nloglik", tags = "train"),
         feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
         feval                       = p_uty(default = NULL, tags = "train"),
         gamma                       = p_dbl(0, default = 0, tags = "train"),
@@ -75,7 +72,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         nrounds                     = p_int(1L, tags = "train"),
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
-        objective                   = p_fct("survival:cox", default = "survival:cox", tags = c("train", "predict")),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
         print_every_n               = p_int(1L, default = 1L, tags = "train"),
         process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
@@ -115,8 +111,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       # custom defaults
-      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none",
-                       objective = "survival:cox", eval_metric = "cox-nloglik")
+      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
 
       super$initialize(
         id = "surv.xgboost.cox",
@@ -142,8 +137,10 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      # manually add 'objective' and 'eval_metric'
+      pv = c(pv, objective = "survival:cox", eval_metric = "cox-nloglik")
 
-      data = get_xgb_mat(task, pv$objective)
+      data = get_xgb_mat(task, objective = pv$objective)
 
       if ("weights" %in% task$properties) {
         xgboost::setinfo(data, "weight", task$weights$weight)
@@ -169,6 +166,9 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
+      # manually add 'objective'
+      pv = c(pv, objective = "survival:cox")
+
       model = self$model$model
       newdata = as_numeric_matrix(ordered_features(task, self))
       # linear predictor on the test set
