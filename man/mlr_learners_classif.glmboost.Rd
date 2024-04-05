@@ -39,10 +39,10 @@ lrn("classif.glmboost")
    mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
-   oobweights \tab untyped \tab  \tab  \tab - \cr
+   oobweights \tab untyped \tab NULL \tab  \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stopintern \tab untyped \tab FALSE \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
    contrasts.arg \tab untyped \tab - \tab  \tab - \cr
 }
 }

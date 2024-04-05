@@ -35,7 +35,7 @@ lrn("surv.blackboost")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
    custom.family \tab untyped \tab - \tab  \tab - \cr
-   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
+   nuirange \tab untyped \tab c(0, 100) \tab  \tab - \cr
    offset \tab untyped \tab - \tab  \tab - \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -73,7 +73,7 @@ lrn("surv.blackboost")
    caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    ipcw \tab untyped \tab 1 \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
 }
 }
 

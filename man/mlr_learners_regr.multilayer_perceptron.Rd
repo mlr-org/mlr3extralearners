@@ -69,7 +69,7 @@ lrn("regr.multilayer_perceptron")
    E \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    A \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    B \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   H \tab untyped \tab a \tab  \tab - \cr
+   H \tab untyped \tab "a" \tab  \tab - \cr
    C \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    I \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    R \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -78,7 +78,7 @@ lrn("regr.multilayer_perceptron")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

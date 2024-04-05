@@ -32,7 +32,7 @@ lrn("classif.C50")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    trials \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    rules \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   costs \tab untyped \tab  \tab  \tab - \cr
+   costs \tab untyped \tab NULL \tab  \tab - \cr
    subset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    bands \tab integer \tab - \tab  \tab \eqn{[0, 1000]}{[0, 1000]} \cr
    winnow \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -43,8 +43,8 @@ lrn("classif.C50")
    sample \tab numeric \tab 0 \tab  \tab \eqn{[0, 0.999]}{[0, 0.999]} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    earlyStopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   label \tab untyped \tab outcome \tab  \tab - \cr
-   na.action \tab untyped \tab stats::na.pass \tab  \tab - \cr
+   label \tab untyped \tab "outcome" \tab  \tab - \cr
+   na.action \tab untyped \tab "stats::na.pass" \tab  \tab - \cr
 }
 }
 

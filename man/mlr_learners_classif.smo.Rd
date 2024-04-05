@@ -89,7 +89,7 @@ lrn("classif.smo")
    V \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    W \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    K \tab character \tab PolyKernel \tab NormalizedPolyKernel, PolyKernel, Puk, RBFKernel, StringKernel \tab - \cr
-   calibrator \tab untyped \tab weka.classifiers.functions.Logistic \tab  \tab - \cr
+   calibrator \tab untyped \tab "weka.classifiers.functions.Logistic" \tab  \tab - \cr
    E_poly \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    L_poly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    C_poly \tab integer \tab 25007 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -100,7 +100,7 @@ lrn("classif.smo")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

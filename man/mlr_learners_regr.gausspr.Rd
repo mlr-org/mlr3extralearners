@@ -41,7 +41,7 @@ lrn("regr.gausspr")
    scale \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    order \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   kpar \tab untyped \tab automatic \tab  \tab - \cr
+   kpar \tab untyped \tab "automatic" \tab  \tab - \cr
    var \tab numeric \tab 0.001 \tab  \tab \eqn{[0.001, \infty)}{[0.001, Inf)} \cr
    variance.model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    tol \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

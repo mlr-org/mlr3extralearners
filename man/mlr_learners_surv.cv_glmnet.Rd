@@ -61,21 +61,21 @@ lrn("surv.cv_glmnet")
    exclude \tab untyped \tab - \tab  \tab - \cr
    exmx \tab numeric \tab 250 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    fdev \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   foldid \tab untyped \tab  \tab  \tab - \cr
+   foldid \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab untyped \tab - \tab  \tab - \cr
    grouped \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda \tab untyped \tab - \tab  \tab - \cr
    lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -  , Inf \tab  \tab - \cr
+   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nfolds \tab integer \tab 10 \tab  \tab \eqn{[3, \infty)}{[3, Inf)} \cr
    nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
    newoffset \tab untyped \tab - \tab  \tab - \cr
    parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    penalty.factor \tab untyped \tab - \tab  \tab - \cr

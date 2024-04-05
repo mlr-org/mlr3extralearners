@@ -36,13 +36,13 @@ lrn("classif.earth")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   wp \tab untyped \tab  \tab  \tab - \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
+   wp \tab untyped \tab NULL \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
    keepxy \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace \tab character \tab 0 \tab 0, .3, .5, 1, 2, 3, 4, 5 \tab - \cr
    degree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    penalty \tab numeric \tab 2 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   nk \tab untyped \tab  \tab  \tab - \cr
+   nk \tab untyped \tab NULL \tab  \tab - \cr
    thresh \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    minspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    endspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

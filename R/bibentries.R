@@ -586,8 +586,17 @@ bibentries = c( # nolint start
     month = "01",
     journal = "University of California, Berkeley"
   ),
+  barnwal2022 = bibentry("article",
+    title = "Survival Regression with Accelerated Failure Time Model in XGBoost",
+    author = "Barnwal Avinash, Cho Hyunsu and Hocking Toby",
+    doi = "10.1080/10618600.2022.2067548",
+    issn = "15372715",
+    journal = "Journal of Computational and Graphical Statistics",
+    publisher = "American Statistical Association",
+    year = "2022"
+  ),
   Kohavi1995 = bibentry("inproceedings",
-    author = "Ron Kohavi",           
+    author = "Ron Kohavi",
     booktitle = "8th European Conference on Machine Learning",
     pages = "174--189",
     publisher = "Springer",

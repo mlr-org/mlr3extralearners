@@ -1,16 +1,20 @@
-#' @title Extreme Gradient Boosting Survival Learner
-#' @author be-marc
-#' @name mlr_learners_surv.xgboost
+#' @title Extreme Gradient Boosting AFT Survival Learner
+#' @author bblodfon
+#' @name mlr_learners_surv.xgboost.aft
 #'
 #' @description
-#' eXtreme Gradient Boosting regression.
-#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost}.
+#' eXtreme Gradient Boosting regression using an **Accelerated Failure Time**
+#' objective.
+#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
+#' set to `survival:aft` and `eval_metric` to `aft-nloglik` by default.
 #'
-#' **Note:** We strongly advise to use the separate [Cox][LearnerSurvXgboostCox]
-#' and [AFT][LearnerSurvXgboostAFT] xgboost survival learners since they represent
-#' two very distinct survival modeling methods and we offer more prediction
-#' types in the respective learners compared to the ones available here.
-#' This learner will be deprecated in the future.
+#' @details
+#' This learner returns three prediction types:
+#' 1. `response`: the estimated survival time \eqn{T} for each test observation.
+#' 2. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation, estimated as \eqn{-log(T)}.
+#' Higher survival time denotes lower risk.
+#' 3. `crank`: same as `lp`.
 #'
 #' @template note_xgboost
 #'
@@ -18,28 +22,24 @@
 #' - `nrounds` is initialized to 1.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
-#' - `objective` is initialized to `survival:cox` for survival analysis.
 #'
-#' @templateVar id surv.xgboost
+#' @template section_early_stopping
+#' @templateVar id surv.xgboost.aft
 #' @template learner
 #' @template section_early_stopping
 #'
 #' @references
-#' `r format_bib("chen_2016")`
+#' `r format_bib("chen_2016", "barnwal2022")`
 #'
-#' @export
 #' @template seealso_learner
 #' @template example
-LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
+#' @export
+LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      .Deprecated(
-        msg = "'surv.xgboost' will be deprecated in the future. Use 'surv.xgboost.cox' or 'surv.xgboost.aft' learners instead." #nolint
-      )
-
       ps = ps(
         aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
         aft_loss_distribution_scale = p_dbl(tags = "train"),
@@ -54,7 +54,7 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
         early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
         eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
-        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"),
+        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
         feval                       = p_uty(default = NULL, tags = "train"),
         gamma                       = p_dbl(0, default = 0, tags = "train"),
         grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train"),
@@ -68,13 +68,13 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         max_leaves                  = p_int(0L, default = 0L, tags = "train"),
         maximize                    = p_lgl(default = NULL, special_vals = list(NULL), tags = "train"),
         min_child_weight            = p_dbl(0, default = 1, tags = "train"),
-        missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)),
+        missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)), #nolint
         monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train"),
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
         nrounds                     = p_int(1L, tags = "train"),
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
+        ntreelimit                  = p_int(1L, tags = "predict"),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
-        objective                   = p_fct(c("survival:cox", "survival:aft"), default = "survival:cox", tags = c("train", "predict")),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
         print_every_n               = p_int(1L, default = 1L, tags = "train"),
         process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
@@ -90,7 +90,7 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         strict_shape                = p_lgl(default = FALSE, tags = "predict"),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
         top_k                       = p_int(0, default = 0, tags = "train"),
-        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"),
+        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"), #nolint
         tweedie_variance_power      = p_dbl(1, 2, default = 1.5, tags = "train"),
         updater                     = p_uty(tags = "train"), # Default depends on the selected booster
         verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
@@ -112,21 +112,19 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
-      ps$add_dep("aft_loss_distribution", "objective", CondEqual$new("survival:aft"))
-      ps$add_dep("aft_loss_distribution_scale", "objective", CondEqual$new("survival:aft"))
 
       # custom defaults
       ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
 
       super$initialize(
-        id = "surv.xgboost",
+        id = "surv.xgboost.aft",
         param_set = ps,
-        predict_types = c("crank", "lp"),
+        predict_types = c("crank", "lp", "response"),
         feature_types = c("integer", "numeric"),
         properties = c("weights", "missings", "importance"),
         packages = c("mlr3extralearners", "xgboost"),
-        man = "mlr3extralearners::mlr_learners_surv.xgboost",
-        label = "Gradient Boosting"
+        man = "mlr3extralearners::mlr_learners_surv.xgboost.aft",
+        label = "Extreme Gradient Boosting AFT"
       )
     },
 
@@ -141,18 +139,9 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
 
   private = list(
     .train = function(task) {
-
       pv = self$param_set$get_values(tags = "train")
-
-      if (is.null(pv$objective)) {
-        pv$objective = "survival:cox"
-      }
-
-      if (pv$objective == "survival:cox") {
-        pv$eval_metric = "cox-nloglik"
-      } else {
-        pv$eval_metric = "aft-nloglik"
-      }
+      # manually add 'objective' and 'eval_metric'
+      pv = c(pv, objective = "survival:aft", eval_metric = "aft-nloglik")
 
       data = get_xgb_mat(task, pv$objective)
 
@@ -177,21 +166,28 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
+      # manually add 'objective'
+      pv = c(pv, objective = "survival:aft")
       model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
-      lp = log(invoke(
-        predict, model,
+
+      # prediction returns survival time, see discussion below:
+      # https://discuss.xgboost.ai/t/understanding-xgboost-aft-predictions-question/3544
+      surv_time = invoke(
+        predict,
+        model,
         newdata = newdata,
         .args = pv
-      ))
+      )
 
-      if (!is.null(pv$objective) && pv$objective == "survival:aft") {
-        lp = -lp
-      }
+      # AFT formula: log(T) = lp + error => T = exp(lp + error)
+      # the '-' is due to AFT-style prediction, since
+      # higher values (survival times) => lower risk
+      lp = -log(surv_time)
 
-      list(crank = lp, lp = lp)
+      mlr3proba::.surv_return(crank = lp, lp = lp, response = surv_time)
     }
   )
 )
 
-.extralrns_dict$add("surv.xgboost", LearnerSurvXgboost)
+.extralrns_dict$add("surv.xgboost.aft", LearnerSurvXgboostAFT)

@@ -51,8 +51,8 @@ lrn("classif.mob")
    caseweights \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    ytype \tab character \tab vector \tab vector, matrix, data.frame \tab - \cr
    xtype \tab character \tab matrix \tab vector, matrix, data.frame \tab - \cr
-   terminal \tab untyped \tab object \tab  \tab - \cr
-   inner \tab untyped \tab object \tab  \tab - \cr
+   terminal \tab untyped \tab "object" \tab  \tab - \cr
+   inner \tab untyped \tab "object" \tab  \tab - \cr
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    numsplit \tab character \tab left \tab left, center \tab - \cr
    catsplit \tab character \tab binary \tab binary, multiway \tab - \cr
