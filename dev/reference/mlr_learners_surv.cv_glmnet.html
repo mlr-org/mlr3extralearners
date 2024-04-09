@@ -12,7 +12,7 @@ Calls glmnet::cv.glmnet() from package glmnet."><meta name="robots" content="noi
     
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.7.1-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.8.0-9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,7 +87,7 @@ Calls glmnet::cv.glmnet() from package glmnet."><meta name="robots" content="noi
 
     <div class="ref-description section level2">
     <p>Generalized linear models with elastic net regularization.
-Calls <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> from package <a href="https://CRAN.R-project.org/package=glmnet" class="external-link"><span class="pkg">glmnet</span></a>.</p>
+Calls <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> from package <a href="https://CRAN.R-project.org/package=glmnet" class="external-link"><span class="pkg">glmnet</span></a>.</p>
     </div>
 
 
@@ -95,10 +95,10 @@ Calls <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>This learner returns two prediction types:</p><ol><li><p><code>lp</code>: a vector of linear predictors (relative risk scores), one per
 observation.
-Calculated using <code><a href="https://glmnet.stanford.edu/reference/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code>.</p></li>
+Calculated using <code><a href="https://rdrr.io/pkg/glmnet/man/predict.cv.glmnet.html" class="external-link">glmnet::predict.cv.glmnet()</a></code>.</p></li>
 <li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using <code><a href="https://glmnet.stanford.edu/reference/survfit.cv.glmnet.html" class="external-link">glmnet::survfit.cv.glmnet()</a></code>.
+Calculated using <code><a href="https://rdrr.io/pkg/glmnet/man/survfit.cv.glmnet.html" class="external-link">glmnet::survfit.cv.glmnet()</a></code>.
 Parameters <code>stype</code> and <code>ctype</code> relate to how <code>lp</code> predictions are transformed
 into survival predictions and are described in <code><a href="https://rdrr.io/pkg/survival/man/survfit.coxph.html" class="external-link">survival::survfit.coxph()</a></code>.
 By default the Breslow estimator is used.</p></li>
@@ -185,7 +185,7 @@ By default the Breslow estimator is used.</p></li>
 
 </div><p></p><hr><a id="method-LearnerSurvCVGlmnet-selected_features"></a><div class="section">
 <h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
-<p>Returns the set of selected features as reported by <code><a href="https://glmnet.stanford.edu/reference/predict.glmnet.html" class="external-link">glmnet::predict.glmnet()</a></code>
+<p>Returns the set of selected features as reported by <code><a href="https://rdrr.io/pkg/glmnet/man/predict.glmnet.html" class="external-link">glmnet::predict.glmnet()</a></code>
 with <code>type</code> set to <code>"nonzero"</code>.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvCVGlmnet</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span>lambda <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div><p></p></div>
