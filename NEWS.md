@@ -1,4 +1,6 @@
-# mlr3extralearners 0.7.1-9000
+# dev
+
+# mlr3extralearners 0.8.0
 
 * Added `surv.xgboost.cox` and `surv.xgboost.aft` separate survival learners. `distr` prediction on the cox xgboost learner is now estimated via Breslow by default and aft xgboost has now in addition a `response` prediction (survival time)
 * Ported `surv.parametric` code to `survivalmodels`, changed `type` parameter to `form` to avoid conflict with survivalmodels's default parameter list
