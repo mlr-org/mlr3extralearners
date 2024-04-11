@@ -71,7 +71,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         id = "surv.aorsf",
         packages = c("mlr3extralearners", "aorsf", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("crank", "distr"),
+        predict_types = c("crank", "distr", "response"),
         param_set = ps,
         properties = c("oob_error", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_surv.aorsf",
@@ -173,7 +173,11 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         pred_type = "surv",
         .args = pv
       )
-      mlr3proba::.surv_return(times = utime, surv = surv)
+      diffs_time = c(utime[1], diff(utime))
+      response = apply(surv, MARGIN = 1, FUN = function(x){
+        sum(diffs_time * x)
+      })
+      mlr3proba::.surv_return(times = utime, surv = surv, response = response)
     }
   )
 )
