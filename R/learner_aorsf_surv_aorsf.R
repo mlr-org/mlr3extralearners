@@ -7,6 +7,20 @@
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
 #' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
 #' the behaviour has to be configured using the parameter `na_action`.
+#'
+#'
+#' @details
+#' Five types of prediction are allowed for this learner:
+#'
+#' 1. 'none' : don't compute out-of-bag predictions
+#' 2. 'risk' : probability of event occurring at or before
+#'              `oobag_pred_horizon` (default).
+#' 3. 'surv' : 1 - risk.
+#' 4. 'chf'  : cumulative hazard function at `oobag_pred_horizon`.
+#' 5. 'mort' : mortality, i.e., the number of events expected if all
+#'              observations in the training data were identical to a
+#'              given observation.
+#'
 #' @template learner
 #' @templateVar id surv.aorsf
 #'
