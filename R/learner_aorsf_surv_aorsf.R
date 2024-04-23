@@ -5,21 +5,17 @@
 #' @description
 #' Accelerated oblique random survival forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
-#' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
-#' the behaviour has to be configured using the parameter `na_action`.
-#'
+#' Note that although the learner has the property `"missing"` and it can in
+#' principle deal with missing values, the behaviour has to be configured using
+#' the parameter `na_action`.
 #'
 #' @details
-#' Five types of prediction are allowed for this learner:
-#'
-#' 1. 'none' : don't compute out-of-bag predictions
-#' 2. 'risk' : probability of event occurring at or before
-#'              `oobag_pred_horizon` (default).
-#' 3. 'surv' : 1 - risk.
-#' 4. 'chf'  : cumulative hazard function at `oobag_pred_horizon`.
-#' 5. 'mort' : mortality, i.e., the number of events expected if all
-#'              observations in the training data were identical to a
-#'              given observation.
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' 2. `response`: the restricted mean survival time of each test observation,
+#' derived from the survival matrix prediction (`distr`).
+#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return].
 #'
 #' @template learner
 #' @templateVar id surv.aorsf
@@ -188,11 +184,16 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         pred_type = "surv",
         .args = pv
       )
+
       diffs_time = c(utime[1], diff(utime))
       response = apply(surv, MARGIN = 1, FUN = function(x){
         sum(diffs_time * x)
       })
-      mlr3proba::.surv_return(times = utime, surv = surv, response = response)
+
+      pred_list = mlr3proba::.surv_return(times = utime, surv = surv)
+      # provide `response` here so that we keep the expected mortality for `crank`
+      pred_list$response = response
+      pred_list
     }
   )
 )
