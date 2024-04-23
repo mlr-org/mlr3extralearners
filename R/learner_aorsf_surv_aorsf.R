@@ -174,9 +174,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
     },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      time = self$model$data[[task$target_names[1]]]
-      status = self$model$data[[task$target_names[2]]]
-      utime = sort(unique(time[status == 1]), decreasing = FALSE)
+      utime = task$unique_event_times() # increasing by default
       surv = mlr3misc::invoke(predict,
         self$model,
         new_data = ordered_features(task, self),
