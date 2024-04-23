@@ -19,7 +19,8 @@
 #' is a column of \eqn{1}s, the linear predictor (`lp`) is \eqn{lp = \beta X}.
 #' 2. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using `predict.flexsurvreg()`
+#' Calculated using `predict.flexsurvreg()`.
+#' 3. `crank`: same as `lp`.
 #'
 #' @section Initial parameter values:
 #' - `k`:
@@ -48,6 +49,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         bknots = p_uty(tags = "train"),
         scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
         timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
+        spline = p_fct(default = "rp", levels = c("rp", "splines2ns"), tags = "train"),
         inits = p_uty(tags = "train"),
         rtrunc = p_uty(tags = "train"),
         fixedpars = p_uty(tags = "train"),
@@ -143,7 +145,7 @@ predict_flexsurvreg = function(object, task, learner, ...) {
   # get survival probabilities in a list
   p = invoke(predict, learner$model, type = "survival", newdata = newdata)$.pred
 
-  times = p[[1]]$.time
+  times = p[[1]]$.eval_time
   ut = unique(times)
 
   # remove survival probabilities at duplicated time points
