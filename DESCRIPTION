@@ -72,7 +72,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.5.3),
+    mlr3proba (>= 0.6.1),
     mlr3pipelines,
     mvtnorm,
     nnet,
