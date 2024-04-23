@@ -15,14 +15,14 @@ test_that("autotest", {
 test_that("predicted time matches aorsf", {
   # time prediction is handled outside of aorsf.
   # this test is placed to ensure that we don't diverge.
-  task = tsk('lung')
-  aorsf = lrn('surv.aorsf',
-              control_type = 'fast',
-              na_action = 'impute_meanmode')
+  task = tsk("lung")
+  aorsf = lrn("surv.aorsf",
+              control_type = "fast",
+              na_action = "impute_meanmode")
   aorsf$train(task)
-  preds_mlr3 <- aorsf$predict(task)
-  preds_aorsf <- predict(aorsf$model,
-                         new_data = task$data(),
-                         pred_type = 'time')
+  preds_mlr3 = aorsf$predict(task)
+  preds_aorsf = predict(aorsf$model,
+                        new_data = task$data(),
+                        pred_type = "time")
   expect_equal(preds_mlr3$response, as.numeric(preds_aorsf))
 })
