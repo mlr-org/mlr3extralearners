@@ -74,6 +74,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         tree_seeds = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         oobag_pred_horizon = p_dbl(default = NULL, special_vals = list(NULL), tags = "train", lower = 0),
         oobag_eval_every = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
+        oobag_fun = p_uty(default = NULL, special_vals = list(NULL), tags = "train",
+                          custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))

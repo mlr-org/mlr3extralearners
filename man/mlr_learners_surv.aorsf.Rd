@@ -73,6 +73,7 @@ lrn("surv.aorsf")
    tree_seeds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    oobag_pred_horizon \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   oobag_fun \tab untyped \tab NULL \tab  \tab - \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr
