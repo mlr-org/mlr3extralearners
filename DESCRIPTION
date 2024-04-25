@@ -33,7 +33,7 @@ Imports:
     methods,
     mlr3 (>= 0.13.4),
     mlr3misc (>= 0.9.4),
-    paradox (>= 1.0.0),
+    paradox,
     R6
 Suggests:
     abess,
