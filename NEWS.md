@@ -1,6 +1,7 @@
 # dev
 
 * Added response (i.e., survival time) prediction to `aorsf` learner
+* Updated support for flexsurv v2.3
 
 # mlr3extralearners 0.8.0
 
