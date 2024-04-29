@@ -192,6 +192,29 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         thread_count = self$param_set$values$thread_count)
       names(imp) = self$state$train_task$feature_names
       sort(imp, decreasing = TRUE)
+    },
+
+    #' @description
+    #' Estimated memory usage of the model in bytes.
+    #' If `border_count` is not set, it defaults to 254.
+    #' If `depth` is not set, it defaults to 6.
+    #'
+    #' @param task [TaskClassif].
+    estimate_memory_usage = function(task) {
+      assert_task(task)
+      pv = self$param_set$get_values()
+
+      # https://github.com/autogluon/autogluon/blob/master/tabular/src/autogluon/tabular/models/xgboost/xgboost_model.py
+      # histogram size
+      border_count = pv$border_count %??% 254
+      depth = pv$depth %??% 6
+      histogram_size = 20 * task$ncol * border_count * 2^depth
+
+      # data size
+      data_set_size = task$nrow * task$ncol * 8
+      data_size = data_set_size * 5 + data_set_size / 4 * length(task$class_names)
+
+      histogram_size + data_size
     }
   ),
 
