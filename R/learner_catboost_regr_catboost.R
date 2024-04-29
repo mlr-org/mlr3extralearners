@@ -205,7 +205,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
       # data size
       data_set_size = task$nrow * task$ncol * 8
-      data_size = data_set_size * 5 + data_set_size / 4 * length(task$class_names)
+      data_size = data_set_size * 5 + data_set_size / 4
 
       histogram_size + data_size
     }
