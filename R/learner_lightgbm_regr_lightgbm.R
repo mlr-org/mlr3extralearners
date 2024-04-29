@@ -219,6 +219,29 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       } else {
         return(named_vector(self$state$train_task$feature_names, 0))
       }
+    },
+
+    #' @description
+    #' Estimated memory usage of the model in bytes.
+    #' If `max_bin` is not set, it defaults to 255.
+    #' If `num_leaves` is not set, it defaults to 31.
+    #'
+    #' @param task [TaskRegr].
+    estimate_memory_usage = function(task) {
+      assert_task(task)
+      pv = self$param_set$get_values()
+
+      # https://github.com/autogluon/autogluon/blob/master/tabular/src/autogluon/tabular/models/lgb/lgb_model.py
+      # histogram size
+      max_bin = pv$max_bin %??% 255
+      num_leaves = pv$num_leaves %??% 31
+      histogram_size = 20 * task$ncol * num_leaves * max_bin
+
+      # data size
+      data_set_size = task$nrow * task$ncol * 8
+      data_size = data_set_size * 5 + data_set_size / 4
+
+      histogram_size + data_size
     }
   ),
 
