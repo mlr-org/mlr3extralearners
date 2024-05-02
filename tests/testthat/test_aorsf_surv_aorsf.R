@@ -15,6 +15,7 @@ test_that("autotest", {
 test_that("predicted time matches aorsf", {
   # time prediction is handled outside of aorsf.
   # this test is placed to ensure that we don't diverge.
+  skip_if_not(utils::packageVersion("aorsf") > "0.1.3")
   task = tsk("lung")
   aorsf = lrn("surv.aorsf",
               control_type = "fast",
