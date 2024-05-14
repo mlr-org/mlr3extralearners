@@ -139,8 +139,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
-      invoke(mboost::glmboost, task$formula(task$feature_names),
-        data = task$data(), family = family, .args = pars)
+      invoke(mboost::glmboost, x=x, y=ysurv, family = family, .args = pars)
     },
 
     .predict = function(task) {
