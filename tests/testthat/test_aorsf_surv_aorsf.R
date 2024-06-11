@@ -17,9 +17,7 @@ test_that("predicted time matches aorsf", {
   # this test is placed to ensure that we don't diverge.
   skip_if_not(utils::packageVersion("aorsf") > "0.1.3")
   task = tsk("lung")
-  aorsf = lrn("surv.aorsf",
-              control_type = "fast",
-              na_action = "impute_meanmode")
+  aorsf = lrn("surv.aorsf", control_type = "fast")
   aorsf$train(task)
   preds_mlr3 = aorsf$predict(task)
   preds_aorsf = predict(aorsf$model,

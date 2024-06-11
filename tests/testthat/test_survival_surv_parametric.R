@@ -54,7 +54,7 @@ test_that("manualtest - aft", {
 test_that("missing", {
   learner = lrn("surv.parametric")
   learner$train(task)
-  expect_error(learner$predict(tsk("lung")))
+  expect_error(learner$predict(lung_missings))
 })
 
 test_that("quantile type", {
