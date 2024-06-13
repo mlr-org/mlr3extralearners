@@ -1,5 +1,8 @@
 # dev
 
+* Added response (i.e., survival time) prediction to `aorsf` learner
+* Updated support for flexsurv v2.3
+
 # mlr3extralearners 0.8.0
 
 * Added `surv.xgboost.cox` and `surv.xgboost.aft` separate survival learners. `distr` prediction on the cox xgboost learner is now estimated via Breslow by default and aft xgboost has now in addition a `response` prediction (survival time)

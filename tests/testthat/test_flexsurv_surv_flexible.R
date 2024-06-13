@@ -32,8 +32,7 @@ test_that("manualtest", {
 })
 
 test_that("missing", {
-  task = tsk("rats")
   learner = lrn("surv.flexible", k = 1)
-  learner$train(task)
-  expect_error(learner$predict(tsk("lung")))
+  learner$train(tsk("lung"))
+  expect_error(learner$predict(lung_missings))
 })

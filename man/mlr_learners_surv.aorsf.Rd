@@ -7,8 +7,19 @@
 \description{
 Accelerated oblique random survival forest.
 Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
-Note that although the learner has the property \code{"missing"} and it can in principle deal with missing values,
-the behaviour has to be configured using the parameter \code{na_action}.
+Note that although the learner has the property \code{"missing"} and it can in
+principle deal with missing values, the behaviour has to be configured using
+the parameter \code{na_action}.
+}
+\details{
+This learner returns three prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and (unique event) time points in columns.
+\item \code{response}: the restricted mean survival time of each test observation,
+derived from the survival matrix prediction (\code{distr}).
+\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
+}
 }
 \section{Dictionary}{
 
@@ -23,7 +34,7 @@ lrn("surv.aorsf")
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{crank}, \dQuote{distr}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{aorsf}, \CRANpkg{pracma}
 }
@@ -56,11 +67,13 @@ lrn("surv.aorsf")
    split_min_events \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_min_obs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    split_min_stat \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   oobag_pred_type \tab character \tab surv \tab none, surv, risk, chf \tab - \cr
+   oobag_pred_type \tab character \tab risk \tab none, surv, risk, chf, mort \tab - \cr
    importance \tab character \tab anova \tab none, anova, negate, permute \tab - \cr
    importance_max_pvalue \tab numeric \tab 0.01 \tab  \tab \eqn{[1e-04, 0.9999]}{[1e-04, 0.9999]} \cr
+   tree_seeds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    oobag_pred_horizon \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   oobag_fun \tab untyped \tab NULL \tab  \tab - \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr

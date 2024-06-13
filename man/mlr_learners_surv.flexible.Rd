@@ -19,7 +19,8 @@ and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
 is a column of \eqn{1}s, the linear predictor (\code{lp}) is \eqn{lp = \beta X}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{predict.flexsurvreg()}
+Calculated using \code{predict.flexsurvreg()}.
+\item \code{crank}: same as \code{lp}.
 }
 }
 \section{Dictionary}{
@@ -50,6 +51,7 @@ lrn("surv.flexible")
    bknots \tab untyped \tab - \tab  \tab - \cr
    scale \tab character \tab hazard \tab hazard, odds, normal \tab - \cr
    timescale \tab character \tab log \tab log, identity \tab - \cr
+   spline \tab character \tab rp \tab rp, splines2ns \tab - \cr
    inits \tab untyped \tab - \tab  \tab - \cr
    rtrunc \tab untyped \tab - \tab  \tab - \cr
    fixedpars \tab untyped \tab - \tab  \tab - \cr
