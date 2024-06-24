@@ -49,6 +49,7 @@ lrn("surv.aorsf")
    n_thread \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_aggregate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pred_simplify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   oobag \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    mtry \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_with_replacement \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr

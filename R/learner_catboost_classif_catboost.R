@@ -32,11 +32,8 @@
 #'
 #' @section Early stopping:
 #' Early stopping can be used to find the optimal number of boosting rounds.
-#' The `early_stopping` parameter controls which set is used to monitor the performance.
 #' Set `early_stopping_rounds` to an integer vaulue to monitor the performance of the model on the validation set while training.
 #' For information on how to configure the valdiation set, see the *Validation* section of [`mlr3::Learner`].
-#'
-#'
 #'
 #' @references
 #' `r format_bib("dorogush2018catboost")`
