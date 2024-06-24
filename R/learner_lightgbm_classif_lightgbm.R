@@ -180,9 +180,12 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           tags = c("train", "internal_tuning", "hotstart"),
           aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
           in_tune_fn = crate(function(domain, param_vals) assert_integerish(domain$upper, len = 1L, any.missing = FALSE), .parent = topenv()),
-          disable_in_tune = list(early_stopping_rounds = NULL)
+          disable_in_tune = list(
+            early_stopping_rounds = NULL,
+            early_stopping_min_delta = NULL)
         ),
-        early_stopping_rounds = p_int(lower = 1L, tags = "train")
+        early_stopping_rounds = p_int(lower = 1L, tags = "train"),
+        early_stopping_min_delta = p_dbl(lower = 0, tags = "train")
       )
 
       ps$add_dep("pos_bagging_fraction", "objective", CondEqual$new("binary"))
@@ -206,7 +209,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       ps$add_dep("force_col_wise", "device_type", CondEqual$new("cpu"))
       ps$add_dep("force_row_wise", "device_type", CondEqual$new("cpu"))
 
-      ps$values = list(num_threads = 1L, verbose = -1L, convert_categorical = TRUE)
+      ps$values = list(num_threads = 1L, verbose = -1L)
 
       super$initialize(
         id = "classif.lightgbm",

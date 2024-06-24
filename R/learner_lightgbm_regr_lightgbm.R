@@ -23,13 +23,10 @@
 #'   * Initial value: -1L
 #'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
 #'
-#' @section Custom mlr3 parameters:
-#' * `early_stopping`
-#'   Whether to use the test set for early stopping. Default is `FALSE`.
-#' * `convert_categorical`:
-#'   Additional parameter. If this parameter is set to `TRUE` (default), all factor and logical
-#'   columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-#'   those columns.
+#' @section Early stopping:
+#' Early stopping can be used to find the optimal number of boosting rounds.
+#' Set `early_stopping_rounds` to an integer value to monitor the performance of the model on the validation set while training.
+#' For information on how to configure the validation set, see the *Validation* section of [`mlr3::Learner`].
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -46,7 +43,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     initialize = function() {
       ps = ps(
         # lgb.train core functions
-        num_iterations = p_int(default = 100L, lower = 0L, tags = c("train", "hotstart")),
         objective = p_fct(default = "regression", levels = c("regression",
           "regression_l1", "huber", "fair", "poisson", "quantile", "mape", "gamma", "tweedie"),
         tags = "train"),
@@ -54,12 +50,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
-        early_stopping_rounds = p_int(lower = 1L, tags = "train"),
-        early_stopping = p_lgl(default = FALSE, tags = "train"),
         callbacks = p_uty(tags = "train"),
         reset_data = p_lgl(default = FALSE, tags = "train"),
-        categorical_feature = p_uty(default = "", tags = "train"),
-        convert_categorical = p_lgl(default = TRUE, tags = "train"),
         # other core functions
         boosting = p_fct(default = "gbdt", levels = c("gbdt", "rf", "dart", "goss"), tags = "train"),
         linear_tree = p_lgl(default = FALSE, tags = "train"),
@@ -171,7 +163,22 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         num_iteration_predict = p_int(default = -1L, tags = "predict"),
         pred_early_stop = p_lgl(default = FALSE, tags = "predict"),
         pred_early_stop_freq = p_int(default = 10L, tags = "predict"),
-        pred_early_stop_margin = p_dbl(default = 10, tags = "predict")
+        pred_early_stop_margin = p_dbl(default = 10, tags = "predict"),
+
+        # early_stopping
+        num_iterations = p_int(
+          lower = 1L,
+          upper = Inf,
+          default = 100L,
+          tags = c("train", "internal_tuning", "hotstart"),
+          aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
+          in_tune_fn = crate(function(domain, param_vals) assert_integerish(domain$upper, len = 1L, any.missing = FALSE), .parent = topenv()),
+          disable_in_tune = list(
+            early_stopping_rounds = NULL,
+            early_stopping_min_delta = NULL)
+        ),
+        early_stopping_rounds = p_int(lower = 1L, tags = "train"),
+        early_stopping_min_delta = p_dbl(lower = 0, tags = "train")
       )
 
       ps$add_dep("reg_sqrt", "objective", CondEqual$new("regression"))
@@ -189,11 +196,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       ps$add_dep("drop_seed", "boosting", CondEqual$new("dart"))
       ps$add_dep("top_rate", "boosting", CondEqual$new("goss"))
       ps$add_dep("other_rate", "boosting", CondEqual$new("goss"))
-      ps$add_dep("categorical_feature", "convert_categorical", CondEqual$new(FALSE))
 
-      ps$values = list(num_threads = 1L, verbose = -1L, objective = "regression",
-        convert_categorical = TRUE
-      )
+      ps$values = list(num_threads = 1L, verbose = -1L, objective = "regression")
 
       super$initialize(
         id = "regr.lightgbm",
@@ -201,7 +205,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = "response",
         param_set = ps,
-        properties = c("weights", "missings", "importance", "hotstart_forward"),
+        properties = c("weights", "missings", "importance", "hotstart_forward", "internal_tuning", "validation"),
         man = "mlr3extralearners::mlr_learners_regr.lightgbm",
         label = "Gradient Boosting"
       )
@@ -223,6 +227,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
   ),
 
   private = list(
+    .validate = NULL,
+
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       train_lightgbm(self, task, "regr", pars)
@@ -241,6 +247,41 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       pars_train = self$state$param_vals
       pars_train$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
       train_lightgbm(self, task, "classif", pars_train, self$model)
+    },
+
+    .extract_internal_tuned_values = function() {
+      if (is.null(self$state$param_vals$early_stopping_rounds)) {
+        return(named_list())
+      }
+      list(num_iterations = learner$model$best_iter)
+    },
+
+    .extract_internal_valid_scores = function() {
+      return(named_list())
+    }
+  ),
+
+  active = list(
+    #' @field internal_valid_scores
+    #' The last observation of the validation scores for all metrics.
+    #' Extracted from `model$evaluation_log`
+    internal_valid_scores = function() {
+      self$state$internal_valid_scores
+    },
+
+    #' @field internal_tuned_values
+    #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
+    internal_tuned_values = function() {
+      self$state$internal_tuned_values
+    },
+
+    #' @field validate
+    #' How to construct the internal validation data. This parameter can be either `NULL`, a ratio, `"test"`, or `"predefined"`.
+    validate = function(rhs) {
+      if (!missing(rhs)) {
+        private$.validate = assert_validate(rhs)
+      }
+      private$.validate
     }
   )
 )
