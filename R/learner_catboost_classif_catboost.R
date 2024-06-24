@@ -218,7 +218,10 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   ),
 
   private = list(
+    .validate = NULL,
+
     .train = function(task) {
+      pars = self$param_set$get_values(tags = "train")
 
       if (packageVersion("catboost") < "0.21") {
         stop("catboost v0.21 or greater is required.")
@@ -245,7 +248,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       # early stopping
       internal_valid_task = task$internal_valid_task
 
-      if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
+      if (!is.null(pars$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
 
@@ -265,7 +268,6 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       }
 
       # set loss_function correctly
-      pars = self$param_set$get_values(tags = "train")
       pars$loss_function = if (is_binary) {
         pars$loss_function_twoclass
       } else {
@@ -317,8 +319,6 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       }
     },
 
-    .validate = NULL,
-
     .extract_internal_tuned_values = function() {
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
@@ -332,6 +332,13 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   ),
 
   active = list(
+    #' @field internal_valid_scores
+    #' The last observation of the validation scores for all metrics.
+    #' Extracted from `model$evaluation_log`
+    internal_valid_scores = function() {
+      self$state$internal_valid_scores
+    },
+
     #' @field internal_tuned_values
     #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
     internal_tuned_values = function() {

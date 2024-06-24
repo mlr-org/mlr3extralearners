@@ -273,6 +273,13 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
   ),
 
   active = list(
+    #' @field internal_valid_scores
+    #' The last observation of the validation scores for all metrics.
+    #' Extracted from `model$evaluation_log`
+    internal_valid_scores = function() {
+      self$state$internal_valid_scores
+    },
+
     #' @field internal_tuned_values
     #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
     internal_tuned_values = function() {

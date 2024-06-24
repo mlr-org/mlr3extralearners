@@ -13,5 +13,5 @@ test_that("early stopping works", {
   learner$train(task)
 
   expect_list(learner$internal_tuned_values)
-  expect_number(learner$internal_tuned_values$iterations)
+  expect_number(learner$internal_tuned_values$num_iterations)
 })
