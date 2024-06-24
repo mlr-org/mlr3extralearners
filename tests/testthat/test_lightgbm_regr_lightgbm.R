@@ -26,4 +26,15 @@ test_that("early stopping works", {
 
   expect_list(learner$internal_tuned_values)
   expect_number(learner$internal_tuned_values$num_iterations)
+
+  expect_list(learner$internal_valid_scores)
+  expect_number(learner$internal_valid_scores$l2)
+
+  learner = lrn("regr.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, eval = c("rmse", "l1"))
+  learner$validate = 0.2
+  learner$train(task)
+
+  expect_list(learner$internal_valid_scores)
+  expect_number(learner$internal_valid_scores$l1)
+  expect_number(learner$internal_valid_scores$rmse)
 })

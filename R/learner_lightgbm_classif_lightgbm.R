@@ -299,7 +299,13 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
     },
 
     .extract_internal_valid_scores = function() {
-      return(named_list())
+      if (is.null(self$model$record_evals$test)) {
+        return(named_list())
+      }
+
+      map(self$model$record_evals$test, function(metric) {
+        metric$eval[[length(metric$eval)]]
+      })
     }
   ),
 
