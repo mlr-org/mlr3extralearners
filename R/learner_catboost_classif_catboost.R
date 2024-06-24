@@ -49,8 +49,6 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     #' Create a `LearnerClassifCatboost` object.
     initialize = function() {
 
-      p_iterations =
-
       ps = ps(
         # catboost.train
         # https://catboost.ai/docs/concepts/r-reference_catboost-train.html
@@ -245,11 +243,12 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         thread_count = self$param_set$values$thread_count)
 
       # early stopping
+      internal_valid_task = task$internal_valid_task
+
       if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
 
-      internal_valid_task = task$internal_valid_task
       test_pool = if (!is.null(internal_valid_task)) {
         # create test labels
         test_label = if (length(internal_valid_task$class_names) == 2L) {
