@@ -253,7 +253,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
       }
-      list(num_iterations = learner$model$best_iter)
+      list(num_iterations = self$model$best_iter)
     },
 
     .extract_internal_valid_scores = function() {

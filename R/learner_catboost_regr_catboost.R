@@ -264,7 +264,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(named_list())
       }
-      list(iterations = learner$model$tree_count)
+      list(iterations = self$model$tree_count)
     },
 
     .extract_internal_valid_scores = function() {
