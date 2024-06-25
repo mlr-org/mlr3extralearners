@@ -83,7 +83,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
     #' Extract the name of selected features from the model by [abess::extract()].
     #' @return The names of selected features
     selected_features = function() {
-      abess::extract(self$model)$support.vars
+      abess::extract(self$model$model)$support.vars
     }
   ),
   private = list(
