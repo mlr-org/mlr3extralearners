@@ -65,6 +65,9 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
       if (length(pars$unpenalized) == 0) {
         penalized = formulate(rhs = task$feature_names)
       } else {
+        if (any(penalized %nin% task$feature_names)) {
+          stopf("Parameter 'penalized' contains values not present in task")
+        }
         penalized = formulate(rhs = task$feature_names[task$feature_names %nin% pars$unpenalized])
         pars$unpenalized = formulate(rhs = pars$unpenalized)
       }
