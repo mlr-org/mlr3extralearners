@@ -96,7 +96,6 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
     valids = valids,
     .args = args,
     params = params,
-    categorical_feature = categorical_feature,
     init_model = init_model
   )
 }
