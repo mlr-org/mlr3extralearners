@@ -90,12 +90,12 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
     .train = function(task) {
       x = task$data(cols = task$feature_names)
       y = as.factor(as.matrix(task$data(cols = task$target_names)))
-      self$state$class_names = levels(y)
+      class_names = levels(y)
 
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       if (is.null(pars$family)) {
-        if (length(self$state$class_names) == 2) {
+        if (length(class_names) == 2) {
           pars$family = "binomial"
         } else {
           pars$family = "multinomial"
@@ -105,23 +105,23 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         pars = insert_named(pars, list(weight = task$weights$weight))
       }
 
-      invoke(
+      list(model = invoke(
         abess::abess,
         x = x,
         y = y,
         .args = pars
-      )
+      ), class_names = class_names)
     },
     .predict = function(task) {
       prob = invoke(
         predict,
-        self$model,
+        self$model$model,
         newx = as.matrix(ordered_features(task, self)),
         type = "response")
 
       family = self$state$param_vals$family
       if (is.null(family)) {
-        if (length(self$state$class_names) == 2) {
+        if (length(self$model$class_names) == 2) {
           family = "binomial"
         } else {
           family = "multinomial"
@@ -134,9 +134,9 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
       }
 
       if (self$predict_type == "response") {
-        list(response = self$state$class_names[apply(prob, 1, which.max)])
+        list(response = self$model$class_names[apply(prob, 1, which.max)])
       } else {
-        colnames(prob) = self$state$class_names
+        colnames(prob) = self$model$class_names
         list(prob = prob)
       }
 
