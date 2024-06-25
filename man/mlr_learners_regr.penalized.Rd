@@ -5,7 +5,7 @@
 \alias{LearnerRegrPenalized}
 \title{L1 and L2 Penalized Regression Learner}
 \description{
-Penalized (L1 and L2) generalized linear models.
+Penalized (L1 and L2) linear model.
 Calls \code{\link[penalized:penalized]{penalized::penalized()}} from \CRANpkg{penalized}.
 }
 \details{

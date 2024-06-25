@@ -3,7 +3,7 @@
 #' @name mlr_learners_classif.penalized
 #'
 #' @description
-#' Penalized (L1 and L2) generalized linear models.
+#' Penalized (L1 and L2) logistic regression.
 #' Calls [penalized::penalized()] from \CRANpkg{penalized}.
 #'
 #' @template learner
