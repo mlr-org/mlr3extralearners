@@ -1,4 +1,5 @@
-task = tsk("lung")$filter(1:100)
+task = tsk("lung")
+task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100) # encode sex factor
 
 test_that("autotest", {
   skip_on_cran()
