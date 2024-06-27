@@ -78,10 +78,17 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         pars$unpenalized = formulate(rhs = pars$unpenalized)
       }
 
-      with_package("penalized", {
-        invoke(penalized::penalized,
-          response = task$truth(), penalized = penalized,
-          data = task$data(cols = task$feature_names), model = "cox", .args = pars)
+      # if we don't attach the penalized package here, the code fails
+      # because it does not find the "contr.none" function
+      # also there is a bug in withr, which does not clean up Depends, therefore
+      # we need the double with_package
+      # https://github.com/r-lib/withr/issues/261
+      with_package("survival", {
+        with_package("penalized", {
+          invoke(penalized::penalized,
+            response = task$truth(), penalized = penalized,
+            data = task$data(cols = task$feature_names), model = "cox", .args = pars)
+        })
       })
     },
 
