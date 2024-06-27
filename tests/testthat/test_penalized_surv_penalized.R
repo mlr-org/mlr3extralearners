@@ -1,5 +1,4 @@
 test_that("autotest", {
-  library(penalized)
   learner = lrn("surv.penalized", trace = FALSE)
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE)
@@ -7,7 +6,6 @@ test_that("autotest", {
 })
 
 test_that("unpenalized", {
-  library(penalized)
   task = tsk("rats")
   learner = lrn("surv.penalized", unpenalized = c("litter"), trace = FALSE)
   learner$train(task)
