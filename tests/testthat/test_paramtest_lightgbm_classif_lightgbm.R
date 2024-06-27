@@ -64,16 +64,12 @@ test_that("paramtest classif.lightgbm train", {
     "header", # we don't load data from the text file
     "objective_seed", # only in ranking applications
     "metric", # we use the lgb.train-only argument "eval"
-
+    "categorical_feature", # handled internally
 
     # rank parameters
     "lambdarank_truncation_level", # ranking
     "lambdarank_norm", # ranking
     "label_gain", # ranking
-
-    # custom parameters
-    "early_stopping",
-    "convert_categorical",
 
     # lgb.train
     "nrounds", # alias for num_iterations
@@ -114,8 +110,7 @@ test_that("paramtest classif.lightgbm predict", {
     "predcontrib", # shapely
     "header", # for prediction for text file
     "start_iteration", # alias for start_iteration_predict
-    "num_iteration", # alias for num_iteration_predict
-    "early_stopping" # custom parameter
+    "num_iteration" # alias for num_iteration_predict
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

@@ -34,18 +34,13 @@ lrn("regr.lightgbm")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    objective \tab character \tab regression \tab regression, regression_l1, huber, fair, poisson, quantile, mape, gamma, tweedie \tab - \cr
    eval \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
    reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   categorical_feature \tab untyped \tab "" \tab  \tab - \cr
-   convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -140,6 +135,9 @@ lrn("regr.lightgbm")
    pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   early_stopping_min_delta \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
 
@@ -161,16 +159,11 @@ lrn("regr.lightgbm")
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Early stopping}{
 
-\itemize{
-\item \code{early_stopping}
-Whether to use the test set for early stopping. Default is \code{FALSE}.
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
-}
+Early stopping can be used to find the optimal number of boosting rounds.
+Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
+For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
 }
 
 \examples{
@@ -201,6 +194,18 @@ kapsner
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrLightGBM}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
+Extracted from \code{model$evaluation_log}}
+
+\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+
+\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
