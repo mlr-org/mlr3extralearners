@@ -65,7 +65,6 @@ lrn("regr.lightgbm")
    feature_fraction_seed \tab integer \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    extra_trees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    extra_seed \tab integer \tab 6 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lambda_l1 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda_l2 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -138,6 +137,7 @@ lrn("regr.lightgbm")
    num_iterations \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    early_stopping_min_delta \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -159,11 +159,13 @@ lrn("regr.lightgbm")
 }
 }
 
-\section{Early stopping}{
+\section{Early Stopping and Validation}{
 
 Early stopping can be used to find the optimal number of boosting rounds.
 Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
 For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
+The internal validation measure can be set via \verb{$internal_valid_measure} that can be a \link[mlr3:Measure]{mlr3::Measure}, a function, or a character string to use the internal lightgbm measures.
+If \code{first_metric_only = FALSE} (default), the learner stops when any metric fails to improve.
 }
 
 \examples{
@@ -198,6 +200,14 @@ kapsner
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
+\item{\code{internal_valid_measure}}{(List of \link[mlr3:Measure]{mlr3::Measure} | \code{character()}| \verb{function()})
+The internal validation measure used for early stopping.
+LightGBM stops when any metric fails to improve on the validation set.
+Sets the \code{eval} parameter in parameter set.
+Pass a \code{character(1)} to choose an internal lightGBM \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#metric}{metric}.
+Custom functions should accept the arguments \code{preds} and \code{dtrain} (see the \href{https://lightgbm.readthedocs.io/en/stable/R/reference/lgb.train.html}{lgb.train} documentation.)
+\link[mlr3:Measure]{mlr3::Measure}s are wrapped internally in custom functions.}
+
 \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
 Extracted from \code{model$evaluation_log}}
 

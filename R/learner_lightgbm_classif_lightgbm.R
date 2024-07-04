@@ -31,10 +31,12 @@
 #' * `num_class`:
 #'  This parameter is automatically inferred for multiclass tasks and does not have to be set.
 #'
-#' @section Early stopping:
+#' @section Early Stopping and Validation:
 #' Early stopping can be used to find the optimal number of boosting rounds.
 #' Set `early_stopping_rounds` to an integer value to monitor the performance of the model on the validation set while training.
 #' For information on how to configure the validation set, see the *Validation* section of [`mlr3::Learner`].
+#' The internal validation measure can be set via `$internal_valid_measure` that can be a [mlr3::Measure], a function, or a character string to use the internal lightgbm measures.
+#' If `first_metric_only = FALSE` (default), the learner stops when any metric fails to improve.
 #'
 #' @references
 #' `r format_bib("ke2017lightgbm")`
@@ -88,7 +90,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         feature_fraction_seed = p_int(default = 2L, tags = "train"),
         extra_trees = p_lgl(default = FALSE, tags = "train"),
         extra_seed = p_int(default = 6L, tags = "train"),
-        first_metric_only = p_lgl(default = FALSE, tags = "train"),
         max_delta_step = p_dbl(default = 0.0, tags = "train"),
         lambda_l1 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
         lambda_l2 = p_dbl(default = 0.0, lower = 0.0, tags = "train"),
@@ -190,7 +191,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
             early_stopping_min_delta = NULL)
         ),
         early_stopping_rounds = p_int(lower = 1L, tags = "train"),
-        early_stopping_min_delta = p_dbl(lower = 0, tags = "train")
+        early_stopping_min_delta = p_dbl(lower = 0, tags = "train"),
+        first_metric_only = p_lgl(default = FALSE, tags = "train")
       )
 
       ps$add_dep("pos_bagging_fraction", "objective", CondEqual$new("binary"))
@@ -257,7 +259,144 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      train_lightgbm(self, task, "classif", pars)
+
+      # convert data
+      x_train = data.matrix(task$data(rows = task$row_roles$use, cols = task$feature_names))
+      y_train = task$data(rows = task$row_roles$use, cols = task$target_names)[[1L]]
+
+      # set objective
+      # catch incorrect objective setting
+      if (!is.null(pars$objective) && pars$objective %in% c("multiclass", "multiclassova") &&
+        !("multiclass" %in% task$properties)) {
+        stopf("Objective cannot be 'multiclass' or 'multiclassova' if task is not multiclass.")
+      }
+
+      # set default objective
+      if (is.null(pars$objective)) {
+        if ("multiclass" %in% task$properties) {
+          pars$objective = "multiclass"
+        } else {
+          pars$objective = "binary"
+        }
+      }
+
+      # set number of classes if multiclass and save label ordering
+      if (pars$objective %in% c("multiclass", "multiclassova")) {
+        pars$num_class = length(task$class_names)
+        self$state$labels = unique(task$truth())
+      }
+
+      if (pars$objective %in% c("multiclass", "multiclassova")) {
+        y_train = as.integer(y_train) - 1L
+      } else {
+        y_train = as.integer(y_train == task$positive)
+      }
+
+      # create data set
+      categorical_feature = if (any(task$feature_types$type %in% c("factor", "logical"))) {
+        task$feature_types$id[task$feature_types$type %in% c("factor", "logical")]
+      }
+
+      dtrain = lightgbm::lgb.Dataset(
+        data = x_train,
+        label = y_train,
+        free_raw_data = FALSE,
+        categorical_feature = categorical_feature
+      )
+      if ("weights" %in% task$properties) {
+        dtrain$set_field("weight", task$weights[get("row_id") %in% task$row_roles$use, "weight"][[1L]])
+      }
+
+      # early stopping
+      internal_valid_task = task$internal_valid_task
+
+      if (!is.null(pars$early_stopping_rounds) && is.null(internal_valid_task)) {
+        stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
+      }
+
+      valids = list()
+      if (!is.null(internal_valid_task)) {
+
+        x_valid = data.matrix(internal_valid_task$data(cols = internal_valid_task$feature_names))
+        y_valid = internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]]
+
+        if (task$task_type == "classif") {
+          if (pars$objective %in% c("multiclass", "multiclassova")) {
+            y_valid = as.integer(y_valid) - 1L
+          } else {
+            y_valid = as.integer(y_valid == internal_valid_task$positive)
+          }
+        }
+
+        dvalid = lightgbm::lgb.Dataset.create.valid(
+          dataset = dtrain,
+          data = x_valid,
+          label = y_valid,
+          params = list(
+            categorical_feature = categorical_feature
+          )
+        )
+
+        if ("weights" %in% internal_valid_task$properties) {
+          dvalid$set_field("weight", internal_valid_task$weights[get("row_id") %in% internal_valid_task$row_roles$test, "weight"][[1L]])
+        }
+
+        valids[["test"]] = dvalid
+      }
+
+      # set internal validation measure
+      if (!is.null(self$internal_valid_measure)) {
+        pars$eval = map(self$internal_valid_measure, function(internal_measure) {
+          # lightgbm measure and custom function
+          if (is.character(internal_measure) || is.function(internal_measure)) return(internal_measure)
+
+          # mlr3 measure to custom function
+          if (inherits(internal_measure, "Measure")) {
+            n_classes = length(task$class_names)
+            measure = internal_measure
+            objective = pars$objective
+
+            pars$eval = mlr3misc::crate({function(pred, dtrain) {
+              truth = factor(lightgbm::get_field(dtrain, "label"))
+              scores = if (objective == "binary") {
+                # pred is a vector of probabilities for class 1
+                if (measure$predict_type == "prob") {
+                  measure$fun(truth, pred, positive = "1")
+                } else {
+                  response = factor(as.integer(pred > 0.5), levels = c("0", "1"))
+                  measure$fun(truth, response)
+                }
+              } else if (objective == "multiclass") {
+                # pred is a vector of probabilities for each class
+                # matrix must be filled by columns
+                if (measure$predict_type == "prob") {
+                  # transform raw output to probabilities
+                  prob = matrix(pred, ncol = n_classes)
+                  colnames(prob) = levels(truth) # FIXME: How handle missing classes?
+                  measure$fun(truth, prob)
+                } else {
+                  response = factor(max.col(matrix(pred, ncol = n_classes), ties.method = "random") - 1, levels = levels(truth))
+                  measure$fun(truth, response)
+                }
+              } else {
+                error("Only 'binary', and 'multiclass' objectives are supported.")
+              }
+              list(name = measure$id, value = scores, higher_better = !measure$minimize)
+            }}, n_classes = n_classes, measure = measure, objective = objective)
+          }
+        })
+      }
+      ii = names(pars) %in% formalArgs(lightgbm::lgb.train)
+      args = pars[ii]
+      params = pars[!ii]
+
+      invoke(
+        lightgbm::lgb.train,
+        data = dtrain,
+        valids = valids,
+        .args = args,
+        params = params
+      )
     },
 
     .predict = function(task) {
@@ -292,8 +431,66 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
     .hotstart = function(task) {
       pars = self$param_set$get_values(tags = "train")
       pars_train = self$state$param_vals
+
+      if (!is.null(pars_train$early_stopping_rounds)) {
+        stop("The parameter `early_stopping_rounds` is set. Early stopping and hotstarting are incompatible.")
+      }
+
+      # calculate additional boosting iterations
       pars_train$num_iterations = pars$num_iterations - self$state$param_vals$num_iterations
-      train_lightgbm(self, task, "classif", pars_train, self$model)
+
+      # convert data
+      x_train = data.matrix(task$data(rows = task$row_roles$use, cols = task$feature_names))
+      y_train = task$data(rows = task$row_roles$use, cols = task$target_names)[[1L]]
+
+      # set default objective
+      if (is.null(pars_train$objective)) {
+        if ("multiclass" %in% task$properties) {
+          pars_train$objective = "multiclass"
+        } else {
+          pars_train$objective = "binary"
+        }
+      }
+
+      # set number of classes if multiclass and save label ordering
+      if (pars_train$objective %in% c("multiclass", "multiclassova")) {
+        pars_train$num_class = length(task$class_names)
+        self$state$labels = unique(task$truth())
+      }
+
+      if (pars_train$objective %in% c("multiclass", "multiclassova")) {
+        y_train = as.integer(y_train) - 1L
+      } else {
+        y_train = as.integer(y_train == task$positive)
+      }
+
+      # create data set
+      categorical_feature = if (any(task$feature_types$type %in% c("factor", "logical"))) {
+        task$feature_types$id[task$feature_types$type %in% c("factor", "logical")]
+      }
+
+      dtrain = lightgbm::lgb.Dataset(
+        data = x_train,
+        label = y_train,
+        free_raw_data = FALSE,
+        categorical_feature = categorical_feature
+      )
+
+      if ("weights" %in% task$properties) {
+        dtrain$set_field("weight", task$weights[get("row_id") %in% task$row_roles$use, "weight"][[1L]])
+      }
+
+      ii = names(pars_train) %in% formalArgs(lightgbm::lgb.train)
+      args = pars_train[ii]
+      params = pars_train[!ii]
+
+      invoke(
+        lightgbm::lgb.train,
+        data = dtrain,
+        .args = args,
+        params = params,
+        init_model = self$model
+      )
     },
 
     .extract_internal_tuned_values = function() {
@@ -315,6 +512,25 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
   ),
 
   active = list(
+    #' @field internal_valid_measure (List of [mlr3::Measure] | `character()`| `function()`)
+    #' The internal validation measure used for early stopping.
+    #' LightGBM stops when any metric fails to improve on the validation set.
+    #' Sets the `eval` parameter in parameter set.
+    #' Pass a `character(1)` to choose an internal lightGBM [metric](https://lightgbm.readthedocs.io/en/latest/Parameters.html#metric).
+    #' Custom functions should accept the arguments `preds` and `dtrain` (see the [lgb.train](https://lightgbm.readthedocs.io/en/stable/R/reference/lgb.train.html) documentation.)
+    #' [mlr3::Measure]s are wrapped internally in custom functions.
+    internal_valid_measure = function(rhs) {
+      if (missing(rhs)) {
+        return(self$param_set$values$eval)
+      }
+      assert_list(rhs, types = c("Measure", "character", "function"), min.len = 1, null.ok = TRUE)
+
+      # without "None" lightgbm also stops on the default measure
+      if (!is.null(rhs)) rhs = c(rhs, "None")
+
+      self$param_set$values$eval = rhs
+    },
+
     #' @field internal_valid_scores
     #' The last observation of the validation scores for all metrics.
     #' Extracted from `model$evaluation_log`

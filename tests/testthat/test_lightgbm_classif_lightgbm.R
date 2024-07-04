@@ -13,13 +13,14 @@ test_that("Can pass parameters", {
 })
 
 test_that("hotstarting works", {
-  task = tsk("iris")
+  task = tsk("sonar")
   learner = lrn("classif.lightgbm", num_iterations = 2000L)
   learner$train(task)
   stack = HotstartStack$new(list(learner))
   learner_hs = lrn("classif.lightgbm", num_iterations = 2001L)
   learner_hs$hotstart_stack = stack
-  expect_true(is.null(get_private(learner_hs$model)$init_predictor))
+  learner_hs$train(task)
+  expect_class(get_private(learner_hs$model)$init_predictor, "lgb.Predictor")
 })
 
 test_that("early stopping works", {
@@ -43,3 +44,152 @@ test_that("early stopping works", {
   expect_number(learner$internal_valid_scores$l1)
   expect_number(learner$internal_valid_scores$l2)
 })
+
+test_that("custom inner validation measure", {
+
+  # internal measure
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10
+  )
+
+  learner$internal_valid_measure = list("binary_logloss")
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "binary_logloss")
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "binary_logloss")
+
+  # function
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10
+  )
+
+  learner$internal_valid_measure = list(function(preds, dtrain) {
+    labels = lightgbm::get_field(dtrain, "label")
+    err = sum(labels != (preds > 0.5)) / length(labels)
+    return(list(name = "error", value = err, higher_better = FALSE))
+  })
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "error")
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "error")
+
+
+  # mlr3 measure
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10
+  )
+
+  learner$internal_valid_measure = list(msr("classif.ce"))
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.ce")
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.ce")
+})
+
+test_that("mlr3measures are equal to internal measures", {
+  # response
+  set.seed(1)
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10
+  )
+
+  learner$internal_valid_measure = list(msr("classif.ce"))
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
+
+  set.seed(1)
+  learner$internal_valid_measure = list("binary_error")
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$binary_error$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # prob
+  set.seed(1)
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob"
+  )
+
+  learner$internal_valid_measure = list(msr("classif.auc"))
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.auc$eval)
+
+  set.seed(1)
+  learner$internal_valid_measure = list("auc")
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$auc$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # multiclass response
+  set.seed(1)
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 100,
+    validate = 0.2,
+    early_stopping_rounds = 100
+  )
+
+  learner$internal_valid_measure = list(msr("classif.ce"))
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
+
+  set.seed(1)
+  learner$internal_valid_measure = list("multi_error")
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$multi_error$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # multiclass prob
+  set.seed(1)
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 30,
+    validate = 0.2,
+    early_stopping_rounds = 30,
+    predict_type = "prob"
+  )
+
+  learner$internal_valid_measure = list(msr("classif.logloss"))
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.logloss$eval)
+
+  set.seed(1)
+  learner$internal_valid_measure = list("multi_logloss")
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$multi_logloss$eval)
+
+  expect_equal(log_mlr3, log_internal)
+})
+
