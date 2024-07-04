@@ -54,10 +54,10 @@ test_that("custom inner validation measure", {
   learner = lrn("regr.lightgbm",
     num_iterations = 10,
     validate = 0.2,
-    early_stopping_rounds = 10
+    early_stopping_rounds = 10,
+    eval = list("rmse")
   )
 
-  learner$internal_valid_measure = list("rmse")
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, c("rmse"))
@@ -67,17 +67,19 @@ test_that("custom inner validation measure", {
   # function
   task = tsk("mtcars")
 
-  learner = lrn("regr.lightgbm",
-    num_iterations = 10,
-    validate = 0.2,
-    early_stopping_rounds = 10
-  )
-
-  learner$internal_valid_measure = list(function(preds, dtrain) {
+  rmse = function(preds, dtrain) {
     truth = lightgbm::get_field(dtrain, "label")
     rmse = sqrt(mean((truth - preds)^2))
     return(list(name = "rmse", value = rmse, higher_better = FALSE))
-  })
+  }
+
+  learner = lrn("regr.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = list(rmse)
+  )
+
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, c("rmse"))
@@ -91,13 +93,37 @@ test_that("custom inner validation measure", {
   learner = lrn("regr.lightgbm",
     num_iterations = 10,
     validate = 0.2,
-    early_stopping_rounds = 10
+    early_stopping_rounds = 10,
+    eval = list(msr("regr.rmse"))
   )
 
-  learner$internal_valid_measure = list(msr("regr.rmse"))
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, c("regr.rmse"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), c("regr.rmse"))
+})
+
+test_that("mlr3measures are equal to internal measures", {
+  # response
+  set.seed(1)
+  task = tsk("mtcars")
+
+  learner = lrn("regr.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = list(msr("regr.rmse"))
+  )
+
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$regr.rmse$eval)
+
+  set.seed(1)
+  learner$param_set$set_values(eval = list("rmse"))
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$rmse$eval)
+
+  expect_equal(log_mlr3, log_internal, tolerance = 1e-1)
 })
