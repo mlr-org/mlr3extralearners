@@ -35,7 +35,7 @@
 #' Early stopping can be used to find the optimal number of boosting rounds.
 #' Set `early_stopping_rounds` to an integer value to monitor the performance of the model on the validation set while training.
 #' For information on how to configure the validation set, see the *Validation* section of [`mlr3::Learner`].
-#' The internal validation measure can be set via `$internal_valid_measure` that can be a [mlr3::Measure], a function, or a character string to use the internal lightgbm measures.
+#' The internal validation measure can be set the `eval` parameter which should be a list of [mlr3::Measure]s, functions, or strings for the internal lightgbm measures.
 #' If `first_metric_only = FALSE` (default), the learner stops when any metric fails to improve.
 #'
 #' @references
@@ -54,7 +54,9 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       ps = ps(
         # lgb.train core functions
         objective = p_fct(levels = c("binary", "multiclass", "multiclassova"), tags = "train"),
-        eval = p_uty(tags = "train"),
+        eval = p_uty(tags = "train", custom_check = mlr3misc::crate({function(x) {
+          check_list(x, types = c("character", "function", "Measure"), min.len = 1, null.ok = FALSE)
+        }})),
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
@@ -345,8 +347,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       }
 
       # set internal validation measure
-      if (!is.null(self$internal_valid_measure)) {
-        pars$eval = map(self$internal_valid_measure, function(internal_measure) {
+      if (!is.null(pars$eval)) {
+        metrics = map(pars$eval, function(internal_measure) {
           # lightgbm measure and custom function
           if (is.character(internal_measure) || is.function(internal_measure)) return(internal_measure)
 
@@ -356,7 +358,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
             measure = internal_measure
             objective = pars$objective
 
-            pars$eval = mlr3misc::crate({function(pred, dtrain) {
+            mlr3misc::crate({function(pred, dtrain) {
               truth = factor(lightgbm::get_field(dtrain, "label"))
               scores = if (objective == "binary") {
                 # pred is a vector of probabilities for class 1
@@ -385,6 +387,8 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
             }}, n_classes = n_classes, measure = measure, objective = objective)
           }
         })
+        # without "None" lightgbm also stops on the default measure
+        pars$eval = c(metrics, "None")
       }
       ii = names(pars) %in% formalArgs(lightgbm::lgb.train)
       args = pars[ii]
@@ -512,25 +516,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
   ),
 
   active = list(
-    #' @field internal_valid_measure (List of [mlr3::Measure] | `character()`| `function()`)
-    #' The internal validation measure used for early stopping.
-    #' LightGBM stops when any metric fails to improve on the validation set.
-    #' Sets the `eval` parameter in parameter set.
-    #' Pass a `character(1)` to choose an internal lightGBM [metric](https://lightgbm.readthedocs.io/en/latest/Parameters.html#metric).
-    #' Custom functions should accept the arguments `preds` and `dtrain` (see the [lgb.train](https://lightgbm.readthedocs.io/en/stable/R/reference/lgb.train.html) documentation.)
-    #' [mlr3::Measure]s are wrapped internally in custom functions.
-    internal_valid_measure = function(rhs) {
-      if (missing(rhs)) {
-        return(self$param_set$values$eval)
-      }
-      assert_list(rhs, types = c("Measure", "character", "function"), min.len = 1, null.ok = TRUE)
-
-      # without "None" lightgbm also stops on the default measure
-      if (!is.null(rhs)) rhs = c(rhs, "None")
-
-      self$param_set$values$eval = rhs
-    },
-
     #' @field internal_valid_scores
     #' The last observation of the validation scores for all metrics.
     #' Extracted from `model$evaluation_log`

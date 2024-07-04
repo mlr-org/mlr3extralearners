@@ -53,10 +53,10 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.lightgbm",
     num_iterations = 10,
     validate = 0.2,
-    early_stopping_rounds = 10
+    early_stopping_rounds = 10,
+    eval = list("binary_logloss")
   )
 
-  learner$internal_valid_measure = list("binary_logloss")
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, "binary_logloss")
@@ -66,17 +66,19 @@ test_that("custom inner validation measure", {
   # function
   task = tsk("sonar")
 
-  learner = lrn("classif.lightgbm",
-    num_iterations = 10,
-    validate = 0.2,
-    early_stopping_rounds = 10
-  )
-
-  learner$internal_valid_measure = list(function(preds, dtrain) {
+  error_metric = function(preds, dtrain) {
     labels = lightgbm::get_field(dtrain, "label")
     err = sum(labels != (preds > 0.5)) / length(labels)
     return(list(name = "error", value = err, higher_better = FALSE))
-  })
+  }
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = list(error_metric)
+  )
+
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, "error")
@@ -90,10 +92,10 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.lightgbm",
     num_iterations = 10,
     validate = 0.2,
-    early_stopping_rounds = 10
+    early_stopping_rounds = 10,
+    eval = list(msr("classif.ce"))
   )
 
-  learner$internal_valid_measure = list(msr("classif.ce"))
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, "classif.ce")
@@ -109,15 +111,15 @@ test_that("mlr3measures are equal to internal measures", {
   learner = lrn("classif.lightgbm",
     num_iterations = 10,
     validate = 0.2,
-    early_stopping_rounds = 10
+    early_stopping_rounds = 10,
+    eval = list(msr("classif.ce"))
   )
 
-  learner$internal_valid_measure = list(msr("classif.ce"))
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
 
   set.seed(1)
-  learner$internal_valid_measure = list("binary_error")
+  learner$param_set$set_values(eval = list("binary_error"))
   learner$train(task)
 
   log_internal = as.numeric(learner$model$record_evals$test$binary_error$eval)
@@ -132,15 +134,15 @@ test_that("mlr3measures are equal to internal measures", {
     num_iterations = 10,
     validate = 0.2,
     early_stopping_rounds = 10,
-    predict_type = "prob"
+    predict_type = "prob",
+    eval = list(msr("classif.auc"))
   )
 
-  learner$internal_valid_measure = list(msr("classif.auc"))
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.auc$eval)
 
   set.seed(1)
-  learner$internal_valid_measure = list("auc")
+  learner$param_set$set_values(eval = list("auc"))
   learner$train(task)
 
   log_internal = as.numeric(learner$model$record_evals$test$auc$eval)
@@ -154,15 +156,15 @@ test_that("mlr3measures are equal to internal measures", {
   learner = lrn("classif.lightgbm",
     num_iterations = 100,
     validate = 0.2,
-    early_stopping_rounds = 100
+    early_stopping_rounds = 100,
+    eval = list(msr("classif.ce"))
   )
 
-  learner$internal_valid_measure = list(msr("classif.ce"))
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
 
   set.seed(1)
-  learner$internal_valid_measure = list("multi_error")
+  learner$param_set$set_values(eval = list("multi_error"))
   learner$train(task)
 
   log_internal = as.numeric(learner$model$record_evals$test$multi_error$eval)
@@ -177,15 +179,15 @@ test_that("mlr3measures are equal to internal measures", {
     num_iterations = 30,
     validate = 0.2,
     early_stopping_rounds = 30,
-    predict_type = "prob"
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"))
   )
 
-  learner$internal_valid_measure = list(msr("classif.logloss"))
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.logloss$eval)
 
   set.seed(1)
-  learner$internal_valid_measure = list("multi_logloss")
+  learner$param_set$set_values(eval = list("multi_logloss"))
   learner$train(task)
 
   log_internal = as.numeric(learner$model$record_evals$test$multi_logloss$eval)

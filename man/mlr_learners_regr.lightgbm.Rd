@@ -164,7 +164,7 @@ lrn("regr.lightgbm")
 Early stopping can be used to find the optimal number of boosting rounds.
 Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
 For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
-The internal validation measure can be set via \verb{$internal_valid_measure} that can be a \link[mlr3:Measure]{mlr3::Measure}, a function, or a character string to use the internal lightgbm measures.
+The internal validation measure can be set the \code{eval} parameter which should be a list of \link[mlr3:Measure]{mlr3::Measure}s, functions, or strings for the internal lightgbm measures.
 If \code{first_metric_only = FALSE} (default), the learner stops when any metric fails to improve.
 }
 

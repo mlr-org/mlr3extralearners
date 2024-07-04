@@ -43,7 +43,9 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         objective = p_fct(default = "regression", levels = c("regression",
           "regression_l1", "huber", "fair", "poisson", "quantile", "mape", "gamma", "tweedie"),
         tags = "train"),
-        eval = p_uty(tags = "train"),
+        eval = p_uty(tags = "train", custom_check = mlr3misc::crate({function(x) {
+          check_list(x, types = c("character", "function", "Measure"), min.len = 1, null.ok = FALSE)
+        }})),
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
         eval_freq = p_int(default = 1L, lower = 1L, tags = "train"),
@@ -283,8 +285,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       }
 
       # set internal validation measure
-      if (!is.null(self$internal_valid_measure)) {
-        pars$eval = map(self$internal_valid_measure, function(internal_measure) {
+      if (!is.null(pars$eval)) {
+        metrics = map(pars$eval, function(internal_measure) {
           # lightgbm measure and custom function
           if (is.character(internal_measure) || is.function(internal_measure)) return(internal_measure)
 
@@ -293,7 +295,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
             measure = internal_measure
             objective = pars$objective
 
-            pars$eval = mlr3misc::crate({function(pred, dtrain) {
+            mlr3misc::crate({function(pred, dtrain) {
               truth = lightgbm::get_field(dtrain, "label")
               scores = if (objective %in% c("regression", "regression_l1")) {
                 measure$fun(truth, pred)
@@ -305,6 +307,8 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
             }}, measure = measure, objective = objective)
           }
         })
+        # without "None" lightgbm also stops on the default measure
+        pars$eval = c(metrics, "None")
       }
 
       ii = names(pars) %in% formalArgs(lightgbm::lgb.train)
@@ -406,7 +410,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       assert_list(rhs, types = c("Measure", "character", "function"), min.len = 1, null.ok = TRUE)
 
       # without "None" lightgbm also stops on the default measure
-      if (!is.null(rhs)) rhs = c(rhs, "None")
+
 
       self$param_set$values$eval = rhs
     },
