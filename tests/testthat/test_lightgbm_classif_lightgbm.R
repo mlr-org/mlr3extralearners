@@ -36,7 +36,7 @@ test_that("early stopping works", {
   expect_list(learner$internal_valid_scores)
   expect_number(learner$internal_valid_scores$binary_logloss)
 
-  learner = lrn("classif.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, eval = c("l1", "l2"))
+  learner = lrn("classif.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, eval = list("l1", "l2"))
   learner$validate = 0.2
   learner$train(task)
 

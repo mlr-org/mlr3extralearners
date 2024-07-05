@@ -36,7 +36,7 @@ test_that("early stopping works", {
   learner = lrn("regr.lightgbm",
     num_iterations = 1000,
     early_stopping_rounds = 10,
-    eval = c("rmse", "l1"),
+    eval = list("rmse", "l1"),
     validate = 0.2)
 
   learner$train(task)

@@ -300,7 +300,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
 
             mlr3misc::crate({function(pred, dtrain) {
               truth = lightgbm::get_field(dtrain, "label")
-              measure$fun(truth, pred)
+              scores = measure$fun(truth, pred)
               list(name = measure$id, value = scores, higher_better = !measure$minimize)
             }}, measure = measure)
           }
