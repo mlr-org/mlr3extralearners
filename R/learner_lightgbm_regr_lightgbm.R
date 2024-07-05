@@ -430,7 +430,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
     #' How to construct the internal validation data. This parameter can be either `NULL`, a ratio, `"test"`, or `"predefined"`.
     validate = function(rhs) {
       if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
+        private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
     }
