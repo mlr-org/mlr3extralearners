@@ -86,7 +86,7 @@ test_that("custom inner validation measure", {
   expect_equal(names(learner$internal_valid_scores), "error")
 
 
-  # mlr3 measure
+  # binary task and mlr3 measure binary response
   task = tsk("sonar")
 
   learner = lrn("classif.lightgbm",
@@ -99,8 +99,81 @@ test_that("custom inner validation measure", {
   learner$train(task)
 
   expect_named(learner$model$record_evals$test, "classif.ce")
+  expect_list(learner$model$record_evals$test$classif.ce$eval, types = "numeric", , len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.ce")
+
+  # binary task and mlr3 measure binary prob
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"))
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.logloss")
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.logloss")
+
+  # binary task and mlr3 measure multiclass prob
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.auc"))
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.auc")
+  expect_list(learner$model$record_evals$test$classif.auc$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.auc")
+
+  # multiclass task and mlr3 measure multiclass response
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.ce"))
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.ce")
+  expect_list(learner$model$record_evals$test$classif.ce$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.ce")
+
+  # multiclass task and mlr3 measure multiclass prob
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"))
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.logloss")
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.logloss")
 })
 
 test_that("mlr3measures are equal to internal measures", {
@@ -195,3 +268,45 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 })
 
+
+if (FALSE) {
+  library(mlr3oml)
+
+  task = tsk("oml", task_id = 10101)
+
+
+ learner = lrn("classif.lightgbm",
+    num_iterations = 30,
+    validate = 0.9,
+    early_stopping_rounds = 30,
+    predict_type = "prob",
+    eval = list(msr("classif.bacc"))
+  )
+
+  learner$model$record_evals
+
+  learner$train(task)
+}
+
+
+if (FALSE) {
+  library(mlr3oml)
+
+  otask = otsk(id = 10101)
+  task = as_task(otask)
+  resampling = as_resampling(otask)
+
+ learner = lrn("classif.lightgbm",
+    num_iterations = 30,
+    validate = "test",
+    early_stopping_rounds = 30,
+    predict_type = "prob",
+    eval = list(msr("classif.bacc"))
+  )
+
+
+
+  rr = resample(task, learner, resampling, store_models = TRUE)
+
+  rr
+}

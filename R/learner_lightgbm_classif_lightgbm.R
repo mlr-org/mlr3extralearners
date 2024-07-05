@@ -356,40 +356,31 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           if (inherits(internal_measure, "Measure")) {
             n_classes = length(task$class_names)
             measure = internal_measure
-            objective = pars$objective
+
+            fun = if (pars$objective == "binary" && measure$predict_type == "prob" && inherits(measure, "MeasureBinarySimple")) {
+              lightgbm_binary_binary_prob
+            } else if (pars$objective == "binary" && measure$predict_type == "prob" && inherits(measure, "MeasureClassifSimple")) {
+              lightgbm_binary_classif_prob
+            } else if (pars$objective == "binary" && measure$predict_type == "response") {
+              lightgbm_binary_response
+            } else if (pars$objective == "multiclass" && measure$predict_type == "prob") {
+              lightgbm_multiclass_prob
+            } else if (pars$objective == "multiclass" && measure$predict_type == "response") {
+              lightgbm_multiclass_response
+            } else {
+              stop("Only 'binary', and 'multiclass' objectives are supported.")
+            }
 
             mlr3misc::crate({function(pred, dtrain) {
-              truth = factor(lightgbm::get_field(dtrain, "label"))
-              scores = if (objective == "binary") {
-                # pred is a vector of probabilities for class 1
-                if (measure$predict_type == "prob") {
-                  measure$fun(truth, pred, positive = "1")
-                } else {
-                  response = factor(as.integer(pred > 0.5), levels = c("0", "1"))
-                  measure$fun(truth, response)
-                }
-              } else if (objective == "multiclass") {
-                # pred is a vector of probabilities for each class
-                # matrix must be filled by columns
-                if (measure$predict_type == "prob") {
-                  # transform raw output to probabilities
-                  prob = matrix(pred, ncol = n_classes)
-                  colnames(prob) = levels(truth) # FIXME: How handle missing classes?
-                  measure$fun(truth, prob)
-                } else {
-                  response = factor(max.col(matrix(pred, ncol = n_classes), ties.method = "random") - 1, levels = levels(truth))
-                  measure$fun(truth, response)
-                }
-              } else {
-                error("Only 'binary', and 'multiclass' objectives are supported.")
-              }
+              scores = fun(pred, dtrain, measure, n_classes)
               list(name = measure$id, value = scores, higher_better = !measure$minimize)
-            }}, n_classes = n_classes, measure = measure, objective = objective)
+            }}, n_classes = n_classes, measure = measure, fun = fun)
           }
         })
         # without "None" lightgbm also stops on the default measure
         pars$eval = c(metrics, "None")
       }
+
       ii = names(pars) %in% formalArgs(lightgbm::lgb.train)
       args = pars[ii]
       params = pars[!ii]
@@ -541,3 +532,51 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 )
 
 .extralrns_dict$add("classif.lightgbm", LearnerClassifLightGBM)
+
+
+lightgbm_binary_binary_prob = mlr3misc::crate({function(pred, dtrain, measure, ...) {
+  # label is a vector of labels (0, 1)
+  truth = factor(lightgbm::get_field(dtrain, "label"), levels = c(0, 1))
+  measure$fun(truth, pred, positive = "1")
+}})
+
+lightgbm_binary_classif_prob = mlr3misc::crate({function(pred, dtrain, measure, ...) {
+  # label is a vector of labels (0, 1)
+  truth = factor(lightgbm::get_field(dtrain, "label"), levels = c(0, 1))
+  # multiclass measure needs a matrix of probabilities
+  pred_mat = matrix(c(pred, 1 - pred), ncol = 2)
+  colnames(pred_mat) = c("1", "0")
+  measure$fun(truth, pred_mat, positive = "1")
+}})
+
+lightgbm_binary_response = mlr3misc::crate({ function(pred, dtrain, measure, ...) {
+  # label is a vector of labels (0, 1)
+  truth = factor(lightgbm::get_field(dtrain, "label"), levels = c(0, 1))
+
+  response = factor(as.integer(pred > 0.5), levels = c(0, 1))
+  measure$fun(truth, response)
+}})
+
+lightgbm_multiclass_prob = mlr3misc::crate({ function(pred, dtrain, measure, n_classes, ...) {
+  # label is a vector of labels (0, 1, ..., n_classes - 1)
+  truth = factor(lightgbm::get_field(dtrain, "label"), levels = seq_len(n_classes) - 1L)
+
+  # pred is a vector of probabilities for each class
+  # matrix must be filled by columns
+  prob = matrix(pred, ncol = n_classes)
+  colnames(prob) = levels(truth) # FIXME: How handle missing classes?
+
+  measure$fun(truth, prob)
+}})
+
+lightgbm_multiclass_response = mlr3misc::crate({function(pred, dtrain, measure, n_classes, ...) {
+  # label is a vector of labels (0, 1, ..., n_classes - 1)
+  truth = factor(lightgbm::get_field(dtrain, "label"), levels = seq_len(n_classes) - 1L)
+
+  # pred is a vector of probabilities for each class
+  # matrix must be filled by columns
+  prob = matrix(pred, ncol = n_classes)  # FIXME: How handle missing classes?
+
+  response = factor(max.col(matrix(pred, ncol = n_classes), ties.method = "random") - 1, levels = levels(truth))
+  measure$fun(truth, response)
+}})

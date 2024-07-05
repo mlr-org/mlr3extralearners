@@ -293,18 +293,16 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           # mlr3 measure to custom function
           if (inherits(internal_measure, "Measure")) {
             measure = internal_measure
-            objective = pars$objective
+
+            if (pars$objective %nin% c("regression", "regression_l1")) {
+              stop("Only 'regression' and 'regression_l1' objectives are supported.")
+            }
 
             mlr3misc::crate({function(pred, dtrain) {
               truth = lightgbm::get_field(dtrain, "label")
-              scores = if (objective %in% c("regression", "regression_l1")) {
-                measure$fun(truth, pred)
-              } else {
-                error("Only 'regression' and 'regression_l1' objectives are supported.")
-              }
-
+              measure$fun(truth, pred)
               list(name = measure$id, value = scores, higher_better = !measure$minimize)
-            }}, measure = measure, objective = objective)
+            }}, measure = measure)
           }
         })
         # without "None" lightgbm also stops on the default measure
