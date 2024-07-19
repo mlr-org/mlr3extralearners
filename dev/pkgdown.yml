@@ -1,12 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.0
 pkgdown_sha: ~
 articles:
   extending: extending.html
-  learner_status: learner_status.html
-  list_learners: list_learners.html
-last_built: 2024-06-27T15:38Z
+  articles/learner_status: learner_status.html
+  articles/list_learners: list_learners.html
+last_built: 2024-07-19T20:16Z
 urls:
   reference: https://mlr3extralearners.mlr-org.com/reference
   article: https://mlr3extralearners.mlr-org.com/articles
-
