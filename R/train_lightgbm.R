@@ -43,7 +43,7 @@ train_lightgbm = function(self, task, task_type, pars, init_model = NULL) {
     # set number of classes if multiclass and save label ordering
     if (pars$objective %in% c("multiclass", "multiclassova")) {
       pars$num_class = length(task$class_names)
-      self$state$labels = unique(task$truth())
+      self$state$labels = task$levels()[[task$target_names]]
     }
 
     if (pars$objective %in% c("multiclass", "multiclassova")) {
