@@ -59,6 +59,7 @@ test_that("paramtest regr.lightgbm train", {
     "header", # we don't load data from the text file
     "objective_seed", # only in ranking applications
     "metric", # we use the lgb.train-only argument "eval"
+    "categorical_feature", # handled internally
 
     # classification only
     "pos_bagging_fraction",
@@ -75,10 +76,6 @@ test_that("paramtest regr.lightgbm train", {
     "lambdarank_truncation_level", # ranking
     "lambdarank_norm", # ranking
     "label_gain", # ranking
-
-    # custom parameters
-    "early_stopping",
-    "convert_categorical",
 
     # lgb.train
     "nrounds", # alias for num_iterations
