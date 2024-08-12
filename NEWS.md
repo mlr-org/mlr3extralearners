@@ -2,6 +2,8 @@
 
 * Added response (i.e., survival time) prediction to `aorsf` learner
 * Updated support for flexsurv v2.3
+* Add early stopping and validation support to learners `lrn("surv.xgboost.aft")`
+  and `lrn("surv.xgboost.cox")`.
 
 # mlr3extralearners 0.8.0
 

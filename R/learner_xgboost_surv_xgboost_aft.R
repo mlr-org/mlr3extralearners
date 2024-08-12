@@ -40,6 +40,17 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+       p_nrounds = p_int(1L,
+        tags = c("train", "hotstart", "internal_tuning"),
+        aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
+        in_tune_fn = crate(function(domain, param_vals) {
+         if (is.null(param_vals$early_stopping_rounds)) {
+            stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
+          }
+          assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
+        disable_in_tune = list(early_stopping_rounds = NULL)
+      )
+
       ps = ps(
         aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
         aft_loss_distribution_scale = p_dbl(tags = "train"),
@@ -52,7 +63,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
         disable_default_eval_metric = p_lgl(default = FALSE, tags = "train"),
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
-        early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
         eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
         feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
         feval                       = p_uty(default = NULL, tags = "train"),
@@ -71,7 +81,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)), #nolint
         monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train"),
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
-        nrounds                     = p_int(1L, tags = "train"),
+        nrounds                     = p_nrounds,
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
         ntreelimit                  = p_int(1L, tags = "predict"),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
@@ -114,14 +124,14 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       # custom defaults
-      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
+      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L)
 
       super$initialize(
         id = "surv.xgboost.aft",
         param_set = ps,
         predict_types = c("crank", "lp", "response"),
         feature_types = c("integer", "numeric"),
-        properties = c("weights", "missings", "importance"),
+        properties = c("weights", "missings", "importance", "validation", "internal_tuning"),
         packages = c("mlr3extralearners", "xgboost"),
         man = "mlr3extralearners::mlr_learners_surv.xgboost.aft",
         label = "Extreme Gradient Boosting AFT"
@@ -136,8 +146,47 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       xgb_imp(self$model)
     }
   ),
-
+  active = list(
+    #' @field internal_valid_scores
+    #' The last observation of the validation scores for all metrics.
+    #' Extracted from `model$evaluation_log`
+    internal_valid_scores = function() {
+      self$state$internal_valid_scores
+    },
+    #' @field internal_tuned_values
+    #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
+    internal_tuned_values = function() {
+      self$state$internal_tuned_values
+    },
+    #' @field validate
+    #' How to construct the internal validation data. This parameter can be either `NULL`,
+    #' a ratio, `"test"`, or `"predefined"`.
+    validate = function(rhs) {
+      if (!missing(rhs)) {
+        private$.validate = assert_validate(rhs)
+      }
+      private$.validate
+    }
+  ),
   private = list(
+    .validate = NULL,
+    .extract_internal_tuned_values = function() {
+      if (is.null(self$state$param_vals$early_stopping_rounds)) {
+        return(NULL)
+      }
+      list(nrounds = self$model$niter)
+    },
+
+    .extract_internal_valid_scores = function() {
+      if (is.null(self$model$evaluation_log)) {
+        return(named_list())
+      }
+      as.list(self$model$evaluation_log[
+        get(".N"),
+        set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD",)))),
+        .SDcols = patterns("^test_")
+      ])
+    },
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       # manually add 'objective' and 'eval_metric'
@@ -149,17 +198,17 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         xgboost::setinfo(data, "weight", task$weights$weight)
       }
 
-      # XGBoost uses the last element in the watchlist as
-      # the early stopping set
-      if (pv$early_stopping_set != "none") {
-        pv$watchlist = c(pv$watchlist, list(train = data))
+      internal_valid_task = task$internal_valid_task
+      if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
+        stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
-
-      if (pv$early_stopping_set == "test" && !is.null(task$row_roles$test)) {
-        test_data = get_xgb_mat(task, pv$objective, task$row_roles$test)
+      if (!is.null(internal_valid_task)) {
+        test_data = get_xgb_mat(internal_valid_task, pv$objective)
+        if ("weights" %in% internal_valid_task$properties) {
+          xgboost::setinfo(test_data, "weight", internal_valid_task$weights$weight)
+        }
         pv$watchlist = c(pv$watchlist, list(test = test_data))
       }
-      pv$early_stopping_set = NULL
 
       invoke(xgboost::xgb.train, data = data, .args = pv)
     },
