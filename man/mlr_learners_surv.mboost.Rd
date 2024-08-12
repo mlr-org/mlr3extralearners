@@ -6,7 +6,7 @@
 \title{Boosted Generalized Additive Survival Learner}
 \description{
 Model-based boosting for survival analysis.
-Calls \code{\link[mboost:mboost]{mboost::mboost()}} from \CRANpkg{mboost}.
+Calls \code{\link[mboost:gamboost]{mboost::mboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
@@ -127,7 +127,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvMBoost$selected_features()}\if{html}{\out{</div>}}

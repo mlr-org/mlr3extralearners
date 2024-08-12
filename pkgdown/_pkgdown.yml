@@ -19,7 +19,7 @@ authors:
 navbar:
   structure:
     left:  [reference, news, book, search, status, extending]
-    right: [github, mattermost, stackoverflow, rss]
+    right: [search, github, mattermost, stackoverflow, rss]
   components:
     home: ~
     articles: ~

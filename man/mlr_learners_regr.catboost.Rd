@@ -31,7 +31,6 @@ lrn("regr.catboost")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    loss_function \tab character \tab RMSE \tab MAE, MAPE, Poisson, Quantile, RMSE, LogLinQuantile, Lq, Huber, Expectile, Tweedie \tab - \cr
-   iterations \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    learning_rate \tab numeric \tab 0.03 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
    random_seed \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    l2_leaf_reg \tab numeric \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -93,6 +92,10 @@ lrn("regr.catboost")
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ntree_start \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ntree_end \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   eval_metric \tab untyped \tab - \tab  \tab - \cr
+   use_best_model \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   iterations \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
@@ -129,6 +132,13 @@ See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 \item Reason for change: consistent with other mlr3 learners
 }
 }
+}
+
+\section{Early stopping}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
+For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
 }
 
 \examples{
@@ -181,6 +191,18 @@ sumny
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrCatboost}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
+Extracted from \code{model$evaluation_log}}
+
+\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+
+\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
