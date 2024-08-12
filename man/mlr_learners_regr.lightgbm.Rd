@@ -200,14 +200,6 @@ kapsner
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{internal_valid_measure}}{(List of \link[mlr3:Measure]{mlr3::Measure} | \code{character()}| \verb{function()})
-The internal validation measure used for early stopping.
-LightGBM stops when any metric fails to improve on the validation set.
-Sets the \code{eval} parameter in parameter set.
-Pass a \code{character(1)} to choose an internal lightGBM \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#metric}{metric}.
-Custom functions should accept the arguments \code{preds} and \code{dtrain} (see the \href{https://lightgbm.readthedocs.io/en/stable/R/reference/lgb.train.html}{lgb.train} documentation.)
-\link[mlr3:Measure]{mlr3::Measure}s are wrapped internally in custom functions.}
-
 \item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
 Extracted from \code{model$evaluation_log}}
 

@@ -134,13 +134,6 @@ See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 }
 }
 
-\section{Early stopping}{
-
-Early stopping can be used to find the optimal number of boosting rounds.
-Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
-For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
-}
-
 \examples{
 learner = mlr3::lrn("regr.catboost")
 print(learner)
