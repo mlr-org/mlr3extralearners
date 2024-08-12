@@ -62,4 +62,4 @@ s4_helper = function(x) {
 # add survival lung task with missing features
 lung = survival::lung
 lung$status = lung$status - 1
-lung_missings = TaskSurv$new("lung", backend = lung, time = "time", event = "status")
+lung_missings = mlr3proba::TaskSurv$new("lung", backend = lung, time = "time", event = "status")
