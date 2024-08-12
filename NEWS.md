@@ -2,6 +2,10 @@
 
 * Added response (i.e., survival time) prediction to `aorsf` learner
 * Updated support for flexsurv v2.3
+* Fixed bug in catboost that caused invalid probability levels during
+  `resample()` or `benchmark()` (#353)
+* the `$model` slot of `lrn("classif.abess")` now contains the model of
+  the upstream package again.
 
 # mlr3extralearners 0.8.0
 
