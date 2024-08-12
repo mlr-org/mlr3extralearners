@@ -191,7 +191,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           "weights",
           "importance",
           "internal_tuning",
-          "validation"), # FIXME: parallel
+          "validation"), 
         man = "mlr3extralearners::mlr_learners_regr.catboost",
         label = "Gradient Boosting"
       )
