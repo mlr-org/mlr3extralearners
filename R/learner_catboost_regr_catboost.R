@@ -30,7 +30,7 @@
 #'   - Adjusted default: FALSE
 #'   - Reason for change: consistent with other mlr3 learners
 #'
-#' @section Early stopping:
+#' @inheritSection mlr_learners_classif.catboost Early stopping
 #' Early stopping can be used to find the optimal number of boosting rounds.
 #' Set `early_stopping_rounds` to an integer value to monitor the performance of the model on the validation set while training.
 #' For information on how to configure the validation set, see the *Validation* section of [`mlr3::Learner`].
@@ -191,7 +191,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           "weights",
           "importance",
           "internal_tuning",
-          "validation"), # FIXME: parallel
+          "validation"), 
         man = "mlr3extralearners::mlr_learners_regr.catboost",
         label = "Gradient Boosting"
       )
