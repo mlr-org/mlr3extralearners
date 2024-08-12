@@ -28,7 +28,6 @@
 #'
 #' # print the model
 #' print(learner$model)
-#'
 #' }
 #' @export
 LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",

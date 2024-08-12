@@ -78,12 +78,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (mlr3misc::require_namespaces(lrn("surv.coxtime")$packages, quietly = TRUE)) {
-# Define the Learner and set parameter values
-learner = lrn("surv.coxtime")
-print(learner)
-
-}
+lrn("surv.coxtime")
 }
 \references{
 Kvamme, Håvard, Borgan Ø, Scheel I (2019).

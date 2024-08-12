@@ -73,16 +73,12 @@ lrn("regr.lmer")
 \examples{
 if (requireNamespace("lme4", quietly = TRUE)) {
 # Define the Learner and set parameter values
-
 learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
 
 # Define a Task
 task = tsk("boston_housing")
 
-# Train the learner
 learner$train(task)
-
-# print the model
 print(learner$model)
 }
 }

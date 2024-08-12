@@ -17,8 +17,6 @@
 #' @examples
 #' if (requireNamespace("prioritylasso", quietly = TRUE)) {
 #' # Define the Learner and set parameter values
-#'
-#'
 #' learner = lrn("regr.priority_lasso",
 #'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
 #' print(learner)
@@ -40,7 +38,6 @@
 #'
 #' # Score the predictions
 #' predictions$score()
-#'
 #' }
 #' @export
 LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",

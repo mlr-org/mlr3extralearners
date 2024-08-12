@@ -23,8 +23,8 @@
 #'
 #' @template seealso_learner
 #' @examples
-#' set.seed(123)
 #' if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)) {
+#' set.seed(123)
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.svm", gamma.mu = 0.1)
 #' print(learner)
@@ -47,7 +47,6 @@
 #' # Score the predictions
 #' predictions$score()
 #' }
-
 #' @export
 LearnerSurvSVM = R6Class("LearnerSurvSVM",
   inherit = mlr3proba::LearnerSurv,

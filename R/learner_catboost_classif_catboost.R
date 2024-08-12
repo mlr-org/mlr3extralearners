@@ -205,12 +205,15 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       # target is encoded as integer values from 0
       # if binary, the positive class is 1
       is_binary = length(task$class_names) == 2L
+
+      truth = task$data(cols = task$target_names)[[1L]]
+
       label = if (is_binary) {
-        ifelse(task$data(cols = task$target_names)[[1L]] == task$positive,
+        ifelse(truth == task$positive,
           yes = 1L,
           no = 0L)
       } else {
-        as.integer(task$data(cols = task$target_names)[[1L]]) - 1L
+        as.integer(truth) - 1L
       }
 
       # data must be a dataframe

@@ -88,12 +88,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-if (mlr3misc::require_namespaces(lrn("surv.pchazard")$packages, quietly = TRUE)) {
-# Define the Learner and set parameter values
-learner = lrn("surv.pchazard")
-print(learner)
-
-}
+lrn("surv.pchazard")
 }
 \references{
 Kvamme, Håvard, Borgan Ø (2019).

@@ -100,7 +100,6 @@ learner$train(task)
 
 # print the model
 print(learner$model)
-
 }
 }
 \references{

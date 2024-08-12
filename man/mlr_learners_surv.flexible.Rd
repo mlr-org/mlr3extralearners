@@ -78,12 +78,7 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-if (mlr3misc::require_namespaces(lrn("surv.flexible")$packages, quietly = TRUE)) {
-# Define the Learner and set parameter values
-learner = lrn("surv.flexible")
-print(learner)
-
-}
+lrn("surv.flexible")
 }
 \references{
 Royston, Patrick, Parmar, KB M (2002).
