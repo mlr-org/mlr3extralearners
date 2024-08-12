@@ -71,31 +71,19 @@ lrn("regr.lmer")
 }
 
 \examples{
-if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
+if (requireNamespace("lme4", quietly = TRUE)) {
 # Define the Learner and set parameter values
 
-
-learner = lrn("regr.lmer", formula = Reaction ~ Days + (Days | Subject))
-print(learner)
+learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
 
 # Define a Task
-task = mlr3::as_task_regr(lme4::sleepstudy, target = "Reaction")
+task = tsk("boston_housing")
 
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
+# Train the learner
+learner$train(task)
 
 # print the model
 print(learner$model)
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-
 }
 }
 \references{

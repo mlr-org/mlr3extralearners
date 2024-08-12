@@ -85,22 +85,19 @@ lrn("classif.glmer")
 }
 
 \examples{
-if (requireNamespace(c("lme4", "faraway"), quietly = TRUE)) {
+if (requireNamespace("lme4", quietly = TRUE)) {
 # Define the Learner and set parameter values
 
-
-learner = lrn("classif.glmer", formula = outcome ~ treatment * visit + (1 | ID))
+learner = lrn("classif.glmer",
+  formula = credit_risk ~ (1 | credit_history) + job + property + telephone + savings)
 print(learner)
-
 # Define a Task
-task = mlr3::as_task_classif(faraway::toenail, target = "outcome")
-
+task = tsk("german_credit")
+task$select(c("credit_history", "job", "property", "telephone", "savings"))
 # Train the learner
 learner$train(task)
-
 # print the model
 print(learner$model)
-
 }
 }
 \references{

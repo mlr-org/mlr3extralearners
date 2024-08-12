@@ -33,13 +33,13 @@
 #'
 #' # Define a Task
 #' task = mlr3::tsk("boston_housing")
+#' ids = partition(task)
 #'
 #' # Train the learner
-#' learner$train(task)
+#' learner$train(task, ids$train)
 #'
-#' # print the model
-#' print(learner$model)
-#'
+#' # Make predictions
+#' learner$predict(task, ids$test)
 #' }
 LearnerRegrGBM = R6Class("LearnerRegrGBM",
   inherit = LearnerRegr,
