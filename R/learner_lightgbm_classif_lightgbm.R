@@ -55,7 +55,13 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         # lgb.train core functions
         objective = p_fct(levels = c("binary", "multiclass", "multiclassova"), tags = "train"),
         eval = p_uty(tags = "train", custom_check = mlr3misc::crate({function(x) {
-          check_list(x, types = c("character", "function", "Measure"), min.len = 1, null.ok = FALSE)
+          if (!is.character(x) || !is.function(x) || !inherits(x, "Measure") || !is.list(x)) {
+            sprintf("Must be of type 'string', 'function, 'Measure' or 'list', not '%s'", class(x))
+          }
+          if (is.list(x)) {
+            check_list(x, types = c("character", "function", "Measure"), min.len = 1, null.ok = FALSE)
+          }
+          return(TRUE)
         }})),
         verbose = p_int(default = 1L, tags = "train"),
         record = p_lgl(default = TRUE, tags = "train"),
@@ -348,6 +354,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       # set internal validation measure
       if (!is.null(pars$eval)) {
+        if (!is.list(pars$eval)) pars$eval = list(pars$eval)
         metrics = map(pars$eval, function(internal_measure) {
           # lightgbm measure and custom function
           if (is.character(internal_measure) || is.function(internal_measure)) return(internal_measure)

@@ -102,6 +102,24 @@ test_that("custom inner validation measure", {
   expect_named(learner$model$record_evals$test, c("regr.rmse"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), c("regr.rmse"))
+
+  # multiple measures
+  task = tsk("mtcars")
+
+  learner = lrn("regr.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = list(msr("regr.mae"), "rmse")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, c("rmse", "regr.mae"))
+  expect_list(learner$model$record_evals$test$rmse$eval, types = "numeric", , len = 10)
+  expect_list(learner$model$record_evals$test$regr.mae$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), c("rmse", "regr.mae"))
 })
 
 test_that("mlr3measures are equal to internal measures", {

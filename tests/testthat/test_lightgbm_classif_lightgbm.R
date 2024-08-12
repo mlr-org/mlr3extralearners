@@ -54,7 +54,7 @@ test_that("custom inner validation measure", {
     num_iterations = 10,
     validate = 0.2,
     early_stopping_rounds = 10,
-    eval = list("binary_logloss")
+    eval = "binary_logloss"
   )
 
   learner$train(task)
@@ -76,7 +76,7 @@ test_that("custom inner validation measure", {
     num_iterations = 10,
     validate = 0.2,
     early_stopping_rounds = 10,
-    eval = list(error_metric)
+    eval = error_metric
   )
 
   learner$train(task)
@@ -93,7 +93,7 @@ test_that("custom inner validation measure", {
     num_iterations = 10,
     validate = 0.2,
     early_stopping_rounds = 10,
-    eval = list(msr("classif.ce"))
+    eval = msr("classif.ce")
   )
 
   learner$train(task)
@@ -111,7 +111,7 @@ test_that("custom inner validation measure", {
     validate = 0.2,
     early_stopping_rounds = 10,
     predict_type = "prob",
-    eval = list(msr("classif.logloss"))
+    eval = msr("classif.logloss")
   )
 
   learner$train(task)
@@ -121,6 +121,25 @@ test_that("custom inner validation measure", {
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.logloss")
 
+  # multiple measures
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"), "binary_error")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, c("binary_error", "classif.logloss"))
+  expect_list(learner$model$record_evals$test$binary_error$eval, types = "numeric", , len = 10)
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), c("binary_error", "classif.logloss"))
+
   # binary task and mlr3 measure multiclass prob
   task = tsk("sonar")
 
@@ -129,7 +148,7 @@ test_that("custom inner validation measure", {
     validate = 0.2,
     early_stopping_rounds = 10,
     predict_type = "prob",
-    eval = list(msr("classif.auc"))
+    eval = msr("classif.auc")
   )
 
   learner$train(task)
@@ -147,7 +166,7 @@ test_that("custom inner validation measure", {
     validate = 0.2,
     early_stopping_rounds = 10,
     predict_type = "prob",
-    eval = list(msr("classif.ce"))
+    eval = msr("classif.ce")
   )
 
   learner$train(task)
@@ -165,7 +184,7 @@ test_that("custom inner validation measure", {
     validate = 0.2,
     early_stopping_rounds = 10,
     predict_type = "prob",
-    eval = list(msr("classif.logloss"))
+    eval = msr("classif.logloss")
   )
 
   learner$train(task)
