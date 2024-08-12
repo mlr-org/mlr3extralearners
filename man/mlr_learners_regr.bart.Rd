@@ -31,7 +31,7 @@ lrn("regr.bart")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ntree \tab integer \tab 200 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   sigest \tab untyped \tab  \tab  \tab - \cr
+   sigest \tab untyped \tab NULL \tab  \tab - \cr
    sigdf \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sigquant \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    k \tab numeric \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -51,8 +51,8 @@ lrn("regr.bart")
    keepcall \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampleronly \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    seed \tab integer \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   proposalprobs \tab untyped \tab  \tab  \tab - \cr
-   splitprobs \tab untyped \tab  \tab  \tab - \cr
+   proposalprobs \tab untyped \tab NULL \tab  \tab - \cr
+   splitprobs \tab untyped \tab NULL \tab  \tab - \cr
    keepsampler \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }

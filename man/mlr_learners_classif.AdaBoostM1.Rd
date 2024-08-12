@@ -36,12 +36,12 @@ lrn("classif.AdaBoostM1")
    Q \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    S \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    I \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   W \tab untyped \tab DecisionStump \tab  \tab - \cr
+   W \tab untyped \tab "DecisionStump" \tab  \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

@@ -33,16 +33,16 @@ lrn("regr.glmboost")
    offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    family \tab character \tab Gaussian \tab Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom \tab - \cr
    custom.family \tab untyped \tab - \tab  \tab - \cr
-   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
+   nuirange \tab untyped \tab c(0, 100) \tab  \tab - \cr
    d \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
-   oobweights \tab untyped \tab  \tab  \tab - \cr
+   oobweights \tab untyped \tab NULL \tab  \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stopintern \tab untyped \tab FALSE \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
    contrasts.arg \tab untyped \tab - \tab  \tab - \cr
 }
 }

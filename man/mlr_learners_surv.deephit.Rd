@@ -41,7 +41,7 @@ lrn("surv.deephit")
    cutpoints \tab untyped \tab - \tab  \tab - \cr
    scheme \tab character \tab equidistant \tab equidistant, quantiles \tab - \cr
    cut_min \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   num_nodes \tab untyped \tab c , 32, 32 \tab  \tab - \cr
+   num_nodes \tab untyped \tab c(32L, 32L) \tab  \tab - \cr
    batch_norm \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    dropout \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    activation \tab character \tab relu \tab celu, elu, gelu, glu, hardshrink, hardsigmoid, hardswish, hardtanh, relu6, leakyrelu, \link{...} \tab - \cr
@@ -56,15 +56,15 @@ lrn("surv.deephit")
    weight_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    learning_rate \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lr_decay \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   betas \tab untyped \tab c    , 0.9  , 0.999 \tab  \tab - \cr
+   betas \tab untyped \tab c(0.9, 0.999) \tab  \tab - \cr
    amsgrad \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambd \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    alpha \tab numeric \tab 0.75 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    t0 \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    momentum \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    centered \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   etas \tab untyped \tab c  , 0.5, 1.2 \tab  \tab - \cr
-   step_sizes \tab untyped \tab c    , 1e-06, 50 \tab  \tab - \cr
+   etas \tab untyped \tab c(0.5, 1.2) \tab  \tab - \cr
+   step_sizes \tab untyped \tab c(1e-06, 50) \tab  \tab - \cr
    dampening \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    nesterov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    batch_size \tab integer \tab 256 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

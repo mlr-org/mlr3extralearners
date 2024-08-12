@@ -44,7 +44,7 @@ lrn("regr.lightgbm")
    early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
    reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   categorical_feature \tab untyped \tab  \tab  \tab - \cr
+   categorical_feature \tab untyped \tab "" \tab  \tab - \cr
    convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -90,11 +90,11 @@ lrn("regr.lightgbm")
    cat_smooth \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    top_k \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   monotone_constraints \tab untyped \tab  \tab  \tab - \cr
+   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
    monotone_constraints_method \tab character \tab basic \tab basic, intermediate, advanced \tab - \cr
    monotone_penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   feature_contri \tab untyped \tab  \tab  \tab - \cr
-   forcedsplits_filename \tab untyped \tab  \tab  \tab - \cr
+   feature_contri \tab untyped \tab NULL \tab  \tab - \cr
+   forcedsplits_filename \tab untyped \tab "" \tab  \tab - \cr
    refit_decay_rate \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cegb_tradeoff \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cegb_penalty_split \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -108,7 +108,7 @@ lrn("regr.lightgbm")
    stochastic_rounding \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    serializable \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
-   max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
+   max_bin_by_feature \tab untyped \tab NULL \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    bin_construct_sample_cnt \tab integer \tab 200000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    data_random_seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -119,7 +119,7 @@ lrn("regr.lightgbm")
    feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   forcedbins_filename \tab untyped \tab  \tab  \tab - \cr
+   forcedbins_filename \tab untyped \tab "" \tab  \tab - \cr
    boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    reg_sqrt \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -130,7 +130,7 @@ lrn("regr.lightgbm")
    num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   machines \tab untyped \tab  \tab  \tab - \cr
+   machines \tab untyped \tab "" \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

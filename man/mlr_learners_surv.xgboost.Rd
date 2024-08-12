@@ -7,6 +7,12 @@
 \description{
 eXtreme Gradient Boosting regression.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost}.
+
+\strong{Note:} We strongly advise to use the separate \link[=LearnerSurvXgboostCox]{Cox}
+and \link[=LearnerSurvXgboostAFT]{AFT} xgboost survival learners since they represent
+two very distinct survival modeling methods and we offer more prediction
+types in the respective learners compared to the ones available here.
+This learner will be deprecated in the future.
 }
 \note{
 To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
@@ -21,17 +27,6 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \item \code{verbose} is initialized to 0.
 \item \code{objective} is initialized to \code{survival:cox} for survival analysis.
 }
-}
-
-\section{Early stopping}{
-
-Early stopping can be used to find the optimal number of boosting rounds.
-The \code{early_stopping_set} parameter controls which set is used to monitor the performance.
-Set \code{early_stopping_set = "test"} to monitor the performance of the model on the test set while training.
-The test set for early stopping can be set with the \code{"test"} row role in the \link[mlr3:Task]{mlr3::Task}.
-Additionally, the range must be set in which the performance must increase with \code{early_stopping_rounds} and the maximum number of boosting rounds with \code{nrounds}.
-While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
-Not that using the test set for early stopping can potentially bias the performance scores.
 }
 
 \section{Dictionary}{
@@ -61,7 +56,7 @@ lrn("surv.xgboost")
    alpha \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
-   callbacks \tab untyped \tab list \tab  \tab - \cr
+   callbacks \tab untyped \tab list() \tab  \tab - \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -70,7 +65,7 @@ lrn("surv.xgboost")
    early_stopping_set \tab character \tab none \tab none, train, test \tab - \cr
    eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab  \tab  \tab - \cr
+   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
@@ -88,7 +83,6 @@ lrn("surv.xgboost")
    normalize_type \tab character \tab tree \tab tree, forest \tab - \cr
    nrounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nthread \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ntreelimit \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    objective \tab character \tab survival:cox \tab survival:cox, survival:aft \tab - \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -110,10 +104,28 @@ lrn("surv.xgboost")
    tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab  \tab  \tab - \cr
+   watchlist \tab untyped \tab NULL \tab  \tab - \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
 }
+}
+
+\section{Early stopping}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+The \code{early_stopping_set} parameter controls which set is used to monitor the
+performance.
+By default, \code{early_stopping_set = "none"} which disables early stopping.
+Set \code{early_stopping_set = "test"} to monitor the performance of the model on
+the test set while training.
+The test set for early stopping can be set with the \code{"test"} row role in the
+\link[mlr3:Task]{mlr3::Task}.
+Additionally, the range must be set in which the performance must increase
+with \code{early_stopping_rounds} and the maximum number of boosting rounds with
+\code{nrounds}.
+While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
+Not that using the test set for early stopping can potentially bias the
+performance scores.
 }
 
 \examples{

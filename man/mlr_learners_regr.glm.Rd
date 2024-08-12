@@ -37,7 +37,7 @@ lrn("regr.glm")
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    etastart \tab untyped \tab - \tab  \tab - \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
-   start \tab untyped \tab  \tab  \tab - \cr
+   start \tab untyped \tab NULL \tab  \tab - \cr
    offset \tab untyped \tab - \tab  \tab - \cr
    family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab - \cr
    na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab - \cr
@@ -45,7 +45,7 @@ lrn("regr.glm")
    epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    maxit \tab numeric \tab 25 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   dispersion \tab untyped \tab  \tab  \tab - \cr
+   dispersion \tab untyped \tab NULL \tab  \tab - \cr
    type \tab character \tab link \tab response, link, terms \tab - \cr
 }
 }

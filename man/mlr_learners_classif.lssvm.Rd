@@ -44,7 +44,7 @@ lrn("classif.lssvm")
    length \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    normalized \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   kpar \tab untyped \tab automatic \tab  \tab - \cr
+   kpar \tab untyped \tab "automatic" \tab  \tab - \cr
    tau \tab numeric \tab 0.01 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    reduced \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    rank \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

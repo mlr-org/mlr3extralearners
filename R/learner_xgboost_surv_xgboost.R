@@ -6,6 +6,12 @@
 #' eXtreme Gradient Boosting regression.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost}.
 #'
+#' **Note:** We strongly advise to use the separate [Cox][LearnerSurvXgboostCox]
+#' and [AFT][LearnerSurvXgboostAFT] xgboost survival learners since they represent
+#' two very distinct survival modeling methods and we offer more prediction
+#' types in the respective learners compared to the ones available here.
+#' This learner will be deprecated in the future.
+#'
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:
@@ -13,17 +19,10 @@
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
 #' - `objective` is initialized to `survival:cox` for survival analysis.
-#' @section Early stopping:
-#' Early stopping can be used to find the optimal number of boosting rounds.
-#' The `early_stopping_set` parameter controls which set is used to monitor the performance.
-#' Set `early_stopping_set = "test"` to monitor the performance of the model on the test set while training.
-#' The test set for early stopping can be set with the `"test"` row role in the [mlr3::Task].
-#' Additionally, the range must be set in which the performance must increase with `early_stopping_rounds` and the maximum number of boosting rounds with `nrounds`.
-#' While resampling, the test set is automatically applied from the [mlr3::Resampling].
-#' Not that using the test set for early stopping can potentially bias the performance scores.
 #'
 #' @templateVar id surv.xgboost
 #' @template learner
+#' @template section_early_stopping
 #'
 #' @references
 #' `r format_bib("chen_2016")`
@@ -37,6 +36,9 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      .Deprecated(
+        msg = "'surv.xgboost' will be deprecated in the future. Use 'surv.xgboost.cox' or 'surv.xgboost.aft' learners instead." #nolint
+      )
 
       ps = ps(
         aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
@@ -71,7 +73,6 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
         nrounds                     = p_int(1L, tags = "train"),
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
-        ntreelimit                  = p_int(1L, tags = "predict"),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
         objective                   = p_fct(c("survival:cox", "survival:aft"), default = "survival:cox", tags = c("train", "predict")),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
@@ -134,46 +135,11 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-
-      imp = xgboost::xgb.importance(
-        model = self$model
-      )
-      set_names(imp$Gain, imp$Feature)
+      xgb_imp(self$model)
     }
   ),
 
   private = list(
-    # helper function to construct an `xgb.DMatrix` object
-    .get_data = function(task, pv, row_ids = NULL) {
-      # use all task rows if `rows_ids` is not specified
-      if (is.null(row_ids))
-        row_ids = task$row_ids
-
-      data = task$data(rows = row_ids, cols = task$feature_names)
-      target = task$data(rows = row_ids, cols = task$target_names)
-      targets = task$target_names
-      label = target[[targets[1]]] # time
-      status = target[[targets[2]]]
-
-      if (pv$objective == "survival:cox") {
-        label[status != 1] = -1L * label[status != 1]
-        data = xgboost::xgb.DMatrix(
-          data = as_numeric_matrix(data),
-          label = label)
-      } else {
-        y_lower_bound = y_upper_bound = label
-        y_upper_bound[status == 0] = Inf
-
-        data = xgboost::xgb.DMatrix(as_numeric_matrix(data))
-        xgboost::setinfo(data, "label_lower_bound", y_lower_bound)
-        xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
-      }
-      data
-    },
-
     .train = function(task) {
 
       pv = self$param_set$get_values(tags = "train")
@@ -188,7 +154,7 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
         pv$eval_metric = "aft-nloglik"
       }
 
-      data = private$.get_data(task, pv)
+      data = get_xgb_mat(task, pv$objective)
 
       if ("weights" %in% task$properties) {
         xgboost::setinfo(data, "weight", task$weights$weight)
@@ -201,7 +167,7 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
       }
 
       if (pv$early_stopping_set == "test" && !is.null(task$row_roles$test)) {
-        test_data = private$.get_data(task, pv, task$row_roles$test)
+        test_data = get_xgb_mat(task, pv$objective, task$row_roles$test)
         pv$watchlist = c(pv$watchlist, list(test = test_data))
       }
       pv$early_stopping_set = NULL

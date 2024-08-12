@@ -32,18 +32,17 @@ lrn("regr.IBk")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    subset \tab untyped \tab - \tab  \tab - \cr
    na.action \tab untyped \tab - \tab  \tab - \cr
-   I \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   F \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   weight \tab character \tab - \tab I, F \tab - \cr
    K \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    E \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    W \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    X \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   A \tab untyped \tab weka.core.neighboursearch.LinearNNSearch \tab  \tab - \cr
+   A \tab character \tab LinearNNSearch \tab BallTree, CoverTree, FilteredNeighbourSearch, KDTree, LinearNNSearch \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 
@@ -68,6 +67,13 @@ lrn("regr.IBk")
 }
 \item Reason for change: This learner contains changed ids of the following control arguments
 since their ids contain irregular pattern
+\item \code{weight}:
+\itemize{
+\item original id: I and F
+}
+\item Reason for change: original \code{I} and \code{F} params are interdependent
+(\code{I} can only be \code{TRUE} when \code{F} is \code{FALSE} and vice versa).
+The easiest way to encode this is to combine \code{I} and \code{F} into one factor param.
 }
 }
 

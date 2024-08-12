@@ -21,7 +21,7 @@ lrn("classif.J48")
 
 \itemize{
 \item Task type: \dQuote{classif}
-\item Predict Types: \dQuote{response}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{RWeka}
 }
@@ -49,7 +49,7 @@ lrn("classif.J48")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

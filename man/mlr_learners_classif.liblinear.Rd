@@ -55,7 +55,7 @@ lrn("classif.liblinear")
    bias \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    cross \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   wi \tab untyped \tab  \tab  \tab - \cr
+   wi \tab untyped \tab NULL \tab  \tab - \cr
    findC \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    useInitC \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }

@@ -36,17 +36,17 @@ lrn("surv.glmboost")
    offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
    custom.family \tab untyped \tab - \tab  \tab - \cr
-   nuirange \tab untyped \tab c  , 0  , 100 \tab  \tab - \cr
+   nuirange \tab untyped \tab c(0, 100) \tab  \tab - \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    risk \tab character \tab inbag \tab inbag, oobag, none \tab - \cr
-   oobweights \tab untyped \tab  \tab  \tab - \cr
+   oobweights \tab untyped \tab NULL \tab  \tab - \cr
    stopintern \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sigma \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    ipcw \tab untyped \tab 1 \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
    contrasts.arg \tab untyped \tab - \tab  \tab - \cr
 }
 }

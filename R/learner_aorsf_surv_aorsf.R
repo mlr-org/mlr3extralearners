@@ -5,8 +5,18 @@
 #' @description
 #' Accelerated oblique random survival forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
-#' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
-#' the behaviour has to be configured using the parameter `na_action`.
+#' Note that although the learner has the property `"missing"` and it can in
+#' principle deal with missing values, the behaviour has to be configured using
+#' the parameter `na_action`.
+#'
+#' @details
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' 2. `response`: the restricted mean survival time of each test observation,
+#' derived from the survival matrix prediction (`distr`).
+#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
 #' @template learner
 #' @templateVar id surv.aorsf
 #'
@@ -35,19 +45,19 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 1, lower = 0, tags = c("train", "predict")),
+        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
+        pred_simplify = p_lgl(default = FALSE, tags = "predict"),
+        oobag = p_lgl(default = FALSE, tags = 'predict'),
         mtry = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
         sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
         control_type = p_fct(levels = c("fast", "cph", "net"), default = "fast", tags = "train"),
         split_rule = p_fct(levels = c("logrank", "cstat"), default = "logrank", tags = "train"),
-        control_fast_do_scale = p_lgl(default = TRUE, tags = "train"),
-        control_fast_method = p_fct(levels = c("efron", "breslow"),
-          default = "efron", tags = "train"),
-        control_cph_method = p_fct(levels = c("efron", "breslow"),
-          default = "efron", tags = "train"),
+        control_fast_do_scale = p_lgl(default = FALSE, tags = "train"),
+        control_fast_ties = p_fct(levels = c("efron", "breslow"), default = "efron", tags = "train"),
+        control_cph_ties = p_fct(levels = c("efron", "breslow"), default = "efron", tags = "train"),
         control_cph_eps = p_dbl(default = 1e-9, lower = 0, tags = "train"),
         control_cph_iter_max = p_int(default = 20L, lower = 1, tags = "train"),
         control_net_alpha = p_dbl(default = 0.5, tags = "train"),
@@ -58,11 +68,15 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         leaf_min_obs = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_events = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_obs = p_int(default = 10, lower = 1L, tags = "train"),
-        split_min_stat = p_dbl(default = 3.841459, lower = 0, tags = "train"),
-        oobag_pred_type = p_fct(levels = c("none", "surv", "risk", "chf"), default = "surv", tags = "train"),
+        split_min_stat = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
+        oobag_pred_type = p_fct(levels = c("none", "surv", "risk", "chf", "mort"), default = "risk", tags = "train"),
         importance = p_fct(levels = c("none", "anova", "negate", "permute"), default = "anova", tags = "train"),
+        importance_max_pvalue = p_dbl(default = 0.01, lower = 0.0001, upper = .9999, tags = "train"),
+        tree_seeds = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         oobag_pred_horizon = p_dbl(default = NULL, special_vals = list(NULL), tags = "train", lower = 0),
         oobag_eval_every = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
+        oobag_fun = p_uty(default = NULL, special_vals = list(NULL), tags = "train",
+                          custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
@@ -71,7 +85,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         id = "surv.aorsf",
         packages = c("mlr3extralearners", "aorsf", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("crank", "distr"),
+        predict_types = c("crank", "distr", "response"),
         param_set = ps,
         properties = c("oob_error", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_surv.aorsf",
@@ -117,35 +131,40 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       control = switch(
         dflt_if_null(pv, "control_type"),
         "fast" = {
-          aorsf::orsf_control_fast(
-            method = dflt_if_null(pv, "control_fast_method"),
-            do_scale = dflt_if_null(pv, "control_fast_do_scale")
+          aorsf::orsf_control_survival(
+            method = "glm",
+            scale_x = dflt_if_null(pv, "control_fast_do_scale"),
+            ties = dflt_if_null(pv, "control_fast_ties"),
+            max_iter = 1
           )
         },
         "cph" = {
-          aorsf::orsf_control_cph(
-            method = dflt_if_null(pv, "control_cph_method"),
-            eps = dflt_if_null(pv, "control_cph_eps"),
-            iter_max = dflt_if_null(pv, "control_cph_iter_max")
+          aorsf::orsf_control_survival(
+            method = "glm",
+            scale_x = TRUE, # should always scale with max_iter > 1
+            ties = dflt_if_null(pv, "control_cph_ties"),
+            epsilon = dflt_if_null(pv, "control_cph_eps"),
+            max_iter = dflt_if_null(pv, "control_cph_iter_max")
           )
         },
         "net" = {
-          aorsf::orsf_control_net(
-            alpha = dflt_if_null(pv, "control_net_alpha"),
-            df_target = dflt_if_null(pv, "control_net_df_target")
+          aorsf::orsf_control_survival(
+            method = "net",
+            net_mix = dflt_if_null(pv, "control_net_alpha"),
+            target_df = dflt_if_null(pv, "control_net_df_target")
           )
         }
       )
       # these parameters are used to organize the control arguments
       # above but are not used directly by aorsf::orsf(), so:
-      pv$control_type = NULL
-      pv$control_fast_do_scale = NULL
-      pv$control_fast_method = NULL
-      pv$control_cph_method = NULL
-      pv$control_cph_eps = NULL
-      pv$control_cph_iter_max = NULL
-      pv$control_net_alpha = NULL
-      pv$control_net_df_target = NULL
+      pv = remove_named(pv, c("control_type",
+                              "control_fast_do_scale",
+                              "control_fast_ties",
+                              "control_cph_ties",
+                              "control_cph_eps",
+                              "control_cph_iter_max",
+                              "control_net_alpha",
+                              "control_net_df_target"))
       invoke(
         aorsf::orsf,
         data = task$data(),
@@ -158,9 +177,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
     },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      time = self$model$data[[task$target_names[1]]]
-      status = self$model$data[[task$target_names[2]]]
-      utime = sort(unique(time[status == 1]), decreasing = FALSE)
+      utime = task$unique_event_times() # increasing by default
       surv = mlr3misc::invoke(predict,
         self$model,
         new_data = ordered_features(task, self),
@@ -168,7 +185,16 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         pred_type = "surv",
         .args = pv
       )
-      mlr3proba::.surv_return(times = utime, surv = surv)
+
+      diffs_time = c(utime[1], diff(utime))
+      response = apply(surv, MARGIN = 1, FUN = function(x){
+        sum(diffs_time * x)
+      })
+
+      pred_list = mlr3proba::.surv_return(times = utime, surv = surv)
+      # provide `response` here so that we keep the expected mortality for `crank`
+      pred_list$response = response
+      pred_list
     }
   )
 )

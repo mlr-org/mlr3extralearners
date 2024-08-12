@@ -33,7 +33,7 @@ lrn("dens.spline")
    type \tab untyped \tab - \tab  \tab - \cr
    alpha \tab numeric \tab 1.4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    weights \tab untyped \tab - \tab  \tab - \cr
-   na.action \tab untyped \tab ::     , stats  , na.omit \tab  \tab - \cr
+   na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
    id.basis \tab untyped \tab - \tab  \tab - \cr
    nbasis \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    seed \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

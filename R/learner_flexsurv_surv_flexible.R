@@ -10,16 +10,17 @@
 #' @templateVar id surv.flexible
 #'
 #' @details
-#' The `distr` prediction is estimated using the fitted custom distributions
-#' from [flexsurv::flexsurvspline()] and the estimated coefficients however the prediction takes
-#' place in this package and not in \CRANpkg{flexsurv} for a much faster and more efficient
-#' implementation.
-#'
-#' As flexible spline models estimate the baseline hazard as the intercept, the linear predictor,
-#' `lp`, can be calculated as in the classical setting. i.e. For fitted coefficients,
-#' \eqn{\beta = (\beta_0,...,\beta_P)}{\beta = (\beta0,...,\betaP)},
-#' and covariates \eqn{X^T = (X_0,...,X_P)^T}{X^T = (X0,...,XP)^T}, where \eqn{X_0}{X0} is a column
-#' of \eqn{1}s: \eqn{lp = \beta X}{lp = \betaX}.
+#' This learner returns two prediction types:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), for each test
+#' observation.
+#' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
+#' For fitted coefficients, \eqn{\beta = (\beta_0,...,\beta_P)},
+#' and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
+#' is a column of \eqn{1}s, the linear predictor (`lp`) is \eqn{lp = \beta X}.
+#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using `predict.flexsurvreg()`.
+#' 3. `crank`: same as `lp`.
 #'
 #' @section Initial parameter values:
 #' - `k`:
@@ -48,6 +49,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         bknots = p_uty(tags = "train"),
         scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
         timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
+        spline = p_fct(default = "rp", levels = c("rp", "splines2ns"), tags = "train"),
         inits = p_uty(tags = "train"),
         rtrunc = p_uty(tags = "train"),
         fixedpars = p_uty(tags = "train"),
@@ -67,7 +69,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         id = "surv.flexible",
         packages = c("mlr3extralearners", "flexsurv", "pracma"),
         feature_types = c("logical", "integer", "factor", "numeric"),
-        predict_types = c("distr", "crank", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = ps,
         properties = "weights",
         man = "mlr3extralearners::mlr_learners_surv.flexible",
@@ -97,8 +99,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars = self$param_set$get_values(tags = "predict")
       pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
 
-      # crank is defined as the mean of the survival distribution
-      list(distr = pred$distr, lp = pred$lp, crank = pred$lp)
+      mlr3proba::.surv_return(surv = pred$surv, lp = pred$lp)
     }
   )
 )
@@ -126,8 +127,8 @@ predict_flexsurvreg = function(object, task, learner, ...) {
     ncol = length(object$dlist$pars), byrow = TRUE)
   colnames(pars) = object$dlist$pars
 
-  # calculate the linear predictor as X\beta, note intercept not included in model.matrix
-  # so added manually
+  # calculate the linear predictor as X*beta
+  # Note: intercept not included in `model.matrix`, so we added manually
   pars[, "gamma0"] = coeffs %*% t(X)
 
   # if any inverse transformations exist then apply them
@@ -141,69 +142,21 @@ predict_flexsurvreg = function(object, task, learner, ...) {
   # once inverse transformed we can collect the linear predictor
   lp = pars[, "gamma0"]
 
-  # Define the d/p/q/r methods using the d/p/q/r methods that are automatically generated in the
-  # fitted object. The parameters referenced are defined below and are based on the gamma
-  # parameters above.
-  pdf = function(x) {} # nolint
-  body(pdf) = substitute({
-    do.call(func, c(list(x = x), self$parameters()$values))
-  }, list(func = object$dfns$d))
+  # get survival probabilities in a list
+  p = invoke(predict, learner$model, type = "survival", newdata = newdata)$.pred
 
-  cdf = function(x) {} # nolint
-  body(cdf) = substitute({
-    do.call(func, c(list(q = x), self$parameters()$values))
-  }, list(func = object$dfns$p))
+  times = p[[1]]$.eval_time
+  ut = unique(times)
 
-  quantile = function(p) {} # nolint
-  body(quantile) = substitute({
-    do.call(func, c(list(p = p), self$parameters()$values))
-  }, list(func = object$dfns$q))
-
-  rand = function(n) {} # nolint
-  body(rand) = substitute({
-    do.call(func, c(list(n = n), self$parameters()$values))
-  }, list(func = object$dfns$r))
-
-  # The parameter set combines the auxiliary parameters with the fitted gamma coefficients.
-  # Whilst the user can set these after fitting, this is generally ill-advised.
-  parameters = param6::ParameterSet$new(c(list(
-    param6::prm(
-      "knots", set6::Reals$new()^length(object$knots),
-      numeric(length(object$knots))
-    ),
-    param6::prm("scale", set6::Set$new("hazard", "odds", "normal"), "hazard"),
-    param6::prm("timescale", set6::Set$new("log", "identity"), "log")),
-  lapply(object$dlist$pars, function(x) param6::prm(x, "reals", 0))
+  # remove survival probabilities at duplicated time points
+  dup = !duplicated(times)
+  surv = t(vapply(
+    p, function(.x) .x$.pred_survival[dup],
+    numeric(length(ut))
   ))
+  colnames(surv) = ut
 
-  pars = data.table::data.table(t(pars))
-  pargs = data.table::data.table(matrix(args, ncol = ncol(pars), nrow = length(args)))
-  pars = rbind(pars, pargs)
-
-  shared_params = list(
-    name = "Flexible Parameteric",
-    short_name = "Flexsurv",
-    type = set6::PosReals$new(),
-    support = set6::PosReals$new(),
-    valueSupport = "continuous",
-    variateForm = "univariate",
-    description = "Royston/Parmar Flexible Parametric Survival Model",
-    .suppressChecks = TRUE,
-    pdf = pdf, cdf = cdf, quantile = quantile, rand = rand
-  )
-
-  ## FIXME - This is bad and needs speeding up
-  distlist = lapply(pars, function(x) {
-    yparams = parameters$clone(deep = TRUE)
-    yparams$values = setNames(as.list(x), c(object$dlist$pars, names(args)))
-
-    do.call(distr6::Distribution$new, c(list(parameters = yparams), shared_params))
-  })
-
-  distr = distr6::VectorDistribution$new(
-    distlist, decorators = c("CoreStatistics", "ExoticStatistics"))
-
-  return(list(distr = distr, lp = lp))
+  list(lp = lp, surv = surv)
 }
 
 .extralrns_dict$add("surv.flexible", LearnerSurvFlexible)

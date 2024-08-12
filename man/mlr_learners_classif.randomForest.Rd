@@ -33,7 +33,7 @@ lrn("classif.randomForest")
    ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    replace \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   classwt \tab untyped \tab  \tab  \tab - \cr
+   classwt \tab untyped \tab NULL \tab  \tab - \cr
    cutoff \tab untyped \tab - \tab  \tab - \cr
    strata \tab untyped \tab - \tab  \tab - \cr
    sampsize \tab untyped \tab - \tab  \tab - \cr
