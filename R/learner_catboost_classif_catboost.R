@@ -200,7 +200,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
           "twoclass",
           "multiclass",
           "internal_tuning",
-          "validation"), # FIXME: parallel
+          "validation"),
         man = "mlr3extralearners::mlr_learners_classif.catboost",
         label = "Gradient Boosting"
       )
