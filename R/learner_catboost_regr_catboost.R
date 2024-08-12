@@ -31,9 +31,6 @@
 #'   - Reason for change: consistent with other mlr3 learners
 #'
 #' @inheritSection mlr_learners_classif.catboost Early stopping
-#' Early stopping can be used to find the optimal number of boosting rounds.
-#' Set `early_stopping_rounds` to an integer value to monitor the performance of the model on the validation set while training.
-#' For information on how to configure the validation set, see the *Validation* section of [`mlr3::Learner`].
 #'
 #' @references
 #' `r format_bib("dorogush2018catboost")`
