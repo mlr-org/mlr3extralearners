@@ -394,25 +394,6 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
   ),
 
   active = list(
-    #' @field internal_valid_measure (List of [mlr3::Measure] | `character()`| `function()`)
-    #' The internal validation measure used for early stopping.
-    #' LightGBM stops when any metric fails to improve on the validation set.
-    #' Sets the `eval` parameter in parameter set.
-    #' Pass a `character(1)` to choose an internal lightGBM [metric](https://lightgbm.readthedocs.io/en/latest/Parameters.html#metric).
-    #' Custom functions should accept the arguments `preds` and `dtrain` (see the [lgb.train](https://lightgbm.readthedocs.io/en/stable/R/reference/lgb.train.html) documentation.)
-    #' [mlr3::Measure]s are wrapped internally in custom functions.
-    internal_valid_measure = function(rhs) {
-      if (missing(rhs)) {
-        return(self$param_set$values$eval)
-      }
-      assert_list(rhs, types = c("Measure", "character", "function"), min.len = 1, null.ok = TRUE)
-
-      # without "None" lightgbm also stops on the default measure
-
-
-      self$param_set$values$eval = rhs
-    },
-
     #' @field internal_valid_scores
     #' The last observation of the validation scores for all metrics.
     #' Extracted from `model$evaluation_log`
