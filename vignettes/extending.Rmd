@@ -114,6 +114,16 @@ To fill out some of this meta-information, one has to go through the manual page
 In order to know e.g. which predict types or properties are available, reading the manual pages of the corresponding superclass(es) is indispensable.
 Furthermore, it is a good idea to look at already existing learner implementations for inspiration.
 
+Three properties in `mlr3` exist that deserve special consideration, which are:
+* `"validation"` - the learner can make use of an internal validation to e.g. track the performance
+* `"internal_tuning"` - the learner can internally optimize hyperparameters, e.g. via early stopping
+* `"marshal"` - the learner cannot be serialized without loss of information (e.g. learners from `mlr3torch` have this property)
+
+While these properties are rarely needed, it is still important to know how to implement them if they do apply.
+For the first two properties, see the [documentation of `?Learner`](https://mlr3.mlr-org.com/reference/Learner.html) or the implementations for the [`XGBoost` learners](https://github.com/mlr-org/mlr3learners/blob/main/R/LearnerClassifXgboost.R).
+The documentation on marshaling can be found by running `?marshaling`, and example implementations can be found in [`mlr3torch`](https://github.com/mlr-org/mlr3torch/blob/main/R/LearnerTorch.R).
+In any case, if you suspect your learner to have any of these properties it is best to first discuss the implementation with the `mlr-org` team.
+
 ## Defining the Parameter Set of a Learner
 
 The parameter set of a learner is the set of hyperparameters used in model training and predicting, this is given as a `paradox::ParamSet`.
@@ -373,6 +383,7 @@ test_that("paramtest", {
   expect_true(result, info = result$error)
 })
 ```
+
 
 ## Contributing to mlr3extralearners
 
