@@ -52,9 +52,6 @@ navbar:
     status:
       text: Learner Status
       href: articles/learner_status.html
-    search:
-      text: Learner List
-      href: articles/list_learners.html
 
 reference:
   - title: Helpers
