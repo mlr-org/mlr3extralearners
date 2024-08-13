@@ -6,115 +6,284 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("manual validation binary", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping = TRUE)
-  task = tsk("sonar")
-  ids = partition(task, 0.7)
-  task$set_row_roles(ids$test, "test")
-  expect_error(learner$train(task), regexp = NA)
-
-})
-
-test_that("manual validation multiclass", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 1, early_stopping = TRUE)
-  task = tsk("iris")
-  ids = partition(task)
-  task$set_row_roles(ids$test, "test")
-
-  expect_error(learner$train(task), regexp = NA)
-  # TODO: Fix with test validation renaming
-  task$row_roles$holdout = sample(seq(task$nrow), task$nrow * 0.3)
-  expect_true(inherits(learner$train(task)$predict(task), "PredictionClassif"))
-})
-
-
 test_that("Can pass parameters", {
   task = tsk("iris")
   learner = lrn("classif.lightgbm", num_iterations = 5L, max_bin = 10L)
   expect_warning(learner$train(task), regexp = NA)
 })
 
-test_that("categorical_feature works correctly", {
-
-  dat1 = data.table::data.table(
-    y = factor(sample(c("hello", "world", 100, TRUE))),
-    x_dbl = rnorm(100),
-    x_fct = factor(sample(letters, 100, TRUE)),
-    x_lgl = sample(c(TRUE, FALSE), 100, TRUE)
-  )
-
-  dat2 = dat1
-  dat2$x_fct = as.integer(dat2$x_fct)
-  dat2$x_lgl = as.integer(dat2$x_lgl)
-
-  task1 = as_task_classif(dat1, target = "y")
-  task2 = as_task_classif(dat2, target = "y")
-
-  # we test that:
-  # 1. Manually converting + giving the categorical_feature is the same as setting
-  # convert_categorical to TRUE
-  # 2.
-
-  set.seed(1)
-  learner = lrn("classif.lightgbm")
-  learner$train(task1)
-  p1 = learner$predict(task1)
-
-  set.seed(1)
-  learner = lrn("classif.lightgbm", convert_categorical = FALSE,
-    categorical_feature = c("x_lgl", "x_fct")
-  )
-  learner$train(task2)
-  p2 = learner$predict(task2)
-
-  expect_true(all.equal(p1, p2))
-
-  set.seed(1)
-  learner = lrn("classif.lightgbm", convert_categorical = FALSE)
-  learner$train(task2)
-  p2wrong = learner$predict(task2)
-  expect_true(is.character(all.equal(p2, p2wrong)))
-})
-
 test_that("hotstarting works", {
-  task = tsk("iris")
+  task = tsk("sonar")
   learner = lrn("classif.lightgbm", num_iterations = 2000L)
   learner$train(task)
   stack = HotstartStack$new(list(learner))
   learner_hs = lrn("classif.lightgbm", num_iterations = 2001L)
   learner_hs$hotstart_stack = stack
-  expect_true(is.null(get_private(learner_hs$model)$init_predictor))
-})
-
-
-test_that("Can pass categorical_feature and convert_categorical = TRUE", {
-  n = 500
-  x1 = sample.int(100, 500, replace = TRUE)
-  x2 = as.factor(sample.int(10, n, replace = TRUE))
-  levels(x2) = letters[1:10]
-  y = as.factor(sample(c("yes", "no"), n, replace = TRUE))
-
-  dat = data.table::data.table(x1 = x1, x2 = x2, y = y)
-  task = as_task_classif(dat, target = "y")
-
-  learner1 = lrn("classif.lightgbm", categorical_feature = "x1", convert_categorical = TRUE)
-  learner1$train(task)
-  expect_true(length(learner1$model$params$categorical_feature) == 2L)
-
-  learner2 = lrn("classif.lightgbm", convert_categorical = TRUE)
-  learner2$train(task)
-  expect_true(length(learner2$model$params$categorical_feature) == 1L)
+  learner_hs$train(task)
+  expect_class(get_private(learner_hs$model)$init_predictor, "lgb.Predictor")
 })
 
 test_that("early stopping works", {
-  learner = lrn("classif.lightgbm", early_stopping_rounds = 10, early_stopping = TRUE)
-  task = tsk("iris")
-  task$set_row_roles(1:10, "test")
+  learner = lrn("classif.lightgbm", num_iterations = 1000, early_stopping_rounds = 10)
+  learner$validate = 0.2
+  task = tsk("pima")
+
   learner$train(task)
 
-  dvalid = get_private(learner$model)$valid_sets
-  dtrain = get_private(learner$model)$train_set
+  expect_list(learner$internal_tuned_values)
+  expect_number(learner$internal_tuned_values$num_iterations)
 
-  expect_true(nrow(get_private(dvalid[[1L]])$raw_data) == 10)
-  expect_true(nrow(get_private(dtrain)$raw_data) == 140)
+  expect_list(learner$internal_valid_scores)
+  expect_number(learner$internal_valid_scores$binary_logloss)
+
+  learner = lrn("classif.lightgbm", num_iterations = 1000, early_stopping_rounds = 10, eval = list("l1", "l2"))
+  learner$validate = 0.2
+  learner$train(task)
+
+  expect_list(learner$internal_valid_scores)
+  expect_number(learner$internal_valid_scores$l1)
+  expect_number(learner$internal_valid_scores$l2)
 })
+
+test_that("custom inner validation measure", {
+
+  # internal measure
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = "binary_logloss"
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "binary_logloss")
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "binary_logloss")
+
+  # function
+  task = tsk("sonar")
+
+  error_metric = function(preds, dtrain) {
+    labels = lightgbm::get_field(dtrain, "label")
+    err = sum(labels != (preds > 0.5)) / length(labels)
+    return(list(name = "error", value = err, higher_better = FALSE))
+  }
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = error_metric
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "error")
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "error")
+
+
+  # binary task and mlr3 measure binary response
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = msr("classif.ce")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.ce")
+  expect_list(learner$model$record_evals$test$classif.ce$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.ce")
+
+  # binary task and mlr3 measure binary prob
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = msr("classif.logloss")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.logloss")
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.logloss")
+
+  # multiple measures
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"), "binary_error")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, c("binary_error", "classif.logloss"))
+  expect_list(learner$model$record_evals$test$binary_error$eval, types = "numeric", , len = 10)
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), c("binary_error", "classif.logloss"))
+
+  # binary task and mlr3 measure multiclass prob
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = msr("classif.auc")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.auc")
+  expect_list(learner$model$record_evals$test$classif.auc$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.auc")
+
+  # multiclass task and mlr3 measure multiclass response
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = msr("classif.ce")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.ce")
+  expect_list(learner$model$record_evals$test$classif.ce$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.ce")
+
+  # multiclass task and mlr3 measure multiclass prob
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = msr("classif.logloss")
+  )
+
+  learner$train(task)
+
+  expect_named(learner$model$record_evals$test, "classif.logloss")
+  expect_list(learner$model$record_evals$test$classif.logloss$eval, types = "numeric", , len = 10)
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "classif.logloss")
+})
+
+test_that("mlr3measures are equal to internal measures", {
+  # response
+  set.seed(1)
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    eval = list(msr("classif.ce"))
+  )
+
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
+
+  set.seed(1)
+  learner$param_set$set_values(eval = list("binary_error"))
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$binary_error$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # prob
+  set.seed(1)
+  task = tsk("sonar")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 10,
+    validate = 0.2,
+    early_stopping_rounds = 10,
+    predict_type = "prob",
+    eval = list(msr("classif.auc"))
+  )
+
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.auc$eval)
+
+  set.seed(1)
+  learner$param_set$set_values(eval = list("auc"))
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$auc$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # multiclass response
+  set.seed(1)
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 100,
+    validate = 0.2,
+    early_stopping_rounds = 100,
+    eval = list(msr("classif.ce"))
+  )
+
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
+
+  set.seed(1)
+  learner$param_set$set_values(eval = list("multi_error"))
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$multi_error$eval)
+
+  expect_equal(log_mlr3, log_internal)
+
+  # multiclass prob
+  set.seed(1)
+  task = tsk("iris")
+
+  learner = lrn("classif.lightgbm",
+    num_iterations = 30,
+    validate = 0.2,
+    early_stopping_rounds = 30,
+    predict_type = "prob",
+    eval = list(msr("classif.logloss"))
+  )
+
+  learner$train(task)
+  log_mlr3 = as.numeric(learner$model$record_evals$test$classif.logloss$eval)
+
+  set.seed(1)
+  learner$param_set$set_values(eval = list("multi_logloss"))
+  learner$train(task)
+
+  log_internal = as.numeric(learner$model$record_evals$test$multi_logloss$eval)
+
+  expect_equal(log_mlr3, log_internal)
+})
+

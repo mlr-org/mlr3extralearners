@@ -30,6 +30,8 @@
 #'   - Adjusted default: FALSE
 #'   - Reason for change: consistent with other mlr3 learners
 #'
+#' @inheritSection mlr_learners_classif.catboost Early stopping
+#'
 #' @references
 #' `r format_bib("dorogush2018catboost")`
 #'
@@ -52,8 +54,6 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
           "LogLinQuantile", "Lq", "Huber", "Expectile", "Tweedie"),
         default = "RMSE", tags = "train"),
         # custom_loss missing
-        # eval_metric missing
-        iterations = p_int(lower = 1L, upper = Inf, default = 1000, tags = "train"),
         learning_rate = p_dbl(lower = 0.001, upper = 1, default = 0.03, tags = "train"),
         random_seed = p_int(lower = 0, upper = Inf, default = 0, tags = "train"),
         l2_leaf_reg = p_dbl(lower = 0, upper = Inf, default = 3, tags = "train"),
@@ -141,7 +141,25 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         # https://catboost.ai/docs/concepts/r-reference_catboost-predict.html
         verbose = p_lgl(default = FALSE, tags = "predict"),
         ntree_start = p_int(lower = 0L, upper = Inf, default = 0L, tags = "predict"),
-        ntree_end = p_int(lower = 0L, upper = Inf, default = 0L, tags = "predict")
+        ntree_end = p_int(lower = 0L, upper = Inf, default = 0L, tags = "predict"),
+        # early stopping
+        early_stopping_rounds = p_int(lower = 1L, upper = Inf, tags = "train"),
+        eval_metric = p_uty(tags = "train"),
+        use_best_model = p_lgl(tags = "train"),
+        iterations = p_int(
+          lower = 1L,
+          upper = Inf,
+          default = 1000L,
+          tags = c("train", "internal_tuning"),
+          aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
+          in_tune_fn = crate(function(domain, param_vals) {
+            if (is.null(param_vals$early_stopping_rounds)) {
+              stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
+            }
+            assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
+          }, .parent = topenv()),
+          disable_in_tune = list(early_stopping_rounds = NULL)
+        )
       )
       ps$add_dep(
         id = "mvs_reg", on = "bootstrap_type",
@@ -166,7 +184,11 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         predict_types = "response",
         param_set = ps,
         properties = c(
-          "missings", "weights", "importance"), # FIXME: parallel
+          "missings",
+          "weights",
+          "importance",
+          "internal_tuning",
+          "validation"), 
         man = "mlr3extralearners::mlr_learners_regr.catboost",
         label = "Gradient Boosting"
       )
@@ -190,6 +212,7 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
 
   private = list(
     .train = function(task) {
+      pars = self$param_set$get_values(tags = "train")
 
       if (packageVersion("catboost") < "0.21") {
         stop("catboost v0.21 or greater is required.")
@@ -202,10 +225,24 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         weight = task$weights$weight,
         thread_count = self$param_set$values$thread_count)
 
-      invoke(catboost::catboost.train,
-        learn_pool = learn_pool,
-        test_pool = NULL,
-        params = self$param_set$get_values(tags = "train"))
+      # early stopping
+      internal_valid_task = task$internal_valid_task
+
+      if (!is.null(pars$early_stopping_rounds) && is.null(internal_valid_task)) {
+        stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
+      }
+
+      test_pool = if (!is.null(internal_valid_task)) {
+        # create test labels
+        test_label = internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]]
+        invoke(catboost::catboost.load_pool,
+          data = internal_valid_task$data(cols = internal_valid_task$feature_names),
+          label = test_label,
+          weight = internal_valid_task$weights$weight,
+          thread_count = 1)
+      }
+
+      catboost::catboost.train(learn_pool, test_pool, pars)
     },
 
     .predict = function(task) {
@@ -221,6 +258,43 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
         .args = self$param_set$get_values(tags = "predict"))
 
       list(response = preds)
+    },
+
+    .validate = NULL,
+
+    .extract_internal_tuned_values = function() {
+      if (is.null(self$state$param_vals$early_stopping_rounds)) {
+        return(named_list())
+      }
+      list(iterations = self$model$tree_count)
+    },
+
+    .extract_internal_valid_scores = function() {
+      return(named_list())
+    }
+  ),
+
+  active = list(
+    #' @field internal_valid_scores
+    #' The last observation of the validation scores for all metrics.
+    #' Extracted from `model$evaluation_log`
+    internal_valid_scores = function() {
+      self$state$internal_valid_scores
+    },
+
+    #' @field internal_tuned_values
+    #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
+    internal_tuned_values = function() {
+      self$state$internal_tuned_values
+    },
+
+    #' @field validate
+    #' How to construct the internal validation data. This parameter can be either `NULL`, a ratio, `"test"`, or `"predefined"`.
+    validate = function(rhs) {
+      if (!missing(rhs)) {
+        private$.validate = mlr3::assert_validate(rhs)
+      }
+      private$.validate
     }
   )
 )

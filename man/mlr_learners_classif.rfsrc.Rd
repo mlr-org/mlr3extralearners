@@ -66,6 +66,7 @@ lrn("classif.rfsrc")
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab gmean, misclass, brier, none \tab - \cr
+   case.depth \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
