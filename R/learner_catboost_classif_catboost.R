@@ -235,12 +235,11 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       # target is encoded as integer values from 0
       # if binary, the positive class is 1
       is_binary = length(task$class_names) == 2L
+      truth = task$data(cols = task$target_names)[[1L]]
       label = if (is_binary) {
-        ifelse(task$data(cols = task$target_names)[[1L]] == task$positive,
-          yes = 1L,
-          no = 0L)
+        ifelse(truth == task$positive, 1L, 0L)
       } else {
-        as.integer(task$data(cols = task$target_names)[[1L]]) - 1L
+        as.integer(truth) - 1L
       }
 
       # data must be a dataframe
@@ -285,13 +284,15 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     },
 
     .predict = function(task) {
-
       is_binary = (length(task$class_names) == 2L)
 
       # data must be a dataframe
       pool = invoke(catboost::catboost.load_pool,
         data = ordered_features(task, self),
         thread_count = self$param_set$values$thread_count)
+
+      # mlr3 ensures that the levels are correct
+      class_names = levels(task$truth(task$row_ids[1L])[[1L]])
 
       prediction_type = if (self$predict_type == "response") {
         "Class"
@@ -308,7 +309,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         response = if (is_binary) {
           ifelse(preds == 1L, yes = task$positive, no = task$negative)
         } else {
-          task$class_names[preds + 1L]
+          class_names[preds + 1L]
         }
         list(response = as.character(unname(response)))
       } else {
@@ -317,7 +318,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
           preds = matrix(c(preds, 1 - preds), ncol = 2L, nrow = length(preds))
           colnames(preds) = c(task$positive, task$negative)
         } else {
-          colnames(preds) = self$state$train_task$class_names
+          colnames(preds) = class_names
         }
 
         list(prob = preds)
@@ -332,7 +333,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     },
 
     .extract_internal_valid_scores = function() {
-      return(named_list())
+      named_list()
     }
   ),
 
