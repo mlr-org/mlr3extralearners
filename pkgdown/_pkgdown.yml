@@ -47,7 +47,7 @@ navbar:
       text: Extending
       href: articles/extending.html
     common_issues:
-      text: Extending
+      text: Common Issues
       href: articles/common_issues.html
     status:
       text: Learner Status
