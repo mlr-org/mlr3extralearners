@@ -291,6 +291,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         data = ordered_features(task, self),
         thread_count = self$param_set$values$thread_count)
 
+      # mlr3 ensures that the levels are correct
       class_names = levels(task$truth(task$row_ids[1L])[[1L]])
 
       prediction_type = if (self$predict_type == "response") {
