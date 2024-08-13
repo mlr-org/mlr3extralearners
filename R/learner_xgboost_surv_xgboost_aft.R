@@ -183,7 +183,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       }
       as.list(self$model$evaluation_log[
         get(".N"),
-        set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD",)))),
+        set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")
       ])
     },
@@ -194,19 +194,14 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
 
       data = get_xgb_mat(task, pv$objective)
 
-      if ("weights" %in% task$properties) {
-        xgboost::setinfo(data, "weight", task$weights$weight)
-      }
-
       internal_valid_task = task$internal_valid_task
       if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
       if (!is.null(internal_valid_task)) {
         test_data = get_xgb_mat(internal_valid_task, pv$objective)
-        if ("weights" %in% internal_valid_task$properties) {
-          xgboost::setinfo(test_data, "weight", internal_valid_task$weights$weight)
-        }
+        # XGBoost uses the last element in the watchlist as
+        # the early stopping set
         pv$watchlist = c(pv$watchlist, list(test = test_data))
       }
 
