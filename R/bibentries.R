@@ -593,6 +593,7 @@ bibentries = c( # nolint start
     volume = "35",
     pages = "6679--6687",
     year = "2021"
+  ),
   barnwal2022 = bibentry("article",
     title = "Survival Regression with Accelerated Failure Time Model in XGBoost",
     author = "Barnwal Avinash, Cho Hyunsu and Hocking Toby",

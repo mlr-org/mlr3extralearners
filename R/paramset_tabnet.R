@@ -1,46 +1,40 @@
-#' Wrapper for the TabNet ParamSet
-#'
-#' Used to de-duplicate learner setup.
-#' @return Object of classes `ParamSet" "R6"`, suitable for use with
-#' @keywords internal
-#'
 params_tabnet = function() {
   param_set = ParamSet$new(list(
-    ParamInt$new("num_threads", default = 1L, lower = 1L, upper = Inf, tags = c("train", "threads")),
-    ParamInt$new("batch_size", default = 256L, lower = 1L, upper = Inf, tags = "train"),
-    ParamDbl$new("penalty", default = 0.001, tags = "train"),
+    num_threads= p_int(default = 1L, lower = 1L, upper = Inf, tags = c("train", "threads")),
+    batch_size = p_int(default = 256L, lower = 1L, upper = Inf, tags = "train"),
+    penalty = p_dbl(default = 0.001, tags = "train"),
 
     # FIXME: NULL here is used for bool FALSE, not sure what to do there.
-    ParamUty$new("clip_value", default = NULL, tags = "train"),
-    ParamFct$new("loss", default = "auto", levels = c("auto", "mse", "cross_entropy"), tags = "train"),
-    ParamInt$new("epochs", default = 5L, lower = 1L, upper = Inf, tags = "train"),
-    ParamLgl$new("drop_last", default = FALSE, tags = "train"),
-    ParamInt$new("decision_width", default = 8L, lower = 1L, upper = Inf, tags = "train"),
-    ParamInt$new("attention_width", default = 8L, lower = 1L, upper = Inf, tags = "train"),
-    ParamInt$new("num_steps", default = 3L, lower = 1L, upper = Inf, tags = "train"),
-    ParamDbl$new("feature_reusage", default = 1.3, lower = 0, upper = Inf, tags = "train"),
-    ParamFct$new("mask_type", default = "sparsemax", levels = c("sparsemax", "entmax"), tags = "train"),
-    ParamInt$new("virtual_batch_size", default = 128L, lower = 1L, upper = Inf, tags = "train"),
-    ParamDbl$new("valid_split", default = 0, lower = 0, upper = 1, tags = "train"),
-    ParamDbl$new("learn_rate", default = 0.02, lower = 0, upper = 1, tags = "train"),
+    clip_value = p_uty(default = NULL, tags = "train"),
+    loss = p_fct(default = "auto", levels = c("auto", "mse", "cross_entropy"), tags = "train"),
+    epochs = p_int(default = 5L, lower = 1L, upper = Inf, tags = "train"),
+    drop_last = p_lgl(default = FALSE, tags = "train"),
+    decision_width = p_int(default = 8L, lower = 1L, upper = Inf, tags = "train"),
+    attention_width = p_int(default = 8L, lower = 1L, upper = Inf, tags = "train"),
+    num_steps = p_int(default = 3L, lower = 1L, upper = Inf, tags = "train"),
+    feature_reusage = p_dbl(default = 1.3, lower = 0, upper = Inf, tags = "train"),
+    mask_typs = p_fct(default = "sparsemax", levels = c("sparsemax", "entmax"), tags = "train"),
+    virtual_batch_size = p_int(default = 128L, lower = 1L, upper = Inf, tags = "train"),
+    valid_split = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+    learn_rate = p_dbl(default = 0.02, lower = 0, upper = 1, tags = "train"),
 
     # FIXME: Currently either 'adam' or arbitrary optimizer function according to docs
-    ParamUty$new("optimizer", default = "adam", tags = "train"),
+    optimizer = p_uty(default = "adam", tags = "train"),
 
     # FIXME: This is either NULL or a function or explicit "steps", needs custom_check fun
-    ParamUty$new("lr_scheduler", default = NULL, tags = "train"),
+    lr_scheduler = p_uty(default = NULL, tags = "train"),
 
-    ParamDbl$new("lr_decay", default = 0.1, lower = 0, upper = 1, tags = "train"),
-    ParamInt$new("step_size", default = 30L, lower = 1L, upper = Inf, tags = "train"),
-    ParamInt$new("checkpoint_epochs", default = 10L, lower = 1L, upper = Inf, tags = "train"),
-    ParamInt$new("cat_emb_dim", default = 1L, lower = 0L, upper = Inf, tags = "train"),
-    ParamInt$new("num_independent", default = 2L, lower = 0, upper = Inf, tags = "train"),
-    ParamInt$new("num_shared", default = 2L, lower = 0, upper = Inf, tags = "train"),
-    ParamDbl$new("momentum", default = 0.02, lower = 0, upper = 1, tags = "train"),
-    ParamDbl$new("pretraining_ratio", default = 0.5, lower = 0, upper = 1, tags = "train"),
-    ParamLgl$new("verbose", default = FALSE, tags = "train"),
-    ParamFct$new("device", default = "auto", levels = c("auto", "cpu", "cuda"), tags = "train"),
-    ParamInt$new("importance_sample_size", lower = 0, upper = 1e5, special_vals = list(NULL), tags = "train")
+    lr_decay = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
+    step_size = p_int(default = 30L, lower = 1L, upper = Inf, tags = "train"),
+    checkpoint_epochs = p_int(default = 10L, lower = 1L, upper = Inf, tags = "train"),
+    cat_emb_dim = p_int(default = 1L, lower = 0L, upper = Inf, tags = "train"),
+    num_independent = p_int(default = 2L, lower = 0, upper = Inf, tags = "train"),
+    num_shared = p_int(default = 2L, lower = 0, upper = Inf, tags = "train"),
+    momentum = p_dbl(default = 0.02, lower = 0, upper = 1, tags = "train"),
+    pretraining_ratio = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
+    verbose = p_lgl(default = FALSE, tags = "train"),
+    devics = p_fct(default = "auto", levels = c("auto", "cpu", "cuda"), tags = "train"),
+    importance_sample_size = p_int(lower = 0, upper = 1e5, special_vals = list(NULL), tags = "train")
   ))
 
   # Set param values that differ from default in tabnet_fit
