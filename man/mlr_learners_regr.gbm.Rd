@@ -65,21 +65,9 @@ lrn("regr.gbm")
 }
 
 \examples{
-if (requireNamespace("mboost", quietly = TRUE)) {
 # Define the Learner
 learner = lrn("regr.gbm")
 print(learner)
-
-# Define a Task
-task = mlr3::tsk("boston_housing")
-ids = partition(task)
-
-# Train the learner
-learner$train(task, ids$train)
-
-# Make predictions
-learner$predict(task, ids$test)
-}
 }
 \references{
 Friedman, H J (2002).

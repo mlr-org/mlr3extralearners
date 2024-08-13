@@ -26,21 +26,9 @@
 #' @export
 #' @template seealso_learner
 #' @examples
-#' if (requireNamespace("mboost", quietly = TRUE)) {
 #' # Define the Learner
 #' learner = lrn("regr.gbm")
 #' print(learner)
-#'
-#' # Define a Task
-#' task = mlr3::tsk("boston_housing")
-#' ids = partition(task)
-#'
-#' # Train the learner
-#' learner$train(task, ids$train)
-#'
-#' # Make predictions
-#' learner$predict(task, ids$test)
-#' }
 LearnerRegrGBM = R6Class("LearnerRegrGBM",
   inherit = LearnerRegr,
   public = list(

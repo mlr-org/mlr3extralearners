@@ -227,7 +227,8 @@ Extracted from \code{model$evaluation_log}}
 
 \item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
 
-\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+\item{\code{validate}}{How to construct the internal validation data.
+This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
 }
 \if{html}{\out{</div>}}
 }
