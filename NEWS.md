@@ -6,6 +6,8 @@
   `resample()` or `benchmark()` (#353)
 * the `$model` slot of `lrn("classif.abess")` now contains the model of
   the upstream package again.
+* Added early stopping and validation to catboost and lightgbm. 
+* Added missing `case.depth` parameter to `rfsrc` learners.
 
 # mlr3extralearners 0.8.0
 

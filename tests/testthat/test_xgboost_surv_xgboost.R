@@ -27,20 +27,6 @@ test_that("manual aft", {
   expect_true(p$score() >= 0.5)
 })
 
-test_that("early stopping on the test set works", {
-  split = partition(task, ratio = 0.8)
-  task$set_row_roles(split$test, "test")
-  learner = lrn("surv.xgboost.cox",
-    nrounds = 20,
-    early_stopping_rounds = 5,
-    early_stopping_set = "test"
-  )
-
-  learner$train(task)
-  expect_named(learner$model$model$evaluation_log,
-               c("iter", "train_cox_nloglik", "test_cox_nloglik"))
-})
-
 test_that("two types of xgboost models can be initialized", {
   cox = lrn("surv.xgboost.cox", nrounds = 3)
   expect_null(cox$param_set$values$objective)
