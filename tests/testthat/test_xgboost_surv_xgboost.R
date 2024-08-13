@@ -147,8 +147,6 @@ test_that("validation and internal tuning: cox", {
   expect_true(is.null(learner$internal_tuned_values))
 })
 
-
-
 test_that("two types of xgboost models can be initialized", {
   cox = lrn("surv.xgboost.cox", nrounds = 3)
   expect_null(cox$param_set$values$objective)
