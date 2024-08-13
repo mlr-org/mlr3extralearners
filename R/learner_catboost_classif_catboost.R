@@ -332,7 +332,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
     },
 
     .extract_internal_valid_scores = function() {
-      return(named_list())
+      named_list()
     }
   ),
 
