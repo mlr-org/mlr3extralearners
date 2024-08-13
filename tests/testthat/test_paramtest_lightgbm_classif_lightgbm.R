@@ -64,16 +64,12 @@ test_that("paramtest classif.lightgbm train", {
     "header", # we don't load data from the text file
     "objective_seed", # only in ranking applications
     "metric", # we use the lgb.train-only argument "eval"
-
+    "categorical_feature", # handled internally
 
     # rank parameters
     "lambdarank_truncation_level", # ranking
     "lambdarank_norm", # ranking
     "label_gain", # ranking
-
-    # custom parameters
-    "early_stopping",
-    "convert_categorical",
 
     # lgb.train
     "nrounds", # alias for num_iterations
@@ -91,7 +87,7 @@ test_that("paramtest classif.lightgbm train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest classif.lightgbm train", {
+test_that("paramtest classif.lightgbm predict", {
   learner = lrn("classif.lightgbm")
   fun = list(lightgbm:::predict.lgb.Booster, x_predict)
   exclude = c(
@@ -105,7 +101,8 @@ test_that("paramtest classif.lightgbm train", {
     # from the R function
     "params", # handled internally
     "object", # handled internally
-    "data", # handled internally
+    "newdata", # handled internally
+    "type", # not exposed
     "reshape", # not a user parameter in mlr3 (shapes output), also deprecate
     "rawscore", # not a user parameter in mlr3 (predict type, scores)
     "predleaf", # not a user parameter in mlr3 (predict type: leaf)
@@ -113,8 +110,7 @@ test_that("paramtest classif.lightgbm train", {
     "predcontrib", # shapely
     "header", # for prediction for text file
     "start_iteration", # alias for start_iteration_predict
-    "num_iteration", # alias for num_iteration_predict
-    "early_stopping" # custom parameter
+    "num_iteration" # alias for num_iteration_predict
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

@@ -32,7 +32,6 @@ lrn("classif.catboost")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    loss_function_twoclass \tab character \tab Logloss \tab Logloss, CrossEntropy \tab - \cr
    loss_function_multiclass \tab character \tab MultiClass \tab MultiClass, MultiClassOneVsAll \tab - \cr
-   iterations \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    learning_rate \tab numeric \tab 0.03 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
    random_seed \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    l2_leaf_reg \tab numeric \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -47,7 +46,7 @@ lrn("classif.catboost")
    grow_policy \tab character \tab SymmetricTree \tab SymmetricTree, Depthwise, Lossguide \tab - \cr
    min_data_in_leaf \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_leaves \tab integer \tab 31 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ignored_features \tab untyped \tab  \tab  \tab - \cr
+   ignored_features \tab untyped \tab NULL \tab  \tab - \cr
    one_hot_max_size \tab untyped \tab FALSE \tab  \tab - \cr
    has_time \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    rsm \tab numeric \tab 1 \tab  \tab \eqn{[0.001, 1]}{[0.001, 1]} \cr
@@ -82,7 +81,7 @@ lrn("classif.catboost")
    devices \tab untyped \tab - \tab  \tab - \cr
    logging_level \tab character \tab Silent \tab Silent, Verbose, Info, Debug \tab - \cr
    metric_period \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   train_dir \tab untyped \tab catboost_info \tab  \tab - \cr
+   train_dir \tab untyped \tab "catboost_info" \tab  \tab - \cr
    model_size_reg \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    allow_writing_files \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    save_snapshot \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -99,6 +98,10 @@ lrn("classif.catboost")
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ntree_start \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ntree_end \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   eval_metric \tab untyped \tab - \tab  \tab - \cr
+   use_best_model \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   iterations \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
@@ -137,6 +140,13 @@ See \url{https://catboost.ai/en/docs/concepts/r-installation}.
 }
 }
 
+\section{Early stopping}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
+For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
+}
+
 \examples{
 learner = mlr3::lrn("classif.catboost")
 print(learner)
@@ -165,6 +175,18 @@ sumny
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifCatboost}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
+Extracted from \code{model$evaluation_log}}
+
+\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+
+\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{

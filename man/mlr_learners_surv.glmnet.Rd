@@ -7,16 +7,13 @@
 \description{
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:glmnet]{glmnet::glmnet()}} from package \CRANpkg{glmnet}.
-\itemize{
-\item \code{family} is set to \code{"cox"} and cannot be changed.
-}
 }
 \details{
 This learner returns two prediction types:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
 observation.
-Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+Calculated using \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
@@ -41,6 +38,13 @@ However, in some situations this is not applicable, usually when data are
 imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 custom resampling strategies (blocked design, stratification).
 }
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"cox"} and cannot be changed.
+}
+}
+
 \section{Dictionary}{
 
 This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
@@ -80,14 +84,14 @@ lrn("surv.glmnet")
    keep \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda \tab untyped \tab - \tab  \tab - \cr
    lambda.min.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lower.limits \tab untyped \tab -  , Inf \tab  \tab - \cr
+   lower.limits \tab untyped \tab -Inf \tab  \tab - \cr
    maxit \tab integer \tab 100000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mnlam \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mxitnr \tab integer \tab 25 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    newoffset \tab untyped \tab - \tab  \tab - \cr
    nlambda \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
    parallel \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    penalty.factor \tab untyped \tab - \tab  \tab - \cr
    pmax \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

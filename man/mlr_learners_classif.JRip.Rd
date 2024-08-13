@@ -6,7 +6,7 @@
 \title{Classification JRip Learner}
 \description{
 Repeated Incremental Pruning to Produce Error Reduction.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::JRip()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:JRip]{RWeka::JRip()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -43,7 +43,7 @@ lrn("classif.JRip")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

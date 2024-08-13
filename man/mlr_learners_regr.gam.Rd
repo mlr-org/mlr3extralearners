@@ -40,19 +40,19 @@ lrn("regr.gam")
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    family \tab character \tab gaussian \tab gaussian, poisson \tab - \cr
    formula \tab untyped \tab - \tab  \tab - \cr
-   offset \tab untyped \tab  \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
    method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab - \cr
-   optimizer \tab untyped \tab c     , outer , newton \tab  \tab - \cr
+   optimizer \tab untyped \tab c("outer", "newton") \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    select \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   knots \tab untyped \tab  \tab  \tab - \cr
-   sp \tab untyped \tab  \tab  \tab - \cr
-   min.sp \tab untyped \tab  \tab  \tab - \cr
-   H \tab untyped \tab  \tab  \tab - \cr
+   knots \tab untyped \tab NULL \tab  \tab - \cr
+   sp \tab untyped \tab NULL \tab  \tab - \cr
+   min.sp \tab untyped \tab NULL \tab  \tab - \cr
+   H \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   paraPen \tab untyped \tab  \tab  \tab - \cr
-   G \tab untyped \tab  \tab  \tab - \cr
-   in.out \tab untyped \tab  \tab  \tab - \cr
+   paraPen \tab untyped \tab NULL \tab  \tab - \cr
+   G \tab untyped \tab NULL \tab  \tab - \cr
+   in.out \tab untyped \tab NULL \tab  \tab - \cr
    drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -63,9 +63,9 @@ lrn("regr.gam")
    mgcv.tol \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mgcv.half \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    rank.tol \tab numeric \tab 1.490116e-08 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   nlm \tab untyped \tab list \tab  \tab - \cr
-   optim \tab untyped \tab list \tab  \tab - \cr
-   newton \tab untyped \tab list \tab  \tab - \cr
+   nlm \tab untyped \tab list() \tab  \tab - \cr
+   optim \tab untyped \tab list() \tab  \tab - \cr
+   newton \tab untyped \tab list() \tab  \tab - \cr
    outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr

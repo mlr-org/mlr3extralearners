@@ -6,7 +6,7 @@
 \title{Survival Bayesian Additive Regression Trees Learner}
 \description{
 Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-survival data. Calls \code{\link[BART:surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
+survival data. Calls \code{\link[BART:mc.surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
 }
 \details{
 Two types of prediction are returned for this learner:
@@ -65,9 +65,9 @@ lrn("surv.bart")
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    K \tab numeric \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   events \tab untyped \tab  \tab  \tab - \cr
-   ztimes \tab untyped \tab  \tab  \tab - \cr
-   zdelta \tab untyped \tab  \tab  \tab - \cr
+   events \tab untyped \tab NULL \tab  \tab - \cr
+   ztimes \tab untyped \tab NULL \tab  \tab - \cr
+   zdelta \tab untyped \tab NULL \tab  \tab - \cr
    sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    theta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    omega \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

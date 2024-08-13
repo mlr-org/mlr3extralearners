@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 0.7.1-9000
+Version: 0.8.0-9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -37,7 +37,7 @@ Imports:
     R6
 Suggests:
     abess,
-    aorsf (>= 0.0.5),
+    aorsf (>= 0.1.4),
     actuar,
     apcluster,
     BART (>= 2.9.4),
@@ -50,7 +50,7 @@ Suggests:
     dbarts,
     distr6,
     earth,
-    flexsurv,
+    flexsurv (>= 2.3),
     FNN,
     formattable,
     future,
@@ -63,7 +63,7 @@ Suggests:
     knitr,
     ks,
     LiblineaR,
-    lightgbm (>= 3.0.0),
+    lightgbm (>= 4.4.0),
     lme4,
     locfit,
     logspline,
@@ -72,7 +72,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.4.2),
-    mlr3proba (>= 0.5.3),
+    mlr3proba (>= 0.6.1),
     mlr3pipelines,
     mvtnorm,
     nnet,
@@ -101,7 +101,7 @@ Suggests:
     sm,
     stats,
     survival,
-    survivalmodels,
+    survivalmodels (>= 0.1.19),
     survivalsvm,
     tensorflow (>= 2.0.0),
     testthat,
@@ -114,12 +114,13 @@ Remotes:
     PlantedML/randomPlantedForest,
     xoopR/distr6,
     xoopR/param6,
-    xoopR/set6
+    xoopR/set6,
+    ropensci/aorsf
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.2.3.9000
+RoxygenNote: 7.3.2
 Config/Needs/website: rmarkdown

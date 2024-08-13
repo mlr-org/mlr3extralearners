@@ -6,7 +6,7 @@
 \title{Density Mixed Data Kernel Learner}
 \description{
 Density estimator for discrete and continuous variables.
-Calls \code{\link[np:np.density]{np::npudens()}} from \CRANpkg{np}.
+Calls \code{\link[np:npudens]{np::npudens()}} from \CRANpkg{np}.
 }
 \section{Dictionary}{
 
@@ -45,11 +45,11 @@ lrn("dens.mixed")
    small \tab numeric \tab 1.490116e-05 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    dfc.dir \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   cfac.dir \tab untyped \tab *            , 2.5          , (3 - sqrt(5)) \tab  \tab - \cr
+   cfac.dir \tab untyped \tab 2.5 * (3 - sqrt(5)) \tab  \tab - \cr
    initc.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbd.dir \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    hbd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   dfac.dir \tab untyped \tab *            , 0.25         , (3 - sqrt(5)) \tab  \tab - \cr
+   dfac.dir \tab untyped \tab 0.25 * (3 - sqrt(5)) \tab  \tab - \cr
    initd.dir \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lbc.init \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    hbc.init \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

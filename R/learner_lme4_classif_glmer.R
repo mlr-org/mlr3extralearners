@@ -28,7 +28,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
     initialize = function() {
       action_levels = c("ignore", "warning", "message", "stop")
       param_set = ps(
-        formula = p_uty(default = formula(), tags = c("train", "required"), custom_check = check_formula),
+        formula = p_uty(tags = c("train", "required"), custom_check = check_formula),
         start = p_uty(default = NULL, tags = "train"),
         verbose = p_int(default = 0, lower = 0, tags = "train"),
         offset = p_uty(default = NULL, tags = "train"),
@@ -104,11 +104,16 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       }
       data = task$data()
 
-      invoke(lme4::glmer,
+      model = invoke(lme4::glmer,
         formula = formula,
         data = data,
         .args = pars_train,
         control = invoke(lme4::glmerControl, .args = pars_ctrl))
+
+      list(
+        model = model,
+        target_levels = levels(data[[task$target_names]])
+      )
     },
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
@@ -116,14 +121,14 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
 
       prob = invoke(
         predict,
-        self$model,
+        self$model$model,
         type = "response",
         newdata = newdata,
         .args = pars
       )
 
       # glmer counts the second level as a 'success'
-      levels = levels(self$state$data_prototype[[task$target_names]])
+      levels = self$model$target_levels
       success = levels[[2L]]
       failure = levels[[1L]]
 

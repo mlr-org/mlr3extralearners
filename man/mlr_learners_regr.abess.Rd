@@ -34,20 +34,20 @@ lrn("regr.abess")
    tune.path \tab character \tab sequence \tab sequence, gsection \tab - \cr
    tune.type \tab character \tab gic \tab gic, aic, bic, ebic, cv \tab - \cr
    normalize \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   support.size \tab untyped \tab  \tab  \tab - \cr
+   support.size \tab untyped \tab NULL \tab  \tab - \cr
    c.max \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   gs.range \tab untyped \tab  \tab  \tab - \cr
+   gs.range \tab untyped \tab NULL \tab  \tab - \cr
    lambda \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   always.include \tab untyped \tab  \tab  \tab - \cr
-   group.index \tab untyped \tab  \tab  \tab - \cr
-   init.active.set \tab untyped \tab  \tab  \tab - \cr
+   always.include \tab untyped \tab NULL \tab  \tab - \cr
+   group.index \tab untyped \tab NULL \tab  \tab - \cr
+   init.active.set \tab untyped \tab NULL \tab  \tab - \cr
    splicing.type \tab integer \tab 2 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    max.splicing.iter \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    screening.num \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    important.search \tab integer \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    warm.start \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nfolds \tab integer \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   foldid \tab untyped \tab  \tab  \tab - \cr
+   foldid \tab untyped \tab NULL \tab  \tab - \cr
    cov.update \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    newton \tab character \tab exact \tab exact, approx \tab - \cr
    newton.thresh \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr

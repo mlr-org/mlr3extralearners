@@ -6,7 +6,7 @@
 \title{Classification OneR Learner}
 \description{
 One Rule classification algorithm that yields an extremely simple model.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::OneR()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:OneR]{RWeka::OneR()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -37,7 +37,7 @@ lrn("classif.OneR")
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab  \tab  \tab - \cr
+   options \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

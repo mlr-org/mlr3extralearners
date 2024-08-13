@@ -55,7 +55,7 @@ lrn("surv.cv_coxboost")
    maxstepno \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    K \tab integer \tab 10 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    type \tab character \tab verweij \tab verweij, naive \tab - \cr
-   folds \tab untyped \tab  \tab  \tab - \cr
+   folds \tab untyped \tab NULL \tab  \tab - \cr
    minstepno \tab integer \tab 50 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    start.penalty \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    iter.max \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

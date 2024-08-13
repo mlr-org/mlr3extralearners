@@ -34,18 +34,13 @@ lrn("classif.lightgbm")
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    objective \tab character \tab - \tab binary, multiclass, multiclassova \tab - \cr
    eval \tab untyped \tab - \tab  \tab - \cr
    verbose \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    record \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    eval_freq \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   early_stopping \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    callbacks \tab untyped \tab - \tab  \tab - \cr
    reset_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   categorical_feature \tab untyped \tab  \tab  \tab - \cr
-   convert_categorical \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    boosting \tab character \tab gbdt \tab gbdt, rf, dart, goss \tab - \cr
    linear_tree \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    learning_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -72,7 +67,6 @@ lrn("classif.lightgbm")
    feature_fraction_seed \tab integer \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    extra_trees \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    extra_seed \tab integer \tab 6 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    lambda_l1 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda_l2 \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -92,11 +86,11 @@ lrn("classif.lightgbm")
    cat_smooth \tab numeric \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    top_k \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   monotone_constraints \tab untyped \tab  \tab  \tab - \cr
+   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
    monotone_constraints_method \tab character \tab basic \tab basic, intermediate, advanced \tab - \cr
    monotone_penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   feature_contri \tab untyped \tab  \tab  \tab - \cr
-   forcedsplits_filename \tab untyped \tab  \tab  \tab - \cr
+   feature_contri \tab untyped \tab NULL \tab  \tab - \cr
+   forcedsplits_filename \tab untyped \tab "" \tab  \tab - \cr
    refit_decay_rate \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    cegb_tradeoff \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cegb_penalty_split \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -108,8 +102,9 @@ lrn("classif.lightgbm")
    num_grad_quant_bins \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    quant_train_renew_leaf \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    stochastic_rounding \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   serializable \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    max_bin \tab integer \tab 255 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
-   max_bin_by_feature \tab untyped \tab  \tab  \tab - \cr
+   max_bin_by_feature \tab untyped \tab NULL \tab  \tab - \cr
    min_data_in_bin \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    bin_construct_sample_cnt \tab integer \tab 200000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    data_random_seed \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -120,18 +115,18 @@ lrn("classif.lightgbm")
    feature_pre_filter \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pre_partition \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    two_round \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   forcedbins_filename \tab untyped \tab  \tab  \tab - \cr
+   forcedbins_filename \tab untyped \tab "" \tab  \tab - \cr
    is_unbalance \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sigmoid \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    boost_from_average \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   eval_at \tab untyped \tab :, 1, 5 \tab  \tab - \cr
+   eval_at \tab untyped \tab 1:5 \tab  \tab - \cr
    multi_error_top_k \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   auc_mu_weights \tab untyped \tab  \tab  \tab - \cr
+   auc_mu_weights \tab untyped \tab NULL \tab  \tab - \cr
    num_machines \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    local_listen_port \tab integer \tab 12400 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    time_out \tab integer \tab 120 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   machines \tab untyped \tab  \tab  \tab - \cr
+   machines \tab untyped \tab "" \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -141,6 +136,10 @@ lrn("classif.lightgbm")
    pred_early_stop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    pred_early_stop_freq \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    pred_early_stop_margin \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_iterations \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   early_stopping_rounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   early_stopping_min_delta \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   first_metric_only \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -166,23 +165,25 @@ lrn("classif.lightgbm")
 
 \itemize{
 \item \code{objective}:
-Depending if the task is binary / multiclass, the default is \code{"binary"} or
-\code{"multiclasss"}.
+Depending if the task is binary / multiclass, the default is \code{"binary"} or \code{"multiclasss"}.
 }
 }
 
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{early_stopping}
-Whether to use the test set for early stopping. Default is \code{FALSE}.
-\item \code{convert_categorical}:
-Additional parameter. If this parameter is set to \code{TRUE} (default), all factor and logical
-columns are converted to integers and the parameter categorical_feature of lightgbm is set to
-those columns.
 \item \code{num_class}:
 This parameter is automatically inferred for multiclass tasks and does not have to be set.
 }
+}
+
+\section{Early Stopping and Validation}{
+
+Early stopping can be used to find the optimal number of boosting rounds.
+Set \code{early_stopping_rounds} to an integer value to monitor the performance of the model on the validation set while training.
+For information on how to configure the validation set, see the \emph{Validation} section of \code{\link[mlr3:Learner]{mlr3::Learner}}.
+The internal validation measure can be set the \code{eval} parameter which should be a list of \link[mlr3:Measure]{mlr3::Measure}s, functions, or strings for the internal lightgbm measures.
+If \code{first_metric_only = FALSE} (default), the learner stops when any metric fails to improve.
 }
 
 \examples{
@@ -213,6 +214,18 @@ kapsner
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifLightGBM}
+}
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
+Extracted from \code{model$evaluation_log}}
+
+\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+
+\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
+}
+\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
