@@ -2,6 +2,8 @@
 
 * Added response (i.e., survival time) prediction to `aorsf` learner
 * Updated support for flexsurv v2.3
+* Added early stopping and validation to catboost and lightgbm. 
+* Added missing `case.depth` parameter to `rfsrc` learners.
 
 # mlr3extralearners 0.8.0
 
