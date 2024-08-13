@@ -97,7 +97,7 @@ See <a href="https://xgboost.readthedocs.io/en/stable/build.html#building-with-g
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>base_score</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>booster</td><td>character</td><td>gbtree</td><td>gbtree, gblinear, dart</td><td>-</td></tr><tr><td>callbacks</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>colsample_bylevel</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bynode</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bytree</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>disable_default_eval_metric</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>early_stopping_rounds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>early_stopping_set</td><td>character</td><td>none</td><td>none, train, test</td><td>-</td></tr><tr><td>eta</td><td>numeric</td><td>0.3</td><td></td><td>\([0, 1]\)</td></tr><tr><td>feature_selector</td><td>character</td><td>cyclic</td><td>cyclic, shuffle, random, greedy, thrifty</td><td>-</td></tr><tr><td>feval</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>grow_policy</td><td>character</td><td>depthwise</td><td>depthwise, lossguide</td><td>-</td></tr><tr><td>interaction_constraints</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>iterationrange</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>lambda_bias</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_bin</td><td>integer</td><td>256</td><td></td><td>\([2, \infty)\)</td></tr><tr><td>max_delta_step</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_depth</td><td>integer</td><td>6</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_leaves</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maximize</td><td>logical</td><td>NULL</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>min_child_weight</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>missing</td><td>numeric</td><td>NA</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>monotone_constraints</td><td>integer</td><td>0</td><td></td><td>\([-1, 1]\)</td></tr><tr><td>normalize_type</td><td>character</td><td>tree</td><td>tree, forest</td><td>-</td></tr><tr><td>nrounds</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nthread</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num_parallel_tree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>one_drop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>print_every_n</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>process_type</td><td>character</td><td>default</td><td>default, update</td><td>-</td></tr><tr><td>rate_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>refresh_leaf</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampling_method</td><td>character</td><td>uniform</td><td>uniform, gradient_based</td><td>-</td></tr><tr><td>sample_type</td><td>character</td><td>uniform</td><td>uniform, weighted</td><td>-</td></tr><tr><td>save_name</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>save_period</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale_pos_weight</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed_per_iteration</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>skip_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>strict_shape</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>subsample</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>top_k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>tree_method</td><td>character</td><td>auto</td><td>auto, exact, approx, hist, gpu_hist</td><td>-</td></tr><tr><td>tweedie_variance_power</td><td>numeric</td><td>1.5</td><td></td><td>\([1, 2]\)</td></tr><tr><td>updater</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>verbose</td><td>integer</td><td>1</td><td></td><td>\([0, 2]\)</td></tr><tr><td>watchlist</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>xgb_model</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>base_score</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>booster</td><td>character</td><td>gbtree</td><td>gbtree, gblinear, dart</td><td>-</td></tr><tr><td>callbacks</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>colsample_bylevel</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bynode</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bytree</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>disable_default_eval_metric</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>early_stopping_rounds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>eta</td><td>numeric</td><td>0.3</td><td></td><td>\([0, 1]\)</td></tr><tr><td>feature_selector</td><td>character</td><td>cyclic</td><td>cyclic, shuffle, random, greedy, thrifty</td><td>-</td></tr><tr><td>feval</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>grow_policy</td><td>character</td><td>depthwise</td><td>depthwise, lossguide</td><td>-</td></tr><tr><td>interaction_constraints</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>iterationrange</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>lambda_bias</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_bin</td><td>integer</td><td>256</td><td></td><td>\([2, \infty)\)</td></tr><tr><td>max_delta_step</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_depth</td><td>integer</td><td>6</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_leaves</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maximize</td><td>logical</td><td>NULL</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>min_child_weight</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>missing</td><td>numeric</td><td>NA</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>monotone_constraints</td><td>integer</td><td>0</td><td></td><td>\([-1, 1]\)</td></tr><tr><td>normalize_type</td><td>character</td><td>tree</td><td>tree, forest</td><td>-</td></tr><tr><td>nrounds</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nthread</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num_parallel_tree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>one_drop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>print_every_n</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>process_type</td><td>character</td><td>default</td><td>default, update</td><td>-</td></tr><tr><td>rate_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>refresh_leaf</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampling_method</td><td>character</td><td>uniform</td><td>uniform, gradient_based</td><td>-</td></tr><tr><td>sample_type</td><td>character</td><td>uniform</td><td>uniform, weighted</td><td>-</td></tr><tr><td>save_name</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>save_period</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale_pos_weight</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed_per_iteration</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>skip_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>strict_shape</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>subsample</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>top_k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>tree_method</td><td>character</td><td>auto</td><td>auto, exact, approx, hist, gpu_hist</td><td>-</td></tr><tr><td>tweedie_variance_power</td><td>numeric</td><td>1.5</td><td></td><td>\([1, 2]\)</td></tr><tr><td>updater</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>verbose</td><td>integer</td><td>1</td><td></td><td>\([0, 2]\)</td></tr><tr><td>watchlist</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>xgb_model</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="early-stopping">Early stopping<a class="anchor" aria-label="anchor" href="#early-stopping"></a></h2>
 
@@ -145,6 +145,24 @@ ACM.
     <div class="section level2">
     <h2 id="super-classes">Super classes<a class="anchor" aria-label="anchor" href="#super-classes"></a></h2>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3proba.mlr-org.com/reference/LearnerSurv.html" class="external-link">mlr3proba::LearnerSurv</a></code> -&gt; <code>LearnerSurvXgboostCox</code></p>
+    </div>
+    <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>internal_valid_scores</code></dt>
+<dd><p>The last observation of the validation scores for all metrics.
+Extracted from <code>model$evaluation_log</code></p></dd>
+
+
+<dt><code>internal_tuned_values</code></dt>
+<dd><p>Returns the early stopped iterations if <code>early_stopping_rounds</code> was set during training.</p></dd>
+
+
+<dt><code>validate</code></dt>
+<dd><p>How to construct the internal validation data. This parameter can be either <code>NULL</code>,
+a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
+
+
+</dl><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
@@ -209,7 +227,8 @@ ACM.
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvXgboostCox:surv.xgboost.cox&gt;: Extreme Gradient Boosting Cox</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: early_stopping_set=none, nrounds=1, nthread=1, verbose=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: nrounds=1, nthread=1, verbose=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Validate: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, xgboost</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
@@ -221,29 +240,28 @@ ACM.
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "booster"                     "callbacks"                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "colsample_bylevel"           "colsample_bynode"           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "colsample_bytree"            "disable_default_eval_metric"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "early_stopping_rounds"       "early_stopping_set"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "eta"                         "feature_selector"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "feval"                       "gamma"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "grow_policy"                 "interaction_constraints"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "iterationrange"              "lambda"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "lambda_bias"                 "max_bin"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "max_delta_step"              "max_depth"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "max_leaves"                  "maximize"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "min_child_weight"            "missing"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "monotone_constraints"        "normalize_type"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "nrounds"                     "nthread"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "num_parallel_tree"           "one_drop"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "print_every_n"               "process_type"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "rate_drop"                   "refresh_leaf"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "sampling_method"             "sample_type"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "save_name"                   "save_period"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "scale_pos_weight"            "seed_per_iteration"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "skip_drop"                   "strict_shape"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "subsample"                   "top_k"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "tree_method"                 "tweedie_variance_power"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "updater"                     "verbose"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "watchlist"                   "xgb_model"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "device"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "early_stopping_rounds"       "eta"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "feature_selector"            "feval"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "gamma"                       "grow_policy"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "interaction_constraints"     "iterationrange"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "lambda"                      "lambda_bias"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "max_bin"                     "max_delta_step"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "max_depth"                   "max_leaves"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "maximize"                    "min_child_weight"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "missing"                     "monotone_constraints"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "normalize_type"              "nrounds"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "nthread"                     "num_parallel_tree"          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "one_drop"                    "print_every_n"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "process_type"                "rate_drop"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "refresh_leaf"                "sampling_method"            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "sample_type"                 "save_name"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "save_period"                 "scale_pos_weight"           </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "seed_per_iteration"          "skip_drop"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "strict_shape"                "subsample"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "top_k"                       "tree_method"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "tweedie_variance_power"      "updater"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "verbose"                     "watchlist"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "xgb_model"                   "device"                     </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
