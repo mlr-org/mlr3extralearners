@@ -25,6 +25,9 @@ get_xgb_mat = function(task, objective, row_ids = NULL) {
     xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
   }
 
+  if ("weights" %in% task$properties) {
+    xgboost::setinfo(data, "weight", task$weights$weight)
+  }
   data
 }
 

@@ -27,6 +27,136 @@ test_that("manual aft", {
   expect_true(p$score() >= 0.5)
 })
 
+test_that("validation and internal tuning: aft", {
+  learner = lrn("surv.xgboost.aft",
+    nrounds = 10,
+    early_stopping_rounds = 10,
+    validate = 0.2
+  )
+
+  learner$train(task)
+  expect_named(learner$model$evaluation_log, c("iter", "test_aft_nloglik"))
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
+  expect_equal(
+    learner$internal_valid_scores$aft_nloglik,
+    learner$model$evaluation[get("iter") == 10, "test_aft_nloglik"][[1L]]
+  )
+
+  expect_list(learner$internal_tuned_values, types = "integerish")
+  expect_equal(names(learner$internal_tuned_values), "nrounds")
+
+  learner$validate = NULL
+  expect_error(learner$train(task), "field 'validate'")
+
+  learner$validate = 0.2
+  task$internal_valid_task = NULL
+  learner$param_set$set_values(
+    early_stopping_rounds = NULL
+  )
+  learner$train(task)
+  expect_equal(learner$internal_tuned_values, NULL)
+  expect_named(learner$model$evaluation_log, c("iter", "test_aft_nloglik"))
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
+
+  learner = lrn("surv.xgboost.aft",
+    nrounds = to_tune(upper = 1000, internal = TRUE),
+    validate = 0.2
+  )
+  s = learner$param_set$search_space()
+  expect_error(learner$param_set$convert_internal_search_space(s), "Parameter")
+  learner$param_set$set_values(early_stopping_rounds = 10)
+  learner$param_set$disable_internal_tuning("nrounds")
+  expect_equal(learner$param_set$values$early_stopping_rounds, NULL)
+
+  learner = lrn("surv.xgboost.aft",
+    nrounds = 100L,
+    early_stopping_rounds = 5,
+    validate = 0.2
+  )
+  learner$train(task)
+  expect_equal(
+    learner$internal_valid_scores$aft_nloglik,
+    learner$model$evaluation_log$test_aft_nloglik[learner$internal_tuned_values$nrounds]
+  )
+
+  learner = lrn("surv.xgboost.aft")
+  learner$train(task)
+  expect_true(is.null(learner$internal_valid_scores))
+  expect_true(is.null(learner$internal_tuned_values))
+
+  learner = lrn("surv.xgboost.aft", validate = 0.3, nrounds = 10)
+  learner$train(task)
+  expect_equal(learner$internal_valid_scores$aft_nloglik, learner$model$evaluation_log$test_aft_nloglik[10L])
+  expect_true(is.null(learner$internal_tuned_values))
+})
+
+test_that("validation and internal tuning: cox", {
+  learner = lrn("surv.xgboost.cox",
+    nrounds = 10,
+    early_stopping_rounds = 10,
+    validate = 0.2
+  )
+
+  learner$train(task)
+  expect_named(learner$model$model$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
+  expect_equal(
+    learner$internal_valid_scores$cox_nloglik,
+    learner$model$model$evaluation[get("iter") == 10, "test_cox_nloglik"][[1L]]
+  )
+
+  expect_list(learner$internal_tuned_values, types = "integerish")
+  expect_equal(names(learner$internal_tuned_values), "nrounds")
+
+  learner$validate = NULL
+  expect_error(learner$train(task), "field 'validate'")
+
+  learner$validate = 0.2
+  task$internal_valid_task = NULL
+  learner$param_set$set_values(
+    early_stopping_rounds = NULL
+  )
+  learner$train(task)
+  expect_equal(learner$internal_tuned_values, NULL)
+  expect_named(learner$model$model$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_list(learner$internal_valid_scores, types = "numeric")
+  expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
+
+  learner = lrn("surv.xgboost.cox",
+    nrounds = to_tune(upper = 1000, internal = TRUE),
+    validate = 0.2
+  )
+  s = learner$param_set$search_space()
+  expect_error(learner$param_set$convert_internal_search_space(s), "Parameter")
+  learner$param_set$set_values(early_stopping_rounds = 10)
+  learner$param_set$disable_internal_tuning("nrounds")
+  expect_equal(learner$param_set$values$early_stopping_rounds, NULL)
+
+  learner = lrn("surv.xgboost.cox",
+    nrounds = 100L,
+    early_stopping_rounds = 5,
+    validate = 0.2
+  )
+  learner$train(task)
+  expect_equal(
+    learner$internal_valid_scores$cox_nloglik,
+    learner$model$model$evaluation_log$test_cox_nloglik[learner$internal_tuned_values$nrounds]
+  )
+
+  learner = lrn("surv.xgboost.cox")
+  learner$train(task)
+  expect_true(is.null(learner$internal_valid_scores))
+  expect_true(is.null(learner$internal_tuned_values))
+
+  learner = lrn("surv.xgboost.cox", validate = 0.3, nrounds = 10)
+  learner$train(task)
+  expect_equal(learner$internal_valid_scores$cox_nloglik, learner$model$model$evaluation_log$test_cox_nloglik[10L])
+  expect_true(is.null(learner$internal_tuned_values))
+})
+
 test_that("two types of xgboost models can be initialized", {
   cox = lrn("surv.xgboost.cox", nrounds = 3)
   expect_null(cox$param_set$values$objective)
