@@ -13,7 +13,7 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
 observation.
-Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+Calculated using \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
