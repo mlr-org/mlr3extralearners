@@ -26,12 +26,12 @@ Authors@R: c(
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
-    R (>= 3.1.0)
+    R (>= 3.1.0),
+    mlr3 (>= 0.13.4)
 Imports:
     checkmate,
     data.table,
     methods,
-    mlr3 (>= 0.13.4),
     mlr3misc (>= 0.9.4),
     paradox,
     R6

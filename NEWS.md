@@ -10,6 +10,7 @@
   and `lrn("surv.xgboost.cox")`.
 * Added early stopping and validation to catboost and lightgbm. 
 * Added missing `case.depth` parameter to `rfsrc` learners.
+* `mlr3` is now in Depends instead of Imports.
 
 # mlr3extralearners 0.8.0
 
