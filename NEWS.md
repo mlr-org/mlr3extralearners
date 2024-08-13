@@ -2,6 +2,8 @@
 
 * Added response (i.e., survival time) prediction to `aorsf` learner
 * Updated support for flexsurv v2.3
+* Add early stopping and validation support to learners `lrn("surv.xgboost.aft")`
+  and `lrn("surv.xgboost.cox")`.
 * Added early stopping and validation to catboost and lightgbm. 
 * Added missing `case.depth` parameter to `rfsrc` learners.
 
