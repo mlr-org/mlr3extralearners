@@ -47,7 +47,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
           if (is.null(param_vals$early_stopping_rounds)) {
             stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
           }
-          assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
+          assert_integerish(domain$upper, len = 1L, any.missing = FALSE)}, .parent = topenv()),
         disable_in_tune = list(early_stopping_rounds = NULL)
       )
       ps = ps(

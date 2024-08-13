@@ -40,7 +40,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-       p_nrounds = p_int(1L,
+      p_nrounds = p_int(1L,
         tags = c("train", "hotstart", "internal_tuning"),
         aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
         in_tune_fn = crate(function(domain, param_vals) {
