@@ -40,11 +40,11 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-       p_nrounds = p_int(1L,
+      p_nrounds = p_int(1L,
         tags = c("train", "hotstart", "internal_tuning"),
         aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
         in_tune_fn = crate(function(domain, param_vals) {
-         if (is.null(param_vals$early_stopping_rounds)) {
+          if (is.null(param_vals$early_stopping_rounds)) {
             stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
@@ -143,7 +143,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     }
   ),
 
-    active = list(
+  active = list(
     #' @field internal_valid_scores
     #' The last observation of the validation scores for all metrics.
     #' Extracted from `model$evaluation_log`
