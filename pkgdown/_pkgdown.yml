@@ -18,8 +18,8 @@ authors:
 
 navbar:
   structure:
-    left:  [reference, news, book, search, status, extending]
-    right: [github, mattermost, stackoverflow, rss]
+    left:  [reference, news, book, status, extending, common_issues]
+    right: [search, github, mattermost, stackoverflow, rss]
   components:
     home: ~
     articles: ~
@@ -46,12 +46,12 @@ navbar:
     extending:
       text: Extending
       href: articles/extending.html
+    common_issues:
+      text: Common Issues
+      href: articles/common_issues.html
     status:
       text: Learner Status
       href: articles/learner_status.html
-    search:
-      text: Learner List
-      href: articles/list_learners.html
 
 reference:
   - title: Helpers

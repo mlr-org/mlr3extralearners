@@ -5,8 +5,18 @@
 #' @description
 #' Accelerated oblique random survival forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
-#' Note that although the learner has the property `"missing"` and it can in principle deal with missing values,
-#' the behaviour has to be configured using the parameter `na_action`.
+#' Note that although the learner has the property `"missing"` and it can in
+#' principle deal with missing values, the behaviour has to be configured using
+#' the parameter `na_action`.
+#'
+#' @details
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' 2. `response`: the restricted mean survival time of each test observation,
+#' derived from the survival matrix prediction (`distr`).
+#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
 #' @template learner
 #' @templateVar id surv.aorsf
 #'
@@ -38,6 +48,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
+        oobag = p_lgl(default = FALSE, tags = 'predict'),
         mtry = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
@@ -58,11 +69,14 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         split_min_events = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_obs = p_int(default = 10, lower = 1L, tags = "train"),
         split_min_stat = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
-        oobag_pred_type = p_fct(levels = c("none", "surv", "risk", "chf"), default = "surv", tags = "train"),
+        oobag_pred_type = p_fct(levels = c("none", "surv", "risk", "chf", "mort"), default = "risk", tags = "train"),
         importance = p_fct(levels = c("none", "anova", "negate", "permute"), default = "anova", tags = "train"),
         importance_max_pvalue = p_dbl(default = 0.01, lower = 0.0001, upper = .9999, tags = "train"),
+        tree_seeds = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         oobag_pred_horizon = p_dbl(default = NULL, special_vals = list(NULL), tags = "train", lower = 0),
         oobag_eval_every = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
+        oobag_fun = p_uty(default = NULL, special_vals = list(NULL), tags = "train",
+                          custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
@@ -71,7 +85,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         id = "surv.aorsf",
         packages = c("mlr3extralearners", "aorsf", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("crank", "distr"),
+        predict_types = c("crank", "distr", "response"),
         param_set = ps,
         properties = c("oob_error", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_surv.aorsf",
@@ -163,9 +177,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
     },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      time = self$model$data[[task$target_names[1]]]
-      status = self$model$data[[task$target_names[2]]]
-      utime = sort(unique(time[status == 1]), decreasing = FALSE)
+      utime = task$unique_event_times() # increasing by default
       surv = mlr3misc::invoke(predict,
         self$model,
         new_data = ordered_features(task, self),
@@ -173,7 +185,16 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         pred_type = "surv",
         .args = pv
       )
-      mlr3proba::.surv_return(times = utime, surv = surv)
+
+      diffs_time = c(utime[1], diff(utime))
+      response = apply(surv, MARGIN = 1, FUN = function(x){
+        sum(diffs_time * x)
+      })
+
+      pred_list = mlr3proba::.surv_return(times = utime, surv = surv)
+      # provide `response` here so that we keep the expected mortality for `crank`
+      pred_list$response = response
+      pred_list
     }
   )
 )

@@ -156,10 +156,6 @@ LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
 
       data = get_xgb_mat(task, pv$objective)
 
-      if ("weights" %in% task$properties) {
-        xgboost::setinfo(data, "weight", task$weights$weight)
-      }
-
       # XGBoost uses the last element in the watchlist as
       # the early stopping set
       if (pv$early_stopping_set != "none") {

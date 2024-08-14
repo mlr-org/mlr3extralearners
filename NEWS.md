@@ -1,5 +1,16 @@
 # dev
 
+* Added response (i.e., survival time) prediction to `aorsf` learner
+* Updated support for flexsurv v2.3
+* Fixed bug in catboost that caused invalid probability levels during
+  `resample()` or `benchmark()` (#353)
+* the `$model` slot of `lrn("classif.abess")` now contains the model of
+  the upstream package again.
+* Add early stopping and validation support to learners `lrn("surv.xgboost.aft")`
+  and `lrn("surv.xgboost.cox")`.
+* Added early stopping and validation to catboost and lightgbm. 
+* Added missing `case.depth` parameter to `rfsrc` learners.
+
 # mlr3extralearners 0.8.0
 
 * Added `surv.xgboost.cox` and `surv.xgboost.aft` separate survival learners. `distr` prediction on the cox xgboost learner is now estimated via Breslow by default and aft xgboost has now in addition a `response` prediction (survival time)
