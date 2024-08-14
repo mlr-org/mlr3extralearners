@@ -15,20 +15,8 @@
 #' @export
 #' @template seealso_learner
 #' @examples
-#' if (requireNamespace("mboost", quietly = TRUE)) {
-#' # Define the Learner and set parameter values
 #' learner = lrn("regr.gamboost", baselearner = "bols")
-#'
-#' # Define a Task
-#' task = mlr3::tsk("boston_housing")
-#'
-#' ids = partition(task)
-#' # Train the learner on the training ids
-#' learner$train(task, ids$train)
-#' 
-#' # Make predictions on the test set
-#' learner$predict(task, ids$test)
-#' }
+#' learner
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(

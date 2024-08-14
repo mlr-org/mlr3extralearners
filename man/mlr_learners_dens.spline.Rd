@@ -10,10 +10,9 @@ Calls \code{\link[gss:ssden]{gss::ssden()}} from \CRANpkg{gss}.
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("dens.spline")
-lrn("dens.spline")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("dens.spline")
 }\if{html}{\out{</div>}}
 }
 
@@ -48,9 +47,8 @@ lrn("dens.spline")
 }
 
 \examples{
-set.seed(123)
-if (mlr3misc::require_namespaces(lrn("dens.spline")$packages, quietly = TRUE)) {
-# Define the Learner and set parameter values
+\dontshow{if (mlr3misc::require_namespaces(lrn("dens.spline")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner
 learner = mlr3::lrn("dens.spline")
 print(learner)
 
@@ -63,18 +61,15 @@ ids = mlr3::partition(task)
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
 
-# print the model
 print(learner$model)
 
-# importance method
-if("importance" \%in\% learner$properties) print(learner$importance)
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
-}
+\dontshow{\}) # examplesIf}
 }
 \references{
 Gu, Chong, Wang, Jingyuan (2003).
@@ -84,7 +79,7 @@ Gu, Chong, Wang, Jingyuan (2003).
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.

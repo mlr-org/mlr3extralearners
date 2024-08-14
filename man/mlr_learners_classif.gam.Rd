@@ -22,10 +22,9 @@ in the task.
 
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("classif.gam")
-lrn("classif.gam")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.gam")
 }\if{html}{\out{</div>}}
 }
 
@@ -86,7 +85,7 @@ lrn("classif.gam")
 \examples{
 
 # simple example
-t = mlr3::tsk("spam")
+t = mlr3::tsk("spam")$filter(1:1000)
 l = mlr3::lrn("classif.gam")
 l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 l$train(t)

@@ -25,7 +25,7 @@
 #' @examples
 #'
 #' # simple example
-#' t = mlr3::tsk("spam")
+#' t = mlr3::tsk("spam")$filter(1:1000)
 #' l = mlr3::lrn("classif.gam")
 #' l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
 #' l$train(t)

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Parametric survival model.
-#' Calls [survivalmodels::parametric()] from 'survivalmodels'.
+#' Calls `parametric()]` from 'survivalmodels'.
 #'
 #' @section Custom mlr3 parameters:
 #' - `discrete` determines the class of the returned survival probability

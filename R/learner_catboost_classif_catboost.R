@@ -40,7 +40,30 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf mlr3misc::require_namespaces("catboost", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("classif.catboost",
+#'   iterations = 100)
+#'
+#' print(learner)
+#'
+#' # Define a Task
+#' task = tsk("sonar")
+#'
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   inherit = LearnerClassif,
   public = list(
