@@ -13,3 +13,12 @@ test_that("autotest aft", {
   result = run_autotest(learner, exclude = "weights|utf8_feature_names|feat_single_factor|feat_all", check_replicable = FALSE)
   expect_true(result, info = result$error)
 })
+
+test_that("can't get importance or selected features on task with factors", {
+  task = tsk("lung")
+  learner = lrn("surv.glmboost")
+  learner$train(task)
+  expect_class(learner$model, "glmboost")
+  expect_error(learner$importance())
+  expect_error(learner$selected_features())
+})
