@@ -12,11 +12,15 @@
 #' @details
 #' This learner returns up to three prediction types:
 #' 1. `crank`: same as `lp`.
-#' 2. `lp`: a vector of linear predictors (relative risk scores), one per observation.
+#' 2. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
 #' Calculated using [mboost::predict.glmboost()].
-#' 3. `distr`: a survival matrix in two dimensions, where rows are observations and columns are the time points.
-#' This predict type is returned only when the `family` parameter is set to `"coxph"` (which is the default).
-#' Calculated using [mboost::survFit()] which uses the Breslow estimator for the baseline hazard function.
+#' 3. `distr`: a survival matrix in two dimensions, where rows are observations
+#' and columns are the time points.
+#' This predict type is returned only when the `family` parameter is set to
+#' `"coxph"` (which is the default).
+#' Calculated using [mboost::survFit()] which uses the Breslow estimator for the
+#' baseline hazard function.
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
@@ -71,10 +75,14 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     },
 
     #' @description
-    #' Importance scores are extracted with the function [mboost::varimp()] and represent a feature's individual contribution to the risk reduction per boosting step of the fitted model.
+    #' Importance scores are extracted with the function [mboost::varimp()] and
+    #' represent a feature's individual contribution to the risk reduction per
+    #' boosting step of the fitted model.
     #' The higher the risk reduction, the larger the feature importance.
     #'
-    #' **Note**: Importance is supported only for datasets with `numeric` features, as the presence of factors with multiple levels makes it difficult to get the original feature names.
+    #' **Note**: Importance is supported only for datasets with `numeric`
+    #' features, as the presence of factors with multiple levels makes it
+    #' difficult to get the original feature names.
     #'
     #' @return Named `numeric()`.
     importance = function() {
@@ -96,9 +104,13 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     },
 
     #' @description
-    #' Selected features are extracted with the function [mboost::coef.glmboost()] which by default returns features with non-zero coefficients and for the final number of boosting iterations.
+    #' Selected features are extracted with the function [mboost::coef.glmboost()]
+    #' which by default returns features with non-zero coefficients and for the
+    #' final number of boosting iterations.
     #'
-    #' **Note**: Selected features can be retrieved only for datasets with `numeric` features, as the presence of factors with multiple levels makes it difficult to get the original feature names.
+    #' **Note**: Selected features can be retrieved only for datasets with
+    #' `numeric` features, as the presence of factors with multiple levels makes
+    #' it difficult to get the original feature names.
     #'
     #' @return `character()`.
     selected_features = function() {

@@ -12,11 +12,15 @@ Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
 This learner returns up to three prediction types:
 \enumerate{
 \item \code{crank}: same as \code{lp}.
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per observation.
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
 Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
-\item \code{distr}: a survival matrix in two dimensions, where rows are observations and columns are the time points.
-This predict type is returned only when the \code{family} parameter is set to \code{"coxph"} (which is the default).
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}} which uses the Breslow estimator for the baseline hazard function.
+\item \code{distr}: a survival matrix in two dimensions, where rows are observations
+and columns are the time points.
+This predict type is returned only when the \code{family} parameter is set to
+\code{"coxph"} (which is the default).
+Calculated using \code{\link[mboost:survFit]{mboost::survFit()}} which uses the Breslow estimator for the
+baseline hazard function.
 }
 }
 \section{Dictionary}{
@@ -125,10 +129,14 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-importance}{}}}
 \subsection{Method \code{importance()}}{
-Importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} and represent a feature's individual contribution to the risk reduction per boosting step of the fitted model.
+Importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} and
+represent a feature's individual contribution to the risk reduction per
+boosting step of the fitted model.
 The higher the risk reduction, the larger the feature importance.
 
-\strong{Note}: Importance is supported only for datasets with \code{numeric} features, as the presence of factors with multiple levels makes it difficult to get the original feature names.
+\strong{Note}: Importance is supported only for datasets with \code{numeric}
+features, as the presence of factors with multiple levels makes it
+difficult to get the original feature names.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$importance()}\if{html}{\out{</div>}}
 }
@@ -141,9 +149,13 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}} which by default returns features with non-zero coefficients and for the final number of boosting iterations.
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}}
+which by default returns features with non-zero coefficients and for the
+final number of boosting iterations.
 
-\strong{Note}: Selected features can be retrieved only for datasets with \code{numeric} features, as the presence of factors with multiple levels makes it difficult to get the original feature names.
+\strong{Note}: Selected features can be retrieved only for datasets with
+\code{numeric} features, as the presence of factors with multiple levels makes
+it difficult to get the original feature names.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$selected_features()}\if{html}{\out{</div>}}
 }
