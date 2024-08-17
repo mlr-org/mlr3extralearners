@@ -57,7 +57,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
         contrasts.arg = p_uty(tags = "train")
       )
 
-      ps$values = list(family = "coxph", center = FALSE)
+      ps$values = list(family = "coxph")
       ps$add_dep("sigma", "family", CondEqual$new("cindex"))
       ps$add_dep("ipcw", "family", CondEqual$new("cindex"))
       ps$add_dep("oobweights", "risk", CondEqual$new("oobag"))
