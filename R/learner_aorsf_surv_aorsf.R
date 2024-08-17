@@ -27,10 +27,7 @@
 #'     Note that `mtry` and `mtry_ratio` are mutually exclusive.
 #'
 #' @references
-#' `r format_bib("jaeger_2019")`
-#'
-#' `r format_bib("jaeger_2022")`
-#'
+#' `r format_bib("jaeger_2019", "jaeger_2022")`
 #'
 #' @template seealso_learner
 #' @template example
