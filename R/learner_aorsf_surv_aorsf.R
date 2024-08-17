@@ -9,6 +9,9 @@
 #' principle deal with missing values, the behaviour has to be configured using
 #' the parameter `na_action`.
 #'
+#' @section Initial parameter values:
+#' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+#'
 #' @details
 #' This learner returns three prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
@@ -42,7 +45,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict")),
+        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "nthreads")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
         oobag = p_lgl(default = FALSE, tags = 'predict'),
@@ -77,6 +80,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+
+      ps$values = list(n_thread = 1)
 
       super$initialize(
         id = "surv.aorsf",
