@@ -6,7 +6,7 @@
 \title{Classification Decision Stump Learner}
 \description{
 Decision Stump Learner.
-Calls \code{\link[RWeka:DecisionStump]{RWeka::DecisionStump()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::DecisionStump()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

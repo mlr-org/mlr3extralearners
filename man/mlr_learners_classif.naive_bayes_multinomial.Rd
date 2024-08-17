@@ -6,7 +6,7 @@
 \title{Classification Multinomial Naive Bayes Learner From Weka}
 \description{
 Multinomial Naive Bayes classifier.
-Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

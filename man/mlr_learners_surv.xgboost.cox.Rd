@@ -8,7 +8,7 @@
 eXtreme Gradient Boosting regression using a \strong{Cox Proportional Hazards}
 objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
-set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik} by default.
+set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
 \details{
 Three types of prediction are returned for this learner:

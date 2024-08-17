@@ -6,7 +6,7 @@
 #' eXtreme Gradient Boosting regression using an **Accelerated Failure Time**
 #' objective.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:aft` and `eval_metric` to `aft-nloglik` by default.
+#' set to `survival:aft` and `eval_metric` to `aft-nloglik`.
 #'
 #' @details
 #' This learner returns three prediction types:

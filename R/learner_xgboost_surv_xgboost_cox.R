@@ -6,7 +6,7 @@
 #' eXtreme Gradient Boosting regression using a **Cox Proportional Hazards**
 #' objective.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:cox` and `eval_metric` to `cox-nloglik` by default.
+#' set to `survival:cox` and `eval_metric` to `cox-nloglik`.
 #'
 #' @details
 #' Three types of prediction are returned for this learner:
