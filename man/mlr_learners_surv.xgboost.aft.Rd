@@ -8,7 +8,7 @@
 eXtreme Gradient Boosting regression using an \strong{Accelerated Failure Time}
 objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
-set to \code{survival:aft} and \code{eval_metric} to \code{aft-nloglik} by default.
+set to \code{survival:aft} and \code{eval_metric} to \code{aft-nloglik}.
 }
 \details{
 This learner returns three prediction types:

@@ -6,7 +6,7 @@
 #' eXtreme Gradient Boosting regression using an **Accelerated Failure Time**
 #' objective.
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:aft` and `eval_metric` to `aft-nloglik` by default.
+#' set to `survival:aft` and `eval_metric` to `aft-nloglik`.
 #'
 #' @details
 #' This learner returns three prediction types:
@@ -46,9 +46,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         in_tune_fn = crate(function(domain, param_vals) {
           if (is.null(param_vals$early_stopping_rounds)) {
             stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
-          }
-          if (is.null(param_vals$eval_metric)) {
-            stop("Parameter 'eval_metric' must be set explicitly when using internal tuning.")
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
         disable_in_tune = list(early_stopping_rounds = NULL)

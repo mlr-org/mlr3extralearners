@@ -62,8 +62,7 @@ test_that("validation and internal tuning: aft", {
 
   learner = lrn("surv.xgboost.aft",
     nrounds = to_tune(upper = 1000, internal = TRUE),
-    validate = 0.2,
-    metric = "aft_nloglik"
+    validate = 0.2
   )
   s = learner$param_set$search_space()
   expect_error(learner$param_set$convert_internal_search_space(s), "Parameter")
@@ -97,8 +96,7 @@ test_that("validation and internal tuning: cox", {
   learner = lrn("surv.xgboost.cox",
     nrounds = 10,
     early_stopping_rounds = 10,
-    validate = 0.2,
-    eval_metric = "cox_nloglik"
+    validate = 0.2
   )
 
   learner$train(task)
