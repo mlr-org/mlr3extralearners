@@ -156,6 +156,9 @@ LearnerRegrCatboost = R6Class("LearnerRegrCatboost",
             if (is.null(param_vals$early_stopping_rounds)) {
               stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
             }
+            if (is.null(param_vals$eval_metric)) {
+              stop("Parameter 'eval_metric' must be explicitly set for internal tuning.")
+            }
             assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
           }, .parent = topenv()),
           disable_in_tune = list(early_stopping_rounds = NULL)

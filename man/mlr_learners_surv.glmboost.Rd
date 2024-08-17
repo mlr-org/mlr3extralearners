@@ -137,6 +137,7 @@ The higher the risk reduction, the larger the feature importance.
 \strong{Note}: Importance is supported only for datasets with \code{numeric}
 features, as the presence of factors with multiple levels makes it
 difficult to get the original feature names.
+
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$importance()}\if{html}{\out{</div>}}
 }
