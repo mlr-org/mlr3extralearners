@@ -56,7 +56,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         id = "regr.gbm",
         packages = c("mlr3extralearners", "gbm"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = "response",
+        predict_types = c("response", "quantile"),
         param_set = ps,
         properties = c("weights", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.gbm",
@@ -95,6 +95,15 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         pars = insert_named(pars, list(weights = task$weights$weight))
       }
 
+      if (self$predict_type == "quantile") {
+
+        if (length(self$quantiles) > 1) {
+          stop("Only one quantile is supported")
+        }
+
+        pars$distribution = list(name = "quantile", alpha = self$quantiles)
+      }
+
       invoke(gbm::gbm, formula = f, data = data, .args = pars)
     },
 
@@ -107,8 +116,16 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       }
       newdata = ordered_features(task, self)
 
-      p = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = p)
+      pred = invoke(predict, self$model, newdata = newdata, .args = pars)
+
+      if (self$predict_type == "quantile") {
+        quantile = matrix(pred, ncol = 1)
+        attr(quantile, "probs") = private$.quantile
+        attr(quantile, "response") = private$.quantile_response
+        return(list(quantile = quantile))
+      }
+
+      list(response = pred)
     }
   )
 )
