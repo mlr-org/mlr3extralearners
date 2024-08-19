@@ -115,7 +115,7 @@ Remotes:
     xoopR/distr6,
     xoopR/param6,
     xoopR/set6,
-    ropensci/aorsf
+    ropensci/aorsf,
     mlr-org/mlr3@predict_type_quantile
 VignetteBuilder:
     knitr
