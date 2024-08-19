@@ -7,6 +7,8 @@
 \description{
 Gradient Boosting Regression Algorithm.
 Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
+
+Weights are ignored for quantile prediction.
 }
 \section{Dictionary}{
 
@@ -21,7 +23,7 @@ lrn("regr.gbm")
 
 \itemize{
 \item Task type: \dQuote{regr}
-\item Predict Types: \dQuote{response}
+\item Predict Types: \dQuote{response}, \dQuote{quantiles}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{gbm}
 }

@@ -6,6 +6,8 @@
 #' Gradient Boosting Regression Algorithm.
 #' Calls [gbm::gbm()] from \CRANpkg{gbm}.
 #'
+#' Weights are ignored for quantile prediction.
+#'
 #' @templateVar id regr.gbm
 #' @template learner
 #'
@@ -91,7 +93,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties) {
+      if ("weights" %in% task$properties && self$predict_type != "quantiles") {
         pars = insert_named(pars, list(weights = task$weights$weight))
       }
 
