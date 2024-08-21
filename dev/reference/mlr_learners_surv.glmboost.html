@@ -50,8 +50,17 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>distr</code> prediction made by <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code>.</p>
-    </div>
+    <p>This learner returns up to three prediction types:</p><ol><li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+<li><p><code>lp</code>: a vector of linear predictors (relative risk scores), one per
+observation.
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/methods.html" class="external-link">mboost::predict.glmboost()</a></code>.</p></li>
+<li><p><code>distr</code>: a survival matrix in two dimensions, where rows are observations
+and columns are the time points.
+This predict type is returned only when the <code>family</code> parameter is set to
+<code>"coxph"</code> (which is the default).
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code> which uses the Breslow estimator for the
+baseline hazard function.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
@@ -106,6 +115,8 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerSurvGLMBoost-new"><code>LearnerSurvGLMBoost$new()</code></a></p></li>
+<li><p><a href="#method-LearnerSurvGLMBoost-importance"><code>LearnerSurvGLMBoost$importance()</code></a></p></li>
+<li><p><a href="#method-LearnerSurvGLMBoost-selected_features"><code>LearnerSurvGLMBoost$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvGLMBoost-clone"><code>LearnerSurvGLMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
@@ -117,27 +128,52 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerSurvGLMBoost-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
-<p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.
-Importance is supported but fails tests as internally data
-is coerced to model
-matrix and original names can't be recovered.</p>
-<p>Importance is supported but fails tests as internally data
-is coerced to model
-matrix and original names can't be recovered.</p>
-<p>description
-Selected features are extracted with the function
-<code><a href="https://rdrr.io/pkg/mboost/man/methods.html" class="external-link">mboost::variable.names.mboost()</a></code>, with
-<code>used.only = TRUE</code>.
-return <code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>.</p><div class="section">
+<p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
 <h4 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va"><a href="../reference/mlr_learners_surv.glmboost.html">LearnerSurvGLMBoost</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 
+</div><p></p><hr><a id="method-LearnerSurvGLMBoost-importance"></a><div class="section">
+<h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
+<p>Importance scores are extracted with the function <code><a href="https://rdrr.io/pkg/mboost/man/varimp.html" class="external-link">mboost::varimp()</a></code> and
+represent a feature's individual contribution to the risk reduction per
+boosting step of the fitted model.
+The higher the risk reduction, the larger the feature importance.</p>
+<p><strong>Note</strong>: Importance is supported only for datasets with <code>numeric</code>
+features, as the presence of factors with multiple levels makes it
+difficult to get the original feature names.</p>
+<div class="section">
+<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGLMBoost</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="returns">Returns<a class="anchor" aria-label="anchor" href="#returns"></a></h4>
+<p>Named <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code>.</p>
+</div>
+
+</div><p></p><hr><a id="method-LearnerSurvGLMBoost-selected_features"></a><div class="section">
+<h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
+<p>Selected features are extracted with the function <code><a href="https://rdrr.io/pkg/mboost/man/methods.html" class="external-link">mboost::coef.glmboost()</a></code>
+which by default returns features with non-zero coefficients and for the
+final number of boosting iterations.</p>
+<p><strong>Note</strong>: Selected features can be retrieved only for datasets with
+<code>numeric</code> features, as the presence of factors with multiple levels makes
+it difficult to get the original feature names.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGLMBoost</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="returns-1">Returns<a class="anchor" aria-label="anchor" href="#returns-1"></a></h4>
+<p><code><a href="https://rdrr.io/r/base/character.html" class="external-link">character()</a></code>.</p>
+</div>
+
 </div><p></p><hr><a id="method-LearnerSurvGLMBoost-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGLMBoost</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
@@ -162,9 +198,9 @@ return <code><a href="https://rdrr.io/r/base/character.html" class="external-lin
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=coxph</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, mboost, pracma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, selected_features, weights</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># available parameters:</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
