@@ -20,7 +20,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)
+#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
 #' task = tsk("iris")
 #' learner = lrn("classif.cforest", ntree = 50)
 #' splits = partition(task)

@@ -81,7 +81,7 @@ The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 task = tsk("veteran")
 learner = lrn("surv.cv_coxboost", maxstepno = 20)
 splits = partition(task)

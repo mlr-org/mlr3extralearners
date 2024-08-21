@@ -36,7 +36,7 @@
 #'
 #' @template seealso_learner
 #' @export
-#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)
+#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
 #' task = tsk("veteran")
 #' learner = lrn("surv.cv_coxboost", maxstepno = 20)
 #' splits = partition(task)

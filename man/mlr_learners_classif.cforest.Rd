@@ -92,7 +92,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 task = tsk("iris")
 learner = lrn("classif.cforest", ntree = 50)
 splits = partition(task)
