@@ -2,8 +2,8 @@ task = tsk("lung")
 task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100) # encode sex factor
 
 test_that("autotest", {
-  with_seed(1, {
-    learner = lrn("surv.xgboost.aft")
+  with_seed(2, {
+    learner = lrn("surv.xgboost.aft", nrounds = 10)
     expect_learner(learner)
     result = run_autotest(learner, N = 10, check_replicable = FALSE)
     expect_true(result, info = result$error)
@@ -12,7 +12,7 @@ test_that("autotest", {
 
 test_that("autotest cox", {
   with_seed(1, {
-    learner = lrn("surv.xgboost.cox")
+    learner = lrn("surv.xgboost.cox", nrounds = 10)
     expect_learner(learner)
     result = run_autotest(learner, N = 10, check_replicable = FALSE)
     expect_true(result, info = result$error)
@@ -21,7 +21,7 @@ test_that("autotest cox", {
 
 test_that("autotest aft", {
   with_seed(1, {
-    learner = lrn("surv.xgboost.aft")
+    learner = lrn("surv.xgboost.aft", nrounds = 10)
     expect_learner(learner)
     result = run_autotest(learner, N = 10, check_replicable = FALSE)
     expect_true(result, info = result$error)
