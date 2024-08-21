@@ -23,11 +23,12 @@
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
 #' @examples
-#'
 #' # simple example
 #' t = mlr3::tsk("spam")$filter(1:1000)
 #' l = mlr3::lrn("classif.gam")
-#' l$param_set$values$formula = type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)
+#' l$param_set$set_values(
+#' formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
+#' ')
 #' l$train(t)
 #' l$model
 #' @export

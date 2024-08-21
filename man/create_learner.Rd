@@ -16,8 +16,7 @@ create_learner(
   predict_types,
   properties,
   gh_name = "Unknown",
-  label = toproper(algorithm),
-  data_formats = "data.table"
+  label = toproper(algorithm)
 )
 }
 \arguments{
@@ -64,10 +63,6 @@ Defaults to \code{"Unknown"}.}
 
 \item{label}{(\code{character(1)})\cr
 Label for the learner, default is the value of the parameter \code{algorithm}.}
-
-\item{data_formats}{(\code{character(1)})\cr
-The data format the learner can deal with (see \code{mlr_reflections$data_formats}).
-Default is \code{"data.table"} and this rarely has to be changes.}
 }
 \description{
 Helper function to create a template for a learner, as well as the test and parameter test.
@@ -89,8 +84,7 @@ create_learner(
   predict_types = c("response", "prob"),
   properties = c("importance", "missings", "multiclass", "twoclass", "weights"),
   gh_name = "RaphaelS1",
-  label = "Regression and Partition Tree",
-  data_formats = "data.table"
+  label = "Regression and Partition Tree"
 )
 }
 }
