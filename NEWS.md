@@ -8,8 +8,9 @@
   the upstream package again.
 * Add early stopping and validation support to learners `lrn("surv.xgboost.aft")`
   and `lrn("surv.xgboost.cox")`.
-* Added early stopping and validation to catboost and lightgbm. 
+* Added early stopping and validation to catboost and lightgbm.
 * Added missing `case.depth` parameter to `rfsrc` learners.
+* Change xgboost default nrounds from 1 to 1000.
 
 # mlr3extralearners 0.8.0
 

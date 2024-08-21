@@ -20,7 +20,7 @@
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:
-#' - `nrounds` is initialized to 1.
+#' - `nrounds` is initialized to 1000.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
 #'
@@ -120,7 +120,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       # custom defaults
-      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L)
+      ps$values = list(nrounds = 1000L, nthread = 1L, verbose = 0L)
 
       super$initialize(
         id = "surv.xgboost.cox",
