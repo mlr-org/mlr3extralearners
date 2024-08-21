@@ -77,7 +77,6 @@ Suggests:
     mvtnorm,
     nnet,
     np,
-    obliqueRSF,
     param6,
     partykit,
     penalized,

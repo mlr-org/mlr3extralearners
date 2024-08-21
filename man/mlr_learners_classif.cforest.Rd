@@ -92,28 +92,12 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.cforest")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("classif.cforest")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("sonar")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
+\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+task = tsk("iris")
+learner = lrn("classif.cforest", ntree = 50)
+splits = partition(task)
+learner$train(task, splits$train)
+pred = learner$predict(task, splits$test)
 \dontshow{\}) # examplesIf}
 }
 \references{

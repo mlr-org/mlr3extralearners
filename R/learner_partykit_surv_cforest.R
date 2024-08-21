@@ -16,14 +16,18 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), silent = TRUE)
+#' task = tsk("rats")
+#' learner = lrn("surv.cforest", ntree = 50)
+#' splits = partition(task)
+#' learner$train(task, splits$train)
+#' pred = learner$predict(task, splits$test)
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-
       ps = ps(
         ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         replace = p_lgl(default = FALSE, tags = "train"),

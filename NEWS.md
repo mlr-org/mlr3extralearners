@@ -14,6 +14,7 @@
 * Deprecated learner `lrn("surv.xgboost")` was now removed.
   Use `lrn("surv.xgboost.cox")` or `lrn("surv.xgboost.aft")` instead.
 * Change xgboost default nrounds from 1 to 1000.
+* remove obliqueRSF Learner which was long superseded by aorsf
 
 # mlr3extralearners 0.8.0
 

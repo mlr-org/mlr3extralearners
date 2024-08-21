@@ -63,7 +63,7 @@ learner = lrn("surv.svm", gamma.mu = 0.1)
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = mlr3::tsk("rats")
 
 # Create train and test set
 ids = mlr3::partition(task)
