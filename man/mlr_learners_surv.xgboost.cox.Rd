@@ -8,7 +8,7 @@
 eXtreme Gradient Boosting regression using a \strong{Cox Proportional Hazards}
 objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
-set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik} by default.
+set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
 \details{
 Three types of prediction are returned for this learner:
@@ -29,7 +29,7 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{nrounds} is initialized to 1.
+\item \code{nrounds} is initialized to 1000.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
 }

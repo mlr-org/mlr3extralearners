@@ -1,21 +1,16 @@
-#' @title Extreme Gradient Boosting Cox Survival Learner
-#' @author bblodfon
-#' @name mlr_learners_surv.xgboost.cox
+#' @title Extreme Gradient Boosting Survival Learner
+#' @author be-marc
+#' @name mlr_learners_surv.xgboost
 #'
 #' @description
-#' eXtreme Gradient Boosting regression using a **Cox Proportional Hazards**
-#' objective.
-#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
-#' set to `survival:cox` and `eval_metric` to `cox-nloglik`.
+#' eXtreme Gradient Boosting regression.
+#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost}.
 #'
-#' @details
-#' Three types of prediction are returned for this learner:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
-#' 2. `crank`: same as `lp`.
-#' 3. `distr`: a survival matrix in two dimensions, where observations are
-#' represented in rows and time points in columns.
-#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
+#' **Note:** We strongly advise to use the separate [Cox][LearnerSurvXgboostCox]
+#' and [AFT][LearnerSurvXgboostAFT] xgboost survival learners since they represent
+#' two very distinct survival modeling methods and we offer more prediction
+#' types in the respective learners compared to the ones available here.
+#' This learner will be deprecated in the future.
 #'
 #' @template note_xgboost
 #'
@@ -23,34 +18,31 @@
 #' - `nrounds` is initialized to 1000.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
+#' - `objective` is initialized to `survival:cox` for survival analysis.
 #'
-#' @templateVar id surv.xgboost.cox
+#' @templateVar id surv.xgboost
 #' @template learner
 #' @template section_early_stopping
 #'
 #' @references
 #' `r format_bib("chen_2016")`
 #'
+#' @export
 #' @template seealso_learner
 #' @template example
-#' @export
-LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
+LearnerSurvXgboost = R6Class("LearnerSurvXgboost",
   inherit = mlr3proba::LearnerSurv,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      p_nrounds = p_int(1L,
-        tags = c("train", "hotstart", "internal_tuning"),
-        aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
-        in_tune_fn = crate(function(domain, param_vals) {
-          if (is.null(param_vals$early_stopping_rounds)) {
-            stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
-          }
-          assert_integerish(domain$upper, len = 1L, any.missing = FALSE)}, .parent = topenv()),
-        disable_in_tune = list(early_stopping_rounds = NULL)
+      .Deprecated(
+        msg = "'surv.xgboost' will be deprecated in the future. Use 'surv.xgboost.cox' or 'surv.xgboost.aft' learners instead." #nolint
       )
+
       ps = ps(
+        aft_loss_distribution       = p_fct(c("normal", "logistic", "extreme"), default = "normal", tags = "train"),
+        aft_loss_distribution_scale = p_dbl(tags = "train"),
         alpha                       = p_dbl(0, default = 0, tags = "train"),
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
@@ -60,8 +52,9 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
         disable_default_eval_metric = p_lgl(default = FALSE, tags = "train"),
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
+        early_stopping_set          = p_fct(c("none", "train", "test"), default = "none", tags = "train"),
         eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
-        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
+        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"),
         feval                       = p_uty(default = NULL, tags = "train"),
         gamma                       = p_dbl(0, default = 0, tags = "train"),
         grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train"),
@@ -75,12 +68,13 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         max_leaves                  = p_int(0L, default = 0L, tags = "train"),
         maximize                    = p_lgl(default = NULL, special_vals = list(NULL), tags = "train"),
         min_child_weight            = p_dbl(0, default = 1, tags = "train"),
-        missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)), #nolint
+        missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)),
         monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train"),
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
-        nrounds                     = p_nrounds,
+        nrounds                     = p_int(1L, tags = "train"),
         nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
+        objective                   = p_fct(c("survival:cox", "survival:aft"), default = "survival:cox", tags = c("train", "predict")),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
         print_every_n               = p_int(1L, default = 1L, tags = "train"),
         process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
@@ -96,7 +90,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         strict_shape                = p_lgl(default = FALSE, tags = "predict"),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
         top_k                       = p_int(0, default = 0, tags = "train"),
-        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"), #nolint
+        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"),
         tweedie_variance_power      = p_dbl(1, 2, default = 1.5, tags = "train"),
         updater                     = p_uty(tags = "train"), # Default depends on the selected booster
         verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
@@ -118,19 +112,21 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
+      ps$add_dep("aft_loss_distribution", "objective", CondEqual$new("survival:aft"))
+      ps$add_dep("aft_loss_distribution_scale", "objective", CondEqual$new("survival:aft"))
 
       # custom defaults
-      ps$values = list(nrounds = 1000L, nthread = 1L, verbose = 0L)
+      ps$values = list(nrounds = 1000L, nthread = 1L, verbose = 0L, early_stopping_set = "none")
 
       super$initialize(
-        id = "surv.xgboost.cox",
+        id = "surv.xgboost",
         param_set = ps,
-        predict_types = c("crank", "lp", "distr"),
+        predict_types = c("crank", "lp"),
         feature_types = c("integer", "numeric"),
-        properties = c("weights", "missings", "importance", "validation", "internal_tuning"),
+        properties = c("weights", "missings", "importance"),
         packages = c("mlr3extralearners", "xgboost"),
-        man = "mlr3extralearners::mlr_learners_surv.xgboost.cox",
-        label = "Extreme Gradient Boosting Cox"
+        man = "mlr3extralearners::mlr_learners_surv.xgboost",
+        label = "Gradient Boosting"
       )
     },
 
@@ -139,109 +135,59 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      xgb_imp(self$model$model)
-    }
-  ),
-
-  active = list(
-    #' @field internal_valid_scores
-    #' The last observation of the validation scores for all metrics.
-    #' Extracted from `model$evaluation_log`
-    internal_valid_scores = function() {
-      self$state$internal_valid_scores
-    },
-    #' @field internal_tuned_values
-    #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
-    internal_tuned_values = function() {
-      self$state$internal_tuned_values
-    },
-    #' @field validate
-    #' How to construct the internal validation data. This parameter can be either `NULL`,
-    #' a ratio, `"test"`, or `"predefined"`.
-    validate = function(rhs) {
-      if (!missing(rhs)) {
-        private$.validate = mlr3::assert_validate(rhs)
-      }
-      private$.validate
+      xgb_imp(self$model)
     }
   ),
 
   private = list(
-    .validate = NULL,
-    .extract_internal_tuned_values = function() {
-      if (is.null(self$state$param_vals$early_stopping_rounds)) {
-        return(NULL)
-      }
-      list(nrounds = self$model$model$niter)
-    },
-
-    .extract_internal_valid_scores = function() {
-      if (is.null(self$model$model$evaluation_log)) {
-        return(named_list())
-      }
-      patterns = NULL
-      as.list(self$model$model$evaluation_log[
-        get(".N"),
-        set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
-        .SDcols = patterns("^test_")
-      ])
-    },
     .train = function(task) {
+
       pv = self$param_set$get_values(tags = "train")
-      # manually add 'objective' and 'eval_metric'
-      pv = c(pv, objective = "survival:cox", eval_metric = "cox-nloglik")
+
+      if (is.null(pv$objective)) {
+        pv$objective = "survival:cox"
+      }
+
+      if (pv$objective == "survival:cox") {
+        pv$eval_metric = "cox-nloglik"
+      } else {
+        pv$eval_metric = "aft-nloglik"
+      }
 
       data = get_xgb_mat(task, pv$objective)
 
-      internal_valid_task = task$internal_valid_task
-      if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
-        stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
-      }
-      if (!is.null(internal_valid_task)) {
-        test_data = get_xgb_mat(internal_valid_task, pv$objective)
-        # XGBoost uses the last element in the watchlist as
-        # the early stopping set
-        pv$watchlist = c(pv$watchlist, list(test = test_data))
+      # XGBoost uses the last element in the watchlist as
+      # the early stopping set
+      if (pv$early_stopping_set != "none") {
+        pv$watchlist = c(pv$watchlist, list(train = data))
       }
 
-      list(
-        model = invoke(xgboost::xgb.train, data = data, .args = pv),
-        train_data = data # for breslow
-      )
+      if (pv$early_stopping_set == "test" && !is.null(task$row_roles$test)) {
+        test_data = get_xgb_mat(task, pv$objective, task$row_roles$test)
+        pv$watchlist = c(pv$watchlist, list(test = test_data))
+      }
+      pv$early_stopping_set = NULL
+
+      invoke(xgboost::xgb.train, data = data, .args = pv)
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      # manually add 'objective'
-      pv = c(pv, objective = "survival:cox")
-
-      model = self$model$model
+      model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
-      # linear predictor on the test set
-      lp_test = log(invoke(
+      lp = log(invoke(
         predict, model,
         newdata = newdata,
         .args = pv
       ))
 
-      # linear predictor on the train set
-      train_data = self$model$train_data
-      lp_train = log(invoke(
-        predict, model,
-        newdata = train_data,
-        .args = pv,
-      ))
+      if (!is.null(pv$objective) && pv$objective == "survival:aft") {
+        lp = -lp
+      }
 
-      # extract (times, status) from train data
-      truth = xgboost::getinfo(train_data, "label")
-      times = abs(truth)
-      status = as.integer(truth > 0) # negative times => censored
-      surv = mlr3proba::breslow(times = times, status = status,
-                                lp_train = lp_train, lp_test = lp_test)
-
-      mlr3proba::.surv_return(surv = surv, crank = lp_test, lp = lp_test)
+      list(crank = lp, lp = lp)
     }
   )
 )
 
-.extralrns_dict$add("surv.xgboost.cox", LearnerSurvXgboostCox)
+.extralrns_dict$add("surv.xgboost", LearnerSurvXgboost)
