@@ -6,6 +6,8 @@
 #' Gradient Boosting Regression Algorithm.
 #' Calls [gbm::gbm()] from \CRANpkg{gbm}.
 #'
+#' Weights are ignored for quantile prediction.
+#'
 #' @templateVar id regr.gbm
 #' @template learner
 #'
@@ -59,7 +61,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         id = "regr.gbm",
         packages = c("mlr3extralearners", "gbm"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = "response",
+        predict_types = c("response", "quantiles"),
         param_set = ps,
         properties = c("weights", "importance", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.gbm",
@@ -94,8 +96,17 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties) {
+      if ("weights" %in% task$properties && self$predict_type != "quantiles") {
         pars = insert_named(pars, list(weights = task$weights$weight))
+      }
+
+      if (self$predict_type == "quantiles") {
+
+        if (length(self$quantiles) > 1) {
+          stop("Only one quantile is supported")
+        }
+
+        pars$distribution = list(name = "quantile", alpha = self$quantiles)
       }
 
       invoke(gbm::gbm, formula = f, data = data, .args = pars)
@@ -110,8 +121,16 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       }
       newdata = ordered_features(task, self)
 
-      p = invoke(predict, self$model, newdata = newdata, .args = pars)
-      list(response = p)
+      pred = invoke(predict, self$model, newdata = newdata, .args = pars)
+
+      if (self$predict_type == "quantiles") {
+        quantiles = matrix(pred, ncol = 1)
+        attr(quantiles, "probs") = private$.quantiles
+        attr(quantiles, "response") = private$.quantile_response
+        return(list(quantiles = quantiles))
+      }
+
+      list(response = pred)
     }
   )
 )
