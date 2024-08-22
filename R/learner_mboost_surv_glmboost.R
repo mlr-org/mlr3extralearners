@@ -10,7 +10,17 @@
 #' @templateVar id surv.glmboost
 #'
 #' @details
-#' `distr` prediction made by [mboost::survFit()].
+#' This learner returns up to three prediction types:
+#' 1. `crank`: same as `lp`.
+#' 2. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' Calculated using [mboost::predict.glmboost()].
+#' 3. `distr`: a survival matrix in two dimensions, where rows are observations
+#' and columns are the time points.
+#' This predict type is returned only when the `family` parameter is set to
+#' `"coxph"` (which is the default).
+#' Calculated using [mboost::survFit()] which uses the Breslow estimator for the
+#' baseline hazard function.
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
@@ -56,45 +66,69 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
         id = "surv.glmboost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
-        predict_types = c("distr", "crank", "lp"),
-        properties = "weights",
+        predict_types = c("crank", "lp", "distr"),
+        properties = c("weights", "selected_features", "importance"),
         packages = c("mlr3extralearners", "mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.glmboost",
         label = "Boosted Generalized Linear Model"
       )
+    },
+
+    #' @description
+    #' Importance scores are extracted with the function [mboost::varimp()] and
+    #' represent a feature's individual contribution to the risk reduction per
+    #' boosting step of the fitted model.
+    #' The higher the risk reduction, the larger the feature importance.
+    #'
+    #' **Note**: Importance is supported only for datasets with `numeric`
+    #' features, as the presence of factors with multiple levels makes it
+    #' difficult to get the original feature names.
+    #'
+    #' @return Named `numeric()`.
+    importance = function() {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (self$model$task_has_factors) {
+        stopf("Can't return importance scores as trained task had factor variables
+              and original feature names cannot be retrieved")
+      }
+
+      var_imp = mboost::varimp(self$model)
+
+      # remove intercept if it is present
+      var_imp = var_imp[names(var_imp) != "(Intercept)"]
+
+      sort(var_imp, decreasing = TRUE)
+    },
+
+    #' @description
+    #' Selected features are extracted with the function [mboost::coef.glmboost()]
+    #' which by default returns features with non-zero coefficients and for the
+    #' final number of boosting iterations.
+    #'
+    #' **Note**: Selected features can be retrieved only for datasets with
+    #' `numeric` features, as the presence of factors with multiple levels makes
+    #' it difficult to get the original feature names.
+    #'
+    #' @return `character()`.
+    selected_features = function() {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (self$model$task_has_factors) {
+        stopf("Can't return selected features as trained task had factor variables
+              and original feature names cannot be retrieved")
+      }
+
+      # Per default, only coefficients of selected variables are returned by coef()
+      features = names(self$model$coef())
+
+      # remove intercept if it is present
+      features[features != "(Intercept)"]
     }
-
-    #' Importance is supported but fails tests as internally data
-    #' is coerced to model
-    #' matrix and original names can't be recovered.
-    #'
-    # importance = function() {
-    #   if (is.null(self$model)) {
-    #     stopf("No model stored")
-    #   }
-    #
-    #   sort(mboost::varimp(self$model)[-1], decreasing = TRUE)
-    # },
-
-    #' Importance is supported but fails tests as internally data
-    #' is coerced to model
-    #' matrix and original names can't be recovered.
-    #'
-    #' description
-    #' Selected features are extracted with the function
-    #' [mboost::variable.names.mboost()], with
-    #' `used.only = TRUE`.
-    #' return `character()`.
-    # selected_features = function() {
-    #   if (is.null(self$model)) {
-    #     stopf("No model stored")
-    #   }
-    #
-    #   sel = unique(names(self$model$model.frame())[self$model$xselect()])
-    #   sel = sel[!(sel %in% "(Intercept)")]
-    #
-    #   return(sel)
-    # }
   ),
 
   private = list(
@@ -107,6 +141,8 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       pars = self$param_set$get_values(tags = "train")
 
       saved_ctrl = mboost::boost_control()
+      # center is deprecated but still returned
+      saved_ctrl$center = NULL
       on.exit(invoke(mboost::boost_control, .args = saved_ctrl))
       is_ctrl_pars = (names(pars) %in% names(saved_ctrl))
 
@@ -139,12 +175,37 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       pars = pars[!(names(pars) %in% formalArgs(mboost::Cindex))]
       pars = pars[!(names(pars) %in% c("family", "custom.family"))]
 
-      invoke(mboost::glmboost, task$formula(task$feature_names),
-        data = task$data(), family = family, .args = pars)
+      # use formula interface if any factor feature
+      if (any(task$feature_types$type == "factor")) {
+        model = invoke(mboost::glmboost,
+                       task$formula(task$feature_names),
+                       data = task$data(),
+                       family = family,
+                       .args = pars)
+        model$task_has_factors = TRUE
+      } else {
+        # use matrix interface if only numeric, integer or logical features
+        # throws warning with center = TRUE about no intercept but it's okay
+        model = invoke(mboost::glmboost,
+                       as.matrix(task$data(cols = task$feature_names)),
+                       y = task$truth(),
+                       family = family,
+                       .args = pars)
+        model$task_has_factors = FALSE
+      }
+
+      model
     },
 
     .predict = function(task) {
-      newdata = ordered_features(task, self)
+      if (self$model$task_has_factors) {
+        # data.frame if formula interface was used
+        newdata = ordered_features(task, self)
+      } else {
+        # matrix otherwise
+        newdata = as.matrix(ordered_features(task, self))
+      }
+
       # predict linear predictor
       pars = self$param_set$get_values(tags = "predict")
       lp = as.numeric(
@@ -154,23 +215,12 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
+        # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-
-        mlr3proba::.surv_return(times = survfit$time,
-          surv = t(survfit$surv),
-          lp = lp)
+        mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
         mlr3proba::.surv_return(lp = -lp)
       }
-
-
-      # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
-      # response = NULL
-      # if (!is.null(self$param_set$values$family)) {
-      #   if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
-      #     response = exp(lp)
-      #   }
-      # }
     }
   )
 )

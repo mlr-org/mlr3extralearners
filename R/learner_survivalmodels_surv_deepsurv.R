@@ -15,7 +15,7 @@
 #' `r format_bib("katzman2018deepsurv")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
   inherit = mlr3proba::LearnerSurv,

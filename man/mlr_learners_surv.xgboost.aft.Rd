@@ -28,7 +28,7 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{nrounds} is initialized to 1.
+\item \code{nrounds} is initialized to 1000.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 \item \code{verbose} is initialized to 0.
 }
@@ -70,10 +70,9 @@ performance scores.
 
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.xgboost.aft")
-lrn("surv.xgboost.aft")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.xgboost.aft")
 }\if{html}{\out{</div>}}
 }
 
@@ -149,11 +148,29 @@ lrn("surv.xgboost.aft")
 }
 
 \examples{
+\dontshow{if (mlr3misc::require_namespaces(lrn("surv.xgboost.aft")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner
 learner = mlr3::lrn("surv.xgboost.aft")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = mlr3::tsk("grace")
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Chen, Tianqi, Guestrin, Carlos (2016).
@@ -170,7 +187,7 @@ ISSN 15372715, \doi{10.1080/10618600.2022.2067548}.
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.

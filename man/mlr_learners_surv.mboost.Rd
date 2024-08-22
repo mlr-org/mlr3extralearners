@@ -6,17 +6,16 @@
 \title{Boosted Generalized Additive Survival Learner}
 \description{
 Model-based boosting for survival analysis.
-Calls \code{\link[mboost:mboost]{mboost::mboost()}} from \CRANpkg{mboost}.
+Calls \code{\link[mboost:gamboost]{mboost::mboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.mboost")
-lrn("surv.mboost")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.mboost")
 }\if{html}{\out{</div>}}
 }
 
@@ -52,11 +51,7 @@ lrn("surv.mboost")
 }
 
 \examples{
-learner = mlr3::lrn("surv.mboost")
-print(learner)
-
-# available parameters:
-learner$param_set$ids()
+lrn("surv.mboost")
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).
@@ -66,7 +61,7 @@ Bühlmann, Peter, Yu, Bin (2003).
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
@@ -131,7 +126,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvMBoost$selected_features()}\if{html}{\out{</div>}}

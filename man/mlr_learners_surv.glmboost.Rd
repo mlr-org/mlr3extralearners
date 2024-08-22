@@ -9,14 +9,25 @@ Fits a generalized linear survival model using a boosting algorithm.
 Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
 }
 \details{
-\code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
+This learner returns up to three prediction types:
+\enumerate{
+\item \code{crank}: same as \code{lp}.
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per
+observation.
+Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
+\item \code{distr}: a survival matrix in two dimensions, where rows are observations
+and columns are the time points.
+This predict type is returned only when the \code{family} parameter is set to
+\code{"coxph"} (which is the default).
+Calculated using \code{\link[mboost:survFit]{mboost::survFit()}} which uses the Breslow estimator for the
+baseline hazard function.
+}
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.glmboost")
-lrn("surv.glmboost")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.glmboost")
 }\if{html}{\out{</div>}}
 }
 
@@ -52,11 +63,29 @@ lrn("surv.glmboost")
 }
 
 \examples{
+\dontshow{if (mlr3misc::require_namespaces(lrn("surv.glmboost")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner
 learner = mlr3::lrn("surv.glmboost")
 print(learner)
 
-# available parameters:
-learner$param_set$ids()
+# Define a Task
+task = mlr3::tsk("grace")
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+print(learner$importance)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).
@@ -66,7 +95,7 @@ Bühlmann, Peter, Yu, Bin (2003).
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.
@@ -84,6 +113,8 @@ RaphaelS1
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerSurvGLMBoost-new}{\code{LearnerSurvGLMBoost$new()}}
+\item \href{#method-LearnerSurvGLMBoost-importance}{\code{LearnerSurvGLMBoost$importance()}}
+\item \href{#method-LearnerSurvGLMBoost-selected_features}{\code{LearnerSurvGLMBoost$selected_features()}}
 \item \href{#method-LearnerSurvGLMBoost-clone}{\code{LearnerSurvGLMBoost$clone()}}
 }
 }
@@ -106,23 +137,49 @@ RaphaelS1
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
-Importance is supported but fails tests as internally data
-is coerced to model
-matrix and original names can't be recovered.
-
-Importance is supported but fails tests as internally data
-is coerced to model
-matrix and original names can't be recovered.
-
-description
-Selected features are extracted with the function
-\code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
-\code{used.only = TRUE}.
-return \code{character()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerSurvGLMBoost-importance"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-importance}{}}}
+\subsection{Method \code{importance()}}{
+Importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} and
+represent a feature's individual contribution to the risk reduction per
+boosting step of the fitted model.
+The higher the risk reduction, the larger the feature importance.
+
+\strong{Note}: Importance is supported only for datasets with \code{numeric}
+features, as the presence of factors with multiple levels makes it
+difficult to get the original feature names.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$importance()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Named \code{numeric()}.
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
+\subsection{Method \code{selected_features()}}{
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}}
+which by default returns features with non-zero coefficients and for the
+final number of boosting iterations.
+
+\strong{Note}: Selected features can be retrieved only for datasets with
+\code{numeric} features, as the presence of factors with multiple levels makes
+it difficult to get the original feature names.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGLMBoost$selected_features()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+\code{character()}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-clone"></a>}}

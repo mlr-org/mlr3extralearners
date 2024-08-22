@@ -18,7 +18,20 @@
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("lme4", quietly = TRUE)
+#'
+#' # Define the Learner and set parameter values
+#' learner = lrn("classif.glmer",
+#'   formula = credit_risk ~ (1 | credit_history) + job + property + telephone + savings)
+#'
+#' # Define a Task
+#' task = tsk("german_credit")
+#' task$select(c("credit_history", "job", "property", "telephone", "savings"))
+#'
+#' # Train the learner
+#' learner$train(task)
+#'
+#' print(learner$model)
 #' @export
 LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
   inherit = LearnerClassif,

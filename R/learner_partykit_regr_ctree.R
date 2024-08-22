@@ -7,7 +7,7 @@
 #' Calls [partykit::ctree()] from \CRANpkg{partykit}.
 #'
 #'
-#' @template class_learner
+#' @template learner
 #' @templateVar id regr.ctree
 #'
 #' @references

@@ -10,10 +10,9 @@ Calls \code{\link[partykit:cforest]{partykit::cforest()}} from \CRANpkg{partykit
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("classif.cforest")
-lrn("classif.cforest")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.cforest")
 }\if{html}{\out{</div>}}
 }
 
@@ -93,11 +92,13 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-learner = mlr3::lrn("classif.cforest")
-print(learner)
-
-# available parameters:
-learner$param_set$ids()
+\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+task = tsk("iris")
+learner = lrn("classif.cforest", ntree = 50)
+splits = partition(task)
+learner$train(task, splits$train)
+pred = learner$predict(task, splits$test)
+\dontshow{\}) # examplesIf}
 }
 \references{
 Hothorn T, Zeileis A (2015).
@@ -113,7 +114,7 @@ Hothorn T, Hornik K, Zeileis A (2006).
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.

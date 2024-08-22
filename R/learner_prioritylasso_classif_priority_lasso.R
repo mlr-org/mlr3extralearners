@@ -13,7 +13,20 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("prioritylasso", quietly = TRUE)
+#' # Define the Learner and set parameter values
+#' learner = lrn("classif.priority_lasso", type.measure = "auc",
+#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
+#'
+#' # Train the learner
+#' learner$train(task)
+#'
+#' # print the model
+#' print(learner$model)
 #' @export
 LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
   inherit = LearnerClassif,

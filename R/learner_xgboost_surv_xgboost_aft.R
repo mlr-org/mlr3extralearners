@@ -19,7 +19,7 @@
 #' @template note_xgboost
 #'
 #' @section Initial parameter values:
-#' - `nrounds` is initialized to 1.
+#' - `nrounds` is initialized to 1000.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #' - `verbose` is initialized to 0.
 #'
@@ -124,7 +124,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       # custom defaults
-      ps$values = list(nrounds = 1L, nthread = 1L, verbose = 0L)
+      ps$values = list(nrounds = 1000L, nthread = 1L, verbose = 0L)
 
       super$initialize(
         id = "surv.xgboost.aft",
@@ -163,7 +163,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #' a ratio, `"test"`, or `"predefined"`.
     validate = function(rhs) {
       if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
+        private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
     }
@@ -181,6 +181,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       if (is.null(self$model$evaluation_log)) {
         return(named_list())
       }
+      patterns = NULL
       as.list(self$model$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
