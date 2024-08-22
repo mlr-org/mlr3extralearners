@@ -1,5 +1,7 @@
 # dev
 
+# mlr3extralearners 0.9.0
+
 * Added response (i.e., survival time) prediction to `aorsf` learner
 * Updated support for flexsurv v2.3
 * Fixed bug in catboost that caused invalid probability levels during
