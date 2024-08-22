@@ -69,9 +69,8 @@ because mlr3 checks the compatibility between the learner and the task on <stron
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.glmer"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.glmer"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.glmer"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -95,7 +94,7 @@ because mlr3 checks the compatibility between the learner and the task on <stron
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -157,35 +156,61 @@ because mlr3 checks the compatibility between the learner and the task on <stron
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.glmer"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifGlmer:classif.glmer&gt;: Generalized Linear Mixed Effect Regression</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=&lt;family&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, lme4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: twoclass, weights</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Define the Learner and set parameter values</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.glmer"</span>,</span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="va">credit_risk</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">credit_history</span><span class="op">)</span> <span class="op">+</span> <span class="va">job</span> <span class="op">+</span> <span class="va">property</span> <span class="op">+</span> <span class="va">telephone</span> <span class="op">+</span> <span class="va">savings</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "formula"                  "start"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "verbose"                  "offset"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "contrasts"                "optimizer"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "restart_edge"             "boundary.tol"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "calc.derivs"              "check.nobs.vs.rankZ"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "check.nobs.vs.nlev"       "check.nlev.gtreq.5"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "check.nlev.gtr.1"         "check.nobs.vs.nRE"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "check.rankX"              "check.scaleX"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "check.formula.LHS"        "family"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "nAGQ"                     "mustart"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "etastart"                 "check.conv.grad"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "check.conv.singular"      "check.conv.hess"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "optCtrl"                  "tolPwrss"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "compDev"                  "nAGQ0initStep"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "check.response.not.const" "newparams"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "re.form"                  "random.only"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "allow.new.levels"         "na.action"               </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"german_credit"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span><span class="op">$</span><span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"credit_history"</span>, <span class="st">"job"</span>, <span class="st">"property"</span>, <span class="st">"telephone"</span>, <span class="st">"savings"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $model</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Generalized linear mixed model fit by maximum likelihood (Laplace</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Approximation) [glmerMod]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Family: binomial  ( logit )</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Formula: credit_risk ~ (1 | credit_history) + job + property + telephone +  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     savings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Data: data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       AIC       BIC    logLik  deviance  df.resid </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1143.8155 1207.6163 -558.9077 1117.8155       987 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Random effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Groups         Name        Std.Dev.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  credit_history (Intercept) 0.687   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 1000, groups:  credit_history, 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed Effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                         (Intercept)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.49718  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                             jobunskilled - resident  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.19139  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                        jobskilled employee/official  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.13544  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        jobmanager/self-empl/highly qualif. employee  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.02365  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                propertycar or other  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.56577  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> propertybuilding soc. savings agr. / life insurance  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.50720  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                 propertyreal estate  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             1.11104  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  telephoneyes (under customer name)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.26805  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                 savings... &lt; 100 DM  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.33521  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          savings100 &lt;= ... &lt; 500 DM  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.08991  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         savings500 &lt;= ... &lt; 1000 DM  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.24679  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               savings... &gt;= 1000 DM  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.04639  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $target_levels</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "good" "bad" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

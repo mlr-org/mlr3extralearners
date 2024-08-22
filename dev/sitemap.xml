@@ -128,7 +128,6 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.loghaz.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.mboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.nelson.html</loc></url>
-<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.obliqueRSF.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.parametric.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.pchazard.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.penalized.html</loc></url>
@@ -138,7 +137,6 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.svm.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.aft.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.cox.html</loc></url>
-<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/reexports.html</loc></url>
 </urlset>
 

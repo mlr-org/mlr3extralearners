@@ -72,9 +72,8 @@ the survival distributions from the <code>lp</code> predictions.</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"surv.cv_coxboost"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.cv_coxboost"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.cv_coxboost"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -192,23 +191,12 @@ Which boosting step to get the coefficients for. If no step is given
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.cv_coxboost"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvCVCoxboost:surv.cv_coxboost&gt;: Likelihood-based Boosting</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, CoxBoost, pracma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: selected_features, weights</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "maxstepno"       "K"               "type"            "folds"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "minstepno"       "start.penalty"   "iter.max"        "upper.margin"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "unpen.index"     "standardize"     "penalty"         "criterion"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "stepsize.factor" "sf.scheme"       "pendistmat"      "connected.index"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "x.is.01"         "return.score"    "trace"           "at.step"        </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"rats"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span><span class="op">$</span><span class="va">col_roles</span><span class="op">$</span><span class="va">feature</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"litter"</span>, <span class="st">"rx"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.cv_coxboost"</span>, maxstepno <span class="op">=</span> <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">splits</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, <span class="va">splits</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, <span class="va">splits</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -65,9 +65,8 @@ baseline hazard function.</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"surv.glmboost"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.glmboost"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.glmboost"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -142,8 +141,7 @@ boosting step of the fitted model.
 The higher the risk reduction, the larger the feature importance.</p>
 <p><strong>Note</strong>: Importance is supported only for datasets with <code>numeric</code>
 features, as the presence of factors with multiple levels makes it
-difficult to get the original feature names.</p>
-<div class="section">
+difficult to get the original feature names.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvGLMBoost</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -192,7 +190,8 @@ it difficult to get the original feature names.</p><div class="section">
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.glmboost"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.glmboost"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvGLMBoost:surv.glmboost&gt;: Boosted Generalized Linear Model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -202,12 +201,51 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, selected_features, weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "offset"        "family"        "custom.family" "nuirange"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "center"        "mstop"         "nu"            "risk"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "oobweights"    "stopintern"    "trace"         "sigma"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "ipcw"          "na.action"     "contrasts.arg"</span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>model with centered covariates does not contain intercept</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	 Generalized Linear Models Fitted via Gradient Boosting</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> glmboost.matrix(x = as.matrix(task$data(cols = task$feature_names)),     y = task$truth(), family = family)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	 Cox Partial Likelihood </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Loss function:  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          age       revasc   revascdays </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.016063472 -0.927797314 -0.007402796 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvGLMBoost__importance(self = self, private = private, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55ff1023b9d8&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8531845 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

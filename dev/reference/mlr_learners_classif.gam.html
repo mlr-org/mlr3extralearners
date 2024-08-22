@@ -66,9 +66,8 @@ in the task.</p>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.gam"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.gam"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.gam"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -143,28 +142,6 @@ Routledge.</p>
 
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># simple example</span></span></span>
-<span class="r-in"><span><span class="va">t</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"spam"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.gam"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">formula</span> <span class="op">=</span> <span class="va">type</span> <span class="op">~</span> <span class="fu">s</span><span class="op">(</span><span class="va">george</span><span class="op">)</span> <span class="op">+</span> <span class="fu">s</span><span class="op">(</span><span class="va">charDollar</span><span class="op">)</span> <span class="op">+</span> <span class="fu">s</span><span class="op">(</span><span class="va">edu</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ti</span><span class="op">(</span><span class="va">george</span>, <span class="va">edu</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">t</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="va">model</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Family: binomial </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Link function: logit </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Formula:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> type ~ s(george) + s(charDollar) + s(edu) + ti(george, edu)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimated degrees of freedom:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.00 5.42 1.00 5.05  total = 13.47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> UBRE score: -0.1759489     </span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

@@ -66,46 +66,6 @@ names in table.</p></dd>
 
 </dl></div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">list_mlr3learners</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"properties"</span>, <span class="st">"predict_types"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>class <span class="op">=</span> <span class="st">"surv"</span>, predict_types <span class="op">=</span> <span class="st">"distr"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> This will take a few seconds.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   id                            properties        predict_types</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               &lt;char&gt;                                &lt;list&gt;               &lt;list&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1:     surv.akritas                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2:       surv.aorsf         importance,missings,oob_error crank,distr,response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3:        surv.bart                   importance,missings          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4:  surv.blackboost                               weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5:     surv.cforest                               weights          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6:    surv.coxboost             selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7:       surv.coxph                               weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8:     surv.coxtime                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9:       surv.ctree                               weights          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10: surv.cv_coxboost             selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11:   surv.cv_glmnet             selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12:     surv.deephit                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13:    surv.deepsurv                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14:     surv.dnnsurv                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15:    surv.flexible                               weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16:    surv.gamboost  importance,selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17:    surv.glmboost  importance,selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18:      surv.glmnet             selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19:      surv.kaplan                              missings          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20:      surv.loghaz                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21:      surv.mboost  importance,selected_features,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22:      surv.nelson                              missings          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23:  surv.obliqueRSF                    missings,oob_error          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24:  surv.parametric                               weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25:    surv.pchazard                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26:   surv.penalized                                                crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27:      surv.ranger          importance,oob_error,weights          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28:       surv.rfsrc importance,missings,oob_error,weights          crank,distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29: surv.xgboost.cox           importance,missings,weights       crank,distr,lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   id                            properties        predict_types</span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

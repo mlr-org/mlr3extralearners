@@ -55,9 +55,8 @@ For logistic regression please use <code><a href="https://mlr3learners.mlr-org.c
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"regr.glm"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.glm"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.glm"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -153,7 +152,8 @@ John Wiley &amp; Sons.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.glm"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.glm"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrGlm:regr.glm&gt;: Generalized Linear Regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -163,12 +163,56 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, character, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "singular.ok" "x"           "y"           "model"       "etastart"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "mustart"     "start"       "offset"      "family"      "na.action"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "link"        "epsilon"     "maxit"       "trace"       "dispersion" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "type"       </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = formula, family = structure(list(family = "gaussian", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     link = "identity", linkfun = function (mu) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     mu, linkinv = function (eta) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     eta, variance = function (mu) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     rep.int(1, length(mu)), dev.resids = function (y, mu, wt) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     wt * ((y - mu)^2), aic = function (y, n, mu, wt, dev) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     {</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         nobs &lt;- length(y)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         nobs * (log(dev/nobs * 2 * pi) + 1) + 2 - sum(log(wt))</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     }, mu.eta = function (eta) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     rep.int(1, length(eta)), initialize = expression({</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         n &lt;- rep.int(1, nobs)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         if (is.null(etastart) &amp;&amp; is.null(start) &amp;&amp; is.null(mustart) &amp;&amp; </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             ((family$link == "inverse" &amp;&amp; any(y == 0)) || (family$link == </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 "log" &amp;&amp; any(y &lt;= 0)))) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             stop("cannot find valid starting values: please specify some")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         mustart &lt;- y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     }), validmu = function (mu) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     TRUE, valideta = function (eta) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     TRUE, dispersion = NA_real_), class = "family"), data = data)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    24.25127      1.34792     -0.31521     -0.11105      0.01345      0.07114  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1.28184     -0.04383      0.36261     -0.08695     -3.58177  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    658.2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 85.62 	AIC: 113.1</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.072603 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

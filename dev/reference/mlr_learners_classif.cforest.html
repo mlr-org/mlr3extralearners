@@ -52,9 +52,8 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="exter
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.cforest"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.cforest"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.cforest"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -94,7 +93,7 @@ Note that <code>mtry</code> and <code>mtryratio</code> are mutually exclusive.</
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -172,31 +171,11 @@ Note that <code>mtry</code> and <code>mtryratio</code> are mutually exclusive.</
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.cforest"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifCForest:classif.cforest&gt;: Conditional Random Forest</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: teststat=quadratic, testtype=Univariate, mincriterion=0,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   saveinfo=FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, partykit, sandwich, coin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: multiclass, oob_error, twoclass, weights</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ntree"           "replace"         "fraction"        "mtry"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "mtryratio"       "applyfun"        "cores"           "trace"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "offset"          "cluster"         "scores"          "teststat"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "splitstat"       "splittest"       "testtype"        "nmax"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "pargs"           "alpha"           "mincriterion"    "logmincriterion"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "minsplit"        "minbucket"       "minprob"         "stump"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "lookahead"       "MIA"             "nresample"       "tol"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "maxsurrogate"    "numsurrogate"    "maxdepth"        "multiway"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "splittry"        "intersplit"      "majority"        "caseweights"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "saveinfo"        "update"          "splitflavour"    "maxvar"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "OOB"             "simplify"        "scale"           "nperm"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "risk"            "conditional"     "threshold"      </span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"iris"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.cforest"</span>, ntree <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">splits</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, <span class="va">splits</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, <span class="va">splits</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

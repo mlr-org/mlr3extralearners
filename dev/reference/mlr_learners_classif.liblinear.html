@@ -67,9 +67,8 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.liblinear"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.liblinear"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.liblinear"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -94,7 +93,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -156,7 +155,8 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifLiblineaR:classif.liblinear&gt;: Support Vector Machine</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -166,10 +166,65 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: multiclass, twoclass</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "type"     "cost"     "epsilon"  "bias"     "cross"    "verbose"  "wi"      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [8] "findC"    "useInitC"</span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $TypeDetail</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "L2-regularized logistic regression primal (L2R_LR)"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Type</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11        V12        V13       V14        V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2025819 -0.8919925 -1.203186 -0.9059427 -0.5702968 -0.177562 0.02371355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V16       V17       V18        V19         V2        V20        V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.6158218 0.7454179 0.4900748 -0.3197919 -0.2465749 -0.7124039 -0.3882649</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24       V25       V26        V27        V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.3906074 -0.4346678 -0.2186743 0.6262891 0.3874617 -0.1261883 -0.2213769</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V29         V3       V30       V31        V32        V33       V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.2049976 -0.2030691 0.2060306 0.6458888 -0.4581355 -0.1427845 0.2506607</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V35      V36      V37         V38        V39         V4       V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4548889 1.276836 1.365353 0.002374227 -0.4119225 -0.3914255 0.4569132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V41        V42        V43        V44       V45       V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.07015045 -0.7022484 -0.7023585 -0.6647682 -1.192913 -1.061015</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V47       V48        V49         V5         V50        V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.7008786 -0.583414 -0.3900857 -0.3045948 -0.07531958 -0.1097853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V52         V53        V54          V55         V56        V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.0807235 -0.02771352 -0.0637423 -0.006843271 -0.01041471 0.01303145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59          V6          V60        V7        V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.03656843 -0.02078169 -0.03022422 -0.008801489 0.1838118 0.1012483</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V9      Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6318295 0.6935652</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $ClassNames</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] R M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Levels: M R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $NbClass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "LiblineaR"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -72,7 +72,7 @@ See <a href="https://xgboost.readthedocs.io/en/stable/build.html#building-with-g
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
 
-<ul><li><p><code>nrounds</code> is initialized to 1.</p></li>
+<ul><li><p><code>nrounds</code> is initialized to 1000.</p></li>
 <li><p><code>nthread</code> is initialized to 1 to avoid conflicts with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
 <li><p><code>verbose</code> is initialized to 0.</p></li>
 </ul></div>
@@ -114,9 +114,8 @@ performance scores.</p>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"surv.xgboost.aft"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.xgboost.aft"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.xgboost.aft"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -242,7 +241,8 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.xgboost.aft"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.xgboost.aft"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvXgboostAFT:surv.xgboost.aft&gt;: Extreme Gradient Boosting AFT</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -254,36 +254,41 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, internal_tuning, missings, validation,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "aft_loss_distribution"       "aft_loss_distribution_scale"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "alpha"                       "base_score"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "booster"                     "callbacks"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "colsample_bylevel"           "colsample_bynode"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "colsample_bytree"            "disable_default_eval_metric"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "early_stopping_rounds"       "eta"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "feature_selector"            "feval"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "gamma"                       "grow_policy"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "interaction_constraints"     "iterationrange"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "lambda"                      "lambda_bias"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "max_bin"                     "max_delta_step"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "max_depth"                   "max_leaves"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "maximize"                    "min_child_weight"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "missing"                     "monotone_constraints"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "normalize_type"              "nrounds"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "nthread"                     "ntreelimit"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "num_parallel_tree"           "one_drop"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "print_every_n"               "process_type"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "rate_drop"                   "refresh_leaf"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "sampling_method"             "sample_type"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "save_name"                   "save_period"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "scale_pos_weight"            "seed_per_iteration"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "skip_drop"                   "strict_shape"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "subsample"                   "top_k"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "tree_method"                 "tweedie_variance_power"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "updater"                     "verbose"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "watchlist"                   "xgb_model"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "device"                     </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ##### xgb.Booster</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> raw: 2.6 Mb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     nthread = 1L, objective = "survival:aft", eval_metric = "aft-nloglik")</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> params (as set within xgb.train):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   nthread = "1", objective = "survival:aft", eval_metric = "aft-nloglik", validate_parameters = "TRUE"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> xgb.attributes:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   niter</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # of features: 6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> niter: 1000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> nfeatures : 6 </span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvXgboostAFT__importance(self = self, private = private, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55ff1c8ddd80&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8346245 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

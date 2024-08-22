@@ -63,9 +63,8 @@ because mlr3 checks the compatibility between the learner and the task on <stron
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"regr.lmer"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.lmer"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.lmer"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -151,27 +150,26 @@ because mlr3 checks the compatibility between the learner and the task on <stron
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.lmer"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrLmer:regr.lmer&gt;: Linear Mixed Effects</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, lme4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner and set parameter values</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.lmer"</span>, formula <span class="op">=</span> <span class="va">cmedv</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">town</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "formula"             "REML"                "start"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "verbose"             "offset"              "contrasts"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "optimizer"           "restart_edge"        "boundary.tol"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "calc.derivs"         "check.nobs.vs.rankZ" "check.nobs.vs.nlev" </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "check.nlev.gtreq.5"  "check.nlev.gtr.1"    "check.nobs.vs.nRE"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "check.rankX"         "check.scaleX"        "check.formula.LHS"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "check.conv.grad"     "check.conv.singular" "check.conv.hess"    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "optCtrl"             "newparams"           "re.form"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "random.only"         "allow.new.levels"    "na.action"          </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"boston_housing"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Linear mixed model fit by REML ['lmerMod']</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Formula: cmedv ~ (1 | town)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Data: data</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 3341.364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Random effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Groups   Name        Std.Dev.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  town     (Intercept) 7.657   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             5.403   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 506, groups:  town, 92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fixed Effects:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       24.92  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -58,9 +58,8 @@ Calls <code><a href="https://rdrr.io/pkg/dbarts/man/bart.html" class="external-l
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.bart"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.bart"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.bart"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -105,7 +104,7 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -167,7 +166,8 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bart"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bart"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifBart:classif.bart&gt;: Bayesian Additive Regression Trees</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -177,14 +177,104 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: twoclass, weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "ntree"         "k"             "power"         "base"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "binaryOffset"  "ndpost"        "nskip"         "printevery"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "keepevery"     "keeptrainfits" "usequants"     "numcut"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "printcutoffs"  "verbose"       "nthread"       "keepcall"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "sampleronly"   "seed"          "proposalprobs" "splitprobs"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "keepsampler"  </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Running BART with binary y</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of trees: 200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> number of chains: 1, number of threads 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> tree thinning rate: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Prior:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	k prior fixed to 2.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	power and base for tree prior: 2.000000 0.950000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	use quantiles for rule cut points: false</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> data:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	number of training observations: 139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	number of test observations: 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	number of explanatory variables: 60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cutoff rules c in x&lt;=c vs x&gt;c</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of cutoffs: (var: number of possible c):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (1: 100) (2: 100) (3: 100) (4: 100) (5: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (6: 100) (7: 100) (8: 100) (9: 100) (10: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (11: 100) (12: 100) (13: 100) (14: 100) (15: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (16: 100) (17: 100) (18: 100) (19: 100) (20: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (21: 100) (22: 100) (23: 100) (24: 100) (25: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (26: 100) (27: 100) (28: 100) (29: 100) (30: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (31: 100) (32: 100) (33: 100) (34: 100) (35: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (36: 100) (37: 100) (38: 100) (39: 100) (40: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (41: 100) (42: 100) (43: 100) (44: 100) (45: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (46: 100) (47: 100) (48: 100) (49: 100) (50: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (51: 100) (52: 100) (53: 100) (54: 100) (55: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (56: 100) (57: 100) (58: 100) (59: 100) (60: 100) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> offsets:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	reg : 0.00 0.00 0.00 0.00 0.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Running mcmc loop:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 100 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 200 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 300 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 400 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 500 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 600 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 700 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 800 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 900 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 1000 (of 1000)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total seconds in loop: 0.491851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Tree sizes, last iteration:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 3 2 3 2 4 1 2 2 2 2 3 2 2 2 3 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 3 1 2 3 2 3 2 2 2 3 4 2 2 4 2 2 3 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 3 2 2 2 2 2 2 3 2 2 3 2 3 2 2 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 3 2 2 2 2 2 2 2 2 2 1 2 3 2 2 1 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2 2 2 2 2 1 4 2 3 2 3 3 3 3 2 4 2 3 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 4 3 2 3 3 2 2 2 1 2 2 2 3 2 1 2 2 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 3 2 2 2 2 3 2 2 2 2 2 1 2 2 2 3 2 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1 2 3 2 2 3 2 2 2 4 3 2 2 4 2 2 3 2 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2 2 2 2 2 2 2 3 2 2 3 2 2 2 2 2 3 1 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 4 2 2 2 1 2 2 2 2 4 2 2 2 3 2 2 3 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Variable Usage, last iteration (var:count):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (1: 4) (2: 3) (3: 3) (4: 4) (5: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (6: 4) (7: 6) (8: 7) (9: 5) (10: 6) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (11: 4) (12: 3) (13: 7) (14: 11) (15: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (16: 3) (17: 4) (18: 4) (19: 2) (20: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (21: 1) (22: 7) (23: 2) (24: 1) (25: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (26: 3) (27: 1) (28: 5) (29: 6) (30: 3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (31: 3) (32: 3) (33: 6) (34: 5) (35: 1) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (36: 6) (37: 3) (38: 6) (39: 6) (40: 2) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (41: 4) (42: 5) (43: 5) (44: 3) (45: 3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (46: 7) (47: 3) (48: 3) (49: 1) (50: 9) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (51: 7) (52: 2) (53: 4) (54: 2) (55: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (56: 4) (57: 3) (58: 3) (59: 4) (60: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> DONE BART</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> dbarts::bart(x.train = x_train, y.train = y_train, keeptrees = TRUE)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -67,9 +67,8 @@ since their ids contain irregular pattern</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.logistic"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.logistic"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.logistic"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -94,7 +93,7 @@ since their ids contain irregular pattern</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -156,7 +155,8 @@ since their ids contain irregular pattern</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifLogistic:classif.logistic&gt;: Multinomial Logistic Regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -166,13 +166,158 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings, multiclass, twoclass</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "C"                         "R"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "M"                         "output_debug_info"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "do_not_check_capabilities" "num_decimal_places"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "batch_size"                "options"                  </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Logistic Regression with ridge parameter of 1.0E-8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1                         139.8746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10                        320.1527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11                       -103.7096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12                        308.2639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13                       -201.3836</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14                         35.0575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15                        -27.3326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16                         77.9024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17                       -177.6567</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18                         38.7053</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19                        129.5289</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                         840.2749</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20                        -23.2551</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                         -73.156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22                         89.0065</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23                        -89.8234</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24                        111.0599</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25                          5.9521</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26                       -101.9557</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27                         99.4799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28                        -70.3332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29                        -89.0143</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V3                        -673.0478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30                        263.3756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V31                       -285.6895</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32                        104.8519</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33                         36.0505</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34                        -78.8381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35                        126.8579</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36                       -139.7472</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37                         -0.3346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38                         11.3324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39                         84.0966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4                         143.9283</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40                        -188.727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41                        -93.4741</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42                         50.6877</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43                         99.7716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44                         73.6616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45                        -122.042</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46                        101.4084</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47                        -23.7295</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48                       -176.1538</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49                       1104.5376</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5                         -51.2491</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50                       -857.7838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                       3317.8079</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                       -868.4954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53                       1219.8453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54                       -721.4155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V55                       -540.5603</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V56                       1068.4121</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57                        -98.8955</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                      -1937.0992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59                       1996.4391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6                         106.4712</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V60                      -1613.1026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V7                        -170.6166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8                        -352.0131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9                           37.152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept                  -46.6662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Odds Ratios...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1             5.581859441307419E60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10          1.0978204352640526E139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12           7.538962677464257E133</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14           1.6799323767691388E15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16            6.801148068221947E33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18           6.4492154359483368E16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19           1.7934291365445113E56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                         Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22            4.518723313464278E38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24           1.7088924924087607E48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25                        384.5485</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27            1.597910101585138E43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V3                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30           2.413072333861129E114</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V31                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32           3.4404597449479535E45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33            4.534554251366329E15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35            1.240796120601815E55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37                          0.7156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38                      83479.9184</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39           3.3319481234800604E36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4              3.21566515015243E62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42           1.0313245929392715E22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43            2.139233267241733E43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44             9.79086916658092E31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46            1.099313720283347E44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V55                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V56                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6            1.7372914141588164E46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V60                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V7                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9            1.3642547684638032E16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3768116 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

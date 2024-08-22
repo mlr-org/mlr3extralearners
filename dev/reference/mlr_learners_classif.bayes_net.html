@@ -81,9 +81,8 @@ and it's unclear how to use them.</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.bayes_net"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.bayes_net"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.bayes_net"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -102,7 +101,7 @@ and it's unclear how to use them.</p></li>
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -164,7 +163,8 @@ and it's unclear how to use them.</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bayes_net"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bayes_net"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifBayesNet:classif.bayes_net&gt;: Bayes Network</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -174,14 +174,96 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings, multiclass, twoclass</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "D"                         "B"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "Q"                         "E"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "output_debug_info"         "do_not_check_capabilities"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "num_decimal_places"        "batch_size"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "options"                  </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Bayes Network Classifier</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> not using ADTree</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> #attributes=61 #classindex=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Network structure (nodes followed by parents)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class(2): </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V31(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V56(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V60(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1267.6284786381798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1293.3969852568418</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1299.6231249558036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1223.138778992278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1254.138778992278</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

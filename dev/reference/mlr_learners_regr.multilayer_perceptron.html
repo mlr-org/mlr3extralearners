@@ -70,9 +70,8 @@ since their ids contain irregular pattern</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"regr.multilayer_perceptron"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.multilayer_perceptron"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.multilayer_perceptron"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -153,7 +152,8 @@ since their ids contain irregular pattern</p></li>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.multilayer_perceptron"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.multilayer_perceptron"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrMultilayerPerceptron:regr.multilayer_perceptron&gt;: MultilayerPerceptron</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -163,18 +163,102 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "L"                         "M"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "N"                         "V"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "S"                         "E"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "A"                         "B"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "H"                         "C"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "I"                         "R"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "D"                         "output_debug_info"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "do_not_check_capabilities" "num_decimal_places"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "batch_size"                "options"                  </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Linear Node 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    0.32882369186346844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 1    -1.238673078064737</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 2    -1.9429573690999387</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 3    0.22931140465421435</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 4    1.883629363394355</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 5    -0.19360954431235333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.4885553036212937</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    -0.015672627339464326</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    1.2614790172118648</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.04611606736399552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    -0.44450933849874086</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    -0.3951754156226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    -0.5976190379976356</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.5542128370748123</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    1.2267867277984938</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.035793535104970686</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    1.0470894862680915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    1.1968222549826508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    1.9221868008662544</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    1.3584004288904494</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.17735435530496357</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.20155036696449444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.010004488847899444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    1.0972649315229646</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.6296643725614822</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    -1.2938487054844934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.3258831560028345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.594995409005474</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.8882972284599085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.5304393894356342</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.34384808590271754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.09023379701826713</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.03970844642764013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.33570304323869227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.5561289962026733</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.06835018822466657</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    0.2780183775955802</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.0731243691305568</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.403506998017617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -1.1684269202309792</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    1.0369144051667574</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    1.2202596951696525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.7561712647237224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    -0.3037994090648925</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.5733889091003305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    1.4791284893316177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    -0.3918559079173945</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    1.5287154962768932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -1.470095937469006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.969317352888682</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.6161400000435916</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.32851252959044547</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.4989464435736292</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.08387490430963163</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    -0.006786774302894942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.2608634779234518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.28229541514711054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.32444407676616804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    -0.18662785697865014</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.006862652040552397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.19922442198494028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Input</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.68327 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

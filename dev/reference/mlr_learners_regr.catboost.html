@@ -52,9 +52,8 @@ Calls <code><a href="https://rdrr.io/pkg/catboost/man/catboost.train.html" class
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"regr.catboost"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.catboost"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.catboost"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -208,7 +207,8 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.catboost"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.catboost"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrCatboost:regr.catboost&gt;: Gradient Boosting</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -221,41 +221,32 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, internal_tuning, missings, validation,</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "loss_function"                  "learning_rate"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "random_seed"                    "l2_leaf_reg"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "bootstrap_type"                 "bagging_temperature"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "subsample"                      "sampling_frequency"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "sampling_unit"                  "mvs_reg"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "random_strength"                "depth"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "grow_policy"                    "min_data_in_leaf"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "max_leaves"                     "has_time"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "rsm"                            "nan_mode"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "fold_permutation_block"         "leaf_estimation_method"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "leaf_estimation_iterations"     "leaf_estimation_backtracking"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "fold_len_multiplier"            "approx_on_full_history"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "boosting_type"                  "boost_from_average"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "langevin"                       "diffusion_temperature"         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "score_function"                 "monotone_constraints"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "feature_weights"                "first_feature_use_penalties"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "penalties_coefficient"          "per_object_feature_penalties"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "model_shrink_rate"              "model_shrink_mode"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "target_border"                  "border_count"                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "feature_border_type"            "per_float_feature_quantization"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "thread_count"                   "task_type"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "devices"                        "logging_level"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "metric_period"                  "train_dir"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [47] "model_size_reg"                 "allow_writing_files"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [49] "save_snapshot"                  "snapshot_file"                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [51] "snapshot_interval"              "simple_ctr"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [53] "combinations_ctr"               "ctr_target_border_count"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [55] "counter_calc_method"            "max_ctr_complexity"            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [57] "ctr_leaf_count_limit"           "store_all_simple_ctr"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [59] "final_ctr_computation_mode"     "verbose"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [61] "ntree_start"                    "ntree_end"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [63] "early_stopping_rounds"          "eval_metric"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [65] "use_best_model"                 "iterations"                    </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> CatBoost model (1000 trees)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerRegrCatboost__importance(self = self, private = private, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55ff1200df38&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.49778 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

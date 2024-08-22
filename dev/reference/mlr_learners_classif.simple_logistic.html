@@ -67,9 +67,8 @@ since their ids contain irregular pattern</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.simple_logistic"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.simple_logistic"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.simple_logistic"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -159,7 +158,8 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.simple_logistic"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.simple_logistic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifSimpleLogistic:classif.simple_logistic&gt;: LogitBoost Based Logistic Regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -169,15 +169,51 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings, multiclass, twoclass</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "subset"                    "na.action"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "I"                         "S"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "P"                         "M"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "H"                         "W"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "A"                         "output_debug_info"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "do_not_check_capabilities" "num_decimal_places"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "batch_size"                "options"                  </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -1.5 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.39 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -0.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * 0.87 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -1.22 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V41] * -1.07 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 1.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 5.41 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 24.28 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 22.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.5  + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.39 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 0.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * -0.87 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 1.22 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V41] * 1.07 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -1.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -5.41 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -24.28 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -22.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

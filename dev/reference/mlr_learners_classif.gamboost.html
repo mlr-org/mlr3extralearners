@@ -52,9 +52,8 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This Learner can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> mlr_learners or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"classif.gamboost"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.gamboost"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"classif.gamboost"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -79,7 +78,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
-<li><p><code>as.data.table(mlr_learners)</code> for a table of available Learners in the running session (depending on the loaded packages).</p></li>
+<li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
 <li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
@@ -141,7 +140,8 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.gamboost"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.gamboost"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifGAMBoost:classif.gamboost&gt;: Boosted Generalized Additive Model</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -151,12 +151,58 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: twoclass, weights</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "baselearner"   "dfbase"        "offset"        "family"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "custom.family" "link"          "type"          "mstop"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "nu"            "risk"          "oobweights"    "trace"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "stopintern"    "na.action"    </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	 Model-based Boosting</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mboost::gamboost(formula = f, data = data, family = new("boost_family_glm",     fW = function (f)     {        f &lt;- pmin(abs(f), 36) * sign(f)        p &lt;- exp(f)/(exp(f) + exp(-f))        4 * p * (1 - p)    }, ngradient = function (y, f, w = 1)     {        exp2yf &lt;- exp(-2 * y * f)        -(-2 * y * exp2yf)/(log(2) * (1 + exp2yf))    }, risk = function (y, f, w = 1)     sum(w * loss(y, f), na.rm = TRUE), offset = function (y,         w)     {        p &lt;- weighted.mean(y &gt; 0, w)        1/2 * log(p/(1 - p))    }, check_y = function (y)     {        if (!is.factor(y))             stop("response is not a factor but ", sQuote("family = Binomial()"))        if (nlevels(y) != 2)             stop("response is not a factor at two levels but ",                 sQuote("family = Binomial()"))        return(c(-1, 1)[as.integer(y)])    }, weights = function (w)     {        switch(weights, any = TRUE, none = isTRUE(all.equal(unique(w),             1)), zeroone = isTRUE(all.equal(unique(w + abs(w -             1)), 1)), case = isTRUE(all.equal(unique(w - floor(w)),             0)))    }, nuisance = function ()     return(NA), response = function (f)     {        f &lt;- pmin(abs(f), 36) * sign(f)        p &lt;- exp(f)/(exp(f) + exp(-f))        return(p)    }, rclass = function (f)     (f &gt; 0) + 1, name = "Negative Binomial Likelihood (logit link)",     charloss = c("{ \n", "    f &lt;- pmin(abs(f), 36) * sign(f) \n",     "    p &lt;- exp(f)/(exp(f) + exp(-f)) \n", "    y &lt;- (y + 1)/2 \n",     "    -y * log(p) - (1 - y) * log(1 - p) \n", "} \n")), control = ctrl)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	 Negative Binomial Likelihood (logit link) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: { </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      f &lt;- pmin(abs(f), 36) * sign(f) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      p &lt;- exp(f)/(exp(f) + exp(-f)) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      y &lt;- (y + 1)/2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -y * log(p) - (1 - y) * log(1 - p) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  } </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.06483891 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of baselearners:  60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

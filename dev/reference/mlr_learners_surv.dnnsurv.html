@@ -59,9 +59,8 @@ the number of features plus number of cuts.</p>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"surv.dnnsurv"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.dnnsurv"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.dnnsurv"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -161,8 +160,7 @@ the number of features plus number of cuts.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.dnnsurv"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.dnnsurv"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvDNNSurv:surv.dnnsurv&gt;: Neural Network</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: verbose=0</span>
@@ -171,54 +169,6 @@ the number of features plus number of cuts.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
-<span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "cuts"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [2] "cutpoints"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "custom_model"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "optimizer"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "lr"                                  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [6] "beta_1"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "beta_2"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [8] "epsilon"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "decay"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "clipnorm"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "clipvalue"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [12] "momentum"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "nesterov"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [14] "loss_weights"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "weighted_metrics"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [16] "early_stopping"                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "min_delta"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [18] "patience"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "verbose"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [20] "baseline"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "restore_best_weights"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [22] "batch_size"                          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "epochs"                              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [24] "validation_split"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "shuffle"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [26] "sample_weight"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "initial_epoch"                       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [28] "steps_per_epoch"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "validation_steps"                    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [30] "steps"                               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "callbacks"                           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [32] "rho"                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "global_clipnorm"                     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [34] "use_ema"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "ema_momentum"                        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [36] "ema_overwrite_frequency"             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [37] "jit_compile"                         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [38] "initial_accumultator_value"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [39] "amsgrad"                             </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [40] "lr_power"                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [41] "l1_regularization_strength"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [42] "l2_regularization_strength"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [43] "l2_shrinkage_regularization_strength"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [44] "beta"                                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [45] "centered"                            </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

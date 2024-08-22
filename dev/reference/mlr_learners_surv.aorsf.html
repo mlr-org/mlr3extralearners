@@ -69,9 +69,8 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
-<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via the <a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">dictionary</a> <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr_learners</a> or with the associated sugar function <code><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a></code>:</p>
-<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>mlr_learners<span class="sc">$</span><span class="fu">get</span>(<span class="st">"surv.aorsf"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.aorsf"</span>)</span></code></pre><p></p></div>
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"surv.aorsf"</span>)</span></code></pre><p></p></div>
     </div>
     <div class="section level2">
     <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
@@ -201,7 +200,8 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.aorsf"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.aorsf"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvAorsf:surv.aorsf&gt;: Oblique Random Forest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
@@ -211,26 +211,45 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, missings, oob_error</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># available parameters:</span></span></span>
-<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">ids</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "n_tree"                  "n_split"                </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [3] "n_retry"                 "n_thread"               </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "pred_aggregate"          "pred_simplify"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "oobag"                   "mtry"                   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "mtry_ratio"              "sample_with_replacement"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [11] "sample_fraction"         "control_type"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "split_rule"              "control_fast_do_scale"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [15] "control_fast_ties"       "control_cph_ties"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] "control_cph_eps"         "control_cph_iter_max"   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [19] "control_net_alpha"       "control_net_df_target"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [21] "leaf_min_events"         "leaf_min_obs"           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [23] "split_min_events"        "split_min_obs"          </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] "split_min_stat"          "oobag_pred_type"        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [27] "importance"              "importance_max_pvalue"  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [29] "tree_seeds"              "oobag_pred_horizon"     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [31] "oobag_eval_every"        "oobag_fun"              </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [33] "attach_data"             "verbose_progress"       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [35] "na_action"              </span>
+<span class="r-in"><span><span class="co"># Define a Task</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ---------- Oblique random survival forest</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 40.842</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: Harrell's C-index</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvAorsf__importance(self = self, private = private, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55ff12c887f8&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8429924 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
