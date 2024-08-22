@@ -22,7 +22,7 @@
 #' `r format_bib("van2011improved", "van2011support", "shivaswamy2007support")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE))
+#' @examplesIf mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)
 #' set.seed(123)
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.svm", gamma.mu = 0.1)
