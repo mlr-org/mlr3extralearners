@@ -163,7 +163,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     #' a ratio, `"test"`, or `"predefined"`.
     validate = function(rhs) {
       if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
+        private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
     }
@@ -181,6 +181,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       if (is.null(self$model$evaluation_log)) {
         return(named_list())
       }
+      patterns = NULL
       as.list(self$model$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),

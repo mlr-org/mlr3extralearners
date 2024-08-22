@@ -127,7 +127,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         param_set = ps,
         predict_types = c("crank", "lp", "distr"),
         feature_types = c("integer", "numeric"),
-        properties = c("weights", "missings", "importance"),
+        properties = c("weights", "missings", "importance", "validation", "internal_tuning"),
         packages = c("mlr3extralearners", "xgboost"),
         man = "mlr3extralearners::mlr_learners_surv.xgboost.cox",
         label = "Extreme Gradient Boosting Cox"
@@ -160,7 +160,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' a ratio, `"test"`, or `"predefined"`.
     validate = function(rhs) {
       if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
+        private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
     }
@@ -179,6 +179,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       if (is.null(self$model$model$evaluation_log)) {
         return(named_list())
       }
+      patterns = NULL
       as.list(self$model$model$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),

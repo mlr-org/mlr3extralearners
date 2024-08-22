@@ -7,8 +7,6 @@
 #' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
 #' The list of parameters can be found [here](https://lightgbm.readthedocs.io/en/latest/Parameters.html#)
 #' and in the documentation of [lightgbm::lgb.train()].
-#' Note that lightgbm models have to be saved using `lightgbm::lgb.save`, so you cannot simpliy
-#' save the learner using `saveRDS`. This will change in future versions of lightgbm.
 #'
 #' @template learner
 #' @templateVar id regr.lightgbm

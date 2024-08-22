@@ -35,8 +35,14 @@
 #' `r format_bib("binder2009boosting")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
+#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
+#' task = tsk("rats")
+#' task$col_roles$feature = c("litter", "rx")
+#' learner = lrn("surv.cv_coxboost", maxstepno = 20)
+#' splits = partition(task)
+#' learner$train(task, splits$train)
+#' pred = learner$predict(task, splits$test)
 LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   inherit = mlr3proba::LearnerSurv,
 

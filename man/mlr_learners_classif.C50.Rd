@@ -6,14 +6,13 @@
 \title{Classification C5.0 Learner}
 \description{
 Decision Tree Algorithm.
-Calls \code{\link[C50:C5.0]{C50::C5.0.formula()}} from \CRANpkg{C50}.
+Calls \code{\link[C50:C5.0.formula]{C50::C5.0.formula()}} from \CRANpkg{C50}.
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("classif.C50")
-lrn("classif.C50")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.C50")
 }\if{html}{\out{</div>}}
 }
 

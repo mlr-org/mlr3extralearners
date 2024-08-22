@@ -22,7 +22,7 @@
 #' `r format_bib("kvamme2019continuous")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   inherit = mlr3proba::LearnerSurv,

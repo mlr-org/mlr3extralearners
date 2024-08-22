@@ -10,10 +10,9 @@ Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("regr.gbm")
-lrn("regr.gbm")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.gbm")
 }\if{html}{\out{</div>}}
 }
 
@@ -65,11 +64,9 @@ lrn("regr.gbm")
 }
 
 \examples{
-learner = mlr3::lrn("regr.gbm")
+# Define the Learner
+learner = lrn("regr.gbm")
 print(learner)
-
-# available parameters:
-learner$param_set$ids()
 }
 \references{
 Friedman, H J (2002).
@@ -79,7 +76,7 @@ Friedman, H J (2002).
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.

@@ -4,10 +4,6 @@
 #' @param select `character()` \cr Passed to [data.table::subset].
 #' @param filter `list()` \cr Named list of conditions to filter on, names correspond to column
 #' names in table.
-#' @examples
-#' list_mlr3learners(
-#'   select = c("id", "properties", "predict_types"),
-#'   filter = list(class = "surv", predict_types = "distr"))
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
   require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cluster"), quietly = TRUE)

@@ -22,7 +22,29 @@
 #' `r format_bib("van2011improved", "van2011support", "shivaswamy2007support")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)
+#' set.seed(123)
+#' # Define the Learner and set parameter values
+#' learner = lrn("surv.svm", gamma.mu = 0.1)
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("rats")
+#'
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' # print the model
+#' print(learner$model)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerSurvSVM = R6Class("LearnerSurvSVM",
   inherit = mlr3proba::LearnerSurv,

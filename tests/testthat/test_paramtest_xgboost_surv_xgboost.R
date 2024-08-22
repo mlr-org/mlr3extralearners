@@ -15,7 +15,6 @@ x = append(x, values = "lambda_bias")
 add_params_xgboost = x
 
 test_that("surv.xgboost", {
-  learner = suppressWarnings(lrn("surv.xgboost"))
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
   fun = list(xgboost::xgb.train, xgboost::xgboost, add_params_xgboost)
@@ -45,8 +44,6 @@ test_that("surv.xgboost", {
     "aft_loss_distribution_scale" # survival specific
   )
 
-  paramtest = run_paramtest(learner, fun, exclude, tag = "train")
-  expect_paramtest(paramtest)
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
   expect_paramtest(paramtest_cox)
   paramtest_aft = run_paramtest(learner_aft, fun, exclude, tag = "train")
@@ -54,7 +51,6 @@ test_that("surv.xgboost", {
 })
 
 test_that("predict surv.xgboost", {
-  learner = suppressWarnings(lrn("surv.xgboost"))
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
 
@@ -73,8 +69,6 @@ test_that("predict surv.xgboost", {
     "ntreelimit" # doc says "deprecated, use 'iterationrange' instead"
   )
 
-  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
-  expect_paramtest(paramtest)
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "predict")
   expect_paramtest(paramtest_cox)
   paramtest_aft = run_paramtest(learner_aft, fun, exclude, tag = "predict")

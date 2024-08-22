@@ -33,7 +33,7 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   inherit = mlr3proba::LearnerSurv,

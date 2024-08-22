@@ -21,7 +21,7 @@
 #' `r format_bib("lee2018deephit")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @template simple_example
 #' @export
 LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
   inherit = mlr3proba::LearnerSurv,

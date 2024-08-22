@@ -2,7 +2,7 @@ test_that("autotest", {
   learner = LearnerClassifCForest$new()
   learner$param_set$values = list(ntree = 30L)
   expect_learner(learner)
-  result = run_autotest(learner)
+  result = with_seed(1, run_autotest(learner))
   expect_true(result, info = result$error)
 })
 
