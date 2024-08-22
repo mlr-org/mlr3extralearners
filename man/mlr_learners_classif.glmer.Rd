@@ -84,7 +84,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-if (requireNamespace("lme4", quietly = TRUE)) {
+\dontshow{if (requireNamespace("lme4", quietly = TRUE))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner and set parameter values
 learner = lrn("classif.glmer",
   formula = credit_risk ~ (1 | credit_history) + job + property + telephone + savings)
@@ -97,7 +97,7 @@ task$select(c("credit_history", "job", "property", "telephone", "savings"))
 learner$train(task)
 
 print(learner$model)
-}
+\dontshow{\}) # examplesIf}
 }
 \references{
 Bates, M D (2010).

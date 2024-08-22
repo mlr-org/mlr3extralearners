@@ -15,6 +15,7 @@
   Use `lrn("surv.xgboost.cox")` or `lrn("surv.xgboost.aft")` instead.
 * Change xgboost default nrounds from 1 to 1000.
 * remove obliqueRSF Learner which was long superseded by aorsf
+* a lot of examples were added to the learners
 
 # mlr3extralearners 0.8.0
 

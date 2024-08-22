@@ -85,7 +85,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-if (requireNamespace("prioritylasso", quietly = TRUE)) {
+\dontshow{if (requireNamespace("prioritylasso", quietly = TRUE))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner and set parameter values
 learner = lrn("regr.priority_lasso",
   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
@@ -108,7 +108,7 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
-}
+\dontshow{\}) # examplesIf}
 }
 \references{
 Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).

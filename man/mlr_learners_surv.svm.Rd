@@ -56,7 +56,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)) {
+\dontshow{if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 set.seed(123)
 # Define the Learner and set parameter values
 learner = lrn("surv.svm", gamma.mu = 0.1)
@@ -79,7 +79,7 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
-}
+\dontshow{\}) # examplesIf}
 }
 \references{
 Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
