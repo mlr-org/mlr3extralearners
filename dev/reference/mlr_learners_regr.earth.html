@@ -13,7 +13,7 @@ Calls earth::earth() from earth.'><meta name="robots" content="noindex"></head><
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.8.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0-9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -174,11 +174,11 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Selected 3 of 10 terms, and 1 of 10 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Selected 3 of 10 terms, and 2 of 10 predictors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: GRSq -Inf at 10 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: wt, am-unused, carb-unused, cyl-unused, disp-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: hp, wt, am-unused, carb-unused, cyl-unused, disp-unused, ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 2 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 8.625125    RSS 105.1444    GRSq 0.7740096    RSq 0.8553662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 7.011946    RSS 85.47896    GRSq 0.8426952    RSq 0.899325</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -187,7 +187,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.122926 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18.97043 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

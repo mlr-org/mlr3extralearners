@@ -9,7 +9,7 @@ Calls mboost::glmboost() from mboost."><meta name="robots" content="noindex"></h
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.8.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">0.9.0-9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -187,14 +187,14 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V16          V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.44312161  -1.61539485  -0.55562853  -1.24127857   0.46433408  -0.66103933 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V27          V28          V31          V36           V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.31610822  -0.39487673  -0.05383456   0.54607284   0.93141473  -0.28607206 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V44          V46          V48          V49          V52          V54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -1.08512754  -0.89523808  -1.29823217  -4.31257778 -14.43378898  -1.51750631 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V57          V58           V6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.94687696  -4.04292112   0.16920919 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V16         V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.13223020 -2.43851929 -1.84482573 -0.26124991  0.40376245 -0.50500481 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V21         V23         V36         V43         V44         V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.07446437 -0.07030992  1.70313875 -0.17379592 -1.14867270 -0.70320444 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V47         V48         V49         V52         V54         V58 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.21225999 -2.65117915 -1.04976784 -6.94836739 -6.58083721 -3.07099904 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.59929604 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.06483891</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -206,7 +206,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
