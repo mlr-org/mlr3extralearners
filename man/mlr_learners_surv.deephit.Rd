@@ -16,10 +16,9 @@ the parameters \code{cuts} or \code{cutpoints}.
 }
 \section{Dictionary}{
 
-This \link{Learner} can be instantiated via the \link[mlr3misc:Dictionary]{dictionary} \link{mlr_learners} or with the associated sugar function \code{\link[=lrn]{lrn()}}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{mlr_learners$get("surv.deephit")
-lrn("surv.deephit")
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.deephit")
 }\if{html}{\out{</div>}}
 }
 
@@ -89,11 +88,7 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 
 \examples{
-learner = mlr3::lrn("surv.deephit")
-print(learner)
-
-# available parameters:
-learner$param_set$ids()
+lrn("surv.deephit")
 }
 \references{
 Lee, Changhee, Zame, William, Yoon, Jinsung, Van Der Schaar, Mihaela (2018).
@@ -103,7 +98,7 @@ In \emph{Proceedings of the AAAI conference on artificial intelligence}, volume 
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
-\item \code{as.data.table(mlr_learners)} for a table of available \link[=Learner]{Learners} in the running session (depending on the loaded packages).
+\item \code{as.data.table(mlr_learners)} for a table of available \link[mlr3:Learner]{Learners} in the running session (depending on the loaded packages).
 \item Chapter in the \href{https://mlr3book.mlr-org.com/}{mlr3book}: \url{https://mlr3book.mlr-org.com/basics.html#learners}
 \item \CRANpkg{mlr3learners} for a selection of recommended learners.
 \item \CRANpkg{mlr3cluster} for unsupervised clustering learners.

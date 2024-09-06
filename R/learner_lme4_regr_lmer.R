@@ -15,7 +15,15 @@
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("lme4", quietly = TRUE)
+#' # Define the Learner and set parameter values
+#' learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
+#'
+#' # Define a Task
+#' task = tsk("boston_housing")
+#'
+#' learner$train(task)
+#' print(learner$model)
 #' @export
 LearnerRegrLmer = R6Class("LearnerRegrLmer",
   inherit = LearnerRegr,

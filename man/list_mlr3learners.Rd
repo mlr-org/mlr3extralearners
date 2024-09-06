@@ -16,8 +16,3 @@ names in table.}
 Lists all learners, properties, and associated packages in a table that can be
 filtered and queried.
 }
-\examples{
-list_mlr3learners(
-  select = c("id", "properties", "predict_types"),
-  filter = list(class = "surv", predict_types = "distr"))
-}

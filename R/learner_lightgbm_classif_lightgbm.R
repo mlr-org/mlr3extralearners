@@ -7,8 +7,6 @@
 #' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
 #' The list of parameters can be found [here](https://lightgbm.readthedocs.io/en/latest/Parameters.html#)
 #' and in the documentation of [lightgbm::lgb.train()].
-#' Note that lightgbm models have to be saved using `lightgbm::lgb.save`, so you cannot simpliy
-#' save the learner using `saveRDS`. This will change in future versions of lightgbm.
 #'
 #' @template learner
 #' @templateVar id classif.lightgbm
@@ -191,6 +189,9 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
           in_tune_fn = crate(function(domain, param_vals) {
             if (is.null(param_vals$early_stopping_rounds)) {
               stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
+            }
+            if (is.null(param_vals$eval)) {
+              stop("Parameter 'eval' must be explicitly set for internal tuning.")
             }
             assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
           }, .parent = topenv()),

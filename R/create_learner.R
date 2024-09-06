@@ -36,9 +36,6 @@
 #'   Defaults to `"Unknown"`.
 #' @param label (`character(1)`)\cr
 #'   Label for the learner, default is the value of the parameter `algorithm`.
-#' @param data_formats (`character(1)`)\cr
-#'   The data format the learner can deal with (see `mlr_reflections$data_formats`).
-#'   Default is `"data.table"` and this rarely has to be changes.
 #'
 #' @examples
 #' \dontrun{
@@ -56,14 +53,13 @@
 #'   predict_types = c("response", "prob"),
 #'   properties = c("importance", "missings", "multiclass", "twoclass", "weights"),
 #'   gh_name = "RaphaelS1",
-#'   label = "Regression and Partition Tree",
-#'   data_formats = "data.table"
+#'   label = "Regression and Partition Tree"
 #' )
 #' }
 #' @export
 create_learner = function(path = ".", classname, type, key = tolower(classname), algorithm,
   package, caller,
-  feature_types, predict_types, properties, gh_name = "Unknown", label = toproper(algorithm), data_formats = "data.table") {
+  feature_types, predict_types, properties, gh_name = "Unknown", label = toproper(algorithm)) {
 
   path = normalizePath(path)
   assert_true(dir.exists(path))
@@ -95,7 +91,6 @@ create_learner = function(path = ".", classname, type, key = tolower(classname),
   assert_character(gh_name, any.missing = FALSE, len = 1)
   assert_character(label, any.missing = FALSE, len = 1L)
 
-  assert_choice(data_formats, mlr3::mlr_reflections$data_formats)
   Type = toproper(type)
 
   assert_character(classname, any.missing = FALSE, len = 1)
