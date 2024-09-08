@@ -27,8 +27,8 @@
 #' t = mlr3::tsk("spam")$filter(1:1000)
 #' l = mlr3::lrn("classif.gam")
 #' l$param_set$set_values(
-#' formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
-#' ')
+#'   formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
+#' )
 #' l$train(t)
 #' l$model
 #' @export
