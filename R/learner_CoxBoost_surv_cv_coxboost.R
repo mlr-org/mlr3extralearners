@@ -3,7 +3,7 @@
 #' @name mlr_learners_surv.cv_coxboost
 #'
 #' @description
-#' Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+#' Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 #' number of steps.
 #' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
 #'
