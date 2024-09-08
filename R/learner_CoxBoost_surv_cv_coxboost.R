@@ -69,7 +69,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         id = "surv.cv_coxboost",
         packages = c("mlr3extralearners", "CoxBoost", "pracma"),
         feature_types = c("integer", "numeric"),
-        predict_types = c("distr", "crank", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = ps,
         properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.cv_coxboost",
@@ -181,16 +181,16 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         .args = pars,
         type = "lp"))
 
+      # all the unique training time points
+      times = sort(unique(self$model$time))
       surv = invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,
         type = "risk",
-        times = sort(unique(self$model$time)))
+        times = times)
 
-      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
-        surv = surv,
-        lp = lp)
+      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )
