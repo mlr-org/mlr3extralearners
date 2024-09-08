@@ -7,6 +7,7 @@
 #' number of steps.
 #' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
 #'
+#' @inheritSection mlr_learners_surv.coxboost Prediction types
 #' @template learner
 #' @templateVar id surv.cv_coxboost
 #'
@@ -21,15 +22,6 @@
 #'
 #' If `penalty == "optimCoxBoostPenalty"` then [CoxBoost::optimCoxBoostPenalty] is used to determine
 #' the penalty value to be used in [CoxBoost::cv.CoxBoost].
-#'
-#' Three prediction types are returned for this learner, using the internal
-#' `predict.CoxBoost()` function:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
-#' 2. `crank`: same as `lp`.
-#' 2. `distr`: a 2d survival matrix, with observations as rows and time points
-#' as columns. The internal transformation uses the Breslow estimator to compose
-#' the survival distributions from the `lp` predictions.
 #'
 #' @references
 #' `r format_bib("binder2009boosting")`

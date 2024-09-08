@@ -12,7 +12,7 @@
 #' @section Initial parameter values:
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 #'
-#' @details
+#' @section Prediction types:
 #' This learner returns three prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.

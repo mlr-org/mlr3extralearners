@@ -6,8 +6,8 @@
 #' Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
 #' survival data. Calls [BART::mc.surv.bart()] from \CRANpkg{BART}.
 #'
-#' @details
-#' Two types of prediction are returned for this learner:
+#' @section Prediction types:
+#' This learner returns two prediction types:
 #' 1. `distr`: a 3d survival array with observations as 1st dimension, time
 #' points as 2nd and the posterior draws as 3rd dimension.
 #' 2. `crank`: the expected mortality using [mlr3proba::.surv_return]. The parameter

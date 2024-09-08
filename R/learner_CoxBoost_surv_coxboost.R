@@ -6,6 +6,15 @@
 #' Fit a Survival Cox model with a likelihood based boosting algorithm.
 #' Calls [CoxBoost::CoxBoost()] from package 'CoxBoost'.
 #'
+#' @section Prediction types:
+#' This learner returns three prediction types, using the internal `predict.CoxBoost()` function:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a 2d survival matrix, with observations as rows and time points
+#' as columns. The internal transformation uses the Breslow estimator to compose
+#' the survival distributions from the `lp` predictions.
+#'
 #' @template learner
 #' @templateVar id surv.coxboost
 #'
@@ -17,15 +26,6 @@
 #' [LearnerSurvCVCoxboost] may be more efficient when tuning `stepno` only. However, for tuning
 #' multiple hyperparameters, \CRANpkg{mlr3tuning} and [LearnerSurvCoxboost] will likely give better
 #' results.
-#'
-#' Three prediction types are returned for this learner, using the internal
-#' `predict.CoxBoost()` function:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
-#' 2. `crank`: same as `lp`.
-#' 3. `distr`: a 2d survival matrix, with observations as rows and time points
-#' as columns. The internal transformation uses the Breslow estimator to compose
-#' the survival distributions from the `lp` predictions.
 #'
 #' @references
 #' `r format_bib("binder2009boosting")`
