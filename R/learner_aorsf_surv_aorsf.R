@@ -65,6 +65,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
           special_vals = list(NULL),
           tags = "train"),
         leaf_min_events = p_int(default = 1L, lower = 1L, tags = "train"),
+        leaf_min_events_ratio = p_dbl(upper = 0.5, tags = "train"),
         leaf_min_obs = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_events = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_obs = p_int(default = 10, lower = 1L, tags = "train"),
@@ -117,6 +118,10 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry_ratio",
         length(task$feature_names))
+
+      pv = convert_ratio(pv, "leaf_min_events", "leaf_min_events_ratio",
+                         sum(task$status()))
+
       # helper function to organize aorsf control function inputs
       dflt_if_null = function(params, slot_name) {
         out = params[[slot_name]]
