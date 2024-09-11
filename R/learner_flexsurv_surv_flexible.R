@@ -9,14 +9,14 @@
 #' @template learner
 #' @templateVar id surv.flexible
 #'
-#' @details
-#' This learner returns two prediction types:
+#' @section Prediction types:
+#' This learner returns three prediction types:
 #' 1. `lp`: a vector of linear predictors (relative risk scores), for each test
 #' observation.
 #' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
-#' For fitted coefficients, \eqn{\beta = (\beta_0,...,\beta_P)},
-#' and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-#' is a column of \eqn{1}s, the linear predictor (`lp`) is \eqn{lp = \beta X}.
+#' For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
+#' and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
+#' is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
 #' 2. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using `predict.flexsurvreg()`.
@@ -111,8 +111,8 @@ predict_flexsurvreg = function(object, task, learner, ...) {
   }
 
   X = stats::model.matrix(formulate(rhs = task$feature_names),
-    data = newdata,
-    xlev = task$levels())
+                          data = newdata,
+                          xlev = task$levels())
 
   # collect the auxiliary arguments for the fitted object
   args = object$aux
