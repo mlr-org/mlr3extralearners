@@ -17,7 +17,6 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
 #' @template simple_example
 LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
   inherit = mlr3proba::LearnerSurv,
