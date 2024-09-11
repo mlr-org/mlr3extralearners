@@ -21,7 +21,7 @@
 #' represented in rows and time points in columns.
 #' Calculated using [mboost::survFit()].
 #' This prediction type is present only when the `family` distribution parameter
-#' is equal to `"coxph"`.
+#' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' @references
@@ -161,14 +161,18 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       # predict linear predictor
-      lp = as.numeric(invoke(predict, self$model, newdata = newdata, type = "link",
-        .args = pars
-      ))
+      lp = as.numeric(
+        invoke(predict,
+               self$model,
+               newdata = newdata,
+               type = "link",
+               .args = pars)
+      )
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
+        # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-
         mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
         mlr3proba::.surv_return(lp = -lp)
@@ -176,4 +180,5 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
     }
   )
 )
+
 .extralrns_dict$add("surv.gamboost", LearnerSurvGAMBoost)
