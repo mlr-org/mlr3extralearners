@@ -225,14 +225,14 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 225</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 38.478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.83</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.82</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: Harrell's C-index</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -241,7 +241,7 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvAorsf__importance(self = self, private = private, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55d65f885cb0&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x557b2fa79e78&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -249,7 +249,7 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8550273 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8805669 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
