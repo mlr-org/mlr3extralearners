@@ -82,6 +82,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
+\examples{
+# simple example
+t = mlr3::tsk("spam")$filter(1:1000)
+l = mlr3::lrn("classif.gam")
+l$param_set$set_values(
+  formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
+)
+l$train(t)
+l$model
+}
 \references{
 Hastie, J T, Tibshirani, J R (2017).
 \emph{Generalized additive models}.
