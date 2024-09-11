@@ -12,8 +12,8 @@
 #' where each score corresponds to a specific test observation.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a 2d survival matrix, with observations as rows and time points
-#' as columns. The internal transformation uses the Breslow estimator to compose
-#' the survival distributions from the `lp` predictions.
+#' as columns. The internal transformation uses the Breslow estimator to compute
+#' the baseline hazard and compose the survival distributions from the `lp` predictions.
 #'
 #' @template learner
 #' @templateVar id surv.coxboost
