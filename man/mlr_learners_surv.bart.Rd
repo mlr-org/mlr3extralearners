@@ -6,13 +6,15 @@
 \title{Survival Bayesian Additive Regression Trees Learner}
 \description{
 Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-survival data. Calls \code{\link[BART:mc.surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
+survival data. Calls \code{\link[BART:surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
 }
-\details{
-Two types of prediction are returned for this learner:
+\section{Prediction types}{
+
+This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a 3d survival array with observations as 1st dimension, time
 points as 2nd and the posterior draws as 3rd dimension.
+Calculated using the internal \code{predict.survbart()} function.
 \item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}. The parameter
 \code{which.curve} decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
@@ -20,6 +22,7 @@ by default used for the calculation of survival measures that require a \code{di
 prediction, see more info on \link[mlr3proba:PredictionSurv]{PredictionSurv}.
 }
 }
+
 \section{Initial parameter values}{
 
 \itemize{

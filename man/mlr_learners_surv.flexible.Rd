@@ -8,21 +8,6 @@
 Flexible parametric spline learner.
 Calls \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} from \CRANpkg{flexsurv}.
 }
-\details{
-This learner returns two prediction types:
-\enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), for each test
-observation.
-Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
-For fitted coefficients, \eqn{\beta = (\beta_0,...,\beta_P)},
-and covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-is a column of \eqn{1}s, the linear predictor (\code{lp}) is \eqn{lp = \beta X}.
-\item \code{distr}: a survival matrix in two dimensions, where observations are
-represented in rows and time points in columns.
-Calculated using \code{predict.flexsurvreg()}.
-\item \code{crank}: same as \code{lp}.
-}
-}
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -60,6 +45,23 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    toler.chol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    debug \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    outer.max \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
+}
+
+\section{Prediction types}{
+
+This learner returns three prediction types:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
+For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
+and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
+is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{predict.flexsurvreg()}.
+\item \code{crank}: same as \code{lp}.
 }
 }
 

@@ -8,18 +8,27 @@
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:glmnet]{glmnet::glmnet()}} from package \CRANpkg{glmnet}.
 }
-\details{
-This learner returns two prediction types:
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"cox"} and cannot be changed.
+}
+}
+
+\section{Prediction types}{
+
+This learner returns three prediction types:
 \enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
-Calculated using \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+\item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
 into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
-By default the Breslow estimator is used.
+By default the Breslow estimator is used for computing the baseline hazard.
 }
 
 \strong{Caution}: This learner is different to learners calling \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
@@ -37,12 +46,6 @@ auto-tuning counterpart in \code{\link[=mlr_learners_surv.cv_glmnet]{mlr_learner
 However, in some situations this is not applicable, usually when data are
 imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 custom resampling strategies (blocked design, stratification).
-}
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{family} is set to \code{"cox"} and cannot be changed.
-}
 }
 
 \section{Dictionary}{

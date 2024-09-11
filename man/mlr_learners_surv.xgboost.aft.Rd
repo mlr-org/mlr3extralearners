@@ -50,22 +50,6 @@ with \code{early_stopping_rounds} and the maximum number of boosting rounds with
 While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
 Not that using the test set for early stopping can potentially bias the
 performance scores.
-
-
-Early stopping can be used to find the optimal number of boosting rounds.
-The \code{early_stopping_set} parameter controls which set is used to monitor the
-performance.
-By default, \code{early_stopping_set = "none"} which disables early stopping.
-Set \code{early_stopping_set = "test"} to monitor the performance of the model on
-the test set while training.
-The test set for early stopping can be set with the \code{"test"} row role in the
-\link[mlr3:Task]{mlr3::Task}.
-Additionally, the range must be set in which the performance must increase
-with \code{early_stopping_rounds} and the maximum number of boosting rounds with
-\code{nrounds}.
-While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
-Not that using the test set for early stopping can potentially bias the
-performance scores.
 }
 
 \section{Dictionary}{

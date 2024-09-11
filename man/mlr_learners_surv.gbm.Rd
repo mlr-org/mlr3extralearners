@@ -8,6 +8,16 @@
 Gradient Boosting for Survival Analysis.
 Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types, using the internal \code{predict.gbm()} function:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+\item \code{crank}: same as \code{lp}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -45,12 +55,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\section{Parameter changes}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{distribution}:
-\item Actual default: "bernoulli"
-\item Adjusted default: "coxph"
+\item Actual default: \code{"bernoulli"}
+\item Adjusted default: \code{"coxph"}
 \item Reason for change: This is the only distribution available for survival.
 \item \code{keep.data}:
 \itemize{
@@ -61,9 +71,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item \code{n.cores}:
 \itemize{
 \item Actual default: NULL
-\item Adjusted default: 1
+\item Adjusted default: \code{1}
 \item Reason for change: Suppressing the automatic internal parallelization if
-\code{cv.folds} > 0.
+\code{cv.folds} > 0 and avoid threading conflicts with \CRANpkg{future}.
 }
 }
 }

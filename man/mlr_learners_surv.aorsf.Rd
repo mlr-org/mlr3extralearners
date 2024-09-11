@@ -11,16 +11,36 @@ Note that although the learner has the property \code{"missing"} and it can in
 principle deal with missing values, the behaviour has to be configured using
 the parameter \code{na_action}.
 }
-\details{
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{n_thread}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+}
+
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
+as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
+}
+}
+}
+
+\section{Prediction types}{
+
 This learner returns three prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
+Calculated using the internal \code{predict.ObliqueForest()} function.
 \item \code{response}: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (\code{distr}).
 \item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
 }
 }
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -77,18 +97,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr
-}
-}
-
-\section{Initial parameter values}{
-
-\itemize{
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
-as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
-Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
-}
 }
 }
 

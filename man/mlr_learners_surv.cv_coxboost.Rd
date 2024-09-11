@@ -5,7 +5,7 @@
 \alias{LearnerSurvCVCoxboost}
 \title{Survival Cox Model with Cross-Validation Likelihood Based Boosting Learner}
 \description{
-Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 number of steps.
 Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} or \code{\link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost()}} from package 'CoxBoost'.
 }
@@ -18,17 +18,6 @@ results.
 
 If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPenalty]{CoxBoost::optimCoxBoostPenalty} is used to determine
 the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
-
-Three prediction types are returned for this learner, using the internal
-\code{predict.CoxBoost()} function:
-\enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
-\item \code{crank}: same as \code{lp}.
-\item \code{distr}: a 2d survival matrix, with observations as rows and time points
-as columns. The internal transformation uses the Breslow estimator to compose
-the survival distributions from the \code{lp} predictions.
-}
 }
 \section{Dictionary}{
 
@@ -78,6 +67,19 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 \code{remotes::install_github("binderh/CoxBoost")}.
+}
+
+\section{Prediction types}{
+
+This learner returns three prediction types, using the internal \code{predict.CoxBoost()} function:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a 2d survival matrix, with observations as rows and time points
+as columns. The internal transformation uses the Breslow estimator to compute
+the baseline hazard and compose the survival distributions from the \code{lp} predictions.
+}
 }
 
 \examples{
