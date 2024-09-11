@@ -11,8 +11,8 @@
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), for each test
-#' observation.
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
 #' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
 #' For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
 #' and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}

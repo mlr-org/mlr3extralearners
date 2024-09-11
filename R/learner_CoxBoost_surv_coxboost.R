@@ -8,8 +8,8 @@
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types, using the internal `predict.CoxBoost()` function:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a 2d survival matrix, with observations as rows and time points
 #' as columns. The internal transformation uses the Breslow estimator to compose
