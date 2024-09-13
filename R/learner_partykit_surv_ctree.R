@@ -10,7 +10,7 @@
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [partykit:::predict.party()] function.
+#' Calculated using the internal [partykit::predict.party()] function.
 #' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
 #'
 #' @template learner
