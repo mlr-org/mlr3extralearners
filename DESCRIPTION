@@ -78,7 +78,7 @@ Suggests:
     nnet,
     np,
     param6,
-    partykit,
+    partykit (>= 1.2-21),
     penalized,
     pendensity,
     plugdensity,
