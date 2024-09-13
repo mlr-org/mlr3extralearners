@@ -6,6 +6,13 @@
 #' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
 #' Calls [partykit::cforest()] from \CRANpkg{partykit}.
 #'
+#' @section Prediction types:
+#' This learner returns two prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using the internal [partykit::predict.cforest()] function.
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
 #' @template learner
 #' @templateVar id surv.cforest
 #'
@@ -116,7 +123,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         id = "surv.cforest",
         param_set = ps,
         # can also predict weights, node, but not really useful here
-        predict_types = c("distr", "crank"),
+        predict_types = c("crank", "distr"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         properties = c("weights"),
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
