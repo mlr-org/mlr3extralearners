@@ -64,6 +64,30 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         man = "mlr3extralearners::mlr_learners_surv.penalized",
         label = "Penalized Regression"
       )
+    },
+
+    #' @description
+    #' Selected features are extracted with the method `coef` of the S4 model
+    #' object, see [penalized::penfit()].
+    #' By default it returns features with non-zero coefficients.
+    #'
+    #' **Note**: Selected features can be retrieved only for datasets with
+    #' `numeric` features, as the presence of factors with multiple levels makes
+    #' it difficult to get the original feature names.
+    #'
+    #' @return `character()`.
+    selected_features = function() {
+      if (is.null(self$model$model)) {
+        stopf("No model stored")
+      }
+
+      if (self$model$task_has_factors) {
+        stopf("Can't return selected features as trained task had factor variables
+              and original feature names cannot be retrieved")
+      }
+
+      # Per default, only coefficients of selected variables are returned by coef()
+      names(coef(self$model$model))
     }
   ),
 
@@ -87,19 +111,23 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
       # also there is a bug in withr, which does not clean up Depends, therefore
       # we need the double with_package
       # https://github.com/r-lib/withr/issues/261
-      with_package("survival", {
+      model = with_package("survival", {
         with_package("penalized", {
           invoke(penalized::penalized,
             response = task$truth(), penalized = penalized,
             data = task$data(cols = task$feature_names), model = "cox", .args = pars)
         })
       })
+
+      list(
+        model = model,
+        task_has_factors = any(task$feature_types$type == "factor")
+      )
     },
 
     .predict = function(task) {
       # Again the penalized and unpenalized covariates are automatically converted to the
       # correct formula
-
       pars = self$param_set$get_values(tags = "predict")
       if (length(pars$unpenalized) == 0) {
         penalized = formulate(rhs = task$feature_names)
