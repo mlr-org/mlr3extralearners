@@ -1,10 +1,20 @@
-#' @title Survival L1 and L2 Penalized Regression Learner
+#' @title Survival L1 and L2 Penalized Cox Learner
 #' @author RaphaelS1
 #' @name mlr_learners_surv.penalized
 #'
 #' @description
-#' Penalized (L1 and L2) generalized linear models.
+#' Penalized (L1 and L2) Cox Proportional Hazards model.
 #' Calls [penalized::penalized()] from \CRANpkg{penalized}.
+#'
+#' @section Prediction types:
+#' This learner returns two prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using the internal [penalized::predict()] function.
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
+#' @section Custom mlr3 parameters:
+#' - `trace` is set to `"FALSE"` to disable printing information during training.
 #'
 #' @template learner
 #' @templateVar id surv.penalized
@@ -13,7 +23,7 @@
 #' The `penalized` and `unpenalized` arguments in the learner are implemented slightly
 #' differently than in [penalized::penalized()]. Here, there is no parameter for `penalized` but
 #' instead it is assumed that every variable is penalized unless stated in the `unpenalized`
-#' parameter, see examples.
+#' parameter.
 #'
 #' @references
 #' `r format_bib("goeman2010l1")`
