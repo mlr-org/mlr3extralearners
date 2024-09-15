@@ -59,7 +59,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         id = "surv.penalized",
         packages = c("mlr3extralearners", "penalized", "pracma"),
         feature_types = c("integer", "numeric", "factor", "logical"),
-        predict_types = c("distr", "crank"),
+        predict_types = c("crank", "distr"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.penalized",
         label = "Penalized Regression"
@@ -69,23 +69,15 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
 
   private = list(
     .train = function(task) {
-
-      # Checks missing data early to prevent crashing, which is not caught earlier by task/train
-
-      if (any(task$missings() > 0)) {
-        stop("Missing data is not supported by ", self$id)
-      }
-
-      # Changes the structure of the penalized and unpenalized parameters to be more user friendly.
-      # Now the user supplies the column names as a vector and these are added to the formula as
-      # required.
       pars = self$param_set$get_values(tags = "train")
       if (length(pars$unpenalized) == 0) {
+        # if no "unpenalized" features, penalize all (no need to set `pars$unpenalized`)
         penalized = formulate(rhs = task$feature_names)
       } else {
-        if (any(pars$penalized %nin% task$feature_names)) {
-          stopf("Parameter 'penalized' contains values not present in task")
+        if (any(pars$unpenalized %nin% task$feature_names)) {
+          stopf("Parameter 'unpenalized' contains values not present in task")
         }
+        # if some "unpenalized" features exist, penalize the rest
         penalized = formulate(rhs = task$feature_names[task$feature_names %nin% pars$unpenalized])
         pars$unpenalized = formulate(rhs = pars$unpenalized)
       }
@@ -117,10 +109,11 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
       }
 
       surv = with_package("penalized", {
-        invoke(penalized::predict, self$model,
-          penalized = penalized,
-          data = ordered_features(task, self),
-          .args = pars)
+        invoke(penalized::predict,
+               self$model$model,
+               penalized = penalized,
+               data = ordered_features(task, self),
+               .args = pars)
       })
 
       mlr3proba::.surv_return(times = surv@time, surv = surv@curves)
