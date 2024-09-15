@@ -53,6 +53,8 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
         trace = p_lgl(default = TRUE, tags = "train")
       )
 
+      ps$values = list(trace = FALSE)
+
       super$initialize(
         id = "surv.penalized",
         packages = c("mlr3extralearners", "penalized", "pracma"),
