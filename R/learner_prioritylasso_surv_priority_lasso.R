@@ -40,7 +40,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         blocks                 = p_uty(tags = c("train", "required")),
         max.coef               = p_uty(default = NULL, tags = "train"),
         block1.penalization    = p_lgl(default = TRUE, tags = "train"),
-        lambda.type            = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")), #nolint
+        lambda.type            = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = "train"),
         standardize            = p_lgl(default = TRUE, tags = "train"),
         nfolds                 = p_int(default = 5L, lower = 1L, tags = "train"),
         foldid                 = p_uty(default = NULL, tags = "train"),
@@ -87,9 +87,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         type.logistic        = p_fct(c("Newton", "modified.Newton"), default = "Newton", tags = "train"),
         type.multinomial     = p_fct(c("ungrouped", "grouped"), default = "ungrouped", tags = "train"),
         upper.limits         = p_uty(default = Inf, tags = "train"),
-        predict.gamma        = p_dbl(default = "gamma.1se", special_vals = list("gamma.1se", "gamma.min"), tags = "predict"), #nolint
-        relax                = p_lgl(default = FALSE, tags = "train"),
-        s                    = p_dbl(0, 1, special_vals = list("lambda.1se", "lambda.min"), default = "lambda.1se", tags = "predict") #nolint
+        relax                = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -143,7 +141,6 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
 
       # get parameters with tag "predict"
       pv = self$param_set$get_values(tags = "predict")
-      pv = rename(pv, "predict.gamma", "gamma")
 
       # get linear predictor for train data
       lp_train = as.numeric(
@@ -155,8 +152,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         invoke(predict, self$model, newdata = newdata, type = "link", .args = pv)
       )
 
-      # get survival probability matrix using the Breslow estimator for the
-      # baseline cumulative hazard
+      # get survival probability matrix using the Breslow estimator for the baseline hazard
       surv = mlr3proba::breslow(
         times = self$model$train_times,
         status = self$model$train_status,
