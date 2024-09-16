@@ -6,6 +6,17 @@
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #'
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
+#' Calculated using [prioritylasso::predict.prioritylasso()].
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using [mlr3proba::breslow()] where the Breslow estimator is used
+#' for computing the baseline hazard.
+#'
 #' @section Custom mlr3 parameters:
 #' - `family` is set to `"cox"` for the Cox survival objective
 #' - `type.measure` set to `"deviance"` (cross-validation measure)
@@ -85,7 +96,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         id = "surv.priority_lasso",
         packages = "prioritylasso",
         feature_types = c("logical", "integer", "numeric"),
-        predict_types = c("response", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = param_set,
         properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.priority_lasso",
@@ -117,31 +128,43 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
       }
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
-      invoke(prioritylasso::prioritylasso,
-             X = data, Y = target,
-             .args = pars)
-    },
-    .predict = function(task) {
-      # get parameters with tag "predict"
-      pars = self$param_set$get_values(tags = "predict")
-      pars = rename(pars, "predict.gamma", "gamma")
 
+      model = invoke(prioritylasso::prioritylasso, X = data, Y = target, .args = pars)
+      # add (time, status) of training data for breslow distr prediction
+      model$train_times = task$times()
+      model$train_status = task$status()
+
+      model
+    },
+
+    .predict = function(task) {
       # get newdata and ensure same ordering in train and predict
       newdata = as.matrix(ordered_features(task, self))
 
-      # Calculate predictions for the selected predict type.
-      type = self$predict_type
-      if (type == "lp") {
-        type = "link"
-      }
+      # get parameters with tag "predict"
+      pv = self$param_set$get_values(tags = "predict")
+      pv = rename(pv, "predict.gamma", "gamma")
 
-      pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
+      # get linear predictor for train data
+      lp_train = as.numeric(
+        invoke(predict, self$model, type = "link", .args = pv)
+      )
 
-      if (type == "response") {
-        list(response = pred, crank = pred)
-      } else {
-        list(lp = pred, crank = pred)
-      }
+      # get linear predictor for test data
+      lp_test = as.numeric(
+        invoke(predict, self$model, newdata = newdata, type = "link", .args = pv)
+      )
+
+      # get survival probability matrix using the Breslow estimator for the
+      # baseline cumulative hazard
+      surv = mlr3proba::breslow(
+        times = self$model$train_times,
+        status = self$model$train_status,
+        lp_train = lp_train,
+        lp_test = lp_test
+      )
+
+      mlr3proba::.surv_return(surv = surv, lp = lp_test)
     }
   )
 )
