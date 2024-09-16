@@ -6,6 +6,9 @@
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #'
+#' @section Custom mlr3 parameters:
+#' - `family` is set to `"binomial"`
+#'
 #' @templateVar id classif.priority_lasso
 #' @template learner
 #'

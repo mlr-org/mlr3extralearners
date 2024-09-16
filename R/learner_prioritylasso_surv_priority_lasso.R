@@ -6,6 +6,10 @@
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #'
+#' @section Custom mlr3 parameters:
+#' - `family` is set to `"cox"` for the Cox survival objective
+#' - `type.measure` set to `"deviance"` (cross-validation measure)
+#'
 #' @templateVar id surv.priority_lasso
 #' @template learner
 #'
@@ -22,19 +26,19 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        blocks               = p_uty(tags = c("train", "required")),
-        max.coef             = p_uty(default = NULL, tags = "train"),
-        block1.penalization  = p_lgl(default = TRUE, tags = "train"),
-        lambda.type          = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")), #nolint
-        standardize          = p_lgl(default = TRUE, tags = "train"),
-        nfolds               = p_int(default = 5L, lower = 1L, tags = "train"),
-        foldid               = p_uty(default = NULL, tags = "train"),
-        cvoffset             = p_lgl(default = FALSE, tags = "train"),
-        cvoffsetnfolds       = p_int(default = 10, lower = 1L, tags = "train"),
-        return.x             = p_lgl(default = TRUE, tags = "train"),
+        blocks                 = p_uty(tags = c("train", "required")),
+        max.coef               = p_uty(default = NULL, tags = "train"),
+        block1.penalization    = p_lgl(default = TRUE, tags = "train"),
+        lambda.type            = p_fct(default = "lambda.min", levels = c("lambda.min", "lambda.1se"), tags = c("train", "predict")), #nolint
+        standardize            = p_lgl(default = TRUE, tags = "train"),
+        nfolds                 = p_int(default = 5L, lower = 1L, tags = "train"),
+        foldid                 = p_uty(default = NULL, tags = "train"),
+        cvoffset               = p_lgl(default = FALSE, tags = "train"),
+        cvoffsetnfolds         = p_int(default = 10, lower = 1L, tags = "train"),
+        return.x               = p_lgl(default = TRUE, tags = "train"),
         handle.missingtestdata = p_fct(c("none", "omit.prediction", "set.zero", "impute.block"), tags = "predict"),
-        include.allintercepts = p_lgl(default = FALSE, tags = "predict"),
-        use.blocks = p_uty(default = "all", tags = "predict"),
+        include.allintercepts  = p_lgl(default = FALSE, tags = "predict"),
+        use.blocks             = p_uty(default = "all", tags = "predict"),
 
         # params from cv.glmnet
         alignment            = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
