@@ -21,6 +21,8 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using the internal \code{\link[penalized:predict]{penalized::predict()}} function.
+By default the Breslow estimator \code{\link[penalized:breslow]{penalized::breslow()}} is used for computing
+the baseline hazard.
 \item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
 }
 }
@@ -28,7 +30,7 @@ Calculated using the internal \code{\link[penalized:predict]{penalized::predict(
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{trace} is set to \code{"FALSE"} to disable printing information during training.
+\item \code{trace} is set to \code{"FALSE"} to disable printing output during model training.
 }
 }
 
@@ -151,7 +153,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvPenalized-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the method \code{coef} of the S4 model
+Selected features are extracted with the method \code{coef()} of the S4 model
 object, see \code{\link[penalized:penfit]{penalized::penfit()}}.
 By default it returns features with non-zero coefficients.
 

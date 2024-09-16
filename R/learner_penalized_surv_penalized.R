@@ -11,10 +11,12 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using the internal [penalized::predict()] function.
+#' By default the Breslow estimator [penalized::breslow()] is used for computing
+#' the baseline hazard.
 #' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
 #'
 #' @section Custom mlr3 parameters:
-#' - `trace` is set to `"FALSE"` to disable printing information during training.
+#' - `trace` is set to `"FALSE"` to disable printing output during model training.
 #'
 #' @template learner
 #' @templateVar id surv.penalized
@@ -67,7 +69,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
     },
 
     #' @description
-    #' Selected features are extracted with the method `coef` of the S4 model
+    #' Selected features are extracted with the method `coef()` of the S4 model
     #' object, see [penalized::penfit()].
     #' By default it returns features with non-zero coefficients.
     #'
