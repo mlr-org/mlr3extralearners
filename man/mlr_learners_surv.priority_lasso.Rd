@@ -7,7 +7,32 @@
 \description{
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
+Many parameters for this survival learner are the same as \link{mlr_learners_surv.cv_glmnet}
+as \code{prioritylasso()} calls \link[=cv.glmnet]{glmnet::cv.glmnet()} during training phase.
 }
+\section{Prediction types}{
+
+This learner returns three prediction types:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using \code{\link[prioritylasso:predict.prioritylasso]{prioritylasso::predict.prioritylasso()}}.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}} where the Breslow estimator is used
+for computing the baseline hazard.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"cox"} for the Cox survival objective
+\item \code{type.measure} set to \code{"deviance"} (cross-validation measure)
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -20,7 +45,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \itemize{
 \item Task type: \dQuote{surv}
-\item Predict Types: \dQuote{lp}, \dQuote{response}
+\item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{prioritylasso}
 }
@@ -77,9 +102,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    type.logistic \tab character \tab Newton \tab Newton, modified.Newton \tab - \cr
    type.multinomial \tab character \tab ungrouped \tab ungrouped, grouped \tab - \cr
    upper.limits \tab untyped \tab Inf \tab  \tab - \cr
-   predict.gamma \tab numeric \tab gamma.1se \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    relax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   s \tab numeric \tab lambda.1se \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
 }
 }
 
@@ -121,6 +144,7 @@ HarutyunyanLiana
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
