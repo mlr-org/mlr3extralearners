@@ -89,7 +89,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
       }
 
       # Per default, only coefficients of selected variables are returned by coef()
-      names(coef(self$model$model))
+      names(penalized::coef(self$model$model))
     }
   ),
 
