@@ -8,6 +8,14 @@
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 }
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"gaussian"}
+\item \code{type.measure} set to \code{"mse"} (cross-validation measure)
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:

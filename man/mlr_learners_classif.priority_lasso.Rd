@@ -8,6 +8,13 @@
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 }
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{family} is set to \code{"binomial"}
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
