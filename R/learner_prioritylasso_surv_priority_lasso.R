@@ -5,6 +5,8 @@
 #' @description
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
+#' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
+#' as `prioritylasso()` calls [glmnet::cv.glmnet()][cv.glmnet()] during training phase.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -28,7 +30,27 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @template simple_example
+#' @examplesIf mlr3misc::require_namespaces(c("mlr3proba"), quietly = TRUE)
+#' # Define a Task
+#' task = tsk("grace")
+#' # Create train and test set
+#' ids = partition(task)
+#' # check task's features
+#' task$feature_names
+#' # partition features to 2 blocks
+#' blocks = list(bl1 = 1:3, bl2 = 4:6)
+#' # define learner
+#' learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
+#'               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#' # selected features
+#' learner$selected_features()
+#' # Make predictions for the test observations
+#' pred = learner$predict(task, row_ids = ids$test)
+#' pred
+#' # Score the predictions
+#' pred$score()
 #' @export
 LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
   inherit = mlr3proba::LearnerSurv,
