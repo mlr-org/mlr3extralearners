@@ -51,7 +51,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         include.allintercepts  = p_lgl(default = FALSE, tags = "predict"),
         use.blocks             = p_uty(default = "all", tags = "predict"),
 
-        # params from cv.glmnet
+        # params from cv.glmnet, passed to `prioritylasso()` during `.train()`
         alignment            = p_fct(c("lambda", "fraction"), default = "lambda", tags = "train"),
         alpha                = p_dbl(0, 1, default = 1, tags = "train"),
         big                  = p_dbl(default = 9.9e35, tags = "train"),
