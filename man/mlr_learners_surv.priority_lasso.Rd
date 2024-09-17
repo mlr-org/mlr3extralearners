@@ -8,7 +8,7 @@
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 Many parameters for this survival learner are the same as \link{mlr_learners_surv.cv_glmnet}
-as \code{prioritylasso()} calls \link[=cv.glmnet]{glmnet::cv.glmnet()} during training phase.
+as \code{prioritylasso()} calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} during training phase.
 Note that \code{prioritylasso()} has ways to deal with block-wise missing data,
 but this feature is not supported currently.
 }

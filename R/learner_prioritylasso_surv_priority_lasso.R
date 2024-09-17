@@ -6,7 +6,7 @@
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
-#' as `prioritylasso()` calls [glmnet::cv.glmnet()][cv.glmnet()] during training phase.
+#' as `prioritylasso()` calls [glmnet::cv.glmnet()] during training phase.
 #' Note that `prioritylasso()` has ways to deal with block-wise missing data,
 #' but this feature is not supported currently.
 #'
