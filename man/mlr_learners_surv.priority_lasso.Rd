@@ -9,6 +9,8 @@ Patient outcome prediction based on multi-omics data taking practitioners’ pre
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 Many parameters for this survival learner are the same as \link{mlr_learners_surv.cv_glmnet}
 as \code{prioritylasso()} calls \link[=cv.glmnet]{glmnet::cv.glmnet()} during training phase.
+Note that \code{prioritylasso()} has ways to deal with block-wise missing data,
+but this feature is not supported currently.
 }
 \section{Prediction types}{
 
@@ -64,7 +66,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    cvoffset \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cvoffsetnfolds \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    return.x \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   handle.missingtestdata \tab character \tab - \tab none, omit.prediction, set.zero, impute.block \tab - \cr
    include.allintercepts \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    use.blocks \tab untyped \tab "all" \tab  \tab - \cr
    alignment \tab character \tab lambda \tab lambda, fraction \tab - \cr
@@ -107,7 +108,28 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-lrn("surv.priority_lasso")
+\dontshow{if (mlr3misc::require_namespaces(c("mlr3proba"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define a Task
+task = tsk("grace")
+# Create train and test set
+ids = partition(task)
+# check task's features
+task$feature_names
+# partition features to 2 blocks
+blocks = list(bl1 = 1:3, bl2 = 4:6)
+# define learner
+learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
+              lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+# selected features
+learner$selected_features()
+# Make predictions for the test observations
+pred = learner$predict(task, row_ids = ids$test)
+pred
+# Score the predictions
+pred$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Simon K, Vindi J, Roman H, Tobias H, Anne-Laure B (2018).
@@ -169,7 +191,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvPriorityLasso-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvPriorityLasso-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features, i.e. those where the coefficient is positive.
+Selected features, i.e. those where the coefficient is non-zero.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvPriorityLasso$selected_features()}\if{html}{\out{</div>}}
 }

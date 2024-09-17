@@ -168,7 +168,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifPriorityLasso-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features, i.e. those where the coefficient is positive.
+Selected features, i.e. those where the coefficient is non-zero.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifPriorityLasso$selected_features()}\if{html}{\out{</div>}}
 }

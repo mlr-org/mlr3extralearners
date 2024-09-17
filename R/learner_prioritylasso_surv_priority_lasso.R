@@ -7,6 +7,8 @@
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
 #' as `prioritylasso()` calls [glmnet::cv.glmnet()][cv.glmnet()] during training phase.
+#' Note that `prioritylasso()` has ways to deal with block-wise missing data,
+#' but this feature is not supported currently.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -69,7 +71,6 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         cvoffset               = p_lgl(default = FALSE, tags = "train"),
         cvoffsetnfolds         = p_int(default = 10, lower = 1L, tags = "train"),
         return.x               = p_lgl(default = TRUE, tags = "train"),
-        handle.missingtestdata = p_fct(c("none", "omit.prediction", "set.zero", "impute.block"), tags = "predict"),
         include.allintercepts  = p_lgl(default = FALSE, tags = "predict"),
         use.blocks             = p_uty(default = "all", tags = "predict"),
 
