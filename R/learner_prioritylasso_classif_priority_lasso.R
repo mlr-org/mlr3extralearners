@@ -107,7 +107,7 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
     },
 
     #' @description
-    #' Selected features, i.e. those where the coefficient is positive.
+    #' Selected features, i.e. those where the coefficient is non-zero.
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model)) {
