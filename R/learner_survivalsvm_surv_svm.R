@@ -96,7 +96,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
         predict_types = c("crank", "response"),
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_surv.svm",
-        label = "Support Vector Machine"
+        label = "Survival Support Vector Machine"
       )
     }
   ),
@@ -113,20 +113,21 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      fit = predict(self$model, newdata = ordered_features(task, self),
-        .args = pars
-      )
+      fit = invoke(predict,
+                   self$model,
+                   newdata = ordered_features(task, self),
+                   .args = pars)
       crank = as.numeric(fit$predicted)
 
-      if (is.null(self$param_set$values$type) ||
-        (self$param_set$values$type %in% c("regression", "hybrid"))) {
-        # higher survival time = lower risk
+      type = self$param_set$values$type
+      if (is.null(type) || (type %in% c("regression", "hybrid"))) {
+        # ranking is like survival time
         response = crank
       } else {
         response = NULL
       }
 
-      # higher rank = higher risk
+      # higher continuous ranking = lower survival time
       list(crank = -crank, response = response)
     }
   )
