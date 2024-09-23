@@ -25,6 +25,11 @@
 #'
 #' `makediff3` is recommended when using `type = "hybrid"`.
 #'
+#' @section Custom mlr3 parameters:
+#'
+#' - `gamma`, `mu` have replaced `gamma.mu` so that it's easier to tune these separately.
+#' `mu` is only used when `type = "hybrid"`.
+#'
 #' @references
 #' `r format_bib("van2011improved", "van2011support", "shivaswamy2007support")`
 #'
@@ -32,7 +37,7 @@
 #' @examplesIf mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)
 #' set.seed(123)
 #' # Define the Learner and set parameter values
-#' learner = lrn("surv.svm", gamma.mu = 0.1)
+#' learner = lrn("surv.svm", gamma = 0.1)
 #' print(learner)
 #'
 #' # Define a Task
@@ -68,7 +73,8 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
         diff.meth = p_fct(
           levels = c("makediff1", "makediff2", "makediff3"),
           tags = c("train")),
-        gamma.mu = p_uty(tags = c("train", "required")),
+        gamma = p_dbl(default = NULL, special_vals = list(NULL), tags = "train"),
+        mu = p_dbl(default = NULL, special_vals = list(NULL), tags = "train"),
         opt.meth = p_fct(
           default = "quadprog", levels = c("quadprog", "ipop"),
           tags = "train"),
@@ -103,11 +109,28 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
 
   private = list(
     .train = function(task) {
+      pars = self$param_set$get_values(tags = "train")
+
+      # Regularization parameters are defined separately to be tuned more easily
+      gamma = pars$gamma
+      mu = pars$mu
+      type = pars$type
+      if (!is.null(type) && type == "hybrid") {
+        # a vector with two parameters is required when `type` = "hybrid"
+        gamma.mu = c(gamma, mu)
+      } else {
+        gamma.mu = gamma
+      }
+      # remove `gamma` and `mu`
+      pars$gamma = NULL
+      pars$mu = NULL
+
       with_package("survivalsvm", {
         invoke(survivalsvm::survivalsvm,
           formula = task$formula(),
           data = task$data(),
-          .args = self$param_set$get_values(tags = "train"))
+          gamma.mu = gamma.mu, # pass `gamma.mu` separately
+          .args = pars)
       })
     },
 
