@@ -9,6 +9,13 @@
 #' @template learner
 #' @templateVar id surv.svm
 #'
+#' @section Prediction types:
+#' This learner returns up to two prediction types:
+#' 1. `crank`: a vector containing the continuous ranking scores, where each score
+#' corresponds to a specific test observation.
+#' 2. `response`: the survival time of each test observation, equal to `-crank`.
+#' This prediction type if only available for `"type"` equal to `regression` or `hybrid`.
+#'
 #' @details
 #' Four possible SVMs can be implemented, dependent on the `type` parameter. These correspond
 #' to predicting the survival time via regression (`regression`), predicting a continuous rank
