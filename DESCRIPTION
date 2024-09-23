@@ -101,7 +101,7 @@ Suggests:
     stats,
     survival,
     survivalmodels (>= 0.1.19),
-    survivalsvm,
+    survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
     testthat,
     xgboost
