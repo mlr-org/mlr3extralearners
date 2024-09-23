@@ -40,7 +40,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    type \tab character \tab regression \tab regression, vanbelle1, vanbelle2, hybrid \tab - \cr
    diff.meth \tab character \tab - \tab makediff1, makediff2, makediff3 \tab - \cr
-   gamma.mu \tab untyped \tab - \tab  \tab - \cr
+   gamma \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mu \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    opt.meth \tab character \tab quadprog \tab quadprog, ipop \tab - \cr
    kernel \tab character \tab lin_kernel \tab lin_kernel, add_kernel, rbf_kernel, poly_kernel \tab - \cr
    kernel.pars \tab untyped \tab - \tab  \tab - \cr
@@ -55,11 +56,30 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
+\section{Prediction types}{
+
+This learner returns up to two prediction types:
+\enumerate{
+\item \code{crank}: a vector containing the continuous ranking scores, where each score
+corresponds to a specific test observation.
+\item \code{response}: the survival time of each test observation, equal to \code{-crank}.
+This prediction type if only available for \code{"type"} equal to \code{regression} or \code{hybrid}.
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{gamma}, \code{mu} have replaced \code{gamma.mu} so that it's easier to tune these separately.
+\code{mu} is only used when \code{type = "hybrid"}.
+}
+}
+
 \examples{
 \dontshow{if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 set.seed(123)
 # Define the Learner and set parameter values
-learner = lrn("surv.svm", gamma.mu = 0.1)
+learner = lrn("surv.svm", gamma = 0.1)
 print(learner)
 
 # Define a Task
@@ -123,7 +143,6 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

@@ -20,30 +20,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \section{Meta Information}{
 
-\itemize{
-\item Task type: \dQuote{regr}
-\item Predict Types: \dQuote{response}, \dQuote{quantiles}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{gbm}
-}
+\verb{r paste(mlr3misc::rd_info(mlr3::lrn("regr.gbm")), collapse = "\\n")}
 }
 
 \section{Parameters}{
-\tabular{lllll}{
-   Id \tab Type \tab Default \tab Levels \tab Range \cr
-   distribution \tab character \tab gaussian \tab gaussian, laplace, poisson, tdist \tab - \cr
-   n.trees \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   interaction.depth \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   n.minobsinnode \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   shrinkage \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   bag.fraction \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   train.fraction \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   cv.folds \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   keep.data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   n.cores \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   var.monotone \tab untyped \tab - \tab  \tab - \cr
-}
+
+\verb{r paste(mlr3misc::rd_info(mlr3::lrn("regr.gbm")$param_set), collapse = "\\n")}
 }
 
 \section{Parameter changes}{
@@ -104,7 +86,6 @@ be-marc
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
-<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
