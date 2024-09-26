@@ -89,6 +89,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{cores}: This parameter is initialized to 1 (default is \code{NULL}) to avoid
+threading conflicts with \CRANpkg{future}.
+}
+}
+
 \section{Custom mlr3 parameters}{
 
 \itemize{
