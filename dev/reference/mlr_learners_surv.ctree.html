@@ -178,22 +178,18 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class="externa
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 1: 1.000 (n = 15)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 1: 45.000 (n = 57)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] revasc &gt; 0: Inf (n = 217)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &gt; 171: Inf (n = 83)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 2: 2.000 (n = 27)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 2: 28.000 (n = 50)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] revasc &gt; 0: Inf (n = 206)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &gt; 171: Inf (n = 81)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [9] age &gt; 70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &lt;= 173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [11] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [12] sysbp &lt;= 112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [13] revascdays &lt;= 3: 1.500 (n = 10)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [14] revascdays &gt; 3: 16.000 (n = 23)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] sysbp &gt; 112: 38.000 (n = 85)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [16] revasc &gt; 0: Inf (n = 130)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 173: Inf (n = 50)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &lt;= 168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [11] revasc &lt;= 0: 24.000 (n = 112)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] revasc &gt; 0: Inf (n = 137)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] revascdays &gt; 168: Inf (n = 57)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -202,7 +198,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class="externa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7921467 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8016967 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -214,7 +210,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class="externa
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
