@@ -8,21 +8,6 @@
 Fits a generalized linear survival model using a boosting algorithm.
 Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
 }
-\details{
-This learner returns up to three prediction types:
-\enumerate{
-\item \code{crank}: same as \code{lp}.
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
-\item \code{distr}: a survival matrix in two dimensions, where rows are observations
-and columns are the time points.
-This predict type is returned only when the \code{family} parameter is set to
-\code{"coxph"} (which is the default).
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}} which uses the Breslow estimator for the
-baseline hazard function.
-}
-}
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -62,6 +47,25 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
+\section{Prediction types}{
+
+This learner returns two to three prediction types:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
+If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
+families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using \code{\link[mboost:survFit]{mboost::survFit()}}.
+This prediction type is present only when the \code{family} distribution parameter
+is equal to \code{"coxph"} (default).
+By default the Breslow estimator is used for computing the baseline hazard.
+}
+}
+
 \examples{
 \dontshow{if (mlr3misc::require_namespaces(lrn("surv.glmboost")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
@@ -78,7 +82,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -122,6 +126,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

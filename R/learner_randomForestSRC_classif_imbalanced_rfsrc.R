@@ -25,7 +25,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ntree = p_int(default = 3000, lower = 1L, tags = "train"),
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         method = p_fct(
           default = "rfq",
           levels = c("rfq", "brf", "standard"),

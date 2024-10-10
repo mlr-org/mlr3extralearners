@@ -6,6 +6,21 @@
 #' Model-based boosting for survival analysis.
 #' Calls [mboost::mboost()] from \CRANpkg{mboost}.
 #'
+#' @section Prediction types:
+#' This learner returns two to three prediction types:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
+#' Calculated using [mboost::predict.mboost()].
+#' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
+#' families represent AFT-style distributions where lower `lp` values indicate higher risk.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using [mboost::survFit()].
+#' This prediction type is present only when the `family` distribution parameter
+#' is equal to `"coxph"` (default).
+#' By default the Breslow estimator is used for computing the baseline hazard.
+#'
 #' @template learner
 #' @templateVar id surv.mboost
 #'
@@ -57,7 +72,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         id = "surv.mboost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
-        predict_types = c("distr", "crank", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "importance", "selected_features"),
         packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.mboost",
@@ -145,30 +160,18 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
     },
 
     .predict = function(task) {
-
       newdata = ordered_features(task, self)
       # predict linear predictor
       lp = as.numeric(invoke(predict, self$model, newdata = newdata, type = "link"))
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
+        # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-
-        mlr3proba::.surv_return(times = survfit$time,
-          surv = t(survfit$surv),
-          lp = lp)
+        mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
         mlr3proba::.surv_return(lp = -lp)
       }
-
-
-      # FIXME - RE-ADD ONCE INTERPRETATION IS CLEAR
-      # response = NULL
-      # if (!is.null(self$param_set$values$family)) {
-      #   if (self$param_set$values$family %in% c("weibull", "loglog", "lognormal", "gehan")) {
-      #     response = exp(lp)
-      #   }
-      # }
     }
   )
 )

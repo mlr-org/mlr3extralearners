@@ -3,10 +3,11 @@
 #' @name mlr_learners_surv.cv_coxboost
 #'
 #' @description
-#' Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+#' Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 #' number of steps.
 #' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
 #'
+#' @inheritSection mlr_learners_surv.coxboost Prediction types
 #' @template learner
 #' @templateVar id surv.cv_coxboost
 #'
@@ -21,15 +22,6 @@
 #'
 #' If `penalty == "optimCoxBoostPenalty"` then [CoxBoost::optimCoxBoostPenalty] is used to determine
 #' the penalty value to be used in [CoxBoost::cv.CoxBoost].
-#'
-#' Three prediction types are returned for this learner, using the internal
-#' `predict.CoxBoost()` function:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
-#' 2. `crank`: same as `lp`.
-#' 2. `distr`: a 2d survival matrix, with observations as rows and time points
-#' as columns. The internal transformation uses the Breslow estimator to compose
-#' the survival distributions from the `lp` predictions.
 #'
 #' @references
 #' `r format_bib("binder2009boosting")`
@@ -77,7 +69,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         id = "surv.cv_coxboost",
         packages = c("mlr3extralearners", "CoxBoost", "pracma"),
         feature_types = c("integer", "numeric"),
-        predict_types = c("distr", "crank", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = ps,
         properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.cv_coxboost",
@@ -189,16 +181,16 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         .args = pars,
         type = "lp"))
 
+      # all the unique training time points
+      times = sort(unique(self$model$time))
       surv = invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,
         type = "risk",
-        times = sort(unique(self$model$time)))
+        times = times)
 
-      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
-        surv = surv,
-        lp = lp)
+      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

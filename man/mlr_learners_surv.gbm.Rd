@@ -8,6 +8,16 @@
 Gradient Boosting for Survival Analysis.
 Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types, using the internal \code{predict.gbm()} function:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+\item \code{crank}: same as \code{lp}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -45,12 +55,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\section{Parameter changes}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{distribution}:
-\item Actual default: "bernoulli"
-\item Adjusted default: "coxph"
+\item Actual default: \code{"bernoulli"}
+\item Adjusted default: \code{"coxph"}
 \item Reason for change: This is the only distribution available for survival.
 \item \code{keep.data}:
 \itemize{
@@ -61,9 +71,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item \code{n.cores}:
 \itemize{
 \item Actual default: NULL
-\item Adjusted default: 1
+\item Adjusted default: \code{1}
 \item Reason for change: Suppressing the automatic internal parallelization if
-\code{cv.folds} > 0.
+\code{cv.folds} > 0 and avoid threading conflicts with \CRANpkg{future}.
 }
 }
 }
@@ -84,7 +94,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -127,6 +137,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

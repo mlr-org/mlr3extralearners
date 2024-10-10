@@ -29,7 +29,9 @@ test_that("surv.priority_lasso predict", {
     "type", # handled internally
     "lambda.type", # predict.glmnet
     "predict.gamma", # is passed as gamma to predict.glmnet
-    "s" # predict.glmnet
+    "s", # predict.glmnet
+    "handle.missingtestdata" # we don't support missing data both in train
+    # (`mcontrol` parameter) therefore also not during prediction
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

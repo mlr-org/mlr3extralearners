@@ -9,17 +9,18 @@
 #' @section Custom mlr3 parameters:
 #' - `family` is set to `"cox"` and cannot be changed.
 #'
-#' @details
-#' This learner returns two prediction types:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
 #' Calculated using [glmnet::predict.coxnet()].
-#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using [glmnet::survfit.coxnet()].
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
 #' into survival predictions and are described in [survival::survfit.coxph()].
-#' By default the Breslow estimator is used.
+#' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' **Caution**: This learner is different to learners calling [glmnet::cv.glmnet()]
 #' in that it does not use the internal optimization of parameter `lambda`.

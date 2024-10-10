@@ -6,7 +6,8 @@ test_that("paramtest surv.svm_train", {
     "data", # coerced internally by task
     "subset", # coerced internally by task
     "time.variable.name", # unused alternative formulation to formula
-    "status.variable.name" # unused alternative formulation to formula
+    "status.variable.name", # unused alternative formulation to formula
+    "gamma.mu", "gamma", "mu" # we split the original parameter to two new ones
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

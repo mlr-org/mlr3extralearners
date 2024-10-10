@@ -6,13 +6,19 @@
 #' Gradient Boosting for Survival Analysis.
 #' Calls [gbm::gbm()] from \CRANpkg{gbm}.
 #'
+#' @section Prediction types:
+#' This learner returns two prediction types, using the internal `predict.gbm()` function:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
+#' 2. `crank`: same as `lp`.
+#'
 #' @templateVar id surv.gbm
 #' @template learner
 #'
-#' @section Parameter changes:
+#' @section Initial parameter values:
 #'  - `distribution`:
-#'   - Actual default: "bernoulli"
-#'   - Adjusted default: "coxph"
+#'   - Actual default: `"bernoulli"`
+#'   - Adjusted default: `"coxph"`
 #'   - Reason for change: This is the only distribution available for survival.
 #' - `keep.data`:
 #'   - Actual default: TRUE
@@ -20,9 +26,9 @@
 #'   - Reason for change: `keep.data = FALSE` saves memory during model fitting.
 #' - `n.cores`:
 #'   - Actual default: NULL
-#'   - Adjusted default: 1
+#'   - Adjusted default: `1`
 #'   - Reason for change: Suppressing the automatic internal parallelization if
-#'     `cv.folds` > 0.
+#'     `cv.folds` > 0 and avoid threading conflicts with \CRANpkg{future}.
 #'
 #' @references
 #' `r format_bib("friedman2002stochastic")`
@@ -82,9 +88,7 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
 
   private = list(
     .train = function(task) {
-
       # hacky formula construction as gbm fails when "type" argument specified in Surv()
-
       tn = task$target_names
       lhs = sprintf("Surv(%s, %s)", tn[1L], tn[2L])
       f = formulate(lhs, task$feature_names, env = getNamespace("survival"))
