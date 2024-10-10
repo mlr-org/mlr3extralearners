@@ -11,12 +11,25 @@
 #'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
-#' @details
-#' [randomForestSRC::predict.rfsrc()] returns both cumulative hazard function (chf) and
-#' survival function (surv) but uses different estimators to derive these. `chf` uses a
-#' bootstrapped Nelson-Aalen estimator, (Ishwaran, 2008) whereas `surv` uses a bootstrapped
-#' Kaplan-Meier estimator. The choice of which estimator to use is given by the extra
-#' `estimator` hyper-parameter, default is `nelson`.
+#' @section Custom mlr3 parameters:
+#' - `estimator`: Hidden parameter that controls the type of estimator used to
+#'   derive the
+#'   survival function during prediction. The **default** value is `"chf"` which
+#'   uses a bootstrapped Nelson-Aalen estimator for the cumulative hazard function
+#'   \eqn{H(t)}, (Ishwaran, 2008) from which we calculate \eqn{S(t) = \exp(-H(t))},
+#'   whereas `"surv"` uses a bootstrapped Kaplan-Meier estimator to directly estimate
+#'   \eqn{S(t)}.
+#' - `ntime`: Number of time points to coerce the observed event times for use in the
+#'   estimated survival function during prediction. We changed the default value
+#'   of `150` to `0` in order to be in line with other random survival forest
+#'   learners and use all the **unique event times from the train set**.
+#'
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
 #'
 #' @references
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
@@ -32,7 +45,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ntree = p_int(default = 1000, lower = 1L, tags = "train"),
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
@@ -59,8 +72,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         na.action = p_fct(
           default = "na.omit", levels = c("na.omit", "na.impute"),
           tags = c("train", "predict")),
-        nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
-        ntime = p_int(lower = 1L, tags = "train"),
+        nimpute = p_int(lower = 1L, default = 1L, special_vals = list(NULL), tags = "train"),
+        ntime = p_int(lower = 0L, default = 150L, special_vals = list(NULL), tags = "train"),
         cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
@@ -98,6 +111,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         perf.type = p_fct(levels = "none", tags = "train"),
         case.depth = p_lgl(default = FALSE, tags = c("train", "predict"))
       )
+
+      ps$values$ntime = 0
 
       super$initialize(
         id = "surv.rfsrc",
@@ -171,13 +186,11 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       pars_predict$cores = NULL
 
       p = invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
-        .opts = list(rf.cores = cores))
+                 .opts = list(rf.cores = cores))
 
       # rfsrc uses Nelson-Aalen in chf and Kaplan-Meier for survival, as these
       # don't give equivalent results one must be chosen and the relevant functions are transformed
       # as required.
-
-
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
       mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
