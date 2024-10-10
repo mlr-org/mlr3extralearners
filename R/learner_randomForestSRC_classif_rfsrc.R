@@ -10,16 +10,14 @@
 #' @templateVar id classif.rfsrc
 #'
 #' @section Custom mlr3 parameters:
-#' - `mtry`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
-#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
-#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
-#' - `sampsize`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
-#'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
-#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
-#' - `cores`:
-#'     This value is set as the option `rf.cores` during training and is set to 1 by default.
+#' - `mtry`: This hyperparameter can alternatively be set via the added
+#'  hyperparameter `mtry.ratio` as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
+#'  Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `sampsize`: This hyperparameter can alternatively be set via the added
+#'  hyperparameter `sampsize.ratio` as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
+#'  Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
+#' - `cores`: This value is set as the option `rf.cores` during training and is
+#' set to 1 by default.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
