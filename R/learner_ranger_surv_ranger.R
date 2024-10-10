@@ -6,11 +6,17 @@
 #' Random survival forest.
 #' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
 #'
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' Calculated using the internal [ranger::predict.ranger()] function.
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
 #' @section Custom mlr3 parameters:
-#' - `mtry`:
-#'   - This hyperparameter can alternatively be set via our hyperparameter `mtry.ratio`
-#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
-#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `mtry`: This hyperparameter can alternatively be set via our hyperparameter
+#' `mtry.ratio` as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
+#' Note that `mtry` and `mtry.ratio` are mutually exclusive.
 #'
 #' @section Initial parameter values:
 #' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
@@ -67,7 +73,7 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
       super$initialize(
         id = "surv.ranger",
         param_set = ps,
-        predict_types = c("distr", "crank"),
+        predict_types = c("crank", "distr"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = c("weights", "importance", "oob_error"),
         packages = c("mlr3extralearners", "ranger"),
