@@ -68,7 +68,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
