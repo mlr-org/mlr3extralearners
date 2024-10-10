@@ -6,6 +6,13 @@
 #' Random survival forest.
 #' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
 #'
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and (unique event) time points in columns.
+#' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#'
 #' @template learner
 #' @templateVar id surv.rfsrc
 #'
@@ -23,13 +30,6 @@
 #'   estimated survival function during prediction. We changed the default value
 #'   of `150` to `0` in order to be in line with other random survival forest
 #'   learners and use all the **unique event times from the train set**.
-#'
-#' @section Prediction types:
-#' This learner returns three prediction types:
-#' 1. `distr`: a survival matrix in two dimensions, where observations are
-#' represented in rows and (unique event) time points in columns.
-#' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
 #'
 #' @references
 #' `r format_bib("ishwaran_2008", "breiman_2001")`

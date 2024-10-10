@@ -8,6 +8,17 @@
 Random survival forest.
 Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
 }
+\section{Prediction types}{
+
+This learner returns three prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and (unique event) time points in columns.
+Calculated using the internal \code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} function.
+\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -96,17 +107,6 @@ hyperparameter \code{sampsize.ratio} as \code{sampsize = max(ceiling(sampsize.ra
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 \item \code{cores}: This value is set as the option \code{rf.cores} during training and is
 set to 1 by default.
-}
-}
-
-\section{Prediction types}{
-
-This learner returns three prediction types:
-\enumerate{
-\item \code{distr}: a survival matrix in two dimensions, where observations are
-represented in rows and (unique event) time points in columns.
-Calculated using the internal \code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} function.
-\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
 }
 }
 
