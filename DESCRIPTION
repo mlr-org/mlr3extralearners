@@ -79,7 +79,7 @@ Suggests:
     np,
     param6,
     partykit (>= 1.2-21),
-    penalized,
+    penalized (>= 0.9-52),
     pendensity,
     plugdensity,
     pracma,
