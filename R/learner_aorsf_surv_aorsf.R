@@ -180,7 +180,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
     },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      utime = task$unique_event_times() # increasing by default
+      # estimate S(t) on the unique event times from the train set
+      utime = self$model$event_times
       surv = mlr3misc::invoke(predict,
         self$model,
         new_data = ordered_features(task, self),

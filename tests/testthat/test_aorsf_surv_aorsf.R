@@ -1,4 +1,3 @@
-
 test_that("autotest", {
   set.seed(1) # there was presumable a weird bug
   learner = lrn("surv.aorsf")
