@@ -71,7 +71,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
       newdata = ordered_features(task, self)
 
       # use unique train set times
-      times = sort(unique(self$model$y[,"time"]))
+      times = sort(unique(self$model$y[, "time"]))
       # coerce them to an `ntime` grid
       ntime = pv$ntime
       if (!is.null(ntime)) {

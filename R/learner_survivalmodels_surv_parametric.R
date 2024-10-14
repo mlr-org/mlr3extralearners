@@ -138,7 +138,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
       newdata = as.data.frame(ordered_features(task, self))
 
       # use unique train set times
-      times = sort(unique(self$model$model$y[,"time"]))
+      times = sort(unique(self$model$model$y[, "time"]))
       # coerce them to an `ntime` grid
       ntime = pv$ntime
       if (!is.null(ntime)) {
