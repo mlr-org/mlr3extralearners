@@ -7,7 +7,7 @@
 #' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
 #'
 #' @section Prediction types:
-#' This learner returns three prediction types:
+#' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.

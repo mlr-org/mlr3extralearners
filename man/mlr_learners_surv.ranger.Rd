@@ -8,15 +8,23 @@
 Random survival forest.
 Calls \code{\link[ranger:ranger]{ranger::ranger()}} from package \CRANpkg{ranger}.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and (unique event) time points in columns.
+Calculated using the internal \code{\link[ranger:predict.ranger]{ranger::predict.ranger()}} function.
+\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
+}
+}
+
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via our hyperparameter \code{mtry.ratio}
-as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+\item \code{mtry}: This hyperparameter can alternatively be set via our hyperparameter
+\code{mtry.ratio} as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
-}
 }
 }
 

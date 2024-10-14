@@ -10,7 +10,7 @@ Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpk
 }
 \section{Prediction types}{
 
-This learner returns three prediction types:
+This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
