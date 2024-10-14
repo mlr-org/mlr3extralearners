@@ -63,7 +63,7 @@ Suggests:
     knitr,
     ks,
     LiblineaR,
-    lightgbm (>= 4.4.0),
+    lightgbm (>= 4.5.0),
     lme4,
     locfit,
     logspline,
