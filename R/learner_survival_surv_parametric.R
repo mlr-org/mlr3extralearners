@@ -4,28 +4,10 @@
 #'
 #' @description
 #' Parametric survival model.
-#' Calls `parametric()]` from 'survivalmodels'.
+#' Calls [survivalmodels::parametric()] from package 'survivalmodels'.
 #'
-#' @section Custom mlr3 parameters:
-#' - `discrete` determines the class of the returned survival probability
-#' distribution. If `FALSE` (default) continuous probability
-#' distributions are returned using [distr6::VectorDistribution], otherwise
-#' [distr6::Matdist] (faster to calculate survival measures that require a
-#' `distr` prediction type).
-#'
-#' @template learner
-#' @templateVar id surv.parametric
-#' @template install_survivalmodels
-#'
-#' @details
-#' This learner allows you to choose a distribution and a model form to compose
-#' a predicted survival probability distribution.
-#'
-#' The predict method is implemented in [survivalmodels::predict.parametric()].
-#' Our implementation is more efficient for composition to distributions than
-#' [survival::predict.survreg()].
-#'
-#' Three types of prediction are returned for this learner:
+#' @section Prediction types:
+#' This learner returns three prediction types:
 #' 1. `lp`: a vector of linear predictors (relative risk scores), one per test
 #' observation.
 #' `lp` is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
@@ -34,8 +16,31 @@
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' The distribution `distr` is composed using the `lp` predictions and specifying
-#' a model form in the `form` hyper-parameter. These are as follows, with respective
-#' survival functions:
+#' a model form in the `form` hyper-parameter, see Details.
+#' The survival matrix uses the unique time points from the training set.
+#' The parameter `ntime` allows to adjust the granularity of these time points
+#' to any number (e.g. `150`).
+#'
+#' @section Custom mlr3 parameters:
+#' - `discrete` determines the class of the returned survival probability
+#' distribution. If `FALSE`, vectorized continuous probability distributions are
+#' returned using [distr6::VectorDistribution], otherwise a [distr6::Matdist]
+#' object, which is faster for calculating survival measures that require a `distr`
+#' prediction type. Default option is `TRUE`.
+#'
+#' @template learner
+#' @templateVar id surv.parametric
+#' @template install_survivalmodels
+#'
+#' @details
+#' This learner allows you to choose a **distribution** and a **model form** to compose
+#' a predicted survival probability distribution \eqn{S(t)}.
+#'
+#' The predict method is implemented in [survivalmodels::predict.parametric()].
+#' Our implementation is more efficient for composition to distributions than
+#' [survival::predict.survreg()].
+#'
+#' The available model forms with their respective survival functions, are as follows:
 #'
 #' - Accelerated Failure Time (`aft`) \deqn{S(t) = S_0(\frac{t}{exp(lp)})}{S(t) = S0(t/exp(lp))}
 #' - Proportional Hazards (`ph`) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
@@ -45,7 +50,7 @@
 #'
 #' where \eqn{S_0}{S0} is the estimated baseline survival distribution (in
 #' this case with a given parametric form), \eqn{lp} is the predicted linear
-#' predictor, \eqn{\Phi} is the cdf of a N(0, 1) distribution, and \eqn{s} is
+#' predictor, \eqn{\Phi} is the cdf of a \eqn{N(0, 1)} distribution, and \eqn{s} is
 #' the fitted scale parameter.
 #'
 #' Whilst any combination of distribution and model form is possible, this does
@@ -91,15 +96,17 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         robust = p_lgl(default = FALSE, tags = "train"),
         score = p_lgl(default = FALSE, tags = "train"),
         cluster = p_uty(tags = "train"),
-        discrete = p_lgl(tags = c("required", "predict"))
+        discrete = p_lgl(tags = c("required", "predict")),
+        ntime = p_int(lower = 1, default = NULL, special_vals = list(NULL), tags = "predict"),
+        round_time = p_int(default = 2, lower = 0, special_vals = list(FALSE), tags = "predict")
       )
 
-      ps$values = list(discrete = FALSE, dist = "weibull", form = "aft")
+      ps$values = list(discrete = TRUE, dist = "weibull", form = "aft")
 
       super$initialize(
         id = "surv.parametric",
         param_set = ps,
-        predict_types = c("crank", "distr", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         properties = "weights",
         packages = c("mlr3extralearners", "survival", "pracma"),
@@ -128,13 +135,22 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-
       newdata = as.data.frame(ordered_features(task, self))
+
+      # use unique train set times
+      times = sort(unique(self$model$model$y[,"time"]))
+      # coerce them to an `ntime` grid
+      ntime = pv$ntime
+      if (!is.null(ntime)) {
+        indx = unique(round(seq.int(1, length(times), length.out = ntime)))
+        times = times[indx]
+      }
 
       pred = invoke(
         predict,
         self$model,
         newdata = newdata,
+        times = times,
         distr6 = !pv$discrete,
         type = "all",
         .args = pv

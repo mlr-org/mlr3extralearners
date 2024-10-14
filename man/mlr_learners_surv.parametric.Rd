@@ -6,29 +6,17 @@
 \title{Survival Fully Parametric Learner}
 \description{
 Parametric survival model.
-Calls \verb{parametric()]} from 'survivalmodels'.
+Calls \code{\link[survivalmodels:parametric]{survivalmodels::parametric()}} from package 'survivalmodels'.
 }
 \details{
-This learner allows you to choose a distribution and a model form to compose
-a predicted survival probability distribution.
+This learner allows you to choose a \strong{distribution} and a \strong{model form} to compose
+a predicted survival probability distribution \eqn{S(t)}.
 
 The predict method is implemented in \code{\link[survivalmodels:predict.parametric]{survivalmodels::predict.parametric()}}.
 Our implementation is more efficient for composition to distributions than
 \code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
 
-Three types of prediction are returned for this learner:
-\enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per test
-observation.
-\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
-variables in the test data set and \eqn{\beta} are the fitted coefficients.
-\item \code{crank}: same as \code{lp}.
-\item \code{distr}: a survival matrix in two dimensions, where observations are
-represented in rows and time points in columns.
-The distribution \code{distr} is composed using the \code{lp} predictions and specifying
-a model form in the \code{form} hyper-parameter. These are as follows, with respective
-survival functions:
-}
+The available model forms with their respective survival functions, are as follows:
 \itemize{
 \item Accelerated Failure Time (\code{aft}) \deqn{S(t) = S_0(\frac{t}{exp(lp)})}{S(t) = S0(t/exp(lp))}
 \item Proportional Hazards (\code{ph}) \deqn{S(t) = S_0(t)^{exp(lp)}}{S(t) = S0(t)^exp(lp)}
@@ -39,7 +27,7 @@ survival functions:
 
 where \eqn{S_0}{S0} is the estimated baseline survival distribution (in
 this case with a given parametric form), \eqn{lp} is the predicted linear
-predictor, \eqn{\Phi} is the cdf of a N(0, 1) distribution, and \eqn{s} is
+predictor, \eqn{\Phi} is the cdf of a \eqn{N(0, 1)} distribution, and \eqn{s} is
 the fitted scale parameter.
 
 Whilst any combination of distribution and model form is possible, this does
@@ -57,14 +45,33 @@ the literature):
 \item dist = "loglogistic"; form = "po";
 }
 }
+\section{Prediction types}{
+
+This learner returns three prediction types:
+\enumerate{
+\item \code{lp}: a vector of linear predictors (relative risk scores), one per test
+observation.
+\code{lp} is predicted using the formula \eqn{lp = X\beta} where \eqn{X} are the
+variables in the test data set and \eqn{\beta} are the fitted coefficients.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+The distribution \code{distr} is composed using the \code{lp} predictions and specifying
+a model form in the \code{form} hyper-parameter, see Details.
+The survival matrix uses the unique time points from the training set.
+The parameter \code{ntime} allows to adjust the granularity of these time points
+to any number (e.g. \code{150}).
+}
+}
+
 \section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{discrete} determines the class of the returned survival probability
-distribution. If \code{FALSE} (default) continuous probability
-distributions are returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise
-\link[distr6:Matdist]{distr6::Matdist} (faster to calculate survival measures that require a
-\code{distr} prediction type).
+distribution. If \code{FALSE}, vectorized continuous probability distributions are
+returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise a \link[distr6:Matdist]{distr6::Matdist}
+object, which is faster for calculating survival measures that require a \code{distr}
+prediction type. Default option is \code{TRUE}.
 }
 }
 
@@ -104,6 +111,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
    discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   ntime \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   round_time \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
 
