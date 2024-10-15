@@ -8,7 +8,7 @@
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:aft` and `eval_metric` to `aft-nloglik`.
 #'
-#' @details
+#' @section Prediction types:
 #' This learner returns three prediction types:
 #' 1. `response`: the estimated survival time \eqn{T} for each test observation.
 #' 2. `lp`: a vector of linear predictors (relative risk scores), one per

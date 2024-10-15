@@ -10,7 +10,13 @@ objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
-\details{
+\note{
+To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
+against CUDA.
+See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
+}
+\section{Prediction types}{
+
 Three types of prediction are returned for this learner:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
@@ -21,11 +27,7 @@ represented in rows and time points in columns.
 By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}}.
 }
 }
-\note{
-To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
-against CUDA.
-See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
-}
+
 \section{Initial parameter values}{
 
 \itemize{

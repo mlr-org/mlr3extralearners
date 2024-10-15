@@ -10,7 +10,13 @@ objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:aft} and \code{eval_metric} to \code{aft-nloglik}.
 }
-\details{
+\note{
+To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
+against CUDA.
+See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
+}
+\section{Prediction types}{
+
 This learner returns three prediction types:
 \enumerate{
 \item \code{response}: the estimated survival time \eqn{T} for each test observation.
@@ -20,11 +26,7 @@ Higher survival time denotes lower risk.
 \item \code{crank}: same as \code{lp}.
 }
 }
-\note{
-To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
-against CUDA.
-See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
-}
+
 \section{Initial parameter values}{
 
 \itemize{
