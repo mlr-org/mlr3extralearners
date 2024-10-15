@@ -15,7 +15,27 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' # Define the Learner
+#' learner = mlr3::lrn("regr.rfsrc", importance = "TRUE")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("mtcars")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   inherit = LearnerRegr,
