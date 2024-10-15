@@ -27,9 +27,30 @@
 #' @references
 #' `r format_bib("wright_2017", "breiman_2001")`
 #'
-#' @export
 #' @template seealso_learner
-#' @template example
+#' @examples
+#' # Define the Learner
+#' learner = mlr3::lrn("surv.ranger", importance = "permutation")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("grace")
+#'
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+#' @export
 LearnerSurvRanger = R6Class("LearnerSurvRanger",
   inherit = mlr3proba::LearnerSurv,
   public = list(

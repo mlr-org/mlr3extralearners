@@ -89,9 +89,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.ranger")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.ranger")
+learner = mlr3::lrn("surv.ranger", importance = "permutation")
 print(learner)
 
 # Define a Task
@@ -111,7 +110,6 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
-\dontshow{\}) # examplesIf}
 }
 \references{
 Wright, N. M, Ziegler, Andreas (2017).
