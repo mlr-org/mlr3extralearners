@@ -22,7 +22,7 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
-#' @examples
+#' @examplesIf requireNamespace("mgcv", quietly = TRUE)
 #' # simple example
 #' t = mlr3::tsk("spam")$filter(1:1000)
 #' l = mlr3::lrn("classif.gam")

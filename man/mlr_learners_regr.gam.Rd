@@ -80,13 +80,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-
+\dontshow{if (requireNamespace("mgcv", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
 t = mlr3::tsk("mtcars")
 l = mlr3::lrn("regr.gam")
 l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 l$train(t)
 l$model
+\dontshow{\}) # examplesIf}
 }
 \references{
 Hastie, J T, Tibshirani, J R (2017).

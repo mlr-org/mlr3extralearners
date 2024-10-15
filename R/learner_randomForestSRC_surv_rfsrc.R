@@ -35,7 +35,7 @@
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examples
+#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
 #' # Define the Learner
 #' learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
 #' print(learner)

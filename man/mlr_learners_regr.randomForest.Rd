@@ -50,6 +50,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+\dontshow{if (requireNamespace("randomForest", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("regr.randomForest", importance = "mse")
 print(learner)
@@ -70,6 +71,7 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Breiman, Leo (2001).

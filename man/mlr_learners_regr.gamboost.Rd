@@ -47,8 +47,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+# Define the Learner
 learner = lrn("regr.gamboost", baselearner = "bols")
-learner
+print(learner)
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

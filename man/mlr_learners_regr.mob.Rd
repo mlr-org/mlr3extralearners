@@ -66,6 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+\dontshow{if (requireNamespace("partykit", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(mlr3)
 lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   lm(y ~ 1, ...)
@@ -84,6 +85,7 @@ task = tsk("mtcars")
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
+\dontshow{\}) # examplesIf}
 }
 \references{
 Hothorn T, Zeileis A (2015).

@@ -28,7 +28,7 @@
 #' `r format_bib("wright_2017", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examples
+#' @examplesIf requireNamespace("ranger", quietly = TRUE)
 #' # Define the Learner
 #' learner = mlr3::lrn("surv.ranger", importance = "permutation")
 #' print(learner)

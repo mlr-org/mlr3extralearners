@@ -111,6 +111,7 @@ set to 1 by default.
 }
 
 \examples{
+\dontshow{if (requireNamespace("randomForestSRC", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
 print(learner)
@@ -132,6 +133,7 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).

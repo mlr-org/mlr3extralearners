@@ -19,8 +19,7 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
-#' @examples
-#'
+#' @examplesIf requireNamespace("mgcv", quietly = TRUE)
 #' # simple example
 #' t = mlr3::tsk("mtcars")
 #' l = mlr3::lrn("regr.gam")
