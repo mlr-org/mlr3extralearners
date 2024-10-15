@@ -4,7 +4,14 @@
 #'
 #' @description
 #' DeepSurv fits a neural network based on the partial likelihood from a Cox PH.
-#' Calls [survivalmodels::dnnsurv()] from package 'survivalmodels'.
+#' Calls [survivalmodels::deepsurv()] from package 'survivalmodels'.
+#'
+#' @section Prediction types:
+#' This learner returns two prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using the internal [survivalmodels::predict.pycox()] function.
+#' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
 #'
 #' @template learner
 #' @templateVar id surv.deepsurv

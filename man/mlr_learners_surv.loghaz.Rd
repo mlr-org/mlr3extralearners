@@ -14,6 +14,17 @@ Custom nets can be used in this learner either using the
 The number of output channels depends on the number of discretised time-points, i.e.
 the parameters \code{cuts} or \code{cutpoints}.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal \code{\link[survivalmodels:predict.pycox]{survivalmodels::predict.pycox()}} function.
+\item \code{crank}: the expected mortality using \code{\link[survivalmodels:surv_to_risk]{survivalmodels::surv_to_risk()}}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:

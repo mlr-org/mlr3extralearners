@@ -14,6 +14,17 @@ Custom nets can be used in this learner either using the
 The number of output channels should be of length \code{1} and number of input channels is
 the number of features plus number of cuts.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal \code{\link[survivalmodels:predict.dnnsurv]{survivalmodels::predict.dnnsurv()}} function.
+\item \code{crank}: the expected mortality using \code{\link[survivalmodels:surv_to_risk]{survivalmodels::surv_to_risk()}}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
