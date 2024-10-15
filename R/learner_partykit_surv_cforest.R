@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using the internal [partykit::predict.cforest()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.cforest

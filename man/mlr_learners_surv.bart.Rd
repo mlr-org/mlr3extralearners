@@ -15,7 +15,7 @@ This learner returns two prediction types:
 \item \code{distr}: a 3d survival array with observations as 1st dimension, time
 points as 2nd and the posterior draws as 3rd dimension.
 Calculated using the internal \code{predict.survbart()} function.
-\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}. The parameter
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}. The parameter
 \code{which.curve} decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
 by default used for the calculation of survival measures that require a \code{distr}

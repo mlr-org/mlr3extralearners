@@ -37,7 +37,7 @@ represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{predict.ObliqueForest()} function.
 \item \code{response}: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (\code{distr}).
-\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
 }
 }
 
