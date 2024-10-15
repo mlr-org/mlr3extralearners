@@ -70,14 +70,10 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      # use unique train set times
-      times = sort(unique(self$model$y[, "time"]))
-      # coerce them to an `ntime` grid
-      ntime = pv$ntime
-      if (!is.null(ntime)) {
-        indx = unique(round(seq.int(1, length(times), length.out = ntime)))
-        times = times[indx]
-      }
+      # use train set times
+      times = self$model$y[, "time"]
+      # coerce times points to an `ntime` grid
+      times = gridify_times(times, pv$ntime)
 
       pred = invoke(
         predict,
