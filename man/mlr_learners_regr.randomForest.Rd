@@ -55,7 +55,7 @@ learner = mlr3::lrn("regr.randomForest", importance = "mse")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("sonar")
+task = mlr3::tsk("mtcars")
 # Create train and test set
 ids = mlr3::partition(task)
 
