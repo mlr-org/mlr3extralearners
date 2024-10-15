@@ -111,9 +111,8 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.rfsrc")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.rfsrc")
+learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
 print(learner)
 
 # Define a Task
@@ -133,7 +132,6 @@ predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
-\dontshow{\}) # examplesIf}
 }
 \references{
 Ishwaran H, Kogalur UB, Blackstone EH, Lauer MS (2008).
