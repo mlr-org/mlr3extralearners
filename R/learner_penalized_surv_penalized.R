@@ -15,7 +15,7 @@
 #' the baseline hazard.
 #' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `trace` is set to `"FALSE"` to disable printing output during model training.
 #'
 #' @template learner

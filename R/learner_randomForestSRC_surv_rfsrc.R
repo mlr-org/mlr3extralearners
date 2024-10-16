@@ -20,12 +20,13 @@
 #'
 #' @section Custom mlr3 parameters:
 #' - `estimator`: Hidden parameter that controls the type of estimator used to
-#'   derive the
-#'   survival function during prediction. The **default** value is `"chf"` which
+#'   derive the survival function during prediction. The **default** value is `"chf"` which
 #'   uses a bootstrapped Nelson-Aalen estimator for the cumulative hazard function
 #'   \eqn{H(t)}, (Ishwaran, 2008) from which we calculate \eqn{S(t) = \exp(-H(t))},
 #'   whereas `"surv"` uses a bootstrapped Kaplan-Meier estimator to directly estimate
 #'   \eqn{S(t)}.
+#'
+#' @section Initial parameter values:
 #' - `ntime`: Number of time points to coerce the observed event times for use in the
 #'   estimated survival function during prediction. We changed the default value
 #'   of `150` to `0` in order to be in line with other random survival forest

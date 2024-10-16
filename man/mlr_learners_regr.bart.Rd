@@ -59,13 +59,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item Parameter: offset
+\item Parameter: \code{offset}
 \itemize{
 \item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
 and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
 \code{dbarts::dbart}.
 }
-\item Parameter: nchain, combineChains, combinechains
+\item Parameter: \code{nchain}, \code{combineChains}, \code{combinechains}
 \itemize{
 \item The parameters are removed as parallelization of multiple models is handled by future.
 }

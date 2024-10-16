@@ -10,12 +10,9 @@
 #' @template learner
 #'
 #' @section Initial parameter values:
-#' * `num.threads`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
-#'
-#' @section Custom mlr3 parameters:
-#' * `family` - Depending on the task type, if the parameter `family` is `NULL`, it is set to `"binomial"` for binary
+#' - `num.threads`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+#' - `family`: Depends on the task type, if the parameter `family` is `NULL`, it is set to `"binomial"` for binary
 #' classification tasks and to `"multinomial"` for multiclass classification problems.
-#'
 #'
 #' @template seealso_learner
 #' @template example

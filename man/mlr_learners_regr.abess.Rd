@@ -62,6 +62,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \itemize{
 \item \code{num.threads}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+\item \code{family}: Depends on the task type, if the parameter \code{family} is \code{NULL}, it is set to \code{"binomial"} for binary
+classification tasks and to \code{"multinomial"} for multiclass classification problems.
 }
 }
 

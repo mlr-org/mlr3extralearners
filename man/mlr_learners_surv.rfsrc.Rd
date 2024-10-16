@@ -85,16 +85,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \itemize{
 \item \code{estimator}: Hidden parameter that controls the type of estimator used to
-derive the
-survival function during prediction. The \strong{default} value is \code{"chf"} which
+derive the survival function during prediction. The \strong{default} value is \code{"chf"} which
 uses a bootstrapped Nelson-Aalen estimator for the cumulative hazard function
 \eqn{H(t)}, (Ishwaran, 2008) from which we calculate \eqn{S(t) = \exp(-H(t))},
 whereas \code{"surv"} uses a bootstrapped Kaplan-Meier estimator to directly estimate
 \eqn{S(t)}.
-\item \code{ntime}: Number of time points to coerce the observed event times for use in the
-estimated survival function during prediction. We changed the default value
-of \code{150} to \code{0} in order to be in line with other random survival forest
-learners and use all the \strong{unique event times from the train set}.
 }
 
 
@@ -107,6 +102,16 @@ hyperparameter \code{sampsize.ratio} as \code{sampsize = max(ceiling(sampsize.ra
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
 \item \code{cores}: This value is set as the option \code{rf.cores} during training and is
 set to 1 by default.
+}
+}
+
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{ntime}: Number of time points to coerce the observed event times for use in the
+estimated survival function during prediction. We changed the default value
+of \code{150} to \code{0} in order to be in line with other random survival forest
+learners and use all the \strong{unique event times from the train set}.
 }
 }
 

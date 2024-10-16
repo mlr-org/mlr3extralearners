@@ -27,10 +27,10 @@ for computing the baseline hazard.
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{family} is set to \code{"cox"} for the Cox survival objective
+\item \code{family} is set to \code{"cox"} for the Cox survival objective and cannot be changed
 \item \code{type.measure} set to \code{"deviance"} (cross-validation measure)
 }
 }

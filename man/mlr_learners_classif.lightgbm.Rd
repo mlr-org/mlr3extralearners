@@ -156,14 +156,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Initial value: -1L
 \item Reason for change: Prevents accidental conflicts with mlr messaging system.
 }
-}
-}
-
-\section{Custom mlr3 defaults}{
-
-\itemize{
 \item \code{objective}:
-Depending if the task is binary / multiclass, the default is \code{"binary"} or \code{"multiclasss"}.
+\itemize{
+\item Depends on the task: if binary classification, then this parameter is set to
+\code{"binary"}, otherwise \code{"multiclasss"} and cannot be changed.
+}
 }
 }
 

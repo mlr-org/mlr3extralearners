@@ -48,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\section{CUstom mlr3 parameters}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{output_debug_info}:

@@ -27,7 +27,7 @@ the baseline hazard.
 }
 }
 
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
 \item \code{trace} is set to \code{"FALSE"} to disable printing output during model training.

@@ -8,10 +8,10 @@
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 }
-\section{Custom mlr3 parameters}{
+\section{Initial parameter values}{
 
 \itemize{
-\item \code{family} is set to \code{"binomial"}
+\item \code{family} is set to \code{"binomial"} and canno be changed
 }
 }
 

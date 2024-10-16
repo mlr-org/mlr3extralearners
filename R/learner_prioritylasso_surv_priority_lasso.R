@@ -21,8 +21,8 @@
 #' Calculated using [mlr3proba::breslow()] where the Breslow estimator is used
 #' for computing the baseline hazard.
 #'
-#' @section Custom mlr3 parameters:
-#' - `family` is set to `"cox"` for the Cox survival objective
+#' @section Initial parameter values:
+#' - `family` is set to `"cox"` for the Cox survival objective and cannot be changed
 #' - `type.measure` set to `"deviance"` (cross-validation measure)
 #'
 #' @templateVar id surv.priority_lasso
