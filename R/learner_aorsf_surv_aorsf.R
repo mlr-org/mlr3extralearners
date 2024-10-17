@@ -53,7 +53,9 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
         sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
-        control_type = p_fct(levels = c("fast", "cph", "net"), default = "fast", tags = "train"),
+        control_type = p_fct(levels = c("fast", "cph", "net", "custom"), default = "fast", tags = "train"),
+        control_custom_fun = p_uty(custom_check = function(x) checkmate::checkFunction(x, nargs = 3),
+                                   depends = control_type == "custom", tags = "train"),
         split_rule = p_fct(levels = c("logrank", "cstat"), default = "logrank", tags = "train"),
         control_fast_do_scale = p_lgl(default = FALSE, tags = "train"),
         control_fast_ties = p_fct(levels = c("efron", "breslow"), default = "efron", tags = "train"),
@@ -153,6 +155,11 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
             net_mix = dflt_if_null(pv, "control_net_alpha"),
             target_df = dflt_if_null(pv, "control_net_df_target")
           )
+        },
+        "custom" = {
+          aorsf::orsf_control_survival(
+            method = pv$control_custom_fun
+          )
         }
       )
       # these parameters are used to organize the control arguments
@@ -164,7 +171,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
                               "control_cph_eps",
                               "control_cph_iter_max",
                               "control_net_alpha",
-                              "control_net_df_target"))
+                              "control_net_df_target",
+                              "control_custom_fun"))
       invoke(
         aorsf::orsf,
         data = task$data(),
