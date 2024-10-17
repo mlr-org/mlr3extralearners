@@ -180,23 +180,25 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.02158609 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.03598675 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V15         V16 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.7709350  -4.0949212  -0.7996784  -0.9983691   0.1554969   0.2007118 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V21         V27         V31         V36          V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.1209378  -0.8111713  -0.3466675   0.2211139   0.8973824  -3.0885875 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V44         V45         V49         V51         V52         V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -1.2006846  -0.3937394  -3.4765918  -9.7942398 -13.0548036  -1.5513348 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.3287046 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V16          V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.91545883  -2.59674935  -2.23740781  -0.28082603   0.32904053  -0.23831672 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V24          V27          V28          V29          V31 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.05964490  -0.23940378  -0.10099808  -0.33194214  -0.09621046   0.28143974 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V36           V4          V43          V44          V45          V46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.98526661  -0.65551085  -0.33397067  -0.32058684  -0.11325129  -0.64535815 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V49          V51          V54          V57          V58          V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -11.77770597 -15.88540437  -3.70175236   3.68977232  -5.29637786  -2.09552936 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.17895515 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.02158609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.03598675</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -206,7 +208,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
