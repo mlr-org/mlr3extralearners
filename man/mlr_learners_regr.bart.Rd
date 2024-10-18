@@ -59,13 +59,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item Parameter: offset
+\item Parameter: \code{offset}
 \itemize{
 \item The parameter is removed, because only \code{dbarts::bart2} allows an offset during training,
 and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant for
 \code{dbarts::dbart}.
 }
-\item Parameter: nchain, combineChains, combinechains
+\item Parameter: \code{nchain}, \code{combineChains}, \code{combinechains}
 \itemize{
 \item The parameters are removed as parallelization of multiple models is handled by future.
 }
@@ -141,6 +141,7 @@ ck37
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

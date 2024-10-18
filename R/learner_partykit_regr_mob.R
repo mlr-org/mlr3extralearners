@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
+#' @examplesIf requireNamespace("partykit", quietly = TRUE)
 #' library(mlr3)
 #' lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   lm(y ~ 1, ...)

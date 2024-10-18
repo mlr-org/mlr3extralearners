@@ -9,13 +9,17 @@
 #' principle deal with missing values, the behaviour has to be configured using
 #' the parameter `na_action`.
 #'
-#' @details
+#' @section Initial parameter values:
+#' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+#'
+#' @section Prediction types:
 #' This learner returns three prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
+#' Calculated using the internal `predict.ObliqueForest()` function.
 #' 2. `response`: the restricted mean survival time of each test observation,
 #' derived from the survival matrix prediction (`distr`).
-#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return].
+#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.aorsf
@@ -27,10 +31,7 @@
 #'     Note that `mtry` and `mtry_ratio` are mutually exclusive.
 #'
 #' @references
-#' `r format_bib("jaeger_2019")`
-#'
-#' `r format_bib("jaeger_2022")`
-#'
+#' `r format_bib("jaeger_2019", "jaeger_2022")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -45,7 +46,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict")),
+        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
         oobag = p_lgl(default = FALSE, tags = 'predict'),
@@ -81,6 +82,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+
+      ps$values = list(n_thread = 1)
 
       super$initialize(
         id = "surv.aorsf",
@@ -182,7 +185,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
     },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      utime = task$unique_event_times() # increasing by default
+      # estimate S(t) on the unique event times from the train set
+      utime = self$model$event_times
       surv = mlr3misc::invoke(predict,
         self$model,
         new_data = ordered_features(task, self),

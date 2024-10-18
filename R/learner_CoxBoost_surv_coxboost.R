@@ -6,6 +6,15 @@
 #' Fit a Survival Cox model with a likelihood based boosting algorithm.
 #' Calls [CoxBoost::CoxBoost()] from package 'CoxBoost'.
 #'
+#' @section Prediction types:
+#' This learner returns three prediction types, using the internal `predict.CoxBoost()` function:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a 2d survival matrix, with observations as rows and time points
+#' as columns. The internal transformation uses the Breslow estimator to compute
+#' the baseline hazard and compose the survival distributions from the `lp` predictions.
+#'
 #' @template learner
 #' @templateVar id surv.coxboost
 #'
@@ -17,15 +26,6 @@
 #' [LearnerSurvCVCoxboost] may be more efficient when tuning `stepno` only. However, for tuning
 #' multiple hyperparameters, \CRANpkg{mlr3tuning} and [LearnerSurvCoxboost] will likely give better
 #' results.
-#'
-#' Three prediction types are returned for this learner, using the internal
-#' `predict.CoxBoost()` function:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
-#' 2. `crank`: same as `lp`.
-#' 3. `distr`: a 2d survival matrix, with observations as rows and time points
-#' as columns. The internal transformation uses the Breslow estimator to compose
-#' the survival distributions from the `lp` predictions.
 #'
 #' @references
 #' `r format_bib("binder2009boosting")`
@@ -60,7 +60,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         id = "surv.coxboost",
         packages = c("mlr3extralearners", "CoxBoost", "pracma"),
         feature_types = c("integer", "numeric"),
-        predict_types = c("distr", "crank", "lp"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = ps,
         properties = c("weights", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.coxboost",
@@ -126,16 +126,16 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         .args = pars,
         type = "lp"))
 
+      # all the unique training time points
+      times = sort(unique(self$model$time))
       surv = invoke(predict,
         self$model,
         newdata = newdata,
         .args = pars,
         type = "risk",
-        times = sort(unique(self$model$time)))
+        times = times)
 
-      mlr3proba::.surv_return(times = sort(unique(self$model$time)),
-        surv = surv,
-        lp = lp)
+      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

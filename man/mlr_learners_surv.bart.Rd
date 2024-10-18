@@ -6,20 +6,23 @@
 \title{Survival Bayesian Additive Regression Trees Learner}
 \description{
 Fits a Bayesian Additive Regression Trees (BART) learner to right-censored
-survival data. Calls \code{\link[BART:mc.surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
+survival data. Calls \code{\link[BART:surv.bart]{BART::mc.surv.bart()}} from \CRANpkg{BART}.
 }
-\details{
-Two types of prediction are returned for this learner:
+\section{Prediction types}{
+
+This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a 3d survival array with observations as 1st dimension, time
 points as 2nd and the posterior draws as 3rd dimension.
-\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}. The parameter
+Calculated using the internal \code{predict.survbart()} function.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}. The parameter
 \code{which.curve} decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
 by default used for the calculation of survival measures that require a \code{distr}
 prediction, see more info on \link[mlr3proba:PredictionSurv]{PredictionSurv}.
 }
 }
+
 \section{Initial parameter values}{
 
 \itemize{
@@ -139,6 +142,7 @@ bblodfon
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

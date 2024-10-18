@@ -5,7 +5,7 @@
 \alias{LearnerSurvCVCoxboost}
 \title{Survival Cox Model with Cross-Validation Likelihood Based Boosting Learner}
 \description{
-Fits a survival Cox model using likelihood based boosting and interal cross-validation for the
+Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 number of steps.
 Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} or \code{\link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost()}} from package 'CoxBoost'.
 }
@@ -18,17 +18,6 @@ results.
 
 If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPenalty]{CoxBoost::optimCoxBoostPenalty} is used to determine
 the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
-
-Three prediction types are returned for this learner, using the internal
-\code{predict.CoxBoost()} function:
-\enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
-\item \code{crank}: same as \code{lp}.
-\item \code{distr}: a 2d survival matrix, with observations as rows and time points
-as columns. The internal transformation uses the Breslow estimator to compose
-the survival distributions from the \code{lp} predictions.
-}
 }
 \section{Dictionary}{
 
@@ -80,6 +69,19 @@ The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 \code{remotes::install_github("binderh/CoxBoost")}.
 }
 
+\section{Prediction types}{
+
+This learner returns three prediction types, using the internal \code{predict.CoxBoost()} function:
+\enumerate{
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+\item \code{crank}: same as \code{lp}.
+\item \code{distr}: a 2d survival matrix, with observations as rows and time points
+as columns. The internal transformation uses the Breslow estimator to compute
+the baseline hazard and compose the survival distributions from the \code{lp} predictions.
+}
+}
+
 \examples{
 \dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 task = tsk("rats")
@@ -124,6 +126,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

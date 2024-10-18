@@ -8,7 +8,7 @@
 #' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:cox` and `eval_metric` to `cox-nloglik`.
 #'
-#' @details
+#' @section Prediction types:
 #' Three types of prediction are returned for this learner:
 #' 1. `lp`: a vector of linear predictors (relative risk scores), one per
 #' observation.

@@ -6,7 +6,7 @@
 \title{Classification Logistic Model Trees Learner}
 \description{
 Classification tree with logistic regression models at the leaves.
-Calls \code{\link[RWeka:LMT]{RWeka::LMT()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::LMT()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -48,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\section{CUstom mlr3 parameters}{
+\section{Custom mlr3 parameters}{
 
 \itemize{
 \item \code{output_debug_info}:
@@ -130,6 +130,7 @@ henrifnk
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

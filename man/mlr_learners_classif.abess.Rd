@@ -62,13 +62,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \itemize{
 \item \code{num.threads}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
-}
-}
-
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{family} - Depending on the task type, if the parameter \code{family} is \code{NULL}, it is set to \code{"binomial"} for binary
+\item \code{family}: Depends on the task type, if the parameter \code{family} is \code{NULL}, it is set to \code{"binomial"} for binary
 classification tasks and to \code{"multinomial"} for multiclass classification problems.
 }
 }
@@ -127,6 +121,7 @@ abess-team
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

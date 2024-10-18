@@ -12,9 +12,29 @@
 #' @references
 #' `r format_bib("breiman_2001")`
 #'
-#' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("randomForest", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("classif.randomForest", importance = "accuracy")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("sonar")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+#' @export
 LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
   inherit = LearnerClassif,
 

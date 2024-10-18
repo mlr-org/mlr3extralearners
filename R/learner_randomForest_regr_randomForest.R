@@ -12,9 +12,29 @@
 #' @references
 #' `r format_bib("breiman_2001")`
 #'
-#' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("randomForest", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("regr.randomForest", importance = "mse")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("mtcars")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+#' @export
 LearnerRegrRandomForest = R6Class("LearnerRegrRandomForest",
   inherit = LearnerRegr,
 

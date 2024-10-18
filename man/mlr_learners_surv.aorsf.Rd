@@ -11,16 +11,36 @@ Note that although the learner has the property \code{"missing"} and it can in
 principle deal with missing values, the behaviour has to be configured using
 the parameter \code{na_action}.
 }
-\details{
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{n_thread}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+}
+
+
+\itemize{
+\item \code{mtry}:
+\itemize{
+\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
+as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
+Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
+}
+}
+}
+
+\section{Prediction types}{
+
 This learner returns three prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
+Calculated using the internal \code{predict.ObliqueForest()} function.
 \item \code{response}: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (\code{distr}).
-\item \code{crank}: the expected mortality using \link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
 }
 }
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -80,18 +100,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\section{Initial parameter values}{
-
-\itemize{
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry_ratio}
-as \code{mtry = max(ceiling(mtry_ratio * n_features), 1)}.
-Note that \code{mtry} and \code{mtry_ratio} are mutually exclusive.
-}
-}
-}
-
 \examples{
 \dontshow{if (mlr3misc::require_namespaces(lrn("surv.aorsf")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
@@ -108,7 +116,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -158,6 +166,7 @@ bcjaeger
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

@@ -10,7 +10,13 @@ objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:aft} and \code{eval_metric} to \code{aft-nloglik}.
 }
-\details{
+\note{
+To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
+against CUDA.
+See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
+}
+\section{Prediction types}{
+
 This learner returns three prediction types:
 \enumerate{
 \item \code{response}: the estimated survival time \eqn{T} for each test observation.
@@ -20,11 +26,7 @@ Higher survival time denotes lower risk.
 \item \code{crank}: same as \code{lp}.
 }
 }
-\note{
-To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
-against CUDA.
-See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
-}
+
 \section{Initial parameter values}{
 
 \itemize{
@@ -35,22 +37,6 @@ See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-s
 }
 
 \section{Early stopping}{
-
-Early stopping can be used to find the optimal number of boosting rounds.
-The \code{early_stopping_set} parameter controls which set is used to monitor the
-performance.
-By default, \code{early_stopping_set = "none"} which disables early stopping.
-Set \code{early_stopping_set = "test"} to monitor the performance of the model on
-the test set while training.
-The test set for early stopping can be set with the \code{"test"} row role in the
-\link[mlr3:Task]{mlr3::Task}.
-Additionally, the range must be set in which the performance must increase
-with \code{early_stopping_rounds} and the maximum number of boosting rounds with
-\code{nrounds}.
-While resampling, the test set is automatically applied from the \link[mlr3:Resampling]{mlr3::Resampling}.
-Not that using the test set for early stopping can potentially bias the
-performance scores.
-
 
 Early stopping can be used to find the optimal number of boosting rounds.
 The \code{early_stopping_set} parameter controls which set is used to monitor the
@@ -163,7 +149,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -226,6 +212,7 @@ a ratio, \code{"test"}, or \code{"predefined"}.}
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

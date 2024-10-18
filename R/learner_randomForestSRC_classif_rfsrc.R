@@ -10,22 +10,40 @@
 #' @templateVar id classif.rfsrc
 #'
 #' @section Custom mlr3 parameters:
-#' - `mtry`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `mtry.ratio`
-#'     as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
-#'     Note that `mtry` and `mtry.ratio` are mutually exclusive.
-#' - `sampsize`:
-#'   - This hyperparameter can alternatively be set via the added hyperparameter `sampsize.ratio`
-#'     as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
-#'     Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
-#' - `cores`:
-#'     This value is set as the option `rf.cores` during training and is set to 1 by default.
+#' - `mtry`: This hyperparameter can alternatively be set via the added
+#'  hyperparameter `mtry.ratio` as `mtry = max(ceiling(mtry.ratio * n_features), 1)`.
+#'  Note that `mtry` and `mtry.ratio` are mutually exclusive.
+#' - `sampsize`: This hyperparameter can alternatively be set via the added
+#'  hyperparameter `sampsize.ratio` as `sampsize = max(ceiling(sampsize.ratio * n_obs), 1)`.
+#'  Note that `sampsize` and `sampsize.ratio` are mutually exclusive.
+#' - `cores`: This value is set as the option `rf.cores` during training and is
+#' set to 1 by default.
 #'
 #' @references
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("classif.rfsrc", importance = "TRUE")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("sonar")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   inherit = LearnerClassif,
@@ -35,7 +53,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ntree = p_int(default = 1000, lower = 1L, tags = "train"),
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
