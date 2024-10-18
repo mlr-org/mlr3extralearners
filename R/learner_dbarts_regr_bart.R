@@ -10,11 +10,11 @@
 #' @templateVar id regr.bart
 #'
 #' @section Custom mlr3 parameters:
-#' * Parameter: offset
+#' * Parameter: `offset`
 #'   * The parameter is removed, because only `dbarts::bart2` allows an offset during training,
 #'     and therefore the offset parameter in `dbarts:::predict.bart` is irrelevant for
 #'     `dbarts::dbart`.
-#' * Parameter: nchain, combineChains, combinechains
+#' * Parameter: `nchain`, `combineChains`, `combinechains`
 #'   * The parameters are removed as parallelization of multiple models is handled by future.
 #'
 #' @section Initial parameter values:

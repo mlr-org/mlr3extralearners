@@ -15,7 +15,27 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("regr.rfsrc", importance = "TRUE")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("mtcars")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
   inherit = LearnerRegr,
@@ -25,7 +45,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ntree = p_int(default = 1000, lower = 1L, tags = "train"),
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),

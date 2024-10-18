@@ -16,7 +16,28 @@
 #' `r format_bib("obrien2019imbrfsrc", "chen2004imbrf")`
 #'
 #' @template seealso_learner
-#' @template example
+#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' # Define the Learner
+#' learner = mlr3::lrn("classif.imbalanced_rfsrc", importance = "TRUE")
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("sonar")
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#' print(learner$importance())
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
+#'
 #' @export
 LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRandomForestSRC",
   inherit = LearnerClassif,
@@ -25,7 +46,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ntree = p_int(default = 3000, lower = 1L, tags = "train"),
+        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
         method = p_fct(
           default = "rfq",
           levels = c("rfq", "brf", "standard"),

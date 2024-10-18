@@ -119,3 +119,15 @@ rename = function(x, old, new) {
   }
   x
 }
+
+# coerce given times points to an `ntime` grid is `ntime` is not NULL,
+# otherwise just returns the sorted unique times points
+gridify_times = function(times, ntime) {
+  times = sort(unique(times))
+  if (!is.null(ntime)) {
+    indx = unique(round(seq.int(1, length(times), length.out = ntime)))
+    times = times[indx]
+  }
+
+  times
+}

@@ -29,7 +29,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   ntree \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    nodesize \tab integer \tab 15 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -72,32 +72,25 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{mtry}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+\item \code{mtry}: This hyperparameter can alternatively be set via the added
+hyperparameter \code{mtry.ratio} as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
-}
-\item \code{sampsize}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
-as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
+\item \code{sampsize}: This hyperparameter can alternatively be set via the added
+hyperparameter \code{sampsize.ratio} as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
-}
-\item \code{cores}:
-This value is set as the option \code{rf.cores} during training and is set to 1 by default.
+\item \code{cores}: This value is set as the option \code{rf.cores} during training and is
+set to 1 by default.
 }
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.rfsrc")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("randomForestSRC", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.rfsrc")
+learner = mlr3::lrn("classif.rfsrc", importance = "TRUE")
 print(learner)
 
 # Define a Task
 task = mlr3::tsk("sonar")
-
 # Create train and test set
 ids = mlr3::partition(task)
 
@@ -105,7 +98,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -151,6 +144,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

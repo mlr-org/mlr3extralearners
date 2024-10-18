@@ -8,13 +8,17 @@
 Random survival forest.
 Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
 }
-\details{
-\code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} returns both cumulative hazard function (chf) and
-survival function (surv) but uses different estimators to derive these. \code{chf} uses a
-bootstrapped Nelson-Aalen estimator, (Ishwaran, 2008) whereas \code{surv} uses a bootstrapped
-Kaplan-Meier estimator. The choice of which estimator to use is given by the extra
-\code{estimator} hyper-parameter, default is \code{nelson}.
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and (unique event) time points in columns.
+Calculated using the internal \code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} function.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
 }
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -36,7 +40,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   ntree \tab integer \tab 1000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    mtry.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    nodesize \tab integer \tab 15 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -53,7 +57,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    sampsize.ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    na.action \tab character \tab na.omit \tab na.omit, na.impute \tab - \cr
    nimpute \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   ntime \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntime \tab integer \tab 150 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cause \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    proximity \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    distance \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
@@ -80,27 +84,41 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{mtry}:
+\item \code{estimator}: Hidden parameter that controls the type of estimator used to
+derive the survival function during prediction. The \strong{default} value is \code{"chf"} which
+uses a bootstrapped Nelson-Aalen estimator for the cumulative hazard function
+\eqn{H(t)}, (Ishwaran, 2008) from which we calculate \eqn{S(t) = \exp(-H(t))},
+whereas \code{"surv"} uses a bootstrapped Kaplan-Meier estimator to directly estimate
+\eqn{S(t)}.
+}
+
+
 \itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{mtry.ratio}
-as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
+\item \code{mtry}: This hyperparameter can alternatively be set via the added
+hyperparameter \code{mtry.ratio} as \code{mtry = max(ceiling(mtry.ratio * n_features), 1)}.
 Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
-}
-\item \code{sampsize}:
-\itemize{
-\item This hyperparameter can alternatively be set via the added hyperparameter \code{sampsize.ratio}
-as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
+\item \code{sampsize}: This hyperparameter can alternatively be set via the added
+hyperparameter \code{sampsize.ratio} as \code{sampsize = max(ceiling(sampsize.ratio * n_obs), 1)}.
 Note that \code{sampsize} and \code{sampsize.ratio} are mutually exclusive.
+\item \code{cores}: This value is set as the option \code{rf.cores} during training and is
+set to 1 by default.
 }
-\item \code{cores}:
-This value is set as the option \code{rf.cores} during training and is set to 1 by default.
+}
+
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{ntime}: Number of time points to coerce the observed event times for use in the
+estimated survival function during prediction. We changed the default value
+of \code{150} to \code{0} in order to be in line with other random survival forest
+learners and use all the \strong{unique event times from the train set}.
 }
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.rfsrc")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (requireNamespace("randomForestSRC", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.rfsrc")
+learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
 print(learner)
 
 # Define a Task
@@ -113,7 +131,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -164,6 +182,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

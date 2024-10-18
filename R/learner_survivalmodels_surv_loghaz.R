@@ -6,6 +6,13 @@
 #' Survival logistic hazard learner.
 #' Calls [survivalmodels::loghaz()] from package 'survivalmodels'.
 #'
+#' @section Prediction types:
+#' This learner returns two prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using the internal [survivalmodels::predict.pycox()] function.
+#' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
+#'
 #' @templateVar id surv.loghaz
 #' @template learner
 #'
