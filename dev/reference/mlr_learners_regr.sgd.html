@@ -122,6 +122,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p><a href="#method-LearnerRegrSGD-new"><code>LearnerRegrSGD$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrSGD-clone"><code>LearnerRegrSGD$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -184,17 +185,17 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          2.2989 (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.6169 (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.1097 (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0381 (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.9594 (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.0229 (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.7448 (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.9162 (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.1373 (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -6.1329 (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      15.2963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          4.053  (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -7.2737 (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.3344 (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2088 (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.0587 (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.0627 (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.4043 (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       4.3612 (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.4493 (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.0801 (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      15.0419</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -203,7 +204,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.84207 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.76915 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

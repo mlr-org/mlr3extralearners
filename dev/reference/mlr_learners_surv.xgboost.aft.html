@@ -55,19 +55,21 @@ set to <code>survival:aft</code> and <code>eval_metric</code> to <code>aft-nlogl
 
 
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This learner returns three prediction types:</p><ol><li><p><code>response</code>: the estimated survival time \(T\) for each test observation.</p></li>
-<li><p><code>lp</code>: a vector of linear predictors (relative risk scores), one per
-observation, estimated as \(-log(T)\).
-Higher survival time denotes lower risk.</p></li>
-<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
-</ol></div>
-    <div class="section level2">
     <h2 id="note">Note<a class="anchor" aria-label="anchor" href="#note"></a></h2>
     <p>To compute on GPUs, you first need to compile <a href="https://CRAN.R-project.org/package=xgboost" class="external-link"><span class="pkg">xgboost</span></a> yourself and link
 against CUDA.
 See <a href="https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support" class="external-link">https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support</a>.</p>
     </div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns three prediction types:</p><ol><li><p><code>response</code>: the estimated survival time \(T\) for each test observation.</p></li>
+<li><p><code>lp</code>: a vector of linear predictors (relative risk scores), one per
+observation, estimated as \(-log(T)\).
+Higher survival time denotes lower risk.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
@@ -79,21 +81,6 @@ See <a href="https://xgboost.readthedocs.io/en/stable/build.html#building-with-g
     <div class="section level2">
     <h2 id="early-stopping">Early stopping<a class="anchor" aria-label="anchor" href="#early-stopping"></a></h2>
 
-
-<p>Early stopping can be used to find the optimal number of boosting rounds.
-The <code>early_stopping_set</code> parameter controls which set is used to monitor the
-performance.
-By default, <code>early_stopping_set = "none"</code> which disables early stopping.
-Set <code>early_stopping_set = "test"</code> to monitor the performance of the model on
-the test set while training.
-The test set for early stopping can be set with the <code>"test"</code> row role in the
-<a href="https://mlr3.mlr-org.com/reference/Task.html" class="external-link">mlr3::Task</a>.
-Additionally, the range must be set in which the performance must increase
-with <code>early_stopping_rounds</code> and the maximum number of boosting rounds with
-<code>nrounds</code>.
-While resampling, the test set is automatically applied from the <a href="https://mlr3.mlr-org.com/reference/Resampling.html" class="external-link">mlr3::Resampling</a>.
-Not that using the test set for early stopping can potentially bias the
-performance scores.</p>
 
 <p>Early stopping can be used to find the optimal number of boosting rounds.
 The <code>early_stopping_set</code> parameter controls which set is used to monitor the
@@ -192,6 +179,7 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <li><p><a href="#method-LearnerSurvXgboostAFT-importance"><code>LearnerSurvXgboostAFT$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvXgboostAFT-clone"><code>LearnerSurvXgboostAFT$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -276,11 +264,9 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # of features: 6 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> niter: 1000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> nfeatures : 6 </span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvXgboostAFT__importance(self = self, private = private, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55d32381ddb0&gt;</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc       sysbp         los         age    stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.328047161 0.286341596 0.138298897 0.133727211 0.104003318 0.009581817 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>

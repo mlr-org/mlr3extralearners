@@ -49,19 +49,6 @@ Calls <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvs
 
 
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This learner returns two prediction types:</p><ol><li><p><code>lp</code>: a vector of linear predictors (relative risk scores), for each test
-observation.
-Calculated using <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvspline.html" class="external-link">flexsurv::flexsurvspline()</a></code> and the estimated coefficients.
-For fitted coefficients, \(\beta = (\beta_0,...,\beta_P)\),
-and covariates \(X^T = (X_0,...,X_P)^T\), where \(X_0\)
-is a column of \(1\)s, the linear predictor (<code>lp</code>) is \(lp = \beta X\).</p></li>
-<li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
-represented in rows and time points in columns.
-Calculated using <code>predict.flexsurvreg()</code>.</p></li>
-<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
-</ol></div>
-    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -81,6 +68,21 @@ Calculated using <code>predict.flexsurvreg()</code>.</p></li>
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bknots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>character</td><td>hazard</td><td>hazard, odds, normal</td><td>-</td></tr><tr><td>timescale</td><td>character</td><td>log</td><td>log, identity</td><td>-</td></tr><tr><td>spline</td><td>character</td><td>rp</td><td>rp, splines2ns</td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns three prediction types:</p><ol><li><p><code>lp</code>: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvspline.html" class="external-link">flexsurv::flexsurvspline()</a></code> and the estimated coefficients.
+For fitted coefficients, \(\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})\),
+and the test data covariates \(X^T = (X_0,...,X_P)^T\), where \(X_0\)
+is a column of \(1\)s, the linear predictor vector is \(lp = \hat{\beta} X^T\).</p></li>
+<li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using <code>predict.flexsurvreg()</code>.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
@@ -126,6 +128,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 <ul><li><p><a href="#method-LearnerSurvFlexible-new"><code>LearnerSurvFlexible$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvFlexible-clone"><code>LearnerSurvFlexible$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>

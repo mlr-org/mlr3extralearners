@@ -58,12 +58,25 @@ the parameter <code>na_action</code>.</p>
 
 
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>This learner returns three prediction types:</p><ol><li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
-represented in rows and (unique event) time points in columns.</p></li>
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+
+
+<ul><li><p><code>n_thread</code>: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.</p></li>
+</ul><ul><li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry_ratio</code>
+as <code>mtry = max(ceiling(mtry_ratio * n_features), 1)</code>.
+Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.</p></li>
+</ul></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns three prediction types:</p><ol><li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and (unique event) time points in columns.
+Calculated using the internal <code>predict.ObliqueForest()</code> function.</p></li>
 <li><p><code>response</code>: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (<code>distr</code>).</p></li>
-<li><p><code>crank</code>: the expected mortality using mlr3proba::.surv_return.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>.</p></li>
 </ol></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -85,15 +98,6 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>n_tree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_split</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_retry</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>n_thread</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pred_aggregate</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>pred_simplify</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobag</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mtry</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>sample_with_replacement</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sample_fraction</td><td>numeric</td><td>0.632</td><td></td><td>\([0, 1]\)</td></tr><tr><td>control_type</td><td>character</td><td>fast</td><td>fast, cph, net</td><td>-</td></tr><tr><td>split_rule</td><td>character</td><td>logrank</td><td>logrank, cstat</td><td>-</td></tr><tr><td>control_fast_do_scale</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>control_fast_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_eps</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>control_cph_iter_max</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>control_net_alpha</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>control_net_df_target</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_events</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_obs</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_events</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_obs</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_stat</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_pred_type</td><td>character</td><td>risk</td><td>none, surv, risk, chf, mort</td><td>-</td></tr><tr><td>importance</td><td>character</td><td>anova</td><td>none, anova, negate, permute</td><td>-</td></tr><tr><td>importance_max_pvalue</td><td>numeric</td><td>0.01</td><td></td><td>\([1e-04, 0.9999]\)</td></tr><tr><td>tree_seeds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_pred_horizon</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_eval_every</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_fun</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>attach_data</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose_progress</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>na_action</td><td>character</td><td>fail</td><td>fail, omit, impute_meanmode</td><td>-</td></tr></table></div>
-    <div class="section level2">
-    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
-
-
-<ul><li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry_ratio</code>
-as <code>mtry = max(ceiling(mtry_ratio * n_features), 1)</code>.
-Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.</p></li>
-</ul></li>
-</ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
@@ -138,6 +142,7 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <li><p><a href="#method-LearnerSurvAorsf-importance"><code>LearnerSurvAorsf$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvAorsf-clone"><code>LearnerSurvAorsf$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -205,7 +210,7 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvAorsf:surv.aorsf&gt;: Oblique Random Forest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: n_thread=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, aorsf, pracma</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, response</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
@@ -225,23 +230,21 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 224</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 40.804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 40.926</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.83</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: Harrell's C-index</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvAorsf__importance(self = self, private = private, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x55d318351448&gt;</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.59538665 0.54993129 0.20004163 0.18782572 0.11961654 0.09908763 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -249,7 +252,7 @@ Note that <code>mtry</code> and <code>mtry_ratio</code> are mutually exclusive.<
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8585253 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8432615 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

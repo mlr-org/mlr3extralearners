@@ -103,6 +103,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <ul><li><p><a href="#method-LearnerRegrGLMBoost-new"><code>LearnerRegrGLMBoost$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrGLMBoost-clone"><code>LearnerRegrGLMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -175,15 +176,15 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.95714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.19524 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am         carb          cyl         disp           hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.225928037  2.214542810 -0.190096629 -0.532897896  0.002655817 -0.015666774 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         qsec           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.356194209 -3.635129027 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   (Intercept)            am          carb           cyl          disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.5520461729  1.4461159883 -0.4996451729 -0.8677466594  0.0006037799 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          drat          gear            hp          qsec            wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0394427953 -0.0212573787 -0.0133726076  0.0553797911 -2.3508096212 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.95714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.19524</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -193,7 +194,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6.26746 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.667004 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

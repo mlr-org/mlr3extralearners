@@ -134,6 +134,7 @@ In <em>IEEE Transactions on Neural Networks</em>.</p>
 <ul><li><p><a href="#method-LearnerRegrSMOreg-new"><code>LearnerRegrSMOreg$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrSMOreg-clone"><code>LearnerRegrSMOreg$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -195,21 +196,21 @@ In <em>IEEE Transactions on Neural Networks</em>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> SMOreg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> weights (not support vectors):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.132  * (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1949 * (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0537 * (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1777 * (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.191  * (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1506 * (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1626 * (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2136 * (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0524 * (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.3117 * (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5048 * (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.4573 * (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1893 * (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.121  * (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0067 * (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1128 * (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0547 * (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3002 * (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.183  * (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1385 * (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0408</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (93.238% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (98.814% cached)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -218,7 +219,7 @@ In <em>IEEE Transactions on Neural Networks</em>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.355384 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30.14116 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

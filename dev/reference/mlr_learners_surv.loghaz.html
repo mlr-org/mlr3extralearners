@@ -56,6 +56,15 @@ The number of output channels depends on the number of discretised time-points, 
 the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
     </div>
     <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two prediction types:</p><ol><li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal <code><a href="https://rdrr.io/pkg/survivalmodels/man/predict.pycox.html" class="external-link">survivalmodels::predict.pycox()</a></code> function.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://rdrr.io/pkg/survivalmodels/man/surv_to_risk.html" class="external-link">survivalmodels::surv_to_risk()</a></code>.</p></li>
+</ol></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -120,6 +129,7 @@ the parameters <code>cuts</code> or <code>cutpoints</code>.</p>
 <ul><li><p><a href="#method-LearnerSurvLogisticHazard-new"><code>LearnerSurvLogisticHazard$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvLogisticHazard-clone"><code>LearnerSurvLogisticHazard$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>

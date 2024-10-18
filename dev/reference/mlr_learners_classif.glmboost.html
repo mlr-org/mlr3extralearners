@@ -103,6 +103,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <ul><li><p><a href="#method-LearnerClassifGLMBoost-new"><code>LearnerClassifGLMBoost$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifGLMBoost-clone"><code>LearnerClassifGLMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -180,25 +181,23 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.03598675 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.05040235 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V16          V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.91545883  -2.59674935  -2.23740781  -0.28082603   0.32904053  -0.23831672 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V24          V27          V28          V29          V31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.05964490  -0.23940378  -0.10099808  -0.33194214  -0.09621046   0.28143974 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V36           V4          V43          V44          V45          V46 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.98526661  -0.65551085  -0.33397067  -0.32058684  -0.11325129  -0.64535815 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V49          V51          V54          V57          V58          V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -11.77770597 -15.88540437  -3.70175236   3.68977232  -5.29637786  -2.09552936 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.17895515 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V15          V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.44306132  -0.46383323  -1.32887726  -0.60737935   0.16530824   0.32769851 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V20          V21          V22          V24          V28          V29 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.13242429  -0.05593751  -0.37900665  -0.18591555  -0.07920002  -0.40765031 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V31          V36          V37           V4          V45          V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.34164179   0.87038870   0.35166095  -1.29440292  -1.98667895  -0.40284302 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V49          V52          V54          V57           V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -4.44663408 -14.02823172  -1.48139932   1.75179280  -0.21321697 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.03598675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.05040235</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -208,7 +207,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

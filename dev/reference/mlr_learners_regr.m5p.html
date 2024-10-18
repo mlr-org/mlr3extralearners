@@ -121,6 +121,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <ul><li><p><a href="#method-LearnerRegrM5P-new"><code>LearnerRegrM5P$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrM5P-clone"><code>LearnerRegrM5P$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -181,16 +182,24 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/43.048%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt;= 2.333 : LM1 (6/29.879%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;  2.333 : LM2 (15/19.664%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.0083 * carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 4.7666 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0431 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 11.3781</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.033 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0266 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.3613 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.2508</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0361 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.7751 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.6585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -199,7 +208,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.92749 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.104755 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

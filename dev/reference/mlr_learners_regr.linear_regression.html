@@ -119,6 +119,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p><a href="#method-LearnerRegrLinearRegression-new"><code>LearnerRegrLinearRegression$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrLinearRegression-clone"><code>LearnerRegrLinearRegression$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -182,9 +183,12 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg =</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      -0.0275 * hp +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      -3.5613 * wt +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      34.8416</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -1.8446 * cyl +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.0378 * hp +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       2.8522 * qsec +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -6.1146 * vs +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -6.0691 * wt +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -2.6537</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -193,7 +197,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14.49389 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25.58688 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

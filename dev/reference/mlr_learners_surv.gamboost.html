@@ -49,10 +49,6 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
 
 
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>distr</code> prediction made by <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code>.</p>
-    </div>
-    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -72,6 +68,23 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>family</td><td>character</td><td>coxph</td><td>coxph, weibull, loglog, lognormal, gehan, cindex, custom</td><td>-</td></tr><tr><td>custom.family</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>nuirange</td><td>untyped</td><td>c(0, 100)</td><td></td><td>-</td></tr><tr><td>offset</td><td>numeric</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mstop</td><td>integer</td><td>100</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nu</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>risk</td><td>character</td><td>inbag</td><td>inbag, oobag, none</td><td>-</td></tr><tr><td>stopintern</td><td>untyped</td><td>FALSE</td><td></td><td>-</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobweights</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>baselearner</td><td>character</td><td>bbs</td><td>bbs, bols, btree</td><td>-</td></tr><tr><td>dfbase</td><td>integer</td><td>4</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>sigma</td><td>numeric</td><td>0.1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>ipcw</td><td>untyped</td><td>1</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>stats::na.omit</td><td></td><td>-</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two to three prediction types:</p><ol><li><p><code>lp</code>: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/methods.html" class="external-link">mboost::predict.gamboost()</a></code>.
+If the <code>family</code> parameter is not <code>"coxph"</code>, <code>-lp</code> is returned, since non-coxph
+families represent AFT-style distributions where lower <code>lp</code> values indicate higher risk.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+<li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code>.
+This prediction type is present only when the <code>family</code> distribution parameter
+is equal to <code>"coxph"</code> (default).
+By default the Breslow estimator is used for computing the baseline hazard.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Bühlmann, Peter, Yu, Bin (2003).
@@ -109,6 +122,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
 <li><p><a href="#method-LearnerSurvGAMBoost-selected_features"><code>LearnerSurvGAMBoost$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvGAMBoost-clone"><code>LearnerSurvGAMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -178,7 +192,7 @@ with the default arguments.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=coxph</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, mboost, pracma</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, selected_features, weights</span>
 </code></pre></div>

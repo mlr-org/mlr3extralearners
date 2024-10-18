@@ -49,6 +49,12 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 
 
     <div class="section level2">
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+
+
+<ul><li><p><code>family</code> is set to <code>"binomial"</code> and canno be changed</p></li>
+</ul></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -106,6 +112,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <li><p><a href="#method-LearnerClassifPriorityLasso-selected_features"><code>LearnerClassifPriorityLasso$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifPriorityLasso-clone"><code>LearnerClassifPriorityLasso$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -123,7 +130,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 
 </div><p></p><hr><a id="method-LearnerClassifPriorityLasso-selected_features"></a><div class="section">
 <h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
-<p>Selected features, i.e. those where the coefficient is positive.</p><div class="section">
+<p>Selected features, i.e. those where the coefficient is non-zero.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifPriorityLasso</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -177,16 +184,16 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 28</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.type</span>
@@ -194,30 +201,30 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.003424371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.002590411</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.05379112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.006944023</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03677851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.0249055</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03179287</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02866407</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5931642</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5831817</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6382545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6400327</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.658379</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6738302</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.8140639</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.8263309</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero</span>
@@ -225,13 +232,13 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 34</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $glmnet.fit</span>
@@ -286,212 +293,211 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet(x = X[current_observations, actual_block], y = Y[current_observations],      weights = weights[current_observations], offset = liste[[i]][current_observations],      family = family, standardize = standardize) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df %Dev   Lambda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.085650</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.43 0.078040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1 0.78 0.071110</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1 1.08 0.064790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1 1.32 0.059040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1 1.53 0.053790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1 1.70 0.049010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2 1.90 0.044660</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2 2.16 0.040690</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2 2.38 0.037080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2 2.57 0.033780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2 2.72 0.030780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  3 2.86 0.028050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14  3 3.01 0.025560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15  3 3.14 0.023280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16  3 3.25 0.021220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17  3 3.34 0.019330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18  3 3.41 0.017610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19  3 3.48 0.016050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20  3 3.53 0.014620</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21  3 3.57 0.013320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22  3 3.61 0.012140</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23  3 3.64 0.011060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24  3 3.66 0.010080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25  3 3.68 0.009184</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26  3 3.70 0.008368</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27  3 3.72 0.007625</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28  3 3.73 0.006947</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29  3 3.74 0.006330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30  3 3.75 0.005768</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31  3 3.75 0.005255</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32  3 3.76 0.004789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33  3 3.76 0.004363</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34  3 3.77 0.003976</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35  3 3.77 0.003622</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36  4 3.78 0.003301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37  4 3.78 0.003007</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38  4 3.78 0.002740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39  4 3.78 0.002497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40  4 3.79 0.002275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41  4 3.79 0.002073</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42  4 3.79 0.001889</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43  4 3.79 0.001721</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44  4 3.79 0.001568</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.085610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.43 0.078000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1 0.78 0.071070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1 1.08 0.064760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   1 1.32 0.059010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   1 1.53 0.053770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   1 1.70 0.048990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   2 1.91 0.044640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   2 2.18 0.040670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  2 2.40 0.037060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  2 2.58 0.033770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  2 2.73 0.030770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  3 2.87 0.028030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  3 3.03 0.025540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  3 3.15 0.023270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  3 3.26 0.021210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17  3 3.35 0.019320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  3 3.43 0.017610</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  3 3.49 0.016040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  3 3.54 0.014620</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21  3 3.58 0.013320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22  3 3.62 0.012130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23  3 3.65 0.011060</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24  3 3.68 0.010070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25  3 3.70 0.009180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  3 3.71 0.008364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27  3 3.73 0.007621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28  3 3.74 0.006944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29  3 3.75 0.006327</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  3 3.76 0.005765</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  3 3.77 0.005253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  3 3.77 0.004786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  3 3.78 0.004361</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34  3 3.78 0.003974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35  3 3.78 0.003621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  4 3.79 0.003299</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  4 3.79 0.003006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38  4 3.79 0.002739</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39  4 3.79 0.002496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40  4 3.80 0.002274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41  4 3.80 0.002072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42  4 3.80 0.001888</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43  4 3.80 0.001720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44  4 3.80 0.001567</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $glmnet.fit[[3]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet(x = X[current_observations, actual_block], y = Y[current_observations],      weights = weights[current_observations], offset = liste[[i]][current_observations],      family = family, standardize = standardize) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df %Dev   Lambda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.064270</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.25 0.058560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   1 0.46 0.053360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   1 0.64 0.048620</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   4 0.85 0.044300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   4 1.36 0.040360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   4 1.80 0.036780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   4 2.17 0.033510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   4 2.48 0.030530</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  4 2.74 0.027820</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11  6 2.99 0.025350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  7 3.26 0.023100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13 10 3.58 0.021050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 10 3.89 0.019180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 11 4.16 0.017470</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 11 4.39 0.015920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 13 4.63 0.014510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 14 4.83 0.013220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 14 5.01 0.012040</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 14 5.16 0.010970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 14 5.29 0.009999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 15 5.40 0.009110</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 15 5.50 0.008301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 16 5.58 0.007564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 16 5.66 0.006892</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 16 5.72 0.006279</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 16 5.77 0.005722</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 16 5.81 0.005213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 16 5.85 0.004750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 16 5.88 0.004328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 16 5.91 0.003944</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 16 5.93 0.003593</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 16 5.95 0.003274</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 16 5.96 0.002983</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 16 5.97 0.002718</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 16 5.98 0.002477</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 16 5.99 0.002257</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 16 6.00 0.002056</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 16 6.00 0.001874</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 16 6.01 0.001707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 17 6.01 0.001555</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 17 6.02 0.001417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 17 6.02 0.001291</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 17 6.02 0.001177</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 17 6.03 0.001072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 17 6.03 0.000977</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 17 6.03 0.000890</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 17 6.03 0.000811</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 17 6.03 0.000739</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 17 6.03 0.000673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.063140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.25 0.057530</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2 0.59 0.052420</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2 0.98 0.047770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   3 1.38 0.043520</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   4 1.82 0.039660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   4 2.26 0.036130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   4 2.63 0.032920</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   5 2.95 0.030000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  5 3.28 0.027330</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  6 3.58 0.024910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  9 3.94 0.022690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  9 4.28 0.020680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  9 4.57 0.018840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  9 4.81 0.017170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 11 5.04 0.015640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 11 5.25 0.014250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 11 5.42 0.012990</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 13 5.59 0.011830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 13 5.73 0.010780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 14 5.85 0.009823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 14 5.95 0.008951</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 14 6.04 0.008155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 14 6.12 0.007431</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 14 6.18 0.006771</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 15 6.24 0.006169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 15 6.29 0.005621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 15 6.33 0.005122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 16 6.36 0.004667</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 16 6.39 0.004252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 16 6.41 0.003874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 17 6.43 0.003530</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 17 6.45 0.003217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 17 6.47 0.002931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 17 6.48 0.002671</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 17 6.49 0.002433</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 17 6.50 0.002217</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 17 6.51 0.002020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 17 6.51 0.001841</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 17 6.52 0.001677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 17 6.52 0.001528</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 17 6.53 0.001392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 17 6.53 0.001269</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 17 6.53 0.001156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 17 6.53 0.001053</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 17 6.54 0.000960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 17 6.54 0.000874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 17 6.54 0.000797</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 17 6.54 0.000726</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $glmnet.fit[[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet(x = X[current_observations, actual_block], y = Y[current_observations],      weights = weights[current_observations], offset = liste[[i]][current_observations],      family = family, standardize = standardize) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df  %Dev   Lambda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     0  0.00 0.162000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     1  0.84 0.154600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3  1.65 0.147600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     4  2.63 0.140900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5  3.67 0.134500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     7  4.68 0.128300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7  5.65 0.122500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     9  6.62 0.116900</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    11  7.72 0.111600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10  8.83 0.106600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11  9.98 0.101700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   11 11.08 0.097090</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   12 12.10 0.092680</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   12 13.07 0.088470</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   12 13.95 0.084440</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16   12 14.77 0.080610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   13 15.55 0.076940</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18   13 16.29 0.073450</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19   13 16.98 0.070110</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   12 17.62 0.066920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21   14 18.29 0.063880</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22   15 19.06 0.060980</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   15 19.79 0.058200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24   15 20.47 0.055560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25   15 21.10 0.053030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26   14 21.69 0.050620</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27   15 22.25 0.048320</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28   16 22.79 0.046130</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   17 23.48 0.044030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30   17 24.19 0.042030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31   17 24.86 0.040120</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32   19 25.57 0.038290</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33   21 26.27 0.036550</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34   24 27.07 0.034890</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35   25 27.94 0.033310</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36   26 28.79 0.031790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   28 29.65 0.030350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38   30 30.48 0.028970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39   35 31.39 0.027650</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40   36 32.35 0.026400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41   39 33.32 0.025200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42   44 34.37 0.024050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43   46 35.42 0.022960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   46 36.42 0.021910</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45   50 37.42 0.020920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46   55 38.51 0.019970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   58 39.68 0.019060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48   60 40.87 0.018190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49   64 42.03 0.017370</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50   68 43.19 0.016580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51   71 44.31 0.015820</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52   76 45.47 0.015100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53   78 46.64 0.014420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54   80 47.80 0.013760</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55   81 48.95 0.013140</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56   86 50.10 0.012540</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57   90 51.29 0.011970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58   92 52.54 0.011430</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   96 53.81 0.010910</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60   99 55.07 0.010410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61  102 56.29 0.009938</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62  105 57.49 0.009486</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63  107 58.63 0.009055</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64  109 59.77 0.008643</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65  113 60.87 0.008250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66  117 61.99 0.007875</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67  126 63.17 0.007517</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68  130 64.38 0.007176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69  133 65.59 0.006850</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70  135 66.75 0.006538</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71  133 67.88 0.006241</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72  140 69.00 0.005957</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 73  143 70.11 0.005687</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 74  145 71.22 0.005428</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75  149 72.33 0.005181</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76  149 73.41 0.004946</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77  149 74.47 0.004721</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 78  151 75.50 0.004507</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 79  150 76.51 0.004302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80  149 77.50 0.004106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81  146 78.42 0.003920</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82  144 79.30 0.003741</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83  146 80.14 0.003571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84  152 80.96 0.003409</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85  154 81.78 0.003254</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86  155 82.55 0.003106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87  156 83.30 0.002965</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88  158 84.03 0.002830</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89  160 84.72 0.002702</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90  162 85.39 0.002579</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91  165 86.04 0.002462</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92  167 86.66 0.002350</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93  166 87.27 0.002243</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94  167 87.83 0.002141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95  169 88.37 0.002044</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96  172 88.90 0.001951</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 97  174 89.40 0.001862</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98  176 89.89 0.001777</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99  179 90.35 0.001697</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100 180 90.79 0.001620</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     0  0.00 0.160300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     1  0.89 0.153000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     2  1.74 0.146000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     2  2.71 0.139400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     4  3.63 0.133000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     5  4.63 0.127000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     5  5.56 0.121200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8  6.51 0.115700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9    10  7.47 0.110500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   10  8.44 0.105400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   11  9.42 0.100600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   12 10.50 0.096070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   12 11.54 0.091700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   13 12.52 0.087540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   13 13.43 0.083560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   14 14.28 0.079760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   16 15.09 0.076130</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18   15 15.86 0.072670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19   15 16.58 0.069370</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   15 17.25 0.066220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21   15 17.92 0.063210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   16 18.54 0.060340</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   17 19.30 0.057590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   17 20.02 0.054980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   17 20.68 0.052480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   18 21.31 0.050090</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27   18 21.89 0.047810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   18 22.43 0.045640</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   18 22.93 0.043570</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30   18 23.44 0.041590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31   20 24.05 0.039700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   21 24.73 0.037890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   23 25.40 0.036170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34   24 26.07 0.034530</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   27 26.84 0.032960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   27 27.63 0.031460</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   28 28.39 0.030030</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   34 29.22 0.028660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   34 30.16 0.027360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40   35 31.09 0.026120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   37 31.98 0.024930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   39 32.89 0.023800</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43   44 33.91 0.022720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   46 34.96 0.021680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   47 35.97 0.020700</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46   52 37.04 0.019760</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   55 38.15 0.018860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48   56 39.29 0.018000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49   59 40.40 0.017180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50   64 41.56 0.016400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51   67 42.76 0.015660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52   70 43.92 0.014950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53   74 45.06 0.014270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54   77 46.23 0.013620</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55   81 47.39 0.013000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56   85 48.60 0.012410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57   89 49.83 0.011840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58   96 51.19 0.011310</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   95 52.50 0.010790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60   96 53.79 0.010300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61   99 55.06 0.009833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  102 56.32 0.009386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  105 57.54 0.008960</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  110 58.75 0.008552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  115 59.92 0.008164</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  119 61.14 0.007793</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  123 62.36 0.007438</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  123 63.52 0.007100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  124 64.69 0.006778</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  128 65.83 0.006470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  133 66.99 0.006175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  135 68.18 0.005895</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  135 69.32 0.005627</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  140 70.45 0.005371</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  143 71.59 0.005127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  145 72.71 0.004894</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  148 73.80 0.004672</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  148 74.87 0.004459</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  147 75.88 0.004257</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  153 76.88 0.004063</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  154 77.85 0.003878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  156 78.77 0.003702</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  156 79.69 0.003534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  158 80.56 0.003373</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  161 81.39 0.003220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  162 82.20 0.003074</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  162 82.96 0.002934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  163 83.70 0.002801</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  163 84.41 0.002673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  162 85.09 0.002552</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  162 85.74 0.002436</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  164 86.37 0.002325</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  165 86.97 0.002219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  167 87.55 0.002118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  170 88.10 0.002022</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  170 88.63 0.001930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  168 89.14 0.001843</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  171 89.63 0.001759</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  176 90.10 0.001679</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 175 90.54 0.001603</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $name</span>
@@ -502,350 +508,418 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $coefficients</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         b1.1         b1.2         b1.3         b1.4         b2.1         b2.2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.961364362  0.758682848  0.188079093  0.213679144  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         b2.3         b2.4         b2.5         b3.1        b3.10        b3.11 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.144797944  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b3.12        b3.13        b3.14        b3.15        b3.16        b3.17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b3.18        b3.19         b3.2         b3.3         b3.4         b3.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.073683917  0.000000000  0.637993296  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         b3.6         b3.7         b3.8         b3.9         b4.1        b4.10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000 -0.127461131  0.082226631  0.000000000  0.345140118  0.314016760 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.100      b4.1000       b4.101       b4.102       b4.103       b4.104 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.105       b4.106       b4.107       b4.108       b4.109        b4.11 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.110       b4.111       b4.112       b4.113       b4.114       b4.115 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.116       b4.117       b4.118       b4.119        b4.12       b4.120 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.121       b4.122       b4.123       b4.124       b4.125       b4.126 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.127       b4.128       b4.129        b4.13       b4.130       b4.131 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.132       b4.133       b4.134       b4.135       b4.136       b4.137 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.138       b4.139        b4.14       b4.140       b4.141       b4.142 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.143       b4.144       b4.145       b4.146       b4.147       b4.148 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.149        b4.15       b4.150       b4.151       b4.152       b4.153 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.015131999 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.154       b4.155       b4.156       b4.157       b4.158       b4.159 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.16       b4.160       b4.161       b4.162       b4.163       b4.164 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.165       b4.166       b4.167       b4.168       b4.169        b4.17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.170       b4.171       b4.172       b4.173       b4.174       b4.175 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.176       b4.177       b4.178       b4.179        b4.18       b4.180 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.181       b4.182       b4.183       b4.184       b4.185       b4.186 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.187       b4.188       b4.189        b4.19       b4.190       b4.191 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.192       b4.193       b4.194       b4.195       b4.196       b4.197 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.198       b4.199         b4.2        b4.20       b4.200       b4.201 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.202       b4.203       b4.204       b4.205       b4.206       b4.207 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.208       b4.209        b4.21       b4.210       b4.211       b4.212 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.213       b4.214       b4.215       b4.216       b4.217       b4.218 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.219        b4.22       b4.220       b4.221       b4.222       b4.223 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.224       b4.225       b4.226       b4.227       b4.228       b4.229 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.23       b4.230       b4.231       b4.232       b4.233       b4.234 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.235       b4.236       b4.237       b4.238       b4.239        b4.24 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.240       b4.241       b4.242       b4.243       b4.244       b4.245 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.246       b4.247       b4.248       b4.249        b4.25       b4.250 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.251       b4.252       b4.253       b4.254       b4.255       b4.256 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.257       b4.258       b4.259        b4.26       b4.260       b4.261 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.262       b4.263       b4.264       b4.265       b4.266       b4.267 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.268       b4.269        b4.27       b4.270       b4.271       b4.272 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.273       b4.274       b4.275       b4.276       b4.277       b4.278 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000 -0.080638277  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.279        b4.28       b4.280       b4.281       b4.282       b4.283 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.284       b4.285       b4.286       b4.287       b4.288       b4.289 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.29       b4.290       b4.291       b4.292       b4.293       b4.294 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.295       b4.296       b4.297       b4.298       b4.299         b4.3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.30       b4.300       b4.301       b4.302       b4.303       b4.304 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.305       b4.306       b4.307       b4.308       b4.309        b4.31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.146864191  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.310       b4.311       b4.312       b4.313       b4.314       b4.315 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.316       b4.317       b4.318       b4.319        b4.32       b4.320 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.321       b4.322       b4.323       b4.324       b4.325       b4.326 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.327       b4.328       b4.329        b4.33       b4.330       b4.331 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.332       b4.333       b4.334       b4.335       b4.336       b4.337 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.073964424  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.338       b4.339        b4.34       b4.340       b4.341       b4.342 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.343       b4.344       b4.345       b4.346       b4.347       b4.348 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.349        b4.35       b4.350       b4.351       b4.352       b4.353 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.354       b4.355       b4.356       b4.357       b4.358       b4.359 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.015650997  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.36       b4.360       b4.361       b4.362       b4.363       b4.364 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.365       b4.366       b4.367       b4.368       b4.369        b4.37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.370       b4.371       b4.372       b4.373       b4.374       b4.375 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.376       b4.377       b4.378       b4.379        b4.38       b4.380 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.381       b4.382       b4.383       b4.384       b4.385       b4.386 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.387       b4.388       b4.389        b4.39       b4.390       b4.391 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.392       b4.393       b4.394       b4.395       b4.396       b4.397 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.398       b4.399         b4.4        b4.40       b4.400       b4.401 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.186023453  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.402       b4.403       b4.404       b4.405       b4.406       b4.407 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.408       b4.409        b4.41       b4.410       b4.411       b4.412 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.413       b4.414       b4.415       b4.416       b4.417       b4.418 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.419        b4.42       b4.420       b4.421       b4.422       b4.423 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.424       b4.425       b4.426       b4.427       b4.428       b4.429 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.43       b4.430       b4.431       b4.432       b4.433       b4.434 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.435       b4.436       b4.437       b4.438       b4.439        b4.44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.440       b4.441       b4.442       b4.443       b4.444       b4.445 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.446       b4.447       b4.448       b4.449        b4.45       b4.450 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.451       b4.452       b4.453       b4.454       b4.455       b4.456 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.457       b4.458       b4.459        b4.46       b4.460       b4.461 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.462       b4.463       b4.464       b4.465       b4.466       b4.467 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.468       b4.469        b4.47       b4.470       b4.471       b4.472 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.473       b4.474       b4.475       b4.476       b4.477       b4.478 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.479        b4.48       b4.480       b4.481       b4.482       b4.483 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.484       b4.485       b4.486       b4.487       b4.488       b4.489 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.49       b4.490       b4.491       b4.492       b4.493       b4.494 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.495       b4.496       b4.497       b4.498       b4.499         b4.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.50       b4.500       b4.501       b4.502       b4.503       b4.504 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.505       b4.506       b4.507       b4.508       b4.509        b4.51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.510       b4.511       b4.512       b4.513       b4.514       b4.515 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.516       b4.517       b4.518       b4.519        b4.52       b4.520 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.521       b4.522       b4.523       b4.524       b4.525       b4.526 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.527       b4.528       b4.529        b4.53       b4.530       b4.531 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.532       b4.533       b4.534       b4.535       b4.536       b4.537 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.538       b4.539        b4.54       b4.540       b4.541       b4.542 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.543       b4.544       b4.545       b4.546       b4.547       b4.548 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.549        b4.55       b4.550       b4.551       b4.552       b4.553 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.554       b4.555       b4.556       b4.557       b4.558       b4.559 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.56       b4.560       b4.561       b4.562       b4.563       b4.564 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.565       b4.566       b4.567       b4.568       b4.569        b4.57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.015318248  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.570       b4.571       b4.572       b4.573       b4.574       b4.575 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.576       b4.577       b4.578       b4.579        b4.58       b4.580 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.581       b4.582       b4.583       b4.584       b4.585       b4.586 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.587       b4.588       b4.589        b4.59       b4.590       b4.591 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.592       b4.593       b4.594       b4.595       b4.596       b4.597 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.598       b4.599         b4.6        b4.60       b4.600       b4.601 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.203578732  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.602       b4.603       b4.604       b4.605       b4.606       b4.607 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.117405537 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.608       b4.609        b4.61       b4.610       b4.611       b4.612 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.613       b4.614       b4.615       b4.616       b4.617       b4.618 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.619        b4.62       b4.620       b4.621       b4.622       b4.623 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.089827967 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.624       b4.625       b4.626       b4.627       b4.628       b4.629 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.63       b4.630       b4.631       b4.632       b4.633       b4.634 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.635       b4.636       b4.637       b4.638       b4.639        b4.64 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.011578792  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.640       b4.641       b4.642       b4.643       b4.644       b4.645 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.102892771  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.646       b4.647       b4.648       b4.649        b4.65       b4.650 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.001238789  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.651       b4.652       b4.653       b4.654       b4.655       b4.656 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.657       b4.658       b4.659        b4.66       b4.660       b4.661 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.138901908  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.662       b4.663       b4.664       b4.665       b4.666       b4.667 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.668       b4.669        b4.67       b4.670       b4.671       b4.672 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.673       b4.674       b4.675       b4.676       b4.677       b4.678 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.679        b4.68       b4.680       b4.681       b4.682       b4.683 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.684       b4.685       b4.686       b4.687       b4.688       b4.689 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.69       b4.690       b4.691       b4.692       b4.693       b4.694 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.695       b4.696       b4.697       b4.698       b4.699         b4.7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.70       b4.700       b4.701       b4.702       b4.703       b4.704 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.705       b4.706       b4.707       b4.708       b4.709        b4.71 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.710       b4.711       b4.712       b4.713       b4.714       b4.715 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.716       b4.717       b4.718       b4.719        b4.72       b4.720 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.721       b4.722       b4.723       b4.724       b4.725       b4.726 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.727       b4.728       b4.729        b4.73       b4.730       b4.731 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.081478335  0.000000000  0.000000000  0.000000000  0.000000000 -0.050587926 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.732       b4.733       b4.734       b4.735       b4.736       b4.737 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.738       b4.739        b4.74       b4.740       b4.741       b4.742 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.743       b4.744       b4.745       b4.746       b4.747       b4.748 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.749        b4.75       b4.750       b4.751       b4.752       b4.753 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.754       b4.755       b4.756       b4.757       b4.758       b4.759 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.76       b4.760       b4.761       b4.762       b4.763       b4.764 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.765       b4.766       b4.767       b4.768       b4.769        b4.77 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.126594982  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.770       b4.771       b4.772       b4.773       b4.774       b4.775 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000 -0.030177892  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.776       b4.777       b4.778       b4.779        b4.78       b4.780 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 -0.015782203  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.781       b4.782       b4.783       b4.784       b4.785       b4.786 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.787       b4.788       b4.789        b4.79       b4.790       b4.791 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 -0.082169918  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.792       b4.793       b4.794       b4.795       b4.796       b4.797 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.798       b4.799         b4.8        b4.80       b4.800       b4.801 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.070927202  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.802       b4.803       b4.804       b4.805       b4.806       b4.807 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.808       b4.809        b4.81       b4.810       b4.811       b4.812 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.813       b4.814       b4.815       b4.816       b4.817       b4.818 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.819        b4.82       b4.820       b4.821       b4.822       b4.823 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.824       b4.825       b4.826       b4.827       b4.828       b4.829 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.83       b4.830       b4.831       b4.832       b4.833       b4.834 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.835       b4.836       b4.837       b4.838       b4.839        b4.84 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.840       b4.841       b4.842       b4.843       b4.844       b4.845 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.846       b4.847       b4.848       b4.849        b4.85       b4.850 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.851       b4.852       b4.853       b4.854       b4.855       b4.856 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.857       b4.858       b4.859        b4.86       b4.860       b4.861 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.862       b4.863       b4.864       b4.865       b4.866       b4.867 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.868       b4.869        b4.87       b4.870       b4.871       b4.872 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.873       b4.874       b4.875       b4.876       b4.877       b4.878 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.879        b4.88       b4.880       b4.881       b4.882       b4.883 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.884       b4.885       b4.886       b4.887       b4.888       b4.889 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.89       b4.890       b4.891       b4.892       b4.893       b4.894 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.895       b4.896       b4.897       b4.898       b4.899         b4.9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.90       b4.900       b4.901       b4.902       b4.903       b4.904 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.905       b4.906       b4.907       b4.908       b4.909        b4.91 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.910       b4.911       b4.912       b4.913       b4.914       b4.915 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.916       b4.917       b4.918       b4.919        b4.92       b4.920 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.170184258  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.921       b4.922       b4.923       b4.924       b4.925       b4.926 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.927       b4.928       b4.929        b4.93       b4.930       b4.931 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.932       b4.933       b4.934       b4.935       b4.936       b4.937 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.017810701 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.938       b4.939        b4.94       b4.940       b4.941       b4.942 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.943       b4.944       b4.945       b4.946       b4.947       b4.948 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.949        b4.95       b4.950       b4.951       b4.952       b4.953 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.954       b4.955       b4.956       b4.957       b4.958       b4.959 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.96       b4.960       b4.961       b4.962       b4.963       b4.964 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.965       b4.966       b4.967       b4.968       b4.969        b4.97 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.970       b4.971       b4.972       b4.973       b4.974       b4.975 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.976       b4.977       b4.978       b4.979        b4.98       b4.980 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.090360036  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.981       b4.982       b4.983       b4.984       b4.985       b4.986 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.987       b4.988       b4.989        b4.99       b4.990       b4.991 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.992       b4.993       b4.994       b4.995       b4.996       b4.997 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       b4.998       b4.999 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b1.1          b1.2          b1.3          b1.4          b2.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9790702238  0.7719310666  0.2051802637  0.2236655235  0.2044085945 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b2.2          b2.3          b2.4          b2.5          b3.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.3891678689  0.0000000000 -0.0996901248  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b3.10         b3.11         b3.12         b3.13         b3.14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b3.15         b3.16         b3.17         b3.18         b3.19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0617829631 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b3.2          b3.3          b3.4          b3.5          b3.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2078435771 -0.0263713618  1.0006106143  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b3.7          b3.8          b3.9          b4.1         b4.10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.2814759547  0.3121265280  0.0000000000  0.3564895797  0.3348017360 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.100       b4.1000        b4.101        b4.102        b4.103 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.104        b4.105        b4.106        b4.107        b4.108 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.109         b4.11        b4.110        b4.111        b4.112 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.113        b4.114        b4.115        b4.116        b4.117 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.118        b4.119         b4.12        b4.120        b4.121 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.122        b4.123        b4.124        b4.125        b4.126 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.127        b4.128        b4.129         b4.13        b4.130 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.131        b4.132        b4.133        b4.134        b4.135 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.136        b4.137        b4.138        b4.139         b4.14 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.140        b4.141        b4.142        b4.143        b4.144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0448819571  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.145        b4.146        b4.147        b4.148        b4.149 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.15        b4.150        b4.151        b4.152        b4.153 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0066049232 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.154        b4.155        b4.156        b4.157        b4.158 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.159         b4.16        b4.160        b4.161        b4.162 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.163        b4.164        b4.165        b4.166        b4.167 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.168        b4.169         b4.17        b4.170        b4.171 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.172        b4.173        b4.174        b4.175        b4.176 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.177        b4.178        b4.179         b4.18        b4.180 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.181        b4.182        b4.183        b4.184        b4.185 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.186        b4.187        b4.188        b4.189         b4.19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.190        b4.191        b4.192        b4.193        b4.194 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.195        b4.196        b4.197        b4.198        b4.199 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b4.2         b4.20        b4.200        b4.201        b4.202 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.203        b4.204        b4.205        b4.206        b4.207 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.208        b4.209         b4.21        b4.210        b4.211 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.212        b4.213        b4.214        b4.215        b4.216 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.217        b4.218        b4.219         b4.22        b4.220 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.221        b4.222        b4.223        b4.224        b4.225 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.226        b4.227        b4.228        b4.229         b4.23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.230        b4.231        b4.232        b4.233        b4.234 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.235        b4.236        b4.237        b4.238        b4.239 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.24        b4.240        b4.241        b4.242        b4.243 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.244        b4.245        b4.246        b4.247        b4.248 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.249         b4.25        b4.250        b4.251        b4.252 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.253        b4.254        b4.255        b4.256        b4.257 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0015152447  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.258        b4.259         b4.26        b4.260        b4.261 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.262        b4.263        b4.264        b4.265        b4.266 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.267        b4.268        b4.269         b4.27        b4.270 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0004231255  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.271        b4.272        b4.273        b4.274        b4.275 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.276        b4.277        b4.278        b4.279         b4.28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000 -0.0772385563  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.280        b4.281        b4.282        b4.283        b4.284 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.285        b4.286        b4.287        b4.288        b4.289 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.29        b4.290        b4.291        b4.292        b4.293 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.294        b4.295        b4.296        b4.297        b4.298 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.299          b4.3         b4.30        b4.300        b4.301 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.302        b4.303        b4.304        b4.305        b4.306 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.307        b4.308        b4.309         b4.31        b4.310 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.1344764417  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.311        b4.312        b4.313        b4.314        b4.315 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.316        b4.317        b4.318        b4.319         b4.32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.320        b4.321        b4.322        b4.323        b4.324 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.325        b4.326        b4.327        b4.328        b4.329 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.33        b4.330        b4.331        b4.332        b4.333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0534482831  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.334        b4.335        b4.336        b4.337        b4.338 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.339         b4.34        b4.340        b4.341        b4.342 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.343        b4.344        b4.345        b4.346        b4.347 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.348        b4.349         b4.35        b4.350        b4.351 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.352        b4.353        b4.354        b4.355        b4.356 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.357        b4.358        b4.359         b4.36        b4.360 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0750206864  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.361        b4.362        b4.363        b4.364        b4.365 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.366        b4.367        b4.368        b4.369         b4.37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.370        b4.371        b4.372        b4.373        b4.374 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.375        b4.376        b4.377        b4.378        b4.379 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.38        b4.380        b4.381        b4.382        b4.383 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.384        b4.385        b4.386        b4.387        b4.388 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.389         b4.39        b4.390        b4.391        b4.392 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.393        b4.394        b4.395        b4.396        b4.397 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.398        b4.399          b4.4         b4.40        b4.400 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.1295450233  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.401        b4.402        b4.403        b4.404        b4.405 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.406        b4.407        b4.408        b4.409         b4.41 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.410        b4.411        b4.412        b4.413        b4.414 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.415        b4.416        b4.417        b4.418        b4.419 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.42        b4.420        b4.421        b4.422        b4.423 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.424        b4.425        b4.426        b4.427        b4.428 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.429         b4.43        b4.430        b4.431        b4.432 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000 -0.0413057539 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.433        b4.434        b4.435        b4.436        b4.437 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.438        b4.439         b4.44        b4.440        b4.441 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.442        b4.443        b4.444        b4.445        b4.446 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.447        b4.448        b4.449         b4.45        b4.450 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.451        b4.452        b4.453        b4.454        b4.455 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.456        b4.457        b4.458        b4.459         b4.46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0003233327  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.460        b4.461        b4.462        b4.463        b4.464 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.465        b4.466        b4.467        b4.468        b4.469 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0168729382  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.47        b4.470        b4.471        b4.472        b4.473 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.474        b4.475        b4.476        b4.477        b4.478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.479         b4.48        b4.480        b4.481        b4.482 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.483        b4.484        b4.485        b4.486        b4.487 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0020793180  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.488        b4.489         b4.49        b4.490        b4.491 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.492        b4.493        b4.494        b4.495        b4.496 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.497        b4.498        b4.499          b4.5         b4.50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.500        b4.501        b4.502        b4.503        b4.504 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.505        b4.506        b4.507        b4.508        b4.509 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.51        b4.510        b4.511        b4.512        b4.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.514        b4.515        b4.516        b4.517        b4.518 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.519         b4.52        b4.520        b4.521        b4.522 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.523        b4.524        b4.525        b4.526        b4.527 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.528        b4.529         b4.53        b4.530        b4.531 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.532        b4.533        b4.534        b4.535        b4.536 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.537        b4.538        b4.539         b4.54        b4.540 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.541        b4.542        b4.543        b4.544        b4.545 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.546        b4.547        b4.548        b4.549         b4.55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.550        b4.551        b4.552        b4.553        b4.554 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.555        b4.556        b4.557        b4.558        b4.559 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.56        b4.560        b4.561        b4.562        b4.563 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.564        b4.565        b4.566        b4.567        b4.568 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.569         b4.57        b4.570        b4.571        b4.572 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0423217824  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.573        b4.574        b4.575        b4.576        b4.577 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.578        b4.579         b4.58        b4.580        b4.581 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.582        b4.583        b4.584        b4.585        b4.586 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.587        b4.588        b4.589         b4.59        b4.590 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.591        b4.592        b4.593        b4.594        b4.595 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.596        b4.597        b4.598        b4.599          b4.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.2181207852 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.60        b4.600        b4.601        b4.602        b4.603 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.604        b4.605        b4.606        b4.607        b4.608 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.1403613920  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.609         b4.61        b4.610        b4.611        b4.612 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.613        b4.614        b4.615        b4.616        b4.617 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.618        b4.619         b4.62        b4.620        b4.621 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.622        b4.623        b4.624        b4.625        b4.626 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0574150972  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.627        b4.628        b4.629         b4.63        b4.630 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.631        b4.632        b4.633        b4.634        b4.635 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.636        b4.637        b4.638        b4.639         b4.64 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.640        b4.641        b4.642        b4.643        b4.644 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.1098834608  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.645        b4.646        b4.647        b4.648        b4.649 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.65        b4.650        b4.651        b4.652        b4.653 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0301266543  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.654        b4.655        b4.656        b4.657        b4.658 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.659         b4.66        b4.660        b4.661        b4.662 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.1564152912  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.663        b4.664        b4.665        b4.666        b4.667 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.668        b4.669         b4.67        b4.670        b4.671 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0042330292  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.672        b4.673        b4.674        b4.675        b4.676 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.677        b4.678        b4.679         b4.68        b4.680 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.681        b4.682        b4.683        b4.684        b4.685 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.686        b4.687        b4.688        b4.689         b4.69 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.690        b4.691        b4.692        b4.693        b4.694 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.695        b4.696        b4.697        b4.698        b4.699 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          b4.7         b4.70        b4.700        b4.701        b4.702 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.703        b4.704        b4.705        b4.706        b4.707 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.708        b4.709         b4.71        b4.710        b4.711 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.712        b4.713        b4.714        b4.715        b4.716 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.717        b4.718        b4.719         b4.72        b4.720 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.721        b4.722        b4.723        b4.724        b4.725 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.726        b4.727        b4.728        b4.729         b4.73 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000 -0.0603737767  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.730        b4.731        b4.732        b4.733        b4.734 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000 -0.0061117675  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.735        b4.736        b4.737        b4.738        b4.739 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.74        b4.740        b4.741        b4.742        b4.743 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.744        b4.745        b4.746        b4.747        b4.748 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.749         b4.75        b4.750        b4.751        b4.752 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.753        b4.754        b4.755        b4.756        b4.757 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.758        b4.759         b4.76        b4.760        b4.761 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.762        b4.763        b4.764        b4.765        b4.766 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0249446163  0.0000000000  0.0000000000 -0.0741394707  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.767        b4.768        b4.769         b4.77        b4.770 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.771        b4.772        b4.773        b4.774        b4.775 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000 -0.0100843764  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.776        b4.777        b4.778        b4.779         b4.78 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000 -0.0411274658  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.780        b4.781        b4.782        b4.783        b4.784 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.785        b4.786        b4.787        b4.788        b4.789 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000 -0.0164786755  0.0000000000  0.0000000000 -0.0967873983 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.79        b4.790        b4.791        b4.792        b4.793 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.794        b4.795        b4.796        b4.797        b4.798 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.799          b4.8         b4.80        b4.800        b4.801 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0735961563  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.802        b4.803        b4.804        b4.805        b4.806 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.807        b4.808        b4.809         b4.81        b4.810 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.811        b4.812        b4.813        b4.814        b4.815 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.816        b4.817        b4.818        b4.819         b4.82 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.820        b4.821        b4.822        b4.823        b4.824 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.825        b4.826        b4.827        b4.828        b4.829 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.83        b4.830        b4.831        b4.832        b4.833 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.834        b4.835        b4.836        b4.837        b4.838 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.839         b4.84        b4.840        b4.841        b4.842 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.843        b4.844        b4.845        b4.846        b4.847 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.848        b4.849         b4.85        b4.850        b4.851 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.852        b4.853        b4.854        b4.855        b4.856 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.857        b4.858        b4.859         b4.86        b4.860 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.861        b4.862        b4.863        b4.864        b4.865 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.866        b4.867        b4.868        b4.869         b4.87 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.870        b4.871        b4.872        b4.873        b4.874 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.875        b4.876        b4.877        b4.878        b4.879 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.88        b4.880        b4.881        b4.882        b4.883 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.884        b4.885        b4.886        b4.887        b4.888 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.889         b4.89        b4.890        b4.891        b4.892 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.893        b4.894        b4.895        b4.896        b4.897 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.898        b4.899          b4.9         b4.90        b4.900 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.901        b4.902        b4.903        b4.904        b4.905 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.906        b4.907        b4.908        b4.909         b4.91 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.910        b4.911        b4.912        b4.913        b4.914 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.915        b4.916        b4.917        b4.918        b4.919 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.1643254666  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.92        b4.920        b4.921        b4.922        b4.923 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.924        b4.925        b4.926        b4.927        b4.928 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.929         b4.93        b4.930        b4.931        b4.932 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.933        b4.934        b4.935        b4.936        b4.937 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.938        b4.939         b4.94        b4.940        b4.941 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.942        b4.943        b4.944        b4.945        b4.946 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.947        b4.948        b4.949         b4.95        b4.950 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.951        b4.952        b4.953        b4.954        b4.955 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.956        b4.957        b4.958        b4.959         b4.96 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.960        b4.961        b4.962        b4.963        b4.964 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.965        b4.966        b4.967        b4.968        b4.969 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         b4.97        b4.970        b4.971        b4.972        b4.973 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.974        b4.975        b4.976        b4.977        b4.978 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0942806350  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.979         b4.98        b4.980        b4.981        b4.982 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.983        b4.984        b4.985        b4.986        b4.987 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.988        b4.989         b4.99        b4.990        b4.991 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.992        b4.993        b4.994        b4.995        b4.996 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000  0.0000000000  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        b4.997        b4.998        b4.999 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000  0.0000000000  0.0000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $call</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> prioritylasso::prioritylasso(X = data, Y = target, family = "binomial", </span>
