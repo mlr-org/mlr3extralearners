@@ -1,5 +1,5 @@
 #' @title Classification Generalized Additive Model Learner
-#' @author JazzyPierrot
+#' @author pierrecamilleri
 #' @name mlr_learners_classif.gam
 #'
 #' @description
