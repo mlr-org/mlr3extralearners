@@ -230,11 +230,11 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 228</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 40.926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.594</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
@@ -244,7 +244,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.59538665 0.54993129 0.20004163 0.18782572 0.11961654 0.09908763 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6028614  0.5536509  0.2190418  0.1897803  0.1259886  0.1144015 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -252,7 +252,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8432615 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8308498 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
