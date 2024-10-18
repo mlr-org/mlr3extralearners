@@ -1,5 +1,20 @@
 # dev
 
+* Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347
+* All survival learners have `crank` as main prediction type (and it is always returned) #331
+* Added minimum working version for all survival learners in `DESCRIPTION` file
+* Harmonized the use of times points for prediction as much as possible across survival learners #387
+  * added `gridify_times()` function to coarse time points
+  * fixed `surv.parametric` and `surv.akritas` use of `ntime` argument
+* `surv.parametric` is now used by default with `discrete = TRUE` (no survival learner returns now `distr6` vectorized distribution by default)
+* Doc update for `mlr3` (version `0.21.0`)
+* Fixed custom and initial values across all learners documentation pages
+* Fixed doc examples that used `learner$importance()`
+* Set `n_thread = 1` for `surv.aorsf` and use unique event time points for predicted `S(t)`
+* Add `selected_features()` for `surv.penalized`
+* Fix `surv.prioritylasso` learner + add `distr` predictions via Breslow #344
+* Survival SVM  `gamma.mu` parameter was split to `gamma` and `mu` to enable easier tuning (`surv.svm` learner)
+
 # mlr3extralearners 0.9.0
 
 * Added response (i.e., survival time) prediction to `aorsf` learner

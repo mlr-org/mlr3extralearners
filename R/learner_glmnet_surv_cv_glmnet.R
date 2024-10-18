@@ -6,20 +6,21 @@
 #' Generalized linear models with elastic net regularization.
 #' Calls [glmnet::cv.glmnet()] from package \CRANpkg{glmnet}.
 #'
-#' @section Custom mlr3 parameters:
+#' @section Initial parameter values:
 #' - `family` is set to `"cox"` and cannot be changed.
 #'
-#' @details
-#' This learner returns two prediction types:
-#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
+#' @section Prediction types:
+#' This learner returns three prediction types:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
 #' Calculated using [glmnet::predict.cv.glmnet()].
-#' 2. `distr`: a survival matrix in two dimensions, where observations are
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using [glmnet::survfit.cv.glmnet()].
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
 #' into survival predictions and are described in [survival::survfit.coxph()].
-#' By default the Breslow estimator is used.
+#' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' @templateVar id surv.cv_glmnet
 #' @template learner

@@ -8,6 +8,13 @@
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
 }
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{family} is set to \code{"binomial"} and canno be changed
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -136,6 +143,7 @@ HarutyunyanLiana
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>
@@ -160,7 +168,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifPriorityLasso-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifPriorityLasso-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features, i.e. those where the coefficient is positive.
+Selected features, i.e. those where the coefficient is non-zero.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifPriorityLasso$selected_features()}\if{html}{\out{</div>}}
 }

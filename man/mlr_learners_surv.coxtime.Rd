@@ -8,6 +8,17 @@
 Cox-Time survival model.
 Calls \code{\link[survivalmodels:coxtime]{survivalmodels::coxtime()}} from package 'survivalmodels'.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal \code{\link[survivalmodels:predict.pycox]{survivalmodels::predict.pycox()}} function.
+\item \code{crank}: the expected mortality using \code{\link[survivalmodels:surv_to_risk]{survivalmodels::surv_to_risk()}}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -112,6 +123,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

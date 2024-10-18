@@ -6,6 +6,13 @@
 #' Fits a neural network based on pseudo-conditional survival probabilities.
 #' Calls [survivalmodels::dnnsurv()] from package 'survivalmodels'.
 #'
+#' @section Prediction types:
+#' This learner returns two prediction types:
+#' 1. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using the internal [survivalmodels::predict.dnnsurv()] function.
+#' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
+#'
 #' @template learner
 #' @templateVar id surv.dnnsurv
 #'

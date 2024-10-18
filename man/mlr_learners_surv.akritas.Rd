@@ -8,6 +8,21 @@
 Survival akritas estimator.
 Calls \code{\link[survivalmodels:akritas]{survivalmodels::akritas()}} from package 'survivalmodels'.
 }
+\section{Prediction types}{
+
+This learner returns two prediction types:
+\enumerate{
+\item \code{distr}: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal \code{\link[survivalmodels:predict.akritas]{survivalmodels::predict.akritas()}} function.
+The survival matrix uses the unique time points from the training set.
+We advise to set the parameter \code{ntime} which allows to adjust the granularity
+of these time points to a reasonable number (e.g. \code{150}).
+This avoids large execution times during prediction.
+\item \code{crank}: the expected mortality using \code{\link[survivalmodels:surv_to_risk]{survivalmodels::surv_to_risk()}}.
+}
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -31,7 +46,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    lambda \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    reverse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   ntime \tab numeric \tab 150 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntime \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    round_time \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
@@ -100,6 +115,7 @@ RaphaelS1
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

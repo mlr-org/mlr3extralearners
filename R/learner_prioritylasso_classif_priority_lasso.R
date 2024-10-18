@@ -6,6 +6,9 @@
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #'
+#' @section Initial parameter values:
+#' - `family` is set to `"binomial"` and canno be changed
+#'
 #' @templateVar id classif.priority_lasso
 #' @template learner
 #'
@@ -104,7 +107,7 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
     },
 
     #' @description
-    #' Selected features, i.e. those where the coefficient is positive.
+    #' Selected features, i.e. those where the coefficient is non-zero.
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model)) {

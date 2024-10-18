@@ -8,24 +8,27 @@
 Generalized linear models with elastic net regularization.
 Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{glmnet}.
 }
-\details{
-This learner returns two prediction types:
+\section{Initial parameter values}{
+
+\itemize{
+\item \code{family} is set to \code{"cox"} and cannot be changed.
+}
+}
+
+\section{Prediction types}{
+
+This learner returns three prediction types:
 \enumerate{
-\item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation.
+\item \code{lp}: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
 Calculated using \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet()}}.
+\item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{\link[glmnet:survfit.cv.glmnet]{glmnet::survfit.cv.glmnet()}}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
 into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
-By default the Breslow estimator is used.
-}
-}
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{family} is set to \code{"cox"} and cannot be changed.
+By default the Breslow estimator is used for computing the baseline hazard.
 }
 }
 
@@ -158,6 +161,7 @@ be-marc
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

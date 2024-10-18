@@ -9,18 +9,20 @@
 #' @template learner
 #' @templateVar id surv.glmboost
 #'
-#' @details
-#' This learner returns up to three prediction types:
-#' 1. `crank`: same as `lp`.
-#' 2. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation.
+#' @section Prediction types:
+#' This learner returns two to three prediction types:
+#' 1. `lp`: a vector containing the linear predictors (relative risk scores),
+#' where each score corresponds to a specific test observation.
 #' Calculated using [mboost::predict.glmboost()].
-#' 3. `distr`: a survival matrix in two dimensions, where rows are observations
-#' and columns are the time points.
-#' This predict type is returned only when the `family` parameter is set to
-#' `"coxph"` (which is the default).
-#' Calculated using [mboost::survFit()] which uses the Breslow estimator for the
-#' baseline hazard function.
+#' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
+#' families represent AFT-style distributions where lower `lp` values indicate higher risk.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' Calculated using [mboost::survFit()].
+#' This prediction type is present only when the `family` distribution parameter
+#' is equal to `"coxph"` (default).
+#' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
@@ -209,9 +211,12 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       # predict linear predictor
       pars = self$param_set$get_values(tags = "predict")
       lp = as.numeric(
-        invoke(predict, self$model, newdata = newdata, type = "link",
-          .args = pars
-      ))
+        invoke(predict,
+               self$model,
+               newdata = newdata,
+               type = "link",
+               .args = pars)
+      )
 
       # predict survival
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {

@@ -9,7 +9,7 @@
 #' @template learner
 #' @templateVar id classif.LMT
 #'
-#' @section CUstom mlr3 parameters:
+#' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
 #'   - original id: output-debug-info
 #'

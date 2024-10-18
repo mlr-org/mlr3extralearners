@@ -10,7 +10,13 @@ objective.
 Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
-\details{
+\note{
+To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
+against CUDA.
+See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
+}
+\section{Prediction types}{
+
 Three types of prediction are returned for this learner:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
@@ -21,11 +27,7 @@ represented in rows and time points in columns.
 By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}}.
 }
 }
-\note{
-To compute on GPUs, you first need to compile \CRANpkg{xgboost} yourself and link
-against CUDA.
-See \url{https://xgboost.readthedocs.io/en/stable/build.html#building-with-gpu-support}.
-}
+
 \section{Initial parameter values}{
 
 \itemize{
@@ -145,7 +147,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance)
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -203,6 +205,7 @@ a ratio, \code{"test"}, or \code{"predefined"}.}
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href='../../mlr3/html/Learner.html#method-Learner-predict'><code>mlr3::Learner$predict()</code></a></span></li>

@@ -20,10 +20,9 @@
 #'   * Actual default: 1L
 #'   * Initial value: -1L
 #'   * Reason for change: Prevents accidental conflicts with mlr messaging system.
-#'
-#' @section Custom mlr3 defaults:
 #' * `objective`:
-#'   Depending if the task is binary / multiclass, the default is `"binary"` or `"multiclasss"`.
+#'   * Depends on the task: if binary classification, then this parameter is set to
+#'   `"binary"`, otherwise `"multiclasss"` and cannot be changed.
 #'
 #' @section Custom mlr3 parameters:
 #' * `num_class`:
@@ -91,6 +90,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         neg_bagging_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
         bagging_freq = p_int(default = 0L, lower = 0L, tags = "train"),
         bagging_seed = p_int(default = 3L, tags = "train"),
+        bagging_by_query = p_lgl(default = FALSE, tags = "train"),
         feature_fraction = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
         feature_fraction_bynode = p_dbl(default = 1.0, lower = 0.0, upper = 1.0, tags = "train"),
         feature_fraction_seed = p_int(default = 2L, tags = "train"),
