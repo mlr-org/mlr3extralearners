@@ -114,8 +114,7 @@ Remotes:
     xoopR/distr6,
     xoopR/param6,
     xoopR/set6,
-    ropensci/aorsf,
-    mlr-org/mlr3
+    ropensci/aorsf
 VignetteBuilder:
     knitr
 Config/testthat/edition: 3
