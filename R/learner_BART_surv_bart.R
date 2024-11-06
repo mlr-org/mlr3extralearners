@@ -137,9 +137,11 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       times = truth[, 1]
       delta = truth[, 2] # delta => status
 
+      .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
+
       list(
         model = invoke(
-          BART::mc.surv.bart,
+          .fun,
           x.train = x.train,
           times = times,
           delta = delta,
