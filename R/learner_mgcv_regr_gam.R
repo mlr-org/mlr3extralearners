@@ -1,5 +1,5 @@
 #' @title Regression Generalized Additive Model Learner
-#' @author JazzyPierrot
+#' @author pierrecamilleri
 #' @name mlr_learners_regr.gam
 #'
 #' @description

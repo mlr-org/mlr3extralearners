@@ -98,7 +98,7 @@ Wood, Simon (2012).
 \dQuote{mgcv: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation.}
 }
 \author{
-JazzyPierrot
+pierrecamilleri
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrGam}
