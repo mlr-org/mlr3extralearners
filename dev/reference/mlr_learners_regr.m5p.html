@@ -182,17 +182,24 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/35.598%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt;= 101.55 : LM1 (5/34.906%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;  101.55 : LM2 (16/24.04%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.1317 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.0128 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0181 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.5713 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 37.9847</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0292 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.7988 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.1237</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0142 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0189 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.8057 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.1147</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -201,7 +208,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.97434 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.781587 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
