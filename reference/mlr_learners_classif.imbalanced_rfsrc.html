@@ -9,7 +9,7 @@ Calls randomForestSRC::imbalanced.rfsrc() from from randomForestSRC."></head><bo
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,21 +67,19 @@ Calls <code><a href="https://www.randomforestsrc.org//reference/imbalanced.rfsrc
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ntree</td><td>integer</td><td>3000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>method</td><td>character</td><td>rfq</td><td>rfq, brf, standard</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>fast</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>nodesize</td><td>integer</td><td>15</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nodedepth</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>gini</td><td>gini, auc, entropy</td><td>-</td></tr><tr><td>nsplit</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>importance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, none, permute, random, anti</td><td>-</td></tr><tr><td>bootstrap</td><td>character</td><td>by.root</td><td>by.root, by.node, none, by.user</td><td>-</td></tr><tr><td>samptype</td><td>character</td><td>swor</td><td>swor, swr</td><td>-</td></tr><tr><td>samp</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>membership</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampsize</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sampsize.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>na.action</td><td>character</td><td>na.omit</td><td>na.omit, na.impute</td><td>-</td></tr><tr><td>nimpute</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntime</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cause</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>proximity</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>distance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>forest.wt</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>xvar.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>split.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>forest</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.used</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>split.depth</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, -1]\)</td></tr><tr><td>do.trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>statistics</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>get.tree</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>outcome</td><td>character</td><td>train</td><td>train, test</td><td>-</td></tr><tr><td>ptn.count</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cores</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>save.memory</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>perf.type</td><td>character</td><td>-</td><td>gmean, misclass, brier, none</td><td>-</td></tr><tr><td>case.depth</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ntree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>method</td><td>character</td><td>rfq</td><td>rfq, brf, standard</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>fast</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>nodesize</td><td>integer</td><td>15</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nodedepth</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>gini</td><td>gini, auc, entropy</td><td>-</td></tr><tr><td>nsplit</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>importance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, none, permute, random, anti</td><td>-</td></tr><tr><td>bootstrap</td><td>character</td><td>by.root</td><td>by.root, by.node, none, by.user</td><td>-</td></tr><tr><td>samptype</td><td>character</td><td>swor</td><td>swor, swr</td><td>-</td></tr><tr><td>samp</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>membership</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampsize</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sampsize.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>na.action</td><td>character</td><td>na.omit</td><td>na.omit, na.impute</td><td>-</td></tr><tr><td>nimpute</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntime</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cause</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>proximity</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>distance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>forest.wt</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>xvar.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>split.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>forest</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.used</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>split.depth</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, -1]\)</td></tr><tr><td>do.trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>statistics</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>get.tree</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>outcome</td><td>character</td><td>train</td><td>train, test</td><td>-</td></tr><tr><td>ptn.count</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cores</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>save.memory</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>perf.type</td><td>character</td><td>-</td><td>gmean, misclass, brier, none</td><td>-</td></tr><tr><td>case.depth</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
 
 
-<ul><li><p><code>mtry</code>:</p><ul><li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>mtry.ratio</code>
-as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
+<ul><li><p><code>mtry</code>: This hyperparameter can alternatively be set via the added
+hyperparameter <code>mtry.ratio</code> as <code>mtry = max(ceiling(mtry.ratio * n_features), 1)</code>.
 Note that <code>mtry</code> and <code>mtry.ratio</code> are mutually exclusive.</p></li>
-</ul></li>
-<li><p><code>sampsize</code>:</p><ul><li><p>This hyperparameter can alternatively be set via the added hyperparameter <code>sampsize.ratio</code>
-as <code>sampsize = max(ceiling(sampsize.ratio * n_obs), 1)</code>.
+<li><p><code>sampsize</code>: This hyperparameter can alternatively be set via the added
+hyperparameter <code>sampsize.ratio</code> as <code>sampsize = max(ceiling(sampsize.ratio * n_obs), 1)</code>.
 Note that <code>sampsize</code> and <code>sampsize.ratio</code> are mutually exclusive.</p></li>
-</ul></li>
-<li><p><code>cores</code>:
-This value is set as the option <code>rf.cores</code> during training and is set to 1 by default.</p></li>
+<li><p><code>cores</code>: This value is set as the option <code>rf.cores</code> during training and is
+set to 1 by default.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -126,6 +124,7 @@ This value is set as the option <code>rf.cores</code> during training and is set
 <li><p><a href="#method-LearnerClassifImbalancedRandomForestSRC-oob_error"><code>LearnerClassifImbalancedRandomForestSRC$oob_error()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifImbalancedRandomForestSRC-clone"><code>LearnerClassifImbalancedRandomForestSRC$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -200,11 +199,11 @@ This value is set as the option <code>rf.cores</code> during training and is set
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.imbalanced_rfsrc"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.imbalanced_rfsrc"</span>, importance <span class="op">=</span> <span class="st">"TRUE"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifImbalancedRandomForestSRC:classif.imbalanced_rfsrc&gt;: Imbalanced Random Forest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: importance=TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, randomForestSRC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
@@ -212,7 +211,6 @@ This value is set as the option <code>rf.cores</code> during training and is set
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -221,10 +219,10 @@ This value is set as the option <code>rf.cores</code> during training and is set
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          Sample size: 139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            Frequency of class labels: 74, 65</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            Frequency of class labels: 79, 60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 3000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 17.1167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 16.7483</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 60</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -233,28 +231,44 @@ This value is set as the option <code>rf.cores</code> during training and is set
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: auc *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     Imbalanced ratio: 1.1385</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    (OOB) Brier score: 0.13443049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         (OOB) Normalized Brier score: 0.53772196</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                            (OOB) AUC: 0.93534304</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       (OOB) Log-loss: 0.43173569</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) PR-AUC: 0.92443251</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) G-mean: 0.83827364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.16172636</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     Imbalanced ratio: 1.3167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    (OOB) Brier score: 0.13083879</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         (OOB) Normalized Brier score: 0.52335516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                            (OOB) AUC: 0.92637131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       (OOB) Log-loss: 0.42142935</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) PR-AUC: 0.91506089</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         (OOB) G-mean: 0.83905211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.16094789</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion matrix:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           predicted</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   observed  M  R class.error</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          M 65  9      0.1216</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          R 13 52      0.2000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          M 71  8      0.1013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          R 13 47      0.2167</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       (OOB) Misclassification rate: 0.1582734</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerClassifImbalancedRandomForestSRC__importance(self = self, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     private = private, super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x5579127b4200&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       (OOB) Misclassification rate: 0.1510791</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V12          V21          V31          V22          V23          V27 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.020748830  0.017917768  0.017917768  0.011902051  0.011902051  0.011902051 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V2          V30           V4          V52          V55          V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.005929771  0.005929771  0.005929771  0.005929771  0.005929771  0.005929771 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V14          V15          V17          V18          V19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.003148897  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V20          V24          V25          V26          V28          V29 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V34          V35          V36          V37          V41          V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V57          V59           V8          V32          V39           V1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.002886584 -0.002886584 -0.005888157 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V10          V54          V13          V16           V3          V33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.005888157 -0.005888157 -0.008879106 -0.008879106 -0.008879106 -0.008879106 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V38          V44          V45          V56           V7           V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.008879106 -0.008879106 -0.008879106 -0.008879106 -0.008879106 -0.008879106 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V40          V42          V58          V43          V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.011611570 -0.014829573 -0.014829573 -0.014829573 -0.017666192 -0.017666192 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V5          V50           V6          V51          V49          V48 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.017666192 -0.017666192 -0.017666192 -0.023678324 -0.029648848 -0.032437233 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -262,7 +276,7 @@ This value is set as the option <code>rf.cores</code> during training and is set
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -274,7 +288,7 @@ This value is set as the option <code>rf.cores</code> during training and is set
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

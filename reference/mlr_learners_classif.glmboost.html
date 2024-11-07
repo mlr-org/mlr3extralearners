@@ -9,7 +9,7 @@ Calls mboost::glmboost() from mboost."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,6 +103,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <ul><li><p><a href="#method-LearnerClassifGLMBoost-new"><code>LearnerClassifGLMBoost$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifGLMBoost-clone"><code>LearnerClassifGLMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -180,23 +181,23 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.06483891 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.02158609 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         V11         V12         V16         V20         V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.37640109 -1.08337655 -1.26780207  0.04792509 -0.68341429 -0.19176383 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V22         V24         V27         V29         V31         V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.07390637 -0.16573813 -0.51001385 -0.21192992  0.04866408  0.68478235 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V37          V4         V40         V43         V44         V45 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.20986816 -1.37184731  0.06176800 -0.07400977 -0.25278469 -1.71690576 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V46         V49         V52         V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.52183016 -9.88116982 -5.13517006  7.81568826 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V16          V22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.18004457  -0.56073013  -1.73572348  -1.26838073   0.89340796  -0.21465287 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V23          V28          V31          V36           V4          V43 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.27866490  -0.23200826   0.09974138   1.12611304  -2.79785655  -0.14000883 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V44          V45          V48          V49          V51          V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.60466486  -0.27547709  -0.47535268  -3.53637140  -3.38665290  -8.85109736 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V57          V58          V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  10.26322771 -10.46793900  -1.92937297 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.06483891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.02158609</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -206,7 +207,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -218,7 +219,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

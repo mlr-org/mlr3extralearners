@@ -9,7 +9,7 @@ Calls survivalsvm::survivalsvm() from survivalsvm."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +76,23 @@ but in any case all can be considered a valid continuous ranking.</p>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>regression</td><td>regression, vanbelle1, vanbelle2, hybrid</td><td>-</td></tr><tr><td>diff.meth</td><td>character</td><td>-</td><td>makediff1, makediff2, makediff3</td><td>-</td></tr><tr><td>gamma.mu</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>opt.meth</td><td>character</td><td>quadprog</td><td>quadprog, ipop</td><td>-</td></tr><tr><td>kernel</td><td>character</td><td>lin_kernel</td><td>lin_kernel, add_kernel, rbf_kernel, poly_kernel</td><td>-</td></tr><tr><td>kernel.pars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sgf.sv</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>sigf</td><td>integer</td><td>7</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>margin</td><td>numeric</td><td>0.05</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bound</td><td>numeric</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eig.tol</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>conv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>posd.tol</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>type</td><td>character</td><td>regression</td><td>regression, vanbelle1, vanbelle2, hybrid</td><td>-</td></tr><tr><td>diff.meth</td><td>character</td><td>-</td><td>makediff1, makediff2, makediff3</td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>mu</td><td>numeric</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>opt.meth</td><td>character</td><td>quadprog</td><td>quadprog, ipop</td><td>-</td></tr><tr><td>kernel</td><td>character</td><td>lin_kernel</td><td>lin_kernel, add_kernel, rbf_kernel, poly_kernel</td><td>-</td></tr><tr><td>kernel.pars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sgf.sv</td><td>integer</td><td>5</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>sigf</td><td>integer</td><td>7</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>20</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>margin</td><td>numeric</td><td>0.05</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bound</td><td>numeric</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>eig.tol</td><td>numeric</td><td>1e-06</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>conv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>posd.tol</td><td>numeric</td><td>1e-08</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns up to two prediction types:</p><ol><li><p><code>crank</code>: a vector containing the continuous ranking scores, where each score
+corresponds to a specific test observation.</p></li>
+<li><p><code>response</code>: the survival time of each test observation, equal to <code>-crank</code>.
+This prediction type if only available for <code>"type"</code> equal to <code>regression</code> or <code>hybrid</code>.</p></li>
+</ol></div>
+    <div class="section level2">
+    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
+
+
+<ul><li><p><code>gamma</code>, <code>mu</code> have replaced <code>gamma.mu</code> so that it's easier to tune these separately.
+<code>mu</code> is only used when <code>type = "hybrid"</code>.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Van Belle, Vanya, Pelckmans, Kristiaan, Van Huffel, Sabine, Suykens, AK J (2011).
@@ -119,6 +135,7 @@ IEEE.</p>
 <ul><li><p><a href="#method-LearnerSurvSVM-new"><code>LearnerSurvSVM$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvSVM-clone"><code>LearnerSurvSVM$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -158,11 +175,11 @@ IEEE.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Define the Learner and set parameter values</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.svm"</span>, gamma.mu <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.svm"</span>, gamma <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvSVM:surv.svm&gt;: Support Vector Machine</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerSurvSVM:surv.svm&gt;: Survival Support Vector Machine</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: gamma.mu=0.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: gamma=0.1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, survivalsvm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], response</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, character, factor</span>
@@ -184,7 +201,7 @@ IEEE.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  survivalsvm::survivalsvm(formula = task$formula(), data = task$data(), gamma.mu = 0.1) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  survivalsvm::survivalsvm(formula = task$formula(), data = task$data(), gamma.mu = gamma.mu) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Survival svm approach              : regression </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Type of Kernel                     : lin_kernel </span>
@@ -210,7 +227,7 @@ IEEE.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

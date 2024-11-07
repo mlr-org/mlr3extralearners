@@ -9,7 +9,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,6 +121,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <ul><li><p><a href="#method-LearnerClassifSimpleLogistic-new"><code>LearnerClassifSimpleLogistic$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSimpleLogistic-clone"><code>LearnerClassifSimpleLogistic$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -182,46 +183,24 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -3.32 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 1    +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * -0.67 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 1.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * 0.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V30] * 0.57 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -0.89 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -1.64 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * 0.59 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * 1.55 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 2.73 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * 3.5  +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 3.03 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * -19.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 45.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V59] * 27.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V6] * -1.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.67 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 0.74 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V28] * 0.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -0.99 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * 2.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * 3.96 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 24.14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.32 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -1 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * 0.67 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -1.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * -0.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.91 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V30] * -0.57 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 0.89 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 1.64 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * -0.59 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * -1.55 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -2.73 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * -3.5 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -3.03 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * 19.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -45.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V59] * -27.02 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V6] * 1.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.67 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -0.74 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V28] * -0.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 0.99 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * -2.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * -3.96 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -24.14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -231,7 +210,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -243,7 +222,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@ Calls abess::abess() from abess."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,12 +73,7 @@ Calls <code><a href="https://abess-team.github.io/abess/reference/abess.html" cl
 
 
 <ul><li><p><code>num.threads</code>: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.</p></li>
-</ul></div>
-    <div class="section level2">
-    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
-
-
-<ul><li><p><code>family</code> - Depending on the task type, if the parameter <code>family</code> is <code>NULL</code>, it is set to <code>"binomial"</code> for binary
+<li><p><code>family</code>: Depends on the task type, if the parameter <code>family</code> is <code>NULL</code>, it is set to <code>"binomial"</code> for binary
 classification tasks and to <code>"multinomial"</code> for multiclass classification problems.</p></li>
 </ul></div>
     <div class="section level2">
@@ -111,6 +106,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <li><p><a href="#method-LearnerClassifAbess-selected_features"><code>LearnerClassifAbess$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifAbess-clone"><code>LearnerClassifAbess$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -185,28 +181,28 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span> abess.default(x = x, y = y, family = "binomial", num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    support.size      dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1             0 96.05589 192.1118</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2             1 79.07175 164.6791</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3             2 73.31858 159.7083</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4             3 67.95204 155.5108</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5             4 63.85384 153.8500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6             5 59.69907 152.0760</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7             6 56.41845 152.0504</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             7 52.58992 150.9289</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9             8 51.27771 154.8401</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10            9 49.00686 156.8339</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           10 46.72715 158.8101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12           11 45.14562 162.1826</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13           12 42.63699 163.7009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14           13 40.97950 166.9216</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15           14 39.27340 170.0449</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16           15 38.03185 174.0974</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17           16 35.95816 176.4856</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18           17 33.74918 178.6032</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19           18 28.87149 175.3834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20           19 25.19105 174.5582</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21           20 21.04167 172.7950</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22           21 16.71416 170.6755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             0 96.31508 192.6302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             1 77.77817 162.0919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3             2 71.52497 156.1211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4             3 64.58873 148.7842</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5             4 60.32146 146.7852</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6             5 57.22205 147.1220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7             6 54.25590 147.7253</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             7 50.42646 146.6020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9             8 47.21606 146.7168</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10            9 44.17528 147.1708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11           10 39.75582 144.8674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12           11 37.07486 146.0411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13           12 35.28734 149.0017</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14           13 34.09136 153.1453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15           14 32.93729 157.3727</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16           15 31.79613 161.6260</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17           16 30.60256 165.7744</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18           17 21.79038 154.6857</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19           18 18.43008 154.5006</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20           19 15.67258 155.5212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21           20 13.77575 158.2631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22           21 12.02102 161.2892</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +211,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -227,7 +223,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

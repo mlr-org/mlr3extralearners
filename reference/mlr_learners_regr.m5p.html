@@ -9,7 +9,7 @@ Calls RWeka::M5P() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -121,6 +121,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <ul><li><p><a href="#method-LearnerRegrM5P-new"><code>LearnerRegrM5P$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrM5P-clone"><code>LearnerRegrM5P$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -181,15 +182,43 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/42.896%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt;= 163.8 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 93.35 : LM1 (2/12.921%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  93.35 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt;= 96 : LM2 (2/0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;  96 : LM3 (4/3.924%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;  163.8 : LM4 (13/37.179%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	4.2835 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0535 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 12.0581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	2.2114 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0104 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.1083 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 34.6405</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	2.2114 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0104 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.1 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.3127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	2.2114 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0104 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0991 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.2039</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.8165 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0176 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0186 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 24.8581</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -198,7 +227,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.19913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.112617 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -210,7 +239,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

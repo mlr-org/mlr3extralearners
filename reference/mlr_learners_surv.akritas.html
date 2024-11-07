@@ -9,7 +9,7 @@ Calls survivalmodels::akritas() from package 'survivalmodels'."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,19 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/akritas.html" class=
 
 
     <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two prediction types:</p><ol><li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal <code><a href="https://rdrr.io/pkg/survivalmodels/man/predict.akritas.html" class="external-link">survivalmodels::predict.akritas()</a></code> function.
+The survival matrix uses the unique time points from the training set.
+We advise to set the parameter <code>ntime</code> which allows to adjust the granularity
+of these time points to a reasonable number (e.g. <code>150</code>).
+This avoids large execution times during prediction.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://rdrr.io/pkg/survivalmodels/man/surv_to_risk.html" class="external-link">survivalmodels::surv_to_risk()</a></code>.</p></li>
+</ol></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -67,7 +80,7 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/akritas.html" class=
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>lambda</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>reverse</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ntime</td><td>numeric</td><td>150</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>round_time</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>lambda</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>reverse</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ntime</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>round_time</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
 
@@ -110,6 +123,7 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/akritas.html" class=
 <ul><li><p><a href="#method-LearnerSurvAkritas-new"><code>LearnerSurvAkritas$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvAkritas-clone"><code>LearnerSurvAkritas$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -198,7 +212,7 @@ Calls <code><a href="https://rdrr.io/pkg/survivalmodels/man/akritas.html" class=
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

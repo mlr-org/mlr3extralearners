@@ -9,7 +9,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,6 +122,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p><a href="#method-LearnerRegrSGD-new"><code>LearnerRegrSGD$new()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrSGD-clone"><code>LearnerRegrSGD$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -184,17 +185,17 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          0.6538 (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -4.0026 (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.433  (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6412 (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       4.7144 (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.6504 (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -4.626  (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       5.0495 (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6482 (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -8.45   (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      18.0415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          3.0414 (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.3807 (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.9007 (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8444 (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.2896 (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.4714 (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.041  (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       5.679  (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5884 (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -9.6883 (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      18.2856</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -203,7 +204,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.09491 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5.15895 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -215,7 +216,7 @@ since their ids contain irregular pattern</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

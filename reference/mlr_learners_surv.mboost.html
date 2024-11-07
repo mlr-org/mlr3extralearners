@@ -9,7 +9,7 @@ Calls mboost::mboost() from mboost."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,6 +52,23 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p><code>distr</code> prediction made by <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code>.</p>
     </div>
+    <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two to three prediction types:</p><ol><li><p><code>lp</code>: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/methods.html" class="external-link">mboost::predict.mboost()</a></code>.
+If the <code>family</code> parameter is not <code>"coxph"</code>, <code>-lp</code> is returned, since non-coxph
+families represent AFT-style distributions where lower <code>lp</code> values indicate higher risk.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+<li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using <code><a href="https://rdrr.io/pkg/mboost/man/survFit.html" class="external-link">mboost::survFit()</a></code>.
+This prediction type is present only when the <code>family</code> distribution parameter
+is equal to <code>"coxph"</code> (default).
+By default the Breslow estimator is used for computing the baseline hazard.</p></li>
+</ol></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
@@ -109,6 +126,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/gamboost.html" class="extern
 <li><p><a href="#method-LearnerSurvMBoost-selected_features"><code>LearnerSurvMBoost$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvMBoost-clone"><code>LearnerSurvMBoost$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -177,7 +195,7 @@ default arguments.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=coxph</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3proba, mlr3extralearners, mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  crank, [distr], lp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [crank], distr, lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, selected_features, weights</span>
 </code></pre></div>
@@ -191,7 +209,7 @@ default arguments.</p><div class="section">
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

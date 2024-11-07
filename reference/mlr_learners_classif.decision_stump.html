@@ -9,7 +9,7 @@ Calls RWeka::DecisionStump() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -112,6 +112,7 @@ since their ids contain irregular pattern</p></li>
 <ul><li><p><a href="#method-LearnerClassifDecisionStump-new"><code>LearnerClassifDecisionStump$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifDecisionStump-clone"><code>LearnerClassifDecisionStump$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -174,21 +175,21 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.17070000000000002 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.17070000000000002 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.1573 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.1573 : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.17070000000000002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.1573</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.16326530612244897	0.8367346938775511	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.17070000000000002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.18604651162790697	0.813953488372093	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.1573</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7333333333333333	0.26666666666666666	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.75	0.25	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5323741007194245	0.4676258992805755	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5755395683453237	0.4244604316546763	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -198,7 +199,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3478261 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -210,7 +211,7 @@ since their ids contain irregular pattern</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

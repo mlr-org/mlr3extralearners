@@ -9,7 +9,7 @@ Calls RWeka::IBk() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,6 +118,7 @@ Elsevier.</p>
 <ul><li><p><a href="#method-LearnerClassifJ48-new"><code>LearnerClassifJ48$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifJ48-clone"><code>LearnerClassifJ48$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -179,28 +180,28 @@ Elsevier.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> J48 pruned tree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V59 &lt;= 0.0093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V47 &lt;= 0.1716: R (47.0/2.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V47 &gt; 0.1716: M (3.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V59 &gt; 0.0093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V1 &lt;= 0.0152: R (2.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V1 &gt; 0.0152: M (9.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V51 &lt;= 0.0128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V16 &lt;= 0.657</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V3 &lt;= 0.0577</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V5 &lt;= 0.0421</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V12 &lt;= 0.3161: M (2.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V12 &gt; 0.3161: R (2.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V5 &gt; 0.0421: M (13.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V3 &gt; 0.0577: R (3.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V16 &gt; 0.657: R (9.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V51 &gt; 0.0128</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V34 &lt;= 0.8681: M (44.0/1.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V34 &gt; 0.8681</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V11 &lt;= 0.2509: R (3.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V11 &gt; 0.2509: M (2.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.1786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V21 &lt;= 0.8631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V47 &lt;= 0.3123: R (43.0/1.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V47 &gt; 0.3123: M (3.0/1.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V21 &gt; 0.8631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V41 &lt;= 0.1322: R (3.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V41 &gt; 0.1322: M (6.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.1786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &lt;= 0.8345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V26 &lt;= 0.5324: M (18.0/1.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V26 &gt; 0.5324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V36 &lt;= 0.4195</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V55 &lt;= 0.0069: M (6.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V55 &gt; 0.0069</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &lt;= 0.9402: R (9.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &gt; 0.9402: M (2.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V36 &gt; 0.4195: R (12.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &gt; 0.8345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V8 &lt;= 0.064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V12 &lt;= 0.2812: M (3.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V12 &gt; 0.2812: R (2.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V8 &gt; 0.064: M (32.0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of Leaves  : 	12</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -214,7 +215,7 @@ Elsevier.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3768116 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -226,7 +227,7 @@ Elsevier.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

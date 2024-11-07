@@ -9,7 +9,7 @@ Calls partykit::cforest() from partykit."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,15 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="exter
 
 
     <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two prediction types:</p><ol><li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
+represented in rows and time points in columns.
+Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="external-link">partykit::predict.cforest()</a></code> function.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>.</p></li>
+</ol></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -68,6 +77,13 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/cforest.html" class="exter
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ntree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>replace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>fraction</td><td>numeric</td><td>0.632</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>mtryratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>applyfun</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cores</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>offset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cluster</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>"stats::na.pass"</td><td></td><td>-</td></tr><tr><td>scores</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>teststat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>-</td></tr><tr><td>splitstat</td><td>character</td><td>quadratic</td><td>quadratic, maximum</td><td>-</td></tr><tr><td>splittest</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>testtype</td><td>character</td><td>Univariate</td><td>Bonferroni, MonteCarlo, Univariate, Teststatistic</td><td>-</td></tr><tr><td>nmax</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>alpha</td><td>numeric</td><td>0.05</td><td></td><td>\([0, 1]\)</td></tr><tr><td>mincriterion</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>logmincriterion</td><td>numeric</td><td>-0.05129329</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>minsplit</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>minbucket</td><td>integer</td><td>7</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>minprob</td><td>numeric</td><td>0.01</td><td></td><td>\([0, 1]\)</td></tr><tr><td>stump</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>lookahead</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>MIA</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nresample</td><td>integer</td><td>9999</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxsurrogate</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>numsurrogate</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>maxdepth</td><td>integer</td><td>Inf</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>multiway</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>splittry</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>intersplit</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>majority</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>caseweights</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>saveinfo</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>update</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>splitflavour</td><td>character</td><td>ctree</td><td>ctree, exhaustive</td><td>-</td></tr><tr><td>maxvar</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>OOB</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>simplify</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scale</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>maxpts</td><td>integer</td><td>25000</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>abseps</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>releps</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+
+
+<ul><li><p><code>cores</code>: This parameter is initialized to 1 (default is <code>NULL</code>) to avoid
+threading conflicts with <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
 
@@ -118,6 +134,7 @@ Note that <code>mtry</code> and <code>mtryratio</code> are mutually exclusive.</
 <ul><li><p><a href="#method-LearnerSurvCForest-new"><code>LearnerSurvCForest$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvCForest-clone"><code>LearnerSurvCForest$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -171,7 +188,7 @@ Note that <code>mtry</code> and <code>mtryratio</code> are mutually exclusive.</
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

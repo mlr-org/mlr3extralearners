@@ -9,7 +9,7 @@ survival data. Calls BART::mc.surv.bart() from BART."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,10 +49,13 @@ survival data. Calls <code><a href="https://rdrr.io/pkg/BART/man/surv.bart.html"
 
 
     <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Two types of prediction are returned for this learner:</p><ol><li><p><code>distr</code>: a 3d survival array with observations as 1st dimension, time
-points as 2nd and the posterior draws as 3rd dimension.</p></li>
-<li><p><code>crank</code>: the expected mortality using mlr3proba::.surv_return. The parameter
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two prediction types:</p><ol><li><p><code>distr</code>: a 3d survival array with observations as 1st dimension, time
+points as 2nd and the posterior draws as 3rd dimension.
+Calculated using the internal <code>predict.survbart()</code> function.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>. The parameter
 <code>which.curve</code> decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
 by default used for the calculation of survival measures that require a <code>distr</code>
@@ -137,6 +140,7 @@ i.e. <code>which.curve</code> is 0.5.</p></li>
 <li><p><a href="#method-LearnerSurvLearnerSurvBART-importance"><code>LearnerSurvLearnerSurvBART$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvLearnerSurvBART-clone"><code>LearnerSurvLearnerSurvBART$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -214,7 +218,7 @@ This is the default importance scores.</p></li>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@ Calls RWeka::AdaBoostM1() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -119,6 +119,7 @@ Citeseer.</p>
 <ul><li><p><a href="#method-LearnerClassifAdaBoostM1-new"><code>LearnerClassifAdaBoostM1$new()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifAdaBoostM1-clone"><code>LearnerClassifAdaBoostM1$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -185,157 +186,157 @@ Citeseer.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.17070000000000002 : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.17070000000000002 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.17070000000000002</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.20754716981132076	0.7924528301886793	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.12727272727272726	0.8727272727272727	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.17070000000000002</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7325581395348837	0.26744186046511625	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7380952380952381	0.2619047619047619	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5323741007194245	0.4676258992805755	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.49640287769784175	0.5035971223021583	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 1.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 &lt;= 0.011099999999999999 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 &gt; 0.011099999999999999 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 is missing : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 &lt;= 0.011099999999999999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3551736484067308	0.6448263515932692	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 &gt; 0.011099999999999999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8449163449163449	0.15508365508365501	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59 is missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4617647058823529	0.538235294117647	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 1.33</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 &lt;= 0.01285 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 &gt; 0.01285 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 is missing : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 &lt;= 0.01285</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.334420650394665	0.6655793496053349	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 &gt; 0.01285</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7596507482407467	0.2403492517592532	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51 is missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5794133985620725	0.4205866014379276	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 &lt;= 0.5144500000000001 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 &gt; 0.5144500000000001 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 is missing : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 &lt;= 0.5144500000000001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3351293303134531	0.664870669686547	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 &gt; 0.5144500000000001</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7703163410908556	0.22968365890914452	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20 is missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5569477597879641	0.44305224021203604	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 &lt;= 0.4746 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 &gt; 0.4746 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 is missing : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 &lt;= 0.4746</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6896617352707274	0.3103382647292727	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 &gt; 0.4746</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1778588245424462	0.8221411754575538	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15 is missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5651598170193618	0.43484018298063826	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 &lt;= 0.0238 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 &gt; 0.0238 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 is missing : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 &lt;= 0.0238</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.12832374888838874	0.8716762511116113	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 &gt; 0.0238</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5556460668560822	0.4443539331439178	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49 is missing</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4392636165185841	0.560736383481416	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &lt;= 0.40695000000000003 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &gt; 0.40695000000000003 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &lt;= 0.46475 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &gt; 0.46475 : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36 is missing : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &lt;= 0.40695000000000003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &lt;= 0.46475</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5646256819001165	0.4353743180998834	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &gt; 0.40695000000000003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5520373097692686	0.44796269023073143	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36 &gt; 0.46475</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.18861846773932625	0.8113815322606738	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.13833477883781428	0.8616652211621857	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.36379846604309607	0.6362015339569039	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4025078369905959	0.5974921630094042	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &lt;= 0.38545 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &gt; 0.38545 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 is missing : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &lt;= 0.38545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2557859638254008	0.7442140361745991	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &gt; 0.38545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8963128382890337	0.1036871617109662	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3398563573774193	0.6601436426225806	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 1.18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.1117 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.1117 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.1117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0	1.0	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.1117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6177127230427156	0.3822872769572844	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5481188931977876	0.45188110680221233	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 &lt;= 0.81445 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 &gt; 0.81445 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 is missing : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 &lt;= 0.81445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2802042213569229	0.7197957786430771	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 &gt; 0.81445</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7393119305731614	0.26068806942683853	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.414749767920319	0.585250232079681	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 &lt;= 0.17670000000000002 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 &gt; 0.17670000000000002 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 is missing : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 &lt;= 0.17670000000000002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.14987114364134382	0.8501288563586562	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 &gt; 0.17670000000000002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5998842960297699	0.4001157039702301	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.510151667468419	0.4898483325315811	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &lt;= 0.04915 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &gt; 0.04915 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 is missing : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &lt;= 0.04915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.28162643946554067	0.7183735605344593	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &gt; 0.04915</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6536359573606423	0.3463640426393577	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4122251936073745	0.5877748063926255	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.83</span>
@@ -344,67 +345,67 @@ Citeseer.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &lt;= 0.0606 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &gt; 0.0606 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 is missing : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 &lt;= 0.71825 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 &gt; 0.71825 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 is missing : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &lt;= 0.0606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 &lt;= 0.71825</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.23289293506915276	0.7671070649308472	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 &gt; 0.0606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2779729071294684	0.7220270928705317	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 &gt; 0.71825</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7056602137050956	0.2943397862949045	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7191849164493896	0.28081508355061036	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3547864622008871	0.645213537799113	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.46517049142384254	0.5348295085761575	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 1.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.95</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &lt;= 0.8976 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &gt; 0.8976 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 is missing : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 &lt;= 0.0225 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 &gt; 0.0225 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 is missing : R</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &lt;= 0.8976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 &lt;= 0.0225</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3424253226307158	0.6575746773692842	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 &gt; 0.8976</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.42865372888056585	0.571346271119434	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 &gt; 0.0225</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.823027895376428	0.176972104623572	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.9664629607162379	0.03353703928376202	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4685387925425306	0.5314612074574695	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.49827505587385607	0.5017249441261441	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Stump</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &lt;= 0.76625 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &gt; 0.76625 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &lt;= 0.6987 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &gt; 0.6987 : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23 is missing : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &lt;= 0.76625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &lt;= 0.6987</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4040681053290349	0.5959318946709651	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &gt; 0.76625</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.41528907103125384	0.5847109289687461	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23 &gt; 0.6987</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8085218053778284	0.19147819462217172	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7991221642884683	0.20087783571153184	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.576390701691048	0.42360929830895205	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5947421046222063	0.4052578953777938	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Weight: 0.78</span>
@@ -419,7 +420,7 @@ Citeseer.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -431,7 +432,7 @@ Citeseer.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

@@ -9,7 +9,7 @@ Calls gbm::gbm() from gbm."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,6 +49,14 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 
 
     <div class="section level2">
+    <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
+
+
+<p>This learner returns two prediction types, using the internal <code>predict.gbm()</code> function:</p><ol><li><p><code>lp</code>: a vector containing the linear predictors (relative risk scores),
+where each score corresponds to a specific test observation.</p></li>
+<li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+</ol></div>
+    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -69,21 +77,21 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>distribution</td><td>character</td><td>coxph</td><td>coxph</td><td>-</td></tr><tr><td>n.trees</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>cv.folds</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>interaction.depth</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n.minobsinnode</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>shrinkage</td><td>numeric</td><td>0.001</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>bag.fraction</td><td>numeric</td><td>0.5</td><td></td><td>\([0, 1]\)</td></tr><tr><td>train.fraction</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>keep.data</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.monotone</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>n.cores</td><td>integer</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>single.tree</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
-    <h2 id="parameter-changes">Parameter changes<a class="anchor" aria-label="anchor" href="#parameter-changes"></a></h2>
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
 
 <ul><li><p><code>distribution</code>:</p></li>
-<li><p>Actual default: "bernoulli"</p></li>
-<li><p>Adjusted default: "coxph"</p></li>
+<li><p>Actual default: <code>"bernoulli"</code></p></li>
+<li><p>Adjusted default: <code>"coxph"</code></p></li>
 <li><p>Reason for change: This is the only distribution available for survival.</p></li>
 <li><p><code>keep.data</code>:</p><ul><li><p>Actual default: TRUE</p></li>
 <li><p>Adjusted default: FALSE</p></li>
 <li><p>Reason for change: <code>keep.data = FALSE</code> saves memory during model fitting.</p></li>
 </ul></li>
 <li><p><code>n.cores</code>:</p><ul><li><p>Actual default: NULL</p></li>
-<li><p>Adjusted default: 1</p></li>
+<li><p>Adjusted default: <code>1</code></p></li>
 <li><p>Reason for change: Suppressing the automatic internal parallelization if
-<code>cv.folds</code> &gt; 0.</p></li>
+<code>cv.folds</code> &gt; 0 and avoid threading conflicts with <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
 </ul></li>
 </ul></div>
     <div class="section level2">
@@ -122,6 +130,7 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 <li><p><a href="#method-LearnerSurvGBM-importance"><code>LearnerSurvGBM$importance()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvGBM-clone"><code>LearnerSurvGBM$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -197,11 +206,9 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> A gradient boosted model with coxph loss function.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 iterations were performed.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> There were 6 predictors of which 6 had non-zero influence.</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerSurvGBM__importance(self = self, private = private, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x557914e6d978&gt;</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los      sysbp   stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43.9651404 25.5690593 17.5779983 10.5716773  1.6256907  0.6904339 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -210,7 +217,7 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.841709 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8533477 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -222,7 +229,7 @@ Calls <code><a href="https://rdrr.io/pkg/gbm/man/gbm.html" class="external-link"
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

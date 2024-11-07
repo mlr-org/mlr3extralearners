@@ -9,7 +9,7 @@ Calls randomForest::randomForest() from randomForest."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -107,6 +107,7 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <li><p><a href="#method-LearnerClassifRandomForest-oob_error"><code>LearnerClassifRandomForest$oob_error()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifRandomForest-clone"><code>LearnerClassifRandomForest$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -170,11 +171,11 @@ Parameter 'importance' must be set to either <code>"accuracy"</code> or <code>"g
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.randomForest"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.randomForest"</span>, importance <span class="op">=</span> <span class="st">"accuracy"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifRandomForest:classif.randomForest&gt;: Random Forest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: importance=accuracy</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, randomForest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
@@ -182,7 +183,6 @@ Parameter 'importance' must be set to either <code>"accuracy"</code> or <code>"g
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
-<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -192,21 +192,41 @@ Parameter 'importance' must be set to either <code>"accuracy"</code> or <code>"g
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  randomForest(formula = formula, data = data, classwt = classwt,      cutoff = cutoff) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  randomForest(formula = formula, data = data, classwt = classwt,      cutoff = cutoff, importance = TRUE) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                Type of random forest: classification</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         OOB estimate of  error rate: 17.99%</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         OOB estimate of  error rate: 16.55%</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion matrix:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    M  R class.error</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M 67  7  0.09459459</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R 18 47  0.27692308</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">importance</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> function () </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> .__LearnerClassifRandomForest__importance(self = self, private = private, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     super = super)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;environment: 0x5579126348e8&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M 63  8   0.1126761</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R 15 53   0.2205882</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V11           V12            V9           V49           V10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.745691e-02  2.346777e-02  1.470553e-02  9.720809e-03  9.262485e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V45           V21            V4           V13           V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8.538029e-03  7.438450e-03  7.282442e-03  7.130117e-03  6.196683e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V20           V36           V37           V17           V28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5.829704e-03  5.339830e-03  5.312910e-03  5.078667e-03  4.761487e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V48           V46           V22           V27            V1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.429920e-03  4.264833e-03  4.065138e-03  3.937412e-03  3.924621e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V31           V23           V32           V43            V5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.818334e-03  3.453001e-03  3.096018e-03  2.950348e-03  2.877068e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V19           V47           V52           V24           V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.638218e-03  2.452193e-03  2.402764e-03  2.314698e-03  2.306434e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V54           V51            V3           V39           V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.217510e-03  2.113913e-03  2.039349e-03  1.994059e-03  1.901038e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V58           V26           V42           V14           V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.848349e-03  1.659102e-03  1.611400e-03  1.532988e-03  1.485969e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V2           V29           V40           V33           V34 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.433534e-03  1.206734e-03  1.193429e-03  1.174550e-03  9.219577e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V38            V6           V55           V53           V35 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  7.763708e-04  7.350775e-04  6.301843e-04  5.344342e-04  4.869396e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V50            V7           V57           V59           V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.886397e-04  3.723352e-04  3.151907e-04  2.312627e-04  1.516957e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V25            V8           V41           V56           V30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8.619140e-05 -3.438244e-06 -5.263755e-05 -1.632846e-04 -3.016861e-04 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -214,7 +234,7 @@ Parameter 'importance' must be set to either <code>"accuracy"</code> or <code>"g
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.08695652 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -226,7 +246,7 @@ Parameter 'importance' must be set to either <code>"accuracy"</code> or <code>"g
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>

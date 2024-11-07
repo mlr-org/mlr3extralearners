@@ -9,7 +9,7 @@ Calls prioritylasso::prioritylasso() from prioritylasso."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">0.9.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.0.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,6 +48,12 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
     </div>
 
 
+    <div class="section level2">
+    <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
+
+
+<ul><li><p><code>family</code> is set to <code>"binomial"</code> and canno be changed</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
@@ -106,6 +112,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <li><p><a href="#method-LearnerClassifPriorityLasso-selected_features"><code>LearnerClassifPriorityLasso$selected_features()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifPriorityLasso-clone"><code>LearnerClassifPriorityLasso$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-encapsulate"><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-format"><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-help"><code>mlr3::Learner$help()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-predict"><code>mlr3::Learner$predict()</code></a></span></li>
@@ -123,7 +130,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 
 </div><p></p><hr><a id="method-LearnerClassifPriorityLasso-selected_features"></a><div class="section">
 <h3 id="method-selected-features-">Method <code>selected_features()</code><a class="anchor" aria-label="anchor" href="#method-selected-features-"></a></h3>
-<p>Selected features, i.e. those where the coefficient is positive.</p><div class="section">
+<p>Selected features, i.e. those where the coefficient is non-zero.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifPriorityLasso</span><span class="op">$</span><span class="fu">selected_features</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
@@ -180,10 +187,10 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 38</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 22</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.ind[[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 31</span>
@@ -197,27 +204,27 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.001959551</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.01931513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.005250988</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02259167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.008965819</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $lambda.min[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03918874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.03748555</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[1]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5900755</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.5916442</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[2]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6494956</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6418319</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6902054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.6918809</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $min.cvm[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.827021</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.8510202</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero</span>
@@ -228,10 +235,10 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero[[3]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 14</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $nzero[[4]]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 23</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $glmnet.fit</span>
@@ -336,162 +343,161 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet(x = X[current_observations, actual_block], y = Y[current_observations],      weights = weights[current_observations], offset = liste[[i]][current_observations],      family = family, standardize = standardize) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Df %Dev   Lambda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.062860</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.25 0.057280</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2 0.47 0.052190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2 0.85 0.047550</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   3 1.23 0.043330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   4 1.73 0.039480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7   4 2.16 0.035970</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8   4 2.52 0.032780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   4 2.83 0.029860</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10  4 3.09 0.027210</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11  6 3.38 0.024790</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  9 3.70 0.022590</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  9 4.04 0.020580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14 10 4.33 0.018760</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15 10 4.58 0.017090</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16 11 4.82 0.015570</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 12 5.03 0.014190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18 13 5.22 0.012930</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19 13 5.39 0.011780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20 13 5.52 0.010730</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21 14 5.65 0.009779</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22 14 5.76 0.008911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23 14 5.84 0.008119</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 15 5.92 0.007398</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 15 5.98 0.006741</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26 15 6.04 0.006142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27 15 6.09 0.005596</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28 15 6.13 0.005099</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29 15 6.16 0.004646</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30 15 6.19 0.004233</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31 15 6.21 0.003857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32 16 6.23 0.003515</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33 16 6.24 0.003202</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 16 6.26 0.002918</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 17 6.27 0.002659</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36 17 6.28 0.002422</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37 17 6.29 0.002207</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38 17 6.30 0.002011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39 18 6.30 0.001832</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40 18 6.31 0.001670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41 18 6.31 0.001521</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42 18 6.32 0.001386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43 18 6.32 0.001263</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44 18 6.32 0.001151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45 18 6.32 0.001049</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46 18 6.33 0.000955</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47 18 6.33 0.000871</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48 19 6.33 0.000793</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49 19 6.33 0.000723</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50 19 6.33 0.000659</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   0 0.00 0.063250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   1 0.26 0.057630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3   2 0.61 0.052510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   2 0.99 0.047850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   3 1.39 0.043600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   4 1.82 0.039720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7   4 2.27 0.036200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8   4 2.64 0.032980</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   5 2.96 0.030050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10  5 3.29 0.027380</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11  7 3.59 0.024950</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  9 3.95 0.022730</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  9 4.30 0.020710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  9 4.58 0.018870</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  9 4.82 0.017200</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 11 5.05 0.015670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 11 5.26 0.014280</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 11 5.44 0.013010</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 13 5.60 0.011850</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 13 5.74 0.010800</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 14 5.86 0.009840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 14 5.97 0.008966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 14 6.06 0.008169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 14 6.14 0.007444</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 14 6.20 0.006782</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 15 6.25 0.006180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 15 6.30 0.005631</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 16 6.34 0.005131</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 16 6.38 0.004675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 16 6.41 0.004259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 17 6.43 0.003881</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 17 6.45 0.003536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 17 6.47 0.003222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 17 6.49 0.002936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 17 6.50 0.002675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 17 6.51 0.002437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 17 6.52 0.002221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 17 6.53 0.002024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 17 6.53 0.001844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 17 6.54 0.001680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 17 6.54 0.001531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 17 6.55 0.001395</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 17 6.55 0.001271</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 17 6.55 0.001158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 17 6.55 0.001055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 17 6.56 0.000961</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 17 6.56 0.000876</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 17 6.56 0.000798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 17 6.56 0.000727</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $glmnet.fit[[4]]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:  glmnet(x = X[current_observations, actual_block], y = Y[current_observations],      weights = weights[current_observations], offset = liste[[i]][current_observations],      family = family, standardize = standardize) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Df  %Dev   Lambda</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1     0  0.00 0.158200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2     1  0.86 0.151000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3     3  1.79 0.144200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4     3  2.76 0.137600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5     5  3.75 0.131300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6     6  4.75 0.125400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7     7  5.73 0.119700</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8  6.69 0.114200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9    11  7.67 0.109000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10   12  8.72 0.104100</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11   13  9.71 0.099360</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12   13 10.82 0.094840</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13   14 11.86 0.090530</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14   13 12.82 0.086420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15   13 13.71 0.082490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16   13 14.53 0.078740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17   14 15.31 0.075160</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18   13 16.03 0.071740</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19   15 16.70 0.068480</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20   15 17.35 0.065370</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21   16 17.99 0.062400</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22   16 18.71 0.059560</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   16 19.46 0.056860</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24   16 20.15 0.054270</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25   16 20.80 0.051810</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26   16 21.40 0.049450</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27   16 21.96 0.047200</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28   15 22.49 0.045060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   15 22.97 0.043010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30   18 23.59 0.041050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31   18 24.19 0.039190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32   21 24.84 0.037410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33   21 25.48 0.035710</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34   23 26.18 0.034080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35   24 26.93 0.032540</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36   25 27.72 0.031060</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37   29 28.57 0.029640</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 38   30 29.44 0.028300</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 39   36 30.30 0.027010</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 40   37 31.24 0.025780</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41   39 32.16 0.024610</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 42   43 33.17 0.023490</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 43   44 34.21 0.022430</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 44   47 35.23 0.021410</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 45   50 36.22 0.020430</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 46   54 37.24 0.019500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 47   58 38.37 0.018620</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48   62 39.60 0.017770</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 49   69 40.84 0.016960</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 50   69 42.04 0.016190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 51   68 43.17 0.015460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 52   74 44.33 0.014750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 53   77 45.51 0.014080</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 54   81 46.69 0.013440</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 55   82 47.91 0.012830</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 56   85 49.10 0.012250</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 57   92 50.36 0.011690</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 58   95 51.70 0.011160</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59   97 53.00 0.010650</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 60   98 54.30 0.010170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61  101 55.57 0.009707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 62  102 56.79 0.009266</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63  104 57.98 0.008845</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 64  115 59.17 0.008443</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 65  116 60.40 0.008059</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 66  115 61.58 0.007693</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 67  120 62.76 0.007343</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68  120 63.96 0.007009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 69  120 65.10 0.006691</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 70  132 66.24 0.006387</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 71  134 67.40 0.006096</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 72  137 68.56 0.005819</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 73  139 69.71 0.005555</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 74  140 70.87 0.005302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 75  144 71.98 0.005061</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 76  145 73.10 0.004831</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 77  147 74.19 0.004612</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 78  147 75.24 0.004402</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 79  150 76.24 0.004202</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 80  153 77.23 0.004011</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 81  152 78.20 0.003829</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 82  152 79.13 0.003655</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 83  153 80.01 0.003489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 84  154 80.86 0.003330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 85  154 81.68 0.003179</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 86  155 82.46 0.003034</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 87  157 83.22 0.002896</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 88  156 83.95 0.002765</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 89  158 84.64 0.002639</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 90  162 85.31 0.002519</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 91  164 85.96 0.002405</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 92  164 86.58 0.002295</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 93  162 87.17 0.002191</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 94  163 87.74 0.002091</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 95  167 88.28 0.001996</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 96  167 88.80 0.001906</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 97  168 89.30 0.001819</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 98  172 89.78 0.001736</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 99  174 90.24 0.001657</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 100 174 90.68 0.001582</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1     0  0.00 0.151300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2     2  0.93 0.144500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3     2  1.93 0.137900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4     3  2.96 0.131600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5     4  3.92 0.125600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6     4  4.86 0.119900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7     6  5.76 0.114500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8     8  6.65 0.109300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9     9  7.61 0.104300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10   11  8.54 0.099560</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11   14  9.66 0.095040</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12   14 10.76 0.090720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13   14 11.77 0.086600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14   14 12.71 0.082660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15   14 13.58 0.078900</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16   14 14.39 0.075320</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17   14 15.15 0.071890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18   14 15.85 0.068630</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19   14 16.50 0.065510</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20   14 17.10 0.062530</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21   14 17.66 0.059690</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   16 18.28 0.056970</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   17 18.97 0.054390</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24   18 19.64 0.051910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25   18 20.28 0.049550</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26   18 20.88 0.047300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27   18 21.43 0.045150</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   20 22.01 0.043100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   21 22.62 0.041140</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30   23 23.28 0.039270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31   23 23.93 0.037490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32   22 24.53 0.035780</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33   23 25.12 0.034160</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34   26 25.73 0.032600</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35   27 26.42 0.031120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36   29 27.17 0.029710</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37   30 28.04 0.028360</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38   33 28.88 0.027070</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39   36 29.81 0.025840</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40   37 30.81 0.024660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41   40 31.81 0.023540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42   43 32.86 0.022470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43   44 33.90 0.021450</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44   47 35.02 0.020480</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45   50 36.20 0.019540</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46   53 37.35 0.018660</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47   53 38.47 0.017810</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48   58 39.60 0.017000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49   62 40.71 0.016230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50   65 41.92 0.015490</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51   72 43.18 0.014790</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52   72 44.42 0.014110</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53   77 45.67 0.013470</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54   80 46.92 0.012860</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55   81 48.18 0.012270</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56   85 49.45 0.011720</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57   90 50.79 0.011180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58   92 52.09 0.010680</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59   96 53.43 0.010190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60  100 54.76 0.009728</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61  104 56.08 0.009285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62  104 57.35 0.008863</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63  108 58.59 0.008461</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64  113 59.82 0.008076</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65  117 61.05 0.007709</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66  120 62.24 0.007359</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67  120 63.41 0.007024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68  122 64.57 0.006705</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69  126 65.73 0.006400</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70  128 66.87 0.006109</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71  134 68.06 0.005832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72  137 69.24 0.005566</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73  141 70.40 0.005313</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74  145 71.55 0.005072</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75  148 72.68 0.004841</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76  149 73.77 0.004621</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77  148 74.83 0.004411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78  148 75.86 0.004211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79  150 76.86 0.004019</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80  149 77.83 0.003837</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81  152 78.77 0.003662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82  154 79.68 0.003496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83  153 80.55 0.003337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84  155 81.39 0.003185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85  156 82.19 0.003041</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86  157 82.95 0.002902</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87  158 83.69 0.002770</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88  157 84.40 0.002645</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89  161 85.07 0.002524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90  164 85.72 0.002410</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91  167 86.35 0.002300</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92  167 86.95 0.002196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93  167 87.53 0.002096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94  168 88.08 0.002000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95  172 88.61 0.001910</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96  172 89.11 0.001823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97  172 89.60 0.001740</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98  175 90.06 0.001661</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99  174 90.51 0.001585</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 100 172 90.94 0.001513</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $name</span>
@@ -503,15 +509,15 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         b1.1         b1.2         b1.3         b1.4         b2.1         b2.2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.992573217  0.781992305  0.218216996  0.231240853  0.139132973  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.992573217  0.781992305  0.218216996  0.231240853  0.215089932  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         b2.3         b2.4         b2.5         b3.1        b3.10        b3.11 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.321286167  0.000000000 -0.041439915  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.399197954  0.000000000 -0.107328632 -0.157523908  0.000000000  0.093365511 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b3.12        b3.13        b3.14        b3.15        b3.16        b3.17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000 -0.025403427  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000 -0.018820733  0.000000000  0.000000000 -0.397892798  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b3.18        b3.19         b3.2         b3.3         b3.4         b3.5 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.044437992  0.054176936  0.228551435 -0.048456764  1.067996096 -0.017267943 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.328546294  0.314308080  0.361878263 -0.223864470  1.623659830 -0.420700078 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         b3.6         b3.7         b3.8         b3.9         b4.1        b4.10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000 -0.339094215  0.301162069  0.000000000  0.306053257  0.271342330 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.076751539 -0.563924820  0.510323002 -0.042951646  0.320276816  0.270103786 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.100      b4.1000       b4.101       b4.102       b4.103       b4.104 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.105       b4.106       b4.107       b4.108       b4.109        b4.11 </span>
@@ -521,7 +527,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.116       b4.117       b4.118       b4.119        b4.12       b4.120 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.121       b4.122       b4.123       b4.124       b4.125       b4.126 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.003042317  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.127       b4.128       b4.129        b4.13       b4.130       b4.131 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.132       b4.133       b4.134       b4.135       b4.136       b4.137 </span>
@@ -529,7 +535,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.138       b4.139        b4.14       b4.140       b4.141       b4.142 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.143       b4.144       b4.145       b4.146       b4.147       b4.148 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.025063881  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.004563904  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.149        b4.15       b4.150       b4.151       b4.152       b4.153 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.154       b4.155       b4.156       b4.157       b4.158       b4.159 </span>
@@ -575,7 +581,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.262       b4.263       b4.264       b4.265       b4.266       b4.267 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.268       b4.269        b4.27       b4.270       b4.271       b4.272 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.010499968  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.273       b4.274       b4.275       b4.276       b4.277       b4.278 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.279        b4.28       b4.280       b4.281       b4.282       b4.283 </span>
@@ -589,7 +595,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b4.30       b4.300       b4.301       b4.302       b4.303       b4.304 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.305       b4.306       b4.307       b4.308       b4.309        b4.31 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.120578284  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.130590667  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.310       b4.311       b4.312       b4.313       b4.314       b4.315 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.316       b4.317       b4.318       b4.319        b4.32       b4.320 </span>
@@ -607,7 +613,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.349        b4.35       b4.350       b4.351       b4.352       b4.353 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.354       b4.355       b4.356       b4.357       b4.358       b4.359 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.004627109  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.016181021  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b4.36       b4.360       b4.361       b4.362       b4.363       b4.364 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.365       b4.366       b4.367       b4.368       b4.369        b4.37 </span>
@@ -623,7 +629,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.392       b4.393       b4.394       b4.395       b4.396       b4.397 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.398       b4.399         b4.4        b4.40       b4.400       b4.401 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.097063753  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.067157064  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.402       b4.403       b4.404       b4.405       b4.406       b4.407 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.408       b4.409        b4.41       b4.410       b4.411       b4.412 </span>
@@ -649,11 +655,11 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.462       b4.463       b4.464       b4.465       b4.466       b4.467 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.468       b4.469        b4.47       b4.470       b4.471       b4.472 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.009228180  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.473       b4.474       b4.475       b4.476       b4.477       b4.478 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.479        b4.48       b4.480       b4.481       b4.482       b4.483 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.006011426 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.484       b4.485       b4.486       b4.487       b4.488       b4.489 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b4.49       b4.490       b4.491       b4.492       b4.493       b4.494 </span>
@@ -687,7 +693,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.565       b4.566       b4.567       b4.568       b4.569        b4.57 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.570       b4.571       b4.572       b4.573       b4.574       b4.575 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.012269988  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.576       b4.577       b4.578       b4.579        b4.58       b4.580 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.581       b4.582       b4.583       b4.584       b4.585       b4.586 </span>
@@ -697,15 +703,15 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.592       b4.593       b4.594       b4.595       b4.596       b4.597 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.598       b4.599         b4.6        b4.60       b4.600       b4.601 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.188308013  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.192863168  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.602       b4.603       b4.604       b4.605       b4.606       b4.607 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.125840313 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.124591111 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.608       b4.609        b4.61       b4.610       b4.611       b4.612 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.613       b4.614       b4.615       b4.616       b4.617       b4.618 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.619        b4.62       b4.620       b4.621       b4.622       b4.623 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.080992569 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.073186076 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.624       b4.625       b4.626       b4.627       b4.628       b4.629 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b4.63       b4.630       b4.631       b4.632       b4.633       b4.634 </span>
@@ -713,17 +719,17 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.635       b4.636       b4.637       b4.638       b4.639        b4.64 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.640       b4.641       b4.642       b4.643       b4.644       b4.645 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.078815294  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.067092406  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.646       b4.647       b4.648       b4.649        b4.65       b4.650 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.651       b4.652       b4.653       b4.654       b4.655       b4.656 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.657       b4.658       b4.659        b4.66       b4.660       b4.661 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.102446492  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.091722042  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.662       b4.663       b4.664       b4.665       b4.666       b4.667 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.668       b4.669        b4.67       b4.670       b4.671       b4.672 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.025883381  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.673       b4.674       b4.675       b4.676       b4.677       b4.678 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.679        b4.68       b4.680       b4.681       b4.682       b4.683 </span>
@@ -757,21 +763,21 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.754       b4.755       b4.756       b4.757       b4.758       b4.759 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        b4.76       b4.760       b4.761       b4.762       b4.763       b4.764 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.011875656  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000 -0.035657680  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.765       b4.766       b4.767       b4.768       b4.769        b4.77 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.030398158  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.031905815  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.770       b4.771       b4.772       b4.773       b4.774       b4.775 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.776       b4.777       b4.778       b4.779        b4.78       b4.780 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 -0.011290434  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.781       b4.782       b4.783       b4.784       b4.785       b4.786 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.787       b4.788       b4.789        b4.79       b4.790       b4.791 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 -0.064973747  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000 -0.056801974  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.792       b4.793       b4.794       b4.795       b4.796       b4.797 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.798       b4.799         b4.8        b4.80       b4.800       b4.801 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.041146875  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.011758894  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.802       b4.803       b4.804       b4.805       b4.806       b4.807 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.808       b4.809        b4.81       b4.810       b4.811       b4.812 </span>
@@ -815,7 +821,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.910       b4.911       b4.912       b4.913       b4.914       b4.915 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.916       b4.917       b4.918       b4.919        b4.92       b4.920 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.134089257  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.127546914  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.921       b4.922       b4.923       b4.924       b4.925       b4.926 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.927       b4.928       b4.929        b4.93       b4.930       b4.931 </span>
@@ -837,7 +843,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.970       b4.971       b4.972       b4.973       b4.974       b4.975 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.976       b4.977       b4.978       b4.979        b4.98       b4.980 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.107550116  0.000000000  0.000000000  0.000000000  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.130037299  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.981       b4.982       b4.983       b4.984       b4.985       b4.986 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       b4.987       b4.988       b4.989        b4.99       b4.990       b4.991 </span>
@@ -21039,7 +21045,7 @@ Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
 </div>
 
     </footer></div>
