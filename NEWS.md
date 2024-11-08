@@ -1,5 +1,7 @@
 # dev
 
+# mlr3extralearners 1.0.0
+
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347
 * All survival learners have `crank` as main prediction type (and it is always returned) #331
 * Added minimum working version for all survival learners in `DESCRIPTION` file
