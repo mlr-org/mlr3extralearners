@@ -59,17 +59,16 @@ rweka_predict = function(newdata, pars, predict_type, model) {
 
 #' @export
 #' @method marshal_model.Weka_classifier
-marshal_model.Weka_classifier= function(model, inplace = FALSE, ...) {
+marshal_model.Weka_classifier = function(model, inplace = FALSE, ...) {
   rJava::.jcache(model$classifier)
-
   structure(list(
-    marshaled = model, packages = "mlr3extralearners"),
-    class = c("classif.Weka_classifier_marshaled", "marshaled")
+    marshaled = model, packages = c("mlr3", "mlr3extralearners")),
+    class = c("Weka_classifier_marshaled", "marshaled")
   )
 }
 
 #' @export
-#' @method unmarshal_model.Weka_classifier
-unmarshal_model.Weka_classifier = function(model, inplace = FALSE, ...) {
+#' @method unmarshal_model.Weka_classifier_marshaled
+unmarshal_model.Weka_classifier_marshaled = function(model, inplace = FALSE, ...) {
   model$marshaled
 }
