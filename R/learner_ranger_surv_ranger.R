@@ -86,7 +86,8 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
         write.forest                 = p_lgl(default = TRUE, tags = "train"),
         min.bucket                   = p_int(default = 3, tags = "train"),
         time.interest                = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
-        node.stats                   = p_lgl(default = FALSE, tags = "train")
+        node.stats                   = p_lgl(default = FALSE, tags = "train"),
+        na.action                    = p_fct(default = "na.learn", c("na.learn", "na.omit", "na.fail"))
       )
 
       ps$values = list(num.threads = 1L)
@@ -96,7 +97,7 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
         param_set = ps,
         predict_types = c("crank", "distr"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
-        properties = c("weights", "importance", "oob_error"),
+        properties = c("weights", "importance", "oob_error", "missings"),
         packages = c("mlr3extralearners", "ranger"),
         man = "mlr3extralearners::mlr_learners_surv.ranger",
         label = "Random Forest"

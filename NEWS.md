@@ -1,5 +1,7 @@
 # dev
 
+* Add missing `na.action` parameter to `lrn("surv.ranger")`
+
 # mlr3extralearners 1.0.0
 
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347

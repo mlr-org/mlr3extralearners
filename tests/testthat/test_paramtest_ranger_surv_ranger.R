@@ -15,7 +15,8 @@ test_that("surv.ranger", {
     "status.variable.name", # handled via mlr3
     "classification", # handled via mlr3
     "quantreg", # regression only
-    "mtry.ratio" # custom hyperpar
+    "mtry.ratio", # custom hyperpar
+    "poisson.tau" # for poisson splitrule
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
