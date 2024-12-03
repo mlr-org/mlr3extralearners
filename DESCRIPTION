@@ -88,7 +88,7 @@ Suggests:
     randomForest,
     randomPlantedForest,
     randomForestSRC (>= 3.3.0),
-    rangera(>= 0.17.0),
+    ranger (>= 0.17.0),
     remotes,
     reticulate (>= 1.16),
     rpart,
