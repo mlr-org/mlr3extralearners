@@ -9,24 +9,79 @@ authors:
   - name: Sebastian Fischer
     orcid: 0000-0002-9609-3197
     affiliation: "2, 3"
+  - name: John Zobolas
+    orcid: 0000-0002-3609-8674
+    affiliation: 4
+  - name: Raphael Sonabend
+    orcid: 0000-0001-9225-4654
+  - name: Marc Becker
+    orcid: 0000-0002-8115-0400
+    affiliation: 2
   - name: Michel Lang
     orcid: 0000-0001-9754-0393
     affiliation: "1, 2"
   - name: Martin Binder
     affiliation: 2
+  - name: Lennart Schneider
+    orchid: 0000-0003-4152-5308
+    affiliation: 2
+  - name: Lukas Burk
+    orchid: 0000-0001-7528-3795
+    affiliation: "2, 3"
   - name: Patrick Schratz
     orcid: 0000-0003-0748-6624
     affiliation: 2
+  - name: Byron C. Jaeger
+    orchid: 0000-0001-7399-2299
+    affiliation: 
+  - name: Stephen A. Lauer
+    orchid: 
+    affiliation: 7
+  - name: Lorenz A. Kapsner
+    orchid: 
+    affiliation: 8
+  - name: Maximilian Mücke
+    orchid: 0009-0000-9432-9795
+    affiliation: 2
+  - name: Zezhi Wang 
+    orchid: 
+    affiliation: 9
+  - name: Keenan Ganz
+    orchid: 0000-0002-8486-3959
+    affiliation: 10
+  - name: Henri Funk
+    orchid: 0009-0007-0949-8385
+    affiliation: 
+  - name: Philipp Kopper
+    orchid: 0000-0002-5037-7135
+    affiliation: 3
+  - name: Andreas Bender
+    orchid: 0000-0001-5628-8611
+    affiliation: "2, 3"
   - name: Bernd Bischl
     orcid: 0000-0001-6002-6980
-    affiliation: "2, 3"
+    affiliation: "2, 3, 5, 6"
 affiliations:
- - name: TU Dortmund University
+ - name: TU Dortmund University, Germany
    index: 1
- - name: LMU Munich
+ - name: Department of Statistics, LMU Munich, Germany
    index: 2
- - name: Munich Center for Machine Learning
+ - name: Munich Center for Machine Learning (MCML), Germany
    index: 3
+ - name: Department of Cancer Genetics, Institute for Cancer Research, Oslo University Hospital, Norway
+   index: 4
+ - name: Leibniz Institute for Prevention Research and Epidemiology (BIPS), Bremen, Germany
+   index: 5
+ - name: Faculty of Mathematics and Computer Science, University of Bremen, Germany
+   index: 6
+ - name: Certilytics, Inc., Louisville, Kentucky
+   index: 7
+ - name: Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Erlangen, Germany
+   index: 8
+ - name: Department of Statistics and Finance/International Institute of Finance, School of Management, University of Science and Technology of China, Hefei, Anhui, China
+   index: 9
+ - name: School of Environmental and Forest Sciences, University of Washington, Seattle
+   index: 10
 date: XXX December 2024
 bibliography: paper.bib
 ---
@@ -70,7 +125,7 @@ However, the benefits of `mlr3extralearners` do not stop at mere integration.
 One core feature of the `mlr3` ecosystem is that it annotates learners with extensive metadata.
 For one, the parameter spaces of learners are defined as parameter sets as defined in the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
 Parameters are explicitly typed, their ranges or list of available values are annotated and this information is used to both check for valid configurations, but also allow for easier parameter tuning.
-Furthermore, learners are annotated with respect to their task type (such as classification, regression or survival analysis) and predict type (such as probabilities or class predictions), which feature types they can handle, and which capabilities they have.
+Furthermore, learners are annotated with respect to their task type (such as classification, regression or survival analysis [@Sonabend2021]) and predict type (such as probabilities or class predictions), which feature types they can handle, and which capabilities they have.
 The latter are standardized via a set of standardized properties, which e.g. includes the ability to do feature selection, to assign importance scores to features, or to handle missing values.
 
 ## Functional Correctness
@@ -92,5 +147,6 @@ The package website contains an [extensive tutorioal](https://mlr3extralearners.
 
 Sebastian Fischer is supported by the Deutsche Forschungsgemeinschaft (DFG, German Research
 Foundation) – 460135501 (NFDI project MaRDI).
+John Zobolas received funding from the European Union's Horizon 2020 research and innovation programme under grant agreement No 101016851, project PANCAIM.
 
 # References
