@@ -38,7 +38,7 @@ authors:
     orchid: 0000-0003-2948-630X
     affiliation: 7
   - name: Lorenz A. Kapsner
-    orchid: 
+    orchid: 0000-0003-1866-860X
     affiliation: 8
   - name: Maximilian Mücke
     orchid: 0009-0000-9432-9795
@@ -119,7 +119,7 @@ This ensures that users can access a wide variety of learners to meet their spec
 and choose the most appropriate learner for their specific problem.
 While connecting new learners to `mlr3` is straightforward and can be done on a per-need basis, integrating them into `mlr3extralearners` benefits the broader community by avoiding redundant effort and ensuring accessibility for all users.
 Additionally, contributions to `mlr3extralearners` are reviewed by the package maintainers, providing a layer of quality assurance.
-This review process ensures that integrated learners function as expected and adhere to the high standards of the `mlr3` ecosystem.
+This review process ensures that integrated learners work as expected and adhere to the high standards of the `mlr3` ecosystem.
 
 Beyond its utility for users, `mlr3extralearners` also offers significant advantages for developers of machine learning packages.
 By integrating a new algorithm into the `mlr3` ecosystem, developers can immediately make their methods accessible to a wider audience.
@@ -127,32 +127,37 @@ This integration facilitates seamless tuning [@mlr3tuning] and preprocessing [@m
 
 # Features
 
-The core functionality of `mlr3extralearners` is to integrate new learners into the `mlr3` ecosystem.
-By doing so, many different learning algorithms can be used with the same syntax and standardized interface.
-However, the benefits of `mlr3extralearners` do not stop at mere integration.
+The core functionality of `mlr3extralearners` is to integrate new learners into the `mlr3` ecosystem, allowing users to access a wide array of learning algorithms through a unified syntax and standardized interface.
+However, the advantages of `mlr3extralearners` go well beyond simple integration.
 
 ## Metadata
 
 One core feature of the `mlr3` ecosystem is that it annotates learners with extensive metadata.
-For one, the parameter spaces of learners are defined as parameter sets as defined in the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
-Parameters are explicitly typed, their ranges or list of available values are annotated and this information is used to both check for valid configurations, but also allow for easier parameter tuning.
-Furthermore, learners are annotated with respect to their task type (such as classification, regression or survival analysis [@Sonabend2021]) and predict type (such as probabilities or class predictions), which feature types they can handle, and which capabilities they have.
-The latter are standardized via a set of standardized properties, which e.g. includes the ability to do feature selection, to assign importance scores to features, or to handle missing values.
+
+- **Parameter Management**: The parameter spaces of learners are defined using parameter sets from the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
+Each parameter is explicitly typed, with annotations for valid ranges and allowable values.
+This ensures valid configurations and simplifies tasks like parameter tuning.
+- **Task and Prediction Types**: Learners are categorized with respect to their task type (e.g. as classification, regression or survival analysis [@Sonabend2021]) and prediction types (e.g. probabilities or class predictions).
+This allows users to easily identify suitable learners for their specific modeling tasks.
+- **Standardized Properties**: Learners are also annotated with properties such as the feature types they can process, and whether they support functionalities such as feature selection, importance scoring, handling missing values or whether they can track performance during training (validation).
+This allows users to have a clear understanding of a learner's capabilities and limitations and assess if it aligns with the specific requirements of their workflows, reducing trial-and-error and streamlining the modeling process.
 
 ## Functional Correctness
 
-One problem that manifests when integrating learning algorithms from different R packages is that their API can change.
-The most frequent case is that new parameters are added, which were not present in the version of the package when the learner was integrated.
-In `mlr3extralearners`, we regularly check whether the learner implements the expected interface of the upstream function and update the parameter set accordingly.
+Integrating learners from diverse R packages poses challenges, particularly due to changes in upstream APIs. `mlr3extralearners` addresses these issues through rigorous checks:
 
-In addition to this `mlr3`-specific check, `mlr3extralearners` also verifies the correctness of learners by regularly running automatic tests on the learners.
-These tests perform simple sanity checks and also verify that the learner's metadata is correctly annotated, e.g. that a learner that claims to be able to handle missing values actually does so.
+- **Interface Consistency**: The package regularly verifies that each learner adheres to the expected interface of its upstream function.
+When new parameters are introduced or existing ones change, the tests fail until the parameter sets are updated accordingly.
+- **Automated Testing**: To ensure correctness, `mlr3extralearners` performs regular automated tests on all learners.
+These tests include sanity checks and validate metadata annotations, such as verifying that a learner claiming to handle missing values works as expected.
 
-## Templates for new Learners
+## Simplified Integration of New Learners
 
-In order to make the integration of new learners into `mlr3extralearners` as easy as possible, we provide templates for generating code for both the new learner itself, as well as associated test files.
-These templates can easily be created via an `R` function that takes in the metadata of the learner and generates files that fill out as much as possible and clearly indicate what is needed to be added by the user.
-The package website contains an [extensive tutorioal](https://mlr3extralearners.mlr-org.com/articles/extending.html) on how to do this, as well as a list with [common mistakes](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered by several contributors.
+To streamline the addition of new learners, `mlr3extralearners` provides robust support tools:
+
+- **Code Templates**: Predefined templates are available for generating the necessary code for both the learner implementation and associated test files.
+These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the user.
+- **Guides and Resources**: The package website contains an contains an [extensive tutorial](https://mlr3extralearners.mlr-org.com/articles/extending.html), as well as a curated list of [common issues](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered during learner integration, making the process accessible for contributors of all experience levels.
 
 # Acknowledgements
 
