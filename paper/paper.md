@@ -92,12 +92,12 @@ The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` and is targeted towards both practitioners and researchers [@Bischl2024].
 At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
 The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
-This enables `mlr3` users to seamlessly access and utilize these learners directly within their workflows.
+This enables `mlr3` users to seamlessly access and utilize these learners directly within their workflows as well as execute large-scale empirical benchmark experiments [@benchlargescale].
 An overview of all `mlr3` learners, including those from `mlr3extralearners`, is available on the [mlr3 website](https://mlr-org.com/learners.html).
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
-This enriches each learner with extensive metadata about its parameter space, prediction types, and other key attributes.
-Furthermore, `mlr3extralearners` includes robust mechanisms for quality assurance, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
+This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
+Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the package to also include learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
 
 - Comparison with other packages:
