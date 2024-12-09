@@ -1,5 +1,5 @@
 #' @title Classification Abess Learner
-#' @author abess-team
+#' @author bbayukari
 #' @name mlr_learners_classif.abess
 #'
 #' @description

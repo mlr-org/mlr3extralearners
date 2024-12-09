@@ -104,7 +104,7 @@ predictions$score()
 }
 }
 \author{
-abess-team
+bbayukari
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrAbess}
