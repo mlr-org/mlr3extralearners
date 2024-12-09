@@ -163,6 +163,7 @@ To streamline the addition of new learners, `mlr3extralearners` provides robust 
 - **Code Templates**: Predefined templates are available for generating the necessary code for both the learner implementation and associated test files.
 These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the user.
 - **Guides and Resources**: The package website contains an contains an [extensive tutorial](https://mlr3extralearners.mlr-org.com/articles/extending.html), as well as a curated list of [common issues](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered during learner integration, making the process accessible for contributors of all experience levels.
+Additionally, every integrated learner includes a simple example of usage in the documentation, ensuring that users can quickly understand how to utilize the learner effectively within the `mlr3` ecosystem.
 
 # Acknowledgements
 
