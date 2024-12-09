@@ -33,7 +33,7 @@ authors:
     affiliation: 2
   - name: Byron C. Jaeger
     orchid: 0000-0001-7399-2299
-    affiliation: 
+    affiliation: 13
   - name: Stephen A. Lauer
     orchid: 
     affiliation: 7
@@ -86,6 +86,8 @@ affiliations:
    index: 11
  - name: Statistical Consulting Unit StaBLab, LMU Munich, Germany
    index: 12
+ - name: Wake Forest University School of Medicine, Department of Biostatistics and Data Science, Division of Public Health SciencesWinston-Salem, North Carolina
+   index: 13
 date: XXX December 2024
 bibliography: paper.bib
 ---
