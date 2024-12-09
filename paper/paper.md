@@ -33,14 +33,16 @@ bibliography: paper.bib
 
 # Summary
 
-The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://www.r-project.org/) [@R] package is a community-driven package that integrates external machine learning algorithms into the [`mlr3`](https://mlr3.mlr-org.com/) [@mlr3] ecosystem.
+The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://www.r-project.org/) [@R] package is a community-driven package that integrates external machine learning algorithms into the [`mlr3`](https://mlr3.mlr-org.com/) [@Lang2019] ecosystem.
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` and is targeted towards both practitioners and researchers [@Bischl2024].
-At its core, the package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
-The `mlr3extralearners` package currently wraps 85 different learning algorithms from many different R packages, making these methods immediately accessible to `mlr3` users.
-An overview of all `mlr3` learners, including those from `mlr3extralearners`, is given in the [mlr3 website](https://mlr3learners.mlr-org.com/).
-Furthermore, the package also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
-In addition to making these learners available to `mlr3` users, integrating learners into `mlr3extralearners` also annotates them with extensive metadata about their parameter space, predict types and other capabilities.
-Furthermore, `mlr3extralearners` verifies the correctness of learners by regularly running sanity checks on the learner, as well as verifying that the parameter space is up to date with the latest version of the package implementing the algorithm.
+At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
+The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
+This enables `mlr3` users to seamlessly access and utilize these learners directly within their workflows.
+An overview of all `mlr3` learners, including those from `mlr3extralearners`, is available on the [mlr3 website](https://mlr-org.com/learners.html).
+
+Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
+This enriches each learner with extensive metadata about its parameter space, prediction types, and other key attributes.
+Furthermore, `mlr3extralearners` includes robust mechanisms for quality assurance, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the package to also include learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
 
 - Comparison with other packages:
@@ -49,13 +51,13 @@ In order to allow the package to also include learners that are not available on
 
 # Statement of Need
 
-In order to solve modeling problems using machine learning, one often has specific requirements for the learning algorithm such as performance, interpretability, or the ability to handle specific data types.
+In order to solve modeling problems using machine learning, one often has specific requirements for the learning algorithm such as performance, interpretability, or the ability to handle specific data types and modeling tasks.
 For this reason, it is essential for the `mlr3` ecosystem to offer a wide variety of learners, such that users can choose the most appropriate learner for their specific problem.
 While connecting a new learner to `mlr3` is straightforward and can be done on a per-need basis, integrating learners into `mlr3extralearners` also makes this available to other users and avoids replication of effort.
 Furthermore, contributing to `mlr3extralearners` also has the added benefits that the learners are reviewed by the maintainers of the package, ensuring that they are correct and work as expected.
 
 Besides the advantage for users of machine learning methods, `mlr3extralearners` also offers benefits for package developers.
-After developing a new R package that implements a machine learning algorithm, making it available in the `mlr3` ecosystem means that the learning algorithm is immediately integrated into the wider ecosystem and can therefore easily be tuned or combined with preprocessing steps.
+After developing a new R package that implements a machine learning algorithm, making it available in the `mlr3` ecosystem means that the learning algorithm is immediately integrated into the wider ecosystem and can therefore easily be tuned or combined with preprocessing steps [@mlr3pipelines2021].
 
 # Features
 
@@ -67,14 +69,14 @@ However, the benefits of `mlr3extralearners` do not stop at mere integration.
 
 One core feature of the `mlr3` ecosystem is that it annotates learners with extensive metadata.
 For one, the parameter spaces of learners are defined as parameter sets as defined in the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
-Parameters are explicitly typed, their ranges or list of available values are annotated and this information is used to both check for valid configurations, but also allow for easier tuning of the hyperparameters.
+Parameters are explicitly typed, their ranges or list of available values are annotated and this information is used to both check for valid configurations, but also allow for easier parameter tuning.
 Furthermore, learners are annotated with respect to their task type (such as classification, regression or survival analysis) and predict type (such as probabilities or class predictions), which feature types they can handle, and which capabilities they have.
 The latter are standardized via a set of standardized properties, which e.g. includes the ability to do feature selection, to assign importance scores to features, or to handle missing values.
 
 ## Functional Correctness
 
-One problem that comes with wrapping learning algorithms from different R packages is that their API can change.
-The most frequent case is that new parameters are added, which were not present in the version of the package when the learner was wrapped.
+One problem that manifests when integrating learning algorithms from different R packages is that their API can change.
+The most frequent case is that new parameters are added, which were not present in the version of the package when the learner was integrated.
 In `mlr3extralearners`, we regularly check whether the learner implements the expected interface of the upstream function and update the parameter set accordingly.
 
 In addition to this `mlr3`-specific check, `mlr3extralearners` also verifies the correctness of learners by regularly running automatic tests on the learners.
@@ -84,7 +86,7 @@ These tests perform simple sanity checks and also verify that the learner's meta
 
 In order to make the integration of new learners into `mlr3extralearners` as easy as possible, we provide templates for generating code for both the learner itself, as well as associated test files.
 These templates can easily be created via an `R` function that takes in the metadata of the learner and generates files that fill out as much as possible and clearly indicate what is needed to be added by the user.
-The package website contains an [extensive tutorioal](https://mlr3extralearners.mlr-org.com/articles/extending.html) on how to do this, as well as a list with [common mistakes](https://mlr3extralearners.mlr-org.com/articles/common_issues.html).
+The package website contains an [extensive tutorioal](https://mlr3extralearners.mlr-org.com/articles/extending.html) on how to do this, as well as a list with [common mistakes](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered by several contributors.
 
 # Acknowledgements
 
