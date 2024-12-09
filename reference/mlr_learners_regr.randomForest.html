@@ -197,13 +197,13 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 7.579088</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 75.38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 6.791493</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 81.24</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       disp        cyl         wt         hp         vs       gear       drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.64204941 6.51843323 6.41855598 6.31929341 1.27984268 0.34625413 0.19696680 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       carb       qsec         am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.15032179 0.10498983 0.06209371 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       disp         wt        cyl         hp       drat         am       carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.3560107  9.5123558  8.2396739  4.7290991  2.0768846  1.4558367  0.8603960 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       gear       qsec         vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6358574  0.4855550  0.2648128 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -211,7 +211,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.65406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.899422 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
