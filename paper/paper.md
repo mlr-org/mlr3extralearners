@@ -24,7 +24,7 @@ authors:
     affiliation: 2
   - name: Lennart Schneider
     orchid: 0000-0003-4152-5308
-    affiliation: 2
+    affiliation: "2, 3"
   - name: Lukas Burk
     orchid: 0000-0001-7528-3795
     affiliation: "2, 3"
