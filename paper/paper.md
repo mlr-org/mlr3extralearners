@@ -34,7 +34,7 @@ authors:
   - name: Byron C. Jaeger
     orchid: 0000-0001-7399-2299
     affiliation: 13
-  - name: Stephen A. Lauer
+  - name: Stephen A Lauer
     orchid: 0000-0003-2948-630X
     affiliation: 7
   - name: Lorenz A. Kapsner
@@ -44,8 +44,11 @@ authors:
     orchid: 0009-0000-9432-9795
     affiliation: 2
   - name: Zezhi Wang 
-    orchid: 
+    orchid: 0000-0001-6988-5853
     affiliation: 9
+  - name: Damir Pulatov
+    orchid: 0000-0003-4901-7201
+    affiliation: 14
   - name: Keenan Ganz
     orchid: 0000-0002-8486-3959
     affiliation: 10
@@ -88,6 +91,8 @@ affiliations:
    index: 12
  - name: Wake Forest University School of Medicine, Department of Biostatistics and Data Science, Division of Public Health SciencesWinston-Salem, North Carolina
    index: 13
+ - name: University of North Carolina Wilmington
+   index: 14
 date: XXX December 2024
 bibliography: paper.bib
 ---
