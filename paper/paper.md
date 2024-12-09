@@ -51,7 +51,7 @@ authors:
     affiliation: 10
   - name: Henri Funk
     orchid: 0009-0007-0949-8385
-    affiliation: 
+    affiliation: "3, 11, 12"
   - name: Philipp Kopper
     orchid: 0000-0002-5037-7135
     affiliation: 3
@@ -82,6 +82,10 @@ affiliations:
    index: 9
  - name: School of Environmental and Forest Sciences, University of Washington, Seattle
    index: 10
+ - name: Department of Geography, LMU Munich, Germany
+   index: 11
+ - name: Statistical Consulting Unit StaBLab, LMU Munich, Germany
+   index: 12
 date: XXX December 2024
 bibliography: paper.bib
 ---
