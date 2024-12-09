@@ -35,7 +35,7 @@ authors:
     orchid: 0000-0001-7399-2299
     affiliation: 13
   - name: Stephen A. Lauer
-    orchid: 
+    orchid: 0000-0003-2948-630X
     affiliation: 7
   - name: Lorenz A. Kapsner
     orchid: 
@@ -74,7 +74,7 @@ affiliations:
    index: 5
  - name: Faculty of Mathematics and Computer Science, University of Bremen, Germany
    index: 6
- - name: Certilytics, Inc., Louisville, Kentucky
+ - name: Certilytics, Inc., 9200 Shelbyville Rd, Louisville, KY, 40222, USA
    index: 7
  - name: Friedrich-Alexander-Universität Erlangen-Nürnberg (FAU), Erlangen, Germany
    index: 8
@@ -98,27 +98,32 @@ The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` and is targeted towards both practitioners and researchers [@Bischl2024].
 At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
 The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
-This enables users to seamlessly access and utilize these learners directly within their workflows as well as execute large-scale empirical benchmark experiments [@benchlargescale], leveraging the `mlr3` framework's parallelization and optimization capabilities.
-An overview of all `mlr3` learners, including those from `mlr3extralearners`, is available on the [mlr3 website](https://mlr-org.com/learners.html).
+This enables users to seamlessly access and utilize these learners directly within their workflows.
+It also facilitates large-scale empirical benchmark experiments, leveraging the `mlr3` framework's parallelization and optimization capabilities  [@benchlargescale].
+An overview of all `mlr3` learners, including those introduced through `mlr3extralearners`, is available on the [mlr3 website](https://mlr-org.com/learners.html).
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
 
-- Comparison with other packages:
-  - parsnip tidymodels
-  - ???
-
 # Statement of Need
 
-In order to solve modeling problems using machine learning, one often has specific requirements for the learning algorithm such as performance, interpretability, or the ability to handle specific data types and modeling tasks.
-For this reason, it is essential for the `mlr3` ecosystem to offer a wide variety of learners, such that users can choose the most appropriate learner for their specific problem.
-While connecting a new learner to `mlr3` is straightforward and can be done on a per-need basis, integrating learners into `mlr3extralearners` also makes this available to other users and avoids replication of effort.
-Furthermore, contributing to `mlr3extralearners` also has the added benefits that the learners are reviewed by the maintainers of the package, ensuring that they are correct and work as expected.
+Machine learning often requires practitioners to navigate a diverse array of modeling problems, each with unique demands such as performance, interpretability, or compatibility with specific data types and tasks.
+To address this challenge, packages like `caret` [@caret] and `parsnip` [@parsnip] from the `tidymodels` ecosystem have historically provided unified interfaces for simplifying model experimentation [@tidymodels].
+For instance, `parsnip` provides a clean and consistent way to define models, enabling users to experiment with different algorithms without dealing with the nuances of underlying package syntax.
+Similarly, the `mlr3` ecosystem aims to streamline model selection and experimentation, making it a versatile toolbox for machine learning in R.
 
-Besides the advantage for users of machine learning methods, `mlr3extralearners` also offers benefits for package developers.
-After developing a new R package that implements a machine learning algorithm, making it available in the `mlr3` ecosystem means that the learning algorithm is immediately integrated into the wider ecosystem and can therefore easily be tuned or combined with preprocessing steps [@mlr3pipelines2021].
+Within this ecosystem, `mlr3extralearners` plays a crucial role by providing a comprehensive collection of external machine learning algorithms integrated into the `mlr3` framework.
+This ensures that users can access a wide variety of learners to meet their specific needs,
+and choose the most appropriate learner for their specific problem.
+While connecting new learners to `mlr3` is straightforward and can be done on a per-need basis, integrating them into `mlr3extralearners` benefits the broader community by avoiding redundant effort and ensuring accessibility for all users.
+Additionally, contributions to `mlr3extralearners` are reviewed by the package maintainers, providing a layer of quality assurance.
+This review process ensures that integrated learners function as expected and adhere to the high standards of the `mlr3` ecosystem.
+
+Beyond its utility for users, `mlr3extralearners` also offers significant advantages for developers of machine learning packages.
+By integrating a new algorithm into the `mlr3` ecosystem, developers can immediately make their methods accessible to a wider audience.
+This integration facilitates seamless tuning [@mlr3tuning] and preprocessing [@mlr3pipelines2021] through the broader `mlr3` framework, enhancing the usability and impact of their work.
 
 # Features
 
