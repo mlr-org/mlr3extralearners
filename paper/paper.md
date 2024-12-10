@@ -17,7 +17,7 @@ authors:
     affiliation: "15, 16"
   - name: Marc Becker
     orcid: 0000-0002-8115-0400
-    affiliation: "2, 3""
+    affiliation: "2, 3"
   - name: Michel Lang
     orcid: 0000-0001-9754-0393
     affiliation: "1, 2"
@@ -56,6 +56,8 @@ authors:
   - name: Henri Funk
     orchid: 0009-0007-0949-8385
     affiliation: "3, 11, 12"
+  - name: Liana Harutyunyan
+  - name: Pierre Camilleri
   - name: Philipp Kopper
     orchid: 0000-0002-5037-7135
     affiliation: 3
