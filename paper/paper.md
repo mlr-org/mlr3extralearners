@@ -14,9 +14,10 @@ authors:
     affiliation: 4
   - name: Raphael Sonabend
     orcid: 0000-0001-9225-4654
+    affiliation: "15, 16"
   - name: Marc Becker
     orcid: 0000-0002-8115-0400
-    affiliation: 2
+    affiliation: "2, 3""
   - name: Michel Lang
     orcid: 0000-0001-9754-0393
     affiliation: "1, 2"
@@ -27,7 +28,7 @@ authors:
     affiliation: "2, 3"
   - name: Lukas Burk
     orchid: 0000-0001-7528-3795
-    affiliation: "2, 3"
+    affiliation: "2, 3, 4, 5"
   - name: Patrick Schratz
     orcid: 0000-0003-0748-6624
     affiliation: 2
@@ -63,7 +64,7 @@ authors:
     affiliation: "2, 3"
   - name: Bernd Bischl
     orcid: 0000-0001-6002-6980
-    affiliation: "2, 3, 5, 6"
+    affiliation: "2, 3"
 affiliations:
  - name: TU Dortmund University, Germany
    index: 1
@@ -93,6 +94,10 @@ affiliations:
    index: 13
  - name: University of North Carolina Wilmington
    index: 14
+ - name: OSPO Now
+   index: 15
+ - name: Imperial College London
+   index: 16
 date: XXX December 2024
 bibliography: paper.bib
 ---
