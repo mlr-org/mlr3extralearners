@@ -119,6 +119,7 @@ Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package d
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
+By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [#wilkinson2016fair]).
 
 # Statement of Need
 
@@ -162,7 +163,8 @@ Integrating learners from diverse R packages poses challenges, particularly due 
 - **Interface Consistency**: The package regularly verifies that each learner adheres to the expected interface of its upstream function.
 When new parameters are introduced or existing ones change, the tests fail until the parameter sets are updated accordingly.
 - **Automated Testing**: To ensure correctness, `mlr3extralearners` performs regular automated tests on all learners.
-These tests include sanity checks and validate metadata annotations, such as verifying that a learner claiming to handle missing values works as expected.
+These tests include sanity checks that, e.g., verify that the learners produce sensible predictions for simple tasks.
+Furthermore, the tests also validate the learners' metadata annotations, such as whether a learner can actually handle missing values or is able to produce importance scores.
 
 ## Simplified Integration of New Learners
 
