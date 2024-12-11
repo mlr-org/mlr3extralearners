@@ -1,10 +1,11 @@
 ---
-title: 'mlr3extralearners: A community-driven package for integrating learners into mlr3'
+title: 'mlr3extralearners: Expanding the mlr3 Ecosystem with Community-Driven Learner Integration'
 tags:
   - R
   - machine learning
   - community
   - FAIR
+  - benchmarking
 authors:
   - name: Sebastian Fischer
     orcid: 0000-0002-9609-3197
