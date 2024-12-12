@@ -59,6 +59,8 @@ authors:
     affiliation: "3, 11, 12"
   - name: Liana Harutyunyan
   - name: Pierre Camilleri
+    orchid: 0009-0005-1070-0670
+    affiliation: 17
   - name: Philipp Kopper
     orchid: 0000-0002-5037-7135
     affiliation: 3
@@ -101,6 +103,8 @@ affiliations:
    index: 15
  - name: Imperial College London
    index: 16
+ - name: multi, 8 passage Brûlon, 75012 PARIS, France
+   index: 17
 date: XXX December 2024
 bibliography: paper.bib
 ---
