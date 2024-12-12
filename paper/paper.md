@@ -119,7 +119,7 @@ Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package d
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
-By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [#wilkinson2016fair]).
+By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [@wilkinson2016fair]).
 
 # Statement of Need
 
@@ -171,9 +171,18 @@ Furthermore, the tests also validate the learners' metadata annotations, such as
 To streamline the addition of new learners, `mlr3extralearners` provides robust support tools:
 
 - **Code Templates**: Predefined templates are available for generating the necessary code for both the learner implementation and associated test files.
-These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the user.
+These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the contributor.
 - **Guides and Resources**: The package website contains an contains an [extensive tutorial](https://mlr3extralearners.mlr-org.com/articles/extending.html), as well as a curated list of [common issues](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered during learner integration, making the process accessible for contributors of all experience levels.
 Additionally, every integrated learner includes a simple example of usage in the documentation, ensuring that users can quickly understand how to utilize the learner effectively within the `mlr3` ecosystem.
+
+# Community Impact and Future Directions
+
+`mlr3extralearners` is a direct result of the contributions from a diverse community of authors and developers.
+The authors of this paper themselves have been actively involved in integrating learners, providing quality assurance, and maintaining the package's infrastructure.
+Their contributions, such as the addition of learners for specialized tasks like survival analysis and high-dimensional data, highlight the impact that thoughtful integration has on the `mlr3` ecosystem.
+This ongoing effort illustrates the transformative potential of **community-driven development**, ensuring that `mlr3extralearners` continues to grow as a dynamic and inclusive repository for cutting-edge machine learning algorithms.
+
+By fostering a spirit of collaboration, the `mlr3extralearners` project invites future contributors to follow this example, helping shape the package's evolution and making advanced machine learning tools accessible to a wider `R` audience.
 
 # Acknowledgements
 
