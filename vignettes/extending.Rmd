@@ -40,7 +40,7 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
         usesurrogate   = p_int(0L, 2L, default = 2L, tags = "train"),
         xval           = p_int(0L, default = 10L, tags = "train")
       )
-      param_set$values$xval = 10
+      param_set$set_values(xval = 10L)
       super$initialize(
         id = "regr.rpart_simple",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
@@ -58,11 +58,10 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
       }
       # importance is only present if there is at least on split
       if (is.null(self$model$variable.importance)) {
-        importance = set_names(numeric())
+        set_names(numeric())
       } else {
-        importance = sort(self$model$variable.importance, decreasing = TRUE)
+        sort(self$model$variable.importance, decreasing = TRUE)
       }
-      return(importance)
     }
   ),
   private = list(
