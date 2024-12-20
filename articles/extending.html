@@ -208,12 +208,19 @@ the corresponding superclass(es) is indispensable. Furthermore, it is a
 good idea to look at already existing learner implementations for
 inspiration.</p>
 <p>Three properties in <code>mlr3</code> exist that deserve special
-consideration, which are: * <code>"validation"</code> - the learner can
-make use of an internal validation to e.g. track the performance *
+consideration, which are:</p>
+<ul>
+<li>
+<code>"validation"</code> - the learner can make use of an internal
+validation to e.g. track the performance</li>
+<li>
 <code>"internal_tuning"</code> - the learner can internally optimize
-hyperparameters, e.g. via early stopping * <code>"marshal"</code> - the
-learner cannot be serialized without loss of information (e.g. learners
-from <code>mlr3torch</code> have this property)</p>
+hyperparameters, e.g. via early stopping</li>
+<li>
+<code>"marshal"</code> - the learner cannot be serialized without
+loss of information (e.g. learners from <code>mlr3torch</code> have this
+property)</li>
+</ul>
 <p>While these properties are rarely needed, it is still important to
 know how to implement them if they do apply. For the first two
 properties, see the <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">documentation of
@@ -224,6 +231,10 @@ see <a href="https://github.com/mlr-org/mlr3torch/blob/main/R/LearnerTorch.R" cl
 In any case, if you suspect your learner to have any of these properties
 it is best to first discuss the implementation with the
 <code>mlr-org</code> team.</p>
+<p>As a final note, we want to mention that a <code>Learner</code>
+should be constructable even when the packages that it uses are not
+loaded, so the <code>$initialize()</code> method should not use any
+objects from the package.</p>
 <div class="section level2">
 <h2 id="defining-the-parameter-set-of-a-learner">Defining the Parameter Set of a Learner<a class="anchor" aria-label="anchor" href="#defining-the-parameter-set-of-a-learner"></a>
 </h2>
@@ -510,7 +521,7 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Test passed</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="checking-parameters">Checking Parameters<a class="anchor" aria-label="anchor" href="#checking-parameters"></a>
@@ -565,7 +576,7 @@ exclusion.</p>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_paramtest</span><span class="op">(</span><span class="va">learner</span>, <span class="fu">rpart</span><span class="fu">:::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/predict.rpart.html" class="external-link">predict.rpart</a></span>, <span class="va">exclude</span>, tag <span class="op">=</span> <span class="st">"predict"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## Test passed</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
