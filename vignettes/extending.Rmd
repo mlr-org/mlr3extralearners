@@ -284,11 +284,10 @@ importance = function() {
   }
   # importance is only present if there is at least on split
   if (is.null(self$model$variable.importance)) {
-    importance = set_names(numeric())
+    set_names(numeric())
   } else {
-    importance = sort(self$model$variable.importance, decreasing = TRUE)
+    sort(self$model$variable.importance, decreasing = TRUE)
   }
-  return(importance)
 }
 ```
 
