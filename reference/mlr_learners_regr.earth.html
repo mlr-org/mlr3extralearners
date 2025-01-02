@@ -175,11 +175,11 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Selected 4 of 10 terms, and 2 of 10 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Selected 6 of 10 terms, and 4 of 10 predictors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: GRSq -Inf at 10 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: hp, wt, disp-unused, am-unused, carb-unused, cyl-unused, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 3 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 7.876681    RSS 73.51569    GRSq 0.8283484    RSq 0.9158907</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: wt, hp, carb, gear, am-unused, cyl-unused, disp-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 5 (additive model)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 5.700353    RSS 27.14454    GRSq 0.8108526    RSq 0.9527132</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -188,7 +188,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.819932 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.40447 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
