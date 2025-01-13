@@ -85,6 +85,7 @@ Suggests:
     pracma,
     prioritylasso (>= 0.3.1),
     pseudo,
+    qgam,
     randomForest,
     randomPlantedForest,
     randomForestSRC (>= 3.3.0),
