@@ -58,6 +58,7 @@ authors:
     orchid: 0009-0007-0949-8385
     affiliation: "3, 11, 12"
   - name: Liana Harutyunyan
+    affiliation: 18
   - name: Pierre Camilleri
     orchid: 0009-0005-1070-0670
     affiliation: 17
@@ -105,6 +106,8 @@ affiliations:
    index: 16
  - name: multi, 8 passage Brûlon, 75012 PARIS, France
    index: 17
+ - name: ServiceTitan, Inc., Glendale, California
+   index: 18
 date: XXX December 2024
 bibliography: paper.bib
 ---
