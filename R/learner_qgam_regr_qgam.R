@@ -7,12 +7,15 @@
 #' Calls [qgam::qgam()] from package \CRANpkg{qgam}.
 #'
 #' @section Form:
-#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
-#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
+#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required
+#' (see example and `?mgcv::formula.gam`).
+#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
+#' behave like Linear Quantile Regression.
 #' Only features specified in the formula are used, superseding columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()], is set using the value specified in `learner$quantiles`.
+#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()],
+#' is set using the value specified in `learner$quantiles`.
 #'
 #' @templateVar id regr.qgam
 #' @template learner
@@ -47,11 +50,11 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         paropts = p_uty(default = list(), tags = "train"),
         link = p_uty(default = "identity", tags = "train"),
         argGam = p_uty(custom_check = crate(function(x) {
-              checkmate::check_list(x, names = "unique", null.ok = TRUE)
-              checkmate::check_subset((names(x)),
-                choices = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")],
-                empty.ok = FALSE)
-            }), tags = "train"),
+          checkmate::check_list(x, names = "unique", null.ok = TRUE)
+          checkmate::check_subset((names(x)),
+            choices = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")],
+            empty.ok = FALSE)
+          }), tags = "train"),
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
@@ -77,7 +80,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      control_pars = if(length(pars$link)) list(pars$link) else list(NULL)
+      control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
       arg_gam_pars = pars$argGam
       pars = pars[names(pars) %nin% c("argGam", "link")]
 

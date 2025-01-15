@@ -714,7 +714,7 @@ bibentries = c( # nolint start
   ),
   faisolo2017qgam = bibentry("article",
     title = "Fast Calibrated Additive Quantile Regression",
-    author = "Fasiolo, Matteo and Wood, Simon N. and Zaffran, Margaux and Nedellec, Raphaël and Goude, Yannig",
+    author = "Fasiolo, Matteo and Wood, Simon N. and Zaffran, Margaux and Nedellec, Raphael and Goude, Yannig",
     year = "2017",
     journal = "Journal of the American Statistical Association",
     volume = "116",
