@@ -51,10 +51,9 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         link = p_uty(default = "identity", tags = "train"),
         argGam = p_uty(custom_check = crate(function(x) {
           checkmate::check_list(x, names = "unique", null.ok = TRUE)
-          checkmate::check_subset((names(x)),
-            choices = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")],
-            empty.ok = FALSE)
-          }), tags = "train"),
+          checkmate::check_subset((names(x)), choices = formalArgs(mgcv::gam)[
+            formalArgs(mgcv::gam) %nin% c("formula", "family", "data")],
+            empty.ok = FALSE)}), tags = "train"),
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
