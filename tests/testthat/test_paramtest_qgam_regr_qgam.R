@@ -2,10 +2,7 @@ test_that("regr.qgam train", {
   learner = lrn("regr.qgam")
   fun = qgam::qgam
   exclude = c(
-    "object", # handled internally
     "data", # handled internally
-    "multicore", # handled internally
-    "ncores", # handled internally
     "control", # handled internally
     "link", # handled internally via control
     "qu" # handled internally via self$quantiles

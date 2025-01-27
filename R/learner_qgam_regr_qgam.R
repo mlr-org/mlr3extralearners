@@ -7,15 +7,12 @@
 #' Calls [qgam::qgam()] from package \CRANpkg{qgam}.
 #'
 #' @section Form:
-#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required
-#' (see example and `?mgcv::formula.gam`).
-#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
-#' behave like Linear Quantile Regression.
-#' Only features specified in the formula are used, superseding columns with col_roles "feature" in the task.
+#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
+#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
+#' The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()],
-#' is set using the value specified in `learner$quantiles`.
+#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()], is set using the value specified in `learner$quantiles`.
 #'
 #' @templateVar id regr.qgam
 #' @template learner
@@ -41,20 +38,18 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        form = p_uty(tags = "train"),
-        lsig = p_dbl(tags = "train"),
-        err = p_dbl(lower = 0, upper = 1, tags = "train"),
-        cluster = p_uty(default = NULL, tags = "train"),
-        multicore = p_lgl(tags = "train"),
-        ncores = p_dbl(tags = "train"),
-        paropts = p_uty(default = list(), tags = "train"),
-        link = p_uty(default = "identity", tags = "train"),
-        argGam = p_uty(custom_check = crate(function(x) {
+        form          = p_uty(tags = "train"),
+        lsig          = p_dbl(tags = "train"),
+        err           = p_dbl(lower = 0, upper = 1, tags = "train"),
+        cluster       = p_uty(default = NULL, tags = "train"),
+        multicore     = p_lgl(tags = "train"),
+        ncores        = p_dbl(tags = "train"),
+        paropts       = p_uty(default = list(), tags = "train"),
+        link          = p_uty(default = "identity", tags = "train"),
+        argGam        = p_uty(custom_check = crate(function(x) {
           checkmate::check_list(x, names = "unique", null.ok = TRUE)
-          args_gam = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")]
-          checkmate::check_subset(names(x), choices = args_gam, empty.ok = FALSE)
-        }), tags = "train"),
-        block.size = p_int(default = 1000L, tags = "predict"),
+          }), tags = "train"),
+        block.size    = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
 
@@ -62,7 +57,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         id = "regr.qgam",
         packages = "qgam",
         feature_types = c("logical", "integer", "numeric", "factor"),
-        predict_types = c("response", "se", "quantiles"), # should response be a predict type?
+        predict_types = c("response", "se", "quantiles"),
         param_set = param_set,
         properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.qgam",
@@ -80,6 +75,12 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
+
+      args_gam = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")]
+      if (length(pars$argGam)) {
+        checkmate::assert_subset(names(pars$argGam), choices = args_gam, empty.ok = FALSE)
+      }
+
       arg_gam_pars = pars$argGam
       pars = pars[names(pars) %nin% c("argGam", "link")]
 
@@ -87,14 +88,13 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         arg_gam_pars = insert_named(arg_gam_pars, list(weights = task$weights$weight))
       }
 
-
       if (is.null(pars$form)) {
-        form = stats::as.formula(paste(
-          task$target_names,
-          "~",
-          paste(task$feature_names, collapse = " + ")
-        ))
+        form = stats::reformulate(task$feature_names, response = task$target_names)
         pars$form = form
+      }
+
+      if (!all(all.vars(pars$form) == c(task$target_names, task$feature_names))) {
+        stopf("The `learner$formula` needs to contain the same features as `task$feature_names` and `task$target_names`")
       }
 
       invoke(
