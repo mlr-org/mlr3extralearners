@@ -23,13 +23,14 @@
 #' @template seealso_learner
 #' @examplesIf requireNamespace("qgam", quietly = TRUE)
 #' # simple example
-#' t = mlr3::tsk("mtcars")
-#' l = mlr3::lrn("regr.qgam")
-#' l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-#' l$quantiles = 0.25
-#' l$train(t)
-#' l$model
-#' l$predict(t)
+# t = mlr3::tsk("mtcars")
+# l = mlr3::lrn("regr.qgam")
+# t$select(c("cyl", "am", "disp", "hp"))
+# l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+# l$quantiles = 0.25
+# l$train(t)
+# l$model
+# l$predict(t)
 #' @export
 LearnerRegrQGam = R6Class("LearnerRegrQGam",
   inherit = LearnerRegr,
@@ -93,10 +94,8 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         pars$form = form
       }
 
-      if (!all(all.vars(pars$form) == c(task$target_names, task$feature_names))) {
-        stopf("The `learner$formula` needs to contain the same features as `task$feature_names` and `task$target_names`")
-      }
-
+      checkmate::assert_set_equal(all.vars(pars$form)[-1], task$col_roles$feature)
+      checkmate::assert_set_equal(all.vars(pars$form)[[1]], task$col_roles$target)
       invoke(
         qgam::qgam,
         qu = self$quantiles,

@@ -12,7 +12,7 @@ Calls \code{\link[qgam:qgam]{qgam::qgam()}} from package \CRANpkg{qgam}.
 
 For the \code{form} parameter, a gam formula specific to the \link[mlr3:Task]{Task} is required (see example and \code{?mgcv::formula.gam}).
 If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
-Only features specified in the formula are used, superseding columns with col_roles "feature" in the task.
+The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 }
 
 \section{Quantile}{
@@ -58,17 +58,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (requireNamespace("qgam", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
-t = mlr3::tsk("mtcars")
-l = mlr3::lrn("regr.qgam")
-l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-l$quantiles = 0.25
-l$train(t)
-l$model
-l$predict(t)
 \dontshow{\}) # examplesIf}
 }
 \references{
-Fasiolo, Matteo, Wood, N. S, Zaffran, Margaux, Nedellec, Raphaël, Goude, Yannig (2017).
+Fasiolo, Matteo, Wood, N. S, Zaffran, Margaux, Nedellec, Raphael, Goude, Yannig (2017).
 \dQuote{Fast Calibrated Additive Quantile Regression.}
 \emph{Journal of the American Statistical Association}, \bold{116}, 1402--1412.
 \doi{10.1080/01621459.2020.1725521}.
