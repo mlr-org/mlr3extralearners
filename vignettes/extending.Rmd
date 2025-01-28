@@ -40,7 +40,7 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
         usesurrogate   = p_int(0L, 2L, default = 2L, tags = "train"),
         xval           = p_int(0L, default = 10L, tags = "train")
       )
-      param_set$values$xval = 10
+      param_set$set_values(xval = 10L)
       super$initialize(
         id = "regr.rpart_simple",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
@@ -58,11 +58,10 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
       }
       # importance is only present if there is at least on split
       if (is.null(self$model$variable.importance)) {
-        importance = set_names(numeric())
+        set_names(numeric())
       } else {
-        importance = sort(self$model$variable.importance, decreasing = TRUE)
+        sort(self$model$variable.importance, decreasing = TRUE)
       }
-      return(importance)
     }
   ),
   private = list(
@@ -115,6 +114,7 @@ In order to know e.g. which predict types or properties are available, reading t
 Furthermore, it is a good idea to look at already existing learner implementations for inspiration.
 
 Three properties in `mlr3` exist that deserve special consideration, which are:
+
 * `"validation"` - the learner can make use of an internal validation to e.g. track the performance
 * `"internal_tuning"` - the learner can internally optimize hyperparameters, e.g. via early stopping
 * `"marshal"` - the learner cannot be serialized without loss of information (e.g. learners from `mlr3torch` have this property)
@@ -123,6 +123,8 @@ While these properties are rarely needed, it is still important to know how to i
 For the first two properties, see the [documentation of `Learner`](https://mlr3.mlr-org.com/reference/Learner.html) or for a concrete implementation the [`XGBoost` learners](https://github.com/mlr-org/mlr3learners/blob/main/R/LearnerClassifXgboost.R).
 The documentation on marshaling can be found by running `?marshaling`, and for an example on how to implement this see [`mlr3torch::LearnerTorch`](https://github.com/mlr-org/mlr3torch/blob/main/R/LearnerTorch.R).
 In any case, if you suspect your learner to have any of these properties it is best to first discuss the implementation with the `mlr-org` team.
+
+As a final note, we want to mention that a `Learner` should be constructable even when the packages that it uses are not loaded, so the `$initialize()` method should not use any objects from the package.
 
 ## Defining the Parameter Set of a Learner
 
@@ -282,11 +284,10 @@ importance = function() {
   }
   # importance is only present if there is at least on split
   if (is.null(self$model$variable.importance)) {
-    importance = set_names(numeric())
+    set_names(numeric())
   } else {
-    importance = sort(self$model$variable.importance, decreasing = TRUE)
+    sort(self$model$variable.importance, decreasing = TRUE)
   }
-  return(importance)
 }
 ```
 
