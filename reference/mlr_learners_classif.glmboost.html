@@ -181,23 +181,21 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.07930252 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.09379931 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V16         V17 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.00789308 -2.60084596 -1.39708045 -0.85921341  0.35257246  0.71165435 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V21         V22         V31         V36          V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.08675651 -0.68867866 -0.13361114  0.16842460  0.97996672 -1.60724272 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V45         V47         V49          V5         V52         V54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -2.12118965 -0.17885206 -1.29726098 -0.39413201 -8.17973703 -8.50239953 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.75164157 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V17          V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.97594912  -1.16664954  -0.73972813  -0.62245483   0.93798117  -0.50023487 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V24          V36           V4          V44          V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.08572221  -0.21325739   1.65220101  -1.33933794  -1.26055857  -1.33697892 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V49           V5          V51          V52          V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.18164916  -4.34308950  -0.45273524  -0.83472648  -1.27023747 -26.09039792 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.07930252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.09379931</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -207,7 +205,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

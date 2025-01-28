@@ -183,14 +183,41 @@ Springer.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0428 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.981 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.521 [21/39.916%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.1471 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0104 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.2073 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 32.1582 [13/17.494%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &lt;= 107.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.049 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.246 [3/21.874%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0622 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 28.4422 [3/10.891%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 25.2 [2/100%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -201,7 +228,7 @@ Springer.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.999995 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.459926 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

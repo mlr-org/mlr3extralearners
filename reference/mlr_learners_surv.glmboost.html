@@ -234,13 +234,13 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         age      revasc  revascdays </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.01430915 -0.90895345 -0.00739724 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.01998918 -0.88673644 -0.00720147 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06458927 0.05108427 0.02593235 0.00000000 0.00000000 0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06238779 0.05097201 0.04261486 0.00000000 0.00000000 0.00000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -248,7 +248,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8333866 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8226622 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

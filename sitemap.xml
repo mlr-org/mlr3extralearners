@@ -98,6 +98,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.mob.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.multilayer_perceptron.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.priority_lasso.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.qgam.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.randomForest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.random_forest_weka.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.random_tree.html</loc></url>
