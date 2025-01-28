@@ -711,5 +711,14 @@ bibentries = c( # nolint start
     publisher = "ACM Press",
     title = "Large margin classification using the perceptron algorithm",
     year = "1998"
+  ),
+  faisolo2017qgam = bibentry("article",
+    title = "Fast Calibrated Additive Quantile Regression",
+    author = "Fasiolo, Matteo and Wood, Simon N. and Zaffran, Margaux and Nedellec, Raphael and Goude, Yannig",
+    year = "2017",
+    journal = "Journal of the American Statistical Association",
+    volume = "116",
+    pages = "1402--1412",
+    doi = "10.1080/01621459.2020.1725521"
   )
 ) # nolint end
