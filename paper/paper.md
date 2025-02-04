@@ -15,7 +15,7 @@ authors:
     affiliation: 4
   - name: Raphael Sonabend
     orcid: 0000-0001-9225-4654
-    affiliation: "15, 16"
+    affiliation: 15
   - name: Marc Becker
     orcid: 0000-0002-8115-0400
     affiliation: "2, 3"
@@ -58,10 +58,10 @@ authors:
     orchid: 0009-0007-0949-8385
     affiliation: "3, 11, 12"
   - name: Liana Harutyunyan
-    affiliation: 18
+    affiliation: 17
   - name: Pierre Camilleri
     orchid: 0009-0005-1070-0670
-    affiliation: 17
+    affiliation: 16
   - name: Philipp Kopper
     orchid: 0000-0002-5037-7135
     affiliation: 3
@@ -102,12 +102,10 @@ affiliations:
    index: 14
  - name: OSPO Now
    index: 15
- - name: Imperial College London
-   index: 16
  - name: multi, 8 passage Brûlon, 75012 PARIS, France
-   index: 17
+   index: 16
  - name: ServiceTitan, Inc., Glendale, California
-   index: 18
+   index: 17
 date: XXX December 2024
 bibliography: paper.bib
 ---
