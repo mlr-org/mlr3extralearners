@@ -45,13 +45,12 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
-        oobag = p_lgl(default = FALSE, tags = 'predict'),
+        oobag = p_lgl(default = FALSE, tags = "predict"),
         mtry = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
         sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
         split_rule = p_fct(levels = c("gini", "cstat"), default = "gini", tags = "train"),
-
         control_method = p_fct(levels = c("glm", "net", "pca", "random"), default = "glm", tags = "train"),
         control_do_scale = p_lgl(default = FALSE, tags = "train"),
         control_eps = p_dbl(default = 1e-9, lower = 0, tags = "train"),
@@ -60,7 +59,6 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         control_df_target = p_int(default = NULL, lower = 1L,
                                   special_vals = list(NULL),
                                   tags = "train"),
-
         leaf_min_events = p_int(default = 1L, lower = 1L, tags = "train"),
         leaf_min_obs = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_events = p_int(default = 5L, lower = 1L, tags = "train"),
@@ -78,7 +76,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
 
-        ps$values = list(n_thread = 1) ?
+        ps$values = list(n_thread = 1)
 
       super$initialize(
         id = "classif.aorsf",
