@@ -1,9 +1,9 @@
-#' @title Oblique Random Forest Classifier
+#' @title Oblique Random Forest Regressor
 #' @author annanzrv
-#' @name mlr_learners_classif.aorsf
+#' @name mlr_learners_regr.aorsf
 #'
 #' @description
-#' Accelerated oblique random classification forest.
+#' Accelerated oblique random regression forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
 #'
 #' @section Initial parameter values:
@@ -12,11 +12,11 @@
 #' @template seealso_learner
 #' @examplesIf requireNamespace("aorsf", quietly = TRUE)
 #' # Define the Learner
-#' learner = mlr3::lrn("classif.aorsf", importance = TRUE)
+#' learner = mlr3::lrn("regr.aorsf", importance = TRUE)
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("breast_cancer")
+#' task = mlr3::tsk("mtcars")
 #' # Create train and test set
 #' ids = mlr3::partition(task)
 #'
@@ -33,8 +33,8 @@
 #' predictions$score()
 #'
 #' @export
-LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
-  inherit = LearnerClassif,
+LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
+  inherit = LearnerRegr,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -51,7 +51,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
         sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
-        split_rule = p_fct(levels = c("gini", "cstat"), default = "gini", tags = "train"),
+        split_rule = p_fct(levels = c("variance"), default = "variance", tags = "train"),
         control_method = p_fct(levels = c("glm", "net", "pca", "random"), default = "glm", tags = "train"),
         control_do_scale = p_lgl(default = FALSE, tags = "train"),
         control_eps = p_dbl(default = 1e-9, lower = 0, tags = "train"),
@@ -77,17 +77,17 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
 
-        ps$values = list(n_thread = 1)
+      ps$values = list(n_thread = 1)
 
       super$initialize(
-        id = "classif.aorsf",
+        id = "regr.aorsf",
         packages = c("mlr3extralearners", "aorsf"),
-        feature_types = c("integer", "numeric", "factor", "ordered"),
-        predict_types = c("response", "prob"),
+        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+        predict_types = "response",
         param_set = ps,
-        properties = c("oob_error", "importance", "multiclass", "twoclass"),
-        man = "mlr3extralearners::mlr_learners_classif.aorsf",
-        label = "Oblique Random Forest Classifier"
+        properties = c("oob_error", "importance", "weights"),
+        man = "mlr3extralearners::mlr_learners_regr.aorsf",
+        label = "Oblique Random Forest Regressor"
       )
     },
 
@@ -129,7 +129,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
       if (is.null(pv$oobag_eval_every)) {
         pv$oobag_eval_every = dflt_if_null(pv, "n_tree")
       }
-      control = aorsf::orsf_control_classification(
+      control = aorsf::orsf_control_regression(
         method = dflt_if_null(pv, "control_method"),
         scale_x = dflt_if_null(pv, "control_do_scale"),
         net_mix = dflt_if_null(pv, "control_net_mix"),
@@ -159,21 +159,14 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      type = ifelse(self$predict_type == "response", "class", "prob")
-      pred_simplify = ifelse(self$predict_type == "response", TRUE, FALSE)
       pred = invoke(predict, self$model,
                     new_data = newdata,
-                    pred_type = type,
-                    pred_simplify = pred_simplify,
+                    pred_type = "mean",
+                    pred_simplify = TRUE,
                     .args = pars)
-
-      if (self$predict_type == "response") {
-        list(response = pred)
-      } else {
-        list(prob = pred)
-      }
+      list(response = pred)
     }
   )
 )
 
-.extralrns_dict$add("classif.aorsf", LearnerClassifObliqueRandomForest)
+.extralrns_dict$add("regr.aorsf", LearnerRegrObliqueRandomForest)

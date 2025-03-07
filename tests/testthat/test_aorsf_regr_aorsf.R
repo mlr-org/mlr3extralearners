@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = lrn("classif.aorsf")
+  learner = lrn("regr.aorsf")
   # setting check_man to TRUE fails for some reason
   expect_learner(learner, check_man = FALSE)
   result = run_autotest(
