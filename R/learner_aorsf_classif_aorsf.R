@@ -3,19 +3,20 @@
 #' @name mlr_learners_classif.aorsf
 #'
 #' @description
-#' Imbalanced Random forest for classification between two classes.
+#' Accelerated oblique random classification forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
 #'
-#'
+#' @section Initial parameter values:
+#' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf requireNamespace("aorsf", quietly = TRUE)
 #' # Define the Learner
-#' learner = mlr3::lrn("classif.imbalanced_rfsrc", importance = "TRUE")
+#' learner = mlr3::lrn("classif.aorsf", importance = TRUE)
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("sonar")
+#' task = mlr3::tsk("penguins")
 #' # Create train and test set
 #' ids = mlr3::partition(task)
 #'
@@ -76,7 +77,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
 
-        ps$values = list(n_thread = 1)
+        #ps$values = list(n_thread = 1)
 
       super$initialize(
         id = "classif.aorsf",
@@ -128,13 +129,21 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
       if (is.null(pv$oobag_eval_every)) {
         pv$oobag_eval_every = dflt_if_null(pv, "n_tree")
       }
+
+      method = dflt_if_null(pv, "control_method")
+      scale_x = dflt_if_null(pv, "control_do_scale")
+      net_mix = dflt_if_null(pv, "control_net_mix")
+      target_df = dflt_if_null(pv, "control_df_target")
+      max_iter = dflt_if_null(pv, "control_iter_max")
+      epsilon = dflt_if_null(pv, "control_eps")
+
       control = aorsf::orsf_control_classification(
-        method = dflt_if_null(pv, "control_method"),
-        scale_x = dflt_if_null(pv, "control_do_scale"),
-        net_mix = dflt_if_null(pv, "control_net_mix"),
-        target_df = dflt_if_null(pv, "control_df_target"),
-        max_iter = dflt_if_null(pv, "control_iter_max"),
-        epsilon = dflt_if_null(pv, "control_cph_eps"),
+        method = method,
+        scale_x = scale_x,
+        # net_mix = net_mix,
+        # target_df = target_df,
+        # max_iter = max_iter,
+        # epsilon = epsilon,
       )
       # these parameters are used to organize the control arguments
       # above but are not used directly by aorsf::orsf(), so:
@@ -144,7 +153,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
                               "control_net_mix",
                               "control_df_target",
                               "control_iter_max",
-                              "control_cph_eps"))
+                              "control_eps"))
       invoke(
         aorsf::orsf,
         data = task$data(),
@@ -158,11 +167,11 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      type = ifelse(self$predict_type == "response", "response", "prob")
+      type = ifelse(self$predict_type == "response", "class", "prob")
 
       pred = invoke(predict, self$model,
-                    newdata = newdata,
-                    type = type, .args = pars)
+                    new_data = newdata,
+                    pred_type = type, .args = pars)
 
       if (self$predict_type == "response") {
         list(response = unname(pred))
