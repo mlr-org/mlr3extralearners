@@ -128,7 +128,7 @@ By providing a standardized interface and comprehensive metadata for each learne
 
 # Statement of Need
 
-Machine learning often requires practitioners to navigate a diverse array of modeling problems, each with unique demands such as performance, interpretability, or compatibility with specific data types and tasks.
+Machine learning often requires practitioners to navigate a diverse array of modeling problems, each with unique demands such as predictive performance, inference latency and throughput, interpretability, or compatibility with specific data types and tasks.
 To address this challenge, packages like `caret` [@caret] and `parsnip` [@parsnip] from the `tidymodels` ecosystem have historically provided unified interfaces for simplifying model experimentation [@tidymodels].
 For instance, `parsnip` provides a clean and consistent way to define models, enabling users to experiment with different algorithms without dealing with the nuances of underlying package syntax.
 Similarly, the `mlr3` ecosystem aims to streamline model selection and experimentation, making it a versatile toolbox for machine learning in R.
