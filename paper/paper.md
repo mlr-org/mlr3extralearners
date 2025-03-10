@@ -113,7 +113,7 @@ bibliography: paper.bib
 # Summary
 
 The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://www.r-project.org/) [@R] package is a community-driven package that integrates external machine learning algorithms into the [`mlr3`](https://mlr3.mlr-org.com/) [@Lang2019] ecosystem.
-The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` and is targeted towards both practitioners and researchers [@Bischl2024].
+The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` that is targeted towards both practitioners and researchers [@Bischl2024].
 At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
 The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
