@@ -112,10 +112,11 @@ bibliography: paper.bib
 
 # Summary
 
-The `mlr3extralearners` `R` [@R] package is a community-driven package that integrates external machine learning algorithms into the `mlr3` [@Lang2019] ecosystem.
-The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` that is targeted towards both practitioners and researchers [@Bischl2024].
-At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
-The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
+The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` [@R] that is targeted towards both practitioners and researchers [@Bischl2024].
+The core `mlr3` package [@Lang2019] defines the standardized interface for machine learning, but does itself not implement many learning algorithms.
+A collection of 21 recommended learning algorithms is available in the `mlr3learners` extension [@mlr3learners] which makes methods from various `R` packages available via the `mlr3` interface.
+The `mlr3extralearners` `R` package is a *community-driven* package that integrates many more external machine learning algorithms into the `mlr3` ecosystem and allows users to request and contribute new learners.
+The package currently wraps **85 different learning algorithms** from many different `R` packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
 It also facilitates large-scale empirical benchmark experiments, leveraging the `mlr3` framework's parallelization and optimization capabilities [@benchlargescale] as well as enabling efficient hyperparameter tuning [@bischl2023].
 An overview of all `mlr3` learners, including those introduced through `mlr3extralearners`, is available on the mlr3 website.[^1]
@@ -124,9 +125,9 @@ An overview of all `mlr3` learners, including those introduced through `mlr3extr
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
-Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
+Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying `R` packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the `mlr` R-universe.[^2]
-By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [@wilkinson2016fair]).
+By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the `R` ecosystem [@wilkinson2016fair]).
 
 [^2]: https://mlr-org.r-universe.dev
 
@@ -135,7 +136,7 @@ By providing a standardized interface and comprehensive metadata for each learne
 Machine learning often requires practitioners to navigate a diverse array of modeling problems, each with unique demands such as predictive performance, inference latency and throughput, interpretability, or compatibility with specific data types and tasks.
 To address this challenge, packages like `caret` [@caret] and `parsnip` [@parsnip] from the `tidymodels` ecosystem have historically provided unified interfaces for simplifying model experimentation [@tidymodels].
 For instance, `parsnip` provides a clean and consistent way to define models, enabling users to experiment with different algorithms without dealing with the nuances of underlying package syntax.
-Similarly, the `mlr3` ecosystem aims to streamline model selection and experimentation, making it a versatile toolbox for machine learning in R.
+Similarly, the `mlr3` ecosystem aims to streamline model selection and experimentation, making it a versatile toolbox for machine learning in `R`.
 
 Within this ecosystem, `mlr3extralearners` plays a crucial role by providing a comprehensive collection of external machine learning algorithms integrated into the `mlr3` framework.
 This ensures that users can access a wide variety of learners to meet their specific needs,
@@ -167,10 +168,10 @@ This allows users to have a clear understanding of a learner's capabilities and 
 
 ## Functional Correctness
 
-Integrating learners from diverse R packages poses challenges, particularly due to changes in upstream APIs. `mlr3extralearners` addresses these issues through rigorous checks:
+Integrating learners from diverse `R` packages poses challenges, particularly due to changes in upstream APIs. `mlr3extralearners` addresses these issues through rigorous checks:
 
 - **Interface Consistency**: The package regularly verifies that each learner adheres to the expected interface of its upstream function.
-When new parameters are introduced or existing ones change, the tests fail until the parameter sets are updated accordingly.
+When new parameters are introduced or existing ones changed or removed, the tests fail until the parameter sets are updated accordingly.
 - **Automated Testing**: To ensure correctness, `mlr3extralearners` performs regular automated tests on all learners.
 These tests include sanity checks that, e.g., verify that the learners produce sensible predictions for simple tasks.
 Furthermore, the tests also validate the learners' metadata annotations, such as whether a learner can actually handle missing values or is able to produce importance scores.
@@ -179,8 +180,9 @@ Furthermore, the tests also validate the learners' metadata annotations, such as
 
 To streamline the addition of new learners, `mlr3extralearners` provides robust support tools:
 
-- **Code Templates**: Predefined templates are available for generating the necessary code for both the learner implementation and associated test files.
-These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the contributor.
+- **Code Templates**: Predefined templates are available for both the learner implementation and associated test files.
+Contributors can utilize these templates through an `R` function that accepts learner metadata and generates new `R` code files based on the templates.
+This approach pre-fills as much information as possible, minimizing the input required from the contributor.
 - **Guides and Resources**: The package website[^3] contains an extensive tutorial, as well as a curated list of common issues encountered during learner integration, making the process accessible for contributors of all experience levels.
 Additionally, every integrated learner includes a simple example of usage in the documentation, ensuring that users can quickly understand how to utilize the learner effectively within the `mlr3` ecosystem.
 
