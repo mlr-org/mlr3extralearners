@@ -21,9 +21,9 @@ authors:
     affiliation: "2, 3"
   - name: Michel Lang
     orcid: 0000-0001-9754-0393
-    affiliation: "1, 2"
+    affiliation: "1"
   - name: Martin Binder
-    affiliation: 2
+    affiliation: "2, 3"
   - name: Lennart Schneider
     orcid: 0000-0003-4152-5308
     affiliation: "2, 3"
@@ -32,7 +32,7 @@ authors:
     affiliation: "2, 3, 5, 6"
   - name: Patrick Schratz
     orcid: 0000-0003-0748-6624
-    affiliation: 2
+    affiliation: 18
   - name: Byron C. Jaeger
     orcid: 0000-0001-7399-2299
     affiliation: 13
@@ -107,6 +107,8 @@ affiliations:
    index: 16
  - name: ServiceTitan, Inc., Glendale, California
    index: 17
+ - name: devXY GmbH
+   index: 18
 date: XXX December 2024
 bibliography: paper.bib
 ---
