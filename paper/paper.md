@@ -25,48 +25,49 @@ authors:
   - name: Martin Binder
     affiliation: 2
   - name: Lennart Schneider
-    orchid: 0000-0003-4152-5308
+    orcid: 0000-0003-4152-5308
     affiliation: "2, 3"
   - name: Lukas Burk
-    orchid: 0000-0001-7528-3795
-    affiliation: "2, 3, 4, 5"
+    orcid: 0000-0001-7528-3795
+    affiliation: "2, 3, 5, 6"
   - name: Patrick Schratz
     orcid: 0000-0003-0748-6624
     affiliation: 2
   - name: Byron C. Jaeger
-    orchid: 0000-0001-7399-2299
+    orcid: 0000-0001-7399-2299
     affiliation: 13
   - name: Stephen A Lauer
-    orchid: 0000-0003-2948-630X
+    orcid: 0000-0003-2948-630X
     affiliation: 7
   - name: Lorenz A. Kapsner
-    orchid: 0000-0003-1866-860X
+    orcid: 0000-0003-1866-860X
     affiliation: 8
   - name: Maximilian Mücke
-    orchid: 0009-0000-9432-9795
+    orcid: 0009-0000-9432-9795
     affiliation: 2
-  - name: Zezhi Wang 
-    orchid: 0000-0001-6988-5853
+  - name: Zezhi Wang
+    orcid: 0000-0001-6988-5853
     affiliation: 9
   - name: Damir Pulatov
-    orchid: 0000-0003-4901-7201
+    orcid: 0000-0003-4901-7201
     affiliation: 14
   - name: Keenan Ganz
-    orchid: 0000-0002-8486-3959
+    orcid: 0000-0002-8486-3959
     affiliation: 10
   - name: Henri Funk
-    orchid: 0009-0007-0949-8385
+    orcid: 0009-0007-0949-8385
     affiliation: "3, 11, 12"
   - name: Liana Harutyunyan
+    orcid: 0000-0002-8486-3959
     affiliation: 17
   - name: Pierre Camilleri
-    orchid: 0009-0005-1070-0670
+    orcid: 0009-0005-1070-0670
     affiliation: 16
   - name: Philipp Kopper
-    orchid: 0000-0002-5037-7135
+    orcid: 0000-0002-5037-7135
     affiliation: 3
   - name: Andreas Bender
-    orchid: 0000-0001-5628-8611
+    orcid: 0000-0001-5628-8611
     affiliation: "2, 3"
   - name: Bernd Bischl
     orcid: 0000-0001-6002-6980
@@ -96,7 +97,7 @@ affiliations:
    index: 11
  - name: Statistical Consulting Unit StaBLab, LMU Munich, Germany
    index: 12
- - name: Wake Forest University School of Medicine, Department of Biostatistics and Data Science, Division of Public Health SciencesWinston-Salem, North Carolina
+ - name: Wake Forest University School of Medicine, Department of Biostatistics and Data Science, Division of Public Health Sciences Winston-Salem, North Carolina
    index: 13
  - name: University of North Carolina Wilmington
    index: 14
