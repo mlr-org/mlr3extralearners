@@ -115,7 +115,7 @@ bibliography: paper.bib
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` [@R] that is targeted towards both practitioners and researchers [@Bischl2024].
 The core `mlr3` package [@Lang2019] defines the standardized interface for machine learning, but does itself not implement many learning algorithms.
 A collection of 21 recommended learning algorithms is available in the `mlr3learners` extension [@mlr3learners] which makes methods from various `R` packages available via the `mlr3` interface.
-The `mlr3extralearners` `R` package is a *community-driven* package that integrates many more external machine learning algorithms into the `mlr3` ecosystem and allows users to request and contribute new learners.
+The `mlr3extralearners` `R` package is a *community-driven* package that integrates many more external machine learning algorithms into the `mlr3` ecosystem and allows users to request and contribute new learner integrations.
 The package currently wraps **85 different learning algorithms** from many different `R` packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
 It also facilitates large-scale empirical benchmark experiments, leveraging the `mlr3` framework's parallelization and optimization capabilities [@benchlargescale] as well as enabling efficient hyperparameter tuning [@bischl2023].
