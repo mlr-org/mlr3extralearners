@@ -115,7 +115,7 @@ bibliography: paper.bib
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` [@R] that is targeted towards both practitioners and researchers [@Bischl2024].
 The core `mlr3` package [@Lang2019] defines the standardized interface for machine learning, but does itself not implement many learning algorithms.
 A collection of 21 recommended learning algorithms is available in the `mlr3learners` extension [@mlr3learners] which makes methods from various `R` packages available via the `mlr3` interface.
-The `mlr3extralearners` `R` package is a *community-driven* package that integrates many more external machine learning algorithms into the `mlr3` ecosystem and allows users to request and contribute new learner integrations.
+The `mlr3extralearners` `R` package is a *community-driven* package that integrates many more external machine learning algorithms into the `mlr3` ecosystem.
 The package currently wraps **85 different learning algorithms** from many different `R` packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
 It also facilitates large-scale empirical benchmark experiments, leveraging the `mlr3` framework's parallelization and optimization capabilities [@benchlargescale] as well as enabling efficient hyperparameter tuning [@bischl2023].
@@ -124,10 +124,10 @@ An overview of all `mlr3` learners, including those introduced through `mlr3extr
 [^1]: https://mlr-org.com/learners.html
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
-This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
+This **enriches each learner with extensive metadata** about its hyperparameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying `R` packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the `mlr` R-universe.[^2]
-By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the `R` ecosystem [@wilkinson2016fair]).
+By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the `R` ecosystem [@wilkinson2016fair].
 
 [^2]: https://mlr-org.r-universe.dev
 
