@@ -156,7 +156,7 @@ One core feature of the `mlr3` ecosystem is that it annotates learners with exte
 - **Hyperparameter Management**: The hyperparameter spaces of learners are defined using `ParamSet` objects from the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
 Each hyperparameter is explicitly typed, with annotations for valid ranges and allowable values.
 This ensures valid configurations and simplifies tasks like hyperparameter tuning.
-- **Task and Prediction Types**: Learners are categorized with respect to their task type (e.g. as classification, regression or survival analysis [@Sonabend2021]) and prediction types (e.g. probabilities or class predictions).
+- **Task and Prediction Types**: Learners are categorized with respect to their task type (e.g. as classification, regression or survival analysis [@Sonabend2021]) and prediction types (e.g. probabilities or response predictions).
 This allows users to easily identify suitable learners for their specific modeling tasks.
 - **Standardized Properties**: Learners are annotated with detailed attributes, including the types of features they can process and their support for functionalities such as feature selection, importance scoring, handling missing values, or monitoring performance on a separate validation set during training among others.
 This allows users to have a clear understanding of a learner's capabilities and limitations and assess if it aligns with the specific requirements of their workflows, reducing trial-and-error and streamlining the modeling process.
