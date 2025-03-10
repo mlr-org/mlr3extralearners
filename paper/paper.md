@@ -153,7 +153,7 @@ However, the advantages of `mlr3extralearners` go well beyond simple integration
 
 One core feature of the `mlr3` ecosystem is that it annotates learners with extensive metadata.
 
-- **Parameter Management**: The parameter spaces of learners are defined using parameter sets from the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
+- **Hyperparameter Management**: The hyperparameter spaces of learners are defined using `ParamSet` objects from the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
 Each parameter is explicitly typed, with annotations for valid ranges and allowable values.
 This ensures valid configurations and simplifies tasks like parameter tuning.
 - **Task and Prediction Types**: Learners are categorized with respect to their task type (e.g. as classification, regression or survival analysis [@Sonabend2021]) and prediction types (e.g. probabilities or class predictions).
