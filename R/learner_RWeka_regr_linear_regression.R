@@ -66,10 +66,33 @@ LearnerRegrLinearRegression = R6Class("LearnerRegrLinearRegression",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
-        properties = "missings",
+        properties = c("marshal", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.linear_regression",
         label = "Linear Regression"
       )
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`marshal_model()`].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`unmarshal_model()`].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 
