@@ -122,7 +122,7 @@ An overview of all `mlr3` learners, including those introduced through `mlr3extr
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
-Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
+Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
 By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [@wilkinson2016fair]).
 
