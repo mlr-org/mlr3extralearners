@@ -1,7 +1,7 @@
 
 # mlr3extralearners
 
-Package website: [release](https://mlr3extralearners.mlr-org.com/) |
+Package website: [release](https://mlr3extralearners.mlr-org.com/) \|
 [dev](https://mlr3extralearners.mlr-org.com/dev/)
 
 Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
@@ -78,3 +78,8 @@ lrn("regr.gbm")
 
 An in-depth tutorial on how to add learners can be found in the [package
 website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
+
+## Acknowledgements
+
+This R package is developed as part of the [Mathematical Research Data
+Initiative](https://www.mardi4nfdi.de/about/mission).
