@@ -112,19 +112,23 @@ bibliography: paper.bib
 
 # Summary
 
-The [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/) [`R`](https://www.r-project.org/) [@R] package is a community-driven package that integrates external machine learning algorithms into the [`mlr3`](https://mlr3.mlr-org.com/) [@Lang2019] ecosystem.
+The `mlr3extralearners` `R` [@R] package is a community-driven package that integrates external machine learning algorithms into the `mlr3` [@Lang2019] ecosystem.
 The `mlr3` ecosystem is a versatile toolbox for machine learning in `R` that is targeted towards both practitioners and researchers [@Bischl2024].
 At its core, the `mlr3extralearners` package provides a standardized interface for machine learning and connects many R packages implementing machine learning algorithms into a unified framework.
 The package currently wraps **85 different learning algorithms** from many different R packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
 It also facilitates large-scale empirical benchmark experiments, leveraging the `mlr3` framework's parallelization and optimization capabilities [@benchlargescale] as well as enabling efficient hyperparameter tuning [@bischl2023].
-An overview of all `mlr3` learners, including those introduced through `mlr3extralearners`, is available on the [mlr3 website](https://mlr-org.com/learners.html).
+An overview of all `mlr3` learners, including those introduced through `mlr3extralearners`, is available on the mlr3 website.[^1]
+
+[^1]: https://mlr-org.com/learners.html
 
 Beyond accessibility, `mlr3extralearners` also allows `mlr3` users and package developers to easily add their own learners to the ecosystem.
 This **enriches each learner with extensive metadata** about its parameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying R packages.
-In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the [`mlr` R-universe](https://mlr-org.r-universe.dev/).
+In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the `mlr` R-universe.[^2]
 By providing a standardized interface and comprehensive metadata for each learner, mlr3extralearners enhances the FAIRness (findability, accessibility, interoperability, and reusability) of machine learning algorithms within the R ecosystem [@wilkinson2016fair]).
+
+[^2]: https://mlr-org.r-universe.dev
 
 # Statement of Need
 
@@ -153,7 +157,7 @@ However, the advantages of `mlr3extralearners` go well beyond simple integration
 
 One core feature of the `mlr3` ecosystem is that it annotates learners with extensive metadata.
 
-- **Hyperparameter Management**: The hyperparameter spaces of learners are defined using `ParamSet` objects from the [`paradox` package](https://paradox.mlr-org.com/) [@paradox].
+- **Hyperparameter Management**: The hyperparameter spaces of learners are defined using `ParamSet` objects from the `paradox` package [@paradox].
 Each hyperparameter is explicitly typed, with annotations for valid ranges and allowable values.
 This ensures valid configurations and simplifies tasks like hyperparameter tuning.
 - **Task and Prediction Types**: Learners are categorized with respect to their task type (e.g. as classification, regression or survival analysis [@Sonabend2021]) and prediction types (e.g. probabilities or response predictions).
@@ -177,8 +181,10 @@ To streamline the addition of new learners, `mlr3extralearners` provides robust 
 
 - **Code Templates**: Predefined templates are available for generating the necessary code for both the learner implementation and associated test files.
 These templates are generated through an `R` function that uses learner metadata to prefill as much information as possible, leaving only minimal input required from the contributor.
-- **Guides and Resources**: The package website contains an [extensive tutorial](https://mlr3extralearners.mlr-org.com/articles/extending.html), as well as a curated list of [common issues](https://mlr3extralearners.mlr-org.com/articles/common_issues.html) encountered during learner integration, making the process accessible for contributors of all experience levels.
+- **Guides and Resources**: The package website[^3] contains an extensive tutorial, as well as a curated list of common issues encountered during learner integration, making the process accessible for contributors of all experience levels.
 Additionally, every integrated learner includes a simple example of usage in the documentation, ensuring that users can quickly understand how to utilize the learner effectively within the `mlr3` ecosystem.
+
+[^3]: https://mlr3extralearners.mlr-org.com
 
 # Community Impact and Future Directions
 
