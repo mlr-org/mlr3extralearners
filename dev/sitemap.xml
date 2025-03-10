@@ -1,4 +1,5 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/LICENSE-text.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/articles/common_issues.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/articles/extending.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/articles/index.html</loc></url>
@@ -96,6 +97,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mob.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.multilayer_perceptron.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.qgam.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.randomForest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_forest_weka.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_tree.html</loc></url>
