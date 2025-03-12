@@ -1,6 +1,6 @@
 # dev
 
-* feat: Support offset during training and prediction in `mgcv`, `glm` learners.
+* feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
 
 # mlr3extralearners 1.0.0
 
