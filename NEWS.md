@@ -1,5 +1,7 @@
 # dev
 
+* feat: Support offset during training and prediction in `mgcv` learners.
+
 # mlr3extralearners 1.0.0
 
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347
