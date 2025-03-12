@@ -12,6 +12,9 @@
 #' for the unit tests). Only features specified in the formula will be used,
 #' superseding columns with col_roles "feature" in the task.
 #'
+#' @section Offset:
+#' If a `Task` contains a column with the `offset` role, it is automatically incorporated during training via the `offset` argument in [mgcv::gam()].
+#' No offset is applied during prediction for this learner.
 #'
 #' @template learner
 #' @templateVar id regr.gam
@@ -37,7 +40,6 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       ps = ps(
         family = p_fct(default = "gaussian", levels = c("gaussian", "poisson"), tags = "train"),
         formula = p_uty(tags = "train"),
-        offset = p_uty(default = NULL, tags = "train"),
         method = p_fct(
           levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
           default = "GCV.Cp",
@@ -87,7 +89,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se"),
         param_set = ps,
-        properties = "weights",
+        properties = c("weights", "offset"),
         man = "mlr3extralearners::mlr_learners_regr.gam",
         label = "Generalized Additive Regression Model"
       )
@@ -103,6 +105,10 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       data = task$data(cols = c(task$feature_names, task$target_names))
       if ("weights" %in% task$properties) {
         pars = insert_named(pars, list(weights = task$weights$weight))
+      }
+
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
 
       if (is.null(pars$formula)) {
