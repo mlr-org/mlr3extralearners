@@ -13,7 +13,8 @@
 #' superseding columns with col_roles "feature" in the task.
 #'
 #' @section Offset:
-#' If a `Task` contains a column with the `offset` role, it is automatically incorporated during training via the `offset` argument in [mgcv::gam()].
+#' If a `Task` contains a column with the `offset` role, it is automatically
+#' incorporated during training via the `offset` argument in [mgcv::gam()].
 #' No offset is applied during prediction for this learner.
 #'
 #' @template learner

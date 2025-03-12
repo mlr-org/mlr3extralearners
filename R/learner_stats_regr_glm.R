@@ -20,8 +20,10 @@
 #' If a `Task` has a column with the role `offset`, it will automatically be used during training.
 #' The offset is incorporated through the formula interface to ensure compatibility with [stats::glm()].
 #' We add it to the model formula as `offset(<column_name>)` and also include it in the training data.
-#' During prediction, the default behavior is to use the offset column from the test set (enabled by `use_pred_offset = TRUE`).
-#' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied, effectively disabling the offset adjustment during prediction.
+#' During prediction, the default behavior is to use the offset column from the
+#' test set (enabled by `use_pred_offset = TRUE`).
+#' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
+#' effectively disabling the offset adjustment during prediction.
 #'
 #' @references
 #' `r format_bib("hosmer2013applied")`
@@ -61,7 +63,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         trace = p_lgl(default = FALSE, tags = "train"),
         dispersion = p_uty(default = NULL, tags = "predict"),
         type = p_fct(default = "link", levels = c("response", "link", "terms"),
-          tags = "predict"),
+                     tags = "predict"),
         use_pred_offset = p_lgl(default = TRUE, tags = "predict")
       )
 

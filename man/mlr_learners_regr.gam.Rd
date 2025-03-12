@@ -18,7 +18,8 @@ superseding columns with col_roles "feature" in the task.
 
 \section{Offset}{
 
-If a \code{Task} contains a column with the \code{offset} role, it is automatically incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+If a \code{Task} contains a column with the \code{offset} role, it is automatically
+incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
 No offset is applied during prediction for this learner.
 }
 
