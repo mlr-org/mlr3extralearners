@@ -12,9 +12,17 @@
 #'
 #' @section Initial parameter values:
 #' - `type`
-#'   - Actual default: "link"
-#'   - Adjusted default: "response"
+#'   - Actual default: `"link"`
+#'   - Adjusted default: `"response"`
 #'   - Reason for change: Response scale more natural for predictions.
+#'
+#' @section Offset:
+#' If a `Task` has a column with the role `offset`, it will automatically be used during training.
+#' The offset is incorporated through the formula interface to ensure compatibility with [stats::glm()].
+#' We add it to the model formula as `offset(<column_name>)` and also include it in the training data.
+#' During prediction, the default behavior is to use the offset column from the test set (enabled by `use_pred_offset = TRUE`).
+#' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied, effectively disabling the offset adjustment during prediction.
+#'
 #' @references
 #' `r format_bib("hosmer2013applied")`
 #'
@@ -36,7 +44,6 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         etastart = p_uty(tags = "train"),
         mustart = p_uty(tags = "train"),
         start = p_uty(default = NULL, tags = "train"),
-        offset = p_uty(tags = "train"),
         family = p_fct(
           default = "gaussian",
           levels = c("gaussian", "poisson", "quasipoisson", "Gamma", "inverse.gaussian"),
@@ -54,10 +61,11 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         trace = p_lgl(default = FALSE, tags = "train"),
         dispersion = p_uty(default = NULL, tags = "predict"),
         type = p_fct(default = "link", levels = c("response", "link", "terms"),
-          tags = "predict")
+          tags = "predict"),
+        use_pred_offset = p_lgl(default = TRUE, tags = "predict")
       )
 
-      ps$values = list(family = "gaussian", type = "response")
+      ps$set_values(family = "gaussian", type = "response", use_pred_offset = TRUE)
 
       super$initialize(
         id = "regr.glm",
@@ -65,7 +73,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         predict_types = c("response", "se"),
         param_set = ps,
-        properties = "weights",
+        properties = c("weights", "offset"),
         man = "mlr3extralearners::mlr_learners_regr.glm",
         label = "Generalized Linear Regression"
       )
@@ -85,15 +93,33 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
       family_fn = getFromNamespace(pars$family, ns = "stats")
       pars$family = invoke(family_fn, .args = family_args)
 
-      formula = task$formula()
+      form = task$formula()
       data = task$data()
 
-      invoke(stats::glm, formula = formula, data = data, .args = pars)
+      if ("offset" %in% task$properties) {
+        # we use the formula interface as `offset` = ... doesn't work during prediction
+        offset_colname = task$col_roles$offset
+        # re-write formula
+        formula_terms = c(task$feature_names, paste0("offset(", offset_colname, ")"))
+        # needs both `env = ...` and `quote = "left"` args to work
+        form = mlr3misc::formulate(lhs = task$target_names, rhs = formula_terms,
+                                   env = environment(), quote = "left")
+        # add offset column to the data
+        data = data[, (offset_colname) := task$offset$offset][]
+      }
+
+      invoke(stats::glm, formula = form, data = data, .args = pars)
     },
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
+
+      if ("offset" %in% task$properties) {
+        # add offset to the test data
+        offset_colname = task$col_roles$offset
+        newdata[, (offset_colname) := if (isTRUE(pars$use_pred_offset)) task$offset$offset else 0]
+      }
 
       if (self$predict_type == "response") {
         response = invoke(stats::predict.glm,
