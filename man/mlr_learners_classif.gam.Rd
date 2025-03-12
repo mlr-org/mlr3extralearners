@@ -42,7 +42,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    formula \tab untyped \tab - \tab  \tab - \cr
-   offset \tab untyped \tab NULL \tab  \tab - \cr
    method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab - \cr
    optimizer \tab untyped \tab c("outer", "newton") \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -80,6 +79,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} contains a column with the \code{offset} role, it is automatically incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+No offset is applied during prediction for this learner.
 }
 
 \examples{
