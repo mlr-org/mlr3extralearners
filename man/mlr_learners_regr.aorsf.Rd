@@ -18,7 +18,7 @@ Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
 \examples{
 \dontshow{if (requireNamespace("aorsf", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("regr.aorsf", importance = TRUE)
+learner = mlr3::lrn("regr.aorsf", importance = "anova")
 print(learner)
 
 # Define a Task
