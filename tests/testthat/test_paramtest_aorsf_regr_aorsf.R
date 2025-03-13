@@ -1,5 +1,5 @@
-test_that("paramtest classif.aorsf train", {
-  learner = lrn("classif.aorsf")
+test_that("paramtest regr.aorsf train", {
+  learner = lrn("regr.aorsf")
   fun = aorsf::aorsf
   exclude = c(
     "control", # handled internally
@@ -29,8 +29,8 @@ test_that("paramtest classif.aorsf train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest classif.aorsf predict", {
-  learner = lrn("classif.aorsf")
+test_that("paramtest regr.aorsf predict", {
+  learner = lrn("regr.aorsf")
   fun = aorsf::predict # nolint
   exclude = c(
     "object", # handled internally

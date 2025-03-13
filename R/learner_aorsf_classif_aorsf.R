@@ -12,7 +12,7 @@
 #' @template seealso_learner
 #' @examplesIf requireNamespace("aorsf", quietly = TRUE)
 #' # Define the Learner
-#' learner = mlr3::lrn("classif.aorsf", importance = TRUE)
+#' learner = mlr3::lrn("classif.aorsf", importance = "anova")
 #' print(learner)
 #'
 #' # Define a Task
