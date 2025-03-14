@@ -102,7 +102,8 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
       if ("offset" %in% task$properties) {
         pars_gamboost = insert_named(
           pars_gamboost,
-          list(offset = task$offset$offset))
+          list(offset = task$offset$offset)
+        )
       }
 
       pars_gamboost$family = switch(pars$family,
