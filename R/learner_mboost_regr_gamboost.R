@@ -9,6 +9,8 @@
 #' @template learner
 #' @templateVar id regr.gamboost
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
@@ -29,8 +31,6 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         baselearner = p_fct(default = "bbs",
           levels = c("bbs", "bols", "btree"), tags = "train"),
         dfbase = p_int(default = 4L, tags = "train"),
-        offset = p_dbl(default = NULL,
-          special_vals = list(NULL), tags = "train"),
         family = p_fct(default = c("Gaussian"),
           levels = c(
             "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
@@ -57,7 +57,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
-        properties = "weights",
+        properties = c("weights", "offset"),
         man = "mlr3extralearners::mlr_learners_regr.gamboost",
         label = "Boosted Generalized Additive Model"
       )
@@ -97,6 +97,12 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         pars_gamboost = insert_named(
           pars_gamboost,
           list(weights = task$weights$weight))
+      }
+
+      if ("offset" %in% task$properties) {
+        pars_gamboost = insert_named(
+          pars_gamboost,
+          list(offset = task$offset$offset))
       }
 
       pars_gamboost$family = switch(pars$family,

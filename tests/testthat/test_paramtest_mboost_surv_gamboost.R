@@ -8,7 +8,8 @@ test_that("paramtest surv.gamboost train", {
     "data", # handled via mlr3
     "weights", # handled via mlr3
     "control", # handled to mboost::boost_control
-    "custom.family" # extra param
+    "custom.family", # extra param
+    "offset" ## handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
