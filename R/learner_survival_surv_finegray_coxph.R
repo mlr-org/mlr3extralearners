@@ -1,4 +1,3 @@
-# March 15,2025
 #' @title Fine-Gray Competing Risks Model with Cox Proportional Hazards
 #' @description
 #' A learner for fitting a Fine-Gray competing risks model using Cox proportional hazards.
