@@ -1,5 +1,9 @@
 # dev
 
+# mlr3extralearners (unreleased)
+
+* Added new survival learner `surv.finegray_coxph` for Fine-Gray competing risks model with Cox PH.
+
 # mlr3extralearners 1.0.0
 
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347
