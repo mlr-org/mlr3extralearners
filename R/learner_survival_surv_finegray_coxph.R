@@ -44,7 +44,7 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
         eps = p_dbl(default = 1e-9, lower = 1e-12, upper = 1e-4, tags = "train"),
         robust = p_lgl(default = FALSE, tags = "train"),
         target_event = p_uty(default = NULL, tags = "train",
-                            custom_check = function(x) {
+                             custom_check = function(x) {
                               if (is.null(x)) return(TRUE)
                               if (is.character(x) || is.numeric(x)) return(TRUE)
                               "target_event must be NULL, a character, or a numeric index"
@@ -52,12 +52,12 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
         singular.ok = p_lgl(default = TRUE, tags = "train")
       )
       ps$values <- list(
-              ties = "efron",
-              iter.max = 20L,
-              eps = 1e-9,
-              robust = FALSE,
-              target_event = NULL,
-              singular.ok = TRUE
+        ties = "efron",
+        iter.max = 20L,
+        eps = 1e-9,
+        robust = FALSE,
+        target_event = NULL,
+        singular.ok = TRUE
       )
       super$initialize(
         id = "surv.finegray_coxph",
@@ -84,7 +84,7 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
       }
       row_ids <- task$row_ids
       full_data <- as.data.frame(task$backend$data(rows = row_ids,
-                                                  cols = c(task$target_names, task$feature_names)))
+                                                   cols = c(task$target_names, task$feature_names)))
       features <- task$feature_names
       if (length(features) == 0) stop("No features provided!")
       time_col <- task$target_names[1]
@@ -108,8 +108,14 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
       if (length(event_levels) < 3) {
         stop("Event status must have at least 3 levels (censored, main event, competing risk)")
       }
-      target_event <- if (is.null(pv$target_event)) {event_levels[2]} else {
-        if (is.numeric(pv$target_event)) event_levels[pv$target_event] else pv$target_event
+      target_event <- if (is.null(pv$target_event)) {
+        event_levels[2]
+        } else {
+          if (is.numeric(pv$target_event)){
+            event_levels[pv$target_event]
+        } else {
+          pv$target_event
+        }
       }
       if (!target_event %in% event_levels) stop("target_event not in event levels")
       fg_data <- survival::finegray(form, data = full_data, etype = target_event, weights = weights)
