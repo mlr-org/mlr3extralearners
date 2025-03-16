@@ -23,7 +23,7 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
-    person("AAndrzej", "Galecki", "agalecki@umich.edu", role ="ctb")
+    person("Andrzej", "Galecki", "agalecki@umich.edu", role ="ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
