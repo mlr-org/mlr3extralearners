@@ -46,7 +46,7 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
         target_event = p_uty(default = NULL, tags = "train",
                              custom_check = function(x) {
                                if (is.null(x)) return(TRUE)
-                              if (is.character(x) || is.numeric(x)) return(TRUE)
+                             if (is.character(x) || is.numeric(x)) return(TRUE)
                               "target_event must be NULL, a character, or a numeric index"
                             }),
         singular.ok = p_lgl(default = TRUE, tags = "train")
@@ -111,7 +111,7 @@ LearnerSurvFineGrayCoxPH <- R6::R6Class("LearnerSurvFineGrayCoxPH",
       target_event <- if (is.null(pv$target_event)) {
         event_levels[2]
       } else {
-          if (is.numeric(pv$target_event)) {
+        if (is.numeric(pv$target_event)) {
             event_levels[pv$target_event]
         } else {
           pv$target_event
