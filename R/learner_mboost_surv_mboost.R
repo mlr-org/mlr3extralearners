@@ -24,6 +24,8 @@
 #' @template learner
 #' @templateVar id surv.mboost
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].
 #'
@@ -47,7 +49,6 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
             "custom"), tags = c("train", "predict")),
         custom.family = p_uty(tags = "train"),
         nuirange = p_uty(default = c(0, 100), tags = "train"),
-        offset = p_dbl(tags = "train"),
         center = p_lgl(default = TRUE, tags = "train"),
         mstop = p_int(default = 100L, lower = 0L, tags = "train"),
         nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
@@ -73,7 +74,7 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "lp", "distr"),
-        properties = c("weights", "importance", "selected_features"),
+        properties = c("weights", "importance", "selected_features", "offset"),
         packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.mboost",
         label = "Boosted Generalized Additive Model"
@@ -120,6 +121,10 @@ LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
+      }
+
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
 
       # Save control settings and return on exit

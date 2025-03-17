@@ -22,7 +22,8 @@ test_that("paramtest surv.blackboost train", {
     "abseps", # mvtnorm::GenzBretz
     "releps", # mvtnorm::GenzBretz
     "sigma", # mboost.:Cindex
-    "ipcw" # mboost::Cindex
+    "ipcw", # mboost::Cindex
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
