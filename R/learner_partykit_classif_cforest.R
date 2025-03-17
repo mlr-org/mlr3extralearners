@@ -48,7 +48,6 @@ LearnerClassifCForest = R6Class("LearnerClassifCForest",
         cores = p_int(default = NULL, special_vals = list(NULL),
           tags = c("train", "importance", "threads")),
         trace = p_lgl(default = FALSE, tags = "train"),
-        offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         scores = p_uty(tags = "train"),
 

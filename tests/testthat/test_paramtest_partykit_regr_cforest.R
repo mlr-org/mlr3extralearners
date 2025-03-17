@@ -18,7 +18,8 @@ test_that("paramtest regr.cforest train", {
     "nperm",
     "risk",
     "conditional",
-    "threshold"
+    "threshold",
+    "offset" # is not directly supported by learner
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
