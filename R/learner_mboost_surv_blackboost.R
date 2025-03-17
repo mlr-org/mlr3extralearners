@@ -159,9 +159,6 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         pars = pars[!is_ctrl_pars]
       }
 
-      # if ("weights" %in% task$properties)
-      #   pars$weights = task$weights$weight
-
       family = switch(pars$family,
         coxph = mboost::CoxPH(),
         weibull = invoke(mboost::Weibull,
