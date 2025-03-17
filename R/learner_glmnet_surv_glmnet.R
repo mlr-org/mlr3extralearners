@@ -38,6 +38,14 @@
 #' imbalanced or not i.i.d. (longitudinal, time-series) and tuning requires
 #' custom resampling strategies (blocked design, stratification).
 #'
+#' @section Offset:
+#' If a `Task` contains a column with the `offset` role, it is automatically
+#' incorporated during training via the `offset` argument in [glmnet::glmnet()].
+#' During prediction, the offset column from the test set is used only if
+#' `use_pred_offset = TRUE` (default), passed via the `newoffset` argument in [glmnet::predict.coxnet()].
+#' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
+#' effectively disabling the offset adjustment during prediction.
+#'
 #' @templateVar id surv.glmnet
 #' @template learner
 #'
@@ -76,9 +84,8 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         mnlam            = p_int(1L, default = 5L, tags = "train"),
         mxit             = p_int(1L, default = 100L, tags = "train"),
         mxitnr           = p_int(1L, default = 25L, tags = "train"),
-        newoffset        = p_uty(tags = "predict"),
         nlambda          = p_int(1L, default = 100L, tags = "train"),
-        offset           = p_uty(default = NULL, tags = c("train", "predict")),
+        use_pred_offset  = p_lgl(default = TRUE, tags = "predict"),
         parallel         = p_lgl(default = FALSE, tags = "train"),
         penalty.factor   = p_uty(tags = "train"),
         pmax             = p_int(0L, tags = "train"),
@@ -97,12 +104,14 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         ctype            = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
       )
 
+      ps$set_values(use_pred_offset = TRUE)
+
       super$initialize(
         id = "surv.glmnet",
         param_set = ps,
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
-        properties = c("weights", "selected_features"),
+        properties = c("weights", "selected_features", "offset"),
         packages = c("mlr3extralearners", "glmnet"),
         man = "mlr3extralearners::mlr_learners_surv.glmnet",
         label = "Regularized Generalized Linear Model"
@@ -131,13 +140,15 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       if ("weights" %in% task$properties) {
         pv$weights = task$weights$weight
       }
+      pv = glmnet_set_offset(task, "train", pv)
 
       list(
         model = glmnet_invoke(data, target, pv),
-        # need these for distr prediction
+        # need these for distr prediction (survfit)
         x = data,
         y = target,
-        weights = pv$weights
+        weights = pv$weights,
+        offset = pv$offset
       )
     },
 
@@ -146,10 +157,12 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       pv = self$param_set$get_values(tags = "predict")
       pv = rename(pv, "predict.gamma", "gamma")
       pv$s = glmnet_get_lambda(self, pv)
+      pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
       fit = invoke(survival::survfit, formula = self$model$model,
-                   x = self$model$x, y = self$model$y, weights = self$model$weights,
+                   x = self$model$x, y = self$model$y,
+                   weights = self$model$weights, offset = self$model$offset,
                    newx = newdata, se.fit = FALSE, .args = pv)
 
       # get linear predictor

@@ -6,7 +6,7 @@
 \title{Classification MultilayerPerceptron Learner}
 \description{
 Classifier that uses backpropagation to learn a multi-layer perceptron.
-Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

@@ -21,7 +21,8 @@ test_that("classif.gam train", {
     "se.fit", # not supported for classification
     "terms", # not relevant for predict type "prob" or "response"
     "exclude", # not relevant for predict type "prob" or "response"
-    "iterms.type" # not relevant for predict type "prob" or "response"
+    "iterms.type", # not relevant for predict type "prob" or "response"
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

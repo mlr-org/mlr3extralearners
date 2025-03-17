@@ -24,7 +24,8 @@ test_that("paramtest surv.cforest train", {
     "pargs", # maxapts, abseps and releps are passed directly
     "maxpts",
     "abseps",
-    "releps"
+    "releps",
+    "offset" # is not directly supported by learner
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

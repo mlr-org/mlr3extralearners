@@ -24,6 +24,8 @@
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
@@ -43,7 +45,6 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
             "custom"), tags = "train"),
         custom.family = p_uty(tags = "train"),
         nuirange = p_uty(default = c(0, 100), tags = "train"),
-        offset = p_dbl(tags = "train"),
         center = p_lgl(default = TRUE, tags = "train"),
         mstop = p_int(default = 100L, lower = 0L, tags = "train"),
         nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
@@ -70,7 +71,7 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "lp", "distr"),
-        properties = c("weights", "importance", "selected_features"),
+        properties = c("weights", "importance", "selected_features", "offset"),
         packages = c("mlr3extralearners", "mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.gamboost",
         label = "Boosted Generalized Additive Model"
@@ -118,6 +119,10 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
+      }
+
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
 
       # Save control settings and return on exit

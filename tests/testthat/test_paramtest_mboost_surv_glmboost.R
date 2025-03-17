@@ -9,7 +9,8 @@ test_that("paramtest surv.glmboost train", {
     "custom.family", # Pass custom families as other families are parametrized as characters
     "nuirange", # e.g. mboost::Weibbull
     "sigma", # e.g. mboost::Cindex
-    "ipcw" # e.g. mboost::Cindex
+    "ipcw", # e.g. mboost::Cindex
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

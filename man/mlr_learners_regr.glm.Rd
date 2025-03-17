@@ -37,7 +37,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    etastart \tab untyped \tab - \tab  \tab - \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
    start \tab untyped \tab NULL \tab  \tab - \cr
-   offset \tab untyped \tab - \tab  \tab - \cr
    family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab - \cr
    na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab - \cr
    link \tab character \tab - \tab logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse \tab - \cr
@@ -46,6 +45,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    dispersion \tab untyped \tab NULL \tab  \tab - \cr
    type \tab character \tab link \tab response, link, terms \tab - \cr
+   use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -54,11 +54,22 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item \code{type}
 \itemize{
-\item Actual default: "link"
-\item Adjusted default: "response"
+\item Actual default: \code{"link"}
+\item Adjusted default: \code{"response"}
 \item Reason for change: Response scale more natural for predictions.
 }
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} has a column with the role \code{offset}, it will automatically be used during training.
+The offset is incorporated through the formula interface to ensure compatibility with \code{\link[stats:glm]{stats::glm()}}.
+We add it to the model formula as \verb{offset(<column_name>)} and also include it in the training data.
+During prediction, the default behavior is to use the offset column from the
+test set (enabled by \code{use_pred_offset = TRUE}).
+Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
+effectively disabling the offset adjustment during prediction.
 }
 
 \examples{

@@ -6,7 +6,7 @@
 \title{Classification AdaBoostM1 Learner}
 \description{
 Adaptive boosting algorithm for classification.
-Calls \code{\link[RWeka:AdaBoostM1]{RWeka::AdaBoostM1()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_meta]{RWeka::AdaBoostM1()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

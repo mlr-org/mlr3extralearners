@@ -43,7 +43,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    REML \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    start \tab untyped \tab NULL \tab  \tab - \cr
    verbose \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   offset \tab untyped \tab NULL \tab  \tab - \cr
    contrasts \tab untyped \tab NULL \tab  \tab - \cr
    optimizer \tab character \tab nloptwrap \tab Nelder_Mead, bobyqa, nlminbwrap, nloptwrap \tab - \cr
    restart_edge \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -67,6 +66,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    allow.new.levels \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    na.action \tab untyped \tab "stats::na.pass" \tab  \tab - \cr
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} contains a column with the \code{offset} role, it is automatically
+incorporated during training via the \code{offset} argument in \code{\link[lme4:lmer]{lme4::lmer()}}.
+No offset is applied during prediction for this learner.
 }
 
 \examples{

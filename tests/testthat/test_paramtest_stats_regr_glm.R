@@ -9,7 +9,8 @@ test_that("paramtest regr.glm train", {
     "method", # we always use glm()
     "control", # handled by glm.control
     "contrasts", # causes lots of troubles just when setting the defaul
-    "link" # parameter passed to the family
+    "link", # parameter passed to the family
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -23,7 +24,8 @@ test_that("paramtest regr.glm predict", {
     "object", # handled via mlr3
     "newdata", # handled via mlr3
     "se.fit", # handled via mlr3
-    "terms" # not implemented by author
+    "terms", # not implemented by author
+    "use_pred_offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

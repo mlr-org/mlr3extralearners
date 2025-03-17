@@ -6,7 +6,7 @@
 \title{Classification OneR Learner}
 \description{
 One Rule classification algorithm that yields an extremely simple model.
-Calls \code{\link[RWeka:OneR]{RWeka::OneR()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::OneR()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

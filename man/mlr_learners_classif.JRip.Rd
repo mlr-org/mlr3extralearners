@@ -6,7 +6,7 @@
 \title{Classification JRip Learner}
 \description{
 Repeated Incremental Pruning to Produce Error Reduction.
-Calls \code{\link[RWeka:JRip]{RWeka::JRip()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::JRip()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

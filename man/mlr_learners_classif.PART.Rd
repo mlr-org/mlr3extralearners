@@ -6,7 +6,7 @@
 \title{Classification PART Learner}
 \description{
 Regression partition tree.
-Calls \code{\link[RWeka:PART]{RWeka::PART()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::PART()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

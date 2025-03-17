@@ -24,6 +24,8 @@
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
@@ -37,7 +39,6 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        offset = p_dbl(tags = "train"),
         family = p_fct(default = "coxph",
           levels = c(
             "coxph", "weibull", "loglog", "lognormal", "gehan", "cindex",
@@ -69,7 +70,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "lp", "distr"),
-        properties = c("weights", "selected_features", "importance"),
+        properties = c("weights", "selected_features", "importance", "offset"),
         packages = c("mlr3extralearners", "mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.glmboost",
         label = "Boosted Generalized Linear Model"
@@ -156,6 +157,10 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
 
       if ("weights" %in% task$properties) {
         pars$weights = task$weights$weight
+      }
+
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
 
       family = switch(pars$family,

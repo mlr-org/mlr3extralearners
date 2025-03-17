@@ -53,24 +53,23 @@ test_that("distr prediction works", {
   expect_false(all(surv1 == surv2))
 })
 
-test_that("offset, newoffset and weight parameters", {
-  offs = rep(0.1, length(part$train))
-  newoffs = rep(0.15, length(part$test))
-  l1 = lrn("surv.glmnet", lambda = 0.03, offset = offs)
-  l2 = lrn("surv.glmnet", lambda = 0.03, newoffset = newoffs)
-  l3 = lrn("surv.glmnet", lambda = 0.03, offset = offs, newoffset = newoffs)
+test_that("offset and weight parameters", {
+  task$cbind(data.table(new_col = runif(300)))
+  task$set_col_roles(cols = "new_col", roles = "offset")
+  l = lrn("surv.glmnet", lambda = 0.03)
 
-  # newoffset is needed
-  expect_error(l1$train(task, part$train)$predict(task, part$test), "newoffset")
-  # offset is not necessary
-  expect_silent(l2$train(task, part$train)$predict(task, part$test))
-  # having both works
-  expect_silent(l3$train(task, part$train)$predict(task, part$test))
+  p = l$train(task, train_rows)$predict(task, test_rows)
+  # offset was used
+  expect_equal(l$model$offset, task$offset$offset[train_rows])
+  expect_true(l$model$model$offset)
+  # not using offset during prediction changes lp, distr
+  l$param_set$set_values(use_pred_offset = FALSE)
+  p2 = l$predict(task, test_rows)
+  expect_false(all(p2$lp == p$lp))
+  expect_false(all(p2$data$distr == p$data$distr))
 
   # training weights are kept for prediction
-  learner = lrn("surv.glmnet", lambda = 0.03)
-  task2 = task$clone()
-  task2$col_roles$weight = "litter"
-  expect_silent(learner$train(task2, train_rows)$predict(task2, test_rows))
-  expect_equal(learner$model$weights, task2$weights$weight[train_rows])
+  task$set_col_roles(cols = "new_col", roles = "weight")
+  expect_silent(l$train(task, train_rows)$predict(task, test_rows))
+  expect_equal(l$model$weights, task$weights$weight[train_rows])
 })

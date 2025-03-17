@@ -14,6 +14,8 @@
 #' @templateVar id classif.glmer
 #' @template learner
 #'
+#' @inheritSection mlr_learners_regr.lmer Offset
+#'
 #' @references
 #' `r format_bib("bates2010lme4")`
 #'
@@ -44,7 +46,6 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         formula = p_uty(tags = c("train", "required"), custom_check = check_formula),
         start = p_uty(default = NULL, tags = "train"),
         verbose = p_int(default = 0, lower = 0, tags = "train"),
-        offset = p_uty(default = NULL, tags = "train"),
         contrasts = p_uty(default = NULL, tags = "train"),
         optimizer = p_fct(levels = c("Nelder_Mead", "bobyqa", "nlminbwrap", "nloptwrap"), tags = "train"),
         restart_edge = p_lgl(default = FALSE, tags = "train"),
@@ -94,9 +95,9 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         feature_types = c("numeric", "integer", "logical", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("twoclass", "weights"),
+        properties = c("twoclass", "weights", "offset"),
         man = "mlr3extralearners::mlr_learners_classif.glmer",
-        label = "Generalized Linear Mixed Effect Regression"
+        label = "Generalized Linear Mixed Effect Classifier"
       )
     }
   ),
@@ -115,6 +116,11 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       if ("weights" %in% task$properties) {
         pars_train$weights = task$weights$weight
       }
+
+      if ("offset" %in% task$properties) {
+        pars_train$offset = task$offset$offset
+      }
+
       data = task$data()
 
       model = invoke(lme4::glmer,

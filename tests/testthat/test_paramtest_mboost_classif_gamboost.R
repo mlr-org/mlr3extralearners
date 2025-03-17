@@ -9,7 +9,8 @@ test_that("paramtest classif.gamboost train", {
     "center", # (mboost_control) depreacated
     "custom.family", # Provide a custom family
     "type", # mboost::Binomial
-    "link" # mboost::Binomial
+    "link", # mboost::Binomial
+    "offset"
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

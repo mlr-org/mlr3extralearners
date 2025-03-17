@@ -10,7 +10,8 @@ test_that("paramtest regr.gamboost train", {
     "center", # depreacated
     "custom.family",
     "nuirange", # Parameter belongs to the families GammaReg etc.
-    "d" # Belongs to the Huber family
+    "d", # Belongs to the Huber family
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

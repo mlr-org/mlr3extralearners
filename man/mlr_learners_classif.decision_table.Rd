@@ -6,7 +6,7 @@
 \title{Classification Decision Table Learner}
 \description{
 Simple Decision Table majority classifier.
-Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Initial parameter values}{
 

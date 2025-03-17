@@ -19,7 +19,8 @@ test_that("paramtest classif.cforest train", {
     "fraction", # perturb = list(replace, fraction)
     "mtryratio", # added as alternative to mtry
     "OOB",
-    "object"
+    "object",
+    "offset" # is not directly supported by learner
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
