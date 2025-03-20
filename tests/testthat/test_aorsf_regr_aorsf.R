@@ -1,10 +1,9 @@
 test_that("autotest", {
   learner = lrn("regr.aorsf")
-  # setting check_man to TRUE fails for some reason
-  expect_learner(learner, check_man = FALSE)
+  expect_learner(learner)
   result = run_autotest(
     learner,
-    exclude = "single || feat_all",
+    exclude = "utf8_feature_names || feat_logical",
     N = 30
   )
   expect_true(result, info = result$error)

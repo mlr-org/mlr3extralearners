@@ -8,6 +8,7 @@
 #'
 #' @section Initial parameter values:
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+#' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
 #' @template seealso_learner
 #' @examplesIf requireNamespace("aorsf", quietly = TRUE)
@@ -40,42 +41,38 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
-        n_split = p_int(default = 5L, lower = 1L, tags = "train"),
-        n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
-        pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
-        # pred_simplify = p_lgl(default = TRUE, tags = "predict"),  # can't be FALSE, otherwise response is NA in prediction
-        oobag = p_lgl(default = FALSE, tags = "predict"),
-        mtry = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
-        mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
+        attach_data             = p_lgl(default = TRUE, tags = "train"),
+        epsilon                 = p_dbl(default = 1e-9, lower = 0, tags = "train"),
+        importance              = p_fct(levels = c("none", "anova", "negate", "permute"), default = "anova", tags = "train"),
+        importance_max_pvalue   = p_dbl(default = 0.01, lower = 0.0001, upper = .9999, tags = "train"),
+        leaf_min_events         = p_int(default = 1L, lower = 1L, tags = "train"),
+        leaf_min_obs            = p_int(default = 5L, lower = 1L, tags = "train"),
+        max_iter                = p_int(default = 20L, lower = 1, tags = "train"),
+        method                  = p_fct(levels = c("glm", "net", "pca", "random"), default = "glm", tags = "train"),
+        mtry                    = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
+        mtry_ratio              = p_dbl(lower = 0, upper = 1, tags = "train"),
+        n_retry                 = p_int(default = 3L, lower = 0L, tags = "train"),
+        n_split                 = p_int(default = 5L, lower = 1L, tags = "train"),
+        n_thread                = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
+        n_tree                  = p_int(default = 500L, lower = 1L, tags = "train"),
+        na_action               = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"),
+        net_mix                 = p_dbl(default = 0.5, tags = "train"),
+        oobag                   = p_lgl(default = FALSE, tags = "predict"),
+        oobag_eval_every        = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
+        oobag_fun               = p_uty(default = NULL, special_vals = list(NULL), tags = "train", custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
+        oobag_pred_type         = p_fct(levels = c("none", "leaf", "mean"), default = "mean", tags = "train"),
+        pred_aggregate          = p_lgl(default = TRUE, tags = "predict"),
+        # pred_simplify         = p_lgl(default = TRUE, tags = "predict"),  # can't be FALSE, otherwise response is NA in prediction
+        sample_fraction         = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
-        sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
-        split_rule = p_fct(levels = c("variance"), default = "variance", tags = "train"),
-        control_method = p_fct(levels = c("glm", "net", "pca", "random"), default = "glm", tags = "train"),
-        control_do_scale = p_lgl(default = FALSE, tags = "train"),
-        control_eps = p_dbl(default = 1e-9, lower = 0, tags = "train"),
-        control_iter_max = p_int(default = 20L, lower = 1, tags = "train"),
-        control_net_mix = p_dbl(default = 0.5, tags = "train"),
-        control_df_target = p_int(default = NULL, lower = 1L,
-                                  special_vals = list(NULL),
-                                  tags = "train"),
-        leaf_min_events = p_int(default = 1L, lower = 1L, tags = "train"),
-        leaf_min_obs = p_int(default = 5L, lower = 1L, tags = "train"),
-        split_min_events = p_int(default = 5L, lower = 1L, tags = "train"),
-        split_min_obs = p_int(default = 10, lower = 1L, tags = "train"),
-        split_min_stat = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
-        oobag_pred_type = p_fct(levels = c("none", "leaf", "prob", "class"), default = "prob", tags = "train"),
-        importance = p_fct(levels = c("none", "anova", "negate", "permute"), default = "anova", tags = "train"),
-        importance_max_pvalue = p_dbl(default = 0.01, lower = 0.0001, upper = .9999, tags = "train"),
-        tree_seeds = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
-        #oobag_pred_horizon = p_dbl(default = NULL, special_vals = list(NULL), tags = "train", lower = 0),
-        oobag_eval_every = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
-        oobag_fun = p_uty(default = NULL, special_vals = list(NULL), tags = "train",
-                          custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
-        attach_data = p_lgl(default = TRUE, tags = "train"),
-        verbose_progress = p_lgl(default = FALSE, tags = "train"),
-        na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+        scale_x                 = p_lgl(default = FALSE, tags = "train"),
+        split_min_events        = p_int(default = 5L, lower = 1L, tags = "train"),
+        split_min_obs           = p_int(default = 10, lower = 1L, tags = "train"),
+        split_min_stat          = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
+        split_rule              = p_fct(levels = c("variance"), default = "variance", tags = "train"),
+        target_df               = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
+        tree_seeds              = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
+        verbose_progress        = p_lgl(default = FALSE, tags = "train"))
 
       ps$values = list(n_thread = 1)
 
@@ -115,43 +112,30 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
   private = list(
     .train = function(task) {
       # initialize
+      args_ctrl = formalArgs(aorsf::orsf_control_classification)
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry_ratio",
                          length(task$feature_names))
-      # helper function to organize aorsf control function inputs
-      dflt_if_null = function(params, slot_name) {
-        out = params[[slot_name]]
-        if (is.null(out)) out <- self$param_set$default[[slot_name]]
-        out
-      }
+      pv_ctrl = pv[names(pv) %in% args_ctrl]
+      pv_train = pv[names(pv) %nin% args_ctrl]
+
+      ctrl = invoke(aorsf::orsf_control_regression, .args = pv_ctrl)
+
       # default value for oobag_eval_every is ntree, but putting
       # default = ntree in p_int() above would be problematic, so:
       if (is.null(pv$oobag_eval_every)) {
-        pv$oobag_eval_every = dflt_if_null(pv, "n_tree")
+        val = pv[["n_tree"]]
+        # if value not set, set to default value and pass to oobag_eval_every
+        if (is.null(val)) val = self$param_set$default[["ntree"]]
+        pv$oobag_eval_every = val
       }
-      control = aorsf::orsf_control_regression(
-        method = dflt_if_null(pv, "control_method"),
-        scale_x = dflt_if_null(pv, "control_do_scale"),
-        net_mix = dflt_if_null(pv, "control_net_mix"),
-        max_iter = dflt_if_null(pv, "control_iter_max"),
-        epsilon = dflt_if_null(pv, "control_eps"),
-        target_df = dflt_if_null(pv, "control_df_target")
-      )
-      # these parameters are used to organize the control arguments
-      # above but are not used directly by aorsf::orsf(), so:
-      pv = remove_named(pv, c("control_method",
-                              "control_do_scale",
-                              "control_fast_ties",
-                              "control_net_mix",
-                              "control_df_target",
-                              "control_iter_max",
-                              "control_eps"))
+
       invoke(
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
         weights = task$weights,
-        control = control,
+        control = ctrl,
         no_fit = FALSE,
         .args = pv
       )
