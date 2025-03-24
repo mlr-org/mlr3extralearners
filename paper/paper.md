@@ -117,20 +117,20 @@ bibliography: paper.bib
 
 The `mlr3` ecosystem is a versatile toolbox for machine learning (ML) in `R` [@R] that is targeted towards both practitioners and researchers [@Bischl2024].
 The core `mlr3` package [@Lang2019] defines the standardized interface for ML, but its goal is not to implement algorithms.
-This is, e.g., done by the `mlr3learners` extension [@mlr3learners] that connects 21 stable algorithms from various `R` packages to the `mlr3` ecosystem that serve as a good starting point for many ML tasks.
-In addition, `mlr3extralearners` is a *community-driven* package that integrates many more ML algorithms.
+This is, e.g., done by the `mlr3learners` extension [@mlr3learners] that connects 21 stable learning algorithms from various `R` packages to the `mlr3` ecosystem that serve as a good starting point for many ML tasks.
+In addition, `mlr3extralearners` is a *community-driven* package that integrates many more methods.
 The package currently wraps **85 different ML algorithms** from many different `R` packages, for tasks such as classification, regression, and survival analysis.
 This enables users to seamlessly access and utilize these learners directly within their workflows.
-One of its strengths is the design and implementation of large-scale benchmark experiments.
+One of the strengths of `mlr3` is the design and implementation of large-scale benchmark experiments.
 For example, datasets for such experiments can be easily obtained from the OpenML[^1] repository [@vanschoren2014openml] via the `mlr3oml` package [@mlr3oml].
-Furthermore, strong support for parallelization, including simplified submission on high-performance computing clusters via `batchtools` [@lang2017batchtools] and its `mlr3` integration `mlr3batchmark` [@mlr3batchmark], is provided by the framework and well documented [@benchlargescale].
+Furthermore, strong support for parallelization, including execution on high-performance computing clusters via `batchtools` [@lang2017batchtools] and its `mlr3` integration `mlr3batchmark` [@mlr3batchmark], is available and well documented [@benchlargescale].
 In combination, these tools allow for large-scale empirical investigations, which has, for example, been used to collect and analyze data about hyperparameter landscapes of ML algorithms [@binder2020collecting].
 An overview of all `mlr3` learners, including those introduced through `mlr3extralearners`, is available on the mlr3 website[^2].
 
 [^1]: https://openml.org
 [^2]: https://mlr-org.com/learners.html
 
-Beyond accessibility, `mlr3extralearners` also allows `mlr3` users to easily connect their own algorithms to the interface and also gives them the opportunity to share their implementations by contributing them to `mlr3extralearners`.
+Beyond accessibility, `mlr3extralearners` also allows `mlr3` users to easily connect their own algorithms to the interface.
 This **enriches each learner with extensive metadata** about its hyperparameter space, prediction types, and other key attributes.
 Furthermore, `mlr3extralearners` includes robust mechanisms for **quality assurance**, such as regular automated sanity checks and verification tests that ensure learner parameters are consistent and up-to-date with the latest versions of their underlying `R` packages.
 In order to allow the integration of learners that are not available on `CRAN`, the package is hosted on the `mlr` R-universe[^3].
@@ -180,10 +180,10 @@ Integrating learners from diverse `R` packages poses challenges, on the one hand
 - **Interface consistency**: The package regularly verifies that each learner adheres to the expected interface of the latest released version of its upstream function.
 When new parameters are introduced or existing ones changed or removed, the tests fail until the parameter sets are updated accordingly.
 - **Automated testing**: In general, writing unit tests for ML algorithms is challenging, because of edge-cases, numeric errors, and the fact that the input to these algorithms can be arbitrary datasets.
-To ensure correctness, `mlr3extralearners` performs regular automated tests on all learners.
+Aimed at addressing these challenges, `mlr3extralearners` performs regular automated tests on all learners.
 These tests include sanity checks that, e.g., verify that the learners produce sensible predictions for simple randomly generated datasets.
-In the past, these tests detected bugs in the implementation of upstream packages and we have subsequently notified upstream package authors.
 Furthermore, the tests also validate the learners' metadata annotations, such as whether a learner can actually handle missing values or is able to produce importance scores.
+In the past, these tests have detected bugs in some upstream packages and we have subsequently notified their authors.
 
 ## Simplified Integration of New Learners
 
@@ -192,10 +192,11 @@ To streamline the addition of new learners, `mlr3extralearners` provides robust 
 - **Code templates**: Predefined templates are available for both the learner implementation and associated test files.
 Contributors can utilize these templates through an `R` function that accepts learner metadata and generates new `R` code files based on the templates.
 This approach pre-fills as much information as possible, minimizing the input required from the contributor.
-- **Guides and resources**: The package website[^3] contains an extensive tutorial, as well as a curated list of common issues encountered during learner integration, making the process accessible for contributors of all experience levels.
+Note that these templates can also be used when learners are only used locally for specific projects and not contributed to `mlr3extralearners`.
+- **Guides and resources**: The package website[^4] contains an extensive tutorial, as well as a curated list of common issues encountered during learner integration, making the process accessible for contributors of all experience levels.
 Additionally, every integrated learner includes a simple example of usage in the documentation, ensuring that users can quickly understand how to utilize the learner effectively within the `mlr3` ecosystem.
 
-[^3]: https://mlr3extralearners.mlr-org.com
+[^4]: https://mlr3extralearners.mlr-org.com
 
 # Community Impact and Future Directions
 
@@ -204,8 +205,7 @@ The authors of this paper themselves have been actively involved in integrating 
 Their contributions, such as the addition of learners for specialized tasks like survival analysis and high-dimensional data, highlight the impact that thoughtful integration has on the `mlr3` ecosystem.
 This ongoing effort illustrates the transformative potential of **community-driven development**, ensuring that `mlr3extralearners` continues to grow as a dynamic and inclusive repository for ML algorithms.
 
-By fostering a spirit of collaboration, the `mlr3extralearners` project invites future contributors to follow this example, helping shape the package's evolution and making advanced machine learning tools accessible to a wider `R` audience.
-Future work will also focus on expanding the ecosystem through `mlr3torch` [@mlr3torch], which aims to seamlessly integrate deep learning models and neural network architectures within the `mlr3` framework.
+Future work will also focus on expanding the ecosystem with more deep learning methods through `mlr3torch` [@mlr3torch], which aims to seamlessly integrate deep learning models and neural network architectures within the `mlr3` framework.
 
 # Acknowledgements
 
