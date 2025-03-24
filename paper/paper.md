@@ -58,7 +58,6 @@ authors:
     orcid: 0009-0007-0949-8385
     affiliation: "3, 11, 12"
   - name: Liana Harutyunyan
-    orcid: 0000-0002-8486-3959
     affiliation: 17
   - name: Pierre Camilleri
     orcid: 0009-0005-1070-0670
