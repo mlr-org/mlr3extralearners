@@ -114,8 +114,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
       # initialize
       args_ctrl = formalArgs(aorsf::orsf_control_classification)
       pv = self$param_set$get_values(tags = "train")
-      pv = convert_ratio(pv, "mtry", "mtry_ratio",
-                         length(task$feature_names))
+      pv = convert_ratio(pv, "mtry", "mtry_ratio", length(task$feature_names))
       pv_ctrl = pv[names(pv) %in% args_ctrl]
       pv_train = pv[names(pv) %nin% args_ctrl]
 
@@ -145,11 +144,13 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
       newdata = ordered_features(task, self)
       type = if (self$predict_type == "response") "class" else "prob"
       pred_simplify = self$predict_type == "response"
-      pred = invoke(predict, self$model,
-                    new_data = newdata,
-                    pred_type = type,
-                    pred_simplify = pred_simplify,
-                    .args = pars)
+      pred = invoke(
+        predict,
+        self$model,
+        new_data = newdata,
+        pred_type = type,
+        pred_simplify = pred_simplify,
+        .args = pars)
 
       if (self$predict_type == "response") {
         list(response = pred)
