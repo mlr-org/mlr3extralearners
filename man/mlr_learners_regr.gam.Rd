@@ -16,6 +16,13 @@ for the unit tests). Only features specified in the formula will be used,
 superseding columns with col_roles "feature" in the task.
 }
 
+\section{Offset}{
+
+If a \code{Task} contains a column with the \code{offset} role, it is automatically
+incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+No offset is applied during prediction for this learner.
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -39,7 +46,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    family \tab character \tab gaussian \tab gaussian, poisson \tab - \cr
    formula \tab untyped \tab - \tab  \tab - \cr
-   offset \tab untyped \tab NULL \tab  \tab - \cr
    method \tab character \tab GCV.Cp \tab GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML \tab - \cr
    optimizer \tab untyped \tab c("outer", "newton") \tab  \tab - \cr
    scale \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

@@ -6,9 +6,10 @@
 #' Fit a generalized linear classification model using a boosting algorithm.
 #' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
 #'
-#'
 #' @template learner
 #' @templateVar id classif.glmboost
+#'
+#' @inheritSection mlr_learners_regr.glmboost Offset
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
@@ -24,8 +25,6 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     #' Create a `LearnerClassifGLMBoost` object.
     initialize = function() {
       ps = ps(
-        offset = p_dbl(default = NULL,
-          special_vals = list(NULL), tags = "train"),
         family = p_fct(default = c("Binomial"),
           levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
         custom.family = p_uty(tags = "train"),
@@ -55,7 +54,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "twoclass"),
+        properties = c("weights", "twoclass", "offset"),
         man = "mlr3extralearners::mlr_learners_classif.glmboost",
         label = "Boosted Generalized Linear Model"
       )
@@ -92,6 +91,13 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
         pars_glmboost = insert_named(
           pars_glmboost,
           list(weights = task$weights$weight))
+      }
+
+      if ("offset" %in% task$properties) {
+        pars_glmboost = insert_named(
+          pars_glmboost,
+          list(offset = task$offset$offset)
+        )
       }
 
       pars_glmboost$family = switch(pars_glmboost$family,
