@@ -70,16 +70,28 @@ For logistic regression please use <code><a href="https://mlr3learners.mlr-org.c
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>singular.ok</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>etastart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>mustart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>start</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>offset</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>family</td><td>character</td><td>gaussian</td><td>gaussian, poisson, quasipoisson, Gamma, inverse.gaussian</td><td>-</td></tr><tr><td>na.action</td><td>character</td><td>-</td><td>na.omit, na.pass, na.fail, na.exclude</td><td>-</td></tr><tr><td>link</td><td>character</td><td>-</td><td>logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse</td><td>-</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-08</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxit</td><td>numeric</td><td>25</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>dispersion</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>type</td><td>character</td><td>link</td><td>response, link, terms</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>singular.ok</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>etastart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>mustart</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>start</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>family</td><td>character</td><td>gaussian</td><td>gaussian, poisson, quasipoisson, Gamma, inverse.gaussian</td><td>-</td></tr><tr><td>na.action</td><td>character</td><td>-</td><td>na.omit, na.pass, na.fail, na.exclude</td><td>-</td></tr><tr><td>link</td><td>character</td><td>-</td><td>logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse</td><td>-</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-08</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>maxit</td><td>numeric</td><td>25</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>dispersion</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>type</td><td>character</td><td>link</td><td>response, link, terms</td><td>-</td></tr><tr><td>use_pred_offset</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
 
-<ul><li><p><code>type</code></p><ul><li><p>Actual default: "link"</p></li>
-<li><p>Adjusted default: "response"</p></li>
+<ul><li><p><code>type</code></p><ul><li><p>Actual default: <code>"link"</code></p></li>
+<li><p>Adjusted default: <code>"response"</code></p></li>
 <li><p>Reason for change: Response scale more natural for predictions.</p></li>
 </ul></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="offset">Offset<a class="anchor" aria-label="anchor" href="#offset"></a></h2>
+
+
+<p>If a <code>Task</code> has a column with the role <code>offset</code>, it will automatically be used during training.
+The offset is incorporated through the formula interface to ensure compatibility with <code><a href="https://rdrr.io/r/stats/glm.html" class="external-link">stats::glm()</a></code>.
+We add it to the model formula as <code>offset(&lt;column_name&gt;)</code> and also include it in the training data.
+During prediction, the default behavior is to use the offset column from the
+test set (enabled by <code>use_pred_offset = TRUE</code>).
+Otherwise, if the user sets <code>use_pred_offset = FALSE</code>, a zero offset is applied,
+effectively disabling the offset adjustment during prediction.</p>
+    </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Hosmer Jr, W D, Lemeshow, Stanley, Sturdivant, X R (2013).
@@ -160,11 +172,11 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrGlm:regr.glm&gt;: Generalized Linear Regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=gaussian, type=response</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=gaussian, type=response, use_pred_offset=TRUE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, stats</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], se</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, character, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: offset, weights</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -177,7 +189,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = formula, family = structure(list(family = "gaussian", </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:  stats::glm(formula = form, family = structure(list(family = "gaussian", </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     link = "identity", linkfun = function (mu) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     mu, linkinv = function (eta) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     eta, variance = function (mu) </span>
@@ -200,13 +212,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     6.39706     -0.02040     -0.41562      0.64726      0.02120      1.32722  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -15.702764     0.921677     0.407840    -0.371187     0.013550     2.388453  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     2.82702     -0.03057      0.54225      0.60337     -4.60223  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.138263    -0.003438     2.522070    -3.132262    -5.490247  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    537.9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 36.92 	AIC: 95.44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    858 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 88.74 	AIC: 113.9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +227,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14.48657 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.01576 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

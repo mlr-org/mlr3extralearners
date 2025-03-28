@@ -211,18 +211,18 @@ for computing the baseline hazard.</p></li>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;PredictionSurv&gt; for 330 observations:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        lp     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        2   5.0  FALSE 0.9662552 0.9662552 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6   5.0  FALSE 1.5779767 1.5779767 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7 180.0  FALSE 0.5869449 0.5869449 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      994   7.0  FALSE 4.3030431 4.3030431 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 3.9414024 3.9414024 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      999   3.0   TRUE 4.0668551 4.0668551 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank       lp     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        3    2  FALSE 1.422810 1.422810 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8    2  FALSE 1.116839 1.116839 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       10  180  FALSE 1.088440 1.088440 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---      ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      974    7   TRUE 3.936188 3.936188 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      981   50   TRUE 3.777149 3.777149 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      999    3   TRUE 3.816751 3.816751 &lt;list[1]&gt;</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7572985 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7885764 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
