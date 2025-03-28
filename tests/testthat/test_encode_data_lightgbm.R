@@ -16,5 +16,4 @@ test_that("encode_data_lightgbm works for train", {
   expect_error(learner$predict(task), regexp = NA)
   expect_error(learner$train(task), regexp = NA)
   expect_error(learner$predict(task), regexp = NA)
-
 })

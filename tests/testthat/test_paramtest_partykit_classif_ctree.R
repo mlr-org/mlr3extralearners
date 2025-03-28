@@ -25,7 +25,8 @@ test_that("classif.ctree", {
     "pargs", # control parameters (GenzBretz()) are passed explicitly :
     "maxpts", # pargs param
     "releps", # pargs param
-    "abseps"
+    "abseps",
+    "offset" # is not directly supported by learner
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude)

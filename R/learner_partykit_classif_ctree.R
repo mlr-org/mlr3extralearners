@@ -65,7 +65,6 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
         update = p_lgl(default = FALSE, tags = "train"),
         splitflavour = p_fct(default = "ctree", # goes into control
           levels = c("ctree", "exhaustive"), tags = "train"),
-        offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         scores = p_uty(tags = "train"),
         doFit = p_lgl(default = TRUE, tags = "train"),

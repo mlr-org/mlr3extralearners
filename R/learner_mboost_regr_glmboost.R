@@ -9,6 +9,11 @@
 #' @template learner
 #' @templateVar id regr.glmboost
 #'
+#' @section Offset:
+#' If a `Task` contains a column with the `offset` role, it is automatically
+#' incorporated via the `offset` argument in `mboost`'s training function.
+#' No offset is applied during prediction for this learner.
+#'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
@@ -23,8 +28,6 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
     #' Create a `LearnerRegrGLMBoost` object.
     initialize = function() {
       ps = ps(
-        offset = p_dbl(default = NULL,
-          special_vals = list(NULL), tags = "train"),
         family = p_fct(default = c("Gaussian"),
           levels = c(
             "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
@@ -52,7 +55,7 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
-        properties = "weights",
+        properties = c("weights", "offset"),
         man = "mlr3extralearners::mlr_learners_regr.glmboost",
         label = "Boosted Generalized Linear Model"
       )
@@ -96,6 +99,13 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
           list(weights = task$weights$weight))
       }
 
+      if ("offset" %in% task$properties) {
+        pars_glmboost = insert_named(
+          pars_glmboost,
+          list(offset = task$offset$offset)
+        )
+      }
+
       pars_glmboost$family = switch(pars$family,
         Gaussian = mboost::Gaussian(),
         Laplace = mboost::Laplace(),
@@ -117,7 +127,9 @@ LearnerRegrGLMBoost = R6Class("LearnerRegrGLMBoost",
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      p = as.numeric(
+        invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      )
       list(response = p)
     }
   )
