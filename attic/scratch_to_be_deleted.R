@@ -64,7 +64,7 @@ config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE)
 
 
 # Step 3: Define and fit the tabular learner
-tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100, 2),
+tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100),
                                 config = config,
                                 metrics = list(accuracy, RocAucBinary(),
                                                Precision(), Recall(),
@@ -80,6 +80,7 @@ fit_eval = function(tab_learner, args) {
     .args = args
   )
 }
+
 invisible(reticulate::py_capture_output(fit_eval(tab_learner, list(n_epoch = 5, lr = 0.005))))
 
 eval_protocol = fastai::fit(tab_learner, n_epoch = 5, lr = 0.005)
@@ -105,49 +106,90 @@ predict(model, df[ids$test])
 
 
 ### Set weights to loss function
-loss = fastai::CrossEntropyLossFlat()
-loss$func$weight = tensor(1.0, 2.0)
 
 logloss = msr("classif.logloss")
+acc = msr("classif.acc")
 
-
-logloss_own_imp = function (truth, prob, sample_weights = NULL, eps = 1e-15, ...)
-{
-  print("does it get printed?")
-  ii = match(as.character(truth), colnames(prob))
-  print("does it match?")
-  print(ii)
-  print(prob)
-  p = prob[cbind(seq_len(nrow(prob)), ii)]
-  print("Is the prob computed?")
-  p = pmax(eps, pmin(1 - eps, p))
-  print("Tester")
-  -mlr3measures:::wmean(log(p), sample_weights)
-}
-
-metric = function(pred, dtrain, ...) {
+# Wrapper for eval measure to include in fastai
+metric = function(pred, dtrain, msr = NULL, ...) {
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   label = factor(dl$dataset$y)
-
   pred = as_array(pred)
   truth = factor(as.vector(as_array(dtrain)))
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)
   colnames(pred_mat) = levels(truth)
-  print("Does it handle the preprocessing?")
-
-  loss = logloss$fun(truth, pred_mat)
-  print("Does it compute the loss?")
-  return(loss)
-
+  pred = pred_mat
+  # transform prediction into class labels
+  if (msr$predict_type == "response") {
+    p = apply(pred_mat, MARGIN = 1, FUN = function(x) which.max(x) - 1)
+    pred = factor(p, levels = levels(truth))
+  }
+  measure = msr$fun(truth, pred, ...)
+  return(measure)
 }
 
 
-tab_learner = fastai::tabular_learner(dl, layers=c(100,100, 100, 50),
-                                      config = config,
-                                      metrics = AccumMetric(metric, flatten=FALSE,
-                                                            sample_weights = NULL, eps = 1e-15))
+tab_learner = fastai::tabular_learner(dl, layers=NULL,
+                                      config = NULL,
+                                      metrics = NULL)
 
 #invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
-eval_protocol = fit(tab_learner, 1, 0.005)
+eval_protocol = fit(tab_learner, 5, 0.005)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+param_set = ps(
+  act_cls     = p_uty(tags = "train"),  # Activation type for LinBnDrop layers, e.g., fastai::nn()$ReLU(inplace = TRUE)
+  bn_cont     = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d on continuous variables
+  bn_final    = p_lgl(default = FALSE, tags = "train"),  # Use BatchNorm1d on final layer
+  drop_last   = p_lgl(default = FALSE, tags = "train"),  #  If True, then the last incomplete batch is dropped.
+  embed_p     = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
+  emb_szs     = p_uty(default=NULL, tags="train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
+  epochs      = p_int(lower=1, default = 5, tags="train"), # Epochs
+  eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(any(is.character(x), is.function(x), inherits(x, "Measure")))})),
+  layers      = p_uty(tags="train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
+  loss_func   = p_uty(tags="train"),  # Defaults to fastai::CrossEntropyLossFlat()
+  lr          = p_dbl(lower=0, default = 0.001, tags = "train"),  # Learning rate
+  metrics     = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
+  n_out       = p_int(tags="train"),  # ?
+  num_workers = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
+  opt_func    = p_uty(tags="train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
+  pin_memory  = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
+  ps          = p_uty(default = NULL, tags = "train"),  # Sequence of dropout probabilities
+  shuffle     = p_lgl(default = FALSE, tags = "train"),  # If True, then data is shuffled every time dataloader is fully read/iterated.
+  train_bn    = p_lgl(default = TRUE, tags = "train"),  # controls if BatchNorm layers are trained
+  wd_bn_bias  = p_lgl(default = FALSE, tags = "train"),  # controls if weight decay is applied to BatchNorm layers and bias
+  use_bn      = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d in LinBnDrop layers
+  y_range     = p_uty(default = NULL, tags = "train"),  # Low and high for SigmoidRange activation (see below)
+  bs          = p_int(default = 50, tags="train") # how many samples per batch to load
+)
