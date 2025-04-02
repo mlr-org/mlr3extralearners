@@ -1,10 +1,10 @@
-#' @title FastAi Neural Network Tabular Classifier
+#' @title Classification Neural Network Learner
 #' @author annanzrv
 #' @name mlr_learners_classif.fastai
 #'
 #' @description
-#' Fit simple feed forward neural networks for tabular classification tasks.
-#' Calls [fastai::fastai()] from FIXME: (CRAN VS NO CRAN): \CRANpkg{fastai} | 'fastai'.
+#' Simple and fast neural nets for tabular data classification.
+#' Calls [fastai::fastai()] from package \CRANpkg{fastai}.
 #'
 #' @section Initial parameter values:
 #' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
@@ -21,13 +21,14 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
+LearnerClassifFastai = R6Class("LearnerClassifFastai",
   inherit = LearnerClassif,
-
   public = list(
+    eval_protocol = NULL,
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+      # FIXME: MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
       param_set = ps(
         act_cls     = p_uty(tags = "train"),  # Activation type for LinBnDrop layers, e.g., fastai::nn()$ReLU(inplace = TRUE)
         bn_cont     = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d on continuous variables
@@ -35,7 +36,7 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
         drop_last   = p_lgl(default = FALSE, tags = "train"),  #  If True, then the last incomplete batch is dropped.
         embed_p     = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
         emb_szs     = p_uty(default=NULL, tags="train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
-        epochs      = p_int(lower=1, default = 5, tags="train"), # Epochs
+        n_epoch     = p_int(lower=1, default = 5, tags="train"), # Epochs
         eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(any(is.character(x), is.function(x), inherits(x, "Measure")))})),
         layers      = p_uty(tags="train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
         loss_func   = p_uty(tags="train"),  # Defaults to fastai::CrossEntropyLossFlat()
@@ -54,19 +55,24 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
         bs          = p_int(default = 50, tags="train") # how many samples per batch to load
       )
 
+      # Epochs is set to default parameter.
+      if (is.null(parmset$values$n_epoch)) {
+        param_set$values = list(n_epoch = 5)
+      }
+      self$eval_protocol = NULL
+
       super$initialize(
         id = "classif.fastai",
-        packages = c("mlr3extralearners", "fastai"),
+        packages = c("fastai", "reticulate"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("missings", "multiclass", "twoclass", "validation", "weights"),
+        properties = c("missings", "multiclass", "twoclass", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.fastai",
         label = "FastAi Neural Network Tabular Classifier"
       )
-    },
+    }
   ),
-
 
   active = list(
     #' @field internal_valid_scores (named `list()` or `NULL`)
@@ -112,12 +118,13 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
       pv_fit = pars[names(pars) %in% args_fit]
       pv_layers = pars[names(pars) == "layers"]
 
-      internal_valid_task = task$internal_valid_task
       formula = task$formula()
       data = task$data()
+
       cat_cols = task$feature_types[type != "numeric"]$id
       num_cols = task$feature_types[type == "numeric"]$id
 
+      internal_valid_task = task$internal_valid_task
       if (!is.null(internal_valid_task)) {
         # combine the training data with the validation data
         full_data = rbind(data, internal_valid_task$data())
@@ -130,16 +137,16 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
           seq(1, nrow(data)), seq(nrow(data), nrow(internal_valid_task$data()))
         )
         # set internal validation metric and convert it to format compatible with fastai
-        measure = pv$eval_metric
+        measure = pars$eval_metric
         metrics = fastai::AccumMetric(metric, flatten=FALSE, msr=measure)  # see wrapper below
 
-      # no internal validation
+        # no internal validation
       } else {
         full_data = data
         splits = NULL
         metrics = NULL
       }
-
+      # set data into a format suitable for fastai
       df_fai = invoke(
         fastai::TabularDataTable,
         df = full_data,
@@ -149,11 +156,15 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
         splits=splits,
         .args = pv_dt
       )
+      # FIXME: Remove debug print
+      print("TabularDataTable created")
       dl = invoke(
         fastai::dataloaders,
-        dataset = df_fai,
+        df_fai,
         .args = pv_dl
       )
+      # FIXME: Remove debug print
+      print("DataLoader created")
       config = invoke(
         fastai::tabular_config,
         .args = pv_config
@@ -161,19 +172,25 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
       if ("weights" %in% task$properties) {
         dl$train$wgts <- task$weights$weight
       }
-      tab_learner = fastai::tabular_learner(dl, layers = layers, config = config,
+      tab_learner = fastai::tabular_learner(dl, layers = pv_layers, config = config,
                                             metrics = metrics)
+
+      # FIXME: Remove debug print
+      print("Tabular Learner internally created")
       # to avoid plot creation when internally validating do:
       invisible(tab_learner$remove_cb(tab_learner$progress))
       fit_eval = function(tab_learner) {
         self$eval_protocol = invoke(
           fastai::fit,
-          tab_learner,
+          object = tab_learner,
+          n_epoch = pars$n_epoch,
           .args = pv_fit
         )
       }
       # to prevent python from printing evaluation protocol do:
       invisible(reticulate::py_capture_output(fit_eval(tab_learner)))
+      print("Fit was successfully executetd")
+      self$model = tab_learner
     },
 
     .predict = function(task) {
@@ -194,15 +211,15 @@ LearnerClassifFastAi = R6Class("LearnerClassifFastAi",
   )
 )
 
-.extralrns_dict$add("classif.fastai", LearnerClassifFastAi)
+.extralrns_dict$add("classif.fastai", LearnerClassifFastai)
 
 
-# Wrapper for eval measure to include in fastai
+# Wrapper for mlr3measures to include in fastai
 metric = function(pred, dtrain, msr = NULL, ...) {
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   label = factor(dl$dataset$y)
   pred = as_array(pred)
-  truth = factor(as.vector(as_array(dtrain)))
+  truth = factor(as.vector(as_array(dtrain)), levels = levels(label))
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)
