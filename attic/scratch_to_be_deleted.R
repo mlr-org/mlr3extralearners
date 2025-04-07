@@ -37,7 +37,7 @@ dl = fastai::dataloaders(df_fai, bs=50)
 
 
 # Step 2: Define a set of configs for the learner
-config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE, epochs = 5)
+config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE)
 # ps_config = ps(
 #   ps       = p_uty(default = NULL, tags = "train"),  # Sequence of dropout probabilities
 #   embed_p  = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
@@ -66,8 +66,7 @@ config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE, epochs = 5)
 # Step 3: Define and fit the tabular learner
 tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100),
                                 config = config,
-                                metrics = list(fastai::Accuracy(),
-                                               fastai::RocAucBinary(),
+                                metrics = list(fastai::RocAucBinary(),
                                                fastai::Precision(), fastai::Recall(),
                                                fastai::F1Score()))
 invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
@@ -100,7 +99,7 @@ eval_protocol = fastai::fit(tab_learner, n_epoch = 5, lr = 0.005)
 
 
 # Prediction:
-predict(tab_learner, df[ids$test])
+pred = predict(tab_learner, df[ids$test])
 
 
 
@@ -110,13 +109,17 @@ predict(tab_learner, df[ids$test])
 
 logloss = msr("classif.logloss")
 acc = msr("classif.acc")
+auc = msr("classif.auc")
+fdr = msr("classif.fdr")
 
 # Wrapper for eval measure to include in fastai
 metric = function(pred, dtrain, msr = NULL, ...) {
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   label = factor(dl$dataset$y)
-  pred = as_array(pred)
+  pred = fastai::as_array(pred)
   truth = factor(as.vector(as_array(dtrain)))
+  print(length(dtrain))
+  print(length(pred))
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)
@@ -127,6 +130,8 @@ metric = function(pred, dtrain, msr = NULL, ...) {
     p = apply(pred_mat, MARGIN = 1, FUN = function(x) which.max(x) - 1)
     pred = factor(p, levels = levels(truth))
   }
+  print(length(pred))
+  print(pred)
   measure = msr$fun(truth, pred, ...)
   return(measure)
 }
@@ -135,12 +140,57 @@ metric = function(pred, dtrain, msr = NULL, ...) {
 tab_learner = fastai::tabular_learner(dl, layers=c(100, 200, 100),
                                       config = config,
                                       metrics = fastai::AccumMetric(metric, flatten=FALSE, msr=logloss))
+if (logloss$minimize) {
+  np = reticulate::import("numpy")
+  comp = np$less
+}
 
 #invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
-eval_protocol = fit(tab_learner)
+eval_protocol = fastai::fit(tab_learner, n_epoch = 5)
 
-eval_protocol = fit(tab_learner, 10, 0.005, cbs = EarlyStoppingCallback(monitor='python_function', patience = 1))
+eval_protocol = fastai::fit(tab_learner, 5, cbs = fastai::EarlyStoppingCallback(monitor=monitor, comp=comp)) # , comp = np$greater
 
-
+patience=param_set$values$patience
+monitor = tab_learner$metrics[[0]]$name
 # Alternatively one could:
-tab_learner$add_cb(EarlyStoppingCallback(monitor='python_function', patience = 1))
+tab_learner$add_cb(EarlyStoppingCallback(monitor=monitor, comp=comp, patience=patience))
+eval_protocol = fastai::fit(tab_learner, n_epoch = 5)
+
+
+
+
+
+# Normal Training:
+learner = lrn("classif.fastai")
+learner
+
+learner$validate = 1/3
+learner$param_set
+
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol
+
+# Training with validation
+
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+learner$param_set$set_values(
+  n_epoch = 7,
+  eval_metric = msr("classif.logloss")
+)
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol
+
+
+# Training with validation and early stopping
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+
+learner$param_set$set_values(
+  n_epoch = 10,
+  patience = 3,
+  eval_metric = msr("classif.logloss")
+)
+
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol

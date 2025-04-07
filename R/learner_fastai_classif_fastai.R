@@ -7,7 +7,9 @@
 #' Calls [fastai::fastai()] from package \CRANpkg{fastai}.
 #'
 #' @section Initial parameter values:
-#' FIXME: DEVIATIONS FROM UPSTREAM PARAMETERS. DELETE IF NOT APPLICABLE.
+#' - `n_epoch`:
+#'   Needs to be set for [fastai::fit()] to work.
+#'   If no value is given, it is set to 5.
 #'
 #' @section Custom mlr3 parameters:
 #' FIXME: DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
@@ -28,35 +30,36 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      # FIXME: MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
       param_set = ps(
-        act_cls     = p_uty(tags = "train"),  # Activation type for LinBnDrop layers, e.g., fastai::nn()$ReLU(inplace = TRUE)
-        bn_cont     = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d on continuous variables
-        bn_final    = p_lgl(default = FALSE, tags = "train"),  # Use BatchNorm1d on final layer
-        drop_last   = p_lgl(default = FALSE, tags = "train"),  #  If True, then the last incomplete batch is dropped.
-        embed_p     = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
-        emb_szs     = p_uty(default=NULL, tags="train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
-        n_epoch     = p_int(lower=1, default = 5, tags="train"), # Epochs
-        eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(any(is.character(x), is.function(x), inherits(x, "Measure")))})),
-        layers      = p_uty(tags="train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
-        loss_func   = p_uty(tags="train"),  # Defaults to fastai::CrossEntropyLossFlat()
-        lr          = p_dbl(lower=0, default = 0.001, tags = "train"),  # Learning rate
-        metrics     = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
-        n_out       = p_int(tags="train"),  # ?
-        num_workers = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
-        opt_func    = p_uty(tags="train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
-        pin_memory  = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
-        ps          = p_uty(default = NULL, tags = "train"),  # Sequence of dropout probabilities
-        shuffle     = p_lgl(default = FALSE, tags = "train"),  # If True, then data is shuffled every time dataloader is fully read/iterated.
-        train_bn    = p_lgl(default = TRUE, tags = "train"),  # controls if BatchNorm layers are trained
-        wd_bn_bias  = p_lgl(default = FALSE, tags = "train"),  # controls if weight decay is applied to BatchNorm layers and bias
-        use_bn      = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d in LinBnDrop layers
-        y_range     = p_uty(default = NULL, tags = "train"),  # Low and high for SigmoidRange activation (see below)
-        bs          = p_int(default = 50, tags="train") # how many samples per batch to load
+        act_cls        = p_uty(tags = "train"),  # Activation type for LinBnDrop layers, e.g., fastai::nn()$ReLU(inplace = TRUE)
+        bn_cont        = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d on continuous variables
+        bn_final       = p_lgl(default = FALSE, tags = "train"),  # Use BatchNorm1d on final layer
+        drop_last      = p_lgl(default = FALSE, tags = "train"),  #  If True, then the last incomplete batch is dropped.
+        # early_stopping = p_lgl(default = FALSE, tags = "train"),  # perform early stopping
+        embed_p        = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
+        emb_szs        = p_uty(default=NULL, tags="train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
+        n_epoch        = p_int(lower=1, default = 5, tags="train"), # Epochs
+        eval_metric    = p_uty(tags = "train", custom_check = crate({function(x) check_true(any(is.character(x), is.function(x), inherits(x, "Measure")))})),
+        layers         = p_uty(tags="train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
+        loss_func      = p_uty(tags="train"),  # Defaults to fastai::CrossEntropyLossFlat()
+        lr             = p_dbl(lower=0, default = 0.001, tags = "train"),  # Learning rate
+        metrics        = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
+        n_out          = p_int(tags="train"),  # ?
+        num_workers    = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
+        opt_func       = p_uty(tags="train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
+        patience       = p_int(1L, default = 1, tags = c("train", "internal_validation")),  # number of epochs to wait when training has not improved model. add `depends = quote(early_stopping == TRUE`)`
+        pin_memory     = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
+        ps             = p_uty(default = NULL, tags = "train"),  # Sequence of dropout probabilities
+        shuffle        = p_lgl(default = FALSE, tags = "train"),  # If True, then data is shuffled every time dataloader is fully read/iterated.
+        train_bn       = p_lgl(default = TRUE, tags = "train"),  # controls if BatchNorm layers are trained
+        wd_bn_bias     = p_lgl(default = FALSE, tags = "train"),  # controls if weight decay is applied to BatchNorm layers and bias
+        use_bn         = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d in LinBnDrop layers
+        y_range        = p_uty(default = NULL, tags = "train"),  # Low and high for SigmoidRange activation (see below)
+        bs             = p_int(default = 50, tags="train") # how many samples per batch to load
       )
 
       # Epochs is set to default parameter.
-      if (is.null(parmset$values$n_epoch)) {
+      if (is.null(param_set$values$n_epoch)) {
         param_set$values = list(n_epoch = 5)
       }
       self$eval_protocol = NULL
@@ -138,14 +141,26 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         )
         # set internal validation metric and convert it to format compatible with fastai
         measure = pars$eval_metric
-        metrics = fastai::AccumMetric(metric, flatten=FALSE, msr=measure)  # see wrapper below
+        if (inherits(measure, "Measure")) {  # measure from mlr3measures
+          metrics = fastai::AccumMetric(metric, flatten=FALSE, msr=measure)  # see wrapper below
+          # This is needed for early stopping. We must tell the early stopping callback whether
+          # the comparison between the epochs should be < or >.
+          if (measure$minimize) {
+            np = reticulate::import("numpy")
+            comp = np$less
+          }
+        } else {
+          metrics = measure  # measure from fastai
+          comp = NULL  # fastai chooses comparison itself internally
+        }
 
-        # no internal validation
+      # if no internal validation
       } else {
         full_data = data
         splits = NULL
         metrics = NULL
       }
+
       # set data into a format suitable for fastai
       df_fai = invoke(
         fastai::TabularDataTable,
@@ -174,21 +189,30 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       }
       tab_learner = fastai::tabular_learner(dl, layers = pv_layers, config = config,
                                             metrics = metrics)
-
       # FIXME: Remove debug print
       print("Tabular Learner internally created")
+      if (!is.null(pars$patience)) {  # if (isTRUE(pars$early_stopping))
+        patience = pars$patience
+        if (!is.null(pars$eval_metric)) {
+          monitor = tab_learner$metrics[[0]]$name
+        }
+        tab_learner$add_cb(
+          EarlyStoppingCallback(monitor=monitor, comp=comp, patience=patience)
+        )
+        print("Early stopping activated")
+      }
       # to avoid plot creation when internally validating do:
       invisible(tab_learner$remove_cb(tab_learner$progress))
       fit_eval = function(tab_learner) {
         self$eval_protocol = invoke(
           fastai::fit,
           object = tab_learner,
-          n_epoch = pars$n_epoch,
           .args = pv_fit
         )
       }
       # to prevent python from printing evaluation protocol do:
       invisible(reticulate::py_capture_output(fit_eval(tab_learner)))
+      # FIXME: Remove debug print
       print("Fit was successfully executetd")
       self$model = tab_learner
     },
@@ -203,10 +227,13 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       # Calculate predictions for the selected predict type.
       type = self$predict_type
 
-      pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
+      pred = invoke(predict, self$model, newdata, .args = pars)
 
-      # FIXME: ADD PREDICTIONS TO LIST BELOW
-      list()
+      if (self$predict_type == "response") {
+        list(response = factor(pred$class, labels = levels(task$truth())))
+      } else {
+        list(prob = pred[, c("M", "R")])
+      }
     }
   )
 )
@@ -218,7 +245,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 metric = function(pred, dtrain, msr = NULL, ...) {
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   label = factor(dl$dataset$y)
-  pred = as_array(pred)
+  pred = fastai::as_array(pred)
   truth = factor(as.vector(as_array(dtrain)), levels = levels(label))
   # transform log odds to probabilities
   pred_exp = exp(pred)
