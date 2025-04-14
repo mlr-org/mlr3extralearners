@@ -50,6 +50,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         argGam        = p_uty(custom_check = crate(function(x) {
           checkmate::check_list(x, names = "unique", null.ok = TRUE)
           }), tags = "train"),
+        discrete      = p_lgl(default = FALSE, tags = "train"),
         block.size    = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )

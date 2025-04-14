@@ -12,6 +12,7 @@ Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
 
 \itemize{
 \item \code{n_thread}: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
+\item \code{pred_simplify} has to be TRUE, otherwise response is NA in prediction
 }
 }
 

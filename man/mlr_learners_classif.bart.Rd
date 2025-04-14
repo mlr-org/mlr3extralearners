@@ -52,6 +52,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    proposalprobs \tab untyped \tab NULL \tab  \tab - \cr
    splitprobs \tab untyped \tab NULL \tab  \tab - \cr
    keepsampler \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   n.threads \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
