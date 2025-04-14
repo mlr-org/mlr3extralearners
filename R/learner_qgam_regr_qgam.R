@@ -1,4 +1,4 @@
-#' @title Regression Quantile Generalized Additive Model Learner
+#' @title Generalized Additive Quantile Regression Model
 #' @author lona-k
 #' @name mlr_learners_regr.qgam
 #'
@@ -23,14 +23,14 @@
 #' @template seealso_learner
 #' @examplesIf requireNamespace("qgam", quietly = TRUE)
 #' # simple example
-# t = mlr3::tsk("mtcars")
-# l = mlr3::lrn("regr.qgam")
-# t$select(c("cyl", "am", "disp", "hp"))
-# l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-# l$quantiles = 0.25
-# l$train(t)
-# l$model
-# l$predict(t)
+#' t = mlr3::tsk("mtcars")
+#' l = mlr3::lrn("regr.qgam")
+#' t$select(c("cyl", "am", "disp", "hp"))
+#' l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+#' l$quantiles = 0.25
+#' l$train(t)
+#' l$model
+#' l$predict(t)
 #' @export
 LearnerRegrQGam = R6Class("LearnerRegrQGam",
   inherit = LearnerRegr,
