@@ -50,6 +50,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    paropts \tab untyped \tab list() \tab  \tab - \cr
    link \tab untyped \tab "identity" \tab  \tab - \cr
    argGam \tab untyped \tab - \tab  \tab - \cr
+   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }

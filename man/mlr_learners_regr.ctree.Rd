@@ -60,7 +60,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    saveinfo \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    update \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    splitflavour \tab character \tab ctree \tab ctree, exhaustive \tab - \cr
-   offset \tab untyped \tab - \tab  \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
    scores \tab untyped \tab - \tab  \tab - \cr
    doFit \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
