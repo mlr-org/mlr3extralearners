@@ -82,8 +82,8 @@ LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
       control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
 
       args_gam = formalArgs(mgcv::gam)[
-          formalArgs(mgcv::gam) %nin% c("formula", "family", "data")
-        ]
+        formalArgs(mgcv::gam) %nin% c("formula", "family", "data")
+      ]
       if (length(pars$argGam)) {
         checkmate::assert_subset(names(pars$argGam), choices = args_gam, empty.ok = FALSE)
       }

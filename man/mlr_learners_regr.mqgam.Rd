@@ -68,7 +68,7 @@ l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
 l$quantiles = c(0.05, 0.5, 0.95)
 l$quantile_response = 0.5
 l$train(t)
-qdo(l$model, l$quantiles, summary)
+qgam::qdo(l$model, l$quantiles, summary)
 l$predict(t)
 \dontshow{\}) # examplesIf}
 }
