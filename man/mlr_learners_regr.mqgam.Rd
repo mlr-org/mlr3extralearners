@@ -10,14 +10,17 @@ Calls \code{\link[qgam:mqgam]{qgam::mqgam()}} from package \CRANpkg{qgam}.
 }
 \section{Form}{
 
-For the \code{form} parameter, a gam formula specific to the \link[mlr3:Task]{Task} is required (see example and \code{?mgcv::formula.gam}).
-If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
+For the \code{form} parameter, a gam formula specific to the \link[mlr3:Task]{Task} is required
+(see example and \code{?mgcv::formula.gam}).
+If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
+behave like Linear Quantile Regression.
 The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 }
 
 \section{Quantile}{
 
-The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}}, is set using the values specified in \code{learner$quantiles}.
+The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}},
+is set using the values specified in \code{learner$quantiles}.
 The response quantile can be specified using \code{learner$quantile_response}
 }
 

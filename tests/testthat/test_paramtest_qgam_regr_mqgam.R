@@ -1,6 +1,6 @@
 test_that("regr.mqgam train", {
   learner = lrn("regr.mqgam")
-  fun = qgam::qgam
+  fun = qgam::mqgam
   exclude = c(
     "data", # handled internally
     "control", # handled internally

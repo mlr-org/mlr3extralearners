@@ -34,7 +34,7 @@
 #' l$quantiles = c(0.05, 0.5, 0.95)
 #' l$quantile_response = 0.5
 #' l$train(t)
-#' qdo(l$model, l$quantiles, summary)
+#' qgam::qdo(l$model, l$quantiles, summary)
 #' l$predict(t)
 #' @export
 LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
@@ -123,7 +123,7 @@ LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
 
       # returns a list with results for quantiles
       preds = invoke(
-        qdo,
+        qgam::qdo,
         self$model,
         qu = self$quantiles,
         fun = predict,
