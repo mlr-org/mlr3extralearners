@@ -178,18 +178,18 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.296</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        carb          am          wt        gear         cyl        drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.098930481 0.068345324 0.054404145 0.042944785 0.030120482 0.022613065 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          hp        qsec        disp          vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.018421053 0.008264463 0.008086253 0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          wt        carb          am          hp        disp         cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.136363636 0.104225352 0.066666667 0.053908356 0.041994751 0.040880503 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        drat        qsec        gear          vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.027322404 0.010075567 0.002898551 0.000000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -197,7 +197,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.04406 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.576405 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

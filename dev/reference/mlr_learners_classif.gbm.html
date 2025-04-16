@@ -189,25 +189,25 @@ the model.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A gradient boosted model with bernoulli loss function.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 iterations were performed.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> There were 60 predictors of which 36 had non-zero influence.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> There were 60 predictors of which 38 had non-zero influence.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V45        V37        V28        V11         V4        V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.5391002 12.9986052 12.5693410  8.4902360  7.6653477  6.9260394  6.6329176 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V9        V13        V48        V31        V10        V21        V39 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6.4040540  5.0547211  4.9686603  4.6677046  4.4657031  3.8117784  2.9739799 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V5        V49        V27        V15        V33        V58        V55 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.8178435  2.5270808  1.9975295  1.8788568  1.5811479  1.5415391  1.2847547 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V32        V43        V25        V23        V52         V7        V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.0940942  0.8275890  0.7819534  0.6716136  0.6579946  0.6040307  0.5929503 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V3        V44        V54        V17        V22        V16        V35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4712297  0.4566589  0.4452039  0.4141629  0.3965804  0.3869088  0.2744697 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V53         V1        V14        V18        V19         V2        V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2264927  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V24        V26        V29        V30        V34        V36        V38 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V13        V12        V37        V51         V4        V36         V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.5447223 11.0786945 10.9732193 10.2747464  7.7894963  6.5036191  6.3107549 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V23        V31        V49        V52        V48        V44        V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  5.9210958  5.5907360  5.3709914  5.0067077  4.8008910  3.8455505  3.3566510 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V35        V45        V43        V21        V22         V6        V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.2572643  3.2380609  3.0107328  2.9116867  2.2205379  1.7249154  1.4817418 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V17        V28        V32        V60        V58        V26        V27 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.4371887  1.4300614  1.3397248  1.2684534  0.9070156  0.8972727  0.8233861 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V29        V56        V55         V8        V46        V54        V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8114318  0.7274532  0.6874754  0.6845349  0.5480867  0.5108877  0.4884003 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V39        V10        V20         V1        V11        V14        V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3790767  0.3307787  0.3108095  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V19         V2        V24        V25         V3        V30        V33 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V40        V41        V42        V46        V50        V56        V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V34        V38        V40        V41        V42        V47         V5 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V59         V6        V60         V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V50        V53        V59         V7 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -216,7 +216,7 @@ the model.</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
