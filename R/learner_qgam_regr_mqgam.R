@@ -1,20 +1,24 @@
-#' @title Generalized Additive Quantile Regression Model
+#' @title Generalized Additive Quantile Regression Model for Multiple Quantiles
 #' @author lona-k
-#' @name mlr_learners_regr.qgam
+#' @name mlr_learners_regr.mqgam
 #'
 #' @description
-#' Quantile Regression with generalized additive models.
-#' Calls [qgam::qgam()] from package \CRANpkg{qgam}.
+#' Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously
+#' Calls [qgam::mqgam()] from package \CRANpkg{qgam}.
 #'
 #' @section Form:
-#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
-#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
+#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required
+#' (see example and `?mgcv::formula.gam`).
+#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
+#' behave like Linear Quantile Regression.
 #' The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()], is set using the value specified in `learner$quantiles`.
+#' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()],
+#' is set using the values specified in `learner$quantiles`.
+#' The response quantile can be specified using `learner$quantile_response`
 #'
-#' @templateVar id regr.qgam
+#' @templateVar id regr.mqgam
 #' @template learner
 #'
 #' @references
@@ -24,15 +28,16 @@
 #' @examplesIf requireNamespace("qgam", quietly = TRUE)
 #' # simple example
 #' t = mlr3::tsk("mtcars")
-#' l = mlr3::lrn("regr.qgam")
+#' l = mlr3::lrn("regr.mqgam")
 #' t$select(c("cyl", "am", "disp", "hp"))
 #' l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-#' l$quantiles = 0.25
+#' l$quantiles = c(0.05, 0.5, 0.95)
+#' l$quantile_response = 0.5
 #' l$train(t)
-#' l$model
+#' qgam::qdo(l$model, l$quantiles, summary)
 #' l$predict(t)
 #' @export
-LearnerRegrQGam = R6Class("LearnerRegrQGam",
+LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
   inherit = LearnerRegr,
   public = list(
     #' @description
@@ -49,25 +54,23 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         link          = p_uty(default = "identity", tags = "train"),
         argGam        = p_uty(custom_check = crate(function(x) {
           checkmate::check_list(x, names = "unique", null.ok = TRUE)
-          }), tags = "train"),
-        discrete      = p_lgl(default = FALSE, tags = "train"),
-        block.size    = p_int(default = 1000L, tags = "predict"),
-        unconditional = p_lgl(default = FALSE, tags = "predict")
+        }), tags = "train"),
+        discrete      = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
-        id = "regr.qgam",
+        id = "regr.mqgam",
         packages = "qgam",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se", "quantiles"),
         param_set = param_set,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.qgam",
+        man = "mlr3extralearners::mlr_learners_regr.mqgam",
         label = "Regression Quantile Generalized Additive Model Learner"
       )
 
       self$predict_type = "quantiles"
-      self$quantiles = 0.5
+      self$quantile_response = 0.5
     }
   ),
   private = list(
@@ -78,7 +81,9 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
       pars = self$param_set$get_values(tags = "train")
       control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
 
-      args_gam = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")]
+      args_gam = formalArgs(mgcv::gam)[
+        formalArgs(mgcv::gam) %nin% c("formula", "family", "data")
+      ]
       if (length(pars$argGam)) {
         checkmate::assert_subset(names(pars$argGam), choices = args_gam, empty.ok = FALSE)
       }
@@ -97,8 +102,9 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       checkmate::assert_set_equal(all.vars(pars$form)[-1], task$col_roles$feature)
       checkmate::assert_set_equal(all.vars(pars$form)[[1]], task$col_roles$target)
+
       invoke(
-        qgam::qgam,
+        qgam::mqgam,
         qu = self$quantiles,
         data = data,
         .args = pars,
@@ -106,7 +112,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         argGam = arg_gam_pars
       )
     },
-    .predict = function(task) { # qgam uses predict.gam
+    .predict = function(task) {
       # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
 
@@ -115,9 +121,12 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       include_se = (self$predict_type == "se")
 
+      # returns a list with results for quantiles
       preds = invoke(
-        predict,
+        qgam::qdo,
         self$model,
+        qu = self$quantiles,
+        fun = predict,
         newdata = newdata,
         type = "response",
         newdata.guaranteed = TRUE,
@@ -125,12 +134,16 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         .args = pars
       )
 
-      if (include_se) { # se and response
-        list(response = preds$fit, se = preds$se)
+      if (include_se) {
+        list(response = preds$fit,
+             se = preds$se.fit)
       } else if (self$predict_type == "quantiles") {
-        quantiles = matrix(preds, ncol = 1)
+        # qdo returns an array if mqgam is trained with only one quantile
+        preds = if (!is.list(preds)) list(preds) else preds
+        quantiles = do.call(cbind, preds)
+
         attr(quantiles, "probs") = self$quantiles
-        attr(quantiles, "response") = self$quantiles
+        attr(quantiles, "response") = self$quantile_response
         list(quantiles = quantiles)
       } else {
         list(response = preds)
@@ -139,4 +152,4 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
   )
 )
 
-.extralrns_dict$add("regr.qgam", LearnerRegrQGam)
+.extralrns_dict$add("regr.mqgam", LearnerRegrMQGam)
