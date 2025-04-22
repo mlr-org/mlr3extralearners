@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Foundation model for tabular data.
-#' Uses \CRANpgk{reticulate} to interface with the \CRANpkg{tabpfn} Python package.
+#' Uses \CRANpgk{reticulate} to interface with the `tabpfn` Python package.
 #' 
 #' @section Initial parameter values:
 #' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
@@ -24,19 +24,23 @@
 #'   the training data.
 #'   When calling `$predict()` without a fitted model stored, the model will be fitted
 #'   on-the-fly and stored in `$model$fitted` henceforth.
+#' 
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
+#' 
 #' - `device` must be a string.
 #'   If set to `"auto"`, the behavior is the same as original.
 #'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
+#' 
 #' - `inference_precision` must be a `torch.dtype` name (e.g., `"float32"`
 #'   is interpreted as `torch.float32`) or `"auto"` or `"autocast"`.
+#' 
 #' - `n_jobs` must be a positive integer specifying the number of CPU cores to use.
 #'   The `-1` option is disabled.
 #' 
 #' @template learner
 #'
 #' @references
-#' `r format_bib("chen_2016", "barnwal2022")`
+#' `r format_bib("hollmann2025tabpfn", "hollmann2023tabpfn")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -91,8 +95,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         packages = "rpart",
         param_set = ps,
         properties = c("missings", "twoclass", "multiclass"),
-        label = "TabPFN Classifier"#,
-        # man = "mlr3extralearners::mlr_learners_classif.tabpfn"
+        label = "TabPFN Classifier",
+        man = "mlr3extralearners::mlr_learners_classif.tabpfn"
       )
     }
   ),
@@ -114,7 +118,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       }
       # create dtype object
       dtype = pars$inference_precision
-      if (!dtype %in% c("auto", "autocast")) {
+      if (!is.null(dtype) && !dtype %in% c("auto", "autocast")) {
         torch = reticulate::py_require("torch")
         pars$inference_precision = switch(dtype,
           float32 = torch$float32,
@@ -134,8 +138,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       res = list()
       if ("fit" %in% train_mode) {
         # create python model and fit
-        tabpfn = reticulate::py_require("tabpfn")
-        np = reticulate::py_require("numpy")
+        reticulate::py_require("tabpfn")
+        tabpfn = reticulate::import("tabpfn")
 
         if (!is.null(pars$categorical_features_indices)) {
           # convert to python indexing
