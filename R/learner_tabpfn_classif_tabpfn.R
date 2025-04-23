@@ -37,8 +37,8 @@
 #'   If set to `"auto"`, the behavior is the same as original.
 #'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
 #' 
-#' - `inference_precision` must be a `torch.dtype` name (e.g., `"float32"`
-#'   is interpreted as `torch.float32`) or `"auto"` or `"autocast"`.
+#' - `inference_precision` must be `"auto"` or `"autocast"`.
+#'   Passing `torch.dtype` is currently not supported.
 #' 
 #' @template learner
 #'
@@ -65,8 +65,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         device = p_uty(default = "auto", tags = "train", custom_check = check_string),
         ignore_pretraining_limits = p_lgl(default = FALSE, tags = "train"),
         inference_precision = p_fct(
-          # do we need more dtypes?
-          c("float32", "float64", "bfloat16", "float16", "auto", "autocast"),
+          # torch.dtype option is currently not supported
+          c("auto", "autocast"),
           default = "auto",
           tags = "train"),
         fit_mode = p_fct(
@@ -119,17 +119,6 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       if (!is.null(pars$device)) {
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
-      }
-      # create dtype object
-      dtype = pars$inference_precision
-      if (!is.null(dtype) && !dtype %in% c("auto", "autocast")) {
-        torch = reticulate::import("torch")
-        pars$inference_precision = switch(dtype,
-          float32 = torch$float32,
-          float64 = torch$float64,
-          bfloat16 = torch$bfloat16,
-          float16 = torch$float16
-        )
       }
 
       # get training data
