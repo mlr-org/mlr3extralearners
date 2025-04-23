@@ -71,22 +71,20 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           default = "fit_preprocessors",
           tags = "train"),
         memory_saving_mode = p_uty(default = "auto", tags = "train", custom_check = function(x) {
-          if ((x == "auto") || test_flag(x) || test_number(x, lower = 0)) {
+          if (identical(x, "auto") || test_flag(x) || test_number(x, lower = 0)) {
             TRUE
           } else {
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
         random_state = p_int(default = 0, tags = "train"),
-        n_jobs = p_int(lower = 1, default = 1, tags = "train")
+        n_jobs = p_int(lower = 1, default = 1, special_vals = list(-1), tags = "train")
       )
 
       # set train_mode to "both" -- fit python model and store training data
       ps$values$train_mode = "both"
       # set n_jobs to 1 as mlr3 has its own parallelization
       ps$values$n_jobs = 1
-      # set a seed for the python `fit` function, following TabPFN's default
-      ps$values$random_state = 0
 
       super$initialize(
         id = "classif.tabpfn",
@@ -119,7 +117,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       # create dtype object
       dtype = pars$inference_precision
       if (!is.null(dtype) && !dtype %in% c("auto", "autocast")) {
-        torch = reticulate::py_require("torch")
+        torch = reticulate::import("torch")
         pars$inference_precision = switch(dtype,
           float32 = torch$float32,
           float64 = torch$float64,
