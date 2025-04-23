@@ -4,7 +4,13 @@
 #'
 #' @description
 #' Foundation model for tabular data.
-#' Uses \CRANpgk{reticulate} to interface with the `tabpfn` Python package.
+#' Uses \CRANpgk{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
+#' 
+#' @section Installation
+#' While the Python dependencies are handled via `reticulate::py_require()`, you can
+#' manually specify a virtual environment by calling `reticulate::use_virtualenv()`
+#' prior to calling the `$train()` function.
+#' In this virtual environment, the `tabpfn` package and its dependencies must be installed.
 #' 
 #' @section Initial parameter values:
 #' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
@@ -13,7 +19,7 @@
 #' - `train_mode`: Controls the behavior of the `$train()` method.
 #'   Possible options are `"fit"`, `"store"`, and `"both"` (default).
 #'   - If `"fit"` is selected, the `$train()` function creates a Python object
-#'     of the class `TabPFNClassifier` and calls its `fit()` function.
+#'     of the class `TabPFNClassifier` and stores the output of the `fit()` function.
 #'   - If `"store"` is selected, the `$train()` function only stores the training data.
 #'   - If `"both"` is selected, the `$train()` function does both.
 #'   The fitted model (Python object), if created, is stored in the `$model$fitted` slot.
@@ -33,9 +39,6 @@
 #' 
 #' - `inference_precision` must be a `torch.dtype` name (e.g., `"float32"`
 #'   is interpreted as `torch.float32`) or `"auto"` or `"autocast"`.
-#' 
-#' - `n_jobs` must be a positive integer specifying the number of CPU cores to use.
-#'   The `-1` option is disabled.
 #' 
 #' @template learner
 #'
