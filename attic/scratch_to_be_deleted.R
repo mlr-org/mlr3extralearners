@@ -5,6 +5,9 @@ task = tsk("sonar")
 df = task$data()
 ids = partition(task)
 
+learner = lrn("classif.fastai")
+tasks = generate_tasks(learner)
+task = tasks$sanity_switched
 # Step 1: Load data into fastai-compatible format:
 # We  need to divide column names into Categorical columns and Continuous columns
 # We can also define several data preprocessors `procs = list(FillMissing(),Categorify(),Normalize())` and pass them to `TabularDataTable`
@@ -13,7 +16,7 @@ cat_cols = task$feature_types[type != "numeric"]$id
 num_cols = task$feature_types[type == "numeric"]$id
 
 df_fai = fastai::TabularDataTable(df, cat_names = cat_cols, cont_names = num_cols,
-                                  y_names = task$target_names, splits=ids)
+                                  y_names = task$target_names, splits=NULL)
 
 dl = fastai::dataloaders(df_fai, bs=50)
 # dl$train$y
@@ -64,11 +67,7 @@ config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE)
 
 
 # Step 3: Define and fit the tabular learner
-tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100),
-                                config = config,
-                                metrics = list(fastai::RocAucBinary(),
-                                               fastai::Precision(), fastai::Recall(),
-                                               fastai::F1Score()))
+tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100))
 invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
 
 invisible(reticulate::py_capture_output(fit(tab_learner, n_epoch = 5, lr = 0.005)))
@@ -98,99 +97,58 @@ eval_protocol = fastai::fit(tab_learner, n_epoch = 5, lr = 0.005)
 # )
 
 
-# Prediction:
-pred = predict(tab_learner, df[ids$test])
 
 
-
-
-
-### Set weights to loss function
-
-logloss = msr("classif.logloss")
-acc = msr("classif.acc")
-auc = msr("classif.auc")
-fdr = msr("classif.fdr")
-
-# Wrapper for eval measure to include in fastai
-metric = function(pred, dtrain, msr = NULL, ...) {
-  # label is a vector of labels (0, 1, ..., n_classes - 1)
-  label = factor(dl$dataset$y)
-  pred = fastai::as_array(pred)
-  truth = factor(as.vector(as_array(dtrain)))
-  print(length(dtrain))
-  print(length(pred))
-  # transform log odds to probabilities
-  pred_exp = exp(pred)
-  pred_mat = pred_exp / rowSums(pred_exp)
-  colnames(pred_mat) = levels(truth)
-  pred = pred_mat
-  # transform prediction into class labels
-  if (msr$predict_type == "response") {
-    p = apply(pred_mat, MARGIN = 1, FUN = function(x) which.max(x) - 1)
-    pred = factor(p, levels = levels(truth))
-  }
-  print(length(pred))
-  print(pred)
-  measure = msr$fun(truth, pred, ...)
-  return(measure)
-}
-
-
-tab_learner = fastai::tabular_learner(dl, layers=c(100, 200, 100),
-                                      config = config,
-                                      metrics = fastai::AccumMetric(metric, flatten=FALSE, msr=logloss))
-if (logloss$minimize) {
-  np = reticulate::import("numpy")
-  comp = np$less
-}
-
-#invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
-eval_protocol = fastai::fit(tab_learner, n_epoch = 5)
-
-eval_protocol = fastai::fit(tab_learner, 5, cbs = fastai::EarlyStoppingCallback(monitor=monitor, comp=comp)) # , comp = np$greater
-
-patience=param_set$values$patience
-monitor = tab_learner$metrics[[0]]$name
-# Alternatively one could:
-tab_learner$add_cb(EarlyStoppingCallback(monitor=monitor, comp=comp, patience=patience))
-eval_protocol = fastai::fit(tab_learner, n_epoch = 5)
-
-
-
-
+# Define task:
+task = tsk("sonar")
+df = task$data()
+ids = partition(task)
 
 # Normal Training:
 learner = lrn("classif.fastai")
 learner
-
-learner$validate = 1/3
 learner$param_set
-
 learner$train(task, row_ids = ids$train)
 learner$eval_protocol
+pred = learner$predict(task, row_ids = ids$test)
+learner$predict_type = "prob"
+learner$predict(task, row_ids = ids$test)
 
 # Training with validation
-
 learner = lrn("classif.fastai")
 learner$validate = 1/3
 learner$param_set$set_values(
   n_epoch = 7,
-  eval_metric = msr("classif.logloss")
+  eval_metric = msr("classif.auc")
 )
 learner$train(task, row_ids = ids$train)
 learner$eval_protocol
-
 
 # Training with validation and early stopping
 learner = lrn("classif.fastai")
 learner$validate = 1/3
-
 learner$param_set$set_values(
   n_epoch = 10,
   patience = 3,
-  eval_metric = msr("classif.logloss")
+  eval_metric = msr("classif.auc"),
+  layers = c(10, 30, 10)
 )
+learner$train(task, row_ids = ids$train)
+learner$internal_tuned_values
+learner$internal_valid_scores
 
+
+# Training with validation and early stopping using fastai metric
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+learner$param_set$set_values(
+  n_epoch = 10,
+  patience = 3,
+  eval_metric = fastai::Precision(),
+  layers = c(10, 30, 10)
+)
 learner$train(task, row_ids = ids$train)
 learner$eval_protocol
+learner$internal_tuned_values
+learner$internal_valid_scores
+

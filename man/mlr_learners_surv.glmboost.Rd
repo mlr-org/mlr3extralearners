@@ -53,7 +53,7 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
+Calculated using \code{\link[mboost:predict.glmboost]{mboost::predict.glmboost()}}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
@@ -172,7 +172,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}}
+Selected features are extracted with the function \code{\link[mboost:coef.glmboost]{mboost::coef.glmboost()}}
 which by default returns features with non-zero coefficients and for the
 final number of boosting iterations.
 
