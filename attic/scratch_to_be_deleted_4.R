@@ -55,5 +55,5 @@ dl <- invoke(
 tab_learner <- fastai::tabular_learner(dl)
 invisible(tab_learner$remove_cb(tab_learner$progress))
 
-fastai::fit(tab_learner, 5)  # Will now be repeatable; but is not?!
+fastai::fit(tab_learner, 5)  # Will now be repeatable
 
