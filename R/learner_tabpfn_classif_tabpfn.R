@@ -49,7 +49,10 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     initialize = function() {
       ps = ps(
         n_estimators = p_int(lower = 1, default = 4, tags = "train"),
-        categorical_features_indices = p_int(lower = 1, tags = "train"), # R indexing is used
+        categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
+          # R indexing is used
+          check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
+        }),
         softmax_temperature = p_dbl(default = 0.9, lower = 0, tags = "train"),
         balance_probabilities = p_lgl(default = FALSE, tags = "train"),
         average_before_softmax = p_lgl(default = FALSE, tags = "train"),
@@ -134,9 +137,13 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       y = task$truth()
 
       tabpfn = reticulate::import("tabpfn")
-      if (!is.null(pars$categorical_features_indices)) {
+      categ_indices = pars$categorical_features_indices
+      if (!is.null(categ_indices)) {
+        if (max(categ_indices) > ncol(X)) {
+          stop("categorical_features_indices must not exceed number of features")
+        }
         # convert to python indexing
-        pars$categorical_features_indices = pars$categorical_features_indices - 1
+        pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
       # create tabpfn model
       classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
