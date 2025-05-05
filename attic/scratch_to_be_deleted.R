@@ -1,24 +1,20 @@
-reticulate::use_condaenv('r-reticulate',required = TRUE)
+#reticulate::use_condaenv('r-reticulate',required = TRUE)
 
 
-task = tsk("sonar")
+task = tsk("boston_housing")
+numeric_features = c(task$feature_types[type == "numeric", id], task$target_names)
 df = task$data()
-ids = partition(task)
+df = df[, ..numeric_features]
 
-learner = lrn("classif.fastai")
-tasks = generate_tasks(learner)
-task = tasks$sanity_switched
 # Step 1: Load data into fastai-compatible format:
 # We  need to divide column names into Categorical columns and Continuous columns
 # We can also define several data preprocessors `procs = list(FillMissing(),Categorify(),Normalize())` and pass them to `TabularDataTable`
 
-cat_cols = task$feature_types[type != "numeric"]$id
-num_cols = task$feature_types[type == "numeric"]$id
-
-df_fai = fastai::TabularDataTable(df, cat_names = cat_cols, cont_names = num_cols,
+task = tsk("sonar")
+df = task$data()
+df_fai = fastai::TabularDataTable(df, #cat_names = cat_cols, cont_names = num_cols,
                                   y_names = task$target_names, splits=NULL)
-
-dl = fastai::dataloaders(df_fai, bs=50)
+dl = fastai::dataloaders(df_fai)
 # dl$train$y
 #
 # target_factor <- factor(dl$train$y)
@@ -69,8 +65,8 @@ config = fastai::tabular_config(embed_p = 0.3, use_bn = FALSE)
 # Step 3: Define and fit the tabular learner
 tab_learner = fastai::tabular_learner(dl, layers=c(200,100,100))
 invisible(tab_learner$remove_cb(tab_learner$progress))  # to avoid plot creation when internally validating
+fastai::fit(tab_learner, n_epoch = 5, lr = 0.005)
 
-invisible(reticulate::py_capture_output(fit(tab_learner, n_epoch = 5, lr = 0.005)))
 
 fit_eval = function(tab_learner, args) {
   eval_protocol = invoke(  # set this to self$eval_protocol
@@ -152,3 +148,122 @@ learner$eval_protocol
 learner$internal_tuned_values
 learner$internal_valid_scores
 
+
+
+
+
+
+
+learner = lrn("classif.fastai")
+tasks = generate_tasks(learner)
+learner$train(tasks$sanity_switched)
+pred = learner$predict(tasks$sanity_switched)
+pred$score(mlr3::msr("classif.ce"))
+learner$eval_protocol
+
+learner = lrn("classif.fastai")
+learner$train(tasks$sanity)
+pred = learner$predict(tasks$sanity)
+pred$score(mlr3::msr("classif.ce"))
+learner$eval_protocol
+
+
+
+
+task = tsk("boston_housing")
+ids = partition(task)
+df = task$data()
+# numeric_features = c(task$feature_types[type %in% c("numeric", "integer"), id], task$target_names)
+# df = task$data()
+# df = df[, ..numeric_features]
+
+cat_cols = task$feature_types[type != "numeric", id]
+num_cols = task$feature_types[type == "numeric", id]
+
+df_fai <- invoke(
+  fastai::TabularDataTable,
+  df = df,
+  cat_names = cat_cols,
+  cont_names = num_cols,
+  y_names = task$target_names,
+  procs = list(fastai::Categorify()),
+  splits = ids
+)
+
+dl <- invoke(
+  fastai::dataloaders,
+  df_fai
+)
+
+tab_learner <- fastai::tabular_learner(dl, metrics = list(fastai::msle()))
+#invisible(tab_learner$remove_cb(tab_learner$progress))
+
+eval = fastai::fit(tab_learner, 5)
+
+test_dl = object$dls$test_dl(row)
+tab_learner$get_preds(dl = test_dl, with_decoded = FALSE)
+
+pred = predict(tab_learner, df)
+
+
+
+
+
+
+
+
+
+
+
+
+task = tsk("boston_housing")
+ids = partition(task)
+
+
+# Normal Training:
+learner = lrn("regr.fastai")
+learner
+learner$param_set
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol
+pred = learner$predict(task, row_ids = ids$test)
+learner$predict_type = "prob"
+learner$predict(task)
+
+# Training with validation
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+learner$param_set$set_values(
+  n_epoch = 7,
+  eval_metric = msr("classif.auc")
+)
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol
+
+# Training with validation and early stopping
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+learner$param_set$set_values(
+  n_epoch = 10,
+  patience = 3,
+  eval_metric = msr("classif.auc"),
+  layers = c(10, 30, 10)
+)
+learner$train(task, row_ids = ids$train)
+learner$internal_tuned_values
+learner$internal_valid_scores
+
+
+# Training with validation and early stopping using fastai metric
+learner = lrn("classif.fastai")
+learner$validate = 1/3
+learner$param_set$set_values(
+  n_epoch = 10,
+  patience = 3,
+  eval_metric = fastai::Precision(),
+  layers = c(10, 30, 10)
+)
+learner$train(task, row_ids = ids$train)
+learner$eval_protocol
+learner$internal_tuned_values
+learner$internal_valid_scores

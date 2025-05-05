@@ -35,13 +35,13 @@ df_fai = invoke(
   df = df,
   cat_names = cat_cols,
   cont_names = num_cols,
-  y_names = "target",
+  y_names = "y",
   procs = list(fastai::Categorify())
 )
 
 dl = invoke(
   fastai::dataloaders,
-  df_fai,
+  df_fai
 )
 
 tab_learner = fastai::tabular_learner(dl)

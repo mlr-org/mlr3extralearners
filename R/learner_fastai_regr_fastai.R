@@ -1,9 +1,9 @@
-#' @title Classification Neural Network Learner
+#' @title Regression Neural Network Learner
 #' @author annanzrv
-#' @name mlr_learners_classif.fastai
+#' @name mlr_learners_regr.fastai
 #'
 #' @description
-#' Simple and fast neural nets for tabular data classification.
+#' Simple and fast neural nets for tabular data regression
 #' Calls [fastai::fastai()] from package \CRANpkg{fastai}.
 #'
 #' @section Initial parameter values:
@@ -12,9 +12,12 @@
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
 #'   Needs to be set for [fastai::predict()] to work.
-#'   If no value is given, it is set to [mlr3measures::classif.logloss].
+#'   If no value is given, it is set to [mlr3measures::regr.rmse].
 #'
-#' @templateVar id classif.fastai
+#' @section Custom mlr3 parameters:
+#' FIXME: DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
+#'
+#' @templateVar id regr.fastai
 #' @template learner
 #'
 #' @references
@@ -23,8 +26,8 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerClassifFastai = R6Class("LearnerClassifFastai",
-  inherit = LearnerClassif,
+LearnerRegrFastai = R6Class("LearnerRegrFastai",
+  inherit = LearnerRegr,
   public = list(
     eval_protocol = NULL,
     #' @description
@@ -64,19 +67,19 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         param_set$set_values(n_epoch = 5)
       }
       if (is.null(param_set$values$eval_metric)) {
-        param_set$set_values(eval_metric = msr("classif.logloss"))
+        param_set$set_values(eval_metric = msr("regr.rmse"))
       }
       self$eval_protocol = NULL
 
       super$initialize(
-        id = "classif.fastai",
-        packages = c("fastai", "reticulate"),
+        id = "regr.fastai",
+        packages = "fastai",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        predict_types = c("response", "prob"),
+        predict_types = "response",
         param_set = param_set,
-        properties = c("multiclass", "twoclass", "weights", "validation"),
-        man = "mlr3extralearners::mlr_learners_classif.fastai",
-        label = "FastAi Neural Network Tabular Classifier"
+        properties = c("weights", "validation"),
+        man = "mlr3extralearners::mlr_learners_regr.fastai",
+        label = "FastAi Neural Network Tabular Regression"
       )
     }
   ),
@@ -113,12 +116,12 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .train = function(task) {
       formula = task$formula()
       data = task$data()
-      cat_cols = task$feature_types[type != "numeric"]$id
+      cat_cols = task$feature_types[type != "numeric", id]
       if ((length(cat_cols) > 0) && (is.null(self$param_set$get_values(tags = "train")$procs))) {
         print("setting categorical vars")
         self$param_set$set_values(procs = list(fastai::Categorify()))
       }
-      num_cols = task$feature_types[type == "numeric"]$id
+      num_cols = task$feature_types[type == "numeric", id]
       comp = NULL  # comparison that fastai uses for internal validation
 
       # get parameters for training
@@ -146,17 +149,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         # set internal validation metric and convert it to format compatible with fastai
         measure = pars$eval_metric
         if (inherits(measure, "Measure")) {  # measure from mlr3measures
-          params_for_metric = list()
-          if ("twoclass" %in% unlist(measure$task_properties)) {
-            params_for_metric = append(params_for_metric, list(positive = "1"))
-          }
           metrics = invoke(
             fastai::AccumMetric,
             metric,
             flatten=FALSE,
-            msr=measure,
-            lvl=levels(factor(as.integer(task$truth())-1)),
-            .args = params_for_metric
+            msr=measure
           )  # see wrapper below
           if (measure$minimize) {
             np = reticulate::import("numpy")
@@ -166,7 +163,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           metrics = measure  # measure from fastai
         }
 
-      # if no internal validation
+        # if no internal validation
       } else {
         full_data = data
         splits = NULL
@@ -229,26 +226,21 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       print("Fit successfully executed.")
       self$model = tab_learner
     },
-
     .predict = function(task) {
       # get parameters with tag "predict"
+      target = task$target_names
       pars = self$param_set$get_values(tags = "predict")
 
       # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
+      test_dl = self$model$dls$test_dl(newdata)
+      tab_learner$get_preds(dl = test_dl, with_decoded = FALSE)
+
       pred = invoke(predict, self$model, newdata, .args = pars)
       print("Prediction was successfully executed.")
-      print(pred)
-      class_labels = levels(task$truth())
-
-      if (self$predict_type == "response") {
-        response = class_labels[pred$class+1]
-        print(response)
-        list(response = response)
-      } else {
-        list(prob = as.matrix(pred[, class_labels]))
-      }
+      print(head(pred, 10))
+      list(response = pred[,target])
     },
 
     .extract_internal_tuned_values = function() {
@@ -268,30 +260,13 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
   )
 )
 
-.extralrns_dict$add("classif.fastai", LearnerClassifFastai)
+.extralrns_dict$add("regr.fastai", LearnerRegrFastai)
 
 
 # Wrapper for eval measure to include in fastai
-metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
-  # label is a vector of labels (0, 1, ..., n_classes - 1)
+metric = function(pred, dtrain, msr = NULL, ...) {
   pred = fastai::as_array(pred)
-  truth = factor(as.vector(fastai::as_array(dtrain)), levels=lvl)
-  # transform log odds to probabilities
-  pred_exp = exp(pred)
-  pred_mat = pred_exp / rowSums(pred_exp)
-  colnames(pred_mat) = lvl
-  pred = pred_mat
-  # only look at the positive class
-  if ("twoclass" %in% unlist(msr$task_properties)) {
-    pred = pred_mat[, 2]
-    print("Measure wrapper: did conditioning on the twoclass work?")
-  }
-  # transform prediction into class labels
-  if (msr$predict_type == "response") {
-    p = apply(pred_mat, MARGIN = 1, FUN = function(x) which.max(x) - 1)
-    pred = factor(p, levels = levels(truth))
-    print("Measure wrapper: did setting the correct response type work?")
-  }
+  truth = as.vector(fastai::as_array(dtrain))
   measure = msr$fun(truth, pred, ...)
   print("Measure wrapper: did calling the measures work?")
   return(measure)
