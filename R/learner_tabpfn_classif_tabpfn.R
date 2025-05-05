@@ -121,7 +121,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       pars = self$param_set$get_values(tags = "train")
 
       # create torch device
-      if (!is.null(pars$device)) {
+      if (!is.null(pars$device) && pars$device != "auto") {
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
       }
