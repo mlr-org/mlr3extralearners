@@ -159,14 +159,15 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       X_py = reticulate::r_to_py(X)
       y_py = reticulate::r_to_py(y)
       # fit model
-      model = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
+      model = classifier$fit(X = X_py, y = y_py)
+      print(model)
 
-      structure(model, class = c("classif.tabpfn_model", "list"))
+      structure(list(model), class = c("classif.tabpfn_model", "list"))
       # model
     },
 
     .predict = function(task) {
-      model = self$model
+      model = self$model[[1]]
       # get test data
       X = as.matrix(task$data(cols = task$feature_names))
       X_py = reticulate::r_to_py(X)
@@ -190,11 +191,10 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
 #' @export
 marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
-  cat("Hi")
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
   # save model as bytes
-  pickled = pickle$dumps(model$pyobj)
+  pickled = pickle$dumps(model[[1]])
   # ensure object is converted to R
   pickled = reticulate::py_to_r(pickled)
 
