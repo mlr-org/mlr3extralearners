@@ -5,36 +5,36 @@
 #' @description
 #' Foundation model for tabular data.
 #' Uses \CRANpkg{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
-#' 
+#'
 #' @section Installation:
 #' While the Python dependencies are handled via `reticulate::py_require()`, you can
 #' manually specify a virtual environment by calling `reticulate::use_virtualenv()`
 #' prior to calling the `$train()` function.
 #' In this virtual environment, the `tabpfn` package and its dependencies must be installed.
-#' 
+#'
 #' @section Saving a Learner:
 #' In order to save a `LearnerClassifTabPFN` for later usage,
 #' it is necessary to call the `$marshal()` method on the `Learner`
 #' before writing it to disk, as the object will otherwise not be saved correctly.
 #' After loading a marshaled `LearnerClassifTabPFN` into R again,
 #' you then need to call `$unmarshal()` to transform it into a useable state.
-#' 
+#'
 #' @section Initial parameter values:
 #' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
 #'
 #' @section Custom mlr3 parameters:
-#' 
+#'
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
-#' 
+#'
 #' - `device` must be a string.
 #'   If set to `"auto"`, the behavior is the same as original.
 #'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
-#' 
+#'
 #' - `inference_precision` must be `"auto"` or `"autocast"`.
 #'   Passing `torch.dtype` is currently not supported.
-#' 
+#'
 #' - `inference_config` is currently not supported.
-#' 
+#'
 #' @template learner
 #'
 #' @references
@@ -109,7 +109,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       learner_unmarshal(.learner = self, ...)
     }
   ),
-  
+
   active = list(
     #' @field marshaled (`logical(1)`)\cr
     #' Whether the learner has been marshaled.
@@ -131,7 +131,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
       }
-      
+
       # X is an (n_samples, n_features) array
       X = as.matrix(task$data(cols = task$feature_names))
       # force NaN to make conversion work
@@ -147,7 +147,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         }
         pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
-      
+
       # create tabpfn model
       classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
       # prepare python data
