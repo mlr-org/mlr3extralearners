@@ -94,12 +94,33 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         id = "classif.tabpfn",
         feature_types = c("integer", "numeric", "logical"),
         predict_types = c("response", "prob"),
-        packages = "rpart",
         param_set = ps,
-        properties = c("missings", "twoclass", "multiclass"),
+        properties = c("twoclass", "multiclass", "missings", "marshal"),
         label = "TabPFN Classifier",
         man = "mlr3extralearners::mlr_learners_classif.tabpfn"
       )
+    },
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`marshal_model()`].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`unmarshal_model()`].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+  
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 
@@ -122,57 +143,32 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         pars$device = torch$device(pars$device)
       }
       
-      target_name = task$target_names
       # X is an (n_samples, n_features) array
       X = as.matrix(task$data(cols = task$feature_names))
       # y is an (n_samples,) array
       y = task$truth()
 
-      res = list()
-      if ("fit" %in% train_mode) {
-        reticulate::py_require("tabpfn")
-        tabpfn = reticulate::import("tabpfn")
-
-        if (!is.null(pars$categorical_features_indices)) {
-          # convert to python indexing
-          pars$categorical_features_indices = pars$categorical_features_indices - 1
-        }
-        # create tabpfn model
-        classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
-        # prepare data
-        X_py = reticulate::r_to_py(X)
-        y_py = reticulate::r_to_py(y)
-        # fit model
-        res$fitted = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
+      tabpfn = reticulate::import("tabpfn")
+      if (!is.null(pars$categorical_features_indices)) {
+        # convert to python indexing
+        pars$categorical_features_indices = pars$categorical_features_indices - 1
       }
-      if ("store" %in% train_mode) {
-        # just store training data
-        res$X = X
-        res$y = y
-      }
+      # create tabpfn model
+      classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
+      # prepare python data
+      X_py = reticulate::r_to_py(X)
+      y_py = reticulate::r_to_py(y)
+      # fit model
+      model = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
 
-      res
+      structure(model, class = c("classif.tabpfn_model", "list"))
+      # model
     },
 
     .predict = function(task) {
-      # If the learner is saved and loaded again, the fitted model will get lost
-      # due to serialization problems. The $model$fitted slot will still be
-      # an object of the same class as an actual fitted model.
-      # But if you print it, you see "<pointer: 0x0>" instead of "TabPFNClassifier".
-      # So we check whether the fitted model exists using the printed message.
-      # There might be a better solution than this hack...
-      message = capture.output(print(self$model$fitted))
-      if (!startsWith(message, "TabPFNClassifier")) {
-        # refit
-        self$param_set$set_values(train_mode = "both")
-        # $model$task is the training task
-        self$model = private$.train(self$model$task)
-      }
-
-      model = self$model$fitted
+      model = self$model
       # get test data
-      target_name = task$target_names[[1]]
-      X = as.matrix(task$data()[, -target_name, with = FALSE])
+      X = as.matrix(task$data(cols = task$feature_names))
       X_py = reticulate::r_to_py(X)
 
       if (self$predict_type == "response") {
@@ -190,3 +186,30 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 )
 
 .extralrns_dict$add("classif.tabpfn", LearnerClassifTabPFN)
+
+
+#' @export
+marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
+  cat("Hi")
+  # pickle should be available in any python environment
+  pickle = reticulate::import("pickle")
+  # save model as bytes
+  pickled = pickle$dumps(model$pyobj)
+  # ensure object is converted to R
+  pickled = reticulate::py_to_r(pickled)
+
+  structure(list(
+    marshaled = pickled,
+    packages = "mlr3extralearners"
+  ), class = c("classif.tabpfn_model_marshaled", "marshaled"))
+}
+
+#' @export
+unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+  pickle = reticulate::import("pickle")
+  unmarshaled = model$marshaled
+  # convert bytes to python object
+  model = pickle$loads(unmarshaled)
+  
+  model
+}
