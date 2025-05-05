@@ -118,8 +118,9 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require("tabpfn")
       reticulate::py_require("torch")
+      reticulate::py_require("tabpfn")
+      tabpfn = reticulate::import("tabpfn")
 
       pars = self$param_set$get_values(tags = "train")
 
@@ -136,15 +137,15 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       # y is an (n_samples,) array
       y = task$truth()
 
-      tabpfn = reticulate::import("tabpfn")
+      # convert categorical_features_indices to python indexing
       categ_indices = pars$categorical_features_indices
       if (!is.null(categ_indices)) {
         if (max(categ_indices) > ncol(X)) {
           stop("categorical_features_indices must not exceed number of features")
         }
-        # convert to python indexing
         pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
+      
       # create tabpfn model
       classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
       # prepare python data
@@ -198,6 +199,7 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
 #' @export
 unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
-  # convert bytes to python object
-  list(fitted = pickle$loads(reticulate::r_to_py(model$marshaled)))
+  # unpickle
+  fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
+  structure(list(fitted = fitted), class = "classif.tabpfn_model")
 }
