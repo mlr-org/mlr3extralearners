@@ -6,7 +6,7 @@
 #' Foundation model for tabular data.
 #' Uses \CRANpgk{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
 #' 
-#' @section Installation
+#' @section Installation:
 #' While the Python dependencies are handled via `reticulate::py_require()`, you can
 #' manually specify a virtual environment by calling `reticulate::use_virtualenv()`
 #' prior to calling the `$train()` function.
@@ -20,16 +20,17 @@
 #'   Possible options are `"fit"`, `"store"`, and `"both"` (default).
 #'   - If `"fit"` is selected, the `$train()` function creates a Python object
 #'     of the class `TabPFNClassifier` and stores the output of the `fit()` function.
-#'   - If `"store"` is selected, the `$train()` function only stores the training data.
+#'   - If `"store"` is selected, the `$train()` function only stores the training task.
 #'   - If `"both"` is selected, the `$train()` function does both.
 #'   The fitted model (Python object), if created, is stored in the `$model$fitted` slot.
-#'   The training data, if stored, can be accessed in the `$model$X` and $model$y` slots.
+#'   The training task, if stored, can be accessed in the `$model$task` slot.
 #'   Note that if you save this learner and load it later, the fitted model (Python object)
 #'   in `$model$fitted` will be corrupted due to serialization issues.
 #'   Therefore, it is recommended to use the `"store"` or `"both"` option to store
 #'   the training data.
-#'   When calling `$predict()` without a fitted model stored, the model will be fitted
+#'   When calling `$predict()` without an intact fitted model, the model will be fitted
 #'   on-the-fly and stored in `$model$fitted` henceforth.
+#'   After this, the `train_mode` parameter will automatically be set to `"both"`.
 #' 
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
 #' 
@@ -120,17 +121,15 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
       }
-
-      # get training data
-      target_name = task$target_names[[1]]
-      # X is an (n_samples, n_features) array,
-      X = as.matrix(task$data()[, -target_name, with = FALSE])
+      
+      target_name = task$target_names
+      # X is an (n_samples, n_features) array
+      X = as.matrix(task$data(cols = task$feature_names))
       # y is an (n_samples,) array
-      y = task$data()[[target_name]]
+      y = task$truth()
 
       res = list()
       if ("fit" %in% train_mode) {
-        # create python model and fit
         reticulate::py_require("tabpfn")
         tabpfn = reticulate::import("tabpfn")
 
@@ -138,11 +137,12 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           # convert to python indexing
           pars$categorical_features_indices = pars$categorical_features_indices - 1
         }
-
+        # create tabpfn model
         classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
+        # prepare data
         X_py = reticulate::r_to_py(X)
         y_py = reticulate::r_to_py(y)
-
+        # fit model
         res$fitted = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
       }
       if ("store" %in% train_mode) {
@@ -155,35 +155,36 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     },
 
     .predict = function(task) {
-      # wrap the usual predict function in a helper function for tryCatch
-      get_pred = function() {
-        model = self$model$fitted
-        # get test data
-        target_name = task$target_names[[1]]
-        X = as.matrix(task$data()[, -target_name, with = FALSE])
-        X_py = reticulate::r_to_py(X)
-
-        if (self$predict_type == "response") {
-          response = mlr3misc::invoke(model$predict, X = X_py)
-          response = reticulate::py_to_r(response)
-          list(response = response)
-        } else {
-          prob = mlr3misc::invoke(model$predict_proba, X = X_py)
-          prob = reticulate::py_to_r(prob)
-          colnames(prob) = reticulate::py_to_r(model$classes_)
-          list(prob = prob)
-        }
+      # If the learner is saved and loaded again, the fitted model will get lost
+      # due to serialization problems. The $model$fitted slot will still be
+      # an object of the same class as an actual fitted model.
+      # But if you print it, you see "<pointer: 0x0>" instead of "TabPFNClassifier".
+      # So we check whether the fitted model exists using the printed message.
+      # There might be a better solution than this hack...
+      message = capture.output(print(self$model$fitted))
+      if (!startsWith(message, "TabPFNClassifier")) {
+        # refit
+        self$param_set$set_values(train_mode = "both")
+        # $model$task is the training task
+        self$model = private$.train(self$model$task)
       }
 
-      tryCatch(
-        get_pred(),
-        error = function(e) {
-          # if error occurs, re-fit the model and try again
-          self$param_set$values$train_mode = "both"
-          self$train(task)
-          get_pred()
-        }
-      )
+      model = self$model$fitted
+      # get test data
+      target_name = task$target_names[[1]]
+      X = as.matrix(task$data()[, -target_name, with = FALSE])
+      X_py = reticulate::r_to_py(X)
+
+      if (self$predict_type == "response") {
+        response = mlr3misc::invoke(model$predict, X = X_py)
+        response = reticulate::py_to_r(response)
+        list(response = response)
+      } else {
+        prob = mlr3misc::invoke(model$predict_proba, X = X_py)
+        prob = reticulate::py_to_r(prob)
+        colnames(prob) = reticulate::py_to_r(model$classes_)
+        list(prob = prob)
+      }
     }
   )
 )
