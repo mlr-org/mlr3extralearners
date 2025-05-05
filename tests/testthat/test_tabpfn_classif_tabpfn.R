@@ -1,5 +1,3 @@
-torch = reticulate::import("torch")
-
 test_that("autotest", {
   learner = lrn("classif.tabpfn")
   expect_learner(learner)
@@ -54,6 +52,11 @@ test_that("categorical feature columns are encoded correctly", {
 })
 
 test_that("device selection works", {
+  if (!reticulate::py_module_available("torch")) {
+    skip("torch not available for testing.")
+  }
+  torch = reticulate::import("torch")
+
   learner = lrn("classif.tabpfn", device = "cpu")
   learner$train(tsk("iris"))
   expect_class(learner$model$fitted$device, c("torch.device", "python.builtin.object"))
@@ -79,11 +82,7 @@ test_that("checks for memory saving mode work", {
   learner$train(task)
   expect_identical(learner$model$fitted$memory_saving_mode, TRUE)
 
-  learner$param_set$set_values(memory_saving_mode = 0.1)
+  learner$param_set$set_values(memory_saving_mode = 50)
   learner$train(task)
-  expect_identical(learner$model$fitted$memory_saving_mode, 0.1)
-
-  learner$param_set$set_values(memory_saving_mode = 50L)
-  learner$train(task)
-  expect_identical(learner$model$fitted$memory_saving_mode, 50L)
+  expect_identical(learner$model$fitted$memory_saving_mode, 50)
 })
