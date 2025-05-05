@@ -6,27 +6,42 @@
 \title{TabPFN Classification Learner}
 \description{
 Foundation model for tabular data.
-Uses \CRANpgk{reticulate} to interface with the \CRANpkg{tabpfn} Python package.
+Uses \CRANpgk{reticulate} to interface with the \href{https://github.com/PriorLabs/TabPFN}{\code{tabpfn}} Python package.
 }
-\section{Custom mlr3 parameters}{
+\section{Installation}{
 
-\itemize{
-\item \code{train_mode}: Controls the behavior of the \verb{$train()} method.
-Possible options are \code{"fit"}, \code{"store"}, and \code{"both"} (default).
-\itemize{
-\item If \code{"fit"} is selected, the \verb{$train()} function creates a Python object
-of the class \code{TabPFNClassifier} and calls its \code{fit()} function.
-\item If \code{"store"} is selected, the \verb{$train()} function only stores the training data.
-\item If \code{"both"} is selected, the \verb{$train()} function does both.
+While the Python dependencies are handled via \code{reticulate::py_require()}, you can
+manually specify a virtual environment by calling \code{reticulate::use_virtualenv()}
+prior to calling the \verb{$train()} function.
+In this virtual environment, the \code{tabpfn} package and its dependencies must be installed.
 }
 
-The fitted model (Python object), if created, is stored in the \verb{$model$fitted} slot.
-The training data, if stored, can be accessed in the \verb{$model$X} and $model$y\verb{slots. Note that if you save this learner and load it later, the fitted model (Python object) in}$model$fitted\verb{will be corrupted due to serialization issues. Therefore, it is recommended to use the}"store"\code{or}"both"\verb{option to store the training data. When calling}$predict()\verb{without a fitted model stored, the model will be fitted on-the-fly and stored in}$model$fitted` henceforth.
-}
+\section{Saving a Learner}{
+
+In order to save a \code{LearnerClassifTabPFN} for later usage,
+it is necessary to call the \verb{$marshal()} method on the \code{Learner}
+before writing it to disk, as the object will otherwise not be saved correctly.
+After loading a marshaled \code{LearnerClassifTabPFN} into R again,
+you then need to call \verb{$unmarshal()} to transform it into a useable state.
 }
 
 \section{Initial parameter values}{
 
+\itemize{
+\item \code{n_jobs} is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
+}
+}
+
+\section{Custom mlr3 parameters}{
+
+\itemize{
+\item \code{categorical_feature_indices} uses R indexing instead of zero-based Python indexing.
+\item \code{device} must be a string.
+If set to \code{"auto"}, the behavior is the same as original.
+Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
+\item \code{inference_precision} must be \code{"auto"} or \code{"autocast"}.
+Passing \code{torch.dtype} is currently not supported.
+}
 }
 
 \section{Dictionary}{
@@ -41,16 +56,14 @@ This [Learner][mlr3::Learner] can be instantiated via [lrn()][mlr3::lrn]:
 }
 
 \references{
-Chen, Tianqi, Guestrin, Carlos (2016).
-\dQuote{Xgboost: A scalable tree boosting system.}
-In \emph{Proceedings of the 22nd ACM SIGKDD Conference on Knowledge Discovery and Data Mining}, 785--794.
-ACM.
-\doi{10.1145/2939672.2939785}.
+Hollmann, Noah, Müller, Samuel, Purucker, Lennart, Krishnakumar, Arjun, Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
+\dQuote{Accurate predictions on small data with a tabular foundation model.}
+\emph{Nature}.
+\doi{10.1038/s41586-024-08328-6}, \url{https://www.nature.com/articles/s41586-024-08328-6}.
 
-Avinash B, Hyunsu C, Toby H (2022).
-\dQuote{Survival Regression with Accelerated Failure Time Model in XGBoost.}
-\emph{Journal of Computational and Graphical Statistics}.
-ISSN 15372715, \doi{10.1080/10618600.2022.2067548}.
+Hollmann, Noah, Müller, Samuel, Eggensperger, Katharina, Hutter, Frank (2023).
+\dQuote{TabPFN: A transformer that solves small tabular classification problems in a second.}
+In \emph{International Conference on Learning Representations 2023}.
 }
 \seealso{
 \itemize{
@@ -69,10 +82,20 @@ b-zhou
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifTabPFN}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{marshaled}}{(\code{logical(1)})\cr
+Whether the learner has been marshaled.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifTabPFN-new}{\code{LearnerClassifTabPFN$new()}}
+\item \href{#method-LearnerClassifTabPFN-marshal}{\code{LearnerClassifTabPFN$marshal()}}
+\item \href{#method-LearnerClassifTabPFN-unmarshal}{\code{LearnerClassifTabPFN$unmarshal()}}
 \item \href{#method-LearnerClassifTabPFN-clone}{\code{LearnerClassifTabPFN$clone()}}
 }
 }
@@ -88,6 +111,7 @@ b-zhou
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
 </ul>
 </details>
@@ -96,10 +120,47 @@ b-zhou
 \if{html}{\out{<a id="method-LearnerClassifTabPFN-new"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifTabPFN-new}{}}}
 \subsection{Method \code{new()}}{
+Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifTabPFN$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifTabPFN-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifTabPFN-marshal}{}}}
+\subsection{Method \code{marshal()}}{
+Marshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifTabPFN$marshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[=marshal_model]{marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifTabPFN-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifTabPFN-unmarshal}{}}}
+\subsection{Method \code{unmarshal()}}{
+Unmarshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifTabPFN$unmarshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[=unmarshal_model]{unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifTabPFN-clone"></a>}}
