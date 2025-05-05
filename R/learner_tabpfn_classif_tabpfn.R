@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Foundation model for tabular data.
-#' Uses \CRANpgk{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
+#' Uses \CRANpkg{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
 #' 
 #' @section Installation:
 #' While the Python dependencies are handled via `reticulate::py_require()`, you can
@@ -32,6 +32,8 @@
 #' 
 #' - `inference_precision` must be `"auto"` or `"autocast"`.
 #'   Passing `torch.dtype` is currently not supported.
+#' 
+#' - `inference_config` is currently not supported.
 #' 
 #' @template learner
 #'

@@ -6,7 +6,7 @@
 \title{TabPFN Classification Learner}
 \description{
 Foundation model for tabular data.
-Uses \CRANpgk{reticulate} to interface with the \href{https://github.com/PriorLabs/TabPFN}{\code{tabpfn}} Python package.
+Uses \CRANpkg{reticulate} to interface with the \href{https://github.com/PriorLabs/TabPFN}{\code{tabpfn}} Python package.
 }
 \section{Installation}{
 
@@ -41,6 +41,7 @@ If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
 \item \code{inference_precision} must be \code{"auto"} or \code{"autocast"}.
 Passing \code{torch.dtype} is currently not supported.
+\item \code{inference_config} is currently not supported.
 }
 }
 
