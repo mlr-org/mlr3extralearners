@@ -183,7 +183,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 .extralrns_dict$add("classif.tabpfn", LearnerClassifTabPFN)
 
 
-#' @export
+#' @exportS3Method mlr3::marshal_model
 marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
@@ -198,7 +198,7 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   ), class = c("classif.tabpfn_model_marshaled", "marshaled"))
 }
 
-#' @export
+#' @exportS3Method mlr3::unmarshal_model
 unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
   # unpickle
