@@ -12,25 +12,17 @@
 #' prior to calling the `$train()` function.
 #' In this virtual environment, the `tabpfn` package and its dependencies must be installed.
 #' 
+#' @section Saving a Learner:
+#' In order to save a `LearnerClassifTabPFN` for later usage,
+#' it is necessary to call the `$marshal()` method on the `Learner`
+#' before writing it to disk, as the object will otherwise not be saved correctly.
+#' After loading a marshaled `LearnerClassifTabPFN` into R again,
+#' you then need to call `$unmarshal()` to transform it into a useable state.
+#' 
 #' @section Initial parameter values:
 #' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
 #'
 #' @section Custom mlr3 parameters:
-#' - `train_mode`: Controls the behavior of the `$train()` method.
-#'   Possible options are `"fit"`, `"store"`, and `"both"` (default).
-#'   - If `"fit"` is selected, the `$train()` function creates a Python object
-#'     of the class `TabPFNClassifier` and stores the output of the `fit()` function.
-#'   - If `"store"` is selected, the `$train()` function only stores the training task.
-#'   - If `"both"` is selected, the `$train()` function does both.
-#'   The fitted model (Python object), if created, is stored in the `$model$fitted` slot.
-#'   The training task, if stored, can be accessed in the `$model$task` slot.
-#'   Note that if you save this learner and load it later, the fitted model (Python object)
-#'   in `$model$fitted` will be corrupted due to serialization issues.
-#'   Therefore, it is recommended to use the `"store"` or `"both"` option to store
-#'   the training data.
-#'   When calling `$predict()` without an intact fitted model, the model will be fitted
-#'   on-the-fly and stored in `$model$fitted` henceforth.
-#'   After this, the `train_mode` parameter will automatically be set to `"both"`.
 #' 
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
 #' 
@@ -56,7 +48,6 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        train_mode = p_fct(c("fit", "store", "both"), tags = "train"),
         n_estimators = p_int(lower = 1, default = 4, tags = "train"),
         categorical_features_indices = p_int(lower = 1, tags = "train"), # R indexing is used
         softmax_temperature = p_dbl(default = 0.9, lower = 0, tags = "train"),
@@ -85,8 +76,6 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         n_jobs = p_int(lower = 1, default = 1, special_vals = list(-1), tags = "train")
       )
 
-      # set train_mode to "both" -- fit python model and store training data
-      ps$values$train_mode = "both"
       # set n_jobs to 1 as mlr3 has its own parallelization
       ps$values$n_jobs = 1
 
@@ -130,12 +119,6 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       reticulate::py_require("torch")
 
       pars = self$param_set$get_values(tags = "train")
-      train_mode = pars$train_mode
-      if (train_mode == "both") {
-        train_mode = c("fit", "store")
-      }
-      # remove train_mode from the param set that will be passed to the model
-      pars$train_mode = NULL
 
       # create torch device
       if (!is.null(pars$device)) {
@@ -159,15 +142,13 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       X_py = reticulate::r_to_py(X)
       y_py = reticulate::r_to_py(y)
       # fit model
-      model = classifier$fit(X = X_py, y = y_py)
-      print(model)
+      fitted = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
 
-      structure(list(model), class = c("classif.tabpfn_model", "list"))
-      # model
+      structure(list(fitted = fitted), class = "classif.tabpfn_model")
     },
 
     .predict = function(task) {
-      model = self$model[[1]]
+      model = self$model$fitted
       # get test data
       X = as.matrix(task$data(cols = task$feature_names))
       X_py = reticulate::r_to_py(X)
@@ -194,9 +175,9 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
   # save model as bytes
-  pickled = pickle$dumps(model[[1]])
+  pickled = pickle$dumps(model$fitted)
   # ensure object is converted to R
-  pickled = reticulate::py_to_r(pickled)
+  pickled = as.raw(pickled)
 
   structure(list(
     marshaled = pickled,
@@ -207,9 +188,6 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
 #' @export
 unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
-  unmarshaled = model$marshaled
   # convert bytes to python object
-  model = pickle$loads(unmarshaled)
-  
-  model
+  list(fitted = pickle$loads(reticulate::r_to_py(model$marshaled)))
 }
