@@ -128,6 +128,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       
       # X is an (n_samples, n_features) array
       X = as.matrix(task$data(cols = task$feature_names))
+      # force NaN to make conversion work
+      X[is.na(X)] = NaN
       # y is an (n_samples,) array
       y = task$truth()
 
@@ -151,6 +153,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       model = self$model$fitted
       # get test data
       X = as.matrix(task$data(cols = task$feature_names))
+      X[is.na(X)] = NaN
       X_py = reticulate::r_to_py(X)
 
       if (self$predict_type == "response") {
