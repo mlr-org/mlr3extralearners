@@ -99,14 +99,14 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' @param ... (any)\cr
     #'   Additional arguments passed to [`marshal_model()`].
     marshal = function(...) {
-      learner_marshal(.learner = self, ...)
+      mlr3::learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
     #'   Additional arguments passed to [`unmarshal_model()`].
     unmarshal = function(...) {
-      learner_unmarshal(.learner = self, ...)
+      mlr3::learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -114,7 +114,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' @field marshaled (`logical(1)`)\cr
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      learner_marshaled(self)
+      mlr3::learner_marshaled(self)
     }
   ),
 
@@ -183,7 +183,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 .extralrns_dict$add("classif.tabpfn", LearnerClassifTabPFN)
 
 
-#' @exportS3Method mlr3::marshal_model
+#' @export
 marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
@@ -198,7 +198,7 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   ), class = c("classif.tabpfn_model_marshaled", "marshaled"))
 }
 
-#' @exportS3Method mlr3::unmarshal_model
+#' @export
 unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
   # unpickle
