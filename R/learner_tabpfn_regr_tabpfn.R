@@ -23,8 +23,9 @@
 #' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
 #'
 #' @section Custom mlr3 parameters:
-#' 
-#' - `output_type` corresponds to the same argument of the `.predict()` method of the `TabPFNRegressor` class, but only supports the options `"mean"`, `"median"` and `"mode"`.
+#'
+#' - `output_type` corresponds to the same argument of the `.predict()` method of the `TabPFNRegressor` class,
+#'   but only supports the options `"mean"`, `"median"` and `"mode"`.
 #'   The point predictions are stored as `$response` of the prediction object.
 #'
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
@@ -144,17 +145,17 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
         pars$device = torch$device(pars$device)
       }
 
-      # X is an (n_samples, n_features) array
-      X = as.matrix(task$data(cols = task$feature_names))
+      # x is an (n_samples, n_features) array
+      x = as.matrix(task$data(cols = task$feature_names))
       # force NaN to make conversion work
-      X[is.na(X)] = NaN
+      x[is.na(x)] = NaN
       # y is an (n_samples,) array
       y = task$truth()
 
       # convert categorical_features_indices to python indexing
       categ_indices = pars$categorical_features_indices
       if (!is.null(categ_indices)) {
-        if (max(categ_indices) > ncol(X)) {
+        if (max(categ_indices) > ncol(x)) {
           stop("categorical_features_indices must not exceed number of features")
         }
         pars$categorical_features_indices = as.integer(categ_indices - 1)
@@ -163,10 +164,10 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
       # create tabpfn model
       regressor = mlr3misc::invoke(tabpfn$TabPFNRegressor, .args = pars)
       # prepare python data
-      X_py = reticulate::r_to_py(X)
+      x_py = reticulate::r_to_py(x)
       y_py = reticulate::r_to_py(y)
       # fit model
-      fitted = mlr3misc::invoke(regressor$fit, X = X_py, y = y_py)
+      fitted = mlr3misc::invoke(regressor$fit, X = x_py, y = y_py)
 
       structure(list(fitted = fitted), class = "regr.tabpfn_model")
     },
@@ -174,19 +175,19 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
     .predict = function(task) {
       model = self$model$fitted
       # get test data
-      X = as.matrix(task$data(cols = task$feature_names))
-      X[is.na(X)] = NaN
-      X_py = reticulate::r_to_py(X)
+      x = as.matrix(task$data(cols = task$feature_names))
+      x[is.na(x)] = NaN
+      x_py = reticulate::r_to_py(x)
 
       if (self$predict_type == "response") {
         pars = self$param_set$get_values(tags = "predict")
-        response = mlr3misc::invoke(model$predict, X = X_py, .args = pars)
+        response = mlr3misc::invoke(model$predict, X = x_py, .args = pars)
         response = reticulate::py_to_r(response)
         list(response = response)
       } else {
         quantiles = mlr3misc::invoke(
           model$predict,
-          X = X_py,
+          X = x_py,
           output_type = "quantiles",
           # tabpfn requires a list object as quantiles, even in the case of a single quantile
           quantiles = as.list(self$quantiles)

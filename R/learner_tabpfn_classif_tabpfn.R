@@ -65,11 +65,13 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           # torch.dtype option is currently not supported
           c("auto", "autocast"),
           default = "auto",
-          tags = "train"),
+          tags = "train"
+        ),
         fit_mode = p_fct(
           c("low_memory", "fit_preprocessors", "fit_with_cache"),
           default = "fit_preprocessors",
-          tags = "train"),
+          tags = "train"
+        ),
         memory_saving_mode = p_uty(default = "auto", tags = "train", custom_check = function(x) {
           if (identical(x, "auto") || test_flag(x) || test_number(x, lower = 0)) {
             TRUE
@@ -132,17 +134,17 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         pars$device = torch$device(pars$device)
       }
 
-      # X is an (n_samples, n_features) array
-      X = as.matrix(task$data(cols = task$feature_names))
+      # x is an (n_samples, n_features) array
+      x = as.matrix(task$data(cols = task$feature_names))
       # force NaN to make conversion work
-      X[is.na(X)] = NaN
+      x[is.na(x)] = NaN
       # y is an (n_samples,) array
       y = task$truth()
 
       # convert categorical_features_indices to python indexing
       categ_indices = pars$categorical_features_indices
       if (!is.null(categ_indices)) {
-        if (max(categ_indices) > ncol(X)) {
+        if (max(categ_indices) > ncol(x)) {
           stop("categorical_features_indices must not exceed number of features")
         }
         pars$categorical_features_indices = as.integer(categ_indices - 1)
@@ -151,10 +153,10 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       # create tabpfn model
       classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
       # prepare python data
-      X_py = reticulate::r_to_py(X)
+      x_py = reticulate::r_to_py(x)
       y_py = reticulate::r_to_py(y)
       # fit model
-      fitted = mlr3misc::invoke(classifier$fit, X = X_py, y = y_py)
+      fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
 
       structure(list(fitted = fitted), class = "classif.tabpfn_model")
     },
@@ -162,16 +164,16 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     .predict = function(task) {
       model = self$model$fitted
       # get test data
-      X = as.matrix(task$data(cols = task$feature_names))
-      X[is.na(X)] = NaN
-      X_py = reticulate::r_to_py(X)
+      x = as.matrix(task$data(cols = task$feature_names))
+      x[is.na(x)] = NaN
+      x_py = reticulate::r_to_py(x)
 
       if (self$predict_type == "response") {
-        response = mlr3misc::invoke(model$predict, X = X_py)
+        response = mlr3misc::invoke(model$predict, X = x_py)
         response = reticulate::py_to_r(response)
         list(response = response)
       } else {
-        prob = mlr3misc::invoke(model$predict_proba, X = X_py)
+        prob = mlr3misc::invoke(model$predict_proba, X = x_py)
         prob = reticulate::py_to_r(prob)
         colnames(prob) = reticulate::py_to_r(model$classes_)
         list(prob = prob)
