@@ -122,7 +122,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require("torch")
+      reticulate::py_require(c("torch", "tabpfn"))
       reticulate::py_require("tabpfn")
       tabpfn = reticulate::import("tabpfn")
 
