@@ -3,19 +3,16 @@
 #' @name mlr_learners_regr.mqgam
 #'
 #' @description
-#' Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously
+#' Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously.
 #' Calls [qgam::mqgam()] from package \CRANpkg{qgam}.
 #'
 #' @section Form:
-#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required
-#' (see example and `?mgcv::formula.gam`).
-#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
-#' behave like Linear Quantile Regression.
+#' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
+#' If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
 #' The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()],
-#' is set using the values specified in `learner$quantiles`.
+#' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()], is set using the values specified in `learner$quantiles`.
 #' The response quantile can be specified using `learner$quantile_response`
 #'
 #' @templateVar id regr.mqgam
@@ -26,16 +23,28 @@
 #'
 #' @template seealso_learner
 #' @examplesIf requireNamespace("qgam", quietly = TRUE)
-#' # simple example
-#' t = mlr3::tsk("mtcars")
-#' l = mlr3::lrn("regr.mqgam")
-#' t$select(c("cyl", "am", "disp", "hp"))
-#' l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-#' l$quantiles = c(0.05, 0.5, 0.95)
-#' l$quantile_response = 0.5
-#' l$train(t)
-#' qgam::qdo(l$model, l$quantiles, summary)
-#' l$predict(t)
+#' # Define the Learner
+#' learner = mlr3::lrn("regr.mqgam")
+#' learner$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+#' learner$quantiles = c(0.05, 0.5, 0.95)
+#' learner$quantile_response = 0.5
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("mtcars")
+#' task$select(c("cyl", "am", "disp", "hp"))
+#'
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
   inherit = LearnerRegr,

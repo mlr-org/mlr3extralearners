@@ -5,22 +5,19 @@
 \alias{LearnerRegrMQGam}
 \title{Generalized Additive Quantile Regression Model for Multiple Quantiles}
 \description{
-Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously
+Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously.
 Calls \code{\link[qgam:mqgam]{qgam::mqgam()}} from package \CRANpkg{qgam}.
 }
 \section{Form}{
 
-For the \code{form} parameter, a gam formula specific to the \link[mlr3:Task]{Task} is required
-(see example and \code{?mgcv::formula.gam}).
-If no formula is provided, a fallback formula using all features in the task is used that will make the Learner
-behave like Linear Quantile Regression.
+For the \code{form} parameter, a gam formula specific to the \link[mlr3:Task]{Task} is required (see example and \code{?mgcv::formula.gam}).
+If no formula is provided, a fallback formula using all features in the task is used that will make the Learner behave like Linear Quantile Regression.
 The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 }
 
 \section{Quantile}{
 
-The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}},
-is set using the values specified in \code{learner$quantiles}.
+The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}}, is set using the values specified in \code{learner$quantiles}.
 The response quantile can be specified using \code{learner$quantile_response}
 }
 
@@ -60,16 +57,28 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \examples{
 \dontshow{if (requireNamespace("qgam", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# simple example
-t = mlr3::tsk("mtcars")
-l = mlr3::lrn("regr.mqgam")
-t$select(c("cyl", "am", "disp", "hp"))
-l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-l$quantiles = c(0.05, 0.5, 0.95)
-l$quantile_response = 0.5
-l$train(t)
-qgam::qdo(l$model, l$quantiles, summary)
-l$predict(t)
+# Define the Learner
+learner = mlr3::lrn("regr.mqgam")
+learner$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+learner$quantiles = c(0.05, 0.5, 0.95)
+learner$quantile_response = 0.5
+print(learner)
+
+# Define a Task
+task = mlr3::tsk("mtcars")
+task$select(c("cyl", "am", "disp", "hp"))
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
