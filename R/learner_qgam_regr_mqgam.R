@@ -13,7 +13,7 @@
 #'
 #' @section Quantile:
 #' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()], is set using the values specified in `learner$quantiles`.
-#' The response quantile can be specified using `learner$quantile_response`
+#' The response quantile can be specified using `learner$quantile_response`.
 #'
 #' @templateVar id regr.mqgam
 #' @template learner

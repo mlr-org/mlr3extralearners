@@ -18,7 +18,7 @@ The features specified in the formula need to be the same as columns with col_ro
 \section{Quantile}{
 
 The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}}, is set using the values specified in \code{learner$quantiles}.
-The response quantile can be specified using \code{learner$quantile_response}
+The response quantile can be specified using \code{learner$quantile_response}.
 }
 
 \section{Dictionary}{
