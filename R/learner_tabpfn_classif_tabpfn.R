@@ -20,7 +20,7 @@
 #' you then need to call `$unmarshal()` to transform it into a useable state.
 #'
 #' @section Initial parameter values:
-#' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
+#' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.
 #'
 #' @section Custom mlr3 parameters:
 #'
