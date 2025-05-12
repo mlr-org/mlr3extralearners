@@ -1,10 +1,10 @@
-#' @title Generalized Additive Quantile Regression Model
+#' @title Generalized Additive Quantile Regression Model for Multiple Quantiles
 #' @author lona-k
-#' @name mlr_learners_regr.qgam
+#' @name mlr_learners_regr.mqgam
 #'
 #' @description
-#' Quantile Regression with generalized additive models.
-#' Calls [qgam::qgam()] from package \CRANpkg{qgam}.
+#' Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously.
+#' Calls [qgam::mqgam()] from package \CRANpkg{qgam}.
 #'
 #' @section Form:
 #' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
@@ -12,9 +12,10 @@
 #' The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantile for the Learner, i.e. `qu` parameter from [qgam::qgam()], is set using the value specified in `learner$quantiles`.
+#' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()], is set using the values specified in `learner$quantiles`.
+#' The response quantile can be specified using `learner$quantile_response`.
 #'
-#' @templateVar id regr.qgam
+#' @templateVar id regr.mqgam
 #' @template learner
 #'
 #' @references
@@ -22,17 +23,30 @@
 #'
 #' @template seealso_learner
 #' @examplesIf requireNamespace("qgam", quietly = TRUE)
-#' # simple example
-#' t = mlr3::tsk("mtcars")
-#' l = mlr3::lrn("regr.qgam")
-#' t$select(c("cyl", "am", "disp", "hp"))
-#' l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-#' l$quantiles = 0.25
-#' l$train(t)
-#' l$model
-#' l$predict(t)
+#' # Define the Learner
+#' learner = mlr3::lrn("regr.mqgam")
+#' learner$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+#' learner$quantiles = c(0.05, 0.5, 0.95)
+#' learner$quantile_response = 0.5
+#' print(learner)
+#'
+#' # Define a Task
+#' task = mlr3::tsk("mtcars")
+#' task$select(c("cyl", "am", "disp", "hp"))
+#'
+#' # Create train and test set
+#' ids = mlr3::partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
-LearnerRegrQGam = R6Class("LearnerRegrQGam",
+LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
   inherit = LearnerRegr,
   public = list(
     #' @description
@@ -49,36 +63,34 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         link          = p_uty(default = "identity", tags = "train"),
         argGam        = p_uty(custom_check = crate(function(x) {
           checkmate::check_list(x, names = "unique", null.ok = TRUE)
-          }), tags = "train"),
-        discrete      = p_lgl(default = FALSE, tags = "train"),
-        block.size    = p_int(default = 1000L, tags = "predict"),
-        unconditional = p_lgl(default = FALSE, tags = "predict")
+        }), tags = "train"),
+        discrete      = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
-        id = "regr.qgam",
+        id = "regr.mqgam",
         packages = "qgam",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se", "quantiles"),
         param_set = param_set,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_regr.qgam",
+        man = "mlr3extralearners::mlr_learners_regr.mqgam",
         label = "Regression Quantile Generalized Additive Model Learner"
       )
 
       self$predict_type = "quantiles"
-      self$quantiles = 0.5
+      self$quantile_response = 0.5
     }
   ),
   private = list(
     .train = function(task) {
       data = task$data(cols = c(task$feature_names, task$target_names))
-
-      # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
 
-      args_gam = formalArgs(mgcv::gam)[formalArgs(mgcv::gam) %nin% c("formula", "family", "data")]
+      args_gam = formalArgs(mgcv::gam)[
+        formalArgs(mgcv::gam) %nin% c("formula", "family", "data")
+      ]
       if (length(pars$argGam)) {
         checkmate::assert_subset(names(pars$argGam), choices = args_gam, empty.ok = FALSE)
       }
@@ -97,8 +109,9 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       checkmate::assert_set_equal(all.vars(pars$form)[-1], task$col_roles$feature)
       checkmate::assert_set_equal(all.vars(pars$form)[[1]], task$col_roles$target)
+
       invoke(
-        qgam::qgam,
+        qgam::mqgam,
         qu = self$quantiles,
         data = data,
         .args = pars,
@@ -106,18 +119,18 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         argGam = arg_gam_pars
       )
     },
-    .predict = function(task) { # qgam uses predict.gam
-      # get parameters with tag "predict"
+    .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
-      newdata = ordered_features(task, self)
-
       include_se = (self$predict_type == "se")
 
+      newdata = ordered_features(task, self)
+
+      # returns a list with results for quantiles
       preds = invoke(
-        predict,
+        qgam::qdo,
         self$model,
+        qu = self$quantiles,
+        fun = predict,
         newdata = newdata,
         type = "response",
         newdata.guaranteed = TRUE,
@@ -125,12 +138,15 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
         .args = pars
       )
 
-      if (include_se) { # se and response
-        list(response = preds$fit, se = preds$se)
+      if (include_se) {
+        list(response = preds$fit, se = preds$se.fit)
       } else if (self$predict_type == "quantiles") {
-        quantiles = matrix(preds, ncol = 1)
+        # qdo returns an array if mqgam is trained with only one quantile
+        preds = if (!is.list(preds)) list(preds) else preds
+        quantiles = do.call(cbind, preds)
+
         attr(quantiles, "probs") = self$quantiles
-        attr(quantiles, "response") = self$quantiles
+        attr(quantiles, "response") = self$quantile_response
         list(quantiles = quantiles)
       } else {
         list(response = preds)
@@ -139,4 +155,4 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
   )
 )
 
-.extralrns_dict$add("regr.qgam", LearnerRegrQGam)
+.extralrns_dict$add("regr.mqgam", LearnerRegrMQGam)
