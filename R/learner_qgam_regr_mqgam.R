@@ -85,8 +85,6 @@ LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
   private = list(
     .train = function(task) {
       data = task$data(cols = c(task$feature_names, task$target_names))
-
-      # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       control_pars = if (length(pars$link)) list(pars$link) else list(NULL)
 
@@ -122,13 +120,10 @@ LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
       )
     },
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
-      newdata = ordered_features(task, self)
-
       include_se = (self$predict_type == "se")
+
+      newdata = ordered_features(task, self)
 
       # returns a list with results for quantiles
       preds = invoke(
@@ -144,8 +139,7 @@ LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
       )
 
       if (include_se) {
-        list(response = preds$fit,
-             se = preds$se.fit)
+        list(response = preds$fit, se = preds$se.fit)
       } else if (self$predict_type == "quantiles") {
         # qdo returns an array if mqgam is trained with only one quantile
         preds = if (!is.list(preds)) list(preds) else preds
