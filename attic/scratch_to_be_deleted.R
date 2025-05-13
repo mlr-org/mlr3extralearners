@@ -227,26 +227,24 @@ learner$param_set
 learner$train(task, row_ids = ids$train)
 learner$eval_protocol
 pred = learner$predict(task, row_ids = ids$test)
-learner$predict_type = "prob"
-learner$predict(task)
 
 # Training with validation
-learner = lrn("classif.fastai")
+learner = lrn("regr.fastai")
 learner$validate = 1/3
 learner$param_set$set_values(
   n_epoch = 7,
-  eval_metric = msr("classif.auc")
+  eval_metric = msr("regr.mse")
 )
 learner$train(task, row_ids = ids$train)
 learner$eval_protocol
 
 # Training with validation and early stopping
-learner = lrn("classif.fastai")
+learner = lrn("regr.fastai")
 learner$validate = 1/3
 learner$param_set$set_values(
   n_epoch = 10,
   patience = 3,
-  eval_metric = msr("classif.auc"),
+  eval_metric = msr("regr.mse"),
   layers = c(10, 30, 10)
 )
 learner$train(task, row_ids = ids$train)

@@ -15,8 +15,8 @@ learner = lrn("classif.fastai")
 tasks = generate_tasks(learner)
 task = tasks$sanity_switched
 df = task$data()
-cat_cols = task$feature_types[type != "numeric"]$id
-num_cols = task$feature_types[type == "numeric"]$id
+cat_cols = task$feature_types[type != "numeric", id]
+num_cols = task$feature_types[type == "numeric", id]
 
 
 set.seed(42)  # R-level seed
@@ -52,8 +52,14 @@ dl <- invoke(
   df_fai
 )
 
-tab_learner <- fastai::tabular_learner(dl)
-invisible(tab_learner$remove_cb(tab_learner$progress))
+tab_learner <- fastai::tabular_learner(dl, layer=c(2, 4, 2))
 
 fastai::fit(tab_learner, 5)  # Will now be repeatable
 
+
+task = tsk("sonar")
+
+set.seed(42)
+learner = lrn("classif.fastai")
+learner$train(task)
+print(learner$eval_protocol)
