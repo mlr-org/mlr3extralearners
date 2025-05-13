@@ -5,10 +5,10 @@ test_that("classif.rda train", {
     "x",
     "object", # handled internally
     "data", # handled internally
-    "grouping",  # optional vector specifying the class for each observation - not implemented
-    "prior",  # optional prior probabilities for the classes - not implemented
+    "grouping",  # optional vector specifying the class for each observation - not implemented by author
+    "prior",  # optional prior probabilities for the classes - not implemented by author
     "regularization",  # handled internally by klaR
-    "startsimplex"  # optional starting simplex for the Nelder-Mead-minimization- not implemented
+    "startsimplex"  # optional starting simplex for the Nelder-Mead-minimization- not implemented by author
   )
 
   # note that you can also pass a list of functions in case $.train calls more than one

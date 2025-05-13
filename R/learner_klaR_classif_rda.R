@@ -10,6 +10,8 @@
 #' @templateVar id classif.rda
 #' @template learner
 #'
+#' @references
+#' `r format_bib("friedman1989rda")`
 #'
 #' @template seealso_learner
 #' @template example
