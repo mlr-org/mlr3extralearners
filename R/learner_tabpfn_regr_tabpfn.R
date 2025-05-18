@@ -139,7 +139,6 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
 
       pars = self$param_set$get_values(tags = "train")
 
-      # create torch device
       if (!is.null(pars$device) && pars$device != "auto") {
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
@@ -147,7 +146,9 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
 
       # x is an (n_samples, n_features) array
       x = as.matrix(task$data(cols = task$feature_names))
-      # force NaN to make conversion work
+      # force NaN to make conversion work,
+      # otherwise reticulate will not convert NAs in logical and integer columns to
+      # np.nan properly
       x[is.na(x)] = NaN
       # y is an (n_samples,) array
       y = task$truth()
@@ -161,12 +162,9 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
         pars$categorical_features_indices = as.integer(categ_indices - 1)
       }
 
-      # create tabpfn model
       regressor = mlr3misc::invoke(tabpfn$TabPFNRegressor, .args = pars)
-      # prepare python data
       x_py = reticulate::r_to_py(x)
       y_py = reticulate::r_to_py(y)
-      # fit model
       fitted = mlr3misc::invoke(regressor$fit, X = x_py, y = y_py)
 
       structure(list(fitted = fitted), class = "tabpfn_model")
@@ -174,8 +172,9 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
 
     .predict = function(task) {
       model = self$model$fitted
-      # get test data
+
       x = as.matrix(task$data(cols = task$feature_names))
+      # NA -> NaN, same reason as in $.train
       x[is.na(x)] = NaN
       x_py = reticulate::r_to_py(x)
 
