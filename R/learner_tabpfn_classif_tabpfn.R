@@ -157,7 +157,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
       # fit model
       fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
 
-      structure(list(fitted = fitted), class = "classif.tabpfn_model")
+      structure(list(fitted = fitted), class = "tabpfn_model")
     },
 
     .predict = function(task) {
@@ -185,7 +185,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
 
 #' @export
-marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
+marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
   # save model as bytes
@@ -196,13 +196,13 @@ marshal_model.classif.tabpfn_model = function(model, inplace = FALSE, ...) {
   structure(list(
     marshaled = pickled,
     packages = "mlr3extralearners"
-  ), class = c("classif.tabpfn_model_marshaled", "marshaled"))
+  ), class = c("tabpfn_model_marshaled", "marshaled"))
 }
 
 #' @export
-unmarshal_model.classif.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
   # unpickle
   fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(fitted = fitted), class = "classif.tabpfn_model")
+  structure(list(fitted = fitted), class = "tabpfn_model")
 }
