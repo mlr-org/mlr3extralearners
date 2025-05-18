@@ -5,10 +5,10 @@
 #' @description
 #' Foundation model for tabular data.
 #' Uses \CRANpkg{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
-#' 
+#'
 #' @templateVar class LearnerClassifTabPFN
 #' @template sections_tabpfn
-#' 
+#'
 #' @section Custom mlr3 parameters:
 #'
 #' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
@@ -21,7 +21,7 @@
 #'   Passing `torch.dtype` is currently not supported.
 #'
 #' - `inference_config` is currently not supported.
-#' 
+#'
 #' @templateVar id classif.tabpfn
 #' @template learner
 #'

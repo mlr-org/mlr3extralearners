@@ -3,12 +3,12 @@
 #' @name mlr_learners_regr.tabpfn
 #'
 #' @inherit mlr_learners_classif.tabpfn description
-#' 
+#'
 #' @templateVar class LearnerRegrTabPFN
 #' @template sections_tabpfn
-#' 
+#'
 #' @section Custom mlr3 parameters:
-#' 
+#'
 #' - `output_type` corresponds to the same argument of the `.predict()` method of the `TabPFNRegressor` class,
 #'   but only supports the options `"mean"`, `"median"` and `"mode"`.
 #'   The point predictions are stored as `$response` of the prediction object.
