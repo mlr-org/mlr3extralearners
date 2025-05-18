@@ -2,28 +2,13 @@
 #' @author b-zhou
 #' @name mlr_learners_regr.tabpfn
 #'
-#' @description
-#' Foundation model for tabular data.
-#' Uses \CRANpkg{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
-#'
-#' @section Installation:
-#' While the Python dependencies are handled via `reticulate::py_require()`, you can
-#' manually specify a virtual environment by calling `reticulate::use_virtualenv()`
-#' prior to calling the `$train()` function.
-#' In this virtual environment, the `tabpfn` package and its dependencies must be installed.
-#'
-#' @section Saving a Learner:
-#' In order to save a `LearnerRegrTabPFN` for later usage,
-#' it is necessary to call the `$marshal()` method on the `Learner`
-#' before writing it to disk, as the object will otherwise not be saved correctly.
-#' After loading a marshaled `LearnerRegrTabPFN` into R again,
-#' you then need to call `$unmarshal()` to transform it into a useable state.
-#'
-#' @section Initial parameter values:
-#' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
-#'
+#' @inherit mlr_learners_classif.tabpfn description
+#' 
+#' @templateVar class LearnerRegrTabPFN
+#' @template sections_tabpfn
+#' 
 #' @section Custom mlr3 parameters:
-#'
+#' 
 #' - `output_type` corresponds to the same argument of the `.predict()` method of the `TabPFNRegressor` class,
 #'   but only supports the options `"mean"`, `"median"` and `"mode"`.
 #'   The point predictions are stored as `$response` of the prediction object.
@@ -39,10 +24,10 @@
 #'
 #' - `inference_config` is currently not supported.
 #'
+#' @templateVar id regr.tabpfn
 #' @template learner
 #'
-#' @references
-#' `r format_bib("hollmann2025tabpfn", "hollmann2023tabpfn")`
+#' @inherit mlr_learners_classif.tabpfn references
 #'
 #' @template seealso_learner
 #' @template example

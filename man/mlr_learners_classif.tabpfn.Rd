@@ -28,7 +28,7 @@ you then need to call \verb{$unmarshal()} to transform it into a useable state.
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{n_jobs} is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.#'
+\item \code{n_jobs} is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.
 }
 }
 
@@ -47,15 +47,66 @@ Passing \code{torch.dtype} is currently not supported.
 
 \section{Dictionary}{
 
-This [Learner][mlr3::Learner] can be instantiated via [lrn()][mlr3::lrn]:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("
-
-[mlr3::Learner]: R:mlr3::Learner
-[mlr3::lrn]: R:mlr3::lrn
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.tabpfn")
 }\if{html}{\out{</div>}}
 }
 
+\section{Meta Information}{
+
+\itemize{
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   n_estimators \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   categorical_features_indices \tab untyped \tab - \tab  \tab - \cr
+   softmax_temperature \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   balance_probabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   average_before_softmax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   model_path \tab untyped \tab "auto" \tab  \tab - \cr
+   device \tab untyped \tab "auto" \tab  \tab - \cr
+   ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   inference_precision \tab character \tab auto \tab auto, autocast \tab - \cr
+   fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
+   memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
+   random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   n_jobs \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+}
+}
+
+\examples{
+\dontshow{if (mlr3misc::require_namespaces(lrn("classif.tabpfn")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner
+learner = mlr3::lrn("classif.tabpfn")
+print(learner)
+
+# Define a Task
+task = mlr3::tsk("sonar")
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+\dontshow{\}) # examplesIf}
+}
 \references{
 Hollmann, Noah, Müller, Samuel, Purucker, Lennart, Krishnakumar, Arjun, Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
 \dQuote{Accurate predictions on small data with a tabular foundation model.}
