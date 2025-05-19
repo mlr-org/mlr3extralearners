@@ -63,7 +63,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         x = x,
         y = y,
         committees = self$param_set$values$committees,
-        weights = if ("weights" %in% task$properties) task$weights$weight else NULL,
+        weights = get_weights(task, private),
         control = control)
     },
 

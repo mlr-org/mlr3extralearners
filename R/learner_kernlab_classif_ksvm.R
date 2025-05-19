@@ -78,14 +78,9 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      kpar = intersect(
-        c("sigma", "degree", "scale", "order", "offset"),
-        names(pars))
+      pars$class.weights = get_weights(task, private)
 
-      if ("weights" %in% task$properties) {
-        pars$class.weights = task$weights$weight
-      }
-
+      kpar = intersect(c("sigma", "degree", "scale", "order", "offset"), names(pars))
       if (length(kpar) > 0) {
         pars$kpar = pars[kpar]
         pars[kpar] = NULL

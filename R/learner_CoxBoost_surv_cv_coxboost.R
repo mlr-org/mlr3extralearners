@@ -108,9 +108,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
       cv_pars = pars[names(pars) %in% cv_args]
       cox_pars = pars[names(pars) %nin% c(names(opt_pars), names(cv_pars))]
 
-      if ("weights" %in% task$properties) {
-        cox_pars$weights = as.numeric(task$weights$weight)
-      }
+      cox_pars$weights = as.numeric(get_weights(task, private))
 
       data = task$data()
       tn = task$target_names

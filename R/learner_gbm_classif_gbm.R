@@ -82,12 +82,9 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
+      pars$weights = get_weights(task, private)
       f = task$formula()
       data = task$data()
-
-      if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(weights = task$weights$weight))
-      }
 
       if (task$properties %in% "twoclass") {
         data[[task$target_names]] =

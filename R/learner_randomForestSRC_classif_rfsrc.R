@@ -173,10 +173,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
       pv$cores = NULL
-
-      if ("weights" %in% task$properties) {
-        pv$case.wt = as.numeric(task$weights$weight) # nolint
-      }
+      pv$case.wt = as.numeric(get_weights(task, private)) # nolint
 
       invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = data.table::setDF(task$data()),

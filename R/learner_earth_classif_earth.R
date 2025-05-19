@@ -87,10 +87,7 @@ LearnerClassifEarth = R6Class("LearnerClassifEarth",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(weights = task$weights$weight))
-      }
+      pars$weights = get_weights(task, private)
 
       invoke(
         earth::earth,

@@ -120,10 +120,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
       }
 
       pars = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+      pars$weights = get_weights(task, private)
 
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset

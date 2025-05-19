@@ -101,11 +101,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
       pars = self$param_set$get_values(tags = "train")
       pars_pargs = pars[names(pars) %in% formalArgs(mvtnorm::GenzBretz)]
       pars = pars[names(pars) %nin% formalArgs(mvtnorm::GenzBretz)]
-
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
-
+      pars$weights = get_weights(task, private)
       pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
 
       invoke(partykit::ctree, formula = task$formula(),

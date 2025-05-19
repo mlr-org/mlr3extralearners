@@ -96,9 +96,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
       # Outcome will now be a factor vector.
       outcome = outcome[[1]]
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+      pars$weights = get_weights(task, private)
 
       # y.train should either be a binary factor or have values {0, 1}
       invoke(dbarts::bart,

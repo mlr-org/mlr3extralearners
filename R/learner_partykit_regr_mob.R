@@ -130,9 +130,7 @@ LearnerRegrMob = R6Class("LearnerRegrMob", inherit = LearnerRegr,
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]
       control = invoke(partykit::mob_control, .args = pars_control)
-      if ("weights" %in% task$properties) { # weights are handled here
-        pars = insert_named(pars, list(weights = task$weights$weight))
-      }
+      pars$weights = get_weights(task, private)
       # append the additional parameters to be passed to the fitting function
       pars = append(pars, pars_additional)
 

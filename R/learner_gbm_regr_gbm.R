@@ -97,7 +97,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
       data = task$data()
 
       if ("weights" %in% task$properties && self$predict_type != "quantiles") {
-        pars = insert_named(pars, list(weights = task$weights$weight))
+        pars$weights = get_weights(task, private)
       }
 
       if (self$predict_type == "quantiles") {
