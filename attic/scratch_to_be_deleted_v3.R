@@ -48,14 +48,20 @@ tab_learner = fastai::tabular_learner(dl)
 
 # to avoid plot creation when internally validating do:
 invisible(tab_learner$remove_cb(tab_learner$progress))
+helper = list()
 fit_eval = function(tab_learner) {
-  self$eval_protocol = invoke(
+  helper$eval_protocol = invoke(
     fastai::fit,
     object = tab_learner,
-    .args = pv_fit
+    n_epoch = 5
   )
 }
 # to prevent python from printing evaluation protocol do:
 invisible(reticulate::py_capture_output(fit_eval(tab_learner)))
 
-pred = invoke(predict, self$model, newdata, .args = pars)
+row = [(.N-1):.N]
+test_dl = tab_learner$dls$test_dl(row)
+tab_learner$get_preds(dl = test_dl, with_decoded = FALSE)
+
+pred = predict(tab_learner, df)
+

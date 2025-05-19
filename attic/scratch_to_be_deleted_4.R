@@ -19,6 +19,14 @@ cat_cols = task$feature_types[type != "numeric", id]
 num_cols = task$feature_types[type == "numeric", id]
 
 
+
+
+
+
+
+
+
+
 set.seed(42)  # R-level seed
 
 # Python seeds (via reticulate)
