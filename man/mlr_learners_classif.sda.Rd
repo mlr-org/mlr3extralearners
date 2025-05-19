@@ -21,7 +21,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{sda}
 }
 }
@@ -33,7 +33,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lambda.var \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    lambda.freqs \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    diagonal \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

@@ -8,6 +8,12 @@
 Regularized Discriminant Analysis.
 Calls \code{\link[klaR:rda]{klaR::rda()}} from: \CRANpkg{klaR}.
 }
+\section{Feature names}{
+
+Caution! This learner does not support utf8 feature names, including German
+characters such as umlauts and sharp S.
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
