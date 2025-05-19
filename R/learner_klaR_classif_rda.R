@@ -6,6 +6,9 @@
 #' Regularized Discriminant Analysis.
 #' Calls [klaR::rda()] from: \CRANpkg{klaR}.
 #'
+#' @section Feature names:
+#' Caution! This learner does not support utf8 feature names, including German
+#' characters such as umlauts and sharp S.
 #'
 #' @templateVar id classif.rda
 #' @template learner
