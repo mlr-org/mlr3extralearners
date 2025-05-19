@@ -49,7 +49,6 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      pars$weights = get_weights(task, private)
 
       x = task$data(cols = task$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
