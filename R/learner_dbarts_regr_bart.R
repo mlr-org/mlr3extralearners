@@ -71,7 +71,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         # TODO: add "se" to the list of predict types.
         predict_types = "response",
         param_set = ps,
-        properties = c("weights"),
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.bart",
         label = "Bayesian Additive Regression Trees"
       )

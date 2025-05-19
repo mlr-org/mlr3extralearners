@@ -98,7 +98,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
           pars$family = "multinomial"
         }
       }
-      pars$weights = get_weights(task, private)
+      pars$weight = get_weights(task, private)
 
       invoke(
         abess::abess,
