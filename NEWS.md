@@ -1,5 +1,8 @@
 # dev
 
+* feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* feat: Added learner `LearnerRegrQGam` and `LearnerRegrMQGam`
+
 # mlr3extralearners 1.0.0
 
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347

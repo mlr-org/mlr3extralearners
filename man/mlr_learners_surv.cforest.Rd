@@ -48,7 +48,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    applyfun \tab untyped \tab - \tab  \tab - \cr
    cores \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   offset \tab untyped \tab - \tab  \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
    na.action \tab untyped \tab "stats::na.pass" \tab  \tab - \cr
    scores \tab untyped \tab - \tab  \tab - \cr
