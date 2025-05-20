@@ -111,7 +111,6 @@ Suggests:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
