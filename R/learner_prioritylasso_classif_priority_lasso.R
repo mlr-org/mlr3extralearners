@@ -123,10 +123,8 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
       pars$family = "binomial"
+      pars$weights = get_weights(task, private)
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
       data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
       invoke(prioritylasso::prioritylasso,

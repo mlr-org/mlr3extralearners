@@ -155,9 +155,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
         pars = pars[!is_ctrl_pars]
       }
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+      pars$weights = get_weights(task, private)
 
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset

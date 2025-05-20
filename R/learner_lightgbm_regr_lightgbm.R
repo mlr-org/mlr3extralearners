@@ -260,7 +260,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         categorical_feature = categorical_feature
       )
       if ("weights" %in% task$properties) {
-        dtrain$set_field("weight", task$weights[, "weight", with = FALSE][[1L]])
+        dtrain$set_field("weight", get_weights(task, private))
       }
 
       # early stopping
@@ -286,7 +286,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         )
 
         if ("weights" %in% internal_valid_task$properties) {
-          dvalid$set_field("weight", internal_valid_task$weights[, "weight", with = FALSE][[1L]])
+          dvalid$set_field("weight", get_weights(internal_valid_task, private))
         }
 
         valids[["test"]] = dvalid
@@ -368,7 +368,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
       )
 
       if ("weights" %in% task$properties) {
-        dtrain$set_field("weight", task$weights[get("row_id") %in% task$row_roles$use, "weight"][[1L]])
+        dtrain$set_field("weight", get_weights(task[get("row_id") %in% task$row_roles$use, ], private))
       }
 
       ii = names(pars_train) %in% formalArgs(lightgbm::lgb.train)

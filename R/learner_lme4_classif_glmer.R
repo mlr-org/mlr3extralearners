@@ -113,9 +113,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       formula = pars_train$formula
       pars_train[["formula"]] = NULL
 
-      if ("weights" %in% task$properties) {
-        pars_train$weights = task$weights$weight
-      }
+      pars_train$weights = get_weights(task, private)
 
       if ("offset" %in% task$properties) {
         pars_train$offset = task$offset$offset
