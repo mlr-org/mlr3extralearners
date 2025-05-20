@@ -185,18 +185,18 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 2.938</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 1.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: AUC-ROC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei    cl_thickness       cell_size      cell_shape     bl_cromatin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5882353       0.4945355       0.4779706       0.4743590       0.4600000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   marg_adhesion normal_nucleoli         mitoses    epith_c_size </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.3541667       0.3385417       0.2408759       0.2290363 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei    cl_thickness       cell_size      cell_shape normal_nucleoli </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5869565       0.5727412       0.5560606       0.5317578       0.4709576 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     bl_cromatin    epith_c_size         mitoses   marg_adhesion </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.4217054       0.3671875       0.3355705       0.3353028 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -204,7 +204,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.01333333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03555556 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
