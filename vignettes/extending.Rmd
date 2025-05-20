@@ -330,7 +330,7 @@ lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.
 We now perform the autotest.
 By setting `expect_learner(..., check_man = FALSE)`, we disable a test that verifies that the correct manual page exists, which is only relevant when adding the learner to `mlr3extralearners`.
 
-```{r}
+```{r, error = TRUE}
 library(testthat)
 test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
