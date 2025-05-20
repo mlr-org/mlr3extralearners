@@ -2,6 +2,7 @@
 
 * feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
 * feat: Added learner `LearnerRegrQGam` and `LearnerRegrMQGam`
+* feat: Added `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 
 # mlr3extralearners 1.0.0
 

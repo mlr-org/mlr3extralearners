@@ -30,6 +30,7 @@ Other contributors:
   \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID}) [contributor]
   \item Lukas Burk \email{burk@leibniz-bips.de} (\href{https://orcid.org/0000-0001-7528-3795}{ORCID}) [contributor]
   \item Lona Koers \email{lona.koers@gmail.com} [contributor]
+  \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
 }
 
 }
