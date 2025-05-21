@@ -712,6 +712,17 @@ bibentries = c( # nolint start
     title = "Large margin classification using the perceptron algorithm",
     year = "1998"
   ),
+  Dudoit2002 = bibentry("article",
+    title = "Comparison of Discrimination Methods for the Classification of Tumors Using Gene Expression Data",
+    author = "Sandrine Dudoit and Jane Fridlyand and Terence P Speed",
+    year = "2002",
+    journal = "Journal of the American Statistical Association",
+    volume = "97",
+    number = "457",
+    pages = "77--87",
+    publisher = "ASA Websites",
+    doi = "10.1198/016214502753479248"
+  ),
   faisolo2017qgam = bibentry("article",
     title = "Fast Calibrated Additive Quantile Regression",
     author = "Fasiolo, Matteo and Wood, Simon N. and Zaffran, Margaux and Nedellec, Raphael and Goude, Yannig",
