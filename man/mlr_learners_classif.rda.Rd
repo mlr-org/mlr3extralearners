@@ -8,12 +8,6 @@
 Regularized Discriminant Analysis.
 Calls \code{\link[klaR:rda]{klaR::rda()}} from: \CRANpkg{klaR}.
 }
-\section{Feature names}{
-
-Caution! This learner does not support utf8 feature names, including German
-characters such as umlauts and sharp S.
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -83,7 +77,7 @@ predictions$score()
 Friedman JH (1989).
 \dQuote{Regularized Discriminant Analysis.}
 \emph{Journal of the American Statistical Association}, \bold{84}(405), 165--175.
-ISSN 01621459, 1537274X, \url{http://www.jstor.org/stable/2289860}}.
+ISSN 01621459, 1537274X, \url{http://www.jstor.org/stable/2289860}.
 }
 \seealso{
 \itemize{
