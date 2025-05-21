@@ -6,10 +6,6 @@
 #' Regularized Discriminant Analysis.
 #' Calls [klaR::rda()] from: \CRANpkg{klaR}.
 #'
-#' @section Feature names:
-#' Caution! This learner does not support utf8 feature names, including German
-#' characters such as umlauts and sharp S.
-#'
 #' @templateVar id classif.rda
 #' @template learner
 #'
@@ -34,10 +30,14 @@ LearnerClassifRda = R6Class("LearnerClassifRda",
         output         = p_lgl(default = FALSE, tags = "train"),
         schedule       = p_int(default = 2L, depends = quote(simAnn == TRUE), tags = "train"),
         T.start        = p_dbl(default = 0.1, lower = 0, depends = quote(simAnn == TRUE), tags = "train"),
-        halflife       = p_dbl(default = 50, lower = 0, depends = quote(simAnn == TRUE && schedule == 1), tags = "train"),
-        zero.temp      = p_dbl(default = 0.01, lower = 0, depends = quote(simAnn == TRUE && schedule == 1), tags = "train"),
-        alpha          = p_dbl(default = 2, lower = 1, depends = quote(simAnn == TRUE && schedule == 2), tags = "train"),
-        K              = p_int(default = 100L, lower = 1L, depends = quote(simAnn == TRUE && schedule == 2), tags = "train"),
+        halflife       = p_dbl(default = 50, lower = 0, depends = quote(simAnn == TRUE && schedule == 1),
+                               tags = "train"),
+        zero.temp      = p_dbl(default = 0.01, lower = 0, depends = quote(simAnn == TRUE && schedule == 1),
+                               tags = "train"),
+        alpha          = p_dbl(default = 2, lower = 1, depends = quote(simAnn == TRUE && schedule == 2),
+                               tags = "train"),
+        K              = p_int(default = 100L, lower = 1L, depends = quote(simAnn == TRUE && schedule == 2),
+                               tags = "train"),
         trafo          = p_lgl(default = TRUE, tags = "train"),
         simAnn         = p_lgl(default = FALSE, tags = "train"),
         estimate.error = p_lgl(default = TRUE, tags = "train"),

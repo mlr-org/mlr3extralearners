@@ -714,7 +714,7 @@ bibentries = c( # nolint start
   ),
   friedman1989rda = bibentry("article",
    ISSN = "01621459, 1537274X",
-   URL = "http://www.jstor.org/stable/2289860}",
+   URL = "http://www.jstor.org/stable/2289860",
    author = "Jerome H. Friedman",
    journal = "Journal of the American Statistical Association",
    number = "405",
