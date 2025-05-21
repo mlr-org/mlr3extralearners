@@ -733,7 +733,7 @@ bibentries = c( # nolint start
     number="1",
     journal="The Annals of Applied Statistics",
     publisher="Institute of Mathematical Statistics",
-    author="Ahdesmäki, Miika and Strimmer, Korbinian",
+    author="Ahdesmaeki, Miika and Strimmer, Korbinian",
     year="2010",
     month="03"
   ),
