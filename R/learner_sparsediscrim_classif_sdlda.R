@@ -23,7 +23,6 @@ LearnerClassifSdlda = R6Class("LearnerClassifSdlda",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-    # FIXME: MANUALLY ADD PARAMETERS BELOW AND THEN DELETE THIS LINE
       param_set = ps(
         num_alphas = p_int(default = 101, tags = "train"),
         prior      = p_uty(default = NULL, tags = "train")
