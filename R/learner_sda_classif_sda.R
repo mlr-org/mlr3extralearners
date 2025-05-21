@@ -48,7 +48,7 @@ LearnerClassifSda = R6Class("LearnerClassifSda",
       target = task$truth()
       cols = task$feature_names
       data = task$data()
-      mat = as.matrix(data[, ..cols])
+      mat = as.matrix(data[, cols, with = FALSE])
 
       invoke(
         sda::sda,
