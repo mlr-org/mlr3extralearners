@@ -1,5 +1,5 @@
 ---
-title: Common Issues
+title: Common Issues when Creating a new Learner
 output:
   rmarkdown::html_vignette:
     toc: true
