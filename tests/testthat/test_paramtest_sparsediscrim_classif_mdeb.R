@@ -1,9 +1,7 @@
-test_that("classif.dlda train", {
-  learner = lrn("classif.dlda")
-  fun = sparsediscrim:::lda_diag.formula
+test_that("classif.mdeb train", {
+  learner = lrn("classif.mdeb")
+  fun = sparsediscrim:::lda_emp_bayes.formula
   exclude = c(
-    "x",
-    "y",
     "object", # handled internally
     "data", # handled internally
     "formula" # handled internally
@@ -15,9 +13,9 @@ test_that("classif.dlda train", {
   expect_paramtest(paramtest)
 })
 
-test_that("classif.dlda predict", {
-  learner = lrn("classif.dlda")
-  fun = sparsediscrim:::predict.lda_diag # nolint
+test_that("classif.mdeb predict", {
+  learner = lrn("classif.mdeb")
+  fun = sparsediscrim:::predict.lda_emp_bayes # nolint
   exclude = c(
     "object", # handled internally
     "data", # handled internally
