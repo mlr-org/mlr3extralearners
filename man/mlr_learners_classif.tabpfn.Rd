@@ -78,7 +78,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   n_jobs \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_jobs \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 

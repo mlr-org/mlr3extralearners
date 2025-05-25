@@ -68,11 +68,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
           }
         }),
         random_state = p_int(default = 0, tags = "train"),
-        n_jobs = p_int(lower = 1, default = 1, special_vals = list(-1), tags = "train")
+        n_jobs = p_int(lower = 1, init = 1, special_vals = list(-1), tags = "train")
       )
-
-      # set n_jobs to 1 as mlr3 has its own parallelization
-      ps$values$n_jobs = 1
 
       super$initialize(
         id = "classif.tabpfn",
