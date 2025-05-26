@@ -134,7 +134,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
-        weights = task$weights,
+        weights = task$weights_learner,
         control = ctrl,
         no_fit = FALSE,
         .args = pv
