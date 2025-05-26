@@ -92,7 +92,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       y_train = task$data(cols = task$target_names)
       y_train = as.integer(y_train == task$positive)
 
-      pars$weights = get_weights(train, private)
+      pars$weights = get_weights(task, private)
 
       invoke(
         dbarts::bart,

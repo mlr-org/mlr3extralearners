@@ -95,7 +95,7 @@ LearnerSurvGBM = R6Class("LearnerSurvGBM",
 
       # collect arguments for predict
       pars = self$param_set$get_values(tags = "train")
-      pars = c(pars, list(weights = task$weights$weight))
+      pars = c(pars, list(weights = get_weights(task, private)))
 
       invoke(
         gbm::gbm,
