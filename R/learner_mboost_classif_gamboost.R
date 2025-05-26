@@ -85,7 +85,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
       f = task$formula()
       data = task$data()
 
-      pars_gamboost$weights = get_weights(task, private)
+      pars_gamboost$weights = private$.get_weights(task)
 
       if ("offset" %in% task$properties) {
         pars_gamboost = insert_named(

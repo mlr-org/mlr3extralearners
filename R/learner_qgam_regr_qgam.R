@@ -85,7 +85,7 @@ LearnerRegrQGam = R6Class("LearnerRegrQGam",
 
       arg_gam_pars = pars$argGam
       pars = pars[names(pars) %nin% c("argGam", "link")]
-      arg_gam_pars$weights = get_weights(task, private)
+      arg_gam_pars$weights = private$.get_weights(task)
 
       if (is.null(pars$form)) {
         form = stats::reformulate(task$feature_names, response = task$target_names)

@@ -119,7 +119,7 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
       target = task$truth()
       pv = self$param_set$get_values(tags = "train")
       pv$family = "cox"
-      pv$weights = get_weights(task, private)
+      pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
 
       list(

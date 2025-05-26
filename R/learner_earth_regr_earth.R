@@ -86,7 +86,7 @@ LearnerRegrEarth = R6Class("LearnerRegrEarth",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
 
       if (self$predict_type == "se" &&
         (is.null(pars$varmod.method) || pars$varmod.method == "none")) {

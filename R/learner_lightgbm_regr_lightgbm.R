@@ -258,7 +258,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         label = y_train,
         free_raw_data = FALSE,
         categorical_feature = categorical_feature,
-        weight = get_weights(task, private)
+        weight = private$.get_weights(task)
       )
 
       # early stopping
@@ -278,7 +278,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
           dataset = dtrain,
           data = x_valid,
           label = y_valid,
-          weight = get_weights(internal_valid_task, private),
+          weight = private$.get_weights(internal_valid_task),
           params = list(categorical_feature = categorical_feature)
         )
 

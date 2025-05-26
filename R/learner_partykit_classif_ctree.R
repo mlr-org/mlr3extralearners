@@ -94,7 +94,7 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
       pars = pars[names(pars) %nin% formalArgs(mvtnorm::GenzBretz)]
       pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
 
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
 
       invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)

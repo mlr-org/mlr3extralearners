@@ -165,7 +165,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
       pv$cores = NULL
-      pv$case.wt = as.numeric(get_weights(task, private)) # nolint
+      pv$case.wt = as.numeric(private$.get_weights(task)) # nolint
 
       invoke(randomForestSRC::imbalanced.rfsrc,
              formula = task$formula(), data = data.table::setDF(task$data()),

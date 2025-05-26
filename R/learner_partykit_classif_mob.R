@@ -138,7 +138,7 @@ LearnerClassifMob = R6Class("LearnerClassifMob", inherit = LearnerClassif,
       pars = pars[names(pars) %nin%
         c("rhs", names(pars_control), "additional")]
       control = invoke(partykit::mob_control, .args = pars_control)
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
 
       # append the additional parameters to be passed to the fitting function
       pars = append(pars, pars_additional)

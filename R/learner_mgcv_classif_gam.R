@@ -108,7 +108,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
 
       data = task$data(cols = c(task$feature_names, task$target_names))
 
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset
       }

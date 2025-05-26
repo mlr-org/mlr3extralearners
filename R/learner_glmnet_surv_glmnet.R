@@ -137,7 +137,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       target = task$truth()
       pv = self$param_set$get_values(tags = "train")
       pv$family = "cox"
-      pv$weights = get_weights(task, private)
+      pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
 
       list(
@@ -158,7 +158,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
-      fit = invoke(survival::survfit,formula = self$model$model,
+      fit = invoke(survival::survfit, formula = self$model$model,
                    x = self$model$x, y = self$model$y,
                    weights = self$model$weights, offset = self$model$offset,
                    newx = newdata, se.fit = FALSE, .args = pv)

@@ -135,7 +135,7 @@ LearnerRegrPriorityLasso = R6Class("LearnerRegrPriorityLasso",
       pars = self$param_set$get_values(tags = "train")
       pars$family = "gaussian"
       pars$type.measure = "mse"
-      pars$weights = as.numeric(get_weights(task, private))
+      pars$weights = as.numeric(private$.get_weights(task))
 
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()

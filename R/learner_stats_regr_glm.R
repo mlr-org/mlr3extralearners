@@ -86,7 +86,7 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
 
       family_args = pars[names(pars) == "link"]
       pars$link = NULL

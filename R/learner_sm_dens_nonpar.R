@@ -50,7 +50,7 @@ LearnerDensNonparametric = R6Class("LearnerDensNonparametric",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$weights = get_weights(task, private)
+      pars$weights = private$.get_weights(task)
 
       # TODO: Why is it done that way??
       pdf = function(x) {} # nolint

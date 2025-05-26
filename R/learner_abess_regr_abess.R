@@ -85,7 +85,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      pars$weight = get_weights(task, private)
+      pars$weight = private$.get_weights(task)
 
       invoke(
         abess::abess,

@@ -101,7 +101,7 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         }
         pars$distribution = list(name = "quantile", alpha = self$quantiles)
       } else {
-        pars$weights = get_weights(task, private)
+        pars$weights = private$.get_weights(task)
       }
 
       invoke(gbm::gbm, formula = f, data = data, .args = pars)

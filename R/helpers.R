@@ -131,11 +131,3 @@ gridify_times = function(times, ntime) {
 
   times
 }
-
-get_weights = function(task, private) {
-  if (packageVersion("mlr3") > "0.23.0") {
-    private$.get_weights(task)
-  } else {
-    task$weights$weight
-  }
-}

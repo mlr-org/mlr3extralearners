@@ -64,7 +64,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         x = x,
         y = y,
         committees = self$param_set$values$committees,
-        weights = get_weights(task, private),
+        weights = private$.get_weights(task),
         control = control)
     },
 

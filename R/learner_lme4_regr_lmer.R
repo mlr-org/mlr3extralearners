@@ -162,7 +162,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
       # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
       pars_train[["formula"]] = NULL
-      pars_train$weights = get_weights(task, private)
+      pars_train$weights = private$.get_weights(task)
 
       if ("offset" %in% task$properties) {
         pars_train$offset = task$offset$offset

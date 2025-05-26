@@ -85,7 +85,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars_ctrl = pars_train[names(pars_train) %in% args_ctrl]
       pars_train = pars_train[names(pars_train) %nin% args_ctrl]
       pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
-      pars_train$weights = get_weights(task, private)
+      pars_train$weights = private$.get_weights(task)
 
       invoke(flexsurv::flexsurvspline,
         formula = task$formula(task$feature_names),

@@ -77,7 +77,7 @@ LearnerRegrKSVM = R6Class("LearnerRegrKSVM",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$class.weights = get_weights(task, private)
+      pars$class.weights = private$.get_weights(task)
 
       kpar = intersect(c("sigma", "degree", "scale", "order", "offset"), names(pars))
       if (length(kpar) > 0) {
