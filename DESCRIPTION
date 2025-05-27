@@ -22,7 +22,8 @@ Authors@R: c(
            comment = c(ORCID = "0000-0002-3609-8674")),
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
-    person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb")
+    person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
+    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -110,7 +111,6 @@ Suggests:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
