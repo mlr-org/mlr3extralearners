@@ -2,7 +2,7 @@
 #' @import paradox
 #' @import mlr3misc
 #' @importFrom R6 R6Class
-#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns
+#' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns marshal_model unmarshal_model
 #' @importFrom stats predict na.omit setNames formula as.formula
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
