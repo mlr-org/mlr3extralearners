@@ -297,6 +297,7 @@ marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
 unmarshal_model.xgboost_cox_model_marshaled = function(model, ...) {
   # xgb.DMatrix cannot be read from a raw vector, but only from a file,
   # so we write the stored raw vector to a temporary file and then read it back.
+  on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
   writeBin(model$train_data, tmp)
   train_data = xgboost::xgb.DMatrix(tmp)
