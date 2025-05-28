@@ -191,33 +191,26 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt;= 5 : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 107.6 : LM1 (3/22.342%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  107.6 : LM2 (4/30.524%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;  5 : LM3 (14/25.583%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt;= 2.333 : LM1 (6/29.66%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;  2.333 : LM2 (15/22.846%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0544 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0732 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.9698 * qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 56.9596</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0237 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 2.2714 * drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.6445 * qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.9346 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 16.7433</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0522 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0722 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.9698 * qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 56.1167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	0.0065 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 1.59 * drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.866 * qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 4.1329 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 9.8796</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0104 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0811 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.6409 * qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 62.5234</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -226,7 +219,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.01115 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.435565 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
