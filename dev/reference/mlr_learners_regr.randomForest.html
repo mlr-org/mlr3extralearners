@@ -205,13 +205,13 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 7.846905</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 76.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 6.113077</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 79.51</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          wt        disp          hp         cyl          vs        drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.45058190  9.20626903  6.84596518  6.54659785  1.09436537  0.71072862 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        carb          am        qsec        gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.55617007  0.37657042  0.35334921  0.06376176 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       disp         hp         wt        cyl       drat         vs       qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.58916358 6.98165408 6.36541016 4.46442861 2.52078219 1.28813271 1.07274395 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       gear       carb         am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.87807856 0.75140650 0.02950325 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -219,7 +219,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.09362 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.540356 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -231,7 +231,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.2.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
