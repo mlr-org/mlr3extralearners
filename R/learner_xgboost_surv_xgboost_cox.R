@@ -301,7 +301,6 @@ unmarshal_model.xgboost_cox_model_marshaled = function(model, ...) {
   tmp = tempfile(fileext = ".buffer")
   writeBin(model$train_data, tmp)
   train_data = xgboost::xgb.DMatrix(tmp)
-  unlink(tmp)
 
   structure(list(
     model = model$model,
