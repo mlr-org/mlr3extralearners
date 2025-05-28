@@ -278,6 +278,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
 marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
   # xgb.DMatrix cannot be saved to a raw vector, but only to a file,
   # so we save it to a temporary file and then read it back as a raw vector.
+  on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
   xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
   train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
