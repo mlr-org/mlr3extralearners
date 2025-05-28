@@ -282,7 +282,6 @@ marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
   tmp = tempfile(fileext = ".buffer")
   xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
   train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
-  # clean up temp file
 
   structure(list(
     # The booster object (model$model) itself can be saved and loaded directly.
