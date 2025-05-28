@@ -243,7 +243,7 @@ test_that("marshaling works for surv.xgboost.cox", {
   expect_invisible(learner$unmarshal())
   # can predict after unmarshaling
   expect_prediction(learner$predict(task))
-  # model is reset (different to `expect_marshalable_learner`)
+  # model is reset (this is different from `expect_marshalable_learner`)
   expect_equal(learner$model$model, model$model)
   expect_true(all.equal(learner$model$train_data, model$train_data))
   # marshaled is set accordingly

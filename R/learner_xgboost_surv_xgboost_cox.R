@@ -18,7 +18,7 @@
 #' By default, the Breslow estimator is used via [mlr3proba::breslow()].
 #'
 #' @template note_xgboost
-#' 
+#'
 #' @section Saving this learner:
 #' In order to save a `LearnerSurvXgboostCox` for later usage,
 #' it is necessary to call the `$marshal()` method on the `Learner`
@@ -278,7 +278,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
 marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
   # xgb.DMatrix cannot be saved to a raw vector, but only to a file,
   # so we save it to a temporary file and then read it back as a raw vector.
-  tmp <- tempfile(fileext = ".buffer")
+  tmp = tempfile(fileext = ".buffer")
   xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
   train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
   # clean up temp file
