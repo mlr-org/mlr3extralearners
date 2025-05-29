@@ -91,10 +91,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        pars$weights = as.numeric(task$weights$weight)
-      }
+      pars$weights = private$.get_weights(task)
 
       data = task$data()
       tn = task$target_names

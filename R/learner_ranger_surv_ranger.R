@@ -136,7 +136,7 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
         dependent.variable.name = targets[1L],
         status.variable.name = targets[2L],
         data = task$data(),
-        case.weights = task$weights$weight,
+        case.weights = private$.get_weights(task),
         .args = pv
       )
     },

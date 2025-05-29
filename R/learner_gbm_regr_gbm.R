@@ -91,22 +91,17 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
   ),
   private = list(
     .train = function(task) {
-
       pars = self$param_set$get_values(tags = "train")
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties && self$predict_type != "quantiles") {
-        pars = insert_named(pars, list(weights = task$weights$weight))
-      }
-
       if (self$predict_type == "quantiles") {
-
         if (length(self$quantiles) > 1) {
           stop("Only one quantile is supported")
         }
-
         pars$distribution = list(name = "quantile", alpha = self$quantiles)
+      } else {
+        pars$weights = private$.get_weights(task)
       }
 
       invoke(gbm::gbm, formula = f, data = data, .args = pars)

@@ -50,10 +50,6 @@ LearnerRegrMars = R6Class("LearnerRegrMars",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
-      if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(w = task$weights$weight))
-      }
-
       x = task$data(cols = task$feature_names)
       y = task$data(cols = task$target_names)[[1L]]
 

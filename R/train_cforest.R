@@ -23,7 +23,7 @@ train_cforest = function(self, task) {
   invoke(partykit::cforest,
     formula = task$formula(),
     data = task$data(),
-    weights = task$weights$weight, # weights are handled here
+    weights = self$.__enclos_env__$private$.get_weights(task), # weights are handled here
     # FIXME: strata handling
     control = control,
     perturb = perturb,

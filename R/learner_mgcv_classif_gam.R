@@ -107,9 +107,8 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
       data = task$data(cols = c(task$feature_names, task$target_names))
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+
+      pars$weights = private$.get_weights(task)
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset
       }

@@ -137,9 +137,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
       target = task$truth()
       pv = self$param_set$get_values(tags = "train")
       pv$family = "cox"
-      if ("weights" %in% task$properties) {
-        pv$weights = task$weights$weight
-      }
+      pv$weights = private$.get_weights(task)
       pv = glmnet_set_offset(task, "train", pv)
 
       list(
