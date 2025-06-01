@@ -44,4 +44,3 @@ test_that("regr.evtree control", {
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
-# prediction handled by partykit
