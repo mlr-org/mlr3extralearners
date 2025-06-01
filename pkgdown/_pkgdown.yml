@@ -21,7 +21,7 @@ authors:
 navbar:
   structure:
     left:  [reference, news, book, status, extending, common_issues]
-    right: [search, github, mattermost, stackoverflow, rss]
+    right: [search, github, mattermost, stackoverflow, rss, lightswitch]
   components:
     home: ~
     articles: ~
