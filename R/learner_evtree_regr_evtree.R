@@ -1,9 +1,9 @@
-#' @title Classification Decision Tree Learner
+#' @title Regression Decision Tree Learner
 #' @author annanzrv
-#' @name mlr_learners_classif.evtree
+#' @name mlr_learners_regr.evtree
 #'
 #' @description
-#' Evolutionary learning of globally optimal classification trees.
+#' Evolutionary learning of globally optimal regression trees.
 #' Calls [evtree::evtree()] from\CRANpkg{evtree}.
 #'
 #' @section Initial parameter values:
@@ -13,15 +13,9 @@
 #' @templateVar id classif.evtree
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("evtree"), quietly = TRUE)
-#' task = tsk("iris")
-#' learner = lrn("classif.evtree", ntrees = 50)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
 #' @export
-LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
-  inherit = LearnerClassif,
+LearnerRegrEvtree = R6Class("LearnerRegrEvtree",
+  inherit = LearnerRegr,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -42,14 +36,14 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
       )
 
       super$initialize(
-        id = "classif.evtree",
+        id = "regr.evtree",
         packages = "evtree",
         # feature type "ordered" supported in mlr2 but throws evtree errors in autotest?
         feature_types = c("integer", "numeric", "factor"),
-        predict_types = c("response", "prob"),
+        predict_types = c("response"),
         param_set = param_set,
-        properties = c("multiclass", "twoclass", "weights"),
-        man = "mlr3extralearners::mlr_learners_classif.evtree",
+        properties = c("weights"),
+        man = "mlr3extralearners::mlr_learners_regr.evtree",
         label = "Evolutionary learning of globally optimal trees"
       )
     }
@@ -93,17 +87,11 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
       # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
-      # Calculate predictions for the selected predict type.
-      type = self$predict_type
+      pred = invoke(predict, self$model, newdata = newdata, .args = pars)
 
-      pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
-
-      if (self$predict_type == "response") {
-        list(response = unname(pred))
-      }
-      list(prob = pred)
+      list(response = unname(pred))
     }
   )
 )
 
-.extralrns_dict$add("classif.evtree", LearnerClassifEvtree)
+.extralrns_dict$add("regr.evtree", LearnerRegrEvtree)
