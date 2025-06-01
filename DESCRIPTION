@@ -52,6 +52,7 @@ Suggests:
     dbarts,
     distr6,
     earth,
+    evtree,
     flexsurv (>= 2.3),
     FNN,
     formattable,
