@@ -24,7 +24,7 @@ test_that("classif.ada predict", {
     "object", # handled internally
     "data", # handled internally
     "newdata", # handled internally
-    "type", # handled internally
+    "type" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

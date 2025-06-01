@@ -23,26 +23,29 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        loss = p_fct(default = "exponential", levels = c("exponential", "logistic"), tags = "train"),
-        type = p_fct(default = "discrete", levels = c("discrete", "real", "gentle"), tags = "train"),
-        iter = p_int(default = 50L, lower = 1L, tags = "train"),
-        nu = p_dbl(default = 0.1, lower = 0, tags = "train"),
-        bag.frac = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
-        model.coef = p_lgl(default = TRUE, tags = "train"),
-        bag.shift = p_lgl(default = FALSE, tags = "train"),
-        max.iter = p_int(default = 20L, lower = 1L, tags = "train"),
-        delta = p_dbl(default = 1e-10, lower = 0, tags = "train"),
-        verbose = p_lgl(default = FALSE, tags = "train"),
-        minsplit = p_int(default = 20L, lower = 1L, tags = "train"),
-        minbucket = p_int(lower = 1L, tags = "train"),
-        cp = p_dbl(default = 0.01, lower = 0, upper = 1, tags = "train"),
-        maxcompete = p_int(default = 4L, lower = 0L, tags = "train"),
-        maxsurrogate = p_int(default = 5L, lower = 0L, tags = "train"),
-        usesurrogate = p_int(default = 2L, lower = 0L, upper = 2L, tags = "train"),
+        bag.frac       = p_dbl(default = 0.5, lower = 0, upper = 1, tags = "train"),
+        bag.shift      = p_lgl(default = FALSE, tags = "train"),
+        cp             = p_dbl(default = 0.01, lower = 0, upper = 1, tags = "train"),
+        delta          = p_dbl(default = 1e-10, lower = 0, tags = "train"),
+        iter           = p_int(default = 50L, lower = 1L, tags = "train"),
+        loss           = p_fct(default = "exponential", levels = c("exponential", "logistic"),
+                               tags = "train"),
+        max.iter       = p_int(default = 20L, lower = 1L, tags = "train"),
+        maxcompete     = p_int(default = 4L, lower = 0L, tags = "train"),
+        maxdepth       = p_int(default = 30L, lower = 1L, upper = 30L, tags = "train"),
+        maxsurrogate   = p_int(default = 5L, lower = 0L, tags = "train"),
+        minbucket      = p_int(lower = 1L, tags = "train"),
+        minsplit       = p_int(default = 20L, lower = 1L, tags = "train"),
+        model.coef     = p_lgl(default = TRUE, tags = "train"),
+        n.iter         = p_int(default = 50L, lower = 1L, tags = "predict"),
+        nu             = p_dbl(default = 0.1, lower = 0, tags = "train"),
         surrogatestyle = p_int(default = 0L, lower = 0L, upper = 1L, tags = "train"),
-        maxdepth = p_int(default = 30L, lower = 1L, upper = 30L, tags = "train"),
-        xval = p_int(default = 0L, lower = 0L, tags = "train"),
-        n.iter = p_int(default = 50L, lower = 1L, tags = "predict")
+        type           = p_fct(default = "discrete", levels = c("discrete", "real", "gentle"),
+                               tags = "train"),
+        usesurrogate   = p_int(default = 2L, lower = 0L, upper = 2L, tags = "train"),
+        verbose        = p_lgl(default = FALSE, tags = "train"),
+        xval           = p_int(default = 0L, lower = 0L, tags = "train")
+
       )
 
       param_set$values = list(xval = 0L)
