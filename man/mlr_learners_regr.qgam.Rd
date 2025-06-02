@@ -3,7 +3,7 @@
 \name{mlr_learners_regr.qgam}
 \alias{mlr_learners_regr.qgam}
 \alias{LearnerRegrQGam}
-\title{Regression Quantile Generalized Additive Model Learner}
+\title{Generalized Additive Quantile Regression Model}
 \description{
 Quantile Regression with generalized additive models.
 Calls \code{\link[qgam:qgam]{qgam::qgam()}} from package \CRANpkg{qgam}.
@@ -50,6 +50,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    paropts \tab untyped \tab list() \tab  \tab - \cr
    link \tab untyped \tab "identity" \tab  \tab - \cr
    argGam \tab untyped \tab - \tab  \tab - \cr
+   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
@@ -58,6 +59,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (requireNamespace("qgam", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
+t = mlr3::tsk("mtcars")
+l = mlr3::lrn("regr.qgam")
+t$select(c("cyl", "am", "disp", "hp"))
+l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
+l$quantiles = 0.25
+l$train(t)
+l$model
+l$predict(t)
 \dontshow{\}) # examplesIf}
 }
 \references{

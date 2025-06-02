@@ -64,7 +64,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         param_set$set_values(n_epoch = 5)
       }
       if (is.null(param_set$values$eval_metric)) {
-        param_set$set_values(eval_metric = msr("classif.logloss"))
+        param_set$set_values(eval_metric = fastai::accuracy())
       }
       self$eval_protocol = NULL
 
@@ -113,6 +113,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .train = function(task) {
       formula = task$formula()
       data = task$data()
+      print(head(data, 5))
+      print(tail(data, 5))
       cat_cols = task$feature_types[type != "numeric"]$id
       if ((length(cat_cols) > 0) && (is.null(self$param_set$get_values(tags = "train")$procs))) {
         print("setting categorical vars")
@@ -201,8 +203,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       if (!is.null(weights)) {
         dl$train$wgts = weights / sum(weights)
       }
+<<<<<<< HEAD
 
       fastai::tabular_learner(dl)
+=======
+>>>>>>> cc3bebe7c3208d7ab8a68cc612dabc3ff64fdf07
       tab_learner = fastai::tabular_learner(dl, layers = pv_layers, config = config,
                                             metrics = metrics)
       # FIXME: Remove debug print
@@ -244,6 +249,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       print("Prediction was successfully executed.")
       print(pred)
       class_labels = levels(task$truth())
+      print(task$truth())
+      print(class_labels)
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class+1]

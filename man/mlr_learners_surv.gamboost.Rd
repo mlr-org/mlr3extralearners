@@ -32,7 +32,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    family \tab character \tab coxph \tab coxph, weibull, loglog, lognormal, gehan, cindex, custom \tab - \cr
    custom.family \tab untyped \tab - \tab  \tab - \cr
    nuirange \tab untyped \tab c(0, 100) \tab  \tab - \cr
-   offset \tab numeric \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    mstop \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -65,6 +64,13 @@ This prediction type is present only when the \code{family} distribution paramet
 is equal to \code{"coxph"} (default).
 By default the Breslow estimator is used for computing the baseline hazard.
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} contains a column with the \code{offset} role, it is automatically
+incorporated via the \code{offset} argument in \code{mboost}'s training function.
+No offset is applied during prediction for this learner.
 }
 
 \examples{

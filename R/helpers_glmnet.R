@@ -55,6 +55,23 @@ glmnet_selected_features = function(self, lambda = NULL) {
   glmnet_feature_names(model)[nonzero]
 }
 
+glmnet_set_offset = function(task, phase = "train", pv) {
+  assert_choice(phase, c("train", "predict"))
+
+  if ("offset" %nin% task$properties) return(pv)
+
+  use_pred_offset = isTRUE(pv$use_pred_offset)
+  is_train = phase == "train"
+
+  # only right-censored survival tasks supported
+  if (task$task_type == "surv") {
+    pv[[if (is_train) "offset" else "newoffset"]] =
+      if (is_train || use_pred_offset) task$offset$offset else rep(0, task$nrow)
+  }
+
+  pv
+}
+
 glmnet_invoke = function(data, target, pv, cv = FALSE) {
   saved_ctrl = glmnet::glmnet.control()
   on.exit(invoke(glmnet::glmnet.control, .args = saved_ctrl))
