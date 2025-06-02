@@ -131,7 +131,8 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = "none", tags = "train"),
-        case.depth = p_lgl(default = FALSE, tags = c("train", "predict"))
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
+        marginal.xvar = p_uty(default = NULL, tags = "predict")
       )
 
       ps$values$ntime = 0
