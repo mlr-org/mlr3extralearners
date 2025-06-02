@@ -116,7 +116,8 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train"), # nolint
-        case.depth = p_lgl(default = FALSE, tags = "predict")
+        case.depth = p_lgl(default = FALSE, tags = "predict"),
+        marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
       super$initialize(
