@@ -1,4 +1,8 @@
 library(fastai)
+library(data.table)
+library(mlr3misc)
+library(mlr3)
+devtools::load_all(".")
 
 # Create the data.table
 full_data <- data.table(

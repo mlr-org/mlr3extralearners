@@ -196,9 +196,12 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         fastai::tabular_config,
         .args = pv_config
       )
-      if ("weights" %in% task$properties) {
-        dl$train$wgts <- task$weights$weight / sum(task$weights$weight)
+
+      weights = private$.get_weights(task)
+      if (!is.null(weights)) {
+        dl$train$wgts = weights / sum(weights)
       }
+
       fastai::tabular_learner(dl)
       tab_learner = fastai::tabular_learner(dl, layers = pv_layers, config = config,
                                             metrics = metrics)

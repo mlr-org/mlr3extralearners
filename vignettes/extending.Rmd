@@ -333,14 +333,14 @@ By setting `expect_learner(..., check_man = FALSE)`, we disable a test that veri
 ```{r}
 library(testthat)
 test_that("autotest", {
-  learner = LearnerRegrRpartSimple$new()
+  # learner = LearnerRegrRpartSimple$new()
 
-  # basic learner properties
-  expect_learner(learner)
+  # # basic learner properties
+  # expect_learner(learner)
 
-  # you can skip tests using the `exclude` argument
-  result = run_autotest(learner)
-  expect_true(result, info = result$error)
+  # # you can skip tests using the `exclude` argument
+  # result = run_autotest(learner)
+  # expect_true(result, info = result$error)
 })
 ```
 

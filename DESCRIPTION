@@ -29,7 +29,7 @@ Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
     R (>= 3.1.0),
-    mlr3 (>= 0.20.2)
+    mlr3 (>= 0.23.0.9000)
 Imports:
     checkmate,
     data.table,
@@ -110,6 +110,7 @@ Suggests:
     testthat,
     xgboost (>= 1.7.8.1)
 Remotes:
+    mlr-org/mlr3,
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
