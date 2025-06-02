@@ -143,7 +143,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
       pars = self$param_set$get_values(tags = "train")
       pars$family = "cox"
       pars$type.measure = "deviance"
-      pars$weights = as.numeric(private$.get_weights(task))
+      pars$weights = private$.get_weights(task)
 
       data = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
