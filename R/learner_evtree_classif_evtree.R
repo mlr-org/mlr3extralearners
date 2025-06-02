@@ -100,8 +100,9 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
 
       if (self$predict_type == "response") {
         list(response = unname(pred))
+      } else {
+        list(prob = pred)
       }
-      list(prob = pred)
     }
   )
 )
