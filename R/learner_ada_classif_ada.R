@@ -104,8 +104,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
       if (type == "probs") {
         colnames(pred) = rownames(self$model$confusion)
         list(prob = pred)
-      }
-      else{
+      } else {
         list(response = pred)
       }
     }
