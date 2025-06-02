@@ -68,7 +68,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      learner$model$model$errs[1L]
+      self$model$model$errs[1L]
 
     }
   ),
