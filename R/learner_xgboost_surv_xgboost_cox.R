@@ -19,6 +19,13 @@
 #'
 #' @template note_xgboost
 #'
+#' @section Saving this learner:
+#' In order to save a `LearnerSurvXgboostCox` for later usage,
+#' it is necessary to call the `$marshal()` method on the `Learner`
+#' before writing it to disk, as the object will otherwise not be saved correctly.
+#' After loading a marshaled `LearnerSurvXgboostCox` into R again,
+#' you then need to call `$unmarshal()` to transform it into a useable state.
+#'
 #' @section Initial parameter values:
 #' - `nrounds` is initialized to 1000.
 #' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
@@ -127,7 +134,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         param_set = ps,
         predict_types = c("crank", "lp", "distr"),
         feature_types = c("integer", "numeric"),
-        properties = c("weights", "missings", "importance", "validation", "internal_tuning"),
+        properties = c("weights", "missings", "importance", "validation", "internal_tuning", "marshal"),
         packages = c("mlr3extralearners", "xgboost"),
         man = "mlr3extralearners::mlr_learners_surv.xgboost.cox",
         label = "Extreme Gradient Boosting Cox"
@@ -140,6 +147,21 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' @return Named `numeric()`.
     importance = function() {
       xgb_imp(self$model$model)
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`marshal_model()`].
+    marshal = function(...) {
+      mlr3::learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`unmarshal_model()`].
+    unmarshal = function(...) {
+      mlr3::learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -163,6 +185,11 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
+    },
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      mlr3::learner_marshaled(self)
     }
   ),
 
@@ -191,23 +218,23 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       # manually add 'objective' and 'eval_metric'
       pv = c(pv, objective = "survival:cox", eval_metric = "cox-nloglik")
 
-      data = get_xgb_mat(task, pv$objective)
+      data = get_xgb_mat(task, pv$objective, private)
 
       internal_valid_task = task$internal_valid_task
       if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
       if (!is.null(internal_valid_task)) {
-        test_data = get_xgb_mat(internal_valid_task, pv$objective)
+        test_data = get_xgb_mat(internal_valid_task, pv$objective, private)
         # XGBoost uses the last element in the watchlist as
         # the early stopping set
         pv$watchlist = c(pv$watchlist, list(test = test_data))
       }
 
-      list(
+      structure(list(
         model = invoke(xgboost::xgb.train, data = data, .args = pv),
         train_data = data # for breslow
-      )
+      ), class = "xgboost_cox_model")
     },
 
     .predict = function(task) {
@@ -245,3 +272,38 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
 )
 
 .extralrns_dict$add("surv.xgboost.cox", LearnerSurvXgboostCox)
+
+
+#' @export
+marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
+  # xgb.DMatrix cannot be saved to a raw vector, but only to a file,
+  # so we save it to a temporary file and then read it back as a raw vector.
+  on.exit(unlink(tmp), add = TRUE)
+  tmp = tempfile(fileext = ".buffer")
+  xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
+  train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
+
+  structure(list(
+    # The booster object (model$model) itself can be saved and loaded directly.
+    # See https://xgboost.readthedocs.io/en/stable/R-package/migration_guide.html#migrating-code-from-previous-xgboost-versions,  # nolint
+    # bullet point "Booster objects".
+    model = model$model,
+    train_data = train_data,
+    packages = c("mlr3extralearners", "xgboost")
+  ), class = c("xgboost_cox_model_marshaled", "marshaled"))
+}
+
+#' @export
+unmarshal_model.xgboost_cox_model_marshaled = function(model, ...) {
+  # xgb.DMatrix cannot be read from a raw vector, but only from a file,
+  # so we write the stored raw vector to a temporary file and then read it back.
+  on.exit(unlink(tmp), add = TRUE)
+  tmp = tempfile(fileext = ".buffer")
+  writeBin(model$train_data, tmp)
+  train_data = xgboost::xgb.DMatrix(tmp)
+
+  structure(list(
+    model = model$model,
+    train_data = train_data
+  ), class = "xgboost_cox_model")
+}

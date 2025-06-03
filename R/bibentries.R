@@ -733,5 +733,24 @@ bibentries = c( # nolint start
     issn      = "2078-2489",
     publisher = "MDPI AG",
     month     = "feb"
+  ),
+  hollmann2025tabpfn = bibentry("article",
+    title = "Accurate predictions on small data with a tabular foundation model",
+    author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Purucker, Lennart and
+         Krishnakumar, Arjun and K\xc3\xb6rfer, Max and Hoo, Shi Bin and
+         Schirrmeister, Robin Tibor and Hutter, Frank",
+    journal = "Nature",
+    year = "2025",
+    month = "01",
+    day = "09",
+    doi = "10.1038/s41586-024-08328-6",
+    publisher = "Springer Nature",
+    URL = "https://www.nature.com/articles/s41586-024-08328-6"
+  ),
+  hollmann2023tabpfn = bibentry("inproceedings",
+    title = "TabPFN: A transformer that solves small tabular classification problems in a second",
+    author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
+    booktitle = "International Conference on Learning Representations 2023",
+    year = "2023"
   )
 ) # nolint end

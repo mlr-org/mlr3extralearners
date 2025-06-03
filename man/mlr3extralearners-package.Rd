@@ -31,6 +31,7 @@ Other contributors:
   \item Lukas Burk \email{burk@leibniz-bips.de} (\href{https://orcid.org/0000-0001-7528-3795}{ORCID}) [contributor]
   \item Lona Koers \email{lona.koers@gmail.com} [contributor]
   \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
+  \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
 }
 
 }

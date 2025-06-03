@@ -1,7 +1,10 @@
 # dev
 
 * feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
-* feat: Added learner `LearnerRegrQGam` and `LearnerRegrMQGam`
+* feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
+* feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
+* feat: Added the new version of learner weights to all learners that support weights
+* feat: Added marshaling for `surv.xgboost.cox`.
 
 # mlr3extralearners 1.0.0
 
