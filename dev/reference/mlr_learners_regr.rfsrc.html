@@ -205,13 +205,16 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.rfsrc"</span>, importance <span class="op">=</span> <span class="st">"TRUE"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrRandomForestSRC:regr.rfsrc&gt;: Random Forest</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: importance=TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, randomForestSRC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, missings, oob_error, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrRandomForestSRC&gt;</span><span style="font-weight: bold;"> (regr.rfsrc): Random Forest</span> <span style="color: #00BBBB;">────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: importance=TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">randomForestSRC</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, and factor</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, missings, oob_error, and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -225,7 +228,7 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          Sample size: 21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 2.194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 2.238</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -234,14 +237,14 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: regr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: mse *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      (OOB) R squared: 0.71801479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 11.11301012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      (OOB) R squared: 0.48612958</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 10.27601356</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          hp        disp         cyl          wt        carb        drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.56812515 13.37296995 10.17456559  9.16976431  8.19564149  2.31769158 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          vs        qsec        gear          am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.21741426  0.19631770  0.02771835  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         disp          cyl           wt           hp         drat         gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  8.824659369  7.880435578  6.759521697  3.864461173  0.607498262  0.415369668 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         carb           vs           am         qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.114026220  0.080045352 -0.002868603 -0.026440200 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -249,7 +252,7 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  12.4396 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28.64207 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

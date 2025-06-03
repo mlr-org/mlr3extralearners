@@ -176,13 +176,16 @@ John Wiley &amp; Sons.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.glm"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrGlm:regr.glm&gt;: Generalized Linear Regression</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: family=gaussian, type=response, use_pred_offset=TRUE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, stats</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], se</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, character, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: offset, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrGlm&gt;</span><span style="font-weight: bold;"> (regr.glm): Generalized Linear Regression</span> <span style="color: #00BBBB;">──────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: family=gaussian, type=response, use_pred_offset=TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">stats</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and se</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, character, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: offset and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -218,13 +221,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   -72.62172     -0.74278     -2.67212      1.66025      0.01744      4.88059  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -48.20453     -0.70851     -0.68207      4.64184      0.01829      8.94201  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     7.98285      0.01226      3.10849     -6.41157     -4.19502  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     4.99582     -0.06273      0.20049      8.81531     -3.12833  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    835 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 53.55 	AIC: 103.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    898.3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 74.96 	AIC: 110.3</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -233,7 +236,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 48.26172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50.88248 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

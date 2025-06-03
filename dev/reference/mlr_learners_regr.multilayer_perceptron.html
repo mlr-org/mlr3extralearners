@@ -164,13 +164,16 @@ since their ids contain irregular pattern</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.multilayer_perceptron"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrMultilayerPerceptron:regr.multilayer_perceptron&gt;: MultilayerPerceptron</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrMultilayerPerceptron&gt;</span><span style="font-weight: bold;"> (regr.multilayer_perceptron): MultilayerPer</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -184,77 +187,77 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linear Node 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.4405269902112218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 1    -0.23511745252851315</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 2    -2.8473526464565766</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 3    2.7285987755035657</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 4    0.6341390133108776</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 5    -0.1346381536365994</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.17139142285138506</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 1    -0.6252326343603754</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 2    -1.1792606681451805</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 3    1.0583683574535947</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 4    1.5188599284937556</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Node 5    -0.6594896852660487</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.9620519908062624</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.18210940969219927</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.6075039667870656</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.006258726198970353</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.24424200817712083</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    -0.07985758489515213</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.4115700845111302</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.520665039080193</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    -0.06043542142455634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.1872992127014772</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.04518138544516684</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.9181991574202102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.4112820076856071</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    -0.2701539786341213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.31716070076212716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.19782287299427673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    -0.4743560734700036</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.3911947713073389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.300212625901791</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    0.591497518580699</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.5957627288802905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.40824413373661106</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -1.6326779152972688</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    -0.8665856267177974</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    1.2742538707969386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.6362163143961329</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.14156728727911363</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.05547607250758171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.7253136531633986</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    1.3273848444902248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    3.450046451328654</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.10823973109148212</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    1.2360942432630941</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.3019763571299966</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    1.8046411636476107</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    -1.197151172323692</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.05071765348962941</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    2.0855136722160954</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.20784419105615476</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.8250418692315209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.5465195418110952</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    -0.872596730141653</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -1.160027500231789</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.6644314320727119</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -2.7451365824335365</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.03397868715363972</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.22163390666841548</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    0.40515132778420965</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    -1.701912671975106</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.04538350545639396</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    1.3701381042676775</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    -1.6733007496519663</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    4.774965415423988</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.4461107765398499</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.23164734776519336</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -2.715112416009477</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    -0.7019731193165132</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    -0.6543205447764261</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    0.38092869219899533</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.6939628615986616</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.9041493115969381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    1.112115395899423</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    -2.2197344774776564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    0.18825113769311821</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.8196071327207008</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.6482757878607516</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -1.941269430626847</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.5596075348360151</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    -0.15269110121880028</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.13303539422444885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.41720016239123175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    -0.25882575937984326</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.44133446216541644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    -0.2620595381595253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    0.85480591139455</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    -0.6282315395297724</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.1890381841314677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -2.8825348225099265</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    1.6030622881271046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.193330599419428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    1.5391521945780957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    -0.029744932100108756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    2.1318004969700666</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    2.2340397865731454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    -1.8950308613410813</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    1.0470795998477274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.17442507530424717</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -1.20927368791993</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sigmoid Node 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Inputs    Weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -1.0186355864903156</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.15620862455650217</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.49478195431077565</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    0.020113265042069728</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.3387877736744516</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    -0.11775305742033756</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.32731209205370365</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.517611154428185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    -0.05346214651752258</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.14398586054938498</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    -0.002337036208707448</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Threshold    -0.9194298475411946</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib am    0.12243198303591551</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib carb    0.7311104327926856</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib cyl    -0.08961778506814393</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib disp    0.23766310512982244</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib drat    0.520669967862208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib gear    0.36847685455673407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib hp    0.4240779554098838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib qsec    0.40164756632865156</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib vs    0.6204406770561302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Attrib wt    0.1745882415167521</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Input</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Node 0</span>
@@ -267,7 +270,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.31987 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31.51737 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

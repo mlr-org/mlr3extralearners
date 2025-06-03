@@ -160,13 +160,16 @@ No offset is applied during prediction for this learner.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.glmboost"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrGLMBoost:regr.glmboost&gt;: Boosted Generalized Linear Model</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: offset, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrGLMBoost&gt;</span><span style="font-weight: bold;"> (regr.glmboost): Boosted Generalized Linear Model</span> <span style="color: #00BBBB;">─────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">mboost</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: offset and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -192,15 +195,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.19524 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  18.98095 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am         carb          cyl         disp         drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.625261399  2.336189054 -0.519810721 -0.323127608  0.002590017  0.716819054 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           hp         qsec           vs           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.026558480  0.251212670 -0.030854390 -1.888662096 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.217791833  0.184345405 -0.113847304 -0.640616288  0.001519205  1.248312852 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           hp           wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.023110615 -2.623008756 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.19524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 18.98095</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -210,7 +213,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.476082 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.46279 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

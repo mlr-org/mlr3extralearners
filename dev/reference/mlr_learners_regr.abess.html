@@ -166,13 +166,16 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.abess"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrAbess:regr.abess&gt;: Fast Best Subset Selection for Regression</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: num.threads=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, abess</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: selected_features, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrAbess&gt;</span><span style="font-weight: bold;"> (regr.abess): Fast Best Subset Selection for Regression</span> <span style="color: #00BBBB;">──</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: num.threads=1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">abess</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: selected_features and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -189,15 +192,15 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 18.106939 60.82220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  5.068342 36.64686</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  4.028609 34.38898</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  3.002366 30.77812</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.971721 33.12624</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.818960 34.58157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.685317 36.12519</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.612821 38.11403</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.532729 40.02380</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 17.978798 60.67306</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  4.571429 34.47991</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.746414 32.86392</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.733129 28.80509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.467034 29.21762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.319294 30.48437</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.300760 32.87944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.283626 35.28604</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.277178 37.79023</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -206,7 +209,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.577066 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.225064 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

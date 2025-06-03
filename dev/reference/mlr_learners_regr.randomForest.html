@@ -181,13 +181,16 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.randomForest"</span>, importance <span class="op">=</span> <span class="st">"mse"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrRandomForest:regr.randomForest&gt;: Random Forest</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: importance=mse</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, randomForest</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, oob_error, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrRandomForest&gt;</span><span style="font-weight: bold;"> (regr.randomForest): Random Forest</span> <span style="color: #00BBBB;">────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: importance=mse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">randomForest</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, oob_error, and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -205,13 +208,13 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 8.693999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 70.35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 9.218677</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 70.51</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      disp        wt       cyl        hp        vs      gear        am      qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.0432375 7.5223431 6.4177968 4.3395693 0.7611909 0.5589765 0.5139863 0.4936538 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      carb      drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4029942 0.3546295 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        disp          hp         cyl          wt        carb        qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.555266654 7.461820190 5.095551077 4.640308800 1.795398529 1.196561227 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          vs        drat        gear          am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.040465189 0.326148397 0.122101144 0.003005265 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -219,7 +222,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.638588 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.744154 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

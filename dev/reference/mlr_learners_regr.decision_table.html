@@ -183,13 +183,16 @@ In <em>8th European Conference on Machine Learning</em>, 174–189.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.decision_table"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrDecisionTable:regr.decision_table&gt;: Decision Table</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: E=rmse</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrDecisionTable&gt;</span><span style="font-weight: bold;"> (regr.decision_table): Decision Table</span> <span style="color: #00BBBB;">────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: E=rmse</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -204,16 +207,16 @@ In <em>8th European Conference on Machine Learning</em>, 174–189.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Table:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of training instances: 21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 7</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Non matches covered by Majority class.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Best first.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Start set: no attributes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Search direction: forward</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Stale search after 5 node expansions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:    2.961</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:    2.806</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Evaluation (for feature selection): CV (leave one out) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 5,10,1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 5,1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -222,7 +225,7 @@ In <em>8th European Conference on Machine Learning</em>, 174–189.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.414616 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.14117 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

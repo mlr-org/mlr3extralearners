@@ -219,16 +219,18 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.catboost"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrCatboost:regr.catboost&gt;: Gradient Boosting</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: loss_function=RMSE, thread_count=1, logging_level=Silent,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   allow_writing_files=FALSE, save_snapshot=FALSE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Validate: NULL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, catboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: importance, internal_tuning, missings, validation,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrCatboost&gt;</span><span style="font-weight: bold;"> (regr.catboost): Gradient Boosting</span> <span style="color: #00BBBB;">────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: loss_function=RMSE, thread_count=1, logging_level=Silent,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> allow_writing_files=FALSE, save_snapshot=FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Validate: <span style="color: #0000BB;">&lt;NULL&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">catboost</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, internal_tuning, missings, validation, and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -244,10 +246,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl      carb        hp      gear      drat      qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.054132 15.930761 14.947210 12.424880  8.525072  8.241783  6.390921  6.004394 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        am        vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5.841301  4.639545 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl      carb      gear        hp      qsec        am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18.873143 16.433784 13.581786 11.338645 10.529272  8.497413  8.021546  6.385282 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      drat        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.599569  1.739559 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -255,7 +257,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.987733 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.367436 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

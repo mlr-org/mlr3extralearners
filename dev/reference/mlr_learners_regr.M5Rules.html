@@ -171,13 +171,16 @@ Springer.</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.M5Rules"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrM5Rules:regr.M5Rules&gt;: Rule-based Algorithm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrM5Rules&gt;</span><span style="font-weight: bold;"> (regr.M5Rules): Rule-based Algorithm</span> <span style="color: #00BBBB;">───────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -191,32 +194,15 @@ Springer.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 192.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	2.1389 * am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.0781 * carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0126 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 23.3545 [12/39.543%]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 99.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0826 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.6943 [7/32.823%]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.4 [2/100%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.101 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 4.9925 * drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.5314 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 13.7563 [21/35.375%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -227,7 +213,7 @@ Springer.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.853201 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.67175 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

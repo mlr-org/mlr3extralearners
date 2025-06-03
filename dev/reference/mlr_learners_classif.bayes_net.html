@@ -175,13 +175,16 @@ and it's unclear how to use them.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bayes_net"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifBayesNet:classif.bayes_net&gt;: Bayes Network</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings, multiclass, twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifBayesNet&gt;</span><span style="font-weight: bold;"> (classif.bayes_net): Bayes Network</span> <span style="color: #00BBBB;">─────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings, multiclass, and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -206,12 +209,12 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V14(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
@@ -228,26 +231,26 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V44(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V46(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V48(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57(1): Class </span>
@@ -258,11 +261,11 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1457.2319584519105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1489.872066835549</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1503.0645641442218</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1406.842322448174</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1445.842322448174</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1187.563867699605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1211.6144738770226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1217.1819899293268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1145.6321178989322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1174.632117898932</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -272,7 +275,7 @@ and it's unclear how to use them.</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

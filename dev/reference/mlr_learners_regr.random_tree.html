@@ -161,13 +161,16 @@ since their ids contain irregular pattern</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.random_tree"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerRegrRandomTree:regr.random_tree&gt;: Random Tree</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrRandomTree&gt;</span><span style="font-weight: bold;"> (regr.random_tree): Random Tree</span> <span style="color: #00BBBB;">─────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -183,38 +186,40 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RandomTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt; 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 93.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 65.5 : 33.9 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 65.5 : 32.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 93.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 2.23 : 26 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 2.23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 96</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   wt &lt; 3.17 : 22.8 (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   wt &gt;= 3.17 : 24.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 96</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   vs &lt; 0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   hp &lt; 142.5 : 21 (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   hp &gt;= 142.5 : 19.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   vs &gt;= 0.5 : 21.43 (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;= 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &lt; 3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   qsec &lt; 17.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 380 : 18.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 380 : 19.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   qsec &gt;= 17.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   drat &lt; 3.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   wt &lt; 3.9 : 17.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   wt &gt;= 3.9 : 16.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   drat &gt;= 3.11 : 15.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &gt;= 3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   qsec &lt; 17.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 395 : 13.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 395 : 14.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   qsec &gt;= 17.62 : 10.4 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt; 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 101.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 65.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   carb &lt; 1.5 : 33.9 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   carb &gt;= 1.5 : 30.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 65.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 78.85 : 32.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 78.85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   hp &lt; 89.5 : 27.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   hp &gt;= 89.5 : 30.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 101.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   vs &lt; 0.5 : 26 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   vs &gt;= 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 143.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &lt; 3.78 : 21.5 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &gt;= 3.78 : 22.8 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 143.75 : 24.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;= 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 192.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &lt; 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   qsec &lt; 17.5 : 16.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   qsec &gt;= 17.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   cyl &lt; 7 : 17.95 (2/0.02)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   cyl &gt;= 7 : 17.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &gt;= 0.5 : 21 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 192.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &lt; 3.1 : 10.4 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &gt;= 3.1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   carb &lt; 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &lt; 15.63 : 13.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &gt;= 15.63 : 14.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   carb &gt;= 6 : 15 (1/0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 33</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -223,7 +228,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.15545 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.937727 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -158,13 +158,16 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.ctree"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifCTree:classif.ctree&gt;: Conditional Inference Tree</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: list()</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, mlr3extralearners, partykit, sandwich, coin</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: multiclass, twoclass, weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifCTree&gt;</span><span style="font-weight: bold;"> (classif.ctree): Conditional Inference Tree</span> <span style="color: #00BBBB;">───────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: list()</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">partykit</span>, <span style="color: #0000BB;">sandwich</span>, and <span style="color: #0000BB;">coin</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: multiclass, twoclass, and weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -188,13 +191,17 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V45 &lt;= 0.1779</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V11 &lt;= 0.197: R (n = 43, err = 9.3%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V11 &gt; 0.197: M (n = 39, err = 38.5%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V45 &gt; 0.1779: M (n = 57, err = 22.8%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V47 &lt;= 0.0602: R (n = 32, err = 15.6%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [3] V47 &gt; 0.0602</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V11 &lt;= 0.1934: R (n = 39, err = 38.5%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [5] V11 &gt; 0.1934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [6] V37 &lt;= 0.4609: M (n = 46, err = 4.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] V37 &gt; 0.4609</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [8] V45 &lt;= 0.2611: R (n = 13, err = 7.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [9] V45 &gt; 0.2611: M (n = 9, err = 0.0%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -203,7 +210,7 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

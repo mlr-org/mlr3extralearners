@@ -170,13 +170,16 @@ since their ids contain irregular pattern</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.sgd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> &lt;LearnerClassifSGD:classif.sgd&gt;: Stochastic Gradient Descent</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Parameters: F=0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Packages: mlr3, RWeka</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Predict Types:  [response], prob</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Feature Types: logical, integer, numeric, factor, ordered</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> * Properties: missings, twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifSGD&gt;</span><span style="font-weight: bold;"> (classif.sgd): Stochastic Gradient Descent</span> <span style="color: #00BBBB;">──────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: F=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span> and <span style="color: #0000BB;">RWeka</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -192,67 +195,67 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         -2.1733 (normalized) V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1931 (normalized) V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.4259 (normalized) V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.7053 (normalized) V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3851 (normalized) V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9913 (normalized) V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.927  (normalized) V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.6153 (normalized) V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.0116 (normalized) V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5851 (normalized) V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.8664 (normalized) V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7009 (normalized) V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6537 (normalized) V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0141 (normalized) V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.176  (normalized) V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7539 (normalized) V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.9886 (normalized) V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2561 (normalized) V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.5919 (normalized) V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1103 (normalized) V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3986 (normalized) V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5049 (normalized) V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1809 (normalized) V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1902 (normalized) V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.0676 (normalized) V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1588 (normalized) V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8817 (normalized) V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2278 (normalized) V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.9539 (normalized) V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.0625 (normalized) V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.4388 (normalized) V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.0794 (normalized) V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1892 (normalized) V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.6353 (normalized) V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.5751 (normalized) V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2118 (normalized) V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.1383 (normalized) V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.054  (normalized) V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.4919 (normalized) V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.9036 (normalized) V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5717 (normalized) V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1287 (normalized) V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.518  (normalized) V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.7198 (normalized) V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1848 (normalized) V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.6248 (normalized) V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4506 (normalized) V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.6345 (normalized) V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.448  (normalized) V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4525 (normalized) V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3362 (normalized) V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6106 (normalized) V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3512 (normalized) V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.0745 (normalized) V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.7404 (normalized) V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3576 (normalized) V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.636  (normalized) V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.452  (normalized) V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.6117 (normalized) V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2569 (normalized) V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       4.51  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         -2.7638 (normalized) V1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2392 (normalized) V10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.7527 (normalized) V11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.5854 (normalized) V12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7642 (normalized) V13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5598 (normalized) V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3304 (normalized) V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7003 (normalized) V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1496 (normalized) V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4065 (normalized) V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.1346 (normalized) V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5385 (normalized) V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2032 (normalized) V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9273 (normalized) V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1685 (normalized) V22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1573 (normalized) V23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.9258 (normalized) V24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7202 (normalized) V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1215 (normalized) V26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8484 (normalized) V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0369 (normalized) V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.842  (normalized) V29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.1948 (normalized) V3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3551 (normalized) V30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.7459 (normalized) V31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5943 (normalized) V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0214 (normalized) V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8715 (normalized) V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2049 (normalized) V35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.117  (normalized) V36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.206  (normalized) V37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0362 (normalized) V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.325  (normalized) V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0986 (normalized) V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0337 (normalized) V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8624 (normalized) V41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2606 (normalized) V42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0534 (normalized) V43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.8926 (normalized) V44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.9333 (normalized) V45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7934 (normalized) V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3393 (normalized) V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.9856 (normalized) V48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.2986 (normalized) V49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9881 (normalized) V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.1985 (normalized) V50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6764 (normalized) V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.8217 (normalized) V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4739 (normalized) V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.6643 (normalized) V54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.9506 (normalized) V55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0627 (normalized) V56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.6162 (normalized) V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.2403 (normalized) V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2461 (normalized) V59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4792 (normalized) V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.0727 (normalized) V60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3808 (normalized) V7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8071 (normalized) V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0217 (normalized) V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.43  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -261,7 +264,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
