@@ -1,3 +1,4 @@
+# nolint start
 # Check why the fastai learner produces surprisingly wrong predictions.
 # Source scratch_to_be_deleted_v3 to get simple fastai learner w/o interval validation.
 
@@ -58,3 +59,4 @@ pred = predict(tab_learner_n, ordered_features(task, learner))
 
 class_labels = levels(task$truth())
 factor(class_labels[pred$class+1])
+# nolint end

@@ -1,3 +1,4 @@
+# nolint start
 library(fastai)
 library(data.table)
 library(mlr3misc)
@@ -125,3 +126,4 @@ devtools::load_all(".")
 )
 
 .extralrns_dict$add("classif.tester", LearnerClassifTester)
+# nolint end

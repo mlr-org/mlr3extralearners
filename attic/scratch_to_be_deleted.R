@@ -1,3 +1,4 @@
+# nolint start
 #reticulate::use_condaenv('r-reticulate',required = TRUE)
 
 
@@ -270,3 +271,4 @@ learner$train(task, row_ids = ids$train)
 learner$eval_protocol
 learner$internal_tuned_values
 learner$internal_valid_scores
+# nolint end

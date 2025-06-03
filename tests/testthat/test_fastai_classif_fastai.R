@@ -66,8 +66,7 @@ test_that("validation and inner tuning works", {
     validate = 0.3
   )
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$accuracy,
-    learner$state$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
+  expect_equal(learner$internal_valid_scores$accuracy, learner$state$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
 
   # no validation and no internal tuning
   learner = lrn("classif.fastai")

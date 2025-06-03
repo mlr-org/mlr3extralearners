@@ -39,7 +39,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           if (is.null(param_vals$patience)) {
             stop("Parameter 'patience' must be set to use internal tuning.")
           }
-          assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
+          assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
+        }, .parent = topenv()),
         disable_in_tune = list(n_epoch = NULL)
       )
 
@@ -51,7 +52,9 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         embed_p     = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
         emb_szs     = p_uty(default = NULL, tags = "train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
         n_epoch     = p_n_epoch,
-        eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(is.function(x) || inherits(x, "Measure"))})),
+        eval_metric = p_uty(tags = "train", custom_check = crate({
+          function(x) check_true(is.function(x) || inherits(x, "Measure"))
+        })),
         layers      = p_uty(tags = "train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
         loss_func   = p_uty(tags = "train"),  # Defaults to fastai::CrossEntropyLossFlat()
         lr          = p_dbl(lower = 0, default = 0.001, tags = "train"),  # Learning rate
@@ -237,22 +240,14 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model, newdata, .args = pars)
-      print("Prediction was successfully executed.")
-      print(pred)
       class_labels = levels(task$truth())
-      print(task$truth())
-      print(class_labels)
 
       if (self$predict_type == "response") {
-        response = class_labels[pred$class+1]
-        print(response)
+        response = class_labels[pred$class + 1]
         list(response = response)
       } else {
         list(prob = as.matrix(pred[, class_labels]))
@@ -281,7 +276,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   pred = fastai::as_array(pred)
-  truth = factor(as.vector(fastai::as_array(dtrain)), levels=lvl)
+  truth = factor(as.vector(fastai::as_array(dtrain)), levels = lvl)
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)
@@ -298,7 +293,5 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
     pred = factor(p, levels = levels(truth))
     print("Measure wrapper: did setting the correct response type work?")
   }
-  measure = msr$fun(truth, pred, ...)
-  print("Measure wrapper: did calling the measures work?")
-  return(measure)
+  msr$fun(truth, pred, ...)
 }

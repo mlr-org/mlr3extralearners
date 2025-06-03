@@ -1,3 +1,5 @@
+# nolint start
+
 # This file shows how you can set the seed in R.
 
 set.seed(42)  # R-level seed
@@ -44,3 +46,4 @@ set.seed(42)
 learner = lrn("classif.fastai")
 learner$train(task)
 print(learner$eval_protocol)
+# nolint end
