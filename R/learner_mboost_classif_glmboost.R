@@ -87,11 +87,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties) {
-        pars_glmboost = insert_named(
-          pars_glmboost,
-          list(weights = task$weights$weight))
-      }
+      pars_glmboost$weights = private$.get_weights(task)
 
       if ("offset" %in% task$properties) {
         pars_glmboost = insert_named(
