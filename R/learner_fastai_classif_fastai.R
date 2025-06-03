@@ -295,3 +295,4 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   }
   msr$fun(truth, pred, ...)
 }
+
