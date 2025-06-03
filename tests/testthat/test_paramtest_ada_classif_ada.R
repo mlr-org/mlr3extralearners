@@ -8,7 +8,7 @@ test_that("classif.ada train", {
     "test.x",
     "test.y",
     "subset",  # handled internally
-    formalArgs(rpart.control)
+    formalArgs(rpart::rpart.control)
   )
 
   # note that you can also pass a list of functions in case $.train calls more than one
