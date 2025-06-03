@@ -4,6 +4,7 @@
 * feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
 * feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * feat: Added marshaling for `surv.xgboost.cox`.
+* feat: Added learner `LearnerClassifAdabag`.
 
 # mlr3extralearners 1.0.0
 

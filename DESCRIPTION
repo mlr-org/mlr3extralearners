@@ -41,6 +41,7 @@ Suggests:
     abess,
     aorsf (>= 0.1.4),
     actuar,
+    adabag,
     apcluster,
     BART (>= 2.9.4),
     C50,
