@@ -82,7 +82,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("oob_error", "importance", "multiclass", "twoclass"),
+        properties = c("oob_error", "importance", "multiclass", "twoclass", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.aorsf",
         label = "Oblique Random Forest Classifier"
       )
@@ -133,7 +133,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
-        weights = task$weights,
+        weights = private$.get_weights(task),
         control = ctrl,
         no_fit = FALSE,
         .args = pv
