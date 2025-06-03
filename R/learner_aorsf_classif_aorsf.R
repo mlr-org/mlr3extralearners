@@ -82,7 +82,7 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("oob_error", "importance", "multiclass", "twoclass"),
+        properties = c("oob_error", "importance", "multiclass", "twoclass", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.aorsf",
         label = "Oblique Random Forest Classifier"
       )
