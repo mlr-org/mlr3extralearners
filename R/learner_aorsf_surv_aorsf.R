@@ -172,7 +172,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
-        weights = task$weights,
+        weights = private$.get_weights(task),
         control = control,
         no_fit = FALSE,
         .args = pv

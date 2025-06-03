@@ -106,8 +106,8 @@ test_that("create_learner works for an R package", {
   )
 
   expect_set_equal(
-    files,
-    files_expected
+    normalizePath(files),
+    normalizePath(files_expected)
   )
 
   # just check whether the file was created
@@ -159,7 +159,7 @@ test_that("Commas are fixed properly", {
   dir.create(path, recursive = TRUE)
 
   properties = "weights"
-  methods = c("importance", "loglik", "oob_error", "selected_features")
+  methods = c("importance", "oob_error", "selected_features")
   for (method in methods) {
     if (runif(1) < 0.5) {
       properties = c(properties, method)
