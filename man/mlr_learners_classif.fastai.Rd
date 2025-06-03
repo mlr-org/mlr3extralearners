@@ -16,13 +16,8 @@ Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
 Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
-If no value is given, it is set to mlr3measures::logloss.
+If no value is given, it is set to \link[mlr3measures:classif.logloss]{mlr3measures::classif.logloss}.
 }
-}
-
-\section{Custom mlr3 parameters}{
-
-FIXME: DEVIATIONS FROM UPSTREAM DEFAULTS. DELETE IF NOT APPLICABLE.
 }
 
 \section{Dictionary}{
@@ -35,73 +30,19 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \section{Meta Information}{
 
-\itemize{
-\item Task type: \dQuote{classif}
-\item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{fastai}, \CRANpkg{reticulate}
-}
+\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.fastai")), collapse = "\\n")}
 }
 
 \section{Parameters}{
-\tabular{lllll}{
-   Id \tab Type \tab Default \tab Levels \tab Range \cr
-   act_cls \tab untyped \tab - \tab  \tab - \cr
-   bn_cont \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   bn_final \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   embed_p \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   emb_szs \tab untyped \tab NULL \tab  \tab - \cr
-   n_epoch \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   eval_metric \tab untyped \tab - \tab  \tab - \cr
-   layers \tab untyped \tab - \tab  \tab - \cr
-   loss_func \tab untyped \tab - \tab  \tab - \cr
-   lr \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   metrics \tab untyped \tab - \tab  \tab - \cr
-   n_out \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   num_workers \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   opt_func \tab untyped \tab - \tab  \tab - \cr
-   patience \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   pin_memory \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   procs \tab untyped \tab NULL \tab  \tab - \cr
-   ps \tab untyped \tab NULL \tab  \tab - \cr
-   shuffle \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   train_bn \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   wd \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   wd_bn_bias \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   use_bn \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   y_range \tab untyped \tab NULL \tab  \tab - \cr
-   bs \tab integer \tab 50 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-}
+
+\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.fastai")$param_set), collapse = "\\n")}
 }
 
-\examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.fastai")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("classif.fastai")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("sonar")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
-\verb{r format_bib(FIXME: ONE OR MORE REFERENCES FROM bibentries.R)}
+Howard, Jeremy, Gugger, Sylvain (2020).
+\dQuote{Fastai: A Layered API for Deep Learning.}
+\emph{Information}, \bold{11}(2), 108.
+ISSN 2078-2489, \doi{10.3390/info11020108}.
 }
 \seealso{
 \itemize{

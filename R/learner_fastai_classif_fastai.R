@@ -12,13 +12,13 @@
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
 #'   Needs to be set for [fastai::predict()] to work.
-#'   If no value is given, it is set to [mlr3measures::classif.logloss].
+#'   If no value is given, it is set to `fastai::accuracy()``.
 #'
 #' @templateVar id classif.fastai
 #' @template learner
 #'
 #' @references
-#' `r format_bib(FIXME: ONE OR MORE REFERENCES FROM bibentries.R)`
+#' `r format_bib("howard_2020")`
 #'
 #' @template seealso_learner
 #' @template example
@@ -26,29 +26,42 @@
 LearnerClassifFastai = R6Class("LearnerClassifFastai",
   inherit = LearnerClassif,
   public = list(
-    eval_protocol = NULL,
+
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
+
+      p_n_epoch = p_int(1L,
+        tags = c("train", "hotstart", "internal_tuning"),
+        init = 5L,
+        aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
+        in_tune_fn = crate(function(domain, param_vals) {
+          if (is.null(param_vals$patience)) {
+            stop("Parameter 'patience' must be set to use internal tuning.")
+          }
+          assert_integerish(domain$upper, len = 1L, any.missing = FALSE) }, .parent = topenv()),
+        disable_in_tune = list(n_epoch = NULL)
+      )
+
       param_set = ps(
         act_cls     = p_uty(tags = "train"),  # Activation type for LinBnDrop layers, e.g., fastai::nn()$ReLU(inplace = TRUE)
         bn_cont     = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d on continuous variables
         bn_final    = p_lgl(default = FALSE, tags = "train"),  # Use BatchNorm1d on final layer
         drop_last   = p_lgl(default = FALSE, tags = "train"),  #  If True, then the last incomplete batch is dropped.
         embed_p     = p_dbl(lower = 0L, upper = 1L, default = 0L, tags = "train"),  # Dropout probability for Embedding layer
-        emb_szs     = p_uty(default=NULL, tags="train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
-        n_epoch     = p_int(lower=1, default = 5, tags="train"), # Epochs
-        eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(any(is.character(x), is.function(x), inherits(x, "Measure")))})),
-        layers      = p_uty(tags="train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
-        loss_func   = p_uty(tags="train"),  # Defaults to fastai::CrossEntropyLossFlat()
-        lr          = p_dbl(lower=0, default = 0.001, tags = "train"),  # Learning rate
+        emb_szs     = p_uty(default = NULL, tags = "train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
+        n_epoch     = p_n_epoch,
+        eval_metric = p_uty(tags = "train", custom_check = crate({function(x) check_true(is.function(x) || inherits(x, "Measure"))})),
+        layers      = p_uty(tags = "train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
+        loss_func   = p_uty(tags = "train"),  # Defaults to fastai::CrossEntropyLossFlat()
+        lr          = p_dbl(lower = 0, default = 0.001, tags = "train"),  # Learning rate
         metrics     = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
-        n_out       = p_int(tags="train"),  # ?
+        n_out       = p_int(tags = "train"),  # ?
         num_workers = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
-        opt_func    = p_uty(tags="train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
-        patience    = p_int(1L, default = 1, tags = c("train", "internal_validation")),  # number of epochs to wait when training has not improved model. add `depends = quote(early_stopping == TRUE`)`
+        opt_func    = p_uty(tags = "train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
+        patience    = p_int(1L, default = 1, tags = "train"),  # number of epochs to wait when training has not improved model. add `depends = quote(early_stopping == TRUE`)`
         pin_memory  = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
-        procs       = p_uty(default=NULL, tags="train"),  # fastai preprocessing steps such as fastai::Categorify, fastai::Normalize, fastai::fill_missing
+        procs       = p_uty(default = NULL, tags = "train"),  # fastai preprocessing steps such as fastai::Categorify, fastai::Normalize, fastai::fill_missing
         ps          = p_uty(default = NULL, tags = "train"),  # Sequence of dropout probabilities
         shuffle     = p_lgl(default = FALSE, tags = "train"),  # If True, then data is shuffled every time dataloader is fully read/iterated.
         train_bn    = p_lgl(default = TRUE, tags = "train"),  # controls if BatchNorm layers are trained
@@ -56,17 +69,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         wd_bn_bias  = p_lgl(default = FALSE, tags = "train"),  # controls if weight decay is applied to BatchNorm layers and bias
         use_bn      = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d in LinBnDrop layers
         y_range     = p_uty(default = NULL, tags = "train"),  # Low and high for SigmoidRange activation (see below)
-        bs          = p_int(default = 50, tags="train") # how many samples per batch to load
+        bs          = p_int(default = 50, tags = "train") # how many samples per batch to load
       )
-
-      # Epochs is set to default parameter.
-      if (is.null(param_set$values$n_epoch)) {
-        param_set$set_values(n_epoch = 5)
-      }
-      if (is.null(param_set$values$eval_metric)) {
-        param_set$set_values(eval_metric = fastai::accuracy())
-      }
-      self$eval_protocol = NULL
 
       super$initialize(
         id = "classif.fastai",
@@ -110,22 +114,21 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
   private = list(
     .validate = NULL,
+
     .train = function(task) {
       formula = task$formula()
       data = task$data()
-      print(head(data, 5))
-      print(tail(data, 5))
       cat_cols = task$feature_types[type != "numeric"]$id
-      if ((length(cat_cols) > 0) && (is.null(self$param_set$get_values(tags = "train")$procs))) {
-        print("setting categorical vars")
-        self$param_set$set_values(procs = list(fastai::Categorify()))
-      }
       num_cols = task$feature_types[type == "numeric"]$id
-      comp = NULL  # comparison that fastai uses for internal validation
 
-      # get parameters for training
       pars = self$param_set$get_values(tags = "train")
+      measure = pars$eval_metric
+      patience = pars$patience
 
+      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
+      if (is.null(measure)) measure = fastai::accuracy()
+
+      # match parameters to fastai functions
       args_dt = formalArgs(fastai::TabularDataTable)
       args_dl = formalArgs(fastai:::fastai2$data$load$DataLoader)
       args_config = formalArgs(fastai::tabular_config)
@@ -137,42 +140,35 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       pv_fit = pars[names(pars) %in% args_fit]
       pv_layers = pars[names(pars) == "layers"]
 
+      # internal validation
       internal_valid_task = task$internal_valid_task
-      if (!is.null(internal_valid_task)) {
-        # combine the training data with the validation data
-        full_data = rbind(data, internal_valid_task$data())
-        # set splits accordingly
-        splits = list(
-          seq(1, nrow(data)), seq(nrow(data), nrow(internal_valid_task$data()))
-        )
-        # set internal validation metric and convert it to format compatible with fastai
-        measure = pars$eval_metric
-        if (inherits(measure, "Measure")) {  # measure from mlr3measures
-          params_for_metric = list()
-          if ("twoclass" %in% unlist(measure$task_properties)) {
-            params_for_metric = append(params_for_metric, list(positive = "1"))
-          }
-          metrics = invoke(
-            fastai::AccumMetric,
-            metric,
-            flatten=FALSE,
-            msr=measure,
-            lvl=levels(factor(as.integer(task$truth())-1)),
-            .args = params_for_metric
-          )  # see wrapper below
-          if (measure$minimize) {
-            np = reticulate::import("numpy")
-            comp = np$less
-          }
-        } else {
-          metrics = measure  # measure from fastai
-        }
+      if (!is.null(patience) && is.null(internal_valid_task)) {
+        stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
+      }
 
-      # if no internal validation
+      if (!is.null(internal_valid_task)) {
+        full_data = data.table::rbindlist(list(data, internal_valid_task$data()))
+        splits = list(seq(task$nrow), seq(task$nrow + 1, task$nrow + internal_valid_task$nrow))
       } else {
         full_data = data
         splits = NULL
-        metrics = pars$eval_metric  # needs to be set to get prediction working
+      }
+
+      metrics = if (inherits(measure, "Measure")) {
+        # wrap mlr3 measure into fastai metric
+        params_for_metric = if ("twoclass" %in% unlist(measure$task_properties)) list(positive = "1")
+
+        invoke(
+          fastai::AccumMetric,
+          metric,
+          flatten = FALSE,
+          msr = measure,
+          lvl = levels(factor(as.integer(task$truth()) - 1)),
+          .args = params_for_metric
+        )
+      } else {
+        # measure from fastai
+        measure
       }
 
       # set data into a format suitable for fastai
@@ -182,18 +178,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         cat_names = cat_cols,
         cont_names = num_cols,
         y_names = task$target_names,
-        splits=splits,
+        splits = splits,
         .args = pv_dt
       )
-      # FIXME: Remove debug print
-      print("TabularDataTable created.")
+
       dl = invoke(
         fastai::dataloaders,
         df_fai,
         .args = pv_dl
       )
-      # FIXME: Remove debug print
-      print("DataLoader created.")
+
       config = invoke(
         fastai::tabular_config,
         .args = pv_config
@@ -203,39 +197,43 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       if (!is.null(weights)) {
         dl$train$wgts = weights / sum(weights)
       }
-<<<<<<< HEAD
 
-      fastai::tabular_learner(dl)
-=======
->>>>>>> cc3bebe7c3208d7ab8a68cc612dabc3ff64fdf07
-      tab_learner = fastai::tabular_learner(dl, layers = pv_layers, config = config,
-                                            metrics = metrics)
-      # FIXME: Remove debug print
-      print("Tabular Learner internally created.")
-      if (!is.null(pars$patience)) {
-        patience = pars$patience
-        if (!is.null(pars$eval_metric)) {
-          monitor = tab_learner$metrics[[0]]$name
+      tab_learner = fastai::tabular_learner(
+        dls = dl,
+        layers = pv_layers,
+        config = config,
+        metrics = metrics
+      )
+
+      # internal tuning
+      if (!is.null(patience)) {
+        monitor = tab_learner$metrics[[0]]$name
+
+        # direction for internal tuning
+        # if mlr3 measure and minimize use numpy less
+        comp = if (inherits(measure, "Measure") && measure$minimize) {
+          np = reticulate::import("numpy")
+          np$less
         }
+
         tab_learner$add_cb(
           fastai::EarlyStoppingCallback(monitor = monitor, comp = comp, patience = patience)
         )
-        print("Early stopping activated")
       }
-      # to avoid plot creation when internally validating do:
+
+      # avoid plot creation when internally validating
       invisible(tab_learner$remove_cb(tab_learner$progress))
-      fit_eval = function(tab_learner) {
-        self$eval_protocol = invoke(
+
+      # prevent python from printing evaluation protocol
+      invisible(reticulate::py_capture_output({
+        self$state$eval_protocol = invoke(
           fastai::fit,
           object = tab_learner,
           .args = pv_fit
         )
-      }
-      # to prevent python from printing evaluation protocol do:
-      invisible(reticulate::py_capture_output(fit_eval(tab_learner)))
-      # FIXME: Remove debug print
-      print("Fit successfully executed.")
-      self$model = tab_learner
+      }))
+
+      tab_learner
     },
 
     .predict = function(task) {
@@ -262,18 +260,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .extract_internal_tuned_values = function() {
-      if (is.null(self$state$param_vals$patience) || is.null(self$eval_protocol)) {
+      if (is.null(self$state$param_vals$patience) || is.null(self$state$eval_protocol)) {
         return(NULL)
       }
-      list(n_epoch = max(self$eval_protocol$epoch)+1)
+      list(n_epoch = max(self$state$eval_protocol$epoch) + 1)
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(self$eval_protocol)) {
-        NULL
-      }
+      if (is.null(self$state$eval_protocol)) return(NULL)
       metric = self$model$metrics[[0]]$name
-      list(score = self$eval_protocol[nrow(self$eval_protocol), metric])
+      set_names(list(self$state$eval_protocol[nrow(self$state$eval_protocol), metric]), metric)
     }
   )
 )
