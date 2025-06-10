@@ -59,10 +59,11 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
-      if ("weights" %in% task$properties) {
-        # weights must be integers (not recognized in mlr2)
-        if (is.integer(task$weights$weight)) pars$weights = task$weights$weight
-      }
+      # if ("weights" %in% task$properties) {
+      #   # weights must be integers (not recognized in mlr2)
+      #   if (is.integer(task$weights$weight)) pars$weights = task$weights$weight
+      # }
+      if(is.integer(private$.get_weights(task))) pars$weights = private$.get_weights(task)
 
       formula = task$formula()
       data = task$data()
@@ -83,7 +84,7 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
         formula = formula,
         data = data,
         contol = ctrl,
-        .args = pars
+        .args = pv_train
       )
     },
     .predict = function(task) {

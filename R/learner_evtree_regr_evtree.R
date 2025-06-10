@@ -52,10 +52,8 @@ LearnerRegrEvtree = R6Class("LearnerRegrEvtree",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        # weights must be integers (not recognized in mlr2)
-        if (is.integer(task$weights$weight)) pars$weights = task$weights$weight
+      if(is.integer(private$.get_weights(task))) {
+        pars$weights = private$.get_weights(task)
       }
 
       formula = task$formula()
