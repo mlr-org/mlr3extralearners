@@ -63,7 +63,9 @@ LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
       #   # weights must be integers (not recognized in mlr2)
       #   if (is.integer(task$weights$weight)) pars$weights = task$weights$weight
       # }
-      if(is.integer(private$.get_weights(task))) pars$weights = private$.get_weights(task)
+      if (is.integer(private$.get_weights(task))) {
+        pars$weights = private$.get_weights(task)
+      }
 
       formula = task$formula()
       data = task$data()
