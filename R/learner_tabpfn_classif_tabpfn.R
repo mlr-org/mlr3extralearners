@@ -144,6 +144,10 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     },
 
     .predict = function(task) {
+      message("Predict2")
+      message("Predict")
+      reticulate::py_require("tabpfn")
+      reticulate::import("tabpfn")
       model = self$model$fitted
 
       x = as.matrix(task$data(cols = task$feature_names))
@@ -170,6 +174,9 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
 
 #' @export
 marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
+  reticulate::py_require(c("pickle", "tabpfn"))
+  reticulate::import("tabpfn")
+  message("Marshal")
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
   # save model as bytes
@@ -185,6 +192,9 @@ marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
 
 #' @export
 unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+  reticulate::py_require(c("pickle", "tabpfn"))
+  reticulate::import("tabpfn")
+  message("Unmarshal tabpfn")
   pickle = reticulate::import("pickle")
   # unpickle
   fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
