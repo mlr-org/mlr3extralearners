@@ -222,36 +222,36 @@ class_labels[pred$class+1]
 
 
 
-task = tsk("boston_housing")
+task = tsk("sonar")
 ids = partition(task)
 
 
 # Normal Training:
-learner = lrn("regr.fastai")
+learner = lrn("classif.fastai")
 learner
 learner$param_set
 learner$train(task, row_ids = ids$train)
-learner$eval_protocol
+learner$state$eval_protocol
 pred = learner$predict(task, row_ids = ids$test)
 
 # Training with validation
-learner = lrn("regr.fastai")
-learner$validate = 1/3
+learner = lrn("classif.fastai")
+learner$validate = 0.3
 learner$param_set$set_values(
   n_epoch = 7,
-  eval_metric = msr("regr.mse")
+  eval_metric = msr("classif.auc")
 )
 learner$train(task, row_ids = ids$train)
-learner$eval_protocol
+learner$state$eval_protocol
+learner$internal_valid_scores
 
 # Training with validation and early stopping
-learner = lrn("regr.fastai")
+learner = lrn("classif.fastai")
 learner$validate = 1/3
 learner$param_set$set_values(
   n_epoch = 10,
   patience = 3,
-  eval_metric = msr("regr.mse"),
-  layers = c(10, 30, 10)
+  eval_metric = msr("classif.auc"),
 )
 learner$train(task, row_ids = ids$train)
 learner$internal_tuned_values

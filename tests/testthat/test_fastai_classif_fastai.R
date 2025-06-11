@@ -104,7 +104,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-    patience = 1,
+    #patience = 1,
     eval_metric = msr("classif.ce")
   )
 
@@ -121,7 +121,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-    patience = 1,
+    #patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.logloss")
   )
@@ -139,7 +139,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-    patience = 1,
+   # patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.auc")
   )
@@ -157,7 +157,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-    patience = 1,
+    #patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.ce")
   )
@@ -175,7 +175,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-    patience = 1,
+   # patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.logloss")
   )

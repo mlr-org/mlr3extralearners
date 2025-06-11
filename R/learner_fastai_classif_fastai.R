@@ -236,6 +236,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         )
       }))
 
+      # Rename eval protocol in case custom metric was used
+      names(self$state$eval_protocol)[
+        names(self$state$eval_protocol) == "python_function"
+      ] = if (inherits(measure, "Measure")) measure$id
+
       tab_learner
     },
 
@@ -264,7 +269,12 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .extract_internal_valid_scores = function() {
       if (is.null(self$state$eval_protocol)) return(NULL)
       metric = self$model$metrics[[0]]$name
-      set_names(list(self$state$eval_protocol[nrow(self$state$eval_protocol), metric]), metric)
+      metric_name = if (metric == "python_function") {
+        self$state$param_vals$eval_metric$id
+      } else {
+        metric
+      }
+      set_names(list(self$state$eval_protocol[nrow(self$state$eval_protocol), metric_name]), metric_name)
     }
   )
 )
