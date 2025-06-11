@@ -36,24 +36,25 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   loss \tab character \tab exponential \tab exponential, logistic \tab - \cr
-   type \tab character \tab discrete \tab discrete, real, gentle \tab - \cr
-   iter \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    bag.frac \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   model.coef \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    bag.shift \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   max.iter \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   delta \tab numeric \tab 1e-10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   minsplit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   minbucket \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    cp \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   delta \tab numeric \tab 1e-10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   iter \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   loss \tab character \tab exponential \tab exponential, logistic \tab - \cr
+   max.iter \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    maxcompete \tab integer \tab 4 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   maxsurrogate \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   usesurrogate \tab integer \tab 2 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   surrogatestyle \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    maxdepth \tab integer \tab 30 \tab  \tab \eqn{[1, 30]}{[1, 30]} \cr
+   maxsurrogate \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   minbucket \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   minsplit \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   model.coef \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   n.iter \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nu \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   surrogatestyle \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   type \tab character \tab discrete \tab discrete, real, gentle \tab - \cr
+   usesurrogate \tab integer \tab 2 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    xval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
@@ -74,7 +75,7 @@ ids = mlr3::partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance())
+
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -104,7 +105,7 @@ annanzrv
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifAdaBoosting-new}{\code{LearnerClassifAdaBoosting$new()}}
-\item \href{#method-LearnerClassifAdaBoosting-importance}{\code{LearnerClassifAdaBoosting$importance()}}
+\item \href{#method-LearnerClassifAdaBoosting-oob_error}{\code{LearnerClassifAdaBoosting$oob_error()}}
 \item \href{#method-LearnerClassifAdaBoosting-clone}{\code{LearnerClassifAdaBoosting$clone()}}
 }
 }
@@ -136,12 +137,12 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifAdaBoosting-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifAdaBoosting-importance}{}}}
-\subsection{Method \code{importance()}}{
-The importance scores are extracted from the model's variable importance values.
+\if{html}{\out{<a id="method-LearnerClassifAdaBoosting-oob_error"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifAdaBoosting-oob_error}{}}}
+\subsection{Method \code{oob_error()}}{
+The oob error is extracted extracted from the model slot \verb{$model$errs}.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAdaBoosting$importance()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAdaBoosting$oob_error()}\if{html}{\out{</div>}}
 }
 
 \subsection{Returns}{

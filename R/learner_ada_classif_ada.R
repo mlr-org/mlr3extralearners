@@ -56,7 +56,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("oob_error", "missings", "twoclass", "weights"),
+        properties = c("oob_error", "missings", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.ada",
         label = "ada Boosting"
       )
