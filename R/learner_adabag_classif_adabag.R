@@ -12,6 +12,9 @@
 #'   * Initial value: 0L
 #'   * Reason for change: Set to 0 for speed.
 #'
+#' @references
+#' `r format_bib("adabag2013")`
+#'
 #' @templateVar id classif.adabag
 #' @template learner
 #'
@@ -60,7 +63,7 @@ LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
       if (is.null(self$model)) {
         stopf("No model stored")
       }
-      self$model$importance
+      sort(self$model$importance, decreasing = TRUE)
     }
   ),
 

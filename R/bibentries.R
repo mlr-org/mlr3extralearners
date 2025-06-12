@@ -739,5 +739,16 @@ bibentries = c( # nolint start
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
+  ),
+  adabag2013 = bibentry("article",
+    title = "adabag: An R Package for Classification with Boosting and Bagging",
+    volume = "54",
+    url = "https://www.jstatsoft.org/index.php/jss/article/view/v054i02",
+    doi = "10.18637/jss.v054.i02",
+    number = "2",
+    journal = "Journal of Statistical Software",
+    author = "Alfaro, Esteban and Gamez, Matias and García, Noelia",
+    year="2013",
+    pages="1–35"
   )
 ) # nolint end

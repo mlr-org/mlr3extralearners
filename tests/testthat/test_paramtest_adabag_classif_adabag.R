@@ -1,11 +1,11 @@
 test_that("classif.adabag train", {
   learner = lrn("classif.adabag")
-  fun = adabag::adabag
+  fun = c(adabag::boosting, rpart::rpart.control)
   exclude = c(
-    "object", # handled internally
-    "data" # handled internally
+    "formula", # handled internally
+    "data", # handled internally
+    "control" # handled internally
   )
-
   # note that you can also pass a list of functions in case $.train calls more than one
   # function, e.g. for control arguments
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -14,7 +14,7 @@ test_that("classif.adabag train", {
 
 test_that("classif.adabag predict", {
   learner = lrn("classif.adabag")
-  fun = adabag::predict # nolint
+  fun = adabag:::predict.boosting # nolint
   exclude = c(
     "object", # handled internally
     "data", # handled internally

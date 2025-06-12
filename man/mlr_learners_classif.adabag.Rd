@@ -33,7 +33,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{adabag}, \CRANpkg{rpart}
 }
 }
@@ -81,6 +81,12 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 \dontshow{\}) # examplesIf}
+}
+\references{
+Alfaro, Esteban, Gamez, Matias, García, Noelia (2013).
+\dQuote{adabag: An R Package for Classification with Boosting and Bagging.}
+\emph{Journal of Statistical Software}, \bold{54}(2), 1–35.
+\doi{10.18637/jss.v054.i02}, \url{https://www.jstatsoft.org/index.php/jss/article/view/v054i02}.
 }
 \seealso{
 \itemize{
