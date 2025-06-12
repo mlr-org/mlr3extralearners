@@ -218,14 +218,14 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       # manually add 'objective' and 'eval_metric'
       pv = c(pv, objective = "survival:cox", eval_metric = "cox-nloglik")
 
-      data = get_xgb_mat(task, pv$objective)
+      data = get_xgb_mat(task, pv$objective, private)
 
       internal_valid_task = task$internal_valid_task
       if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
       if (!is.null(internal_valid_task)) {
-        test_data = get_xgb_mat(internal_valid_task, pv$objective)
+        test_data = get_xgb_mat(internal_valid_task, pv$objective, private)
         # XGBoost uses the last element in the watchlist as
         # the early stopping set
         pv$watchlist = c(pv$watchlist, list(test = test_data))

@@ -119,10 +119,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        pv$weights = task$weights$weight
-      }
+      pv$weights = private$.get_weights(task)
 
       invoke(
         survivalmodels::parametric,

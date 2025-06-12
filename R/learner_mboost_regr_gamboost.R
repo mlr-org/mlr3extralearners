@@ -93,11 +93,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties) {
-        pars_gamboost = insert_named(
-          pars_gamboost,
-          list(weights = task$weights$weight))
-      }
+      pars_gamboost$weights = private$.get_weights(task)
 
       if ("offset" %in% task$properties) {
         pars_gamboost = insert_named(
