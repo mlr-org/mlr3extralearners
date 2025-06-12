@@ -196,4 +196,3 @@ unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
   fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
   structure(list(fitted = fitted), class = "tabpfn_model")
 }
-
