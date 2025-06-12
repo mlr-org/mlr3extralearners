@@ -86,11 +86,11 @@ LearnerRegrGlm = R6Class("LearnerRegrGlm",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
+      pars$weights = private$.get_weights(task)
+
       family_args = pars[names(pars) == "link"]
       pars$link = NULL
-      if ("weights" %in% task$properties) {
-        pars$weight = task$weights$weight
-      }
+
       # add family to parameters
       family_fn = getFromNamespace(pars$family, ns = "stats")
       pars$family = invoke(family_fn, .args = family_args)

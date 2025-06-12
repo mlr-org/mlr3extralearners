@@ -90,7 +90,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr", "response"),
         param_set = ps,
-        properties = c("oob_error", "importance", "missings"),
+        properties = c("oob_error", "importance", "missings", "weights"),
         man = "mlr3extralearners::mlr_learners_surv.aorsf",
         label = "Oblique Random Forest"
       )
@@ -172,7 +172,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
-        weights = task$weights,
+        weights = private$.get_weights(task),
         control = control,
         no_fit = FALSE,
         .args = pv
