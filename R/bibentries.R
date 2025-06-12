@@ -747,8 +747,8 @@ bibentries = c( # nolint start
     doi = "10.18637/jss.v054.i02",
     number = "2",
     journal = "Journal of Statistical Software",
-    author = "Alfaro, Esteban and Gamez, Matias and García, Noelia",
+    author = "Alfaro, Esteban and Gamez, Matias and Garc{\'i}a, Noelia",
     year="2013",
-    pages="1–35"
+    pages="1–-35"
   )
 ) # nolint end
