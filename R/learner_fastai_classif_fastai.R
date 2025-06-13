@@ -119,6 +119,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
+      reticulate::py_require("fastai")
+
       formula = task$formula()
       data = task$data()
       cat_cols = task$feature_types[type != "numeric"]$id
@@ -245,6 +247,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .predict = function(task) {
+      reticulate::py_require("fastai")
+
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
@@ -284,6 +288,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
 # Wrapper for eval measure to include in fastai
 metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
+  reticulate::py_require("fastai")
+
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   pred = fastai::as_array(pred)
   truth = factor(as.vector(fastai::as_array(dtrain)), levels = lvl)
