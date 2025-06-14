@@ -187,3 +187,29 @@ test_that("custom inner validation measure", {
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.logloss")
 })
+
+test_that("marshaling works for classif.fastai", {
+  learner = lrn("classif.fastai")
+  task = tsk("iris")
+  # expect_marshalable_learner(learner, task)
+
+  learner$train(task)
+  pred = learner$predict(task)
+  model = learner$model
+  class_prev = class(model)
+
+  # checks for marshaling is the same as expect_marshalable_learner
+  expect_false(learner$marshaled)
+  expect_equal(is_marshaled_model(learner$model), learner$marshaled)
+  expect_invisible(learner$marshal())
+  expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
+
+  # checks for unmarshaling differs -- instead of checking equality of model,
+  # we check equality of predictions, because expect_equal() on python objects
+  # checks the pointer which almost always changes after unmarshaling
+  expect_invisible(learner$unmarshal())
+  expect_prediction(learner$predict(task))
+  expect_equal(learner$predict(task), pred)
+  expect_false(learner$marshaled)
+  expect_equal(class(learner$model), class_prev)
+})

@@ -81,10 +81,24 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("multiclass", "twoclass", "weights", "validation"),
+        properties = c("multiclass", "twoclass", "weights", "validation", "marshal"),
         man = "mlr3extralearners::mlr_learners_classif.fastai",
         label = "FastAi Neural Network Tabular Classifier"
       )
+    },
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`marshal_model()`].
+    marshal = function(...) {
+      mlr3::learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`unmarshal_model()`].
+    unmarshal = function(...) {
+      mlr3::learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -112,6 +126,12 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         private$.validate = assert_validate(rhs)
       }
       private$.validate
+    },
+
+    #' @field marshaled (`logical(1)`)
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      mlr3::learner_marshaled(self)
     }
   ),
 
@@ -243,7 +263,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         names(self$state$eval_protocol) == "python_function"
       ] = if (inherits(measure, "Measure")) measure$id
 
-      tab_learner
+      structure(list(tab_learner = tab_learner), class = "fastai_model")
     },
 
     .predict = function(task) {
@@ -252,7 +272,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      pred = invoke(predict, self$model, newdata, .args = pars)
+      pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
       class_labels = levels(task$truth())
 
       if (self$predict_type == "response") {
@@ -272,7 +292,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .extract_internal_valid_scores = function() {
       if (is.null(self$state$eval_protocol)) return(NULL)
-      metric = self$model$metrics[[0]]$name
+      metric = self$model$tab_learner$metrics[[0]]$name
       metric_name = if (metric == "python_function") {
         self$state$param_vals$eval_metric$id
       } else {
@@ -312,3 +332,25 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   msr$fun(truth, pred, ...)
 }
 
+#' @export
+marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
+  # pickle should be available in any python environment
+  pickle = reticulate::import("pickle")
+  # save model as bytes
+  pickled = pickle$dumps(model$tab_learner)
+  # ensure object is converted to R
+  pickled = as.raw(pickled)
+
+  structure(list(
+    marshaled = pickled,
+    packages = "mlr3extralearners"
+  ), class = c("fastai_model_marshaled", "marshaled"))
+}
+
+#' @export
+unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+  pickle = reticulate::import("pickle")
+  # unpickle
+  tab_learner = pickle$loads(reticulate::r_to_py(model$marshaled))
+  structure(list(tab_learner = tab_learner), class = "fastai_model")
+}
