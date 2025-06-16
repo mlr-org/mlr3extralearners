@@ -251,14 +251,14 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          age       revasc   revascdays </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.019812230 -0.872553863 -0.007131641 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         age      revasc  revascdays </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.01674191 -0.96679519 -0.00771434 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06264735 0.04958733 0.04003215 0.00000000 0.00000000 0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06806136 0.05776516 0.03513683 0.00000000 0.00000000 0.00000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -266,7 +266,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8350577 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8280556 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
