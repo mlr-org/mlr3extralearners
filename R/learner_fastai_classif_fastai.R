@@ -333,7 +333,7 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
 }
 
 #' @export
-marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
+marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
   # pickle should be available in any python environment
   pickle = reticulate::import("pickle")
   # save model as bytes
@@ -348,7 +348,7 @@ marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
 }
 
 #' @export
-unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+unmarshal_model.fastai_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
   # unpickle
   tab_learner = pickle$loads(reticulate::r_to_py(model$marshaled))
