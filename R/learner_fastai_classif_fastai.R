@@ -143,6 +143,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
       formula = task$formula()
       data = task$data()
+      type = NULL
       cat_cols = task$feature_types[type != "numeric"]$id
       num_cols = task$feature_types[type == "numeric"]$id
 
@@ -321,16 +322,15 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   # only look at the positive class
   if ("twoclass" %in% unlist(msr$task_properties)) {
     pred = pred_mat[, 2]
-    print("Measure wrapper: did conditioning on the twoclass work?")
   }
   # transform prediction into class labels
   if (msr$predict_type == "response") {
     p = apply(pred_mat, MARGIN = 1, FUN = function(x) which.max(x) - 1)
     pred = factor(p, levels = levels(truth))
-    print("Measure wrapper: did setting the correct response type work?")
   }
   msr$fun(truth, pred, ...)
 }
+# lg$debug
 
 #' @export
 marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
