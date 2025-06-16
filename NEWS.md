@@ -5,6 +5,7 @@
 * feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * feat: Added the new version of learner weights to all learners that support weights
 * feat: Added marshaling for `surv.xgboost.cox`.
+* feat: Added learner `LearnerClassifMda`.
 
 # mlr3extralearners 1.0.0
 
