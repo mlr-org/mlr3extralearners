@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Simple and fast neural nets for tabular data classification.
-#' Calls [fastai::fastai()] from package \CRANpkg{fastai}.
+#' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
 #'
 #' @section Initial parameter values:
 #' - `n_epoch`:
@@ -12,7 +12,7 @@
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
 #'   Needs to be set for [fastai::predict()] to work.
-#'   If no value is given, it is set to `fastai::accuracy()``.
+#'   If no value is given, it is set to `fastai::accuracy()`.
 #'
 #' @templateVar id classif.fastai
 #' @template learner

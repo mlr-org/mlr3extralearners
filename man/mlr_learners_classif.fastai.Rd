@@ -6,7 +6,7 @@
 \title{Classification Neural Network Learner}
 \description{
 Simple and fast neural nets for tabular data classification.
-Calls \code{\link[fastai:fastai]{fastai::fastai()}} from package \CRANpkg{fastai}.
+Calls \code{\link[fastai:tabular_learner]{fastai::tabular_learner()}} from package \CRANpkg{fastai}.
 }
 \section{Initial parameter values}{
 
@@ -16,7 +16,7 @@ Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
 Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
-If no value is given, it is set to \link[mlr3measures:classif.logloss]{mlr3measures::classif.logloss}.
+If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }
 
@@ -30,14 +30,71 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \section{Meta Information}{
 
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.fastai")), collapse = "\\n")}
+\itemize{
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{fastai}, \CRANpkg{reticulate}
+}
 }
 
 \section{Parameters}{
-
-\verb{r paste(mlr3misc::rd_info(mlr3::lrn("classif.fastai")$param_set), collapse = "\\n")}
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   act_cls \tab untyped \tab - \tab  \tab - \cr
+   bn_cont \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   bn_final \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   embed_p \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   emb_szs \tab untyped \tab NULL \tab  \tab - \cr
+   n_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   eval_metric \tab untyped \tab - \tab  \tab - \cr
+   layers \tab untyped \tab - \tab  \tab - \cr
+   loss_func \tab untyped \tab - \tab  \tab - \cr
+   lr \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   metrics \tab untyped \tab - \tab  \tab - \cr
+   n_out \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   num_workers \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   opt_func \tab untyped \tab - \tab  \tab - \cr
+   patience \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   pin_memory \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   procs \tab untyped \tab NULL \tab  \tab - \cr
+   ps \tab untyped \tab NULL \tab  \tab - \cr
+   shuffle \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   train_bn \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   wd \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   wd_bn_bias \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use_bn \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   y_range \tab untyped \tab NULL \tab  \tab - \cr
+   bs \tab integer \tab 50 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
 }
 
+\examples{
+\dontshow{if (mlr3misc::require_namespaces(lrn("classif.fastai")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner
+learner = mlr3::lrn("classif.fastai")
+print(learner)
+
+# Define a Task
+task = mlr3::tsk("sonar")
+
+# Create train and test set
+ids = mlr3::partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+\dontshow{\}) # examplesIf}
+}
 \references{
 Howard, Jeremy, Gugger, Sylvain (2020).
 \dQuote{Fastai: A Layered API for Deep Learning.}
@@ -76,6 +133,9 @@ which is the last epoch that yielded improvement w.r.t. the \code{patience}, ext
 \item{\code{validate}}{(\code{numeric(1)} or \code{character(1)} or \code{NULL})
 How to construct the internal validation data. This parameter can be either \code{NULL},
 a ratio, \code{"test"}, or \code{"predefined"}.}
+
+\item{\code{marshaled}}{(\code{logical(1)})
+Whether the learner has been marshaled.}
 }
 \if{html}{\out{</div>}}
 }
@@ -83,6 +143,8 @@ a ratio, \code{"test"}, or \code{"predefined"}.}
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifFastai-new}{\code{LearnerClassifFastai$new()}}
+\item \href{#method-LearnerClassifFastai-marshal}{\code{LearnerClassifFastai$marshal()}}
+\item \href{#method-LearnerClassifFastai-unmarshal}{\code{LearnerClassifFastai$unmarshal()}}
 \item \href{#method-LearnerClassifFastai-clone}{\code{LearnerClassifFastai$clone()}}
 }
 }
@@ -112,6 +174,42 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifFastai$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifFastai-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifFastai-marshal}{}}}
+\subsection{Method \code{marshal()}}{
+Marshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifFastai$marshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[=marshal_model]{marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifFastai-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifFastai-unmarshal}{}}}
+\subsection{Method \code{unmarshal()}}{
+Unmarshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifFastai$unmarshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[=unmarshal_model]{unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifFastai-clone"></a>}}
