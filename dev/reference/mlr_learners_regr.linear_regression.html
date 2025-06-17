@@ -37,6 +37,12 @@ Calls RWeka::LinearRegression() RWeka."><meta name="robots" content="noindex"></
 <li class="nav-item"><a class="external-link nav-link" href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><span class="fa fa-comments"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://stackoverflow.com/questions/tagged/mlr3"><span class="fa fab fa-stack-overflow"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://mlr-org.com/"><span class="fa fa-rss"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch"><li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul></li>
       </ul></div>
 
 
@@ -194,11 +200,12 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg =</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       6.0095 * am +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.0332 * disp +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       1.9349 * qsec +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      -6.5625 * wt +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      -3.6181</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       4.2369 * am +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -1.2339 * carb +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       2.2758 * drat +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.6447 * qsec +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      -1.94   * wt +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       8.5605</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -207,7 +214,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.62242 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.360308 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

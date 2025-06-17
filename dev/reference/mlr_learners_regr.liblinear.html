@@ -35,6 +35,12 @@ Calls LiblineaR::LiblineaR() from LiblineaR."><meta name="robots" content="noind
 <li class="nav-item"><a class="external-link nav-link" href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><span class="fa fa-comments"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://stackoverflow.com/questions/tagged/mlr3"><span class="fa fab fa-stack-overflow"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://mlr-org.com/"><span class="fa fa-rss"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch"><li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul></li>
       </ul></div>
 
 
@@ -197,10 +203,10 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              am       carb      cyl        disp      drat      gear          hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.06485652 0.03481666 0.175405 -0.03485817 0.3055459 0.3064033 0.005237293</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          qsec         vs         wt       Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.321009 0.07576159 0.09049995 0.06801853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              am        carb       cyl        disp      drat      gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.07944028 -0.01478303 0.1906029 -0.03535301 0.3217889 0.3114851</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               hp     qsec         vs         wt       Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.000921475 1.390745 0.08396037 0.07723278 0.07176758</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -218,7 +224,7 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   10.498 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.88545 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

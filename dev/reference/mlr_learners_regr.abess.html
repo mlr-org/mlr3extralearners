@@ -35,6 +35,12 @@ Calls abess::abess() from abess."><meta name="robots" content="noindex"></head><
 <li class="nav-item"><a class="external-link nav-link" href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/"><span class="fa fa-comments"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://stackoverflow.com/questions/tagged/mlr3"><span class="fa fab fa-stack-overflow"></span></a></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://mlr-org.com/"><span class="fa fa-rss"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch"><li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul></li>
       </ul></div>
 
 
@@ -192,15 +198,15 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 14.953968 56.80451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  3.148413 26.64844</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  2.736876 26.27030</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  1.947754 21.69093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  1.864275 23.33460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  1.801761 25.18190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  1.755003 27.19330</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  1.694776 29.02354</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  1.689932 31.52701</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 19.501701 62.38054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  4.178053 32.59032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.203736 29.57781</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.667025 28.29095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.551443 29.92411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.434322 31.50088</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.387677 33.65816</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.286152 35.30926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.281374 37.82889</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -209,7 +215,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.38494 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.593451 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
