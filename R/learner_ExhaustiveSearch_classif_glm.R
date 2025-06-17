@@ -3,12 +3,12 @@ library(paradox)
 library(R6)
 library(mlr3misc)
 
-LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
-                                      inherit = LearnerRegr,
+LearnerClassifExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
+                                      inherit = LearnerClassif,
                                       public = list(
                                         initialize = function() {
                                           param_set = ps(
-                                            family = p_fct(c("gaussian", "binomial"), tags = "train"), # maybe delete option binomial in regr case?
+                                            family = p_fct(c("gaussian", "binomial"), tags = "train"), # maybe delete option gaussian in classif case?
                                             performanceMeasure = p_fct(c("MSE", "AIC"), tags = "train"), # interdepency to testSetIDs
                                             combsUpTo = p_int(1L, tags = "train"),
                                             nResults = p_int(1L, default = 5000L, tags = "train"),
@@ -18,17 +18,17 @@ LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
                                             quietly = p_lgl(default = FALSE, tags = "train"),
                                             checkLarge = p_lgl(default = TRUE, tags = "train")
                                           )
-                                          param_set$set_values(family = "gaussian")
+                                          param_set$set_values(family = "binomial")
 
                                           super$initialize(
-                                            id = "regr.exhaustive_search",
+                                            id = "classif.exhaustive_search",
                                             feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-                                            predict_types = "response",
+                                            predict_types = c("response", "prob"),
                                             packages = "ExhaustiveSearch",
                                             param_set = param_set,
-                                            properties = c("missings", "selected_features"),
+                                            properties = c("twoclass", "missings", "selected_features"),
                                             label = "Exhaustive Search",
-                                            man = "mlr3extralearners::mlr_learners_regr.exhaustive_search"
+                                            man = "mlr3extralearners::mlr_learners_classif.exhaustive_search"
                                           )
                                         },
 
@@ -52,32 +52,38 @@ LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
                                           # extract selected features of best performing model
                                           # make new task
                                           private$.selected_features = intersect(ES_response$featureNames,
-                                                               ExhaustiveSearch::getFeatures(ES_response, ranks = 1))
+                                                                                 ExhaustiveSearch::getFeatures(ES_response, ranks = 1))
                                           task_selected = task$clone()
                                           task_selected$select(private$.selected_features)
                                           # return best model
                                           invoke(
-                                            lm,
+                                            stats::glm,
+                                            family = "binomial",
                                             formula = task_selected$formula(),
-                                            data = task_selected$data())
+                                            data = task_selected$data(),
+                                            model = FALSE)
                                         },
                                         .predict = function(task) {
-                                          pv = self$param_set$get_values(tags = "predict")
-
+                                          # pv = self$param_set$get_values(tags = "predict")
+                                          lvls = c(task$negative, task$positive)
                                           # ensure same column order in train and predict
                                           newdata = mlr3extralearners:::ordered_features(task, self)
 
-                                          response = invoke(predict, self$model, newdata = newdata, .args = pv)
-                                          list(response = unname(response))
+                                          p = unname(invoke(predict, object = self$model, newdata = newdata, type = "response"))
+
+                                          if (self$predict_type == "response") {
+                                            list(response = ifelse(p < 0.5, lvls[1L], lvls[2L]))
+                                          } else {
+                                            list(prob = pvec2mat(p, lvls))
+                                          }
                                         },
                                         .selected_features = NULL
                                       )
 )
 
-learner = LearnerRegrExhaustiveSearch$new()
-tsk_cars = tsk("mtcars")
-learner$train(tsk_cars)
+learner = LearnerClassifExhaustiveSearch$new()
+tsk_pima = tsk("pima")
+learner$train(tsk_pima)
 learner$model
-learner$predict(tsk_cars)
+learner$predict(tsk_pima)$score()
 learner$selected_features()
-
