@@ -9,7 +9,8 @@ test_that("paramtest regr.glmboost train", {
     "center", # depreacated
     "custom.family", # possibility to pass custom family
     "nuirange", # GammaReg etc.
-    "d" # Huber
+    "d", # Huber
+    "offset" # handled by mlr3
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
   expect_paramtest(paramtest)

@@ -24,6 +24,8 @@
 #' @template learner
 #' @templateVar id surv.blackboost
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @details
 #' `distr` prediction made by [mboost::survFit()].
 #'
@@ -46,7 +48,6 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
             "custom"), tags = "train"),
         custom.family = p_uty(tags = "train"),
         nuirange = p_uty(default = c(0, 100), tags = "train"),
-        offset = p_uty(tags = "train"),
         center = p_lgl(default = TRUE, tags = "train"),
         mstop = p_int(default = 100L, lower = 0L, tags = "train"),
         nu = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
@@ -102,7 +103,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         param_set = ps,
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("crank", "lp", "distr"),
-        properties = "weights",
+        properties = c("weights", "offset"),
         packages = c("mlr3extralearners", "mboost", "pracma"),
         man = "mlr3extralearners::mlr_learners_surv.blackboost",
         label = "Gradient Boosting"
@@ -119,9 +120,10 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
       }
 
       pars = self$param_set$get_values(tags = "train")
+      pars$weights = private$.get_weights(task)
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
 
       # mboost control
@@ -153,9 +155,6 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         pars$tree_controls = do.call(partykit::ctree_control, pars[is_ctrl_pars])
         pars = pars[!is_ctrl_pars]
       }
-
-      # if ("weights" %in% task$properties)
-      #   pars$weights = task$weights$weight
 
       family = switch(pars$family,
         coxph = mboost::CoxPH(),

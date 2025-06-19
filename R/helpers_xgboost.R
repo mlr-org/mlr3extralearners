@@ -1,6 +1,6 @@
 # helper function to construct an `xgb.DMatrix` object
 # that has both features and target (label) data
-get_xgb_mat = function(task, objective, row_ids = NULL) {
+get_xgb_mat = function(task, objective, private, row_ids = NULL) {
   # use all task rows if `rows_ids` is not specified
   if (is.null(row_ids)) row_ids = task$row_ids
 
@@ -25,9 +25,8 @@ get_xgb_mat = function(task, objective, row_ids = NULL) {
     xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
   }
 
-  if ("weights" %in% task$properties) {
-    xgboost::setinfo(data, "weight", task$weights$weight)
-  }
+  xgboost::setinfo(data, "weight", private$.get_weights(task))
+
   data
 }
 

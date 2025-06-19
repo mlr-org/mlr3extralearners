@@ -200,3 +200,53 @@ test_that("surv.xgboost.cox distr via breslow works", {
     expect_equal(surv, p_test$data$distr)
   })
 })
+
+test_that("marshaling works for surv.xgboost.cox", {
+  # Basically the same test as `expect_marshalable_learner()`,
+  # but uses `all.equal()` to compare xgb.DMatrix objects rather than `expect_equal`.
+  # The latter always throws an error unless two objects are identical, i.e.,
+  # with the same externalptr etc.
+
+  learner = lrn("surv.xgboost.cox",
+    nrounds = 10,
+    early_stopping_rounds = 10,
+    validate = 0.2
+  )
+
+  learner$train(task)
+
+  expect_true("marshal" %in% learner$properties)
+  learner$state = NULL
+
+  has_public = function(learner, x) {
+    exists(x, learner, inherits = FALSE)
+  }
+
+  expect_true(has_public(learner, "marshal") && checkmate::test_function(learner$marshal, nargs = 0))
+  expect_true(has_public(learner, "unmarshal") && checkmate::test_function(learner$unmarshal, nargs = 0))
+  expect_true(has_public(learner, "marshaled"))
+
+  expect_equal(learner$marshaled, FALSE)
+
+  learner$train(task)
+  model = learner$model
+  class_prev = class(model)
+  expect_false(learner$marshaled)
+  expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
+  expect_invisible(learner$marshal())
+  if (!inherits(learner, "GraphLearner")) {
+    expect_true(learner$marshaled)
+  }
+  expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
+
+  # unmarshaling works
+  expect_invisible(learner$unmarshal())
+  # can predict after unmarshaling
+  expect_prediction(learner$predict(task))
+  # model is reset (this is different from `expect_marshalable_learner`)
+  expect_equal(learner$model$model, model$model)
+  expect_true(all.equal(learner$model$train_data, model$train_data))
+  # marshaled is set accordingly
+  expect_false(learner$marshaled)
+  expect_equal(class(learner$model), class_prev)
+})

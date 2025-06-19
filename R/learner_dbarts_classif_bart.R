@@ -64,7 +64,8 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
         seed = p_int(default = NA_integer_, tags = "train", special_vals = list(NA_integer_)),
         proposalprobs = p_uty(default = NULL, tags = "train"),
         splitprobs = p_uty(default = NULL, tags = "train"),
-        keepsampler = p_lgl(default = NO_DEF, tags = "train")
+        keepsampler = p_lgl(default = NO_DEF, tags = "train"),
+        n.threads = p_int(tags = "predict")
       )
 
       super$initialize(
@@ -91,9 +92,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       y_train = task$data(cols = task$target_names)
       y_train = as.integer(y_train == task$positive)
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+      pars$weights = private$.get_weights(task)
 
       invoke(
         dbarts::bart,

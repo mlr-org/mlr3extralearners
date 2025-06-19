@@ -65,7 +65,6 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
         update = p_lgl(default = FALSE, tags = "train"),
         splitflavour = p_fct(default = "ctree", # goes into control
           levels = c("ctree", "exhaustive"), tags = "train"),
-        offset = p_uty(tags = "train"),
         cluster = p_uty(tags = "train"),
         scores = p_uty(tags = "train"),
         doFit = p_lgl(default = TRUE, tags = "train"),
@@ -93,12 +92,9 @@ LearnerClassifCTree = R6Class("LearnerClassifCTree",
       pars = self$param_set$get_values(tags = "train")
       pars_pargs = pars[names(pars) %in% formalArgs(mvtnorm::GenzBretz)]
       pars = pars[names(pars) %nin% formalArgs(mvtnorm::GenzBretz)]
-
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
-
       pars$pargs = invoke(mvtnorm::GenzBretz, pars_pargs)
+
+      pars$weights = private$.get_weights(task)
 
       invoke(partykit::ctree, formula = task$formula(),
         data = task$data(), .args = pars)

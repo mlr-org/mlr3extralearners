@@ -16,6 +16,8 @@
 #' in the formula will be used, superseding columns with col_roles "feature"
 #' in the task.
 #'
+#' @inheritSection mlr_learners_regr.gam Offset
+#'
 #' @template learner
 #' @templateVar id classif.gam
 #'
@@ -41,7 +43,6 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
     initialize = function() {
       ps = ps(
         formula = p_uty(tags = "train"),
-        offset = p_uty(default = NULL, tags = "train"),
         method = p_fct(
           levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
           default = "GCV.Cp",
@@ -92,7 +93,7 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("prob", "response"),
         param_set = ps,
-        properties = c("twoclass", "weights"),
+        properties = c("twoclass", "weights", "offset"),
         man = "mlr3extralearners::mlr_learners_classif.gam",
         label = "Generalized Additive Model"
       )
@@ -106,8 +107,10 @@ LearnerClassifGam = R6Class("LearnerClassifGam",
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
       data = task$data(cols = c(task$feature_names, task$target_names))
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
+
+      pars$weights = private$.get_weights(task)
+      if ("offset" %in% task$properties) {
+        pars$offset = task$offset$offset
       }
       if (is.null(pars$formula)) {
         formula = stats::as.formula(paste(

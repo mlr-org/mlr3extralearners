@@ -11,6 +11,11 @@
 #' @templateVar id regr.lmer
 #' @template learner
 #'
+#' @section Offset:
+#' If a `Task` contains a column with the `offset` role, it is automatically
+#' incorporated during training via the `offset` argument in [lme4::lmer()].
+#' No offset is applied during prediction for this learner.
+#'
 #' @references
 #' `r format_bib("bates2010lme4")`
 #'
@@ -44,7 +49,6 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         REML = p_lgl(tags = "train", default = TRUE),
         start = p_uty(tags = "train", default = NULL),
         verbose = p_int(tags = "train", default = 0, lower = 0),
-        offset = p_uty(tags = "train", default = NULL),
         contrasts = p_uty(tags = "train", default = NULL),
 
         # Params passed to lmerControl()
@@ -135,7 +139,7 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         id = "regr.lmer",
         packages = "lme4",
         feature_types = c("logical", "integer", "numeric", "factor"),
-        properties = "weights",
+        properties = c("weights", "offset"),
         predict_types = "response",
         param_set = ps,
         man = "mlr3extralearners::mlr_learners_regr.lmer",
@@ -158,9 +162,10 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
       # formula must be set manually to use the lme4 mixed effects syntax
       formula = pars_train$formula
       pars_train[["formula"]] = NULL
+      pars_train$weights = private$.get_weights(task)
 
-      if ("weights" %in% task$properties) {
-        pars_train$weights = task$weights$weight
+      if ("offset" %in% task$properties) {
+        pars_train$offset = task$offset$offset
       }
 
       data = task$data()

@@ -29,7 +29,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   offset \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    family \tab character \tab Gaussian \tab Gaussian, Laplace, Huber, Poisson, GammaReg, NBinomial, Hurdle, custom \tab - \cr
    custom.family \tab untyped \tab - \tab  \tab - \cr
    nuirange \tab untyped \tab c(0, 100) \tab  \tab - \cr
@@ -44,6 +43,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    na.action \tab untyped \tab stats::na.omit \tab  \tab - \cr
    contrasts.arg \tab untyped \tab - \tab  \tab - \cr
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} contains a column with the \code{offset} role, it is automatically
+incorporated via the \code{offset} argument in \code{mboost}'s training function.
+No offset is applied during prediction for this learner.
 }
 
 \examples{
