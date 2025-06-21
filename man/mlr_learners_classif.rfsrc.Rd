@@ -66,6 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab gmean, misclass, brier, none \tab - \cr
    case.depth \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   marginal.xvar \tab untyped \tab NULL \tab  \tab - \cr
 }
 }
 

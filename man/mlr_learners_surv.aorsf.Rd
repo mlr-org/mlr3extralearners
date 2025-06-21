@@ -65,7 +65,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    n_tree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_split \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_retry \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   n_thread \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_thread \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_aggregate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pred_simplify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    oobag \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
