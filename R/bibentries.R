@@ -586,6 +586,14 @@ bibentries = c( # nolint start
     month = "01",
     journal = "University of California, Berkeley"
   ),
+  arik2021tabnet = bibentry("inproceedings",
+    title = "Tabnet: Attentive interpretable tabular learning",
+    author = "Ar\xc4\xb1k, Sercan O and Pfister, Tomas",
+    booktitle = "AAAI",
+    volume = "35",
+    pages = "6679--6687",
+    year = "2021"
+  ),
   barnwal2022 = bibentry("article",
     title = "Survival Regression with Accelerated Failure Time Model in XGBoost",
     author = "Barnwal Avinash, Cho Hyunsu and Hocking Toby",
