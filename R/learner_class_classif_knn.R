@@ -51,8 +51,7 @@ LearnerClassifKnn = R6Class("LearnerClassifKnn",
 
       # prepare arguments for knn
       train_data = as.matrix(task$data(cols = task$feature_names))
-      args = c(list(train = train_data, cl = z[[target]]),
-              pars)
+      args = c(list(train = train_data, cl = z[[target]]), pars)
 
       # store the arguments for prediction
       args
