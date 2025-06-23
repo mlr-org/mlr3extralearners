@@ -269,7 +269,7 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ##### xgb.Booster</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raw: 2.4 Mb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> raw: 2.5 Mb </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> call:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     nthread = 1L, objective = "survival:aft", eval_metric = "aft-nloglik")</span>
@@ -281,8 +281,8 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> niter: 1000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> nfeatures : 6 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc       sysbp         los         age    stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.328047161 0.286341596 0.138298897 0.133727211 0.104003318 0.009581817 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         los       sysbp         age    stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.333157752 0.319164444 0.138096425 0.114412882 0.087260520 0.007907977 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -290,7 +290,7 @@ a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8290215 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8312348 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
