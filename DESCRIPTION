@@ -30,7 +30,7 @@ Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
     R (>= 3.1.0),
-    mlr3 (>= 0.20.2)
+    mlr3 (>= 1.0.0)
 Imports:
     checkmate,
     data.table,
@@ -75,7 +75,7 @@ Suggests:
     mda,
     mgcv,
     mlr3cluster,
-    mlr3learners (>= 0.4.2),
+    mlr3learners (>= 0.12.0),
     mlr3proba (>= 0.6.1),
     mlr3pipelines,
     mvtnorm,
@@ -113,8 +113,6 @@ Suggests:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3,
-    mlr-org/mlr3learners,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
