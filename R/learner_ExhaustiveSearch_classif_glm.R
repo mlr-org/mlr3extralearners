@@ -45,11 +45,6 @@
 #'
 #' # predict on training task
 #' learner$predict(tsk_gc)
-
-library(mlr3)
-library(paradox)
-library(R6)
-
 LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                       inherit = LearnerClassif,
                                       public = list(
@@ -130,11 +125,4 @@ LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                       )
 )
 
-learner = LearnerClassifExhaustiveSearch$new()
-learner$predict_type = "prob"
-learner$param_set$set_values(combsUpTo = 3)
-tsk_gc = tsk("german_credit")
-learner$train(tsk_gc)
-learner$selected_features()
-learner$predict(tsk_gc)
-
+.extralrns_dict$add("classif.ES", LearnerClassifExhaustiveSearch)
