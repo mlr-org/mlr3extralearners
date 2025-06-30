@@ -17,6 +17,10 @@
 #'   - Adjusted default: 1
 #'   - Reason for change: Suppressing the automatic internal parallelization if
 #'     `cv.folds` > 0.
+#' - `quietly`:
+#'   - Actual default: FALSE
+#'   - Adjusted default: TRUE
+#'   - Reason for change: Suppression of constant printing to console
 #'
 #'
 #' @template learner
@@ -43,8 +47,14 @@
 #'
 #' # predict on training task
 #' learner$predict(tsk_cars)
+
+library(R6)
+library(mlr3)
+
+
+
 LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
-                                      inherit = LearnerRegr,
+                                      inherit = mlr3::LearnerRegr,
                                       public = list(
                                         initialize = function() {
                                           param_set = ps(
@@ -55,7 +65,7 @@ LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
                                             nThreads = p_int(1L, init = 1L, tags = "train"),
                                             testSetIDs = p_int(1L, tags = "train"), # use as internal validation?
                                             errorVal = p_uty(default = -1, tags = "train"),
-                                            quietly = p_lgl(default = FALSE, tags = "train"),
+                                            quietly = p_lgl(init = TRUE, tags = "train"),
                                             checkLarge = p_lgl(default = TRUE, tags = "train")
                                           )
 
@@ -89,8 +99,14 @@ LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
                                             .args = pv
                                           )
                                           # extract selected features of best performing model
-                                          private$.selected_features = intersect(ES_response$featureNames,
-                                                                                 ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))
+                                          sel.l = vapply(paste0("^", task$feature_names),
+                                                         function(x) any(grepl(x, ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))),
+                                                         logical(1))
+                                          private$.selected_features = task$feature_names[sel.l]
+
+                                          # private$.selected_features = intersect(ES_response$featureNames,
+                                          #                                        ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))
+
                                           # task_selected: reduce task to selected features
                                           task_selected = task$clone()
                                           task_selected$select(private$.selected_features)
@@ -118,4 +134,4 @@ LearnerRegrExhaustiveSearch = R6Class("LearnerRegrExhaustiveSearch",
                                       )
 )
 
-.extralrns_dict$add("regr.ES", LearnerRegrExhaustiveSearch)
+.extralrns_dict$add("regr.exhaustive_search", LearnerRegrExhaustiveSearch)

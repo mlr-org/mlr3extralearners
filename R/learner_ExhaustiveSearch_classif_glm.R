@@ -17,6 +17,10 @@
 #'   - Adjusted default: 1
 #'   - Reason for change: Suppressing the automatic internal parallelization if
 #'     `cv.folds` > 0.
+#' - `quietly`:
+#'   - Actual default: FALSE
+#'   - Adjusted default: TRUE
+#'   - Reason for change: Suppression of constant printing to console
 #'
 #'
 #' @template learner
@@ -45,6 +49,10 @@
 #'
 #' # predict on training task
 #' learner$predict(tsk_gc)
+
+library(mlr3)
+library(R6)
+
 LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                       inherit = LearnerClassif,
                                       public = list(
@@ -57,13 +65,13 @@ LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                             nThreads = p_int(1L, init = 1L, tags = "train"),
                                             testSetIDs = p_int(1L, tags = "train"), # use as internal validation?
                                             errorVal = p_uty(default = -1L, tags = "train"),
-                                            quietly = p_lgl(default = FALSE, tags = "train"),
+                                            quietly = p_lgl(init = TRUE, tags = "train"),
                                             checkLarge = p_lgl(default = TRUE, tags = "train")
                                           )
 
                                           super$initialize(
                                             id = "classif.exhaustive_search",
-                                            feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
+                                            feature_types = c("logical", "integer", "numeric", "factor", "ordered", "character"),
                                             predict_types = c("response", "prob"),
                                             packages = "ExhaustiveSearch",
                                             param_set = param_set,
@@ -91,8 +99,16 @@ LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                             .args = pv
                                           )
                                           # extract selected features of best performing model
-                                          private$.selected_features = intersect(ES_response$featureNames,
-                                                                                 ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))
+                                          sel.l = vapply(paste0("^", task$feature_names),
+                                                          function(x) any(grepl(x, ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))),
+                                                          logical(1))
+                                          private$.selected_features = task$feature_names[sel.l]
+
+
+
+                                          # private$.selected_features = intersect(ES_response$featureNames,
+                                          #                                        ExhaustiveSearch::getFeatures(ES_response, ranks = 1L))
+
                                           # task_selected: reduce task to selected features
                                           task_selected = task$clone()
                                           task_selected$select(private$.selected_features)
@@ -107,7 +123,8 @@ LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                         .predict = function(task) {
                                           # pv = self$param_set$get_values(tags = "predict")
                                           # ensure same column order in train and predict
-                                          newdata = mlr3extralearners:::ordered_features(task, self)
+                                          # newdata = mlr3extralearners:::ordered_features(task, self)
+                                          newdata = ordered_features(task, self)
 
                                           p = unname(invoke(predict,
                                                             object = self$model,
@@ -118,11 +135,12 @@ LearnerClassifExhaustiveSearch = R6Class("LearnerClassifExhaustiveSearch",
                                           if (self$predict_type == "response") {
                                             list(response = ifelse(p < 0.5, task$negative, task$positive))
                                           } else {
-                                            list(prob = mlr3extralearners:::pprob_to_matrix((1-p), task)) # from helpers
+                                            list(prob = pprob_to_matrix((1-p), task))
+                                            # list(prob = mlr3extralearners:::pprob_to_matrix((1-p), task)) # from helpers
                                           }
                                         },
                                         .selected_features = NULL
                                       )
 )
 
-.extralrns_dict$add("classif.ES", LearnerClassifExhaustiveSearch)
+.extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)
