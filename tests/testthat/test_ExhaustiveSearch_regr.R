@@ -13,11 +13,14 @@ test_that("selected features", {
   learner$train(task)
 
   # run ExhaustiveSearch manually
-  ES = ExhaustiveSearch::ExhaustiveSearch(task$formula(),
-                                          task$data(),
-                                          family = "gaussian",
-                                          combsUpTo = 3,
-                                          quietly = TRUE)
+  ES = ExhaustiveSearch::ExhaustiveSearch(
+    task$formula(),
+    task$data(),
+    family = "gaussian",
+    combsUpTo = 3,
+    quietly = TRUE)
   # compare results --- latter part only works with non-factor features
-  expect_identical(learner$selected_features(), ExhaustiveSearch::getFeatures(ES, 1)[-1,1])
+  expect_identical(
+    learner$selected_features(),
+    ExhaustiveSearch::getFeatures(ES, 1)[-1, 1])
 })

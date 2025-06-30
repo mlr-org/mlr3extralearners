@@ -1,8 +1,9 @@
 test_that("paramtest classif.exhaustive_search train", {
   learner = lrn("regr.exhaustive_search")
   fun_list = list(ExhaustiveSearch::ExhaustiveSearch)
-  exclude = c("formula", # handled internally
-              "data"  # handled internally
+  exclude = c(
+    "formula", # handled internally
+    "data"  # handled internally
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
