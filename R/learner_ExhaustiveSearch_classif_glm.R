@@ -72,32 +72,32 @@ LearnerClassifExhaustiveSearch = R6Class(
         errorVal = p_uty(default = -1L, tags = "train"),
         quietly = p_lgl(init = TRUE, tags = "train"),
         checkLarge = p_lgl(default = TRUE, tags = "train")
-        )
+      )
       super$initialize(
         id = "classif.exhaustive_search",
         feature_types = c("logical",
-                          "integer",
-                          "numeric",
-                          "factor",
-                          "ordered",
-                          "character"),
+          "integer",
+          "numeric",
+          "factor",
+          "ordered",
+          "character"),
         predict_types = c("response", "prob"),
         packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
         properties = c("twoclass", "selected_features"), # to add: "validation"
         label = "Exhaustive Search",
         man = "mlr3extralearners::mlr_learners_classif.exhaustive_search"
-        )
-      },
+      )
+    },
     #' @description
     #' Extracts selected features of this learner.
     selected_features = function() {
       if (is.null(private$.selected_features)) {
         stopf("No features stored")
-        }
-      private$.selected_features
       }
-    ),
+      private$.selected_features
+    }
+  ),
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
@@ -107,7 +107,7 @@ LearnerClassifExhaustiveSearch = R6Class(
         formula = task$formula(),
         data = task$data(),
         .args = pv
-        )
+      )
       # extract selected features of best performing model
       selected = vapply(
         paste0("^", task$feature_names),
@@ -125,7 +125,7 @@ LearnerClassifExhaustiveSearch = R6Class(
         formula = task_selected$formula(),
         data = task_selected$data(),
         model = FALSE)
-      },
+    },
     .predict = function(task) {
       newdata = ordered_features(task, self)
       p = unname(
@@ -137,10 +137,10 @@ LearnerClassifExhaustiveSearch = R6Class(
       )
       if (self$predict_type == "response") {
         list(response = ifelse(p < 0.5, task$negative, task$positive))
-        } else {
-          list(prob = pprob_to_matrix((1 - p), task))
-          }
-      },
+      } else {
+        list(prob = pprob_to_matrix((1 - p), task))
+      }
+    },
     .selected_features = NULL
   )
 )

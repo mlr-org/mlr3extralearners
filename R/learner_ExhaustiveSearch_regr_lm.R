@@ -58,10 +58,10 @@ LearnerRegrExhaustiveSearch = R6Class(
     initialize = function() {
       param_set = ps(
         family = p_fct(c("gaussian", "binomial"),
-                       init = "gaussian",
-                       tags = "train"),
+          init = "gaussian",
+          tags = "train"),
         performanceMeasure = p_fct(c("MSE", "AIC"),
-                                   tags = "train"),
+          tags = "train"),
         combsUpTo = p_int(1L, tags = "train"),
         nResults = p_int(1L, default = 5000L, tags = "train"),
         nThreads = p_int(1L, init = 1L, tags = "train"),
@@ -69,31 +69,31 @@ LearnerRegrExhaustiveSearch = R6Class(
         errorVal = p_uty(default = -1, tags = "train"),
         quietly = p_lgl(init = TRUE, tags = "train"),
         checkLarge = p_lgl(default = TRUE, tags = "train")
-        )
+      )
       super$initialize(
         id = "regr.exhaustive_search",
         feature_types = c("logical",
-                          "integer",
-                          "numeric",
-                          "factor",
-                          "character"),
+          "integer",
+          "numeric",
+          "factor",
+          "character"),
         predict_types = c("response", "se"),
         packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
         properties = c("selected_features"),
         label = "Exhaustive Search",
         man = "mlr3extralearners::mlr_learners_regr.exhaustive_search"
-        )
-      },
+      )
+    },
     #' @description
     #' Extracts selected features of this learner.
     selected_features = function() {
       if (is.null(private$.selected_features)) {
         stopf("No features stored")
-        }
-      private$.selected_features
       }
-    ),
+      private$.selected_features
+    }
+  ),
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
@@ -103,7 +103,7 @@ LearnerRegrExhaustiveSearch = R6Class(
         formula = task$formula(),
         data = task$data(),
         .args = pv
-        )
+      )
       # extract selected features of best performing model
       selected = vapply(
         paste0("^", task$feature_names),
@@ -119,7 +119,7 @@ LearnerRegrExhaustiveSearch = R6Class(
         stats::lm,
         formula = task_selected$formula(),
         data = task_selected$data())
-      },
+    },
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       # ensure same column order in train and predict
@@ -133,13 +133,13 @@ LearnerRegrExhaustiveSearch = R6Class(
         .args = pv)
       if (se_fit) {
         list(response = unname(prediction$fit),
-             se = unname(prediction$se.fit))
-        } else {
-          list(response = unname(prediction))
-          }
-      },
+          se = unname(prediction$se.fit))
+      } else {
+        list(response = unname(prediction))
+      }
+    },
     .selected_features = NULL
-    )
+  )
 )
 
 .extralrns_dict$add("regr.exhaustive_search", LearnerRegrExhaustiveSearch)

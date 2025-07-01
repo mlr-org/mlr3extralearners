@@ -3,7 +3,7 @@ test_that("paramtest regr.exhaustive_search train", {
   fun_list = list(ExhaustiveSearch::ExhaustiveSearch)
   exclude = c(
     "formula", # handled internally
-    "data"  # handled internally
+    "data" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

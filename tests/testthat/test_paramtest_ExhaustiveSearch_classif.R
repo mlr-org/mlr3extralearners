@@ -3,7 +3,7 @@ test_that("paramtest classif.exhaustive_search train", {
   fun_list = list(ExhaustiveSearch::ExhaustiveSearch)
   exclude = c(
     "formula", # handled internally
-    "data"  # handled internally
+    "data" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -20,7 +20,7 @@ test_that("paramset regr.exhaustive_search predict", {
     "se.fit", # not used
     "dispersion", # not used
     "terms", # not used
-    "na.action"  # not used
+    "na.action" # not used
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
   expect_paramtest(paramtest)
