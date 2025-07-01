@@ -49,6 +49,8 @@
 #' learner$predict(tsk_cars)
 #' @export
 
+library(R6)
+
 LearnerRegrExhaustiveSearch = R6Class(
   "LearnerRegrExhaustiveSearch",
   inherit = mlr3::LearnerRegr,
@@ -74,12 +76,7 @@ LearnerRegrExhaustiveSearch = R6Class(
       )
       super$initialize(
         id = "regr.exhaustive_search",
-        feature_types = c(
-          "logical",
-          "integer",
-          "numeric",
-          "factor",
-          "character"),
+        feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "se"),
         packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
@@ -91,10 +88,10 @@ LearnerRegrExhaustiveSearch = R6Class(
     #' @description
     #' Extracts selected features of this learner.
     selected_features = function() {
-      if (is.null(private$.selected_features)) {
-        stopf("No features stored")
+      if (is.null(self$model)) {
+        stopf("No model trained")
       }
-      private$.selected_features
+      attr(summary(self$model)$terms, "term.labels")
     }
   ),
   private = list(
@@ -107,16 +104,15 @@ LearnerRegrExhaustiveSearch = R6Class(
         data = task$data(),
         .args = pv
       )
+
       # extract selected features of best performing model
-      selected = vapply(
-        paste0("^", task$feature_names),
-        function(x) {
-          any(grepl(x, ExhaustiveSearch::getFeatures(es_response, ranks = 1L)))
-        },
-        logical(1))
-      private$.selected_features = task$feature_names[selected]
+      selected_features = intersect(
+        ExhaustiveSearch::getFeatures(es_response, ranks = 1L),
+        task$feature_names)
+
       # task_selected: reduce task to selected features
-      task_selected = task$clone()$select(private$.selected_features)
+      task_selected = task$clone()$select(selected_features)
+
       # return best model
       invoke(
         stats::lm,
@@ -126,7 +122,7 @@ LearnerRegrExhaustiveSearch = R6Class(
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       # ensure same column order in train and predict
-      newdata = mlr3extralearners:::ordered_features(task, self)
+      newdata = ordered_features(task, self)
       se_fit = self$predict_type == "se"
       prediction = invoke(
         predict,
@@ -141,9 +137,14 @@ LearnerRegrExhaustiveSearch = R6Class(
       } else {
         list(response = unname(prediction))
       }
-    },
-    .selected_features = NULL
+    }
   )
 )
 
 .extralrns_dict$add("regr.exhaustive_search", LearnerRegrExhaustiveSearch)
+
+# learner = LearnerRegrExhaustiveSearch$new()
+# learner$selected_features()
+# learner$train(tsk("mtcars"))
+# learner$selected_features()
+# learner$predict(tsk("mtcars"))

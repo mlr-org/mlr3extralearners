@@ -50,6 +50,8 @@
 #' learner$predict(tsk_gc)
 #' @export
 
+library(R6)
+
 LearnerClassifExhaustiveSearch = R6Class(
   "LearnerClassifExhaustiveSearch",
   inherit = LearnerClassif,
@@ -75,13 +77,7 @@ LearnerClassifExhaustiveSearch = R6Class(
       )
       super$initialize(
         id = "classif.exhaustive_search",
-        feature_types = c(
-          "logical",
-          "integer",
-          "numeric",
-          "factor",
-          "ordered",
-          "character"),
+        feature_types = c("logical", "integer", "numeric"),
         predict_types = c("response", "prob"),
         packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
@@ -93,10 +89,10 @@ LearnerClassifExhaustiveSearch = R6Class(
     #' @description
     #' Extracts selected features of this learner.
     selected_features = function() {
-      if (is.null(private$.selected_features)) {
-        stopf("No features stored")
+      if (is.null(self$model)) {
+        stopf("No model trained")
       }
-      private$.selected_features
+      attr(summary(self$model)$terms, "term.labels")
     }
   ),
   private = list(
@@ -109,16 +105,15 @@ LearnerClassifExhaustiveSearch = R6Class(
         data = task$data(),
         .args = pv
       )
+
       # extract selected features of best performing model
-      selected = vapply(
-        paste0("^", task$feature_names),
-        function(x) {
-          any(grepl(x, ExhaustiveSearch::getFeatures(es_response, ranks = 1L)))
-        },
-        logical(1))
-      private$.selected_features = task$feature_names[selected]
+      selected_features = intersect(
+        ExhaustiveSearch::getFeatures(es_response, ranks = 1L),
+        task$feature_names)
+
       # task_selected: reduce task to selected features
-      task_selected = task$clone()$select(private$.selected_features)
+      task_selected = task$clone()$select(selected_features)
+
       # return best model
       invoke(
         stats::glm,
@@ -141,9 +136,17 @@ LearnerClassifExhaustiveSearch = R6Class(
       } else {
         list(prob = pprob_to_matrix((1 - p), task))
       }
-    },
-    .selected_features = NULL
+    }
   )
 )
 
 .extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)
+
+# learner = LearnerClassifExhaustiveSearch$new()
+# learner$param_set$set_values(
+#   combsUpTo = 2
+# )
+# learner$selected_features()
+# learner$train(tsk("sonar"))
+# learner$selected_features()
+# learner$predict(tsk("sonar"))
