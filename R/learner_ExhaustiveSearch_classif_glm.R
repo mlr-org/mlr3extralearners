@@ -11,7 +11,8 @@
 #' - `family`:
 #'   - Actual default: NULL
 #'   - Adjusted default: "binomial"
-#'   - Reason for change: To comply with mlr3 architecture, we differentiate between classification and regression learners.
+#'   - Reason for change: To comply with mlr3 architecture,
+#'      we differentiate between classification and regression learners.
 #' - `nThreads`:
 #'   - Actual default: NULL
 #'   - Adjusted default: 1
@@ -56,19 +57,22 @@ LearnerClassifExhaustiveSearch = R6Class(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      param_set = ps(family = p_fct(c("gaussian", "binomial"),
-                                    init = "binomial",
-                                    tags = "train"),
-                     performanceMeasure = p_fct(c("MSE", "AIC"),
-                                                tags = "train"),
-                     combsUpTo = p_int(1L, tags = "train"),
-                     nResults = p_int(1L, default = 5000L, tags = "train"),
-                     nThreads = p_int(1L, init = 1L, tags = "train"),
-                     testSetIDs = p_int(1L, tags = "train"),
-                     errorVal = p_uty(default = -1L, tags = "train"),
-                     quietly = p_lgl(init = TRUE, tags = "train"),
-                     checkLarge = p_lgl(default = TRUE, tags = "train")
-                     )
+      param_set = ps(
+        family = p_fct(
+          c("gaussian", "binomial"),
+          init = "binomial",
+          tags = "train"),
+        performanceMeasure = p_fct(
+          c("MSE", "AIC"),
+          tags = "train"),
+        combsUpTo = p_int(1L, tags = "train"),
+        nResults = p_int(1L, default = 5000L, tags = "train"),
+        nThreads = p_int(1L, init = 1L, tags = "train"),
+        testSetIDs = p_int(1L, tags = "train"),
+        errorVal = p_uty(default = -1L, tags = "train"),
+        quietly = p_lgl(init = TRUE, tags = "train"),
+        checkLarge = p_lgl(default = TRUE, tags = "train")
+        )
       super$initialize(
         id = "classif.exhaustive_search",
         feature_types = c("logical",
@@ -108,17 +112,9 @@ LearnerClassifExhaustiveSearch = R6Class(
       selected = vapply(
         paste0("^", task$feature_names),
         function(x) {
-          any(
-            grepl(x,
-                  ExhaustiveSearch::getFeatures(
-                    es_response,
-                    ranks = 1L
-                    )
-                  )
-            )
-          },
-        logical(1)
-        )
+          any(grepl(x, ExhaustiveSearch::getFeatures(es_response, ranks = 1L)))
+        },
+        logical(1))
       private$.selected_features = task$feature_names[selected]
       # task_selected: reduce task to selected features
       task_selected = task$clone()$select(private$.selected_features)
@@ -132,26 +128,21 @@ LearnerClassifExhaustiveSearch = R6Class(
       },
     .predict = function(task) {
       newdata = ordered_features(task, self)
-      p = unname(invoke(
-        predict,
-        object = self$model,
-        newdata = newdata,
-        type = "response")
-        )
+      p = unname(
+        invoke(
+          predict,
+          object = self$model,
+          newdata = newdata,
+          type = "response")
+      )
       if (self$predict_type == "response") {
-        list(
-          response = ifelse(p < 0.5, task$negative, task$positive)
-          )
+        list(response = ifelse(p < 0.5, task$negative, task$positive))
         } else {
-          list(
-            prob = pprob_to_matrix((1 - p), task)
-            )
+          list(prob = pprob_to_matrix((1 - p), task))
           }
       },
     .selected_features = NULL
-    )
+  )
 )
 
-.extralrns_dict$add(
-  "classif.exhaustive_search",
-  LearnerClassifExhaustiveSearch)
+.extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)

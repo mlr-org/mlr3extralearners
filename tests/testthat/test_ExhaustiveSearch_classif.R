@@ -1,7 +1,9 @@
 test_that("autotest", {
   learner = LearnerClassifExhaustiveSearch$new()
   expect_learner(learner, check_man = FALSE) # toDo
-  result = run_autotest(learner, exclude = "sanity") # exclusion, since learner prefers unimportant feature and therefore predicts badly
+  # exclusion of sanity task,
+  # since learner prefers unimportant feature and therefore predicts badly
+  result = run_autotest(learner, exclude = "sanity")
   expect_true(result, info = result$error)
 })
 

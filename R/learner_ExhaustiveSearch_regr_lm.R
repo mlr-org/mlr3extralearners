@@ -11,7 +11,8 @@
 #' - `family`:
 #'   - Actual default: NULL
 #'   - Adjusted default: "gaussian"
-#'   - Reason for change: To comply with mlr3 architecture, we differentiate between classification and regression learners.
+#'   - Reason for change: To comply with mlr3 architecture,
+#'      we differentiate between classification and regression learners.
 #' - `nThreads`:
 #'   - Actual default: NULL
 #'   - Adjusted default: 1
@@ -107,18 +108,9 @@ LearnerRegrExhaustiveSearch = R6Class(
       selected = vapply(
         paste0("^", task$feature_names),
         function(x) {
-          any(
-            grepl(
-              x,
-              ExhaustiveSearch::getFeatures(
-                es_response,
-                ranks = 1L
-              )
-            )
-          )
+          any(grepl(x, ExhaustiveSearch::getFeatures(es_response, ranks = 1L)))
         },
-        logical(1)
-        )
+        logical(1))
       private$.selected_features = task$feature_names[selected]
       # task_selected: reduce task to selected features
       task_selected = task$clone()$select(private$.selected_features)
@@ -138,23 +130,16 @@ LearnerRegrExhaustiveSearch = R6Class(
         object = self$model,
         newdata = newdata,
         se.fit = se_fit,
-        .args = pv
-        )
+        .args = pv)
       if (se_fit) {
-        list(
-          response = unname(prediction$fit),
-          se = unname(prediction$se.fit)
-          )
+        list(response = unname(prediction$fit),
+             se = unname(prediction$se.fit))
         } else {
-          list(
-            response = unname(prediction)
-            )
+          list(response = unname(prediction))
           }
       },
     .selected_features = NULL
     )
 )
 
-.extralrns_dict$add(
-  "regr.exhaustive_search",
-  LearnerRegrExhaustiveSearch)
+.extralrns_dict$add("regr.exhaustive_search", LearnerRegrExhaustiveSearch)
