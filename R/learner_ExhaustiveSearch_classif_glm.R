@@ -22,14 +22,12 @@
 #'   - Adjusted default: TRUE
 #'   - Reason for change: Suppression of constant printing to console
 #'
-#'
 #' @template learner
 #' @templateVar id classif.exhaustive_search
 #'
 #' @details
 #' Internal validation not yet implemented.
 #'
-#' @export
 #' @template seealso_learner
 #' @examples
 #'
@@ -49,14 +47,14 @@
 #'
 #' # predict on training task
 #' learner$predict(tsk_gc)
-
-library(mlr3)
-library(R6)
+#' @export
 
 LearnerClassifExhaustiveSearch = R6Class(
   "LearnerClassifExhaustiveSearch",
   inherit = LearnerClassif,
   public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(family = p_fct(c("gaussian", "binomial"),
                                     init = "binomial",
@@ -80,13 +78,15 @@ LearnerClassifExhaustiveSearch = R6Class(
                           "ordered",
                           "character"),
         predict_types = c("response", "prob"),
-        packages = "ExhaustiveSearch",
+        packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
         properties = c("twoclass", "selected_features"), # to add: "validation"
         label = "Exhaustive Search",
         man = "mlr3extralearners::mlr_learners_classif.exhaustive_search"
         )
       },
+    #' @description
+    #' Extracts selected features of this learner.
     selected_features = function() {
       if (is.null(private$.selected_features)) {
         stopf("No features stored")
@@ -105,16 +105,20 @@ LearnerClassifExhaustiveSearch = R6Class(
         .args = pv
         )
       # extract selected features of best performing model
-      selected = vapply(paste0("^", task$feature_names),
-                     function(x) any(
-                       grepl(x,
-                             ExhaustiveSearch::getFeatures(
-                               es_response,
-                               ranks = 1L
-                               )
-                             )
-                       ),
-                     logical(1))
+      selected = vapply(
+        paste0("^", task$feature_names),
+        function(x) {
+          any(
+            grepl(x,
+                  ExhaustiveSearch::getFeatures(
+                    es_response,
+                    ranks = 1L
+                    )
+                  )
+            )
+          },
+        logical(1)
+        )
       private$.selected_features = task$feature_names[selected]
       # task_selected: reduce task to selected features
       task_selected = task$clone()$select(private$.selected_features)
@@ -135,9 +139,13 @@ LearnerClassifExhaustiveSearch = R6Class(
         type = "response")
         )
       if (self$predict_type == "response") {
-        list(response = ifelse(p < 0.5, task$negative, task$positive))
+        list(
+          response = ifelse(p < 0.5, task$negative, task$positive)
+          )
         } else {
-          list(prob = pprob_to_matrix((1 - p), task))
+          list(
+            prob = pprob_to_matrix((1 - p), task)
+            )
           }
       },
     .selected_features = NULL
