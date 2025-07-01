@@ -57,10 +57,12 @@ LearnerRegrExhaustiveSearch = R6Class(
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        family = p_fct(c("gaussian", "binomial"),
+        family = p_fct(
+          c("gaussian", "binomial"),
           init = "gaussian",
           tags = "train"),
-        performanceMeasure = p_fct(c("MSE", "AIC"),
+        performanceMeasure = p_fct(
+          c("MSE", "AIC"),
           tags = "train"),
         combsUpTo = p_int(1L, tags = "train"),
         nResults = p_int(1L, default = 5000L, tags = "train"),
@@ -72,7 +74,8 @@ LearnerRegrExhaustiveSearch = R6Class(
       )
       super$initialize(
         id = "regr.exhaustive_search",
-        feature_types = c("logical",
+        feature_types = c(
+          "logical",
           "integer",
           "numeric",
           "factor",
@@ -132,7 +135,8 @@ LearnerRegrExhaustiveSearch = R6Class(
         se.fit = se_fit,
         .args = pv)
       if (se_fit) {
-        list(response = unname(prediction$fit),
+        list(
+          response = unname(prediction$fit),
           se = unname(prediction$se.fit))
       } else {
         list(response = unname(prediction))

@@ -75,7 +75,8 @@ LearnerClassifExhaustiveSearch = R6Class(
       )
       super$initialize(
         id = "classif.exhaustive_search",
-        feature_types = c("logical",
+        feature_types = c(
+          "logical",
           "integer",
           "numeric",
           "factor",
