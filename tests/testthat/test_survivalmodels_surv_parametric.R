@@ -22,8 +22,9 @@ test_that("autotest po", {
   expect_true(result, info = result$error)
 })
 
+task = tsk("lung")
+
 test_that("time points for prediction", {
-  task = tsk("lung")
   learner = lrn("surv.parametric")
   p = learner$train(task)$predict(task)
   times = as.integer(colnames(p$data$distr))
@@ -51,8 +52,6 @@ test_that("missing", {
 })
 
 test_that("'form' affects survival prediction", {
-  task = tsk("lung")
-
   # aft
   p = lrn("surv.parametric", form = "aft")$train(task)$predict(task)
   expect_true(inherits(p$distr, "Matdist"))
