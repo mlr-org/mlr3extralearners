@@ -287,3 +287,10 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 })
 
+
+test_that("#437", {
+  lr = lrn("classif.lightgbm", predict_type = "prob")
+  lr$encapsulate("callr", lrn("classif.featureless", predict_type = "prob"))
+  pred = lr$train(tsk("iris"))$predict(tsk("iris"))
+  expect_equal(mean(rowSums(pred$prob)), 1)
+})
