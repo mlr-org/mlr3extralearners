@@ -106,16 +106,6 @@ The parameter <code>ntime</code> allows to adjust the granularity of these time 
 to any number (e.g. <code>150</code>).</p></li>
 </ol></div>
     <div class="section level2">
-    <h2 id="custom-mlr-parameters">Custom mlr3 parameters<a class="anchor" aria-label="anchor" href="#custom-mlr-parameters"></a></h2>
-
-
-<ul><li><p><code>discrete</code> determines the class of the returned survival probability
-distribution. If <code>FALSE</code>, vectorized continuous probability distributions are
-returned using <a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a>, otherwise a <a href="https://xoopr.github.io/distr6/reference/Matdist.html" class="external-link">distr6::Matdist</a>
-object, which is faster for calculating survival measures that require a <code>distr</code>
-prediction type. Default option is <code>TRUE</code>.</p></li>
-</ul></div>
-    <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
 
@@ -134,7 +124,7 @@ prediction type. Default option is <code>TRUE</code>.</p></li>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>form</td><td>character</td><td>aft</td><td>aft, ph, po, tobit</td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>weibull</td><td>weibull, exponential, gaussian, lognormal, loglogistic</td><td>-</td></tr><tr><td>parms</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>init</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>robust</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>score</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cluster</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>discrete</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ntime</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>round_time</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>form</td><td>character</td><td>aft</td><td>aft, ph, po, tobit</td><td>-</td></tr><tr><td>na.action</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>dist</td><td>character</td><td>weibull</td><td>weibull, exponential, gaussian, lognormal, loglogistic</td><td>-</td></tr><tr><td>parms</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>init</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>robust</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>score</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>cluster</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>ntime</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>round_time</td><td>integer</td><td>2</td><td></td><td>\([0, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
 
@@ -225,7 +215,7 @@ ie higher value =&gt; higher risk</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvParametric&gt;</span><span style="font-weight: bold;"> (surv.parametric): Fully Parametric Learner</span> <span style="color: #00BBBB;">─────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: form=aft, dist=weibull, discrete=TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: form=aft, dist=weibull</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">survival</span>, and <span style="color: #0000BB;">pracma</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, and factor</span>
@@ -261,7 +251,7 @@ ie higher value =&gt; higher risk</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8649318 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8352981 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
