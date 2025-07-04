@@ -54,7 +54,7 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
     initialize = function() {
       param_set = paradox::ps(
         blocks              = p_uty(tags = c("train", "required")),
-        block.method        = p_fct(c("BlockForest", "RandomBlock", "BlockVarSel", "VarProb", "SplitWeights"), default = "BlockForest", tags = "train"),
+        block.method        = p_fct(c("BlockForest", "RandomBlock", "BlockVarSel", "VarProb", "SplitWeights"), default = "BlockForest", tags = "train"), #nolint
         num.trees           = p_int(1L, default = 2000L, tags = "train"),
         mtry                = p_uty(default = NULL, tags = "train"),
         nsets               = p_int(1L, default = 300L, tags = "train"),
@@ -82,15 +82,15 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
     #' The importance scores are extracted from the model slot `variable.importance`.
     #' @return Named `numeric()`.
     importance = function() {
-       if (is.null(self$model)) {
-         stopf("No model stored")
-       }
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
 
-       if (self$model$forest$importance.mode == "none") {
-         stopf("No importance stored")
-       }
+      if (self$model$forest$importance.mode == "none") {
+        stopf("No importance stored")
+      }
 
-       sort(self$model$forest$variable.importance, decreasing = TRUE)
+      sort(self$model$forest$variable.importance, decreasing = TRUE)
     }
   ),
 
