@@ -42,7 +42,7 @@ LearnerClassifPenalized = R6Class("LearnerClassifPenalized",
         startgamma  = p_uty(tags = c("train")),
         steps       = p_uty(default = 1L, tags = c("train")),
         trace       = p_lgl(default = TRUE, tags = c("train")),
-        unpenalized = p_uty(tags = c("train"))
+        unpenalized = p_uty(tags = c("train", "predict"))
       )
 
       param_set$values = list(trace = FALSE)
