@@ -64,17 +64,6 @@ to any number (e.g. \code{150}).
 }
 }
 
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{discrete} determines the class of the returned survival probability
-distribution. If \code{FALSE}, vectorized continuous probability distributions are
-returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise a \link[distr6:Matdist]{distr6::Matdist}
-object, which is faster for calculating survival measures that require a \code{distr}
-prediction type. Default option is \code{TRUE}.
-}
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -110,7 +99,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
-   discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    ntime \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    round_time \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
