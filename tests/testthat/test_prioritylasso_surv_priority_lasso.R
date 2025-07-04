@@ -1,5 +1,5 @@
 test_that("autotest", {
-  # These shenanigans are necessary because we have to dynanically set the blocks, depending on the task
+  # These shenanigans are necessary because we have to dynamically set the blocks, depending on the task
   set.seed(1)
   # blocks gets changed later anyway but is required
   learner = lrn("surv.priority_lasso", blocks = "PLACEHOLDER")
@@ -10,8 +10,8 @@ test_that("autotest", {
 
   src = as.list(body(train_old))
   new_lines = list(
-    quote(s <- seq_along(task$feature_names)),
-    quote(pars$blocks <- set_names(list(s), "bp1"))
+    quote(s = seq_along(task$feature_names)),
+    quote(pars$blocks = set_names(list(s), "bp1"))
   )
   src = c(src[1:2], new_lines, src[3:length(src)])
   new_body = as.call(src)
