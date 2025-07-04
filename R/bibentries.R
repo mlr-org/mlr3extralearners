@@ -739,5 +739,15 @@ bibentries = c( # nolint start
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
+  ),
+  knn2002 = bibentry("book",
+    title = "Modern Applied Statistics with S",
+    author = "W. N. Venables and B. D. Ripley",
+    publisher = "Springer",
+    edition = "Fourth",
+    address = "New York",
+    year = "2002",
+    note = "ISBN 0-387-95457-0",
+    url = "https://www.stats.ox.ac.uk/pub/MASS4/"
   )
 ) # nolint end
