@@ -1,6 +1,6 @@
 test_that("autotest", {
-  # These shenanigans are necessary because we have to dynamically set the blocks, depending on the task
   set.seed(1)
+  # These shenanigans are necessary because we have to dynamically set the blocks, depending on the task
   # blocks gets changed later anyway but is required
   learner = lrn("surv.priority_lasso", blocks = "PLACEHOLDER")
   on.exit({

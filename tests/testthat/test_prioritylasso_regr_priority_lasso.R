@@ -1,5 +1,4 @@
 test_that("autotest", {
-  # These shenanigans are necessary because we have to dynanically set the blocks, depending on the
   set.seed(1)
   learner = lrn("regr.priority_lasso", blocks = "PLACEHOLDER")
   on.exit({
