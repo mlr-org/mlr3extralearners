@@ -1,7 +1,9 @@
 # dev
 
+* fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * fix: lightgbm classifier now works with encapsulation (#437)
 * feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* feat: Added learner `LearnerSurvBlockForest`.
 * feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
 * feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * feat: Added the new version of learner weights to all learners that support weights
