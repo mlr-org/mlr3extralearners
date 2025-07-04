@@ -23,7 +23,8 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
-    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb")
+    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -53,6 +54,7 @@ Suggests:
     distr6,
     earth,
     flexsurv (>= 2.3),
+    ExhaustiveSearch,
     FNN,
     formattable,
     future,
