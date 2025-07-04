@@ -43,6 +43,7 @@ Suggests:
     actuar,
     apcluster,
     BART (>= 2.9.4),
+    blockForest (>= 0.2.6),
     C50,
     catboost,
     coin,
