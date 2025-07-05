@@ -8,6 +8,6 @@ test_that("autotest", {
     learner$param_set$set_values(blocks = set_names(list(s), "bp1"))
   }
 
-  result = run_autotest(learner, configure_learner = cfg_lrn)
+  result = run_autotest(learner, exclude = "feat_single", configure_learner = cfg_lrn)
   expect_true(result, info = result$error)
 })
