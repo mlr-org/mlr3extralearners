@@ -39,7 +39,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{blockForest}
 }
 }
@@ -57,6 +57,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    always.select.block \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    importance \tab character \tab - \tab none, impurity, impurity_corrected, permutation \tab - \cr
    num.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   seed \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
