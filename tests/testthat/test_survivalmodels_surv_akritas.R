@@ -3,8 +3,6 @@ test_that("autotest", {
     learner = lrn("surv.akritas", lambda = 0.5)
     expect_learner(learner)
     result = run_autotest(learner, check_replicable = FALSE)
-    # sanity test disabled => TO CHECK: akritas default uses lambda = 0.5, which
-    # can better than KM!
     expect_true(result, info = result$error)
   })
 })
