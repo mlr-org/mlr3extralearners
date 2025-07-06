@@ -739,5 +739,18 @@ bibentries = c( # nolint start
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
+  ),
+  park2008plr = bibentry("article",
+    title = "Penalized logistic regression for detecting gene interactions",
+    author = "Park, Mee Young and Hastie, Trevor",
+    journal = "Biostatistics",
+    volume = "9",
+    number = "1",
+    pages = "30-50",
+    year = "2007",
+    month = "04",
+    issn = "1465-4644",
+    doi = "10.1093/biostatistics/kxm010",
+    url = "https://doi.org/10.1093/biostatistics/kxm010"
   )
 ) # nolint end
