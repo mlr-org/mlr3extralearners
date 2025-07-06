@@ -3,7 +3,7 @@ test_that("autotest", {
   logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
     glm(y ~ 1, family = binomial, start = start, ...)
   }
-  learner = LearnerClassifMob$new()
+  learner = lrn("classif.mob")
   learner$param_set$values$rhs = "."
   learner$param_set$values$fit = logit_
   learner$param_set$values$additional = list(maxit = 100)

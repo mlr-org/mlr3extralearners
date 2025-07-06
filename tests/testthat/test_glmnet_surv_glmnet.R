@@ -9,10 +9,8 @@ test_rows  = part$test
 unique_times = task$unique_times(rows = train_rows)
 
 test_that("autotest", {
-  learner = mlr3::lrn("surv.glmnet", lambda = .1)
+  learner = lrn("surv.glmnet", lambda = 0.1)
   expect_learner(learner)
-
-  skip_on_os("solaris")
   result = run_autotest(learner, exclude = "feat_single", check_replicable = FALSE)
   expect_true(result, info = result$error)
 })

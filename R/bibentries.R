@@ -739,5 +739,16 @@ bibentries = c( # nolint start
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
+  ),
+  hornung2019blockforest = bibentry("article",
+    title = "Block Forests: Random forests for blocks of clinical and omics covariate data",
+    author = "Hornung, R. and Wright, M. N.",
+    journal = "BMC Bioinformatics",
+    year = "2019",
+    volume = "20",
+    number = "1",
+    pages = "1--17",
+    doi = "10.1186/s12859-019-2942-y",
+    URL = "https://doi.org/10.1186/s12859-019-2942-y"
   )
 ) # nolint end

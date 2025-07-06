@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = LearnerClassifCTree$new()
+  learner = lrn("classif.ctree")
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)

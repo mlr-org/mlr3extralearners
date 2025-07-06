@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = LearnerDensKDEks$new()
+  learner = lrn("dens.kde_ks")
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
