@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = LearnerRegrCTree$new()
+  learner = lrn("regr.ctree")
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
