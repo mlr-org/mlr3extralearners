@@ -194,7 +194,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.196</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 2.798</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.99</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: AUC-ROC</span>
@@ -202,10 +202,10 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei      cell_shape    cl_thickness       cell_size     bl_cromatin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5911950       0.5172414       0.4833948       0.4172840       0.4145729 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   marg_adhesion normal_nucleoli         mitoses    epith_c_size </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.3820755       0.3727506       0.2507331       0.2488263 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei      cell_shape    cl_thickness     bl_cromatin       cell_size </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5932722       0.5768621       0.5683564       0.5550314       0.4968847 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> normal_nucleoli   marg_adhesion    epith_c_size         mitoses </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.4771341       0.4032258       0.3828125       0.2572993 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -213,7 +213,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.01777778 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03555556 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -221,7 +221,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

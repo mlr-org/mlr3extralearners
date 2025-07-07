@@ -53,7 +53,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
-</div>
+<ul><li>fix: remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
+<li>feat: Added learner <code>LearnerSurvBlockForest</code>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="mlr3extralearners-110">mlr3extralearners 1.1.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-110"></a></h2>
 <p>New Features:</p>
@@ -535,7 +537,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

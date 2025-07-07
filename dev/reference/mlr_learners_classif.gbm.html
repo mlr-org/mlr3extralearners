@@ -204,25 +204,25 @@ the model.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A gradient boosted model with bernoulli loss function.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 iterations were performed.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> There were 60 predictors of which 45 had non-zero influence.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> There were 60 predictors of which 37 had non-zero influence.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V36        V52        V12        V48        V37        V45 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24.8700421 11.4993112  7.2951396  6.4403846  6.0295609  5.7636287  5.2004164 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V31        V51         V9        V54        V17        V46 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5.0041161  4.7601253  4.0810097  3.9460213  3.6621459  3.6206222  3.5382196 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V28         V4        V49         V6        V44        V59        V24 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.8969618  2.7901556  2.7164500  2.4309067  1.9678708  1.7168998  1.6674624 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V23        V60        V47        V40        V10        V21         V1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.5944756  1.5190662  1.4524897  1.4316389  1.3631034  1.2869969  1.1953547 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V34        V25        V18        V22        V20        V14        V35 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.0732498  1.0112355  0.9855448  0.9475037  0.9332209  0.9071637  0.8399780 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V29         V7        V30        V27        V56        V32        V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8324535  0.8212627  0.6758445  0.5580566  0.5423680  0.5234708  0.4963824 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V38        V43        V42        V13        V15        V19         V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4693821  0.4027376  0.3794878  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V26         V3        V33        V39        V41         V5        V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V12        V51        V37        V11        V27        V49        V23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21.7932817 17.8604108  7.6195480  7.2659995  7.0067308  6.5206732  4.3453791 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V31         V9        V52        V45        V48        V20         V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.2627508  4.2153837  4.1784812  3.5621674  3.2407680  3.0740564  3.0672750 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V46        V21        V26        V28        V60        V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.8626640  2.7905101  2.4422467  2.4002990  2.3649070  2.2363486  2.0542506 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V43        V59        V36        V54        V17        V15        V30 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.9678551  1.7731430  1.7674888  1.6405728  1.5080317  1.4663449  1.1391682 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V29        V32        V53        V55        V56        V41        V22 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.0477439  0.9412785  0.8866315  0.7104812  0.6433514  0.6097913  0.5761004 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V24        V40         V1        V10        V13        V14        V18 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4049575  0.3878782  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V19         V2        V25         V3        V33        V34        V35 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V53        V55        V58         V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V38        V39         V4        V42        V47         V5        V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V57        V58         V7         V8 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -239,7 +239,7 @@ the model.</p><div class="section">
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

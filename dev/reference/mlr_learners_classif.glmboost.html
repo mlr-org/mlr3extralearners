@@ -206,21 +206,23 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.007194369 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.05040235 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          V11          V12          V16          V20          V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.65984098  -1.65341205  -0.73448824   0.92500063  -0.25131930  -0.82311080 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V22          V30          V36          V44          V46          V49 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.03965295  -0.04894779   0.72338806  -0.53667613  -2.41374882  -6.51471826 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V51          V52          V57          V60           V7 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -14.17209161 -13.12008286  15.36908400  -2.07628404   0.15475216 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          V1         V11         V12         V15         V16 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.6471269  -3.0912281  -2.5800616  -0.7015937   0.4822619   0.2717666 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V21         V22         V28         V31         V36          V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.2555646  -0.6314661  -0.3211433   0.2554035   0.8358715  -0.9337844 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V40         V44         V45         V48         V49         V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.0595925  -0.7222719  -1.2700392  -0.3563289  -4.1983325  -6.9330571 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.1603530 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.007194369</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.05040235</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -230,7 +232,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -238,7 +240,7 @@ No offset is applied during prediction for this learner.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

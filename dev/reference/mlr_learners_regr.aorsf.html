@@ -193,18 +193,18 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.206</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         wt       disp       carb       drat         hp         am        cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.09651475 0.07242340 0.05413105 0.05205479 0.04918033 0.03076923 0.02803738 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       gear       qsec         vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.02243590 0.02030457 0.00621118 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          hp          wt        carb         cyl        qsec          am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.145299145 0.120234604 0.096590909 0.070175439 0.034682081 0.033950617 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        disp          vs        drat        gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.018469657 0.014792899 0.010869565 0.009146341 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -212,7 +212,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.44483 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.43223 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -220,7 +220,7 @@ Calls <code><a href="https://docs.ropensci.org/aorsf/reference/orsf.html" class=
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">
