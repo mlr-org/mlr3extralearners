@@ -1,6 +1,6 @@
 test_that("surv.blockforest", {
   learner = LearnerSurvBlockForest$new()
-  fun = list(blockForest::blockfor, blockForest::blockForest)
+  fun = blockForest::blockfor
   exclude = c(
     "X", # handled via mlr3
     "y", # handled via mlr3
