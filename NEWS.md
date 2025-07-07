@@ -1,11 +1,16 @@
-# dev
+# mlr3extralearners 1.1.0
 
-* fix: lightgbm classifier now works with encapsulation (#437)
-* feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
-* feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
-* feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
-* feat: Added the new version of learner weights to all learners that support weights
-* feat: Added marshaling for `surv.xgboost.cox`.
+New Features:
+
+* Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
+* Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
+* Added the new version of learner weights to all learners that support weights
+* Added marshaling for `surv.xgboost.cox`.
+
+Bugfixes:
+
+* lightgbm classifier now works with encapsulation (#437)
 
 # mlr3extralearners 1.0.0
 
