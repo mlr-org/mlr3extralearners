@@ -12,6 +12,7 @@ New Features:
 * Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * Added the new version of learner weights to all learners that support weights
 * Added marshaling for `surv.xgboost.cox`.
+* Added learner `LearnerClassifKnn`.
 
 Bugfixes:
 
