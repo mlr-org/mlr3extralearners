@@ -19,7 +19,7 @@ Calls earth::earth() from earth.'><meta name="robots" content="noindex"></head><
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -194,9 +194,9 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Selected 4 of 10 terms, and 2 of 10 predictors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: GRSq -Inf at 10 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: wt, hp, am-unused, carb-unused, cyl-unused, disp-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: hp, carb-unused, wt, am-unused, cyl-unused, disp-unused, ...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 3 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 6.560995    RSS 61.23595    GRSq 0.7822759    RSq 0.8933152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GCV 8.771163    RSS 81.86419    GRSq 0.7871576    RSq 0.8957072</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -205,7 +205,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8.68359 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  18.2567 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

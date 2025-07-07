@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -192,16 +192,14 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 3.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 92 : 28.67 (2/0.64) [2/51.36]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 96 : 22.8 (2/0) [0/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 96 : 21.3 (2/0.06) [1/0.02]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 3.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 192.5 : 17.34 (5/2.21) [3/2.14]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 192.5 : 12.28 (3/3.61) [1/6.25]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 107.6 : 30.88 (3/7.27) [2/1.75]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 107.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 250.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt; 163.8 : 21.73 (3/0.06) [3/5.09]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;= 163.8 : 18.65 (2/0.3) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 250.4 : 15.11 (6/6.6) [2/1.06]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -210,7 +208,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  13.4448 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.394721 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

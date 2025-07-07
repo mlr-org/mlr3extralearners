@@ -15,7 +15,7 @@ splits. Calls partykit::ctree() from partykit."><meta name="robots" content="noi
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.0.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -197,13 +197,15 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.1675</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V4 &lt;= 0.0505: R (n = 39, err = 5.1%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V4 &gt; 0.0505: M (n = 9, err = 22.2%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V11 &gt; 0.1675: M (n = 91, err = 27.5%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.1786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V1 &lt;= 0.0317: R (n = 43, err = 14.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V1 &gt; 0.0317: M (n = 7, err = 28.6%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V11 &gt; 0.1786</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V17 &lt;= 0.687: M (n = 64, err = 12.5%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [7] V17 &gt; 0.687: R (n = 25, err = 44.0%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
