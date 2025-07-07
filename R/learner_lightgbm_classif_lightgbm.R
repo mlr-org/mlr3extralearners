@@ -292,7 +292,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       # set number of classes if multiclass and save label ordering
       if (pars$objective %in% c("multiclass", "multiclassova")) {
         pars$num_class = length(task$class_names)
-        self$state$labels = task$levels()[[task$target_names]]
       }
 
       if (pars$objective %in% c("multiclass", "multiclassova")) {
@@ -405,10 +404,11 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       if ("multiclass" %in% task$properties) {
         pred_mat = pred
-        colnames(pred_mat) = self$state$labels
+        labels = self$state$train_task$levels()[[self$state$train_task$target_names]]
+        colnames(pred_mat) = labels
         if (self$predict_type == "response") {
           which = apply(pred_mat, 1, which.max)
-          response = self$state$labels[which]
+          response = labels[which]
           pred_mat = NULL
         }
       } else {
@@ -451,7 +451,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       # set number of classes if multiclass and save label ordering
       if (pars_train$objective %in% c("multiclass", "multiclassova")) {
         pars_train$num_class = length(task$class_names)
-        self$state$labels = unique(task$truth())
       }
 
       if (pars_train$objective %in% c("multiclass", "multiclassova")) {

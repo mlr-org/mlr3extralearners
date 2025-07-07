@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = mlr3::lrn("regr.gbm")
+  learner = lrn("regr.gbm")
   learner$param_set$values = mlr3misc::insert_named(
     learner$param_set$values,
     list(n.minobsinnode = 1))
@@ -9,7 +9,7 @@ test_that("autotest", {
 })
 
 test_that("quantile prediction", {
-  learner = mlr3::lrn("regr.gbm",
+  learner = lrn("regr.gbm",
     predict_type = "quantiles",
     quantiles = 0.1,
     n.minobsinnode = 1)
