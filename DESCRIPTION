@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.0.0-9000
+Version: 1.1.0.9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -18,7 +18,7 @@ Authors@R: c(
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
     person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
-    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "ctb",
+    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-3609-8674")),
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
@@ -43,6 +43,7 @@ Suggests:
     actuar,
     apcluster,
     BART (>= 2.9.4),
+    blockForest (>= 0.2.6),
     C50,
     catboost,
     coin,
@@ -74,7 +75,7 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.12.0),
-    mlr3proba (>= 0.6.1),
+    mlr3proba (>= 0.8.1),
     mlr3pipelines,
     mvtnorm,
     nnet,
@@ -112,6 +113,7 @@ Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
+    mlr-org/mlr3,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
     xoopR/distr6,
