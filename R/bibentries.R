@@ -749,5 +749,16 @@ bibentries = c( # nolint start
     year = "2002",
     note = "ISBN 0-387-95457-0",
     url = "https://www.stats.ox.ac.uk/pub/MASS4/"
+  ),
+  hornung2019blockforest = bibentry("article",
+    title = "Block Forests: Random forests for blocks of clinical and omics covariate data",
+    author = "Hornung, R. and Wright, M. N.",
+    journal = "BMC Bioinformatics",
+    year = "2019",
+    volume = "20",
+    number = "1",
+    pages = "1--17",
+    doi = "10.1186/s12859-019-2942-y",
+    URL = "https://doi.org/10.1186/s12859-019-2942-y"
   )
 ) # nolint end
