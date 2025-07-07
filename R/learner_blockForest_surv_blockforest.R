@@ -63,7 +63,7 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
         always.select.block = p_int(0L, 1L, default = 0L, tags = "train"),
         # adding few key parameters from blockForest::blockForest()
         importance          = p_fct(c("none", "impurity", "impurity_corrected", "permutation"), tags = "train"),
-        num.threads         = p_int(1L, default = 1L, tags = c("train", "predict", "threads")),
+        num.threads         = p_int(1L, default = 1L, tags = c("train", "predict", "threads"), init = 1L),
         seed                = p_int(default = NULL, special_vals = list(NULL), tags = c("train", "predict")),
         verbose             = p_lgl(default = TRUE, tags = c("train", "predict"))
       )
