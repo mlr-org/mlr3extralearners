@@ -1,4 +1,4 @@
-# dev
+# mlr3extralearners (development version)
 
 * fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * feat: Added learner `LearnerSurvBlockForest`.
