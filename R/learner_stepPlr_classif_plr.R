@@ -71,7 +71,7 @@ LearnerClassifStepPlr = R6Class("LearnerClassifStepPlr",
         response = factor(pred, levels = seq_along(levels) - 1, labels = levels)
         list(response = response)
       } else {
-        prob = pprob_to_matrix(1-unname(pred), task)
+        prob = pprob_to_matrix(1 - unname(pred), task)
         list(prob = prob)
       }
     }
