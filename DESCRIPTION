@@ -113,7 +113,7 @@ Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3proba,
-    mlr-org/mlr3@878f0d0,
+    mlr-org/mlr3,
     RaphaelS1/survivalmodels,
     PlantedML/randomPlantedForest,
     xoopR/distr6,
