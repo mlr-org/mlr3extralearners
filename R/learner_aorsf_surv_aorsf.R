@@ -121,7 +121,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       # helper function to organize aorsf control function inputs
       dflt_if_null = function(params, slot_name) {
         out = params[[slot_name]]
-        if (is.null(out)) out <- self$param_set$default[[slot_name]]
+        if (is.null(out)) out = self$param_set$default[[slot_name]]
         out
       }
       # default value for oobag_eval_every is ntree, but putting
