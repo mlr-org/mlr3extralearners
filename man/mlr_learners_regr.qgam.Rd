@@ -56,19 +56,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\examples{
-\dontshow{if (requireNamespace("qgam", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# simple example
-t = mlr3::tsk("mtcars")
-l = mlr3::lrn("regr.qgam")
-t$select(c("cyl", "am", "disp", "hp"))
-l$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-l$quantiles = 0.25
-l$train(t)
-l$model
-l$predict(t)
-\dontshow{\}) # examplesIf}
-}
 \references{
 Fasiolo, Matteo, Wood, N. S, Zaffran, Margaux, Nedellec, Raphael, Goude, Yannig (2017).
 \dQuote{Fast Calibrated Additive Quantile Regression.}

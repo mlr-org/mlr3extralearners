@@ -22,29 +22,6 @@
 #' `r format_bib("faisolo2017qgam")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("qgam", quietly = TRUE)
-#' # Define the Learner
-#' learner = mlr3::lrn("regr.mqgam")
-#' learner$param_set$values$form = mpg ~ cyl + am + s(disp) + s(hp)
-#' learner$quantiles = c(0.05, 0.5, 0.95)
-#' learner$quantile_response = 0.5
-#' print(learner)
-#'
-#' # Define a Task
-#' task = mlr3::tsk("mtcars")
-#' task$select(c("cyl", "am", "disp", "hp"))
-#'
-#' # Create train and test set
-#' ids = mlr3::partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
 #' @export
 LearnerRegrMQGam = R6Class("LearnerRegrMQGam",
   inherit = LearnerRegr,
