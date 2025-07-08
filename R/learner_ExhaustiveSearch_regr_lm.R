@@ -27,8 +27,6 @@
 #' @template learner
 #' @templateVar id regr.exhaustive_search
 #'
-#' @details
-#' Internal validation not yet implemented.
 #'
 #' @template seealso_learner
 #' @examples
@@ -48,8 +46,6 @@
 #' # predict on training task
 #' learner$predict(tsk_cars)
 #' @export
-
-library(R6)
 
 LearnerRegrExhaustiveSearch = R6Class(
   "LearnerRegrExhaustiveSearch",
@@ -95,6 +91,7 @@ LearnerRegrExhaustiveSearch = R6Class(
     }
   ),
   private = list(
+    .validate = NULL,
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       # run exhaustive search
@@ -140,11 +137,4 @@ LearnerRegrExhaustiveSearch = R6Class(
     }
   )
 )
-
 .extralrns_dict$add("regr.exhaustive_search", LearnerRegrExhaustiveSearch)
-
-# learner = LearnerRegrExhaustiveSearch$new()
-# learner$selected_features()
-# learner$train(tsk("mtcars"))
-# learner$selected_features()
-# learner$predict(tsk("mtcars"))

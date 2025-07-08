@@ -26,8 +26,6 @@
 #' @template learner
 #' @templateVar id classif.exhaustive_search
 #'
-#' @details
-#' Internal validation not yet implemented.
 #'
 #' @template seealso_learner
 #' @examples
@@ -49,8 +47,6 @@
 #' # predict on training task
 #' learner$predict(tsk_gc)
 #' @export
-
-library(R6)
 
 LearnerClassifExhaustiveSearch = R6Class(
   "LearnerClassifExhaustiveSearch",
@@ -81,7 +77,7 @@ LearnerClassifExhaustiveSearch = R6Class(
         predict_types = c("response", "prob"),
         packages = c("mlr3extralearners", "ExhaustiveSearch"),
         param_set = param_set,
-        properties = c("twoclass", "selected_features"), # to add: "validation"
+        properties = c("twoclass", "selected_features"),
         label = "Exhaustive Search",
         man = "mlr3extralearners::mlr_learners_classif.exhaustive_search"
       )
@@ -96,6 +92,7 @@ LearnerClassifExhaustiveSearch = R6Class(
     }
   ),
   private = list(
+    .validate = NULL,
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       # run exhaustive search
@@ -114,13 +111,14 @@ LearnerClassifExhaustiveSearch = R6Class(
       # task_selected: reduce task to selected features
       task_selected = task$clone()$select(selected_features)
 
-      # return best model
-      invoke(
+      # train best model
+      model = invoke(
         stats::glm,
         family = "binomial",
         formula = task_selected$formula(),
         data = task_selected$data(),
         model = FALSE)
+
     },
     .predict = function(task) {
       newdata = ordered_features(task, self)
@@ -136,17 +134,7 @@ LearnerClassifExhaustiveSearch = R6Class(
       } else {
         list(prob = pprob_to_matrix((1 - p), task))
       }
-    }
+    },
   )
 )
-
 .extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)
-
-# learner = LearnerClassifExhaustiveSearch$new()
-# learner$param_set$set_values(
-#   combsUpTo = 2
-# )
-# learner$selected_features()
-# learner$train(tsk("sonar"))
-# learner$selected_features()
-# learner$predict(tsk("sonar"))
