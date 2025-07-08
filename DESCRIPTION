@@ -91,7 +91,7 @@ Suggests:
     qgam,
     randomForest,
     randomPlantedForest,
-    randomForestSRC (>= 3.3.0),
+    randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
     reticulate (>= 1.16),
