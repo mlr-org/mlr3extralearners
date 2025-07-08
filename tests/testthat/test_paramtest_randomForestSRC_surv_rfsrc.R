@@ -5,7 +5,7 @@ test_that("paramtest surv.rfsrc train", {
     "formula", # handled internally
     "data", # handled internally
     "ytry", # for unsupervised forests only
-    "yvar.wt", # not yet implemented
+    "yvar.wt", # for multivariable forests (not yet implemented)
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
