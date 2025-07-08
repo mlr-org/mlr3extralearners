@@ -1,11 +1,22 @@
-# dev
+# mlr3extralearners (development version)
 
-* feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
-* feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
-* feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
-* feat: Added the new version of learner weights to all learners that support weights
-* feat: Added marshaling for `surv.xgboost.cox`.
+* fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* feat: Added learner `LearnerSurvBlockForest`.
 * feat: Added learner `LearnerClassifAdabag`.
+
+# mlr3extralearners 1.1.0
+
+New Features:
+
+* Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
+* Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
+* Added the new version of learner weights to all learners that support weights
+* Added marshaling for `surv.xgboost.cox`.
+
+Bugfixes:
+
+* lightgbm classifier now works with encapsulation (#437)
 
 # mlr3extralearners 1.0.0
 
