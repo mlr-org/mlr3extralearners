@@ -6,5 +6,5 @@ test_that("autotest", {
   result = run_autotest(learner, check_replicable = FALSE)
   expect_true(result, info = result$error)
   expect_error(learner$importance(), "No model stored")
-  learner$train(tsk("rats"))$importance()
+  expect_numeric(learner$train(tsk("rats"))$importance())
 })
