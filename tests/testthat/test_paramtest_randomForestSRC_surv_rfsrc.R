@@ -9,7 +9,8 @@ test_that("paramtest surv.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio" # alternative to mtry
+    "mtry.ratio", # alternative to mtry
+    "cause" # only for competing risks forests
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

@@ -85,7 +85,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         na.action      = p_fct(default = "na.omit", levels = c("na.omit", "na.impute"), tags = c("train", "predict")),
         nimpute        = p_int(lower = 1L, default = 1L, special_vals = list(NULL), tags = "train"),
         ntime          = p_int(lower = 0L, default = 150L, init = 0L, special_vals = list(NULL), tags = "train"),
-        cause          = p_int(lower = 1L, tags = "train"),
         proximity      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
         distance       = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
         forest.wt      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
