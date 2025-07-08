@@ -66,83 +66,54 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
-        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
-        mtry = p_int(lower = 1L, tags = "train"),
-        mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
-        nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
-        nodedepth = p_int(lower = 1L, tags = "train"),
-        splitrule = p_fct(
-          levels = c("logrank", "bs.gradient", "logrankscore"),
-          default = "logrank", tags = "train"),
-        nsplit = p_int(lower = 0, default = 10, tags = "train"),
-        importance = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "TRUE", "none", "permute", "random", "anti"),
-          tags = c("train", "predict")),
-        block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
-        bootstrap = p_fct(
-          default = "by.root",
-          levels = c("by.root", "by.node", "none", "by.user"), tags = "train"),
-        samptype = p_fct(
-          default = "swor", levels = c("swor", "swr"),
-          tags = "train"),
-        samp = p_uty(tags = "train"),
-        membership = p_lgl(default = FALSE, tags = c("train", "predict")),
-        sampsize = p_uty(tags = "train"),
+      param_set = ps(
+        ntree          = p_int(default = 500L, lower = 1L, tags = "train"),
+        mtry           = p_int(lower = 1L, tags = "train"),
+        mtry.ratio     = p_dbl(lower = 0, upper = 1, tags = "train"),
+        nodesize       = p_int(default = 15L, lower = 1L, tags = "train"),
+        nodedepth      = p_int(lower = 1L, tags = "train"),
+        splitrule      = p_fct(levels = c("logrank", "bs.gradient", "logrankscore"), default = "logrank", tags = "train"),
+        nsplit         = p_int(lower = 0, default = 10, tags = "train"),
+        importance     = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "none", "anti", "permute", "random"), tags = c("train", "predict")), #nolint
+        block.size     = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
+        bootstrap      = p_fct(default = "by.root", levels = c("by.root", "by.node", "none", "by.user"), tags = "train"), #nolint
+        samptype       = p_fct(default = "swor", levels = c("swor", "swr"), tags = "train"),
+        samp           = p_uty(tags = "train"),
+        membership     = p_lgl(default = FALSE, tags = c("train", "predict")),
+        sampsize       = p_uty(tags = "train"),
         sampsize.ratio = p_dbl(0, 1, tags = "train"),
-        na.action = p_fct(
-          default = "na.omit", levels = c("na.omit", "na.impute"),
-          tags = c("train", "predict")),
-        nimpute = p_int(lower = 1L, default = 1L, special_vals = list(NULL), tags = "train"),
-        ntime = p_int(lower = 0L, default = 150L, special_vals = list(NULL), tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
-        proximity = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
-          tags = c("train", "predict")),
-        distance = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
-          tags = c("train", "predict")),
-        forest.wt = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
-          tags = c("train", "predict")),
-        xvar.wt = p_uty(tags = "train"),
-        split.wt = p_uty(tags = "train"),
-        forest = p_lgl(default = TRUE, tags = "train"),
-        var.used = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
-        split.depth = p_fct(
-          default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
-        seed = p_int(upper = -1L, tags = c("train", "predict")),
-        do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
-        get.tree = p_uty(tags = "predict"),
-        outcome = p_fct(
-          default = "train", levels = c("train", "test"),
-          tags = "predict"),
-        ptn.count = p_int(default = 0L, lower = 0L, tags = "predict"),
-        estimator = p_fct(default = "nelson", levels = c("nelson", "kaplan"),
-          tags = "predict"),
-        cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
-        save.memory = p_lgl(default = FALSE, tags = "train"),
-        perf.type = p_fct(levels = "none", tags = "train"),
-        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
-        marginal.xvar = p_uty(default = NULL, tags = "predict")
+        na.action      = p_fct(default = "na.omit", levels = c("na.omit", "na.impute"), tags = c("train", "predict")),
+        nimpute        = p_int(lower = 1L, default = 1L, special_vals = list(NULL), tags = "train"),
+        ntime          = p_int(lower = 0L, default = 150L, init = 0L, special_vals = list(NULL), tags = "train"),
+        cause          = p_int(lower = 1L, tags = "train"),
+        proximity      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
+        distance       = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
+        forest.wt      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
+        xvar.wt        = p_uty(tags = "train"),
+        split.wt       = p_uty(tags = "train"),
+        forest         = p_lgl(default = TRUE, tags = "train"),
+        var.used       = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
+        split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
+        seed           = p_int(upper = -1L, tags = c("train", "predict")),
+        do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
+        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
+        get.tree       = p_uty(tags = "predict"),
+        outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
+        ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
+        estimator      = p_fct(default = "nelson", levels = c("nelson", "kaplan"), tags = "predict"),
+        cores          = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        save.memory    = p_lgl(default = FALSE, tags = "train"),
+        perf.type      = p_fct(levels = "none", tags = "train"),
+        case.depth     = p_lgl(default = FALSE, tags = c("train", "predict")),
+        marginal.xvar  = p_uty(default = NULL, tags = "predict")
       )
-
-      ps$values$ntime = 0
 
       super$initialize(
         id = "surv.rfsrc",
         packages = c("mlr3extralearners", "randomForestSRC", "pracma"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "distr"),
-        param_set = ps,
+        param_set = param_set,
         # selected features is possible but there's a bug somewhere in rfsrc so that the model
         # can be trained but not predicted. so public method retained but property not included
         properties = c("weights", "missings", "importance", "oob_error"),
