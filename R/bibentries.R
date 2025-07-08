@@ -750,5 +750,16 @@ bibentries = c( # nolint start
     pages = "1--17",
     doi = "10.1186/s12859-019-2942-y",
     URL = "https://doi.org/10.1186/s12859-019-2942-y"
+  ),
+  ishwaran2014rsf = bibentry("article",
+    title = "Random survival forests for competing risks",
+    author = "Ishwaran, H. and Gerds, T. A. and Kogalur, U. B. and Moore, R. D. and Gange, S. J. and Lau, B. M.",
+    journal = "Biostatistics",
+    year = "2014",
+    volume = "15",
+    number = "4",
+    pages = "757--773",
+    doi = "10.1093/BIOSTATISTICS/KXU010",
+    URL = "https://doi.org/10.1093/BIOSTATISTICS/KXU010"
   )
 ) # nolint end
