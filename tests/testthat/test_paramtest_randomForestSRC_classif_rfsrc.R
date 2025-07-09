@@ -17,7 +17,6 @@ test_that("paramtest classif.rfsrc train", {
   expect_paramtest(paramtest)
 })
 
-
 test_that("paramtest classif.rfsrc predict", {
   learner = lrn("classif.rfsrc")
   fun_list = list(randomForestSRC:::predict.rfsrc) # nolint

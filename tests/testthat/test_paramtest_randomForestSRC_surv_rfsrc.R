@@ -17,7 +17,6 @@ test_that("paramtest surv.rfsrc train", {
   expect_paramtest(paramtest)
 })
 
-
 test_that("paramtest surv.rfsrc predict", {
   learner = lrn("surv.rfsrc")
   fun_list = list(randomForestSRC:::predict.rfsrc)
