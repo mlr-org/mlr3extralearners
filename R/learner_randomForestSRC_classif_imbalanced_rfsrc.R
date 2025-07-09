@@ -55,7 +55,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
         fast = p_lgl(default = FALSE, tags = "train"),
         ratio = p_dbl(0, 1, tags = "train"),
-
+        # rest of the parameters are from randomForestSRC::rfsrc()
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
@@ -115,7 +115,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train"), # nolint
-        case.depth = p_lgl(default = FALSE, tags = "predict"),
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
         marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
