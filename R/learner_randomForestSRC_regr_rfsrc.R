@@ -74,7 +74,6 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
           tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
         ntime = p_int(lower = 1L, tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),

@@ -1,43 +1,16 @@
 test_that("paramtest classif.imbalanced_rfsrc train", {
   learner = lrn("classif.imbalanced_rfsrc")
-  fun_list = list(randomForestSRC::imbalanced)
+  fun_list = list(randomForestSRC::imbalanced, randomForestSRC::rfsrc)
   exclude = c(
     "formula", # handled internally
     "data", # handled internally
-    # all other parameters are ones inherited from rfsrc
-    "mtry",
-    "mtry.ratio",
-    "nodesize",
-    "nodedepth",
-    "splitrule",
-    "nsplit",
-    "importance",
-    "bootstrap",
-    "samptype",
-    "samp",
-    "membership",
-    "sampsize",
-    "sampsize.ratio",
-    "na.action",
-    "nimpute",
-    "ntime",
-    "cause",
-    "proximity",
-    "distance",
-    "forest.wt",
-    "xvar.wt",
-    "split.wt",
-    "forest",
-    "var.used",
-    "split.depth",
-    "seed",
-    "do.trace",
-    "statistics",
-    "get.tree",
-    "outcome",
-    "ptn.count",
-    "cores",
-    "save.memory"
+    "ytry", # for unsupervised forests only
+    "yvar.wt", # not yet implemented
+    "case.wt", # handled by task weights
+    "mtry.ratio", # alternative to mtry
+    "sampsize.ratio", # alternative to sampsize
+    "cores", # is set as option(rf.cores)
+    "cause" # for competing risk forests only
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
