@@ -72,7 +72,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         mtry.ratio     = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize       = p_int(default = 15L, lower = 1L, tags = "train"),
         nodedepth      = p_int(lower = 1L, tags = "train"),
-        splitrule      = p_fct(levels = c("logrank", "bs.gradient", "logrankscore"), default = "logrank", tags = "train"),
+        splitrule      = p_fct(levels = c("logrank", "bs.gradient"), default = "logrank", tags = "train"),
         nsplit         = p_int(lower = 0, default = 10, tags = "train"),
         importance     = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "none", "anti", "permute", "random"), tags = c("train", "predict")), #nolint
         block.size     = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
