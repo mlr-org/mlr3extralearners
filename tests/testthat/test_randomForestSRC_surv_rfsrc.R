@@ -19,7 +19,7 @@ test_that("importance/selected", {
       var.used = "all.trees", importance = "random"
     )
     learner$train(task)
-    expect_numeric(learner$selected_features(), names = "named")
+    expect_character(learner$selected_features())
     expect_numeric(learner$importance(), names = "named")
   })
 })
