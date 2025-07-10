@@ -100,7 +100,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         forest = p_lgl(default = TRUE, tags = "train"),
         var.used = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         split.depth = p_fct(
           default = "FALSE",
           levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
