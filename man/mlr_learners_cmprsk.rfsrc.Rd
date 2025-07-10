@@ -3,7 +3,7 @@
 \name{mlr_learners_cmprsk.rfsrc}
 \alias{mlr_learners_cmprsk.rfsrc}
 \alias{LearnerCompRisksRandomForestSRC}
-\title{Survival Random Forest Competing Risks Learner}
+\title{Random Forest Competing Risks Learner}
 \description{
 Random survival forests for competing risks.
 Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
@@ -115,6 +115,7 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 print(learner$importance(cause = 1)) # VIMP for cause = 1
 print(learner$importance(cause = 2)) # VIMP for cause = 2
+print(learner$oob_error()) # weighted-mean across causes
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -220,7 +221,12 @@ Selected features are extracted from the model slot \code{var.used}.
 \if{html}{\out{<a id="method-LearnerCompRisksRandomForestSRC-oob_error"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerCompRisksRandomForestSRC-oob_error}{}}}
 \subsection{Method \code{oob_error()}}{
-Extracts the cause-specific OOB CIF error from the model's \code{err.rate} slot.
+Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
+from the model's \code{err.rate} slot.
+
+If \code{cause = "mean"} (default), the function returns a weighted average
+of the cause-specific OOB errors, where the weights correspond to the
+observed proportion of events for each cause in the training data.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerCompRisksRandomForestSRC$oob_error(cause = "mean")}\if{html}{\out{</div>}}
 }
@@ -228,8 +234,9 @@ Extracts the cause-specific OOB CIF error from the model's \code{err.rate} slot.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{cause}}{Integer or character; either a specific event type or \code{"mean"}
-(default), which returns the weighted average OOB error across all causes.}
+\item{\code{cause}}{Integer (event type) or \code{"mean"} (default). Use a specific
+event type to retrieve its OOB error, or \code{"mean"} to compute the weighted
+average across causes.}
 }
 \if{html}{\out{</div>}}
 }

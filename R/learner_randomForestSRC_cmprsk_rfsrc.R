@@ -1,4 +1,4 @@
-#' @title Survival Random Forest Competing Risks Learner
+#' @title Random Forest Competing Risks Learner
 #' @author bblodfon
 #' @name mlr_learners_cmprsk.rfsrc
 #'
@@ -41,6 +41,7 @@
 #' print(learner$model)
 #' print(learner$importance(cause = 1)) # VIMP for cause = 1
 #' print(learner$importance(cause = 2)) # VIMP for cause = 2
+#' print(learner$oob_error()) # weighted-mean across causes
 #'
 #' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)
@@ -139,10 +140,16 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
     },
 
     #' @description
-    #' Extracts the cause-specific OOB CIF error from the model's `err.rate` slot.
+    #' Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
+    #' from the model's `err.rate` slot.
     #'
-    #' @param cause Integer or character; either a specific event type or `"mean"`
-    #' (default), which returns the weighted average OOB error across all causes.
+    #' If `cause = "mean"` (default), the function returns a weighted average
+    #' of the cause-specific OOB errors, where the weights correspond to the
+    #' observed proportion of events for each cause in the training data.
+    #'
+    #' @param cause Integer (event type) or `"mean"` (default). Use a specific
+    #' event type to retrieve its OOB error, or `"mean"` to compute the weighted
+    #' average across causes.
     #' @return `numeric()`.
     oob_error = function(cause = "mean") {
       causes = sort(learner$model$event.info$event.type)
