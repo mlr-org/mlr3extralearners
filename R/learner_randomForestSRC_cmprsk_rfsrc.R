@@ -210,7 +210,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
 
       # Split CIF array into list of matrices per cause
       n_causes = dim(cif_array)[3]
-      cif_list = lapply(seq_len(n_causes), function(cause) cif_array[,,cause])
+      cif_list = lapply(seq_len(n_causes), function(cause) cif_array[, , cause])
       names(cif_list) = seq_len(n_causes)
 
       list(cif = cif_list)
