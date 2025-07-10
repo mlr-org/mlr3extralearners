@@ -152,7 +152,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
     #' average across causes.
     #' @return `numeric()`.
     oob_error = function(cause = "mean") {
-      causes = sort(learner$model$event.info$event.type)
+      causes = sort(self$model$event.info$event.type)
 
       if ((cause != "mean") && (cause %nin% causes)) {
         stopf("Invalid cause. Use one of: %s, or 'mean'", paste(causes, collapse = ", "))
