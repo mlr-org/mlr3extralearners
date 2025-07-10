@@ -192,14 +192,12 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt; 5 : 25.97 (4/11.96) [3/25.05]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;= 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 177.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 162.5 : 17.16 (3/2.75) [2/2.05]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 162.5 : 19.2 (3/0.17) [0/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 177.5 : 14.58 (4/0.16) [2/12.15]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 101.55 : 31.07 (3/0.89) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 101.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 116.5 : 21.9 (3/0.58) [2/0.6]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 116.5 : 15.32 (8/2.96) [5/15.49]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -208,7 +206,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15.37076 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.270209 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
