@@ -144,7 +144,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
         stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
       }
 
-      self$model$var.used
+      names(self$model$var.used)
     },
 
     #' @description
