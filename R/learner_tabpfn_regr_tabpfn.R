@@ -44,7 +44,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
           default = "mean",
           tags = "predict"
         ),
-        n_estimators = p_int(lower = 1, default = 4, tags = "train"),
+        n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
         categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
           # R indexing is used
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
@@ -73,8 +73,8 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
-        random_state = p_int(default = 0, tags = "train"),
-        n_jobs = p_int(lower = 1, init = 1, special_vals = list(-1), tags = "train")
+        random_state = p_int(default = 0L, special_vals = list(NULL), tags = "train"),
+        n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
       )
 
       super$initialize(
