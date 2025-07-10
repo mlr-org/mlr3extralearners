@@ -54,7 +54,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    xvar.wt \tab untyped \tab - \tab  \tab - \cr
    split.wt \tab untyped \tab - \tab  \tab - \cr
    forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   var.used \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
+   var.used \tab character \tab FALSE \tab FALSE, all.trees \tab - \cr
    split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
    do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -228,8 +228,8 @@ Extracts the cause-specific OOB CIF error from the model's \code{err.rate} slot.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{cause}}{Integer or character; either a specific event type or \code{"mean"} (default),
-which returns the average OOB error across all causes.}
+\item{\code{cause}}{Integer or character; either a specific event type or \code{"mean"}
+(default), which returns the weighted average OOB error across all causes.}
 }
 \if{html}{\out{</div>}}
 }
