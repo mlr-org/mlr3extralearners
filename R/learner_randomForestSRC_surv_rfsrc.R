@@ -91,7 +91,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         xvar.wt        = p_uty(tags = "train"),
         split.wt       = p_uty(tags = "train"),
         forest         = p_lgl(default = TRUE, tags = "train"),
-        var.used       = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
+        var.used       = p_fct(default = "FALSE", levels = c("FALSE", "all.trees"), tags = c("train", "predict")), #nolint
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -117,7 +117,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         # can be trained but not predicted. so public method retained but property not included
         properties = c("weights", "missings", "importance", "oob_error"),
         man = "mlr3extralearners::mlr_learners_surv.rfsrc",
-        label = "Random Forest"
+        label = "Random Survival Forests"
       )
     },
 
@@ -137,7 +137,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to 'all.trees'}.")
       }
 
       names(self$model$var.used)
@@ -171,7 +171,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # default estimator is nelson, hence nelson selected if NULL
       estimator = pars_predict$estimator %??% "nelson"
       pars_predict$estimator = NULL
-      pars_predict$var.used = "FALSE"
       cores = pars_predict$cores %??% 1L # additionaly implemented by author
       pars_predict$cores = NULL
 
