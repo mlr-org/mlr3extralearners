@@ -6,7 +6,7 @@
 \title{Regression IBk Learner}
 \description{
 Instance based algorithm: K-nearest neighbours regression.
-Calls \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:IBk]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
