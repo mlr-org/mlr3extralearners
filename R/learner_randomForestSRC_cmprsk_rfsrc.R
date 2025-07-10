@@ -21,7 +21,7 @@
 #' `r format_bib("ishwaran2014rsf")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf mlr3misc::require_namespaces(c("randomForestSRC", "riskRegression"), quietly = TRUE)
 #' # Define the Learner
 #' learner = mlr3::lrn("cmprsk.rfsrc", importance = "TRUE")
 #' print(learner)
