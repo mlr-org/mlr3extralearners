@@ -55,7 +55,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
         fast = p_lgl(default = FALSE, tags = "train"),
         ratio = p_dbl(0, 1, tags = "train"),
-
+        # rest of the parameters are from randomForestSRC::rfsrc()
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
@@ -83,7 +83,6 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
             tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
         ntime = p_int(lower = 1L, tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
@@ -101,10 +100,10 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         forest = p_lgl(default = TRUE, tags = "train"),
         var.used = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         split.depth = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         seed = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
         statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -116,7 +115,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train"), # nolint
-        case.depth = p_lgl(default = FALSE, tags = "predict"),
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
         marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
@@ -146,7 +145,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
