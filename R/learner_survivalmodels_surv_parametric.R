@@ -21,13 +21,6 @@
 #' The parameter `ntime` allows to adjust the granularity of these time points
 #' to any number (e.g. `150`).
 #'
-#' @section Custom mlr3 parameters:
-#' - `discrete` determines the class of the returned survival probability
-#' distribution. If `FALSE`, vectorized continuous probability distributions are
-#' returned using [distr6::VectorDistribution], otherwise a [distr6::Matdist]
-#' object, which is faster for calculating survival measures that require a `distr`
-#' prediction type. Default option is `TRUE`.
-#'
 #' @template learner
 #' @templateVar id surv.parametric
 #' @template install_survivalmodels
@@ -96,12 +89,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         robust = p_lgl(default = FALSE, tags = "train"),
         score = p_lgl(default = FALSE, tags = "train"),
         cluster = p_uty(tags = "train"),
-        discrete = p_lgl(tags = c("required", "predict")),
         ntime = p_int(lower = 1, default = NULL, special_vals = list(NULL), tags = "predict"),
         round_time = p_int(default = 2, lower = 0, special_vals = list(FALSE), tags = "predict")
       )
 
-      ps$values = list(discrete = TRUE, dist = "weibull", form = "aft")
+      ps$values = list(dist = "weibull", form = "aft")
 
       super$initialize(
         id = "surv.parametric",
@@ -119,10 +111,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-
-      if ("weights" %in% task$properties) {
-        pv$weights = task$weights$weight
-      }
+      pv$weights = private$.get_weights(task)
 
       invoke(
         survivalmodels::parametric,
@@ -147,7 +136,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         self$model,
         newdata = newdata,
         times = times,
-        distr6 = !pv$discrete,
+        distr6 = FALSE,
         type = "all",
         .args = pv
       )

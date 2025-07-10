@@ -745,5 +745,35 @@ bibentries = c( # nolint start
     volume = "116",
     pages = "1402--1412",
     doi = "10.1080/01621459.2020.1725521"
+  ),
+  hollmann2025tabpfn = bibentry("article",
+    title = "Accurate predictions on small data with a tabular foundation model",
+    author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Purucker, Lennart and
+         Krishnakumar, Arjun and K\xc3\xb6rfer, Max and Hoo, Shi Bin and
+         Schirrmeister, Robin Tibor and Hutter, Frank",
+    journal = "Nature",
+    year = "2025",
+    month = "01",
+    day = "09",
+    doi = "10.1038/s41586-024-08328-6",
+    publisher = "Springer Nature",
+    URL = "https://www.nature.com/articles/s41586-024-08328-6"
+  ),
+  hollmann2023tabpfn = bibentry("inproceedings",
+    title = "TabPFN: A transformer that solves small tabular classification problems in a second",
+    author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Eggensperger, Katharina and Hutter, Frank",
+    booktitle = "International Conference on Learning Representations 2023",
+    year = "2023"
+  ),
+  hornung2019blockforest = bibentry("article",
+    title = "Block Forests: Random forests for blocks of clinical and omics covariate data",
+    author = "Hornung, R. and Wright, M. N.",
+    journal = "BMC Bioinformatics",
+    year = "2019",
+    volume = "20",
+    number = "1",
+    pages = "1--17",
+    doi = "10.1186/s12859-019-2942-y",
+    URL = "https://doi.org/10.1186/s12859-019-2942-y"
   )
 ) # nolint end

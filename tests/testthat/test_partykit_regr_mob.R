@@ -4,7 +4,7 @@ test_that("autotest", {
   lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
     lm(y ~ 1, ...)
   }
-  learner = LearnerRegrMob$new()
+  learner = lrn("regr.mob")
   learner$param_set$values$rhs = "."
   learner$param_set$values$fit = lm_
   learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
