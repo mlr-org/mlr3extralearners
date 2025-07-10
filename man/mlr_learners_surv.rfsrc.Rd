@@ -47,7 +47,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nodedepth \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    splitrule \tab character \tab logrank \tab logrank, bs.gradient, logrankscore \tab - \cr
    nsplit \tab integer \tab 10 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   importance \tab character \tab FALSE \tab FALSE, TRUE, none, permute, random, anti \tab - \cr
+   importance \tab character \tab FALSE \tab FALSE, TRUE, none, anti, permute, random \tab - \cr
    block.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    bootstrap \tab character \tab by.root \tab by.root, by.node, none, by.user \tab - \cr
    samptype \tab character \tab swor \tab swor, swr \tab - \cr
@@ -58,7 +58,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    na.action \tab character \tab na.omit \tab na.omit, na.impute \tab - \cr
    nimpute \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntime \tab integer \tab 150 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   cause \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    proximity \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    distance \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    forest.wt \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
