@@ -1,3 +1,6 @@
+# default competing risk score needs this package
+skip_if_not_installed("riskRegression")
+
 test_that("autotest", {
   with_seed(42, {
     learner = lrn("cmprsk.rfsrc", ntree = 20, importance = "TRUE", na.action = "na.impute")
