@@ -765,6 +765,17 @@ bibentries = c( # nolint start
     booktitle = "International Conference on Learning Representations 2023",
     year = "2023"
   ),
+  adabag2013 = bibentry("article",
+    title = "adabag: An R Package for Classification with Boosting and Bagging",
+    volume = "54",
+    url = "https://www.jstatsoft.org/index.php/jss/article/view/v054i02",
+    doi = "10.18637/jss.v054.i02",
+    number = "2",
+    journal = "Journal of Statistical Software",
+    author = "Alfaro, Esteban and Gamez, Matias and Garc\xc3\xada, Noelia",
+    year = "2013",
+    pages = "1-35"
+  ),
   hornung2019blockforest = bibentry("article",
     title = "Block Forests: Random forests for blocks of clinical and omics covariate data",
     author = "Hornung, R. and Wright, M. N.",
