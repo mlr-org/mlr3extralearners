@@ -1,5 +1,5 @@
 # default competing risk score needs this package
-# skip_if_not_installed("riskRegression")
+skip_if_not_installed("riskRegression")
 
 test_that("autotest", {
   with_seed(42, {
