@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = lrn("classif.tabpfn", device = "cpu")
+  learner = lrn("classif.tabpfn")
   expect_learner(learner)
   # reproducibility is not guaranteed, hence check_replicable = FALSE
   result = run_autotest(learner, check_replicable = FALSE)
@@ -7,7 +7,7 @@ test_that("autotest", {
 })
 
 test_that("marshaling works for classif.tabpfn", {
-  learner = lrn("classif.tabpfn", device = "cpu")
+  learner = lrn("classif.tabpfn")
   task = tsk("iris")
   # expect_marshalable_learner(learner, task)
 

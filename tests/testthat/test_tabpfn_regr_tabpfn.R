@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = lrn("regr.tabpfn", device = "cpu")
+  learner = lrn("regr.tabpfn")
   expect_learner(learner)
   # reproducibility is not guaranteed, hence check_replicable = FALSE
   result = run_autotest(learner, check_replicable = FALSE)
@@ -7,7 +7,7 @@ test_that("autotest", {
 })
 
 test_that("marshaling works for regr.tabpfn", {
-  learner = lrn("regr.tabpfn", device = "cpu")
+  learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
   # expect_marshalable_learner(learner, task)
 
@@ -43,9 +43,9 @@ test_that("categorical feature columns are encoded correctly", {
     ),
     target = "y"
   )
-  learner = lrn("regr.tabpfn", device = "cpu", categorical_features_indices = 5)
+  learner = lrn("regr.tabpfn", categorical_features_indices = 5)
   expect_error(learner$train(task))
-  learner = lrn("regr.tabpfn", device = "cpu", categorical_features_indices = 1:3)
+  learner = lrn("regr.tabpfn", categorical_features_indices = 1:3)
   learner$train(task)
   expect_identical(learner$model$fitted$categorical_features_indices, 0:2)
 })
@@ -75,7 +75,7 @@ test_that("inference_precision works", {
   task = tsk("mtcars")
 
   lapply(c("auto", "autocast"), function(precision) {
-    learner = lrn("regr.tabpfn", device = "cpu", inference_precision = precision)
+    learner = lrn("regr.tabpfn", inference_precision = precision)
     expect_invisible(learner$train(task))
     expect_identical(learner$model$fitted$inference_precision, precision)
   })
@@ -88,7 +88,7 @@ test_that("inference_precision works", {
     "bfloat16"
   )
   lapply(dtypes, function(dtype) {
-    learner = lrn("regr.tabpfn", device = "cpu", inference_precision = paste0("torch.", dtype))
+    learner = lrn("regr.tabpfn", inference_precision = paste0("torch.", dtype))
     expect_invisible(learner$train(task))
     actual_dtype = learner$model$fitted$inference_precision
     expected_dtype = reticulate::py_get_attr(torch, dtype)
@@ -121,26 +121,26 @@ test_that("random_state works", {
   task = tsk("mtcars")
 
   # different seeds => slightly different predictions
-  learner1 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner1$param_set$set_values(random_state = "None")
   learner1$train(task)
-  learner2 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner2$param_set$set_values(random_state = "None")
   learner2$train(task)
   expect_character(all.equal(learner1$predict(task), learner2$predict(task)))
 
   # same seed (default: 0) => (almost) same predictions
-  learner1 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner1$train(task)
-  learner2 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner2$train(task)
   expect_equal(learner1$predict(task), learner2$predict(task))
 
   # same seed => (almost) same predictions
-  learner1 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner1$param_set$set_values(random_state = 42L)
   learner1$train(task)
-  learner2 = lrn("regr.tabpfn", device = "cpu", predict_type = "quantiles")
+  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner2$param_set$set_values(random_state = 42L)
   learner2$train(task)
   expect_equal(learner1$predict(task), learner2$predict(task))

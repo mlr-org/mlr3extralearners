@@ -55,7 +55,7 @@ jobs:
 
       - name: Install Python packages
         run: |
-          pak::pkg_install('reticulate')
+          pak::pkg_install('rstudio/reticulate')
           reticulate::install_miniconda(force = TRUE)
           reticulate::use_condaenv('r-reticulate')
           install.packages('keras')
