@@ -74,13 +74,8 @@ test_that("inference_precision works", {
   torch = reticulate::import("torch")
   task = tsk("mtcars")
 
-  lapply(c("auto", "autocast"), function(precision) {
-    learner = lrn("regr.tabpfn", inference_precision = precision)
-    expect_invisible(learner$train(task))
-    expect_identical(learner$model$fitted$inference_precision, precision)
-  })
-
-  # test all possible torch dtypes
+  # No test for the "autocast" option, because it is not supported on cpu.
+  # But we test all possible torch dtypes.
   dtypes = c(
     "float32", "float",
     "float64", "double",
