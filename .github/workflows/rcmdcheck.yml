@@ -64,6 +64,7 @@ jobs:
           reticulate::py_install("tensorflow-cpu", pip = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
+          reticulate::py_install("tabpfn")
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
