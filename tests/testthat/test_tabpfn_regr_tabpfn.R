@@ -119,7 +119,7 @@ test_that("checks for memory saving mode work", {
 
 test_that("random_state works", {
   task = tsk("mtcars")
-  
+
   # different seeds => slightly different predictions
   learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
   learner1$param_set$set_values(random_state = "None")
