@@ -85,3 +85,32 @@ test_that("checks for memory saving mode work", {
   learner$train(task)
   expect_identical(learner$model$fitted$memory_saving_mode, 50)
 })
+
+test_that("random_state works", {
+  task = tsk("iris")
+  
+  # different seeds => slightly different predictions
+  learner1 = lrn("classif.tabpfn", predict_type = "prob")
+  learner1$param_set$set_values(random_state = "None")
+  learner1$train(task)
+  learner2 = lrn("classif.tabpfn", predict_type = "prob")
+  learner2$param_set$set_values(random_state = "None")
+  learner2$train(task)
+  expect_character(all.equal(learner1$predict(task), learner2$predict(task)))
+
+  # same seed (default: 0) => (almost) same predictions
+  learner1 = lrn("classif.tabpfn", predict_type = "prob")
+  learner1$train(task)
+  learner2 = lrn("classif.tabpfn", predict_type = "prob")
+  learner2$train(task)
+  expect_equal(learner1$predict(task), learner2$predict(task))
+
+  # same seed => (almost) same predictions
+  learner1 = lrn("classif.tabpfn", predict_type = "prob")
+  learner1$param_set$set_values(random_state = 42L)
+  learner1$train(task)
+  learner2 = lrn("classif.tabpfn", predict_type = "prob")
+  learner2$param_set$set_values(random_state = 42L)
+  learner2$train(task)
+  expect_equal(learner1$predict(task), learner2$predict(task))
+})

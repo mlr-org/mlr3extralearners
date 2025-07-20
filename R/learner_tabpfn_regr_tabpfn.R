@@ -24,6 +24,10 @@
 #'
 #' - `inference_config` is currently not supported.
 #'
+#' - `random_state` accepts either an integer or the special value `"None"`
+#'   which corresponds to `None` in Python.
+#'   Following the original Python implementation, the default `random_state` is `0`.
+#'
 #' @templateVar id regr.tabpfn
 #' @template learner
 #'
@@ -73,7 +77,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
-        random_state = p_int(default = 0L, special_vals = list(NULL), tags = "train"),
+        random_state = p_int(default = 0L, special_vals = list("None"), tags = "train"),
         n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
       )
 
@@ -123,6 +127,10 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
       if (!is.null(pars$device) && pars$device != "auto") {
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
+      }
+
+      if (identical(pars$random_state, "None")) {
+        pars$random_state = reticulate::py_none()
       }
 
       # x is an (n_samples, n_features) array
