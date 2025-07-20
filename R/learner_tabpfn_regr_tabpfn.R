@@ -19,8 +19,10 @@
 #'   If set to `"auto"`, the behavior is the same as original.
 #'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
 #'
-#' - `inference_precision` must be `"auto"` or `"autocast"`.
-#'   Passing `torch.dtype` is currently not supported.
+#' - `inference_precision` must be `"auto"`, `"autocast"`,
+#'   or a [`torch.dtype`](https://docs.pytorch.org/docs/stable/tensor_attributes.html) string,
+#'   e.g., `"torch.float32"`, `"torch.float64"`, etc.
+#'   Non-float dtypes are not supported.
 #'
 #' - `inference_config` is currently not supported.
 #'
@@ -60,8 +62,15 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
         device = p_uty(default = "auto", tags = "train", custom_check = check_string),
         ignore_pretraining_limits = p_lgl(default = FALSE, tags = "train"),
         inference_precision = p_fct(
-          # torch.dtype option is currently not supported
-          c("auto", "autocast"),
+          c(
+            "auto", "autocast",
+            # all float dtypes
+            # from https://docs.pytorch.org/docs/stable/tensor_attributes.html
+            "torch.float32", "torch.float",
+            "torch.float64", "torch.double",
+            "torch.float16", "torch.half",
+            "torch.bfloat16"
+          ),
           default = "auto",
           tags = "train"
         ),
@@ -121,8 +130,15 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
     .train = function(task) {
       reticulate::py_require(c("torch", "tabpfn"))
       tabpfn = reticulate::import("tabpfn")
+      torch = reticulate::import("torch")
 
       pars = self$param_set$get_values(tags = "train")
+
+      inference_precision = pars$inference_precision
+      if (!is.null(inference_precision) && startsWith(inference_precision, "torch.")) {
+        dtype = strsplit(inference_precision, "\\.")[[1]][2]
+        pars$inference_precision = reticulate::py_get_attr(torch, dtype)
+      }
 
       if (!is.null(pars$device) && pars$device != "auto") {
         torch = reticulate::import("torch")

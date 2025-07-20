@@ -66,6 +66,37 @@ test_that("device selection works", {
   expect_identical(learner$model$fitted$device, "auto")
 })
 
+
+test_that("inference_precision works", {
+  if (!reticulate::py_module_available("torch")) {
+    skip("torch not available for testing.")
+  }
+  torch = reticulate::import("torch")
+  task = tsk("mtcars")
+
+  lapply(c("auto", "autocast"), function(precision) {
+    learner = lrn("regr.tabpfn", inference_precision = precision)
+    expect_invisible(learner$train(task))
+    expect_identical(learner$model$fitted$inference_precision, precision)
+  })
+
+  # test all possible torch dtypes
+  dtypes = c(
+    "float32", "float",
+    "float64", "double",
+    "float16", "half",
+    "bfloat16"
+  )
+  lapply(dtypes, function(dtype) {
+    learner = lrn("regr.tabpfn", inference_precision = paste0("torch.", dtype))
+    expect_invisible(learner$train(task))
+    actual_dtype = learner$model$fitted$inference_precision
+    expected_dtype = reticulate::py_get_attr(torch, dtype)
+    # actual and expected should be the same torch.dtype object
+    expect_identical(reticulate::py_id(actual_dtype), reticulate::py_id(expected_dtype))
+  })
+})
+
 test_that("checks for memory saving mode work", {
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
