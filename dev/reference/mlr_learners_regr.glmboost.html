@@ -201,15 +201,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.41905 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.40476 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am         carb          cyl         disp         drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.986409536  1.378613193 -0.313230852 -0.513734799 -0.003969911  2.173621206 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           hp         qsec           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.008762596  0.130161205 -1.683563822 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)         carb          cyl         disp         drat         gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.823727831 -0.088895120 -0.873608765  0.001261426  0.230289247  0.703096134 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           hp           vs           wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.013337041  0.178789629 -3.033947760 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.41905</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.40476</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -219,7 +219,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.85642 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.09376 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
