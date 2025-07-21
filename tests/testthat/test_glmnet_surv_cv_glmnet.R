@@ -9,10 +9,8 @@ test_rows  = part$test
 unique_times = task$unique_times(rows = train_rows)
 
 test_that("autotest", {
-  learner = mlr3::lrn("surv.cv_glmnet")
+  learner = lrn("surv.cv_glmnet")
   expect_learner(learner)
-
-  skip_on_os("solaris")
   result = run_autotest(learner, exclude = "feat_single", check_replicable = FALSE)
   expect_true(result, info = result$error)
 })
@@ -69,7 +67,7 @@ test_that("offset and weight parameters", {
   expect_false(all(p2$data$distr == p$data$distr))
 
   # training weights are kept for prediction
-  task$set_col_roles(cols = "new_col", roles = "weight")
+  task$set_col_roles(cols = "new_col", roles = "weights_learner")
   expect_silent(l$train(task, train_rows)$predict(task, test_rows))
-  expect_equal(l$model$weights, task$weights$weight[train_rows])
+  expect_equal(l$model$weights, task$weights_learner$weight[train_rows])
 })

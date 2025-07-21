@@ -8,29 +8,3 @@
 \description{
 Extra learners for use in mlr3.
 }
-\author{
-\strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com}
-
-Authors:
-\itemize{
-  \item Raphael Sonabend \email{raphaelsonabend@gmail.com} (\href{https://orcid.org/0000-0001-9225-4654}{ORCID})
-  \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
-}
-
-Other contributors:
-\itemize{
-  \item Lorenz A. Kapsner \email{lorenz.kapsner@gmail.com} (\href{https://orcid.org/0000-0003-1866-860X}{ORCID}) [contributor]
-  \item Lennart Schneider \email{lennart.sch@web.de} (\href{https://orcid.org/0000-0003-4152-5308}{ORCID}) [contributor]
-  \item Stephen A Lauer \email{stephenalauer@gmail.com} (\href{https://orcid.org/0000-0003-2948-630X}{ORCID}) [contributor]
-  \item Pierre Camilleri \email{camilleri_pierre@hotmail.fr} [contributor]
-  \item Javier García \email{geshter@hotmail.com} [contributor]
-  \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
-  \item Byron Jaeger \email{bjaeger@wakehealth.edu} [contributor]
-  \item Zezhi Wang \email{homura@mail.ustc.edu.cn} [contributor]
-  \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID}) [contributor]
-  \item Lukas Burk \email{burk@leibniz-bips.de} (\href{https://orcid.org/0000-0001-7528-3795}{ORCID}) [contributor]
-  \item Lona Koers \email{lona.koers@gmail.com} [contributor]
-  \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
-}
-
-}
