@@ -63,7 +63,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Ahdesmäki, Miika, Strimmer, Korbinian (2010).
+Ahdesmaeki, Miika, Strimmer, Korbinian (2010).
 \dQuote{Feature selection in omics prediction problems using cat scores and false nondiscovery rate control.}
 \emph{The Annals of Applied Statistics}, \bold{4}(1).
 ISSN 1932-6157, \doi{10.1214/09-aoas277}, \url{http://dx.doi.org/10.1214/09-AOAS277}.
