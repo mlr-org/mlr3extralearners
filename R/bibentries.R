@@ -780,6 +780,19 @@ bibentries = c( # nolint start
     pages = "1402--1412",
     doi = "10.1080/01621459.2020.1725521"
   ),
+  howard_2020 = bibentry("article",
+    title     = "Fastai: A Layered API for Deep Learning",
+    author    = "Howard, Jeremy and Gugger, Sylvain",
+    year      = "2020",
+    journal   = "Information",
+    volume    = "11",
+    number    = "2",
+    pages     = "108",
+    doi       = "10.3390/info11020108",
+    issn      = "2078-2489",
+    publisher = "MDPI AG",
+    month     = "feb"
+  ),
   hollmann2025tabpfn = bibentry("article",
     title = "Accurate predictions on small data with a tabular foundation model",
     author = "Hollmann, Noah and M\xc3\xbcller, Samuel and Purucker, Lennart and

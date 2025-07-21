@@ -2,6 +2,7 @@
 
 * fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * feat: Added learner `LearnerSurvBlockForest`.
+* feat: Added learner `LearnerClassifFastai`.
 * feat: Added learners `LearnerRegrPenalized` and `LearnerClassifPenalized`.
 * feat: Added learners `LearnerClassifBst` and `LearnerRegrBst`.
 * feat: Added learner `LearnerClassifAdaBoosting`.
@@ -22,7 +23,6 @@ New Features:
 Bugfixes:
 
 * lightgbm classifier now works with encapsulation (#437)
-
 
 # mlr3extralearners 1.0.0
 
