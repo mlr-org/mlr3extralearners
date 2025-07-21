@@ -67,7 +67,8 @@ jobs:
         shell: bash
         run: |
           # conda install -n r-reticulate -c conda-forge pip
-          pip install fastai torch torchvision pytorch-cpu tensorflow-cpu tabpfn
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install fastai tensorflow-cpu tabpfn
 
       - name: Install & configure reticulate-based packages
         shell: Rscript {0}
