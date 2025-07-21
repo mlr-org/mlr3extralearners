@@ -36,7 +36,6 @@
 #' @inherit mlr_learners_classif.tabpfn references
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
   inherit = LearnerRegr,

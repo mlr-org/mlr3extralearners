@@ -35,7 +35,6 @@
 #' `r format_bib("hollmann2025tabpfn", "hollmann2023tabpfn")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
   inherit = LearnerClassif,
