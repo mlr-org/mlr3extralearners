@@ -15,7 +15,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("Dudoit2002)`
+#' `r format_bib("Dudoit2002")`
 #'
 #' @template seealso_learner
 #' @template example

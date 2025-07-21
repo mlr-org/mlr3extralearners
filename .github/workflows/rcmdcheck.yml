@@ -79,4 +79,11 @@ jobs:
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
 
+      - name: Set RETICULATE_PYTHON for tests
+        shell: bash
+        run: |
+          # Ensure reticulate picks up the correct Python
+          PYTHON_PATH=$(conda run -n r-reticulate which python)
+          echo "RETICULATE_PYTHON=$PYTHON_PATH" >> $GITHUB_ENV
+
       - uses: r-lib/actions/check-r-package@v2
