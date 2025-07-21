@@ -274,7 +274,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
-      class_labels = levels(task$truth())
+      class_labels = task$class_names
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]
