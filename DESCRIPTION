@@ -41,8 +41,6 @@ Imports:
 Suggests:
     fastai,
     testthat
-VignetteBuilder:
-    knitr
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
