@@ -94,7 +94,7 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>block.method</td><td>character</td><td>BlockForest</td><td>BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights</td><td>-</td></tr><tr><td>num.trees</td><td>integer</td><td>2000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>nsets</td><td>integer</td><td>300</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num.trees.pre</td><td>integer</td><td>1500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>extratrees</td><td>logrank, extratrees, C, maxstat</td><td>-</td></tr><tr><td>always.select.block</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>importance</td><td>character</td><td>-</td><td>none, impurity, impurity_corrected, permutation</td><td>-</td></tr><tr><td>num.threads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>seed</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>verbose</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>blocks</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>block.method</td><td>character</td><td>BlockForest</td><td>BlockForest, RandomBlock, BlockVarSel, VarProb, SplitWeights</td><td>-</td></tr><tr><td>num.trees</td><td>integer</td><td>2000</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>nsets</td><td>integer</td><td>300</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num.trees.pre</td><td>integer</td><td>1500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>extratrees</td><td>logrank, extratrees, C, maxstat</td><td>-</td></tr><tr><td>always.select.block</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>importance</td><td>character</td><td>-</td><td>none, impurity, impurity_corrected, permutation</td><td>-</td></tr><tr><td>num.threads</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>seed</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>verbose</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Hornung, R., Wright, N. M (2019).
@@ -203,25 +203,25 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age         los       sysbp    stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.134400359 0.089314194 0.025486470 0.016227315 0.009363156 0.007418253 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.12518176 0.06200700 0.02532721 0.01995026 0.01188455 0.01100717 </span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status    crank     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       15   5.0  FALSE 19.39025 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       16 180.0  FALSE 21.06599 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       20 180.0  FALSE 12.54006 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---      ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 91.57547 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      998 180.0  FALSE 38.80879 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      999   3.0   TRUE 69.52299 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1  180  FALSE 15.41057 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2    5  FALSE 14.76036 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        9  180  FALSE 13.09516 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      989   67   TRUE 63.06888 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      996   69   TRUE 67.81933 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      998  180  FALSE 32.31934 &lt;list[1]&gt;</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8285774 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8475758 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
