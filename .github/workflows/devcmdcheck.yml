@@ -53,18 +53,36 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Install Python packages
+      - name: Setup Conda & Python packages
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: '3.9'
+          auto-update-conda: true
+          activate-environment: r-reticulate
+          environment-spec: |
+            name: r-reticulate
+            channels:
+              - conda-forge
+              - pytorch
+            dependencies:
+              - python=3.9
+              - pip
+              - pip:
+                  - fastai
+                  - torch
+                  - torchvision
+                  - pytorch-cpu
+                  - tensorflow-cpu
+
+      - name: Install & configure reticulate-based packages
+        shell: Rscript {0}
         run: |
           pak::pkg_install('reticulate')
-          reticulate::install_miniconda(force = TRUE)
-          reticulate::use_condaenv('r-reticulate')
-          pak::pkg_install(c('eagerai/fastai', 'keras'))
+          reticulate::use_condaenv('r-reticulate', required = TRUE)
+
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
-          reticulate::py_install("pytorch-cpu")
-          reticulate::py_install("tensorflow-cpu", pip = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
-        shell: Rscript {0}
 
       - name: Install dev versions
         run: pak::pkg_install(c('${{ matrix.config.dev-package }}'))
