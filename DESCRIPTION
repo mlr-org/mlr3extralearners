@@ -17,20 +17,20 @@ Authors@R: c(
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
-    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
-    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "aut",
+    person("Zezhi", "Wang", , "homura@mail.ustc.edu.cn", role = "ctb"),
+    person("John", "Zobolas", , "bblodfon@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-3609-8674")),
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
-    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Nazarova", "Anna", , "anna.nazarova@outlook.com", role = "ctb")
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
+    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
-    R (>= 3.3.0),
-    mlr3 (>= 1.0.0)
+    mlr3 (>= 1.0.0),
+    R (>= 3.3.0)
 Imports:
     checkmate,
     data.table,
@@ -40,13 +40,13 @@ Imports:
     R6
 Suggests:
     abess,
+    actuar,
     ada,
     aorsf (>= 0.1.4),
-    actuar,
     apcluster,
     BART (>= 2.9.4),
-    bst,
     blockForest (>= 0.2.6),
+    bst,
     C50,
     catboost,
     class,
@@ -82,8 +82,8 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.12.0),
-    mlr3proba (>= 0.8.1),
     mlr3pipelines,
+    mlr3proba (>= 0.8.1),
     mvtnorm,
     nnet,
     np,
@@ -97,8 +97,8 @@ Suggests:
     pseudo,
     qgam,
     randomForest,
-    randomPlantedForest,
     randomForestSRC (>= 3.3.0),
+    randomPlantedForest,
     ranger (>= 0.17.0),
     remotes,
     reticulate (>= 1.16),
@@ -107,8 +107,8 @@ Suggests:
     rvest,
     RWeka,
     sandwich,
-    set6,
     sda,
+    set6,
     sm,
     sparsediscrim,
     stats,
@@ -118,22 +118,22 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     xgboost (>= 1.7.8.1)
+VignetteBuilder:
+    knitr
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3proba,
     mlr-org/mlr3,
-    RaphaelS1/survivalmodels,
+    mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
+    RaphaelS1/survivalmodels,
+    ropensci/aorsf,
     xoopR/distr6,
     xoopR/param6,
-    xoopR/set6,
-    ropensci/aorsf
-VignetteBuilder:
-    knitr
+    xoopR/set6
+Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.2
-Config/Needs/website: rmarkdown
