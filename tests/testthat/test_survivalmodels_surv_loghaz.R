@@ -1,4 +1,5 @@
 skip_on_os("windows")
+skip("avoid py_module_available()")
 
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||
   !reticulate::py_module_available("numpy")) {
