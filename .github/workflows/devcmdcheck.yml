@@ -53,21 +53,48 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Install Python packages
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: '3.9'
+          auto-update-conda: true
+          use-mamba: true
+          activate-environment: r-reticulate
+          add-pip-as-python-dependency: true
+
+      - name: Install Python deps (fastai, torch, tf, tabpfn)
+        shell: bash
+        run: |
+          pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install fastai tensorflow-cpu tabpfn
+
+      - name: Install & configure reticulate-based packages
+        shell: Rscript {0}
         run: |
           pak::pkg_install('reticulate')
-          reticulate::install_miniconda(force = TRUE)
-          reticulate::use_condaenv('r-reticulate')
-          pak::pkg_install(c('eagerai/fastai', 'keras'))
+          # reticulate::use_condaenv('r-reticulate', required = TRUE)
+
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
-          reticulate::py_install("pytorch-cpu")
-          reticulate::py_install("tensorflow-cpu", pip = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
-        shell: Rscript {0}
 
       - name: Install dev versions
         run: pak::pkg_install(c('${{ matrix.config.dev-package }}'))
         shell: Rscript {0}
+
+      - name: Verify Python dependencies
+        shell: bash
+        run: |
+           python --version
+           pip list
+           conda --version
+           conda activate
+
+      - name: Set RETICULATE_PYTHON for tests
+        shell: bash
+        run: |
+          # Ensure reticulate picks up the correct Python
+          PYTHON_PATH=$(conda run -n r-reticulate which python)
+          echo "RETICULATE_PYTHON=$PYTHON_PATH" >> $GITHUB_ENV
 
       - uses: r-lib/actions/check-r-package@v2
