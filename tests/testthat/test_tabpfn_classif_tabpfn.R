@@ -1,5 +1,7 @@
 test_that("Python config is valid", {
-  print(reticulate::py_config())
+  cnfg = reticulate::py_config()
+  env = basename(cnfg$pythonhome)
+  expect_equal(env, "r-reticulate")
 })
 
 test_that("autotest", {
