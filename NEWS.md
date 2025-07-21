@@ -5,6 +5,7 @@
 * feat: Added learners `LearnerClassifBst` and `LearnerRegrBst`.
 * feat: Added learner `LearnerClassifAdaBoosting`.
 * feat: Added learners `LearnerClassifEvtree` and `LearnerRegrEvtree`.
+* feat: Added learner `LearnerClassifKnn`.
 
 # mlr3extralearners 1.1.0
 
@@ -15,6 +16,7 @@ New Features:
 * Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * Added the new version of learner weights to all learners that support weights
 * Added marshaling for `surv.xgboost.cox`.
+* Added learner `LearnerClassifKnn`.
 
 Bugfixes:
 
