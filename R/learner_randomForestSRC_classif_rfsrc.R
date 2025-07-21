@@ -82,7 +82,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
         ntime = p_int(lower = 1L, tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
@@ -100,7 +99,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         forest = p_lgl(default = TRUE, tags = "train"),
         var.used = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         split.depth = p_fct(
           default = "FALSE",
           levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
@@ -153,7 +152,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     #' @return `character()`.
     selected_features = function() {
       if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+        stopf("Set 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
