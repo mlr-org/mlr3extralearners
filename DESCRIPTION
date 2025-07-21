@@ -24,12 +24,12 @@ Authors@R: c(
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Nazarova", "Anna", , "anna.nazarova@outlook.com", role = "ctb") 
+    person("Nazarova", "Anna", , "anna.nazarova@outlook.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
-    R (>= 3.1.0),
+    R (>= 3.3.0),
     mlr3 (>= 1.0.0)
 Imports:
     checkmate,
@@ -40,10 +40,12 @@ Imports:
     R6
 Suggests:
     abess,
+    ada,
     aorsf (>= 0.1.4),
     actuar,
     apcluster,
     BART (>= 2.9.4),
+    bst,
     blockForest (>= 0.2.6),
     C50,
     catboost,
@@ -55,6 +57,7 @@ Suggests:
     dbarts,
     distr6,
     earth,
+    evtree,
     flexsurv (>= 2.3),
     FNN,
     formattable,
@@ -65,6 +68,7 @@ Suggests:
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
+    klaR,
     knitr,
     ks,
     LiblineaR,
@@ -103,7 +107,9 @@ Suggests:
     RWeka,
     sandwich,
     set6,
+    sda,
     sm,
+    sparsediscrim,
     stats,
     survival,
     survivalmodels (>= 0.1.19),
