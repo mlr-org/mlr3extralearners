@@ -40,20 +40,6 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v2
 
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          r-version: ${{ matrix.config.r }}
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: any::rcmdcheck
-          needs: check
-
-      - uses: mxschmitt/action-tmate@v3
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
-        with:
-          limit-access-to-actor: true
-
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
@@ -76,14 +62,19 @@ jobs:
           reticulate::use_condaenv('r-reticulate', required = TRUE)
 
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
-          survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
-          survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
 
-      - name: Set RETICULATE_PYTHON for tests
-        shell: bash
-        run: |
-          # Ensure reticulate picks up the correct Python
-          PYTHON_PATH=$(conda run -n r-reticulate which python)
-          echo "RETICULATE_PYTHON=$PYTHON_PATH" >> $GITHUB_ENV
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: ${{ matrix.config.r }}
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::rcmdcheck
+          needs: check
+
+      - uses: mxschmitt/action-tmate@v3
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+        with:
+          limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
