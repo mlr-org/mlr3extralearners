@@ -1,3 +1,7 @@
+if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("tabpfn")) {
+  skip("torch or tabpfn not available for testing.")
+}
+
 test_that("autotest", {
   learner = lrn("classif.tabpfn")
   expect_learner(learner)
@@ -51,9 +55,6 @@ test_that("categorical feature columns are encoded correctly", {
 })
 
 test_that("device selection works", {
-  if (!reticulate::py_module_available("torch")) {
-    skip("torch not available for testing.")
-  }
   torch = reticulate::import("torch")
 
   learner = lrn("classif.tabpfn", device = "cpu")
@@ -67,9 +68,6 @@ test_that("device selection works", {
 })
 
 test_that("inference_precision works", {
-  if (!reticulate::py_module_available("torch")) {
-    skip("torch not available for testing.")
-  }
   torch = reticulate::import("torch")
   task = tsk("iris")
 
