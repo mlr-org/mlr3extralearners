@@ -56,14 +56,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    splitrule \tab character \tab extratrees \tab logrank, extratrees, C, maxstat \tab - \cr
    always.select.block \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    importance \tab character \tab - \tab none, impurity, impurity_corrected, permutation \tab - \cr
-   num.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   num.threads \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    seed \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    verbose \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("mlr3proba"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define a Task
 task = tsk("grace")
 # Create train and test set
