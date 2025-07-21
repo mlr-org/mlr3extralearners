@@ -91,7 +91,6 @@ jobs:
       - name: Set RETICULATE_PYTHON for tests
         shell: bash
         run: |
-          # Ensure reticulate picks up the correct Python
           PYTHON_PATH=$(conda run -n r-reticulate which python)
           echo "RETICULATE_PYTHON=$PYTHON_PATH" >> $GITHUB_ENV
 
