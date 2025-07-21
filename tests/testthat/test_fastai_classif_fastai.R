@@ -1,5 +1,9 @@
 # reticulate::use_condaenv("r-reticulate")
 
+test_that("Python config is valid", {
+  print(reticulate::py_config())
+})
+
 test_that("autotest", {
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)

@@ -66,6 +66,7 @@ jobs:
       - name: Install Python deps (fastai, torch, tf, tabpfn)
         shell: bash
         run: |
+          set -e
           pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
           pip install fastai tensorflow-cpu tabpfn
 
@@ -78,6 +79,14 @@ jobs:
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
+
+      - name: Verify Python dependencies
+        shell: bash
+        run: |
+           python --version
+           pip list
+           conda --version
+           conda run -n r-reticulate python -c "import fastai, torch, ..."
 
       - name: Set RETICULATE_PYTHON for tests
         shell: bash

@@ -1,3 +1,7 @@
+test_that("Python config is valid", {
+  print(reticulate::py_config())
+})
+
 test_that("autotest", {
   learner = lrn("classif.tabpfn")
   expect_learner(learner)

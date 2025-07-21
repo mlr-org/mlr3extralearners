@@ -151,8 +151,10 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       measure = pars$eval_metric
       patience = pars$patience
 
-      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
-      if (is.null(measure)) measure = fastai::accuracy()
+      browser()
+
+      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify)
+      if (is.null(measure)) measure = fastai::accuracy
 
       # match parameters to fastai functions
       args_dt = formalArgs(fastai::TabularDataTable)
