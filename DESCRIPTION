@@ -106,6 +106,7 @@ Suggests:
     set6,
     sda,
     sm,
+    sparsediscrim,
     stats,
     survival,
     survivalmodels (>= 0.1.19),
