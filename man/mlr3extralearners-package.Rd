@@ -32,6 +32,7 @@ Other contributors:
   \item Lona Koers \email{lona.koers@gmail.com} [contributor]
   \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
   \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
+  \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
 }
 
 }
