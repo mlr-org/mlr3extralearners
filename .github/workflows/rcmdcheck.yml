@@ -52,6 +52,14 @@ jobs:
           activate-environment: r-reticulate
           add-pip-as-python-dependency: true
 
+
+      - name: Install & configure reticulate-based packages
+        shell: Rscript {0}
+        run: |
+          install.packages('reticulate')
+          reticulate::use_condaenv('r-reticulate', required = TRUE)
+          fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
