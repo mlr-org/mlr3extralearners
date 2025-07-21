@@ -65,7 +65,6 @@ jobs:
       - name: Install Python deps (fastai, torch, tf, tabpfn)
         shell: bash
         run: |
-          # conda install -n r-reticulate -c conda-forge pip
           pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
           pip install fastai tensorflow-cpu tabpfn
 
