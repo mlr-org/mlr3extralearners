@@ -63,7 +63,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib("Dudoit2002)}
+Dudoit S, Fridlyand J, Speed TP (2002).
+\dQuote{Comparison of Discrimination Methods for the Classification of Tumors Using Gene Expression Data.}
+\emph{Journal of the American Statistical Association}, \bold{97}(457), 77--87.
+\doi{10.1198/016214502753479248}.
 }
 \seealso{
 \itemize{
