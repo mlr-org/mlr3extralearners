@@ -85,10 +85,12 @@ jobs:
       - name: Verify Python dependencies
         shell: bash
         run: |
+           set -e
            python --version
            pip list
            conda --version
-           conda activate
+           conda env list
+           conda run -n r-reticulate which python
 
       - name: Set RETICULATE_PYTHON for tests
         shell: bash
