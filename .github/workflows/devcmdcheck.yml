@@ -69,8 +69,4 @@ jobs:
         run: pak::pkg_install(c('${{ matrix.config.dev-package }}'))
         shell: Rscript {0}
 
-      - name: Install riskRegression
-        run: pak::pkg_install("riskRegression")
-        shell: Rscript {0}
-
       - uses: r-lib/actions/check-r-package@v2
