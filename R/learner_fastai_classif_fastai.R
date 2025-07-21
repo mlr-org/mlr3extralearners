@@ -151,8 +151,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       measure = pars$eval_metric
       patience = pars$patience
 
-      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify)
-      if (is.null(measure)) measure = fastai::accuracy
+      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
+      if (is.null(measure)) measure = fastai::accuracy()
 
       # match parameters to fastai functions
       args_dt = formalArgs(fastai::TabularDataTable)
@@ -274,7 +274,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
-      class_labels = levels(task$truth())
+      class_labels = task$class_names
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]
