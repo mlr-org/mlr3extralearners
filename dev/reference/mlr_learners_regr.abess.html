@@ -197,16 +197,16 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   support.size        dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 21.3561451 64.28813</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  3.1511474 26.66667</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  2.4601055 24.03143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  1.9434887 21.64489</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  1.7958443 22.54926</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  1.6968006 23.92148</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  1.2066344 19.32595</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  1.0127844 18.21176</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  0.9472083 19.36959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 15.581905 57.66832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  5.021633 36.45243</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  4.128522 34.90345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.995387 30.72925</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.725661 31.31120</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.267748 30.01238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.183344 31.77943</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.155043 34.06901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.152856 36.61126</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +215,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24.98652 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.39536 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

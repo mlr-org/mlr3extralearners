@@ -202,21 +202,21 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revascdays &lt;= 170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 3: 3.000 (n = 33)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 3: 73.000 (n = 44)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] revascdays &gt; 170: Inf (n = 74)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] stchange &lt;= 0: Inf (n = 101)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] stchange &gt; 0: Inf (n = 128)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 1: 1.000 (n = 12)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 1: 60.000 (n = 57)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] revasc &gt; 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [8] stchange &lt;= 0: Inf (n = 87)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [9] stchange &gt; 0: Inf (n = 125)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &gt; 170: Inf (n = 89)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   [11] age &gt; 70</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] revascdays &lt;= 173</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [13] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [14] stchange &lt;= 0: 108.000 (n = 36)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] stchange &gt; 0: 18.000 (n = 71)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [16] revasc &gt; 0: Inf (n = 129)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 173: Inf (n = 54)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [14] sysbp &lt;= 112: 7.000 (n = 28)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] sysbp &gt; 112: 38.000 (n = 88)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [16] revasc &gt; 0: Inf (n = 135)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 173: Inf (n = 49)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 9</span>
@@ -228,7 +228,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7910105 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7958651 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
