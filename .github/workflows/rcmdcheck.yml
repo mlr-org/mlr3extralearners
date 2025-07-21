@@ -54,26 +54,20 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Setup Conda & Python packages
+      - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
           python-version: '3.9'
           auto-update-conda: true
+          use-mamba: true
           activate-environment: r-reticulate
-          environment-spec: |
-            name: r-reticulate
-            channels:
-              - conda-forge
-              - pytorch
-            dependencies:
-              - python=3.9
-              - pip
-              - pip:
-                  - fastai
-                  - torch
-                  - torchvision
-                  - pytorch-cpu
-                  - tensorflow-cpu
+          add-pip-as-python-dependency: true
+
+      - name: Install Python deps (fastai, torch, tf, tabpfn)
+        shell: bash
+        run: |
+          # conda install -n r-reticulate -c conda-forge pip
+          pip install fastai torch torchvision pytorch-cpu tensorflow-cpu tabpfn
 
       - name: Install & configure reticulate-based packages
         shell: Rscript {0}
