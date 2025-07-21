@@ -55,9 +55,12 @@
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
 <ul><li>fix: remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
 <li>feat: Added learner <code>LearnerSurvBlockForest</code>.</li>
+<li>feat: Added learner <code>LearnerClassifFastai</code>.</li>
+<li>feat: Added learners <code>LearnerRegrPenalized</code> and <code>LearnerClassifPenalized</code>.</li>
 <li>feat: Added learners <code>LearnerClassifBst</code> and <code>LearnerRegrBst</code>.</li>
 <li>feat: Added learner <code>LearnerClassifAdaBoosting</code>.</li>
 <li>feat: Added learners <code>LearnerClassifEvtree</code> and <code>LearnerRegrEvtree</code>.</li>
+<li>feat: Added learner <code>LearnerClassifKnn</code>.</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="mlr3extralearners-110">mlr3extralearners 1.1.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-110"></a></h2>
@@ -67,6 +70,7 @@
 <li>Added learners <code>LearnerClassifTabPFN</code> and <code>LearnerRegrTabPFN</code>.</li>
 <li>Added the new version of learner weights to all learners that support weights</li>
 <li>Added marshaling for <code>surv.xgboost.cox</code>.</li>
+<li>Added learner <code>LearnerClassifKnn</code>.</li>
 </ul><p>Bugfixes:</p>
 <ul><li>lightgbm classifier now works with encapsulation (#437)</li>
 </ul></div>

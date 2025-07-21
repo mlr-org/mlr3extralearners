@@ -169,42 +169,6 @@ The features specified in the formula need to be the same as columns with col_ro
 
     </div>
 
-    <div class="section level2">
-    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># simple example</span></span></span>
-<span class="r-in"><span><span class="va">t</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.qgam"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">t</span><span class="op">$</span><span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cyl"</span>, <span class="st">"am"</span>, <span class="st">"disp"</span>, <span class="st">"hp"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="va">values</span><span class="op">$</span><span class="va">form</span> <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="va">cyl</span> <span class="op">+</span> <span class="va">am</span> <span class="op">+</span> <span class="fu">s</span><span class="op">(</span><span class="va">disp</span><span class="op">)</span> <span class="op">+</span> <span class="fu">s</span><span class="op">(</span><span class="va">hp</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="va">quantiles</span> <span class="op">=</span> <span class="fl">0.25</span></span></span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">t</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating learning rate. Each dot corresponds to a loss evaluation. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> qu = 0.25...................done </span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="va">model</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Family: elf </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Link function: identity </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Formula:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg ~ cyl + am + s(disp) + s(hp)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimated degrees of freedom:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.79 1.00  total = 11.79 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REML score: 72.30896     </span>
-<span class="r-in"><span><span class="va">l</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">t</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">32</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth    q0.25 response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 20.08142 20.08142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        2  21.0 20.08142 20.08142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3  22.8 22.91407 22.91407</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       30  19.7 18.09929 18.09929</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       31  15.0 13.42599 13.42599</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 22.21132 22.21132</span>
-</code></pre></div>
-    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

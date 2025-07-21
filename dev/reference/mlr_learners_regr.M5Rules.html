@@ -200,28 +200,14 @@ Springer.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &lt;= 163.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 101.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.8061 * am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0506 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0264 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 32.1613 [6/4.923%]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	3.8548 * am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.2955 * carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.4001 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0194 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 37.1097 [15/18.539%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0264 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 4.7252 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.0426 [21/34.647%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -232,7 +218,7 @@ Springer.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.864982 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.69427 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
