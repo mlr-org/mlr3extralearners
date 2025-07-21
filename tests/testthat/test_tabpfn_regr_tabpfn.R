@@ -1,3 +1,8 @@
+tryCatch({
+  reticulate::use_condaenv("r-reticulate", required = TRUE)
+}, error = function(e) {
+  skip("r-reticulate conda environment not found.")
+})
 if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("tabpfn")) {
   skip("torch or tabpfn not available for testing.")
 }
