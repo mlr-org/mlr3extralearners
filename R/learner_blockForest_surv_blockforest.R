@@ -75,6 +75,7 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         properties = c("weights", "importance"),
         packages = c("mlr3extralearners", "blockForest"),
+        man = "mlr3extralearners::mlr_learners_surv.blockforest",
         label = "Random Forests for Block-wise Data"
       )
     },
