@@ -101,7 +101,6 @@ Suggests:
     randomForestSRC (>= 3.3.0),
     randomPlantedForest,
     ranger (>= 0.17.0),
-    remotes,
     rpart,
     rsm,
     rvest,
