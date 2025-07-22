@@ -94,15 +94,13 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
 
       pars$weights = private$.get_weights(task)
 
-      capture.output({model = invoke(
+      invoke(
         dbarts::bart,
         x.train = x_train,
         y.train = y_train,
         keeptrees = TRUE,
         .args = pars
-      )})
-
-      model
+      )
     },
 
     .predict = function(task) {

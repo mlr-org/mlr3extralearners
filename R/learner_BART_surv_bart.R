@@ -139,13 +139,13 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
 
-      capture.output({model = invoke(
+      model = invoke(
         .fun,
         x.train = x.train,
         times = times,
         delta = delta,
         .args = pars
-      )})
+      )
 
       list(
         model = model,
