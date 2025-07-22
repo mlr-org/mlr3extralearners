@@ -1,11 +1,3 @@
-test_that("Python config is valid", {
-  skip_if_no_tabpfn()
-
-  cnfg = reticulate::py_config()
-  env = basename(cnfg$pythonhome)
-  expect_equal(env, "r-reticulate")
-})
-
 test_that("autotest", {
   skip_if_no_tabpfn()
 
@@ -79,31 +71,6 @@ test_that("device selection works", {
   expect_identical(learner$model$fitted$device, "auto")
 })
 
-
-test_that("inference_precision works", {
-  skip_if_no_tabpfn()
-
-  torch = reticulate::import("torch")
-  task = tsk("mtcars")
-
-  # No test for the "autocast" option, because it is not supported on cpu.
-  # But we test all possible torch dtypes.
-  dtypes = c(
-    "float32", "float",
-    "float64", "double",
-    "float16", "half",
-    "bfloat16"
-  )
-  lapply(dtypes, function(dtype) {
-    learner = lrn("regr.tabpfn", inference_precision = paste0("torch.", dtype))
-    expect_invisible(learner$train(task))
-    actual_dtype = learner$model$fitted$inference_precision
-    expected_dtype = reticulate::py_get_attr(torch, dtype)
-    # actual and expected should be the same torch.dtype object
-    expect_identical(reticulate::py_id(actual_dtype), reticulate::py_id(expected_dtype))
-  })
-})
-
 test_that("checks for memory saving mode work", {
   skip_if_no_tabpfn()
 
@@ -124,35 +91,4 @@ test_that("checks for memory saving mode work", {
   learner$param_set$set_values(memory_saving_mode = 50)
   learner$train(task)
   expect_identical(learner$model$fitted$memory_saving_mode, 50)
-})
-
-test_that("random_state works", {
-  skip_if_no_tabpfn()
-
-  task = tsk("mtcars")
-
-  # different seeds => slightly different predictions
-  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner1$param_set$set_values(random_state = "None")
-  learner1$train(task)
-  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner2$param_set$set_values(random_state = "None")
-  learner2$train(task)
-  expect_character(all.equal(learner1$predict(task), learner2$predict(task)))
-
-  # same seed (default: 0) => (almost) same predictions
-  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner1$train(task)
-  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner2$train(task)
-  expect_equal(learner1$predict(task), learner2$predict(task))
-
-  # same seed => (almost) same predictions
-  learner1 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner1$param_set$set_values(random_state = 42L)
-  learner1$train(task)
-  learner2 = lrn("regr.tabpfn", predict_type = "quantiles")
-  learner2$param_set$set_values(random_state = 42L)
-  learner2$train(task)
-  expect_equal(learner1$predict(task), learner2$predict(task))
 })

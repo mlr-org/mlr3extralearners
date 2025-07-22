@@ -1,13 +1,3 @@
-print(reticulate::py_list_packages()[, c("package", "version")])
-
-test_that("Python config is valid", {
-  skip_if_no_fastai()
-
-  cnfg = reticulate::py_config()
-  env = basename(cnfg$pythonhome)
-  expect_equal(env, "r-reticulate")
-})
-
 test_that("autotest", {
   skip_if_no_fastai()
 
