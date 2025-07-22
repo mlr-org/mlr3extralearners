@@ -47,6 +47,7 @@ Suggests:
     remotes,
     survival,
     survivalmodels,
+    tensorflow,
     testthat
 Remotes:
     xoopR/distr6,
