@@ -57,6 +57,7 @@ jobs:
       - name: Install Python packages
         run: |
           pak::pkg_install('reticulate')
+          reticulate::py_install(c("torch", "torchvision", "torchaudio"), pip = TRUE, pip_options = "--index-url https://download.pytorch.org/whl/cpu")
           reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
           reticulate::py_config()
         shell: Rscript {0}
