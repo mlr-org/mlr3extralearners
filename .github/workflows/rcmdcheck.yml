@@ -54,14 +54,4 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Install Python packages
-        run: |
-          pak::pkg_install('reticulate')
-          Sys.setenv(RETICULATE_PYTHON = "managed")
-          Sys.setenv(UV_INDEX = "https://download.pytorch.org/whl/cpu")
-          reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
-          reticulate::py_config()
-          reticulate::py_list_packages()[, c("package", "version")]
-        shell: Rscript {0}
-
       - uses: r-lib/actions/check-r-package@v2
