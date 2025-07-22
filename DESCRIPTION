@@ -41,7 +41,9 @@ Imports:
     reticulate
 Suggests:
     fastai,
+    mlr3cluster,
     mlr3proba,
+    remotes,
     survival,
     testthat
 Remotes:
