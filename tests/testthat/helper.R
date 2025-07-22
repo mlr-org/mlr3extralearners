@@ -85,3 +85,5 @@ skip_if_no_tabpfn <- function() {
 }
 
 reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
+# force the python environment to be initialized
+reticulate::py_config()
