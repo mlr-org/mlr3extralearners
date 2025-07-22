@@ -37,8 +37,7 @@ Imports:
     methods,
     mlr3misc (>= 0.9.4),
     paradox (>= 1.0.1),
-    R6,
-    reticulate
+    R6
 Suggests:
     abess,
     actuar,
@@ -101,6 +100,8 @@ Suggests:
     randomForestSRC (>= 3.3.0),
     randomPlantedForest,
     ranger (>= 0.17.0),
+    remotes,
+    reticulate (>= 1.16),
     rpart,
     rsm,
     rvest,
@@ -117,6 +118,8 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     xgboost (>= 1.7.8.1)
+VignetteBuilder:
+    knitr
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
@@ -127,11 +130,9 @@ Remotes:
     ropensci/aorsf,
     xoopR/distr6,
     xoopR/param6,
-    xoopR/set6,
-    rstudio/reticulate
+    xoopR/set6
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
-Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
