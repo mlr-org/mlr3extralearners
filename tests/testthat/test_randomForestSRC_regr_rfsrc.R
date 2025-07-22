@@ -2,7 +2,9 @@ test_that("importance/selected", {
   set.seed(1)
   task = tsk("boston_housing")
   learner = lrn("regr.rfsrc")
-  capture.output({learner$train(task)})
+  capture.output({
+    learner$train(task)
+  })
   expect_error(learner$importance(), "Set 'importance'")
   expect_error(learner$selected_features(), "Set 'var.used'")
 })

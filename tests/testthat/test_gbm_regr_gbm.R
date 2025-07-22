@@ -17,7 +17,9 @@ test_that("quantile prediction", {
     n.minobsinnode = 1)
   task = tsk("mtcars")
 
-  capture.output({learner$train(task)})
+  capture.output({
+    learner$train(task)
+  })
   pred = learner$predict(task)
 
   expect_matrix(pred$quantiles, ncol = 1L)
