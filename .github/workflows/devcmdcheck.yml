@@ -57,7 +57,6 @@ jobs:
         run: |
           pak::pkg_install('reticulate')
           reticulate::install_miniconda(force = TRUE)
-          reticulate::use_condaenv('r-reticulate')
           pak::pkg_install(c('eagerai/fastai', 'keras'))
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
           reticulate::py_install("pytorch-cpu")
