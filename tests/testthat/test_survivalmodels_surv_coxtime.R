@@ -1,3 +1,5 @@
+skip_on_os("windows")
+
 np = reticulate::import("numpy")
 torch = reticulate::import("torch")
 set.seed(1)
