@@ -1,3 +1,5 @@
+print(reticulate::py_list_packages())
+
 test_that("Python config is valid", {
   skip_if_no_tabpfn()
 

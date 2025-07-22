@@ -1,4 +1,5 @@
 skip_on_os("windows")
+print(reticulate::py_list_packages())
 
 test_that("autotest", {
   skip_if_no_pycox()

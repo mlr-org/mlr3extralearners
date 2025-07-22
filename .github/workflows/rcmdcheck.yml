@@ -60,11 +60,8 @@ jobs:
           Sys.setenv(RETICULATE_PYTHON = "managed")
           Sys.setenv(UV_INDEX = "https://download.pytorch.org/whl/cpu")
           reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
-          reticulate::import("torch")
-          reticulate::import("fastai")
-          reticulate::import("tabpfn")
-          reticulate::import("pycox")
           reticulate::py_config()
+          reticulate::py_list_packages()
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2
