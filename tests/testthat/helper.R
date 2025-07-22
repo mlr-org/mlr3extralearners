@@ -83,3 +83,5 @@ skip_if_no_tabpfn <- function() {
     skip("torch or tabpfn not available for testing.")
   }
 }
+
+reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))

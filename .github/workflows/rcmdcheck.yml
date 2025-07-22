@@ -61,7 +61,7 @@ jobs:
           Sys.setenv(UV_INDEX = "https://download.pytorch.org/whl/cpu")
           reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
           reticulate::py_config()
-          reticulate::py_list_packages()
+          reticulate::py_list_packages()[, c("name", "version")]
         shell: Rscript {0}
 
       - uses: r-lib/actions/check-r-package@v2

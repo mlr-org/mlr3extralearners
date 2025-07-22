@@ -1,4 +1,4 @@
-print(reticulate::py_list_packages())
+print(reticulate::py_list_packages()[, c("name", "version")])
 
 test_that("Python config is valid", {
   skip_if_no_fastai()
