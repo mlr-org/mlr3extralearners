@@ -26,13 +26,15 @@ task = tsk("lung")
 
 test_that("time points for prediction", {
   learner = lrn("surv.parametric")
-  p = learner$train(task)$predict(task)
+  learner$train(task)
+  p = learner$predict(task)
   times = as.integer(colnames(p$data$distr))
   expect_equal(times, task$unique_times()) # unique train time points are used
 
   # use many more time points than the ones in the train set
   learner$param_set$set_values(.values = list(ntime = 9999))
-  p = learner$train(task)$predict(task)
+  learner$train(task)
+  p = learner$predict(task)
   times = as.integer(colnames(p$data$distr))
   expect_equal(times, task$unique_times()) # all unique train time points are still used
 
