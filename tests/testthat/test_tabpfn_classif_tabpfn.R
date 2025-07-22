@@ -1,3 +1,6 @@
+print(reticulate::py_config())
+print(reticulate::py_list_packages()[, c("package", "version")])
+
 test_that("autotest", {
   learner = lrn("classif.tabpfn")
   expect_learner(learner)
