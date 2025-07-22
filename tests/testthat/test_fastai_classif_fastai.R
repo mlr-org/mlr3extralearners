@@ -1,5 +1,5 @@
 test_that("Python config is valid", {
-  skip_if_no_tabpfn()
+  skip_if_no_fastai()
 
   cnfg = reticulate::py_config()
   env = basename(cnfg$pythonhome)
