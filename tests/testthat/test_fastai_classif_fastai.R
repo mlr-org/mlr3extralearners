@@ -1,6 +1,14 @@
-# reticulate::use_condaenv("r-reticulate")
+test_that("Python config is valid", {
+  skip_if_no_tabpfn()
+
+  cnfg = reticulate::py_config()
+  env = basename(cnfg$pythonhome)
+  expect_equal(env, "r-reticulate")
+})
 
 test_that("autotest", {
+  skip_if_no_fastai()
+
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
   # results not replicable, because torch seed must be set in the python backend
@@ -9,6 +17,8 @@ test_that("autotest", {
 })
 
 test_that("eval protocol", {
+  skip_if_no_fastai()
+
   learner = lrn("classif.fastai")
   task = tsk("sonar")
   learner$train(task)
@@ -17,6 +27,8 @@ test_that("eval protocol", {
 
 
 test_that("validation and inner tuning works", {
+  skip_if_no_fastai()
+
   task = tsk("spam")
 
   # with n_epoch and patience parameter
@@ -82,6 +94,8 @@ test_that("validation and inner tuning works", {
 })
 
 test_that("custom inner validation measure", {
+  skip_if_no_fastai()
+
   # internal measure
   task = tsk("sonar")
 
@@ -175,7 +189,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-   # patience = 1,
+    # patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.logloss")
   )
@@ -189,6 +203,8 @@ test_that("custom inner validation measure", {
 })
 
 test_that("marshaling works for classif.fastai", {
+  skip_if_no_fastai()
+
   learner = lrn("classif.fastai")
   task = tsk("iris")
   # expect_marshalable_learner(learner, task)
