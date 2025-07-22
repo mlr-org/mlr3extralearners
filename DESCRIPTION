@@ -40,14 +40,18 @@ Imports:
     R6,
     reticulate
 Suggests:
+    distr6,
     fastai,
     mlr3cluster,
     mlr3proba,
     remotes,
     survival,
+    survivalmodels,
     testthat
 Remotes:
+    xoopR/distr6,
     mlr-org/mlr3proba,
+    RaphaelS1/survivalmodels,
     rstudio/reticulate
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
