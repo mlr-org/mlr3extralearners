@@ -1,10 +1,11 @@
-#' @title Survival Logistic-Hazard Learner
+#' @title Survival PC-Hazard Learner
 #' @author RaphaelS1
-#' @name mlr_learners_surv.loghaz
+#' @name mlr_learners_surv.pchazard
 #'
 #' @description
-#' Survival logistic hazard learner.
-#' Calls [survivalmodels::loghaz()] from package 'survivalmodels'.
+#' Logistic-Hazard fits a discrete neural network based on a cross-entropy loss and
+#' predictions of a discrete hazard function, also known as Nnet-Survival.
+#' Calls [survivalmodels::pchazard()] from package 'survivalmodels'.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
@@ -13,8 +14,8 @@
 #' Calculated using the internal [survivalmodels::predict.pycox()] function.
 #' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
 #'
-#' @templateVar id surv.loghaz
 #' @template learner
+#' @templateVar id surv.pchazard
 #'
 #' @template install_survivalmodels
 #'
@@ -25,12 +26,12 @@
 #'  the parameters `cuts` or `cutpoints`.
 #'
 #' @references
-#' `r format_bib("gensheimer2018simple", "kvamme2019time")`
+#' `r format_bib("kvamme2019continuous")`
 #'
 #' @template seealso_learner
 #' @template simple_example
 #' @export
-LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
+LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   inherit = mlr3proba::LearnerSurv,
 
   public = list(
@@ -38,7 +39,7 @@ LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      param_set = ps(
+      ps = ps(
         frac = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
         cuts = p_int(default = 10L, lower = 1L, tags = "train"),
         cutpoints = p_uty(tags = "train"),
@@ -47,6 +48,8 @@ LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
         cut_min = p_dbl(default = 0, lower = 0, tags = "train"),
         num_nodes = p_uty(default = c(32L, 32L), tags = "train"),
         batch_norm = p_lgl(default = TRUE, tags = "train"),
+        reduction = p_fct(default = "mean", levels = c("mean", "none", "sum"),
+          tags = "train"),
         dropout = p_dbl(lower = 0, upper = 1, tags = "train"),
         activation = p_fct(default = "relu",
           levels = c("celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
@@ -86,57 +89,55 @@ LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
         min_delta = p_dbl(default = 0, tags = "train"),
         patience = p_int(default = 10, tags = "train"),
         interpolate = p_lgl(default = FALSE, tags = "predict"),
-        inter_scheme = p_fct(default = "const_hazard",
-          levels = c("const_hazard", "const_pdf"), tags = "predict"),
         sub = p_int(default = 10L, lower = 1L, tags = "predict")
       )
 
-      param_set$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
-      param_set$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
+      ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
+      ps$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
         "adamw", "rmsprop", "sparse_adam")))
-      param_set$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
-      param_set$add_dep("weight_decay", "optimizer",
+      ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
+      ps$add_dep("weight_decay", "optimizer",
         CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw",
           "asgd", "rmsprop", "sgd")))
-      param_set$add_dep("learning_rate", "optimizer",
+      ps$add_dep("learning_rate", "optimizer",
         CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
           "sgd", "sparse_adam")))
-      param_set$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
-      param_set$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
-      param_set$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
-      param_set$add_dep("lambd", "optimizer", CondEqual$new("asgd"))
-      param_set$add_dep("t0", "optimizer", CondEqual$new("asgd"))
-      param_set$add_dep("momentum", "optimizer", CondAnyOf$new(c("sgd", "rmsprop")))
-      param_set$add_dep("centered", "optimizer", CondEqual$new("rmsprop"))
-      param_set$add_dep("etas", "optimizer", CondEqual$new("rprop"))
-      param_set$add_dep("step_sizes", "optimizer", CondEqual$new("rprop"))
-      param_set$add_dep("dampening", "optimizer", CondEqual$new("sgd"))
-      param_set$add_dep("nesterov", "optimizer", CondEqual$new("sgd"))
+      ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
+      ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
+      ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
+      ps$add_dep("lambd", "optimizer", CondEqual$new("asgd"))
+      ps$add_dep("t0", "optimizer", CondEqual$new("asgd"))
+      ps$add_dep("momentum", "optimizer", CondAnyOf$new(c("sgd", "rmsprop")))
+      ps$add_dep("centered", "optimizer", CondEqual$new("rmsprop"))
+      ps$add_dep("etas", "optimizer", CondEqual$new("rprop"))
+      ps$add_dep("step_sizes", "optimizer", CondEqual$new("rprop"))
+      ps$add_dep("dampening", "optimizer", CondEqual$new("sgd"))
+      ps$add_dep("nesterov", "optimizer", CondEqual$new("sgd"))
 
-      param_set$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
-      param_set$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
+      ps$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
+      ps$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
 
-      param_set$add_dep("sub", "interpolate", CondEqual$new(TRUE))
-      param_set$add_dep("inter_scheme", "interpolate", CondEqual$new(TRUE))
+      ps$add_dep("sub", "interpolate", CondEqual$new(TRUE))
 
       super$initialize(
-        id = "surv.loghaz",
+        id = "surv.pchazard",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
-        param_set = param_set,
-        man = "mlr3extralearners::mlr_learners_surv.loghaz",
+        param_set = ps,
+        man = "mlr3extralearners::mlr_learners_surv.pchazard",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"),
-        label = "Logistic-Hazard Learner"
+        label = "PC-Hazard Learner"
       )
     }
   ),
 
   private = list(
     .train = function(task) {
+      reticulate::py_require(c("torch", "pycox", "numpy"))
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
-        survivalmodels::loghaz,
+        survivalmodels::pchazard,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
@@ -146,7 +147,7 @@ LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
     },
 
     .predict = function(task) {
-
+      reticulate::py_require(c("torch", "pycox", "numpy"))
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
@@ -165,4 +166,4 @@ LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
   )
 )
 
-.extralrns_dict$add("surv.loghaz", LearnerSurvLogisticHazard)
+.extralrns_dict$add("surv.pchazard", LearnerSurvPCHazard)
