@@ -42,6 +42,7 @@ Imports:
 Suggests:
     fastai,
     mlr3proba,
+    survival,
     testthat
 Remotes:
     mlr-org/mlr3proba,
