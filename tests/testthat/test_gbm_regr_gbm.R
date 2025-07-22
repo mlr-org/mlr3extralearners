@@ -4,7 +4,9 @@ test_that("autotest", {
     learner$param_set$values,
     list(n.minobsinnode = 1))
   expect_learner(learner)
-  capture.output({result = run_autotest(learner, predict_types = "response")})
+  capture.output({
+    result = run_autotest(learner, predict_types = "response")
+  })
   expect_true(result, info = result$error)
 })
 

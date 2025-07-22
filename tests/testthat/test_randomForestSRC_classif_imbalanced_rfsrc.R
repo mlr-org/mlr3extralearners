@@ -2,7 +2,9 @@ test_that("importance/selected", {
   set.seed(1)
   task = tsk("breast_cancer")
   learner = lrn("classif.imbalanced_rfsrc")
-  capture.output({learner$train(task)})
+  capture.output({
+    learner$train(task)
+  })
   expect_error(learner$importance(), "Set 'importance'")
   expect_error(learner$selected_features(), "Set 'var.used'")
 })
@@ -14,7 +16,9 @@ test_that("autotest", {
     do.trace = TRUE)
   expect_learner(learner)
   set.seed(1)
-  capture.output({result = run_autotest(learner, exclude = "uf8_feature_names")})
+  capture.output({
+    result = run_autotest(learner, exclude = "uf8_feature_names")
+  })
   expect_true(result, info = result$error)
 })
 

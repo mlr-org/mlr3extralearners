@@ -14,7 +14,9 @@ test_that("autotest", {
     do.trace = TRUE)
   expect_learner(learner)
   set.seed(1)
-  capture.output({result = run_autotest(learner, exclude = "uf8_feature_names")})
+  capture.output({
+    result = run_autotest(learner, exclude = "uf8_feature_names")
+  })
   expect_true(result, info = result$error)
 })
 

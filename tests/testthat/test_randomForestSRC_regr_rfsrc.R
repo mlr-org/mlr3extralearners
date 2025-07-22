@@ -14,6 +14,8 @@ test_that("autotest", {
     do.trace = TRUE)
   expect_learner(learner)
   set.seed(1)
-  capture.output({result = run_autotest(learner, exclude = "single")})
+  capture.output({
+    result = run_autotest(learner, exclude = "single")
+  })
   expect_true(result, info = result$error)
 })

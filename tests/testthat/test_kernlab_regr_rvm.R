@@ -2,7 +2,9 @@ test_that("autotest", {
   set.seed(2)
   learner = lrn("regr.rvm")
   expect_learner(learner)
-  capture.output({result = run_autotest(learner)})
+  capture.output({
+    result = run_autotest(learner)
+  })
   expect_true(result, info = result$error)
 })
 
