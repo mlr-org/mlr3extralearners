@@ -46,6 +46,7 @@ Suggests:
     mlr3proba,
     keras (>= 2.3.0),
     pseudo,
+    qgam,
     remotes,
     survival,
     survivalmodels,
