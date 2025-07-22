@@ -55,3 +55,5 @@ jobs:
           limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
+        with:
+          error-on: "error"
