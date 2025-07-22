@@ -104,7 +104,8 @@ LearnerRegrGBM = R6Class("LearnerRegrGBM",
         pars$weights = private$.get_weights(task)
       }
 
-      invoke(gbm::gbm, formula = f, data = data, .args = pars)
+      capture.output({model = invoke(gbm::gbm, formula = f, data = data, .args = pars)})
+      model
     },
 
     .predict = function(task) {

@@ -99,10 +99,12 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
       pars$weights = private$.get_weights(task)
 
       # y.train should either be a binary factor or have values {0, 1}
-      invoke(dbarts::bart,
+      capture.output({model = invoke(dbarts::bart,
         x.train = data, y.train = outcome,
         .args = pars
-      )
+      )})
+
+      model
     },
 
     .predict = function(task) {
