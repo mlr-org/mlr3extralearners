@@ -57,10 +57,10 @@ jobs:
         run: |
           pak::pkg_install('reticulate')
           reticulate::install_miniconda(force = TRUE)
+          reticulate::py_require("pytorch-cpu")
+          reticulate::py_install("tensorflow-cpu", pip = TRUE)
           pak::pkg_install(c('eagerai/fastai', 'keras'))
           fastai::install_fastai(gpu = FALSE, cuda_version = '11.6', overwrite = FALSE)
-          reticulate::py_install("pytorch-cpu")
-          reticulate::py_install("tensorflow-cpu", pip = TRUE)
           survivalmodels::install_pycox(pip = TRUE, install_torch = FALSE)
           survivalmodels::install_keras(pip = TRUE, install_tensorflow = FALSE)
         shell: Rscript {0}
