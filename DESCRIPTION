@@ -37,13 +37,15 @@ Imports:
     methods,
     mlr3misc (>= 0.9.4),
     paradox (>= 1.0.1),
-    R6
+    R6,
+    reticulate
 Suggests:
     fastai,
     mlr3proba,
     testthat
 Remotes:
-    mlr-org/mlr3proba
+    mlr-org/mlr3proba,
+    rstudio/reticulate
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Encoding: UTF-8
