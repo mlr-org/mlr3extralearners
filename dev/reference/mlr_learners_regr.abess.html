@@ -127,6 +127,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-print"><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerRegrAbess-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -198,15 +199,15 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 15.581905 57.66832</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  5.021633 36.45243</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  4.128522 34.90345</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.995387 30.72925</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.725661 31.31120</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.267748 30.01238</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.183344 31.77943</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.155043 34.06901</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.152856 36.61126</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 18.486893 61.25830</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  5.123258 36.87317</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.403009 30.84500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  3.104984 31.48389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.471403 29.25478</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.185881 29.24025</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  2.118454 31.14583</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  2.108463 33.61013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  2.083715 35.92576</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +216,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.39536 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.320419 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

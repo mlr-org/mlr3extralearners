@@ -142,6 +142,7 @@ by the mlr3learner. The default value is set to th default of the respective
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerRegrLiblineaR-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -203,10 +204,10 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              am         carb       cyl        disp     drat      gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.04803259 -0.005382937 0.1515137 -0.04489918 0.241296 0.2247142</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              hp     qsec         vs         wt       Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.04413114 1.106728 0.06814774 0.06900021 0.05552397</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              am       carb       cyl       disp      drat      gear         hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.04674448 0.01891169 0.1663693 -0.0384119 0.2713877 0.2578043 0.02296417</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          qsec         vs         wt       Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.260002 0.07889816 0.07983999 0.06344006</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -224,7 +225,7 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16.77552 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.53299 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -148,6 +148,7 @@ and it's unclear how to use them.</p></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifBayesNet-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -220,14 +221,14 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
@@ -246,15 +247,15 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V44(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V54(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
@@ -265,13 +266,13 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V6(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -867.4455788060527</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -884.6245832184939</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -888.626593281402</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -836.8146169835301</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -857.8146169835301</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1353.9358995432763</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1381.4223066031818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1386.8109435605963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1305.3921236639396</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1338.3921236639396</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -281,7 +282,7 @@ and it's unclear how to use them.</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

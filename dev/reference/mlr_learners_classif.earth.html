@@ -141,6 +141,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifEarth-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -197,13 +198,13 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM (family binomial, link logit):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  nulldev  df       dev  df   devratio     AIC iters converged</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  192.515 138   27.2516 126      0.858   53.25     9         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  191.477 138   47.1363 124      0.754   77.14     8         1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 13 of 22 terms, and 10 of 60 predictors</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 22 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V11, V45, V36, V23, V28, V52, V27, V60, V42, V39, V48-unused, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 12 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.1036433    RSS 9.690277    GRSq 0.5908409    RSq 0.7207818</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 15 of 21 terms, and 10 of 60 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 21 terms</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V12, V52, V49, V40, V27, V23, V25, V45, V36, V14, V1-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 14 (additive model)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.117318    RSS 10.21257    GRSq 0.5333743    RSq 0.7035197</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>

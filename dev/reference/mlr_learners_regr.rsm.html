@@ -134,6 +134,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerRegrRSM-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -195,27 +196,27 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  6.164524  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  35.47443  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  2.045050  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -1.67061  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.020336  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   1.03549  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.997810  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -2.34580  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.003843  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.03218  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.355397  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.15193  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  2.043960  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.12272  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.035721  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.01850  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.980784  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.71398  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  1.183726  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -1.94918  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -4.137150  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -5.79419  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -225,7 +226,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.274005 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.17383 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

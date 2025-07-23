@@ -134,6 +134,7 @@ since their ids contain irregular pattern</p></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifRandomTree-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -192,52 +193,46 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RandomTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5 &lt; 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V51 &lt; 0.02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V25 &lt; 0.92 : R (19/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V25 &gt;= 0.92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V24 &lt; 0.82 : M (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V24 &gt;= 0.82 : R (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V51 &gt;= 0.02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V28 &lt; 0.97</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V11 &lt; 0.32 : R (8/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V11 &gt;= 0.32 : M (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V28 &gt;= 0.97 : M (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5 &gt;= 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &lt; 0.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V53 &lt; 0.02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V30 &lt; 0.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V27 &lt; 0.53 : M (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V27 &gt;= 0.53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V53 &lt; 0.01 : R (5/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V53 &gt;= 0.01 : M (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V30 &gt;= 0.41 : R (12/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V53 &gt;= 0.02 : M (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V49 &gt;= 0.03</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V54 &lt; 0.02</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V28 &lt; 0.64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V43 &lt; 0.41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V1 &lt; 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V3 &lt; 0.06</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V16 &lt; 0.64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   V23 &lt; 0.67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   |   V39 &lt; 0.3 : R (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   |   V39 &gt;= 0.3 : M (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   V23 &gt;= 0.67 : M (6/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V16 &gt;= 0.64 : R (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V3 &gt;= 0.06 : R (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V1 &gt;= 0.04 : M (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V43 &gt;= 0.41 : R (4/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V28 &gt;= 0.64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V10 &lt; 0.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V5 &lt; 0.04 : R (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V5 &gt;= 0.04</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V3 &lt; 0.02 : R (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V3 &gt;= 0.02 : M (6/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V10 &gt;= 0.15 : M (32/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V54 &gt;= 0.02 : M (14/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9 &lt; 0.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V5 &lt; 0.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V50 &lt; 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V21 &lt; 0.65 : R (9/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V21 &gt;= 0.65 : M (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V50 &gt;= 0.01 : R (22/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V5 &gt;= 0.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V4 &lt; 0.07</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V6 &lt; 0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V49 &lt; 0.02 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V49 &gt;= 0.02 : M (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V6 &gt;= 0.11 : R (4/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V4 &gt;= 0.07 : M (6/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9 &gt;= 0.12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V47 &lt; 0.04 : R (10/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V47 &gt;= 0.04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V17 &lt; 0.89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V36 &lt; 0.47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V12 &lt; 0.23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &lt; 0.41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V1 &lt; 0.03 : R (3/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V1 &gt;= 0.03 : M (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V20 &gt;= 0.41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V24 &lt; 0.95 : M (8/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V24 &gt;= 0.95 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V12 &gt;= 0.23 : M (38/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V36 &gt;= 0.47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V39 &lt; 0.31 : R (7/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   V39 &gt;= 0.31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V21 &lt; 0.24 : M (5/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   V21 &gt;= 0.24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V28 &lt; 0.82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V56 &lt; 0.01 : R (3/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   V56 &gt;= 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   V26 &lt; 0.6 : M (5/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   |   |   V26 &gt;= 0.6 : R (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   V28 &gt;= 0.82 : M (3/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V17 &gt;= 0.89 : R (7/0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 39</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -246,7 +241,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4202899 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

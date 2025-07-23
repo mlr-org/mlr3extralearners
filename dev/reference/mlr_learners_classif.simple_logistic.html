@@ -143,6 +143,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifSimpleLogistic-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -200,68 +201,40 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -2.98 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 8.62 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V10] * -0.88 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 6.48 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 0.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * -0.41 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -0.76 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 0.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * 1.21 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * 0.5  +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.99 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * -2.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -1.18 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -1.31 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V37] * -1.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * 0.6  +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V41] * -0.81 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 1.95 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 3.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V46] * 1.04 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * 5.05 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 11.32 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * -44.14 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 13.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 65.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * 19.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * -56.57 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V58] * 40.72 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V60] * -35.33 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -5.86</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.52 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 8.45 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.12 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -0.91 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V20] * 0.53 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * 1.12 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.67 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -2.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 2.04 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 3.73 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * 5.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 19.82 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * 21.59 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * -38.62 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V59] * 35.33 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -2.11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.98 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -8.62 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V10] * 0.88 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -6.48 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -0.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * 0.41 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 0.76 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -0.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * -1.21 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * -0.5 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.99 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * 2.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 1.18 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 1.31 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V37] * 1.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * -0.6 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V41] * 0.81 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -1.95 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -3.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V46] * -1.04 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * -5.05 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -11.32 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * 44.14 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -13.68 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -65.46 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * -19.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * 56.57 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V58] * -40.72 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V60] * 35.33 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 5.86</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.52 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -8.45 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.12 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 0.91 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V20] * -0.53 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * -1.12 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.67 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 2.66 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -2.04 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -3.73 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V48] * -5.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -19.82 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * -21.59 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * 38.62 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V59] * -35.33 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 2.11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -271,7 +244,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3623188 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

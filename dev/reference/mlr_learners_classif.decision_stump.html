@@ -134,6 +134,7 @@ since their ids contain irregular pattern</p></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifDecisionStump-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -192,21 +193,21 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classifications</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &lt;= 0.27795000000000003 : R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &gt; 0.27795000000000003 : M</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 is missing : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.19795000000000001 : R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.19795000000000001 : M</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing : M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class distributions</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &lt;= 0.27795000000000003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &lt;= 0.19795000000000001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4690265486725664	0.5309734513274337	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 &gt; 0.27795000000000003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.18518518518518517	0.8148148148148148	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 &gt; 0.19795000000000001</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.9615384615384616	0.038461538461538464	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45 is missing</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.7647058823529411	0.23529411764705882	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11 is missing</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M	R	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5611510791366906	0.43884892086330934	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.539568345323741	0.460431654676259	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -216,7 +217,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3913043 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

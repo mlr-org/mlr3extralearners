@@ -144,6 +144,7 @@ since their ids contain irregular pattern</p></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerRegrSGD-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -202,17 +203,17 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          4.8668 (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +     -10.5716 (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.0089 (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.5615 (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       5.6042 (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.5894 (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7345 (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.9113 (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.3962 (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.4476 (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      16.0539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          3.5271 (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.6313 (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       5.3002 (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0798 (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.408  (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.4604 (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.4062 (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.4251 (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.5564 (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.5396 (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      12.1082</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -221,7 +222,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15.42604 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21.73317 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

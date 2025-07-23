@@ -126,6 +126,7 @@ ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="ex
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifRda-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -184,16 +185,16 @@ ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> rda(formula = formula, data = data)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Regularization parameters: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      gamma     lambda </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.50788583 0.01473022 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     gamma    lambda </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1565874 0.5894384 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Prior probabilities of groups: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M         R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5539568 0.4460432 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5755396 0.4244604 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Misclassification rate: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 6.475 %</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 20.375 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        apparent: 2.158 %</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cross-validated: 19.35 %</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -202,7 +203,7 @@ ISSN 01621459, 1537274X, <a href="http://www.jstor.org/stable/2289860" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

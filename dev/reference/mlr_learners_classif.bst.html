@@ -131,6 +131,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifBst-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -199,26 +200,24 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0.05035971 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V1         V10         V11         V12         V13         V14 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.21836589  0.08269343  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V15         V16         V17         V18         V19          V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V21         V22         V23         V24         V25 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V26         V27         V28         V29          V3         V30 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V31         V32         V33         V34         V35         V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 -0.72377296 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V37         V38         V39          V4         V40         V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V42         V43         V44         V45         V46         V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.56205696  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V48         V49          V5         V50         V51         V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  2.38351552  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V53         V54         V55         V56         V57         V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V59          V6         V60          V7          V8          V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V1        V10        V11        V12        V13        V14        V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V17        V18        V19         V2        V20        V21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.2247292  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V22        V23        V24        V25        V26        V27        V28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V29         V3        V30        V31        V32        V33        V34 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000 -0.0810870  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V35        V36        V37        V38        V39         V4        V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000 -0.5928008  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V41        V42        V43        V44        V45        V46        V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.8798531  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V48        V49         V5        V50        V51        V52        V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  3.5791208  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V54        V55        V56        V57        V58        V59         V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V60         V7         V8         V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.05035971</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -230,7 +229,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3333333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

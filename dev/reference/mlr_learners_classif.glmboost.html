@@ -133,6 +133,7 @@ No offset is applied during prediction for this learner.</p>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifGLMBoost-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Create a <code>LearnerClassifGLMBoost</code> object.</p><div class="section">
@@ -206,21 +207,21 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.06483891 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0.02158609 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          V11          V12          V15          V19          V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.83639255  -2.67714149  -0.72134586   0.68600580  -0.12455072  -0.76676270 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V28          V29          V34          V36           V4          V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.10925737  -0.08585744   0.27343675   0.80183292  -0.66257372  -0.60200115 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V45          V47          V48          V49          V52          V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.77633687  -0.59563954  -0.49365185  -6.26029747  -7.62812606 -20.82153692 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          V11          V12          V16          V21          V24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.24916055  -2.07224747  -0.14917622   0.20980540  -0.58192053  -0.04270063 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V28          V31          V36          V40          V43          V45 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.28484931   0.35695654   1.01026701   0.18598827  -0.49103274  -1.34152269 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V49          V52          V54          V57           V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.41329378  -6.00935888 -16.88036287  -8.97310125   9.88896215   0.71920396 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.06483891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.02158609</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -230,7 +231,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

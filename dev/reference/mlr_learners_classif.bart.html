@@ -151,6 +151,7 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifBart-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -247,34 +248,34 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
 <span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 800 (of 1000)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 900 (of 1000)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> iteration: 1000 (of 1000)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> total seconds in loop: 0.473102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> total seconds in loop: 0.465140</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Tree sizes, last iteration:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 3 2 2 2 3 2 2 2 2 2 2 3 2 2 4 2 2 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 3 2 2 1 4 3 3 2 2 2 2 2 3 2 2 2 3 1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 2 2 2 2 3 3 2 2 2 2 2 2 2 3 5 2 2 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 2 2 4 2 2 2 4 2 2 2 1 2 2 5 2 2 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 3 4 2 2 2 3 2 2 2 3 3 2 2 2 2 2 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4 2 2 2 2 2 4 2 2 2 2 2 3 3 2 4 2 2 1 3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 2 2 2 2 2 2 2 2 2 3 4 2 3 3 1 2 4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 4 1 2 4 2 3 2 3 2 3 2 3 2 2 2 2 3 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 2 3 2 2 2 3 2 2 3 2 3 3 4 2 2 4 2 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 2 3 2 2 3 2 2 2 2 3 2 2 4 3 2 3 1 2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 2 2 2 2 3 2 3 3 2 3 2 2 2 2 2 4 4 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 2 3 2 2 2 1 3 2 2 2 2 3 2 3 2 2 5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2 3 2 2 3 4 3 2 2 3 3 2 2 2 2 3 2 3 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3 2 2 2 2 3 5 2 2 2 3 2 2 2 3 2 3 2 1 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 4 2 2 1 2 3 2 2 2 1 2 4 2 3 2 3 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 4 3 2 2 2 2 2 2 2 2 2 2 4 2 2 2 2 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 2 2 2 2 2 2 2 3 2 3 3 2 2 3 1 2 3 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 3 2 2 2 1 2 2 3 2 1 2 2 3 3 2 2 3 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 1 2 1 3 2 2 2 4 2 2 2 4 2 2 3 3 4 3 3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 2 2 2 1 2 2 3 3 3 3 2 3 2 3 2 3 3 2 2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2 3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable Usage, last iteration (var:count):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (1: 3) (2: 8) (3: 3) (4: 3) (5: 7) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (6: 1) (7: 4) (8: 2) (9: 7) (10: 6) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (11: 2) (12: 4) (13: 6) (14: 4) (15: 5) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (16: 4) (17: 7) (18: 9) (19: 2) (20: 4) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (21: 2) (22: 2) (23: 1) (24: 3) (25: 1) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (26: 3) (27: 4) (28: 8) (29: 3) (30: 3) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (31: 2) (32: 4) (33: 10) (34: 4) (35: 4) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (36: 5) (37: 5) (38: 6) (39: 6) (40: 9) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (41: 5) (42: 5) (43: 4) (44: 9) (45: 3) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (46: 3) (47: 4) (48: 3) (49: 5) (50: 3) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (51: 4) (52: 6) (53: 8) (54: 4) (55: 4) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (56: 2) (57: 3) (58: 11) (59: 3) (60: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (1: 6) (2: 4) (3: 6) (4: 4) (5: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (6: 4) (7: 6) (8: 3) (9: 4) (10: 3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (11: 6) (12: 3) (13: 3) (14: 4) (15: 8) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (16: 4) (17: 4) (18: 4) (19: 5) (20: 3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (21: 3) (22: 4) (23: 0) (24: 1) (25: 3) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (26: 6) (27: 4) (28: 5) (29: 0) (30: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (31: 4) (32: 3) (33: 8) (34: 4) (35: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (36: 6) (37: 4) (38: 5) (39: 5) (40: 6) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (41: 6) (42: 3) (43: 6) (44: 5) (45: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (46: 6) (47: 4) (48: 8) (49: 4) (50: 5) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (51: 4) (52: 4) (53: 5) (54: 3) (55: 4) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (56: 7) (57: 6) (58: 3) (59: 8) (60: 6) </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> DONE BART</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -292,7 +293,7 @@ and therefore the offset parameter in <code>dbarts:::predict.bart</code> is irre
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1304348 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

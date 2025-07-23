@@ -138,6 +138,7 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifNaiveBayesMultinomial-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -194,8 +195,8 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The independent probability of a class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.43</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The probability of a word given the class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
@@ -208,7 +209,7 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V14	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16	0.02	0.02	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17	0.03	0.02	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2	0	0	</span>
@@ -221,7 +222,7 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V28	0.04	0.04	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V29	0.03	0.04	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31	0.03	0.03	</span>
@@ -242,7 +243,7 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45	0.01	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V46	0.01	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V47	0.01	0.01	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V48	0.01	0	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48	0.01	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V5	0.01	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50	0	0	</span>
@@ -269,7 +270,7 @@ In <em>AAAI-98 Workshop on 'Learning for Text Categorization'</em>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3623188 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4057971 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
