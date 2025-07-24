@@ -21,7 +21,6 @@
 #' `r format_bib("howard_2020")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerClassifFastai = R6Class("LearnerClassifFastai",
   inherit = LearnerClassif,
@@ -274,7 +273,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
-      class_labels = levels(task$truth())
+      class_labels = task$class_names
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]

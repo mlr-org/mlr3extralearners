@@ -130,6 +130,7 @@ abess-team
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -147,7 +148,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract]{abess::extract()}}.
+Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features()}\if{html}{\out{</div>}}
 }

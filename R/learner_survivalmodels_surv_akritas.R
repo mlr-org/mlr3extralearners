@@ -56,6 +56,8 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
 
   private = list(
     .train = function(task) {
+      reticulate::py_require(c("torch", "pycox", "numpy"))
+
       pv = self$param_set$get_values(tags = "train")
       invoke(
         survivalmodels::akritas,
@@ -67,6 +69,8 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     },
 
     .predict = function(task) {
+      reticulate::py_require(c("torch", "pycox", "numpy"))
+
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 

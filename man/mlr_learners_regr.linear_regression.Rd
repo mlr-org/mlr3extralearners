@@ -7,7 +7,7 @@
 \description{
 Linear Regression learner that uses the Akaike criterion for model selection and
 is able to deal with weighted instances.
-Calls \code{\link[RWeka:LinearRegression]{RWeka::LinearRegression()}} \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_functions]{RWeka::LinearRegression()}} \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
@@ -141,6 +141,7 @@ damirpolat
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

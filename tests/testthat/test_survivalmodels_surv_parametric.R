@@ -26,13 +26,15 @@ task = tsk("lung")
 
 test_that("time points for prediction", {
   learner = lrn("surv.parametric")
-  p = learner$train(task)$predict(task)
+  learner$train(task)
+  p = learner$predict(task)
   times = as.integer(colnames(p$data$distr))
   expect_equal(times, task$unique_times()) # unique train time points are used
 
   # use many more time points than the ones in the train set
   learner$param_set$set_values(.values = list(ntime = 9999))
-  p = learner$train(task)$predict(task)
+  learner$train(task)
+  p = learner$predict(task)
   times = as.integer(colnames(p$data$distr))
   expect_equal(times, task$unique_times()) # all unique train time points are still used
 
@@ -53,28 +55,36 @@ test_that("missing", {
 
 test_that("'form' affects survival prediction", {
   # aft
-  p = lrn("surv.parametric", form = "aft")$train(task)$predict(task)
+  learner = lrn("surv.parametric", form = "aft")
+  learner$train(task)
+  p = learner$predict(task)
   expect_true(inherits(p$distr, "Matdist"))
   surv_aft = p$distr$survival(task$unique_times())
   expect_matrix(surv_aft, nrows = length(task$unique_times()), ncols = task$nrow,
                 any.missing = FALSE) # [times x obs]
 
   # tobit
-  p = lrn("surv.parametric", form = "tobit")$train(task)$predict(task)
+  learner = lrn("surv.parametric", form = "tobit")
+  learner$train(task)
+  p = learner$predict(task)
   expect_true(inherits(p$distr, "Matdist"))
   surv_tobit = p$distr$survival(task$unique_times())
   expect_matrix(surv_tobit, nrows = length(task$unique_times()), ncols = task$nrow,
                 any.missing = FALSE) # [times x obs]
 
   # ph
-  p = lrn("surv.parametric", form = "ph")$train(task)$predict(task)
+  learner = lrn("surv.parametric", form = "ph")
+  learner$train(task)
+  p = learner$predict(task)
   expect_true(inherits(p$distr, "Matdist"))
   surv_ph = p$distr$survival(task$unique_times())
   expect_matrix(surv_ph, nrows = length(task$unique_times()), ncols = task$nrow,
                 any.missing = FALSE) # [times x obs]
 
   # po
-  p = lrn("surv.parametric", form = "po")$train(task)$predict(task)
+  learner = lrn("surv.parametric", form = "po")
+  learner$train(task)
+  p = learner$predict(task)
   expect_true(inherits(p$distr, "Matdist"))
   surv_po = p$distr$survival(task$unique_times())
   expect_matrix(surv_po, nrows = length(task$unique_times()), ncols = task$nrow,

@@ -48,6 +48,7 @@ jobs:
         with:
           extra-packages: any::rcmdcheck
           needs: check
+          cache: "always"
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
@@ -55,3 +56,5 @@ jobs:
           limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
+        with:
+          error-on: '"error"'
