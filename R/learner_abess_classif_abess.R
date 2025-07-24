@@ -115,7 +115,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         type = "response")
 
       # mlr3 ensures that the levels are correct
-      class_names = levels(task$truth(task$row_ids[1L]))
+      class_names = task$class_names
 
       family = self$state$param_vals$family
       if (is.null(family)) {
