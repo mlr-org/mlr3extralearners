@@ -56,9 +56,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
 
   private = list(
     .train = function(task) {
-      python_packages = c("torch", "pycox", "numpy")
-      reticulate::py_require(python_packages)
-      assert_python_packages(python_packages)
+      assert_python_packages(c("torch", "pycox", "numpy"))
 
       pv = self$param_set$get_values(tags = "train")
       invoke(
@@ -71,9 +69,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     },
 
     .predict = function(task) {
-      python_packages = c("torch", "pycox", "numpy")
-      reticulate::py_require(python_packages)
-      assert_python_packages(python_packages)
+      assert_python_packages(c("torch", "pycox", "numpy"))
 
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

@@ -148,7 +148,6 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
-      reticulate::py_require("fastai")
       assert_python_packages("fastai")
 
       formula = task$formula()
@@ -278,7 +277,6 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .predict = function(task) {
-      reticulate::py_require("fastai")
       assert_python_packages("fastai")
 
       pars = self$param_set$get_values(tags = "predict")
