@@ -6,6 +6,20 @@
 #' Simple and fast neural nets for tabular data classification.
 #' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
 #'
+#' @section Installation:
+#' The Python dependencies are automatically installed via `reticulate::py_require()`.
+#' See [Installing Python Dependencies](https://rstudio.github.io/reticulate/articles/python_packages.html) for more details.
+#' You can manually specify a virtual environment by calling `reticulate::use_virtualenv()` prior to calling the `$train()` function.
+#' In this virtual environment, the `fastai` package and its dependencies must be installed.
+#'
+#' @section Saving a Learner:
+#' In order to save a `<%= class %>` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk, as the object will otherwise not be saved correctly.
+#' After loading a marshaled `<%= class %>` into R again,
+#' you then need to call `$unmarshal()` to transform it into a useable state.
+#'
+#' @section Initial parameter values:
+#' - `n_jobs` is initialized to 1 to avoid threading conflicts with \CRANpkg{future}.
+#'
 #' @section Initial parameter values:
 #' - `n_epoch`:
 #'   Needs to be set for [fastai::fit()] to work.
@@ -139,6 +153,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .train = function(task) {
       reticulate::py_require("fastai")
+      assert_python_packages("fastai")
 
       formula = task$formula()
       data = task$data()
@@ -268,6 +283,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .predict = function(task) {
       reticulate::py_require("fastai")
+      assert_python_packages("fastai")
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

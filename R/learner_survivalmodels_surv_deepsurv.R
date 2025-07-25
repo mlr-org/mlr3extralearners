@@ -114,7 +114,9 @@ LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
+      python_packages = c("torch", "pycox", "numpy")
+      reticulate::py_require(python_packages)
+      assert_python_packages(python_packages)
       pars = self$param_set$get_values(tags = "fit")
       invoke(
         survivalmodels::deepsurv,
@@ -127,7 +129,9 @@ LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
     },
 
     .predict = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
+      python_packages = c("torch", "pycox", "numpy")
+      reticulate::py_require(python_packages)
+      assert_python_packages(python_packages)
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
