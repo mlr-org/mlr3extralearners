@@ -1,11 +1,10 @@
-#' @title Survival PC-Hazard Learner
+#' @title Survival DeepSurv Learner
 #' @author RaphaelS1
-#' @name mlr_learners_surv.pchazard
+#' @name mlr_learners_surv.deepsurv
 #'
 #' @description
-#' Logistic-Hazard fits a discrete neural network based on a cross-entropy loss and
-#' predictions of a discrete hazard function, also known as Nnet-Survival.
-#' Calls [survivalmodels::pchazard()] from package 'survivalmodels'.
+#' DeepSurv fits a neural network based on the partial likelihood from a Cox PH.
+#' Calls [survivalmodels::deepsurv()] from package 'survivalmodels'.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
@@ -15,23 +14,16 @@
 #' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
 #'
 #' @template learner
-#' @templateVar id surv.pchazard
+#' @templateVar id surv.deepsurv
 #'
 #' @template install_survivalmodels
 #'
-#' @details
-#' Custom nets can be used in this learner either using the
-#'  [survivalmodels::build_pytorch_net] utility function or using `torch` via \CRANpkg{reticulate}.
-#'  The number of output channels depends on the number of discretised time-points, i.e.
-#'  the parameters `cuts` or `cutpoints`.
-#'
 #' @references
-#' `r format_bib("kvamme2019continuous")`
+#' `r format_bib("katzman2018deepsurv")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
-LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
+LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
   inherit = mlr3proba::LearnerSurv,
 
   public = list(
@@ -41,15 +33,8 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
 
       ps = ps(
         frac = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        cuts = p_int(default = 10L, lower = 1L, tags = "train"),
-        cutpoints = p_uty(tags = "train"),
-        scheme = p_fct(default = "equidistant", levels = c("equidistant", "quantiles"),
-          tags = "train"),
-        cut_min = p_dbl(default = 0, lower = 0, tags = "train"),
         num_nodes = p_uty(default = c(32L, 32L), tags = "train"),
         batch_norm = p_lgl(default = TRUE, tags = "train"),
-        reduction = p_fct(default = "mean", levels = c("mean", "none", "sum"),
-          tags = "train"),
         dropout = p_dbl(lower = 0, upper = 1, tags = "train"),
         activation = p_fct(default = "relu",
           levels = c("celu", "elu", "gelu", "glu", "hardshrink", "hardsigmoid", "hardswish",
@@ -57,7 +42,6 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
             "rrelu", "relu", "selu", "sigmoid", "softmax", "softmax2d", "softmin",
             "softplus", "softshrink", "softsign", "tanh", "tanhshrink", "threshold"),
           tags = "train"),
-        custom_net = p_uty(tags = "train"),
         device = p_uty(tags = "train"),
         optimizer = p_fct(default = "adam",
           levels = c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
@@ -87,9 +71,7 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
         best_weights = p_lgl(default = FALSE, tags = "train"),
         early_stopping = p_lgl(default = FALSE, tags = "train"),
         min_delta = p_dbl(default = 0, tags = "train"),
-        patience = p_int(default = 10, tags = "train"),
-        interpolate = p_lgl(default = FALSE, tags = "predict"),
-        sub = p_int(default = 10L, lower = 1L, tags = "predict")
+        patience = p_int(default = 10, tags = "train")
       )
 
       ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
@@ -117,16 +99,14 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
       ps$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
       ps$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
 
-      ps$add_dep("sub", "interpolate", CondEqual$new(TRUE))
-
       super$initialize(
-        id = "surv.pchazard",
+        id = "surv.deepsurv",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_surv.pchazard",
+        man = "mlr3extralearners::mlr_learners_surv.deepsurv",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"),
-        label = "PC-Hazard Learner"
+        label = "Neural Network"
       )
     }
   ),
@@ -134,10 +114,9 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   private = list(
     .train = function(task) {
       assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
-
-      pars = self$param_set$get_values(tags = "train")
+      pars = self$param_set$get_values(tags = "fit")
       invoke(
-        survivalmodels::pchazard,
+        survivalmodels::deepsurv,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
@@ -166,4 +145,4 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   )
 )
 
-.extralrns_dict$add("surv.pchazard", LearnerSurvPCHazard)
+.extralrns_dict$add("surv.deepsurv", LearnerSurvDeepsurv)

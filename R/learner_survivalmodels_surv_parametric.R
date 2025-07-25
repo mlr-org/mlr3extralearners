@@ -64,7 +64,6 @@
 #' `r format_bib("kalbfleisch2011statistical")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerSurvParametric = R6Class("LearnerSurvParametric",
   inherit = mlr3proba::LearnerSurv,

@@ -1,10 +1,10 @@
-#' @title Survival DeepHit Learner
+#' @title Survival Cox-Time Learner
 #' @author RaphaelS1
-#' @name mlr_learners_surv.deephit
+#' @name mlr_learners_surv.coxtime
 #'
 #' @description
-#' Neural network 'Deephit' for survival analysis.
-#' Calls [survivalmodels::deephit()] from pacakge 'survivalmodels'.
+#' Cox-Time survival model.
+#' Calls [survivalmodels::coxtime()] from package 'survivalmodels'.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
@@ -14,23 +14,16 @@
 #' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
 #'
 #' @template learner
-#' @templateVar id surv.deephit
+#' @templateVar id surv.coxtime
 #'
 #' @template install_survivalmodels
 #'
-#' @details
-#' Custom nets can be used in this learner either using the
-#'  [survivalmodels::build_pytorch_net] utility function or using `torch` via \CRANpkg{reticulate}.
-#'  The number of output channels depends on the number of discretised time-points, i.e.
-#'  the parameters `cuts` or `cutpoints`.
-#'
 #' @references
-#' `r format_bib("lee2018deephit")`
+#' `r format_bib("kvamme2019time")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
-LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
+LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
   inherit = mlr3proba::LearnerSurv,
 
   public = list(
@@ -40,11 +33,10 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
 
       ps = ps(
         frac = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        cuts = p_int(default = 10L, lower = 1L, tags = "train"),
-        cutpoints = p_uty(tags = "train"),
-        scheme = p_fct(default = "equidistant", levels = c("equidistant", "quantiles"),
-          tags = "train"),
-        cut_min = p_dbl(default = 0, lower = 0, tags = "train"),
+        standardize_time = p_lgl(default = FALSE, tags = "train"),
+        log_duration = p_lgl(default = FALSE, tags = "train"),
+        with_mean = p_lgl(default = TRUE, tags = "train"),
+        with_std = p_lgl(default = TRUE, tags = "train"),
         num_nodes = p_uty(default = c(32L, 32L), tags = "train"),
         batch_norm = p_lgl(default = TRUE, tags = "train"),
         dropout = p_dbl(lower = 0, upper = 1, tags = "train"),
@@ -54,10 +46,8 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
             "rrelu", "relu", "selu", "sigmoid", "softmax", "softmax2d", "softmin",
             "softplus", "softshrink", "softsign", "tanh", "tanhshrink", "threshold"),
           tags = "train"),
-        custom_net = p_uty(tags = "train"),
         device = p_uty(tags = "train"),
-        mod_alpha = p_dbl(default = 0.2, lower = 0, upper = 1, tags = "train"),
-        sigma = p_dbl(default = 0.1, lower = 0, tags = "train"),
+        shrink = p_dbl(default = 0, lower = 0, tags = "train"),
         optimizer = p_fct(default = "adam",
           levels = c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
             "sgd", "sparse_adam"), tags = "train"),
@@ -86,23 +76,21 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
         best_weights = p_lgl(default = FALSE, tags = "train"),
         early_stopping = p_lgl(default = FALSE, tags = "train"),
         min_delta = p_dbl(default = 0, tags = "train"),
-        patience = p_int(default = 10, tags = "train"),
-        interpolate = p_lgl(default = FALSE, tags = "predict"),
-        inter_scheme = p_fct(default = "const_hazard",
-          levels = c("const_hazard", "const_pdf"), tags = "predict"),
-        sub = p_int(default = 10L, lower = 1L, tags = "predict")
+        patience = p_int(default = 10, tags = "train")
       )
+
+      ps$add_dep("log_duration", "standardize_time", CondEqual$new(TRUE))
+      ps$add_dep("with_mean", "standardize_time", CondEqual$new(TRUE))
+      ps$add_dep("with_std", "standardize_time", CondEqual$new(TRUE))
 
       ps$add_dep("rho", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("eps", "optimizer", CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax",
         "adamw", "rmsprop", "sparse_adam")))
       ps$add_dep("lr", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("weight_decay", "optimizer",
-        CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw",
-          "asgd", "rmsprop", "sgd")))
-      ps$add_dep("learning_rate", "optimizer",
-        CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "rprop",
-          "sgd", "sparse_adam")))
+        CondAnyOf$new(c("adadelta", "adagrad", "adam", "adamax", "adamw", "asgd", "rmsprop", "sgd")))
+      ps$add_dep("learning_rate", "optimizer", CondAnyOf$new(c("adagrad", "adam", "adamax", "adamw",
+        "asgd", "rmsprop", "rprop", "sgd", "sparse_adam")))
       ps$add_dep("lr_decay", "optimizer", CondEqual$new("adadelta"))
       ps$add_dep("betas", "optimizer", CondAnyOf$new(c("adam", "adamax", "adamw", "sparse_adam")))
       ps$add_dep("amsgrad", "optimizer", CondAnyOf$new(c("adam", "adamw")))
@@ -118,17 +106,14 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
       ps$add_dep("min_delta", "early_stopping", CondEqual$new(TRUE))
       ps$add_dep("patience", "early_stopping", CondEqual$new(TRUE))
 
-      ps$add_dep("sub", "interpolate", CondEqual$new(TRUE))
-      ps$add_dep("inter_scheme", "interpolate", CondEqual$new(TRUE))
-
       super$initialize(
-        id = "surv.deephit",
+        id = "surv.coxtime",
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        man = "mlr3extralearners::mlr_learners_surv.deephit",
+        man = "mlr3extralearners::mlr_learners_surv.coxtime",
         packages = c("mlr3extralearners", "survivalmodels", "distr6", "reticulate"),
-        label = "Neural Network"
+        label = "Cox-Time Estimator"
       )
     }
   ),
@@ -139,7 +124,7 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
-        survivalmodels::deephit,
+        survivalmodels::coxtime,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],
@@ -169,4 +154,4 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
   )
 )
 
-.extralrns_dict$add("surv.deephit", LearnerSurvDeephit)
+.extralrns_dict$add("surv.coxtime", LearnerSurvCoxtime)

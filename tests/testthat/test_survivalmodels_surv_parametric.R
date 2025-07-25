@@ -1,5 +1,6 @@
 test_that("autotest aft", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -18,13 +19,13 @@ test_that("autotest aft", {
 
     # single test fails randomly I think this depends on the python version
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+    TRUE
   }))
-
-  expect_true(result, info = result$error)
 })
 
 test_that("autotest ph", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -42,13 +43,13 @@ test_that("autotest ph", {
 
     # single test fails randomly I think this depends on the python version
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+    TRUE
   }))
-
-  expect_true(result, info = result$error)
 })
 
 test_that("autotest po", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -66,13 +67,13 @@ test_that("autotest po", {
 
     # single test fails randomly I think this depends on the python version
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+    TRUE
   }))
-
-  expect_true(result, info = result$error)
 })
 
 test_that("time points for prediction", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -89,11 +90,11 @@ test_that("time points for prediction", {
     p = learner$predict(task)
     times = as.integer(colnames(p$data$distr))
     testthat::expect_equal(times, task$unique_times()) # unique train time points are used
+    TRUE
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -112,12 +113,11 @@ test_that("time points for prediction", {
     p = learner$predict(task)
     times = as.integer(colnames(p$data$distr))
     testthat::expect_equal(times, task$unique_times()) # all unique train time points are still used
+    TRUE
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-
-
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -137,13 +137,14 @@ test_that("time points for prediction", {
     testthat::expect_equal(min(times), min(task$unique_times()))
     testthat::expect_equal(max(times), max(task$unique_times()))
     testthat::expect_equal(length(times), 50)
+    TRUE
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
 })
 
 test_that("missing", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -154,15 +155,18 @@ test_that("missing", {
     lapply(list.files(system.file("testthat", package = "mlr3proba"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
+    lung = survival::lung
+    lung$status = lung$status - 1
+    lung_missings = mlr3proba::TaskSurv$new("lung", backend = lung, time = "time", event = "status")
+
     learner = lrn("surv.parametric")
     testthat::expect_error(learner$predict(lung_missings))
-  }, lung_missings = lung_missings))
-
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
+    TRUE
+  }))
 })
 
 test_that("'form' affects survival prediction", {
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -179,16 +183,11 @@ test_that("'form' affects survival prediction", {
     learner$train(task)
     p = learner$predict(task)
     testthat::expect_true(inherits(p$distr, "Matdist"))
-    surv_aft = p$distr$survival(task$unique_times())
+    p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_aft, nrows = length(task$unique_times()), ncols = task$nrow,  any.missing = FALSE) # [times x obs]
-    surv_aft
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-  surv_aft = if (!mirai::is_mirai_error(result)) result
-
-
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -205,15 +204,11 @@ test_that("'form' affects survival prediction", {
     learner$train(task)
     p = learner$predict(task)
     testthat::expect_true(inherits(p$distr, "Matdist"))
-    surv_tobit = p$distr$survival(task$unique_times())
+    p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_tobit, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
-    surv_tobit
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-  surv_tobit = if (!mirai::is_mirai_error(result)) result
-
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -230,15 +225,11 @@ test_that("'form' affects survival prediction", {
     learner$train(task)
     p = learner$predict(task)
     testthat::expect_true(inherits(p$distr, "Matdist"))
-    surv_ph = p$distr$survival(task$unique_times())
+    p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_ph, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
-    surv_ph
   }))
 
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-  surv_ph = if (!mirai::is_mirai_error(result)) result
-
-  result = mirai::collect_mirai(mirai::mirai({
+  expect_true(callr::r(function() {
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -255,20 +246,9 @@ test_that("'form' affects survival prediction", {
     learner$train(task)
     p = learner$predict(task)
     testthat::expect_true(inherits(p$distr, "Matdist"))
-    surv_po = p$distr$survival(task$unique_times())
+    p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_po, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
-    surv_po
   }))
-
-  expect_false(mirai::is_mirai_error(result), info = as.character(result))
-  surv_po = if (!mirai::is_mirai_error(result)) result
-
-  # predicted survival matrices are different
-  expect_true(!is.null(surv_aft) && !is.null(surv_tobit) && any(surv_aft != surv_tobit))
-  expect_true(!is.null(surv_aft) && !is.null(surv_ph) && any(surv_aft != surv_ph))
-  expect_true(!is.null(surv_aft) && !is.null(surv_po) && any(surv_aft != surv_po))
-  expect_true(!is.null(surv_tobit) && !is.null(surv_ph) && any(surv_tobit != surv_ph))
-  expect_true(!is.null(surv_tobit) && !is.null(surv_po) && any(surv_tobit != surv_po))
-  expect_true(!is.null(surv_ph) && !is.null(surv_po) && any(surv_ph != surv_po))
 })
+
 

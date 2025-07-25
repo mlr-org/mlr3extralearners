@@ -28,7 +28,6 @@
 #' `r format_bib("gensheimer2018simple", "kvamme2019time")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
 LearnerSurvLogisticHazard = R6Class("LearnerSurvLogisticHazard",
   inherit = mlr3proba::LearnerSurv,

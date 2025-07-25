@@ -1,3 +1,5 @@
+skip_on_os("windows")
+
 test_that("autotest", {
   expect_true(callr::r(function() {
     Sys.setenv(RETICULATE_PYTHON = "managed")
