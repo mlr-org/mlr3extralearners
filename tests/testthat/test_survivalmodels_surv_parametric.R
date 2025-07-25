@@ -186,6 +186,7 @@ test_that("'form' affects survival prediction", {
     testthat::expect_true(inherits(p$distr, "Matdist"))
     surv_aft = p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_aft, nrows = length(task$unique_times()), ncols = task$nrow,  any.missing = FALSE) # [times x obs]
+    TRUE
   }))
 
   expect_true(callr::r(function() {
@@ -208,6 +209,7 @@ test_that("'form' affects survival prediction", {
     testthat::expect_true(inherits(p$distr, "Matdist"))
     surv_tobit = p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_tobit, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
+    TRUE
   }))
 
   expect_true(callr::r(function() {
@@ -230,6 +232,7 @@ test_that("'form' affects survival prediction", {
     testthat::expect_true(inherits(p$distr, "Matdist"))
     surv_ph = p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_ph, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
+    TRUE
   }))
 
   expect_true(callr::r(function() {
@@ -252,6 +255,7 @@ test_that("'form' affects survival prediction", {
     testthat::expect_true(inherits(p$distr, "Matdist"))
     surv_po = p$distr$survival(task$unique_times())
     checkmate::expect_matrix(surv_po, nrows = length(task$unique_times()), ncols = task$nrow, any.missing = FALSE) # [times x obs]
+    TRUE
   }))
 })
 
