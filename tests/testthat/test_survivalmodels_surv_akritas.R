@@ -1,8 +1,6 @@
 test_that("autotest", {
   expect_true(callr::r(function() {
-    Sys.unsetenv("RETICULATE_PYTHON")
-    Sys.setenv(RETICULATE_PYTHON="managed")
-    Sys.setenv(RETICULATE_USE_MANAGED_VENV="yes")
+    Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
     library(mlr3proba)
@@ -24,97 +22,97 @@ test_that("autotest", {
   }))
 })
 
-# test_that("time points for prediction", {
-  # expect_true(callr::r(function() {
-  #   Sys.unsetenv("RETICULATE_PYTHON")
-  #   library(mlr3)
-  #   library(mlr3proba)
-  #   library(mlr3extralearners)
+test_that("time points for prediction", {
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
 
-  #   lapply(list.files(system.file("testthat", package = "mlr3"),
-  #     pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-  #   lapply(list.files(system.file("testthat", package = "mlr3proba"),
-  #     pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-  #   task = tsk("lung")
-  #   learner = lrn("surv.akritas")
-  #   learner$train(task)
-  #   p = learner$predict(task)
-  #   times = as.integer(colnames(p$data$distr))
-  #   testthat::expect_equal(times, task$unique_times()) # unique train time points are used
-  #   TRUE
-  # }))
+    task = tsk("lung")
+    learner = lrn("surv.akritas")
+    learner$train(task)
+    p = learner$predict(task)
+    times = as.integer(colnames(p$data$distr))
+    testthat::expect_equal(times, task$unique_times()) # unique train time points are used
+    TRUE
+  }))
 
-  # expect_true(callr::r(function() {
-  #   library(mlr3)
-  #   library(mlr3proba)
-  #   library(mlr3extralearners)
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
 
-  #   lapply(list.files(system.file("testthat", package = "mlr3"),
-  #     pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-  #   lapply(list.files(system.file("testthat", package = "mlr3proba"),
-  #     pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-  #   task = tsk("lung")
-  #   learner = lrn("surv.akritas")
-  #   learner$train(task)
-  #   p = learner$predict(task)
-  #   times = as.integer(colnames(p$data$distr))
-  #   testthat::expect_equal(times, task$unique_times()) # unique train time points are used
-  #   TRUE
-  # }))
+    task = tsk("lung")
+    learner = lrn("surv.akritas")
+    learner$train(task)
+    p = learner$predict(task)
+    times = as.integer(colnames(p$data$distr))
+    testthat::expect_equal(times, task$unique_times()) # unique train time points are used
+    TRUE
+  }))
 
-#   result = mirai::collect_mirai(mirai::mirai({
-#     library(mlr3)
-#     library(mlr3proba)
-#     library(mlr3extralearners)
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
 
-#     lapply(list.files(system.file("testthat", package = "mlr3"),
-#       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-#     lapply(list.files(system.file("testthat", package = "mlr3proba"),
-#       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-#     task = tsk("lung")
-#     learner = lrn("surv.akritas")
+    task = tsk("lung")
+    learner = lrn("surv.akritas")
 
-#     # use many more time points than the ones in the train set
-#     learner$param_set$set_values(.values = list(ntime = 9999))
-#     learner$train(task)
-#     p = learner$predict(task)
-#     times = as.integer(colnames(p$data$distr))
-#     testthat::expect_equal(times, task$unique_times()) # all unique train time points are still used
-#   }))
+    # use many more time points than the ones in the train set
+    learner$param_set$set_values(.values = list(ntime = 9999))
+    learner$train(task)
+    p = learner$predict(task)
+    times = as.integer(colnames(p$data$distr))
+    testthat::expect_equal(times, task$unique_times()) # all unique train time points are still used
+    TRUE
+  }))
 
-#   expect_false(mirai::is_mirai_error(result), info = as.character(result))
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
 
-# })
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-#   result = mirai::collect_mirai(mirai::mirai({
-#     library(mlr3)
-#     library(mlr3proba)
-#     library(mlr3extralearners)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-#     lapply(list.files(system.file("testthat", package = "mlr3"),
-#       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    task = tsk("lung")
+    learner = lrn("surv.akritas")
+    learner$param_set$set_values(.values = list(ntime = 50))
+    learner$train(task)
+    p = learner$predict(task)
+    times = as.integer(colnames(p$data$distr))
+    # min and max times are retained after coersion
+    testthat::expect_equal(min(times), min(task$unique_times()))
+    testthat::expect_equal(max(times), max(task$unique_times()))
+    testthat::expect_equal(length(times), 50)
+    TRUE
+  }))
+})
 
-#     lapply(list.files(system.file("testthat", package = "mlr3proba"),
-#       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
-
-#     task = tsk("lung")
-#     learner = lrn("surv.akritas")
-#     learner$param_set$set_values(.values = list(ntime = 50))
-#     learner$train(task)
-#     p = learner$predict(task)
-#     times = as.integer(colnames(p$data$distr))
-#     # min and max times are retained after coersion
-#     testthat::expect_equal(min(times), min(task$unique_times()))
-#     testthat::expect_equal(max(times), max(task$unique_times()))
-#     testthat::expect_equal(length(times), 50)
-#   }))
-
-#   expect_false(mirai::is_mirai_error(result), info = as.character(result))
-# })
 
