@@ -114,7 +114,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "tabpfn"))
+      assert_python_packages(c("torch", "tabpfn"))
       tabpfn = reticulate::import("tabpfn")
 
       pars = self$param_set$get_values(tags = "train")
@@ -151,7 +151,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
     },
 
     .predict = function(task) {
-      reticulate::py_require("tabpfn")
+      assert_python_packages("tabpfn")
       reticulate::import("tabpfn")
       model = self$model$fitted
 
