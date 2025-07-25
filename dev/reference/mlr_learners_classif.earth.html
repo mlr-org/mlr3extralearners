@@ -198,13 +198,13 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM (family binomial, link logit):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  nulldev  df       dev  df   devratio     AIC iters converged</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  191.477 138   47.1363 124      0.754   77.14     8         1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  192.515 138   58.7722 126      0.695   84.77     7         1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 15 of 21 terms, and 10 of 60 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 13 of 21 terms, and 10 of 60 predictors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 21 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V12, V52, V49, V40, V27, V23, V25, V45, V36, V14, V1-unused, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 14 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.117318    RSS 10.21257    GRSq 0.5333743    RSq 0.7035197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V12, V45, V36, V21, V16, V28, V3, V49, V39, V30, V1-unused, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 12 (additive model)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.1308266    RSS 12.23182    GRSq 0.4835278    RSq 0.6475492</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -213,7 +213,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
