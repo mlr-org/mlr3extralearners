@@ -122,6 +122,7 @@ VignetteBuilder:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
+    eagerai/fastai,
     mlr-org/mlr3,
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
