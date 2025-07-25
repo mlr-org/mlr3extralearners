@@ -26,7 +26,6 @@
 #' `r format_bib("akritas1994nearest")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
   inherit = mlr3proba::LearnerSurv,
