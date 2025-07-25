@@ -49,6 +49,7 @@ Suggests:
     blockForest (>= 0.2.6),
     bst,
     C50,
+    callr,
     catboost,
     class,
     coin,
