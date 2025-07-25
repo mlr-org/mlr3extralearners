@@ -201,14 +201,53 @@ Springer.</p>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &lt;= 96</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.5126 * qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 5.3669 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 10.6245 [21/33.09%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0357 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0216 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.715 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.6629 [5/16.141%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 116.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0164 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.2074 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 30.8222 [5/11.253%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &lt;= 116.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0295 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.0334 * qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 22.9661 [4/2.757%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &lt;= 162.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	0.8417 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 15.0968 [4/29.711%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 19.2 [3/100%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -219,7 +258,7 @@ Springer.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.40853 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.50554 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

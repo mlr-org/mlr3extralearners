@@ -61,6 +61,22 @@ Calls <code><a href="https://rdrr.io/pkg/fastai/man/tabular_learner.html" class=
 
 
     <div class="section level2">
+    <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
+
+
+<p>The Python dependencies are automatically installed via <code><a href="https://rstudio.github.io/reticulate/reference/py_require.html" class="external-link">reticulate::py_require()</a></code>.
+See <a href="https://rstudio.github.io/reticulate/articles/python_packages.html" class="external-link">Installing Python Dependencies</a> for more details.
+You can manually specify a virtual environment by calling <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_virtualenv()</a></code> prior to calling the <code>$train()</code> function.
+In this virtual environment, the <code>fastai</code> package and its dependencies must be installed.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="saving-a-learner">Saving a Learner<a class="anchor" aria-label="anchor" href="#saving-a-learner"></a></h2>
+
+
+<p>In order to save a <code>lrn("classif.fastai")</code> for later usage, it is necessary to call the <code>$marshal()</code> method on the <code>Learner</code>  before writing it to disk, as the object will otherwise not be saved correctly.
+After loading a marshaled <code>lrn("classif.fastai")</code> into R again, you then need to call <code>$unmarshal()</code> to transform it into a useable state.</p>
+    </div>
+    <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
 
