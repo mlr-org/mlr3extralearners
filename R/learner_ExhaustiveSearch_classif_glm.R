@@ -134,7 +134,7 @@ LearnerClassifExhaustiveSearch = R6Class(
       } else {
         list(prob = pprob_to_matrix((1 - p), task))
       }
-    },
+    }
   )
 )
 .extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)
