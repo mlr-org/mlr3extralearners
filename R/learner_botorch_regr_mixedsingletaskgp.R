@@ -3,7 +3,7 @@
 #' @name mlr_learners_regr.botorch_mixedsingletaskgp
 #'
 #' @description
-#' Gaussian Process via [botorch](https://botorch.org/) and [gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP` model from `botorch.models.gp_regression_mixed`.
+#' Gaussian Process via [botorch](https://botorch.org/) and [gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP`.
 #' Uses \CRANpkg{reticulate} to interface with Python.
 #'
 #' @templateVar id regr.botorch_mixedsingletaskgp
@@ -100,33 +100,38 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     .predict = function(task) {
       reticulate::py_require(c("torch", "botorch", "gpytorch"))
       torch = reticulate::import("torch")
-      reticulate::source_python(system.file("python", "botorch_predict.py", package = "mlr3extralearners"))
-      gp = self$model$gp
-
       pars = self$param_set$get_values(tags = "predict")
-      device = pars$device
 
+      # compute the posterior distribution and extract the mean and covariance matrix
+      # disable gradient computation with torch.no_grad() for efficiency
+      reticulate::py_run_string("def predict_gp(model, x_py):
+        import torch
+        with torch.no_grad():
+            posterior = model.posterior(x_py)
+            mean = posterior.mean.cpu().numpy()
+            covar = posterior.mvn.covariance_matrix.cpu().numpy()
+        return mean, covar")
+
+      gp = self$model$gp
+      # change the model to evaluation mode
       gp$eval()
 
       x = task$data(cols = task$feature_names)
-
       # convert factors and logicals to integers
       cols = which(sapply(x, function(x) is.factor(x) || is.logical(x)))
       x[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
       x = as_numeric_matrix(x)
+      x_py = torch$as_tensor(x, dtype = torch$float64, device = pars$device)
 
-      # convert to torch tensors
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
-
-      posterior = predict_gp(gp, x_py)
-      mean = posterior[[1]]
+      posterior = reticulate::py$predict_gp(gp, x_py)
+      mean = as.numeric(posterior[[1]])
       covar = posterior[[2]]
 
       if (self$predict_type == "response") {
-        list(response = as.numeric(mean))
+        list(response = mean)
       } else {
         sd = sqrt(diag(covar))
-        list(response = as.numeric(mean), se = as.numeric(sd))
+        list(response = mean, se = sd)
       }
     }
   )

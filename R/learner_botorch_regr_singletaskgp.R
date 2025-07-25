@@ -19,7 +19,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train")
+        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -90,26 +90,34 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
     .predict = function(task) {
       reticulate::py_require(c("torch", "botorch", "gpytorch"))
       torch = reticulate::import("torch")
-      reticulate::source_python(system.file("python", "botorch_predict.py", package = "mlr3extralearners"))
+      pars = self$param_set$get_values(tags = "predict")
 
-      pars = self$param_set$get_values(tags = "train")
-      device = pars$device
+      # compute the posterior distribution and extract the mean and covariance matrix
+      # disable gradient computation with torch.no_grad() for efficiency
+      reticulate::py_run_string("def predict_gp(model, x_py):
+        import torch
+        with torch.no_grad():
+            posterior = model.posterior(x_py)
+            mean = posterior.mean.cpu().numpy()
+            covar = posterior.mvn.covariance_matrix.cpu().numpy()
+        return mean, covar")
 
       gp = self$model$gp
+      # change the model to evaluation mode
       gp$eval()
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
-      x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
+      x_py = torch$as_tensor(x, dtype = torch$float64, device = pars$device)
 
-      posterior = predict_gp(gp, x_py)
-      mean = posterior[[1]]
+      posterior = reticulate::py$predict_gp(gp, x_py)
+      mean = as.numeric(posterior[[1]])
       covar = posterior[[2]]
 
       if (self$predict_type == "response") {
-        list(response = as.numeric(mean))
+        list(response = mean)
       } else {
         sd = sqrt(diag(covar))
-        list(response = as.numeric(mean), se = as.numeric(sd))
+        list(response = mean, se = sd)
       }
     }
   )

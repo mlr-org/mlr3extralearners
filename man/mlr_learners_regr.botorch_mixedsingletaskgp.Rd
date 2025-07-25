@@ -5,7 +5,7 @@
 \alias{LearnerRegrBotorchMixedSingleTaskGP}
 \title{BoTorch MixedSingleTaskGP Regression Learner}
 \description{
-Gaussian Process via \href{https://botorch.org/}{botorch} and \href{https://gpytorch.ai/}{gpytorch}, using the \code{MixedSingleTaskGP} model from \code{botorch.models.gp_regression_mixed}.
+Gaussian Process via \href{https://botorch.org/}{botorch} and \href{https://gpytorch.ai/}{gpytorch}, using the \code{MixedSingleTaskGP}.
 Uses \CRANpkg{reticulate} to interface with Python.
 }
 \section{Dictionary}{
