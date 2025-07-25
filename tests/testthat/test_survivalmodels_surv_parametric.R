@@ -167,6 +167,7 @@ test_that("missing", {
 
 test_that("'form' affects survival prediction", {
   expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -188,6 +189,7 @@ test_that("'form' affects survival prediction", {
   }))
 
   expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -209,6 +211,7 @@ test_that("'form' affects survival prediction", {
   }))
 
   expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -230,6 +233,7 @@ test_that("'form' affects survival prediction", {
   }))
 
   expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
