@@ -1,6 +1,7 @@
 skip_on_os("windows")
 
 test_that("autotest", {
+
   result = mirai::collect_mirai(mirai::mirai({
     library(mlr3)
     library(mlr3proba)
@@ -20,12 +21,12 @@ test_that("autotest", {
     np$random$seed(1L)
     torch$manual_seed(1L)
 
-    learner = lrn("surv.loghaz")
+    learner = lrn("surv.deepsurv")
     expect_learner(learner)
 
     # single test fails randomly I think this depends on the python version
     result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

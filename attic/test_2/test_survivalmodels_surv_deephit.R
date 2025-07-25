@@ -6,6 +6,7 @@ test_that("autotest", {
     library(mlr3proba)
     library(mlr3extralearners)
 
+
     lapply(list.files(system.file("testthat", package = "mlr3"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
@@ -15,16 +16,16 @@ test_that("autotest", {
     reticulate::py_require(c("numpy", "torch", "pycox"), python_version = "3.10")
     np = reticulate::import("numpy")
     torch = reticulate::import("torch")
-    set.seed(10)
+    set.seed(1)
     np$random$seed(1L)
     torch$manual_seed(1L)
 
-    learner = lrn("surv.dnnsurv", cuts = 5)
+    learner = lrn("surv.deephit")
     expect_learner(learner)
 
     # single test fails randomly I think this depends on the python version
-    result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity || feat_single_integer")
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

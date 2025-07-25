@@ -20,7 +20,7 @@ test_that("autotest aft", {
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })
 
 test_that("autotest ph", {
@@ -44,7 +44,7 @@ test_that("autotest ph", {
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })
 
 test_that("autotest po", {
@@ -68,7 +68,7 @@ test_that("autotest po", {
     result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })
 
 task = tsk("lung")

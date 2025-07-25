@@ -16,7 +16,7 @@ test_that("autotest", {
     run_autotest(learner, check_replicable = FALSE)
   }))
 
-  expect_true(result)
+  expect_true(result, info = result$error)
 })
 
 # test_that("time points for prediction", {
