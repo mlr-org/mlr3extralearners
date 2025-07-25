@@ -1,5 +1,5 @@
 test_that("autotest", {
-  skip_if_no_fastai()
+
 
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
@@ -9,7 +9,7 @@ test_that("autotest", {
 })
 
 test_that("eval protocol", {
-  skip_if_no_fastai()
+
 
   learner = lrn("classif.fastai")
   task = tsk("sonar")
@@ -19,7 +19,7 @@ test_that("eval protocol", {
 
 
 test_that("validation and inner tuning works", {
-  skip_if_no_fastai()
+
 
   task = tsk("spam")
 
@@ -86,7 +86,7 @@ test_that("validation and inner tuning works", {
 })
 
 test_that("custom inner validation measure", {
-  skip_if_no_fastai()
+
 
   # internal measure
   task = tsk("sonar")
@@ -195,7 +195,7 @@ test_that("custom inner validation measure", {
 })
 
 test_that("marshaling works for classif.fastai", {
-  skip_if_no_fastai()
+
 
   learner = lrn("classif.fastai")
   task = tsk("iris")
