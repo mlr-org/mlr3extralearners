@@ -1,25 +1,74 @@
 test_that("autotest aft", {
-  set.seed(1)
-  learner = lrn("surv.parametric")
-  expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
-  expect_true(result, info = result$error)
+  result = mirai::collect_mirai(mirai::mirai({
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
+
+
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    set.seed(1)
+
+    learner = lrn("surv.parametric")
+    expect_learner(learner)
+
+    # single test fails randomly I think this depends on the python version
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+  }))
+
+  expect_true(result)
 })
 
 test_that("autotest ph", {
-  set.seed(1)
-  learner = lrn("surv.parametric", form = "ph")
-  expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
-  expect_true(result, info = result$error)
+  result = mirai::collect_mirai(mirai::mirai({
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
+
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    set.seed(1)
+
+    learner = lrn("surv.parametric", form = "ph")
+    expect_learner(learner)
+
+    # single test fails randomly I think this depends on the python version
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+  }))
+
+  expect_true(result)
 })
 
 test_that("autotest po", {
-  set.seed(1)
-  learner = lrn("surv.parametric", form = "po")
-  expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
-  expect_true(result, info = result$error)
+  result = mirai::collect_mirai(mirai::mirai({
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
+
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    set.seed(1)
+
+    learner = lrn("surv.parametric", form = "po")
+    expect_learner(learner)
+
+    # single test fails randomly I think this depends on the python version
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
+  }))
+
+  expect_true(result)
 })
 
 task = tsk("lung")
