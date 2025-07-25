@@ -271,3 +271,4 @@ test_that("'form' affects survival prediction", {
   expect_true(!is.null(surv_tobit) && !is.null(surv_po) && any(surv_tobit != surv_po))
   expect_true(!is.null(surv_ph) && !is.null(surv_po) && any(surv_ph != surv_po))
 })
+

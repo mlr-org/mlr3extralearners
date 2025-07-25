@@ -1,7 +1,8 @@
 skip_on_os("windows")
 
 test_that("autotest", {
-  result = mirai::collect_mirai(mirai::mirai({
+  result = callr::r(function() {
+    Sys.unsetenv("RETICULATE_PYTHON")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -25,7 +26,7 @@ test_that("autotest", {
 
     # single test fails randomly I think this depends on the python version
     result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity || feat_single")
-  }))
+  })
 
   expect_true(result, info = result$error)
 })

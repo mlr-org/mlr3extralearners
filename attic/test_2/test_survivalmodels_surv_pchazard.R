@@ -27,3 +27,4 @@ test_that("autotest", {
 
   expect_true(result)
 })
+
