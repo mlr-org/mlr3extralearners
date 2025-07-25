@@ -1,6 +1,4 @@
 test_that("autotest", {
-  reticulate::use_python_version("3.9")
-
   with_seed(1, {
     learner = lrn("surv.akritas", lambda = 0.5)
     expect_learner(learner)
