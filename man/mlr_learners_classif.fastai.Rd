@@ -8,6 +8,20 @@
 Simple and fast neural nets for tabular data classification.
 Calls \code{\link[fastai:tabular_learner]{fastai::tabular_learner()}} from package \CRANpkg{fastai}.
 }
+\section{Installation}{
+
+The Python dependencies are automatically installed via \code{reticulate::py_require()}.
+See \href{https://rstudio.github.io/reticulate/articles/python_packages.html}{Installing Python Dependencies} for more details.
+You can manually specify a virtual environment by calling \code{reticulate::use_virtualenv()} prior to calling the \verb{$train()} function.
+In this virtual environment, the \code{fastai} package and its dependencies must be installed.
+}
+
+\section{Saving a Learner}{
+
+In order to save a \code{lrn("classif.fastai")} for later usage, it is necessary to call the \verb{$marshal()} method on the \code{Learner}  before writing it to disk, as the object will otherwise not be saved correctly.
+After loading a marshaled \code{lrn("classif.fastai")} into R again, you then need to call \verb{$unmarshal()} to transform it into a useable state.
+}
+
 \section{Initial parameter values}{
 
 \itemize{

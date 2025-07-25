@@ -121,7 +121,7 @@ LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
+      assert_python_packages(c("torch", "pycox", "numpy"))
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -135,7 +135,7 @@ LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
     },
 
     .predict = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
+      assert_python_packages(c("torch", "pycox", "numpy"))
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

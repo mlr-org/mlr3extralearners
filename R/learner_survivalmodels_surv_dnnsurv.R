@@ -123,7 +123,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("keras", "tensorflow"))
+      assert_python_packages(c("keras", "tensorflow"))
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -137,7 +137,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
     },
 
     .predict = function(task) {
-      reticulate::py_require(c("keras", "tensorflow"))
+      assert_python_packages(c("keras", "tensorflow"))
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

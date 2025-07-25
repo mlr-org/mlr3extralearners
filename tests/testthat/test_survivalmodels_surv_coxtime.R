@@ -1,12 +1,14 @@
 skip_on_os("windows")
 
-np = reticulate::import("numpy")
-torch = reticulate::import("torch")
-set.seed(1)
-np$random$seed(1L)
-torch$manual_seed(1L)
-
 test_that("autotest", {
+  skip_if_no_pycox()
+
+  np = reticulate::import("numpy")
+  torch = reticulate::import("torch")
+  set.seed(1)
+  np$random$seed(1L)
+  torch$manual_seed(1L)
+
   learner = lrn("surv.coxtime")
   expect_learner(learner)
   # single test fails randomly I think this depends on the python version

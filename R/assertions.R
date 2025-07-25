@@ -1,0 +1,18 @@
+#' @title Assert Python Packages
+#'
+#' @description
+#' Assert that the given Python packages are available.
+#'
+#' @param packages (`character()`)\cr
+#'   Python packages to check.
+#'
+#' @return (`character()`)\cr
+assert_python_packages = function(packages) {
+  reticulate::py_require(packages)
+  available = map_lgl(packages, reticulate::py_module_available)
+  if (any(!available)) {
+    stopf("Package %s not available.", packages[!available])
+  }
+  invisible(packages)
+}
+
