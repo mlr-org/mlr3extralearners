@@ -1,7 +1,7 @@
 skip_on_os("windows")
 
 test_that("autotest", {
-  skip_if_no_pycox()
+
 
   np = reticulate::import("numpy")
   torch = reticulate::import("torch")
