@@ -2,6 +2,8 @@ test_that("autotest", {
   expect_true(callr::r(function() {
     Sys.unsetenv("RETICULATE_PYTHON")
     Sys.setenv(RETICULATE_PYTHON="managed")
+    Sys.setenv(RETICULATE_USE_MANAGED_VENV="yes")
+
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
