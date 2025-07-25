@@ -4,11 +4,14 @@
 \alias{assert_python_packages}
 \title{Assert Python Packages}
 \usage{
-assert_python_packages(packages)
+assert_python_packages(packages, python_version = NULL)
 }
 \arguments{
 \item{packages}{(\code{character()})\cr
 Python packages to check.}
+
+\item{python_version}{(\code{character(1)})\cr
+Python version to use. If \code{NULL}, the default Python version is used.}
 }
 \value{
 (\code{character()})\cr

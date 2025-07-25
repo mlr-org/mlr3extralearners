@@ -5,6 +5,8 @@
 #'
 #' @param packages (`character()`)\cr
 #'   Python packages to check.
+#' @param python_version (`character(1)`)\cr
+#'   Python version to use. If `NULL`, the default Python version is used.
 #'
 #' @return (`character()`)\cr
 assert_python_packages = function(packages, python_version = NULL) {
