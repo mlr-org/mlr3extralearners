@@ -1,4 +1,6 @@
 test_that("classif.fastai train", {
+  skip_if_no_fastai()
+
   learner = lrn("classif.fastai")
   fun_list = list(fastai::TabularDataTable, fastai::dataloaders,
                   fastai::tabular_learner, fastai::fit)
@@ -45,6 +47,8 @@ test_that("classif.fastai train", {
 })
 
 test_that("classif.fastai predict", {
+  skip_if_no_fastai()
+
   learner = lrn("classif.fastai")
   fun = fastai::predict # nolint
   exclude = c(

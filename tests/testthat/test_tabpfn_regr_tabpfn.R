@@ -1,4 +1,6 @@
 test_that("autotest", {
+  skip_if_no_tabpfn()
+
   learner = lrn("regr.tabpfn")
   expect_learner(learner)
   # reproducibility is not guaranteed, hence check_replicable = FALSE
@@ -7,6 +9,8 @@ test_that("autotest", {
 })
 
 test_that("marshaling works for regr.tabpfn", {
+  skip_if_no_tabpfn()
+
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
   # expect_marshalable_learner(learner, task)
@@ -33,6 +37,8 @@ test_that("marshaling works for regr.tabpfn", {
 })
 
 test_that("categorical feature columns are encoded correctly", {
+  skip_if_no_tabpfn()
+
   n = 6
   task = as_task_regr(
     data.frame(
@@ -51,9 +57,8 @@ test_that("categorical feature columns are encoded correctly", {
 })
 
 test_that("device selection works", {
-  if (!reticulate::py_module_available("torch")) {
-    skip("torch not available for testing.")
-  }
+  skip_if_no_tabpfn()
+
   torch = reticulate::import("torch")
 
   learner = lrn("regr.tabpfn", device = "cpu")
@@ -67,6 +72,8 @@ test_that("device selection works", {
 })
 
 test_that("checks for memory saving mode work", {
+  skip_if_no_tabpfn()
+
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
 
