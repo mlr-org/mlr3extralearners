@@ -78,6 +78,7 @@ Suggests:
     lme4,
     locfit,
     logspline,
+    mirai,
     mboost (>= 2.9-10),
     mda,
     mgcv,

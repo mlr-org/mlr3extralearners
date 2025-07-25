@@ -114,7 +114,7 @@ LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
 
   private = list(
     .train = function(task) {
-      assert_python_packages(c("torch", "pycox", "numpy"))
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
       pars = self$param_set$get_values(tags = "fit")
       invoke(
         survivalmodels::deepsurv,
@@ -127,7 +127,7 @@ LearnerSurvDeepsurv = R6Class("LearnerSurvDeepsurv",
     },
 
     .predict = function(task) {
-      assert_python_packages(c("torch", "pycox", "numpy"))
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 

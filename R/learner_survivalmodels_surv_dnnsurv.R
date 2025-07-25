@@ -123,7 +123,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
 
   private = list(
     .train = function(task) {
-      assert_python_packages(c("keras", "tensorflow"))
+      assert_python_packages(c("keras", "tensorflow"), python_version = "3.10")
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -137,7 +137,7 @@ LearnerSurvDNNSurv = R6Class("LearnerSurvDNNSurv",
     },
 
     .predict = function(task) {
-      assert_python_packages(c("keras", "tensorflow"))
+      assert_python_packages(c("keras", "tensorflow"), python_version = "3.10")
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

@@ -1,10 +1,22 @@
 test_that("autotest", {
-  with_seed(1, {
+  result = mirai::collect_mirai(mirai::mirai({
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
+
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
     learner = lrn("surv.akritas", lambda = 0.5)
     expect_learner(learner)
-    result = run_autotest(learner, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+
+    run_autotest(learner, check_replicable = FALSE)
+  }))
+
+  expect_true(result)
 })
 
 # test_that("time points for prediction", {
