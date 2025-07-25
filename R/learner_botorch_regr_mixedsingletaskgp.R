@@ -59,7 +59,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
   ),
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch"))
       torch = reticulate::import("torch")
       botorch = reticulate::import("botorch")
       gpytorch = reticulate::import("gpytorch")
@@ -98,7 +98,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     },
 
     .predict = function(task) {
-      reticulate::py_require(c("torch", "botorch", "gpytorch"))
+      assert_python_packages(c("torch", "botorch", "gpytorch"))
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 
