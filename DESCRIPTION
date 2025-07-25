@@ -78,7 +78,6 @@ Suggests:
     lme4,
     locfit,
     logspline,
-    mirai,
     mboost (>= 2.9-10),
     mda,
     mgcv,
@@ -118,6 +117,8 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     xgboost (>= 1.7.8.1)
+VignetteBuilder:
+    knitr
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
