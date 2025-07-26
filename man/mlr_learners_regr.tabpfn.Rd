@@ -42,9 +42,14 @@ The point predictions are stored as \verb{$response} of the prediction object.
 \item \code{device} must be a string.
 If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
-\item \code{inference_precision} must be \code{"auto"} or \code{"autocast"}.
-Passing \code{torch.dtype} is currently not supported.
+\item \code{inference_precision} must be \code{"auto"}, \code{"autocast"},
+or a \href{https://docs.pytorch.org/docs/stable/tensor_attributes.html}{\code{torch.dtype}} string,
+e.g., \code{"torch.float32"}, \code{"torch.float64"}, etc.
+Non-float dtypes are not supported.
 \item \code{inference_config} is currently not supported.
+\item \code{random_state} accepts either an integer or the special value \code{"None"}
+which corresponds to \code{None} in Python.
+Following the original Python implementation, the default \code{random_state} is \code{0}.
 }
 }
 
@@ -78,7 +83,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    model_path \tab untyped \tab "auto" \tab  \tab - \cr
    device \tab untyped \tab "auto" \tab  \tab - \cr
    ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   inference_precision \tab character \tab auto \tab auto, autocast \tab - \cr
+   inference_precision \tab character \tab auto \tab auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 \tab - \cr
    fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
