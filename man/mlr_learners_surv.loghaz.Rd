@@ -96,9 +96,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-lrn("surv.loghaz")
-}
 \references{
 Gensheimer, F M, Narasimhan, BA (2018).
 \dQuote{Simple discrete-time survival model for neural networks.}

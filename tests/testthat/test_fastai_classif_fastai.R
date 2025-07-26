@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # reticulate::use_condaenv("r-reticulate")
 tryCatch({
   reticulate::use_condaenv("r-reticulate", required = TRUE)
@@ -5,6 +6,8 @@ tryCatch({
   skip("r-reticulate conda environment not found.")
 })
 
+=======
+>>>>>>> main
 test_that("autotest", {
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
@@ -22,6 +25,8 @@ test_that("eval protocol", {
 
 
 test_that("validation and inner tuning works", {
+
+
   task = tsk("spam")
 
   # with n_epoch and patience parameter
@@ -87,6 +92,8 @@ test_that("validation and inner tuning works", {
 })
 
 test_that("custom inner validation measure", {
+
+
   # internal measure
   task = tsk("sonar")
 
@@ -180,7 +187,7 @@ test_that("custom inner validation measure", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     validate = 0.2,
-   # patience = 1,
+    # patience = 1,
     predict_type = "prob",
     eval_metric = msr("classif.logloss")
   )
@@ -194,6 +201,8 @@ test_that("custom inner validation measure", {
 })
 
 test_that("marshaling works for classif.fastai", {
+
+
   learner = lrn("classif.fastai")
   task = tsk("iris")
   # expect_marshalable_learner(learner, task)
@@ -218,3 +227,4 @@ test_that("marshaling works for classif.fastai", {
   expect_false(learner$marshaled)
   expect_equal(class(learner$model), class_prev)
 })
+

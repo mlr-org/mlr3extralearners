@@ -87,9 +87,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-lrn("surv.coxtime")
-}
 \references{
 Kvamme, Håvard, Borgan Ø, Scheel I (2019).
 \dQuote{Time-to-event prediction with neural networks and Cox regression.}

@@ -97,9 +97,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-lrn("surv.pchazard")
-}
 \references{
 Kvamme, Håvard, Borgan Ø (2019).
 \dQuote{Continuous and discrete-time survival prediction with neural networks.}

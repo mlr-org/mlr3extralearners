@@ -1,20 +1,33 @@
 skip_on_os("windows")
 skip("avoid py_module_available()")
 
-if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||
-  !reticulate::py_module_available("numpy")) {
-  skip("One of torch, numpy, pycox not available for testing.")
-}
-
-np = reticulate::import("numpy")
-torch = reticulate::import("torch")
-set.seed(1)
-np$random$seed(1L)
-torch$manual_seed(1L)
-
 test_that("autotest", {
-  learner = lrn("surv.loghaz")
-  expect_learner(learner)
-  result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
-  expect_true(result, info = result$error)
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+    library(mlr3)
+    library(mlr3proba)
+    library(mlr3extralearners)
+
+
+    lapply(list.files(system.file("testthat", package = "mlr3"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    lapply(list.files(system.file("testthat", package = "mlr3proba"),
+      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
+    reticulate::py_require(c("numpy", "torch", "pycox"), python_version = "3.10")
+    np = reticulate::import("numpy")
+    torch = reticulate::import("torch")
+    set.seed(1)
+    np$random$seed(1L)
+    torch$manual_seed(1L)
+
+    learner = lrn("surv.loghaz")
+    expect_learner(learner)
+
+    # single test fails randomly I think this depends on the python version
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
+    testthat::expect_true(result, info = result$error)
+    TRUE
+  }))
 })
