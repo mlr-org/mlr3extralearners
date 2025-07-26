@@ -1,5 +1,5 @@
 test_that("autotest", {
-  skip_if_no_tabpfn()
+
 
   learner = lrn("regr.tabpfn")
   expect_learner(learner)
@@ -9,7 +9,7 @@ test_that("autotest", {
 })
 
 test_that("marshaling works for regr.tabpfn", {
-  skip_if_no_tabpfn()
+
 
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
@@ -37,7 +37,7 @@ test_that("marshaling works for regr.tabpfn", {
 })
 
 test_that("categorical feature columns are encoded correctly", {
-  skip_if_no_tabpfn()
+
 
   n = 6
   task = as_task_regr(
@@ -57,7 +57,7 @@ test_that("categorical feature columns are encoded correctly", {
 })
 
 test_that("device selection works", {
-  skip_if_no_tabpfn()
+
 
   torch = reticulate::import("torch")
 
@@ -72,7 +72,7 @@ test_that("device selection works", {
 })
 
 test_that("checks for memory saving mode work", {
-  skip_if_no_tabpfn()
+
 
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")

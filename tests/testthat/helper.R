@@ -38,32 +38,3 @@ s4_helper = function(x) {
   formals(f) = pairlist()
   return(f())
 }
-
-# add survival lung task with missing features
-lung = survival::lung
-lung$status = lung$status - 1
-lung_missings = mlr3proba::TaskSurv$new("lung", backend = lung, time = "time", event = "status")
-
-# skips for reticulate
-skip_if_no_pycox <- function() {
-  if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("pycox") ||
-    !reticulate::py_module_available("numpy")) {
-    skip("One of torch, numpy, pycox not available for testing.")
-  }
-}
-
-skip_if_no_fastai <- function() {
-  if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("fastai")) {
-    skip("torch or fastai not available for testing.")
-  }
-}
-
-skip_if_no_tabpfn <- function() {
-  if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("tabpfn")) {
-    skip("torch or tabpfn not available for testing.")
-  }
-}
-
-reticulate::py_require(c("torch", "torchvision", "torchaudio", "fastai", "tabpfn", "pycox", "tensorflow-cpu", "keras"))
-# force the python environment to be initialized
-reticulate::py_config()

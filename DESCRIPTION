@@ -49,6 +49,7 @@ Suggests:
     blockForest (>= 0.2.6),
     bst,
     C50,
+    callr,
     catboost,
     class,
     coin,
@@ -73,6 +74,7 @@ Suggests:
     klaR,
     knitr,
     ks,
+    lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
     lme4,
@@ -122,6 +124,7 @@ VignetteBuilder:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
+    eagerai/fastai,
     mlr-org/mlr3,
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
