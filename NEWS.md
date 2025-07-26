@@ -8,6 +8,8 @@
 * feat: Added learner `LearnerClassifAdaBoosting`.
 * feat: Added learners `LearnerClassifEvtree` and `LearnerRegrEvtree`.
 * feat: Added learner `LearnerClassifKnn`.
+* feat: Added learner `LearnerRegrBotorchSingleTaskGP`.
+* feat: Added learner `LearnerRegrBotorchMixedSingleTaskGP`.
 
 # mlr3extralearners 1.1.0
 
