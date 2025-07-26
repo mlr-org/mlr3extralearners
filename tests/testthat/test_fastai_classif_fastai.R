@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-# reticulate::use_condaenv("r-reticulate")
-tryCatch({
-  reticulate::use_condaenv("r-reticulate", required = TRUE)
-}, error = function(e) {
-  skip("r-reticulate conda environment not found.")
-})
-
-=======
->>>>>>> main
 test_that("autotest", {
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
