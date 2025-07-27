@@ -53,7 +53,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         mtry_ratio              = p_dbl(lower = 0, upper = 1, tags = "train"),
         n_retry                 = p_int(default = 3L, lower = 0L, tags = "train"),
         n_split                 = p_int(default = 5L, lower = 1L, tags = "train"),
-        n_thread                = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
+        n_thread                = p_int(init = 1, lower = 0, tags = c("train", "predict", "threads")),
         n_tree                  = p_int(default = 500L, lower = 1L, tags = "train"),
         na_action               = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"),
         net_mix                 = p_dbl(default = 0.5, tags = "train"),
@@ -73,8 +73,6 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         target_df               = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         tree_seeds              = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         verbose_progress        = p_lgl(default = FALSE, tags = "train"))
-
-      ps$values = list(n_thread = 1)
 
       super$initialize(
         id = "regr.aorsf",

@@ -21,17 +21,25 @@ test_that("autotest", {
 test_that("convert_ratio", {
   task = tsk("sonar")
   learner = lrn("classif.imbalanced_rfsrc", ntree = 5, mtry.ratio = .5)
-  expect_equal(learner$train(task)$model$mtry, 30)
+  capture.output({
+    expect_equal(learner$train(task)$model$mtry, 30)
+  })
 
   learner$param_set$values$mtry.ratio = 0
-  expect_equal(learner$train(task)$model$mtry, 1)
+  capture.output({
+    expect_equal(learner$train(task)$model$mtry, 1)
+  })
 
   learner$param_set$values$mtry.ratio = 1
-  expect_equal(learner$train(task)$model$mtry, 60)
+  capture.output({
+    expect_equal(learner$train(task)$model$mtry, 60)
+  })
 
   learner$param_set$values$mtry = 10
   expect_error(learner$train(task), "exclusive")
 
   learner$param_set$values$mtry.ratio = NULL
-  expect_equal(learner$train(task)$model$mtry, 10)
+  capture.output({
+    expect_equal(learner$train(task)$model$mtry, 10)
+  })
 })

@@ -139,14 +139,16 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
 
+      model = invoke(
+        .fun,
+        x.train = x.train,
+        times = times,
+        delta = delta,
+        .args = pars
+      )
+
       list(
-        model = invoke(
-          .fun,
-          x.train = x.train,
-          times = times,
-          delta = delta,
-          .args = pars
-        ),
+        model = model,
         # need these for predict
         x.train = x.train,
         times = times,
