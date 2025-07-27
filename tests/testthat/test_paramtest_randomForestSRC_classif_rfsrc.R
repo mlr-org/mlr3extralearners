@@ -10,6 +10,7 @@ test_that("paramtest classif.rfsrc train", {
     "mtry.ratio", # alternative to mtry
     "sampsize.ratio", # alternative to sampsize
     "cores", # is set as option(rf.cores)
+    "ntime", # for survival forests only
     "cause" # for competing risk forests only
   )
 

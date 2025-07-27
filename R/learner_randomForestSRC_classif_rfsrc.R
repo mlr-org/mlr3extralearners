@@ -81,7 +81,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           default = "na.omit", levels = c("na.omit", "na.impute"),
           tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
-        ntime = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
