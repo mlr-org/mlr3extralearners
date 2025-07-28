@@ -164,10 +164,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       if (is.null(measure)) measure = fastai::accuracy()
 
       # match parameters to fastai functions
+      fastai2 = getFromNamespace("fastai2", ns = "fastai")
       args_dt = formalArgs(fastai::TabularDataTable)
-      args_dl = formalArgs(fastai:::fastai2$data$load$DataLoader)
+      args_dl = formalArgs(fastai2$data$load$DataLoader)
       args_config = formalArgs(fastai::tabular_config)
-      args_fit = formalArgs(fastai:::fastai2$learner$Learner$fit)
+      args_fit = formalArgs(fastai2$learner$Learner$fit)
 
       pv_dt = pars[names(pars) %in% args_dt]
       pv_dl = pars[names(pars) %in% args_dl]
