@@ -38,12 +38,3 @@ s4_helper = function(x) {
   formals(f) = pairlist()
   return(f())
 }
-<<<<<<< HEAD
-
-# add survival lung task with missing features
-lung = survival::lung
-lung$status = lung$status - 1
-lung_missings = mlr3proba::TaskSurv$new("lung", backend = lung, time = "time", event = "status")
-
-=======
->>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8

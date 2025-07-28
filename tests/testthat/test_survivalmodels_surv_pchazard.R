@@ -1,15 +1,11 @@
 skip_on_os("windows")
 
 test_that("autotest", {
-<<<<<<< HEAD
-
-=======
   expect_true(callr::r(function() {
     Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
->>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8
 
     lapply(list.files(system.file("testthat", package = "mlr3"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
