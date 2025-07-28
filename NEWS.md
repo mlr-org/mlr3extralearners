@@ -1,6 +1,7 @@
 # mlr3extralearners (development version)
 
 * feat: Added learner `LearnerCompRisksRandomForestSRC`
+* fix: removed parameters from RandomForestSRC learners that weren't used + optimized tests
 * fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * feat: Added learner `LearnerSurvBlockForest`.
 * feat: Added learner `LearnerClassifFastai`.
