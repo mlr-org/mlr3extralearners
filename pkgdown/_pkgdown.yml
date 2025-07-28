@@ -2,6 +2,8 @@ url: https://mlr3extralearners.mlr-org.com
 
 template:
   bootstrap: 5
+  light-switch: true
+  math-rendering: mathjax
   package: mlr3pkgdowntemplate
 
 development:
@@ -19,7 +21,7 @@ authors:
 navbar:
   structure:
     left:  [reference, news, book, status, extending, common_issues]
-    right: [search, github, mattermost, stackoverflow, rss]
+    right: [search, github, mattermost, stackoverflow, rss, lightswitch]
   components:
     home: ~
     articles: ~
@@ -60,6 +62,7 @@ reference:
       - list_mlr3learners
       - starts_with("install_")
       - lrn
+      - assert_python_packages
   - title: Classification Learners
     contents:
       - starts_with("mlr_learners_classif")

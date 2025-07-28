@@ -43,6 +43,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         feature_types = c("integer", "numeric", "character", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.cubist",
         label = "Rule-based model"
       )
@@ -63,7 +64,7 @@ LearnerRegrCubist = R6Class("LearnerRegrCubist",
         x = x,
         y = y,
         committees = self$param_set$values$committees,
-        weights = if ("weights" %in% task$properties) task$weights$weight else NULL,
+        weights = private$.get_weights(task),
         control = control)
     },
 

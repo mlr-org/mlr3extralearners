@@ -3,7 +3,7 @@
 \name{mlr_learners_regr.qgam}
 \alias{mlr_learners_regr.qgam}
 \alias{LearnerRegrQGam}
-\title{Regression Quantile Generalized Additive Model Learner}
+\title{Generalized Additive Quantile Regression Model}
 \description{
 Quantile Regression with generalized additive models.
 Calls \code{\link[qgam:qgam]{qgam::qgam()}} from package \CRANpkg{qgam}.
@@ -50,16 +50,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    paropts \tab untyped \tab list() \tab  \tab - \cr
    link \tab untyped \tab "identity" \tab  \tab - \cr
    argGam \tab untyped \tab - \tab  \tab - \cr
+   discrete \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
-\examples{
-\dontshow{if (requireNamespace("qgam", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# simple example
-\dontshow{\}) # examplesIf}
-}
 \references{
 Fasiolo, Matteo, Wood, N. S, Zaffran, Margaux, Nedellec, Raphael, Goude, Yannig (2017).
 \dQuote{Fast Calibrated Additive Quantile Regression.}
@@ -102,7 +98,9 @@ lona-k
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

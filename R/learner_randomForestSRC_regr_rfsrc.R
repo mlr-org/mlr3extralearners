@@ -107,7 +107,8 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = "none", tags = "train"),
-        case.depth = p_lgl(default = FALSE, tags = c("train", "predict"))
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
+        marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
       super$initialize(
@@ -162,10 +163,7 @@ LearnerRegrRandomForestSRC = R6Class("LearnerRegrRandomForestSRC",
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
       pv$cores = NULL
-
-      if ("weights" %in% task$properties) {
-        pv$case.wt = as.numeric(task$weights$weight) # nolint
-      }
+      pv$case.wt = private$.get_weights(task) # nolint
 
       invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = task$data(),

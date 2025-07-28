@@ -22,6 +22,8 @@
 #' into survival predictions and are described in [survival::survfit.coxph()].
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
+#' @inheritSection mlr_learners_surv.glmnet Offset
+#'
 #' @templateVar id surv.cv_glmnet
 #' @template learner
 #'
@@ -62,8 +64,7 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
         mxitnr               = p_int(1L, default = 25L, tags = "train"),
         nfolds               = p_int(3L, default = 10L, tags = "train"),
         nlambda              = p_int(1L, default = 100L, tags = "train"),
-        offset               = p_uty(default = NULL, tags = c("train", "predict")),
-        newoffset            = p_uty(tags = "predict"),
+        use_pred_offset      = p_lgl(default = TRUE, tags = "predict"),
         parallel             = p_lgl(default = FALSE, tags = "train"),
         penalty.factor       = p_uty(tags = "train"),
         pmax                 = p_int(0L, tags = "train"),
@@ -85,12 +86,14 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
         ctype                = p_int(lower = 1L, upper = 2L, tags = "predict") # how to handle ties
       )
 
+      ps$set_values(use_pred_offset = TRUE)
+
       super$initialize(
         id = "surv.cv_glmnet",
         param_set = ps,
         feature_types = c("logical", "integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
-        properties = c("weights", "selected_features"),
+        properties = c("weights", "selected_features", "offset"),
         packages = c("mlr3extralearners", "glmnet"),
         man = "mlr3extralearners::mlr_learners_surv.cv_glmnet",
         label = "Regularized Generalized Linear Model"
@@ -116,16 +119,16 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
       target = task$truth()
       pv = self$param_set$get_values(tags = "train")
       pv$family = "cox"
-      if ("weights" %in% task$properties) {
-        pv$weights = task$weights$weight
-      }
+      pv$weights = private$.get_weights(task)
+      pv = glmnet_set_offset(task, "train", pv)
 
       list(
         model = glmnet_invoke(data, target, pv, cv = TRUE),
-        # need these for distr prediction
+        # need these for distr prediction (survfit)
         x = data,
         y = target,
-        weights = pv$weights
+        weights = pv$weights,
+        offset = pv$offset
       )
     },
 
@@ -133,11 +136,18 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
       pv = rename(pv, "predict.gamma", "gamma")
+      pv = glmnet_set_offset(task, "predict", pv)
 
       # get survival matrix
-      fit = invoke(survival::survfit, formula = self$model$model,
-                   x = self$model$x, y = self$model$y, weights = self$model$weights,
-                   newx = newdata, se.fit = FALSE, .args = pv)
+      fit = invoke(survival::survfit,
+                   formula = self$model$model,
+                   x = self$model$x,
+                   y = self$model$y,
+                   weights = self$model$weights,
+                   offset = self$model$offset,
+                   newx = newdata,
+                   se.fit = FALSE,
+                   .args = pv)
 
       # get linear predictor
       lp = as.numeric(

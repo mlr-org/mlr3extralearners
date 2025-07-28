@@ -98,9 +98,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
           pars$family = "multinomial"
         }
       }
-      if ("weights" %in% task$properties) {
-        pars = insert_named(pars, list(weight = task$weights$weight))
-      }
+      pars$weight = private$.get_weights(task)
 
       invoke(
         abess::abess,
@@ -117,7 +115,7 @@ LearnerClassifAbess = R6Class("LearnerClassifAbess",
         type = "response")
 
       # mlr3 ensures that the levels are correct
-      class_names = levels(task$truth(task$row_ids[1L]))
+      class_names = task$class_names
 
       family = self$state$param_vals$family
       if (is.null(family)) {

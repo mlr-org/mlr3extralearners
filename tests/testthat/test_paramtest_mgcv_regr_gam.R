@@ -10,7 +10,8 @@ test_that("paramtest regr.gam train", {
     "control", # handled via "train" parameters
     "fit", # A model should be fitted
     "discrete", # experimental, should not be modified
-    "keepData" # handled internally
+    "keepData", # handled internally
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

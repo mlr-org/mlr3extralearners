@@ -57,7 +57,7 @@
 #' learner$train(task, row_ids = ids$train)
 #'
 #' print(learner$model)
-#' print(learner$importance)
+#' print(learner$importance())
 #'
 #' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)
@@ -272,7 +272,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       learn_pool = invoke(catboost::catboost.load_pool,
         data = task$data(cols = task$feature_names),
         label = label,
-        weight = task$weights$weight,
+        weight = private$.get_weights(task),
         thread_count = self$param_set$values$thread_count)
 
       # early stopping
@@ -293,7 +293,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         invoke(catboost::catboost.load_pool,
           data = internal_valid_task$data(cols = internal_valid_task$feature_names),
           label = test_label,
-          weight = internal_valid_task$weights$weight,
+          weight = private$.get_weights(internal_valid_task),
           thread_count = 1)
       }
 
@@ -318,7 +318,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
         thread_count = self$param_set$values$thread_count)
 
       # mlr3 ensures that the levels are correct
-      class_names = levels(task$truth(task$row_ids[1L])[[1L]])
+      class_names = task$class_names
 
       prediction_type = if (self$predict_type == "response") {
         "Class"

@@ -58,7 +58,8 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         seed = p_int(default = NA_integer_, tags = "train", special_vals = list(NA_integer_)),
         proposalprobs = p_uty(default = NULL, tags = "train"),
         splitprobs = p_uty(default = NULL, tags = "train"),
-        keepsampler = p_lgl(default = NO_DEF, tags = "train")
+        keepsampler = p_lgl(default = NO_DEF, tags = "train"),
+        n.threads = p_int(tags = "predict")
       )
 
       ps$values = list(keeptrees = TRUE)
@@ -70,7 +71,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
         # TODO: add "se" to the list of predict types.
         predict_types = "response",
         param_set = ps,
-        properties = c("weights"),
+        properties = "weights",
         man = "mlr3extralearners::mlr_learners_regr.bart",
         label = "Bayesian Additive Regression Trees"
       )
@@ -95,9 +96,7 @@ LearnerRegrBart = R6Class("LearnerRegrBart",
       # Outcome will now be a factor vector.
       outcome = outcome[[1]]
 
-      if ("weights" %in% task$properties) {
-        pars$weights = task$weights$weight
-      }
+      pars$weights = private$.get_weights(task)
 
       # y.train should either be a binary factor or have values {0, 1}
       invoke(dbarts::bart,
