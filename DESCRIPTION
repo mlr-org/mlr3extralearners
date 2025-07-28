@@ -103,6 +103,7 @@ Suggests:
     randomPlantedForest,
     randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
+    riskRegression,
     rpart,
     rsm,
     rvest,

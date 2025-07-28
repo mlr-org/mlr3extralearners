@@ -55,10 +55,6 @@ jobs:
         with:
           limit-access-to-actor: true
 
-      - name: Install riskRegression
-        run: pak::pkg_install("riskRegression")
-        shell: Rscript {0}
-
       - uses: r-lib/actions/check-r-package@v2
         with:
           error-on: '"error"'
