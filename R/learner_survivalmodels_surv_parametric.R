@@ -64,7 +64,6 @@
 #' `r format_bib("kalbfleisch2011statistical")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerSurvParametric = R6Class("LearnerSurvParametric",
   inherit = mlr3proba::LearnerSurv,
@@ -110,7 +109,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 
   private = list(
     .train = function(task) {
+<<<<<<< HEAD
       assert_python_packages(c("torch", "pycox", "numpy"))
+=======
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
+>>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8
 
       pv = self$param_set$get_values(tags = "train")
       pv$weights = private$.get_weights(task)
@@ -125,7 +128,11 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     },
 
     .predict = function(task) {
+<<<<<<< HEAD
       assert_python_packages(c("torch", "pycox", "numpy"))
+=======
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
+>>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8
 
       pv = self$param_set$get_values(tags = "predict")
       newdata = as.data.frame(ordered_features(task, self))

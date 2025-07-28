@@ -82,9 +82,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-lrn("surv.deepsurv")
-}
 \references{
 Katzman, L J, Shaham, Uri, Cloninger, Alexander, Bates, Jonathan, Jiang, Tingting, Kluger, Yuval (2018).
 \dQuote{DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network.}

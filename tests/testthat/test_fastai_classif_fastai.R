@@ -1,6 +1,4 @@
 test_that("autotest", {
-
-
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
   # results not replicable, because torch seed must be set in the python backend
@@ -9,8 +7,6 @@ test_that("autotest", {
 })
 
 test_that("eval protocol", {
-
-
   learner = lrn("classif.fastai")
   task = tsk("sonar")
   learner$train(task)
@@ -221,3 +217,4 @@ test_that("marshaling works for classif.fastai", {
   expect_false(learner$marshaled)
   expect_equal(class(learner$model), class_prev)
 })
+

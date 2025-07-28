@@ -26,10 +26,10 @@ You can install the package as follows:
 
 ``` r
 # latest GitHub release
-remotes::install_github("mlr-org/mlr3extralearners@*release")
+pak::pak("mlr-org/mlr3extralearners@*release")
 
 # development version
-remotes::install_github("mlr-org/mlr3extralearners")
+pak::pak("mlr-org/mlr3extralearners")
 ```
 
 Alternatively, you can add the following to your .Rprofile, which allows

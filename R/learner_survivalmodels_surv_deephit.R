@@ -28,7 +28,6 @@
 #' `r format_bib("lee2018deephit")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
 LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
   inherit = mlr3proba::LearnerSurv,
@@ -135,7 +134,11 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
 
   private = list(
     .train = function(task) {
+<<<<<<< HEAD
       assert_python_packages(c("torch", "pycox", "numpy"))
+=======
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
+>>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -149,7 +152,11 @@ LearnerSurvDeephit = R6Class("LearnerSurvDeephit",
     },
 
     .predict = function(task) {
+<<<<<<< HEAD
       assert_python_packages(c("torch", "pycox", "numpy"))
+=======
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
+>>>>>>> 695e1e920008e5b76b20118737e5c02f1f5669f8
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

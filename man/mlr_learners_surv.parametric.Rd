@@ -110,31 +110,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.parametric")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("surv.parametric")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("grace")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
 Kalbfleisch, D J, Prentice, L R (2011).
 \emph{The statistical analysis of failure time data}.
