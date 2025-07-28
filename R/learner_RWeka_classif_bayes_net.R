@@ -128,3 +128,7 @@ LearnerClassifBayesNet = R6Class("LearnerClassifBayesNet",
 )
 
 .extralrns_dict$add("classif.bayes_net", LearnerClassifBayesNet)
+    marshaled = model, packages = c("mlr3", "mlr3extralearners")),
+    class = c("Weka_classifier_marshaled", "marshaled")
+  )
+}
