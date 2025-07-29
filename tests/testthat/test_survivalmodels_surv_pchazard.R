@@ -25,4 +25,3 @@ test_that("autotest", {
     TRUE
   }))
 })
-
