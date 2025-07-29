@@ -102,9 +102,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = "cif",
         param_set = param_set,
-        # selected features is possible but there's a bug somewhere in rfsrc so that the model
-        # can be trained but not predicted. so public method retained but property not included
-        properties = c("weights", "missings", "importance", "oob_error"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features"),
         man = "mlr3extralearners::mlr_learners_cmprsk.rfsrc",
         label = "Competing Risk Survival Forests"
       )
@@ -130,10 +128,18 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
 
     #' @description
     #' Selected features are extracted from the model slot `var.used`.
+    #'
+    #' **Note**: Due to a known issue in `randomForestSRC`, enabling `var.used = "all.trees"`
+    #' causes prediction to fail. Therefore, this setting should be used exclusively
+    #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to 'all.trees'}.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
@@ -192,6 +198,10 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
     .predict = function(task) {
       newdata = ordered_features(task, self)
       pv = self$param_set$get_values(tags = "predict")
+
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      }
 
       cores = pv$cores # additionaly implemented by author
       pv$cores = NULL

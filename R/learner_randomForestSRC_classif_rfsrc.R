@@ -123,8 +123,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "missings", "importance", "oob_error",
-                       "selected_features", "twoclass", "multiclass"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features",
+                       "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.rfsrc",
         label = "Random Forest"
       )
@@ -186,19 +186,19 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
 
     .predict = function(task) {
       newdata = data.table::setDF(ordered_features(task, self))
-      pars = self$param_set$get_values(tags = "predict")
+      pv = self$param_set$get_values(tags = "predict")
 
-      if (!is.null(pars$var.used) && pars$var.used == "all.trees") {
-        stop("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
       }
 
-      cores = pars$cores %??% 1L
-      pars$cores = NULL
+      cores = pv$cores %??% 1L
+      pv$cores = NULL
 
       pred = invoke(predict,
         object = self$model,
         newdata = newdata,
-        .args = pars,
+        .args = pv,
         .opts = list(rf.cores = cores))
 
       if (self$predict_type == "response") {

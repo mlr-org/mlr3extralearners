@@ -113,9 +113,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = param_set,
-        # selected features is possible but there's a bug somewhere in rfsrc so that the model
-        # can be trained but not predicted. so public method retained but property not included
-        properties = c("weights", "missings", "importance", "oob_error"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features"),
         man = "mlr3extralearners::mlr_learners_surv.rfsrc",
         label = "Random Survival Forests"
       )
@@ -134,10 +132,18 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
     #' @description
     #' Selected features are extracted from the model slot `var.used`.
+    #'
+    #' **Note**: Due to a known issue in `randomForestSRC`, enabling `var.used = "all.trees"`
+    #' causes prediction to fail. Therefore, this setting should be used exclusively
+    #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to 'all.trees'}.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
@@ -167,14 +173,19 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
     .predict = function(task) {
       newdata = ordered_features(task, self)
-      pars_predict = self$param_set$get_values(tags = "predict")
-      # default estimator is nelson, hence nelson selected if NULL
-      estimator = pars_predict$estimator %??% "nelson"
-      pars_predict$estimator = NULL
-      cores = pars_predict$cores %??% 1L # additionaly implemented by author
-      pars_predict$cores = NULL
+      pv = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, object = self$model, newdata = newdata, .args = pars_predict,
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      }
+
+      # default estimator is nelson, hence nelson selected if NULL
+      estimator = pv$estimator %??% "nelson"
+      pv$estimator = NULL
+      cores = pv$cores %??% 1L # additionaly implemented by author
+      pv$cores = NULL
+
+      p = invoke(predict, object = self$model, newdata = newdata, .args = pv,
                  .opts = list(rf.cores = cores))
 
       # rfsrc uses Nelson-Aalen in chf and Kaplan-Meier for survival, as these
