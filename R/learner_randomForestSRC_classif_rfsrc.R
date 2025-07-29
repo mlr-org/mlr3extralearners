@@ -151,8 +151,12 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
     #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) && !is.null(self$model)) {
-        stopf("Set 'var.used' to 'all.trees'.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
