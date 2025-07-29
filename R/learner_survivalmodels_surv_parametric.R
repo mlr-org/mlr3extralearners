@@ -109,8 +109,6 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 
   private = list(
     .train = function(task) {
-      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
-
       pv = self$param_set$get_values(tags = "train")
       pv$weights = private$.get_weights(task)
 
@@ -124,8 +122,6 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     },
 
     .predict = function(task) {
-      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
-
       pv = self$param_set$get_values(tags = "predict")
       newdata = as.data.frame(ordered_features(task, self))
 
