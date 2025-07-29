@@ -116,12 +116,23 @@ since their ids contain irregular pattern</p></li>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html" class="external-link">mlr3::LearnerRegr</a></code> -&gt; <code>LearnerRegrRandomTree</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>marshaled</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether the learner has been marshaled.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerRegrRandomTree-new"><code>LearnerRegrRandomTree$new()</code></a></p></li>
+<li><p><a href="#method-LearnerRegrRandomTree-marshal"><code>LearnerRegrRandomTree$marshal()</code></a></p></li>
+<li><p><a href="#method-LearnerRegrRandomTree-unmarshal"><code>LearnerRegrRandomTree$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerRegrRandomTree-clone"><code>LearnerRegrRandomTree$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -143,15 +154,49 @@ since their ids contain irregular pattern</p></li>
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerRegrRandomTree-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerRegrRandomTree-marshal"></a><div class="section">
+<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrRandomTree</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrRandomTree</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">marshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerRegrRandomTree-unmarshal"></a><div class="section">
+<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+<p>Unmarshal the learner's model.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrRandomTree</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">unmarshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerRegrRandomTree-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrRandomTree</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -176,7 +221,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal and missings</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
@@ -193,46 +238,40 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> RandomTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> drat &lt; 3.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &lt; 3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &lt; 3.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 127.5 : 18.1 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 127.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &lt; 2.5 : 15.5 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &gt;= 2.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &lt; 3.75 : 17.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &gt;= 3.75</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   qsec &lt; 17.7 : 16.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   qsec &gt;= 17.7 : 15.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &gt;= 3.08</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   wt &lt; 3.44 : 15.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   wt &gt;= 3.44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &lt; 17.04 : 18.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &gt;= 17.04 : 19.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &gt;= 3.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &lt; 0.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   drat &lt; 3.1 : 10.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   drat &gt;= 3.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &lt; 400 : 14.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &gt;= 400 : 14.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &gt;= 0.5 : 15 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> drat &gt;= 3.62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &lt; 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 2.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   gear &lt; 4.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &lt; 77.35 : 30.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &gt;= 77.35 : 27.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   gear &gt;= 4.5 : 30.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 2.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 77.5 : 24.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 77.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   am &lt; 0.5 : 21.5 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   am &gt;= 0.5 : 22.8 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &gt;= 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 116.5 : 21 (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 116.5 : 19.2 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 107.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &lt; 1.73 : 30.4 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &gt;= 1.73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt; 74.9 : 33.9 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;= 74.9 : 32.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 107.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &lt; 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 3.31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   vs &lt; 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &lt; 5 : 21 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &gt;= 5 : 19.7 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   vs &gt;= 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &lt; 143.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   drat &lt; 3.81 : 21.5 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   drat &gt;= 3.81 : 22.8 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &gt;= 143.75 : 24.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 3.31 : 17.95 (2/0.02)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &gt;= 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   carb &lt; 3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 162.5 : 15.35 (2/0.02)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 162.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &lt; 3.08</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &lt; 3.9 : 17.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &gt;= 3.9 : 16.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &gt;= 3.08 : 19.2 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   carb &gt;= 3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 355.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &lt; 6 : 15.8 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   carb &gt;= 6 : 15 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 355.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &lt; 3.22 : 14.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &gt;= 3.22 : 14.7 (1/0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 33</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -241,7 +280,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16.10545 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.532955 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -142,12 +142,23 @@ In Jordan MI, Kearns MJ, Solla SA (eds.), <em>Advances in Neural Information Pro
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html" class="external-link">mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifSMO</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>marshaled</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether the learner has been marshaled.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerClassifSMO-new"><code>LearnerClassifSMO$new()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifSMO-marshal"><code>LearnerClassifSMO$marshal()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifSMO-unmarshal"><code>LearnerClassifSMO$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSMO-clone"><code>LearnerClassifSMO$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -169,15 +180,49 @@ In Jordan MI, Kearns MJ, Solla SA (eds.), <em>Advances in Neural Information Pro
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerClassifSMO-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerClassifSMO-marshal"></a><div class="section">
+<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">marshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifSMO-unmarshal"></a><div class="section">
+<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+<p>Unmarshal the learner's model.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">unmarshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifSMO-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSMO</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -202,7 +247,7 @@ In Jordan MI, Kearns MJ, Solla SA (eds.), <em>Advances in Neural Information Pro
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings, multiclass, and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal, missings, multiclass, and twoclass</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
@@ -226,69 +271,69 @@ In Jordan MI, Kearns MJ, Solla SA (eds.), <em>Advances in Neural Information Pro
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Machine linear: showing attribute weights, not support vectors.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.9825 * (normalized) V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6829 * (normalized) V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.5498 * (normalized) V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2583 * (normalized) V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.353  * (normalized) V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.21   * (normalized) V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5606 * (normalized) V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4674 * (normalized) V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2976 * (normalized) V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.286  * (normalized) V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2834 * (normalized) V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1789 * (normalized) V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5087 * (normalized) V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.598  * (normalized) V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1544 * (normalized) V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2994 * (normalized) V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.873  * (normalized) V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0943 * (normalized) V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4325 * (normalized) V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2376 * (normalized) V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5604 * (normalized) V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1713 * (normalized) V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2927 * (normalized) V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1827 * (normalized) V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1102 * (normalized) V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0262 * (normalized) V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4113 * (normalized) V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2622 * (normalized) V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0094 * (normalized) V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1      * (normalized) V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.2862 * (normalized) V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6279 * (normalized) V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6725 * (normalized) V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5859 * (normalized) V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6713 * (normalized) V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1968 * (normalized) V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3291 * (normalized) V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.55   * (normalized) V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3624 * (normalized) V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1199 * (normalized) V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5526 * (normalized) V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.166  * (normalized) V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3356 * (normalized) V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.357  * (normalized) V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4152 * (normalized) V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.2157 * (normalized) V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2444 * (normalized) V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7793 * (normalized) V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0715 * (normalized) V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6694 * (normalized) V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4692 * (normalized) V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.143  * (normalized) V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6507 * (normalized) V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0848 * (normalized) V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9452 * (normalized) V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2687 * (normalized) V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2419 * (normalized) V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9929 * (normalized) V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6821 * (normalized) V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.016  * (normalized) V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.181 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.393  * (normalized) V1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0111 * (normalized) V10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.5493 * (normalized) V11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.933  * (normalized) V12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3423 * (normalized) V13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0479 * (normalized) V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2913 * (normalized) V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5814 * (normalized) V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7971 * (normalized) V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6441 * (normalized) V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2376 * (normalized) V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9436 * (normalized) V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5126 * (normalized) V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.096  * (normalized) V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3937 * (normalized) V22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0424 * (normalized) V23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1791 * (normalized) V24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6918 * (normalized) V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1689 * (normalized) V26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6416 * (normalized) V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2883 * (normalized) V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0282 * (normalized) V29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.481  * (normalized) V3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2036 * (normalized) V30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.644  * (normalized) V31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.415  * (normalized) V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1035 * (normalized) V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7106 * (normalized) V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1202 * (normalized) V35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0408 * (normalized) V36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.505  * (normalized) V37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1218 * (normalized) V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0135 * (normalized) V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7533 * (normalized) V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0388 * (normalized) V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3727 * (normalized) V41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2046 * (normalized) V42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7115 * (normalized) V43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5221 * (normalized) V44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8939 * (normalized) V45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5348 * (normalized) V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1734 * (normalized) V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7626 * (normalized) V48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1536 * (normalized) V49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.154  * (normalized) V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7313 * (normalized) V50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4572 * (normalized) V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2782 * (normalized) V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1543 * (normalized) V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6427 * (normalized) V54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7004 * (normalized) V55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0748 * (normalized) V56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0311 * (normalized) V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0849 * (normalized) V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1499 * (normalized) V59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1397 * (normalized) V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4478 * (normalized) V60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7958 * (normalized) V7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7073 * (normalized) V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8829 * (normalized) V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.4172</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 7106 (86.437% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 6030 (92.427% cached)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -299,7 +344,7 @@ In Jordan MI, Kearns MJ, Solla SA (eds.), <em>Advances in Neural Information Pro
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.115942 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -130,12 +130,23 @@ and it's unclear how to use them.</p></li>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html" class="external-link">mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifBayesNet</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>marshaled</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether the learner has been marshaled.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerClassifBayesNet-new"><code>LearnerClassifBayesNet$new()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifBayesNet-marshal"><code>LearnerClassifBayesNet$marshal()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifBayesNet-unmarshal"><code>LearnerClassifBayesNet$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifBayesNet-clone"><code>LearnerClassifBayesNet$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -157,15 +168,49 @@ and it's unclear how to use them.</p></li>
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerClassifBayesNet-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerClassifBayesNet-marshal"></a><div class="section">
+<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifBayesNet</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifBayesNet</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code>marshal_model()</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifBayesNet-unmarshal"></a><div class="section">
+<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+<p>Unmarshal the learner's model.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifBayesNet</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifBayesNet-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifBayesNet</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -190,7 +235,7 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings, multiclass, and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal, missings, multiclass, and twoclass</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
@@ -220,15 +265,15 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
@@ -236,28 +281,28 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V32(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V50(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57(1): Class </span>
@@ -266,13 +311,13 @@ and it's unclear how to use them.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V6(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V9(3): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1360.7951954063583</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1393.7615190580657</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1404.8722824833892</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1313.5845147204718</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1350.5845147204716</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1479.3284642354597</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1510.2506721778534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1517.7081081008205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1426.4203403379029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1463.4203403379029</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -282,7 +327,7 @@ and it's unclear how to use them.</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

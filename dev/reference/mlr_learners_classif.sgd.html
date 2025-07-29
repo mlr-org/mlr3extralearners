@@ -125,12 +125,23 @@ since their ids contain irregular pattern</p></li>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html" class="external-link">mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifSGD</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>marshaled</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether the learner has been marshaled.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerClassifSGD-new"><code>LearnerClassifSGD$new()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifSGD-marshal"><code>LearnerClassifSGD$marshal()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifSGD-unmarshal"><code>LearnerClassifSGD$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifSGD-clone"><code>LearnerClassifSGD$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -152,15 +163,49 @@ since their ids contain irregular pattern</p></li>
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerClassifSGD-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerClassifSGD-marshal"></a><div class="section">
+<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSGD</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSGD</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">marshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifSGD-unmarshal"></a><div class="section">
+<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+<p>Unmarshal the learner's model.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSGD</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">unmarshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifSGD-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifSGD</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -185,7 +230,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal, missings, and twoclass</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
@@ -202,67 +247,67 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         -3.487  (normalized) V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3982 (normalized) V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2297 (normalized) V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.3179 (normalized) V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4027 (normalized) V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1931 (normalized) V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8959 (normalized) V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.1753 (normalized) V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7886 (normalized) V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1708 (normalized) V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.4932 (normalized) V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2234 (normalized) V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2808 (normalized) V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0905 (normalized) V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0113 (normalized) V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3892 (normalized) V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.7483 (normalized) V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.2156 (normalized) V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1578 (normalized) V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2332 (normalized) V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0589 (normalized) V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.295  (normalized) V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.9153 (normalized) V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1999 (normalized) V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.7859 (normalized) V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1221 (normalized) V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6812 (normalized) V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.405  (normalized) V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2909 (normalized) V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0356 (normalized) V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.7975 (normalized) V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.135  (normalized) V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0429 (normalized) V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.0196 (normalized) V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.5779 (normalized) V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2028 (normalized) V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0073 (normalized) V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.916  (normalized) V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9628 (normalized) V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.4538 (normalized) V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.088  (normalized) V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0922 (normalized) V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3328 (normalized) V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.1541 (normalized) V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0883 (normalized) V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.0314 (normalized) V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.8289 (normalized) V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3168 (normalized) V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1439 (normalized) V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0985 (normalized) V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5484 (normalized) V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4024 (normalized) V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.2439 (normalized) V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1849 (normalized) V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2285 (normalized) V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.8614 (normalized) V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5161 (normalized) V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.8452 (normalized) V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.8756 (normalized) V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.9684 (normalized) V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.79  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         -2.3369 (normalized) V1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2894 (normalized) V10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.9371 (normalized) V11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.8062 (normalized) V12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0489 (normalized) V13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3435 (normalized) V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0282 (normalized) V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3677 (normalized) V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.578  (normalized) V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3342 (normalized) V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1227 (normalized) V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8872 (normalized) V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3969 (normalized) V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2936 (normalized) V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5262 (normalized) V22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.4714 (normalized) V23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.1108 (normalized) V24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.2698 (normalized) V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2882 (normalized) V26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1615 (normalized) V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1092 (normalized) V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8368 (normalized) V29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.9959 (normalized) V3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2842 (normalized) V30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.8393 (normalized) V31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8375 (normalized) V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6523 (normalized) V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1806 (normalized) V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6161 (normalized) V35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1407 (normalized) V36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.3431 (normalized) V37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8294 (normalized) V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2222 (normalized) V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9101 (normalized) V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.0072 (normalized) V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.934  (normalized) V41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1506 (normalized) V42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.691  (normalized) V43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5579 (normalized) V44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.0259 (normalized) V45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4729 (normalized) V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8996 (normalized) V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.1118 (normalized) V48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.8146 (normalized) V49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.536  (normalized) V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.8147 (normalized) V50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.4896 (normalized) V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.6826 (normalized) V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.042  (normalized) V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3276 (normalized) V54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.513  (normalized) V55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6803 (normalized) V56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.4961 (normalized) V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.5624 (normalized) V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.2137 (normalized) V59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.4217 (normalized) V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9129 (normalized) V60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.0122 (normalized) V7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9086 (normalized) V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.323  (normalized) V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.85  </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -271,7 +316,7 @@ since their ids contain irregular pattern</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
