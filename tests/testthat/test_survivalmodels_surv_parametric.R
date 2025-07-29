@@ -236,5 +236,3 @@ test_that("'form' affects survival prediction", {
     TRUE
   }))
 })
-
-

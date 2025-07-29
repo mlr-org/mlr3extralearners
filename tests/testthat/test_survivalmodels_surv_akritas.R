@@ -106,5 +106,3 @@ test_that("time points for prediction", {
     TRUE
   }))
 })
-
-
