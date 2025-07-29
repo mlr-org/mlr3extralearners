@@ -5,6 +5,9 @@ test_that("autotest", {
   with_seed(42, {
     learner = lrn("cmprsk.rfsrc", ntree = 20, importance = "TRUE", na.action = "na.impute")
     expect_learner(learner)
+    # remove property as prediction doesn't work due to rsfrc bug
+    learner$properties = setdiff(learner$properties, "selected_features")
+
     result = run_autotest(learner, N = 42, check_replicable = FALSE)
     expect_true(result, info = result$error)
   })
@@ -15,13 +18,14 @@ test_that("importance/selected/oob_error", {
   learner = lrn("cmprsk.rfsrc", ntree = 20)
   learner$train(task)
   expect_error(learner$importance(), "Set 'importance'")
-  expect_error(learner$selected_features(), "Set 'var.used'")
+  expect_error(learner$selected_features(), "Set parameter 'var.used'")
 
   learner$param_set$values = list(
     var.used = "all.trees", importance = "random"
   )
   learner$train(task)
   expect_character(learner$selected_features())
+  expect_error(learner$predict(task), "Prediction is not supported")
 
   expect_numeric(learner$importance(), names = "named") # cause = 1 by default
   expect_numeric(learner$importance(cause = 2), names = "named")
