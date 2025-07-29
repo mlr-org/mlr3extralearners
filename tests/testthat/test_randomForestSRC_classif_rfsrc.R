@@ -1,17 +1,23 @@
 test_that("importance/selected", {
   task = tsk("iris")
-  learner = lrn("classif.rfsrc")
-  capture.output({
-    learner$train(task)
-  })
+  learner = lrn("classif.rfsrc", ntree = 20)
+  learner$train(task)
+
   expect_error(learner$importance(), "Set 'importance'")
-  expect_error(learner$selected_features(), "Set 'var.used'")
+  expect_error(learner$selected_features(), "Set parameter 'var.used'")
+
+  # when selected_features() works, prediction fails
+  learner$param_set$set_values(var.used = "all.trees")
+  learner$train(task)
+  expect_character(learner$selected_features())
+  expect_error(learner$predict(task), "Prediction is not supported")
 })
 
 test_that("autotest", {
   with_seed(1, {
     learner = lrn("classif.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
     expect_learner(learner)
+    # remove property as prediction doesn't work due to rsfrc bug
     learner$properties = setdiff(learner$properties, "selected_features")
 
     result = run_autotest(learner, exclude = "uf8_feature_names")
