@@ -56,3 +56,16 @@ rweka_predict = function(newdata, pars, predict_type, model) {
   retval[[predict_type]] = p
   return(retval)
 }
+
+#' @export
+marshal_model.Weka_classifier = function(model, inplace = FALSE, ...) {
+  rJava::.jcache(model$classifier)
+  structure(list( marshaled = model, packages = c("mlr3", "mlr3extralearners")),
+    class = c("Weka_classifier_marshaled", "marshaled")
+  )
+}
+
+#' @export
+unmarshal_model.Weka_classifier_marshaled = function(model, inplace = FALSE, ...) {
+  model$marshaled
+}

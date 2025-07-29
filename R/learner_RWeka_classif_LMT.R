@@ -65,10 +65,33 @@ LearnerClassifLMT = R6Class("LearnerClassifLMT",
         feature_types = c("numeric", "factor", "ordered", "integer"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("twoclass", "multiclass"),
+        properties = c("twoclass", "multiclass", "marshal"),
         man = "mlr3extralearners::mlr_learners_classif.LMT",
         label = "Tree-based Model"
       )
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`marshal_model()`].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`unmarshal_model()`].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 
