@@ -6,11 +6,9 @@ test_that("autotest: regr.botorch_singletaskgp", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     learner = mlr3::lrn("regr.botorch_singletaskgp")
     expect_learner(learner)

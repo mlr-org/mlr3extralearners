@@ -8,11 +8,9 @@ test_that("autotest", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     learner = lrn("surv.akritas", lambda = 0.5)
     expect_learner(learner)
@@ -31,11 +29,9 @@ test_that("time points for prediction", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     task = tsk("lung")
     learner = lrn("surv.akritas")
@@ -52,11 +48,9 @@ test_that("time points for prediction", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     task = tsk("lung")
     learner = lrn("surv.akritas")
@@ -73,11 +67,9 @@ test_that("time points for prediction", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     task = tsk("lung")
     learner = lrn("surv.akritas")
@@ -97,11 +89,9 @@ test_that("time points for prediction", {
     library(mlr3proba)
     library(mlr3extralearners)
 
-    lapply(list.files(system.file("testthat", package = "mlr3"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+    lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     task = tsk("lung")
     learner = lrn("surv.akritas")
