@@ -6,7 +6,6 @@
 #' Imbalanced Random forest for classification between two classes.
 #' Calls [randomForestSRC::imbalanced.rfsrc()] from from \CRANpkg{randomForestSRC}.
 #'
-#'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @templateVar id classif.imbalanced_rfsrc
@@ -125,11 +124,12 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "missings", "importance", "oob_error", "twoclass"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.imbalanced_rfsrc",
         label = "Imbalanced Random Forest"
       )
     },
+
     #' @description
     #' The importance scores are extracted from the slot `importance`.
     #' @return Named `numeric()`.
@@ -140,12 +140,21 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
 
       sort(self$model$importance[, 1], decreasing = TRUE)
     },
+
     #' @description
     #' Selected features are extracted from the model slot `var.used`.
+    #'
+    #' **Note**: Due to a known issue in `randomForestSRC`, enabling `var.used = "all.trees"`
+    #' causes prediction to fail. Therefore, this setting should be used exclusively
+    #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to 'all.trees'.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
@@ -158,6 +167,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       as.numeric(self$model$err.rate[self$model$ntree, 1])
     }
   ),
+
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
@@ -168,18 +178,25 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       pv$case.wt = private$.get_weights(task) # nolint
 
       invoke(randomForestSRC::imbalanced.rfsrc,
-             formula = task$formula(), data = data.table::setDF(task$data()),
+             formula = task$formula(), data = task$data(),
              .args = pv, .opts = list(rf.cores = cores))
     },
+
     .predict = function(task) {
-      newdata = data.table::setDF(ordered_features(task, self))
-      pars = self$param_set$get_values(tags = "predict")
-      cores = pars$cores %??% 1L
-      pars$cores = NULL
+      newdata = ordered_features(task, self)
+      pv = self$param_set$get_values(tags = "predict")
+
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      }
+
+      cores = pv$cores %??% 1L
+      pv$cores = NULL
+
       pred = invoke(predict,
                     object = self$model,
                     newdata = newdata,
-                    .args = pars,
+                    .args = pv,
                     .opts = list(rf.cores = cores))
 
       if (self$predict_type == "response") {
