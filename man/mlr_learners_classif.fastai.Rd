@@ -18,7 +18,8 @@ In this virtual environment, the \code{fastai} package and its dependencies must
 
 \section{Saving a Learner}{
 
-In order to save a \code{lrn("classif.fastai")} for later usage, it is necessary to call the \verb{$marshal()} method on the \code{Learner}  before writing it to disk, as the object will otherwise not be saved correctly.
+In order to save a \code{lrn("classif.fastai")} for later usage, it is necessary to call the \verb{$marshal()} method on the \code{Learner}  before writing it to disk,
+as the object will otherwise not be saved correctly.
 After loading a marshaled \code{lrn("classif.fastai")} into R again, you then need to call \verb{$unmarshal()} to transform it into a useable state.
 }
 

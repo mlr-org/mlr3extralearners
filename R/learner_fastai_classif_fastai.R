@@ -13,7 +13,8 @@
 #' In this virtual environment, the `fastai` package and its dependencies must be installed.
 #'
 #' @section Saving a Learner:
-#' In order to save a `lrn("classif.fastai")` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk, as the object will otherwise not be saved correctly.
+#' In order to save a `lrn("classif.fastai")` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk,
+#' as the object will otherwise not be saved correctly.
 #' After loading a marshaled `lrn("classif.fastai")` into R again, you then need to call `$unmarshal()` to transform it into a useable state.
 #'
 #' @section Initial parameter values:

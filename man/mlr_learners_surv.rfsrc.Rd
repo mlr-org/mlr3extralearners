@@ -222,6 +222,10 @@ Named \code{numeric()}.
 \if{latex}{\out{\hypertarget{method-LearnerSurvRandomForestSRC-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
 Selected features are extracted from the model slot \code{var.used}.
+
+\strong{Note}: Due to a known issue in \code{randomForestSRC}, enabling \code{var.used = "all.trees"}
+causes prediction to fail. Therefore, this setting should be used exclusively
+for feature selection purposes and not when prediction is required.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvRandomForestSRC$selected_features()}\if{html}{\out{</div>}}
 }
