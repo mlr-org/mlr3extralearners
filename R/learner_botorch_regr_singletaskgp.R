@@ -71,20 +71,18 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
       pars = self$param_set$get_values(tags = "train")
       device = pars$device
 
-      # prepare data
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
       x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
       y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
+      # normalizing is strongly recommended for the SingleTaskGP model
       input_transform = botorch$models$transforms$Normalize(d = ncol(x))
 
-      # Kernel selection
       gp = SingleTaskGP(x_py, y_py, input_transform = input_transform)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
-
-      structure(list(gp = gp), class = "botorch_gp_model")
+      gp
     },
 
     .predict = function(task) {
@@ -102,7 +100,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
             covar = posterior.mvn.covariance_matrix.cpu().numpy()
         return mean, covar")
 
-      gp = self$model$gp
+      gp = self$model
       # change the model to evaluation mode
       gp$eval()
 

@@ -81,20 +81,17 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       x[, (cols) := lapply(.SD, as.integer), .SDcols = cols]
       x = as_numeric_matrix(x)
-
-      # convert to torch tensors
       x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
       y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
-      # infer categorical columns (0-based for Python)
+      # 0-based categorical dimensions
       cat_dims = reticulate::r_to_py(unname(as.list(cols - 1L)))
 
-      # Kernel selection and model creation
       gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
 
-      structure(list(gp = gp), class = "botorch_gp_model")
+      gp
     },
 
     .predict = function(task) {
@@ -112,7 +109,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
             covar = posterior.mvn.covariance_matrix.cpu().numpy()
         return mean, covar")
 
-      gp = self$model$gp
+      gp = self$model
       # change the model to evaluation mode
       gp$eval()
 
