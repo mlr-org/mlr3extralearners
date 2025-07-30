@@ -68,14 +68,14 @@ LearnerRegrM5Rules = R6Class("LearnerRegrM5Rules",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`].
     marshal = function(...) {
       learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`].
     unmarshal = function(...) {
       learner_unmarshal(.learner = self, ...)
     }

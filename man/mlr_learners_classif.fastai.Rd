@@ -27,10 +27,10 @@ After loading a marshaled \code{lrn("classif.fastai")} into R again, you then ne
 
 \itemize{
 \item \code{n_epoch}:
-Needs to be set for \code{\link[fastai:fit]{fastai::fit()}} to work.
+Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
-Needs to be set for \code{\link[fastai:predict]{fastai::predict()}} to work.
+Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
 If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }
@@ -179,7 +179,7 @@ Marshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -197,7 +197,7 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }

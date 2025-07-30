@@ -99,14 +99,14 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`][mlr3::marshaling()].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
       learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`][mlr3::marshaling()].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
       learner_unmarshal(.learner = self, ...)
     }

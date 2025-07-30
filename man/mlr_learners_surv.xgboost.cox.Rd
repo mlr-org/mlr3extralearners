@@ -268,7 +268,7 @@ Marshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -286,7 +286,7 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{unmarshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
