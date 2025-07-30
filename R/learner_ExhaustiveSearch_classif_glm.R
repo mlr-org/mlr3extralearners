@@ -109,14 +109,12 @@ LearnerClassifExhaustiveSearch = R6Class(
       task_selected = task$clone()$select(selected_features)
 
       # train best model
-      model = invoke(
+      invoke(
         stats::glm,
         family = "binomial",
         formula = task_selected$formula(),
         data = task_selected$data(),
         model = FALSE)
-
-      return(model)
     },
     .predict = function(task) {
       newdata = ordered_features(task, self)
