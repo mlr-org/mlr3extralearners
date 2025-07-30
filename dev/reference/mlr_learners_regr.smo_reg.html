@@ -187,7 +187,7 @@ Whether the learner has been marshaled.</p></dd>
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">marshal_model()</a></code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -204,7 +204,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">unmarshal_model()</a></code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::unmarshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -259,21 +259,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SMOreg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> weights (not support vectors):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0781 * (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2882 * (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0875 * (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2532 * (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1448 * (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0336 * (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0239 * (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1204 * (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.169  * (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1117 * (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5972</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0098 * (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0993 * (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0835 * (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2572 * (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1581 * (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.063  * (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2047 * (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1328 * (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.071  * (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1273 * (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4687</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (98.045% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (94.769% cached)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -282,7 +282,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15.58481 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.78176 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

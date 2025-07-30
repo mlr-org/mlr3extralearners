@@ -179,7 +179,7 @@ Whether the learner has been marshaled.</p></dd>
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code>marshal_model()</code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -196,7 +196,7 @@ Additional arguments passed to <code>marshal_model()</code>.</p></dd>
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::unmarshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -258,7 +258,7 @@ Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V12(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V13(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V17(1): Class </span>
@@ -273,7 +273,7 @@ Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V26(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V27(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V30(1): Class </span>
@@ -286,7 +286,7 @@ Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
@@ -313,11 +313,11 @@ Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1479.3284642354597</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1510.2506721778534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1517.7081081008205</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1426.4203403379029</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1463.4203403379029</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1470.1974691488922</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1499.4017766500422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1504.548370481305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1418.195076651518</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1453.195076651518</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -327,7 +327,7 @@ Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

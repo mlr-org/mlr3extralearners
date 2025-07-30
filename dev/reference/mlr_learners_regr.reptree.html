@@ -165,7 +165,7 @@ Whether the learner has been marshaled.</p></dd>
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">marshal_model()</a></code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -182,7 +182,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">unmarshal_model()</a></code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::unmarshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -238,14 +238,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 3.16 : 24.37 (6/5.72) [3/53.69]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 3.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &lt; 3.79</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt; 289.9 : 18.1 (2/0.06) [1/2.72]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;= 289.9 : 15.9 (4/0.31) [1/12.25]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &gt;= 3.79 : 12.63 (2/2.1) [2/11.4]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 192.5 : 24.5 (5/21.09) [4/24.57]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 192.5 : 15.66 (9/1.92) [3/20.28]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 3</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -254,7 +250,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22.60218 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20.70942 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

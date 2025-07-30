@@ -53,7 +53,11 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
-<ul><li>fix: remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
+<ul><li>feat: Added learner <code>LearnerCompRisksRandomForestSRC</code>
+</li>
+<li>feat: Added <code>selected_features</code> property to RandomForestSRC learners (prediction doesn’t work if <code>vars.used = 'all.trees'</code>)</li>
+<li>fix: Removed parameters from RandomForestSRC learners that weren’t used + optimized tests</li>
+<li>fix: Remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
 <li>feat: Added learner <code>LearnerSurvBlockForest</code>.</li>
 <li>feat: Added learner <code>LearnerClassifFastai</code>.</li>
 <li>feat: Added learners <code>LearnerRegrPenalized</code> and <code>LearnerClassifPenalized</code>.</li>

@@ -73,7 +73,8 @@ In this virtual environment, the <code>fastai</code> package and its dependencie
     <h2 id="saving-a-learner">Saving a Learner<a class="anchor" aria-label="anchor" href="#saving-a-learner"></a></h2>
 
 
-<p>In order to save a <code>lrn("classif.fastai")</code> for later usage, it is necessary to call the <code>$marshal()</code> method on the <code>Learner</code>  before writing it to disk, as the object will otherwise not be saved correctly.
+<p>In order to save a <code>lrn("classif.fastai")</code> for later usage, it is necessary to call the <code>$marshal()</code> method on the <code>Learner</code>  before writing it to disk,
+as the object will otherwise not be saved correctly.
 After loading a marshaled <code>lrn("classif.fastai")</code> into R again, you then need to call <code>$unmarshal()</code> to transform it into a useable state.</p>
     </div>
     <div class="section level2">
@@ -204,7 +205,7 @@ Whether the learner has been marshaled.</p></dd>
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code>marshal_model()</code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
@@ -221,7 +222,7 @@ Additional arguments passed to <code>marshal_model()</code>.</p></dd>
 <h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>...</code></dt>
 <dd><p>(any)<br>
-Additional arguments passed to <code>unmarshal_model()</code>.</p></dd>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
 
 
 </dl><p></p></div>
