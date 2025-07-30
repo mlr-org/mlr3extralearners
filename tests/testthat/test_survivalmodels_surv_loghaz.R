@@ -1,5 +1,4 @@
 skip_on_os("windows")
-skip("avoid py_module_available()")
 
 test_that("autotest", {
   expect_true(callr::r(function() {
