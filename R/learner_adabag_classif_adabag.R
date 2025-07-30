@@ -48,7 +48,7 @@ LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
       super$initialize(
         id = "classif.adabag",
         packages = c("adabag", "rpart"),
-        feature_types = c("integer", "numeric", "factor", "ordered"),
+        feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
         properties = c("importance", "missings", "multiclass", "twoclass"),
@@ -109,7 +109,7 @@ LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
       type = self$predict_type
 
       # adaboost requires target column
-      newdata[, task$target_names] = factor(rep(1, nrow(newdata)), levels = task$class_names)
+      newdata[, "target"] = factor(rep(1, nrow(newdata)), levels = task$class_names)
 
       pred = invoke(predict, self$model, newdata = newdata, .args = pars)
 
