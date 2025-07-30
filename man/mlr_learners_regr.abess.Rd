@@ -148,7 +148,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerRegrAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
+Extract the name of selected features from the model by \code{\link[abess:extract]{abess::extract()}}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrAbess$selected_features()}\if{html}{\out{</div>}}
 }

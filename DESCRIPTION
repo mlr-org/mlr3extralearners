@@ -42,6 +42,7 @@ Imports:
 Suggests:
     abess,
     actuar,
+    adabag,
     ada,
     aorsf (>= 0.1.4),
     apcluster,
