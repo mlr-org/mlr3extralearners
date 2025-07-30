@@ -11,6 +11,7 @@
 * feat: Added learner `LearnerClassifAdaBoosting`.
 * feat: Added learners `LearnerClassifEvtree` and `LearnerRegrEvtree`.
 * feat: Added learner `LearnerClassifKnn`.
+* feat: Added learner `LearnerClassifStepPlr`.
 
 # mlr3extralearners 1.1.0
 
