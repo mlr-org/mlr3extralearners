@@ -10,10 +10,22 @@ Uses \CRANpkg{reticulate} to interface with the \href{https://github.com/PriorLa
 }
 \section{Installation}{
 
-While the Python dependencies are handled via \code{reticulate::py_require()}, you can
-manually specify a virtual environment by calling \code{reticulate::use_virtualenv()}
-prior to calling the \verb{$train()} function.
-In this virtual environment, the \code{tabpfn} package and its dependencies must be installed.
+This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
+It is not necessary to install any Python package manually in advance or specify a Python environment
+via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
+or \code{reticulate::use_miniconda()}.
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tapfn}, \code{torch}, etc.) will be installed
+automatically, if not already.
+Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
+\href{https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery}{Order of Discovery}
+contains all the necessary packages.
+
+You may also manually install \code{tabpfn} into a Python environment following the
+\href{https://github.com/PriorLabs/TabPFN?tab=readme-ov-file#-quick-start}{official installation guide}
+and specify the environment via \verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}.
+Note that the GPU version of PyTorch cannot be loaded by \code{reticulate::use_condaenv()} from a conda environment.
+To use a conda environment, please install the CPU version of PyTorch.
 }
 
 \section{Saving a Learner}{
