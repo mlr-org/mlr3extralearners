@@ -1,23 +1,27 @@
-test_that("importance/selected", {
-  set.seed(1)
-  task = tsk("boston_housing")
-  learner = lrn("regr.rfsrc")
-  capture.output({
-    learner$train(task)
+test_that("autotest", {
+  with_seed(1, {
+    learner = lrn("regr.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
+    expect_learner(learner)
+    # remove property as prediction doesn't work due to rsfrc bug
+    learner$properties = setdiff(learner$properties, "selected_features")
+
+    result = run_autotest(learner, exclude = "single")
+    expect_true(result, info = result$error)
   })
-  expect_error(learner$importance(), "Set 'importance'")
-  expect_error(learner$selected_features(), "Set 'var.used'")
 })
 
-test_that("autotest", {
-  learner = lrn("regr.rfsrc")
-  learner$param_set$values = list(
-    importance = "random", na.action = "na.impute",
-    do.trace = TRUE)
-  expect_learner(learner)
-  set.seed(1)
-  capture.output({
-    result = run_autotest(learner, exclude = "single")
+test_that("importance/selected", {
+  with_seed(1, {
+    task = tsk("boston_housing")
+    learner = lrn("regr.rfsrc", ntree = 20)
+    learner$train(task)
+    expect_error(learner$importance(), "Set 'importance'")
+    expect_error(learner$selected_features(), "Set parameter 'var.used'")
+
+    # when selected_features() works, prediction fails
+    learner$param_set$set_values(var.used = "all.trees")
+    learner$train(task)
+    expect_character(learner$selected_features())
+    expect_error(learner$predict(task), "Prediction is not supported")
   })
-  expect_true(result, info = result$error)
 })

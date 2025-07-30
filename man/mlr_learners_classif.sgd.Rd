@@ -125,10 +125,20 @@ damirpolat
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifSGD}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{marshaled}}{(\code{logical(1)})\cr
+Whether the learner has been marshaled.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifSGD-new}{\code{LearnerClassifSGD$new()}}
+\item \href{#method-LearnerClassifSGD-marshal}{\code{LearnerClassifSGD$marshal()}}
+\item \href{#method-LearnerClassifSGD-unmarshal}{\code{LearnerClassifSGD$unmarshal()}}
 \item \href{#method-LearnerClassifSGD-clone}{\code{LearnerClassifSGD$clone()}}
 }
 }
@@ -159,6 +169,42 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifSGD$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifSGD-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifSGD-marshal}{}}}
+\subsection{Method \code{marshal()}}{
+Marshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifSGD$marshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifSGD-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifSGD-unmarshal}{}}}
+\subsection{Method \code{unmarshal()}}{
+Unmarshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifSGD$unmarshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifSGD-clone"></a>}}

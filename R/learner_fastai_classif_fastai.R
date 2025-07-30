@@ -13,7 +13,8 @@
 #' In this virtual environment, the `fastai` package and its dependencies must be installed.
 #'
 #' @section Saving a Learner:
-#' In order to save a `lrn("classif.fastai")` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk, as the object will otherwise not be saved correctly.
+#' In order to save a `lrn("classif.fastai")` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk,
+#' as the object will otherwise not be saved correctly.
 #' After loading a marshaled `lrn("classif.fastai")` into R again, you then need to call `$unmarshal()` to transform it into a useable state.
 #'
 #' @section Initial parameter values:
@@ -98,16 +99,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
-      mlr3::learner_marshal(.learner = self, ...)
+      learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
-      mlr3::learner_unmarshal(.learner = self, ...)
+      learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -140,7 +141,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @field marshaled (`logical(1)`)
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      mlr3::learner_marshaled(self)
+      learner_marshaled(self)
     }
   ),
 

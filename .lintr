@@ -7,5 +7,6 @@ linters: linters_with_defaults(
     commented_code_linter = NULL, # allow code in comments
     todo_comment_linter = NULL, # allow todo in comments
     line_length_linter = line_length_linter(180),
-    object_length_linter = object_length_linter(40)
+    object_length_linter = object_length_linter(40),
+    indentation_linter(indent = 2L, hanging_indent_style = "never")
     )

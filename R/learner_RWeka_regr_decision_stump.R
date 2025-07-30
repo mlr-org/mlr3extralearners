@@ -53,10 +53,33 @@ LearnerRegrDecisionStump = R6Class("LearnerRegrDecisionStump",
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
-        properties = "missings",
+        properties = c("missings", "marshal"),
         man = "mlr3extralearners::mlr_learners_regr.decision_stump",
         label = "Decision Stump"
       )
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::marshal_model()`].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 
