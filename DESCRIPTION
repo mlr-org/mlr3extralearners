@@ -17,37 +17,42 @@ Authors@R: c(
     person("Keenan", "Ganz", , "ganzkeenan1@gmail.com", role = "ctb"),
     person("Byron", "Jaeger", , "bjaeger@wakehealth.edu", role = "ctb"),
     person("Sebastian", "Fischer", , "sebf.fischer@gmail.com", role = c("cre", "aut")),
-    person("Zezhi", "Wang", ,"homura@mail.ustc.edu.cn", role = "ctb"),
-    person("John", "Zobolas", ,"bblodfon@gmail.com", role = "aut",
+    person("Zezhi", "Wang", , "homura@mail.ustc.edu.cn", role = "ctb"),
+    person("John", "Zobolas", , "bblodfon@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0002-3609-8674")),
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
-    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb")
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
+    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
 Depends:
-    R (>= 3.1.0),
-    mlr3 (>= 1.0.0)
+    mlr3 (>= 1.0.0),
+    R (>= 3.3.0)
 Imports:
     checkmate,
     data.table,
     methods,
     mlr3misc (>= 0.9.4),
     paradox (>= 1.0.1),
-    R6
+    R6,
+    reticulate
 Suggests:
     abess,
-    aorsf (>= 0.1.4),
     actuar,
     adabag,
+    ada,
+    aorsf (>= 0.1.4),
     apcluster,
     BART (>= 2.9.4),
     blockForest (>= 0.2.6),
+    bst,
     C50,
+    callr,
     catboost,
+    class,
     coin,
     CoxBoost,
     Cubist,
@@ -55,6 +60,8 @@ Suggests:
     dbarts,
     distr6,
     earth,
+    evtree,
+    fastai,
     flexsurv (>= 2.3),
     FNN,
     formattable,
@@ -65,8 +72,10 @@ Suggests:
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
+    klaR,
     knitr,
     ks,
+    lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
     lme4,
@@ -77,8 +86,8 @@ Suggests:
     mgcv,
     mlr3cluster,
     mlr3learners (>= 0.12.0),
-    mlr3proba (>= 0.8.1),
     mlr3pipelines,
+    mlr3proba (>= 0.8.1),
     mvtnorm,
     nnet,
     np,
@@ -93,17 +102,20 @@ Suggests:
     qgam,
     randomForest,
     randomPlantedForest,
-    randomForestSRC (>= 3.3.0),
+    randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
-    reticulate (>= 1.16),
+    riskRegression,
+    rJava,
     rpart,
     rsm,
     rvest,
     RWeka,
     sandwich,
+    sda,
     set6,
     sm,
+    sparsediscrim,
     stats,
     survival,
     survivalmodels (>= 0.1.19),
@@ -111,22 +123,25 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     xgboost (>= 1.7.8.1)
+VignetteBuilder:
+    knitr
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3proba,
+    eagerai/fastai,
     mlr-org/mlr3,
-    RaphaelS1/survivalmodels,
+    mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
+    RaphaelS1/survivalmodels,
+    ropensci/aorsf,
     xoopR/distr6,
     xoopR/param6,
     xoopR/set6,
-    ropensci/aorsf
-VignetteBuilder:
-    knitr
+    rstudio/reticulate
+Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
+Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.2
-Config/Needs/website: rmarkdown

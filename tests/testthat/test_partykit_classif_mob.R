@@ -12,7 +12,7 @@ test_that("autotest", {
 
   predict_fun = function(object, newdata, task, .type) {
     p = unname(predict(object, newdata = newdata, type = "response"))
-    levs = task$levels(task$target_names)[[1L]]
+    levs = task$class_names
 
     if (.type == "response") {
       ifelse(p < 0.5, levs[1L], levs[2L])
