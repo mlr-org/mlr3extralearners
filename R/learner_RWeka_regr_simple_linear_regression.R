@@ -57,10 +57,33 @@ LearnerRegrSimpleLinearRegression = R6Class("LearnerRegrSimpleLinearRegression",
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,
-        properties = "missings",
+        properties = c("marshal", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.simple_linear_regression",
         label = "Simple Linear Regression"
       )
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::marshal_model()`].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 

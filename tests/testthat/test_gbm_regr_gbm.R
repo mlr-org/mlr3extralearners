@@ -4,7 +4,9 @@ test_that("autotest", {
     learner$param_set$values,
     list(n.minobsinnode = 1))
   expect_learner(learner)
-  result = run_autotest(learner, predict_types = "response")
+  capture.output({
+    result = run_autotest(learner, predict_types = "response")
+  })
   expect_true(result, info = result$error)
 })
 
@@ -15,7 +17,9 @@ test_that("quantile prediction", {
     n.minobsinnode = 1)
   task = tsk("mtcars")
 
-  learner$train(task)
+  capture.output({
+    learner$train(task)
+  })
   pred = learner$predict(task)
 
   expect_matrix(pred$quantiles, ncol = 1L)

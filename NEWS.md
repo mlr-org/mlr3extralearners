@@ -1,8 +1,17 @@
 # mlr3extralearners (development version)
 
-* fix: remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* feat: Added learner `LearnerCompRisksRandomForestSRC`
+* feat: Added `selected_features` property to RandomForestSRC learners (prediction doesn't work if `vars.used = 'all.trees'`)
+* fix: Removed parameters from RandomForestSRC learners that weren't used + optimized tests
+* fix: Remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * feat: Added learner `LearnerSurvBlockForest`.
 * feat: Added learner `LearnerClassifAdabag`.
+* feat: Added learner `LearnerClassifFastai`.
+* feat: Added learners `LearnerRegrPenalized` and `LearnerClassifPenalized`.
+* feat: Added learners `LearnerClassifBst` and `LearnerRegrBst`.
+* feat: Added learner `LearnerClassifAdaBoosting`.
+* feat: Added learners `LearnerClassifEvtree` and `LearnerRegrEvtree`.
+* feat: Added learner `LearnerClassifKnn`.
 
 # mlr3extralearners 1.1.0
 
@@ -13,6 +22,7 @@ New Features:
 * Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
 * Added the new version of learner weights to all learners that support weights
 * Added marshaling for `surv.xgboost.cox`.
+* Added learner `LearnerClassifKnn`.
 
 Bugfixes:
 
