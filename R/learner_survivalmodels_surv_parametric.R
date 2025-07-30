@@ -64,7 +64,6 @@
 #' `r format_bib("kalbfleisch2011statistical")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerSurvParametric = R6Class("LearnerSurvParametric",
   inherit = mlr3proba::LearnerSurv,
@@ -110,8 +109,6 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
-
       pv = self$param_set$get_values(tags = "train")
       pv$weights = private$.get_weights(task)
 
@@ -125,8 +122,6 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
     },
 
     .predict = function(task) {
-      reticulate::py_require(c("torch", "pycox", "numpy"))
-
       pv = self$param_set$get_values(tags = "predict")
       newdata = as.data.frame(ordered_features(task, self))
 

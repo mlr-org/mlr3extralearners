@@ -133,10 +133,20 @@ damirpolat
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrGaussianProcesses}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{marshaled}}{(\code{logical(1)})\cr
+Whether the learner has been marshaled.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerRegrGaussianProcesses-new}{\code{LearnerRegrGaussianProcesses$new()}}
+\item \href{#method-LearnerRegrGaussianProcesses-marshal}{\code{LearnerRegrGaussianProcesses$marshal()}}
+\item \href{#method-LearnerRegrGaussianProcesses-unmarshal}{\code{LearnerRegrGaussianProcesses$unmarshal()}}
 \item \href{#method-LearnerRegrGaussianProcesses-clone}{\code{LearnerRegrGaussianProcesses$clone()}}
 }
 }
@@ -167,6 +177,42 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrGaussianProcesses$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerRegrGaussianProcesses-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrGaussianProcesses-marshal}{}}}
+\subsection{Method \code{marshal()}}{
+Marshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrGaussianProcesses$marshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerRegrGaussianProcesses-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerRegrGaussianProcesses-unmarshal}{}}}
+\subsection{Method \code{unmarshal()}}{
+Unmarshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrGaussianProcesses$unmarshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrGaussianProcesses-clone"></a>}}
