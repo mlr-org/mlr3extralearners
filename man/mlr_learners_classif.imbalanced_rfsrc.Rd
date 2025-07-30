@@ -51,15 +51,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    na.action \tab character \tab na.omit \tab na.omit, na.impute \tab - \cr
    nimpute \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    ntime \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   cause \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    proximity \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    distance \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    forest.wt \tab character \tab FALSE \tab FALSE, TRUE, inbag, oob, all \tab - \cr
    xvar.wt \tab untyped \tab - \tab  \tab - \cr
    split.wt \tab untyped \tab - \tab  \tab - \cr
    forest \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   var.used \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
-   split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
+   var.used \tab character \tab FALSE \tab FALSE, all.trees \tab - \cr
+   split.depth \tab character \tab FALSE \tab FALSE, all.trees \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
    do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    statistics \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -194,6 +193,10 @@ Named \code{numeric()}.
 \if{latex}{\out{\hypertarget{method-LearnerClassifImbalancedRandomForestSRC-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
 Selected features are extracted from the model slot \code{var.used}.
+
+\strong{Note}: Due to a known issue in \code{randomForestSRC}, enabling \code{var.used = "all.trees"}
+causes prediction to fail. Therefore, this setting should be used exclusively
+for feature selection purposes and not when prediction is required.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifImbalancedRandomForestSRC$selected_features()}\if{html}{\out{</div>}}
 }

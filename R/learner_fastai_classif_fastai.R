@@ -6,6 +6,17 @@
 #' Simple and fast neural nets for tabular data classification.
 #' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
 #'
+#' @section Installation:
+#' The Python dependencies are automatically installed via `reticulate::py_require()`.
+#' See [Installing Python Dependencies](https://rstudio.github.io/reticulate/articles/python_packages.html) for more details.
+#' You can manually specify a virtual environment by calling `reticulate::use_virtualenv()` prior to calling the `$train()` function.
+#' In this virtual environment, the `fastai` package and its dependencies must be installed.
+#'
+#' @section Saving a Learner:
+#' In order to save a `lrn("classif.fastai")` for later usage, it is necessary to call the `$marshal()` method on the `Learner`  before writing it to disk,
+#' as the object will otherwise not be saved correctly.
+#' After loading a marshaled `lrn("classif.fastai")` into R again, you then need to call `$unmarshal()` to transform it into a useable state.
+#'
 #' @section Initial parameter values:
 #' - `n_epoch`:
 #'   Needs to be set for [fastai::fit()] to work.
@@ -88,16 +99,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
-      mlr3::learner_marshal(.learner = self, ...)
+      learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
-      mlr3::learner_unmarshal(.learner = self, ...)
+      learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -130,7 +141,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     #' @field marshaled (`logical(1)`)
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      mlr3::learner_marshaled(self)
+      learner_marshaled(self)
     }
   ),
 
@@ -138,7 +149,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
-      reticulate::py_require("fastai")
+      assert_python_packages("fastai")
 
       formula = task$formula()
       data = task$data()
@@ -154,10 +165,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       if (is.null(measure)) measure = fastai::accuracy()
 
       # match parameters to fastai functions
+      fastai2 = getFromNamespace("fastai2", ns = "fastai")
       args_dt = formalArgs(fastai::TabularDataTable)
-      args_dl = formalArgs(fastai:::fastai2$data$load$DataLoader)
+      args_dl = formalArgs(fastai2$data$load$DataLoader)
       args_config = formalArgs(fastai::tabular_config)
-      args_fit = formalArgs(fastai:::fastai2$learner$Learner$fit)
+      args_fit = formalArgs(fastai2$learner$Learner$fit)
 
       pv_dt = pars[names(pars) %in% args_dt]
       pv_dl = pars[names(pars) %in% args_dl]
@@ -267,7 +279,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .predict = function(task) {
-      reticulate::py_require("fastai")
+      assert_python_packages("fastai")
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
