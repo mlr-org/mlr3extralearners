@@ -1,48 +1,36 @@
-#' @title Survival Random Forest SRC Learner
-#' @author RaphaelS1
-#' @name mlr_learners_surv.rfsrc
+#' @title Random Forest Competing Risks Learner
+#' @author bblodfon
+#' @name mlr_learners_cmprsk.rfsrc
 #'
 #' @description
-#' Random survival forest.
+#' Random survival forests for competing risks.
 #' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
 #'
-#' @section Prediction types:
-#' This learner returns two prediction types:
-#' 1. `distr`: a survival matrix in two dimensions, where observations are
-#' represented in rows and (unique event) time points in columns.
-#' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
-#'
 #' @template learner
-#' @templateVar id surv.rfsrc
+#' @templateVar id cmprsk.rfsrc
 #'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
-#' @section Custom mlr3 parameters:
-#' - `estimator`: Hidden parameter that controls the type of estimator used to
-#'   derive the survival function during prediction. The **default** value is `"chf"` which
-#'   uses a bootstrapped Nelson-Aalen estimator for the cumulative hazard function
-#'   \eqn{H(t)}, (Ishwaran, 2008) from which we calculate \eqn{S(t) = \exp(-H(t))},
-#'   whereas `"surv"` uses a bootstrapped Kaplan-Meier estimator to directly estimate
-#'   \eqn{S(t)}.
-#'
 #' @section Initial parameter values:
-#' - `ntime`: Number of time points to coerce the observed event times for use in the
-#'   estimated survival function during prediction. We changed the default value
-#'   of `150` to `0` in order to be in line with other random survival forest
-#'   learners and use all the **unique event times from the train set**.
+#' - `ntime`: Number of time points to coerce the observed event times for use
+#' in the estimated cumulative incidence functions during prediction.
+#' We changed the default value of `150` to `0`, meaning we now use all the
+#' **unique event times from the train set** across all competing causes.
 #'
 #' @references
-#' `r format_bib("ishwaran_2008", "breiman_2001")`
+#' `r format_bib("ishwaran2014rsf")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf mlr3misc::require_namespaces(c("randomForestSRC", "riskRegression"), quietly = TRUE)
 #' # Define the Learner
-#' learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
+#' learner = mlr3::lrn("cmprsk.rfsrc", importance = "TRUE")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("grace")
+#' task = mlr3::tsk("pbc")
+#'
+#' # Stratification based on event
+#' task$set_col_roles(cols = "status", add_to = "stratum")
 #'
 #' # Create train and test set
 #' ids = mlr3::partition(task)
@@ -51,7 +39,9 @@
 #' learner$train(task, row_ids = ids$train)
 #'
 #' print(learner$model)
-#' print(learner$importance())
+#' print(learner$importance(cause = 1)) # VIMP for cause = 1
+#' print(learner$importance(cause = 2)) # VIMP for cause = 2
+#' print(learner$oob_error()) # weighted-mean across causes
 #'
 #' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)
@@ -59,9 +49,8 @@
 #' # Score the predictions
 #' predictions$score()
 #' @export
-LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
-  inherit = mlr3proba::LearnerSurv,
-
+LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
+  inherit = mlr3proba::LearnerCompRisks,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -72,7 +61,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         mtry.ratio     = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize       = p_int(default = 15L, lower = 1L, tags = "train"),
         nodedepth      = p_int(lower = 1L, tags = "train"),
-        splitrule      = p_fct(levels = c("logrank", "bs.gradient"), default = "logrank", tags = "train"),
+        splitrule      = p_fct(levels = c("logrankCR", "logrank"), default = "logrankCR", tags = "train"),
         nsplit         = p_int(lower = 0, default = 10, tags = "train"),
         importance     = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "none", "anti", "permute", "random"), tags = c("train", "predict")), #nolint
         block.size     = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
@@ -85,6 +74,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         na.action      = p_fct(default = "na.omit", levels = c("na.omit", "na.impute"), tags = c("train", "predict")),
         nimpute        = p_int(lower = 1L, default = 1L, special_vals = list(NULL), tags = "train"),
         ntime          = p_int(lower = 0L, default = 150L, init = 0L, special_vals = list(NULL), tags = "train"),
+        cause          = p_uty(tags = "train"),
         proximity      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
         distance       = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
         forest.wt      = p_fct(default = "FALSE", levels = c("FALSE", "TRUE", "inbag", "oob", "all"), tags = c("train", "predict")), #nolint
@@ -99,8 +89,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
-        estimator      = p_fct(default = "nelson", levels = c("nelson", "kaplan"), tags = "predict"),
-        cores          = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        cores          = p_int(default = 1L, lower = 1L, init = 1, tags = c("train", "predict", "threads")),
         save.memory    = p_lgl(default = FALSE, tags = "train"),
         perf.type      = p_fct(levels = "none", tags = "train"),
         case.depth     = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -108,26 +97,33 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       )
 
       super$initialize(
-        id = "surv.rfsrc",
-        packages = c("mlr3extralearners", "randomForestSRC", "pracma"),
+        id = "cmprsk.rfsrc",
+        packages = c("mlr3extralearners", "randomForestSRC"),
         feature_types = c("logical", "integer", "numeric", "factor"),
-        predict_types = c("crank", "distr"),
+        predict_types = "cif",
         param_set = param_set,
         properties = c("weights", "missings", "importance", "oob_error", "selected_features"),
-        man = "mlr3extralearners::mlr_learners_surv.rfsrc",
-        label = "Random Survival Forests"
+        man = "mlr3extralearners::mlr_learners_cmprsk.rfsrc",
+        label = "Competing Risk Survival Forests"
       )
     },
 
     #' @description
-    #' The importance scores are extracted from the model slot `importance`.
+    #' The importance scores are extracted from the model slot `importance` and
+    #' are cause-specific.
+    #' @param cause Integer value indicating the event of interest
     #' @return Named `numeric()`.
-    importance = function() {
+    importance = function(cause = 1) {
       if (is.null(self$model$importance) & !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 
-      sort(self$model$importance, decreasing = TRUE)
+      causes = sort(self$model$event.info$event.type)
+      if (cause %nin% causes) {
+        stopf("Invalid cause. Use one of: %s", paste(causes, collapse = ", "))
+      }
+
+      sort(self$model$importance[, cause], decreasing = TRUE)
     },
 
     #' @description
@@ -150,10 +146,33 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     },
 
     #' @description
-    #' OOB error extracted from the model slot `err.rate`.
+    #' Extracts the out-of-bag (OOB) cumulative incidence function (CIF) error
+    #' from the model's `err.rate` slot.
+    #'
+    #' If `cause = "mean"` (default), the function returns a weighted average
+    #' of the cause-specific OOB errors, where the weights correspond to the
+    #' observed proportion of events for each cause in the training data.
+    #'
+    #' @param cause Integer (event type) or `"mean"` (default). Use a specific
+    #' event type to retrieve its OOB error, or `"mean"` to compute the weighted
+    #' average across causes.
     #' @return `numeric()`.
-    oob_error = function() {
-      self$model$err.rate[self$model$ntree]
+    oob_error = function(cause = "mean") {
+      causes = sort(self$model$event.info$event.type)
+
+      if ((cause != "mean") && (cause %nin% causes)) {
+        stopf("Invalid cause. Use one of: %s, or 'mean'", paste(causes, collapse = ", "))
+      }
+
+      oob_errors = self$model$err.rate[self$model$ntree, ]
+
+      if (cause == "mean") {
+        event = self$model$event.info$event # only event > 0 are included here
+        w = prop.table(table(event)) # observed proportions per cause
+        sum(w * oob_errors)
+      } else {
+        oob_errors[cause]
+      }
     }
   ),
 
@@ -162,13 +181,18 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       pv = self$param_set$get_values(tags = "train")
       pv = convert_ratio(pv, "mtry", "mtry.ratio", length(task$feature_names))
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
-      cores = pv$cores %??% 1L
+
+      cores = pv$cores # additionaly implemented by author
       pv$cores = NULL
       pv$case.wt = private$.get_weights(task)
 
-      invoke(randomForestSRC::rfsrc,
-        formula = task$formula(), data = task$data(),
-        .args = pv, .opts = list(rf.cores = cores))
+      invoke(
+        randomForestSRC::rfsrc,
+        formula = task$formula(),
+        data = task$data(),
+        .args = pv,
+        .opts = list(rf.cores = cores)
+      )
     },
 
     .predict = function(task) {
@@ -179,23 +203,29 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
       }
 
-      # default estimator is nelson, hence nelson selected if NULL
-      estimator = pv$estimator %??% "nelson"
-      pv$estimator = NULL
-      cores = pv$cores %??% 1L # additionaly implemented by author
+      cores = pv$cores # additionaly implemented by author
       pv$cores = NULL
 
-      p = invoke(predict, object = self$model, newdata = newdata, .args = pv,
-                 .opts = list(rf.cores = cores))
+      prediction = invoke(
+        predict,
+        object = self$model,
+        newdata = newdata,
+        .args = pv,
+        .opts = list(rf.cores = cores)
+      )
 
-      # rfsrc uses Nelson-Aalen in chf and Kaplan-Meier for survival, as these
-      # don't give equivalent results one must be chosen and the relevant functions are transformed
-      # as required.
-      surv = if (estimator == "nelson") exp(-p$chf) else p$survival
+      # Extract CIF array: [n_obs x times x causes]
+      cif_array = prediction$cif
+      dimnames(cif_array)[[2]] = prediction$time.interest
 
-      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
+      # Split CIF array into list of matrices per cause
+      n_causes = dim(cif_array)[3]
+      cif_list = lapply(seq_len(n_causes), function(cause) cif_array[, , cause])
+      names(cif_list) = seq_len(n_causes)
+
+      list(cif = cif_list)
     }
   )
 )
 
-.extralrns_dict$add("surv.rfsrc", LearnerSurvRandomForestSRC)
+.extralrns_dict$add("cmprsk.rfsrc", LearnerCompRisksRandomForestSRC)

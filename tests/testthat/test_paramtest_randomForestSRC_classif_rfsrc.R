@@ -7,15 +7,16 @@ test_that("paramtest classif.rfsrc train", {
     "ytry", # for unsupervised forests only
     "yvar.wt", # not yet implemented
     "case.wt", # handled by task weights
-    "mtry.ratio",
-    "sampsize.ratio",
-    "cores" # is set as option(rf.cores)
+    "mtry.ratio", # alternative to mtry
+    "sampsize.ratio", # alternative to sampsize
+    "cores", # is set as option(rf.cores)
+    "ntime", # for survival forests only
+    "cause" # for competing risk forests only
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
-
 
 test_that("paramtest classif.rfsrc predict", {
   learner = lrn("classif.rfsrc")
