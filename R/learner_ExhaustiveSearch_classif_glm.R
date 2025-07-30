@@ -26,8 +26,8 @@
 #' @template learner
 #' @templateVar id classif.exhaustive_search
 #'
-#'
 #' @template seealso_learner
+#'
 #' @examples
 #' # define the learner
 #' learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
@@ -43,6 +43,7 @@
 #'
 #' # predict on training task
 #' learner$predict(tsk_sonar)
+#'
 #' @export
 
 LearnerClassifExhaustiveSearch = R6Class(

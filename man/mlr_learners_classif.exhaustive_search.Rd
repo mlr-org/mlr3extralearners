@@ -9,9 +9,6 @@ Logistic Regression, where the features used in the model are selected by runnin
 
 Calls \code{\link[ExhaustiveSearch:ExhaustiveSearch]{ExhaustiveSearch::ExhaustiveSearch()}} from \CRANpkg{ExhaustiveSearch}.
 }
-\details{
-Internal validation not yet implemented.
-}
 \section{Initial parameter values}{
 
 \itemize{
@@ -19,7 +16,8 @@ Internal validation not yet implemented.
 \itemize{
 \item Actual default: NULL
 \item Adjusted default: "binomial"
-\item Reason for change: To comply with mlr3 architecture, we differentiate between classification and regression learners.
+\item Reason for change: To comply with mlr3 architecture,
+we differentiate between classification and regression learners.
 }
 \item \code{nThreads}:
 \itemize{
@@ -50,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}, \dQuote{ordered}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{ExhaustiveSearch}
 }
 }
@@ -71,23 +69,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-
 # define the learner
-learner = LearnerClassifExhaustiveSearch$new()
-learner$predict_type = "prob"
-learner$param_set$set_values(combsUpTo = 3)
+learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 
 # define the task
-tsk_gc = tsk("german_credit")
+tsk_sonar = tsk("sonar")
 
 # train the learner
-learner$train(tsk_gc)
+learner$train(tsk_sonar)
 
 # extract selected features
 learner$selected_features()
 
 # predict on training task
-learner$predict(tsk_gc)
+learner$predict(tsk_sonar)
+
 }
 \seealso{
 \itemize{
