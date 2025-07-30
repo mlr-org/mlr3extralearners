@@ -29,23 +29,20 @@
 #'
 #' @template seealso_learner
 #' @examples
-#'
 #' # define the learner
-#' learner = LearnerClassifExhaustiveSearch$new()
-#' learner$predict_type = "prob"
-#' learner$param_set$set_values(combsUpTo = 3)
+#' learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 #'
 #' # define the task
-#' tsk_gc = tsk("german_credit")
+#' tsk_sonar = tsk("sonar")
 #'
 #' # train the learner
-#' learner$train(tsk_gc)
+#' learner$train(tsk_sonar)
 #'
 #' # extract selected features
 #' learner$selected_features()
 #'
 #' # predict on training task
-#' learner$predict(tsk_gc)
+#' learner$predict(tsk_sonar)
 #' @export
 
 LearnerClassifExhaustiveSearch = R6Class(
@@ -119,6 +116,7 @@ LearnerClassifExhaustiveSearch = R6Class(
         data = task_selected$data(),
         model = FALSE)
 
+      return(model)
     },
     .predict = function(task) {
       newdata = ordered_features(task, self)
@@ -134,7 +132,7 @@ LearnerClassifExhaustiveSearch = R6Class(
       } else {
         list(prob = pprob_to_matrix((1 - p), task))
       }
-    },
+    }
   )
 )
 .extralrns_dict$add("classif.exhaustive_search", LearnerClassifExhaustiveSearch)
