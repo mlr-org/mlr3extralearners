@@ -57,7 +57,9 @@ LearnerClassifStepPlr = R6Class("LearnerClassifStepPlr",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       # Remove target column if present in newdata
-      if (task$target_names %in% colnames(newdata)) {
+      if (
+        length(task$target_names) > 0 && task$target_names %in% colnames(newdata)
+      ) {
         newx = as.matrix(newdata[, !task$target_names, with = FALSE])
       } else {
         newx = as.matrix(newdata)
