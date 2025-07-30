@@ -1,5 +1,5 @@
-test_that("paramtest surv.rfsrc train", {
-  learner = lrn("surv.rfsrc")
+test_that("paramtest cmprsk.rfsrc train", {
+  learner = lrn("cmprsk.rfsrc")
   fun_list = list(randomForestSRC::rfsrc)
   exclude = c(
     "formula", # handled internally
@@ -9,16 +9,15 @@ test_that("paramtest surv.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio", # alternative to mtry
-    "cause" # only for competing risks forests
+    "mtry.ratio" # alternative to mtry
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest surv.rfsrc predict", {
-  learner = lrn("surv.rfsrc")
+test_that("paramtest cmprsk.rfsrc predict", {
+  learner = lrn("cmprsk.rfsrc")
   fun_list = list(randomForestSRC:::predict.rfsrc)
   exclude = c(
     "object", # handled internally

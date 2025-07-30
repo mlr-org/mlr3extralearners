@@ -18,7 +18,8 @@ In this virtual environment, the \code{fastai} package and its dependencies must
 
 \section{Saving a Learner}{
 
-In order to save a \code{lrn("classif.fastai")} for later usage, it is necessary to call the \verb{$marshal()} method on the \code{Learner}  before writing it to disk, as the object will otherwise not be saved correctly.
+In order to save a \code{lrn("classif.fastai")} for later usage, it is necessary to call the \verb{$marshal()} method on the \code{Learner}  before writing it to disk,
+as the object will otherwise not be saved correctly.
 After loading a marshaled \code{lrn("classif.fastai")} into R again, you then need to call \verb{$unmarshal()} to transform it into a useable state.
 }
 
@@ -178,7 +179,7 @@ Marshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=marshal_model]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -196,7 +197,7 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=unmarshal_model]{unmarshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
