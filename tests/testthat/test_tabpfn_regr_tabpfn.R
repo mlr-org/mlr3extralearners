@@ -1,15 +1,4 @@
-tryCatch({
-  reticulate::use_condaenv("r-reticulate", required = TRUE)
-}, error = function(e) {
-  skip("r-reticulate conda environment not found.")
-})
-if (!reticulate::py_module_available("torch") || !reticulate::py_module_available("tabpfn")) {
-  skip("torch or tabpfn not available for testing.")
-}
-
 test_that("autotest", {
-
-
   learner = lrn("regr.tabpfn")
   expect_learner(learner)
   # reproducibility is not guaranteed, hence check_replicable = FALSE
@@ -18,8 +7,6 @@ test_that("autotest", {
 })
 
 test_that("marshaling works for regr.tabpfn", {
-
-
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
   # expect_marshalable_learner(learner, task)
@@ -46,8 +33,6 @@ test_that("marshaling works for regr.tabpfn", {
 })
 
 test_that("categorical feature columns are encoded correctly", {
-
-
   n = 6
   task = as_task_regr(
     data.frame(
@@ -66,8 +51,6 @@ test_that("categorical feature columns are encoded correctly", {
 })
 
 test_that("device selection works", {
-
-
   torch = reticulate::import("torch")
 
   learner = lrn("regr.tabpfn", device = "cpu")
@@ -104,8 +87,6 @@ test_that("inference_precision works", {
 })
 
 test_that("checks for memory saving mode work", {
-
-
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
 
