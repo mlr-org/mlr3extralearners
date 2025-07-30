@@ -55,7 +55,6 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
         }),
         softmax_temperature = p_dbl(default = 0.9, lower = 0, tags = "train"),
-        balance_probabilities = p_lgl(default = FALSE, tags = "train"),
         average_before_softmax = p_lgl(default = FALSE, tags = "train"),
         model_path = p_uty(default = "auto", tags = "train", custom_check = check_string),
         device = p_uty(default = "auto", tags = "train", custom_check = check_string),
