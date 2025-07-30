@@ -63,7 +63,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Ahdesmäki, Miika, Strimmer, Korbinian (2010).
+Ahdesmaeki, Miika, Strimmer, Korbinian (2010).
 \dQuote{Feature selection in omics prediction problems using cat scores and false nondiscovery rate control.}
 \emph{The Annals of Applied Statistics}, \bold{4}(1).
 ISSN 1932-6157, \doi{10.1214/09-aoas277}, \url{http://dx.doi.org/10.1214/09-AOAS277}.
@@ -106,6 +106,7 @@ annanzrv
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

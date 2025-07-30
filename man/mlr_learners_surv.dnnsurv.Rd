@@ -107,9 +107,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 }
 }
 
-\examples{
-lrn("surv.dnnsurv")
-}
 \references{
 Zhao, Lili, Feng, Dai (2019).
 \dQuote{Dnnsurv: Deep neural networks for survival analysis using pseudo values.}
