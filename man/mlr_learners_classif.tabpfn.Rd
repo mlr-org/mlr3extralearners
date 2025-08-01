@@ -10,10 +10,22 @@ Uses \CRANpkg{reticulate} to interface with the \href{https://github.com/PriorLa
 }
 \section{Installation}{
 
-While the Python dependencies are handled via \code{reticulate::py_require()}, you can
-manually specify a virtual environment by calling \code{reticulate::use_virtualenv()}
-prior to calling the \verb{$train()} function.
-In this virtual environment, the \code{tabpfn} package and its dependencies must be installed.
+This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
+It is not necessary to install any Python package manually in advance or specify a Python environment
+via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
+or \code{reticulate::use_miniconda()}.
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tapfn}, \code{torch}, etc.) will be installed
+automatically, if not already.
+Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
+\href{https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery}{Order of Discovery}
+contains all the necessary packages.
+
+You may also manually install \code{tabpfn} into a Python environment following the
+\href{https://github.com/PriorLabs/TabPFN?tab=readme-ov-file#-quick-start}{official installation guide}
+and specify the environment via \verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}.
+Note that the GPU version of PyTorch cannot be loaded by \code{reticulate::use_condaenv()} from a conda environment.
+To use a conda environment, please install the CPU version of PyTorch.
 }
 
 \section{Saving a Learner}{
@@ -39,9 +51,14 @@ you then need to call \verb{$unmarshal()} to transform it into a useable state.
 \item \code{device} must be a string.
 If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
-\item \code{inference_precision} must be \code{"auto"} or \code{"autocast"}.
-Passing \code{torch.dtype} is currently not supported.
+\item \code{inference_precision} must be \code{"auto"}, \code{"autocast"},
+or a \href{https://docs.pytorch.org/docs/stable/tensor_attributes.html}{\code{torch.dtype}} string,
+e.g., \code{"torch.float32"}, \code{"torch.float64"}, etc.
+Non-float dtypes are not supported.
 \item \code{inference_config} is currently not supported.
+\item \code{random_state} accepts either an integer or the special value \code{"None"}
+which corresponds to \code{None} in Python.
+Following the original Python implementation, the default \code{random_state} is \code{0}.
 }
 }
 
@@ -74,7 +91,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    model_path \tab untyped \tab "auto" \tab  \tab - \cr
    device \tab untyped \tab "auto" \tab  \tab - \cr
    ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   inference_precision \tab character \tab auto \tab auto, autocast \tab - \cr
+   inference_precision \tab character \tab auto \tab auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 \tab - \cr
    fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

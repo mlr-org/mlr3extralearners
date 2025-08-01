@@ -1,16 +1,21 @@
 # mlr3extralearners (development version)
 
-* feat: Added learner `LearnerCompRisksRandomForestSRC`
-* feat: Added `selected_features` property to RandomForestSRC learners (prediction doesn't work if `vars.used = 'all.trees'`)
-* fix: Removed parameters from RandomForestSRC learners that weren't used + optimized tests
-* fix: Remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
-* feat: Added learner `LearnerSurvBlockForest`.
-* feat: Added learner `LearnerClassifFastai`.
-* feat: Added learners `LearnerRegrPenalized` and `LearnerClassifPenalized`.
-* feat: Added learners `LearnerClassifBst` and `LearnerRegrBst`.
-* feat: Added learner `LearnerClassifAdaBoosting`.
-* feat: Added learners `LearnerClassifEvtree` and `LearnerRegrEvtree`.
-* feat: Added learner `LearnerClassifKnn`.
+## New Features:
+
+* New Learners: 
+  - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr}ExhaustiveSearch`
+  - `LearnerClassifFastai`
+  - `Learner{Classif,Regr}Penalized`
+  - `Learner{Classif,Regr}Bst`
+  - `LearnerClassifAdaBoosting`
+  - `Learner{Classif,Regr}Evtree`
+  - `LearnerClassifKnn`
+
+## Bugfixes:
+
+* remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
+  survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 
 # mlr3extralearners 1.1.0
 
