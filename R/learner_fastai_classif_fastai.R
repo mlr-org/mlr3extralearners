@@ -321,6 +321,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 # Wrapper for eval measure to include in fastai
 metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   reticulate::py_require("fastai")
+  reticulate::py_require("numpy")
 
   # label is a vector of labels (0, 1, ..., n_classes - 1)
   pred = fastai::as_array(pred)
