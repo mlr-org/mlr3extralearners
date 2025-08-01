@@ -64,10 +64,21 @@ Uses <a href="https://CRAN.R-project.org/package=reticulate" class="external-lin
     <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a></h2>
 
 
-<p>While the Python dependencies are handled via <code><a href="https://rstudio.github.io/reticulate/reference/py_require.html" class="external-link">reticulate::py_require()</a></code>, you can
-manually specify a virtual environment by calling <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_virtualenv()</a></code>
-prior to calling the <code>$train()</code> function.
-In this virtual environment, the <code>tabpfn</code> package and its dependencies must be installed.</p>
+<p>This learner relies on <a href="https://CRAN.R-project.org/package=reticulate" class="external-link"><span class="pkg">reticulate</span></a> to handle Python dependencies.
+It is not necessary to install any Python package manually in advance or specify a Python environment
+via <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_python()</a></code>, <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_virtualenv()</a></code>, <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_condaenv()</a></code>,
+or <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_miniconda()</a></code>.
+By calling <code>$train()</code> or <code>$predict()</code>, the required Python packages (<code>tapfn</code>, <code>torch</code>, etc.) will be installed
+automatically, if not already.
+Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+unless an existing environment (e.g., <code>"r-reticulate"</code>) in reticulate's
+<a href="https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery" class="external-link">Order of Discovery</a>
+contains all the necessary packages.</p>
+<p>You may also manually install <code>tabpfn</code> into a Python environment following the
+<a href="https://github.com/PriorLabs/TabPFN?tab=readme-ov-file#-quick-start" class="external-link">official installation guide</a>
+and specify the environment via <code>reticulate::use_*()</code> before calling <code>$train()</code> or <code>$predict()</code>.
+Note that the GPU version of PyTorch cannot be loaded by <code><a href="https://rstudio.github.io/reticulate/reference/use_python.html" class="external-link">reticulate::use_condaenv()</a></code> from a conda environment.
+To use a conda environment, please install the CPU version of PyTorch.</p>
     </div>
     <div class="section level2">
     <h2 id="saving-a-learner">Saving a Learner<a class="anchor" aria-label="anchor" href="#saving-a-learner"></a></h2>
@@ -93,9 +104,14 @@ you then need to call <code>$unmarshal()</code> to transform it into a useable s
 <li><p><code>device</code> must be a string.
 If set to <code>"auto"</code>, the behavior is the same as original.
 Otherwise, the string is passed as argument to <code>torch.device()</code> to create a device.</p></li>
-<li><p><code>inference_precision</code> must be <code>"auto"</code> or <code>"autocast"</code>.
-Passing <code>torch.dtype</code> is currently not supported.</p></li>
+<li><p><code>inference_precision</code> must be <code>"auto"</code>, <code>"autocast"</code>,
+or a <a href="https://docs.pytorch.org/docs/stable/tensor_attributes.html" class="external-link"><code>torch.dtype</code></a> string,
+e.g., <code>"torch.float32"</code>, <code>"torch.float64"</code>, etc.
+Non-float dtypes are not supported.</p></li>
 <li><p><code>inference_config</code> is currently not supported.</p></li>
+<li><p><code>random_state</code> accepts either an integer or the special value <code>"None"</code>
+which corresponds to <code>None</code> in Python.
+Following the original Python implementation, the default <code>random_state</code> is <code>0</code>.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -116,7 +132,7 @@ Passing <code>torch.dtype</code> is currently not supported.</p></li>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>n_estimators</td><td>integer</td><td>4</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>categorical_features_indices</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>softmax_temperature</td><td>numeric</td><td>0.9</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>balance_probabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>average_before_softmax</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model_path</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>ignore_pretraining_limits</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>inference_precision</td><td>character</td><td>auto</td><td>auto, autocast</td><td>-</td></tr><tr><td>fit_mode</td><td>character</td><td>fit_preprocessors</td><td>low_memory, fit_preprocessors, fit_with_cache</td><td>-</td></tr><tr><td>memory_saving_mode</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>random_state</td><td>integer</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>n_jobs</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>n_estimators</td><td>integer</td><td>4</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>categorical_features_indices</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>softmax_temperature</td><td>numeric</td><td>0.9</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>balance_probabilities</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>average_before_softmax</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>model_path</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>ignore_pretraining_limits</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>inference_precision</td><td>character</td><td>auto</td><td>auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16</td><td>-</td></tr><tr><td>fit_mode</td><td>character</td><td>fit_preprocessors</td><td>low_memory, fit_preprocessors, fit_with_cache</td><td>-</td></tr><tr><td>memory_saving_mode</td><td>untyped</td><td>"auto"</td><td></td><td>-</td></tr><tr><td>random_state</td><td>integer</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>n_jobs</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Hollmann, Noah, Müller, Samuel, Purucker, Lennart, Krishnakumar, Arjun, Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
