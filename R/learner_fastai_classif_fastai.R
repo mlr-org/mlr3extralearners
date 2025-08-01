@@ -149,7 +149,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
-      assert_python_packages("fastai")
+      assert_python_packages(c("fastai", "numpy"))
 
       formula = task$formula()
       data = task$data()
@@ -279,7 +279,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .predict = function(task) {
-      assert_python_packages("fastai")
+      assert_python_packages(c("fastai", "numpy"))
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
