@@ -15,8 +15,6 @@ test_that("eval protocol", {
 
 
 test_that("validation and inner tuning works", {
-
-
   task = tsk("spam")
 
   # with n_epoch and patience parameter
@@ -82,8 +80,6 @@ test_that("validation and inner tuning works", {
 })
 
 test_that("custom inner validation measure", {
-
-
   # internal measure
   task = tsk("sonar")
 
@@ -191,8 +187,6 @@ test_that("custom inner validation measure", {
 })
 
 test_that("marshaling works for classif.fastai", {
-
-
   learner = lrn("classif.fastai")
   task = tsk("iris")
   # expect_marshalable_learner(learner, task)
