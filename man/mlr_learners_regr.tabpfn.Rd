@@ -90,7 +90,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    n_estimators \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    categorical_features_indices \tab untyped \tab - \tab  \tab - \cr
    softmax_temperature \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   balance_probabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_before_softmax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    model_path \tab untyped \tab "auto" \tab  \tab - \cr
    device \tab untyped \tab "auto" \tab  \tab - \cr

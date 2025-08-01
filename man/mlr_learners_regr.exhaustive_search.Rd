@@ -9,9 +9,6 @@ Linear Regression, where the features used in the model are selected by running 
 
 Calls \code{\link[ExhaustiveSearch:ExhaustiveSearch]{ExhaustiveSearch::ExhaustiveSearch()}} from \CRANpkg{ExhaustiveSearch}.
 }
-\details{
-Internal validation not yet implemented.
-}
 \section{Initial parameter values}{
 
 \itemize{
@@ -19,7 +16,8 @@ Internal validation not yet implemented.
 \itemize{
 \item Actual default: NULL
 \item Adjusted default: "gaussian"
-\item Reason for change: To comply with mlr3 architecture, we differentiate between classification and regression learners.
+\item Reason for change: To comply with mlr3 architecture,
+we differentiate between classification and regression learners.
 }
 \item \code{nThreads}:
 \itemize{
@@ -50,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}, \dQuote{se}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}
+\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{ExhaustiveSearch}
 }
 }
@@ -71,6 +69,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+\dontshow{if (mlr3misc::require_namespaces("ExhaustiveSearch", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # define learner
 learner = LearnerRegrExhaustiveSearch$new()
 learner$predict_type = "se"
@@ -86,6 +85,7 @@ learner$selected_features()
 
 # predict on training task
 learner$predict(tsk_cars)
+\dontshow{\}) # examplesIf}
 }
 \seealso{
 \itemize{
@@ -125,6 +125,7 @@ ngerman
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}
