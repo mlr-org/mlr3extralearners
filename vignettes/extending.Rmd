@@ -203,7 +203,7 @@ model = rpart::rpart(mpg ~ ., data = mtcars, xval = 0)
 We need to pass the formula notation `mpg ~ .`, the data and the hyperparameters.
 To get the hyperparameters, we call `self$param_set$get_values(tag = "train")` and thereby query all parameters that are using during `"train"`.
 Then, the dataset is extracted from the `Task`.
-Because the learner has the property `"weights"`, we insert the weights of the task if there are any.
+Because the learner has the property `"weights"`, we insert the weights of the task if there are any, by calling `$.get_weights()` to to retrieve them.
 Then we obtain the formula from the task using `task$formula()` and access the training data using `task$data()`.
 Last, we call the upstream function `rpart::rpart()` with the data and pass all hyperparameters via argument `.args` using the `mlr3misc::invoke()` function.
 The latter is simply an optimized version of `do.call()` that we use within the `mlr3` ecosystem.
@@ -288,6 +288,46 @@ importance = function() {
   }
 }
 ```
+
+## Internal Validation and Tuning:
+
+Some learners, such as boosting algorithms (e.g., LightGBM), or deep learning models support validation data during the training to monitor the validation performance during training.
+This validation data can also be used to internally tune hyperparameters, e.g., the number of boosting iterations in LightGBM or the number of epochs in FastAi, enabling early stopping.
+
+**Internal Validation**
+
+Add the `"validation"` property to the learner. Then, implement the `$internal_valid_scores` active binding to retrieve the validation scores computed during training, and the `$validate` binding to serve as a getter/setter for the internal validation set.
+
+```{r}
+active = list(
+  #' @field internal_valid_scores
+  internal_valid_scores = function() {
+    self$state$internal_valid_scores
+  }
+  
+  #' @field validate
+  validate = function(rhs) {
+    if (!missing(rhs)) {
+      private$.validate = mlr3::assert_validate(rhs)
+    }
+    private$.validate
+  }
+)
+```
+
+Additionally, implement the private method `$.extract_internal_valid_scores()` which returns the (final) internal validation scores from the model of the `Learner` as a named `list()` of `numeric(1)`.
+If the model is not trained yet, this method should return `NULL`. Also, add a private field `.validate = NULL` to store the internal validation set. This will later be accessed or modified via the active binding `$validate()`.
+
+**Internal Tuning**
+
+Internal tuning _can_ rely on internal validation data, but it doesn't necessarily have to. To enable internal tuning and early stopping, annotate the learner with the `"internal_tuning"` property. Then, add the active binding `$internal_tuned_values` which accesses internal hyperparameters that were automatically tuned during training, such as last epoch that yielded improvement
+
+
+## Implement a python-powered learner with reticulate
+
+Some learners rely on Python packages like fastai, tabpfn, or survivalmodels. To implement such learners, you need to utilize the `reticulate` R package that provides seamless  interoperability between R and Python. It allows you to call Python code, import Python modules, and work with Python modules directly from R. `reticulate`
+
+
 
 ## Testing the learner
 
