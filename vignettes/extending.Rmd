@@ -366,7 +366,7 @@ class(fastai::TabularDataTable(df = iris))
 #> [5] "fastai.data.core.FilteredBase"     "python.builtin.object"   
 ```
 
-Generally, you need to explicitly convert an R object into a Python-compatible object using `reticulate::r_to_py()`, before passing it to a Python function or class method. Furthermore, you want to convert a Python object into an R-native format with `reticulate::py_to_r()`, to use it in downstream R functions or to extract values for inspection or postprocessing. Note, that you must force `NaN` in R objects to make the conversion work, otherwise `reticulate` will not properly convert `NA`s in logical and integer columns to `numpy.na`
+Generally, you need to explicitly convert an R object into a Python-compatible object using `reticulate::r_to_py()`, before passing it to a Python function or class method. Furthermore, you want to convert a Python object into an R-native format with `reticulate::py_to_r()`, to use it in downstream R functions or to extract values for inspection or postprocessing. Note, that you must force `NaN` in R objects to make the conversion work, otherwise `reticulate` will not properly convert `NA`s in logical and integer columns to `numpy.na`.
 
 By default, `reticulate` creates and uses a Conda environment called `"r-reticulate"` to manage Python dependencies for R projects. This environment is automatically created the first time you install a Python package via `reticulate::py_install()`.
 Unless you explicitly set another Python path (via `use_python()` or `use_condaenv()`), `reticulate` defaults to using `"r-reticulate"`.
@@ -394,6 +394,34 @@ Here is a minimal working example showing the `.train()` function of `LearnerCla
   y_py = reticulate::r_to_py(y)
   fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
 
+  structure(list(fitted = fitted), class = "tabpfn_model")
+}
+```
+
+### Marshaling
+
+For learners that wrap Python models, marshaling requires special handling, because the underlying model lives in the Python runtime and cannot be directly serialized with R. Instead, you need to use the `pickle` Python module. It should be available in any Python environment, so you do not need to assert it with `assert_python_packages`. You simply load it with `reticulate::import("pickle")`.
+Here's an example of how marshal_model() and unmarshal_model() are implemented for `LearnerClassifTabPFN`:
+
+```{r, eval=FALSE}
+marshal_model.tabpfn_model = function(model, inplace = FALSE, ...) {
+  reticulate::py_require("tabpfn")
+  reticulate::import("tabpfn")
+  pickle = reticulate::import("pickle")
+  pickled = pickle$dumps(model$fitted)
+  pickled = as.raw(pickled)
+
+  structure(list(
+    marshaled = pickled,
+    packages = "mlr3extralearners"
+  ), class = c("tabpfn_model_marshaled", "marshaled"))
+}
+
+unmarshal_model.tabpfn_model_marshaled = function(model, inplace = FALSE, ...) {
+  reticulate::py_require("tabpfn")
+  reticulate::import("tabpfn")
+  pickle = reticulate::import("pickle")
+  fitted = pickle$loads(reticulate::r_to_py(model$marshaled))
   structure(list(fitted = fitted), class = "tabpfn_model")
 }
 ```
