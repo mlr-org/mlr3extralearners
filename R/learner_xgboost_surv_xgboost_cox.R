@@ -152,16 +152,16 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
-      mlr3::learner_marshal(.learner = self, ...)
+      learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
-      mlr3::learner_unmarshal(.learner = self, ...)
+      learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -189,7 +189,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' @field marshaled (`logical(1)`)\cr
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      mlr3::learner_marshaled(self)
+      learner_marshaled(self)
     }
   ),
 

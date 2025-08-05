@@ -118,10 +118,20 @@ henrifnk
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifJRip}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{marshaled}}{(\code{logical(1)})\cr
+Whether the learner has been marshaled.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifJRip-new}{\code{LearnerClassifJRip$new()}}
+\item \href{#method-LearnerClassifJRip-marshal}{\code{LearnerClassifJRip$marshal()}}
+\item \href{#method-LearnerClassifJRip-unmarshal}{\code{LearnerClassifJRip$unmarshal()}}
 \item \href{#method-LearnerClassifJRip-clone}{\code{LearnerClassifJRip$clone()}}
 }
 }
@@ -152,6 +162,42 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifJRip$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifJRip-marshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifJRip-marshal}{}}}
+\subsection{Method \code{marshal()}}{
+Marshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifJRip$marshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifJRip-unmarshal"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifJRip-unmarshal}{}}}
+\subsection{Method \code{unmarshal()}}{
+Unmarshal the learner's model.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifJRip$unmarshal(...)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifJRip-clone"></a>}}

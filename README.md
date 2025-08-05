@@ -33,8 +33,7 @@ pak::pak("mlr-org/mlr3extralearners")
 ```
 
 Alternatively, you can add the following to your .Rprofile, which allows
-you to install `mlr3extralearners` via `install.packages()`. Note that
-this will install the development version.
+you to install `mlr3extralearners` via `install.packages()`.
 
 ``` r
 # .Rprofile

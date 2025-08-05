@@ -15,7 +15,7 @@ test_that("#353", {
   )
 
   pred = rr$prediction()
-  assert_true(all(abs(rowSums(pred$prob) - 1) < 0.001))
+  expect_true(all(abs(rowSums(pred$prob) - 1) < 0.001))
 })
 
 test_that("early stopping works", {
