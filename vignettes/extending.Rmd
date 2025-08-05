@@ -353,10 +353,50 @@ p_n_epoch = p_int(1L,
 ## Implement a python-powered learner with reticulate
 
 Some learners rely on Python packages like `fastai`, `tabpfn`, or `pycox`. To implement such learners, you need to utilize the `reticulate` R package that provides seamless interoperability between R and Python. It allows you to call Python code, import Python modules, and work with Python modules directly from R. 
+Type conversion happens for most basic and structured types automatically when passing objects between R and Python. However, not all Python objects have a direct R equivalent. When such objects are returned to R, `reticulate` does not convert them but instead, it creates a reference to the original Python object that remains in memory. These objects can still be used and interacted with directly from R. To manage these references, `reticulate` assigns them the S3 class `python.builtin.object`.
+
+```{r, eval=FALSE}
+np = reticulate::import("numpy")
+class(np)
+#> [1] "python.builtin.module" "python.builtin.object"
+
+class(fastai::TabularDataTable(df = iris))
+#> [1] "fastai.tabular.core.TabularPandas" "fastai.tabular.core.Tabular"      
+#> [3] "fastcore.foundation.CollBase"      "fastcore.basics.GetAttr"          
+#> [5] "fastai.data.core.FilteredBase"     "python.builtin.object"   
+```
+
+Generally, you need to explicitly convert an R object into a Python-compatible object using `reticulate::r_to_py()`, before passing it to a Python function or class method. Furthermore, you want to convert a Python object into an R-native format with `reticulate::py_to_r()`, to use it in downstream R functions or to extract values for inspection or postprocessing. Note, that you must force `NaN` in R objects to make the conversion work, otherwise `reticulate` will not properly convert `NA`s in logical and integer columns to `numpy.na`
+
 By default, `reticulate` creates and uses a Conda environment called `"r-reticulate"` to manage Python dependencies for R projects. This environment is automatically created the first time you install a Python package via `reticulate::py_install()`.
 Unless you explicitly set another Python path (via `use_python()` or `use_condaenv()`), `reticulate` defaults to using `"r-reticulate"`.
 
 In the learner's `.train()` and `.predict()` methods, you will typically either call a Python module directly, e.g., `np = reticulate::import("numpy")`, or use an R wrapper package that internally handles the Python interaction, such as `fastai`. To ensure the required Python modules are available and working correctly, add `assert_python_packages("<python-package>")` at the very beginning of both the `.train()` *and* `.predict()` functions. This checks that the package is installed and ready to use.
+
+Here is a minimal working example showing the `.train()` function of `LearnerClassifTabPFN`:
+
+```{r, eval=FALSE}
+.train = function(task) {
+  assert_python_packages(c("torch", "tabpfn"))
+  tabpfn = reticulate::import("tabpfn")
+  pars = self$param_set$get_values(tags = "train")
+
+  if (!is.null(pars$device) && pars$device != "auto") {
+    torch = reticulate::import("torch")
+    pars$device = torch$device(pars$device)
+  }
+  x = as.matrix(task$data(cols = task$feature_names))
+  x[is.na(x)] = NaN
+  y = task$truth()
+
+  classifier = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
+  x_py = reticulate::r_to_py(x)
+  y_py = reticulate::r_to_py(y)
+  fitted = mlr3misc::invoke(classifier$fit, X = x_py, y = y_py)
+
+  structure(list(fitted = fitted), class = "tabpfn_model")
+}
+```
 
 ## Testing the learner
 
