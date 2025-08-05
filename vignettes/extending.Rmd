@@ -289,7 +289,7 @@ importance = function() {
 }
 ```
 
-## Internal Validation and Tuning:
+## Internal Validation and Tuning
 
 Some learners, such as boosting algorithms (e.g., LightGBM), or deep learning models support validation data during the training to monitor the validation performance during training.
 This validation data can also be used to internally tune hyperparameters, e.g., the number of boosting iterations in LightGBM or the number of epochs in FastAi, enabling early stopping.
@@ -298,7 +298,7 @@ This validation data can also be used to internally tune hyperparameters, e.g., 
 
 Add the `"validation"` property to the learner. Then, implement the `$internal_valid_scores` active binding to retrieve the validation scores computed during training, and the `$validate` binding to serve as a getter/setter for the internal validation set.
 
-```{r}
+```{r, eval=FALSE}
 active = list(
   #' @field internal_valid_scores
   internal_valid_scores = function() {
@@ -320,14 +320,43 @@ If the model is not trained yet, this method should return `NULL`. Also, add a p
 
 **Internal Tuning**
 
-Internal tuning _can_ rely on internal validation data, but it doesn't necessarily have to. To enable internal tuning and early stopping, annotate the learner with the `"internal_tuning"` property. Then, add the active binding `$internal_tuned_values` which accesses internal hyperparameters that were automatically tuned during training, such as last epoch that yielded improvement
+Internal tuning _can_ rely on internal validation data, but it doesn't necessarily have to. To enable internal tuning and early stopping, annotate the learner with the `"internal_tuning"` property. Then, add the active binding `$internal_tuned_values` which accesses internal hyperparameters that were automatically tuned during training, e.g., last epoch that yielded improvement in `LearnerClassifFastai`. Similar to internal validation, implement the `$internal_tuned_values` active binding and the private method `$.extract_internal_tuned_values()` which should return the internally tuned values from the learner's model as a named `list()`. If the model is not trained yet or internal tuning is disabled, this method should return `NULL`.
+For example, `LearnerClassifFastai` supports early stopping by tuning the number of epochs and stopping when no further improvement is observed. This behavior is activated by setting the `"patience"` parameter in the learner’s `ParamSet` to a non-null value. The tuned value can then be accessed by the `eval_protocol` which itself is set in the `.train` function:
+
+```{r, eval=FALSE}
+.extract_internal_tuned_values = function() {
+  if (is.null(self$state$param_vals$patience) || is.null(self$state$eval_protocol)) {
+    return(NULL)
+  }
+  list(n_epoch = max(self$state$eval_protocol$epoch) + 1)
+}
+```
+
+The parameter that is ought to be tuned by internal tuning must must be tagged with `"internal_tuning"`, which requires to also provide a `in_tune_fn` and `disable_tune_fn`, and should also include a default aggregation function.
+
+```{r}
+p_n_epoch = p_int(1L,
+  tags = c("train", "hotstart", "internal_tuning"),
+  init = 5L,
+  aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
+  in_tune_fn = crate(function(domain, param_vals) {
+    if (is.null(param_vals$patience)) {
+      stop("Parameter 'patience' must be set to use internal tuning.")
+    }
+    assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
+  }, .parent = topenv()),
+  disable_in_tune = list(n_epoch = NULL)
+)
+```
 
 
 ## Implement a python-powered learner with reticulate
 
-Some learners rely on Python packages like fastai, tabpfn, or survivalmodels. To implement such learners, you need to utilize the `reticulate` R package that provides seamless  interoperability between R and Python. It allows you to call Python code, import Python modules, and work with Python modules directly from R. `reticulate`
+Some learners rely on Python packages like `fastai`, `tabpfn`, or `pycox`. To implement such learners, you need to utilize the `reticulate` R package that provides seamless interoperability between R and Python. It allows you to call Python code, import Python modules, and work with Python modules directly from R. 
+By default, `reticulate` creates and uses a Conda environment called `"r-reticulate"` to manage Python dependencies for R projects. This environment is automatically created the first time you install a Python package via `reticulate::py_install()`.
+Unless you explicitly set another Python path (via `use_python()` or `use_condaenv()`), `reticulate` defaults to using `"r-reticulate"`.
 
-
+In the learner's `.train()` and `.predict()` methods, you will typically either call a Python module directly, e.g., `np = reticulate::import("numpy")`, or use an R wrapper package that internally handles the Python interaction, such as `fastai`. To ensure the required Python modules are available and working correctly, add `assert_python_packages("<python-package>")` at the very beginning of both the `.train()` *and* `.predict()` functions. This checks that the package is installed and ready to use.
 
 ## Testing the learner
 
@@ -422,7 +451,6 @@ test_that("paramtest", {
   expect_true(result, info = result$error)
 })
 ```
-
 
 ## Contributing to mlr3extralearners
 
