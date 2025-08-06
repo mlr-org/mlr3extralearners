@@ -10,10 +10,22 @@ Uses \CRANpkg{reticulate} to interface with the \href{https://github.com/PriorLa
 }
 \section{Installation}{
 
-While the Python dependencies are handled via \code{reticulate::py_require()}, you can
-manually specify a virtual environment by calling \code{reticulate::use_virtualenv()}
-prior to calling the \verb{$train()} function.
-In this virtual environment, the \code{tabpfn} package and its dependencies must be installed.
+This learner relies on \CRANpkg{reticulate} to handle Python dependencies.
+It is not necessary to install any Python package manually in advance or specify a Python environment
+via \code{reticulate::use_python()}, \code{reticulate::use_virtualenv()}, \code{reticulate::use_condaenv()},
+or \code{reticulate::use_miniconda()}.
+By calling \verb{$train()} or \verb{$predict()}, the required Python packages (\code{tapfn}, \code{torch}, etc.) will be installed
+automatically, if not already.
+Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+unless an existing environment (e.g., \code{"r-reticulate"}) in reticulate's
+\href{https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery}{Order of Discovery}
+contains all the necessary packages.
+
+You may also manually install \code{tabpfn} into a Python environment following the
+\href{https://github.com/PriorLabs/TabPFN?tab=readme-ov-file#-quick-start}{official installation guide}
+and specify the environment via \verb{reticulate::use_*()} before calling \verb{$train()} or \verb{$predict()}.
+Note that the GPU version of PyTorch cannot be loaded by \code{reticulate::use_condaenv()} from a conda environment.
+To use a conda environment, please install the CPU version of PyTorch.
 }
 
 \section{Saving a Learner}{
@@ -42,9 +54,14 @@ The point predictions are stored as \verb{$response} of the prediction object.
 \item \code{device} must be a string.
 If set to \code{"auto"}, the behavior is the same as original.
 Otherwise, the string is passed as argument to \code{torch.device()} to create a device.
-\item \code{inference_precision} must be \code{"auto"} or \code{"autocast"}.
-Passing \code{torch.dtype} is currently not supported.
+\item \code{inference_precision} must be \code{"auto"}, \code{"autocast"},
+or a \href{https://docs.pytorch.org/docs/stable/tensor_attributes.html}{\code{torch.dtype}} string,
+e.g., \code{"torch.float32"}, \code{"torch.float64"}, etc.
+Non-float dtypes are not supported.
 \item \code{inference_config} is currently not supported.
+\item \code{random_state} accepts either an integer or the special value \code{"None"}
+which corresponds to \code{None} in Python.
+Following the original Python implementation, the default \code{random_state} is \code{0}.
 }
 }
 
@@ -73,12 +90,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    n_estimators \tab integer \tab 4 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    categorical_features_indices \tab untyped \tab - \tab  \tab - \cr
    softmax_temperature \tab numeric \tab 0.9 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   balance_probabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_before_softmax \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    model_path \tab untyped \tab "auto" \tab  \tab - \cr
    device \tab untyped \tab "auto" \tab  \tab - \cr
    ignore_pretraining_limits \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   inference_precision \tab character \tab auto \tab auto, autocast \tab - \cr
+   inference_precision \tab character \tab auto \tab auto, autocast, torch.float32, torch.float, torch.float64, torch.double, torch.float16, torch.half, torch.bfloat16 \tab - \cr
    fit_mode \tab character \tab fit_preprocessors \tab low_memory, fit_preprocessors, fit_with_cache \tab - \cr
    memory_saving_mode \tab untyped \tab "auto" \tab  \tab - \cr
    random_state \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -86,31 +102,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 }
 
-\examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.tabpfn")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("regr.tabpfn")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("mtcars")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
 Hollmann, Noah, Müller, Samuel, Purucker, Lennart, Krishnakumar, Arjun, Körfer, Max, Hoo, Bin S, Schirrmeister, Tibor R, Hutter, Frank (2025).
 \dQuote{Accurate predictions on small data with a tabular foundation model.}
@@ -169,6 +160,7 @@ Whether the learner has been marshaled.}
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}
@@ -195,7 +187,7 @@ Marshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=marshal_model]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -213,7 +205,7 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=unmarshal_model]{unmarshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }

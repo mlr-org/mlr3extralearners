@@ -36,8 +36,7 @@ test_that("paramtest surv.parametric predict", {
     "form", # handled internally
     "times", # handled internally
     "ntime", # handled internally
-    "round_time", # handled internally
-    "discrete"
+    "round_time" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun = fun, exclude, tag = "predict")

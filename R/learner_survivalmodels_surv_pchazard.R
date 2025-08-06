@@ -29,7 +29,6 @@
 #' `r format_bib("kvamme2019continuous")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
 LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
   inherit = mlr3proba::LearnerSurv,
@@ -133,6 +132,7 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
 
   private = list(
     .train = function(task) {
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -146,7 +146,7 @@ LearnerSurvPCHazard = R6Class("LearnerSurvPCHazard",
     },
 
     .predict = function(task) {
-
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 

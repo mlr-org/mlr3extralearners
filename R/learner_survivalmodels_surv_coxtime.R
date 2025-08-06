@@ -22,7 +22,6 @@
 #' `r format_bib("kvamme2019time")`
 #'
 #' @template seealso_learner
-#' @template simple_example
 #' @export
 LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
   inherit = mlr3proba::LearnerSurv,
@@ -121,6 +120,7 @@ LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
 
   private = list(
     .train = function(task) {
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
 
       pars = self$param_set$get_values(tags = "train")
       invoke(
@@ -134,6 +134,7 @@ LearnerSurvCoxtime = R6Class("LearnerSurvCoxtime",
     },
 
     .predict = function(task) {
+      assert_python_packages(c("torch", "pycox", "numpy"), python_version = "3.10")
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)

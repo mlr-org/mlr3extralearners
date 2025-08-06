@@ -98,9 +98,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-lrn("surv.deephit")
-}
 \references{
 Lee, Changhee, Zame, William, Yoon, Jinsung, Van Der Schaar, Mihaela (2018).
 \dQuote{Deephit: A deep learning approach to survival analysis with competing risks.}
