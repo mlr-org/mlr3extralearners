@@ -249,7 +249,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         # direction for internal tuning
         # if mlr3 measure and minimize use numpy less
         comp = if (inherits(measure, "Measure") && measure$minimize) {
-          np = reticulate::import("numpy")
+          np = reticulate::import("numpy", delay_load = TRUE)
           np$less
         }
 
