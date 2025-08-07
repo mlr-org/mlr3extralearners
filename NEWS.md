@@ -11,6 +11,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifRferns`
 
 ## Bugfixes:
 
