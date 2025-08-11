@@ -31,7 +31,7 @@ test_that("paramtest surv.aorsf train", {
 
 test_that("paramtest surv.aorsf predict", {
   learner = lrn("surv.aorsf")
-  fun_list = list(aorsf:::predict.ObliqueForest)
+  fun_list = list(aorsf:::predict.ObliqueForest) # nolint
   exclude = c(
     "object", # handled internally
     "new_data", # handled internally

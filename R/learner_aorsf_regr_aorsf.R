@@ -72,7 +72,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         split_min_events        = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_obs           = p_int(default = 10, lower = 1L, tags = "train"),
         split_min_stat          = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
-        split_rule              = p_fct(levels = c("variance"), default = "variance", tags = "train"),
+        split_rule              = p_fct(levels = "variance", default = "variance", tags = "train"),
         target_df               = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         tree_seeds              = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         verbose_progress        = p_lgl(default = FALSE, tags = "train"))
