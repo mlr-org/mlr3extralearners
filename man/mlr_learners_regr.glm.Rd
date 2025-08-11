@@ -37,7 +37,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    etastart \tab untyped \tab - \tab  \tab - \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
    start \tab untyped \tab NULL \tab  \tab - \cr
-   offset \tab untyped \tab - \tab  \tab - \cr
    family \tab character \tab gaussian \tab gaussian, poisson, quasipoisson, Gamma, inverse.gaussian \tab - \cr
    na.action \tab character \tab - \tab na.omit, na.pass, na.fail, na.exclude \tab - \cr
    link \tab character \tab - \tab logit, probit, cauchit, cloglog, identity, log, sqrt, 1/mu^2, inverse \tab - \cr
@@ -46,6 +45,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    dispersion \tab untyped \tab NULL \tab  \tab - \cr
    type \tab character \tab link \tab response, link, terms \tab - \cr
+   use_pred_offset \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -54,11 +54,22 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item \code{type}
 \itemize{
-\item Actual default: "link"
-\item Adjusted default: "response"
+\item Actual default: \code{"link"}
+\item Adjusted default: \code{"response"}
 \item Reason for change: Response scale more natural for predictions.
 }
 }
+}
+
+\section{Offset}{
+
+If a \code{Task} has a column with the role \code{offset}, it will automatically be used during training.
+The offset is incorporated through the formula interface to ensure compatibility with \code{\link[stats:glm]{stats::glm()}}.
+We add it to the model formula as \verb{offset(<column_name>)} and also include it in the training data.
+During prediction, the default behavior is to use the offset column from the
+test set (enabled by \code{use_pred_offset = TRUE}).
+Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
+effectively disabling the offset adjustment during prediction.
 }
 
 \examples{
@@ -119,6 +130,7 @@ salauer
 <details><summary>Inherited methods</summary>
 <ul>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href='../../mlr3/html/Learner.html#method-Learner-base_learner'><code>mlr3::Learner$base_learner()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href='../../mlr3/html/Learner.html#method-Learner-configure'><code>mlr3::Learner$configure()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="encapsulate"><a href='../../mlr3/html/Learner.html#method-Learner-encapsulate'><code>mlr3::Learner$encapsulate()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="format"><a href='../../mlr3/html/Learner.html#method-Learner-format'><code>mlr3::Learner$format()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="help"><a href='../../mlr3/html/Learner.html#method-Learner-help'><code>mlr3::Learner$help()</code></a></span></li>
@@ -126,7 +138,9 @@ salauer
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="predict_newdata"><a href='../../mlr3/html/Learner.html#method-Learner-predict_newdata'><code>mlr3::Learner$predict_newdata()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="print"><a href='../../mlr3/html/Learner.html#method-Learner-print'><code>mlr3::Learner$print()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

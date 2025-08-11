@@ -46,7 +46,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
+        n_thread = p_int(init = 1, lower = 0, tags = c("train", "predict", "threads")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
         oobag = p_lgl(default = FALSE, tags = 'predict'),
@@ -84,15 +84,13 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
         na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
 
-      ps$values = list(n_thread = 1)
-
       super$initialize(
         id = "surv.aorsf",
         packages = c("mlr3extralearners", "aorsf", "pracma"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr", "response"),
         param_set = ps,
-        properties = c("oob_error", "importance", "missings"),
+        properties = c("oob_error", "importance", "missings", "weights"),
         man = "mlr3extralearners::mlr_learners_surv.aorsf",
         label = "Oblique Random Forest"
       )
@@ -125,7 +123,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       # helper function to organize aorsf control function inputs
       dflt_if_null = function(params, slot_name) {
         out = params[[slot_name]]
-        if (is.null(out)) out <- self$param_set$default[[slot_name]]
+        if (is.null(out)) out = self$param_set$default[[slot_name]]
         out
       }
       # default value for oobag_eval_every is ntree, but putting
@@ -180,7 +178,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         aorsf::orsf,
         data = task$data(),
         formula = task$formula(),
-        weights = task$weights,
+        weights = private$.get_weights(task),
         control = control,
         no_fit = FALSE,
         .args = pv

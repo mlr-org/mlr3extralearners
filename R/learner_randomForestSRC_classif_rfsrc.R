@@ -81,8 +81,6 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
           default = "na.omit", levels = c("na.omit", "na.impute"),
           tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
-        ntime = p_int(lower = 1L, tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
@@ -100,7 +98,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         forest = p_lgl(default = TRUE, tags = "train"),
         var.used = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         split.depth = p_fct(
           default = "FALSE",
           levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
@@ -115,7 +113,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train"), # nolint
-        case.depth = p_lgl(default = FALSE, tags = c("train", "predict"))
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
+        marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
       super$initialize(
@@ -124,11 +123,8 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        # selected features is possible but there's a bug somewhere in rfsrc so that the model
-        # can be trained but not predicted. so public method retained but property not included
-        properties = c(
-          "weights", "missings", "importance", "oob_error",
-          "twoclass", "multiclass"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features",
+                       "twoclass", "multiclass"),
         man = "mlr3extralearners::mlr_learners_classif.rfsrc",
         label = "Random Forest"
       )
@@ -149,10 +145,18 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
 
     #' @description
     #' Selected features are extracted from the model slot `var.used`.
+    #'
+    #' **Note**: Due to a known issue in `randomForestSRC`, enabling `var.used = "all.trees"`
+    #' causes prediction to fail. Therefore, this setting should be used exclusively
+    #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
@@ -173,10 +177,7 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
       pv = convert_ratio(pv, "sampsize", "sampsize.ratio", task$nrow)
       cores = pv$cores %??% 1L
       pv$cores = NULL
-
-      if ("weights" %in% task$properties) {
-        pv$case.wt = as.numeric(task$weights$weight) # nolint
-      }
+      pv$case.wt = private$.get_weights(task) # nolint
 
       invoke(randomForestSRC::rfsrc,
         formula = task$formula(), data = data.table::setDF(task$data()),
@@ -185,14 +186,19 @@ LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
 
     .predict = function(task) {
       newdata = data.table::setDF(ordered_features(task, self))
-      pars = self$param_set$get_values(tags = "predict")
-      cores = pars$cores %??% 1L
-      pars$cores = NULL
+      pv = self$param_set$get_values(tags = "predict")
+
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      }
+
+      cores = pv$cores %??% 1L
+      pv$cores = NULL
 
       pred = invoke(predict,
         object = self$model,
         newdata = newdata,
-        .args = pars,
+        .args = pv,
         .opts = list(rf.cores = cores))
 
       if (self$predict_type == "response") {

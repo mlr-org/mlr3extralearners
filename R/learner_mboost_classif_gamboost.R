@@ -9,6 +9,8 @@
 #' @template learner
 #' @templateVar id classif.gamboost
 #'
+#' @inheritSection mlr_learners_regr.glmboost Offset
+#'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`
 #'
@@ -26,8 +28,6 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
         baselearner = p_fct(default = "bbs",
           levels = c("bbs", "bols", "btree"), tags = "train"),
         dfbase = p_int(default = 4L, tags = "train"),
-        offset = p_dbl(default = NULL,
-          special_vals = list(NULL), tags = "train"),
         family = p_fct(default = c("Binomial"),
           levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
         custom.family = p_uty(tags = "train"),
@@ -54,7 +54,7 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "twoclass"),
+        properties = c("weights", "twoclass", "offset"),
         man = "mlr3extralearners::mlr_learners_classif.gamboost",
         label = "Boosted Generalized Additive Model"
       )
@@ -85,10 +85,13 @@ LearnerClassifGAMBoost = R6Class("LearnerClassifGAMBoost",
       f = task$formula()
       data = task$data()
 
-      if ("weights" %in% task$properties) {
+      pars_gamboost$weights = private$.get_weights(task)
+
+      if ("offset" %in% task$properties) {
         pars_gamboost = insert_named(
           pars_gamboost,
-          list(weights = task$weights$weight))
+          list(offset = task$offset$offset)
+        )
       }
 
       pars_gamboost$family = switch(pars_gamboost$family,

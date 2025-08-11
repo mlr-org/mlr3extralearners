@@ -15,6 +15,7 @@ Authors:
 \itemize{
   \item Raphael Sonabend \email{raphaelsonabend@gmail.com} (\href{https://orcid.org/0000-0001-9225-4654}{ORCID})
   \item Patrick Schratz \email{patrick.schratz@gmail.com} (\href{https://orcid.org/0000-0003-0748-6624}{ORCID})
+  \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID})
 }
 
 Other contributors:
@@ -27,8 +28,11 @@ Other contributors:
   \item Keenan Ganz \email{ganzkeenan1@gmail.com} [contributor]
   \item Byron Jaeger \email{bjaeger@wakehealth.edu} [contributor]
   \item Zezhi Wang \email{homura@mail.ustc.edu.cn} [contributor]
-  \item John Zobolas \email{bblodfon@gmail.com} (\href{https://orcid.org/0000-0002-3609-8674}{ORCID}) [contributor]
   \item Lukas Burk \email{burk@leibniz-bips.de} (\href{https://orcid.org/0000-0001-7528-3795}{ORCID}) [contributor]
+  \item Lona Koers \email{lona.koers@gmail.com} [contributor]
+  \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
+  \item Nikolai German \email{niko.german@gmail.com} [contributor]
+  \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
 }
 
 }

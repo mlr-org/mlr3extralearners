@@ -1,4 +1,38 @@
-# dev
+# mlr3extralearners (development version)
+
+## New Features:
+
+* New Learners: 
+  - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr}ExhaustiveSearch`
+  - `LearnerClassifFastai`
+  - `Learner{Classif,Regr}Penalized`
+  - `Learner{Classif,Regr}Bst`
+  - `LearnerClassifAdaBoosting`
+  - `Learner{Classif,Regr}Evtree`
+  - `LearnerClassifKnn`
+
+## Bugfixes:
+
+* remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
+  survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+
+# mlr3extralearners 1.1.0
+
+New Features:
+
+* Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
+* Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
+* Added the new version of learner weights to all learners that support weights
+* Added marshaling for `surv.xgboost.cox`.
+* Added learner `LearnerClassifKnn`.
+
+Bugfixes:
+
+* lightgbm classifier now works with encapsulation (#437)
+
+# mlr3extralearners 1.0.0
 
 * Add "Prediction types" doc section for all 30 survival learners + make sure it is consistent #347
 * All survival learners have `crank` as main prediction type (and it is always returned) #331

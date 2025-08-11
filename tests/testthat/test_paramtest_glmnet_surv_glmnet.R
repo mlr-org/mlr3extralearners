@@ -12,7 +12,8 @@ test_that("surv.glmnet", {
     "type.measure", # only used by cv.glmnet
     "standardize.response", # for 'mgaussian' only
     "itrace", # supported via param trace.it
-    "factory" # only used in scripts, no effect within mlr3
+    "factory", # only used in scripts, no effect within mlr3
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -29,7 +30,9 @@ test_that("predict surv.glmnet", {
     "predict.gamma", # renamed from gamma
     "offset", # for distr prediction
     "stype", # for distr prediction
-    "ctype" # for distr prediction
+    "ctype", # for distr prediction
+    "newoffset", # handled by mlr3
+    "use_pred_offset" # for using the offset during prediction
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

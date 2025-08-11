@@ -1,5 +1,5 @@
 test_that("autotest", {
-  learner = LearnerRegrLiblineaR$new()
+  learner = lrn("regr.liblinear")
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)

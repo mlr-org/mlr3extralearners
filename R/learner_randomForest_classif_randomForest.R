@@ -114,6 +114,7 @@ LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
     .train = function(task) {
 
       pars = self$param_set$get_values(tags = "train")
+      pars$weights = private$.get_weights(task)
 
       formula = task$formula()
       data = task$data()
