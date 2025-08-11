@@ -7,6 +7,9 @@
 \description{
 Accelerated oblique random classification forest.
 Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Note that although the learner has the property \code{"missing"} and it can in
+principle deal with missing values, the behaviour has to be configured using
+the parameter \code{na_action}.
 }
 \section{Initial parameter values}{
 
