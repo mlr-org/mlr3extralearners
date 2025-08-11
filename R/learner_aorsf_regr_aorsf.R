@@ -80,7 +80,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
       super$initialize(
         id = "regr.aorsf",
         packages = c("mlr3extralearners", "aorsf"),
-        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+        feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
         properties = c("oob_error", "importance", "missings", "weights"),
