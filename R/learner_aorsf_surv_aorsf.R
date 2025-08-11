@@ -82,7 +82,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
                           custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
-        na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
+        na_action = p_fct(levels = c("fail", "impute_meanmode"), default = "fail", tags = "train"))
 
       super$initialize(
         id = "surv.aorsf",
