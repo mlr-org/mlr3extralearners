@@ -1,16 +1,16 @@
-#' @title Regression Bayesian Treed Linear Model Learner
+#' @title Gaussian Process Regression Learner
 #' @author annanzrv
-#' @name mlr_learners_regr.btlm
+#' @name mlr_learners_regr.bgpllm
 #'
 #' @description
-#' Nonparametric and nonstationary bayesian treed linear regression.
-#' Calls [tgp::btlm()] \CRANpkg{tgp}.
+#' Gaussian Process with jumps to the LLM.
+#' Calls [tgp::bgpllm()] \CRANpkg{tgp}.
 #'
 #' @section Initial parameter values:
 #' - `pred.n` set to `FALSE` to skip prediction during training yielding faster implementation.
 #' - `verb` set to `0L` to turn off verbosity.
 #'
-#' @templateVar id regr.btlm
+#' @templateVar id regr.bgpllm
 #' @template learner
 #'
 #' @references
@@ -19,17 +19,18 @@
 #' @template seealso_learner
 #' @template example
 #' @export
-LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
+LearnerRegrBgpllm = R6Class("LearnerRegrBgpllm",
   inherit = LearnerRegr,
   public = list(
    #' @description
    #' Creates a new instance of this [R6][R6::R6Class] class.
    initialize = function() {
      param_set = ps(
-       meanfn = p_fct(levels = c("constant", "linear"), default = "linear", tags = "train"),
        bprior = p_fct(levels = c("b0", "b0not", "bflat", "bmle", "bmznot", "bmzt"), default = "bflat", tags = "train"),
-       tree   = p_uty(default = c(0.5, 2), custom_check = function(p) checkmate::checkNumeric(p, len = 2), tags = c("train", "predict")),
-       BTE    = p_uty(default = c(2000, 7000, 2), custom_check = function(p) checkmate::checkNumeric(p, len = 3), tags = c("train", "predict")),
+       meanfn = p_fct(levels = c("constant", "linear"), default = "linear", tags = "train"),
+       corr   = p_fct(levels = c("exp", "expsep", "matern", "sim"), default = "expsep", tags = "train"),
+       gamma  = p_uty(default = c(10, 0.2, 0.7), custom_check = check_gamma_param, tags = c("train")),
+       BTE    = p_uty(default = c(1000, 4000, 2), custom_check = function(p) checkmate::checkNumeric(p, len = 3), tags = c("train", "predict")),
        R      = p_int(default = 1, lower = 1, tags = c("train", "predict")),
        m0r1   = p_lgl(default = TRUE, tags = "train"),
        itemps = p_uty(default = NULL, tags = "train"),
@@ -39,6 +40,7 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
        Ds2x   = p_lgl(default = FALSE, tags = c("train", "predict")),
        improv = p_lgl(default = FALSE, tags = c("train", "predict")),
        sens.p = p_uty(default = NULL, tags = c("train", "predict")),
+       nu     = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
        trace  = p_lgl(default = FALSE, tags = c("train", "predict")),
        verb   = p_int(default = 1L, lower = 0L, upper = 4L, tags = c("train", "predict")),
        MAP    = p_lgl(default = TRUE, tags = "predict")
@@ -47,13 +49,13 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
      param_set$values = list(pred.n = FALSE, verb = 0L)
 
      super$initialize(
-       id = "regr.btlm",
+       id = "regr.bgpllm",
        packages = "tgp",
        feature_types = c("integer", "numeric"),
        predict_types = c("response"),
        param_set = param_set,
-       man = "mlr3extralearners::mlr_learners_regr.btlm",
-       label = "Bayesian Treed Linear Model"
+       man = "mlr3extralearners::mlr_learners_regr.bgpllm",
+       label = "Gaussian Process"
      )
    }
   ),
@@ -64,7 +66,7 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
      x = task$data(cols = task$feature_names)
      z = data[[task$target_names]]
      invoke(
-       tgp::btlm,
+       tgp::bgpllm,
        X = x,
        Z = z,
        .args = pars
@@ -81,4 +83,13 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
   )
 )
 
-.extralrns_dict$add("regr.btlm", LearnerRegrBtlm)
+.extralrns_dict$add("regr.bgpllm", LearnerRegrBgpllm)
+
+check_gamma_param = function(p) {
+  base_check <- checkmate::checkNumeric(p, len = 3, any.missing = FALSE)
+  if (!isTRUE(base_check)) return(base_check)
+  if ((p[[2]] + p[[3]]) >= 1) {
+    return("The sum of the last two elements must be less than 1.")
+  }
+  return(TRUE)
+}

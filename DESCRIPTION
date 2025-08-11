@@ -123,6 +123,7 @@ Suggests:
     survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
     testthat,
+    tgp,
     xgboost (>= 1.7.8.1)
 VignetteBuilder:
     knitr

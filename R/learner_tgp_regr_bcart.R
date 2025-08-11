@@ -49,9 +49,9 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
         id = "regr.bcart",
         packages = "tgp",
         feature_types = c("integer", "numeric"),
-        predict_types = c("response"),
+        predict_types = c("response", "se"),
         param_set = param_set,
-        man = "mlr3extralearners::mlr_learners_regr.blm",
+        man = "mlr3extralearners::mlr_learners_regr.bcart",
         label = "Bayesian CART"
       )
     }
@@ -74,8 +74,17 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
       pars = self$param_set$get_values(tags = "predict")
       # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
-      pred = invoke(predict, self$model, XX = newdata, .args = pars)
-      list(response = pred$ZZ.km)
+      pred = invoke(
+        predict,
+        self$model,
+        XX = newdata[, task$feature_names, with = FALSE],
+        .args = pars
+      )
+      if (self$predict_type == "response") {
+        list(response = pred$ZZ.km)
+      } else {
+        list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
+      }
     }
   )
 )
