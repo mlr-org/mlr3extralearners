@@ -13,7 +13,7 @@
   - `LearnerClassifKnni`
 
 * New Features:
-  - Add new new `control_custom_fun` parameter in `surv.aorsf`
+  - Add new `control_custom_fun` parameter in `surv.aorsf`
 
 ## Bugfixes:
 
