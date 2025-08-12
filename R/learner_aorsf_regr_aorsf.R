@@ -5,6 +5,9 @@
 #' @description
 #' Accelerated oblique random regression forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
+#' Note that although the learner has the property `"missing"` and it can in
+#' principle deal with missing values, the behaviour has to be configured using
+#' the parameter `na_action`.
 #'
 #' @section Initial parameter values:
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
@@ -55,7 +58,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         n_split                 = p_int(default = 5L, lower = 1L, tags = "train"),
         n_thread                = p_int(init = 1, lower = 0, tags = c("train", "predict", "threads")),
         n_tree                  = p_int(default = 500L, lower = 1L, tags = "train"),
-        na_action               = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"),
+        na_action               = p_fct(levels = c("fail", "impute_meanmode"), default = "fail", tags = c("train", "predict")),
         net_mix                 = p_dbl(default = 0.5, tags = "train"),
         oobag                   = p_lgl(default = FALSE, tags = "predict"),
         oobag_eval_every        = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
@@ -69,7 +72,7 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
         split_min_events        = p_int(default = 5L, lower = 1L, tags = "train"),
         split_min_obs           = p_int(default = 10, lower = 1L, tags = "train"),
         split_min_stat          = p_dbl(default = NULL, special_vals = list(NULL), lower = 0, tags = "train"),
-        split_rule              = p_fct(levels = c("variance"), default = "variance", tags = "train"),
+        split_rule              = p_fct(levels = "variance", default = "variance", tags = "train"),
         target_df               = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         tree_seeds              = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         verbose_progress        = p_lgl(default = FALSE, tags = "train"))
@@ -77,10 +80,10 @@ LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
       super$initialize(
         id = "regr.aorsf",
         packages = c("mlr3extralearners", "aorsf"),
-        feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+        feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = ps,
-        properties = c("oob_error", "importance", "weights"),
+        properties = c("oob_error", "importance", "missings", "weights"),
         man = "mlr3extralearners::mlr_learners_regr.aorsf",
         label = "Oblique Random Forest Regressor"
       )

@@ -12,6 +12,9 @@
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
 
+* New Features:
+  - Add new `control_custom_fun` parameter in `surv.aorsf`
+
 ## Bugfixes:
 
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`

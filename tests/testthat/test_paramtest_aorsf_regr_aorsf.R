@@ -31,9 +31,8 @@ test_that("paramtest regr.aorsf train", {
 
 test_that("paramtest regr.aorsf predict", {
   learner = lrn("regr.aorsf")
-  fun_list = list(aorsf:::predict.ObliqueForest)
+  fun_list = list(aorsf:::predict.ObliqueForest) # nolint
   exclude = c(
-    "na_action", # not implemented,
     "new_data", # handled internally
     "object", # handled internally
     "pred_horizon", # all times required for distr
