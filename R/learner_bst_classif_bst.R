@@ -66,7 +66,7 @@ LearnerClassifBst = R6Class("LearnerClassifBst",
 
       super$initialize(
         id = "classif.bst",
-        packages = c("bst", "rpart"),
+        packages = c("mlr3extralearners", "bst", "rpart"),
         feature_types = c("numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
