@@ -21,7 +21,7 @@ LearnerClassifPolyFit = R6Class("LearnerClassifPolyFit",
     initialize = function() {
       param_set = ps(
         deg = p_int(lower = 0, tags = c("train", "required")),
-        maxInteractDeg = p_int(lower = 0, tags = c("train")),
+        maxInteractDeg = p_int(lower = 0, tags = "train"),
         # we dont put param "use" here because these is determined by the task
         return_xy = p_lgl(default = FALSE, tags = c("train")),
         returnPoly = p_lgl(default = FALSE, tags = c("train")),
