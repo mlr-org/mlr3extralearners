@@ -11,6 +11,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifRferns`
 
 * New Features:
   - Add new `control_custom_fun` parameter in `surv.aorsf`
