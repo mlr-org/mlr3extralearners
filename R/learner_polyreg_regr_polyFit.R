@@ -27,7 +27,7 @@ LearnerRegrPoly = R6Class("LearnerRegrPolyFit",
         returnPoly = p_lgl(default = FALSE, tags = "train"),
         noisy = p_lgl(default = TRUE, tags = "train")
       )
-      param_set$set_values(deg=2, noisy = FALSE)
+      param_set$set_values(deg = 2, noisy = FALSE)
 
       super$initialize(
         id = "regr.polyFit",
