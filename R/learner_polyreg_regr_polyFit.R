@@ -47,7 +47,7 @@ LearnerRegrPoly = R6Class("LearnerRegrPolyFit",
       pars$use = "lm"
       data = task$data()
       colns = c(task$feature_names, task$target_names)
-      data = data[, ..colns]
+      data = data[, colns, with = FALSE]
       invoke(
         polyreg::polyFit,
         xy = data,
