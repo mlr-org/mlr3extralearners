@@ -24,7 +24,7 @@ LearnerClassifPolyFit = R6Class("LearnerClassifPolyFit",
         maxInteractDeg = p_int(lower = 0, tags = "train"),
         # we dont put param "use" here because these is determined by the task
         return_xy = p_lgl(default = FALSE, tags = "train"),
-        returnPoly = p_lgl(default = FALSE, tags = c("train")),
+        returnPoly = p_lgl(default = FALSE, tags = "train"),
         noisy = p_lgl(default = TRUE, tags = c("train")),
         glmMethod = p_fct(levels = c("one", "all"), default = "one", tags = c("train"))
       )
