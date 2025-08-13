@@ -37,7 +37,7 @@ LearnerRegrPoly = R6Class("LearnerRegrPolyFit",
         param_set = param_set,
         properties = character(0),
         label = "Polynomial Regression",
-        man = "mlr3::mlr_learners_regr.polyFit"
+        man = "mlr3extralearners::mlr_learners_regr.polyFit"
       )
     }
   ),
