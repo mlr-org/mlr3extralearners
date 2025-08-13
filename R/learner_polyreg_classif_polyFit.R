@@ -26,7 +26,7 @@ LearnerClassifPolyFit = R6Class("LearnerClassifPolyFit",
         return_xy = p_lgl(default = FALSE, tags = "train"),
         returnPoly = p_lgl(default = FALSE, tags = "train"),
         noisy = p_lgl(default = TRUE, tags = "train"),
-        glmMethod = p_fct(levels = c("one", "all"), default = "one", tags = c("train"))
+        glmMethod = p_fct(levels = c("one", "all"), default = "one", tags = "train")
       )
       param_set$set_values(deg = 2, noisy = FALSE)
 
