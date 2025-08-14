@@ -6,7 +6,7 @@
 \title{Classification Logistic Model Trees Learner}
 \description{
 Classification tree with logistic regression models at the leaves.
-Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::LMT()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:LMT]{RWeka::LMT()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
