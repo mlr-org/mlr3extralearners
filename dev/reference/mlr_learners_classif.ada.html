@@ -80,7 +80,7 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <ul><li><p>Task type: “classif”</p></li>
 <li><p>Predict Types: “response”, “prob”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=ada" class="external-link"><span class="pkg">ada</span></a>, <a href="https://CRAN.R-project.org/package=rpart" class="external-link"><span class="pkg">rpart</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=ada" class="external-link"><span class="pkg">ada</span></a>, <a href="https://CRAN.R-project.org/package=rpart" class="external-link"><span class="pkg">rpart</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -176,7 +176,7 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifAdaBoosting&gt;</span><span style="font-weight: bold;"> (classif.ada): ada Boosting</span> <span style="color: #00BBBB;">─────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: xval=0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">ada</span>, and <span style="color: #0000BB;">rpart</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">ada</span>, and <span style="color: #0000BB;">rpart</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -201,17 +201,17 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Final Confusion Matrix for Data:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           Final Prediction</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> True value  M  R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          M 77  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          R  1 61</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          M 69  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          R  0 68</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Train Error: 0.007 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Train Error: 0.014 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Out-Of-Bag Error:  0.065  iteration= 44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Out-Of-Bag Error:  0.043  iteration= 46 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Additional Estimates of number of iterations:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> train.err1 train.kap1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         46         46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         43         43 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -221,7 +221,7 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

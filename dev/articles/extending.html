@@ -136,7 +136,7 @@ example, we will implement a slightly stripped-down version of
 <span>        param_set <span class="op">=</span> <span class="va">param_set</span>,</span>
 <span>        properties <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"weights"</span>, <span class="st">"missings"</span>, <span class="st">"importance"</span><span class="op">)</span>,</span>
 <span>        label <span class="op">=</span> <span class="st">"Regression Tree"</span>,</span>
-<span>        man <span class="op">=</span> <span class="st">"mlr3::mlr_learners_regr.rpart"</span></span>
+<span>        man <span class="op">=</span> <span class="st">"mlr3extralearners::mlr_learners_regr.rpart"</span></span>
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">}</span>,</span>
 <span>    importance <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
@@ -155,7 +155,7 @@ example, we will implement a slightly stripped-down version of
 <span>    .train <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">task</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="va">pv</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">get_values</span><span class="op">(</span>tags <span class="op">=</span> <span class="st">"train"</span><span class="op">)</span></span>
 <span>      <span class="va">pv</span><span class="op">$</span><span class="va">weights</span> <span class="op">=</span> <span class="va">private</span><span class="op">$</span><span class="fu">.get_weights</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span>      </span>
+<span></span>
 <span>      <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>
 <span>        <span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart</a></span>,</span>
 <span>        formula <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">formula</span><span class="op">(</span><span class="op">)</span>,</span>
@@ -203,7 +203,10 @@ supports.</li>
 <code>feature_types</code>: Set of feature types the learner is able
 to handle.</li>
 <li>
-<code>properties</code>: Set of properties of the learner.</li>
+<code>properties</code>: Set of properties of the learner. These are
+listed both in the documentation of the <code>Learner</code> base class,
+as well as in the respective subclasses (<code>LearnerClassif</code>,
+<code>LearnerRegr</code>, etc.).</li>
 <li>
 <code>man</code>: The roxygen identifier of the learner. This is
 used within the <code>$help()</code> method of the super class to open
@@ -376,7 +379,7 @@ available as the <code>$model</code> slot of the trained learner.</p>
 <code class="sourceCode R"><span><span class="va">.train</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">task</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">pv</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">get_values</span><span class="op">(</span>tags <span class="op">=</span> <span class="st">"train"</span><span class="op">)</span></span>
 <span>  <span class="va">pv</span><span class="op">$</span><span class="va">weights</span> <span class="op">=</span> <span class="va">private</span><span class="op">$</span><span class="fu">.get_weights</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span>  <span class="va">formula</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">formula</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">data</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">data</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>

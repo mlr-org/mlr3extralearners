@@ -82,7 +82,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <ul><li><p>Task type: “regr”</p></li>
 <li><p>Predict Types: “response”</p></li>
 <li><p>Feature Types: “numeric”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=bst" class="external-link"><span class="pkg">bst</span></a>, <a href="https://CRAN.R-project.org/package=rpart" class="external-link"><span class="pkg">rpart</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=bst" class="external-link"><span class="pkg">bst</span></a>, <a href="https://CRAN.R-project.org/package=rpart" class="external-link"><span class="pkg">rpart</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -165,7 +165,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrBst&gt;</span><span style="font-weight: bold;"> (regr.bst): Gradient Boosting</span> <span style="color: #00BBBB;">──────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: Learner=ls, maxdepth=1, xval=0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">bst</span>, and <span style="color: #0000BB;">rpart</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">bst</span>, and <span style="color: #0000BB;">rpart</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -193,15 +193,15 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Base learner:  ls </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.23333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.58571 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          am        carb         cyl        disp        drat        gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.48104387  0.00000000  0.00000000 -0.01010785  0.00000000  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.32069347 -0.28013427  0.00000000 -0.01083168  0.00000000  0.00000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          hp        qsec          vs          wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  4.51170700  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  4.15501877  0.00000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.23333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.58571</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -211,7 +211,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.24456 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.499589 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
