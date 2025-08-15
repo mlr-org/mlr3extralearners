@@ -1,6 +1,6 @@
 test_that("autotest", {
   with_seed(1, {
-    learner = lrn("regr.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
+    learner = lrn("regr.rfsrc", ntree = 50, importance = "random", na.action = "na.impute")
     expect_learner(learner)
     # remove property as prediction doesn't work due to rsfrc bug
     learner$properties = setdiff(learner$properties, "selected_features")
