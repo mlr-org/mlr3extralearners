@@ -49,7 +49,7 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
         param_set = param_set,
         properties = c("weights", "missings", "importance"),
         label = "Regression Tree",
-        man = "mlr3::mlr_learners_regr.rpart"
+        man = "mlr3extralearners::mlr_learners_regr.rpart"
       )
     },
     importance = function() {
@@ -68,7 +68,7 @@ LearnerRegrRpartSimple = R6Class("LearnerRegrRpartSimple",
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       pv$weights = private$.get_weights(task)
-      
+
       invoke(
         rpart::rpart,
         formula = task$formula(),
@@ -102,7 +102,8 @@ These include:
 * `param_set`: A set of hyperparameters and their descriptions provided as a `paradox::ParamSet`.
 * `predict_types`: Set of predict types the learner supports.
 * `feature_types`: Set of feature types the learner is able to handle.
-* `properties`: Set of properties of the learner.
+* `properties`: Set of properties of the learner. These are listed both in the documentation of the `Learner` base
+  class, as well as in the respective subclasses (`LearnerClassif`, `LearnerRegr`, etc.).
 * `man`: The roxygen identifier of the learner.
   This is used within the `$help()` method of the super class to open the help page of the learner.
 * `label`: The label of the learner.
@@ -213,7 +214,7 @@ The return value of this method will be available as the `$model` slot of the tr
 .train = function(task) {
   pv = self$param_set$get_values(tags = "train")
   pv$weights = private$.get_weights(task)
-  
+
   formula = task$formula()
   data = task$data()
   invoke(
