@@ -87,7 +87,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
       super$initialize(
         id = "classif.fastai",
-        packages = c("fastai", "reticulate"),
+        packages = c("mlr3extralearners", "fastai", "reticulate"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
