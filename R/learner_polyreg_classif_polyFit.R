@@ -31,14 +31,14 @@ LearnerClassifPolyFit = R6Class("LearnerClassifPolyFit",
       param_set$set_values(deg = 2, noisy = FALSE)
 
       super$initialize(
-        id = "regr.polyFit",
+        id = "classif.polyFit",
         packages = c("mlr3extralearners", "polyreg"),
         feature_types =  c("numeric", "factor"),
         predict_types = "response",
         param_set = param_set,
-        properties = character(0),
+        properties = c("twoclass", "multiclass"),
         label = "Polynomial Regression",
-        man = "mlr3::mlr_learners_classif.polyFit"
+        man = "mlr3extralearners::mlr_learners_classif.polyFit"
       )
     }
   ),
@@ -64,4 +64,3 @@ LearnerClassifPolyFit = R6Class("LearnerClassifPolyFit",
 )
 
 .extralrns_dict$add("classif.polyFit", LearnerClassifPolyFit)
-
