@@ -132,6 +132,7 @@ Remotes:
     catboost/catboost/catboost/R-package,
     eagerai/fastai,
     mlr-org/mlr3,
+    mlr-org/mlr3misc,
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
     RaphaelS1/survivalmodels,
