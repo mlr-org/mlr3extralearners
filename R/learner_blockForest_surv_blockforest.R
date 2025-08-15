@@ -99,12 +99,12 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv$case.weights = private$.get_weights(task)
 
       mlr3misc::invoke(
         blockForest::blockfor,
         X = task$data(cols = task$feature_names),
         y = task$truth(),
-        case.weights = private$.get_weights(task),
         .args = pv
       )
     },
