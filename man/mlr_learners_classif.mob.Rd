@@ -85,7 +85,9 @@ predict_fun = function(object, newdata, task, .type) {
   if (.type == "response") {
     ifelse(p < 0.5, levs[1L], levs[2L])
   } else {
-    prob_vector_to_matrix(p, levs)
+    y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
+    colnames(y) = levs
+    y
   }
 }
 task = tsk("breast_cancer")

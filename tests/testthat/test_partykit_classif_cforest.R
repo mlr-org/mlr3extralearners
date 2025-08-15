@@ -1,8 +1,10 @@
 test_that("autotest", {
-  learner = lrn("classif.cforest", ntree = 30L)
-  expect_learner(learner)
-  result = with_seed(1, run_autotest(learner))
-  expect_true(result, info = result$error)
+  with_seed(1, {
+    learner = lrn("classif.cforest", ntree = 50L)
+    expect_learner(learner)
+    result = run_autotest(learner)
+    expect_true(result, info = result$error)
+  })
 })
 
 test_that("parameter setting works", {
