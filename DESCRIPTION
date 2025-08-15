@@ -96,6 +96,7 @@ Suggests:
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
     pendensity,
+    polyreg,
     plugdensity,
     pracma,
     prioritylasso (>= 0.3.1),
