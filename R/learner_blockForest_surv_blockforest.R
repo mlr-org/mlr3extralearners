@@ -88,11 +88,11 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
         stopf("No model stored")
       }
 
-      if (self$model$forest$importance.mode == "none") {
+      if (self$model$importance.mode == "none") {
         stopf("No importance stored")
       }
 
-      sort(self$model$forest$variable.importance, decreasing = TRUE)
+      sort(self$model$variable.importance, decreasing = TRUE)
     }
   ),
 
@@ -105,14 +105,13 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
         blockForest::blockfor,
         X = task$data(cols = task$feature_names),
         y = task$truth(),
-        .args = pv
-      )
+        .args = pv)$forest
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      prediction = invoke(predict, object = self$model$forest, data = newdata, .args = pv)
+      prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
       mlr3proba::.surv_return(times = prediction$unique.death.times, surv = prediction$survival)
     }
   )

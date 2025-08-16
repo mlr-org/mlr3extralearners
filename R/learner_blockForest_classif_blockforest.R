@@ -24,10 +24,10 @@
 #' # check task's features
 #' task$feature_names
 #' # partition features to 2 blocks
-#' blocks = list(bl1 = 1:3, bl2 = 4:6)
+#' blocks = list(bl1 = 1:42, bl2 = 43:60)
 #' # define learner
 #' learner = lrn("classif.blockforest", blocks = blocks,
-#'               importance = "permutation", nsets = 10,
+#'               importance = "permutation", nsets = 10, predict_type = "prob",
 #'               num.trees = 50, num.trees.pre = 10, splitrule = "gini")
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
@@ -81,11 +81,11 @@ LearnerClassifBlockForest = R6::R6Class("LearnerClassifBlockForest",
         stopf("No model stored")
       }
 
-      if (self$model$forest$importance.mode == "none") {
+      if (self$model$importance.mode == "none") {
         stopf("No importance stored")
       }
 
-      sort(self$model$forest$variable.importance, decreasing = TRUE)
+      sort(self$model$variable.importance, decreasing = TRUE)
     }
   ),
 
@@ -99,22 +99,19 @@ LearnerClassifBlockForest = R6::R6Class("LearnerClassifBlockForest",
         blockForest::blockfor,
         X = task$data(cols = task$feature_names),
         y = task$truth(),
-        .args = pv
-      )
+        .args = pv)$forest
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      prediction = invoke(predict, object = self$model$forest,
-                          data = newdata, .args = pv)
+      prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
 
       if (self$predict_type == "response") {
         list(response = prediction$predictions)
       } else {
         list(prob = prediction$predictions)
       }
-
     }
   )
 )
