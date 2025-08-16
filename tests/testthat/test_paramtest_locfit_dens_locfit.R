@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("locfit")
+
 test_that("paramtest dens.locfit train", {
   learner = lrn("dens.locfit")
   # density.lf calls locfit.raw internally (this is where the ... go)

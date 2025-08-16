@@ -1,16 +1,16 @@
 # default competing risk score needs this package
 skip_if_not_installed("riskRegression")
+skip_if_not_installed("randomForestSRC")
 
 test_that("autotest", {
-  with_seed(42, {
-    learner = lrn("cmprsk.rfsrc", ntree = 20, importance = "TRUE", na.action = "na.impute")
-    expect_learner(learner)
-    # remove property as prediction doesn't work due to rsfrc bug
-    learner$properties = setdiff(learner$properties, "selected_features")
+  withr::local_seed(42)
+  learner = lrn("cmprsk.rfsrc", ntree = 20, importance = "TRUE", na.action = "na.impute")
+  expect_learner(learner)
+  # remove property as prediction doesn't work due to rsfrc bug
+  learner$properties = setdiff(learner$properties, "selected_features")
 
-    result = run_autotest(learner, N = 42, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+  result = run_autotest(learner, N = 42, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 test_that("importance/selected/oob_error", {

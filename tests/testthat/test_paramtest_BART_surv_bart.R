@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("BART")
+
 test_that("paramtest surv.bart train", {
   learner = lrn("surv.bart")
   fun_list = list(BART::mc.surv.bart)

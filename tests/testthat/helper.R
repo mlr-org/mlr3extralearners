@@ -38,3 +38,18 @@ s4_helper = function(x) {
   formals(f) = pairlist()
   return(f())
 }
+
+skip_if_not_installed_py = function(...) {
+  pkgs = c(...)
+  # We skip the tests if the python packages are not installed and we are not in GHA
+  # Because if we are in GHA, we want to ensure that the installation of the python packages
+  # is working
+  skip_if_not_installed("reticulate")
+  reticulate::py_require(pkgs)
+  available = map_lgl(pkgs, reticulate::py_module_available)
+  in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
+
+  if (!all(available) && !in_gha) {
+    skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
+  }
+}

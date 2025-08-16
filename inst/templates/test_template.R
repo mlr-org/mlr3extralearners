@@ -1,3 +1,6 @@
+# TODO: Fill this out with the learner packages
+skip_if_not_installed()
+
 test_that("autotest", {
   learner = lrn("<type>.<key>")
   expect_learner(learner)

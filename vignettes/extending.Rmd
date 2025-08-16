@@ -13,7 +13,6 @@ vignette: >
 Many learners are already included in the `mlr3` ecosystem, but there are still many more that have not been implemented and so in this vignette we will look at how to add a new `Learner` to `mlr3`.
 Here we will already assume a lot of knowledge, so it is best to read the [mlr3book](https://mlr3book.mlr-org.com/) first!
 If you want to contribute a new `Learner` to `mlr3extralearners` it is recommended to first open an issue to discuss the learner.
-As another side note, the `mlr3extralearner::create_learner()` function can be used to generate files containing templates for the learner and test files required to create and test a `Learner`.
 We will not use it in this vignette for the sake of clarity, but recommend using it in practice to avoid writing a lot of boilerplate code.
 
 We will first demonstrate what the final class looks like and then we will explain it line by line (and method by method).
@@ -391,7 +390,7 @@ When adding a `Learner` to `mlr3extralearners` there are some additional require
 
 * Adding the line `.extralrns_dict$add("<learner-id>", function() <LearnerName>$new())` to the bottom of the learner file to add the learner to the learners `Dictionary`.
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
-* The learner must be properly documented. When using `mlr3extralearners::create_learner()` this is automatically generated. Otherwise you can use and adapt the documentation of an already implemented learner.
+* The learner must be properly documented. Check the other learners for how to do this.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
 * The tests must pass in the CI (also check the CodeFactor results).
 * Update the `NEWS.md` file and describe that you added the learner.

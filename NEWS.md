@@ -1,8 +1,9 @@
 # mlr3extralearners (development version)
 
-## New Features:
+## New Features
 
-* New Learners: 
+* New Learners:
+
   - `LearnerSurvBlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
@@ -12,13 +13,26 @@
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
 
-* New Features:
-  - Add new `control_custom_fun` parameter in `surv.aorsf`
+* Add new `control_custom_fun` parameter in `surv.aorsf`
 
-## Bugfixes:
+## Bug fixes
 
+* Tests are now skipped when the suggested packages is not available.
+  This will make local development much more convenient.
+
+## Breaking Changes
+
+* The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+
+## Other
+
+* The package now depends on `withr`
+* The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
+  This means the auto tests will be stochastic like they should be
+* The CI now checks that rmcmdcheck passes without suggests.
+
 
 # mlr3extralearners 1.1.0
 

@@ -17,6 +17,10 @@ mlr3::lrn
 #' @export
 mlr3::lrns
 
+
+#rcmdcheck. We use this extensively in the tests
+withr::local_seed
+
 # nocov start
 register_mlr3 = function(libname, pkgname) {
   # get mlr_learners dictionary from the mlr3 namespace

@@ -1,3 +1,6 @@
+# TODO: Fill this out with the learner packages
+skip_if_not_installed()
+
 test_that("<type>.<key> train", {
   learner = lrn("<type>.<key>")
   fun = <package>::<caller>
