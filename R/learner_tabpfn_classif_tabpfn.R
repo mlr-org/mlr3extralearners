@@ -88,6 +88,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         feature_types = c("integer", "numeric", "logical"),
         predict_types = c("response", "prob"),
         param_set = ps,
+        packages = "reticulate",
         properties = c("twoclass", "multiclass", "missings", "marshal"),
         label = "TabPFN Classifier",
         man = "mlr3extralearners::mlr_learners_classif.tabpfn"

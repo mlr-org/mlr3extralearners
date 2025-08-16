@@ -1,3 +1,5 @@
+skip_if_not_installed("dbarts")
+
 test_that("autotest", {
   learner = lrn("classif.bart")
 

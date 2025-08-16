@@ -1,3 +1,5 @@
+skip_if_not_installed("lme4")
+
 test_that("autotest", {
   learner = lrn("classif.glmer")
   expect_learner(learner)

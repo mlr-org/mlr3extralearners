@@ -1,3 +1,5 @@
+skip_if_not_installed("kernlab")
+
 test_that("paramtest regr.rvm train", {
   learner = lrn("regr.rvm")
   # The Learner actually calls the S4 method with class "formula", but this only creates the matrix

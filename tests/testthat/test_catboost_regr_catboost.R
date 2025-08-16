@@ -1,3 +1,5 @@
+skip_if_not_installed("catboost")
+
 test_that("autotest", {
   learner = lrn("regr.catboost", iterations = 10)
   expect_learner(learner)

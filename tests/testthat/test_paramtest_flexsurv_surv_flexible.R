@@ -1,3 +1,7 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("flexsurv")
+skip_if_not_installed("pracma")
+
 test_that("paramtest surv.flexible train", {
   task = tsk("rats")
   learner = lrn("surv.flexible")

@@ -1,3 +1,5 @@
+skip_if_not_installed_py("torch", "tabpfn")
+
 test_that("autotest", {
   learner = lrn("regr.tabpfn")
   expect_learner(learner)

@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("mboost")
+
 test_that("paramtest surv.mboost train", {
   learner = lrn("surv.mboost")
   fun_list = list(mboost::boost_control, mboost::mboost, mboost::Weibull, mboost::Loglog,

@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("classif.reptree train", {
   learner = lrn("classif.reptree")
   fun = RWeka::make_Weka_classifier("weka/classifiers/trees/REPTree")

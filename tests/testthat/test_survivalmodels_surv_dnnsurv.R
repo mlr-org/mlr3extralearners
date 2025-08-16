@@ -1,4 +1,9 @@
 skip_on_os("windows")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("keras")
+skip_if_not_installed("pseudo")
+skip_if_not_installed("tensorflow")
+skip_if_not_installed("distr6")
 
 test_that("autotest", {
   expect_true(callr::r(function() {
@@ -16,7 +21,7 @@ test_that("autotest", {
     reticulate::py_require(c("numpy", "torch", "pycox"), python_version = "3.10")
     np = reticulate::import("numpy")
     torch = reticulate::import("torch")
-    set.seed(10)
+    withr::local_seed(10)
     np$random$seed(1L)
     torch$manual_seed(1L)
 

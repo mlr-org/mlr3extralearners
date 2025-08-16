@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("plugdensity")
+
 test_that("dens.plug", {
   learner = lrn("dens.plug")
   fun = plugdensity::plugin.density

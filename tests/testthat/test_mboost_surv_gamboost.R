@@ -1,3 +1,6 @@
+skip_if_not_installed("mboost")
+skip_if_not_installed("pracma")
+
 test_that("autotest ph", {
   learner = lrn("surv.gamboost", baselearner = "bols", family = "coxph", center = TRUE)
   expect_learner(learner)

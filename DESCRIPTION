@@ -39,7 +39,8 @@ Imports:
     mlr3misc (>= 0.9.4),
     paradox (>= 1.0.1),
     R6,
-    reticulate
+    reticulate,
+    withr
 Suggests:
     abess,
     actuar,

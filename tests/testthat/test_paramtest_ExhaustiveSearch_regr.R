@@ -1,3 +1,5 @@
+skip_if_not_installed("ExhaustiveSearch")
+
 test_that("paramtest regr.exhaustive_search train", {
   learner = lrn("regr.exhaustive_search")
   fun_list = list(ExhaustiveSearch::ExhaustiveSearch)

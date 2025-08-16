@@ -1,3 +1,5 @@
+skip_if_not_installed("sm")
+
 test_that("autotest", {
   learner = lrn("dens.nonpar")
   expect_learner(learner)

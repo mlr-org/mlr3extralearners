@@ -1,3 +1,5 @@
+skip_if_not_installed("abess")
+
 test_that("regr.abess predict", {
   learner = lrn("regr.abess")
   fun = predict # nolint

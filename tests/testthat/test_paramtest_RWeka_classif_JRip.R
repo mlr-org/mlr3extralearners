@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.JRip train", {
   learner = lrn("classif.JRip")
   fun = RWeka::JRip

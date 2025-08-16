@@ -1,3 +1,5 @@
+skip_if_not_installed("Cubist")
+
 test_that("paramtest regr.cubist train", {
   learner = lrn("regr.cubist")
   fun_list = list(Cubist::cubist, Cubist::cubistControl, Cubist:::cubist.default) # nolint

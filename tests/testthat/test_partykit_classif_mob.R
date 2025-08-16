@@ -1,3 +1,7 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
   # use a senseless logit model and partition with respect to all features
   logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {

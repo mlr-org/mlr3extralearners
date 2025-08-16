@@ -1,3 +1,5 @@
+skip_if_not_installed("mgcv")
+
 test_that("autotest", {
   learner = lrn("classif.gam")
   expect_learner(learner)

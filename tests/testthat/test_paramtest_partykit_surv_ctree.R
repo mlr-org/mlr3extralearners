@@ -1,3 +1,8 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("partykit")
+skip_if_not_installed("coin")
+skip_if_not_installed("sandwich")
+
 test_that("paramtest surv.ctree train", {
   learner = lrn("surv.ctree")
   fun_list = list(partykit::ctree, partykit::ctree_control, partykit::predict.party,

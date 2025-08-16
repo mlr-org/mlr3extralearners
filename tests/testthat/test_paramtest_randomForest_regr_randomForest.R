@@ -1,3 +1,5 @@
+skip_if_not_installed("randomForest")
+
 test_that("paramtest regr.randomforest train", {
   learner = lrn("regr.randomForest")
   fun_list = list(randomForest:::randomForest.default) # nolint

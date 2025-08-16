@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest regr.M5Rules train", {
   learner = lrn("regr.M5Rules")
   fun = RWeka::M5Rules

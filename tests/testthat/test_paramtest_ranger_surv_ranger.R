@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("ranger")
+
 test_that("surv.ranger", {
   learner = LearnerSurvRanger$new()
   fun = ranger::ranger

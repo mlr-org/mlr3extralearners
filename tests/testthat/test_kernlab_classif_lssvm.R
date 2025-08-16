@@ -1,5 +1,7 @@
+skip_if_not_installed("kernlab")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("classif.lssvm")
   expect_learner(learner)
   capture.output({

@@ -1,3 +1,5 @@
+skip_if_not_installed("FNN")
+
 # no real training phase
 
 test_that("paramtest classif.fnn predict", {

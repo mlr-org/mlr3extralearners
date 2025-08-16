@@ -1,3 +1,5 @@
+skip_if_not_installed("mboost")
+
 test_that("paramtest classif.glmboost train", {
   learner = lrn("classif.glmboost")
   fun_list = list(mboost:::glmboost.formula, mboost::boost_control) # nolint

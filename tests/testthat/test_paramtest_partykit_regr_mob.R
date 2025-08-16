@@ -1,3 +1,7 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("paramtest regr.mob train", {
   learner = lrn("regr.mob")
   fun_list = list(partykit::mob, partykit::mob_control)

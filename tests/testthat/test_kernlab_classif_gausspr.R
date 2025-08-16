@@ -1,3 +1,5 @@
+skip_if_not_installed("kernlab")
+
 test_that("autotest", {
   learner = lrn("classif.gausspr")
   expect_learner(learner)

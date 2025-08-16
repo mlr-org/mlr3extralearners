@@ -1,3 +1,5 @@
+skip_if_not_installed("penalized")
+
 test_that("autotest", {
   learner = lrn("classif.penalized")
   expect_learner(learner)

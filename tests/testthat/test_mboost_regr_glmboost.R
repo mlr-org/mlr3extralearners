@@ -1,3 +1,5 @@
+skip_if_not_installed("mboost")
+
 test_that("autotest", {
   learner = lrn("regr.glmboost")
   expect_learner(learner)

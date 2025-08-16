@@ -1,3 +1,5 @@
+skip_if_not_installed("LiblineaR")
+
 test_that("autotest", {
   learner = lrn("regr.liblinear")
   expect_learner(learner)

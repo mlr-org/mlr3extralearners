@@ -1,3 +1,5 @@
+skip_if_not_installed("kernlab")
+
 test_that("paramtest classif.ksvm train", {
   learner = lrn("classif.ksvm")
   fun_list = list(

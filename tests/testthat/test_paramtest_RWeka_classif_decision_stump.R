@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("classif.decision_stump train", {
   learner = lrn("classif.decision_stump")
   fun = RWeka::DecisionStump

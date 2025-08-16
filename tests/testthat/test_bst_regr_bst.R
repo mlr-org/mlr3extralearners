@@ -1,3 +1,6 @@
+skip_if_not_installed("bst")
+skip_if_not_installed("rpart")
+
 test_that("autotest", {
   learner = lrn("regr.bst")
   expect_learner(learner)

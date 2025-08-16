@@ -1,3 +1,7 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("paramtest regr.ctree train", {
   learner = lrn("regr.ctree")
   fun_list = list(partykit::ctree, partykit::ctree_control, mvtnorm::GenzBretz)

@@ -1,3 +1,5 @@
+skip_if_not_installed("randomForestSRC")
+
 test_that("paramtest classif.imbalanced_rfsrc train", {
   learner = lrn("classif.imbalanced_rfsrc")
   fun_list = list(randomForestSRC::imbalanced, randomForestSRC::rfsrc)

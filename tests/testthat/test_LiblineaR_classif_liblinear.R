@@ -1,4 +1,4 @@
-install_learners("classif.liblinear")
+skip_if_not_installed("LiblineaR")
 
 test_that("autotest", {
   learner = lrn("classif.liblinear")

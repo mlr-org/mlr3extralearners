@@ -1,3 +1,5 @@
+skip_if_not_installed("ExhaustiveSearch")
+
 test_that("autotest", {
   learner = LearnerClassifExhaustiveSearch$new()
   expect_learner(learner, check_man = FALSE) # toDo

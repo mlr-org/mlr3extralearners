@@ -1,3 +1,5 @@
+skip_if_not_installed("qgam")
+
 test_that("regr.qgam train", {
   learner = lrn("regr.qgam")
   fun = qgam::qgam

@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.PART train", {
   learner = lrn("classif.PART")
   fun = RWeka::PART

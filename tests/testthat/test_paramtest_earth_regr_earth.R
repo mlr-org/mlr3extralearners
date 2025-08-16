@@ -1,3 +1,5 @@
+skip_if_not_installed("earth")
+
 test_that("paramtest regr.earth train", {
   learner = lrn("regr.earth")
   fun = earth:::earth.default # nolint

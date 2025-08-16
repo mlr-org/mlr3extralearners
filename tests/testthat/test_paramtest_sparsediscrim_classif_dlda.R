@@ -1,3 +1,5 @@
+skip_if_not_installed("sparsediscrim")
+
 test_that("classif.dlda train", {
   learner = lrn("classif.dlda")
   fun = sparsediscrim:::lda_diag.formula

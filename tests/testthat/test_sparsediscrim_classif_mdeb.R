@@ -1,3 +1,5 @@
+skip_if_not_installed("sparsediscrim")
+
 test_that("autotest", {
   learner = lrn("classif.mdeb")
   expect_learner(learner)

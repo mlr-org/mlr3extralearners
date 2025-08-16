@@ -1,3 +1,5 @@
+skip_if_not_installed("randomForest")
+
 test_that("autotest", {
   learner = lrn("classif.randomForest", importance = "gini")
   expect_learner(learner)

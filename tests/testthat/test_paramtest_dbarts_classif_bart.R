@@ -1,3 +1,5 @@
+skip_if_not_installed("dbarts")
+
 test_that("paramtest classif.bart train", {
   learner = lrn("classif.bart")
   fun_list = list(dbarts::bart)

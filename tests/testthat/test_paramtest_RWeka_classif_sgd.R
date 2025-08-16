@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("classif.sgd train", {
   learner = lrn("classif.sgd")
   fun = RWeka::make_Weka_classifier("weka/classifiers/functions/SGD")

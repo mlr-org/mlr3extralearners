@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("classif.decision_table train", {
   learner = lrn("classif.decision_table")
   fun = RWeka::make_Weka_classifier("weka/classifiers/rules/DecisionTable")

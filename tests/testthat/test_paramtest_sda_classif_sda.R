@@ -1,3 +1,5 @@
+skip_if_not_installed("sda")
+
 test_that("classif.sda train", {
   learner = lrn("classif.sda")
   fun = sda::sda

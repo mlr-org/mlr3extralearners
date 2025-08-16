@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.IBk train", {
   learner = lrn("classif.IBk")
   fun = RWeka::IBk

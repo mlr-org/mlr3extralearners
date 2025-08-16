@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("regr.m5p train", {
   learner = lrn("regr.m5p")
   fun = RWeka::M5P

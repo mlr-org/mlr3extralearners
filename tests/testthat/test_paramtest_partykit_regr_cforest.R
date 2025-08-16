@@ -1,3 +1,7 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("paramtest regr.cforest train", {
   learner = lrn("regr.cforest")
   fun_list = list(partykit::cforest, partykit::ctree_control)

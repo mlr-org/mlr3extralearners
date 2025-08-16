@@ -1,3 +1,5 @@
+skip_if_not_installed("gbm")
+
 test_that("autotest", {
   learner = LearnerClassifGBM$new()
   learner$param_set$values = mlr3misc::insert_named(

@@ -1,3 +1,5 @@
+skip_if_not_installed("aorsf")
+
 test_that("paramtest classif.aorsf train", {
   learner = lrn("classif.aorsf")
   fun_list = list(aorsf::orsf)

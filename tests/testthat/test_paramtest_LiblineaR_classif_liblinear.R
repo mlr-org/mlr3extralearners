@@ -1,3 +1,5 @@
+skip_if_not_installed("LiblineaR")
+
 test_that("paramtest classif.liblinear train", {
   learner = lrn("classif.liblinear")
   fun_list = list(LiblineaR::LiblineaR)

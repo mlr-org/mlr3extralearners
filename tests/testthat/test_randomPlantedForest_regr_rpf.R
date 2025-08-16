@@ -1,3 +1,5 @@
+skip_if_not_installed("randomPlantedForest")
+
 test_that("autotest", {
   learner = lrn("regr.rpf")
   expect_learner(learner)

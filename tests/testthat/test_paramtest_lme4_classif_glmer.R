@@ -1,3 +1,5 @@
+skip_if_not_installed("lme4")
+
 test_that("regr.lmer train", {
   learner = lrn("classif.glmer")
   fun = c(lme4::glmer, lme4::glmerControl)

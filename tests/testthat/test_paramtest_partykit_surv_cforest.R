@@ -1,3 +1,8 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("paramtest surv.cforest train", {
   learner = lrn("surv.cforest")
   fun_list = list(partykit::cforest, partykit::ctree_control)

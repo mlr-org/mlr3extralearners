@@ -1,3 +1,5 @@
+skip_if_not_installed("C50")
+
 test_that("autotest", {
   learner = LearnerClassifC50$new()
   learner$param_set$values = list(trials = 1L)
