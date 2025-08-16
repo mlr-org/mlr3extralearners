@@ -385,13 +385,15 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       args = pars[ii]
       params = pars[!ii]
 
-      invoke(
+      model = invoke(
         lightgbm::lgb.train,
         data = dtrain,
         valids = valids,
         .args = args,
         params = params
       )
+      attr(model, "mlr3_info") = task$levels()[[task$target_names]]
+      model
     },
 
     .predict = function(task) {
@@ -400,11 +402,12 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       pred = invoke(predict, self$model, data, params = pars)
 
+      labels = attr(self$model, "mlr3_info")
+
       response = NULL
 
       if ("multiclass" %in% task$properties) {
         pred_mat = pred
-        labels = self$state$train_task$levels()[[self$state$train_task$target_names]]
         colnames(pred_mat) = labels
         if (self$predict_type == "response") {
           which = apply(pred_mat, 1, which.max)
