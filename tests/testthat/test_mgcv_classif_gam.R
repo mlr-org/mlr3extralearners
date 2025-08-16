@@ -1,5 +1,6 @@
+skip_if_not_installed("mgcv")
+
 test_that("autotest", {
-  skip_if_not_installed("mgcv")
   learner = lrn("classif.gam")
   expect_learner(learner)
   result = run_autotest(learner, exclude = "utf8_feature_names")

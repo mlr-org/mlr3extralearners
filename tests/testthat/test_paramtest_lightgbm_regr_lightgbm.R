@@ -1,5 +1,4 @@
 skip_if_not_installed("rvest")
-
 skip_if_not_installed("lightgbm")
 
 docs = rvest::read_html("https://lightgbm.readthedocs.io/en/latest/Parameters.html")

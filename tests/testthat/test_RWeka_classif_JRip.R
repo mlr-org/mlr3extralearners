@@ -1,7 +1,7 @@
 skip_on_os("windows")
+skip_if_not_installed("RWeka")
 
 test_that("autotest", {
-  skip_if_not_installed("RWeka")
   learner = lrn("classif.JRip")
   expect_learner(learner)
   result = run_autotest(learner)
