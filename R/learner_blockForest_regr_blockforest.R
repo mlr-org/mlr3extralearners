@@ -149,8 +149,12 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
 
 #' @export
 marshal_model.regr_blockforest_model = function(model, inplace = FALSE, ...) {
-  # Serialize the model object into a raw vector
-  raw_model = serialize(model, connection = NULL)
+  tmp = tempfile(fileext = ".rds")
+  on.exit(unlink(tmp), add = TRUE)
+
+  # Save the model to a temporary file and read it back as raw
+  saveRDS(model, tmp)
+  raw_model = readBin(tmp, what = "raw", n = file.info(tmp)$size)
 
   structure(list(
     marshaled = raw_model,
@@ -160,11 +164,22 @@ marshal_model.regr_blockforest_model = function(model, inplace = FALSE, ...) {
 
 #' @export
 unmarshal_model.regr_blockforest_model_marshaled = function(model, ...) {
-  # Unserialize the raw vector back into the original model
-  restored_model = unserialize(model$marshaled)
+  tmp = tempfile(fileext = ".rds")
+  on.exit(unlink(tmp), add = TRUE)
+
+  # Write raw bytes to a temp file and read back the model
+  writeBin(model$marshaled, tmp)
+  restored_model = readRDS(tmp)
+
+   # Sanity check: make sure the object has the right class
+  if (!inherits(restored_model, "regr_blockforest_model")) {
+    stopf("Unmarshaled object is not of class 'regr_blockforest_model' (got: %s)",
+          paste(class(restored_model), collapse = ", "))
+  }
 
   #browser()
-  structure(list(
-    model = restored_model
-  ), class = "regr_blockforest_model")
+  # structure(list(
+  #   model = restored_model$model
+  # ), class = "regr_blockforest_model")
+  restored_model
 }
