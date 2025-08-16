@@ -1,5 +1,4 @@
 skip_if_not_installed("RWeka")
-
 skip_on_os("windows")
 
 test_that("classif.kstar train", {
