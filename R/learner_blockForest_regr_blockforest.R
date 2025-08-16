@@ -24,7 +24,7 @@
 #' # check task's features
 #' task$feature_names
 #' # partition features to 2 blocks
-#' blocks = list(bl1 = 1:3, bl2 = 4:6)
+#' blocks = list(bl1 = 1:3, bl2 = 4:10)
 #' # define learner
 #' learner = lrn("regr.blockforest", blocks = blocks,
 #'               importance = "permutation", nsets = 10,
@@ -54,11 +54,12 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
         num.trees.pre       = p_int(1L, default = 1500L, tags = "train"),
         splitrule           = p_fct(c("extratrees", "variance", "maxstat"), default = "extratrees", tags = "train"),
         always.select.block = p_int(0L, 1L, default = 0L, tags = "train"),
-        # adding few key parameters from blockForest::blockForest()
+        # adding few key parameters from blockForest::blockForest() and predict.blockForest()
         importance          = p_fct(c("none", "impurity", "impurity_corrected", "permutation"), tags = "train"),
         num.threads         = p_int(1L, tags = c("train", "predict", "threads"), init = 1L),
         seed                = p_int(default = NULL, special_vals = list(NULL), tags = c("train", "predict")),
-        verbose             = p_lgl(default = TRUE, tags = c("train", "predict"))
+        verbose             = p_lgl(default = TRUE, tags = c("train", "predict")),
+        se.method           = p_fct(c("jack", "infjack"), default = "infjack", tags = "predict")
       )
 
       super$initialize(
@@ -66,7 +67,7 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
         param_set = param_set,
         predict_types = c("response", "se"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        properties = c("weights", "importance"),
+        properties = c("weights", "importance", "marshal"),
         packages = c("mlr3extralearners", "blockForest"),
         man = "mlr3extralearners::mlr_learners_regr.blockforest",
         label = "Random Forests for Block-wise Data"
@@ -77,16 +78,39 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
     #' The importance scores are extracted from the model slot `variable.importance`.
     #' @return Named `numeric()`.
     importance = function() {
-      browser()
       if (is.null(self$model)) {
         stopf("No model stored")
       }
 
-      if (self$model$forest$importance.mode == "none") {
+      if (self$model$model$importance.mode == "none") {
         stopf("No importance stored")
       }
 
-      sort(self$model$forest$variable.importance, decreasing = TRUE)
+      sort(self$model$model$variable.importance, decreasing = TRUE)
+    },
+
+    #' @description
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
+    marshal = function(...) {
+      learner_marshal(.learner = self, ...)
+    },
+
+    #' @description
+    #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
+    unmarshal = function(...) {
+      learner_unmarshal(.learner = self, ...)
+    }
+  ),
+
+  active = list(
+    #' @field marshaled (`logical(1)`)\cr
+    #' Whether the learner has been marshaled.
+    marshaled = function() {
+      learner_marshaled(self)
     }
   ),
 
@@ -95,21 +119,52 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
       pv = self$param_set$get_values(tags = "train")
       pv$case.weights = private$.get_weights(task)
 
-      mlr3misc::invoke(
-        blockForest::blockfor,
-        X = task$data(cols = task$feature_names),
-        y = task$truth(),
-        .args = pv
-      )
+      # with no marshalling:
+      # mlr3misc::invoke(
+      #     blockForest::blockfor,
+      #     X = task$data(cols = task$feature_names),
+      #     y = task$truth(),
+      #     .args = pv)$forest
+
+      structure(list(model =
+        mlr3misc::invoke(
+          blockForest::blockfor,
+          X = task$data(cols = task$feature_names),
+          y = task$truth(),
+          .args = pv)$forest
+      ), class = "regr_blockforest_model")
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      prediction = invoke(predict, object = self$model$forest, data = newdata, .args = pv)
-      browser()
+      prediction = invoke(predict, object = self$model$model, data = newdata,
+                          type = self$predict_type, .args = pv)
+      list(response = prediction$predictions, se = prediction$se)
     }
   )
 )
 
 .extralrns_dict$add("regr.blockforest", LearnerRegrBlockForest)
+
+#' @export
+marshal_model.regr_blockforest_model = function(model, inplace = FALSE, ...) {
+  # Serialize the model object into a raw vector
+  raw_model = serialize(model, connection = NULL)
+
+  structure(list(
+    marshaled = raw_model,
+    packages = c("mlr3extralearners", "blockForest")
+  ), class = c("regr_blockforest_model_marshaled", "marshaled"))
+}
+
+#' @export
+unmarshal_model.regr_blockforest_model_marshaled = function(model, ...) {
+  # Unserialize the raw vector back into the original model
+  restored_model = unserialize(model$marshaled)
+
+  #browser()
+  structure(list(
+    model = restored_model
+  ), class = "regr_blockforest_model")
+}
