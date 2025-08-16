@@ -2,7 +2,7 @@ library(checkmate)
 library(mlr3)
 library(mlr3extralearners)
 
-if (mlr3misc::require_namespaces("mlr3proba")) {
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)) {
   # proba is suggests
   lirbary(mlr3proba)
 }
