@@ -23,7 +23,7 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: R CMD Check ${{ matrix.config.os }} (${{ matrix.config.r }})${{ matrix.config.depends_only && ' – noSuggests' || '' }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})${{ matrix.config.depends_only && ' – noSuggests' || '' }}
 
     strategy:
       fail-fast: false
