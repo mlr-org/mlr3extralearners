@@ -24,8 +24,12 @@ In such cases, one might be tempted to access data from the `$state` of a `Learn
 However, this is a rather internal data structure and some parts of the state are e.g. only available after a manual `$train()` call, but not during `resample()`.
 This is done for efficiency reasons.
 
-If you need additional information, you can make the private `$.train()` method return a `list()` with the actual model and additional metadata so that both is available during `$.train()`.
-In such cases, it is a good idea to first consult with the maintainer of `mlr3extralearners` if this is really necessary.
+If you need additional information, there are two options:
+
+1. You can make the private `$.train()` method return a `list()` with the actual model and additional metadata so that both is available during `$.train()`.
+2. You can store additional information in the attributes of the upstream model.
+   This should use an attribute name that does not conflict with other attributes.
+   You can, e.g., use `"mlr3_info"`.
 
 ## Default vs. Initial Parameters
 

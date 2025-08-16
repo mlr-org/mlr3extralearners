@@ -2,7 +2,7 @@
 
 ## New Features:
 
-* New Learners: 
+* New Learners:
   - `LearnerSurvBlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
@@ -11,14 +11,13 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
-
-* New Features:
   - Add new `control_custom_fun` parameter in `surv.aorsf`
 
 ## Bugfixes:
 
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* `classif.lightgbm` now works with encapsulation with multiclass tasks
 
 # mlr3extralearners 1.1.0
 

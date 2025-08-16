@@ -385,13 +385,15 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       args = pars[ii]
       params = pars[!ii]
 
-      invoke(
+      model = invoke(
         lightgbm::lgb.train,
         data = dtrain,
         valids = valids,
         .args = args,
         params = params
       )
+      attr(model, "mlr3_info") = task$levels()[[task$target_names]]
+      model
     },
 
     .predict = function(task) {
@@ -400,14 +402,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       pred = invoke(predict, self$model, data, params = pars)
 
-      labels = if (is.null(self$state$task_prototype)) {
-        # there prototype is present after manual $train()
-        task$levels()[[task$target_names]]
-      } else {
-        # we are in a benchmark()-like situation, where the same task is used for training
-        # and prediction
-        self$state$task_prototype$levels()[[self$state$task_prototype$target_names]]
-      }
+      labels = attr(model, "mlr3_info")
 
       response = NULL
 

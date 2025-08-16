@@ -1,4 +1,5 @@
 test_that("autotest", {
+  skip_if_not_installed("bst")
   learner = lrn("classif.bst")
   expect_learner(learner)
   # note that you can skip tests using the exclude argument
