@@ -47,7 +47,7 @@ LearnerClassifRferns = R6Class("LearnerClassifRferns",
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
-        properties = c("importance", "missings", "multiclass", "twoclass", "oob_error"),
+        properties = c("importance", "multiclass", "twoclass", "oob_error"),
         man = "mlr3extralearners::mlr_learners_classif.rFerns",
         label = "Random Ferns Classifier"
       )
