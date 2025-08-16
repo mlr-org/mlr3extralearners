@@ -400,11 +400,19 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       pred = invoke(predict, self$model, data, params = pars)
 
+      labels = if (is.null(self$state$task_prototype)) {
+        # there prototype is present after manual $train()
+        task$levels()[[task$target_names]]
+      } else {
+        # we are in a benchmark()-like situation, where the same task is used for training
+        # and prediction
+        self$state$task_prototype$levels()[[self$state$task_prototype$target_names]]
+      }
+
       response = NULL
 
       if ("multiclass" %in% task$properties) {
         pred_mat = pred
-        labels = self$state$train_task$levels()[[self$state$train_task$target_names]]
         colnames(pred_mat) = labels
         if (self$predict_type == "response") {
           which = apply(pred_mat, 1, which.max)

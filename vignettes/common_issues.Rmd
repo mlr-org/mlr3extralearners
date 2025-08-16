@@ -19,11 +19,12 @@ For this purpose, the `ordered_features` helper function exists that is also use
 
 ## Accessing Internals From `$state`
 
-Sometimes, one needs additional information that might not be stored in the machine learning model itself.
+Sometimes, one needs additional information during `$predict()` that might not be stored in the machine learning model itself.
 In such cases, one might be tempted to access data from the `$state` of a `Learner` beyond `$state$model`.
-However, this is a rather internal data structure that might change in the future and one should not rely on it.
-Furthermore, the `$state` that is created when a learner is `resample`d is not the same that is created in a manual `$train()`.
-If you absolutely need additional information, you can make the private `$.train()` method return a `list()` with the actual model and additional metadata so that both is available during `$.train()`.
+However, this is a rather internal data structure and some parts of the state are e.g. only available after a manual `$train()` call, but not during `resample()`.
+This is done for efficiency reasons.
+
+If you need additional information, you can make the private `$.train()` method return a `list()` with the actual model and additional metadata so that both is available during `$.train()`.
 In such cases, it is a good idea to first consult with the maintainer of `mlr3extralearners` if this is really necessary.
 
 ## Default vs. Initial Parameters
@@ -38,4 +39,4 @@ By default, it is not initialized to any value, which means that the default beh
 ## Complex Defaults
 
 When annotating the default value for a parameter (argument `default`) in the `ParamSet`, there are cases where defaults are complex expressions such as `sample.int(10000L)`.
-In such cases, it is ok to not specify any `default` value for the parameter, which `paradox` then interpretes as having a complex default.
+In such cases, it is ok to not specify any `default` value for the parameter, which `paradox` then interprets as having a complex default.
