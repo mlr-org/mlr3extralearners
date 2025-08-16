@@ -402,7 +402,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       pred = invoke(predict, self$model, data, params = pars)
 
-      labels = attr(model, "mlr3_info")
+      labels = attr(self$model, "mlr3_info")
 
       response = NULL
 
