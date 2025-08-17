@@ -106,6 +106,7 @@ Suggests:
     randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
+    rotationForest,
     riskRegression,
     rJava,
     rpart,
