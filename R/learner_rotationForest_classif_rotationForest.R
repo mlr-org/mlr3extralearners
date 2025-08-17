@@ -4,11 +4,10 @@
 #'
 #' @description
 #' Classification using Rotation Forest algorithm.
+#' Training this learner works only for tasks with at least two features.
+#' The task must not have utf8 feature names.
 #' Calls [rotationForest::rotationForest()] from \CRANpkg{rotationForest}.
 #'
-#' @section Initial parameter values:
-#' - `K`: Default value is 3 (number of feature subsets)
-#' - `L`: Default value is 10 (number of trees)
 #'
 #' @section Custom mlr3 parameters:
 #' No custom mlr3 parameters.
