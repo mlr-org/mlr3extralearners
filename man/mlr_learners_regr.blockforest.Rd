@@ -98,21 +98,11 @@ bblodfon
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrBlockForest}
 }
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{marshaled}}{(\code{logical(1)})\cr
-Whether the learner has been marshaled.}
-}
-\if{html}{\out{</div>}}
-}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerRegrBlockForest-new}{\code{LearnerRegrBlockForest$new()}}
 \item \href{#method-LearnerRegrBlockForest-importance}{\code{LearnerRegrBlockForest$importance()}}
-\item \href{#method-LearnerRegrBlockForest-marshal}{\code{LearnerRegrBlockForest$marshal()}}
-\item \href{#method-LearnerRegrBlockForest-unmarshal}{\code{LearnerRegrBlockForest$unmarshal()}}
 \item \href{#method-LearnerRegrBlockForest-clone}{\code{LearnerRegrBlockForest$clone()}}
 }
 }
@@ -155,42 +145,6 @@ The importance scores are extracted from the model slot \code{variable.importanc
 
 \subsection{Returns}{
 Named \code{numeric()}.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrBlockForest-marshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrBlockForest-marshal}{}}}
-\subsection{Method \code{marshal()}}{
-Marshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrBlockForest$marshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrBlockForest-unmarshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrBlockForest-unmarshal}{}}}
-\subsection{Method \code{unmarshal()}}{
-Unmarshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrBlockForest$unmarshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
-}
-\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}
