@@ -1,7 +1,7 @@
 test_that("autotest", {
   with_seed(1, {
     learner = lrn("regr.blockforest", nsets = 5, num.trees = 10,
-                  num.trees.pre = 5, importance = "permutation")
+                  num.trees.pre = 5, importance = "permutation", se.method = "jack")
 
     # Dynamically define a single block containing all features for the given task
     cfg_lrn = function(learner, task) {
