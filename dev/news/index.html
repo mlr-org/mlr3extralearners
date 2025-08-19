@@ -48,14 +48,15 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-
+      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features:<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
-<ul><li>New Learners:
+<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>
+<p>New Learners:</p>
 <ul><li><code>LearnerSurvBlockForest</code></li>
 <li><code>Learner{Classif,Regr}ExhaustiveSearch</code></li>
 <li><code>LearnerClassifFastai</code></li>
@@ -64,15 +65,30 @@
 <li><code>LearnerClassifAdaBoosting</code></li>
 <li><code>Learner{Classif,Regr}Evtree</code></li>
 <li><code>LearnerClassifKnn</code></li>
-<li>Add new <code>control_custom_fun</code> parameter in <code>surv.aorsf</code>
-</li>
 </ul></li>
+<li><p>Add new <code>control_custom_fun</code> parameter in <code>surv.aorsf</code></p></li>
+<li><p>New function <code><a href="../reference/learner_is_runnable.html">learner_is_runnable()</a></code> to check whether the required packages to train a learner are available.</p></li>
 </ul></div>
 <div class="section level3">
-<h3 id="bugfixes-development-version">Bugfixes:<a class="anchor" aria-label="anchor" href="#bugfixes-development-version"></a></h3>
-<ul><li>remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
+<h3 id="bug-fixes-development-version">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-development-version"></a></h3>
+<ul><li>Tests are now skipped when the suggested packages is not available. This will make local development much more convenient.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>The <code>create_learner()</code> generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.</li>
+<li>remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
 <li>
 <code>classif.lightgbm</code> now works with encapsulation with multiclass tasks</li>
+<li>the package no longer re-exports <code>lrn</code> and <code>lrns</code>, which should anyway be available to the user as the package depends on <code>mlr3</code>, where these functions are defined.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<ul><li>The package now imports <code>withr</code>
+</li>
+<li>
+<code>mlr3proba</code> is now an import and no longer a suggested package.</li>
+<li>The package no longer uses <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> in the tests and instead uses <code><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">withr::local_seed()</a></code> This means the auto tests will be stochastic like they should be</li>
+<li>The CI now checks that RCMD-check passes when suggested packages are not available.</li>
 </ul></div>
 </div>
     <div class="section level2">
@@ -85,14 +101,14 @@
 <li>Added marshaling for <code>surv.xgboost.cox</code>.</li>
 <li>Added learner <code>LearnerClassifKnn</code>.</li>
 </ul><p>Bugfixes:</p>
-<ul><li>lightgbm classifier now works with encapsulation (#437)</li>
+<ul><li>lightgbm classifier now works with encapsulation (<a href="https://github.com/mlr-org/mlr3extralearners/issues/437" class="external-link">#437</a>)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.0.0" id="mlr3extralearners-100">mlr3extralearners 1.0.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-100"></a></h2>
-<ul><li>Add “Prediction types” doc section for all 30 survival learners + make sure it is consistent #347</li>
-<li>All survival learners have <code>crank</code> as main prediction type (and it is always returned) #331</li>
+<ul><li>Add “Prediction types” doc section for all 30 survival learners + make sure it is consistent <a href="https://github.com/mlr-org/mlr3extralearners/issues/347" class="external-link">#347</a></li>
+<li>All survival learners have <code>crank</code> as main prediction type (and it is always returned) <a href="https://github.com/mlr-org/mlr3extralearners/issues/331" class="external-link">#331</a></li>
 <li>Added minimum working version for all survival learners in <code>DESCRIPTION</code> file</li>
-<li>Harmonized the use of times points for prediction as much as possible across survival learners #387
+<li>Harmonized the use of times points for prediction as much as possible across survival learners <a href="https://github.com/mlr-org/mlr3extralearners/issues/387" class="external-link">#387</a>
 <ul><li>added <code>gridify_times()</code> function to coarse time points</li>
 <li>fixed <code>surv.parametric</code> and <code>surv.akritas</code> use of <code>ntime</code> argument</li>
 </ul></li>
@@ -106,14 +122,14 @@
 </li>
 <li>Add <code>selected_features()</code> for <code>surv.penalized</code>
 </li>
-<li>Fix <code>surv.prioritylasso</code> learner + add <code>distr</code> predictions via Breslow #344</li>
+<li>Fix <code>surv.prioritylasso</code> learner + add <code>distr</code> predictions via Breslow <a href="https://github.com/mlr-org/mlr3extralearners/issues/344" class="external-link">#344</a></li>
 <li>Survival SVM <code>gamma.mu</code> parameter was split to <code>gamma</code> and <code>mu</code> to enable easier tuning (<code>surv.svm</code> learner)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.9.0" id="mlr3extralearners-090">mlr3extralearners 0.9.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-090"></a></h2>
 <ul><li>Added response (i.e., survival time) prediction to <code>aorsf</code> learner</li>
 <li>Updated support for flexsurv v2.3</li>
-<li>Fixed bug in catboost that caused invalid probability levels during <code><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample()</a></code> or <code><a href="https://mlr3.mlr-org.com/reference/benchmark.html" class="external-link">benchmark()</a></code> (#353)</li>
+<li>Fixed bug in catboost that caused invalid probability levels during <code><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample()</a></code> or <code><a href="https://mlr3.mlr-org.com/reference/benchmark.html" class="external-link">benchmark()</a></code> (<a href="https://github.com/mlr-org/mlr3extralearners/issues/353" class="external-link">#353</a>)</li>
 <li>the <code>$model</code> slot of <code>lrn("classif.abess")</code> now contains the model of the upstream package again.</li>
 <li>Add early stopping and validation support to learners <code>lrn("surv.xgboost.aft")</code> and <code>lrn("surv.xgboost.cox")</code>.</li>
 <li>Added early stopping and validation to catboost and lightgbm.</li>
@@ -129,18 +145,18 @@
 <h2 class="pkg-version" data-toc-text="0.8.0" id="mlr3extralearners-080">mlr3extralearners 0.8.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-080"></a></h2>
 <ul><li>Added <code>surv.xgboost.cox</code> and <code>surv.xgboost.aft</code> separate survival learners. <code>distr</code> prediction on the cox xgboost learner is now estimated via Breslow by default and aft xgboost has now in addition a <code>response</code> prediction (survival time)</li>
 <li>Ported <code>surv.parametric</code> code to <code>survivalmodels</code>, changed <code>type</code> parameter to <code>form</code> to avoid conflict with survivalmodels’s default parameter list</li>
-<li>Fix: Replace hardcoded <code>VectorDistribution</code>s from partykit and flexsurv survival learners with survival matrices (<code>Matdist</code>) (thanks to @bblodfon)</li>
+<li>Fix: Replace hardcoded <code>VectorDistribution</code>s from partykit and flexsurv survival learners with survival matrices (<code>Matdist</code>) (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
 <li>Feat: Add <code>discrete</code> parameter in <code>surv.parametric</code> learner to return <code>Matdist</code> survival predictions</li>
-<li>Added method <code>selected_features()</code> to CoxBoost survival learners (thanks to @bblodfon)</li>
-<li>Added the Random Planted Forest Learner (thanks to @jemus42)</li>
+<li>Added method <code>selected_features()</code> to CoxBoost survival learners (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
+<li>Added the Random Planted Forest Learner (thanks to <a href="https://github.com/jemus42" class="external-link">@jemus42</a>)</li>
 <li>re-added the catboost learner as it was requested (was previously removed because of installation issues)</li>
 <li>
-<code>surv.ranger</code> now receives parameters during <code>$predict()</code> (thanks to @jemus42)</li>
-<li>Feature: Learner <code>surv.bart</code> was added (thanks to @bblodfon)</li>
-<li>Parameters of <code>lrn("surv.aorsf")</code> were updated (thanks to @bcjaeger)</li>
+<code>surv.ranger</code> now receives parameters during <code>$predict()</code> (thanks to <a href="https://github.com/jemus42" class="external-link">@jemus42</a>)</li>
+<li>Feature: Learner <code>surv.bart</code> was added (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
+<li>Parameters of <code>lrn("surv.aorsf")</code> were updated (thanks to <a href="https://github.com/bcjaeger" class="external-link">@bcjaeger</a>)</li>
 <li>Various minor doc improvements</li>
-<li>Added the <code>distr</code> predict type to the <code>surv.cv_glmnet</code> and <code>surv.glmnet</code> learners (thanks to @bblodfon)</li>
-<li>Feat: Added many new WEKA learners (thanks to @damirpolat)</li>
+<li>Added the <code>distr</code> predict type to the <code>surv.cv_glmnet</code> and <code>surv.glmnet</code> learners (thanks to <a href="https://github.com/bblodfon" class="external-link">@bblodfon</a>)</li>
+<li>Feat: Added many new WEKA learners (thanks to <a href="https://github.com/damirpolat" class="external-link">@damirpolat</a>)</li>
 <li>Fix: <code>I</code> and <code>F</code> params from IBk learner are too interdependent (<code>I</code> can only be <code>TRUE</code> when <code>F</code> is <code>FALSE</code> and vice versa). Combined them into one factor param <code>weight</code> that has two levels – <code>I</code> and <code>F</code>.</li>
 <li>Fix: <code>U</code> must be <code>FALSE</code> for <code>S</code> to be tunable in J48 learner.</li>
 <li>Compatibility with upcoming ‘paradox’ release.</li>
@@ -157,14 +173,14 @@
 <li>Add feature type <code>"factor"</code> to gam learners</li>
 <li>Add new parameter <code>min.bucket</code> to ranger</li>
 <li>Remove catboost learner (because the developers don’t properly take care of the R package)</li>
-<li>Add argument <code>nthreads</code> to <code>dbarts</code> learners; set verbose to <code>FALSE</code> by default (thanks to @ck37)</li>
+<li>Add argument <code>nthreads</code> to <code>dbarts</code> learners; set verbose to <code>FALSE</code> by default (thanks to <a href="https://github.com/ck37" class="external-link">@ck37</a>)</li>
 <li>Add new parameters to prioritylasso</li>
 <li>Fix: available levels for parameter of imbalanced random forest (typo)</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.6.1" id="mlr3extralearners-061">mlr3extralearners 0.6.1<a class="anchor" aria-label="anchor" href="#mlr3extralearners-061"></a></h2>
 <ul><li>BREAKING CHANGE: lightgbm’s early stopping mechanism now uses the task’s test set.</li>
-<li>feat: Add two new learners <code>regr.abess</code> and <code>classif.abess</code> (thanks to @bbayukari)</li>
+<li>feat: Add two new learners <code>regr.abess</code> and <code>classif.abess</code> (thanks to <a href="https://github.com/bbayukari" class="external-link">@bbayukari</a>)</li>
 <li>feat: Added learner <code>LearnerClassifImbalancedRandomForestSRC</code> (thanks to
 <ol class="example" style="list-style-type: decimal"><li>
 </li></ol></li>

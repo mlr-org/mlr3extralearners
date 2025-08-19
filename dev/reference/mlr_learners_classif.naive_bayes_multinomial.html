@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Multinomial Naive Bayes Learner From Weka</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_naive_bayes_multinomial.R" class="external-link"><code>R/learner_RWeka_classif_naive_bayes_multinomial.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.naive_bayes_multinomial.Rd</code></div>
     </div>
 
@@ -215,7 +215,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.naive_bayes_multinomial"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.naive_bayes_multinomial"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifNaiveBayesMultinomial&gt;</span><span style="font-weight: bold;"> (classif.naive_bayes_multinomial): Mult</span></span>
@@ -229,10 +229,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -240,8 +240,8 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The independent probability of a class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The probability of a word given the class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
@@ -260,7 +260,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V20	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V21	0.04	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25	0.04	0.04	</span>
@@ -276,7 +276,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36	0.02	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.02	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V4	0	0	</span>
@@ -315,7 +315,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -50,7 +50,7 @@ splits. Calls partykit::ctree() from partykit."><meta name="robots" content="noi
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Conditional Inference Tree Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_classif_ctree.R" class="external-link"><code>R/learner_partykit_classif_ctree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.ctree.Rd</code></div>
     </div>
 
@@ -163,7 +163,7 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.ctree"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.ctree"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifCTree&gt;</span><span style="font-weight: bold;"> (classif.ctree): Conditional Inference Tree</span> <span style="color: #00BBBB;">───────────</span></span>
@@ -177,10 +177,10 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -198,14 +198,14 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V49 &lt;= 0.0452</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V21 &lt;= 0.6484: R (n = 37, err = 8.1%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V21 &gt; 0.6484: M (n = 30, err = 46.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V49 &gt; 0.0452</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V36 &lt;= 0.4619: M (n = 45, err = 6.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [7] V36 &gt; 0.4619</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [8] V45 &lt;= 0.3017: R (n = 18, err = 22.2%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V45 &gt; 0.3017: M (n = 9, err = 0.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V1 &lt;= 0.0293: R (n = 43, err = 11.6%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [4] V1 &gt; 0.0293: M (n = 12, err = 41.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [5] V11 &gt; 0.197</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V17 &lt;= 0.3975: M (n = 40, err = 10.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [7] V17 &gt; 0.3975</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [8] V37 &lt;= 0.4609: M (n = 32, err = 21.9%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V37 &gt; 0.4609: R (n = 12, err = 0.0%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 5</span>
@@ -217,7 +217,7 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

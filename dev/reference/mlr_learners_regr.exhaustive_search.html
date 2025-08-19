@@ -50,7 +50,7 @@ Calls ExhaustiveSearch::ExhaustiveSearch() from ExhaustiveSearch."><meta name="r
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Linear Regression with Exhaustive Search</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_ExhaustiveSearch_regr_lm.R" class="external-link"><code>R/learner_ExhaustiveSearch_regr_lm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.exhaustive_search.Rd</code></div>
     </div>
 
@@ -185,6 +185,7 @@ we differentiate between classification and regression learners.</p></li>
 <span class="r-in"><span><span class="va">tsk_cars</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># train learner</span></span></span>
+<span class="r-in"><span><span class="co"># and subset to 3 features to speed up the example</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">tsk_cars</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># extract selected features</span></span></span>

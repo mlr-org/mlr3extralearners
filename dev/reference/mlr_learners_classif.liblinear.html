@@ -50,7 +50,7 @@ Calls LiblineaR::LiblineaR() from LiblineaR."><meta name="robots" content="noind
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>LiblineaR Classification Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_LiblineaR_classif_liblinear.R" class="external-link"><code>R/learner_LiblineaR_classif_liblinear.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.liblinear.Rd</code></div>
     </div>
 
@@ -172,7 +172,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLiblineaR&gt;</span><span style="font-weight: bold;"> (classif.liblinear): Support Vector Machine</span> <span style="color: #00BBBB;">───────</span></span>
@@ -186,10 +186,10 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -202,26 +202,26 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V1        V10       V11       V12        V13         V14       V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.238023 -0.8335465 -1.206552 -0.781184 -0.3747758 -0.02616221 0.2151207</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V16       V17       V18        V19         V2        V20        V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5508748 0.5609001 0.3051747 -0.3292467 -0.3110767 -0.5836784 -0.6705488</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24       V25       V26         V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.3133949 -0.2516675 -0.1961075 0.8146235 0.4582926 -0.04891395</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V28        V29         V3        V30      V31       V32         V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4877806 -0.1756048 -0.3106363 -0.1912513 0.994599 0.2879758 -0.04542919</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V34       V35       V36       V37         V38        V39         V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.7471423 0.6580286 0.9481294 0.9090739 -0.04180277 -0.3728842 -0.6174529</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V40        V41        V42       V43        V44       V45        V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5962619 -0.2514449 -0.8402419 -1.050451 -0.9950134 -1.214481 -0.9845299</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V47       V48        V49         V5         V50        V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.5325204 -0.574599 -0.4182978 -0.5000567 -0.03752381 -0.0946515</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V52           V53         V54         V55         V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.07104628 -0.0001295094 -0.06013356 0.009393205 0.006226787</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                V57         V58         V59          V6         V60          V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.0001087237 -0.04521289 -0.06062911 -0.06078074 -0.03979648 -0.01187576</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V8        V9      Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1108824 -0.808343 0.9082936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V1      V10       V11       V12        V13        V14       V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1622409 -0.77812 -1.220225 -1.313133 -0.6127721 -0.1347291 0.4606352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V16       V17       V18        V19         V2        V20        V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.569905 0.4545447 0.2959286 0.04671332 -0.2270428 -0.1884234 -0.6201864</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24       V25       V26       V27        V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2717631 -0.1483024 -0.2089941 0.1217708 0.4174766 0.3021298 -0.1752985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V29         V3        V30      V31       V32        V33       V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.5546286 -0.1945297 -0.1969447 1.331452 0.4057646 0.08762574 0.1808345</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V35      V36       V37         V38        V39         V4      V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.6675694 1.098746 0.7311144 -0.03830922 -0.1900421 -0.3751106 0.642549</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V41        V42        V43        V44       V45        V46        V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.16511 -0.5755424 -0.6570342 -0.7939673 -1.182759 -0.9585919 -0.5883974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V48        V49        V5         V50         V51         V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6926281 -0.4020594 -0.293297 -0.01672093 -0.08890178 -0.07830166</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V53        V54          V55         V56        V57         V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.01980876 -0.0610755 -0.007437088 -0.02278988 0.00279339 -0.03799745</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V59          V6         V60         V7         V8         V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.03567679 -0.07638216 -0.01463193 0.08973098 0.01372834 -0.7431498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.2861361</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>

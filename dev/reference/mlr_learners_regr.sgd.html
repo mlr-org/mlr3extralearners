@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Stochastic Gradient Descent Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_sgd.R" class="external-link"><code>R/learner_RWeka_regr_sgd.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.sgd.Rd</code></div>
     </div>
 
@@ -221,7 +221,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.sgd"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.sgd"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrSGD&gt;</span><span style="font-weight: bold;"> (regr.sgd): Stochastic Gradient Descent</span> <span style="color: #00BBBB;">────────────────────</span></span>
@@ -235,10 +235,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -248,17 +248,17 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          7.9087 (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -7.0285 (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.7486 (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9298 (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.6531 (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7566 (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.3081 (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       4.9172 (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       4.0267 (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.0287 (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      18.4891</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          3.8332 (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.4091 (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.5768 (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2397 (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.5982 (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.2395 (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -3.4337 (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       8.2239 (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6881 (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -7.8472 (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      16.762 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -267,7 +267,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.91482 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.183312 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

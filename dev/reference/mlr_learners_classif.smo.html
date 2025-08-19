@@ -50,7 +50,7 @@ Calls RWeka::SMO() from RWeka."><meta name="robots" content="noindex"></head><bo
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Support Vector Machine Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_smo.R" class="external-link"><code>R/learner_RWeka_classif_smo.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.smo.Rd</code></div>
     </div>
 
@@ -237,7 +237,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.smo"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.smo"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifSMO&gt;</span><span style="font-weight: bold;"> (classif.smo): Support Vector Machine</span> <span style="color: #00BBBB;">───────────────────</span></span>
@@ -251,10 +251,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -271,69 +271,69 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Machine linear: showing attribute weights, not support vectors.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.9063 * (normalized) V1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1092 * (normalized) V10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0628 * (normalized) V11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0186 * (normalized) V12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2284 * (normalized) V13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4762 * (normalized) V14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5828 * (normalized) V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6834 * (normalized) V16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4848 * (normalized) V17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6705 * (normalized) V18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5113 * (normalized) V19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8414 * (normalized) V2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3363 * (normalized) V20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3229 * (normalized) V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3791 * (normalized) V22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6981 * (normalized) V23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4656 * (normalized) V24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5904 * (normalized) V25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2248 * (normalized) V26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0647 * (normalized) V27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1976 * (normalized) V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7877 * (normalized) V29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1179 * (normalized) V3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4937 * (normalized) V30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.1766 * (normalized) V31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1989 * (normalized) V32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2385 * (normalized) V33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7742 * (normalized) V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6185 * (normalized) V35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.8775 * (normalized) V36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6667 * (normalized) V37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7082 * (normalized) V38</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9055 * (normalized) V39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0658 * (normalized) V4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5238 * (normalized) V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3151 * (normalized) V41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3388 * (normalized) V42</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2147 * (normalized) V43</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7428 * (normalized) V44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7224 * (normalized) V45</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2699 * (normalized) V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4092 * (normalized) V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4936 * (normalized) V48</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3041 * (normalized) V49</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1261 * (normalized) V5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.9816 * (normalized) V50</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7705 * (normalized) V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1284 * (normalized) V52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1028 * (normalized) V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0336 * (normalized) V54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6508 * (normalized) V55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0571 * (normalized) V56</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3967 * (normalized) V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3289 * (normalized) V58</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.5757 * (normalized) V59</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3823 * (normalized) V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2519 * (normalized) V60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2676 * (normalized) V7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4118 * (normalized) V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2215 * (normalized) V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       2.3833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         -0.3825 * (normalized) V1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4492 * (normalized) V10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3845 * (normalized) V11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.9154 * (normalized) V12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4123 * (normalized) V13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3619 * (normalized) V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7443 * (normalized) V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5011 * (normalized) V16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2873 * (normalized) V17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0569 * (normalized) V18</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4885 * (normalized) V19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1595 * (normalized) V2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4356 * (normalized) V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.452  * (normalized) V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.7304 * (normalized) V22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.0597 * (normalized) V23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5965 * (normalized) V24</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4495 * (normalized) V25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5061 * (normalized) V26</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1569 * (normalized) V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3666 * (normalized) V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1271 * (normalized) V29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1393 * (normalized) V3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8448 * (normalized) V30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2282 * (normalized) V31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1596 * (normalized) V32</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3968 * (normalized) V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.042  * (normalized) V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4506 * (normalized) V35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.4794 * (normalized) V36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.0202 * (normalized) V37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3711 * (normalized) V38</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.5104 * (normalized) V39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.453  * (normalized) V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2462 * (normalized) V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.8717 * (normalized) V41</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0087 * (normalized) V42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0789 * (normalized) V43</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9612 * (normalized) V44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.3738 * (normalized) V45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6586 * (normalized) V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5187 * (normalized) V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.2117 * (normalized) V48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6294 * (normalized) V49</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.3282 * (normalized) V5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.3684 * (normalized) V50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0413 * (normalized) V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.6508 * (normalized) V52</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3844 * (normalized) V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4472 * (normalized) V54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.5476 * (normalized) V55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.1489 * (normalized) V56</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4476 * (normalized) V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.4062 * (normalized) V58</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.9687 * (normalized) V59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.5088 * (normalized) V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3981 * (normalized) V60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4846 * (normalized) V7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0722 * (normalized) V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -1.1301 * (normalized) V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.3273</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 6036 (84.753% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 4555 (87.712% cached)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -344,7 +344,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
