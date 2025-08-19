@@ -67,7 +67,7 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
         param_set = param_set,
         predict_types = c("response", "se"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
-        properties = c("weights", "importance", "marshal"),
+        properties = c("weights", "importance"),
         packages = c("mlr3extralearners", "blockForest"),
         man = "mlr3extralearners::mlr_learners_regr.blockforest",
         label = "Random Forests for Block-wise Data"
@@ -82,35 +82,11 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
         stopf("No model stored")
       }
 
-      if (self$model$model$importance.mode == "none") {
+      if (self$model$importance.mode == "none") {
         stopf("No importance stored")
       }
 
-      sort(self$model$model$variable.importance, decreasing = TRUE)
-    },
-
-    #' @description
-    #' Marshal the learner's model.
-    #' @param ... (any)\cr
-    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
-    marshal = function(...) {
-      learner_marshal(.learner = self, ...)
-    },
-
-    #' @description
-    #' Unmarshal the learner's model.
-    #' @param ... (any)\cr
-    #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
-    unmarshal = function(...) {
-      learner_unmarshal(.learner = self, ...)
-    }
-  ),
-
-  active = list(
-    #' @field marshaled (`logical(1)`)\cr
-    #' Whether the learner has been marshaled.
-    marshaled = function() {
-      learner_marshaled(self)
+      sort(self$model$variable.importance, decreasing = TRUE)
     }
   ),
 
@@ -119,26 +95,17 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
       pv = self$param_set$get_values(tags = "train")
       pv$case.weights = private$.get_weights(task)
 
-      # with no marshalling:
-      # mlr3misc::invoke(
-      #     blockForest::blockfor,
-      #     X = task$data(cols = task$feature_names),
-      #     y = task$truth(),
-      #     .args = pv)$forest
-
-      structure(list(model =
-        mlr3misc::invoke(
+      mlr3misc::invoke(
           blockForest::blockfor,
           X = task$data(cols = task$feature_names),
           y = task$truth(),
           .args = pv)$forest
-      ), class = "regr_blockforest_model")
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      prediction = invoke(predict, object = self$model$model, data = newdata,
+      prediction = invoke(predict, object = self$model, data = newdata,
                           type = self$predict_type, .args = pv)
       list(response = prediction$predictions, se = prediction$se)
     }
@@ -146,40 +113,3 @@ LearnerRegrBlockForest = R6::R6Class("LearnerRegrBlockForest",
 )
 
 .extralrns_dict$add("regr.blockforest", LearnerRegrBlockForest)
-
-#' @export
-marshal_model.regr_blockforest_model = function(model, inplace = FALSE, ...) {
-  tmp = tempfile(fileext = ".rds")
-  on.exit(unlink(tmp), add = TRUE)
-
-  # Save the model to a temporary file and read it back as raw
-  saveRDS(model, tmp)
-  raw_model = readBin(tmp, what = "raw", n = file.info(tmp)$size)
-
-  structure(list(
-    marshaled = raw_model,
-    packages = c("mlr3extralearners", "blockForest")
-  ), class = c("regr_blockforest_model_marshaled", "marshaled"))
-}
-
-#' @export
-unmarshal_model.regr_blockforest_model_marshaled = function(model, ...) {
-  tmp = tempfile(fileext = ".rds")
-  on.exit(unlink(tmp), add = TRUE)
-
-  # Write raw bytes to a temp file and read back the model
-  writeBin(model$marshaled, tmp)
-  restored_model = readRDS(tmp)
-
-   # Sanity check: make sure the object has the right class
-  if (!inherits(restored_model, "regr_blockforest_model")) {
-    stopf("Unmarshaled object is not of class 'regr_blockforest_model' (got: %s)",
-          paste(class(restored_model), collapse = ", "))
-  }
-
-  #browser()
-  # structure(list(
-  #   model = restored_model$model
-  # ), class = "regr_blockforest_model")
-  restored_model
-}
