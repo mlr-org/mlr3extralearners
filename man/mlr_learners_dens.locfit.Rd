@@ -10,7 +10,7 @@ Calls \code{\link[locfit:density.lf]{locfit::density.lf()}} from \CRANpkg{locfit
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("dens.locfit")
 }\if{html}{\out{</div>}}

@@ -12,7 +12,7 @@ Weights are ignored for quantile prediction.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.gbm")
 }\if{html}{\out{</div>}}

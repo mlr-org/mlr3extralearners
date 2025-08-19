@@ -21,7 +21,7 @@ Calculated using the internal \code{\link[randomForestSRC:predict.rfsrc]{randomF
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.rfsrc")
 }\if{html}{\out{</div>}}

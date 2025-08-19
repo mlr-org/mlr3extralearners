@@ -1,5 +1,5 @@
 #' @section Dictionary:
-#' This [Learner][mlr3::Learner] can be instantiated via [lrn()][lrn]:
+#' This [Learner][mlr3::Learner] can be instantiated via [lrn()][mlr3::lrn]:
 #' ```
 #' lrn("<%= id %>")
 #' ```

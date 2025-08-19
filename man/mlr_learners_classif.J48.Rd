@@ -10,7 +10,7 @@ Calls \code{\link[RWeka:IBk]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.J48")
 }\if{html}{\out{</div>}}

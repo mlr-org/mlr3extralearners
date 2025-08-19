@@ -10,7 +10,7 @@ Calls \code{\link[pendensity:pendensity]{pendensity::pendensity()}} from \CRANpk
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("dens.pen")
 }\if{html}{\out{</div>}}

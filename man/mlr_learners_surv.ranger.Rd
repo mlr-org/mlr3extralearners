@@ -37,7 +37,7 @@ Note that \code{mtry} and \code{mtry.ratio} are mutually exclusive.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.ranger")
 }\if{html}{\out{</div>}}

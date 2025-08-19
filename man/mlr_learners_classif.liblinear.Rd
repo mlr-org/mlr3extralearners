@@ -29,7 +29,7 @@ The default \code{epsilon} value depends on the \code{type} parameter, see \link
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.liblinear")
 }\if{html}{\out{</div>}}
