@@ -182,7 +182,7 @@ If \code{first_metric_only = FALSE} (default), the learner stops when any metric
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.lightgbm")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.lightgbm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("classif.lightgbm")
 print(learner)

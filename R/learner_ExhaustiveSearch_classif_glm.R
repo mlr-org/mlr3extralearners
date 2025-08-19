@@ -28,7 +28,7 @@
 #'
 #' @template seealso_learner
 #'
-#' @examplesIf mlr3misc::require_namespaces("ExhaustiveSearch", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.exhaustive_search")
 #' # define the learner
 #' learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 #'

@@ -12,7 +12,7 @@ task_id = if ("LearnerClassif" %in% class(l)) {
 }
 %>
 #'
-#' <%= sprintf("@examplesIf mlr3misc::require_namespaces(lrn(\"%s\")$packages, quietly = TRUE)", id) %>
+#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' # Define the Learner
 #' <%= sprintf("learner = mlr3::lrn(\"%s\")", id)%>
 #' print(learner)

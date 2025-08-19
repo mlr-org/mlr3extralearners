@@ -4,7 +4,7 @@ library(mlr3extralearners)
 
 if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)) {
   # proba is suggests
-  lirbary(mlr3proba)
+  library(mlr3proba)
 }
 
 lapply(list.files(system.file("testthat", package = "mlr3"),

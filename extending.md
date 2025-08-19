@@ -9,11 +9,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r, include = FALSE}
-rpart_available = requireNamespace("rpart", quietly = TRUE)
-testthat_available = requireNamespace("testthat", quietly = TRUE)
-lgr::get_logger("mlr3")$set_threshold("warn")
-```
+
 
 
 Many learners are already included in the `mlr3` ecosystem, but there are still many more that have not been implemented and so in this vignette we will look at how to add a new `Learner` to `mlr3`.
@@ -24,7 +20,8 @@ We will not use it in this vignette for the sake of clarity, but recommend using
 We will first demonstrate what the final class looks like and then we will explain it line by line (and method by method).
 As a working example, we will implement a slightly stripped-down version of `regr.rpart`.
 
-```{r}
+
+``` r
 library(mlr3)
 library(paradox)
 library(R6)
@@ -201,7 +198,8 @@ We want to translate the following call of `rpart::rpart()` into code that can b
 
 First, we write something down that works completely without `mlr3`:
 
-```{r, eval = rpart_available}
+
+``` r
 data = mtcars
 model = rpart::rpart(mpg ~ ., data = mtcars, xval = 0)
 ```
@@ -215,7 +213,8 @@ Last, we call the upstream function `rpart::rpart()` with the data and pass all 
 The latter is simply an optimized version of `do.call()` that we use within the `mlr3` ecosystem.
 The return value of this method will be available as the `$model` slot of the trained learner.
 
-```{r}
+
+``` r
 .train = function(task) {
   pv = self$param_set$get_values(tags = "train")
   pv$weights = private$.get_weights(task)
@@ -242,7 +241,8 @@ The return value must contain the required information to produce a `mlr3::Predi
 We proceed analogously to what we did in the previous section.
 We start with a version without any `mlr3` objects and continue to replace objects until we have reached the desired interface:
 
-```{r, eval = rpart_available}
+
+``` r
 # inputs:
 task = tsk("mtcars")
 self = list(model = rpart::rpart(task$formula(), data = task$data()))
@@ -259,7 +259,8 @@ For, e.g., regression learners with predict types `"response"` and `"se"` or cla
 
 The final `$.predict()` method is below, we could omit the `pv` line as there are no parameters with the `"predict"` tag but we keep it here to be consistent:
 
-```{r}
+
+``` r
 .predict = function(task) {
   pv = self$param_set$get_values(tags = "predict")
   # ensure same column order in train and predict
@@ -281,7 +282,8 @@ Because we specified earlier that the learner has the property `"importance"`, w
 They access the `$model` slot of a learner after training and return one of its fields.
 Because the `$importance()` method is standardized, it must return the importance scores as a sorted numeric vector, the names being the features.
 
-```{r}
+
+``` r
 importance = function() {
   if (is.null(self$model)) {
     stopf("No model stored")
@@ -304,15 +306,28 @@ The manual page for these functions can be accessed via `?mlr_test_helpers`.
 
 For a bare-bone check you can just try to run a simple `$train()` call.
 
-```{r, eval = rpart_available}
+
+``` r
 task = tsk("mtcars")
 learner = LearnerRegrRpartSimple$new()
 learner$train(task)
 p = learner$predict(task)
 
 p$score(msr("regr.mse"))
+```
 
+```
+## regr.mse 
+## 9.127693
+```
+
+``` r
 learner$importance()
+```
+
+```
+##       cyl      disp        hp        wt      qsec        vs      carb      gear 
+## 724.18935 721.08062 702.29023 573.72817 442.05737 395.01237  31.36333  15.68167
 ```
 
 If it runs without erroring, that's a very good start!
@@ -325,7 +340,8 @@ See section *run_autotest* and *expect_learner* of `?mlr_test_helpers` for an ex
 Because these functions are not in the `mlr3` namespace, we have to source them from the `./testthat` subfolder of the installed `mlr3` package
 Note that when implementing survival learners, you must also source these help files from the `mlr3proba` package.
 
-```{r, results = 'hide'}
+
+``` r
 lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 # mlr3proba
 lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
@@ -334,7 +350,8 @@ lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^he
 We now perform the autotest.
 By setting `expect_learner(..., check_man = FALSE)`, we disable a test that verifies that the correct manual page exists, which is only relevant when adding the learner to `mlr3extralearners`.
 
-```{r, eval = testthat_available && rpart_available}
+
+``` r
 library(testthat)
 test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
@@ -346,6 +363,10 @@ test_that("autotest", {
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
+```
+
+```
+## Test passed 🌈
 ```
 
 ### Checking Parameters
@@ -368,7 +389,8 @@ All excluded parameters should have a comment justifying their exclusion.
 
 In our example, the final paramtest script looks like:
 
-```{r, eval = testthat_available && rpart_available}
+
+``` r
 test_that("paramtest", {
   learner = LearnerRegrRpartSimple$new()
 
@@ -387,6 +409,10 @@ test_that("paramtest", {
   result = run_paramtest(learner, rpart:::predict.rpart, exclude, tag = "predict")
   expect_true(result, info = result$error)
 })
+```
+
+```
+## Test passed 🌈
 ```
 
 

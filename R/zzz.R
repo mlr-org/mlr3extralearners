@@ -7,6 +7,7 @@
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
+#' @importFrom withr local_seed
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
@@ -18,8 +19,8 @@ mlr3::lrn
 mlr3::lrns
 
 
-#rcmdcheck. We use this extensively in the tests
-withr::local_seed
+# Silence rcmdcheck.
+local_seed
 
 # nocov start
 register_mlr3 = function(libname, pkgname) {

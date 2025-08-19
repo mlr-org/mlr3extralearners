@@ -83,7 +83,7 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (requireNamespace("randomForestSRC", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("classif.rfsrc", importance = "TRUE")
 print(learner)

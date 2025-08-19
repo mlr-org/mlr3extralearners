@@ -73,7 +73,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.glmboost")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.glmboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("surv.glmboost")
 print(learner)

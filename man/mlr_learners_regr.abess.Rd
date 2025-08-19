@@ -68,7 +68,7 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.abess")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.abess")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("regr.abess")
 print(learner)

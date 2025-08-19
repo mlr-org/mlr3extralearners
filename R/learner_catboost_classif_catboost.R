@@ -40,7 +40,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces("catboost", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.catboost")
 #' # Define the Learner
 #' learner = mlr3::lrn("classif.catboost",
 #'   iterations = 100)

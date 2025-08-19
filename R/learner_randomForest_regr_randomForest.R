@@ -13,7 +13,7 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForest", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.randomForest")
 #' # Define the Learner
 #' learner = mlr3::lrn("regr.randomForest", importance = "mse")
 #' print(learner)

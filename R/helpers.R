@@ -131,3 +131,18 @@ gridify_times = function(times, ntime) {
 
   times
 }
+
+
+#' @title Check if an example is runnable
+#'
+#' @description
+#' Checks if an example is runnable by loading the required packages.
+#'
+#' @param id (`character(1)`)\cr
+#'   The id of the learner.
+#' @export
+learner_is_runnable = function(id) {
+  l = suppressWarnings(mlr3::lrn(id))
+  mlr3misc::require_namespaces(l$packages, quietly = TRUE)
+
+}

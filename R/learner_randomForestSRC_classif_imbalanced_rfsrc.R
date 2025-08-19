@@ -15,7 +15,7 @@
 #' `r format_bib("obrien2019imbrfsrc", "chen2004imbrf")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.imbalanced_rfsrc")
 #' # Define the Learner
 #' learner = mlr3::lrn("classif.imbalanced_rfsrc", importance = "TRUE")
 #' print(learner)

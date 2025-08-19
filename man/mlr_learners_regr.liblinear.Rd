@@ -63,7 +63,7 @@ by the mlr3learner. The default value is set to th default of the respective
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.liblinear")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.liblinear")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("regr.liblinear")
 print(learner)

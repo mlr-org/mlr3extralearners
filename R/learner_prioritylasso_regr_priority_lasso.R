@@ -17,7 +17,7 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("prioritylasso", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.priority_lasso")
 #' # Define the Learner and set parameter values
 #' learner = lrn("regr.priority_lasso",
 #'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))

@@ -65,7 +65,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.OneR")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.OneR")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("classif.OneR")
 print(learner)

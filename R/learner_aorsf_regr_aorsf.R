@@ -14,7 +14,7 @@
 #' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("aorsf", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.aorsf")
 #' # Define the Learner
 #' learner = mlr3::lrn("regr.aorsf", importance = "anova")
 #' print(learner)

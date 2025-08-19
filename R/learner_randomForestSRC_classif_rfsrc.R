@@ -23,7 +23,7 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.rfsrc")
 #' # Define the Learner
 #' learner = mlr3::lrn("classif.rfsrc", importance = "TRUE")
 #' print(learner)

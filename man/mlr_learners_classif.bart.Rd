@@ -75,7 +75,7 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.bart")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.bart")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = mlr3::lrn("classif.bart")
 print(learner)
