@@ -90,7 +90,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (requireNamespace("lme4", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.glmer")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 # Define the Learner and set parameter values
 learner = lrn("classif.glmer",

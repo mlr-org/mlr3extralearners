@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf requireNamespace("partykit", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.mob")
 #' library(mlr3)
 #' logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   glm(y ~ 1, family = binomial, start = start, ...)

@@ -1,4 +1,6 @@
 skip_on_os("windows")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("distr6")
 
 test_that("autotest", {
   expect_true(callr::r(function() {

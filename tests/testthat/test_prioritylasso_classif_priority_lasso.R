@@ -1,5 +1,7 @@
+skip_if_not_installed("prioritylasso")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("classif.priority_lasso", type.measure = "class")
 
   # Dynamically define a single block containing all features for the given task

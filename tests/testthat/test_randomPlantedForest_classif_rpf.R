@@ -1,3 +1,5 @@
+skip_if_not_installed("randomPlantedForest")
+
 test_that("autotest", {
   with_seed(42, {
     learner = lrn("classif.rpf")

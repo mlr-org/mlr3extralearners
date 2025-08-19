@@ -1,31 +1,31 @@
-test_that("autotest", {
-  with_seed(1, {
-    learner = lrn("classif.imbalanced_rfsrc", ntree = 50, importance = "random", na.action = "na.impute")
-    expect_learner(learner)
-    # remove property as prediction doesn't work due to rsfrc bug
-    learner$properties = setdiff(learner$properties, "selected_features")
+skip_if_not_installed("randomForestSRC")
 
-    result = run_autotest(learner, exclude = "uf8_feature_names")
-    expect_true(result, info = result$error)
-  })
+test_that("autotest", {
+  withr::local_seed(1)
+  learner = lrn("classif.imbalanced_rfsrc", ntree = 50, importance = "random", na.action = "na.impute")
+  expect_learner(learner)
+  # remove property as prediction doesn't work due to rsfrc bug
+  learner$properties = setdiff(learner$properties, "selected_features")
+
+  result = run_autotest(learner, exclude = "uf8_feature_names")
+  expect_true(result, info = result$error)
 })
 
 test_that("importance/selected", {
-  with_seed(1, {
-    task = tsk("breast_cancer")
-    learner = lrn("classif.imbalanced_rfsrc", ntree = 20)
-    learner$train(task)
-    expect_error(learner$importance(), "Set 'importance'")
-    expect_error(learner$selected_features(), "Set parameter 'var.used'")
+  withr::local_seed(1)
+  task = tsk("breast_cancer")
+  learner = lrn("classif.imbalanced_rfsrc", ntree = 20)
+  learner$train(task)
+  expect_error(learner$importance(), "Set 'importance'")
+  expect_error(learner$selected_features(), "Set parameter 'var.used'")
 
-    learner$param_set$values = list(
-      var.used = "all.trees", importance = "random"
-    )
-    learner$train(task)
-    expect_character(learner$selected_features())
-    expect_numeric(learner$importance(), names = "named")
-    expect_error(learner$predict(task), "Prediction is not supported")
-  })
+  learner$param_set$values = list(
+    var.used = "all.trees", importance = "random"
+  )
+  learner$train(task)
+  expect_character(learner$selected_features())
+  expect_numeric(learner$importance(), names = "named")
+  expect_error(learner$predict(task), "Prediction is not supported")
 })
 
 test_that("convert_ratio", {

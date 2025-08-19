@@ -68,16 +68,16 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.abess")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.abess")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("regr.abess")
+learner = lrn("regr.abess")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("mtcars")
+task = tsk("mtcars")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
@@ -148,7 +148,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerRegrAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerRegrAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
+Extract the name of selected features from the model by \code{\link[abess:extract]{abess::extract()}}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrAbess$selected_features()}\if{html}{\out{</div>}}
 }

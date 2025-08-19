@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.LMT train", {
   learner = lrn("classif.LMT")
   fun = RWeka::LMT

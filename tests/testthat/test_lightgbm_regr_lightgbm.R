@@ -1,5 +1,7 @@
+skip_if_not_installed("lightgbm")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("regr.lightgbm", num_iterations = 50)
   expect_learner(learner)
   result = run_autotest(learner)
@@ -124,7 +126,7 @@ test_that("custom inner validation measure", {
 
 test_that("mlr3measures are equal to internal measures", {
   # response
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("mtcars")
 
   learner = lrn("regr.lightgbm",
@@ -137,7 +139,7 @@ test_that("mlr3measures are equal to internal measures", {
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$regr.rmse$eval)
 
-  set.seed(1)
+  withr::local_seed(1)
   learner$param_set$set_values(eval = list("rmse"))
   learner$train(task)
 

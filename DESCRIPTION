@@ -29,6 +29,8 @@ Authors@R: c(
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
+URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
     mlr3 (>= 1.0.0),
     R (>= 3.3.0)
@@ -37,9 +39,11 @@ Imports:
     data.table,
     methods,
     mlr3misc (>= 0.9.4),
+    mlr3proba (>= 0.8.1),
     paradox (>= 1.0.1),
     R6,
-    reticulate
+    reticulate,
+    withr
 Suggests:
     abess,
     actuar,
@@ -89,7 +93,6 @@ Suggests:
     mlr3cluster,
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
-    mlr3proba (>= 0.8.1),
     mvtnorm,
     nnet,
     np,
@@ -113,6 +116,7 @@ Suggests:
     rsm,
     rvest,
     RWeka,
+    rmarkdown,
     sandwich,
     sda,
     set6,
@@ -126,7 +130,8 @@ Suggests:
     testthat,
     xgboost (>= 1.7.8.1)
 VignetteBuilder:
-    knitr
+    knitr,
+    rmarkdown
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,

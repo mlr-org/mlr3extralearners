@@ -1,3 +1,8 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("distr6")
+skip_if_not_installed("reticulate")
+
 test_that("paramtest surv.coxtime train", {
   learner = lrn("surv.coxtime")
   fun_list = list(survivalmodels::coxtime, survivalmodels:::get_pycox_optim) # nolint
