@@ -58,7 +58,7 @@ skip_if_not_installed_py = function(...) {
   #   other contributors always have to download the python packages
   # * Want to run the tests in GHA. If installation fails there, we want to notice, etcept
   # * We test only suggested packages in GHA
-  if (!all(available) && (!in_gha || Sys.getenv("_R_CHECK_DEPENDS_ONLY_") == "TRUE")) {
+  if (!all(available) && (!in_gha || Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE")) {
     skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
   }
 }
