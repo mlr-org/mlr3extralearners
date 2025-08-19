@@ -48,8 +48,6 @@ skip_if_not_installed_py = function(...) {
   # We skip the tests if the python packages are not installed and we are not in GHA
   # Because if we are in GHA, we want to ensure that the installation of the python packages
   # is working
-  skip_if_not_installed("reticulate")
-  reticulate::py_require(pkgs)
   available = map_lgl(pkgs, reticulate::py_module_available)
   in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
 
@@ -58,7 +56,7 @@ skip_if_not_installed_py = function(...) {
   #   other contributors always have to download the python packages
   # * Want to run the tests in GHA. If installation fails there, we want to notice, etcept
   # * We test only suggested packages in GHA
-  if (!all(available) && (!in_gha || Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE")) {
+  if (!all(available) && (!in_gha || Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "false") == "true")) {
     skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
   }
 }
