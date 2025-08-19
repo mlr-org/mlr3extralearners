@@ -53,7 +53,12 @@ skip_if_not_installed_py = function(...) {
   available = map_lgl(pkgs, reticulate::py_module_available)
   in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
 
-  if (!all(available) && !in_gha) {
+  # We:
+  # * Don't want to run the tests locally if they are not available, as this will mean
+  #   other contributors always have to download the python packages
+  # * Want to run the tests in GHA. If installation fails there, we want to notice, etcept
+  # * We test only suggested packages in GHA
+  if (!all(available) && (!in_gha || Sys.getenv("_R_CHECK_DEPENDS_ONLY_" == "TRUE"))) {
     skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
   }
 }
