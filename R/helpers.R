@@ -141,6 +141,7 @@ gridify_times = function(times, ntime) {
 #' @param id (`character(1)`)\cr
 #'   The id of the learner.
 #' @export
+#' @keywords internal
 learner_is_runnable = function(id) {
   l = suppressWarnings(mlr3::lrn(id))
   mlr3misc::require_namespaces(l$packages, quietly = TRUE)
