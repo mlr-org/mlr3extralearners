@@ -50,7 +50,7 @@ skip_if_not_installed_py = function(...) {
   # is working
   available = map_lgl(pkgs, reticulate::py_module_available)
   in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
-  only_suggests = Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "false") == "true"
+  only_suggests = Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE"
 
   # We:
   # * Don't want to run the tests locally if they are not available, as this will mean
@@ -60,6 +60,5 @@ skip_if_not_installed_py = function(...) {
   if (!all(available) && (!in_gha || only_suggests)) {
     skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
   }
-  print(Sys.getenv("_R_CHECK_DEPENDS_ONLY_"))
-  stop(print)
+  invisible()
 }
