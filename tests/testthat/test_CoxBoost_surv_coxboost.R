@@ -1,3 +1,6 @@
+skip_if_not_installed("CoxBoost")
+skip_if_not_installed("pracma")
+
 test_that("autotest surv.coxboost", {
   learner = lrn("surv.coxboost", stepno = 5)
   expect_learner(learner)

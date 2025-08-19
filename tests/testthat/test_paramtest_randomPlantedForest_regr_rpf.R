@@ -1,3 +1,5 @@
+skip_if_not_installed("randomPlantedForest")
+
 test_that("regr.rpf train", {
   learner = lrn("regr.rpf")
   fun = randomPlantedForest:::rpf.data.frame

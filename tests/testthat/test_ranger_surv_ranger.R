@@ -1,10 +1,11 @@
+skip_if_not_installed("ranger")
+
 test_that("autotest", {
-  with_seed(1, {
-    learner = lrn("surv.ranger", importance = "impurity")
-    expect_learner(learner)
-    result = run_autotest(learner, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+  withr::local_seed(1)
+  learner = lrn("surv.ranger", importance = "impurity")
+  expect_learner(learner)
+  result = run_autotest(learner, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 test_that("importance", {

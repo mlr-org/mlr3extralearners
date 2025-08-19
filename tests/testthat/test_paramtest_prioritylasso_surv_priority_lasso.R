@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("prioritylasso")
+
 test_that("surv.priority_lasso train", {
   learner = lrn("surv.priority_lasso")
   fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)

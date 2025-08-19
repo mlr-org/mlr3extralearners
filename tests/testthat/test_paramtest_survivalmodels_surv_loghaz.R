@@ -1,3 +1,8 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("distr6")
+skip_if_not_installed("reticulate")
+
 test_that("paramtest surv.loghaz train", {
   learner = lrn("surv.loghaz")
   fun_list = list(survivalmodels::loghaz, survivalmodels::get_pycox_optim)

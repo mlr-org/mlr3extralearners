@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("regr.gaussian_processes train", {
   learner = lrn("regr.gaussian_processes")
   fun = RWeka::make_Weka_classifier("weka/classifiers/functions/GaussianProcesses")

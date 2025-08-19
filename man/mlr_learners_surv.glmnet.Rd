@@ -21,7 +21,7 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+Calculated using \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
@@ -53,7 +53,7 @@ custom resampling strategies (blocked design, stratification).
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
 incorporated during training via the \code{offset} argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
@@ -123,16 +123,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.glmnet")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.glmnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.glmnet")
+learner = lrn("surv.glmnet")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = tsk("grace")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

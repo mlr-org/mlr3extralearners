@@ -1,3 +1,4 @@
+skip_if_not_installed("rsm")
 test_that("autotest", {
   learner = lrn("regr.rsm")
   expect_learner(learner)

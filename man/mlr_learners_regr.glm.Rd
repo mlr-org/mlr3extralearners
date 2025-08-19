@@ -73,16 +73,16 @@ effectively disabling the offset adjustment during prediction.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.glm")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.glm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("regr.glm")
+learner = lrn("regr.glm")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("mtcars")
+task = tsk("mtcars")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

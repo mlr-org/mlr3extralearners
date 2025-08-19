@@ -27,7 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.cforest")
 #' task = tsk("rats")
 #' learner = lrn("surv.cforest", ntree = 50)
 #' splits = partition(task)
