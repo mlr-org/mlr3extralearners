@@ -105,19 +105,23 @@ in the learner template.</p>
 <div class="section level2">
 <h2 id="accessing-internals-from-state">Accessing Internals From <code>$state</code><a class="anchor" aria-label="anchor" href="#accessing-internals-from-state"></a>
 </h2>
-<p>Sometimes, one needs additional information that might not be stored
-in the machine learning model itself. In such cases, one might be
-tempted to access data from the <code>$state</code> of a
-<code>Learner</code> beyond <code>$state$model</code>. However, this is
-a rather internal data structure that might change in the future and one
-should not rely on it. Furthermore, the <code>$state</code> that is
-created when a learner is <code>resample</code>d is not the same that is
-created in a manual <code>$train()</code>. If you absolutely need
-additional information, you can make the private <code>$.train()</code>
-method return a <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> with the actual model and additional
-metadata so that both is available during <code>$.train()</code>. In
-such cases, it is a good idea to first consult with the maintainer of
-<code>mlr3extralearners</code> if this is really necessary.</p>
+<p>Sometimes, one needs additional information during
+<code>$predict()</code> that might not be stored in the machine learning
+model itself. In such cases, one might be tempted to access data from
+the <code>$state</code> of a <code>Learner</code> beyond
+<code>$state$model</code>. However, this is a rather internal data
+structure and some parts of the state are e.g. only available after a
+manual <code>$train()</code> call, but not during
+<code><a href="https://mlr3.mlr-org.com/reference/resample.html" class="external-link">resample()</a></code>. This is done for efficiency reasons.</p>
+<p>If you need additional information, there are two options:</p>
+<ol style="list-style-type: decimal">
+<li>You can make the private <code>$.train()</code> method return a
+<code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> with the actual model and additional metadata so
+that both is available during <code>$.train()</code>.</li>
+<li>You can store additional information in the attributes of the
+upstream model. This should use an attribute name that does not conflict
+with other attributes. You can, e.g., use <code>"mlr3_info"</code>.</li>
+</ol>
 </div>
 <div class="section level2">
 <h2 id="default-vs--initial-parameters">Default vs. Initial Parameters<a class="anchor" aria-label="anchor" href="#default-vs--initial-parameters"></a>
@@ -146,7 +150,7 @@ used.</p>
 where defaults are complex expressions such as
 <code>sample.int(10000L)</code>. In such cases, it is ok to not specify
 any <code>default</code> value for the parameter, which
-<code>paradox</code> then interpretes as having a complex default.</p>
+<code>paradox</code> then interprets as having a complex default.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

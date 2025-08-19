@@ -222,10 +222,10 @@ where each score corresponds to a specific test observation.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     weights = NULL, keep.data = FALSE, n.cores = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A gradient boosted model with coxph loss function.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 100 iterations were performed.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> There were 6 predictors of which 5 had non-zero influence.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> There were 6 predictors of which 6 had non-zero influence.</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los      sysbp   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  46.926531  26.514604  16.976308   6.187222   3.395335   0.000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44.3414968 24.7502141 12.4810593  9.7325893  8.0347692  0.6598713 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -234,7 +234,7 @@ where each score corresponds to a specific test observation.</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8591653 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8292949 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
