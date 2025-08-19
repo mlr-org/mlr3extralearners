@@ -14,6 +14,8 @@
   - `LearnerClassifKnn`
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
+* New function `learner_is_runnable()` to check whether the
+  required packages to train a learner are available.
 
 ## Bug fixes
 
@@ -26,13 +28,17 @@
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 * `classif.lightgbm` now works with encapsulation with multiclass tasks
+* the package no longer re-exports `lrn` and `lrns`, which should anyway
+  be available to the user as the package depends on `mlr3`, where these
+  functions are defined.
 
 ## Other
 
-* The package now depends on `withr`
+* The package now imports `withr`
+* `mlr3proba` is now an import and no longer a suggested package.
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
   This means the auto tests will be stochastic like they should be
-* The CI now checks that rmcmdcheck passes without suggests.
+* The CI now checks that RCMD-check passes when suggested packages are not available.
 
 
 # mlr3extralearners 1.1.0

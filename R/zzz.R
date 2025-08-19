@@ -12,13 +12,6 @@
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
 
-#' @export
-lrn
-
-#' @export
-lrns
-
-
 # Silence rcmdcheck.
 local_seed
 

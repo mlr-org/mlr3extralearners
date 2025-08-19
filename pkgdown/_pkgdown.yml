@@ -60,7 +60,6 @@ reference:
     contents:
       - list_mlr3learners
       - starts_with("install_")
-      - lrn
       - assert_python_packages
   - title: Classification Learners
     contents:

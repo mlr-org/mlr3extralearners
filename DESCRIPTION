@@ -29,6 +29,8 @@ Authors@R: c(
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
+URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
     mlr3 (>= 1.0.0),
     R (>= 3.3.0)
