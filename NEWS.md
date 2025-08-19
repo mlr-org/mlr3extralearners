@@ -25,6 +25,7 @@
 * The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* `classif.lightgbm` now works with encapsulation with multiclass tasks
 
 ## Other
 
