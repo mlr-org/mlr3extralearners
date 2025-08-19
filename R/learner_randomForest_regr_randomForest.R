@@ -15,13 +15,13 @@
 #' @template seealso_learner
 #' @examplesIf learner_is_runnable("regr.randomForest")
 #' # Define the Learner
-#' learner = mlr3::lrn("regr.randomForest", importance = "mse")
+#' learner = lrn("regr.randomForest", importance = "mse")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("mtcars")
+#' task = tsk("mtcars")
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)

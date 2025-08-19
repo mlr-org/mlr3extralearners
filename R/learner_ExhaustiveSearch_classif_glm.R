@@ -33,7 +33,8 @@
 #' learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 #'
 #' # define the task
-#' tsk_sonar = tsk("sonar")
+#' # and subset to 3 features to speed up the example
+#' tsk_sonar = tsk("sonar")$select(c("V1", "V2", "V3"))
 #'
 #' # train the learner
 #' learner$train(tsk_sonar)

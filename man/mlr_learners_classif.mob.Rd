@@ -10,7 +10,7 @@ Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANpkg{mob}.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.mob")
 }\if{html}{\out{</div>}}

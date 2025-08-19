@@ -18,7 +18,7 @@ Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} 
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.priority_lasso")
 }\if{html}{\out{</div>}}
@@ -103,7 +103,7 @@ print(learner)
 task = mlr3::as_task_regr(prioritylasso::pl_data, target = "pl_out")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

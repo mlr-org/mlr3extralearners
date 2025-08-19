@@ -26,8 +26,8 @@
 #'
 #' @examplesIf learner_is_runnable("classif.gam")
 #' # simple example
-#' t = mlr3::tsk("spam")$filter(1:1000)
-#' l = mlr3::lrn("classif.gam")
+#' t = tsk("spam")$filter(1:1000)
+#' l = lrn("classif.gam")
 #' l$param_set$set_values(
 #'   formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
 #' )

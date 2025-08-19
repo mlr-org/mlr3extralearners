@@ -13,10 +13,10 @@
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
 
 #' @export
-mlr3::lrn
+lrn
 
 #' @export
-mlr3::lrns
+lrns
 
 
 # Silence rcmdcheck.

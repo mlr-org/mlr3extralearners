@@ -25,7 +25,7 @@ No offset is applied during prediction for this learner.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("regr.gam")
 }\if{html}{\out{</div>}}
@@ -88,8 +88,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("regr.gam")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
-t = mlr3::tsk("mtcars")
-l = mlr3::lrn("regr.gam")
+t = tsk("mtcars")
+l = lrn("regr.gam")
 l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 l$train(t)
 l$model

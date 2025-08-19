@@ -10,7 +10,7 @@ Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpk
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("cmprsk.rfsrc")
 }\if{html}{\out{</div>}}
@@ -97,17 +97,17 @@ set to 1 by default.
 \examples{
 \dontshow{if (learner_is_runnable("cmprsk.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("cmprsk.rfsrc", importance = "TRUE")
+learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("pbc")
+task = tsk("pbc")
 
 # Stratification based on event
 task$set_col_roles(cols = "status", add_to = "stratum")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

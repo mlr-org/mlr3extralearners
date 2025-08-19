@@ -19,7 +19,7 @@ but in any case all can be considered a valid continuous ranking.
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.svm")
 }\if{html}{\out{</div>}}
@@ -83,10 +83,10 @@ learner = lrn("surv.svm", gamma = 0.1)
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("rats")
+task = tsk("rats")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

@@ -25,8 +25,8 @@
 #'
 #' @examplesIf learner_is_runnable("regr.gam")
 #' # simple example
-#' t = mlr3::tsk("mtcars")
-#' l = mlr3::lrn("regr.gam")
+#' t = tsk("mtcars")
+#' l = lrn("regr.gam")
 #' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
 #' l$train(t)
 #' l$model

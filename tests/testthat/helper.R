@@ -52,8 +52,6 @@ skip_if_not_installed_py = function(...) {
   in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
   only_suggests = Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE"
 
-  print(paste0("all_available: ", all(available)))
-
   # We:
   # * Don't want to run the tests locally if they are not available, as this will mean
   #   other contributors always have to download the python packages

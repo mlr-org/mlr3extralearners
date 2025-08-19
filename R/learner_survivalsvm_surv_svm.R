@@ -41,10 +41,10 @@
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("rats")
+#' task = tsk("rats")
 #'
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)

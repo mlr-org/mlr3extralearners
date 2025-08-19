@@ -37,7 +37,7 @@ we differentiate between classification and regression learners.
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.exhaustive_search")
 }\if{html}{\out{</div>}}
@@ -74,7 +74,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 
 # define the task
-tsk_sonar = tsk("sonar")
+# and subset to 3 features to speed up the example
+tsk_sonar = tsk("sonar")$select(c("V1", "V2", "V3"))
 
 # train the learner
 learner$train(tsk_sonar)

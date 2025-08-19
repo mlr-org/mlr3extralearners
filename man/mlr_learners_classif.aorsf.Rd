@@ -22,13 +22,13 @@ the parameter \code{na_action}.
 \examples{
 \dontshow{if (learner_is_runnable("classif.aorsf")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.aorsf", importance = "anova")
+learner = lrn("classif.aorsf", importance = "anova")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("breast_cancer")
+task = tsk("breast_cancer")
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

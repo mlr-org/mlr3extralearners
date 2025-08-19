@@ -32,7 +32,7 @@ Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} fr
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.naive_bayes_multinomial")
 }\if{html}{\out{</div>}}
@@ -64,14 +64,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("classif.naive_bayes_multinomial")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.naive_bayes_multinomial")
+learner = lrn("classif.naive_bayes_multinomial")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("sonar")
+task = tsk("sonar")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

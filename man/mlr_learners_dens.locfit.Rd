@@ -10,7 +10,7 @@ Calls \code{\link[locfit:density.lf]{locfit::density.lf()}} from \CRANpkg{locfit
 }
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("dens.locfit")
 }\if{html}{\out{</div>}}
@@ -49,14 +49,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("dens.locfit")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("dens.locfit")
+learner = lrn("dens.locfit")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("faithful")
+task = tsk("faithful")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

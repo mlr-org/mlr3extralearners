@@ -21,7 +21,7 @@ Calculated using the internal \code{\link[partykit:predict.cforest]{partykit::pr
 
 \section{Dictionary}{
 
-This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[=lrn]{lrn()}:
 
 \if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("surv.cforest")
 }\if{html}{\out{</div>}}

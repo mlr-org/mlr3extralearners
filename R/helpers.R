@@ -143,7 +143,7 @@ gridify_times = function(times, ntime) {
 #' @export
 #' @keywords internal
 learner_is_runnable = function(id) {
-  l = suppressWarnings(mlr3::lrn(id))
+  l = suppressWarnings(lrn(id))
   mlr3misc::require_namespaces(l$packages, quietly = TRUE)
 
 }
