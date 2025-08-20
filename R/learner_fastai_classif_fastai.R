@@ -263,7 +263,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
       # prevent python from printing evaluation protocol
       invisible(reticulate::py_capture_output({
-        self$state$eval_protocol = invoke(
+        eval_protocol = invoke(
           fastai::fit,
           object = tab_learner,
           .args = pv_fit
@@ -271,11 +271,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       }))
 
       # Rename eval protocol in case custom metric was used
-      names(self$state$eval_protocol)[
-        names(self$state$eval_protocol) == "python_function"
+      names(eval_protocol)[
+        names(eval_protocol) == "python_function"
       ] = if (inherits(measure, "Measure")) measure$id
 
-      structure(list(tab_learner = tab_learner), class = "fastai_model")
+      structure(list(tab_learner = tab_learner, eval_protocol = eval_protocol), class = "fastai_model")
     },
 
     .predict = function(task) {
@@ -296,21 +296,23 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .extract_internal_tuned_values = function() {
-      if (is.null(self$state$param_vals$patience) || is.null(self$state$eval_protocol)) {
+      if (is.null(self$state$param_vals$patience) || is.null(self$model$eval_protocol)) {
         return(NULL)
       }
-      list(n_epoch = max(self$state$eval_protocol$epoch) + 1)
+      list(n_epoch = max(self$model$eval_protocol$epoch) + 1)
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(self$state$eval_protocol)) return(NULL)
+      if (is.null(self$model$eval_protocol)) {
+        return(NULL)
+      }
       metric = self$model$tab_learner$metrics[[0]]$name
       metric_name = if (metric == "python_function") {
         self$state$param_vals$eval_metric$id
       } else {
         metric
       }
-      set_names(list(self$state$eval_protocol[nrow(self$state$eval_protocol), metric_name]), metric_name)
+      set_names(list(self$model$eval_protocol[nrow(self$model$eval_protocol), metric_name]), metric_name)
     }
   )
 )
@@ -353,7 +355,7 @@ marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
   pickled = as.raw(pickled)
 
   structure(list(
-    marshaled = pickled,
+    marshaled = list(pickled = pickled, eval_protocol = model$eval_protocol),
     packages = "mlr3extralearners"
   ), class = c("fastai_model_marshaled", "marshaled"))
 }
@@ -362,6 +364,6 @@ marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
 unmarshal_model.fastai_model_marshaled = function(model, inplace = FALSE, ...) {
   pickle = reticulate::import("pickle")
   # unpickle
-  tab_learner = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(tab_learner = tab_learner), class = "fastai_model")
+  tab_learner = pickle$loads(reticulate::r_to_py(model$marshaled$pickled))
+  structure(list(tab_learner = tab_learner, eval_protocol = model$marshaled$eval_protocol), class = "fastai_model")
 }
