@@ -1,3 +1,5 @@
+skip_if_not_installed("lightgbm")
+
 test_that("encode_data_lightgbm works for train", {
   dat = data.table::data.table(
     y = rnorm(100),

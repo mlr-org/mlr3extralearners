@@ -34,17 +34,17 @@
 #' `r format_bib("van2011improved", "van2011support", "shivaswamy2007support")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.svm")
 #' set.seed(123)
 #' # Define the Learner and set parameter values
 #' learner = lrn("surv.svm", gamma = 0.1)
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("rats")
+#' task = tsk("rats")
 #'
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)

@@ -1,4 +1,5 @@
 test_that("autotest", {
+  skip_if_not_installed("pendensity")
   learner = lrn("dens.pen")
   expect_learner(learner)
   capture.output({

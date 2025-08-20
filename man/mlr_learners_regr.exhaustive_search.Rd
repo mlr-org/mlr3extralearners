@@ -69,7 +69,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces("ExhaustiveSearch", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.exhaustive_search")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # define learner
 learner = LearnerRegrExhaustiveSearch$new()
 learner$predict_type = "se"
@@ -78,6 +78,7 @@ learner$predict_type = "se"
 tsk_cars = tsk("mtcars")
 
 # train learner
+# and subset to 3 features to speed up the example
 learner$train(tsk_cars)
 
 # extract selected features

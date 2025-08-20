@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("classif.bayes_net train", {
   learner = lrn("classif.bayes_net")
   fun = RWeka::make_Weka_classifier("weka/classifiers/bayes/BayesNet")

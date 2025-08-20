@@ -1,3 +1,8 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("distr6")
+skip_if_not_installed("reticulate")
+
 test_that("paramtest surv.deephit train", {
   learner = lrn("surv.deephit")
   fun_list = list(survivalmodels::deephit, survivalmodels:::get_pycox_optim) # nolint
