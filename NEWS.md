@@ -31,8 +31,11 @@
 * the package no longer re-exports `lrn` and `lrns`, which should anyway
   be available to the user as the package depends on `mlr3`, where these
   functions are defined.
-* Removed `randomPlantedForest` as there is currently no way to properly save this,
-  which means it has very limited use.
+* Removed various learners:
+  * `randomPlantedForest` was removed, because there is currently no way to
+    save the model.
+  * The deep learning methods from `survivalmodels` were removed, because
+    they also cannot be saved and because the upstream package is archived.
 
 ## Other
 
