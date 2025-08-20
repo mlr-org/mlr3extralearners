@@ -16,7 +16,6 @@ test_that("autotest", {
       run_autotest(learner, N = 42, check_replicable = FALSE)
     )
     expect_true(result, info = result$error)
-  })
 })
 
 test_that("importance/selected/oob_error", {

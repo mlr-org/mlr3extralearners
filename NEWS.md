@@ -31,6 +31,8 @@
 * the package no longer re-exports `lrn` and `lrns`, which should anyway
   be available to the user as the package depends on `mlr3`, where these
   functions are defined.
+* Removed `randomPlantedForest` as there is currently no way to properly save this,
+  which means it has very limited use.
 
 ## Other
 

@@ -7,7 +7,7 @@
 \description{
 Linear Regression learner that uses the Akaike criterion for model selection and
 is able to deal with weighted instances.
-Calls \code{\link[RWeka:LinearRegression]{RWeka::LinearRegression()}} \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_functions]{RWeka::LinearRegression()}} \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
