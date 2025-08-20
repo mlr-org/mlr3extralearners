@@ -1,3 +1,5 @@
+skip_if_not_installed("polyreg")
+
 test_that("autotest", {
   # reduce interact deg to 1, otherwise univar tasks will fail
   learner = lrn("classif.polyFit", maxInteractDeg = 1)
@@ -5,5 +7,3 @@ test_that("autotest", {
   result = run_autotest(learner, exclude = "utf8_feature_names")
   expect_true(result, info = result$error)
 })
-
-

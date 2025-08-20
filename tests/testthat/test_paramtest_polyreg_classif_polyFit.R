@@ -1,3 +1,5 @@
+skip_if_not_installed("polyreg")
+
 test_that("paramtest classif.polyFit train", {
   learner = lrn("classif.polyFit")
   fun_list = list(polyreg::polyFit)
@@ -11,7 +13,6 @@ test_that("paramtest classif.polyFit train", {
   expect_paramtest(paramtest)
 })
 
-
 test_that("paramtest classif.polyFit predict", {
   learner = lrn("classif.polyFit")
   fun_list = list(polyreg:::predict.polyFit) # nolint
@@ -23,4 +24,3 @@ test_that("paramtest classif.polyFit predict", {
   paramtest = run_paramtest(learner, fun_list, exclude, "predict")
   expect_paramtest(paramtest)
 })
-

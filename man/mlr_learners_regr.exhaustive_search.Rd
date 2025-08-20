@@ -78,7 +78,6 @@ learner$predict_type = "se"
 tsk_cars = tsk("mtcars")
 
 # train learner
-# and subset to 3 features to speed up the example
 learner$train(tsk_cars)
 
 # extract selected features
