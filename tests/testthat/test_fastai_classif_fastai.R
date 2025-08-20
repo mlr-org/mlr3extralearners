@@ -13,7 +13,7 @@ test_that("eval protocol", {
   learner = lrn("classif.fastai")
   task = tsk("sonar")
   learner$train(task)
-  expect_true(is.list(learner$state$eval_protocol))
+  expect_true(is.list(learner$model$eval_protocol))
 })
 
 
@@ -28,7 +28,7 @@ test_that("validation and inner tuning works", {
   )
 
   learner$train(task)
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "accuracy"))
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "accuracy"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "accuracy")
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -46,7 +46,7 @@ test_that("validation and inner tuning works", {
 
   learner$train(task)
   expect_equal(learner$internal_tuned_values, NULL)
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "accuracy"))
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "accuracy"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "accuracy")
 
@@ -67,7 +67,7 @@ test_that("validation and inner tuning works", {
     validate = 0.3
   )
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$accuracy, learner$state$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
+  expect_equal(learner$internal_valid_scores$accuracy, learner$model$eval_protocol$accuracy[learner$internal_tuned_values$n_epoch])
 
   # no validation and no internal tuning
   learner = lrn("classif.fastai")
@@ -78,7 +78,7 @@ test_that("validation and inner tuning works", {
   # no tuning without patience parameter
   learner = lrn("classif.fastai", validate = 0.3, n_epoch = 10)
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$accuracy, learner$state$eval_protocol$accuracy[10L])
+  expect_equal(learner$internal_valid_scores$accuracy, learner$model$eval_protocol$accuracy[10L])
   expect_null(learner$internal_tuned_values)
 })
 
@@ -95,7 +95,7 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "error_rate"))
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "error_rate"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "error_rate")
 
@@ -111,8 +111,8 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.ce"))
-  expect_numeric(learner$state$eval_protocol$classif.ce, len = 10)
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.ce"))
+  expect_numeric(learner$model$eval_protocol$classif.ce, len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.ce")
 
@@ -129,8 +129,8 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.logloss"))
-  expect_numeric(learner$state$eval_protocol$classif.logloss, len = 10)
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.logloss"))
+  expect_numeric(learner$model$eval_protocol$classif.logloss, len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.logloss")
 
@@ -147,8 +147,8 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.auc"))
-  expect_numeric(learner$state$eval_protocol$classif.auc, len = 10)
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.auc"))
+  expect_numeric(learner$model$eval_protocol$classif.auc, len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.auc")
 
@@ -165,8 +165,8 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.ce"))
-  expect_numeric(learner$state$eval_protocol$classif.ce, len = 10)
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.ce"))
+  expect_numeric(learner$model$eval_protocol$classif.ce, len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.ce")
 
@@ -183,8 +183,8 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$state$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.logloss"))
-  expect_numeric(learner$state$eval_protocol$classif.logloss, len = 10)
+  expect_named(learner$model$eval_protocol, c("epoch", "train_loss", "valid_loss", "classif.logloss"))
+  expect_numeric(learner$model$eval_protocol$classif.logloss, len = 10)
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "classif.logloss")
 })
