@@ -63,7 +63,7 @@ LearnerRegrBst = R6Class("LearnerRegrBst",
 
       super$initialize(
         id = "regr.bst",
-        packages = c("bst", "rpart"),
+        packages = c("mlr3extralearners", "bst", "rpart"),
         feature_types = c("numeric"),
         predict_types = c("response"),
         param_set = param_set,

@@ -1,3 +1,5 @@
+skip_if_not_installed("logspline")
+
 test_that("autotest", {
   learner = lrn("dens.logspline")
   expect_learner(learner)

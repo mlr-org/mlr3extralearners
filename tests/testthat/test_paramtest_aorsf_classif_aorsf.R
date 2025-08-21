@@ -1,3 +1,5 @@
+skip_if_not_installed("aorsf")
+
 test_that("paramtest classif.aorsf train", {
   learner = lrn("classif.aorsf")
   fun_list = list(aorsf::orsf)
@@ -31,9 +33,8 @@ test_that("paramtest classif.aorsf train", {
 
 test_that("paramtest classif.aorsf predict", {
   learner = lrn("classif.aorsf")
-  fun_list = list(aorsf:::predict.ObliqueForest)
+  fun_list = list(aorsf:::predict.ObliqueForest) # nolint
   exclude = c(
-    "na_action", # not implemented,
     "new_data", # handled internally
     "object", # handled internally
     "pred_horizon", # all times required for distr

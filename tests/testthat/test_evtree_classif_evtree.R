@@ -1,3 +1,5 @@
+skip_if_not_installed("evtree")
+
 test_that("autotest", {
   learner = lrn("classif.evtree")
   expect_learner(learner)

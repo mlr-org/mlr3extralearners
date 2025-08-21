@@ -1,3 +1,6 @@
+skip_if_not_installed("fastai")
+skip_if_not_installed("reticulate")
+
 test_that("autotest", {
   learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
