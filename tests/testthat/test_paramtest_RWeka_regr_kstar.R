@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("regr.kstar train", {
   learner = lrn("regr.kstar")
   fun = RWeka::make_Weka_classifier("weka/classifiers/lazy/KStar")

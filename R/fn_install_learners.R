@@ -15,7 +15,7 @@ install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
       utils::install.packages("mlr3cluster", repos = repos, ...)
     }
 
-    lrn = suppressWarnings(mlr3::lrn(.key))
+    lrn = suppressWarnings(lrn(.key))
     pkgs = lrn$packages
     # get uninstalled packages
     cran = pkgs[!grepl("/", pkgs)]

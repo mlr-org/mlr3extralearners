@@ -1,3 +1,5 @@
+skip_if_not_installed("mgcv")
+
 test_that("autotest", {
   learner = lrn("regr.gam")
   expect_learner(learner)

@@ -1,3 +1,5 @@
+skip_if_not_installed("stats")
+
 test_that("autotest", {
   learner = lrn("regr.glm")
   expect_learner(learner)

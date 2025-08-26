@@ -1,13 +1,13 @@
+skip_if_not_installed("randomForestSRC")
 test_that("autotest", {
-  with_seed(1, {
-    learner = lrn("classif.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
-    expect_learner(learner)
-    # remove property as prediction doesn't work due to rsfrc bug
-    learner$properties = setdiff(learner$properties, "selected_features")
+  withr::local_seed(1)
+  learner = lrn("classif.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
+  expect_learner(learner)
+  # remove property as prediction doesn't work due to rsfrc bug
+  learner$properties = setdiff(learner$properties, "selected_features")
 
-    result = run_autotest(learner, exclude = "uf8_feature_names")
-    expect_true(result, info = result$error)
-  })
+  result = run_autotest(learner, exclude = "uf8_feature_names")
+  expect_true(result, info = result$error)
 })
 
 test_that("importance/selected", {

@@ -1,3 +1,6 @@
+skip_if_not_installed("survival")
+skip_if_not_installed("pracma")
+
 test_that("autotest", {
   learner = lrn("surv.nelson")
   expect_learner(learner)

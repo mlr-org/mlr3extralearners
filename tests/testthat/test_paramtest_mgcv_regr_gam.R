@@ -1,3 +1,5 @@
+skip_if_not_installed("mgcv")
+
 test_that("paramtest regr.gam train", {
   learner = lrn("regr.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)

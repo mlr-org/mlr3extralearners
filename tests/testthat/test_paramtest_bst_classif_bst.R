@@ -1,3 +1,6 @@
+skip_if_not_installed("bst")
+skip_if_not_installed("rpart")
+
 test_that("classif.bst train", {
   learner = lrn("classif.bst")
   fun = c(bst::bst, bst::bst_control) # nolint
