@@ -1,3 +1,5 @@
+skip_if_not_installed("rFerns")
+
 test_that("autotest", {
   learner = lrn("classif.rFerns")
   expect_learner(learner, check_man = FALSE)
