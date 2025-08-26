@@ -75,7 +75,7 @@ LearnerClassifRferns = R6Class("LearnerClassifRferns",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      data = task$data()
+      data = ordered_features(task, self)
       X = task$data(cols = task$feature_names)
       y = data[[task$target_names]]
       invoke(
