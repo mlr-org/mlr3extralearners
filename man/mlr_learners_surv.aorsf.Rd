@@ -73,7 +73,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_with_replacement \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sample_fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   control_type \tab character \tab fast \tab fast, cph, net \tab - \cr
+   control_type \tab character \tab fast \tab fast, cph, net, custom \tab - \cr
+   control_custom_fun \tab untyped \tab - \tab  \tab - \cr
    split_rule \tab character \tab logrank \tab logrank, cstat \tab - \cr
    control_fast_do_scale \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    control_fast_ties \tab character \tab efron \tab efron, breslow \tab - \cr
@@ -96,21 +97,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    oobag_fun \tab untyped \tab NULL \tab  \tab - \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr
+   na_action \tab character \tab fail \tab fail, impute_meanmode \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.aorsf")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.aorsf")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.aorsf")
+learner = lrn("surv.aorsf")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = tsk("grace")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

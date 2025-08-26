@@ -93,6 +93,7 @@ LearnerRegrTabPFN = R6Class("LearnerRegrTabPFN",
         feature_types = c("integer", "numeric", "logical"),
         predict_types = c("response", "quantiles"),
         param_set = ps,
+        packages = "reticulate",
         properties = c("missings", "marshal"),
         label = "TabPFN Regressor",
         man = "mlr3extralearners::mlr_learners_regr.tabpfn"

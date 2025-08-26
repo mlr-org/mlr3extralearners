@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("glmnet")
+
 test_that("surv.cv_glmnet", {
   learner = lrn("surv.cv_glmnet")
   fun = list(glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)

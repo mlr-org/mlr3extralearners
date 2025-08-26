@@ -1,3 +1,6 @@
+skip_if_not_installed("bst")
+skip_if_not_installed("rpart")
+
 test_that("regr.bst train", {
   learner = lrn("regr.bst")
   fun = c(bst::bst, bst::bst_control) # nolint

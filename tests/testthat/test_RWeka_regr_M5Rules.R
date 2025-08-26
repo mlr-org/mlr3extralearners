@@ -1,6 +1,7 @@
 skip_on_os("windows")
 
 test_that("autotest", {
+  skip_if_not_installed("RWeka")
   learner = lrn("regr.M5Rules")
   expect_learner(learner)
   # these parameters have to be set as otherwise the sanity check does not run

@@ -1,3 +1,7 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
   # use a senseless logit model and partition with respect to all features
   logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
@@ -17,7 +21,9 @@ test_that("autotest", {
     if (.type == "response") {
       ifelse(p < 0.5, levs[1L], levs[2L])
     } else {
-      prob_vector_to_matrix(p, levs)
+      y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
+      colnames(y) = levs
+      y
     }
   }
   learner$param_set$values$predict_fun = predict_fun

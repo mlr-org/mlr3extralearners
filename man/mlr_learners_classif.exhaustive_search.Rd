@@ -69,12 +69,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces("ExhaustiveSearch", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.exhaustive_search")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # define the learner
 learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
 
 # define the task
-tsk_sonar = tsk("sonar")
+# and subset to 3 features to speed up the example
+tsk_sonar = tsk("sonar")$select(c("V1", "V2", "V3"))
 
 # train the learner
 learner$train(tsk_sonar)

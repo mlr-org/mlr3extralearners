@@ -1,3 +1,5 @@
+skip_if_not_installed("klaR")
+
 test_that("autotest", {
   learner = lrn("classif.rda")
   expect_learner(learner)

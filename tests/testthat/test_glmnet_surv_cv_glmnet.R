@@ -1,7 +1,7 @@
 skip_on_os("solaris") # glmnet not working properly on solaris
 skip_if_not_installed("glmnet")
 
-set.seed(42)
+withr::local_seed(42)
 task = tsk("rats")$select(c("litter", "rx"))
 part = partition(task, ratio = 0.9)
 train_rows = part$train

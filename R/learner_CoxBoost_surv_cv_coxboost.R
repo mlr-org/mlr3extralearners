@@ -28,7 +28,7 @@
 #'
 #' @template seealso_learner
 #' @export
-#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.cv_coxboost")
 #' task = tsk("rats")
 #' task$col_roles$feature = c("litter", "rx")
 #' learner = lrn("surv.cv_coxboost", maxstepno = 20)
