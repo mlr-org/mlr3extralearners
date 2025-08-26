@@ -1,3 +1,5 @@
+skip_if_not_installed("class")
+
 test_that("autotest", {
   learner = lrn("classif.knn")
   expect_learner(learner)

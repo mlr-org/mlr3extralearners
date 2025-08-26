@@ -1,31 +1,30 @@
+skip_if_not_installed("xgboost")
+
 task = tsk("lung")
 task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100) # encode sex factor
 
 test_that("autotest", {
-  with_seed(2, {
-    learner = lrn("surv.xgboost.aft", nrounds = 10)
-    expect_learner(learner)
-    result = run_autotest(learner, N = 10, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+  withr::local_seed(2)
+  learner = lrn("surv.xgboost.aft", nrounds = 10)
+  expect_learner(learner)
+  result = run_autotest(learner, N = 10, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 test_that("autotest cox", {
-  with_seed(1, {
-    learner = lrn("surv.xgboost.cox", nrounds = 10)
-    expect_learner(learner)
-    result = run_autotest(learner, N = 10, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+  withr::local_seed(1)
+  learner = lrn("surv.xgboost.cox", nrounds = 10)
+  expect_learner(learner)
+  result = run_autotest(learner, N = 10, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 test_that("autotest aft", {
-  with_seed(1, {
-    learner = lrn("surv.xgboost.aft", nrounds = 10)
-    expect_learner(learner)
-    result = run_autotest(learner, N = 10, check_replicable = FALSE)
-    expect_true(result, info = result$error)
-  })
+  withr::local_seed(1)
+  learner = lrn("surv.xgboost.aft", nrounds = 10)
+  expect_learner(learner)
+  result = run_autotest(learner, N = 10, check_replicable = FALSE)
+  expect_true(result, info = result$error)
 })
 
 
@@ -183,22 +182,21 @@ test_that("two types of xgboost models can be initialized", {
 })
 
 test_that("surv.xgboost.cox distr via breslow works", {
-  with_seed(42, {
-    part = partition(task, ratio = 0.8)
-    cox = lrn("surv.xgboost.cox", nrounds = 3)
-    cox$train(task, part$train)
-    p_train = cox$predict(task, part$train)
-    p_test  = cox$predict(task, part$test)
+  withr::local_seed(42)
+  part = partition(task, ratio = 0.8)
+  cox = lrn("surv.xgboost.cox", nrounds = 3)
+  cox$train(task, part$train)
+  p_train = cox$predict(task, part$train)
+  p_test  = cox$predict(task, part$test)
 
-    surv = breslow(
-      times = task$times(part$train),
-      status = task$status(part$train),
-      lp_train = p_train$lp,
-      lp_test = p_test$lp
-    )
+  surv = breslow(
+    times = task$times(part$train),
+    status = task$status(part$train),
+    lp_train = p_train$lp,
+    lp_test = p_test$lp
+  )
 
-    expect_equal(surv, p_test$data$distr)
-  })
+  expect_equal(surv, p_test$data$distr)
 })
 
 test_that("marshaling works for surv.xgboost.cox", {

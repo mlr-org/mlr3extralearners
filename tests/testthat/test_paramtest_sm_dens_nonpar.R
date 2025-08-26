@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("sm")
+
 test_that("paramtest dens.nonpar train", {
   learner = lrn("dens.nonpar")
   fun = sm::sm.density

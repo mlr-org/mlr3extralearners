@@ -1,3 +1,5 @@
+skip_if_not_installed("class")
+
 # class::knn() not called in learner$train but directly in learner$predict.
 # learner$train() simply initializes the model state with the current parameters.
 test_that("classif.knn train and predict", {

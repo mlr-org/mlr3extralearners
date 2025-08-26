@@ -8,6 +8,15 @@
 \description{
 Extra learners for use in mlr3.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://mlr3extralearners.mlr-org.com}
+  \item \url{https://github.com/mlr-org/mlr3extralearners}
+  \item Report bugs at \url{https://github.com/mlr-org/mlr3extralearners/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com}
 

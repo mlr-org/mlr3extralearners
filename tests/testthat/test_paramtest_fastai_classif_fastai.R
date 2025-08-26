@@ -1,3 +1,6 @@
+skip_if_not_installed("fastai")
+skip_if_not_installed("reticulate")
+
 test_that("classif.fastai train", {
   learner = lrn("classif.fastai")
   fun_list = list(fastai::TabularDataTable, fastai::dataloaders,

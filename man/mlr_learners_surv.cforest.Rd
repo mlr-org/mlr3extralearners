@@ -109,7 +109,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.cforest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 task = tsk("rats")
 learner = lrn("surv.cforest", ntree = 50)
 splits = partition(task)

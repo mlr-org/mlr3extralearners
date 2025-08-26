@@ -1,4 +1,6 @@
 skip_on_os("windows")
+skip_if_not_installed("fastai")
+skip_if_not_installed("reticulate")
 
 test_that("autotest", {
   expect_true(callr::r(function() {

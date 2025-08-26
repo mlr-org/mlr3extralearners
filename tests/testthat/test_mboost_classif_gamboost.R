@@ -1,3 +1,5 @@
+skip_if_not_installed("mboost")
+
 test_that("autotest", {
   learner = lrn("classif.gamboost", baselearner = "btree", family = "Binomial")
   expect_learner(learner)

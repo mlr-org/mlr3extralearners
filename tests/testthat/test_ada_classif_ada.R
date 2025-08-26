@@ -1,3 +1,5 @@
+skip_if_not_installed("ada")
+skip_if_not_installed("rpart")
 test_that("autotest", {
   learner = lrn("classif.ada")
   expect_learner(learner)
