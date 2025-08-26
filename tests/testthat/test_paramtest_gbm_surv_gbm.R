@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("gbm")
+
 test_that("surv.gbm", {
   learner = lrn("surv.gbm")
   fun = fun_list = gbm::gbm

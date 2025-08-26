@@ -1,6 +1,11 @@
-test_that("paramtest surv.loghaz train", {
-  learner = lrn("surv.loghaz")
-  fun_list = list(survivalmodels::loghaz, survivalmodels::get_pycox_optim)
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("distr6")
+skip_if_not_installed("reticulate")
+
+test_that("paramtest surv.deepsurv train", {
+  learner = lrn("surv.deepsurv")
+  fun_list = list(survivalmodels::deepsurv, survivalmodels:::get_pycox_optim) # nolint
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -16,14 +21,17 @@ test_that("paramtest surv.loghaz train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest surv.loghaz predict", {
-  learner = lrn("surv.loghaz")
+test_that("paramtest surv.deepsurv predict", {
+  learner = lrn("surv.deepsurv")
   fun = survivalmodels:::predict.pycox # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
-    "distr6" # handled internally
+    "distr6", # handled internally
+    "interpolate", # unused
+    "inter_scheme", # unused
+    "sub" # unused
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

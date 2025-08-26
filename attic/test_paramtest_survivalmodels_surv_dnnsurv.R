@@ -1,3 +1,10 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+skip_if_not_installed("keras")
+skip_if_not_installed("pseudo")
+skip_if_not_installed("tensorflow")
+skip_if_not_installed("distr6")
+
 test_that("paramtest surv.dnnsurv train", {
   learner = lrn("surv.dnnsurv")
   fun_list = list(survivalmodels::dnnsurv, survivalmodels::get_keras_optimizer)

@@ -1,3 +1,5 @@
+skip_if_not_installed("sda")
+
 test_that("autotest", {
   learner = lrn("classif.sda")
   expect_learner(learner)

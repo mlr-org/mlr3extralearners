@@ -1,3 +1,7 @@
+skip_if_not_installed("rvest")
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("xgboost")
+
 x = rvest::read_html("https://xgboost.readthedocs.io/en/latest/parameter.html")
 xli = rvest::html_elements(x, "li")
 xp = rvest::html_elements(x, "p")

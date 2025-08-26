@@ -53,16 +53,16 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.glmboost")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.glmboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.glmboost")
+learner = lrn("classif.glmboost")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("sonar")
+task = tsk("sonar")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
