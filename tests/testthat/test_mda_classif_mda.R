@@ -1,3 +1,5 @@
+skip_if_not_installed("mda")
+
 test_that("autotest", {
   learner = lrn("classif.mda", subclasses = 2)
   expect_learner(learner)

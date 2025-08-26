@@ -1,3 +1,5 @@
+skip_if_not_installed("mda")
+
 test_that("classif.mda train", {
   learner = lrn("classif.mda")
   fun = mda::mda
