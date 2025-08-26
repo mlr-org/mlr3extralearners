@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("blockForest")
+
 test_that("classif.blockforest", {
   learner = LearnerClassifBlockForest$new()
   fun = blockForest::blockfor
