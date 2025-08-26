@@ -1,3 +1,5 @@
+skip_if_not_installed("mboost")
+
 test_that("paramtest regr.glmboost train", {
   learner = lrn("regr.glmboost")
   fun_list = list(mboost:::glmboost.formula, mboost::boost_control) # nolint

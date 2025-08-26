@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("np")
+
 test_that("paramtest dens.mixed train", {
   learner = lrn("dens.mixed")
   fun_list = list(np::npudens, np:::npudensbw.default) # nolint

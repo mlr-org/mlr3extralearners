@@ -1,3 +1,5 @@
+skip_if_not_installed("penalized")
+
 test_that("regr.penalized train", {
   learner = lrn("regr.penalized")
   fun_list = list(penalized::penalized)

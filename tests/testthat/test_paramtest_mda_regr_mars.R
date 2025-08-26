@@ -1,3 +1,5 @@
+skip_if_not_installed("mda")
+
 test_that("paramtest regr.mars train", {
   learner = lrn("regr.mars")
   fun = mda::mars

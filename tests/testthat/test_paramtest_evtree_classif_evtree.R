@@ -1,3 +1,5 @@
+skip_if_not_installed("evtree")
+
 test_that("classif.evtree train", {
   learner = lrn("classif.evtree")
   fun = evtree::evtree

@@ -1,3 +1,5 @@
+skip_if_not_installed("ks")
+
 test_that("paramtest dens.kde_ks train", {
   learner = lrn("dens.kde_ks")
   fun = ks::kde

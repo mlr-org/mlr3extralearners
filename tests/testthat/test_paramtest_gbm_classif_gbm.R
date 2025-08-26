@@ -1,3 +1,5 @@
+skip_if_not_installed("gbm")
+
 test_that("paramtest classif.gbm train", {
   learner = lrn("classif.gbm")
   fun = gbm::gbm

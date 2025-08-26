@@ -1,3 +1,5 @@
+skip_if_not_installed("randomForestSRC")
+
 test_that("paramtest regr.rfsrc train", {
   learner = lrn("regr.rfsrc")
   fun_list = list(randomForestSRC::rfsrc)

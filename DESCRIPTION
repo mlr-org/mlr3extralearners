@@ -23,11 +23,14 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
-    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
-    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb")
+    person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
+URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
     mlr3 (>= 1.0.0),
     R (>= 3.3.0)
@@ -36,9 +39,11 @@ Imports:
     data.table,
     methods,
     mlr3misc (>= 0.9.4),
+    mlr3proba (>= 0.8.1),
     paradox (>= 1.0.1),
     R6,
-    reticulate
+    reticulate,
+    withr
 Suggests:
     abess,
     actuar,
@@ -62,6 +67,7 @@ Suggests:
     evtree,
     fastai,
     flexsurv (>= 2.3),
+    ExhaustiveSearch,
     FNN,
     formattable,
     future,
@@ -83,10 +89,10 @@ Suggests:
     mboost (>= 2.9-10),
     mda,
     mgcv,
+    mirai,
     mlr3cluster,
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
-    mlr3proba (>= 0.8.1),
     mvtnorm,
     nnet,
     np,
@@ -94,6 +100,7 @@ Suggests:
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
     pendensity,
+    polyreg,
     plugdensity,
     pracma,
     prioritylasso (>= 0.3.1),
@@ -110,6 +117,7 @@ Suggests:
     rsm,
     rvest,
     RWeka,
+    rmarkdown,
     sandwich,
     sda,
     set6,
@@ -124,12 +132,14 @@ Suggests:
     testthat,
     xgboost (>= 1.7.8.1)
 VignetteBuilder:
-    knitr
+    knitr,
+    rmarkdown
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     eagerai/fastai,
     mlr-org/mlr3,
+    mlr-org/mlr3misc,
     mlr-org/mlr3proba,
     PlantedML/randomPlantedForest,
     RaphaelS1/survivalmodels,

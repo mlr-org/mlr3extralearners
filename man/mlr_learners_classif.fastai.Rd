@@ -27,10 +27,10 @@ After loading a marshaled \code{lrn("classif.fastai")} into R again, you then ne
 
 \itemize{
 \item \code{n_epoch}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
+Needs to be set for \code{\link[fastai:fit]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
+Needs to be set for \code{\link[fastai:predict]{fastai::predict()}} to work.
 If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }
@@ -49,7 +49,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{fastai}, \CRANpkg{reticulate}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{fastai}, \CRANpkg{reticulate}
 }
 }
 
