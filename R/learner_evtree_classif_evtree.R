@@ -13,7 +13,7 @@
 #' @templateVar id classif.evtree
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("evtree"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.evtree")
 #' task = tsk("iris")
 #' learner = lrn("classif.evtree", ntrees = 50)
 #' splits = partition(task)

@@ -1,3 +1,6 @@
+skip_if_not_installed("ada")
+skip_if_not_installed("rpart")
+
 test_that("classif.ada train", {
   learner = lrn("classif.ada")
   fun = ada:::ada.default

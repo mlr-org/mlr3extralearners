@@ -52,7 +52,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
 
       super$initialize(
         id = "classif.ada",
-        packages = c("ada", "rpart"),
+        packages = c("mlr3extralearners", "ada", "rpart"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,

@@ -1,3 +1,5 @@
+skip_if_not_installed("Cubist")
+
 test_that("autotest", {
   learner = lrn("regr.cubist")
   expect_learner(learner)

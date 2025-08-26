@@ -1,3 +1,5 @@
+skip_if_not_installed("earth")
+
 test_that("autotest", {
   learner = lrn("classif.earth", varmod.method = "const", nfold = 2, ncross = 3)
   expect_learner(learner)

@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.OneR train", {
   learner = lrn("classif.OneR")
   fun = RWeka::OneR

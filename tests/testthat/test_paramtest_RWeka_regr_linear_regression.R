@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("regr.linear_regression train", {
   learner = lrn("regr.linear_regression")
   fun = RWeka::LinearRegression

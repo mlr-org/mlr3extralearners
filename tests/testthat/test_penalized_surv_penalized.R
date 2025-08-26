@@ -1,3 +1,6 @@
+skip_if_not_installed("penalized")
+skip_if_not_installed("pracma")
+
 test_that("autotest", {
   learner = lrn("surv.penalized")
   expect_learner(learner)

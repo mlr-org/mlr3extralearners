@@ -15,15 +15,15 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.rfsrc")
 #' # Define the Learner
-#' learner = mlr3::lrn("regr.rfsrc", importance = "TRUE")
+#' learner = lrn("regr.rfsrc", importance = "TRUE")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("mtcars")
+#' task = tsk("mtcars")
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
