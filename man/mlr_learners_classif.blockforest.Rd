@@ -52,6 +52,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+\dontshow{if (learner_is_runnable("classif.blockforest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define a Task
 task = tsk("sonar")
 # Create train and test set
@@ -73,6 +74,7 @@ pred = learner$predict(task, row_ids = ids$test)
 pred
 # Score the predictions
 pred$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Hornung, R., Wright, N. M (2019).
