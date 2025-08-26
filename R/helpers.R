@@ -159,5 +159,4 @@ gridify_times = function(times, ntime) {
 learner_is_runnable = function(id) {
   l = suppressWarnings(lrn(id))
   mlr3misc::require_namespaces(l$packages, quietly = TRUE)
-
 }

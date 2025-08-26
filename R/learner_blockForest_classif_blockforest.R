@@ -16,7 +16,7 @@
 #' `r format_bib("hornung2019blockforest")`
 #'
 #' @template seealso_learner
-#' @examples
+#' @examplesIf learner_is_runnable("classif.blockforest")
 #' # Define a Task
 #' task = tsk("sonar")
 #' # Create train and test set

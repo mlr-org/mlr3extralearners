@@ -16,7 +16,7 @@
 #' `r format_bib("hornung2019blockforest")`
 #'
 #' @template seealso_learner
-#' @examples
+#' @examplesIf learner_is_runnable("regr.blockforest")
 #' # Define a Task
 #' task = tsk("mtcars")
 #' # Create train and test set
