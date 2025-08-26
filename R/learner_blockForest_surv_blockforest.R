@@ -23,7 +23,7 @@
 #' `r format_bib("hornung2019blockforest")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.blockforest")
 #' # Define a Task
 #' task = tsk("grace")
 #' # Create train and test set

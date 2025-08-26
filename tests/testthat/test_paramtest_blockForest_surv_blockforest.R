@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("blockForest")
+
 test_that("surv.blockforest", {
   learner = LearnerSurvBlockForest$new()
   fun = blockForest::blockfor

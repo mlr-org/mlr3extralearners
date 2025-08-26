@@ -1,8 +1,9 @@
 # mlr3extralearners (development version)
 
-## New Features:
+## New Features
 
-* New Learners: 
+* New Learners:
+
   - `LearnerSurvBlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
@@ -12,13 +13,38 @@
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
 
-* New Features:
-  - Add new `control_custom_fun` parameter in `surv.aorsf`
+* Add new `control_custom_fun` parameter in `surv.aorsf`
+* New function `learner_is_runnable()` to check whether the
+  required packages to train a learner are available.
 
-## Bugfixes:
+## Bug fixes
 
+* Tests are now skipped when the suggested packages is not available.
+  This will make local development much more convenient.
+
+## Breaking Changes
+
+* The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* `classif.lightgbm` now works with encapsulation with multiclass tasks
+* the package no longer re-exports `lrn` and `lrns`, which should anyway
+  be available to the user as the package depends on `mlr3`, where these
+  functions are defined.
+* Removed various learners:
+  * `randomPlantedForest` was removed, because there is currently no way to
+    save the model.
+  * The deep learning methods from `survivalmodels` were removed, because
+    they also cannot be saved and because the upstream package is archived.
+
+## Other
+
+* The package now imports `withr`
+* `mlr3proba` is now an import and no longer a suggested package.
+* The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
+  This means the auto tests will be stochastic like they should be
+* The CI now checks that RCMD-check passes when suggested packages are not available.
+
 
 # mlr3extralearners 1.1.0
 

@@ -28,16 +28,16 @@
 #' `r format_bib("wright_2017", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("ranger", quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.ranger")
 #' # Define the Learner
-#' learner = mlr3::lrn("surv.ranger", importance = "permutation")
+#' learner = lrn("surv.ranger", importance = "permutation")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("grace")
+#' task = tsk("grace")
 #'
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)

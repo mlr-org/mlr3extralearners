@@ -1,3 +1,5 @@
+skip_if_not_installed("rsm")
+
 test_that("regr.rsm train", {
   learner = lrn("regr.rsm")
   fun = rsm::rsm

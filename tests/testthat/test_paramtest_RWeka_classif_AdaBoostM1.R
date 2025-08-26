@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.AdaBoostM1 train", {
   learner = lrn("classif.AdaBoostM1")
   fun = RWeka::AdaBoostM1

@@ -1,7 +1,12 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
-  learner = lrn("classif.cforest", ntree = 30L)
+  withr::local_seed(1)
+  learner = lrn("classif.cforest", ntree = 50L)
   expect_learner(learner)
-  result = with_seed(1, run_autotest(learner))
+  result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
 

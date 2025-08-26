@@ -1,3 +1,5 @@
+skip_if_not_installed("sparsediscrim")
+
 test_that("classif.sdlda train", {
   learner = lrn("classif.sdlda")
   fun = sparsediscrim:::lda_shrink_cov.formula

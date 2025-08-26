@@ -23,7 +23,7 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: RCMD Check (${{ matrix.config.os }} (${{ matrix.config.r }}))
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})${{ matrix.config.depends_only && ' – noSuggests' || '' }}
 
     strategy:
       fail-fast: false
@@ -31,12 +31,13 @@ jobs:
         config:
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'devel'}
+          - {os: ubuntu-latest, r: 'release', depends_only: true}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -56,5 +57,8 @@ jobs:
           limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
+        env:
+          _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.depends_only && 'TRUE' || 'FALSE' }}
+          NOT_CRAN: ${{ matrix.config.depends_only && 'FALSE' || 'TRUE' }}
         with:
           error-on: '"error"'
