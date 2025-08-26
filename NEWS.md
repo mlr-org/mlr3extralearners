@@ -12,6 +12,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifStepPlr`
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the
@@ -44,7 +45,6 @@
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
   This means the auto tests will be stochastic like they should be
 * The CI now checks that RCMD-check passes when suggested packages are not available.
-
 
 # mlr3extralearners 1.1.0
 
