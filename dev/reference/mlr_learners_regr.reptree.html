@@ -238,14 +238,16 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt; 94 : 27.8 (4/13.05) [2/23.13]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;= 94</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 116.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &lt; 0.5 : 21.9 (2/0) [1/1.82]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   am &gt;= 0.5 : 21 (2/0) [0/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 116.5 : 15.19 (6/2.98) [4/10.5]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 1.97 : 30.4 (2/0) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 1.97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &lt; 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 95 : 23.6 (2/0.64) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 116.5 : 21.62 (2/0.06) [3/0.82]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 116.5 : 18.9 (2/0.06) [1/2.72]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &gt;= 7 : 15.42 (6/2.37) [3/13.54]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -254,7 +256,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.23788 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14.41207 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

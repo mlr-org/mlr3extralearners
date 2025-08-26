@@ -80,6 +80,11 @@
 <li>
 <code>classif.lightgbm</code> now works with encapsulation with multiclass tasks</li>
 <li>the package no longer re-exports <code>lrn</code> and <code>lrns</code>, which should anyway be available to the user as the package depends on <code>mlr3</code>, where these functions are defined.</li>
+<li>Removed various learners:
+<ul><li>
+<code>randomPlantedForest</code> was removed, because there is currently no way to save the model.</li>
+<li>The deep learning methods from <code>survivalmodels</code> were removed, because they also cannot be saved and because the upstream package is archived.</li>
+</ul></li>
 </ul></div>
 <div class="section level3">
 <h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
