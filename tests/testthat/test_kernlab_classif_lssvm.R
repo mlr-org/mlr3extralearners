@@ -5,7 +5,7 @@ test_that("autotest", {
   learner = lrn("classif.lssvm")
   expect_learner(learner)
   capture.output({
-    result = run_autotest(learner, exclude = "single|utf8_feature_names_multiclass", N = 50)
+    result = run_autotest(learner, exclude = "single|utf8_feature_names_multiclass", N = 100L)
   })
   expect_true(result, info = result$error)
 })

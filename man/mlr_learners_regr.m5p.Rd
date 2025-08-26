@@ -6,7 +6,7 @@
 \title{Regression M5P Learner}
 \description{
 Implements base routines for generating M5 Model trees and rules.
-Calls \code{\link[RWeka:M5P]{RWeka::M5P()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::M5P()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
