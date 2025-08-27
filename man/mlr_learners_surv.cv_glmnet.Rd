@@ -105,7 +105,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
 incorporated during training via the \code{offset} argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.coxnet]{glmnet::predict.coxnet()}}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
