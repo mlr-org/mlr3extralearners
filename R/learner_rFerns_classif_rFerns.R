@@ -43,7 +43,7 @@ LearnerClassifRferns = R6Class("LearnerClassifRferns",
 
       super$initialize(
         id = "classif.rFerns",
-        packages = "rFerns",
+        packages = c("mlr3extralearners", "rFerns"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = "response",
         param_set = param_set,
@@ -75,9 +75,8 @@ LearnerClassifRferns = R6Class("LearnerClassifRferns",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      data = task$data()
+      y = task$data(cols = task$target_names)[[1L]]
       X = task$data(cols = task$feature_names)
-      y = data[[task$target_names]]
       invoke(
         rFerns::rFerns,
         x = X,

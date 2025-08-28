@@ -1,3 +1,5 @@
+skip_if_not_installed("rFerns")
+
 test_that("classif.rFerns train", {
   learner = lrn("classif.rFerns")
   fun = rFerns:::rFerns.default # nolint
