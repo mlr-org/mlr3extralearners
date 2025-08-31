@@ -6,7 +6,7 @@
 \title{Classification Random Forest Learner from Weka}
 \description{
 Class for constructing a random forest.
-Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
