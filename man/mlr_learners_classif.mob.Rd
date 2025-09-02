@@ -66,7 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (requireNamespace("partykit", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.mob")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(mlr3)
 logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   glm(y ~ 1, family = binomial, start = start, ...)
@@ -85,7 +85,9 @@ predict_fun = function(object, newdata, task, .type) {
   if (.type == "response") {
     ifelse(p < 0.5, levs[1L], levs[2L])
   } else {
-    prob_vector_to_matrix(p, levs)
+    y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
+    colnames(y) = levs
+    y
   }
 }
 task = tsk("breast_cancer")

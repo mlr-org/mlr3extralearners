@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf requireNamespace("partykit", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.mob")
 #' library(mlr3)
 #' lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   lm(y ~ 1, ...)

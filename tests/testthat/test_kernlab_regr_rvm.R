@@ -1,5 +1,7 @@
+skip_if_not_installed("kernlab")
+
 test_that("autotest", {
-  set.seed(2)
+  withr::local_seed(2)
   learner = lrn("regr.rvm")
   expect_learner(learner)
   capture.output({

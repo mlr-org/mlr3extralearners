@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("gss")
+
 test_that("paramtest dens.spline train", {
   learner = lrn("dens.spline")
   fun = gss::ssden

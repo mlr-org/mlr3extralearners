@@ -1,9 +1,11 @@
+skip_if_not_installed("kernlab")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("classif.lssvm")
   expect_learner(learner)
   capture.output({
-    result = run_autotest(learner, exclude = "single|utf8_feature_names_multiclass", N = 50)
+    result = run_autotest(learner, exclude = "single|utf8_feature_names_multiclass", N = 100L)
   })
   expect_true(result, info = result$error)
 })

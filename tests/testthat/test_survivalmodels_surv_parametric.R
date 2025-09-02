@@ -1,3 +1,5 @@
+skip_if_not_installed("survivalmodels")
+
 test_that("autotest aft", {
   expect_true(callr::r(function() {
     Sys.setenv(RETICULATE_PYTHON = "managed")
@@ -12,7 +14,7 @@ test_that("autotest aft", {
     lapply(list.files(system.file("testthat", package = "mlr3proba"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    set.seed(1)
+    withr::local_seed(1)
 
     learner = lrn("surv.parametric")
     expect_learner(learner)
@@ -36,7 +38,7 @@ test_that("autotest ph", {
     lapply(list.files(system.file("testthat", package = "mlr3proba"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    set.seed(1)
+    withr::local_seed(1)
 
     learner = lrn("surv.parametric", form = "ph")
     expect_learner(learner)
@@ -60,7 +62,7 @@ test_that("autotest po", {
     lapply(list.files(system.file("testthat", package = "mlr3proba"),
       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    set.seed(1)
+    withr::local_seed(1)
 
     learner = lrn("surv.parametric", form = "po")
     expect_learner(learner)

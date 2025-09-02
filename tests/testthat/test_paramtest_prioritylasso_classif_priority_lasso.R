@@ -1,3 +1,5 @@
+skip_if_not_installed("prioritylasso")
+
 test_that("classif.priority_lasso train", {
   learner = lrn("classif.priority_lasso")
   fun = list(prioritylasso::prioritylasso, glmnet::cv.glmnet, glmnet::glmnet.control, glmnet::glmnet)

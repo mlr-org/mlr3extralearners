@@ -29,7 +29,7 @@
 #'
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces("ExhaustiveSearch", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.exhaustive_search")
 #' # define learner
 #' learner = LearnerRegrExhaustiveSearch$new()
 #' learner$predict_type = "se"

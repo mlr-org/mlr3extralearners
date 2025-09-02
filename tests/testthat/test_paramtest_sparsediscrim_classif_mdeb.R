@@ -1,3 +1,5 @@
+skip_if_not_installed("sparsediscrim")
+
 test_that("classif.mdeb train", {
   learner = lrn("classif.mdeb")
   fun = sparsediscrim:::lda_emp_bayes.formula
