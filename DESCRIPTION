@@ -94,6 +94,7 @@ Suggests:
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
     mvtnorm,
+    neuralnet,
     nnet,
     np,
     param6,
