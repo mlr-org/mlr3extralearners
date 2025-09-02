@@ -1,3 +1,5 @@
+skip_if_not_installed("neuralnet")
+
 test_that("paramtest classif.neuralnet train", {
   learner = lrn("classif.neuralnet")
   fun = neuralnet::neuralnet

@@ -51,7 +51,7 @@ LearnerClassifNeuralnet = R6Class("LearnerClassifNeuralnet",
        feature_types = c("numeric", "integer"),
        predict_types = c("response", "prob"),
        param_set = param_set,
-       properties = c("twoclass"),  # multiclass generally possible but produces weird output
+       properties = "twoclass",  # c("twoclass", "multiclass") generally possible but produces weird output
        man = "mlr3extralearners::mlr_learners_classif.neuralnet",
        label = "Neural Network from neuralnet"
      )
