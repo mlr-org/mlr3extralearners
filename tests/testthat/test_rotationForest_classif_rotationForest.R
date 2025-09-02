@@ -1,3 +1,5 @@
+skip_if_not_installed("rotationForest")
+
 test_that("autotest", {
   learner = lrn("classif.rotationForest")
   expect_learner(learner)

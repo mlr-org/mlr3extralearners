@@ -34,11 +34,11 @@ LearnerClassifRotationForest = R6Class("LearnerClassifRotationForest",
 
       super$initialize(
         id = "classif.rotationForest",
-        packages = "rotationForest",
+        packages = c("mlr3extralearners", "rotationForest"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("twoclass"),
+        properties = "twoclass",
         man = "mlr3extralearners::mlr_learners_classif.rotationForest",
         label = "Rotation Forest"
       )

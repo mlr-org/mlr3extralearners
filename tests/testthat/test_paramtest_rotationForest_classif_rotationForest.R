@@ -1,3 +1,5 @@
+skip_if_not_installed("rotationForest")
+
 test_that("classif.rotationForest train", {
   learner = lrn("classif.rotationForest")
   fun = rotationForest::rotationForest
