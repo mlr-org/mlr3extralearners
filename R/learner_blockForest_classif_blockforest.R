@@ -6,6 +6,11 @@
 #' Random forests for blocks of clinical and omics covariate data.
 #' Calls [blockForest::blockfor()] from package \CRANpkg{blockForest}.
 #'
+#' In this learner, only the trained forest object (`$forest`) is retained. The
+#' optimized block-specific tuning parameters (`paramvalues`) and the biased OOB
+#' error estimate (`biased_oob_error_donotuse`) are discarded, as they are either
+#' not needed for downstream use or not reliable for performance estimation.
+#'
 #' @section Initial parameter values:
 #' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
 #'
