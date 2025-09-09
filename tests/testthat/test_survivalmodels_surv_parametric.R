@@ -1,7 +1,7 @@
 skip_if_not_installed("survivalmodels")
 
 test_that("autotest aft", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("surv.parametric")
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
