@@ -87,7 +87,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
 
       super$initialize(
         id = "surv.aorsf",
-        packages = c("mlr3extralearners", "aorsf", "pracma"),
+        packages = c("mlr3extralearners", "aorsf"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr", "response"),
         param_set = ps,
