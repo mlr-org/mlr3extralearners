@@ -59,7 +59,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
 
       super$initialize(
         id = "surv.penalized",
-        packages = c("mlr3extralearners", "penalized", "pracma"),
+        packages = c("mlr3extralearners", "penalized"),
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "distr"),
         param_set = ps,

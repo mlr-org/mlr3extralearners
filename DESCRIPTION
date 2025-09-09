@@ -102,7 +102,6 @@ Suggests:
     pendensity,
     polyreg,
     plugdensity,
-    pracma,
     prioritylasso (>= 0.3.1),
     pseudo,
     qgam,

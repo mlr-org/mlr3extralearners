@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("survival")
-skip_if_not_installed("pracma")
 
 test_that("surv.nelson", {
   learner = lrn("surv.nelson")
