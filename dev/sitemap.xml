@@ -27,6 +27,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.aorsf.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bayes_net.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.blockforest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bst.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.catboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.cforest.html</loc></url>
@@ -88,6 +89,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.aorsf.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cforest.html</loc></url>

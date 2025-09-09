@@ -74,7 +74,7 @@ Calls <code><a href="https://rdrr.io/pkg/mboost/man/glmboost.html" class="extern
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “distr”, “lp”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a>, <a href="https://CRAN.R-project.org/package=pracma" class="external-link"><span class="pkg">pracma</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -223,7 +223,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvGLMBoost&gt;</span><span style="font-weight: bold;"> (surv.glmboost): Boosted Generalized Linear Model</span> <span style="color: #00BBBB;">─────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: family=coxph</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">mboost</span>, and <span style="color: #0000BB;">pracma</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">mboost</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, and factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -258,13 +258,13 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          age       revasc   revascdays </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.017768897 -0.936683687 -0.007461986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.017593965 -1.023624075 -0.007581513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06254089 0.05400021 0.03420734 0.00000000 0.00000000 0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.06954087 0.06329303 0.03647911 0.00000000 0.00000000 0.00000000 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -272,7 +272,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8555018 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8077041 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

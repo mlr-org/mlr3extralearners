@@ -104,7 +104,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “distr”, “response”</p></li>
 <li><p>Feature Types: “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=aorsf" class="external-link"><span class="pkg">aorsf</span></a>, <a href="https://CRAN.R-project.org/package=pracma" class="external-link"><span class="pkg">pracma</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=aorsf" class="external-link"><span class="pkg">aorsf</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -226,7 +226,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvAorsf&gt;</span><span style="font-weight: bold;"> (surv.aorsf): Oblique Random Forest</span> <span style="color: #00BBBB;">──────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: n_thread=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">aorsf</span>, and <span style="color: #0000BB;">pracma</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">aorsf</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and response</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -247,11 +247,11 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 210</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 231</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 39.298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 42.394</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
@@ -260,8 +260,8 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los      sysbp   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5822483  0.5433954  0.2061331  0.1861037  0.1191825  0.1096386 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5915519  0.5309432  0.2169973  0.1833184  0.1369639  0.0971205 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -269,7 +269,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8361832 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8570305 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

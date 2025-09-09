@@ -95,7 +95,7 @@ By default the Breslow estimator is used for computing the baseline hazard.</p><
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “distr”, “lp”</p></li>
 <li><p>Feature Types: “integer”, “numeric”, “factor”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a>, <a href="https://CRAN.R-project.org/package=pracma" class="external-link"><span class="pkg">pracma</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=mboost" class="external-link"><span class="pkg">mboost</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -191,7 +191,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvBlackBoost&gt;</span><span style="font-weight: bold;"> (surv.blackboost): Gradient Boosting</span> <span style="color: #00BBBB;">────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: family=coxph</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">mboost</span>, and <span style="color: #0000BB;">pracma</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">mboost</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, and factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -232,7 +232,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8552102 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8644709 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
