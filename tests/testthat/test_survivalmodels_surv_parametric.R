@@ -17,7 +17,7 @@ test_that("autotest ph", {
 })
 
 test_that("autotest po", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("surv.parametric", form = "po")
   expect_learner(learner)
   result = run_autotest(learner, check_replicable = FALSE, exclude = "utf8_feature_names")
