@@ -51,7 +51,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
         }, .parent = topenv()),
-        disable_in_tune = list(n_epoch = NULL)
+        disable_in_tune = list(patience = NULL)
       )
 
       param_set = ps(
@@ -298,7 +298,6 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     },
 
     .extract_internal_tuned_values = function() {
-      browser()
       if (is.null(self$state$param_vals$patience) || is.null(self$model$eval_protocol)) {
         return(NULL)
       }
