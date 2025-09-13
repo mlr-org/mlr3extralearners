@@ -1,3 +1,8 @@
+#-------------------------- CODE CEMETERY ----------------------------------------------------------------------
+
+# Helper functions to build a base class for python based learners that can run
+# each instance in separated R session.
+
 # Process runner: run any fun. in clean R session that activates some specific python env
 .python_callr = function(envname, method, fn, args = list(), libpaths = .libPaths(), timeout = Inf) {
   callr::r(

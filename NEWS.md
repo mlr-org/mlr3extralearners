@@ -16,6 +16,7 @@
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the
   required packages to train a learner are available.
+* New `LearnerPythonClassif` base class for python-powered learners.
 
 ## Bug fixes
 
