@@ -24,7 +24,8 @@ test_that("validation and inner tuning works", {
   learner = lrn("classif.fastai",
     n_epoch = 10,
     patience = 1,
-    validate = 0.2
+    validate = 0.2,
+    layers = 100
   )
 
   learner$train(task)

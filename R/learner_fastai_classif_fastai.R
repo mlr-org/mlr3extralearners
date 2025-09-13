@@ -63,7 +63,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         emb_szs     = p_uty(default = NULL, tags = "train"),  # Sequence of (num_embeddings, embedding_dim) for each categorical variable
         n_epoch     = p_n_epoch,
         eval_metric = p_uty(tags = "train", custom_check = crate({
-          function(x) check_true(is.function(x) || inherits(x, "Measure"))
+          function(x) check_true(is.null(x) || is.character(x) || inherits(x, "Measure"))
         })),
         layers      = p_uty(tags = "train"),  # Sequence of ints used to specify the input and output size of each LinBnDrop layer
         loss_func   = p_uty(tags = "train"),  # Defaults to fastai::CrossEntropyLossFlat()
@@ -160,11 +160,48 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       num_cols = task$feature_types[type == "numeric"]$id
 
       pars = self$param_set$get_values(tags = "train")
-      measure = pars$eval_metric
+      eval_metric = pars$eval_metric
       patience = pars$patience
 
+
+      metrics = if (is.character(eval_metric)) {
+        # match character to fastai metric
+        # these objects must be created here because they break when serialized
+        switch(eval_metric,
+          "accuracy" = fastai::accuracy(),
+          "error_rate" = fastai::error_rate(),
+          "top_k_accuracy" = fastai::top_k_accuracy(),
+          "APScoreBinary" = fastai::APScoreBinary(),
+          "BalancedAccuracy" = fastai::BalancedAccuracy(),
+          "BrierScore" = fastai::BrierScore(),
+          "CohenKappa" = fastai::CohenKappa(),
+          "F1Score" = fastai::F1Score(),
+          "FBeta" = fastai::FBeta(),
+          "HammingLoss" = fastai::HammingLoss(),
+          "Jaccard" = fastai::Jaccard(),
+          "Precision" = fastai::Precision(),
+          "Recall" = fastai::Recall(),
+          "RocAuc" = fastai::RocAuc(),
+          "RocAucBinary" = fastai::RocAucBinary(),
+          "MatthewsCorrCoef" = fastai::MatthewsCorrCoef(),
+          error_config("Unknown eval_metric")
+        )
+      } else if(inherits(eval_metric, "Measure")) {
+        # wrap mlr3 measure into fastai metric
+        invoke(
+          fastai::AccumMetric,
+          fastai_measure_wrapper,
+          flatten = FALSE,
+          msr = eval_metric,
+          lvl = levels(factor(as.integer(task$truth()) - 1)),
+          .args = if ("twoclass" %in% unlist(eval_metric$task_properties)) list(positive = "1")
+        )
+      } else {
+        # fastai fails without a metric
+        fastai::accuracy()
+      }
+
       if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
-      if (is.null(measure)) measure = fastai::accuracy()
 
       # match parameters to fastai functions
       fastai2 = getFromNamespace("fastai2", ns = "fastai")
@@ -191,23 +228,6 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       } else {
         full_data = data
         splits = NULL
-      }
-
-      metrics = if (inherits(measure, "Measure")) {
-        # wrap mlr3 measure into fastai metric
-        params_for_metric = if ("twoclass" %in% unlist(measure$task_properties)) list(positive = "1")
-
-        invoke(
-          fastai::AccumMetric,
-          metric,
-          flatten = FALSE,
-          msr = measure,
-          lvl = levels(factor(as.integer(task$truth()) - 1)),
-          .args = params_for_metric
-        )
-      } else {
-        # measure from fastai
-        measure
       }
 
       # set data into a format suitable for fastai
@@ -250,7 +270,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
         # direction for internal tuning
         # if mlr3 measure and minimize use numpy less
-        comp = if (inherits(measure, "Measure") && measure$minimize) {
+        comp = if (inherits(eval_metric, "Measure") && eval_metric$minimize) {
           np = reticulate::import("numpy")
           np$less
         }
@@ -275,7 +295,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       # Rename eval protocol in case custom metric was used
       names(eval_protocol)[
         names(eval_protocol) == "python_function"
-      ] = if (inherits(measure, "Measure")) measure$id
+      ] = if (inherits(eval_metric, "Measure")) eval_metric$id
 
       structure(list(tab_learner = tab_learner, eval_protocol = eval_protocol), class = "fastai_model")
     },
@@ -323,7 +343,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
 
 # Wrapper for eval measure to include in fastai
-metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
+fastai_measure_wrapper = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   reticulate::py_require("fastai")
 
   # label is a vector of labels (0, 1, ..., n_classes - 1)
@@ -345,7 +365,6 @@ metric = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   }
   msr$fun(truth, pred, ...)
 }
-# lg$debug
 
 #' @export
 marshal_model.fastai_model = function(model, inplace = FALSE, ...) {
