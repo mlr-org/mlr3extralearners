@@ -163,7 +163,6 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       eval_metric = pars$eval_metric
       patience = pars$patience
 
-
       metrics = if (is.character(eval_metric)) {
         # match character to fastai metric
         # these objects must be created here because they break when serialized

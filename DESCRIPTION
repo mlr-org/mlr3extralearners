@@ -39,7 +39,6 @@ Imports:
     data.table,
     methods,
     mlr3misc (>= 0.9.4),
-    mlr3proba (>= 0.8.1),
     paradox (>= 1.0.1),
     R6,
     reticulate,
@@ -137,11 +136,6 @@ Remotes:
     eagerai/fastai,
     mlr-org/mlr3,
     mlr-org/mlr3misc,
-    mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels,
-    xoopR/distr6,
-    xoopR/param6,
-    xoopR/set6,
     rstudio/reticulate
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
@@ -149,4 +143,4 @@ Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
