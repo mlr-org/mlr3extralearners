@@ -57,9 +57,9 @@ test_that("validation and inner tuning works", {
   )
   s = learner$param_set$search_space()
   expect_error(learner$param_set$convert_internal_search_space(s), "patience")
-  learner$param_set$set_values(n_epoch = 10)
+  learner$param_set$set_values(patience = 10)
   learner$param_set$disable_internal_tuning("n_epoch")
-  expect_equal(learner$param_set$values$n_epoch, NULL)
+  expect_equal(learner$param_set$values$patience, NULL)
 
   learner = lrn("classif.fastai",
     n_epoch = 20,
