@@ -238,7 +238,7 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          Sample size: 21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 2.42</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 2.264</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -247,14 +247,14 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: regr</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: mse *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      (OOB) R squared: 0.70650987</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 10.81831178</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                      (OOB) R squared: 0.72063023</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 13.31940595</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        disp          wt         cyl          hp          vs        carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23.51157758 20.21198780 11.02665565 10.85007218  2.63638094  0.95453245 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        qsec        drat        gear          am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.44566667  0.28559959  0.01938877  0.01646851 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         cyl          wt        disp          hp        drat          vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23.01561466 19.86256564 19.53236384 16.32492033  1.62412548  1.04904973 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        carb          am        gear        qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.85345119  0.29513436  0.13724736  0.04095039 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -262,7 +262,7 @@ for feature selection purposes and not when prediction is required.</p><div clas
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.638861 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.324551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
