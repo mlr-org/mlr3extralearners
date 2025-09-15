@@ -154,7 +154,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .train = function(task) {
       assert_python_packages(c("fastai", "torch"))
       torch = reticulate::import("torch")
-      torch$set_num_threads(self$param_set$values$n_threads)
+      torch$set_num_threads(as.integer(self$param_set$values$n_threads))
 
       formula = task$formula()
       data = task$data()
@@ -299,14 +299,14 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         names(eval_protocol) == "python_function"
       ] = if (inherits(eval_metric, "Measure")) eval_metric$id
 
-      torch$set_num_threads(1)
+      torch$set_num_threads(1L)
       structure(list(tab_learner = tab_learner, eval_protocol = eval_protocol), class = "fastai_model")
     },
 
     .predict = function(task) {
       assert_python_packages(c("fastai", "torch"))
       torch = reticulate::import("torch")
-      torch$set_num_threads(self$param_set$values$n_threads)
+      torch$set_num_threads(as.integer(self$param_set$values$n_threads))
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
@@ -314,7 +314,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
       class_labels = task$class_names
 
-      torch$set_num_threads(1)
+      torch$set_num_threads(1L)
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]
