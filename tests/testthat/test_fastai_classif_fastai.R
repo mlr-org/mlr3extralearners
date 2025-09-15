@@ -216,3 +216,10 @@ test_that("marshaling works for classif.fastai", {
   expect_equal(class(learner$model), class_prev)
 })
 
+test_that("n_threads parameter works", {
+  learner = lrn("classif.fastai")
+  set_threads(2)
+  task = tsk("sonar")
+  learner$train(task)
+  expect_equal(learner$model$tab_learner$dls$train$n_workers, 2)
+})

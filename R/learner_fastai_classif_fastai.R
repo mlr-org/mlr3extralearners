@@ -70,7 +70,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         lr          = p_dbl(lower = 0, default = 0.001, tags = "train"),  # Learning rate
         metrics     = p_uty(tags = "train"),  # optional list of metrics, e.g, fastai::Precision() or fastai::accuracy()
         n_out       = p_int(tags = "train"),  # ?
-        num_workers = p_int(default = 0L, tags = "train"),  # how many subprocesses to use for data loading
+        num_workers = p_int(init = 1L, tags = c("train", "threads")),  # how many subprocesses to use for data loading
         opt_func    = p_uty(tags = "train"),  # Optimizer created when Learner.fit is called. E.g., fastai::Adam()
         patience    = p_int(1L, default = 1, tags = "train"),  # number of epochs to wait when training has not improved model. add `depends = quote(early_stopping == TRUE`)`
         pin_memory  = p_lgl(default = TRUE, tags = "train"),  # If True, the data loader will copy Tensors into CUDA pinned memory before returning them.
@@ -82,7 +82,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         wd_bn_bias  = p_lgl(default = FALSE, tags = "train"),  # controls if weight decay is applied to BatchNorm layers and bias
         use_bn      = p_lgl(default = TRUE, tags = "train"),  # Use BatchNorm1d in LinBnDrop layers
         y_range     = p_uty(default = NULL, tags = "train"),  # Low and high for SigmoidRange activation (see below)
-        bs          = p_int(default = 50, tags = "train") # how many samples per batch to load
+        bs          = p_int(default = 50, tags = "train"), # how many samples per batch to load
+        n_threads   = p_int(init = 1, tags = c("train", "threads")) # how many threads to use for training
       )
 
       param_set$set_values(n_epoch = 5L)
@@ -151,7 +152,9 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
-      assert_python_packages("fastai")
+      assert_python_packages(c("fastai", "torch"))
+      torch = reticulate::import("torch")
+      torch$set_num_threads(self$param_set$values$n_threads)
 
       formula = task$formula()
       data = task$data()
@@ -296,17 +299,22 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         names(eval_protocol) == "python_function"
       ] = if (inherits(eval_metric, "Measure")) eval_metric$id
 
+      torch$set_num_threads(1)
       structure(list(tab_learner = tab_learner, eval_protocol = eval_protocol), class = "fastai_model")
     },
 
     .predict = function(task) {
-      assert_python_packages("fastai")
+      assert_python_packages(c("fastai", "torch"))
+      torch = reticulate::import("torch")
+      torch$set_num_threads(self$param_set$values$n_threads)
 
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model$tab_learner, newdata, .args = pars)
       class_labels = task$class_names
+
+      torch$set_num_threads(1)
 
       if (self$predict_type == "response") {
         response = class_labels[pred$class + 1]
