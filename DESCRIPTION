@@ -59,6 +59,7 @@ Suggests:
     class,
     coin,
     CoxBoost,
+    crs,
     Cubist,
     curl,
     dbarts,
