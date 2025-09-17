@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("aorsf")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.aorsf train", {
   learner = lrn("surv.aorsf")

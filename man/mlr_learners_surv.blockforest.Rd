@@ -7,6 +7,11 @@
 \description{
 Random survival forests for blocks of clinical and omics covariate data.
 Calls \code{\link[blockForest:blockfor]{blockForest::blockfor()}} from package \CRANpkg{blockForest}.
+
+In this learner, only the trained forest object (\verb{$forest}) is retained. The
+optimized block-specific tuning parameters (\code{paramvalues}) and the biased OOB
+error estimate (\code{biased_oob_error_donotuse}) are discarded, as they are either
+not needed for downstream use or not reliable for performance estimation.
 }
 \section{Prediction types}{
 
