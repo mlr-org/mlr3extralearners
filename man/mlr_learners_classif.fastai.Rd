@@ -81,7 +81,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    embed_p \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    emb_szs \tab untyped \tab NULL \tab  \tab - \cr
-   n_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_epoch \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    eval_metric \tab untyped \tab - \tab  \tab - \cr
    layers \tab untyped \tab - \tab  \tab - \cr
    loss_func \tab untyped \tab - \tab  \tab - \cr
@@ -111,7 +111,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    embed_p \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    emb_szs \tab untyped \tab NULL \tab  \tab - \cr
-   n_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_epoch \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    eval_metric \tab untyped \tab - \tab  \tab - \cr
    layers \tab untyped \tab - \tab  \tab - \cr
    loss_func \tab untyped \tab - \tab  \tab - \cr

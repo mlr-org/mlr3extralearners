@@ -7,7 +7,7 @@ LearnerPythonClassif = R6::R6Class(
   public = list(
     initialize = function(id,
                           feature_types   = c("logical","integer","numeric","factor","ordered"),
-                          predict_types   = c("response"),
+                          predict_types   = c("response", "prob"),
                           param_set       = paradox::ParamSet$new(),
                           properties      = character(),
                           packages        = "reticulate",              # R packages
@@ -125,7 +125,6 @@ LearnerPythonClassif = R6::R6Class(
 
 #' @export
 marshal_model.pybytes_model <- function(model, inplace = FALSE, ...) {
-  print("marshalling python model...")
   reticulate::py_require(model$py_modules, python_version = model$py_version)
   pickle <- reticulate::import("pickle")
 
@@ -138,8 +137,6 @@ marshal_model.pybytes_model <- function(model, inplace = FALSE, ...) {
   structure(
     list(
       marshaled     = raw,
-      py_modules    = model$py_modules,
-      py_version    = model$py_version,
       meta          = model$meta,
       learner_class = learner_class
     ),
@@ -149,7 +146,6 @@ marshal_model.pybytes_model <- function(model, inplace = FALSE, ...) {
 
 #' @export
 unmarshal_model.pybytes_model_marshaled <- function(model, inplace = FALSE, ...) {
-  print("unmarshalling python model...")
   reticulate::py_require(model$py_modules, python_version = model$py_version)
   pickle <- reticulate::import("pickle")
   fitted <- pickle$loads(reticulate::r_to_py(model$marshaled))
@@ -163,9 +159,7 @@ unmarshal_model.pybytes_model_marshaled <- function(model, inplace = FALSE, ...)
   structure(
     list(
       fitted     = fitted,
-      meta       = if (is.null(model$meta)) list() else model$meta,
-      py_modules = model$py_modules,
-      py_version = model$py_version
+      meta       = if (is.null(model$meta)) list() else model$meta
     ),
     class = classes
   )

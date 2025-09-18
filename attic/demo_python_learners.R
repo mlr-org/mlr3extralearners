@@ -9,13 +9,6 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-learner = lrn("classif.python.fastai", layers = c(200, 100))
-#learner$predict_type = "prob"
-tasks = generate_tasks(learner)
-task = tasks[[1L]]
-learner$train(task)
-p = learner$predict(task)
-
 
 test_that("eval protocol", {
   learner = lrn("classif.python.fastai")
@@ -223,3 +216,14 @@ test_that("marshaling works for classif.python.fastai", {
   expect_equal(class(learner$model), class_prev)
 })
 
+test_that("encapsulation works for classif.python.fastai", {
+  learner = lrn("classif.python.fastai")
+  task = tsk("irirs")
+
+  learner$train(task)
+  learner_encapsulated = learner$clone(deep = TRUE)
+  learner_encapsulated$encapsulate("mirai", default_fallback(learner_encapsulated))
+
+  rr = resample(task, learner_encapsulated, rsmp("holdout"), store_models = TRUE)
+  log = rr$learners[[1]]$state$log
+})
