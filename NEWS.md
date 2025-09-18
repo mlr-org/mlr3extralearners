@@ -4,7 +4,7 @@
 
 * New Learners:
 
-  - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr,Surv}BlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
   - `Learner{Classif,Regr}Penalized`
