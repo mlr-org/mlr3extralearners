@@ -2,7 +2,7 @@ skip_if_not_installed("fastai")
 skip_if_not_installed("reticulate")
 
 test_that("autotest", {
-  learner = lrn("classif.fastai", layers = "None")
+  learner = lrn("classif.fastai", layers = c(200, 100))
   expect_learner(learner, check_man = FALSE)
   # results not replicable, because torch seed must be set in the python backend
   result = run_autotest(learner, check_replicable = FALSE)
