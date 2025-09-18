@@ -17,7 +17,7 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.blackboost()}}.
+Calculated using \code{\link[mboost:predict.blackboost]{mboost::predict.blackboost()}}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
