@@ -62,7 +62,7 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
         feature_types = c("numeric", "integer", "factor", "ordered"),
         predict_types = c("response", "se"),
         param_set = param_set,
-        properties = "weights", # "loglik"
+        properties = "weights",  # "loglik"
         man = "mlr3extralearners::mlr_learners_regr.crs",
         label = "Regression Splines"
       )
