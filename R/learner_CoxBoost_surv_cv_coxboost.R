@@ -67,7 +67,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       super$initialize(
         id = "surv.cv_coxboost",
-        packages = c("mlr3extralearners", "CoxBoost", "pracma"),
+        packages = c("mlr3extralearners", "CoxBoost"),
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         param_set = ps,

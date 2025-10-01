@@ -856,5 +856,25 @@ bibentries = c( # nolint start
     pages = "757--773",
     doi = "10.1093/BIOSTATISTICS/KXU010",
     URL = "https://doi.org/10.1093/BIOSTATISTICS/KXU010"
+  ),
+  ozuyal2010rferns = bibentry("article",
+    author = "Ozuysal, Mustafa and Calonder, Michael and Lepetit, Vincent and Fua, Pascal",
+    journal = "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    title = "Fast Keypoint Recognition Using Random Ferns",
+    year = "2010",
+    volume = "32",
+    number = "3",
+    pages = "448-461",
+    doi = "10.1109/TPAMI.2009.23"
+  ),
+  kursa2014rferns = bibentry("article",
+    title = "rFerns: An Implementation of the Random Ferns Method for General-Purpose Machine Learning",
+    author = "Miron B. Kursa",
+    journal = "Journal of Statistical Software",
+    year = "2014",
+    volume = "61",
+    number = "10",
+    pages = "1--13",
+    url = "https://www.jstatsoft.org/v61/i10/"
   )
 ) # nolint end
