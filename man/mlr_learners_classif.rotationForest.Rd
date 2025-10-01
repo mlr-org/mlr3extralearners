@@ -6,21 +6,10 @@
 \title{Classification Rotation Forest Learner}
 \description{
 Classification using Rotation Forest algorithm.
+Training this learner works only for tasks with at least two features.
+The task must not have utf8 feature names.
 Calls \code{\link[rotationForest:rotationForest]{rotationForest::rotationForest()}} from \CRANpkg{rotationForest}.
 }
-\section{Initial parameter values}{
-
-\itemize{
-\item \code{K}: Default value is 3 (number of feature subsets)
-\item \code{L}: Default value is 10 (number of trees)
-}
-}
-
-\section{Custom mlr3 parameters}{
-
-No custom mlr3 parameters.
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -34,8 +23,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
-\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{rotationForest}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{rotationForest}
 }
 }
 
@@ -48,16 +37,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("classif.rotationForest")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.rotationForest")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.rotationForest")
+learner = lrn("classif.rotationForest")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("sonar")
+task = tsk("sonar")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

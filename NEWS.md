@@ -14,16 +14,13 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
-<<<<<<< HEAD
   - `LearnerClassifRotationForest`
-=======
   - `LearnerRegrCrs`
   - `LearnerClassifStepPlr`
   - `LearnerClassifMda`
   - `LearnerClassifRferns`
   - `LearnerClassifNeuralnet`
   - `LearnerRegrBrnn`
->>>>>>> main
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the
