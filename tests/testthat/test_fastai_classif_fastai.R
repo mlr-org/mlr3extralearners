@@ -12,6 +12,12 @@ test_that("autotest", {
 
     lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
+    mirai::daemons(1, .compute = "mlr3_encapsulation")
+
+    mirai::everywhere({
+      Sys.setenv(RETICULATE_PYTHON = "managed")
+    }, .compute = "mlr3_encapsulation")
+
     learner = lrn("classif.fastai", layers = c(200, 100))
     expect_learner(learner)
 
