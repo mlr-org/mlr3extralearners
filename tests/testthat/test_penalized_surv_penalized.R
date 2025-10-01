@@ -1,5 +1,4 @@
 skip_if_not_installed("penalized")
-skip_if_not_installed("pracma")
 
 test_that("autotest", {
   learner = lrn("surv.penalized")
@@ -13,7 +12,7 @@ test_that("unpenalized", {
   learner = lrn("surv.penalized", unpenalized = "litter")
   learner$train(task)
   expect_equal(names(learner$model$model@penalized), c("rx", "sexm"))
-  expect_equal(names(learner$model$model@unpenalized), c("litter"))
+  expect_equal(names(learner$model$model@unpenalized), "litter")
   expect_prediction_surv(learner$predict(task))
   # unpenalized features have to be in present
   learner = lrn("surv.penalized", unpenalized = "li")
