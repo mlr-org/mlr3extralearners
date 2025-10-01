@@ -68,27 +68,6 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
       )
     },
 
-    #' @description
-    #' Log-Likelihood is obtained from the underlying linear model.
-    #' @return `numeric(1)`.
-    loglik = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-      # Extract the underlying linear model
-      if (self$model$kernel) {
-        # For kernel smoothing, use the first model
-        model_lm = self$model$model.lm[[1]]
-      } else {
-        # For non-kernel case, use the single model
-        model_lm = self$model$model.lm
-      }
-      if (is.null(model_lm)) {
-        stopf("No underlying linear model available")
-      }
-      # Calculate log-likelihood from the linear model
-      stats::logLik(model_lm)
-    }
   ),
   private = list(
     .train = function(task) {
