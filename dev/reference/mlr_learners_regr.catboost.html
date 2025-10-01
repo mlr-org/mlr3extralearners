@@ -253,10 +253,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl        hp      carb      gear      qsec      drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23.878791 23.104280 10.629966  9.504135  8.244145  6.885205  6.100851  5.268262 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        vs        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.675029  1.709336 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      disp        wt       cyl      carb        hp      gear      qsec      drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18.451253 18.314613 13.928222 13.247594  8.803013  7.496404  6.718577  5.418380 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        am        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.390253  3.231691 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -264,7 +264,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.541938 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.268913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
