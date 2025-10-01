@@ -868,6 +868,16 @@ bibentries = c( # nolint start
     doi = "10.1093/BIOSTATISTICS/KXU010",
     URL = "https://doi.org/10.1093/BIOSTATISTICS/KXU010"
   ),
+  rodriguez2006rf = bibentry("article",
+    author="Rodriguez, J.J. and Kuncheva, L.I. and Alonso, C.J.",
+    journal="IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    title="Rotation Forest: A New Classifier Ensemble Method",
+    year="2006",
+    volume="28",
+    number="10",
+    pages="1619-1630",
+    doi="10.1109/TPAMI.2006.211"
+  ),
   ozuyal2010rferns = bibentry("article",
     author = "Ozuysal, Mustafa and Calonder, Michael and Lepetit, Vincent and Fua, Pascal",
     journal = "IEEE Transactions on Pattern Analysis and Machine Intelligence",
