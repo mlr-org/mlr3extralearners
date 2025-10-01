@@ -1,5 +1,4 @@
 skip_if_not_installed("CoxBoost")
-skip_if_not_installed("pracma")
 
 test_that("autotest", {
   withr::local_seed(1)
