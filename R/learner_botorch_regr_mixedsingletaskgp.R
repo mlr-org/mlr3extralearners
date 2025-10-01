@@ -91,7 +91,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
 
-      gp
+      structure(list(model = gp), class = "botorch_gp_model")
     },
 
     .predict = function(task) {
@@ -109,7 +109,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
             covar = posterior.mvn.covariance_matrix.cpu().numpy()
         return mean, covar")
 
-      gp = self$model
+      gp = self$model$model
       # change the model to evaluation mode
       gp$eval()
 
