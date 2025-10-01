@@ -23,13 +23,16 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
-    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb")
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
+           comment = c(ORCID = "0000-0002-8115-0400")),
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
-URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+URL: https://mlr3extralearners.mlr-org.com,
+    https://github.com/mlr-org/mlr3extralearners
 BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
     mlr3 (>= 1.0.0),
@@ -47,8 +50,8 @@ Imports:
 Suggests:
     abess,
     actuar,
-    adabag,
     ada,
+    adabag,
     aorsf (>= 0.1.5),
     apcluster,
     BART (>= 2.9.4),
@@ -68,9 +71,9 @@ Suggests:
     distr6,
     earth,
     evtree,
+    ExhaustiveSearch,
     fastai,
     flexsurv (>= 2.3),
-    ExhaustiveSearch,
     FNN,
     formattable,
     future,
@@ -104,8 +107,8 @@ Suggests:
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
     pendensity,
-    polyreg,
     plugdensity,
+    polyreg,
     prioritylasso (>= 0.3.1),
     pseudo,
     qgam,
@@ -113,15 +116,15 @@ Suggests:
     randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
-    rotationForest,
     rFerns,
     riskRegression,
     rJava,
+    rmarkdown,
+    rotationForest,
     rpart,
     rsm,
     rvest,
     RWeka,
-    rmarkdown,
     sandwich,
     sda,
     set6,
@@ -146,10 +149,10 @@ Remotes:
     mlr-org/mlr3misc,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
+    rstudio/reticulate,
     xoopR/distr6,
     xoopR/param6,
-    xoopR/set6,
-    rstudio/reticulate
+    xoopR/set6
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
