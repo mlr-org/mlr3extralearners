@@ -12,6 +12,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifStepPlr`
   - `LearnerClassifMda`
   - `LearnerClassifRferns`
   - `LearnerClassifNeuralnet`
@@ -48,7 +49,6 @@
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
   This means the auto tests will be stochastic like they should be
 * The CI now checks that RCMD-check passes when suggested packages are not available.
-
 
 # mlr3extralearners 1.1.0
 
