@@ -6,7 +6,7 @@
 \title{Boosted Generalized Additive Survival Learner}
 \description{
 Model-based boosting for survival analysis.
-Calls \code{\link[mboost:mboost]{mboost::mboost()}} from \CRANpkg{mboost}.
+Calls \code{\link[mboost:gamboost]{mboost::mboost()}} from \CRANpkg{mboost}.
 }
 \details{
 \code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
@@ -17,7 +17,7 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:predict.mboost]{mboost::predict.mboost()}}.
+Calculated using \code{\link[mboost:methods]{mboost::predict.mboost()}}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
@@ -153,7 +153,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:variable.names.mboost]{mboost::variable.names.mboost()}}, with
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
 \code{used.only = TRUE}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvMBoost$selected_features()}\if{html}{\out{</div>}}
