@@ -127,6 +127,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifStepPlr-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -158,7 +159,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.stepPlr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.stepPlr"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifStepPlr&gt;</span><span style="font-weight: bold;"> (classif.stepPlr): Logistic Regression with a L2 Pena</span></span>
@@ -172,10 +173,10 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -187,25 +188,25 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  38.70009 -16.43639  33.81170 -22.53983 -63.94904  33.72623   0.86734   7.08808 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  17.33846 -38.41762 -46.38630  -9.33416 -27.29505 -12.55703  32.91125 -35.10238 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -13.08664  16.43332  15.88964 -11.40049 -11.35622  -6.56141  16.09315 -51.95457 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  45.09421 -28.22935  16.48363   1.86119  -9.05002 -18.47626   9.61191 -17.93862 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  28.28709 -33.30661  -0.27027  43.97622 -27.45628 -17.05207  22.43655  21.25193 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  37.37126 -57.58417  23.24151  29.22633 -30.03894  11.02118   0.40817  62.38627 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -39.00396  27.87705   0.80693  -6.96324   9.19305 -26.81215  34.10042   6.52019 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -18.54306  38.22407 -12.87538  -2.63516  12.40097  13.56703  -7.01388  33.06208 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -3.73543 -19.47160 -74.91255  20.87462  -5.73911 -16.84735  24.55343 -29.17141 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -16.76287 -12.98466 -16.51118  13.67988  21.47920 -22.93716  -4.07148 -49.74955 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -4.16243  12.15421  11.56075 -61.25441 -29.25218  -0.14090  23.70611 -19.95181 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  14.68812 -55.17003  29.73430 -24.85430 -69.07571 -42.94195  31.00152 -22.96357 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -13.99878 -11.28138 -23.67922  -9.29610   9.07354 -19.24055  -8.42766 -14.84031 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -17.31315  -7.21470  -1.25435 -12.25076  22.43011  31.92434 -12.39628  12.57687 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -17.18782  -2.06130  15.66278  27.82737 -59.03908 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -13.84873   8.93345 -11.80038  34.23633  12.89085 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.34 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 7.93 on 97.3 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 213.68 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.45 on 97.1 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 219.18 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -214,7 +215,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
