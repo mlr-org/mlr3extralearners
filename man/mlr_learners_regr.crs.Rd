@@ -68,7 +68,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.crs")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.crs")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.crs")
 print(learner)
@@ -113,7 +113,6 @@ annanzrv
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerRegrCrs-new}{\code{LearnerRegrCrs$new()}}
-\item \href{#method-LearnerRegrCrs-loglik}{\code{LearnerRegrCrs$loglik()}}
 \item \href{#method-LearnerRegrCrs-clone}{\code{LearnerRegrCrs$clone()}}
 }
 }
@@ -144,19 +143,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrCrs$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrCrs-loglik"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrCrs-loglik}{}}}
-\subsection{Method \code{loglik()}}{
-Log-Likelihood is obtained from the underlying linear model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrCrs$loglik()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-\code{numeric(1)}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrCrs-clone"></a>}}

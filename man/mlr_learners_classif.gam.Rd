@@ -89,7 +89,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.gam")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.gam")) withAutoprint(\{ # examplesIf}
 # simple example
 t = tsk("spam")$filter(1:1000)
 l = lrn("classif.gam")

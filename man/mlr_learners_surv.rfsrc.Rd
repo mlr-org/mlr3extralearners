@@ -116,7 +116,7 @@ learners and use all the \strong{unique event times from the train set}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.rfsrc")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.rfsrc", importance = "TRUE")
 print(learner)

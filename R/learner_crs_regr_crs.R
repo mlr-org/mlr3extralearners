@@ -66,8 +66,7 @@ LearnerRegrCrs = R6Class("LearnerRegrCrs",
         man = "mlr3extralearners::mlr_learners_regr.crs",
         label = "Regression Splines"
       )
-    },
-
+    }
   ),
   private = list(
     .train = function(task) {
