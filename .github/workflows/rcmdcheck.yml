@@ -61,4 +61,4 @@ jobs:
           _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.depends_only && 'TRUE' || 'FALSE' }}
           NOT_CRAN: ${{ matrix.config.depends_only && 'FALSE' || 'TRUE' }}
         with:
-          error-on: '"error"'
+          error-on: '"note"'
