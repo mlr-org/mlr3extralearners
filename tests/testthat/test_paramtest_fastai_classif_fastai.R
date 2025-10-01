@@ -53,7 +53,8 @@ test_that("classif.fastai predict", {
   exclude = c(
     "object", # handled internally
     "data", # handled internally
-    "newdata" # handled internally
+    "newdata", # handled internally
+    "num_workers" # used by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
