@@ -14,6 +14,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerRegrCrs`
   - `LearnerClassifStepPlr`
   - `LearnerClassifMda`
   - `LearnerClassifRferns`
