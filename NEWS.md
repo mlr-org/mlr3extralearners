@@ -12,6 +12,7 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifMda`
   - `LearnerClassifRferns`
   - `LearnerClassifNeuralnet`
   - `LearnerRegrBrnn`
