@@ -82,7 +82,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
       gp = SingleTaskGP(x_py, y_py, input_transform = input_transform)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
-      gp
+      structure(list(model = gp), class = "botorch_gp_model")
     },
 
     .predict = function(task) {
@@ -100,7 +100,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
             covar = posterior.mvn.covariance_matrix.cpu().numpy()
         return mean, covar")
 
-      gp = self$model
+      gp = self$model$model
       # change the model to evaluation mode
       gp$eval()
 
@@ -127,7 +127,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
 marshal_model.botorch_gp_model = function(model, inplace = FALSE, ...) {
   reticulate::py_require(c("torch", "botorch", "gpytorch", "pickle"))
   pickle = reticulate::import("pickle")
-  pickled_model = pickle$dumps(model$gp)
+  pickled_model = pickle$dumps(model$model)
   structure(list(
     marshaled = as.raw(pickled_model),
     packages = "mlr3extralearners"
@@ -139,5 +139,5 @@ unmarshal_model.botorch_gp_model_marshaled = function(model, inplace = FALSE, ..
   reticulate::py_require(c("torch", "botorch", "gpytorch", "pickle"))
   pickle = reticulate::import("pickle")
   model_obj = pickle$loads(reticulate::r_to_py(model$marshaled))
-  structure(list(gp = model_obj), class = "botorch_gp_model")
+  structure(list(model = model_obj), class = "botorch_gp_model")
 }
