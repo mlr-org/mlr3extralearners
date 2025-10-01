@@ -73,10 +73,8 @@ LearnerPythonClassifFastai <- R6::R6Class(
         packages = c("mlr3extralearners", "fastai", "reticulate"), # R packages
         label = "Fastai Tabular Classifier",
         man = "mlr3extralearners::mlr_learners_classif.fastai",
-
         py_packages = c("fastai", "torch"),
-        python_version = "3.10",
-        method = "auto"
+        python_version = "3.10"
       )
     },
     #' @description
@@ -132,8 +130,10 @@ LearnerPythonClassifFastai <- R6::R6Class(
     .validate = NULL,
 
     # -------------------- TRAIN HOOK --------------------
-    .fit_py = function(x, y, pars, task) {
-      self$ensure_deps()
+    .train_py = function(task) {
+      py_requirements = self$py_requirements()
+      assert_python_packages(packages = py_requirements$packages,
+                             python_version = py_requirements$python_version)
 
       # We need the task columns split into cat/cont; fastai uses names, not indices.
       data = task$data()
@@ -142,6 +142,7 @@ LearnerPythonClassifFastai <- R6::R6Class(
       num_cols = task$feature_types[type == "numeric"]$id
 
       # Default eval metric if none is supplied
+      pars = self$param_set$get_values(tags = "train")
       measure = pars$eval_metric
       patience = pars$patience
       if (is.null(measure)) measure = fastai::accuracy()
@@ -182,7 +183,7 @@ LearnerPythonClassifFastai <- R6::R6Class(
           metric,
           flatten = FALSE,
           msr = measure,
-          lvl = levels(factor(as.integer(y) - 1L)),
+          lvl = levels(factor(as.integer(task$truth()) - 1L)),
           .args = params_for_metric
         )
       } else {
@@ -258,39 +259,43 @@ LearnerPythonClassifFastai <- R6::R6Class(
 
       list(
         model = tab_learner,
-        meta  = list(eval_protocol = eval_protocol)
+        eval_protocol = eval_protocol,
+        class_labels = task$class_names
       )
     },
 
     # -------------------- PREDICT HOOK --------------------
-    .predict_py = function(model, newdata, predict_type, meta, class_labels) {
-      self$ensure_deps()
+    .predict_py = function(task, newdata, predict_types) {
+      model = self$model$model
+      class_labels = self$model$class_labels
 
       # Fastai expects same column order & types as during fit
       pars_pred = self$param_set$get_values(tags = "predict")
       pred = invoke(fastai::predict, model, newdata, .args = pars_pred)
 
-      if ("prob" %in% predict_type) {
+      if ("prob" %in% predict_types) {
         prob = as.matrix(pred[, class_labels, drop = FALSE])
         list(response = NULL, prob = prob)
-      } else {
+      } else if ("response" %in% predict_types) {
         response = class_labels[pred$class + 1L]
         list(response = response, prob = NULL)
+      } else {
+        list()
       }
     },
 
     # ---------------- Validation extractors ----------------
     .extract_internal_tuned_values = function() {
-      ep <- self$model$meta$eval_protocol
+      ep = self$model$eval_protocol
       if (is.null(self$state$param_vals$patience) || is.null(ep)) return(NULL)
       list(n_epoch = max(ep$epoch) + 1L)
     },
 
     .extract_internal_valid_scores = function() {
-      ep <- self$model$meta$eval_protocol
+      ep = self$model$eval_protocol
       if (is.null(ep)) return(NULL)
-      metric <- self$model$fitted$metrics[[0]]$name
-      metric_name <- if (metric == "python_function") {
+      metric = self$model$fitted$metrics[[0]]$name
+      metric_name = if (metric == "python_function") {
         self$state$param_vals$eval_metric$id
       } else metric
       set_names(list(ep[nrow(ep), metric_name]), metric_name)

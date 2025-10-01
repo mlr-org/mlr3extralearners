@@ -40,9 +40,8 @@ LearnerPythonClassifTabPFN <- R6::R6Class(
         feature_types  = c("integer","numeric","logical"),
         predict_types  = c("response","prob"),
         param_set      = ps,
-        py_packages       = c("numpy","pandas","torch","tabpfn"),
+        py_packages    = c("numpy","pandas","torch","tabpfn"),
         python_version = "3.10",
-        method         = "auto",
         properties     = c("twoclass", "multiclass", "missings", "marshal"),
         man            = "mlr3extralearners::mlr_learners_classif.tabpfn"
       )
@@ -65,31 +64,6 @@ LearnerPythonClassifTabPFN <- R6::R6Class(
   ),
 
   active = list(
-    #' @field internal_valid_scores (named `list()` or `NULL`)
-    #' The validation scores extracted from `eval_protocol` which itself is set by fitting the `fastai::tab_learner`.
-    #' If early stopping is activated, this contains the validation scores of the model for the optimal `n_epoch`,
-    #' otherwise the `n_epoch` for the final model.
-    internal_valid_scores = function() {
-      self$state$internal_valid_scores
-    },
-
-    #' @field internal_tuned_values (named `list()` or `NULL`)
-    #' If early stopping is activated, this returns a list with `n_epoch`,
-    #' which is the last epoch that yielded improvement w.r.t. the `patience`, extracted by `max(eval_protocol$epoch)+1`
-    internal_tuned_values = function() {
-      self$state$internal_tuned_values
-    },
-
-    #' @field validate (`numeric(1)` or `character(1)` or `NULL`)
-    #' How to construct the internal validation data. This parameter can be either `NULL`,
-    #' a ratio, `"test"`, or `"predefined"`.
-    validate = function(rhs) {
-      if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
-      }
-      private$.validate
-    },
-
     #' @field marshaled (`logical(1)`)
     #' Whether the learner has been marshaled.
     marshaled = function() {
@@ -98,49 +72,70 @@ LearnerPythonClassifTabPFN <- R6::R6Class(
   ),
 
   private = list(
-    .fit_py = function(x, y, pars, task) {
-      torch  <- reticulate::import("torch",  delay_load = FALSE)
-      tabpfn <- reticulate::import("tabpfn", delay_load = FALSE)
+    .train_py = function(task) {
 
-      ip <- pars$inference_precision
+      torch  = reticulate::import("torch",  delay_load = FALSE)
+      tabpfn = reticulate::import("tabpfn", delay_load = FALSE)
+
+      pars = self$param_set$get_values(tags = "train")
+
+      ip = pars$inference_precision
       if (!is.null(ip) && startsWith(ip, "torch.")) {
-        dtype <- strsplit(ip, "\\.", fixed = TRUE)[[1]][2]
-        pars$inference_precision <- reticulate::py_get_attr(torch, dtype)
+        dtype = strsplit(ip, "\\.", fixed = TRUE)[[1]][2]
+        pars$inference_precision = reticulate::py_get_attr(torch, dtype)
       }
       if (!is.null(pars$device) && pars$device != "auto") {
-        pars$device <- torch$device(pars$device)
+        pars$device = torch$device(pars$device)
       }
       if (identical(pars$random_state, "None")) {
-        pars$random_state <- reticulate::py_none()
+        pars$random_state = reticulate::py_none()
       }
-      if (!is.null(pars$categorical_features_indices)) {
-        pars$categorical_features_indices <- as.integer(pars$categorical_features_indices - 1L)
+      # leave categorical_features_indices as provided (1-based R indices for now);
+      # convert once below after validating against current feature count
+      # x is an (n_samples, n_features) array
+      X = as.matrix(task$data(cols = task$feature_names))
+      # force NaN to make conversion work,
+      # otherwise reticulate will not convert NAs in logical and integer columns to
+      # np.nan properly
+      X[is.na(X)] = NaN
+      # y is an (n_samples,) array
+      Y = task$truth()
+      X_py = reticulate::r_to_py(X)
+      Y_py = reticulate::r_to_py(Y)
+
+      # convert categorical_features_indices to python indexing
+      categ_indices = pars$categorical_features_indices
+      if (!is.null(categ_indices)) {
+        if (max(categ_indices) > ncol(X)) {
+          stop("categorical_features_indices must not exceed number of features")
+        }
+        pars$categorical_features_indices = as.integer(categ_indices - 1L)
       }
 
-      X <- as.matrix(x); storage.mode(X) <- "double"; X[is.na(X)] <- NaN
-      X_py <- reticulate::r_to_py(X)
-      y_py <- reticulate::r_to_py(as.vector(y))
+      clf    = mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
+      fitted = mlr3misc::invoke(clf$fit, X = X_py, y = Y_py)
 
-      clf    <- mlr3misc::invoke(tabpfn$TabPFNClassifier, .args = pars)
-      fitted <- mlr3misc::invoke(clf$fit, X = X_py, y = y_py)
-
-      classes <- as.character(reticulate::py_to_r(fitted$classes_))
-      list(model = fitted, meta = list(classes = classes))
+      classes = as.character(reticulate::py_to_r(fitted$classes_))
+      list(model = fitted, classes = classes)
     },
 
-    .predict_py = function(model, newdata, predict_types, meta, class_names) {
-      X <- as.matrix(newdata); storage.mode(X) <- "double"; X[is.na(X)] <- NaN
-      X_py <- reticulate::r_to_py(X)
+    .predict_py = function(task, newdata, predict_types) {
+      model = self$model$model
+      X = as.matrix(newdata)
+      storage.mode(X) = "double"
+      X[is.na(X)] = NaN
+      X_py = reticulate::r_to_py(X)
 
       if ("prob" %in% predict_types) {
-        prob <- mlr3misc::invoke(model$predict_proba, X = X_py)
-        prob <- reticulate::py_to_r(prob)
-        colnames(prob) <- meta$classes %||% as.character(reticulate::py_to_r(model$classes_))
-        list(response = NULL, prob = prob)
-      } else {
+        prob = mlr3misc::invoke(model$predict_proba, X = X_py)
+        prob = reticulate::py_to_r(prob)
+        colnames(prob) = as.character(reticulate::py_to_r(model$classes_))
+        list(prob = prob)
+      }
+
+      if ("response" %in% predict_types) {
         response <- mlr3misc::invoke(model$predict, X = X_py)
-        response <- reticulate::py_to_r(response)
-        list(response = as.character(response), prob = NULL)
+        list(response = as.character(reticulate::py_to_r(response)))
       }
     }
   )
