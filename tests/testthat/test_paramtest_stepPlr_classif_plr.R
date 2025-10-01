@@ -1,3 +1,5 @@
+skip_if_not_installed("stepPlr")
+
 test_that("classif.plr train", {
   learner = lrn("classif.stepPlr")
   fun = stepPlr::plr

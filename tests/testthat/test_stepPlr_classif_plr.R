@@ -1,3 +1,5 @@
+skip_if_not_installed("stepPlr")
+
 test_that("autotest", {
   learner = lrn("classif.stepPlr")
   expect_learner(learner)
