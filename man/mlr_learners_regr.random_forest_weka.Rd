@@ -96,16 +96,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("regr.random_forest_weka")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.random_forest_weka")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("regr.random_forest_weka")
+learner = lrn("regr.random_forest_weka")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("mtcars")
+task = tsk("mtcars")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

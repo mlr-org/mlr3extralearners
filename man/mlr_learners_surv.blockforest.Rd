@@ -7,6 +7,11 @@
 \description{
 Random survival forests for blocks of clinical and omics covariate data.
 Calls \code{\link[blockForest:blockfor]{blockForest::blockfor()}} from package \CRANpkg{blockForest}.
+
+In this learner, only the trained forest object (\verb{$forest}) is retained. The
+optimized block-specific tuning parameters (\code{paramvalues}) and the biased OOB
+error estimate (\code{biased_oob_error_donotuse}) are discarded, as they are either
+not needed for downstream use or not reliable for performance estimation.
 }
 \section{Prediction types}{
 
@@ -63,7 +68,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.blockforest")) withAutoprint(\{ # examplesIf}
 # Define a Task
 task = tsk("grace")
 # Create train and test set

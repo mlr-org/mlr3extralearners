@@ -104,7 +104,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "offset"),
-        packages = c("mlr3extralearners", "mboost", "pracma"),
+        packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.blackboost",
         label = "Gradient Boosting"
       )

@@ -36,16 +36,16 @@
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.rfsrc")
 #' # Define the Learner
-#' learner = mlr3::lrn("surv.rfsrc", importance = "TRUE")
+#' learner = lrn("surv.rfsrc", importance = "TRUE")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("grace")
+#' task = tsk("grace")
 #'
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
@@ -95,7 +95,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
@@ -109,7 +108,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
 
       super$initialize(
         id = "surv.rfsrc",
-        packages = c("mlr3extralearners", "randomForestSRC", "pracma"),
+        packages = c("mlr3extralearners", "randomForestSRC"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = param_set,

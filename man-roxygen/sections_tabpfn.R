@@ -1,8 +1,20 @@
 #' @section Installation:
-#' While the Python dependencies are handled via `reticulate::py_require()`, you can
-#' manually specify a virtual environment by calling `reticulate::use_virtualenv()`
-#' prior to calling the `$train()` function.
-#' In this virtual environment, the `tabpfn` package and its dependencies must be installed.
+#' This learner relies on \CRANpkg{reticulate} to handle Python dependencies. 
+#' It is not necessary to install any Python package manually in advance or specify a Python environment
+#' via `reticulate::use_python()`, `reticulate::use_virtualenv()`, `reticulate::use_condaenv()`,
+#' or `reticulate::use_miniconda()`.
+#' By calling `$train()` or `$predict()`, the required Python packages (`tapfn`, `torch`, etc.) will be installed
+#' automatically, if not already.
+#' Reticulate will then configure and initialize an ephemeral environment satisfying those requirements,
+#' unless an existing environment (e.g., `"r-reticulate"`) in reticulate's
+#' [Order of Discovery](https://rstudio.github.io/reticulate/articles/versions.html#order-of-discovery)
+#' contains all the necessary packages.
+#'
+#' You may also manually install `tabpfn` into a Python environment following the
+#' [official installation guide](https://github.com/PriorLabs/TabPFN?tab=readme-ov-file#-quick-start)
+#' and specify the environment via `reticulate::use_*()` before calling `$train()` or `$predict()`.
+#' Note that the GPU version of PyTorch cannot be loaded by `reticulate::use_condaenv()` from a conda environment.
+#' To use a conda environment, please install the CPU version of PyTorch.
 #'
 #' @section Saving a Learner:
 #' In order to save a `<%= class %>` for later usage,

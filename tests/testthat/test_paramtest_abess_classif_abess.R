@@ -1,3 +1,5 @@
+skip_if_not_installed("abess")
+
 test_that("regr.abess predict", {
   learner = lrn("regr.abess")
   fun = predict # nolint
@@ -7,6 +9,6 @@ test_that("regr.abess predict", {
     "newx", # handled by mlr3
     "object" # handled by mlr3
   )
-  paramtest = run_paramtest(learner, fun, exclude, tag = 'perdict')
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
 })

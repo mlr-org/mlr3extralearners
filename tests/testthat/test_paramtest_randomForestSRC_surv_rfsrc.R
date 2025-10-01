@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("randomForestSRC")
+
 test_that("paramtest surv.rfsrc train", {
   learner = lrn("surv.rfsrc")
   fun_list = list(randomForestSRC::rfsrc)

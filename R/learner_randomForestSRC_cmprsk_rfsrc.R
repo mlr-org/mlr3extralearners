@@ -21,19 +21,19 @@
 #' `r format_bib("ishwaran2014rsf")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("randomForestSRC", "riskRegression"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("cmprsk.rfsrc")
 #' # Define the Learner
-#' learner = mlr3::lrn("cmprsk.rfsrc", importance = "TRUE")
+#' learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("pbc")
+#' task = tsk("pbc")
 #'
 #' # Stratification based on event
 #' task$set_col_roles(cols = "status", add_to = "stratum")
 #'
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
@@ -85,7 +85,6 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),

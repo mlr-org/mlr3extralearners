@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("penalized")
+
 test_that("paramtest surv.penalized train", {
   learner = lrn("surv.penalized")
   fun_list = list(penalized::penalized)

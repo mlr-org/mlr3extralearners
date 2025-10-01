@@ -58,7 +58,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
    do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   statistics \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    get.tree \tab untyped \tab - \tab  \tab - \cr
    outcome \tab character \tab train \tab train, test \tab - \cr
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -95,19 +94,19 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("randomForestSRC", "riskRegression"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("cmprsk.rfsrc", importance = "TRUE")
+learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("pbc")
+task = tsk("pbc")
 
 # Stratification based on event
 task$set_col_roles(cols = "status", add_to = "stratum")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

@@ -76,17 +76,17 @@ This prediction type if only available for \code{"type"} equal to \code{regressi
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("mlr3extralearners", "survivalsvm"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.svm")) withAutoprint(\{ # examplesIf}
 set.seed(123)
 # Define the Learner and set parameter values
 learner = lrn("surv.svm", gamma = 0.1)
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("rats")
+task = tsk("rats")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

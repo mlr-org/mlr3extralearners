@@ -1,3 +1,5 @@
+skip_if_not_installed("klaR")
+
 test_that("classif.rda train", {
   learner = lrn("classif.rda")
   fun = klaR:::rda.default

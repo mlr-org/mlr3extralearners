@@ -1,3 +1,5 @@
+skip_if_not_installed("gbm")
+
 test_that("regr.gbm", {
   learner = lrn("regr.gbm")
   fun = gbm::gbm

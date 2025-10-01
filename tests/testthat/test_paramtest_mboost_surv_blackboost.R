@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("mboost")
+
 test_that("paramtest surv.blackboost train", {
   learner = lrn("surv.blackboost")
   fun_list = list(mboost::blackboost, mboost::boost_control, partykit::ctree_control)

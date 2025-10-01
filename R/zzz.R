@@ -7,15 +7,13 @@
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
+#' @importFrom withr local_seed
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
 
-#' @export
-mlr3::lrn
-
-#' @export
-mlr3::lrns
+# Silence rcmdcheck.
+local_seed
 
 # nocov start
 register_mlr3 = function(libname, pkgname) {

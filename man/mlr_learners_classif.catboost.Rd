@@ -147,9 +147,9 @@ For information on how to configure the validation set, see the \emph{Validation
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces("catboost", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.catboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("classif.catboost",
+learner = lrn("classif.catboost",
   iterations = 100)
 
 print(learner)
@@ -158,7 +158,7 @@ print(learner)
 task = tsk("sonar")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

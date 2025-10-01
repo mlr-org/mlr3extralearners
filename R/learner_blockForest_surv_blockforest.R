@@ -6,6 +6,11 @@
 #' Random survival forests for blocks of clinical and omics covariate data.
 #' Calls [blockForest::blockfor()] from package \CRANpkg{blockForest}.
 #'
+#' In this learner, only the trained forest object (`$forest`) is retained. The
+#' optimized block-specific tuning parameters (`paramvalues`) and the biased OOB
+#' error estimate (`biased_oob_error_donotuse`) are discarded, as they are either
+#' not needed for downstream use or not reliable for performance estimation.
+#'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
@@ -23,7 +28,7 @@
 #' `r format_bib("hornung2019blockforest")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.blockforest")
 #' # Define a Task
 #' task = tsk("grace")
 #' # Create train and test set
@@ -88,31 +93,30 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
         stopf("No model stored")
       }
 
-      if (self$model$forest$importance.mode == "none") {
+      if (self$model$importance.mode == "none") {
         stopf("No importance stored")
       }
 
-      sort(self$model$forest$variable.importance, decreasing = TRUE)
+      sort(self$model$variable.importance, decreasing = TRUE)
     }
   ),
 
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      pv$case.weights = private$.get_weights(task)
 
       mlr3misc::invoke(
         blockForest::blockfor,
         X = task$data(cols = task$feature_names),
         y = task$truth(),
-        case.weights = private$.get_weights(task),
-        .args = pv
-      )
+        .args = pv)$forest
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      prediction = invoke(predict, object = self$model$forest, data = newdata, .args = pv)
+      prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
       mlr3proba::.surv_return(times = prediction$unique.death.times, surv = prediction$survival)
     }
   )

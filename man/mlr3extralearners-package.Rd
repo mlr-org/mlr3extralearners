@@ -8,6 +8,15 @@
 \description{
 Extra learners for use in mlr3.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://mlr3extralearners.mlr-org.com}
+  \item \url{https://github.com/mlr-org/mlr3extralearners}
+  \item Report bugs at \url{https://github.com/mlr-org/mlr3extralearners/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Sebastian Fischer \email{sebf.fischer@gmail.com}
 
@@ -33,6 +42,7 @@ Other contributors:
   \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
   \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
   \item Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID}) [contributor]
+  \item Nikolai German \email{niko.german@gmail.com} [contributor]
 }
 
 }

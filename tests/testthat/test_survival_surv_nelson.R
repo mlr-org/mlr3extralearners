@@ -1,3 +1,5 @@
+skip_if_not_installed("survival")
+
 test_that("autotest", {
   learner = lrn("surv.nelson")
   expect_learner(learner)

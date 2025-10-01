@@ -1,3 +1,5 @@
+skip_if_not_installed("mboost")
+
 test_that("autotest ph", {
   learner = lrn("surv.glmboost", family = "coxph")
   expect_learner(learner)

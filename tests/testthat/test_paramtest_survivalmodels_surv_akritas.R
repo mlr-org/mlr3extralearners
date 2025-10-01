@@ -1,3 +1,6 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survivalmodels")
+
 test_that("paramtest surv.akritas train", {
   learner = lrn("surv.akritas")
   fun = survivalmodels::akritas

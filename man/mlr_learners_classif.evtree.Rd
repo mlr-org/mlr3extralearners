@@ -15,7 +15,7 @@ are scaled internally to sum to 100.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("evtree"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.evtree")) withAutoprint(\{ # examplesIf}
 task = tsk("iris")
 learner = lrn("classif.evtree", ntrees = 50)
 splits = partition(task)

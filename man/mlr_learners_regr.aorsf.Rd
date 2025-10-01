@@ -7,6 +7,9 @@
 \description{
 Accelerated oblique random regression forest.
 Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Note that although the learner has the property \code{"missing"} and it can in
+principle deal with missing values, the behaviour has to be configured using
+the parameter \code{na_action}.
 }
 \section{Initial parameter values}{
 
@@ -17,15 +20,15 @@ Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
 }
 
 \examples{
-\dontshow{if (requireNamespace("aorsf", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.aorsf")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("regr.aorsf", importance = "anova")
+learner = lrn("regr.aorsf", importance = "anova")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("mtcars")
+task = tsk("mtcars")
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
