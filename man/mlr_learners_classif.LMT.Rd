@@ -73,7 +73,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.LMT")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.LMT")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.LMT")
 print(learner)

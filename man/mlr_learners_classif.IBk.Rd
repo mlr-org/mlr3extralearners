@@ -77,7 +77,7 @@ The easiest way to encode this is to combine \code{I} and \code{F} into one fact
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.IBk")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.IBk")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.IBk")
 print(learner)

@@ -3,24 +3,38 @@
 ## New Features
 
 * New Learners:
-
+  - `LearnerCompRisksRandomForestSRC`
+  - `LearnerSurvBlockForest`
   - `Learner{Classif,Regr,Surv}BlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
   - `Learner{Classif,Regr}Penalized`
   - `Learner{Classif,Regr}Bst`
+  - `LearnerClassifAdabag`
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifRotationForest`
+  - `LearnerRegrCrs`
+  - `LearnerClassifStepPlr`
+  - `LearnerClassifMda`
+  - `LearnerClassifRferns`
+  - `LearnerClassifNeuralnet`
+  - `LearnerRegrBrnn`
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the
   required packages to train a learner are available.
+* Added `selected_features` property to RandomForestSRC learners (prediction doesn't work if `vars.used = 'all.trees'`)
 
 ## Bug fixes
 
 * Tests are now skipped when the suggested packages is not available.
   This will make local development much more convenient.
+* Removed parameters from RandomForestSRC learners that weren't used + optimized tests
+* Removed `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+
+
 
 ## Breaking Changes
 
@@ -44,7 +58,6 @@
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
   This means the auto tests will be stochastic like they should be
 * The CI now checks that RCMD-check passes when suggested packages are not available.
-
 
 # mlr3extralearners 1.1.0
 

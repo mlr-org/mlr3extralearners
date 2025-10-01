@@ -69,7 +69,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.M5Rules")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.M5Rules")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.M5Rules")
 print(learner)

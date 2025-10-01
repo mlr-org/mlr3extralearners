@@ -63,7 +63,7 @@ by the mlr3learner. The default value is set to th default of the respective
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.liblinear")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.liblinear")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.liblinear")
 print(learner)
