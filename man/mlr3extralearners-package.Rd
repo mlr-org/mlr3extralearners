@@ -39,9 +39,10 @@ Other contributors:
   \item Zezhi Wang \email{homura@mail.ustc.edu.cn} [contributor]
   \item Lukas Burk \email{burk@leibniz-bips.de} (\href{https://orcid.org/0000-0001-7528-3795}{ORCID}) [contributor]
   \item Lona Koers \email{lona.koers@gmail.com} [contributor]
-  \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
-  \item Nikolai German \email{niko.german@gmail.com} [contributor]
   \item Anna Nazarova \email{anna.nazarova@outlook.com} [contributor]
+  \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
+  \item Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID}) [contributor]
+  \item Nikolai German \email{niko.german@gmail.com} [contributor]
 }
 
 }

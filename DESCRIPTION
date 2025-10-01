@@ -23,9 +23,11 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
-    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb")
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
+           comment = c(ORCID = "0000-0002-8115-0400")),
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -48,8 +50,8 @@ Imports:
 Suggests:
     abess,
     actuar,
-    adabag,
     ada,
+    adabag,
     aorsf (>= 0.1.5),
     apcluster,
     BART (>= 2.9.4),
@@ -114,11 +116,11 @@ Suggests:
     randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
-    rotationForest,
     rFerns,
     riskRegression,
     rJava,
     rmarkdown,
+    rotationForest,
     rpart,
     rsm,
     rvest,

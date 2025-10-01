@@ -3,7 +3,7 @@
 #' @import mlr3misc
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns marshal_model unmarshal_model assert_validate learner_marshal learner_unmarshal learner_marshaled
-#' @importFrom stats predict na.omit setNames formula as.formula
+#' @importFrom stats predict na.omit setNames formula as.formula qnorm
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
@@ -41,3 +41,4 @@ register_mlr3 = function(libname, pkgname) {
 # nocov end
 
 leanify_package()
+
