@@ -175,13 +175,13 @@ Calls <a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brn
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of parameters (weights and biases) to estimate: 24 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nguyen-Widrow method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Scaling factor= 0.7234904 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 1.0896 	 alpha= 1.4195 	 beta= 1.992 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 6.8623 	 alpha= 3.5435 	 beta= 10.8102 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A Bayesian regularized neural network </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 10 - 2 - 1 with 24 weights, biases and connection strengths</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Inputs and output were  normalized</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Training finished because  Maximum number of epochs reached </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Training finished because  Changes in F= beta*SCE + alpha*Ew in last 3 iterations less than 0.001 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -190,7 +190,7 @@ Calls <a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brn
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19.38623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.301263 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -184,55 +184,55 @@ ISSN 1932-6157, <a href="https://doi.org/10.1214/09-aoas277" class="external-lin
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of observations: 139 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of classes: 2 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda.freq (frequencies): 1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda.freq (frequencies): 0.4772 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Estimating variances (pooled across classes)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda.var (variance vector): 0.0219 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda.var (variance vector): 0.0248 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Computing inverse correlation matrix (pooled across classes)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1047 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimating optimal shrinkage intensity lambda (correlation matrix): 0.1196 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $regularization</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       lambda   lambda.var lambda.freqs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.10474464   0.02191101   1.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.11958199   0.02483411   0.47720776 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $freqs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   M   R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5 0.5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         M         R </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5319693 0.4680307 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $alpha</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M         R </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -5.128131  2.266706 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -5.238674  3.170283 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $beta</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V1        V10       V11       V12        V13      V14        V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M  4.277027 -0.8100912  4.237391  3.075591 -0.7601385 -1.78377  0.5278479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R -4.277027  0.8100912 -4.237391 -3.075591  0.7601385  1.78377 -0.5278479</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V16        V17       V18        V19        V2        V20       V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M -0.5326105 -0.4850247  1.111948  0.5732622  9.962843  0.6690089  0.539177</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R  0.5326105  0.4850247 -1.111948 -0.5732622 -9.962843 -0.6690089 -0.539177</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V22         V23        V24       V25       V26        V27       V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.1543222  0.07150355 -0.1842034 -0.947486  1.284833  0.5654542 -1.014933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R -0.1543222 -0.07150355  0.1842034  0.947486 -1.284833 -0.5654542  1.014933</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V29       V3       V30       V31        V32        V33        V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.3513706 -11.4704  1.765612 -1.500073  0.5166725  0.2995034  0.2184068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R -0.3513706  11.4704 -1.765612  1.500073 -0.5166725 -0.2995034 -0.2184068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V35      V36       V37         V38        V39        V4       V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M -0.1930732 -1.74436 -1.597772  0.07798325  0.7682639  6.120819 -1.068417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R  0.1930732  1.74436  1.597772 -0.07798325 -0.7682639 -6.120819  1.068417</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V41       V42       V43        V44       V45       V46       V47</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M -0.7630791  0.583933  0.227346  0.5911194  1.246346  2.014488  5.487937</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R  0.7630791 -0.583933 -0.227346 -0.5911194 -1.246346 -2.014488 -5.487937</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V48       V49       V5       V50       V51       V52        V53</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M  5.946387  6.529017  1.09086 -17.99209 -4.894452  6.504346 -0.5058677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R -5.946387 -6.529017 -1.09086  17.99209  4.894452 -6.504346  0.5058677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V54       V55        V56       V57       V58       V59         V6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M  2.540482 -11.60578  0.6391178 -5.789596 -2.725266  12.29754  0.6407364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R -2.540482  11.60578 -0.6391178  5.789596  2.725266 -12.29754 -0.6407364</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V60        V7         V8        V9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M -1.712884 -5.775758  0.6966777  2.414153</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R  1.712884  5.775758 -0.6966777 -2.414153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V1       V10       V11       V12        V13        V14        V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  1.847818 -1.138703  3.787650  4.026391 -0.5222091 -0.7976840 -0.4529592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -2.100252  1.294264 -4.305089 -4.576444  0.5935492  0.9066573  0.5148389</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V16        V17        V18        V19        V2        V20        V21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M -0.6735429 -0.6423853  0.5917513  0.1715417  5.566347  0.9828184  0.6372054</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R  0.7655570  0.7301428 -0.6725916 -0.1949763 -6.326777 -1.1170832 -0.7242553</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V22        V23       V24        V25        V26        V27         V28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.2018621  0.4034565  1.013815  0.4850474 -0.2050681 -0.3508646  0.04374803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -0.2294389 -0.4585735 -1.152314 -0.5513107  0.2330829  0.3987969 -0.04972454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V29        V3       V30       V31        V32        V33        V34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.01798594 -7.488827  1.752732 -1.479118  0.7586717 -0.8593202  0.1548337</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -0.02044303  8.511890 -1.992176  1.681183 -0.8623154  0.9767136 -0.1759858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V35       V36        V37       V38         V39        V4       V40</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.6462996 -1.804109 -0.7798305  1.719341  0.04752035  3.757376 -1.322454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -0.7345919  2.050572  0.8863647 -1.954223 -0.05401220 -4.270679  1.503117</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V41        V42        V43        V44        V45       V46       V47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  0.8990817 -0.2865138 -0.5591827  0.5720612  0.1953752  1.824329  2.642500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -1.0219071  0.3256551  0.6355737 -0.6502116 -0.2220658 -2.073554 -3.003498</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V48       V49        V5       V50       V51         V52       V53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  6.996196  3.738145  1.919455 -13.40518 -8.538417  0.03072493  2.401019</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -7.951960 -4.248820 -2.181675  15.23649  9.704868 -0.03492232 -2.729027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V54       V55       V56        V57       V58       V59         V6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  4.489089 -2.305616 -5.379978  0.7520232  1.742016  7.839874  0.2642537</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -5.102352  2.620591  6.114947 -0.8547586 -1.979996 -8.910895 -0.3003539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V60        V7        V8        V9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M  2.103680 -3.358531 -1.629042  1.866753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R -2.391068  3.817346  1.851589 -2.121774</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "shrinkage"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -247,7 +247,7 @@ ISSN 1932-6157, <a href="https://doi.org/10.1214/09-aoas277" class="external-lin
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

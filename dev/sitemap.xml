@@ -72,6 +72,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rda.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.reptree.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rfsrc.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sda.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sdlda.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sgd.html</loc></url>
@@ -99,6 +100,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cforest.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.crs.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ctree.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cubist.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.decision_stump.html</loc></url>
