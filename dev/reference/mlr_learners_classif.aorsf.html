@@ -205,7 +205,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 2.908</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 2.698</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.99</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: AUC-ROC</span>
@@ -213,10 +213,10 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cell_shape     bare_nuclei    cl_thickness     bl_cromatin       cell_size </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5460705       0.5416133       0.5199430       0.4624829       0.4475524 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> normal_nucleoli    epith_c_size   marg_adhesion         mitoses </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.4075574       0.3750000       0.3278689       0.2284345 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      cell_shape     bare_nuclei       cell_size     bl_cromatin    cl_thickness </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5829228       0.5688073       0.5589172       0.4925595       0.4909910 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    epith_c_size normal_nucleoli   marg_adhesion         mitoses </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.4455587       0.3888889       0.3470588       0.2576271 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -224,7 +224,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.02666667 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.04 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
