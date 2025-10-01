@@ -5,6 +5,7 @@
 * New Learners:
   - `LearnerCompRisksRandomForestSRC`
   - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr,Surv}BlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
   - `Learner{Classif,Regr}Penalized`
@@ -13,6 +14,11 @@
   - `LearnerClassifAdaBoosting`
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
+  - `LearnerClassifStepPlr`
+  - `LearnerClassifMda`
+  - `LearnerClassifRferns`
+  - `LearnerClassifNeuralnet`
+  - `LearnerRegrBrnn`
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the

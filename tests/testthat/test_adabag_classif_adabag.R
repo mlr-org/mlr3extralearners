@@ -1,3 +1,5 @@
+skip_if_not_installed("adabag")
+
 test_that("autotest", {
   learner = lrn("classif.adabag")
   expect_learner(learner)

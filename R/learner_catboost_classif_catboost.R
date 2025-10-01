@@ -193,7 +193,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
             }
             assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
           }, .parent = topenv()),
-          disable_in_tune = list(early_stopping_rounds = NULL)
+          disable_in_tune = list(early_stopping_rounds = NULL, use_best_model = FALSE)
         )
       )
       ps$add_dep(

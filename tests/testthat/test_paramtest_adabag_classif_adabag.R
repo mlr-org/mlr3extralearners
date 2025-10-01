@@ -1,3 +1,5 @@
+skip_if_not_installed("adabag")
+
 test_that("classif.adabag train", {
   learner = lrn("classif.adabag")
   fun = c(adabag::boosting, rpart::rpart.control)

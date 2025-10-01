@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("mboost")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.blackboost train", {
   learner = lrn("surv.blackboost")
