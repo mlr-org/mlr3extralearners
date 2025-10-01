@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("CoxBoost")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.cv_coxboost train", {
   learner = lrn("surv.cv_coxboost")

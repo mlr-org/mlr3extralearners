@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("penalized")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.penalized train", {
   learner = lrn("surv.penalized")

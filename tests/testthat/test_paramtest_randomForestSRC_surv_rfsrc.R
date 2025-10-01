@@ -1,6 +1,5 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("randomForestSRC")
-skip_if_not_installed("pracma")
 
 test_that("paramtest surv.rfsrc train", {
   learner = lrn("surv.rfsrc")

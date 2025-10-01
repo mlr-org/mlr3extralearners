@@ -36,7 +36,7 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson",
         predict_types = c("crank", "distr"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = "missings",
-        packages = c("mlr3extralearners", "survival", "pracma"),
+        packages = c("mlr3extralearners", "survival"),
         man = "mlr3extralearners::mlr_learners_surv.nelson",
         label = "Nelson-Aalen Estimator"
       )

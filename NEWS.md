@@ -4,7 +4,7 @@
 
 * New Learners:
 
-  - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr,Surv}BlockForest`
   - `Learner{Classif,Regr}ExhaustiveSearch`
   - `LearnerClassifFastai`
   - `Learner{Classif,Regr}Penalized`
@@ -13,6 +13,7 @@
   - `Learner{Classif,Regr}Evtree`
   - `LearnerClassifKnn`
   - `LearnerClassifNeuralnet`
+  - `LearnerRegrBrnn`
 
 * Add new `control_custom_fun` parameter in `surv.aorsf`
 * New function `learner_is_runnable()` to check whether the
