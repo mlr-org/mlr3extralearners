@@ -120,8 +120,22 @@ rename = function(x, old, new) {
   x
 }
 
-# coerce given times points to an `ntime` grid is `ntime` is not NULL,
-# otherwise just returns the sorted unique times points
+#' @description Coerce time points to a grid
+#'
+#' Sorts and deduplicates the input time points. If `ntime` is provided,
+#' the times are downsampled to approximately `ntime` equally spaced indices
+#' along the sorted sequence.
+#'
+#' @param times (`numeric()`)\cr
+#'   Vector of time points.
+#' @param ntime (`integer(1)`)\cr
+#'   Desired number of grid points. If `NULL`, all unique sorted time points
+#'   are returned.
+#'
+#' @return `numeric()` vector of sorted time points, optionally reduced to
+#'   a grid of length `ntime`.
+#'
+#' @noRd
 gridify_times = function(times, ntime) {
   times = sort(unique(times))
   if (!is.null(ntime)) {
@@ -145,5 +159,4 @@ gridify_times = function(times, ntime) {
 learner_is_runnable = function(id) {
   l = suppressWarnings(lrn(id))
   mlr3misc::require_namespaces(l$packages, quietly = TRUE)
-
 }

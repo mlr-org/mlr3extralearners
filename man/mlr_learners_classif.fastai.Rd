@@ -27,10 +27,10 @@ After loading a marshaled \code{lrn("classif.fastai")} into R again, you then ne
 
 \itemize{
 \item \code{n_epoch}:
-Needs to be set for \code{\link[fastai:fit]{fastai::fit()}} to work.
+Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
-Needs to be set for \code{\link[fastai:predict]{fastai::predict()}} to work.
+Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
 If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }
@@ -62,7 +62,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    drop_last \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    embed_p \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    emb_szs \tab untyped \tab NULL \tab  \tab - \cr
-   n_epoch \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_epoch \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    eval_metric \tab untyped \tab - \tab  \tab - \cr
    layers \tab untyped \tab - \tab  \tab - \cr
    loss_func \tab untyped \tab - \tab  \tab - \cr

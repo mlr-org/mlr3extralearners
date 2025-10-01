@@ -6,7 +6,7 @@
 \title{Density Mixed Data Kernel Learner}
 \description{
 Density estimator for discrete and continuous variables.
-Calls \code{\link[np:npudens]{np::npudens()}} from \CRANpkg{np}.
+Calls \code{\link[np:np.density]{np::npudens()}} from \CRANpkg{np}.
 }
 \section{Dictionary}{
 
@@ -62,7 +62,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("dens.mixed")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("dens.mixed")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("dens.mixed")
 print(learner)

@@ -47,11 +47,13 @@ Imports:
 Suggests:
     abess,
     actuar,
+    adabag,
     ada,
-    aorsf (>= 0.1.4),
+    aorsf (>= 0.1.5),
     apcluster,
     BART (>= 2.9.4),
     blockForest (>= 0.2.6),
+    brnn,
     bst,
     C50,
     callr,
@@ -59,6 +61,7 @@ Suggests:
     class,
     coin,
     CoxBoost,
+    crs,
     Cubist,
     curl,
     dbarts,
@@ -94,6 +97,7 @@ Suggests:
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
     mvtnorm,
+    neuralnet,
     nnet,
     np,
     param6,
@@ -102,7 +106,6 @@ Suggests:
     pendensity,
     polyreg,
     plugdensity,
-    pracma,
     prioritylasso (>= 0.3.1),
     pseudo,
     qgam,
@@ -111,6 +114,7 @@ Suggests:
     ranger (>= 0.17.0),
     remotes,
     rotationForest,
+    rFerns,
     riskRegression,
     rJava,
     rpart,
@@ -124,6 +128,7 @@ Suggests:
     sm,
     sparsediscrim,
     stats,
+    stepPlr,
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
@@ -141,7 +146,6 @@ Remotes:
     mlr-org/mlr3misc,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
-    ropensci/aorsf,
     xoopR/distr6,
     xoopR/param6,
     xoopR/set6,
@@ -152,4 +156,4 @@ Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

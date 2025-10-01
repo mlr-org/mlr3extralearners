@@ -43,7 +43,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
       p_n_epoch = p_int(1L,
         tags = c("train", "hotstart", "internal_tuning"),
-        init = 5L,
+        default = 5L,
         aggr = crate(function(x) as.integer(ceiling(mean(unlist(x)))), .parent = topenv()),
         in_tune_fn = crate(function(domain, param_vals) {
           if (is.null(param_vals$patience)) {
@@ -51,7 +51,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE)
         }, .parent = topenv()),
-        disable_in_tune = list(n_epoch = NULL)
+        disable_in_tune = list(patience = NULL)
       )
 
       param_set = ps(
@@ -85,13 +85,15 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         bs          = p_int(default = 50, tags = "train") # how many samples per batch to load
       )
 
+      param_set$set_values(n_epoch = 5L)
+
       super$initialize(
         id = "classif.fastai",
         packages = c("mlr3extralearners", "fastai", "reticulate"),
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("multiclass", "twoclass", "weights", "validation", "marshal"),
+        properties = c("multiclass", "twoclass", "weights", "validation", "marshal", "internal_tuning"),
         man = "mlr3extralearners::mlr_learners_classif.fastai",
         label = "FastAi Neural Network Tabular Classifier"
       )

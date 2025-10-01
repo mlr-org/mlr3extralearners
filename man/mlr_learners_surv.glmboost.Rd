@@ -22,7 +22,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{mboost}
 }
 }
 
@@ -52,7 +52,7 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:predict.glmboost]{mboost::predict.glmboost()}}.
+Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
@@ -73,7 +73,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.glmboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.glmboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.glmboost")
 print(learner)
@@ -178,7 +178,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:coef.glmboost]{mboost::coef.glmboost()}}
+Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}}
 which by default returns features with non-zero coefficients and for the
 final number of boosting iterations.
 
