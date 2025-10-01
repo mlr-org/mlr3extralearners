@@ -29,7 +29,8 @@ Authors@R: c(
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
-URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+URL: https://mlr3extralearners.mlr-org.com,
+    https://github.com/mlr-org/mlr3extralearners
 BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
     mlr3 (>= 1.0.0),
@@ -39,6 +40,7 @@ Imports:
     data.table,
     methods,
     mlr3misc (>= 0.9.4),
+    mlr3proba (>= 0.8.1),
     paradox (>= 1.0.1),
     R6,
     reticulate,
@@ -61,11 +63,12 @@ Suggests:
     Cubist,
     curl,
     dbarts,
+    distr6,
     earth,
     evtree,
+    ExhaustiveSearch,
     fastai,
     flexsurv (>= 2.3),
-    ExhaustiveSearch,
     FNN,
     formattable,
     future,
@@ -94,11 +97,12 @@ Suggests:
     mvtnorm,
     nnet,
     np,
+    param6,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
     pendensity,
-    polyreg,
     plugdensity,
+    polyreg,
     prioritylasso (>= 0.3.1),
     pseudo,
     qgam,
@@ -108,13 +112,14 @@ Suggests:
     remotes,
     riskRegression,
     rJava,
+    rmarkdown,
     rpart,
     rsm,
     rvest,
     RWeka,
-    rmarkdown,
     sandwich,
     sda,
+    set6,
     sm,
     sparsediscrim,
     stats,
@@ -133,7 +138,12 @@ Remotes:
     eagerai/fastai,
     mlr-org/mlr3,
     mlr-org/mlr3misc,
-    rstudio/reticulate
+    mlr-org/mlr3proba,
+    RaphaelS1/survivalmodels,
+    rstudio/reticulate,
+    xoopR/distr6,
+    xoopR/param6,
+    xoopR/set6
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
