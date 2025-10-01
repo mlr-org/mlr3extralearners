@@ -9,8 +9,6 @@
 #' Calls [rotationForest::rotationForest()] from \CRANpkg{rotationForest}.
 #'
 #'
-#' @section Custom mlr3 parameters:
-#' No custom mlr3 parameters.
 #'
 #' @templateVar id classif.rotationForest
 #' @template learner
