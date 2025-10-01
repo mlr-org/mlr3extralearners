@@ -105,7 +105,6 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
           levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         seed = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree = p_uty(tags = "predict"),
         outcome = p_fct(
           default = "train", levels = c("train", "test"),
