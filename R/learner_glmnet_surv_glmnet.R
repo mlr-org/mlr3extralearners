@@ -168,7 +168,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
         invoke(predict, self$model$model, newx = newdata, type = "link", .args = pv)
       )
 
-      mlr3proba::.surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
+      mlr3proba::surv_return(times = fit$time, surv = t(fit$surv), lp = lp)
     }
   )
 )

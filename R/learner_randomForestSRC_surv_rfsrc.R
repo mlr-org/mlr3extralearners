@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.rfsrc
@@ -192,7 +192,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # as required.
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
+      mlr3proba::surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )

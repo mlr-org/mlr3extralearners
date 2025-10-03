@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using the internal [partykit::predict.party()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.ctree
@@ -128,7 +128,7 @@ LearnerSurvCTree = R6Class("LearnerSurvCTree",
       })
       surv = do.call(cbind, res) # rows => times, columns => obs
 
-      mlr3proba::.surv_return(times = utimes, surv = t(surv))
+      mlr3proba::surv_return(times = utimes, surv = t(surv))
     }
   )
 )
