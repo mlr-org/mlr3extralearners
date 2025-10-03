@@ -22,7 +22,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{cmprsk}
 \item Predict Types: \dQuote{cif}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForestSRC}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3cmprsk}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForestSRC}
 }
 }
 
@@ -144,7 +144,7 @@ Ishwaran, H., Gerds, A. T, Kogalur, B. U, Moore, D. R, Gange, J. S, Lau, M. B (2
 bblodfon
 }
 \section{Super classes}{
-\code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerCompRisks]{mlr3proba::LearnerCompRisks}} -> \code{LearnerCompRisksRandomForestSRC}
+\code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3cmprsk:LearnerCompRisks]{mlr3cmprsk::LearnerCompRisks}} -> \code{LearnerCompRisksRandomForestSRC}
 }
 \section{Methods}{
 \subsection{Public methods}{
