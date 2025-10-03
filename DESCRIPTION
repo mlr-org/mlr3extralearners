@@ -35,17 +35,19 @@ URL: https://mlr3extralearners.mlr-org.com,
     https://github.com/mlr-org/mlr3extralearners
 BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
-    mlr3 (>= 1.0.0),
+    mlr3 (>= 1.2.0),
     R (>= 3.3.0)
 Imports:
     checkmate,
     data.table,
     methods,
-    mlr3misc (>= 0.9.4),
-    mlr3proba (>= 0.8.1),
+    mlr3cmprsk (>= 0.0.1),
+    mlr3misc (>= 0.19.0),
+    mlr3proba (>= 0.8.2),
     paradox (>= 1.0.1),
     R6,
     reticulate,
+    survdistr (>= 0.0.1),
     withr
 Suggests:
     abess,
@@ -117,7 +119,6 @@ Suggests:
     ranger (>= 0.17.0),
     remotes,
     rFerns,
-    riskRegression,
     rJava,
     rmarkdown,
     rotationForest,
@@ -145,8 +146,7 @@ Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     eagerai/fastai,
-    mlr-org/mlr3,
-    mlr-org/mlr3misc,
+    mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     rstudio/reticulate,
