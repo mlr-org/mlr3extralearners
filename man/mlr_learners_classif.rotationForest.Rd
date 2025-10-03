@@ -62,10 +62,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Rodriguez, J.J., Kuncheva, L.I., Alonso, C.J. (2006).
-\dQuote{Rotation Forest: A New Classifier Ensemble Method.}
-\emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, \bold{28}(10), 1619-1630.
-\doi{10.1109/TPAMI.2006.211}.
+\verb{r format_bib("rodriguez2006rf")}
 }
 \seealso{
 \itemize{

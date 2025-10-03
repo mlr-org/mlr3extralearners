@@ -83,10 +83,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Alfaro, Esteban, Gamez, Matias, García, Noelia (2013).
-\dQuote{adabag: An R Package for Classification with Boosting and Bagging.}
-\emph{Journal of Statistical Software}, \bold{54}(2), 1-35.
-\doi{10.18637/jss.v054.i02}, \url{https://www.jstatsoft.org/index.php/jss/article/view/v054i02}.
+\verb{r format_bib("adabag2013")}
 }
 \seealso{
 \itemize{
