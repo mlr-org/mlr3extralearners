@@ -10,7 +10,6 @@
 #' @template learner
 #' @templateVar id cmprsk.crr
 #'
-### ' @importFrom rlang exec
 #'
 #' @section Parameters:
 #'
@@ -58,17 +57,19 @@
 #' library(mlr3)
 #' library(mlr3proba)
 #'
-#' # Define the learner
-#' learner = lrn("cmprsk.crr")
-#' learner
-#'
 #' # Define a task
 #' task = tsk("pbc")
 #' task$select(c("age", "bili", "sex"))
 #' task$set_col_roles(cols = "status", add_to = "stratum")
 #'
 #' # Create train and test sets
-#' ids = partition(task)
+#' set.seed(123)
+#' ids = partition(task, ratio =0.95)
+
+#'
+#' # Define the learner
+#' learner = lrn("cmprsk.crr")
+#' learner
 #'
 #' # Train the learner
 #' learner$train(task, row_ids = ids$train)
