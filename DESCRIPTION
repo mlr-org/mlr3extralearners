@@ -105,7 +105,6 @@ Suggests:
     neuralnet,
     nnet,
     np,
-    param6,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
     pendensity,
@@ -128,7 +127,6 @@ Suggests:
     RWeka,
     sandwich,
     sda,
-    set6,
     sm,
     sparsediscrim,
     stats,
@@ -150,9 +148,7 @@ Remotes:
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
     rstudio/reticulate,
-    xoopR/distr6,
-    xoopR/param6,
-    xoopR/set6
+    xoopR/distr6
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
