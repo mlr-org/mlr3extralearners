@@ -36,10 +36,9 @@
 * Removed parameters from RandomForestSRC learners that weren't used + optimized tests
 * Removed `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 
-
-
 ## Breaking Changes
 
+* All (extra) density learners are removed. These will be transferred to `mlr3proba` soon (see `v0.8.2` or later).
 * The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
