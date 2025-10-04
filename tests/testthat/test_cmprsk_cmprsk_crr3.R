@@ -1,6 +1,8 @@
 # default competing risk score needs this package
 skip_if_not_installed("riskRegression")
 skip_if_not_installed("cmprsk")
+skip_if_not_installed("rlang")
+
 
   withr::local_seed(42)
   task = tsk("pbc")

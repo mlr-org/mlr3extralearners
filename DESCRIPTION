@@ -122,6 +122,7 @@ Suggests:
     rFerns,
     riskRegression,
     rJava,
+    rlang,
     rmarkdown,
     rotationForest,
     rpart,

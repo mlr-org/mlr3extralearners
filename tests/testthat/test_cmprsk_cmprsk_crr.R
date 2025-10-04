@@ -1,6 +1,7 @@
 # default competing risk score needs this package
 skip_if_not_installed("riskRegression")
 skip_if_not_installed("cmprsk")
+skip_if_not_installed("rlang")
 
 test_that("autotest", {
   withr::local_seed(42)

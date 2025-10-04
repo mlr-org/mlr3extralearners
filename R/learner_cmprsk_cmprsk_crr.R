@@ -128,7 +128,7 @@ LearnerCompRisksFineGrayCRR = R6::R6Class("LearnerCompRisksFineGrayCRR",
           m = matrix(m, ncol = 1)
           xvar = data[[cx]]
           cxname = cx
-          if (is.factor(xvar)) cxname = paste0(cx, ".", colnames(contrasts(xvar)))
+          if (is.factor(xvar)) cxname = paste0(cx, ".", colnames(stats::contrasts(xvar)))
           if (is.logical(xvar)) cxname = paste0(cx, ".T")
           colnames(m) = cxname
         }
