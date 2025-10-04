@@ -1,5 +1,4 @@
-# default competing risk score needs this package
-skip_if_not_installed("riskRegression")
+skip_if_not_installed("mlr3cmprsk")
 skip_if_not_installed("randomForestSRC")
 
 test_that("autotest", {
