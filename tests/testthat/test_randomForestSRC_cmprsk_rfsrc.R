@@ -15,7 +15,7 @@ test_that("autotest", {
     result = suppress_fallback_warnings(
       run_autotest(learner, N = 42, check_replicable = FALSE)
     )
-    expect_true(result, info = result$error)
+    expect_true(result)
 })
 
 test_that("importance/selected/oob_error", {
