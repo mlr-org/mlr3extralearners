@@ -56,9 +56,12 @@
 
 * The package now imports `withr`
 * `mlr3proba` is now an import and no longer a suggested package.
+* `mlr3cmprsk` is added as an import.
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
-  This means the auto tests will be stochastic like they should be
+  This means the auto tests will be stochastic like they should be.
 * The CI now checks that RCMD-check passes when suggested packages are not available.
+* `distr6` dependency is removed. `partykit` survival learners use constant
+  interpolation of the predicted Kaplan-Meier curves via `survdistr::vec_interp()`
 
 # mlr3extralearners 1.1.0
 
