@@ -69,7 +69,6 @@ Suggests:
     Cubist,
     curl,
     dbarts,
-    distr6,
     earth,
     evtree,
     ExhaustiveSearch,
@@ -139,8 +138,7 @@ Remotes:
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
-    rstudio/reticulate,
-    xoopR/distr6
+    rstudio/reticulate
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
