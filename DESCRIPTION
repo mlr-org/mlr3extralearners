@@ -73,7 +73,7 @@ Suggests:
     earth,
     evtree,
     ExhaustiveSearch,
-    fastai,
+    fastai (>= 2.2.2),
     flexsurv (>= 2.3),
     FNN,
     formattable,
@@ -134,7 +134,6 @@ VignetteBuilder:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    eagerai/fastai,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
     RaphaelS1/survivalmodels,
