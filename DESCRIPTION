@@ -56,7 +56,7 @@ Suggests:
     adabag,
     aorsf (>= 0.1.5),
     apcluster,
-    BART (>= 2.9.4),
+    BART (>= 2.9.9),
     blockForest (>= 0.2.6),
     brnn,
     bst,
