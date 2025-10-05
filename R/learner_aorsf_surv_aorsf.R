@@ -19,7 +19,7 @@
 #' Calculated using the internal `predict.ObliqueForest()` function.
 #' 2. `response`: the restricted mean survival time of each test observation,
 #' derived from the survival matrix prediction (`distr`).
-#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 3. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.aorsf
@@ -202,7 +202,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         sum(diffs_time * x)
       })
 
-      pred_list = mlr3proba::.surv_return(times = utime, surv = surv)
+      pred_list = mlr3proba::surv_return(times = utime, surv = surv)
       # provide `response` here so that we keep the expected mortality for `crank`
       pred_list$response = response
       pred_list

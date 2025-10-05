@@ -266,7 +266,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       surv = mlr3proba::breslow(times = times, status = status,
                                 lp_train = lp_train, lp_test = lp_test)
 
-      mlr3proba::.surv_return(surv = surv, crank = lp_test, lp = lp_test)
+      mlr3proba::surv_return(surv = surv, crank = lp_test, lp = lp_test)
     }
   )
 )

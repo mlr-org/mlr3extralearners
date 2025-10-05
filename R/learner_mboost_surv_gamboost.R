@@ -175,9 +175,9 @@ LearnerSurvGAMBoost = R6Class("LearnerSurvGAMBoost",
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
         # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-        mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
+        mlr3proba::surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
-        mlr3proba::.surv_return(lp = -lp)
+        mlr3proba::surv_return(lp = -lp)
       }
     }
   )

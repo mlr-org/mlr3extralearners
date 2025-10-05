@@ -13,6 +13,9 @@ lapply(list.files(system.file("testthat", package = "mlr3"),
 lapply(list.files(system.file("testthat", package = "mlr3proba"),
   pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
+lapply(list.files(system.file("testthat", package = "mlr3cmprsk"),
+  pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
+
 expect_paramtest = function(paramtest) {
   if (!is.atomic(paramtest)) {
     if (length(paramtest$missing)) {

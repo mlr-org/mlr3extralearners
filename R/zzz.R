@@ -8,6 +8,7 @@
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
 #' @importFrom withr local_seed
+#' @importFrom survdistr vec_interp
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
