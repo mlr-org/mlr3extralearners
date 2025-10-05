@@ -62,10 +62,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Park, Young M, Hastie, Trevor (2007).
-\dQuote{Penalized logistic regression for detecting gene interactions.}
-\emph{Biostatistics}, \bold{9}(1), 30-50.
-ISSN 1465-4644, \doi{10.1093/biostatistics/kxm010}, \url{https://doi.org/10.1093/biostatistics/kxm010}.
+\verb{r format_bib("park2008plr")}
 }
 \seealso{
 \itemize{
