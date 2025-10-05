@@ -90,7 +90,8 @@
 </ul></div>
 <div class="section level3">
 <h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
-<ul><li>The <code>create_learner()</code> generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.</li>
+<ul><li>All (extra) density learners are removed. These will be transferred to <code>mlr3proba</code> soon (see <code>v0.8.2</code> or later).</li>
+<li>The <code>create_learner()</code> generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.</li>
 <li>remove <code>discrete</code> parameter from <code>surv.parametric</code>, so that it is impossible to return <code><a href="https://xoopr.github.io/distr6/reference/VectorDistribution.html" class="external-link">distr6::VectorDistribution</a></code> survival predictions (softly deprecated in <code>mlr3proba@v0.8.1</code>)</li>
 <li>
 <code>classif.lightgbm</code> now works with encapsulation with multiclass tasks</li>
@@ -107,8 +108,13 @@
 </li>
 <li>
 <code>mlr3proba</code> is now an import and no longer a suggested package.</li>
-<li>The package no longer uses <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> in the tests and instead uses <code><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">withr::local_seed()</a></code> This means the auto tests will be stochastic like they should be</li>
+<li>
+<code>mlr3cmprsk</code> is added as an import.</li>
+<li>The package no longer uses <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> in the tests and instead uses <code><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">withr::local_seed()</a></code> This means the auto tests will be stochastic like they should be.</li>
 <li>The CI now checks that RCMD-check passes when suggested packages are not available.</li>
+<li>
+<code>distr6</code> dependency is removed. <code>partykit</code> survival learners use constant interpolation of the predicted Kaplan-Meier curves via <code><a href="https://survdistr.mlr-org.com/reference/vec_interp.html" class="external-link">survdistr::vec_interp()</a></code>
+</li>
 </ul></div>
 </div>
     <div class="section level2">

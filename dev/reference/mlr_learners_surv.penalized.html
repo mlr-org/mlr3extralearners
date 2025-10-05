@@ -76,7 +76,7 @@ represented in rows and time points in columns.
 Calculated using the internal <code><a href="https://rdrr.io/r/stats/predict.html" class="external-link">penalized::predict()</a></code> function.
 By default the Breslow estimator <code><a href="https://rdrr.io/pkg/penalized/man/breslow.html" class="external-link">penalized::breslow()</a></code> is used for computing
 the baseline hazard.</p></li>
-<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/surv_return.html" class="external-link">mlr3proba::surv_return()</a></code>.</p></li>
 </ol></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
@@ -224,7 +224,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-out co"><span class="r-pr">#&gt;</span> Penalized cox regression object</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 6 regression coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Loglikelihood =	 -1445.664 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Loglikelihood =	 -1400.873 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $task_has_factors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] FALSE</span>
@@ -237,7 +237,7 @@ it difficult to get the original feature names.</p><div class="section">
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.835381 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8060667 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

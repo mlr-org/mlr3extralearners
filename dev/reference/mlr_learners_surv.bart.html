@@ -67,7 +67,7 @@ survival data. Calls <code><a href="https://rdrr.io/pkg/BART/man/surv.bart.html"
 <p>This learner returns two prediction types:</p><ol><li><p><code>distr</code>: a 3d survival array with observations as 1st dimension, time
 points as 2nd and the posterior draws as 3rd dimension.
 Calculated using the internal <code>predict.survbart()</code> function.</p></li>
-<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>. The parameter
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/surv_return.html" class="external-link">mlr3proba::surv_return()</a></code>. The parameter
 <code>which.curve</code> decides which posterior draw (3rd dimension) will be used for the
 calculation of the expected mortality. Note that the median posterior is
 by default used for the calculation of survival measures that require a <code>distr</code>

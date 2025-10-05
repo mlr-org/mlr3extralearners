@@ -175,25 +175,25 @@ No offset is applied during prediction for this learner.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner and set parameter values</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.lmer"</span>, formula <span class="op">=</span> <span class="va">cmedv</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">town</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.lmer"</span>, formula <span class="op">=</span> <span class="va">mpg</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">gear</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"boston_housing"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Linear mixed model fit by REML ['lmerMod']</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Formula: cmedv ~ (1 | town)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Formula: mpg ~ (1 | gear)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    Data: data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 3341.364</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> REML criterion at convergence: 191.6219</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Random effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Groups   Name        Std.Dev.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  town     (Intercept) 7.657   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             5.403   </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 506, groups:  town, 92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  gear     (Intercept) 4.159   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Residual             4.701   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 32, groups:  gear, 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed Effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       24.92  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       20.61  </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
