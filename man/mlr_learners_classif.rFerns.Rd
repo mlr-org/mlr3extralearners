@@ -79,15 +79,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Kursa MB (2014).
-\dQuote{rFerns: An Implementation of the Random Ferns Method for General-Purpose Machine Learning.}
-\emph{Journal of Statistical Software}, \bold{61}(10), 1--13.
-\url{https://www.jstatsoft.org/v61/i10/}.
-
-Ozuysal, Mustafa, Calonder, Michael, Lepetit, Vincent, Fua, Pascal (2010).
-\dQuote{Fast Keypoint Recognition Using Random Ferns.}
-\emph{IEEE Transactions on Pattern Analysis and Machine Intelligence}, \bold{32}(3), 448-461.
-\doi{10.1109/TPAMI.2009.23}.
+\verb{r format_bib("kursa2014rferns", "ozuyal2010rferns")}
 }
 \seealso{
 \itemize{
