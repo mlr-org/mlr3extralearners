@@ -19,7 +19,7 @@ and in the documentation of lightgbm::lgb.train()."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,7 +54,7 @@ and in the documentation of lightgbm::lgb.train()."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification LightGBM Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_lightgbm_classif_lightgbm.R" class="external-link"><code>R/learner_lightgbm_classif_lightgbm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.lightgbm.Rd</code></div>
     </div>
 
@@ -182,6 +182,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifLightGBM-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -225,7 +226,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.lightgbm"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.lightgbm"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLightGBM&gt;</span><span style="font-weight: bold;"> (classif.lightgbm): Gradient Boosting</span> <span style="color: #00BBBB;">──────────────</span></span>
@@ -241,10 +242,10 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -254,24 +255,24 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Objective: binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted to dataset with 60 columns</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V17          V45          V12          V23          V10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.2080169495 0.0758369906 0.0686966838 0.0641929149 0.0555893258 0.0540105772 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V31          V51          V16          V36          V37          V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0448314763 0.0414316020 0.0362831279 0.0321865566 0.0307854218 0.0285092080 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V42          V58          V49           V1          V21          V34 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0179957607 0.0162092627 0.0157331358 0.0149442483 0.0146658683 0.0118332111 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V13          V24          V28          V27          V35          V26 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0114390110 0.0113546556 0.0109304798 0.0106505853 0.0101841825 0.0092712800 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V29          V15          V48          V46          V20          V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0090100658 0.0089249732 0.0075778101 0.0072049595 0.0066875042 0.0064311553 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V54          V19          V43          V39           V2          V33 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0062865479 0.0052338177 0.0049707415 0.0048717483 0.0047127102 0.0042903582 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V55          V18          V57          V59          V60          V56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0037028768 0.0030442748 0.0029748974 0.0029408371 0.0027576274 0.0026950104 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V8           V9          V44          V22           V4          V14 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0020835825 0.0016173613 0.0013183662 0.0011988147 0.0009623033 0.0009114176 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V40          V25          V30          V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0008237658 0.0005499751 0.0004915417 0.0001424404 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V36          V45          V49          V52          V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.958575e-01 1.231558e-01 8.274575e-02 6.287917e-02 5.226922e-02 5.098621e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V9          V23          V47          V21          V31          V51 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.409112e-02 3.528916e-02 3.184716e-02 2.850874e-02 2.153554e-02 2.001431e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V15          V35          V48          V59          V12 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.679210e-02 1.536512e-02 1.492504e-02 1.438667e-02 1.424127e-02 1.402254e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V4          V55          V54          V27          V17          V39 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.393237e-02 1.279983e-02 1.276208e-02 1.250161e-02 1.230200e-02 1.036045e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V34          V13          V25          V20          V44          V28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.202939e-03 8.742024e-03 8.503782e-03 7.429652e-03 7.368795e-03 6.056892e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V18          V33          V60           V5          V57          V10 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.583751e-03 5.017419e-03 4.976629e-03 4.636991e-03 4.384858e-03 2.312212e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V43          V19          V22          V16          V40          V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.066967e-03 1.893484e-03 1.718656e-03 1.423200e-03 1.141976e-03 8.509434e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V53           V1          V58           V6          V29          V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.393576e-04 6.280240e-04 5.458114e-04 4.027337e-04 3.136585e-04 2.822437e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V38          V42           V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.122482e-04 9.258435e-05 1.457144e-06 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -279,7 +280,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -287,7 +288,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

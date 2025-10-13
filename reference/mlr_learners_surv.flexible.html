@@ -15,7 +15,7 @@ Calls flexsurv::flexsurvspline() from flexsurv."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls flexsurv::flexsurvspline() from flexsurv."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Survival Flexible Parametric Spline Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_flexsurv_surv_flexible.R" class="external-link"><code>R/learner_flexsurv_surv_flexible.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.flexible.Rd</code></div>
     </div>
 
@@ -74,7 +74,7 @@ Calls <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvs
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “distr”, “lp”</p></li>
 <li><p>Feature Types: “logical”, “integer”, “numeric”, “factor”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=flexsurv" class="external-link"><span class="pkg">flexsurv</span></a>, <a href="https://CRAN.R-project.org/package=pracma" class="external-link"><span class="pkg">pracma</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=flexsurv" class="external-link"><span class="pkg">flexsurv</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
@@ -185,7 +185,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvFlexible&gt;</span><span style="font-weight: bold;"> (surv.flexible): Flexible Parametric Splines</span> <span style="color: #00BBBB;">──────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: k=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">flexsurv</span>, and <span style="color: #0000BB;">pracma</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">flexsurv</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, and factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -198,7 +198,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

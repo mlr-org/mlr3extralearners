@@ -15,7 +15,7 @@ Calls rsm::rsm() from rsm."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls rsm::rsm() from rsm."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Response Surface Model Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_rsm_regr_rsm.R" class="external-link"><code>R/learner_rsm_regr_rsm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.rsm.Rd</code></div>
     </div>
 
@@ -134,6 +134,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerRegr.html#method-predict_newdata_fast"><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerRegrRSM-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -165,7 +166,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.rsm"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.rsm"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrRSM&gt;</span><span style="font-weight: bold;"> (regr.rsm): Response Surface Model</span> <span style="color: #00BBBB;">─────────────────────────</span></span>
@@ -179,10 +180,10 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -195,27 +196,27 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                -23.702539  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  17.53144  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  4.783515  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   3.67024  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -2.990811  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.45160  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  2.131307  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.67395  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.009143  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.01567  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  6.988179  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.58006  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.590752  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.57834  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.066609  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.03321  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.571046  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.85156  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.497705  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   1.55783  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  2.992450  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -5.16585  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -225,7 +226,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 68.38088 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.81706 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -233,7 +234,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

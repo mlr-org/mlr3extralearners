@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,12 +63,6 @@
 
       <dl><dt>
 
-          <code><a href="create_learner.html">create_learner()</a></code>
-
-        </dt>
-        <dd>Create a New Learner</dd>
-      </dl><dl><dt>
-
           <code><a href="list_mlr3learners.html">list_mlr3learners()</a></code>
 
         </dt>
@@ -81,10 +75,10 @@
         <dd>Install Learner Dependencies</dd>
       </dl><dl><dt>
 
-          <code><a href="reexports.html">reexports</a></code> <code><a href="reexports.html">lrn</a></code> <code><a href="reexports.html">lrns</a></code>
+          <code><a href="assert_python_packages.html">assert_python_packages()</a></code>
 
         </dt>
-        <dd>Objects exported from other packages</dd>
+        <dd>Assert Python Packages</dd>
       </dl></div><div class="section level2">
       <h2 id="classification-learners">Classification Learners<a class="anchor" aria-label="anchor" href="#classification-learners"></a></h2>
 
@@ -152,6 +146,18 @@
         <dd>Classification Abess Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.ada.html">mlr_learners_classif.ada</a></code> <code><a href="mlr_learners_classif.ada.html">LearnerClassifAdaBoosting</a></code>
+
+        </dt>
+        <dd>Classification Boosting Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.adabag.html">mlr_learners_classif.adabag</a></code> <code><a href="mlr_learners_classif.adabag.html">LearnerClassifAdabag</a></code>
+
+        </dt>
+        <dd>Classification Boosting Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.aorsf.html">mlr_learners_classif.aorsf</a></code> <code><a href="mlr_learners_classif.aorsf.html">LearnerClassifObliqueRandomForest</a></code>
 
         </dt>
@@ -168,6 +174,18 @@
 
         </dt>
         <dd>Classification Bayes Network Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.blockforest.html">mlr_learners_classif.blockforest</a></code> <code><a href="mlr_learners_classif.blockforest.html">LearnerClassifBlockForest</a></code>
+
+        </dt>
+        <dd>BlockForest Classification Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.bst.html">mlr_learners_classif.bst</a></code> <code><a href="mlr_learners_classif.bst.html">LearnerClassifBst</a></code>
+
+        </dt>
+        <dd>Classification Gradient Boosting Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_classif.catboost.html">mlr_learners_classif.catboost</a></code> <code><a href="mlr_learners_classif.catboost.html">LearnerClassifCatboost</a></code>
@@ -200,10 +218,34 @@
         <dd>Classification Decision Table Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.dlda.html">mlr_learners_classif.dlda</a></code> <code><a href="mlr_learners_classif.dlda.html">LearnerClassifDiagLda</a></code>
+
+        </dt>
+        <dd>Classification Diagonal Linear Discriminant Analysis Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.earth.html">mlr_learners_classif.earth</a></code> <code><a href="mlr_learners_classif.earth.html">LearnerClassifEarth</a></code>
 
         </dt>
         <dd>Classification MARS (Multivariate Adaptive Regression Splines) Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.evtree.html">mlr_learners_classif.evtree</a></code> <code><a href="mlr_learners_classif.evtree.html">LearnerClassifEvtree</a></code>
+
+        </dt>
+        <dd>Classification Decision Tree Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.exhaustive_search.html">mlr_learners_classif.exhaustive_search</a></code> <code><a href="mlr_learners_classif.exhaustive_search.html">LearnerClassifExhaustiveSearch</a></code>
+
+        </dt>
+        <dd>Logistic Regression with Exhaustive Search</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.fastai.html">mlr_learners_classif.fastai</a></code> <code><a href="mlr_learners_classif.fastai.html">LearnerClassifFastai</a></code>
+
+        </dt>
+        <dd>Classification Neural Network Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_classif.fnn.html">mlr_learners_classif.fnn</a></code> <code><a href="mlr_learners_classif.fnn.html">LearnerClassifFNN</a></code>
@@ -254,6 +296,12 @@
         <dd>Classification Imbalanced Random Forest Src Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.knn.html">mlr_learners_classif.knn</a></code> <code><a href="mlr_learners_classif.knn.html">LearnerClassifKnn</a></code>
+
+        </dt>
+        <dd>Classification K-nearest Neighbour Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.kstar.html">mlr_learners_classif.kstar</a></code> <code><a href="mlr_learners_classif.kstar.html">LearnerClassifKStar</a></code>
 
         </dt>
@@ -290,6 +338,18 @@
         <dd>Classification Least Squares Support Vector Machine Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.mda.html">mlr_learners_classif.mda</a></code> <code><a href="mlr_learners_classif.mda.html">LearnerClassifMda</a></code>
+
+        </dt>
+        <dd>Classification Discriminant Analysis Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.mdeb.html">mlr_learners_classif.mdeb</a></code> <code><a href="mlr_learners_classif.mdeb.html">LearnerClassifMdeb</a></code>
+
+        </dt>
+        <dd>Classification Linear Discriminant Analysis Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.mob.html">mlr_learners_classif.mob</a></code> <code><a href="mlr_learners_classif.mob.html">LearnerClassifMob</a></code>
 
         </dt>
@@ -314,10 +374,34 @@
         <dd>Classification Naive Bayes Learner From Weka</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.neuralnet.html">mlr_learners_classif.neuralnet</a></code> <code><a href="mlr_learners_classif.neuralnet.html">LearnerClassifNeuralnet</a></code>
+
+        </dt>
+        <dd>Classification Neural Network Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.penalized.html">mlr_learners_classif.penalized</a></code> <code><a href="mlr_learners_classif.penalized.html">LearnerClassifPenalized</a></code>
+
+        </dt>
+        <dd>Classification L1 and L2 Penalized Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.polyFit.html">mlr_learners_classif.polyFit</a></code> <code><a href="mlr_learners_classif.polyFit.html">LearnerClassifPolyFit</a></code>
+
+        </dt>
+        <dd>Polynomial GLM Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.priority_lasso.html">mlr_learners_classif.priority_lasso</a></code> <code><a href="mlr_learners_classif.priority_lasso.html">LearnerClassifPriorityLasso</a></code>
 
         </dt>
         <dd>Classification Priority Lasso Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.rFerns.html">mlr_learners_classif.rFerns</a></code> <code><a href="mlr_learners_classif.rFerns.html">LearnerClassifRferns</a></code>
+
+        </dt>
+        <dd>Random Ferns Classification Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_classif.randomForest.html">mlr_learners_classif.randomForest</a></code> <code><a href="mlr_learners_classif.randomForest.html">LearnerClassifRandomForest</a></code>
@@ -338,6 +422,12 @@
         <dd>Classification Random Tree Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_classif.rda.html">mlr_learners_classif.rda</a></code> <code><a href="mlr_learners_classif.rda.html">LearnerClassifRda</a></code>
+
+        </dt>
+        <dd>Classification Discriminant Analysis Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_classif.reptree.html">mlr_learners_classif.reptree</a></code> <code><a href="mlr_learners_classif.reptree.html">LearnerClassifREPTree</a></code>
 
         </dt>
@@ -350,10 +440,22 @@
         <dd>Classification Random Forest SRC Learner</dd>
       </dl><dl><dt>
 
-          <code><a href="mlr_learners_classif.rpf.html">mlr_learners_classif.rpf</a></code> <code><a href="mlr_learners_classif.rpf.html">LearnerClassifRandomPlantedForest</a></code>
+          <code><a href="mlr_learners_classif.rotationForest.html">mlr_learners_classif.rotationForest</a></code> <code><a href="mlr_learners_classif.rotationForest.html">LearnerClassifRotationForest</a></code>
 
         </dt>
-        <dd>Classification Random Planted Forest Learner</dd>
+        <dd>Classification Rotation Forest Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.sda.html">mlr_learners_classif.sda</a></code> <code><a href="mlr_learners_classif.sda.html">LearnerClassifSda</a></code>
+
+        </dt>
+        <dd>Shrinkage Discriminant Analysis</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.sdlda.html">mlr_learners_classif.sdlda</a></code> <code><a href="mlr_learners_classif.sdlda.html">LearnerClassifSdlda</a></code>
+
+        </dt>
+        <dd>Classification Linear Discriminant Analysis Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_classif.sgd.html">mlr_learners_classif.sgd</a></code> <code><a href="mlr_learners_classif.sgd.html">LearnerClassifSGD</a></code>
@@ -372,6 +474,12 @@
 
         </dt>
         <dd>Classification Support Vector Machine Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_classif.stepPlr.html">mlr_learners_classif.stepPlr</a></code> <code><a href="mlr_learners_classif.stepPlr.html">LearnerClassifStepPlr</a></code>
+
+        </dt>
+        <dd>Classification Logistic Regression Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_classif.tabpfn.html">mlr_learners_classif.tabpfn</a></code> <code><a href="mlr_learners_classif.tabpfn.html">LearnerClassifTabPFN</a></code>
@@ -427,6 +535,36 @@
         <dd>Regression BART (Bayesian Additive Regression Trees) Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_regr.blockforest.html">mlr_learners_regr.blockforest</a></code> <code><a href="mlr_learners_regr.blockforest.html">LearnerRegrBlockForest</a></code>
+
+        </dt>
+        <dd>BlockForest Regression Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.botorch_mixedsingletaskgp.html">mlr_learners_regr.botorch_mixedsingletaskgp</a></code> <code><a href="mlr_learners_regr.botorch_mixedsingletaskgp.html">LearnerRegrBotorchMixedSingleTaskGP</a></code>
+
+        </dt>
+        <dd>BoTorch MixedSingleTaskGP Regression Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.botorch_singletaskgp.html">mlr_learners_regr.botorch_singletaskgp</a></code> <code><a href="mlr_learners_regr.botorch_singletaskgp.html">LearnerRegrBotorchSingleTaskGP</a></code>
+
+        </dt>
+        <dd>BoTorch SingleTaskGP Regression Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.brnn.html">mlr_learners_regr.brnn</a></code> <code><a href="mlr_learners_regr.brnn.html">LearnerRegrBrnn</a></code>
+
+        </dt>
+        <dd>Regression Neural Network Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.bst.html">mlr_learners_regr.bst</a></code> <code><a href="mlr_learners_regr.bst.html">LearnerRegrBst</a></code>
+
+        </dt>
+        <dd>Regression Gradient Boosting Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_regr.catboost.html">mlr_learners_regr.catboost</a></code> <code><a href="mlr_learners_regr.catboost.html">LearnerRegrCatboost</a></code>
 
         </dt>
@@ -437,6 +575,12 @@
 
         </dt>
         <dd>Regression Conditional Random Forest Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.crs.html">mlr_learners_regr.crs</a></code> <code><a href="mlr_learners_regr.crs.html">LearnerRegrCrs</a></code>
+
+        </dt>
+        <dd>Regression Splines Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_regr.ctree.html">mlr_learners_regr.ctree</a></code> <code><a href="mlr_learners_regr.ctree.html">LearnerRegrCTree</a></code>
@@ -467,6 +611,18 @@
 
         </dt>
         <dd>Implementation of Multivariate Adaptive Regression Splines</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.evtree.html">mlr_learners_regr.evtree</a></code> <code><a href="mlr_learners_regr.evtree.html">LearnerRegrEvtree</a></code>
+
+        </dt>
+        <dd>Regression Decision Tree Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.exhaustive_search.html">mlr_learners_regr.exhaustive_search</a></code> <code><a href="mlr_learners_regr.exhaustive_search.html">LearnerRegrExhaustiveSearch</a></code>
+
+        </dt>
+        <dd>Linear Regression with Exhaustive Search</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_regr.fnn.html">mlr_learners_regr.fnn</a></code> <code><a href="mlr_learners_regr.fnn.html">LearnerRegrFNN</a></code>
@@ -583,6 +739,18 @@
         <dd>Regression MultilayerPerceptron Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_regr.penalized.html">mlr_learners_regr.penalized</a></code> <code><a href="mlr_learners_regr.penalized.html">LearnerRegrPenalized</a></code>
+
+        </dt>
+        <dd>Regression L1 and L2 Penalized Learner</dd>
+      </dl><dl><dt>
+
+          <code><a href="mlr_learners_regr.polyFit.html">mlr_learners_regr.polyFit</a></code> <code><a href="mlr_learners_regr.polyFit.html">LearnerRegrPoly</a></code>
+
+        </dt>
+        <dd>Polynomial Regression Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_regr.priority_lasso.html">mlr_learners_regr.priority_lasso</a></code> <code><a href="mlr_learners_regr.priority_lasso.html">LearnerRegrPriorityLasso</a></code>
 
         </dt>
@@ -623,12 +791,6 @@
 
         </dt>
         <dd>Regression Random Forest SRC Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_regr.rpf.html">mlr_learners_regr.rpf</a></code> <code><a href="mlr_learners_regr.rpf.html">LearnerRegrRandomPlantedForest</a></code>
-
-        </dt>
-        <dd>Regression Random Planted Forest Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_regr.rsm.html">mlr_learners_regr.rsm</a></code> <code><a href="mlr_learners_regr.rsm.html">LearnerRegrRSM</a></code>
@@ -702,6 +864,12 @@
         <dd>Gradient Boosting with Regression Trees Survival Learner</dd>
       </dl><dl><dt>
 
+          <code><a href="mlr_learners_surv.blockforest.html">mlr_learners_surv.blockforest</a></code> <code><a href="mlr_learners_surv.blockforest.html">LearnerSurvBlockForest</a></code>
+
+        </dt>
+        <dd>BlockForest Survival Learner</dd>
+      </dl><dl><dt>
+
           <code><a href="mlr_learners_surv.cforest.html">mlr_learners_surv.cforest</a></code> <code><a href="mlr_learners_surv.cforest.html">LearnerSurvCForest</a></code>
 
         </dt>
@@ -712,12 +880,6 @@
 
         </dt>
         <dd>Survival Cox Model with Likelihood Based Boosting Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_surv.coxtime.html">mlr_learners_surv.coxtime</a></code> <code><a href="mlr_learners_surv.coxtime.html">LearnerSurvCoxtime</a></code>
-
-        </dt>
-        <dd>Survival Cox-Time Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_surv.ctree.html">mlr_learners_surv.ctree</a></code> <code><a href="mlr_learners_surv.ctree.html">LearnerSurvCTree</a></code>
@@ -736,24 +898,6 @@
 
         </dt>
         <dd>Cross-Validated GLM with Elastic Net Regularization Survival Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_surv.deephit.html">mlr_learners_surv.deephit</a></code> <code><a href="mlr_learners_surv.deephit.html">LearnerSurvDeephit</a></code>
-
-        </dt>
-        <dd>Survival DeepHit Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_surv.deepsurv.html">mlr_learners_surv.deepsurv</a></code> <code><a href="mlr_learners_surv.deepsurv.html">LearnerSurvDeepsurv</a></code>
-
-        </dt>
-        <dd>Survival DeepSurv Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_surv.dnnsurv.html">mlr_learners_surv.dnnsurv</a></code> <code><a href="mlr_learners_surv.dnnsurv.html">LearnerSurvDNNSurv</a></code>
-
-        </dt>
-        <dd>Survival DNNSurv Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_surv.flexible.html">mlr_learners_surv.flexible</a></code> <code><a href="mlr_learners_surv.flexible.html">LearnerSurvFlexible</a></code>
@@ -786,12 +930,6 @@
         <dd>GLM with Elastic Net Regularization Survival Learner</dd>
       </dl><dl><dt>
 
-          <code><a href="mlr_learners_surv.loghaz.html">mlr_learners_surv.loghaz</a></code> <code><a href="mlr_learners_surv.loghaz.html">LearnerSurvLogisticHazard</a></code>
-
-        </dt>
-        <dd>Survival Logistic-Hazard Learner</dd>
-      </dl><dl><dt>
-
           <code><a href="mlr_learners_surv.mboost.html">mlr_learners_surv.mboost</a></code> <code><a href="mlr_learners_surv.mboost.html">LearnerSurvMBoost</a></code>
 
         </dt>
@@ -808,12 +946,6 @@
 
         </dt>
         <dd>Survival Fully Parametric Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_surv.pchazard.html">mlr_learners_surv.pchazard</a></code> <code><a href="mlr_learners_surv.pchazard.html">LearnerSurvPCHazard</a></code>
-
-        </dt>
-        <dd>Survival PC-Hazard Learner</dd>
       </dl><dl><dt>
 
           <code><a href="mlr_learners_surv.penalized.html">mlr_learners_surv.penalized</a></code> <code><a href="mlr_learners_surv.penalized.html">LearnerSurvPenalized</a></code>
@@ -857,7 +989,7 @@
         </dt>
         <dd>Extreme Gradient Boosting Cox Survival Learner</dd>
       </dl></div><div class="section level2">
-      <h2 id="density-learners">Density Learners<a class="anchor" aria-label="anchor" href="#density-learners"></a></h2>
+      <h2 id="competing-risks-learners">Competing Risks Learners<a class="anchor" aria-label="anchor" href="#competing-risks-learners"></a></h2>
 
 
 
@@ -869,52 +1001,10 @@
 
       <dl><dt>
 
-          <code><a href="mlr_learners_dens.kde_ks.html">mlr_learners_dens.kde_ks</a></code> <code><a href="mlr_learners_dens.kde_ks.html">LearnerDensKDEks</a></code>
+          <code><a href="mlr_learners_cmprsk.rfsrc.html">mlr_learners_cmprsk.rfsrc</a></code> <code><a href="mlr_learners_cmprsk.rfsrc.html">LearnerCompRisksRandomForestSRC</a></code>
 
         </dt>
-        <dd>Density KS Kernel Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.locfit.html">mlr_learners_dens.locfit</a></code> <code><a href="mlr_learners_dens.locfit.html">LearnerDensLocfit</a></code>
-
-        </dt>
-        <dd>Density Locfit Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.logspline.html">mlr_learners_dens.logspline</a></code> <code><a href="mlr_learners_dens.logspline.html">LearnerDensLogspline</a></code>
-
-        </dt>
-        <dd>Density Logspline Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.mixed.html">mlr_learners_dens.mixed</a></code> <code><a href="mlr_learners_dens.mixed.html">LearnerDensMixed</a></code>
-
-        </dt>
-        <dd>Density Mixed Data Kernel Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.nonpar.html">mlr_learners_dens.nonpar</a></code> <code><a href="mlr_learners_dens.nonpar.html">LearnerDensNonparametric</a></code>
-
-        </dt>
-        <dd>Density Nonparametric Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.pen.html">mlr_learners_dens.pen</a></code> <code><a href="mlr_learners_dens.pen.html">LearnerDensPenalized</a></code>
-
-        </dt>
-        <dd>Density Penalized Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.plug.html">mlr_learners_dens.plug</a></code> <code><a href="mlr_learners_dens.plug.html">LearnerDensPlugin</a></code>
-
-        </dt>
-        <dd>Density Plug-In Kernel Learner</dd>
-      </dl><dl><dt>
-
-          <code><a href="mlr_learners_dens.spline.html">mlr_learners_dens.spline</a></code> <code><a href="mlr_learners_dens.spline.html">LearnerDensSpline</a></code>
-
-        </dt>
-        <dd>Density Smoothing Splines Learner</dd>
+        <dd>Random Forest Competing Risks Learner</dd>
       </dl></div><div class="section level2">
       <h2 id="general">General<a class="anchor" aria-label="anchor" href="#general"></a></h2>
 
@@ -938,7 +1028,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

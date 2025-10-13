@@ -15,7 +15,7 @@ Calls RWeka::Logistic() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::Logistic() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Logistic Regression Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_logistic.R" class="external-link"><code>R/learner_RWeka_classif_logistic.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.logistic.Rd</code></div>
     </div>
 
@@ -122,12 +122,23 @@ since their ids contain irregular pattern</p></li>
     <p><code><a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">mlr3::Learner</a></code> -&gt; <code><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html" class="external-link">mlr3::LearnerClassif</a></code> -&gt; <code>LearnerClassifLogistic</code></p>
     </div>
     <div class="section level2">
+    <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
+    <p></p><div class="r6-active-bindings"><dl><dt><code>marshaled</code></dt>
+<dd><p>(<code>logical(1)</code>)<br>
+Whether the learner has been marshaled.</p></dd>
+
+
+</dl><p></p></div>
+    </div>
+    <div class="section level2">
     <h2 id="methods">Methods<a class="anchor" aria-label="anchor" href="#methods"></a></h2>
 
 <div class="section">
 <h3 id="public-methods">Public methods<a class="anchor" aria-label="anchor" href="#public-methods"></a></h3>
 
 <ul><li><p><a href="#method-LearnerClassifLogistic-new"><code>LearnerClassifLogistic$new()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifLogistic-marshal"><code>LearnerClassifLogistic$marshal()</code></a></p></li>
+<li><p><a href="#method-LearnerClassifLogistic-unmarshal"><code>LearnerClassifLogistic$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerClassifLogistic-clone"><code>LearnerClassifLogistic$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -140,6 +151,7 @@ since their ids contain irregular pattern</p></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-reset"><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-selected_features"><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-train"><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href="https://mlr3.mlr-org.com/reference/LearnerClassif.html#method-predict_newdata_fast"><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul></details></p><hr><a id="method-LearnerClassifLogistic-new"></a><div class="section">
 <h3 id="method-new-">Method <code>new()</code><a class="anchor" aria-label="anchor" href="#method-new-"></a></h3>
 <p>Creates a new instance of this <a href="https://r6.r-lib.org/reference/R6Class.html" class="external-link">R6</a> class.</p><div class="section">
@@ -148,15 +160,49 @@ since their ids contain irregular pattern</p></li>
 </div>
 
 
-</div><p></p><hr><a id="method-LearnerClassifLogistic-clone"></a><div class="section">
-<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
-<p>The objects of this class are cloneable with this method.</p><div class="section">
+</div><p></p><hr><a id="method-LearnerClassifLogistic-marshal"></a><div class="section">
+<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
+<p>Marshal the learner's model.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLogistic</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLogistic</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
 <h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifLogistic-unmarshal"></a><div class="section">
+<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
+<p>Unmarshal the learner's model.</p><div class="section">
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLogistic</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
+<p></p><div class="arguments"><dl><dt><code>...</code></dt>
+<dd><p>(any)<br>
+Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::unmarshal_model()</a></code>.</p></dd>
+
+
+</dl><p></p></div>
+</div>
+
+</div><p></p><hr><a id="method-LearnerClassifLogistic-clone"></a><div class="section">
+<h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
+<p>The objects of this class are cloneable with this method.</p><div class="section">
+<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
+<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerClassifLogistic</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
+</div>
+
+<div class="section">
+<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -171,7 +217,7 @@ since their ids contain irregular pattern</p></li>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLogistic&gt;</span><span style="font-weight: bold;"> (classif.logistic): Multinomial Logistic Regression</span> </span>
@@ -181,14 +227,14 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and prob</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings, multiclass, and twoclass</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal, missings, multiclass, and twoclass</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -199,133 +245,133 @@ since their ids contain irregular pattern</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V1                         234.4741</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V10                       -168.3497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11                         95.8339</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12                        126.0161</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V13                        120.0834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14                        -83.7475</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15                          2.3399</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V16                        -34.2557</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17                          9.0959</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18                        -26.8416</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19                         44.8569</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2                         505.0166</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20                        -26.6068</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21                         -2.3816</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22                        -24.9652</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23                          0.1337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V24                        159.0497</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V25                        -56.3656</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V26                       -114.2229</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V27                         32.6665</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28                        -14.9416</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V29                        -37.7311</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V3                        -531.5841</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30                        158.2676</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V31                       -216.4763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32                         33.5987</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V33                         55.1337</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V34                       -102.8862</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35                        128.8825</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36                       -156.5877</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37                        -13.3755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V38                        -58.7303</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V39                        103.0508</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4                          21.0206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V40                        -39.5133</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V41                        -35.7022</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V42                         35.5515</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V43                         14.5269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44                         54.3705</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45                          76.358</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46                        117.6125</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47                       -188.6731</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V48                        611.2193</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49                       -357.2244</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5                         -20.7021</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V50                       -165.6328</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51                       -660.0381</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52                         897.838</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V53                        593.1662</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54                       -204.7508</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V55                       -4102.361</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V56                        884.8135</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V57                      -1544.5834</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V58                       1929.5003</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59                       2081.3718</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V6                          11.0069</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V60                      -2984.4924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V7                        -233.1781</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8                         -22.0477</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V9                         136.8542</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept                   36.4046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1                        1797.7367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10                        -71.8675</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11                        401.8333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12                       -123.0427</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13                        -26.1066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14                         28.7201</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15                         67.4508</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16                        -195.177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17                        -41.0808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18                        123.3849</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19                       -160.0055</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                        -910.3865</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20                        177.8028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                        -68.4722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22                         30.6411</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23                          8.3241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24                         48.4007</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25                        -43.4034</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26                          4.7038</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27                        -41.6153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28                          15.944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29                        -92.9037</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V3                        -348.2202</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30                        225.8803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V31                       -287.9569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32                        157.4548</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33                         73.2959</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34                       -313.0504</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35                         234.612</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36                       -112.9563</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37                        -84.1013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38                          83.322</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39                        -55.3632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4                         223.8742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40                        -78.2139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41                        166.4226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42                       -147.9013</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43                          19.771</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44                         143.442</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45                        -30.1764</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46                       -158.3255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47                        580.5383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48                        -18.8536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49                       1023.4753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5                         156.0402</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50                      -2773.3421</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                       1977.2226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                       -892.8046</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53                       1095.2665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54                        955.3177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V55                       -336.0925</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V56                       1463.0311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57                         -813.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                      -3481.3613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59                       2677.4078</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6                          22.1718</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V60                      -2368.0296</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V7                         -65.7346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8                        -472.5251</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9                         184.9916</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept                  -15.1472</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Odds Ratios...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V1            6.773093712238356E101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1                         Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V10                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11             4.17012235709738E41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12           5.3468885122110196E54</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V13           1.4175625944937342E52</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15                         10.3803</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11           3.265819365227805E174</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14           2.9715091979588486E12</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15           1.9656638212656323E29</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17                       8918.7941</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19            3.027699100984806E19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2           2.1180576930437113E219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21                          0.0924</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23                           1.143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V24           1.1868865288744851E69</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18            3.849427692251844E53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20           1.6549398019108147E77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22           2.0289986207961312E13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23                       4121.9443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24           1.0474895838301739E21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V25                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V26                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V27           1.5377828922006897E14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26                        110.3605</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28                     8402405.406</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3                                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30            5.429446741361161E68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30           1.2547796516586303E98</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32           3.9059212082766444E14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V33            8.795167006010712E23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32           2.4085097802646783E68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33            6.792190867971183E31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35             9.39674958563154E55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35           7.774675759378915E101</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V38                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V39           5.6808778217904796E44</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4                  1346227752.3527</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38            1.535602412376822E36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4            1.6877888775691352E97</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V41                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V42           2.7529688953268175E15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V43                    2036719.8113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44            4.100250323271359E23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45           1.4516471825283777E33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46           1.1979722170529673E51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V48          2.8129215445311952E265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41           1.8898303135822805E72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43                  385873455.5914</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44           1.9772484312226949E62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47          1.3322636856880672E252</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5             5.853290879677922E67</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52                        Infinity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V53          4.0627010249816973E257</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V58                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V59                        Infinity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V6                       60287.1823</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6                  4257005497.9286</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7                                0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V8                                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V9            2.7228968820057472E59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9            2.1918996803714292E80</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -343,7 +389,7 @@ since their ids contain irregular pattern</p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

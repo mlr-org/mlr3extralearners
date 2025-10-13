@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
       <h1>Creating a new Learner</h1>
             
       
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
       <div class="d-none name"><code>extending.Rmd</code></div>
     </div>
 
@@ -94,13 +94,9 @@ and so in this vignette we will look at how to add a new
 <code>Learner</code> to <code>mlr3</code>. Here we will already assume a
 lot of knowledge, so it is best to read the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a> first! If you want to
 contribute a new <code>Learner</code> to <code>mlr3extralearners</code>
-it is recommended to first open an issue to discuss the learner. As
-another side note, the <code>mlr3extralearner::create_learner()</code>
-function can be used to generate files containing templates for the
-learner and test files required to create and test a
-<code>Learner</code>. We will not use it in this vignette for the sake
-of clarity, but recommend using it in practice to avoid writing a lot of
-boilerplate code.</p>
+it is recommended to first open an issue to discuss the learner. We will
+not use it in this vignette for the sake of clarity, but recommend using
+it in practice to avoid writing a lot of boilerplate code.</p>
 <p>We will first demonstrate what the final class looks like and then we
 will explain it line by line (and method by method). As a working
 example, we will implement a slightly stripped-down version of
@@ -135,7 +131,7 @@ example, we will implement a slightly stripped-down version of
 <span>        param_set <span class="op">=</span> <span class="va">param_set</span>,</span>
 <span>        properties <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"weights"</span>, <span class="st">"missings"</span>, <span class="st">"importance"</span><span class="op">)</span>,</span>
 <span>        label <span class="op">=</span> <span class="st">"Regression Tree"</span>,</span>
-<span>        man <span class="op">=</span> <span class="st">"mlr3::mlr_learners_regr.rpart"</span></span>
+<span>        man <span class="op">=</span> <span class="st">"mlr3extralearners::mlr_learners_regr.rpart"</span></span>
 <span>      <span class="op">)</span></span>
 <span>    <span class="op">}</span>,</span>
 <span>    importance <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
@@ -154,8 +150,8 @@ example, we will implement a slightly stripped-down version of
 <span>    .train <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">task</span><span class="op">)</span> <span class="op">{</span></span>
 <span>      <span class="va">pv</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">get_values</span><span class="op">(</span>tags <span class="op">=</span> <span class="st">"train"</span><span class="op">)</span></span>
 <span>      <span class="va">pv</span><span class="op">$</span><span class="va">weights</span> <span class="op">=</span> <span class="va">private</span><span class="op">$</span><span class="fu">.get_weights</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span>      </span>
-<span>      <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>
+<span></span>
+<span>      <span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>
 <span>        <span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart</a></span>,</span>
 <span>        formula <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">formula</span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        data <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">data</span><span class="op">(</span><span class="op">)</span>,</span>
@@ -167,7 +163,7 @@ example, we will implement a slightly stripped-down version of
 <span></span>
 <span>      <span class="co"># ensure same column order in train and predict</span></span>
 <span>      <span class="va">newdata</span> <span class="op">=</span> <span class="fu">mlr3extralearners</span><span class="fu">:::</span><span class="fu">ordered_features</span><span class="op">(</span><span class="va">task</span>, <span class="va">self</span><span class="op">)</span></span>
-<span>      <span class="va">response</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span><span class="va">predict</span>, <span class="va">self</span><span class="op">$</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="va">newdata</span>, .args <span class="op">=</span> <span class="va">pv</span><span class="op">)</span></span>
+<span>      <span class="va">response</span> <span class="op">=</span> <span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span><span class="va">predict</span>, <span class="va">self</span><span class="op">$</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="va">newdata</span>, .args <span class="op">=</span> <span class="va">pv</span><span class="op">)</span></span>
 <span>      <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>response <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span><span class="op">)</span></span>
 <span>    <span class="op">}</span></span>
 <span>  <span class="op">)</span></span>
@@ -202,7 +198,10 @@ supports.</li>
 <code>feature_types</code>: Set of feature types the learner is able
 to handle.</li>
 <li>
-<code>properties</code>: Set of properties of the learner.</li>
+<code>properties</code>: Set of properties of the learner. These are
+listed both in the documentation of the <code>Learner</code> base class,
+as well as in the respective subclasses (<code>LearnerClassif</code>,
+<code>LearnerRegr</code>, etc.).</li>
 <li>
 <code>man</code>: The roxygen identifier of the learner. This is
 used within the <code>$help()</code> method of the super class to open
@@ -375,10 +374,10 @@ available as the <code>$model</code> slot of the trained learner.</p>
 <code class="sourceCode R"><span><span class="va">.train</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">task</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">pv</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">get_values</span><span class="op">(</span>tags <span class="op">=</span> <span class="st">"train"</span><span class="op">)</span></span>
 <span>  <span class="va">pv</span><span class="op">$</span><span class="va">weights</span> <span class="op">=</span> <span class="va">private</span><span class="op">$</span><span class="fu">.get_weights</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
-<span>  </span>
+<span></span>
 <span>  <span class="va">formula</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">formula</span><span class="op">(</span><span class="op">)</span></span>
 <span>  <span class="va">data</span> <span class="op">=</span> <span class="va">task</span><span class="op">$</span><span class="fu">data</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>
+<span>  <span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span></span>
 <span>    <span class="fu">rpart</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart</a></span>,</span>
 <span>    formula <span class="op">=</span> <span class="va">formula</span>,</span>
 <span>    data <span class="op">=</span> <span class="va">data</span>,</span>
@@ -429,7 +428,7 @@ return the prediction requested by the user.</p>
 <span>  <span class="va">pv</span> <span class="op">=</span> <span class="va">self</span><span class="op">$</span><span class="va">param_set</span><span class="op">$</span><span class="fu">get_values</span><span class="op">(</span>tags <span class="op">=</span> <span class="st">"predict"</span><span class="op">)</span></span>
 <span>  <span class="co"># ensure same column order in train and predict</span></span>
 <span>  <span class="va">newdata</span> <span class="op">=</span> <span class="fu">mlr3extralearners</span><span class="fu">:::</span><span class="fu">ordered_features</span><span class="op">(</span><span class="va">task</span>, <span class="va">self</span><span class="op">)</span></span>
-<span>  <span class="va">response</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span><span class="va">predict</span>, <span class="va">self</span><span class="op">$</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="va">newdata</span>, .args <span class="op">=</span> <span class="va">pv</span><span class="op">)</span></span>
+<span>  <span class="va">response</span> <span class="op">=</span> <span class="fu">mlr3misc</span><span class="fu">::</span><span class="fu"><a href="https://mlr3misc.mlr-org.com/reference/invoke.html" class="external-link">invoke</a></span><span class="op">(</span><span class="va">predict</span>, <span class="va">self</span><span class="op">$</span><span class="va">model</span>, newdata <span class="op">=</span> <span class="va">newdata</span>, .args <span class="op">=</span> <span class="va">pv</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>response <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="va">response</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 <p>Beware that you cannot rely on the column order of the data returned
@@ -513,7 +512,7 @@ from the <code>mlr3proba</code> package.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span>
 <span><span class="co"># mlr3proba</span></span>
-<span><span class="co"># lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3proba"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span></code></pre></div>
 <p>We now perform the autotest. By setting
 <code>expect_learner(..., check_man = FALSE)</code>, we disable a test
 that verifies that the correct manual page exists, which is only
@@ -523,14 +522,14 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># basic learner properties</span></span>
-<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
+<span>  <span class="co"># # basic learner properties</span></span>
+<span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span>, check_man <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># you can skip tests using the `exclude` argument</span></span>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 😸</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="checking-parameters">Checking Parameters<a class="anchor" aria-label="anchor" href="#checking-parameters"></a>
@@ -585,7 +584,7 @@ exclusion.</p>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_paramtest</span><span class="op">(</span><span class="va">learner</span>, <span class="fu">rpart</span><span class="fu">:::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/predict.rpart.html" class="external-link">predict.rpart</a></span>, <span class="va">exclude</span>, tag <span class="op">=</span> <span class="st">"predict"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 🎉</span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #00BB00;">Test passed</span> 🌈</span></span></code></pre>
 </div>
 </div>
 <div class="section level2">
@@ -600,10 +599,8 @@ to the bottom of the learner file to add the learner to the learners
 <code>Dictionary</code>.</li>
 <li>Add the learner dependencies to <em>Suggests</em> (and not e.g. to
 <em>Imports</em>) in the DESCRIPTION file.</li>
-<li>The learner must be properly documented. When using
-<code><a href="../reference/create_learner.html">mlr3extralearners::create_learner()</a></code> this is automatically
-generated. Otherwise you can use and adapt the documentation of an
-already implemented learner.</li>
+<li>The learner must be properly documented. Check the other learners
+for how to do this.</li>
 <li>Conforming to the <code>mlr3</code> <a href="https://github.com/mlr-org/mlr3/wiki/Style-Guide" class="external-link">style
 guide</a>.</li>
 <li>The tests must pass in the CI (also check the CodeFactor
@@ -620,7 +617,7 @@ learner.</li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

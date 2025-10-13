@@ -21,7 +21,7 @@ the parameter na_action.'></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@ the parameter na_action.'></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Accelerated Oblique Random Survival Forest Learner</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_surv_aorsf.R" class="external-link"><code>R/learner_aorsf_surv_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.aorsf.Rd</code></div>
     </div>
 
@@ -88,7 +88,7 @@ represented in rows and (unique event) time points in columns.
 Calculated using the internal <code>predict.ObliqueForest()</code> function.</p></li>
 <li><p><code>response</code>: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (<code>distr</code>).</p></li>
-<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/dot-surv_return.html" class="external-link">mlr3proba::.surv_return()</a></code>.</p></li>
+<li><p><code>crank</code>: the expected mortality using <code><a href="https://mlr3proba.mlr-org.com/reference/surv_return.html" class="external-link">mlr3proba::surv_return()</a></code>.</p></li>
 </ol></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -104,12 +104,12 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <ul><li><p>Task type: “surv”</p></li>
 <li><p>Predict Types: “crank”, “distr”, “response”</p></li>
 <li><p>Feature Types: “integer”, “numeric”, “factor”, “ordered”</p></li>
-<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=aorsf" class="external-link"><span class="pkg">aorsf</span></a>, <a href="https://CRAN.R-project.org/package=pracma" class="external-link"><span class="pkg">pracma</span></a></p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3proba" class="external-link"><span class="pkg">mlr3proba</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=aorsf" class="external-link"><span class="pkg">aorsf</span></a></p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>n_tree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_split</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_retry</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>n_thread</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pred_aggregate</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>pred_simplify</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobag</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mtry</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>sample_with_replacement</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sample_fraction</td><td>numeric</td><td>0.632</td><td></td><td>\([0, 1]\)</td></tr><tr><td>control_type</td><td>character</td><td>fast</td><td>fast, cph, net</td><td>-</td></tr><tr><td>split_rule</td><td>character</td><td>logrank</td><td>logrank, cstat</td><td>-</td></tr><tr><td>control_fast_do_scale</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>control_fast_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_eps</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>control_cph_iter_max</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>control_net_alpha</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>control_net_df_target</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_events</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_obs</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_events</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_obs</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_stat</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_pred_type</td><td>character</td><td>risk</td><td>none, surv, risk, chf, mort</td><td>-</td></tr><tr><td>importance</td><td>character</td><td>anova</td><td>none, anova, negate, permute</td><td>-</td></tr><tr><td>importance_max_pvalue</td><td>numeric</td><td>0.01</td><td></td><td>\([1e-04, 0.9999]\)</td></tr><tr><td>tree_seeds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_pred_horizon</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_eval_every</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_fun</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>attach_data</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose_progress</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>na_action</td><td>character</td><td>fail</td><td>fail, omit, impute_meanmode</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>n_tree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_split</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_retry</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>n_thread</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>pred_aggregate</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>pred_simplify</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobag</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mtry</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>sample_with_replacement</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sample_fraction</td><td>numeric</td><td>0.632</td><td></td><td>\([0, 1]\)</td></tr><tr><td>control_type</td><td>character</td><td>fast</td><td>fast, cph, net, custom</td><td>-</td></tr><tr><td>control_custom_fun</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>split_rule</td><td>character</td><td>logrank</td><td>logrank, cstat</td><td>-</td></tr><tr><td>control_fast_do_scale</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>control_fast_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_ties</td><td>character</td><td>efron</td><td>efron, breslow</td><td>-</td></tr><tr><td>control_cph_eps</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>control_cph_iter_max</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>control_net_alpha</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>control_net_df_target</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_events</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_obs</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_events</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_obs</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_stat</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_pred_type</td><td>character</td><td>risk</td><td>none, surv, risk, chf, mort</td><td>-</td></tr><tr><td>importance</td><td>character</td><td>anova</td><td>none, anova, negate, permute</td><td>-</td></tr><tr><td>importance_max_pvalue</td><td>numeric</td><td>0.01</td><td></td><td>\([1e-04, 0.9999]\)</td></tr><tr><td>tree_seeds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_pred_horizon</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>oobag_eval_every</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_fun</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>attach_data</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verbose_progress</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>na_action</td><td>character</td><td>fail</td><td>fail, impute_meanmode</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Jaeger BC, Long DL, Long DM, Sims M, Szychowski JM, Min Y, Mcclure LA, Howard G, Simon N (2019).
@@ -220,13 +220,13 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.aorsf"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.aorsf"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvAorsf&gt;</span><span style="font-weight: bold;"> (surv.aorsf): Oblique Random Forest</span> <span style="color: #00BBBB;">──────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: n_thread=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, <span style="color: #0000BB;">aorsf</span>, and <span style="color: #0000BB;">pracma</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">aorsf</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and response</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
@@ -234,10 +234,10 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">mlr3</span><span class="fu">::</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -247,11 +247,11 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 223</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 227</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 40.82</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.994</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
@@ -261,7 +261,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5737438  0.5323025  0.2171535  0.1915926  0.1715323  0.1002096 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5805769  0.5350840  0.2124634  0.1873975  0.1307757  0.1130390 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -269,7 +269,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.844488 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8333049 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -277,7 +277,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">

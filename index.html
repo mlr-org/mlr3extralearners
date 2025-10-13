@@ -36,7 +36,7 @@
 
     <a class="navbar-brand me-2" href="index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.1.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,11 +90,11 @@
 <p>You can install the package as follows:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># latest GitHub release</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners@*release"</span><span class="op">)</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners@*release"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># development version</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
-<p>Alternatively, you can add the following to your .Rprofile, which allows you to install <code>mlr3extralearners</code> via <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code>. Note that this will install the development version.</p>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"mlr-org/mlr3extralearners"</span><span class="op">)</span></span></code></pre></div>
+<p>Alternatively, you can add the following to your .Rprofile, which allows you to install <code>mlr3extralearners</code> via <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># .Rprofile</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>repos <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
@@ -107,7 +107,7 @@
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu">lrn</span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
@@ -119,7 +119,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="fu">lrn</span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
 <span><span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span></span>
@@ -139,7 +139,15 @@
 <p>This R package is developed as part of the <a href="https://www.mardi4nfdi.de/about/mission" class="external-link">Mathematical Research Data Initiative</a>.</p>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/mlr-org/mlr3extralearners/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/mlr-org/mlr3extralearners/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/LGPL-3" class="external-link">LGPL-3</a></li>
@@ -161,6 +169,7 @@
 <li>
 <a href="https://pat-s.me" class="external-link">Patrick Schratz</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-0748-6624" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li>Sebastian Fischer <br><small class="roles"> Maintainer, author </small>   </li>
+<li>John Zobolas <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3609-8674" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
 <li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
@@ -172,7 +181,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer.</p>
+  <p>Developed by Raphael Sonabend, <a href="https://pat-s.me" class="external-link">Patrick Schratz</a>, Sebastian Fischer, John Zobolas.</p>
 </div>
 
 <div class="pkgdown-footer-right">
