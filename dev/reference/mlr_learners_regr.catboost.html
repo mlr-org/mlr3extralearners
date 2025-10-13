@@ -15,7 +15,7 @@ Calls catboost::catboost.train() from package 'catboost'."><meta name="robots" c
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.1.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0-9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -253,10 +253,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl      disp        hp      drat        wt      carb        vs      qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18.834358 17.317478 15.010124 11.132900  9.152385  9.101450  5.348035  5.296669 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        am      gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.588586  4.218015 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl        wt      disp      carb        hp      qsec      drat        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20.245964 17.463172 16.809598 12.285106  8.290310  6.870248  5.507998  5.501484 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      gear        am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.277775  2.748345 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -264,7 +264,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.230935 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.985579 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
