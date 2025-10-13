@@ -2,6 +2,7 @@ options(rgl.useNULL = TRUE) # avoid 'RGL: unable to open X11 display' warning
 skip_if_not_installed("adabag")
 
 test_that("autotest", {
+  options(rgl.useNULL = TRUE)
   learner = lrn("classif.adabag")
   expect_learner(learner)
   # note that you can skip tests using the exclude argument
