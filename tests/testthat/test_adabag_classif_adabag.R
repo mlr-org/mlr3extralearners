@@ -1,4 +1,3 @@
-options(rgl.useNULL = TRUE) # avoid 'RGL: unable to open X11 display' warning
 skip_if_not_installed("adabag")
 
 test_that("autotest", {
