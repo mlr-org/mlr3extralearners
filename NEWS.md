@@ -1,4 +1,4 @@
-# mlr3extralearners (development version)
+# mlr3extralearners 1.2.0
 
 ## New Features
 
