@@ -63,7 +63,7 @@ LearnerPythonClassif = R6::R6Class(
       do.call(assert_python_packages, py_requirements)
 
       newdata = ordered_features(task, self)
-      preds = private$.predict_py(task = task, newdata = newdata, predict_types = self$predict_types)
+      preds = private$.predict_py(task = task, newdata = newdata, predict_type = self$predict_type)
       preds
     },
 
@@ -99,7 +99,7 @@ marshal_model.pybytes_model <- function(model, inplace = FALSE, ...) {
     marshaled     = raw,
     learner_class = learner_class,
     py_modules    = model$py_modules,
-    py_version    = model$py_version,
+    py_version    = model$py_version
   )
   meta_data = setdiff(model, "model")
 
@@ -124,9 +124,9 @@ unmarshal_model.pybytes_model_marshaled <- function(model, inplace = FALSE, ...)
   meta_data = setdiff(model, "marshaled")
   out = list(
     model         = fitted,
-    learner_class = learner_class,
+    learner_class = classes,
     py_modules    = model$py_modules,
-    py_version    = model$py_version,
+    py_version    = model$py_version
   )
 
   structure(

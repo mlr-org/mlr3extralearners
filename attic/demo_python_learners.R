@@ -7,11 +7,17 @@ test_that("autotest", {
     Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3extralearners)
+    library(checkmate)
 
     lapply(list.files(system.file("testthat", package = "mlr3"),
                       pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     reticulate::py_require(c("numpy", "fastai"), python_version = "3.10")
+
+    mirai::daemons(1, .compute = "mlr3_encapsulation")
+    mirai::everywhere({
+      Sys.setenv(RETICULATE_PYTHON = "managed")
+    }, .compute = "mlr3_encapsulation")
 
     learner = lrn("classif.python.fastai", layers = c(200, 100))
     expect_learner(learner, check_man = FALSE)

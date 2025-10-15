@@ -1,10 +1,48 @@
-# R/learner_classif_tabpfn.R
-
+#' @title TabPFN Classification Learner
+#' @author b-zhou
+#' @name mlr_learners_classif.python.tabpfn
+#'
+#' @description
+#' Foundation model for tabular data.
+#' Uses \CRANpkg{reticulate} to interface with the [`tabpfn`](https://github.com/PriorLabs/TabPFN) Python package.
+#'
+#' @templateVar class LearnerClassifTabPFN
+#' @template sections_tabpfn
+#'
+#' @section Custom mlr3 parameters:
+#'
+#' - `categorical_feature_indices` uses R indexing instead of zero-based Python indexing.
+#'
+#' - `device` must be a string.
+#'   If set to `"auto"`, the behavior is the same as original.
+#'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
+#'
+#' - `inference_precision` must be `"auto"`, `"autocast"`,
+#'   or a [`torch.dtype`](https://docs.pytorch.org/docs/stable/tensor_attributes.html) string,
+#'   e.g., `"torch.float32"`, `"torch.float64"`, etc.
+#'   Non-float dtypes are not supported.
+#'
+#' - `inference_config` is currently not supported.
+#'
+#' - `random_state` accepts either an integer or the special value `"None"`
+#'   which corresponds to `None` in Python.
+#'   Following the original Python implementation, the default `random_state` is `0`.
+#'
+#' @templateVar id classif.python.tabpfn
+#' @template learner
+#'
+#' @references
+#' `r format_bib("hollmann2025tabpfn", "hollmann2023tabpfn")`
+#'
+#' @template seealso_learner
+#' @export
 LearnerPythonClassifTabPFN <- R6::R6Class(
   "LearnerPythonClassifTabPFN",
   inherit = LearnerPythonClassif,
 
   public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps <- ps(
         n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
@@ -119,21 +157,21 @@ LearnerPythonClassifTabPFN <- R6::R6Class(
       list(model = fitted, classes = classes)
     },
 
-    .predict_py = function(task, newdata, predict_types) {
+    .predict_py = function(task, newdata, predict_type) {
       model = self$model$model
       X = as.matrix(newdata)
       storage.mode(X) = "double"
       X[is.na(X)] = NaN
       X_py = reticulate::r_to_py(X)
 
-      if ("prob" %in% predict_types) {
+      if ("prob" %in% predict_type) {
         prob = mlr3misc::invoke(model$predict_proba, X = X_py)
         prob = reticulate::py_to_r(prob)
         colnames(prob) = as.character(reticulate::py_to_r(model$classes_))
         list(prob = prob)
       }
 
-      if ("response" %in% predict_types) {
+      if ("response" %in% predict_type) {
         response <- mlr3misc::invoke(model$predict, X = X_py)
         list(response = as.character(reticulate::py_to_r(response)))
       }

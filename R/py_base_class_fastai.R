@@ -1,12 +1,12 @@
 #' @title Classification Neural Network Learner
 #' @author annanzrv
-#' @name mlr_learners_classif.fastai
+#' @name mlr_learners_classif.python.fastai
 #'
 #' @description
 #' Simple and fast neural nets for tabular data classification.
 #' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
 #'
-#' @templateVar id classif.fastai
+#' @templateVar id classif.python.fastai
 #' @template learner
 #'
 #' @references
@@ -17,6 +17,8 @@ LearnerPythonClassifFastai <- R6::R6Class(
   inherit = LearnerPythonClassif,
 
   public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
       p_n_epoch = p_int(
@@ -265,7 +267,7 @@ LearnerPythonClassifFastai <- R6::R6Class(
     },
 
     # -------------------- PREDICT HOOK --------------------
-    .predict_py = function(task, newdata, predict_types) {
+    .predict_py = function(task, newdata, predict_type) {
       model = self$model$model
       class_labels = self$model$class_labels
 
@@ -273,10 +275,10 @@ LearnerPythonClassifFastai <- R6::R6Class(
       pars_pred = self$param_set$get_values(tags = "predict")
       pred = invoke(fastai::predict, model, newdata, .args = pars_pred)
 
-      if ("prob" %in% predict_types) {
+      if ("prob" %in% predict_type) {
         prob = as.matrix(pred[, class_labels, drop = FALSE])
         list(response = NULL, prob = prob)
-      } else if ("response" %in% predict_types) {
+      } else if ("response" %in% predict_type) {
         response = class_labels[pred$class + 1L]
         list(response = response, prob = NULL)
       } else {
