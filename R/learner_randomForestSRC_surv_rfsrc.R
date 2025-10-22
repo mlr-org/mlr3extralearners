@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal [randomForestSRC::predict.rfsrc()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.rfsrc
@@ -95,7 +95,6 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
@@ -193,7 +192,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
       # as required.
       surv = if (estimator == "nelson") exp(-p$chf) else p$survival
 
-      mlr3proba::.surv_return(times = self$model$time.interest, surv = surv)
+      mlr3proba::surv_return(times = self$model$time.interest, surv = surv)
     }
   )
 )

@@ -22,7 +22,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{cmprsk}
 \item Predict Types: \dQuote{cif}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForestSRC}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3cmprsk}, \CRANpkg{mlr3extralearners}, \CRANpkg{randomForestSRC}
 }
 }
 
@@ -58,7 +58,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    split.depth \tab character \tab FALSE \tab FALSE, all.trees, by.tree \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, -1]}{(-Inf, -1]} \cr
    do.trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   statistics \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    get.tree \tab untyped \tab - \tab  \tab - \cr
    outcome \tab character \tab train \tab train, test \tab - \cr
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -95,7 +94,7 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 print(learner)
@@ -145,7 +144,7 @@ Ishwaran, H., Gerds, A. T, Kogalur, B. U, Moore, D. R, Gange, J. S, Lau, M. B (2
 bblodfon
 }
 \section{Super classes}{
-\code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3proba:LearnerCompRisks]{mlr3proba::LearnerCompRisks}} -> \code{LearnerCompRisksRandomForestSRC}
+\code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3cmprsk:LearnerCompRisks]{mlr3cmprsk::LearnerCompRisks}} -> \code{LearnerCompRisksRandomForestSRC}
 }
 \section{Methods}{
 \subsection{Public methods}{

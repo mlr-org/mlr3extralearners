@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal [ranger::predict.ranger()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @section Custom mlr3 parameters:
 #' - `mtry`: This hyperparameter can alternatively be set via our hyperparameter
@@ -145,7 +145,7 @@ LearnerSurvRanger = R6Class("LearnerSurvRanger",
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
-      mlr3proba::.surv_return(times = prediction$unique.death.times, surv = prediction$survival)
+      mlr3proba::surv_return(times = prediction$unique.death.times, surv = prediction$survival)
     }
   )
 )

@@ -7,8 +7,6 @@ task_id = if ("LearnerClassif" %in% class(l)) {
 "mtcars"
 } else if ("LearnerSurv" %in% class(l)) {
 "grace"
-} else if ("LearnerDens" %in% class(l)) {
-"faithful"
 }
 %>
 #'

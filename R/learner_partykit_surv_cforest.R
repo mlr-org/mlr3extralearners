@@ -11,7 +11,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using the internal [partykit::predict.cforest()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.cforest
@@ -139,22 +139,27 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       preds = invoke(predict, object = self$model, newdata = newdata,
-        type = "prob", .args = pars)
+        type = "prob", .args = pars) # list of `survfit` objects
 
       times = lapply(preds, function(p) p$time)
-      utimes = sort(unique(unlist(times)))
+      common_times = sort(unique(unlist(times)))
 
-      # to use non-exported function from `distr6`
-      extend_times = getFromNamespace("C_Vec_WeightedDiscreteCdf", ns = "distr6")
       res = lapply(preds, function(p) {
         # p is a `survfit` object
-        cdf = matrix(data = 1 - p$surv, ncol = 1) # 1 observation (column), rows => times
-        # extend cdf to 'utimes', return survival
-        extend_times(utimes, p$time, cdf = cdf, FALSE, FALSE)
+        survdistr::vec_interp(
+          x = p$surv,
+          times = p$time,
+          eval_times = common_times,
+          constant = TRUE,
+          type = "surv",
+          add_times = FALSE,
+          check = FALSE # no need to check, as Kaplan-Meier formula is used
+        )
       })
-      surv = do.call(cbind, res) # rows => times, columns => obs
+      surv = do.call(rbind, res)
+      dimnames(surv) = NULL
 
-      mlr3proba::.surv_return(times = utimes, surv = t(surv))
+      mlr3proba::surv_return(times = common_times, surv = surv)
     }
   )
 )

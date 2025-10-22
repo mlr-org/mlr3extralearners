@@ -18,7 +18,7 @@ The cumulative hazard \eqn{H(t)} is calculated using the train data and the
 default parameters of the \code{\link[survival:survfit]{survival::survfit()}} function, i.e. \code{ctype = 1},
 which uses the Nelson-Aalen formula.
 Then for each test observation the survival curve is \eqn{S(t) = \exp{(-H(t))}}.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
 }
 }
 
@@ -46,7 +46,7 @@ Empty ParamSet
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.nelson")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.nelson")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.nelson")
 print(learner)

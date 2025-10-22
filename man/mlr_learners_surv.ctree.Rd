@@ -15,7 +15,7 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using the internal \code{\link[partykit:party-predict]{partykit::predict.party()}} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
 }
 }
 
@@ -81,7 +81,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.ctree")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.ctree")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.ctree")
 print(learner)

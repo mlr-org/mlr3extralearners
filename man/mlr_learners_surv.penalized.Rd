@@ -23,7 +23,7 @@ represented in rows and time points in columns.
 Calculated using the internal \code{\link[penalized:predict]{penalized::predict()}} function.
 By default the Breslow estimator \code{\link[penalized:breslow]{penalized::breslow()}} is used for computing
 the baseline hazard.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
 }
 }
 
@@ -71,7 +71,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.penalized")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.penalized")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.penalized")
 print(learner)

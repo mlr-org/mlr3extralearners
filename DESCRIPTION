@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.1.0.9000
+Version: 1.2.0-9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -23,35 +23,42 @@ Authors@R: c(
     person("Lukas", "Burk", , "burk@leibniz-bips.de", role = "ctb",
            comment = c(ORCID = "0000-0001-7528-3795")),
     person("Lona", "Koers", , "lona.koers@gmail.com", role = "ctb"),
+    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb"),
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
-    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
-    person("Anna", "Nazarova", , "anna.nazarova@outlook.com", role = "ctb")
+    person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
+           comment = c(ORCID = "0000-0002-8115-0400")),
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
-URL: https://mlr3extralearners.mlr-org.com, https://github.com/mlr-org/mlr3extralearners
+URL: https://mlr3extralearners.mlr-org.com,
+    https://github.com/mlr-org/mlr3extralearners
 BugReports: https://github.com/mlr-org/mlr3extralearners/issues
 Depends:
-    mlr3 (>= 1.0.0),
+    mlr3 (>= 1.2.0),
     R (>= 3.3.0)
 Imports:
     checkmate,
     data.table,
     methods,
-    mlr3misc (>= 0.9.4),
-    mlr3proba (>= 0.8.1),
+    mlr3cmprsk (>= 0.0.1),
+    mlr3misc (>= 0.19.0),
+    mlr3proba (>= 0.8.2),
     paradox (>= 1.0.1),
     R6,
     reticulate,
+    survdistr (>= 0.0.1),
     withr
 Suggests:
     abess,
     actuar,
     ada,
+    adabag,
     aorsf (>= 0.1.5),
     apcluster,
-    BART (>= 2.9.4),
+    BART (>= 2.9.9),
     blockForest (>= 0.2.6),
+    brnn,
     bst,
     C50,
     callr,
@@ -59,33 +66,29 @@ Suggests:
     class,
     coin,
     CoxBoost,
+    crs,
     Cubist,
     curl,
     dbarts,
-    distr6,
     earth,
     evtree,
-    fastai,
-    flexsurv (>= 2.3),
     ExhaustiveSearch,
+    fastai (>= 2.2.2),
+    flexsurv (>= 2.3),
     FNN,
     formattable,
     future,
     gbm (>= 2.2.2),
     glmnet (>= 4.1-6),
-    gss,
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
     klaR,
     knitr,
-    ks,
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
     lme4,
-    locfit,
-    logspline,
     mboost (>= 2.9-10),
     mda,
     mgcv,
@@ -94,14 +97,11 @@ Suggests:
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
     mvtnorm,
+    neuralnet,
     nnet,
-    np,
-    param6,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
-    pendensity,
     polyreg,
-    plugdensity,
     prioritylasso (>= 0.3.1),
     pseudo,
     qgam,
@@ -109,19 +109,19 @@ Suggests:
     randomForestSRC (>= 3.4.1),
     ranger (>= 0.17.0),
     remotes,
-    riskRegression,
+    rFerns,
     rJava,
+    rmarkdown,
+    rotationForest,
     rpart,
     rsm,
     rvest,
     RWeka,
-    rmarkdown,
     sandwich,
     sda,
-    set6,
-    sm,
     sparsediscrim,
     stats,
+    stepPlr,
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
@@ -134,19 +134,13 @@ VignetteBuilder:
 Remotes:
     binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
-    eagerai/fastai,
-    mlr-org/mlr3,
-    mlr-org/mlr3misc,
+    mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels,
-    xoopR/distr6,
-    xoopR/param6,
-    xoopR/set6,
-    rstudio/reticulate
+    RaphaelS1/survivalmodels
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
 Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3

@@ -13,7 +13,7 @@ test_that("autotest", {
 
 test_that("importance/selected", {
   withr::local_seed(1)
-  task = tsk("boston_housing")
+  task = tsk("mtcars")
   learner = lrn("regr.rfsrc", ntree = 20)
   learner$train(task)
   expect_error(learner$importance(), "Set 'importance'")

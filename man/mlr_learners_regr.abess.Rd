@@ -68,7 +68,7 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.abess")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.abess")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.abess")
 print(learner)

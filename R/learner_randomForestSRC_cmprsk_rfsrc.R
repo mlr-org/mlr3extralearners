@@ -50,7 +50,7 @@
 #' predictions$score()
 #' @export
 LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
-  inherit = mlr3proba::LearnerCompRisks,
+  inherit = mlr3cmprsk::LearnerCompRisks,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
@@ -85,7 +85,6 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
         split.depth    = p_fct(default = "FALSE", levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")), #nolint
         seed           = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace       = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics     = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree       = p_uty(tags = "predict"),
         outcome        = p_fct(default = "train", levels = c("train", "test"), tags = "predict"),
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),

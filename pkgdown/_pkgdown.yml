@@ -73,9 +73,6 @@ reference:
   - title: Competing Risks Learners
     contents:
       - starts_with("mlr_learners_cmprsk")
-  - title: Density Learners
-    contents:
-      - starts_with("mlr_learners_dens")
   - title: General
     contents:
       - mlr3extralearners-package

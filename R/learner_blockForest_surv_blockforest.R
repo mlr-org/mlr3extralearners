@@ -16,7 +16,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal `blockForest:::predict.blockForest()` function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @section Initial parameter values:
 #' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
@@ -117,7 +117,7 @@ LearnerSurvBlockForest = R6::R6Class("LearnerSurvBlockForest",
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       prediction = invoke(predict, object = self$model, data = newdata, .args = pv)
-      mlr3proba::.surv_return(times = prediction$unique.death.times, surv = prediction$survival)
+      mlr3proba::surv_return(times = prediction$unique.death.times, surv = prediction$survival)
     }
   )
 )

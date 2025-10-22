@@ -96,7 +96,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars = self$param_set$get_values(tags = "predict")
       pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
 
-      mlr3proba::.surv_return(surv = pred$surv, lp = pred$lp)
+      mlr3proba::surv_return(surv = pred$surv, lp = pred$lp)
     }
   )
 )
