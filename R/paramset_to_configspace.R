@@ -3,28 +3,33 @@
 #' Translates a [`paradox::ParamSet`] into a Python
 #' [`ConfigSpace.ConfigurationSpace`] via **reticulate**.
 #'
-#' Supported parameter types:
-#' - `ParamDbl`  => `Float` / `UniformFloatHyperparameter`
-#' - `ParamInt`  => `Integer` / `UniformIntegerHyperparameter`
-#' - `ParamLgl`  => `Categorical(TRUE/FALSE)`
-#' - `ParamFct`  => `Categorical`
+#' This function performs strict validation to ensure the `ParamSet` can be
+#' represented in ConfigSpace:
 #'
-#' Utility parameters (`ParamUty`) are not representable in ConfigSpace and are skipped
-#' with an explicit warning listing their IDs.
+#' - Every parameter **must have a default value**. If any parameter is missing a
+#'   default, an error is raised.
+#' - Utility parameters (`ParamUty`) are **not representable** in ConfigSpace and
+#'   are skipped with a warning listing their IDs.
+#'
+#' Supported parameter mappings:
+#' - `ParamDbl` => `Float` / `UniformFloatHyperparameter`
+#' - `ParamInt` => `Integer` / `UniformIntegerHyperparameter`
+#' - `ParamLgl` => `Categorical(TRUE/FALSE)`
+#' - `ParamFct` => `Categorical`
 #'
 #' Dependency conditions (`CondEqual`, `CondIn`) are preserved. Multiple conditions
 #' on the same child are combined using `ConfigSpace.AndConjunction`.
 #'
-#' The function auto-detects old vs. new ConfigSpace APIs:
-#' - New (>= 1.0): `ConfigSpace$Float`, `ConfigSpace$Integer`, `ConfigSpace$Categorical`,
-#'   `cs$add()`, `cs$add_condition()` and conditions in `ConfigSpace$conditions`.
-#' - Old: `ConfigSpace$hyperparameters$*Hyperparameter`, `cs$add_hyperparameter()`,
-#'   `cs$add_condition()`, and conditions at top level.
+#' The function auto-detects old vs. new ConfigSpace APIs
 #'
-#' @param ps [paradox::ParamSet]\cr The parameter set to convert.
-#' @param name `character(1)`\cr Optional name for the resulting ConfigurationSpace.
+#' @param ps [paradox::ParamSet]\cr
+#'   The parameter set to convert. All parameters must have defaults.
+#'   Numeric parameters must define both `lower` and `upper` bounds.
+#' @param name `character(1)`\cr
+#'   Optional name for the resulting ConfigurationSpace.
 #'
-#' @return A Python `ConfigSpace.ConfigurationSpace` object.
+#' @return A Python `ConfigSpace.ConfigurationSpace` object representing the given
+#'   parameter set.
 #'
 #' @examples
 #' \dontrun{
@@ -33,21 +38,48 @@
 #'     ntree     = p_int(lower = 10,   upper = 500, default = 100,  tags = c("train","tuning")),
 #'     bootstrap = p_lgl(default = TRUE, tags = "train"),
 #'     criterion = p_fct(levels = c("gini", "entropy", "other"), default = "gini", tags = "train"),
-#'     extras    = p_fct(tags = "predict", levels = c("alpha","beta","gamma","delta","kappa","nu")),
-#'     depending = p_lgl(tags = "train",
+#'     extras    = p_fct(tags = "predict", default = "alpha",
+#'                       levels = c("alpha","beta","gamma","delta","kappa","nu")),
+#'     depending = p_lgl(tags = "train", default = TRUE,
 #'                       depends = quote(criterion == "entropy" && extras %in% c("alpha","beta")))
 #'   )
 #'   cs = paramset_to_configspace(ps, name = "demo")
 #' }
 #' @export
+
 paramset_to_configspace = function(ps, name = NULL) {
   stopifnot(inherits(ps, "ParamSet"))
+  assert_python_packages("ConfigSpace")
 
+  # Skip uty parameters and give warning
   uty_idx = which(ps$params$cls %in% c("ParamUty", "p_uty"))
   if (length(uty_idx)) {
     warning(sprintf(
       "The following ParamUty parameter(s) cannot be converted and will be skipped: %s",
       paste(ps$params$id[uty_idx], collapse = ", ")
+    ))
+    ps = ps$subset(ps$params$id[-uty_idx])
+  }
+
+  #assert that every parameter has a default
+  no_default = vapply(ps$params$default, function(x) {
+    d = unlist(x)
+    is.null(d) || is.na(d)
+  }, logical(1))
+  if (any(no_default)) {
+    stop(sprintf(
+      "All parameters must have a default. Missing for: %s",
+      paste(ps$params$id[no_default], collapse = ", ")
+    ))
+  }
+
+  # assert that numeric params must have lower & upper (presence check)
+  is_num = ps$params$cls %in% c("ParamDbl", "ParamInt")
+  missing_bounds = is_num & (is.na(ps$params$lower) | is.na(ps$params$upper))
+  if (any(missing_bounds, na.rm = TRUE)) {
+    stop(sprintf(
+      "Numeric parameters must have both lower and upper bounds. Missing for: %s",
+      paste(ps$params$id[missing_bounds], collapse = ", ")
     ))
   }
 
@@ -78,7 +110,7 @@ paramset_to_configspace = function(ps, name = NULL) {
       return(hp)
     }
     ConfigSpace$Float(id, bounds = c(as.numeric(lower), as.numeric(upper)),
-             default = default, meta = meta)
+                      default = default, meta = meta)
   }
 
   build_int = function(id, lower, upper, default, meta) {
@@ -90,8 +122,8 @@ paramset_to_configspace = function(ps, name = NULL) {
       return(hp)
     }
     ConfigSpace$Integer(id, bounds = c(as.integer(lower), as.integer(upper)),
-               default = if (is.null(default)) NULL else as.integer(default),
-               meta = meta)
+                        default = if (is.null(default)) NULL else as.integer(default),
+                        meta = meta)
   }
 
   build_cat = function(id, choices, default, meta) {
@@ -107,7 +139,6 @@ paramset_to_configspace = function(ps, name = NULL) {
     build_cat(id, c(TRUE, FALSE), default, meta)
   }
 
-
   for (i in seq_row(ps$params)) {
     p = ps$params[i,]
 
@@ -117,38 +148,10 @@ paramset_to_configspace = function(ps, name = NULL) {
     )
 
     if (p$cls == "ParamDbl") {
-      if (is.null(p$lower) || is.null(p$upper) || is.infinite(p$lower) || is.infinite(p$upper)) {
-        warning(sprintf("ParamDbl '%s' has missing or infinite bounds; skipping.", p$id))
-        next
-      }
-      if (is.null(unlist(p$default))) {
-        warning(sprintf("ParamDbl '%s' has no default; skipping.", p$id))
-        next
-      }
       add_hp(build_float(p$id, p$lower, p$upper, unlist(p$default), meta))
 
     } else if (p$cls == "ParamInt") {
-      pl = if (is.infinite(p$lower)) {
-        warning(sprintf("ParamInt '%s' lower is infinite; using -(.Machine$integer.max). It is adviced to set the bound to a finite value", p$id))
-         as.integer(-.Machine$integer.max)
-      } else {
-        p$lower
-      }
-      pu = if (is.infinite(p$upper)) {
-        warning(sprintf("ParamInt '%s' upper is infinite; using .Machine$integer.max. It is adviced to set the bound to a finite value", p$id))
-        as.integer(.Machine$integer.max)
-      } else {
-        p$upper
-      }
-      if (is.na(pl) || is.na(pu)) {
-        warning(sprintf("ParamInt '%s' has missing bounds; skipping.", p$id))
-        next
-      }
-      if (is.null(unlist(p$default))) {
-        warning(sprintf("ParamInt '%s' has no default; skipping.", p$id))
-        next
-      }
-      add_hp(build_int(p$id, pl, pu, unlist(p$default), meta))
+      add_hp(build_int(p$id, p$lower, p$upper, unlist(p$default), meta))
 
     } else if (p$cls == "ParamLgl") {
       add_hp(build_bool(p$id, as.logical(p$default), meta))
@@ -156,19 +159,9 @@ paramset_to_configspace = function(ps, name = NULL) {
     } else if (p$cls == "ParamFct") {
       lvls = unlist(p$levels)
       if (length(lvls) == 0L) {
-        warning(sprintf("ParamFct '%s' has no levels; skipping.", p$id))
-        next
+        stop(sprintf("ParamFct '%s' has no levels; skipping.", p$id))
       }
-      d = unlist(p$default)
-      # take first value as default if none is given in param set
-      # todo: make a warning here
-      default = if (!is.null(d) && !is.na(d)) d else {
-        warning(sprintf(
-          "ParamFct '%s' has no default; using first level '%s'.", p$id, lvls[[1]]
-        ))
-        lvls[[1]]
-      }
-      add_hp(build_cat(p$id, lvls, default, meta))
+      add_hp(build_cat(p$id, lvls, unlist(p$default), meta))
     }
   }
 
@@ -177,7 +170,7 @@ paramset_to_configspace = function(ps, name = NULL) {
     deps = ps$deps
     combine_condition = function(x) {
       assert_list(x, all.missing = FALSE)
-      if (length(x) < 2) return(x)
+      if (length(x) < 2) return(x[[1]])
       do.call(ConfigSpace$AndConjunction, unname(x))
     }
 
@@ -187,9 +180,6 @@ paramset_to_configspace = function(ps, name = NULL) {
       # `dep$cond` is a list with only one element; see `add_dep` in paradox/r/paramset.r
       # thus, we can safely extract the first element
       condition = dep$cond[[1]]
-
-      # If either HP was skipped (e.g., uty or invalid), skip its condition
-      if (is.null(cs[dep$id]) || is.null(cs[dep$on])) next
 
       if (inherits(condition, "CondEqual")) {
         cond = ConfigSpace$EqualsCondition(cs[dep$id], cs[dep$on], condition$rhs)
