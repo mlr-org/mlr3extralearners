@@ -60,6 +60,7 @@ to use a learner, and ships with the function `install_learner` which can instal
 learner dependencies.
 
 ```{r, echo=TRUE, eval = FALSE}
+library(mlr3extralearners)
 lrn("regr.gbm")
 #> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting

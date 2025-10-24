@@ -51,6 +51,7 @@ function `install_learner` which can install all required learner
 dependencies.
 
 ``` r
+library(mlr3extralearners)
 lrn("regr.gbm")
 #> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
@@ -80,7 +81,7 @@ You can now use the learner to fit a model and make predictions.
 task <- tsk("california_housing")
 task
 #> 
-#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #> • Target: median_house_value
 #> • Properties: -
 #> • Features (9):
@@ -91,15 +92,15 @@ learner$train(task, split$train)
 #> Distribution not specified, assuming gaussian ...
 learner$predict(task, split$test)
 #> 
-#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 #>  row_ids  truth  response
-#>        3 352100 407386.74
-#>       10 261100 271895.42
-#>       19 158700 178825.76
+#>        1 452600 428999.97
+#>        7 299200 265771.26
+#>       17 152500 221807.64
 #>      ---    ---       ---
-#>    20631 112000 140737.32
-#>    20633 115600 118176.67
-#>    20637  77100  94912.09
+#>    20634  98300  98009.59
+#>    20635 116800 144098.72
+#>    20640  89400  93868.47
 ```
 
 You can learn more about using learners by [reading our
