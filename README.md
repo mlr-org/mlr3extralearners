@@ -43,7 +43,7 @@ options(repos = c(
 ))
 ```
 
-## Installing and Loading Learners
+## Quick Start
 
 The package includes functionality for detecting if you have the
 required packages installed to use a learner, and ships with the
@@ -63,7 +63,8 @@ lrn("regr.gbm")
 
 install_learners("regr.gbm")
 
-lrn("regr.gbm")
+learner <-lrn("regr.gbm")
+learner
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
 #> * Parameters: keep.data=FALSE, n.cores=1
@@ -72,6 +73,37 @@ lrn("regr.gbm")
 #> * Feature Types: integer, numeric, factor, ordered
 #> * Properties: importance, missings, weights
 ```
+
+You can now use the learner to fit a model and make predictions.
+
+``` r
+task <- tsk("california_housing")
+task
+#> 
+#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> • Target: median_house_value
+#> • Properties: -
+#> • Features (9):
+#>   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms
+#>   • fct (1): ocean_proximity
+split <- partition(task)
+learner$train(task, split$train)
+#> Distribution not specified, assuming gaussian ...
+learner$predict(task, split$test)
+#> 
+#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#>  row_ids  truth  response
+#>        3 352100 407386.74
+#>       10 261100 271895.42
+#>       19 158700 178825.76
+#>      ---    ---       ---
+#>    20631 112000 140737.32
+#>    20633 115600 118176.67
+#>    20637  77100  94912.09
+```
+
+You can learn more about using learners by [reading our
+book](https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example).
 
 ## Extending mlr3extralearners
 
