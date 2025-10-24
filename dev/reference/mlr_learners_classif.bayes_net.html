@@ -225,7 +225,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.bayes_net"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.bayes_net"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifBayesNet&gt;</span><span style="font-weight: bold;"> (classif.bayes_net): Bayes Network</span> <span style="color: #00BBBB;">─────────────────</span></span>
@@ -239,10 +239,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -263,10 +263,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V17(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V18(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V22(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V23(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V24(1): Class </span>
@@ -281,43 +281,43 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V32(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V41(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V42(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V43(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V46(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V49(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V5(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V50(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V51(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54(2): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V57(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V58(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V59(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V6(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60(1): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7(1): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8(1): Class </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8(2): Class </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V9(2): Class </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1275.6557709311508</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1301.4242775498124</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1307.6680709579252</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1231.1837249943999</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1262.1837249943999</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore Bayes: -1402.0016745972746</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore BDeu: -1434.6417829809134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore MDL: -1450.0355698724497</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore ENTROPY: -1353.8133281764012</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogScore AIC: -1392.8133281764015</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -327,7 +327,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

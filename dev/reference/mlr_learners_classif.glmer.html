@@ -182,11 +182,11 @@ No offset is applied during prediction for this learner.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define the Learner and set parameter values</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.glmer"</span>,</span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.glmer"</span>,</span></span>
 <span class="r-in"><span>  formula <span class="op">=</span> <span class="va">credit_risk</span> <span class="op">~</span> <span class="op">(</span><span class="fl">1</span> <span class="op">|</span> <span class="va">credit_history</span><span class="op">)</span> <span class="op">+</span> <span class="va">job</span> <span class="op">+</span> <span class="va">property</span> <span class="op">+</span> <span class="va">telephone</span> <span class="op">+</span> <span class="va">savings</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"german_credit"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"german_credit"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">task</span><span class="op">$</span><span class="fu">select</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"credit_history"</span>, <span class="st">"job"</span>, <span class="st">"property"</span>, <span class="st">"telephone"</span>, <span class="st">"savings"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner</span></span></span>
@@ -208,29 +208,29 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 1000, groups:  credit_history, 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed Effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.49718  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.49717  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                             jobunskilled - resident  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.19139  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.19140  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        jobskilled employee/official  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.13544  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.13545  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        jobmanager/self-empl/highly qualif. employee  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.02365  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                propertycar or other  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.56577  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.56578  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> propertybuilding soc. savings agr. / life insurance  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.50720  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.50721  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 propertyreal estate  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             1.11104  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             1.11105  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  telephoneyes (under customer name)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.26805  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.26806  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 savings... &lt; 100 DM  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.33521  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          savings100 &lt;= ... &lt; 500 DM  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.08991  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         savings500 &lt;= ... &lt; 1000 DM  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.24679  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.24678  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               savings... &gt;= 1000 DM  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.04639  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.04640  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $target_levels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "good" "bad" </span>

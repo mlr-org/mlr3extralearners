@@ -217,7 +217,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.logistic"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLogistic&gt;</span><span style="font-weight: bold;"> (classif.logistic): Multinomial Logistic Regression</span> </span>
@@ -231,10 +231,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -245,133 +245,133 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V1                         291.5519</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V10                         78.1605</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11                         14.4159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12                        195.3159</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V13                       -123.9856</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14                         26.5275</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15                         68.8755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V16                        -71.1733</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V17                       -120.3509</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18                         94.7327</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19                         29.3316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2                         341.9319</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20                         -63.451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21                         34.3769</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22                         30.3757</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23                        -43.7383</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V24                        175.2357</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V25                       -121.4868</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V26                        -63.4732</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V27                        147.6164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28                        -84.5687</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V29                        -42.0024</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V3                        -913.7775</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30                        138.1341</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V31                       -155.6558</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32                         92.0362</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V33                          7.0253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V34                       -111.4276</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35                        180.7644</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V36                       -103.4352</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37                       -132.1141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V38                         68.9494</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V39                         79.7023</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4                          59.3641</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V40                       -197.5825</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V41                         -4.1206</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V42                         147.633</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V43                       -121.1098</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44                        140.3196</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45                          23.789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46                         72.3316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47                        245.3789</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V48                       -153.1048</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49                        993.3473</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5                         199.5812</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V50                      -2709.5203</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51                        305.9765</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52                        576.7304</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V53                       1447.9785</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V54                        852.4828</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V55                       -629.7196</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V56                       -330.0646</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V57                      -1581.4365</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V58                        403.7493</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59                       2121.3004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V6                         -62.7846</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V60                       1936.2605</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V7                        -239.2523</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8                          -5.3659</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V9                          101.977</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept                  -86.0878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1                        -398.6116</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10                         32.9453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11                       -338.5259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12                        367.2868</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V13                        -50.8662</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14                         -3.5885</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15                         26.0064</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V16                        -68.0226</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V17                        -60.6683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18                        126.1804</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19                          -17.68</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                        1464.8255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20                         -8.2172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                        -98.7158</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22                        116.2565</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23                         30.4177</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24                         24.0884</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25                         23.6285</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26                         52.3962</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27                        -111.415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28                         85.3028</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V29                        -42.0254</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V3                       -1453.8637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30                        124.5167</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V31                       -196.6564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32                         69.2454</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33                        -11.6516</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V34                        -26.7539</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35                          99.062</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V36                       -184.9688</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37                        -92.5447</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38                        111.4487</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39                         36.2207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4                         903.3963</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V40                        -81.9849</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41                         78.4714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42                        -52.7135</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43                         82.3027</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44                        -85.5515</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45                        256.4513</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46                        -70.8176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47                        175.0773</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V48                        -28.9295</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49                        316.1151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5                           9.4795</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V50                      -1871.9672</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                       -888.7974</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                       2349.9324</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V53                       1077.4212</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V54                       1893.4753</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V55                      -2533.2176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V56                       -885.9374</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57                       1239.1988</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                       2402.9927</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59                        173.1243</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V6                        -264.1798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V60                        729.0531</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V7                        -333.5415</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8                         -86.8066</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9                         380.5387</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Intercept                 -106.6946</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Odds Ratios...</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable                          M</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===================================</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V1           4.1627366535547713E126</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V10            8.804042875097034E33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V11                    1822917.8957</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12            6.677560744727115E84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V1                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10           2.0321270911462534E14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V11                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12           3.240586092518865E159</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V13                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V14              3.3168631503825E11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V15            8.170142161444773E29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V14                          0.0276</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V15           1.9697760852966562E11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V17                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18           1.3863575353552297E41</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V19            5.477171004485568E12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V2           3.1559815665161025E148</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V20                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V21            8.505471434399246E14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V22             1.55595813428319E13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V23                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V24           1.2702518867816186E76</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V25                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V26                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V27           1.2852055335515968E64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V28                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18            6.301839657995802E54</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V19                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V2                         Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V20                          0.0003</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V21                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V22            3.087167794492638E50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V23           1.6226979237818973E13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V24           2.8938011802326492E10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V25           1.8269745184459972E10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V26            5.693350367585952E22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V27                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V28           1.1131496338890967E37</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3                                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30            9.791968347316892E59</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30           1.1937189514474425E54</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V32            9.350004369350227E39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V33                       1124.6903</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V32            1.182796795534364E30</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V33                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V35           3.1988852413949618E78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V35           1.0522074793333041E43</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V37                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V38            8.797366755466684E29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V39           4.1139612284226973E34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V4            6.0465547138292055E25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V38           2.5210166199134406E48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V39             5.37593904442639E15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V4                         Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V40                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V41                          0.0162</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V42            1.306805748820449E64</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V43                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V44            8.710438639095624E60</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V45           2.1450691173907566E10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V46           2.5894200742665706E31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V47           3.687217321369537E106</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V41           1.2014649691670812E34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V42                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V43             5.54151680465255E35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V44                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V45          2.3735423728993945E111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V46                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V47           1.0842012066468567E76</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V48                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V49                        Infinity</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V5            4.7534719431393244E86</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V49          1.9367053989911987E137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V5                       13089.0757</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V50                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V51           7.654361294549983E132</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V52           2.956854394416923E250</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V51                               0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V52                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V53                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V54                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V55                               0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V56                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V57                               0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V58           2.218754876746142E175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V59                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V57                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V58                        Infinity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V59            1.537873184709126E75</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V6                                0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V60                        Infinity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V7                                0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V8                           0.0047</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V9            1.9411692274095947E44</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V8                                0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V9           1.8444939520229364E165</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -381,7 +381,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
