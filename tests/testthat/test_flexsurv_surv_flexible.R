@@ -36,3 +36,37 @@ test_that("missing", {
   learner$train(tsk("lung"))
   expect_error(learner$predict(lung_missings))
 })
+
+test_that("formula interface works", {
+  expect_error(lrn("surv.flexible", formula = "not_a_formula"))
+  expect_error(lrn("surv.flexible", formula = list("not_a_formula")))
+  task = tsk("lung")
+
+  form = Surv(time, status) ~ age + sex
+  learner = lrn("surv.flexible", k = 1, formula = form)
+  learner$train(task)
+  expect_equal(learner$model$ncovs, 2)
+  expect_equal(learner$model$all.formulae$gamma0, form)
+  expect_equal(learner$model$dlist$name, "survspline")
+  expect_equal(learner$model$dlist$location, "gamma0")
+  # 3 gammaX params + age and sex
+  expect_numeric(learner$model$coefficients, len = 5)
+
+  # use of `anc` changes coefficients
+  learner2 = lrn("surv.flexible", k = 1, formula = form, anc = list(gamma1 = ~ sex))
+  learner2$train(task)
+  expect_equal(learner2$model$ncovs, 2)
+  expect_equal(learner2$model$all.formulae$gamma0, form)
+  expect_equal(learner2$model$dlist$name, "survspline")
+  expect_equal(learner2$model$dlist$location, "gamma0")
+  # 3 gammaX params + age, sex and extra `gamma1(sexm)`
+  expect_numeric(learner2$model$coefficients, len = 6)
+  # check that the number of common coefficients is 5
+  common_names = intersect(names(learner$model$coefficients),
+                           names(learner2$model$coefficients))
+  expect_length(common_names, 5)
+  # all coefficients are different
+  expect_false(any(
+    learner$model$coefficients[common_names] == learner2$model$coefficients[common_names]
+  ))
+})
