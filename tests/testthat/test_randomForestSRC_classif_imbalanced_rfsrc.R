@@ -1,8 +1,8 @@
 skip_if_not_installed("randomForestSRC")
 
 test_that("autotest", {
-  withr::local_seed(1)
-  learner = lrn("classif.imbalanced_rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
+  withr::local_seed(42)
+  learner = lrn("classif.imbalanced_rfsrc", ntree = 42, importance = "random", na.action = "na.impute")
   expect_learner(learner)
   # remove property as prediction doesn't work due to rsfrc bug
   learner$properties = setdiff(learner$properties, "selected_features")
