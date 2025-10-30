@@ -1,6 +1,6 @@
 # mlr3extralearners dev
 
-* Add `formula` and `anc` params to `surv.flexible` learner
+* Add `formula` and `anc` params to `surv.flexible` learner, as well as `response` predict type (mean survival time)
 
 # mlr3extralearners 1.2.0
 
