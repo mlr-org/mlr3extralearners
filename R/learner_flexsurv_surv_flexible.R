@@ -36,6 +36,8 @@
 #'
 #' @template seealso_learner
 #' @examplesIf learner_is_runnable("surv.flexible")
+#' library(survival)
+#'
 #' # Define the task, split to train/test set
 #' task = tsk("lung")
 #' part = partition(task)
@@ -54,7 +56,7 @@
 #' print(predictions)
 #'
 #' # Score the predictions
-#' p$score()
+#' predictions$score()
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   inherit = mlr3proba::LearnerSurv,

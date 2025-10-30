@@ -84,6 +84,8 @@ implementation of, \link{LearnerSurvParametric}.
 
 \examples{
 \dontshow{if (learner_is_runnable("surv.flexible")) withAutoprint(\{ # examplesIf}
+library(survival)
+
 # Define the task, split to train/test set
 task = tsk("lung")
 part = partition(task)
@@ -102,7 +104,7 @@ predictions = learner$predict(task, part$test)
 print(predictions)
 
 # Score the predictions
-p$score()
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
