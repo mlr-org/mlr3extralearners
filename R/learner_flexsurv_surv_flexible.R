@@ -43,6 +43,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
+        formula = p_uty(tags = "train", custom_check = check_formula),
         bhazard = p_uty(tags = "train"),
         k = p_int(default = 0L, lower = 0L, tags = "train"),
         knots = p_uty(tags = "train"),
@@ -50,10 +51,13 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
         timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
         spline = p_fct(default = "rp", levels = c("rp", "splines2ns"), tags = "train"),
-        inits = p_uty(tags = "train"),
         rtrunc = p_uty(tags = "train"),
+        # params from `flexsurvreg()`
+        inits = p_uty(tags = "train"),
         fixedpars = p_uty(tags = "train"),
         cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
+        anc = p_uty(tags = "train", custom_check = function(x) checkmate::check_list(x, types = "formula")),
+        # params from `survival::survreg.control()`
         maxiter = p_int(default = 30L, tags = "train"),
         rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
         toler.chol = p_dbl(default = 1e-10, tags = "train"),
@@ -87,9 +91,17 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
       pars_train$weights = private$.get_weights(task)
 
+      if (is.null(pars_train$formula)) {
+        form = task$formula(task$feature_names)
+      } else {
+        form = pars_train$formula
+        pars_train$formula = NULL
+      }
+
       invoke(flexsurv::flexsurvspline,
-        formula = task$formula(task$feature_names),
-        data = task$data(), .args = pars_train)
+             formula = form,
+             data = task$data(),
+             .args = pars_train)
     },
 
     .predict = function(task) {

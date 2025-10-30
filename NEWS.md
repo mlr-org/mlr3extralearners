@@ -1,5 +1,7 @@
 # mlr3extralearners dev
 
+* Add `formula` and `anc` params to `surv.flexible` learner
+
 # mlr3extralearners 1.2.0
 
 ## New Features
