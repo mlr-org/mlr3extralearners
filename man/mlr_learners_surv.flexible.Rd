@@ -59,11 +59,13 @@ where each score corresponds to a specific test observation.
 Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
 For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
 and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
+is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
+vector is \eqn{lp = \hat{\beta} X^T}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{predict.flexsurvreg()}.
+Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
 \item \code{crank}: same as \code{lp}.
+\item \code{response}: mean survival time calculated using \code{predict.flexsurvreg(type = "response", ...)}
 }
 }
 
@@ -81,7 +83,27 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-lrn("surv.flexible")
+\dontshow{if (learner_is_runnable("surv.flexible")) withAutoprint(\{ # examplesIf}
+# Define the task, split to train/test set
+task = tsk("lung")
+part = partition(task)
+
+# Define the learner
+learner = lrn("surv.flexible", k = 1,
+  formula = Surv(time, status) ~ age + ph.karno + sex,
+  anc = list(gamma1 = ~ sex))
+
+# Train the learner on the training ids
+learner$train(task, part$train)
+print(learner$model)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, part$test)
+print(predictions)
+
+# Score the predictions
+p$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Royston, Patrick, Parmar, KB M (2002).
