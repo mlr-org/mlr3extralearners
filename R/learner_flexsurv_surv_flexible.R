@@ -35,7 +35,26 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @template simple_example
+#' @examplesIf learner_is_runnable("surv.flexible")
+#' # Define the task, split to train/test set
+#' task = tsk("lung")
+#' part = partition(task)
+#'
+#' # Define the learner
+#' learner = lrn("surv.flexible", k = 1,
+#'   formula = Surv(time, status) ~ age + ph.karno + sex,
+#'   anc = list(gamma1 = ~ sex))
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, part$train)
+#' print(learner$model)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, part$test)
+#' print(predictions)
+#'
+#' # Score the predictions
+#' p$score()
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   inherit = mlr3proba::LearnerSurv,
