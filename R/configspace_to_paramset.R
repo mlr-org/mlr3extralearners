@@ -102,5 +102,5 @@ configspace_to_paramset = function(cs) {
     }
   }
 
-  return(paramset)
+  paramset
 }

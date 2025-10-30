@@ -75,7 +75,7 @@ paramset_to_configspace = function(ps, name = NULL) {
 
   # assert that numeric params must have lower & upper (presence check)
   is_num = ps$params$cls %in% c("ParamDbl", "ParamInt")
-  missing_bounds = is_num & (is.na(ps$params$lower) | is.na(ps$params$upper))
+  missing_bounds = is_num & (is.infinite(ps$params$lower) | is.infinite(ps$params$upper))
   if (any(missing_bounds, na.rm = TRUE)) {
     stop(sprintf(
       "Numeric parameters must have both lower and upper bounds. Missing for: %s",
@@ -196,5 +196,5 @@ paramset_to_configspace = function(ps, name = NULL) {
     }
   }
 
-  return(cs)
+  cs
 }

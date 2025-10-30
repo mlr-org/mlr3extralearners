@@ -29,7 +29,7 @@ test_that("basic type mappings, defaults, and tags round-trip as expected", {
     name = "num_layers",
     lower = 1L, upper = 10L,
     default_value = 3L,
-    meta = reticulate::dict(tags = c("train"))
+    meta = reticulate::dict(tags = "train")
   )
 
   cs$add_hyperparameters(c(hp_lgl, hp_fct, hp_float, hp_int))
