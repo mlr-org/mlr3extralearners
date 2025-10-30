@@ -253,10 +253,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        hp      disp        wt      gear      qsec      carb       cyl        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.420663 18.360080 12.405254  9.435314  7.829500  7.714947  7.479020  6.013458 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      disp       cyl        am        hp      carb      qsec      gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20.483980 14.933039 14.896382  9.535452  9.035401  8.456238  7.469923  6.188577 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      drat        vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5.583304  3.758460 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.680133  4.320876 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -264,7 +264,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.62172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.07242 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

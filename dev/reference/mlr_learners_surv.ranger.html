@@ -248,11 +248,11 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <span class="r-out co"><span class="r-pr">#&gt;</span> Target node size:                 3 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Variable importance mode:         permutation </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Splitrule:                        logrank </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of unique death times:     91 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> OOB prediction error (1-C):       0.1699781 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of unique death times:     85 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> OOB prediction error (1-C):       0.1683352 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age         los       sysbp    stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.145713373 0.088068691 0.031682628 0.020295996 0.005327755 0.004845025 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.145437628 0.077257015 0.031377711 0.023401876 0.013050827 0.007236323 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -260,7 +260,7 @@ ISSN 1573-0565, <a href="https://doi.org/10.1023/A%3A1010933404324" class="exter
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8608069 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8576632 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
