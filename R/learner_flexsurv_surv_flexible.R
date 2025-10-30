@@ -43,7 +43,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        formula = p_uty(tags = "train", custom_check = check_formula),
+        formula = p_uty(tags = c("train", "predict"), custom_check = check_formula),
         bhazard = p_uty(tags = "train"),
         k = p_int(default = 0L, lower = 0L, tags = "train"),
         knots = p_uty(tags = "train"),
@@ -105,29 +105,27 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     },
 
     .predict = function(task) {
-      pars = self$param_set$get_values(tags = "predict")
-      pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
+      pv = self$param_set$get_values(tags = "predict")
+      pred = invoke(predict_flexsurvreg, self$model, task, learner = self, form = pv$formula)
 
       mlr3proba::surv_return(surv = pred$surv, lp = pred$lp)
     }
   )
 )
 
-predict_flexsurvreg = function(object, task, learner, ...) {
+predict_flexsurvreg = function(object, task, learner, form) {
   newdata = ordered_features(task, learner)
-  if (any(is.na(newdata))) {
-    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
+
+  if (is.null(form)) {
+    form = task$formula(task$feature_names)
   }
+  # remove left hand side (which is needed only during training)
+  form = form[-2]
 
-  X = stats::model.matrix(formulate(rhs = task$feature_names),
-                          data = newdata,
-                          xlev = task$levels())
+  # Intercept (1) + variables X
+  X = stats::model.matrix(form, data = newdata, xlev = task$levels())
 
-  # collect the auxiliary arguments for the fitted object
-  args = object$aux
-  args$knots = as.numeric(args$knots)
-
-  # define matrix of coeffs coefficients
+  # define matrix of coefficients (gamma0 and X, without intercept)
   coeffs = matrix(object$coefficients[c("gamma0", colnames(X)[-1])], nrow = 1)
 
   # collect fitted parameters
@@ -136,8 +134,7 @@ predict_flexsurvreg = function(object, task, learner, ...) {
     ncol = length(object$dlist$pars), byrow = TRUE)
   colnames(pars) = object$dlist$pars
 
-  # calculate the linear predictor as X*beta
-  # Note: intercept not included in `model.matrix`, so we added manually
+  # calculate the linear predictor as gamma0 + (beta * X)
   pars[, "gamma0"] = coeffs %*% t(X)
 
   # if any inverse transformations exist then apply them
