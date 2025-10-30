@@ -238,12 +238,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 2.3 : 30.07 (4/9.31) [2/5]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 2.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &lt; 7 : 21.24 (5/1.65) [3/6.56]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   cyl &gt;= 7 : 14.54 (5/7.04) [2/11.56]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 140.15 : 26.3 (3/3.41) [1/40.96]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 140.15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 177.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 3.33 : 21.2 (2/0.04) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 3.33 : 17.67 (4/2.15) [3/2.74]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 177.5 : 14.39 (5/3.6) [3/3]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -252,7 +254,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.649472 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.04662 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

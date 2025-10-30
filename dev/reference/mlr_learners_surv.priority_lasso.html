@@ -66,7 +66,7 @@ but this feature is not supported currently."><meta name="robots" content="noind
     <p>Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
 Calls <code><a href="https://rdrr.io/pkg/prioritylasso/man/prioritylasso.html" class="external-link">prioritylasso::prioritylasso()</a></code> from <a href="https://CRAN.R-project.org/package=prioritylasso" class="external-link"><span class="pkg">prioritylasso</span></a>.
 Many parameters for this survival learner are the same as <a href="mlr_learners_surv.cv_glmnet.html">mlr_learners_surv.cv_glmnet</a>
-as <code>prioritylasso()</code> calls <code><a href="https://rdrr.io/pkg/glmnet/man/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> during training phase.
+as <code>prioritylasso()</code> calls <code><a href="https://glmnet.stanford.edu/reference/cv.glmnet.html" class="external-link">glmnet::cv.glmnet()</a></code> during training phase.
 Note that <code>prioritylasso()</code> has ways to deal with block-wise missing data,
 but this feature is not supported currently.</p>
     </div>
@@ -224,18 +224,18 @@ for computing the baseline hazard.</p></li>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank        lp     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        2   5.0  FALSE 0.6755029 0.6755029 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3   2.0  FALSE 1.3365128 1.3365128 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       10 180.0  FALSE 0.8242176 0.8242176 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      993  53.0   TRUE 3.4966262 3.4966262 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      994   7.0  FALSE 3.6636592 3.6636592 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE 3.2627718 3.2627718 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank       lp     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2    5  FALSE 1.101248 1.101248 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5  180  FALSE 1.137522 1.137522 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       14   12   TRUE 1.247019 1.247019 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---      ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      989   67   TRUE 4.231550 4.231550 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      993   53   TRUE 4.128852 4.128852 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      999    3   TRUE 4.263693 4.263693 &lt;list[1]&gt;</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7445281 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.6869178 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
