@@ -106,7 +106,7 @@ Suggests:
     pseudo,
     qgam,
     randomForest,
-    randomForestSRC (>= 3.4.1),
+    randomForestSRC (>= 3.4.3),
     ranger (>= 0.17.0),
     remotes,
     rFerns,
