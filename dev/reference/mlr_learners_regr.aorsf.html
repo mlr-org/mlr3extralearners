@@ -203,18 +203,18 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.214</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.63</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          wt          hp        carb        drat        gear        disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.152777778 0.118694362 0.109826590 0.048571429 0.030303030 0.019718310 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         cyl          am        qsec          vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.016286645 0.015243902 0.005524862 0.003378378 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         wt         am       disp       carb       qsec        cyl       gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.07843137 0.07594937 0.07428571 0.06267806 0.05044510 0.04719764 0.03960396 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         hp       drat         vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.03098592 0.01907357 0.01238390 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -222,7 +222,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25.27895 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.106285 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
