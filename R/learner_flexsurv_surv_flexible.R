@@ -16,11 +16,13 @@
 #' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
 #' For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
 #' and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-#' is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
+#' is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
+#' vector is \eqn{lp = \hat{\beta} X^T}.
 #' 2. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using `predict.flexsurvreg()`.
+#' Calculated using `predict.flexsurvreg(type = "survival", ...)`.
 #' 3. `crank`: same as `lp`.
+#' 4. `response`: mean survival time calculated using `predict.flexsurvreg(type = "response", ...)`
 #'
 #' @section Initial parameter values:
 #' - `k`:
@@ -106,9 +108,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      pred = invoke(predict_flexsurvreg, self$model, task, learner = self, form = pv$formula)
-
-      mlr3proba::surv_return(surv = pred$surv, lp = pred$lp)
+      invoke(predict_flexsurvreg, self$model, task, learner = self, form = pv$formula)
     }
   )
 )
@@ -162,7 +162,11 @@ predict_flexsurvreg = function(object, task, learner, form) {
   ))
   colnames(surv) = ut
 
-  list(lp = lp, surv = surv)
+  # get mean survival times
+  response = invoke(predict, learner$model, type = "response", newdata = newdata)[[1]]
+
+  # return all predict types for this learner
+  list(crank = lp, lp = lp, distr = surv, response = response)
 }
 
 .extralrns_dict$add("surv.flexible", LearnerSurvFlexible)
