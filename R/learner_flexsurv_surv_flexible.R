@@ -40,6 +40,7 @@
 #'
 #' # Define the task, split to train/test set
 #' task = tsk("lung")
+#' set.seed(42)
 #' part = partition(task)
 #'
 #' # Define the learner
