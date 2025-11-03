@@ -1,21 +1,27 @@
+skip_if_not_installed("gbm")
+
 test_that("autotest", {
-  learner = mlr3::lrn("regr.gbm")
+  learner = lrn("regr.gbm")
   learner$param_set$values = mlr3misc::insert_named(
     learner$param_set$values,
     list(n.minobsinnode = 1))
   expect_learner(learner)
-  result = run_autotest(learner, predict_types = "response")
+  capture.output({
+    result = run_autotest(learner, predict_types = "response")
+  })
   expect_true(result, info = result$error)
 })
 
 test_that("quantile prediction", {
-  learner = mlr3::lrn("regr.gbm",
+  learner = lrn("regr.gbm",
     predict_type = "quantiles",
     quantiles = 0.1,
     n.minobsinnode = 1)
   task = tsk("mtcars")
 
-  learner$train(task)
+  capture.output({
+    learner$train(task)
+  })
   pred = learner$predict(task)
 
   expect_matrix(pred$quantiles, ncol = 1L)

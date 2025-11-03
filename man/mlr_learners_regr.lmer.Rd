@@ -76,12 +76,12 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (requireNamespace("lme4", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.lmer")) withAutoprint(\{ # examplesIf}
 # Define the Learner and set parameter values
-learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
+learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
 
 # Define a Task
-task = tsk("boston_housing")
+task = tsk("mtcars")
 
 learner$train(task)
 print(learner$model)
@@ -129,6 +129,7 @@ s-kganz
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerRegr" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerRegr.html#method-LearnerRegr-predict_newdata_fast'><code>mlr3::LearnerRegr$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

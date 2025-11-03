@@ -1,3 +1,5 @@
+skip_if_not_installed("lme4")
+
 test_that("autotest", {
   learner = lrn("regr.lmer")
   expect_learner(learner)
@@ -5,26 +7,23 @@ test_that("autotest", {
 
   # Test with single logical feature
   learner$param_set$values$formula = as.formula("target ~ (1|logical)")
-  result_logical = run_autotest(
-    learner,
-    exclude = "(sanity)|(all)|(utf)|(integer)|(numeric)|(factor)"
-  )
+  suppressMessages(capture.output({
+    result_logical = run_autotest(learner, exclude = "(sanity)|(all)|(utf)|(integer)|(numeric)|(factor)")
+  }))
   expect_true(result_logical, info = result_logical$error)
 
   # Test with single factor feature
   learner$param_set$values$formula = as.formula("target ~ (1|factor)")
-  result_factor = run_autotest(
-    learner,
-    exclude = "(sanity)|(all)|(utf)|(integer)|(numeric)|(logical)"
-  )
+  suppressMessages(capture.output({
+    result_factor = run_autotest(learner, exclude = "(sanity)|(all)|(utf)|(integer)|(numeric)|(logical)")
+  }))
   expect_true(result_factor, info = result_factor$error)
 
   # Test with single integer feature
   learner$param_set$values$formula = as.formula("target ~ (1|integer)")
-  result_integer = run_autotest(
-    learner,
-    exclude = "(sanity)|(all)|(utf)|(factor)|(numeric)|(logical)"
-  )
+  suppressMessages(capture.output({
+    result_integer = run_autotest(learner, exclude = "(sanity)|(all)|(utf)|(factor)|(numeric)|(logical)")
+  }))
   expect_true(result_integer, info = result_integer$error)
 
   # Note: a mixed effects model cannot be built with only float features since
@@ -33,9 +32,8 @@ test_that("autotest", {
 
   # Test with all features
   learner$param_set$values$formula = as.formula("target ~ (numeric+integer+logical|factor)")
-  result_all = run_autotest(
-    learner,
-    exclude = "(sanity)|(utf)|(fact)|(int)|(log)|(num)"
-  )
+  suppressMessages(capture.output({
+    result_all = run_autotest(learner, exclude = "(sanity)|(utf)|(fact)|(int)|(log)|(num)")
+  }))
   expect_true(result_all, info = result_all$error)
 })

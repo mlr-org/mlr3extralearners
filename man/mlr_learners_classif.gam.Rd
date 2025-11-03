@@ -89,10 +89,10 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (requireNamespace("mgcv", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.gam")) withAutoprint(\{ # examplesIf}
 # simple example
-t = mlr3::tsk("spam")$filter(1:1000)
-l = mlr3::lrn("classif.gam")
+t = tsk("spam")$filter(1:1000)
+l = lrn("classif.gam")
 l$param_set$set_values(
   formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
 )
@@ -135,6 +135,7 @@ pierrecamilleri
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

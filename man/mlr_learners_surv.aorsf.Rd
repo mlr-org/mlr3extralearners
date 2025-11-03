@@ -37,7 +37,7 @@ represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{predict.ObliqueForest()} function.
 \item \code{response}: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (\code{distr}).
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
 }
 }
 
@@ -55,7 +55,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{aorsf}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{aorsf}
 }
 }
 
@@ -65,7 +65,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    n_tree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_split \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    n_retry \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   n_thread \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_thread \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_aggregate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    pred_simplify \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    oobag \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -73,7 +73,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_with_replacement \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sample_fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   control_type \tab character \tab fast \tab fast, cph, net \tab - \cr
+   control_type \tab character \tab fast \tab fast, cph, net, custom \tab - \cr
+   control_custom_fun \tab untyped \tab - \tab  \tab - \cr
    split_rule \tab character \tab logrank \tab logrank, cstat \tab - \cr
    control_fast_do_scale \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    control_fast_ties \tab character \tab efron \tab efron, breslow \tab - \cr
@@ -96,21 +97,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    oobag_fun \tab untyped \tab NULL \tab  \tab - \cr
    attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   na_action \tab character \tab fail \tab fail, omit, impute_meanmode \tab - \cr
+   na_action \tab character \tab fail \tab fail, impute_meanmode \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.aorsf")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.aorsf")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.aorsf")
+learner = lrn("surv.aorsf")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = tsk("grace")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("paramtest classif.J48 train", {
   learner = lrn("classif.J48")
   fun = RWeka::J48

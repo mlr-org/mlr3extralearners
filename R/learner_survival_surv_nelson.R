@@ -14,7 +14,7 @@
 #' default parameters of the [survival::survfit()] function, i.e. `ctype = 1`,
 #' which uses the Nelson-Aalen formula.
 #' Then for each test observation the survival curve is \eqn{S(t) = \exp{(-H(t))}}.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.nelson
@@ -36,7 +36,7 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson",
         predict_types = c("crank", "distr"),
         feature_types = c("logical", "integer", "numeric", "character", "factor", "ordered"),
         properties = "missings",
-        packages = c("mlr3extralearners", "survival", "pracma"),
+        packages = c("mlr3extralearners", "survival"),
         man = "mlr3extralearners::mlr_learners_surv.nelson",
         label = "Nelson-Aalen Estimator"
       )
@@ -58,7 +58,7 @@ LearnerSurvNelson = R6Class("LearnerSurvNelson",
         ncol = length(times), nrow = task$nrow,
         byrow = TRUE)
 
-      mlr3proba::.surv_return(times = times, surv = surv)
+      mlr3proba::surv_return(times = times, surv = surv)
     }
   )
 )

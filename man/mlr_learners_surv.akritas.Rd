@@ -37,7 +37,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{character}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}, \CRANpkg{distr6}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survivalmodels}
 }
 }
 
@@ -57,31 +57,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.akritas")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("surv.akritas")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("grace")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
 Akritas, G M (1994).
 \dQuote{Nearest neighbor estimation of a bivariate distribution under random censoring.}

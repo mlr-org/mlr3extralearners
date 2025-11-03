@@ -1,10 +1,14 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   # use a senseless linear model and partition with respect to all features
   lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
     lm(y ~ 1, ...)
   }
-  learner = LearnerRegrMob$new()
+  learner = lrn("regr.mob")
   learner$param_set$values$rhs = "."
   learner$param_set$values$fit = lm_
   learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")

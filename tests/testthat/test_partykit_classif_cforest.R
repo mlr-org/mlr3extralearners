@@ -1,13 +1,17 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
-  learner = LearnerClassifCForest$new()
-  learner$param_set$values = list(ntree = 30L)
+  withr::local_seed(1)
+  learner = lrn("classif.cforest", ntree = 50L)
   expect_learner(learner)
-  result = with_seed(1, run_autotest(learner))
+  result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
 
 test_that("parameter setting works", {
-  learner = LearnerClassifCForest$new()
+  learner = lrn("classif.cforest")
   learner$param_set$values$ntree = 3
   learner$param_set$values$replace = TRUE
   learner$param_set$values$fraction = 0.7

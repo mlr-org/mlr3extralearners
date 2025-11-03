@@ -6,10 +6,10 @@
 #' names in table.
 #' @export
 list_mlr3learners = function(select = NULL, filter = NULL) {
-  require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cluster"), quietly = TRUE)
+  require_namespaces(c("mlr3learners", "mlr3proba", "mlr3cmprsk", "mlr3cluster"), quietly = TRUE)
   messagef("This will take a few seconds.")
   keys = mlr3::mlr_learners$keys()
-  all_lrns = suppressWarnings(mlr3::lrns(keys))
+  all_lrns = suppressWarnings(lrns(keys))
 
   mlr3learners_table = data.table::data.table(t(data.table::rbindlist(list(
     mlr3misc::map(all_lrns, function(.x) {

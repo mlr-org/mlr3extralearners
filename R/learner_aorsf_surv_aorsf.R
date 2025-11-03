@@ -19,7 +19,7 @@
 #' Calculated using the internal `predict.ObliqueForest()` function.
 #' 2. `response`: the restricted mean survival time of each test observation,
 #' derived from the survival matrix prediction (`distr`).
-#' 3. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 3. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @template learner
 #' @templateVar id surv.aorsf
@@ -46,7 +46,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         n_tree = p_int(default = 500L, lower = 1L, tags = "train"),
         n_split = p_int(default = 5L, lower = 1L, tags = "train"),
         n_retry = p_int(default = 3L, lower = 0L, tags = "train"),
-        n_thread = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
+        n_thread = p_int(init = 1, lower = 0, tags = c("train", "predict", "threads")),
         pred_aggregate = p_lgl(default = TRUE, tags = "predict"),
         pred_simplify = p_lgl(default = FALSE, tags = "predict"),
         oobag = p_lgl(default = FALSE, tags = 'predict'),
@@ -54,7 +54,9 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         mtry_ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         sample_with_replacement = p_lgl(default = TRUE, tags = "train"),
         sample_fraction = p_dbl(lower = 0, upper = 1, default = .632, tags = "train"),
-        control_type = p_fct(levels = c("fast", "cph", "net"), default = "fast", tags = "train"),
+        control_type = p_fct(levels = c("fast", "cph", "net", "custom"), default = "fast", tags = "train"),
+        control_custom_fun = p_uty(custom_check = function(x) checkmate::checkFunction(x, nargs = 3),
+                                   depends = quote(control_type == "custom"), tags = "train"),
         split_rule = p_fct(levels = c("logrank", "cstat"), default = "logrank", tags = "train"),
         control_fast_do_scale = p_lgl(default = FALSE, tags = "train"),
         control_fast_ties = p_fct(levels = c("efron", "breslow"), default = "efron", tags = "train"),
@@ -80,13 +82,12 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
                           custom_check = function(x) checkmate::checkFunction(x, nargs = 3)),
         attach_data = p_lgl(default = TRUE, tags = "train"),
         verbose_progress = p_lgl(default = FALSE, tags = "train"),
-        na_action = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"))
-
-      ps$values = list(n_thread = 1)
+        na_action = p_fct(levels = c("fail", "impute_meanmode"), default = "fail", tags = c("train", "predict"))
+      )
 
       super$initialize(
         id = "surv.aorsf",
-        packages = c("mlr3extralearners", "aorsf", "pracma"),
+        packages = c("mlr3extralearners", "aorsf"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "distr", "response"),
         param_set = ps,
@@ -123,7 +124,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
       # helper function to organize aorsf control function inputs
       dflt_if_null = function(params, slot_name) {
         out = params[[slot_name]]
-        if (is.null(out)) out <- self$param_set$default[[slot_name]]
+        if (is.null(out)) out = self$param_set$default[[slot_name]]
         out
       }
       # default value for oobag_eval_every is ntree, but putting
@@ -156,6 +157,11 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
             net_mix = dflt_if_null(pv, "control_net_alpha"),
             target_df = dflt_if_null(pv, "control_net_df_target")
           )
+        },
+        "custom" = {
+          aorsf::orsf_control_survival(
+            method = pv$control_custom_fun
+          )
         }
       )
       # these parameters are used to organize the control arguments
@@ -167,7 +173,8 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
                               "control_cph_eps",
                               "control_cph_iter_max",
                               "control_net_alpha",
-                              "control_net_df_target"))
+                              "control_net_df_target",
+                              "control_custom_fun"))
       invoke(
         aorsf::orsf,
         data = task$data(),
@@ -195,7 +202,7 @@ LearnerSurvAorsf = R6Class("LearnerSurvAorsf",
         sum(diffs_time * x)
       })
 
-      pred_list = mlr3proba::.surv_return(times = utime, surv = surv)
+      pred_list = mlr3proba::surv_return(times = utime, surv = surv)
       # provide `response` here so that we keep the expected mortality for `crank`
       pred_list$response = response
       pred_list

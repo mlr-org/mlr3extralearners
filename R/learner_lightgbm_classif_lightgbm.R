@@ -72,7 +72,7 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
         num_leaves = p_int(default = 31L, lower = 1L, upper = 131072L, tags = "train"),
         tree_learner = p_fct(default = "serial", levels = c("serial", "feature",
           "data", "voting"), tags = "train"),
-        num_threads = p_int(default = 0L, lower = 0L, tags = c("train", "threads")),
+        num_threads = p_int(default = 0L, lower = 0L, tags = c("train", "predict", "threads")),
         device_type = p_fct(default = "cpu", levels = c("cpu", "gpu"), tags = "train"),
         seed = p_int(tags = "train"),
         deterministic = p_lgl(default = FALSE, tags = "train"),
@@ -292,7 +292,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       # set number of classes if multiclass and save label ordering
       if (pars$objective %in% c("multiclass", "multiclassova")) {
         pars$num_class = length(task$class_names)
-        self$state$labels = task$levels()[[task$target_names]]
       }
 
       if (pars$objective %in% c("multiclass", "multiclassova")) {
@@ -386,13 +385,15 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       args = pars[ii]
       params = pars[!ii]
 
-      invoke(
+      model = invoke(
         lightgbm::lgb.train,
         data = dtrain,
         valids = valids,
         .args = args,
         params = params
       )
+      attr(model, "mlr3_info") = task$levels()[[task$target_names]]
+      model
     },
 
     .predict = function(task) {
@@ -401,14 +402,16 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
 
       pred = invoke(predict, self$model, data, params = pars)
 
+      labels = attr(self$model, "mlr3_info")
+
       response = NULL
 
       if ("multiclass" %in% task$properties) {
         pred_mat = pred
-        colnames(pred_mat) = self$state$labels
+        colnames(pred_mat) = labels
         if (self$predict_type == "response") {
           which = apply(pred_mat, 1, which.max)
-          response = self$state$labels[which]
+          response = labels[which]
           pred_mat = NULL
         }
       } else {
@@ -451,7 +454,6 @@ LearnerClassifLightGBM = R6Class("LearnerClassifLightGBM",
       # set number of classes if multiclass and save label ordering
       if (pars_train$objective %in% c("multiclass", "multiclassova")) {
         pars_train$num_class = length(task$class_names)
-        self$state$labels = unique(task$truth())
       }
 
       if (pars_train$objective %in% c("multiclass", "multiclassova")) {

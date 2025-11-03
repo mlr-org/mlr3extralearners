@@ -1,4 +1,7 @@
+skip_if_not_installed("mboost")
+
 test_that("autotest ph", {
+  withr::local_seed(42)
   learner = lrn("surv.glmboost", family = "coxph")
   expect_learner(learner)
   exclude_str = "weights|utf8_feature_names|feat_single_factor|feat_all"
@@ -8,6 +11,7 @@ test_that("autotest ph", {
 })
 
 test_that("autotest aft", {
+  withr::local_seed(42)
   learner = lrn("surv.glmboost", family = "weibull")
   expect_learner(learner)
   exclude_str = "weights|utf8_feature_names|feat_single_factor|feat_all"

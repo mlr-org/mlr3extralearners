@@ -1,3 +1,5 @@
+skip_if_not_installed("randomForestSRC")
+
 test_that("paramtest regr.rfsrc train", {
   learner = lrn("regr.rfsrc")
   fun_list = list(randomForestSRC::rfsrc)
@@ -9,7 +11,9 @@ test_that("paramtest regr.rfsrc train", {
     "case.wt", # handled by task weights
     "cores", # set as option(rf.cores)
     "sampsize.ratio", # alternative to sampsize
-    "mtry.ratio" # alternative to mtry
+    "mtry.ratio", # alternative to mtry
+    "ntime", # for survival forests only
+    "cause" # for competing risk forests only
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")

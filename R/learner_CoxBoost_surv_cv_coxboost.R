@@ -28,7 +28,7 @@
 #'
 #' @template seealso_learner
 #' @export
-#' @examplesIf mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.cv_coxboost")
 #' task = tsk("rats")
 #' task$col_roles$feature = c("litter", "rx")
 #' learner = lrn("surv.cv_coxboost", maxstepno = 20)
@@ -67,7 +67,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
 
       super$initialize(
         id = "surv.cv_coxboost",
-        packages = c("mlr3extralearners", "CoxBoost", "pracma"),
+        packages = c("mlr3extralearners", "CoxBoost"),
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         param_set = ps,
@@ -188,7 +188,7 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
         type = "risk",
         times = times)
 
-      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
+      mlr3proba::surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

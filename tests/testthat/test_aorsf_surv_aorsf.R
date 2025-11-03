@@ -1,14 +1,12 @@
+skip_if_not_installed("aorsf")
+
 test_that("autotest", {
-  set.seed(1) # there was presumable a weird bug
-  learner = lrn("surv.aorsf")
+  withr::local_seed(42)
+  learner = lrn("surv.aorsf", n_tree = 20, na_action = "impute_meanmode")
   expect_learner(learner)
-  # for some reason the feat_all test randomly stopped working, check later if the
-  # problem goes away (could not reproduce locally)
-  result = run_autotest(learner,
-    exclude = "single || feat_all",
-    N = 30,
-    check_replicable = FALSE)
-  expect_true(result, info = result$error)
+  result = run_autotest(learner, N = 30, exclude = "utf8_feature_names",
+                        check_replicable = FALSE)
+  expect_true(result)
 })
 
 test_that("predicted time matches aorsf", {

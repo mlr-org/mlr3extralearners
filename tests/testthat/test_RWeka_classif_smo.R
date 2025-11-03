@@ -1,4 +1,5 @@
 skip_on_os("windows")
+skip_if_not_installed("RWeka")
 
 test_that("autotest", {
   learner = lrn("classif.smo")

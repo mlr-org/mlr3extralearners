@@ -1,3 +1,5 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("aorsf")
 
 test_that("paramtest surv.aorsf train", {
   learner = lrn("surv.aorsf")
@@ -23,6 +25,7 @@ test_that("paramtest surv.aorsf train", {
     "control_cph_iter_max", # handled internally
     "control_net_alpha", # handled internally
     "control_net_df_target", # handled internally
+    "control_custom_fun", # handled internally
     "group_factors" # is set correctly in the learner's importance method (is only relevant for that)
   )
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -31,13 +34,12 @@ test_that("paramtest surv.aorsf train", {
 
 test_that("paramtest surv.aorsf predict", {
   learner = lrn("surv.aorsf")
-  fun_list = list(aorsf:::predict.ObliqueForest)
+  fun_list = list(aorsf:::predict.ObliqueForest) # nolint
   exclude = c(
     "object", # handled internally
     "new_data", # handled internally
     "pred_horizon", # all times required for distr
     "pred_type", # handled internally
-    "na_action", # not implemented
     "verbose_progress", # handled internally
     "boundary_checks" # not implemented
   )

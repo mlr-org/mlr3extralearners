@@ -5,21 +5,24 @@
 #' @description
 #' Accelerated oblique random classification forest.
 #' Calls [aorsf::orsf()] from \CRANpkg{aorsf}.
+#' Note that although the learner has the property `"missing"` and it can in
+#' principle deal with missing values, the behaviour has to be configured using
+#' the parameter `na_action`.
 #'
 #' @section Initial parameter values:
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 #' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("aorsf", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.aorsf")
 #' # Define the Learner
-#' learner = mlr3::lrn("classif.aorsf", importance = "anova")
+#' learner = lrn("classif.aorsf", importance = "anova")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("breast_cancer")
+#' task = tsk("breast_cancer")
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
@@ -53,9 +56,9 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         mtry_ratio              = p_dbl(lower = 0, upper = 1, tags = "train"),
         n_retry                 = p_int(default = 3L, lower = 0L, tags = "train"),
         n_split                 = p_int(default = 5L, lower = 1L, tags = "train"),
-        n_thread                = p_int(default = 0, lower = 0, tags = c("train", "predict", "threads")),
+        n_thread                = p_int(init = 1, lower = 0, tags = c("train", "predict", "threads")),
         n_tree                  = p_int(default = 500L, lower = 1L, tags = "train"),
-        na_action               = p_fct(levels = c("fail", "omit", "impute_meanmode"), default = "fail", tags = "train"),
+        na_action               = p_fct(levels = c("fail", "impute_meanmode"), default = "fail", tags = c("train", "predict")),
         net_mix                 = p_dbl(default = 0.5, tags = "train"),
         oobag                   = p_lgl(default = FALSE, tags = "predict"),
         oobag_eval_every        = p_int(default = NULL, special_vals = list(NULL), lower = 1, tags = "train"),
@@ -74,15 +77,13 @@ LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
         tree_seeds              = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
         verbose_progress        = p_lgl(default = FALSE, tags = "train"))
 
-        ps$values = list(n_thread = 1)
-
       super$initialize(
         id = "classif.aorsf",
         packages = c("mlr3extralearners", "aorsf"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("oob_error", "importance", "multiclass", "twoclass", "weights"),
+        properties = c("oob_error", "importance", "multiclass", "twoclass", "missings", "weights"),
         man = "mlr3extralearners::mlr_learners_classif.aorsf",
         label = "Oblique Random Forest Classifier"
       )

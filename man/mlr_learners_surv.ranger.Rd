@@ -15,7 +15,7 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{\link[ranger:predict.ranger]{ranger::predict.ranger()}} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:dot-surv_return]{mlr3proba::.surv_return()}}.
+\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
 }
 }
 
@@ -89,16 +89,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (requireNamespace("ranger", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.ranger")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.ranger", importance = "permutation")
+learner = lrn("surv.ranger", importance = "permutation")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = tsk("grace")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)

@@ -1,3 +1,7 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survival")
+skip_if_not_installed("survivalmodels")
+
 test_that("paramtest surv.parametric train", {
   learner = lrn("surv.parametric")
   fun = list(survivalmodels::parametric, survival::survreg)
@@ -36,8 +40,7 @@ test_that("paramtest surv.parametric predict", {
     "form", # handled internally
     "times", # handled internally
     "ntime", # handled internally
-    "round_time", # handled internally
-    "discrete"
+    "round_time" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun = fun, exclude, tag = "predict")

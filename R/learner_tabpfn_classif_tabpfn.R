@@ -17,10 +17,16 @@
 #'   If set to `"auto"`, the behavior is the same as original.
 #'   Otherwise, the string is passed as argument to `torch.device()` to create a device.
 #'
-#' - `inference_precision` must be `"auto"` or `"autocast"`.
-#'   Passing `torch.dtype` is currently not supported.
+#' - `inference_precision` must be `"auto"`, `"autocast"`,
+#'   or a [`torch.dtype`](https://docs.pytorch.org/docs/stable/tensor_attributes.html) string,
+#'   e.g., `"torch.float32"`, `"torch.float64"`, etc.
+#'   Non-float dtypes are not supported.
 #'
 #' - `inference_config` is currently not supported.
+#'
+#' - `random_state` accepts either an integer or the special value `"None"`
+#'   which corresponds to `None` in Python.
+#'   Following the original Python implementation, the default `random_state` is `0`.
 #'
 #' @templateVar id classif.tabpfn
 #' @template learner
@@ -29,7 +35,6 @@
 #' `r format_bib("hollmann2025tabpfn", "hollmann2023tabpfn")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
   inherit = LearnerClassif,
@@ -38,7 +43,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        n_estimators = p_int(lower = 1, default = 4, tags = "train"),
+        n_estimators = p_int(lower = 1L, default = 4L, tags = "train"),
         categorical_features_indices = p_uty(tags = "train", custom_check = function(x) {
           # R indexing is used
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
@@ -50,8 +55,15 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         device = p_uty(default = "auto", tags = "train", custom_check = check_string),
         ignore_pretraining_limits = p_lgl(default = FALSE, tags = "train"),
         inference_precision = p_fct(
-          # torch.dtype option is currently not supported
-          c("auto", "autocast"),
+          c(
+            "auto", "autocast",
+            # all float dtypes
+            # from https://docs.pytorch.org/docs/stable/tensor_attributes.html
+            "torch.float32", "torch.float",
+            "torch.float64", "torch.double",
+            "torch.float16", "torch.half",
+            "torch.bfloat16"
+          ),
           default = "auto",
           tags = "train"
         ),
@@ -67,8 +79,8 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
             "Invalid value for memory_saving_mode. Must be 'auto', a TRUE/FALSE value, or a number > 0."
           }
         }),
-        random_state = p_int(default = 0, tags = "train"),
-        n_jobs = p_int(lower = 1, init = 1, special_vals = list(-1), tags = "train")
+        random_state = p_int(default = 0L, special_vals = list("None"), tags = "train"),
+        n_jobs = p_int(lower = 1L, init = 1L, special_vals = list(-1L), tags = "train")
       )
 
       super$initialize(
@@ -76,6 +88,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
         feature_types = c("integer", "numeric", "logical"),
         predict_types = c("response", "prob"),
         param_set = ps,
+        packages = "reticulate",
         properties = c("twoclass", "multiclass", "missings", "marshal"),
         label = "TabPFN Classifier",
         man = "mlr3extralearners::mlr_learners_classif.tabpfn"
@@ -84,16 +97,16 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
-      mlr3::learner_marshal(.learner = self, ...)
+      learner_marshal(.learner = self, ...)
     },
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
-      mlr3::learner_unmarshal(.learner = self, ...)
+      learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -101,20 +114,31 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     #' @field marshaled (`logical(1)`)\cr
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      mlr3::learner_marshaled(self)
+      learner_marshaled(self)
     }
   ),
 
   private = list(
     .train = function(task) {
-      reticulate::py_require(c("torch", "tabpfn"))
+      assert_python_packages(c("torch", "tabpfn"))
       tabpfn = reticulate::import("tabpfn")
+      torch = reticulate::import("torch")
 
       pars = self$param_set$get_values(tags = "train")
+
+      inference_precision = pars$inference_precision
+      if (!is.null(inference_precision) && startsWith(inference_precision, "torch.")) {
+        dtype = strsplit(inference_precision, "\\.")[[1]][2]
+        pars$inference_precision = reticulate::py_get_attr(torch, dtype)
+      }
 
       if (!is.null(pars$device) && pars$device != "auto") {
         torch = reticulate::import("torch")
         pars$device = torch$device(pars$device)
+      }
+
+      if (identical(pars$random_state, "None")) {
+        pars$random_state = reticulate::py_none()
       }
 
       # x is an (n_samples, n_features) array
@@ -144,7 +168,7 @@ LearnerClassifTabPFN = R6Class("LearnerClassifTabPFN",
     },
 
     .predict = function(task) {
-      reticulate::py_require("tabpfn")
+      assert_python_packages("tabpfn")
       reticulate::import("tabpfn")
       model = self$model$fitted
 

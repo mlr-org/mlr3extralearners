@@ -20,12 +20,12 @@
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("lme4", quietly = TRUE)
+#' @examplesIf learner_is_runnable("regr.lmer")
 #' # Define the Learner and set parameter values
-#' learner = lrn("regr.lmer", formula = cmedv ~ (1 | town))
+#' learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
 #'
 #' # Define a Task
-#' task = tsk("boston_housing")
+#' task = tsk("mtcars")
 #'
 #' learner$train(task)
 #' print(learner$model)

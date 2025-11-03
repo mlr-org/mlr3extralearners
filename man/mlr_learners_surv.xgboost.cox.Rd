@@ -141,16 +141,16 @@ performance scores.
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.xgboost.cox")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.xgboost.cox")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = mlr3::lrn("surv.xgboost.cox")
+learner = lrn("surv.xgboost.cox")
 print(learner)
 
 # Define a Task
-task = mlr3::tsk("grace")
+task = tsk("grace")
 
 # Create train and test set
-ids = mlr3::partition(task)
+ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
@@ -268,7 +268,7 @@ Marshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=marshal_model]{marshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }
@@ -286,7 +286,7 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[=unmarshal_model]{unmarshal_model()}}.}
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
 }
 \if{html}{\out{</div>}}
 }

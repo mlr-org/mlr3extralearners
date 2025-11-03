@@ -1,5 +1,7 @@
+skip_if_not_installed("CoxBoost")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("surv.cv_coxboost", maxstepno = 1, K = 2)
   expect_learner(learner)
   result = run_autotest(learner, N = 10, check_replicable = FALSE)
@@ -7,7 +9,7 @@ test_that("autotest", {
 })
 
 test_that("optim", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("surv.cv_coxboost",
     penalty = "optimCoxBoostPenalty",
     maxstepno = 1, minstepno = 0, iter.max = 1, K = 2)

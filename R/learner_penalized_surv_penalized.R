@@ -13,7 +13,7 @@
 #' Calculated using the internal [penalized::predict()] function.
 #' By default the Breslow estimator [penalized::breslow()] is used for computing
 #' the baseline hazard.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()].
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
 #'
 #' @section Initial parameter values:
 #' - `trace` is set to `"FALSE"` to disable printing output during model training.
@@ -59,7 +59,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
 
       super$initialize(
         id = "surv.penalized",
-        packages = c("mlr3extralearners", "penalized", "pracma"),
+        packages = c("mlr3extralearners", "penalized"),
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "distr"),
         param_set = ps,
@@ -146,7 +146,7 @@ LearnerSurvPenalized = R6Class("LearnerSurvPenalized",
                .args = pars)
       })
 
-      mlr3proba::.surv_return(times = surv@time, surv = surv@curves)
+      mlr3proba::surv_return(times = surv@time, surv = surv@curves)
     }
   )
 )

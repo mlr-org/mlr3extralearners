@@ -1,5 +1,7 @@
+skip_if_not_installed("lightgbm")
+
 test_that("autotest", {
-  set.seed(1)
+  withr::local_seed(1)
   learner = lrn("classif.lightgbm", num_iterations = 50)
   expect_learner(learner)
   result = run_autotest(learner)
@@ -197,7 +199,7 @@ test_that("custom inner validation measure", {
 
 test_that("mlr3measures are equal to internal measures", {
   # response
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("sonar")
 
   learner = lrn("classif.lightgbm",
@@ -210,7 +212,7 @@ test_that("mlr3measures are equal to internal measures", {
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
 
-  set.seed(1)
+  withr::local_seed(1)
   learner$param_set$set_values(eval = list("binary_error"))
   learner$train(task)
 
@@ -219,7 +221,7 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 
   # prob
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("sonar")
 
   learner = lrn("classif.lightgbm",
@@ -233,7 +235,7 @@ test_that("mlr3measures are equal to internal measures", {
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.auc$eval)
 
-  set.seed(1)
+  withr::local_seed(1)
   learner$param_set$set_values(eval = list("auc"))
   learner$train(task)
 
@@ -242,7 +244,7 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 
   # multiclass response
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("iris")
 
   learner = lrn("classif.lightgbm",
@@ -255,7 +257,7 @@ test_that("mlr3measures are equal to internal measures", {
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.ce$eval)
 
-  set.seed(1)
+  withr::local_seed(1)
   learner$param_set$set_values(eval = list("multi_error"))
   learner$train(task)
 
@@ -264,7 +266,7 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 
   # multiclass prob
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("iris")
 
   learner = lrn("classif.lightgbm",
@@ -278,7 +280,7 @@ test_that("mlr3measures are equal to internal measures", {
   learner$train(task)
   log_mlr3 = as.numeric(learner$model$record_evals$test$classif.logloss$eval)
 
-  set.seed(1)
+  withr::local_seed(1)
   learner$param_set$set_values(eval = list("multi_logloss"))
   learner$train(task)
 
@@ -287,3 +289,10 @@ test_that("mlr3measures are equal to internal measures", {
   expect_equal(log_mlr3, log_internal)
 })
 
+
+test_that("#437", {
+  lr = lrn("classif.lightgbm", predict_type = "prob")
+  lr$encapsulate("callr", lrn("classif.featureless", predict_type = "prob"))
+  pred = lr$train(tsk("iris"))$predict(tsk("iris"))
+  expect_equal(mean(rowSums(pred$prob)), 1)
+})

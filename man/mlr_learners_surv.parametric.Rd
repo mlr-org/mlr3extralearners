@@ -64,17 +64,6 @@ to any number (e.g. \code{150}).
 }
 }
 
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{discrete} determines the class of the returned survival probability
-distribution. If \code{FALSE}, vectorized continuous probability distributions are
-returned using \link[distr6:VectorDistribution]{distr6::VectorDistribution}, otherwise a \link[distr6:Matdist]{distr6::Matdist}
-object, which is faster for calculating survival measures that require a \code{distr}
-prediction type. Default option is \code{TRUE}.
-}
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -89,7 +78,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{survival}
 }
 }
 
@@ -110,7 +99,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    robust \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cluster \tab untyped \tab - \tab  \tab - \cr
-   discrete \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    ntime \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    round_time \tab integer \tab 2 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
@@ -122,31 +110,6 @@ Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
 \code{remotes::install_github("RaphaelS1/survivalmodels")}.
 }
 
-\examples{
-\dontshow{if (mlr3misc::require_namespaces(lrn("surv.parametric")$packages, quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Define the Learner
-learner = mlr3::lrn("surv.parametric")
-print(learner)
-
-# Define a Task
-task = mlr3::tsk("grace")
-
-# Create train and test set
-ids = mlr3::partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \references{
 Kalbfleisch, D J, Prentice, L R (2011).
 \emph{The statistical analysis of failure time data}.
@@ -198,7 +161,7 @@ bblodfon
 \if{latex}{\out{\hypertarget{method-LearnerSurvParametric-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
-returned \code{risk} from survivalmodels is hp-style
+returned \code{risk} from survivalmodels is PH-style
 ie higher value => higher risk
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvParametric$new()}\if{html}{\out{</div>}}

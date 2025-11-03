@@ -104,7 +104,7 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "offset"),
-        packages = c("mlr3extralearners", "mboost", "pracma"),
+        packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.blackboost",
         label = "Gradient Boosting"
       )
@@ -196,9 +196,9 @@ LearnerSurvBlackBoost = R6Class("LearnerSurvBlackBoost",
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
         # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-        mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
+        mlr3proba::surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
-        mlr3proba::.surv_return(lp = -lp)
+        mlr3proba::surv_return(lp = -lp)
       }
     }
   )

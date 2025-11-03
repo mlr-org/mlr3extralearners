@@ -6,7 +6,6 @@
 #' Imbalanced Random forest for classification between two classes.
 #' Calls [randomForestSRC::imbalanced.rfsrc()] from from \CRANpkg{randomForestSRC}.
 #'
-#'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
 #' @templateVar id classif.imbalanced_rfsrc
@@ -16,15 +15,15 @@
 #' `r format_bib("obrien2019imbrfsrc", "chen2004imbrf")`
 #'
 #' @template seealso_learner
-#' @examplesIf requireNamespace("randomForestSRC", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.imbalanced_rfsrc")
 #' # Define the Learner
-#' learner = mlr3::lrn("classif.imbalanced_rfsrc", importance = "TRUE")
+#' learner = lrn("classif.imbalanced_rfsrc", importance = "TRUE")
 #' print(learner)
 #'
 #' # Define a Task
-#' task = mlr3::tsk("sonar")
+#' task = tsk("sonar")
 #' # Create train and test set
-#' ids = mlr3::partition(task)
+#' ids = partition(task)
 #'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
@@ -55,7 +54,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         block.size = p_int(default = 10L, lower = 1L, tags = c("train", "predict")),
         fast = p_lgl(default = FALSE, tags = "train"),
         ratio = p_dbl(0, 1, tags = "train"),
-
+        # rest of the parameters are from randomForestSRC::rfsrc()
         mtry = p_int(lower = 1L, tags = "train"),
         mtry.ratio = p_dbl(lower = 0, upper = 1, tags = "train"),
         nodesize = p_int(default = 15L, lower = 1L, tags = "train"),
@@ -83,7 +82,6 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
             tags = c("train", "predict")),
         nimpute = p_int(default = 1L, lower = 1L, tags = "train"),
         ntime = p_int(lower = 1L, tags = "train"),
-        cause = p_int(lower = 1L, tags = "train"),
         proximity = p_fct(
           default = "FALSE",
           levels = c("FALSE", "TRUE", "inbag", "oob", "all"),
@@ -101,13 +99,12 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         forest = p_lgl(default = TRUE, tags = "train"),
         var.used = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         split.depth = p_fct(
           default = "FALSE",
-          levels = c("FALSE", "all.trees", "by.tree"), tags = c("train", "predict")),
+          levels = c("FALSE", "all.trees"), tags = c("train", "predict")),
         seed = p_int(upper = -1L, tags = c("train", "predict")),
         do.trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        statistics = p_lgl(default = FALSE, tags = c("train", "predict")),
         get.tree = p_uty(tags = "predict"),
         outcome = p_fct(
           default = "train", levels = c("train", "test"),
@@ -116,7 +113,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         cores = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
         save.memory = p_lgl(default = FALSE, tags = "train"),
         perf.type = p_fct(levels = c("gmean", "misclass", "brier", "none"), tags = "train"), # nolint
-        case.depth = p_lgl(default = FALSE, tags = "predict"),
+        case.depth = p_lgl(default = FALSE, tags = c("train", "predict")),
         marginal.xvar	= p_uty(default = NULL, tags = "predict")
       )
 
@@ -126,11 +123,12 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
         feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "missings", "importance", "oob_error", "twoclass"),
+        properties = c("weights", "missings", "importance", "oob_error", "selected_features", "twoclass"),
         man = "mlr3extralearners::mlr_learners_classif.imbalanced_rfsrc",
         label = "Imbalanced Random Forest"
       )
     },
+
     #' @description
     #' The importance scores are extracted from the slot `importance`.
     #' @return Named `numeric()`.
@@ -141,12 +139,21 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
 
       sort(self$model$importance[, 1], decreasing = TRUE)
     },
+
     #' @description
     #' Selected features are extracted from the model slot `var.used`.
+    #'
+    #' **Note**: Due to a known issue in `randomForestSRC`, enabling `var.used = "all.trees"`
+    #' causes prediction to fail. Therefore, this setting should be used exclusively
+    #' for feature selection purposes and not when prediction is required.
     #' @return `character()`.
     selected_features = function() {
-      if (is.null(self$model$var.used) & !is.null(self$model)) {
-        stopf("Set 'var.used' to one of: {'all.trees', 'by.tree'}.")
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
+      if (is.null(self$model$var.used)) {
+        stopf("Set parameter 'var.used' to 'all.trees'.")
       }
 
       names(self$model$var.used)
@@ -159,6 +166,7 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       as.numeric(self$model$err.rate[self$model$ntree, 1])
     }
   ),
+
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
@@ -169,18 +177,25 @@ LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRando
       pv$case.wt = private$.get_weights(task) # nolint
 
       invoke(randomForestSRC::imbalanced.rfsrc,
-             formula = task$formula(), data = data.table::setDF(task$data()),
+             formula = task$formula(), data = task$data(),
              .args = pv, .opts = list(rf.cores = cores))
     },
+
     .predict = function(task) {
-      newdata = data.table::setDF(ordered_features(task, self))
-      pars = self$param_set$get_values(tags = "predict")
-      cores = pars$cores %??% 1L
-      pars$cores = NULL
+      newdata = ordered_features(task, self)
+      pv = self$param_set$get_values(tags = "predict")
+
+      if (!is.null(pv$var.used) && pv$var.used == "all.trees") {
+        stopf("Prediction is not supported when var.used = 'all.trees'. Use this setting only when extracting selected features.") #nolint
+      }
+
+      cores = pv$cores %??% 1L
+      pv$cores = NULL
+
       pred = invoke(predict,
                     object = self$model,
                     newdata = newdata,
-                    .args = pars,
+                    .args = pv,
                     .opts = list(rf.cores = cores))
 
       if (self$predict_type == "response") {

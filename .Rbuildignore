@@ -23,3 +23,6 @@
 vignettes/learners
 ^.pre-commit-config.yaml
 ^vignettes/articles$
+^README.html$
+^CODE_OF_CONDUCT\.md$
+^CONTRIBUTING.md

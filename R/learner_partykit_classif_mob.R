@@ -14,7 +14,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf requireNamespace("partykit", quietly = TRUE)
+#' @examplesIf learner_is_runnable("classif.mob")
 #' library(mlr3)
 #' logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
 #'   glm(y ~ 1, family = binomial, start = start, ...)
@@ -33,7 +33,9 @@
 #'   if (.type == "response") {
 #'     ifelse(p < 0.5, levs[1L], levs[2L])
 #'   } else {
-#'     prob_vector_to_matrix(p, levs)
+#'     y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
+#'     colnames(y) = levs
+#'     y
 #'   }
 #' }
 #' task = tsk("breast_cancer")

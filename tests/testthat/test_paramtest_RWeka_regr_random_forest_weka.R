@@ -1,3 +1,5 @@
+skip_if_not_installed("RWeka")
+
 test_that("regr.random_forest_weka train", {
   learner = lrn("regr.random_forest_weka")
   fun = RWeka::make_Weka_classifier("weka/classifiers/trees/RandomForest")

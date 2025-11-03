@@ -1,3 +1,7 @@
+skip_if_not_installed("mlr3proba")
+skip_if_not_installed("survival")
+skip_if_not_installed("flexsurv")
+
 test_that("paramtest surv.flexible train", {
   task = tsk("rats")
   learner = lrn("surv.flexible")
@@ -7,10 +11,8 @@ test_that("paramtest surv.flexible train", {
     "weights", # handle by task
     "subset", # handle by task
     "iter.max", # identical to maxiter
-    "formula", # Not implemented by the creator
-    "anc", # not implemented by the creator
     "na.action", # not implemented by the creator
-    "dist", # not implemented by the creator
+    "dist", # handled by flexsurvreg
     "dfns", # not implemented by the creator
     "aux", # not implemented by the creator
     "integ.opts", # not implemented by the creator

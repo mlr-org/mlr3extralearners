@@ -66,7 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (requireNamespace("partykit", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.mob")) withAutoprint(\{ # examplesIf}
 library(mlr3)
 logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   glm(y ~ 1, family = binomial, start = start, ...)
@@ -85,7 +85,9 @@ predict_fun = function(object, newdata, task, .type) {
   if (.type == "response") {
     ifelse(p < 0.5, levs[1L], levs[2L])
   } else {
-    prob_vector_to_matrix(p, levs)
+    y = matrix(c(1 - p, p), ncol = 2L, nrow = length(p))
+    colnames(y) = levs
+    y
   }
 }
 task = tsk("breast_cancer")
@@ -144,6 +146,7 @@ sumny
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="reset"><a href='../../mlr3/html/Learner.html#method-Learner-reset'><code>mlr3::Learner$reset()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="selected_features"><a href='../../mlr3/html/Learner.html#method-Learner-selected_features'><code>mlr3::Learner$selected_features()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="train"><a href='../../mlr3/html/Learner.html#method-Learner-train'><code>mlr3::Learner$train()</code></a></span></li>
+<li><span class="pkg-link" data-pkg="mlr3" data-topic="LearnerClassif" data-id="predict_newdata_fast"><a href='../../mlr3/html/LearnerClassif.html#method-LearnerClassif-predict_newdata_fast'><code>mlr3::LearnerClassif$predict_newdata_fast()</code></a></span></li>
 </ul>
 </details>
 }}

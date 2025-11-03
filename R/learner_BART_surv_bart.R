@@ -11,7 +11,7 @@
 #' 1. `distr`: a 3d survival array with observations as 1st dimension, time
 #' points as 2nd and the posterior draws as 3rd dimension.
 #' Calculated using the internal `predict.survbart()` function.
-#' 2. `crank`: the expected mortality using [mlr3proba::.surv_return()]. The parameter
+#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()]. The parameter
 #' `which.curve` decides which posterior draw (3rd dimension) will be used for the
 #' calculation of the expected mortality. Note that the median posterior is
 #' by default used for the calculation of survival measures that require a `distr`
@@ -139,14 +139,16 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
 
+      model = invoke(
+        .fun,
+        x.train = x.train,
+        times = times,
+        delta = delta,
+        .args = pars
+      )
+
       list(
-        model = invoke(
-          .fun,
-          x.train = x.train,
-          times = times,
-          delta = delta,
-          .args = pars
-        ),
+        model = model,
         # need these for predict
         x.train = x.train,
         times = times,
@@ -212,8 +214,8 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       # distr => 3d survival array
       # crank => expected mortality
-      mlr3proba::.surv_return(times = times, surv = surv_array,
-                              which.curve = pars$which.curve)
+      mlr3proba::surv_return(times = times, surv = surv_array,
+                             which.curve = pars$which.curve)
     }
   )
 )

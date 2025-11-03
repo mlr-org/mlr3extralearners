@@ -33,7 +33,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}, \CRANpkg{pracma}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{CoxBoost}
 }
 }
 
@@ -83,7 +83,7 @@ the baseline hazard and compose the survival distributions from the \code{lp} pr
 }
 
 \examples{
-\dontshow{if (mlr3misc::require_namespaces(c("coin", "sandwich", "partykit"), quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.cv_coxboost")) withAutoprint(\{ # examplesIf}
 task = tsk("rats")
 task$col_roles$feature = c("litter", "rx")
 learner = lrn("surv.cv_coxboost", maxstepno = 20)

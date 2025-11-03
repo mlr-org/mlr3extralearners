@@ -1,7 +1,11 @@
 library(checkmate)
 library(mlr3)
 library(mlr3extralearners)
-library(mlr3proba)
+
+if (mlr3misc::require_namespaces("mlr3proba", quietly = TRUE)) {
+  # proba is suggests
+  library(mlr3proba)
+}
 
 lapply(list.files(system.file("testthat", package = "mlr3"),
   pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
@@ -9,25 +13,8 @@ lapply(list.files(system.file("testthat", package = "mlr3"),
 lapply(list.files(system.file("testthat", package = "mlr3proba"),
   pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-load_tests = function(key) {
-  class = strsplit(mlr3::lrn(key)$id, ".", TRUE)[[1]][[1]]
-
-  if (class %in% c("surv", "dens")) {
-    if (!requireNamespace("mlr3proba", quietly = TRUE)) {
-      remotes::install_github("mlr-org/mlr3proba", upgrade = "always")
-    }
-    invisible(lapply(list.files(system.file("testthat", package = "mlr3proba"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
-    require("mlr3proba")
-  } else if (class == "clust") {
-    if (!requireNamespace("mlr3cluster", quietly = TRUE)) {
-      remotes::install_github("mlr-org/mlr3cluster", upgrade = "always")
-    }
-    invisible(lapply(list.files(system.file("testthat", package = "mlr3cluster"),
-      pattern = "^helper.*\\.[rR]", full.names = TRUE), source))
-    require("mlr3cluster")
-  }
-}
+lapply(list.files(system.file("testthat", package = "mlr3cmprsk"),
+  pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
 expect_paramtest = function(paramtest) {
   if (!is.atomic(paramtest)) {
@@ -59,7 +46,22 @@ s4_helper = function(x) {
   return(f())
 }
 
-# add survival lung task with missing features
-lung = survival::lung
-lung$status = lung$status - 1
-lung_missings = mlr3proba::TaskSurv$new("lung", backend = lung, time = "time", event = "status")
+skip_if_not_installed_py = function(...) {
+  pkgs = c(...)
+  # We skip the tests if the python packages are not installed and we are not in GHA
+  # Because if we are in GHA, we want to ensure that the installation of the python packages
+  # is working
+  available = map_lgl(pkgs, reticulate::py_module_available)
+  in_gha = Sys.getenv("GITHUB_ACTIONS") == "true"
+  only_suggests = Sys.getenv("_R_CHECK_DEPENDS_ONLY_", "FALSE") == "TRUE"
+
+  # We:
+  # * Don't want to run the tests locally if they are not available, as this will mean
+  #   other contributors always have to download the python packages
+  # * Want to run the tests in GHA. If installation fails there, we want to notice, etcept
+  # * We test only suggested packages in GHA
+  if (!all(available) && (!in_gha || only_suggests)) {
+    skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
+  }
+  invisible()
+}

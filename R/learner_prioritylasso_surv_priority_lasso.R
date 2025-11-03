@@ -32,7 +32,7 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @examplesIf mlr3misc::require_namespaces(c("mlr3proba"), quietly = TRUE)
+#' @examplesIf learner_is_runnable("surv.priority_lasso")
 #' # Define a Task
 #' task = tsk("grace")
 #' # Create train and test set
@@ -181,7 +181,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         lp_test = lp_test
       )
 
-      mlr3proba::.surv_return(surv = surv, lp = lp_test)
+      mlr3proba::surv_return(surv = surv, lp = lp_test)
     }
   )
 )

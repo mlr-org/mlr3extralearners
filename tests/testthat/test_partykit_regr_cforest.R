@@ -1,13 +1,16 @@
+skip_if_not_installed("partykit")
+skip_if_not_installed("sandwich")
+skip_if_not_installed("coin")
+
 test_that("autotest", {
-  learner = LearnerRegrCForest$new()
-  learner$param_set$values = list(ntree = 30L)
+  learner = lrn("regr.cforest", ntree = 30L)
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)
 })
 
 test_that("parameter setting works", {
-  learner = LearnerRegrCForest$new()
+  learner = lrn("regr.cforest")
   learner$param_set$values$ntree = 3
   learner$param_set$values$replace = TRUE
   learner$param_set$values$fraction = 0.7

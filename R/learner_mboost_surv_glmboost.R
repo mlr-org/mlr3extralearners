@@ -71,7 +71,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
         feature_types = c("integer", "numeric", "factor", "logical"),
         predict_types = c("crank", "lp", "distr"),
         properties = c("weights", "selected_features", "importance", "offset"),
-        packages = c("mlr3extralearners", "mboost", "pracma"),
+        packages = c("mlr3extralearners", "mboost"),
         man = "mlr3extralearners::mlr_learners_surv.glmboost",
         label = "Boosted Generalized Linear Model"
       )
@@ -225,9 +225,9 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
       if (is.null(self$param_set$values$family) || self$param_set$values$family == "coxph") {
         # uses Breslow estimator internally
         survfit = invoke(mboost::survFit, self$model, newdata = newdata)
-        mlr3proba::.surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
+        mlr3proba::surv_return(times = survfit$time, surv = t(survfit$surv), lp = lp)
       } else {
-        mlr3proba::.surv_return(lp = -lp)
+        mlr3proba::surv_return(lp = -lp)
       }
     }
   )

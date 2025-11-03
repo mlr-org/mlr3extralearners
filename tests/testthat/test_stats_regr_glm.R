@@ -1,5 +1,7 @@
+skip_if_not_installed("stats")
+
 test_that("autotest", {
-  learner = LearnerRegrGlm$new()
+  learner = lrn("regr.glm")
   expect_learner(learner)
   result = run_autotest(learner)
   expect_true(result, info = result$error)

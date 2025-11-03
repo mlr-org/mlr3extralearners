@@ -1,10 +1,86 @@
-# dev
+# mlr3extralearners dev
 
-* feat: Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
-* feat: Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
-* feat: Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
-* feat: Added the new version of learner weights to all learners that support weights
-* feat: Added marshaling for `surv.xgboost.cox`.
+* Add `formula` and `anc` params to `surv.flexible` learner, as well as `response` predict type (mean survival time)
+
+# mlr3extralearners 1.2.0
+
+## New Features
+
+* New Learners:
+  - `LearnerCompRisksRandomForestSRC`
+  - `LearnerSurvBlockForest`
+  - `Learner{Classif,Regr,Surv}BlockForest`
+  - `Learner{Classif,Regr}ExhaustiveSearch`
+  - `LearnerClassifFastai`
+  - `Learner{Classif,Regr}Penalized`
+  - `Learner{Classif,Regr}Bst`
+  - `LearnerClassifAdabag`
+  - `LearnerClassifAdaBoosting`
+  - `Learner{Classif,Regr}Evtree`
+  - `LearnerClassifKnn`
+  - `LearnerClassifRotationForest`
+  - `LearnerRegrCrs`
+  - `LearnerClassifStepPlr`
+  - `LearnerClassifMda`
+  - `LearnerClassifRferns`
+  - `LearnerClassifNeuralnet`
+  - `LearnerRegrBrnn`
+  - `LearnerRegrBotorchSingleTaskGP`
+  - `LearnerRegrBotorchMixedSingleTaskGP`
+
+* Add new `control_custom_fun` parameter in `surv.aorsf`
+* New function `learner_is_runnable()` to check whether the
+  required packages to train a learner are available.
+* Added `selected_features` property to RandomForestSRC learners (prediction doesn't work if `vars.used = 'all.trees'`)
+
+## Bug fixes
+
+* Tests are now skipped when the suggested packages is not available.
+  This will make local development much more convenient.
+* Removed parameters from RandomForestSRC learners that weren't used + optimized tests
+* Removed `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+
+## Breaking Changes
+
+* All (extra) density learners are removed. These will be transferred to `mlr3proba` soon (see `v0.8.2` or later).
+* The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
+* remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
+  survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
+* `classif.lightgbm` now works with encapsulation with multiclass tasks
+* the package no longer re-exports `lrn` and `lrns`, which should anyway
+  be available to the user as the package depends on `mlr3`, where these
+  functions are defined.
+* Removed various learners:
+  * `randomPlantedForest` was removed, because there is currently no way to
+    save the model.
+  * The deep learning methods from `survivalmodels` were removed, because
+    they also cannot be saved and because the upstream package is archived.
+
+## Other
+
+* The package now imports `withr`
+* `mlr3proba` is now an import and no longer a suggested package.
+* `mlr3cmprsk` is added as an import.
+* The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
+  This means the auto tests will be stochastic like they should be.
+* The CI now checks that RCMD-check passes when suggested packages are not available.
+* `distr6` dependency is removed. `partykit` survival learners use constant
+  interpolation of the predicted Kaplan-Meier curves via `survdistr::vec_interp()`
+
+# mlr3extralearners 1.1.0
+
+New Features:
+
+* Support offset in learners `regr|classif.mgcv`, `regr.glm` and `regr.lmer`.
+* Added learners `LearnerRegrQGam` and `LearnerRegrMQGam`.
+* Added learners `LearnerClassifTabPFN` and `LearnerRegrTabPFN`.
+* Added the new version of learner weights to all learners that support weights
+* Added marshaling for `surv.xgboost.cox`.
+* Added learner `LearnerClassifKnn`.
+
+Bugfixes:
+
+* lightgbm classifier now works with encapsulation (#437)
 
 # mlr3extralearners 1.0.0
 

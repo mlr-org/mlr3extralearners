@@ -1,25 +1,29 @@
+skip_if_not_installed("randomForestSRC")
+
 test_that("autotest", {
-  learner = lrn("surv.rfsrc")
-  learner$param_set$values = insert_named(
-    learner$param_set$values,
-    list(importance = "random", na.action = "na.impute"))
+  withr::local_seed(1)
+  learner = lrn("surv.rfsrc", ntree = 20, importance = "random", na.action = "na.impute")
   expect_learner(learner)
-  set.seed(1)
+  # remove property as prediction doesn't work due to rsfrc bug
+  learner$properties = setdiff(learner$properties, "selected_features")
+
   result = run_autotest(learner, check_replicable = FALSE, N = 100)
   expect_true(result, info = result$error)
 })
 
 test_that("importance/selected", {
-  set.seed(1)
+  withr::local_seed(1)
   task = tsk("rats")
-  learn = LearnerSurvRandomForestSRC$new()
-  learn$param_set$values = list(estimator = "kaplan")
-  learn$train(task)
-  expect_error(learn$importance(), "Set 'importance'")
-  expect_error(learn$selected_features(), "Set 'var.used'")
-  learn$param_set$values = list(estimator = "nelson", var.used = "all.trees", importance = "random")
-  learn$train(task)
-  expect_silent(learn$selected_features())
-  expect_silent(learn$importance())
-  expect_silent(learn$oob_error())
+  learner = lrn("surv.rfsrc", ntree = 20)
+  learner$train(task)
+  expect_error(learner$importance(), "Set 'importance'")
+  expect_error(learner$selected_features(), "Set parameter 'var.used'")
+
+  learner$param_set$values = list(
+    var.used = "all.trees", importance = "random"
+  )
+  learner$train(task)
+  expect_character(learner$selected_features())
+  expect_numeric(learner$importance(), names = "named")
+  expect_error(learner$predict(task), "Prediction is not supported")
 })

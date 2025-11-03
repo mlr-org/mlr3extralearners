@@ -229,7 +229,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       # higher values (survival times) => lower risk
       lp = -log(surv_time)
 
-      mlr3proba::.surv_return(crank = lp, lp = lp, response = surv_time)
+      mlr3proba::surv_return(crank = lp, lp = lp, response = surv_time)
     }
   )
 )

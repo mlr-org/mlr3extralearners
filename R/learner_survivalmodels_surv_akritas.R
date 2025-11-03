@@ -26,7 +26,6 @@
 #' `r format_bib("akritas1994nearest")`
 #'
 #' @template seealso_learner
-#' @template example
 #' @export
 LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
   inherit = mlr3proba::LearnerSurv,
@@ -47,7 +46,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         feature_types = c("logical", "integer", "character", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        packages = c("mlr3extralearners", "survivalmodels", "distr6"),
+        packages = c("mlr3extralearners", "survivalmodels"),
         man = "mlr3extralearners::mlr_learners_surv.akritas",
         label = "Akritas Estimator"
       )

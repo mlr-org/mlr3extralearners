@@ -58,7 +58,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
 
       super$initialize(
         id = "surv.coxboost",
-        packages = c("mlr3extralearners", "CoxBoost", "pracma"),
+        packages = c("mlr3extralearners", "CoxBoost"),
         feature_types = c("integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         param_set = ps,
@@ -132,7 +132,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         type = "risk",
         times = times)
 
-      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
+      mlr3proba::surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

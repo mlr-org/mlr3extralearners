@@ -9,13 +9,13 @@
 #' @export
 install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
   sapply(.keys, function(.key) {
-    if (grepl("surv|dens", .key) && !requireNamespace("mlr3proba", quietly = TRUE)) {
+    if (grepl("surv", .key) && !requireNamespace("mlr3proba", quietly = TRUE)) {
       utils::install.packages("mlr3proba", repos = repos, ...)
     } else if (grepl("clust", .key) && !requireNamespace("mlr3cluster", quietly = TRUE)) {
       utils::install.packages("mlr3cluster", repos = repos, ...)
     }
 
-    lrn = suppressWarnings(mlr3::lrn(.key))
+    lrn = suppressWarnings(lrn(.key))
     pkgs = lrn$packages
     # get uninstalled packages
     cran = pkgs[!grepl("/", pkgs)]
