@@ -1,0 +1,57 @@
+# Common Issues when Creating a new Learner
+
+This vignette lists some common issues that one should pay attention to
+when implementing a `Learner`.
+
+## Ordering Features
+
+When implementing the private `$.predict()` method it is a good idea to
+retrieve the columns in the same order as they were during `$.train()`.
+While this might not matter in most cases, we have encountered examples
+where this was necessary to ensure that the learner worked as expected.
+For this purpose, the `ordered_features` helper function exists that is
+also used in the learner template.
+
+## Accessing Internals From `$state`
+
+Sometimes, one needs additional information during `$predict()` that
+might not be stored in the machine learning model itself. In such cases,
+one might be tempted to access data from the `$state` of a `Learner`
+beyond `$state$model`. However, this is a rather internal data structure
+and some parts of the state are e.g. only available after a manual
+`$train()` call, but not during
+[`resample()`](https://mlr3.mlr-org.com/reference/resample.html). This
+is done for efficiency reasons.
+
+If you need additional information, there are two options:
+
+1.  You can make the private `$.train()` method return a
+    [`list()`](https://rdrr.io/r/base/list.html) with the actual model
+    and additional metadata so that both is available during
+    `$.train()`.
+2.  You can store additional information in the attributes of the
+    upstream model. This should use an attribute name that does not
+    conflict with other attributes. You can, e.g., use `"mlr3_info"`.
+
+## Default vs. Initial Parameters
+
+When creating a parameter (via `p_dbl()` and friends), there are two
+similar arguments that can be specified, namely `init` and `default`. On
+the one hand, the argument `default` should describe the default value
+that the upstream package uses when no specific value is set. E.g., if
+one were to connect the linear model to `mlr3`, the default for the
+parameter `singualr.ok` can be accessed via `formals(lm)$singular.ok`.
+Note that these default values do not set any specific parameter values
+in the `$param_set` of the `Learner`. On the other hand, the `init`
+field describes to what the parameter value should be initialized to (so
+it is then also accessible via `learner$param_set$values$<id>`). By
+default, it is not initialized to any value, which means that the
+default behavior is used.
+
+## Complex Defaults
+
+When annotating the default value for a parameter (argument `default`)
+in the `ParamSet`, there are cases where defaults are complex
+expressions such as `sample.int(10000L)`. In such cases, it is ok to not
+specify any `default` value for the parameter, which `paradox` then
+interprets as having a complex default.

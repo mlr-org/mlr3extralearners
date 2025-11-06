@@ -1,0 +1,595 @@
+# mlr3extralearners
+
+Package website: [release](https://mlr3extralearners.mlr-org.com/) \|
+[dev](https://mlr3extralearners.mlr-org.com/dev/)
+
+Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
+
+## What is mlr3extralearners?
+
+`mlr3extralearners` contains all learners from mlr3 that are not in
+`mlr3learners` or the core packages. An overview of all learners within
+the `mlr3verse` can be found [here](https://mlr-org.com/learners.html).
+
+`mlr3extralearners` lives on GitHub and will not be on CRAN.
+
+You can install the package as follows:
+
+``` r
+# latest GitHub release
+pak::pak("mlr-org/mlr3extralearners@*release")
+
+# development version
+pak::pak("mlr-org/mlr3extralearners")
+```
+
+Alternatively, you can add the following to your .Rprofile, which allows
+you to install `mlr3extralearners` via
+[`install.packages()`](https://rdrr.io/r/utils/install.packages.html).
+
+``` r
+# .Rprofile
+options(repos = c(
+  mlrorg = "https://mlr-org.r-universe.dev",
+  CRAN = "https://cloud.r-project.org/"
+))
+```
+
+## Quick Start
+
+The package includes functionality for detecting if you have the
+required packages installed to use a learner, and ships with the
+function `install_learner` which can install all required learner
+dependencies.
+
+``` r
+library(mlr3extralearners)
+lrn("regr.gbm")
+#> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
+#> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
+#> * Model: -
+#> * Parameters: keep.data=FALSE, n.cores=1
+#> * Packages: mlr3, mlr3extralearners, gbm
+#> * Predict Types:  [response]
+#> * Feature Types: integer, numeric, factor, ordered
+#> * Properties: importance, missings, weights
+
+install_learners("regr.gbm")
+
+learner <-lrn("regr.gbm")
+learner
+#> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
+#> * Model: -
+#> * Parameters: keep.data=FALSE, n.cores=1
+#> * Packages: mlr3, mlr3extralearners, gbm
+#> * Predict Types:  [response]
+#> * Feature Types: integer, numeric, factor, ordered
+#> * Properties: importance, missings, weights
+```
+
+You can now use the learner to fit a model and make predictions.
+
+``` r
+task <- tsk("california_housing")
+task
+#> 
+#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> • Target: median_house_value
+#> • Properties: -
+#> • Features (9):
+#>   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms
+#>   • fct (1): ocean_proximity
+split <- partition(task)
+learner$train(task, split$train)
+#> Distribution not specified, assuming gaussian ...
+learner$predict(task, split$test)
+#> 
+#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#>  row_ids  truth  response
+#>        1 452600 428999.97
+#>        7 299200 265771.26
+#>       17 152500 221807.64
+#>      ---    ---       ---
+#>    20634  98300  98009.59
+#>    20635 116800 144098.72
+#>    20640  89400  93868.47
+```
+
+You can learn more about using learners by [reading our
+book](https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example).
+
+## Extending mlr3extralearners
+
+An in-depth tutorial on how to add learners can be found in the [package
+website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
+
+## Acknowledgements
+
+This R package is developed as part of the [Mathematical Research Data
+Initiative](https://www.mardi4nfdi.de/about/mission).
+
+# Package index
+
+## Helpers
+
+- [`list_mlr3learners()`](https://mlr3extralearners.mlr-org.com/dev/reference/list_mlr3learners.md)
+  : List Learners in mlr3verse
+- [`install_learners()`](https://mlr3extralearners.mlr-org.com/dev/reference/install_learners.md)
+  : Install Learner Dependencies
+- [`assert_python_packages()`](https://mlr3extralearners.mlr-org.com/dev/reference/assert_python_packages.md)
+  : Assert Python Packages
+
+## Classification Learners
+
+- [`mlr_learners_classif.AdaBoostM1`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.AdaBoostM1.md)
+  [`LearnerClassifAdaBoostM1`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.AdaBoostM1.md)
+  : Classification AdaBoostM1 Learner
+- [`mlr_learners_classif.C50`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.C50.md)
+  [`LearnerClassifC50`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.C50.md)
+  : Classification C5.0 Learner
+- [`mlr_learners_classif.IBk`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.IBk.md)
+  [`LearnerClassifIBk`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.IBk.md)
+  : Classification IBk Learner
+- [`mlr_learners_classif.J48`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.J48.md)
+  [`LearnerClassifJ48`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.J48.md)
+  : Classification J48 Learner
+- [`mlr_learners_classif.JRip`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.JRip.md)
+  [`LearnerClassifJRip`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.JRip.md)
+  : Classification JRip Learner
+- [`mlr_learners_classif.LMT`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.LMT.md)
+  [`LearnerClassifLMT`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.LMT.md)
+  : Classification Logistic Model Trees Learner
+- [`mlr_learners_classif.OneR`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.OneR.md)
+  [`LearnerClassifOneR`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.OneR.md)
+  : Classification OneR Learner
+- [`mlr_learners_classif.PART`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.PART.md)
+  [`LearnerClassifPART`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.PART.md)
+  : Classification PART Learner
+- [`mlr_learners_classif.abess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.abess.md)
+  [`LearnerClassifAbess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.abess.md)
+  : Classification Abess Learner
+- [`mlr_learners_classif.ada`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ada.md)
+  [`LearnerClassifAdaBoosting`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ada.md)
+  : Classification Boosting Learner
+- [`mlr_learners_classif.adabag`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.adabag.md)
+  [`LearnerClassifAdabag`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.adabag.md)
+  : Classification Boosting Learner
+- [`mlr_learners_classif.aorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.aorsf.md)
+  [`LearnerClassifObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.aorsf.md)
+  : Oblique Random Forest Classifier
+- [`mlr_learners_classif.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.md)
+  [`LearnerClassifBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bart.md)
+  : Classification BART (Bayesian Additive Regression Trees) Learner
+- [`mlr_learners_classif.bayes_net`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bayes_net.md)
+  [`LearnerClassifBayesNet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bayes_net.md)
+  : Classification Bayes Network Learner
+- [`mlr_learners_classif.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.blockforest.md)
+  [`LearnerClassifBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.blockforest.md)
+  : BlockForest Classification Learner
+- [`mlr_learners_classif.bst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bst.md)
+  [`LearnerClassifBst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.bst.md)
+  : Classification Gradient Boosting Learner
+- [`mlr_learners_classif.catboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.catboost.md)
+  [`LearnerClassifCatboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.catboost.md)
+  : Gradient Boosted Decision Trees Classification Learner
+- [`mlr_learners_classif.cforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.cforest.md)
+  [`LearnerClassifCForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.cforest.md)
+  : Classification Conditional Random Forest Learner
+- [`mlr_learners_classif.ctree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ctree.md)
+  [`LearnerClassifCTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ctree.md)
+  : Classification Conditional Inference Tree Learner
+- [`mlr_learners_classif.decision_stump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_stump.md)
+  [`LearnerClassifDecisionStump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_stump.md)
+  : Classification Decision Stump Learner
+- [`mlr_learners_classif.decision_table`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_table.md)
+  [`LearnerClassifDecisionTable`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_table.md)
+  : Classification Decision Table Learner
+- [`mlr_learners_classif.dlda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dlda.md)
+  [`LearnerClassifDiagLda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dlda.md)
+  : Classification Diagonal Linear Discriminant Analysis Learner
+- [`mlr_learners_classif.earth`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.earth.md)
+  [`LearnerClassifEarth`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.earth.md)
+  : Classification MARS (Multivariate Adaptive Regression Splines)
+  Learner
+- [`mlr_learners_classif.evtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.evtree.md)
+  [`LearnerClassifEvtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.evtree.md)
+  : Classification Decision Tree Learner
+- [`mlr_learners_classif.exhaustive_search`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.exhaustive_search.md)
+  [`LearnerClassifExhaustiveSearch`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.exhaustive_search.md)
+  : Logistic Regression with Exhaustive Search
+- [`mlr_learners_classif.fastai`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.fastai.md)
+  [`LearnerClassifFastai`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.fastai.md)
+  : Classification Neural Network Learner
+- [`mlr_learners_classif.fnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.fnn.md)
+  [`LearnerClassifFNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.fnn.md)
+  : Fast Nearest Neighbour Classification
+- [`mlr_learners_classif.gam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gam.md)
+  [`LearnerClassifGam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gam.md)
+  : Classification Generalized Additive Model Learner
+- [`mlr_learners_classif.gamboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gamboost.md)
+  [`LearnerClassifGAMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gamboost.md)
+  : Boosted Generalized Additive Classification Learner
+- [`mlr_learners_classif.gausspr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gausspr.md)
+  [`LearnerClassifGausspr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gausspr.md)
+  : Classification Gaussian Process Learner
+- [`mlr_learners_classif.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gbm.md)
+  [`LearnerClassifGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gbm.md)
+  : Gradient Boosting Classification Learner
+- [`mlr_learners_classif.glmboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmboost.md)
+  [`LearnerClassifGLMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmboost.md)
+  : Boosted Generalized Linear Classification Learner
+- [`mlr_learners_classif.glmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmer.md)
+  [`LearnerClassifGlmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmer.md)
+  : Classification Linear Mixed Effect Learner
+- [`mlr_learners_classif.imbalanced_rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
+  [`LearnerClassifImbalancedRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
+  : Classification Imbalanced Random Forest Src Learner
+- [`mlr_learners_classif.knn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.knn.md)
+  [`LearnerClassifKnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.knn.md)
+  : Classification K-nearest Neighbour Learner
+- [`mlr_learners_classif.kstar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.kstar.md)
+  [`LearnerClassifKStar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.kstar.md)
+  : Classification KStar Learner
+- [`mlr_learners_classif.ksvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ksvm.md)
+  [`LearnerClassifKSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ksvm.md)
+  : Classification Kernlab Support Vector Machine
+- [`mlr_learners_classif.liblinear`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.liblinear.md)
+  [`LearnerClassifLiblineaR`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.liblinear.md)
+  : LiblineaR Classification Learner
+- [`mlr_learners_classif.lightgbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lightgbm.md)
+  [`LearnerClassifLightGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lightgbm.md)
+  : Classification LightGBM Learner
+- [`mlr_learners_classif.logistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.logistic.md)
+  [`LearnerClassifLogistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.logistic.md)
+  : Classification Logistic Regression Learner
+- [`mlr_learners_classif.lssvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lssvm.md)
+  [`LearnerClassifLSSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lssvm.md)
+  : Classification Least Squares Support Vector Machine Learner
+- [`mlr_learners_classif.mda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mda.md)
+  [`LearnerClassifMda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mda.md)
+  : Classification Discriminant Analysis Learner
+- [`mlr_learners_classif.mdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
+  [`LearnerClassifMdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
+  : Classification Linear Discriminant Analysis Learner
+- [`mlr_learners_classif.mob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)
+  [`LearnerClassifMob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)
+  : Classification Model-based Recursive Partitioning Learner
+- [`mlr_learners_classif.multilayer_perceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.multilayer_perceptron.md)
+  [`LearnerClassifMultilayerPerceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.multilayer_perceptron.md)
+  : Classification MultilayerPerceptron Learner
+- [`mlr_learners_classif.naive_bayes_multinomial`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.naive_bayes_multinomial.md)
+  [`LearnerClassifNaiveBayesMultinomial`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.naive_bayes_multinomial.md)
+  : Classification Multinomial Naive Bayes Learner From Weka
+- [`mlr_learners_classif.naive_bayes_weka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.naive_bayes_weka.md)
+  [`LearnerClassifNaiveBayesWeka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.naive_bayes_weka.md)
+  : Classification Naive Bayes Learner From Weka
+- [`mlr_learners_classif.neuralnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.neuralnet.md)
+  [`LearnerClassifNeuralnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.neuralnet.md)
+  : Classification Neural Network Learner
+- [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
+  [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
+  : Classification L1 and L2 Penalized Learner
+- [`mlr_learners_classif.polyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.polyFit.md)
+  [`LearnerClassifPolyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.polyFit.md)
+  : Polynomial GLM Learner
+- [`mlr_learners_classif.priority_lasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.priority_lasso.md)
+  [`LearnerClassifPriorityLasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.priority_lasso.md)
+  : Classification Priority Lasso Learner
+- [`mlr_learners_classif.rFerns`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rFerns.md)
+  [`LearnerClassifRferns`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rFerns.md)
+  : Random Ferns Classification Learner
+- [`mlr_learners_classif.randomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.randomForest.md)
+  [`LearnerClassifRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.randomForest.md)
+  : Classification Random Forest Learner
+- [`mlr_learners_classif.random_forest_weka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.random_forest_weka.md)
+  [`LearnerClassifRandomForestWeka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.random_forest_weka.md)
+  : Classification Random Forest Learner from Weka
+- [`mlr_learners_classif.random_tree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.random_tree.md)
+  [`LearnerClassifRandomTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.random_tree.md)
+  : Classification Random Tree Learner
+- [`mlr_learners_classif.rda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rda.md)
+  [`LearnerClassifRda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rda.md)
+  : Classification Discriminant Analysis Learner
+- [`mlr_learners_classif.reptree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.reptree.md)
+  [`LearnerClassifREPTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.reptree.md)
+  : Classification Decision Tree Learner
+- [`mlr_learners_classif.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rfsrc.md)
+  [`LearnerClassifRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rfsrc.md)
+  : Classification Random Forest SRC Learner
+- [`mlr_learners_classif.rotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
+  [`LearnerClassifRotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
+  : Classification Rotation Forest Learner
+- [`mlr_learners_classif.sda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sda.md)
+  [`LearnerClassifSda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sda.md)
+  : Shrinkage Discriminant Analysis
+- [`mlr_learners_classif.sdlda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sdlda.md)
+  [`LearnerClassifSdlda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sdlda.md)
+  : Classification Linear Discriminant Analysis Learner
+- [`mlr_learners_classif.sgd`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sgd.md)
+  [`LearnerClassifSGD`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sgd.md)
+  : Classification Stochastic Gradient Descent Learner
+- [`mlr_learners_classif.simple_logistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.simple_logistic.md)
+  [`LearnerClassifSimpleLogistic`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.simple_logistic.md)
+  : Classification SimpleLogistic Learner
+- [`mlr_learners_classif.smo`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.smo.md)
+  [`LearnerClassifSMO`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.smo.md)
+  : Classification Support Vector Machine Learner
+- [`mlr_learners_classif.stepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
+  [`LearnerClassifStepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
+  : Classification Logistic Regression Learner
+- [`mlr_learners_classif.tabpfn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabpfn.md)
+  [`LearnerClassifTabPFN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.tabpfn.md)
+  : TabPFN Classification Learner
+- [`mlr_learners_classif.voted_perceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.voted_perceptron.md)
+  [`LearnerClassifVotedPerceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.voted_perceptron.md)
+  : Classification Voted Perceptron Learner
+
+## Regression Learners
+
+- [`mlr_learners_regr.IBk`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.IBk.md)
+  [`LearnerRegrIBk`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.IBk.md)
+  : Regression IBk Learner
+- [`mlr_learners_regr.M5Rules`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.M5Rules.md)
+  [`LearnerRegrM5Rules`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.M5Rules.md)
+  : Regression M5Rules Learner
+- [`mlr_learners_regr.abess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.md)
+  [`LearnerRegrAbess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.md)
+  : Regression Abess Learner
+- [`mlr_learners_regr.aorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.aorsf.md)
+  [`LearnerRegrObliqueRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.aorsf.md)
+  : Oblique Random Forest Regressor
+- [`mlr_learners_regr.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
+  [`LearnerRegrBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
+  : Regression BART (Bayesian Additive Regression Trees) Learner
+- [`mlr_learners_regr.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
+  [`LearnerRegrBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
+  : BlockForest Regression Learner
+- [`mlr_learners_regr.botorch_mixedsingletaskgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
+  [`LearnerRegrBotorchMixedSingleTaskGP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
+  : BoTorch MixedSingleTaskGP Regression Learner
+- [`mlr_learners_regr.botorch_singletaskgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_singletaskgp.md)
+  [`LearnerRegrBotorchSingleTaskGP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_singletaskgp.md)
+  : BoTorch SingleTaskGP Regression Learner
+- [`mlr_learners_regr.brnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.brnn.md)
+  [`LearnerRegrBrnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.brnn.md)
+  : Regression Neural Network Learner
+- [`mlr_learners_regr.bst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.md)
+  [`LearnerRegrBst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.md)
+  : Regression Gradient Boosting Learner
+- [`mlr_learners_regr.catboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.md)
+  [`LearnerRegrCatboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.md)
+  : Gradient Boosted Decision Trees Regression Learner
+- [`mlr_learners_regr.cforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cforest.md)
+  [`LearnerRegrCForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cforest.md)
+  : Regression Conditional Random Forest Learner
+- [`mlr_learners_regr.crs`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.crs.md)
+  [`LearnerRegrCrs`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.crs.md)
+  : Regression Splines Learner
+- [`mlr_learners_regr.ctree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ctree.md)
+  [`LearnerRegrCTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ctree.md)
+  : Regression Conditional Inference Tree Learner
+- [`mlr_learners_regr.cubist`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cubist.md)
+  [`LearnerRegrCubist`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.cubist.md)
+  : Regression Cubist Learner
+- [`mlr_learners_regr.decision_stump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.decision_stump.md)
+  [`LearnerRegrDecisionStump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.decision_stump.md)
+  : Regression Decision Stump Learner
+- [`mlr_learners_regr.decision_table`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.decision_table.md)
+  [`LearnerRegrDecisionTable`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.decision_table.md)
+  : Regression Decision Table Learner
+- [`mlr_learners_regr.earth`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.earth.md)
+  [`LearnerRegrEarth`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.earth.md)
+  : Implementation of Multivariate Adaptive Regression Splines
+- [`mlr_learners_regr.evtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.evtree.md)
+  [`LearnerRegrEvtree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.evtree.md)
+  : Regression Decision Tree Learner
+- [`mlr_learners_regr.exhaustive_search`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.exhaustive_search.md)
+  [`LearnerRegrExhaustiveSearch`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.exhaustive_search.md)
+  : Linear Regression with Exhaustive Search
+- [`mlr_learners_regr.fnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fnn.md)
+  [`LearnerRegrFNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fnn.md)
+  : Regression Fast Nearest Neighbor Search Learner
+- [`mlr_learners_regr.gam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gam.md)
+  [`LearnerRegrGam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gam.md)
+  : Regression Generalized Additive Model Learner
+- [`mlr_learners_regr.gamboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gamboost.md)
+  [`LearnerRegrGAMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gamboost.md)
+  : Boosted Generalized Additive Regression Learner
+- [`mlr_learners_regr.gaussian_processes`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gaussian_processes.md)
+  [`LearnerRegrGaussianProcesses`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gaussian_processes.md)
+  : Regression Gaussian Processes Learner From Weka
+- [`mlr_learners_regr.gausspr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gausspr.md)
+  [`LearnerRegrGausspr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gausspr.md)
+  : Regression Gaussian Process Learner
+- [`mlr_learners_regr.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gbm.md)
+  [`LearnerRegrGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gbm.md)
+  : Regression Gradient Boosting Machine Learner
+- [`mlr_learners_regr.glm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glm.md)
+  [`LearnerRegrGlm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glm.md)
+  : Generalized Linear Regression
+- [`mlr_learners_regr.glmboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glmboost.md)
+  [`LearnerRegrGLMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.glmboost.md)
+  : Boosted Generalized Linear Regression Learner
+- [`mlr_learners_regr.kstar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
+  [`LearnerRegrKStar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
+  : Regression KStar Learner
+- [`mlr_learners_regr.ksvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ksvm.md)
+  [`LearnerRegrKSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ksvm.md)
+  : Regression Kernlab Support Vector Machine
+- [`mlr_learners_regr.liblinear`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.liblinear.md)
+  [`LearnerRegrLiblineaR`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.liblinear.md)
+  : L2-Regularized Support Vector Regression Learner
+- [`mlr_learners_regr.lightgbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lightgbm.md)
+  [`LearnerRegrLightGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lightgbm.md)
+  : Regression LightGBM Learner
+- [`mlr_learners_regr.linear_regression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.linear_regression.md)
+  [`LearnerRegrLinearRegression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.linear_regression.md)
+  : Regression Linear Regression Learner From Weka
+- [`mlr_learners_regr.lmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lmer.md)
+  [`LearnerRegrLmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.lmer.md)
+  : Regression Linear Mixed Effects Learner
+- [`mlr_learners_regr.m5p`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.m5p.md)
+  [`LearnerRegrM5P`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.m5p.md)
+  : Regression M5P Learner
+- [`mlr_learners_regr.mars`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mars.md)
+  [`LearnerRegrMars`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mars.md)
+  : Regression Mars Learner
+- [`mlr_learners_regr.mob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mob.md)
+  [`LearnerRegrMob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mob.md)
+  : Regression Model-based Recursive Partitioning Learner
+- [`mlr_learners_regr.mqgam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mqgam.md)
+  [`LearnerRegrMQGam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.mqgam.md)
+  : Generalized Additive Quantile Regression Model for Multiple
+  Quantiles
+- [`mlr_learners_regr.multilayer_perceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.multilayer_perceptron.md)
+  [`LearnerRegrMultilayerPerceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.multilayer_perceptron.md)
+  : Regression MultilayerPerceptron Learner
+- [`mlr_learners_regr.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
+  [`LearnerRegrPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
+  : Regression L1 and L2 Penalized Learner
+- [`mlr_learners_regr.polyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
+  [`LearnerRegrPoly`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
+  : Polynomial Regression Learner
+- [`mlr_learners_regr.priority_lasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.md)
+  [`LearnerRegrPriorityLasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.priority_lasso.md)
+  : Regression Priority Lasso Learner
+- [`mlr_learners_regr.qgam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.qgam.md)
+  [`LearnerRegrQGam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.qgam.md)
+  : Generalized Additive Quantile Regression Model
+- [`mlr_learners_regr.randomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.randomForest.md)
+  [`LearnerRegrRandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.randomForest.md)
+  : Regression Random Forest Learner
+- [`mlr_learners_regr.random_forest_weka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_forest_weka.md)
+  [`LearnerRegrRandomForestWeka`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_forest_weka.md)
+  : Regression Random Forest Learner from Weka
+- [`mlr_learners_regr.random_tree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_tree.md)
+  [`LearnerRegrRandomTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.random_tree.md)
+  : Regression Random Tree Learner
+- [`mlr_learners_regr.reptree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.reptree.md)
+  [`LearnerRegrREPTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.reptree.md)
+  : Regression Decision Tree Learner
+- [`mlr_learners_regr.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rfsrc.md)
+  [`LearnerRegrRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rfsrc.md)
+  : Regression Random Forest SRC Learner
+- [`mlr_learners_regr.rsm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rsm.md)
+  [`LearnerRegrRSM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rsm.md)
+  : Regression Response Surface Model Learner
+- [`mlr_learners_regr.rvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rvm.md)
+  [`LearnerRegrRVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.rvm.md)
+  : Regression Relevance Vector Machine Learner
+- [`mlr_learners_regr.sgd`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.sgd.md)
+  [`LearnerRegrSGD`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.sgd.md)
+  : Regression Stochastic Gradient Descent Learner
+- [`mlr_learners_regr.simple_linear_regression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.simple_linear_regression.md)
+  [`LearnerRegrSimpleLinearRegression`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.simple_linear_regression.md)
+  : Regression SimpleLinearRegression Learner from Weka
+- [`mlr_learners_regr.smo_reg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
+  [`LearnerRegrSMOreg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.smo_reg.md)
+  : Regression Support Vector Machine Learner
+- [`mlr_learners_regr.tabpfn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
+  [`LearnerRegrTabPFN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.tabpfn.md)
+  : TabPFN Regression Learner
+
+## Survival Learners
+
+- [`mlr_learners_surv.akritas`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.akritas.md)
+  [`LearnerSurvAkritas`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.akritas.md)
+  : Survival Akritas Estimator Learner
+- [`mlr_learners_surv.aorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.aorsf.md)
+  [`LearnerSurvAorsf`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.aorsf.md)
+  : Accelerated Oblique Random Survival Forest Learner
+- [`mlr_learners_surv.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.bart.md)
+  [`LearnerSurvLearnerSurvBART`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.bart.md)
+  : Survival Bayesian Additive Regression Trees Learner
+- [`mlr_learners_surv.blackboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.blackboost.md)
+  [`LearnerSurvBlackBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.blackboost.md)
+  : Gradient Boosting with Regression Trees Survival Learner
+- [`mlr_learners_surv.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.blockforest.md)
+  [`LearnerSurvBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.blockforest.md)
+  : BlockForest Survival Learner
+- [`mlr_learners_surv.cforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cforest.md)
+  [`LearnerSurvCForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cforest.md)
+  : Survival Conditional Random Forest Learner
+- [`mlr_learners_surv.coxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.coxboost.md)
+  [`LearnerSurvCoxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.coxboost.md)
+  : Survival Cox Model with Likelihood Based Boosting Learner
+- [`mlr_learners_surv.ctree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.ctree.md)
+  [`LearnerSurvCTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.ctree.md)
+  : Survival Conditional Inference Tree Learner
+- [`mlr_learners_surv.cv_coxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_coxboost.md)
+  [`LearnerSurvCVCoxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_coxboost.md)
+  : Survival Cox Model with Cross-Validation Likelihood Based Boosting
+  Learner
+- [`mlr_learners_surv.cv_glmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
+  [`LearnerSurvCVGlmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
+  : Cross-Validated GLM with Elastic Net Regularization Survival Learner
+- [`mlr_learners_surv.flexible`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexible.md)
+  [`LearnerSurvFlexible`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexible.md)
+  : Survival Flexible Parametric Spline Learner
+- [`mlr_learners_surv.gamboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
+  [`LearnerSurvGAMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
+  : Boosted Generalized Additive Survival Learner
+- [`mlr_learners_surv.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gbm.md)
+  [`LearnerSurvGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gbm.md)
+  : Survival Gradient Boosting Machine Learner
+- [`mlr_learners_surv.glmboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.glmboost.md)
+  [`LearnerSurvGLMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.glmboost.md)
+  : Boosted Generalized Linear Survival Learner
+- [`mlr_learners_surv.glmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.glmnet.md)
+  [`LearnerSurvGlmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.glmnet.md)
+  : GLM with Elastic Net Regularization Survival Learner
+- [`mlr_learners_surv.mboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.mboost.md)
+  [`LearnerSurvMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.mboost.md)
+  : Boosted Generalized Additive Survival Learner
+- [`mlr_learners_surv.nelson`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.nelson.md)
+  [`LearnerSurvNelson`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.nelson.md)
+  : Survival Nelson-Aalen Estimator Learner
+- [`mlr_learners_surv.parametric`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.parametric.md)
+  [`LearnerSurvParametric`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.parametric.md)
+  : Survival Fully Parametric Learner
+- [`mlr_learners_surv.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.penalized.md)
+  [`LearnerSurvPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.penalized.md)
+  : Survival L1 and L2 Penalized Cox Learner
+- [`mlr_learners_surv.priority_lasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.priority_lasso.md)
+  [`LearnerSurvPriorityLasso`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.priority_lasso.md)
+  : Survival Priority Lasso Learner
+- [`mlr_learners_surv.ranger`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.ranger.md)
+  [`LearnerSurvRanger`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.ranger.md)
+  : Ranger Survival Learner
+- [`mlr_learners_surv.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.rfsrc.md)
+  [`LearnerSurvRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.rfsrc.md)
+  : Survival Random Forest SRC Learner
+- [`mlr_learners_surv.svm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.svm.md)
+  [`LearnerSurvSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.svm.md)
+  : Survival Support Vector Machine Learner
+- [`mlr_learners_surv.xgboost.aft`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.aft.md)
+  [`LearnerSurvXgboostAFT`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.aft.md)
+  : Extreme Gradient Boosting AFT Survival Learner
+- [`mlr_learners_surv.xgboost.cox`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.cox.md)
+  [`LearnerSurvXgboostCox`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.xgboost.cox.md)
+  : Extreme Gradient Boosting Cox Survival Learner
+
+## Competing Risks Learners
+
+- [`mlr_learners_cmprsk.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.rfsrc.md)
+  [`LearnerCompRisksRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.rfsrc.md)
+  : Random Forest Competing Risks Learner
+
+## General
+
+- [`mlr3extralearners`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr3extralearners-package.md)
+  [`mlr3extralearners-package`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr3extralearners-package.md)
+  : mlr3extralearners: Extra Learners For mlr3
+
+# Articles
+
+### All vignettes
+
+- [Common Issues when Creating a new
+  Learner](https://mlr3extralearners.mlr-org.com/dev/articles/common_issues.md):
+- [Creating a new
+  Learner](https://mlr3extralearners.mlr-org.com/dev/articles/extending.md):
+- [Learner
+  Status](https://mlr3extralearners.mlr-org.com/dev/articles/learner_status.md):
+- [Search
+  Learners](https://mlr3extralearners.mlr-org.com/dev/articles/list_learners.md):
