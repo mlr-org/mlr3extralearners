@@ -71,6 +71,17 @@ authors:
   - name: Bernd Bischl
     orcid: 0000-0001-6002-6980
     affiliation: "2, 3"
+  - name: Baisu Zhou
+    orcid: 0009-0001-5588-9658
+    affiliation: 19
+  - name: Niko German
+    orcid: 0009-0001-7394-8367
+    affiliation: 2
+  - name: Lona Koers
+    orcid: 0009-0008-8862-7540
+    affiliation: 2
+  - name: Anna Nazarova
+    affiliation: 2
 affiliations:
  - name: TU Dortmund University, Germany
    index: 1
@@ -108,6 +119,8 @@ affiliations:
    index: 17
  - name: devXY GmbH
    index: 18
+ - name: Department of Computer Science, University of Tübingen
+   index: 19
 date: 24 March 2025
 bibliography: paper.bib
 ---
