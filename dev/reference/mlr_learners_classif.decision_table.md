@@ -261,16 +261,16 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 139
-#> Number of Rules : 12
+#> Number of Rules : 4
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 510
-#>  Merit of best subset found:   83.453
+#>  Total number of subsets evaluated: 405
+#>  Merit of best subset found:   78.417
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 3,4,43,51,1
+#> Feature set: 2,5,1
 
 
 # Make predictions for the test rows

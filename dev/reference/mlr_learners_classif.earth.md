@@ -198,13 +198,13 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> GLM (family binomial, link logit, maxit=25):
 #>  nulldev  df         dev  df   devratio     AIC iters converged
-#>  191.073 138 1.88546e-08 120          1      38    25         0
+#>  192.342 138 5.36589e-08 121          1      36    25         0
 #> 
-#> Earth selected 19 of 29 terms, and 14 of 60 predictors
-#> Termination condition: RSq changed by less than 0.001 at 29 terms
-#> Importance: V11, V23, V45, V36, V49, V28, V24, V54, V39, V9, V31, V17, V38, ...
-#> Number of terms at each degree of interaction: 1 18 (additive model)
-#> Earth GCV 0.09248758    RSS 6.922595    GRSq 0.6310571    RSq 0.7984414
+#> Earth selected 18 of 21 terms, and 10 of 60 predictors
+#> Termination condition: RSq changed by less than 0.001 at 21 terms
+#> Importance: V12, V23, V45, V36, V27, V28, V42, V52, V39, V49, V1-unused, ...
+#> Number of terms at each degree of interaction: 1 17 (additive model)
+#> Earth GCV 0.1005092    RSS 7.820919    GRSq 0.6027195    RSq 0.7743654
 
 
 # Make predictions for the test rows
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>   0.173913 
 ```
