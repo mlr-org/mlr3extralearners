@@ -192,7 +192,7 @@ Integrating learners from diverse `R` packages poses challenges, on the one hand
 - **Interface consistency**: The package regularly verifies that each learner adheres to the expected interface of the latest released version of its upstream function.
 When new parameters are introduced or existing ones changed or removed, the tests fail until the parameter sets are updated accordingly.
 - **Automated testing**: In general, writing unit tests for ML algorithms is challenging, because of edge-cases, numeric errors, and the fact that the input to these algorithms can be arbitrary datasets.
-Aimed at addressing these challenges, `mlr3extralearners` performs regular automated tests on all learners.
+`mlr3extralearners` is aimed at addressing these challenges, and performs regular automated tests on all learners.
 These tests include sanity checks that, e.g., verify that the learners produce sensible predictions for simple randomly generated datasets.
 Furthermore, the tests also validate the learners' metadata annotations, such as whether a learner can actually handle missing values or is able to produce importance scores.
 In the past, these tests have detected bugs in some upstream packages and we have subsequently notified their authors.
