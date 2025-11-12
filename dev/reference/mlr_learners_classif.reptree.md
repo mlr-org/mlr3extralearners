@@ -231,15 +231,13 @@ print(learner$model)
 #> ============
 #> 
 #> V12 < 0.23
-#> |   V2 < 0.05
-#> |   |   V4 < 0.05 : R (25/0) [19/3]
-#> |   |   V4 >= 0.05
-#> |   |   |   V10 < 0.2 : R (3/0) [1/0]
-#> |   |   |   V10 >= 0.2 : M (2/0) [1/0]
-#> |   V2 >= 0.05 : M (5/1) [4/2]
-#> V12 >= 0.23 : M (57/16) [22/4]
+#> |   V20 < 0.83
+#> |   |   V44 < 0.3 : R (25/0) [17/3]
+#> |   |   V44 >= 0.3 : M (5/2) [2/0]
+#> |   V20 >= 0.83 : M (9/2) [7/2]
+#> V12 >= 0.23 : M (53/12) [21/5]
 #> 
-#> Size of the tree : 9
+#> Size of the tree : 7
 
 
 # Make predictions for the test rows
@@ -248,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.2608696 
 ```
