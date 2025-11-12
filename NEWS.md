@@ -1,4 +1,9 @@
-# mlr3extralearners (development version)
+# mlr3extralearners dev
+
+* Add `formula` and `anc` params to `surv.flexible` learner, as well as `response` predict type (mean survival time).
+* Fix `regr.gamboost` regression predictions (#498).
+
+# mlr3extralearners 1.2.0
 
 ## New Features
 
@@ -36,10 +41,9 @@
 * Removed parameters from RandomForestSRC learners that weren't used + optimized tests
 * Removed `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution` survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
 
-
-
 ## Breaking Changes
 
+* All (extra) density learners are removed. These will be transferred to `mlr3proba` soon (see `v0.8.2` or later).
 * The `create_learner()` generator was removed, because it was hard to maintain and boilerplate code in the age of LLMs is easy enough to write.
 * remove `discrete` parameter from `surv.parametric`, so that it is impossible to return `distr6::VectorDistribution`
   survival predictions (softly deprecated in `mlr3proba@v0.8.1`)
@@ -57,9 +61,12 @@
 
 * The package now imports `withr`
 * `mlr3proba` is now an import and no longer a suggested package.
+* `mlr3cmprsk` is added as an import.
 * The package no longer uses `set.seed()` in the tests and instead uses `withr::local_seed()`
-  This means the auto tests will be stochastic like they should be
+  This means the auto tests will be stochastic like they should be.
 * The CI now checks that RCMD-check passes when suggested packages are not available.
+* `distr6` dependency is removed. `partykit` survival learners use constant
+  interpolation of the predicted Kaplan-Meier curves via `survdistr::vec_interp()`
 
 # mlr3extralearners 1.1.0
 

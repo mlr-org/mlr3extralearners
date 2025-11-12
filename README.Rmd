@@ -43,8 +43,6 @@ pak::pak("mlr-org/mlr3extralearners@*release")
 pak::pak("mlr-org/mlr3extralearners")
 ```
 
-
-
 Alternatively, you can add the following to your .Rprofile, which allows you to install `mlr3extralearners` via `install.packages()`.
 
 ```{r, eval = FALSE}
@@ -55,13 +53,14 @@ options(repos = c(
 ))
 ```
 
-## Installing and Loading Learners
+## Quick Start
 
 The package includes functionality for detecting if you have the required packages installed
 to use a learner, and ships with the function `install_learner` which can install all required
 learner dependencies.
 
 ```{r, echo=TRUE, eval = FALSE}
+library(mlr3extralearners)
 lrn("regr.gbm")
 #> Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
@@ -74,7 +73,8 @@ lrn("regr.gbm")
 
 install_learners("regr.gbm")
 
-lrn("regr.gbm")
+learner <-lrn("regr.gbm")
+learner
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
 #> * Parameters: keep.data=FALSE, n.cores=1
@@ -83,6 +83,22 @@ lrn("regr.gbm")
 #> * Feature Types: integer, numeric, factor, ordered
 #> * Properties: importance, missings, weights
 ```
+
+```{r, echo = FALSE}
+learner <- lrn("regr.gbm")
+```
+
+You can now use the learner to fit a model and make predictions.
+
+```{r}
+task <- tsk("california_housing")
+task
+split <- partition(task)
+learner$train(task, split$train)
+learner$predict(task, split$test)
+```
+
+You can learn more about using learners by [reading our book](https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example).
 
 ## Extending mlr3extralearners
 

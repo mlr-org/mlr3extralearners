@@ -50,7 +50,7 @@
 #' predictions$score()
 #' @export
 LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
-  inherit = mlr3proba::LearnerCompRisks,
+  inherit = mlr3cmprsk::LearnerCompRisks,
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.

@@ -140,7 +140,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
         .args = pv
       )
 
-      #' returned `risk` from survivalmodels is hp-style
+      #' returned `risk` from survivalmodels is PH-style
       #' ie higher value => higher risk
       list(crank = pred$risk, lp = pred$risk, distr = pred$surv)
     }

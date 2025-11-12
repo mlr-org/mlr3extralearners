@@ -29,6 +29,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
+   formula \tab untyped \tab - \tab  \tab - \cr
    bhazard \tab untyped \tab - \tab  \tab - \cr
    k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    knots \tab untyped \tab - \tab  \tab - \cr
@@ -36,10 +37,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    scale \tab character \tab hazard \tab hazard, odds, normal \tab - \cr
    timescale \tab character \tab log \tab log, identity \tab - \cr
    spline \tab character \tab rp \tab rp, splines2ns \tab - \cr
-   inits \tab untyped \tab - \tab  \tab - \cr
    rtrunc \tab untyped \tab - \tab  \tab - \cr
+   inits \tab untyped \tab - \tab  \tab - \cr
    fixedpars \tab untyped \tab - \tab  \tab - \cr
    cl \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   anc \tab untyped \tab - \tab  \tab - \cr
    maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    toler.chol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -57,11 +59,13 @@ where each score corresponds to a specific test observation.
 Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
 For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
 and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
+is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
+vector is \eqn{lp = \hat{\beta} X^T}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{predict.flexsurvreg()}.
+Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
 \item \code{crank}: same as \code{lp}.
+\item \code{response}: mean survival time calculated using \code{predict.flexsurvreg(type = "response", ...)}
 }
 }
 
@@ -79,7 +83,30 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-lrn("surv.flexible")
+\dontshow{if (learner_is_runnable("surv.flexible")) withAutoprint(\{ # examplesIf}
+library(survival)
+
+# Define the task, split to train/test set
+task = tsk("lung")
+set.seed(42)
+part = partition(task)
+
+# Define the learner
+learner = lrn("surv.flexible", k = 1,
+  formula = Surv(time, status) ~ age + ph.karno + sex,
+  anc = list(gamma1 = ~ sex))
+
+# Train the learner on the training ids
+learner$train(task, part$train)
+print(learner$model)
+
+# Make predictions for the test rows
+predictions = learner$predict(task, part$test)
+print(predictions)
+
+# Score the predictions
+predictions$score()
+\dontshow{\}) # examplesIf}
 }
 \references{
 Royston, Patrick, Parmar, KB M (2002).

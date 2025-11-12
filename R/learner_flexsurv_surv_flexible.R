@@ -16,11 +16,13 @@
 #' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
 #' For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
 #' and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-#' is a column of \eqn{1}s, the linear predictor vector is \eqn{lp = \hat{\beta} X^T}.
+#' is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
+#' vector is \eqn{lp = \hat{\beta} X^T}.
 #' 2. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using `predict.flexsurvreg()`.
+#' Calculated using `predict.flexsurvreg(type = "survival", ...)`.
 #' 3. `crank`: same as `lp`.
+#' 4. `response`: mean survival time calculated using `predict.flexsurvreg(type = "response", ...)`
 #'
 #' @section Initial parameter values:
 #' - `k`:
@@ -33,7 +35,29 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @template simple_example
+#' @examplesIf learner_is_runnable("surv.flexible")
+#' library(survival)
+#'
+#' # Define the task, split to train/test set
+#' task = tsk("lung")
+#' set.seed(42)
+#' part = partition(task)
+#'
+#' # Define the learner
+#' learner = lrn("surv.flexible", k = 1,
+#'   formula = Surv(time, status) ~ age + ph.karno + sex,
+#'   anc = list(gamma1 = ~ sex))
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, part$train)
+#' print(learner$model)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, part$test)
+#' print(predictions)
+#'
+#' # Score the predictions
+#' predictions$score()
 #' @export
 LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
   inherit = mlr3proba::LearnerSurv,
@@ -43,6 +67,7 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
+        formula = p_uty(tags = c("train", "predict"), custom_check = check_formula),
         bhazard = p_uty(tags = "train"),
         k = p_int(default = 0L, lower = 0L, tags = "train"),
         knots = p_uty(tags = "train"),
@@ -50,10 +75,13 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
         scale = p_fct(default = "hazard", levels = c("hazard", "odds", "normal"), tags = "train"),
         timescale = p_fct(default = "log", levels = c("log", "identity"), tags = "train"),
         spline = p_fct(default = "rp", levels = c("rp", "splines2ns"), tags = "train"),
-        inits = p_uty(tags = "train"),
         rtrunc = p_uty(tags = "train"),
+        # params from `flexsurvreg()`
+        inits = p_uty(tags = "train"),
         fixedpars = p_uty(tags = "train"),
         cl = p_dbl(default = 0.95, lower = 0, upper = 1, tags = "train"),
+        anc = p_uty(tags = "train", custom_check = function(x) checkmate::check_list(x, types = "formula")),
+        # params from `survival::survreg.control()`
         maxiter = p_int(default = 30L, tags = "train"),
         rel.tolerance = p_dbl(default = 1e-09, tags = "train"),
         toler.chol = p_dbl(default = 1e-10, tags = "train"),
@@ -87,35 +115,39 @@ LearnerSurvFlexible = R6Class("LearnerSurvFlexible",
       pars_train$sr.control = invoke(survival::survreg.control, .args = pars_ctrl)
       pars_train$weights = private$.get_weights(task)
 
+      if (is.null(pars_train$formula)) {
+        form = task$formula(task$feature_names)
+      } else {
+        form = pars_train$formula
+        pars_train$formula = NULL
+      }
+
       invoke(flexsurv::flexsurvspline,
-        formula = task$formula(task$feature_names),
-        data = task$data(), .args = pars_train)
+             formula = form,
+             data = task$data(),
+             .args = pars_train)
     },
 
     .predict = function(task) {
-      pars = self$param_set$get_values(tags = "predict")
-      pred = invoke(predict_flexsurvreg, self$model, task, .args = pars, learner = self)
-
-      mlr3proba::.surv_return(surv = pred$surv, lp = pred$lp)
+      pv = self$param_set$get_values(tags = "predict")
+      invoke(predict_flexsurvreg, self$model, task, learner = self, form = pv$formula)
     }
   )
 )
 
-predict_flexsurvreg = function(object, task, learner, ...) {
+predict_flexsurvreg = function(object, task, learner, form) {
   newdata = ordered_features(task, learner)
-  if (any(is.na(newdata))) {
-    stopf("Learner %s on task %s failed to predict: Missing values in new data (line(s) %s)\n", learner$id, task$id)
+
+  if (is.null(form)) {
+    form = task$formula(task$feature_names)
   }
+  # remove left hand side (which is needed only during training)
+  form = form[-2]
 
-  X = stats::model.matrix(formulate(rhs = task$feature_names),
-                          data = newdata,
-                          xlev = task$levels())
+  # Intercept (1) + variables X
+  X = stats::model.matrix(form, data = newdata, xlev = task$levels())
 
-  # collect the auxiliary arguments for the fitted object
-  args = object$aux
-  args$knots = as.numeric(args$knots)
-
-  # define matrix of coeffs coefficients
+  # define matrix of coefficients (gamma0 and X, without intercept)
   coeffs = matrix(object$coefficients[c("gamma0", colnames(X)[-1])], nrow = 1)
 
   # collect fitted parameters
@@ -124,8 +156,7 @@ predict_flexsurvreg = function(object, task, learner, ...) {
     ncol = length(object$dlist$pars), byrow = TRUE)
   colnames(pars) = object$dlist$pars
 
-  # calculate the linear predictor as X*beta
-  # Note: intercept not included in `model.matrix`, so we added manually
+  # calculate the linear predictor as gamma0 + (beta * X)
   pars[, "gamma0"] = coeffs %*% t(X)
 
   # if any inverse transformations exist then apply them
@@ -153,7 +184,11 @@ predict_flexsurvreg = function(object, task, learner, ...) {
   ))
   colnames(surv) = ut
 
-  list(lp = lp, surv = surv)
+  # get mean survival times
+  response = invoke(predict, learner$model, type = "response", newdata = newdata)[[1]]
+
+  # return all predict types for this learner
+  list(crank = lp, lp = lp, distr = surv, response = response)
 }
 
 .extralrns_dict$add("surv.flexible", LearnerSurvFlexible)

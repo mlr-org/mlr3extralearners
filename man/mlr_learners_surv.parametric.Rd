@@ -161,7 +161,7 @@ bblodfon
 \if{latex}{\out{\hypertarget{method-LearnerSurvParametric-new}{}}}
 \subsection{Method \code{new()}}{
 Creates a new instance of this \link[R6:R6Class]{R6} class.
-returned \code{risk} from survivalmodels is hp-style
+returned \code{risk} from survivalmodels is PH-style
 ie higher value => higher risk
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvParametric$new()}\if{html}{\out{</div>}}

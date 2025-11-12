@@ -1,6 +1,7 @@
 skip_if_not_installed("mboost")
 
 test_that("autotest ph", {
+  withr::local_seed(42)
   learner = lrn("surv.mboost", baselearner = "bols", family = "coxph", center = TRUE)
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
@@ -9,6 +10,7 @@ test_that("autotest ph", {
 })
 
 test_that("autotest aft", {
+  withr::local_seed(42)
   learner = lrn("surv.mboost", family = "loglog", baselearner = "bols", center = TRUE)
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'

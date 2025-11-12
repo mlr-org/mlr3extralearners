@@ -132,7 +132,7 @@ LearnerSurvCoxboost = R6Class("LearnerSurvCoxboost",
         type = "risk",
         times = times)
 
-      mlr3proba::.surv_return(times = times, surv = surv, lp = lp)
+      mlr3proba::surv_return(times = times, surv = surv, lp = lp)
     }
   )
 )

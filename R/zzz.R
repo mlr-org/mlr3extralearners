@@ -3,11 +3,13 @@
 #' @import mlr3misc
 #' @importFrom R6 R6Class
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns marshal_model unmarshal_model assert_validate learner_marshal learner_unmarshal learner_marshaled
+#' @importFrom mlr3cmprsk LearnerCompRisks
 #' @importFrom stats predict na.omit setNames formula as.formula qnorm
 #' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
 #' @importFrom withr local_seed
+#' @importFrom survdistr vec_interp
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))

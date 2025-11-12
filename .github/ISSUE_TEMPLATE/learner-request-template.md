@@ -18,10 +18,10 @@ assignees: ''
 ### Supported types
 
 * [ ] classif
-* [ ] clust 
-* [ ] dens
+* [ ] clust
 * [ ] regr
 * [ ] surv
+* [ ] cmprsk
 
 ### I have checked that this is not already implemented in
 

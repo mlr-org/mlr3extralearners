@@ -125,7 +125,9 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
-      p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      p = as.numeric(
+        invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
+      )
       list(response = p)
     }
   )

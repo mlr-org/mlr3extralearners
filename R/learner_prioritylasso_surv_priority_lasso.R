@@ -181,7 +181,7 @@ LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
         lp_test = lp_test
       )
 
-      mlr3proba::.surv_return(surv = surv, lp = lp_test)
+      mlr3proba::surv_return(surv = surv, lp = lp_test)
     }
   )
 )
