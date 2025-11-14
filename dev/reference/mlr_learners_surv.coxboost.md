@@ -222,8 +222,8 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> 100 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -1127.328 
+#> 100 boosting steps resulting in 4 non-zero coefficients  
+#> partial log-likelihood: -1135.402 
 
 
 # Make predictions for the test rows
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8316969 
+#>   0.8101718 
 ```

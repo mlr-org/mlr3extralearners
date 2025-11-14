@@ -238,13 +238,10 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>      -0.6496 * cyl +
-#>       0.018  * disp +
-#>      -1.9193 * drat +
-#>       1.654  * gear +
-#>      -0.0353 * hp +
-#>      -4.5293 * wt +
-#>      39.9326
+#>      -1.2389 * carb +
+#>       4.3308 * drat +
+#>      -2.6676 * wt +
+#>      17.3328
 
 
 # Make predictions for the test rows
@@ -253,5 +250,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 16.69861 
+#> 11.80731 
 ```
