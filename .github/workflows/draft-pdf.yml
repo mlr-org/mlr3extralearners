@@ -1,9 +1,6 @@
 name: Draft PDF
 on:
-  push:
-    paths:
-      - paper/**
-      - .github/workflows/draft-pdf.yml
+  workflow_dispatch:
 
 jobs:
   paper:
