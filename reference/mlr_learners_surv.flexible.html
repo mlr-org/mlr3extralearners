@@ -15,7 +15,7 @@ Calls flexsurv::flexsurvspline() from flexsurv."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -79,7 +79,7 @@ Calls <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvs
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bknots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>character</td><td>hazard</td><td>hazard, odds, normal</td><td>-</td></tr><tr><td>timescale</td><td>character</td><td>log</td><td>log, identity</td><td>-</td></tr><tr><td>spline</td><td>character</td><td>rp</td><td>rp, splines2ns</td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bhazard</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>knots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>bknots</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>character</td><td>hazard</td><td>hazard, odds, normal</td><td>-</td></tr><tr><td>timescale</td><td>character</td><td>log</td><td>log, identity</td><td>-</td></tr><tr><td>spline</td><td>character</td><td>rp</td><td>rp, splines2ns</td><td>-</td></tr><tr><td>rtrunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>inits</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>fixedpars</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>cl</td><td>numeric</td><td>0.95</td><td></td><td>\([0, 1]\)</td></tr><tr><td>anc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>maxiter</td><td>integer</td><td>30</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>rel.tolerance</td><td>numeric</td><td>1e-09</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>toler.chol</td><td>numeric</td><td>1e-10</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>debug</td><td>integer</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>outer.max</td><td>integer</td><td>10</td><td></td><td>\((-\infty, \infty)\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="prediction-types">Prediction types<a class="anchor" aria-label="anchor" href="#prediction-types"></a></h2>
 
@@ -89,11 +89,13 @@ where each score corresponds to a specific test observation.
 Calculated using <code><a href="http://chjackson.github.io/flexsurv-dev/reference/flexsurvspline.html" class="external-link">flexsurv::flexsurvspline()</a></code> and the estimated coefficients.
 For fitted coefficients, \(\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})\),
 and the test data covariates \(X^T = (X_0,...,X_P)^T\), where \(X_0\)
-is a column of \(1\)s, the linear predictor vector is \(lp = \hat{\beta} X^T\).</p></li>
+is a column of \(1\)s and \(\hat{\beta_0} = \hat{\gamma_0}\), the linear predictor
+vector is \(lp = \hat{\beta} X^T\).</p></li>
 <li><p><code>distr</code>: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using <code>predict.flexsurvreg()</code>.</p></li>
+Calculated using <code>predict.flexsurvreg(type = "survival", ...)</code>.</p></li>
 <li><p><code>crank</code>: same as <code>lp</code>.</p></li>
+<li><p><code>response</code>: mean survival time calculated using <code>predict.flexsurvreg(type = "response", ...)</code></p></li>
 </ol></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
@@ -180,17 +182,69 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.flexible"</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/therneau/survival" class="external-link">survival</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Define the task, split to train/test set</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"lung"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">42</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">part</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Define the learner</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"surv.flexible"</span>, k <span class="op">=</span> <span class="fl">1</span>,</span></span>
+<span class="r-in"><span>  formula <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/survival/man/Surv.html" class="external-link">Surv</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">status</span><span class="op">)</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ph.karno</span> <span class="op">+</span> <span class="va">sex</span>,</span></span>
+<span class="r-in"><span>  anc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>gamma1 <span class="op">=</span> <span class="op">~</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
+<span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, <span class="va">part</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> flexsurv::flexsurvspline(formula = form, data = task$data(), </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     k = 1L, anc = list(gamma1 = ~sex), sr.control = list(iter.max = 30, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         rel.tolerance = 1e-09, toler.chol = 1e-10, debug = 0, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         maxiter = 30, outer.max = 10))</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvFlexible&gt;</span><span style="font-weight: bold;"> (surv.flexible): Flexible Parametric Splines</span> <span style="color: #00BBBB;">──────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: k=1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">flexsurv</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, and factor</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Estimates: </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               data mean  est        L95%       U95%       se         exp(est) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma0               NA   -8.73038  -13.77364   -3.68713    2.57314         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma1               NA    1.15817    0.29894    2.01741    0.43839         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma2               NA   -0.05009   -0.11585    0.01567    0.03355         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> age            63.39823    0.00878   -0.01982    0.03737    0.01459    1.00882</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ph.karno       82.30088   -0.00192   -0.02008    0.01624    0.00926    0.99808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sexm            0.61947    2.30274   -1.45935    6.06482    1.91947   10.00151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma1(sexm)    0.61947   -0.29320   -0.90598    0.31957    0.31265    0.74587</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               L95%       U95%     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma0               NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma1               NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma2               NA         NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> age             0.98037    1.03808</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ph.karno        0.98012    1.01637</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sexm            0.23239  430.44606</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma1(sexm)    0.40415    1.37654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> N = 113,  Events: 80,  Censored: 33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Total time at risk: 34858</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Log-likelihood = -554.9652, df = 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AIC = 1123.93</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, <span class="va">part</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">predictions</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">55</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status     crank        lp response     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7  166   TRUE -6.026908 -6.026908 338.0766 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8  170   TRUE -6.081253 -6.081253 351.0301 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11  707   TRUE -5.970881 -5.970881 325.1780 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---       ---       ---      ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      158  185  FALSE -5.995166 -5.995166 330.7130 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      160  183   TRUE -5.914491 -5.914491 312.6467 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      161  211  FALSE -8.250652 -8.250652 440.6995 &lt;list[1]&gt;</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
+<span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.5855263 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -202,7 +256,7 @@ implementation of, <a href="mlr_learners_surv.parametric.html">LearnerSurvParame
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

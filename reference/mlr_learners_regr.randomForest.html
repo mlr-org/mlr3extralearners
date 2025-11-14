@@ -15,7 +15,7 @@ Calls randomForest::randomForest() from randomForest."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -215,13 +215,13 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 6.981456</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 76.16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 6.541441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 76.85</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         cyl          wt        disp          hp        drat        carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.39727983  6.45805257  5.36734985  4.28626098  1.00799135  0.93465315 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          am        gear          vs        qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.31355107  0.21469539  0.21383646  0.08618109 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        hp      disp       cyl        wt      qsec      carb      drat      gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.0519814 6.8911222 6.7558090 4.1483132 1.0522164 0.9539738 0.7688602 0.6396266 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        vs        am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.4789071 0.1705976 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -229,7 +229,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.96543 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.647586 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -241,7 +241,7 @@ Parameter 'importance' must be set to either <code>"mse"</code> or <code>"nodepu
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

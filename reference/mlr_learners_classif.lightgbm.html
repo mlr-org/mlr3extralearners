@@ -19,7 +19,7 @@ and in the documentation of lightgbm::lgb.train()."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -226,7 +226,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.lightgbm"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.lightgbm"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLightGBM&gt;</span><span style="font-weight: bold;"> (classif.lightgbm): Gradient Boosting</span> <span style="color: #00BBBB;">──────────────</span></span>
@@ -242,10 +242,10 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -255,24 +255,26 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Objective: binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted to dataset with 60 columns</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V36          V45          V49          V52          V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.958575e-01 1.231558e-01 8.274575e-02 6.287917e-02 5.226922e-02 5.098621e-02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V9          V23          V47          V21          V31          V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4.409112e-02 3.528916e-02 3.184716e-02 2.850874e-02 2.153554e-02 2.001431e-02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V46          V15          V35          V48          V59          V12 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.679210e-02 1.536512e-02 1.492504e-02 1.438667e-02 1.424127e-02 1.402254e-02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V4          V55          V54          V27          V17          V39 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.393237e-02 1.279983e-02 1.276208e-02 1.250161e-02 1.230200e-02 1.036045e-02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V34          V13          V25          V20          V44          V28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.202939e-03 8.742024e-03 8.503782e-03 7.429652e-03 7.368795e-03 6.056892e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V18          V33          V60           V5          V57          V10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.583751e-03 5.017419e-03 4.976629e-03 4.636991e-03 4.384858e-03 2.312212e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V43          V19          V22          V16          V40          V32 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.066967e-03 1.893484e-03 1.718656e-03 1.423200e-03 1.141976e-03 8.509434e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V53           V1          V58           V6          V29          V50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.393576e-04 6.280240e-04 5.458114e-04 4.027337e-04 3.136585e-04 2.822437e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V38          V42           V8 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.122482e-04 9.258435e-05 1.457144e-06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V17          V21          V12          V51          V27 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1665791292 0.0910240025 0.0729727392 0.0652911233 0.0591845918 0.0555559861 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V49          V31           V9          V43          V48          V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0441752320 0.0404111841 0.0312806545 0.0311274370 0.0307447336 0.0256086302 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V52          V39          V36          V59          V23           V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0227787166 0.0224533802 0.0222833808 0.0177347947 0.0168185316 0.0144108483 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V10          V20          V44           V5          V38          V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0134939764 0.0127714101 0.0118274685 0.0113985654 0.0104357933 0.0094207818 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V1          V46           V2          V26          V33          V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0087769938 0.0086995619 0.0086768572 0.0066667233 0.0065181635 0.0058915604 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V34           V6          V32          V28          V18          V35 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0049030616 0.0043424133 0.0042459984 0.0037727951 0.0036065427 0.0034593309 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V22          V54           V3          V42          V19          V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0034282332 0.0031275013 0.0028534102 0.0028220233 0.0027091671 0.0024607354 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V45          V13          V55          V40          V29           V7 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0023089678 0.0020946348 0.0018256745 0.0016271468 0.0015458546 0.0012347108 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V58          V41          V56          V53          V16          V24 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0005185525 0.0004282217 0.0004072075 0.0004061365 0.0002652708 0.0002356819 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V8          V25 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0001941968 0.0001635795 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -280,7 +282,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -292,7 +294,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

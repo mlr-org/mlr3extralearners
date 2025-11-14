@@ -15,7 +15,7 @@ Calls LiblineaR::LiblineaR() from LiblineaR."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -172,7 +172,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu">lrn</span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.liblinear"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerClassifLiblineaR&gt;</span><span style="font-weight: bold;"> (classif.liblinear): Support Vector Machine</span> <span style="color: #00BBBB;">───────</span></span>
@@ -186,10 +186,10 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
-<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu">tsk</span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
-<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu">partition</span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
@@ -202,26 +202,26 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11      V12        V13        V14       V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1130535 -0.8231548 -1.349811 -1.26129 -0.7266066 -0.1280229 0.1895006</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V16      V17       V18        V19         V2        V20       V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4591842 0.548823 0.3935641 -0.2162527 -0.2341263 -0.6829925 -0.509967</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23         V24       V25      V26       V27       V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2216838 0.04618201 -0.05144624 0.1750428 0.473645 0.1693273 -0.375293</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V29         V3        V30       V31       V32       V33       V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4268771 -0.1647236 -0.3897179 0.9283025 0.2627057 0.5010834 0.5016236</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V35       V36       V37         V38       V39         V4       V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.2867206 0.9290123 0.7532899 -0.06095151 -0.465163 -0.3736881 0.5148237</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V41        V42        V43       V44       V45        V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.004669666 -0.1109462 -0.5553822 -1.009339 -1.501543 -0.7749714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V47        V48        V49         V5          V50         V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4819049 -0.5301295 -0.3005167 -0.2089915 -0.006388392 -0.06775065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V52         V53         V54         V55         V56         V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.09502396 -0.01837985 -0.03918567 -0.02219057 -0.03894059 -0.01086143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59          V6          V60        V7         V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.02913887 -0.03767529 -0.07658007 -0.006934783 0.1396196 -0.0952947</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V9    Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.8736999 0.71095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11        V12        V13          V14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2226696 -0.9976155 -1.085639 -0.9572193 -0.8158456 -0.009015576</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V15       V16       V17       V18        V19         V2        V20</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.3292312 0.7716018 0.8367208 0.6803559 -0.3194628 -0.2969424 -0.5092971</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V21        V22        V23        V24       V25       V26        V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.7266023 -0.6858248 -0.3386212 0.05685829 0.6960784 0.2416647 -0.2461134</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V28        V29         V3       V30      V31       V32          V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2257746 -0.1473431 -0.2459362 0.1177568 1.024319 0.2984788 -0.005435985</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V34      V35      V36       V37        V38        V39         V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.1053718 0.410312 1.179976 0.7479645 -0.2794477 -0.3271733 -0.5797172</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V40        V41        V42       V43       V44       V45        V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5749453 -0.3043423 -0.7016611 -1.053081 -1.098847 -1.336921 -0.8372005</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V47        V48        V49         V5          V50        V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.3921818 -0.4517884 -0.3049442 -0.5741055 3.867119e-05 -0.0623367</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V52         V53         V54          V55         V56        V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.09609704 -0.02640582 -0.05199666 -0.008407454 -0.02574697 0.00953249</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59         V6         V60       V7        V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.05146448 -0.06275012 -0.0833413 -0.02680819 0.158311 0.1786658</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V9      Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6334295 0.5693979</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -255,7 +255,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

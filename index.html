@@ -36,7 +36,7 @@
 
     <a class="navbar-brand me-2" href="index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.2.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -103,11 +103,12 @@
 <span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="installing-and-loading-learners">Installing and Loading Learners<a class="anchor" aria-label="anchor" href="#installing-and-loading-learners"></a>
+<h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
 <p>The package includes functionality for detecting if you have the required packages installed to use a learner, and ships with the function <code>install_learner</code> which can install all required learner dependencies.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">lrn</span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3extralearners.mlr-org.com">mlr3extralearners</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: Package 'gbm' required but not installed for Learner 'regr.gbm'</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
@@ -119,7 +120,8 @@
 <span></span>
 <span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu">lrn</span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="va">learner</span> <span class="op">&lt;-</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="va">learner</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
 <span><span class="co">#&gt; * Parameters: keep.data=FALSE, n.cores=1</span></span>
@@ -127,6 +129,32 @@
 <span><span class="co">#&gt; * Predict Types:  [response]</span></span>
 <span><span class="co">#&gt; * Feature Types: integer, numeric, factor, ordered</span></span>
 <span><span class="co">#&gt; * Properties: importance, missings, weights</span></span></code></pre></div>
+<p>You can now use the learner to fit a model and make predictions.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"california_housing"</span><span class="op">)</span></span>
+<span><span class="va">task</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── &lt;TaskRegr&gt; (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • Target: median_house_value</span></span>
+<span><span class="co">#&gt; • Properties: -</span></span>
+<span><span class="co">#&gt; • Features (9):</span></span>
+<span><span class="co">#&gt;   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms</span></span>
+<span><span class="co">#&gt;   • fct (1): ocean_proximity</span></span>
+<span><span class="va">split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
+<span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, <span class="va">split</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Distribution not specified, assuming gaussian ...</span></span>
+<span><span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, <span class="va">split</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── &lt;PredictionRegr&gt; for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt;  row_ids  truth  response</span></span>
+<span><span class="co">#&gt;        1 452600 428999.97</span></span>
+<span><span class="co">#&gt;        7 299200 265771.26</span></span>
+<span><span class="co">#&gt;       17 152500 221807.64</span></span>
+<span><span class="co">#&gt;      ---    ---       ---</span></span>
+<span><span class="co">#&gt;    20634  98300  98009.59</span></span>
+<span><span class="co">#&gt;    20635 116800 144098.72</span></span>
+<span><span class="co">#&gt;    20640  89400  93868.47</span></span></code></pre></div>
+<p>You can learn more about using learners by <a href="https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example" class="external-link">reading our book</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="extending-mlr3extralearners">Extending mlr3extralearners<a class="anchor" aria-label="anchor" href="#extending-mlr3extralearners"></a>
@@ -154,6 +182,13 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -185,7 +220,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
