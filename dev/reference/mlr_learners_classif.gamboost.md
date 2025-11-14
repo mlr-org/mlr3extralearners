@@ -206,17 +206,9 @@ predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.1449275 
 ```
