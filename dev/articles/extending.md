@@ -456,7 +456,7 @@ test_that("autotest", {
 })
 ```
 
-    ## Test passed 🎉
+    ## Test passed with 20 successes 🎉.
 
 ### Checking Parameters
 
@@ -514,7 +514,7 @@ test_that("paramtest", {
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed with 2 successes 🌈.
 
 ## Contributing to mlr3extralearners
 

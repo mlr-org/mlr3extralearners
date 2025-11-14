@@ -50,13 +50,13 @@ Source:
 [`DESCRIPTION`](https://github.com/mlr-org/mlr3extralearners/blob/main/DESCRIPTION)
 
 Sonabend R, Schratz P, Fischer S, Zobolas J (2025). *mlr3extralearners:
-Extra Learners For mlr3*. R package version 1.2.0-9000,
+Extra Learners For mlr3*. R package version 1.3.0.9000,
 <https://mlr3extralearners.mlr-org.com>.
 
     @Manual{,
       title = {mlr3extralearners: Extra Learners For mlr3},
       author = {Raphael Sonabend and Patrick Schratz and Sebastian Fischer and John Zobolas},
       year = {2025},
-      note = {R package version 1.2.0-9000},
+      note = {R package version 1.3.0.9000},
       url = {https://mlr3extralearners.mlr-org.com},
     }

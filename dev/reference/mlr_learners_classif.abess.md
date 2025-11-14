@@ -93,7 +93,7 @@ instantiated via
 
 ## Author
 
-abess-team
+bbayukari
 
 ## Super classes
 

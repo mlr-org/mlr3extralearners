@@ -21,7 +21,7 @@ the parameter na_action.'><meta name="robots" content="noindex"></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -247,21 +247,21 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 207</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 213</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 39.384</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 39.826</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.83</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: Harrell's C-index</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     revasc revascdays        los        age      sysbp   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.56889102 0.55899105 0.23037053 0.18391445 0.11342176 0.09059284 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age   stchange      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5770269  0.5378584  0.1988304  0.1864772  0.1295008  0.1200443 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -269,7 +269,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8578827 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8663227 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

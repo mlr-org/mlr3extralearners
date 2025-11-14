@@ -27,7 +27,7 @@ not needed for downstream use or not reliable for performance estimation."><meta
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.2.0-9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -212,27 +212,27 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl       disp         hp       carb         am         wt       drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.1018883  6.2145077  5.1605237  4.9635997  3.8609819  2.4608324  0.5386184 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       gear       qsec         vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3424190  0.2171434  0.1139107 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl       carb         hp         am         wt       disp         vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.4438598  6.1567178  4.7504963  4.4839813  3.8650866  2.3967818  1.6779308 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       drat       gear       qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6786846  0.0000000 -0.1152652 </span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">11</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3  22.8 27.83833</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7  14.3 14.77082</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8  24.4 23.67632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2  21.0 19.61965</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7  14.3 14.30613</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8  24.4 21.92158</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       23  15.2 17.75681</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       26  27.3 28.31033</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 25.97256</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       25  19.2 16.44500</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       27  26.0 23.48380</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       28  30.4 23.66325</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.874417 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.801239 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
