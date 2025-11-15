@@ -245,27 +245,15 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt;= 130.55 : LM1 (5/42.275%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;  130.55 : LM2 (16/23.308%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/38.926%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.9962 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.0114 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0169 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.7672 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 41.1536</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0304 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 5.0275 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.8469</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.6427 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.0073 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0251 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 4.1424 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.2911</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -274,7 +262,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.99144 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.35822 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
