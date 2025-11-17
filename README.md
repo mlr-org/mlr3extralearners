@@ -12,6 +12,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.08331/status.svg)](https://doi.org/10.21105/joss.08331)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -64,7 +65,7 @@ lrn("regr.gbm")
 
 install_learners("regr.gbm")
 
-learner <-lrn("regr.gbm")
+learner = lrn("regr.gbm")
 learner
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
@@ -78,29 +79,30 @@ learner
 You can now use the learner to fit a model and make predictions.
 
 ``` r
-task <- tsk("california_housing")
+task = tsk("california_housing")
 task
 #> 
-#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <TaskRegr> (20640x10): California House Value ───────────────────────────────
 #> • Target: median_house_value
 #> • Properties: -
 #> • Features (9):
-#>   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms
+#>   • dbl (8): households, housing_median_age, latitude, longitude,
+#>   median_income, population, total_bedrooms, total_rooms
 #>   • fct (1): ocean_proximity
-split <- partition(task)
+split = partition(task)
 learner$train(task, split$train)
 #> Distribution not specified, assuming gaussian ...
 learner$predict(task, split$test)
 #> 
-#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
 #>  row_ids  truth  response
-#>        1 452600 428999.97
-#>        7 299200 265771.26
-#>       17 152500 221807.64
+#>        1 452600 434737.08
+#>        2 358500 441760.73
+#>        3 352100 409282.31
 #>      ---    ---       ---
-#>    20634  98300  98009.59
-#>    20635 116800 144098.72
-#>    20640  89400  93868.47
+#>    20631 112000 139033.41
+#>    20632 107200 135412.43
+#>    20637  77100  97422.34
 ```
 
 You can learn more about using learners by [reading our
@@ -115,3 +117,23 @@ website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
 
 This R package is developed as part of the [Mathematical Research Data
 Initiative](https://www.mardi4nfdi.de/about/mission).
+
+## Citing mlr3extralearners
+
+If you use `mlr3extralearners`, please cite our [JOSS
+paper](https://doi.org/10.21105/joss.08331):
+
+``` bibtex
+@article{Fischer2025,
+  title = {mlr3extralearners: Expanding the mlr3 Ecosystem with Community-Driven Learner Integration},
+  journal = {Journal of Open Source Software},
+  author = {Fischer, Sebastian and Zobolas, John and Sonabend, Raphael and Becker, Marc and Lang, Michel and Binder, Martin and Schneider, Lennart and Burk, Lukas and Schratz, Patrick and Jaeger, Byron C. and Lauer, Stephen A. and Kapsner, Lorenz A. and Mücke, Maximilian and Wang, Zezhi and Pulatov, Damir and Ganz, Keenan and Funk, Henri and Harutyunyan, Liana and Camilleri, Pierre and Kopper, Philipp and Bender, Andreas and Bischl, Bernd and Zhou, Baisu and German, Niko and Koers, Lona and Nazarova, Anna},
+  doi = {10.21105/joss.08331},
+  url = {https://doi.org/10.21105/joss.08331},
+  year = {2025},
+  publisher = {The Open Journal},
+  volume = {10},
+  number = {115},
+  pages = {8331}
+}
+```
