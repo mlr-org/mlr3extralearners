@@ -113,17 +113,6 @@ This R package is developed as part of the [Mathematical Research Data Initiativ
 
 If you use `mlr3extralearners`, please cite our [JOSS paper](https://doi.org/10.21105/joss.08331):
 
-```bibtex
-@article{Fischer2025,
-  title = {mlr3extralearners: Expanding the mlr3 Ecosystem with Community-Driven Learner Integration},
-  journal = {Journal of Open Source Software},
-  author = {Fischer, Sebastian and Zobolas, John and Sonabend, Raphael and Becker, Marc and Lang, Michel and Binder, Martin and Schneider, Lennart and Burk, Lukas and Schratz, Patrick and Jaeger, Byron C. and Lauer, Stephen A. and Kapsner, Lorenz A. and Mücke, Maximilian and Wang, Zezhi and Pulatov, Damir and Ganz, Keenan and Funk, Henri and Harutyunyan, Liana and Camilleri, Pierre and Kopper, Philipp and Bender, Andreas and Bischl, Bernd and Zhou, Baisu and German, Niko and Koers, Lona and Nazarova, Anna},
-  doi = {10.21105/joss.08331},
-  url = {https://doi.org/10.21105/joss.08331},
-  year = {2025},
-  publisher = {The Open Journal},
-  volume = {10},
-  number = {115},
-  pages = {8331}
-}
+```{r echo = FALSE, comment = ""}
+toBibtex(citation("mlr3extralearners"))
 ```

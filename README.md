@@ -95,14 +95,14 @@ learner$train(task, split$train)
 learner$predict(task, split$test)
 #> 
 #> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
-#>  row_ids  truth  response
-#>        1 452600 434737.08
-#>        2 358500 441760.73
-#>        3 352100 409282.31
-#>      ---    ---       ---
-#>    20631 112000 139033.41
-#>    20632 107200 135412.43
-#>    20637  77100  97422.34
+#>  row_ids  truth response
+#>        1 452600 425871.7
+#>        5 342200 262134.1
+#>       10 261100 272794.3
+#>      ---    ---      ---
+#>    20631 112000 141930.5
+#>    20633 115600 119215.1
+#>    20637  77100 100245.2
 ```
 
 You can learn more about using learners by [reading our
@@ -123,17 +123,13 @@ Initiative](https://www.mardi4nfdi.de/about/mission).
 If you use `mlr3extralearners`, please cite our [JOSS
 paper](https://doi.org/10.21105/joss.08331):
 
-``` bibtex
-@article{Fischer2025,
-  title = {mlr3extralearners: Expanding the mlr3 Ecosystem with Community-Driven Learner Integration},
-  journal = {Journal of Open Source Software},
-  author = {Fischer, Sebastian and Zobolas, John and Sonabend, Raphael and Becker, Marc and Lang, Michel and Binder, Martin and Schneider, Lennart and Burk, Lukas and Schratz, Patrick and Jaeger, Byron C. and Lauer, Stephen A. and Kapsner, Lorenz A. and Mücke, Maximilian and Wang, Zezhi and Pulatov, Damir and Ganz, Keenan and Funk, Henri and Harutyunyan, Liana and Camilleri, Pierre and Kopper, Philipp and Bender, Andreas and Bischl, Bernd and Zhou, Baisu and German, Niko and Koers, Lona and Nazarova, Anna},
-  doi = {10.21105/joss.08331},
-  url = {https://doi.org/10.21105/joss.08331},
-  year = {2025},
-  publisher = {The Open Journal},
-  volume = {10},
-  number = {115},
-  pages = {8331}
-}
-```
+    @Article{Fischer2025,
+      title = {mlr3extralearners: {E}xpanding the mlr3 {E}cosystem with {C}ommunity-{D}riven {L}earner {I}ntegration},
+      author = {Sebastian Fischer and John Zobolas and Raphael Sonabend and Marc Becker and Michel Lang and Martin Binder and Lennart Schneider and Lukas Burk and Patrick Schratz and Byron C. Jaeger and Stephen A. Lauer and Lorenz A. Kapsner and Maximilian Mücke and Zezhi Wang and Damir Pulatov and Keenan Ganz and Henri Funk and Liana Harutyunyan and Pierre Camilleri and Philipp Kopper and Andreas Bender and Bernd Bischl and Baisu Zhou and Niko German and Lona Koers and Anna Nazarova},
+      journal = {Journal of Open Source Software},
+      year = {2025},
+      volume = {10},
+      number = {115},
+      pages = {8331},
+      doi = {10.21105/joss.08331},
+    }
