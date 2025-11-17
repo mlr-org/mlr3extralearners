@@ -190,25 +190,25 @@ learner = lrn("regr.blockforest", blocks = blocks,
 learner$train(task, row_ids = ids$train)
 # feature importance
 learner$importance()
-#>         cyl        disp          wt          am        carb          hp 
-#> 10.52689131  4.34245801  3.99759004  3.80535385  2.95911603  1.71191403 
-#>        drat        qsec        gear          vs 
-#>  1.68316758  0.55988998  0.09577438 -0.40244392 
+#>         cyl          am        disp          wt        carb          hp 
+#> 12.58118432  6.92005868  6.28665674  5.45327127  5.29764100  3.65244820 
+#>        drat          vs        qsec        gear 
+#>  2.37920713  1.11868580 -0.04124444 -0.06435200 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        3  22.8 27.39926
-#>       11  17.8 18.53792
-#>       15  10.4 13.95663
+#>        4  21.4 21.07217
+#>        6  18.1 21.33517
+#>        9  22.8 22.31260
 #>      ---   ---      ---
-#>       29  15.8 20.43668
-#>       30  19.7 21.47210
-#>       31  15.0 18.83848
+#>       26  27.3 29.29502
+#>       27  26.0 26.73754
+#>       32  21.4 25.05295
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 10.29504 
+#> 3.880211 
 ```

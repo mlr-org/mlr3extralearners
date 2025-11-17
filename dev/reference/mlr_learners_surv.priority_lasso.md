@@ -7,7 +7,7 @@ from [prioritylasso](https://CRAN.R-project.org/package=prioritylasso).
 Many parameters for this survival learner are the same as
 [mlr_learners_surv.cv_glmnet](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
 as `prioritylasso()` calls
-[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
+[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
 during training phase. Note that `prioritylasso()` has ways to deal with
 block-wise missing data, but this feature is not supported currently.
 

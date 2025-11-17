@@ -121,7 +121,7 @@
 <span></span>
 <span><span class="fu"><a href="reference/install_learners.html">install_learners</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">learner</span> <span class="op">&lt;-</span><span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
+<span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.gbm"</span><span class="op">)</span></span>
 <span><span class="va">learner</span></span>
 <span><span class="co">#&gt; &lt;LearnerRegrGBM:regr.gbm&gt;: Gradient Boosting</span></span>
 <span><span class="co">#&gt; * Model: -</span></span>
@@ -132,29 +132,30 @@
 <span><span class="co">#&gt; * Properties: importance, missings, weights</span></span></code></pre></div>
 <p>You can now use the learner to fit a model and make predictions.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">task</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"california_housing"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"california_housing"</span><span class="op">)</span></span>
 <span><span class="va">task</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── &lt;TaskRegr&gt; (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; ── &lt;TaskRegr&gt; (20640x10): California House Value ───────────────────────────────</span></span>
 <span><span class="co">#&gt; • Target: median_house_value</span></span>
 <span><span class="co">#&gt; • Properties: -</span></span>
 <span><span class="co">#&gt; • Features (9):</span></span>
-<span><span class="co">#&gt;   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms</span></span>
+<span><span class="co">#&gt;   • dbl (8): households, housing_median_age, latitude, longitude,</span></span>
+<span><span class="co">#&gt;   median_income, population, total_bedrooms, total_rooms</span></span>
 <span><span class="co">#&gt;   • fct (1): ocean_proximity</span></span>
-<span><span class="va">split</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
+<span><span class="va">split</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span>
 <span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, <span class="va">split</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Distribution not specified, assuming gaussian ...</span></span>
 <span><span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, <span class="va">split</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; ── &lt;PredictionRegr&gt; for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────</span></span>
-<span><span class="co">#&gt;  row_ids  truth  response</span></span>
-<span><span class="co">#&gt;        1 452600 428999.97</span></span>
-<span><span class="co">#&gt;        7 299200 265771.26</span></span>
-<span><span class="co">#&gt;       17 152500 221807.64</span></span>
-<span><span class="co">#&gt;      ---    ---       ---</span></span>
-<span><span class="co">#&gt;    20634  98300  98009.59</span></span>
-<span><span class="co">#&gt;    20635 116800 144098.72</span></span>
-<span><span class="co">#&gt;    20640  89400  93868.47</span></span></code></pre></div>
+<span><span class="co">#&gt; ── &lt;PredictionRegr&gt; for 6811 observations: ─────────────────────────────────────</span></span>
+<span><span class="co">#&gt;  row_ids  truth response</span></span>
+<span><span class="co">#&gt;        1 452600 425871.7</span></span>
+<span><span class="co">#&gt;        5 342200 262134.1</span></span>
+<span><span class="co">#&gt;       10 261100 272794.3</span></span>
+<span><span class="co">#&gt;      ---    ---      ---</span></span>
+<span><span class="co">#&gt;    20631 112000 141930.5</span></span>
+<span><span class="co">#&gt;    20633 115600 119215.1</span></span>
+<span><span class="co">#&gt;    20637  77100 100245.2</span></span></code></pre></div>
 <p>You can learn more about using learners by <a href="https://mlr3book.mlr-org.com/chapters/chapter1/introduction_and_overview.html#mlr3-by-example" class="external-link">reading our book</a>.</p>
 </div>
 <div class="section level2">
@@ -166,6 +167,21 @@
 <h2 id="acknowledgements">Acknowledgements<a class="anchor" aria-label="anchor" href="#acknowledgements"></a>
 </h2>
 <p>This R package is developed as part of the <a href="https://www.mardi4nfdi.de/about/mission" class="external-link">Mathematical Research Data Initiative</a>.</p>
+</div>
+<div class="section level2">
+<h2 id="citing-mlr3extralearners">Citing mlr3extralearners<a class="anchor" aria-label="anchor" href="#citing-mlr3extralearners"></a>
+</h2>
+<p>If you use <code>mlr3extralearners</code>, please cite our <a href="https://doi.org/10.21105/joss.08331" class="external-link">JOSS paper</a>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="sc">@</span>Article{Fischer2025,</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>  title <span class="ot">=</span> {mlr3extralearners<span class="sc">:</span> {E}xpanding the mlr3 {E}cosystem with {C}ommunity<span class="sc">-</span>{D}riven {L}earner {I}ntegration},</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>  author <span class="ot">=</span> {Sebastian Fischer and John Zobolas and Raphael Sonabend and Marc Becker and Michel Lang and Martin Binder and Lennart Schneider and Lukas Burk and Patrick Schratz and Byron C. Jaeger and Stephen A. Lauer and Lorenz A. Kapsner and Maximilian Mücke and Zezhi Wang and Damir Pulatov and Keenan Ganz and Henri Funk and Liana Harutyunyan and Pierre Camilleri and Philipp Kopper and Andreas Bender and Bernd Bischl and Baisu Zhou and Niko German and Lona Koers and Anna Nazarova},</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>  journal <span class="ot">=</span> {Journal of Open Source Software},</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>  year <span class="ot">=</span> {<span class="dv">2025</span>},</span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a>  volume <span class="ot">=</span> {<span class="dv">10</span>},</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a>  number <span class="ot">=</span> {<span class="dv">115</span>},</span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a>  pages <span class="ot">=</span> {<span class="dv">8331</span>},</span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a>  doi <span class="ot">=</span> {<span class="fl">10.21105</span><span class="sc">/</span>joss<span class="fl">.08331</span>},</span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -216,6 +232,7 @@
 <li><a href="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml" class="external-link"><img src="https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg" alt="RCMD Check"></a></li>
 <li><a href="https://stackoverflow.com/questions/tagged/mlr3" class="external-link"><img src="https://img.shields.io/badge/stackoverflow-mlr3-orange.svg" alt="StackOverflow"></a></li>
 <li><a href="https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/" class="external-link"><img src="https://img.shields.io/badge/chat-mattermost-orange.svg" alt="Mattermost"></a></li>
+<li><a href="https://doi.org/10.21105/joss.08331" class="external-link"><img src="https://joss.theoj.org/papers/10.21105/joss.08331/status.svg" alt="DOI"></a></li>
 </ul>
 </div>
 
