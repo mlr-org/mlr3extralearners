@@ -86,14 +86,14 @@ learner$train(task, split$train)
 learner$predict(task, split$test)
 #> 
 #> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
-#>  row_ids  truth response
-#>        1 452600 425871.7
-#>        5 342200 262134.1
-#>       10 261100 272794.3
-#>      ---    ---      ---
-#>    20631 112000 141930.5
-#>    20633 115600 119215.1
-#>    20637  77100 100245.2
+#>  row_ids  truth  response
+#>        6 269700 267521.73
+#>       15 159200 206521.92
+#>       19 158700 186987.58
+#>      ---    ---       ---
+#>    20635 116800 138468.71
+#>    20638  92300  81523.13
+#>    20640  89400  93127.56
 ```
 
 You can learn more about using learners by [reading our
@@ -117,7 +117,7 @@ paper](https://doi.org/10.21105/joss.08331):
 ``` R
 @Article{Fischer2025,
   title = {mlr3extralearners: {E}xpanding the mlr3 {E}cosystem with {C}ommunity-{D}riven {L}earner {I}ntegration},
-  author = {Sebastian Fischer and John Zobolas and Raphael Sonabend and Marc Becker and Michel Lang and Martin Binder and Lennart Schneider and Lukas Burk and Patrick Schratz and Byron C. Jaeger and Stephen A. Lauer and Lorenz A. Kapsner and Maximilian Mücke and Zezhi Wang and Damir Pulatov and Keenan Ganz and Henri Funk and Liana Harutyunyan and Pierre Camilleri and Philipp Kopper and Andreas Bender and Bernd Bischl and Baisu Zhou and Niko German and Lona Koers and Anna Nazarova},
+  author = {Sebastian Fischer and John Zobolas and Raphael Sonabend and Marc Becker and Michel Lang and Martin Binder and Lennart Schneider and Lukas Burk and Patrick Schratz and Byron C. Jaeger and Stephen A. Lauer and Lorenz A. Kapsner and Maximilian Mücke and Zezhi Wang and Damir Pulatov and Keenan Ganz and Henri Funk and Liana Harutyunyan and Pierre Camilleri and Philipp Kopper and Andreas Bender and Baisu Zhou and Niko German and Lona Koers and Anna Nazarova and Bernd Bischl},
   journal = {Journal of Open Source Software},
   year = {2025},
   volume = {10},
