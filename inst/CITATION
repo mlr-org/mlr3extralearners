@@ -24,11 +24,11 @@ bibentry(
     person("Pierre", "Camilleri"),
     person("Philipp", "Kopper"),
     person("Andreas", "Bender"),
-    person("Bernd", "Bischl"),
     person("Baisu", "Zhou"),
     person("Niko", "German"),
     person("Lona", "Koers"),
-    person("Anna", "Nazarova")
+    person("Anna", "Nazarova"),
+    person("Bernd", "Bischl")
   ),
   journal = "Journal of Open Source Software",
   year    = "2025",

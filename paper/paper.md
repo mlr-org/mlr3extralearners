@@ -68,9 +68,6 @@ authors:
   - name: Andreas Bender
     orcid: 0000-0001-5628-8611
     affiliation: "2, 3"
-  - name: Bernd Bischl
-    orcid: 0000-0001-6002-6980
-    affiliation: "2, 3"
   - name: Baisu Zhou
     orcid: 0009-0001-5588-9658
     affiliation: 19
@@ -82,6 +79,9 @@ authors:
     affiliation: 2
   - name: Anna Nazarova
     affiliation: 2
+  - name: Bernd Bischl
+    orcid: 0000-0001-6002-6980
+    affiliation: "2, 3"
 affiliations:
  - name: TU Dortmund University, Germany
    index: 1
