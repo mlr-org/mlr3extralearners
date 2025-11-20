@@ -27,10 +27,10 @@ After loading a marshaled \code{lrn("classif.fastai")} into R again, you then ne
 
 \itemize{
 \item \code{n_epoch}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
+Needs to be set for \code{\link[fastai:fit]{fastai::fit()}} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
+Needs to be set for \code{\link[fastai:predict]{fastai::predict()}} to work.
 If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }

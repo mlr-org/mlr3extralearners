@@ -7,7 +7,7 @@
 \description{
 Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
 linear regression models at the terminal leaves.
-Calls \code{\link[Cubist:cubist.default]{Cubist::cubist()}} from \CRANpkg{Cubist}.
+Calls \code{\link[Cubist:cubist]{Cubist::cubist()}} from \CRANpkg{Cubist}.
 }
 \section{Dictionary}{
 
@@ -42,7 +42,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.cubist")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.cubist")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.cubist")
 print(learner)
