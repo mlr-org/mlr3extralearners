@@ -73,7 +73,7 @@ effectively disabling the offset adjustment during prediction.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.glm")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.glm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.glm")
 print(learner)

@@ -22,7 +22,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
 \item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{flexsurv}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{flexsurv}, \CRANpkg{survival}
 }
 }
 
@@ -83,7 +83,7 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.flexible")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.flexible")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(survival)
 
 # Define the task, split to train/test set

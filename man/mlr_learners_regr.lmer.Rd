@@ -76,7 +76,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.lmer")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.lmer")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner and set parameter values
 learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
 

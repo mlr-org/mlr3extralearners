@@ -86,7 +86,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.gam")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.gam")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
 t = tsk("mtcars")
 l = lrn("regr.gam")
