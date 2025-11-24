@@ -1,19 +1,21 @@
 skip_if_not_installed("mboost")
 
 test_that("autotest ph", {
-  withr::local_seed(42)
+  # withr::local_seed(42)
   learner = lrn("surv.gamboost", baselearner = "bols", family = "coxph", center = TRUE)
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
+  # sanity-task works only for specific checks
   result = run_autotest(learner, exclude = "weights|utf8_feature_names|sanity", check_replicable = FALSE)
   expect_true(result, info = result$error)
 })
 
 test_that("autotest aft", {
-  withr::local_seed(42)
+  # withr::local_seed(42)
   learner = lrn("surv.gamboost", family = "loglog", baselearner = "bols", center = TRUE)
   expect_learner(learner)
   # weights are fine for all predict types except 'distr'
+  # sanity-task works only for specific checks
   result = run_autotest(learner, exclude = "weights|utf8_feature_names|sanity", check_replicable = FALSE)
   expect_true(result, info = result$error)
 })
