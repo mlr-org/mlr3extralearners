@@ -27,7 +27,8 @@ Authors@R: c(
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
     person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
            comment = c(ORCID = "0000-0002-8115-0400")),
-    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
+    person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -80,11 +81,13 @@ Suggests:
     future,
     gbm (>= 2.2.2),
     glmnet (>= 4.1-6),
+    GPfit,
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
     klaR,
     knitr,
+    laGP,
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
@@ -101,6 +104,7 @@ Suggests:
     nnet,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
+    pls,
     polyreg,
     prioritylasso (>= 0.3.1),
     pseudo,
@@ -108,6 +112,7 @@ Suggests:
     randomForest,
     randomForestSRC (>= 3.4.3),
     ranger (>= 0.17.0),
+    RRF,
     remotes,
     rFerns,
     rJava,

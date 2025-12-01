@@ -1,0 +1,126 @@
+#' @title Regression Gaussian Process Learner (GPfit)
+#' @author awinterstetter
+#' @name mlr_learners_regr.gpfit
+#'
+#' @description
+#' Gaussian process regression via [GPfit::GP_fit()] from \CRANpkg{GPfit}.
+#' Inputs are optionally scaled to the unit hypercube (GPfit assumes this
+#' domain for optimization). The correlation kernel is configured via
+#' `type`, `power`, and `matern_nu_k`, matching the original mlr S3 learner.
+#'
+#' @template learner
+#' @templateVar id regr.gpfit
+#'
+#' @references
+#' MacDonald, B., Ranjan, R., & Chipman, H. (2015).
+#' GPfit: Gaussian process model fitting using a new optimization algorithm.
+#' Journal of Statistical Software, 64(12), 1–23.
+#'
+#' @export
+#' @template seealso_learner
+#' @template example
+LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
+  inherit = LearnerRegr,
+  public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
+    initialize = function() {
+
+      ps = ps(
+        control = p_uty(init = NULL,
+          custom_check = function(x) checkmate::check_numeric(x, len = 3, lower = 1, any.missing = FALSE, null.ok = TRUE),
+          tags = "train"),
+        nug_thres = p_dbl(init = 20, lower = 0, tags = "train"),
+        trace = p_lgl(init = FALSE, tags = "train"),
+        maxit = p_int(init = 100L, lower = 1L, tags = "train"),
+        optim_start = p_uty(init = NULL, special_vals = list(NULL), tags = "train"),
+        scale = p_lgl(init = TRUE, tags = "train"),
+        type = p_fct(init = "exponential", levels = c("exponential", "matern"), tags = "train"),
+        matern_nu_k = p_int(default = 0L, lower = 0L, depends = quote(type == "matern"), tags = "train"),
+        power = p_dbl(init = 1.95, lower = 1, upper = 2, depends = quote(type == "exponential"), tags = "train")
+      )
+
+      super$initialize(
+        id = "regr.gpfit",
+        packages = c("mlr3extralearners", "GPfit"),
+        feature_types = c("integer", "numeric"),
+        predict_types = c("response", "se"),
+        param_set = ps,
+        label = "Gaussian Process (GPfit)",
+        man = "mlr3extralearners::mlr_learners_regr.gpfit"
+      )
+    }
+  ),
+
+  private = list(
+
+    .train = function(task) {
+      pv = self$param_set$get_values(tags = "train")
+      
+      d = list()
+      d$data = as_numeric_matrix(task$data(cols = task$feature_names))
+      d$target = task$truth()
+
+      low = apply(d$data, 2, min)
+      high = apply(d$data, 2, max)
+      not_const = colnames(d$data)[high != low]
+
+      if (length(not_const) == 0L) {
+        stop("GPfit requires at least one non-constant feature.")
+      }
+      if (pv$scale) {
+        d$data[, not_const] = apply(d$data[, not_const, drop = FALSE], 2, function(x) x = (x - min(x)) / (max(x) - min(x)))
+        mlist = list(scaled = TRUE, not_const = not_const, high = high, low = low)
+      } else {
+        mlist = list(scaled = FALSE, not_const = not_const)
+      }
+      corr_pars = pv[names(pv) %in% c("scale", "type", "matern_nu_k", "power")]
+      if (corr_pars$type == "exponential") {
+        corr_pars$matern_nu_k = NULL
+      }
+
+      train_pars = pv[names(pv) %nin% c("scale", "type", "matern_nu_k", "power")]
+      if (is.null(pv$control)) {
+        train_pars$control = NULL
+      }
+
+      model = mlr3misc::invoke(
+        GPfit::GP_fit,
+        X = d$data,
+        Y = d$target,
+        corr = corr_pars,
+        .args = train_pars
+      )
+      
+      list(
+        model = model,
+        scaled = isTRUE(pv$scale),
+        not_const = not_const,
+        low = low[not_const],
+        high = high[not_const]
+      )
+    },
+
+    .predict = function(task) {
+      state = self$model
+      newdata = ordered_features(task, self)
+      x_new = as_numeric_matrix(newdata[, state$not_const, with = FALSE, drop = FALSE])
+
+      if (state$scaled) {
+        rng = state$high - state$low
+        x_new = sweep(x_new, 2, state$low, "-")
+        x_new = sweep(x_new, 2, rng, "/")
+      }
+
+      pred = GPfit::predict.GP(state$model, xnew = x_new)
+
+      if (self$predict_type == "response") {
+        list(response = as.numeric(pred$Y_hat))
+      } else {
+        list(response = as.numeric(pred$Y_hat), se = sqrt(pred$MSE))
+      }
+    }
+  )
+)
+
+.extralrns_dict$add("regr.gpfit", LearnerRegrGPfit)
