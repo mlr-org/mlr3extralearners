@@ -1,4 +1,8 @@
+# mlr3extralearners (development version)
+
 # mlr3extralearners dev
+
+# mlr3extralearners 1.3.0
 
 * Add `formula` and `anc` params to `surv.flexible` learner, as well as `response` predict type (mean survival time).
 * Fix `regr.gamboost` regression predictions (#498).
