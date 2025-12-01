@@ -56,7 +56,7 @@ the parameter na_action.'></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Oblique Random Forest Classifier</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_classif_aorsf.R" class="external-link"><code>R/learner_aorsf_classif_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_aorsf_classif_aorsf.R" class="external-link"><code>R/learner_aorsf_classif_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.aorsf.Rd</code></div>
     </div>
 
@@ -205,18 +205,18 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.338</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 2.606</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.99</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 1.00</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: AUC-ROC</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei      cell_shape    cl_thickness       cell_size     bl_cromatin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.5365269       0.5131744       0.5095012       0.4243845       0.4053076 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   marg_adhesion normal_nucleoli    epith_c_size         mitoses </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       0.3808933       0.3574144       0.2571090       0.2473822 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     bare_nuclei      cell_shape       cell_size    cl_thickness     bl_cromatin </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.6377953       0.6143791       0.6038062       0.5800000       0.5196078 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    epith_c_size normal_nucleoli   marg_adhesion         mitoses </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.4577114       0.3780687       0.3242784       0.2946593 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -224,7 +224,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.01777778 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       0.04 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

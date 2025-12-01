@@ -198,7 +198,7 @@ print(learner$model)
 #> Termination condition: GRSq -Inf at 9 terms
 #> Importance: wt-unused, disp, am-unused, carb-unused, cyl-unused, ...
 #> Number of terms at each degree of interaction: 1 2 (additive model)
-#> GCV 6.537304    RSS 79.69285    GRSq 0.8589492    RSq 0.9097275
+#> GCV 8.208145    RSS 100.0612    GRSq 0.8135568    RSq 0.8806763
 
 
 # Make predictions for the test rows
@@ -207,5 +207,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.148126 
+#> 5.920191 
 ```

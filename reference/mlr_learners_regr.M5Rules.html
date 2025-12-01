@@ -52,7 +52,7 @@ Calls RWeka::M5Rules() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression M5Rules Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_M5Rules.R" class="external-link"><code>R/learner_RWeka_regr_M5Rules.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_RWeka_regr_M5Rules.R" class="external-link"><code>R/learner_RWeka_regr_M5Rules.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.M5Rules.Rd</code></div>
     </div>
 
@@ -251,9 +251,10 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0294 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0296 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.7415 [21/47.623%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.9118 * carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 4.0085 * drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.2797 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 18.1762 [21/36.092%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -264,7 +265,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.438014 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.74875 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

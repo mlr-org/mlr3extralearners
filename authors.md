@@ -47,7 +47,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/mlr-org/mlr3extralearners/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/inst/CITATION)
 
 Fischer S, Zobolas J, Sonabend R, Becker M, Lang M, Binder M, Schneider
 L, Burk L, Schratz P, Jaeger B, Lauer S, Kapsner L, Mücke M, Wang Z,
