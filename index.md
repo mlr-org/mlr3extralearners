@@ -56,7 +56,7 @@ lrn("regr.gbm")
 
 install_learners("regr.gbm")
 
-learner <-lrn("regr.gbm")
+learner = lrn("regr.gbm")
 learner
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
@@ -70,29 +70,30 @@ learner
 You can now use the learner to fit a model and make predictions.
 
 ``` r
-task <- tsk("california_housing")
+task = tsk("california_housing")
 task
 #> 
-#> ── <TaskRegr> (20640x10): California House Value ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <TaskRegr> (20640x10): California House Value ───────────────────────────────
 #> • Target: median_house_value
 #> • Properties: -
 #> • Features (9):
-#>   • dbl (8): households, housing_median_age, latitude, longitude, median_income, population, total_bedrooms, total_rooms
+#>   • dbl (8): households, housing_median_age, latitude, longitude,
+#>   median_income, population, total_bedrooms, total_rooms
 #>   • fct (1): ocean_proximity
-split <- partition(task)
+split = partition(task)
 learner$train(task, split$train)
 #> Distribution not specified, assuming gaussian ...
 learner$predict(task, split$test)
 #> 
-#> ── <PredictionRegr> for 6811 observations: ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+#> ── <PredictionRegr> for 6811 observations: ─────────────────────────────────────
 #>  row_ids  truth  response
-#>        1 452600 428999.97
-#>        7 299200 265771.26
-#>       17 152500 221807.64
+#>        6 269700 267521.73
+#>       15 159200 206521.92
+#>       19 158700 186987.58
 #>      ---    ---       ---
-#>    20634  98300  98009.59
-#>    20635 116800 144098.72
-#>    20640  89400  93868.47
+#>    20635 116800 138468.71
+#>    20638  92300  81523.13
+#>    20640  89400  93127.56
 ```
 
 You can learn more about using learners by [reading our
@@ -107,3 +108,21 @@ website](https://mlr3extralearners.mlr-org.com/articles/extending.html).
 
 This R package is developed as part of the [Mathematical Research Data
 Initiative](https://www.mardi4nfdi.de/about/mission).
+
+## Citing mlr3extralearners
+
+If you use `mlr3extralearners`, please cite our [JOSS
+paper](https://doi.org/10.21105/joss.08331):
+
+``` R
+@Article{Fischer2025,
+  title = {mlr3extralearners: {E}xpanding the mlr3 {E}cosystem with {C}ommunity-{D}riven {L}earner {I}ntegration},
+  author = {Sebastian Fischer and John Zobolas and Raphael Sonabend and Marc Becker and Michel Lang and Martin Binder and Lennart Schneider and Lukas Burk and Patrick Schratz and Byron C. Jaeger and Stephen A. Lauer and Lorenz A. Kapsner and Maximilian Mücke and Zezhi Wang and Damir Pulatov and Keenan Ganz and Henri Funk and Liana Harutyunyan and Pierre Camilleri and Philipp Kopper and Andreas Bender and Baisu Zhou and Niko German and Lona Koers and Anna Nazarova and Bernd Bischl},
+  journal = {Journal of Open Source Software},
+  year = {2025},
+  volume = {10},
+  number = {115},
+  pages = {8331},
+  doi = {10.21105/joss.08331},
+}
+```

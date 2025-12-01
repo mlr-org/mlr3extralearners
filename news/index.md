@@ -1,5 +1,9 @@
 # Changelog
 
+## mlr3extralearners 1.3.1
+
+- Update website to include citation information
+
 ## mlr3extralearners 1.3.0
 
 - Add `formula` and `anc` params to `surv.flexible` learner, as well as

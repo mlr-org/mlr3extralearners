@@ -15,7 +15,7 @@ Calls RWeka::M5P() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -246,26 +246,61 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt;= 85.5 : LM1 (5/33.306%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;  85.5 : LM2 (16/25.407%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt;= 177.5 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   drat &lt;= 4 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt;= 3.327 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt;= 96 : LM1 (2/0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;  96 : LM2 (4/3.708%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;  3.327 : LM3 (4/7.372%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   drat &gt;  4 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt;= 78.85 : LM4 (2/12.212%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;  78.85 : LM5 (2/10.584%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;  177.5 : LM6 (7/10.106%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.2157 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0102 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0228 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.6184 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 43.7724</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1215 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0204 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.9632 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.6587</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.3928 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.0092 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0147 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.6738 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.8632</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1215 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.02 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.9632 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.5997</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1342 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0162 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.9632 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.1507</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0116 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0162 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 4.5313 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.2681</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0116 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0162 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 4.5313 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.1904</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0075 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.492 * drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0213 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.8529 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.4033</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 6</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -274,7 +309,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.537357 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.843559 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

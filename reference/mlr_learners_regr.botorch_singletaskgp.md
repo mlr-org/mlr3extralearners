@@ -102,7 +102,7 @@ Marshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`marshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 
@@ -120,7 +120,7 @@ Unmarshal the learner's model.
 
   (any)  
   Additional arguments passed to
-  [`mlr3::unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
+  [`unmarshal_model()`](https://mlr3.mlr-org.com/reference/marshaling.html).
 
 ------------------------------------------------------------------------
 

@@ -23,7 +23,8 @@ instantiated via
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
   [mlr3proba](https://CRAN.R-project.org/package=mlr3proba),
   [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
-  [flexsurv](https://CRAN.R-project.org/package=flexsurv)
+  [flexsurv](https://CRAN.R-project.org/package=flexsurv),
+  [survival](https://CRAN.R-project.org/package=survival)
 
 ## Parameters
 
