@@ -2,7 +2,7 @@ skip_if_not_installed("pls")
 
 test_that("paramtest regr.plsr train", {
   learner = lrn("regr.plsr")
-  fun_list = list(pls::mvr, pls:::mvrCv, pls::kernelpls.fit, pls::widekernelpls.fit, pls::simpls.fit, pls::oscorespls.fit)
+  fun_list = list(pls::mvr, pls:::mvrCv, pls::kernelpls.fit, pls::widekernelpls.fit, pls::simpls.fit, pls::oscorespls.fit) # nolint
   exclude = c(
     "formula", # constructed from task data
     "Y.add", # additional response not supported
@@ -28,7 +28,7 @@ test_that("paramtest regr.plsr train", {
 
 test_that("paramtest regr.plsr predict", {
   learner = lrn("regr.plsr")
-  fun = pls:::predict.mvr
+  fun = pls:::predict.mvr #nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally

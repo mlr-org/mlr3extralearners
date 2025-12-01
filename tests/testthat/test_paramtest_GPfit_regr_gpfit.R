@@ -20,7 +20,7 @@ test_that("paramtest regr.gpfit train", {
 
 test_that("paramtest regr.gpfit predict", {
   learner = lrn("regr.gpfit")
-  fun = GPfit:::predict.GP
+  fun = GPfit:::predict.GP # nolint
 
   exclude = c(
     "object", # handled by mlr3
