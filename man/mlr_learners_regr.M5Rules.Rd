@@ -7,7 +7,7 @@
 \description{
 Algorithm for inducing \href{https://en.wikipedia.org/wiki/Decision_list}{decision lists} from
 model trees.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::M5Rules()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:M5Rules]{RWeka::M5Rules()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -69,7 +69,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.M5Rules")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.M5Rules")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.M5Rules")
 print(learner)

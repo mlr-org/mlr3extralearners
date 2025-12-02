@@ -42,7 +42,7 @@ test_that("formula interface works", {
   expect_error(lrn("surv.flexible", formula = list("not_a_formula")))
   task = tsk("lung")
 
-  form = Surv(time, status) ~ age + sex
+  form = survival::Surv(time, status) ~ age + sex
   learner = lrn("surv.flexible", k = 1, formula = form)
   learner$train(task)
   expect_equal(learner$model$ncovs, 2)

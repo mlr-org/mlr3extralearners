@@ -68,7 +68,7 @@ classification tasks and to \code{"multinomial"} for multiclass classification p
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.abess")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.abess")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.abess")
 print(learner)
@@ -104,7 +104,7 @@ predictions$score()
 }
 }
 \author{
-abess-team
+bbayukari
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerClassif]{mlr3::LearnerClassif}} -> \code{LearnerClassifAbess}
@@ -148,7 +148,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
+Extract the name of selected features from the model by \code{\link[abess:extract]{abess::extract()}}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features()}\if{html}{\out{</div>}}
 }
