@@ -80,6 +80,7 @@ Suggests:
     future,
     gbm (>= 2.2.2),
     glmnet (>= 4.1-6),
+    GPfit,
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
