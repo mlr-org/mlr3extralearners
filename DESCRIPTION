@@ -114,6 +114,7 @@ Suggests:
     rmarkdown,
     rotationForest,
     rpart,
+    RRF,
     rsm,
     rvest,
     RWeka,
