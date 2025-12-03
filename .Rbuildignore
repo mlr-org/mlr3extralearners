@@ -26,3 +26,4 @@ vignettes/learners
 ^README.html$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING.md
+^paper$

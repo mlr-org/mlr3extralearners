@@ -6,7 +6,7 @@
 \title{Regression M5P Learner}
 \description{
 Implements base routines for generating M5 Model trees and rules.
-Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::M5P()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:M5P]{RWeka::M5P()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
@@ -69,7 +69,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.m5p")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.m5p")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.m5p")
 print(learner)
