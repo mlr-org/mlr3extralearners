@@ -9,6 +9,9 @@
 #' @templateVar id regr.plsr
 #' @template learner
 #'
+#' @references
+#' `r format_bib("mevik_2007")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
