@@ -65,6 +65,12 @@ predictions = learner$predict(task, row_ids = ids$test)
 predictions$score()
 \dontshow{\}) # examplesIf}
 }
+\references{
+Mevik, Bjorn-Helge, Wehrens, Ron (2007).
+\dQuote{The pls Package: Principal Component and Partial Least Squares Regression in R.}
+\emph{Journal of Statistical Software}, \bold{18}(2), 1--24.
+\doi{10.18637/jss.v018.i02}.
+}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
