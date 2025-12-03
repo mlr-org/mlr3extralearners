@@ -78,6 +78,18 @@ predictions = learner$predict(task, row_ids = ids$test)
 predictions$score()
 \dontshow{\}) # examplesIf}
 }
+\references{
+Deng, Houtao, Runger, George (2012).
+\dQuote{Feature selection via regularized trees.}
+In \emph{2012 International Joint Conference on Neural Networks (IJCNN)}, 1--8.
+IEEE.
+\doi{10.1109/IJCNN.2012.6252640}.
+
+Deng, Houtao, Runger, George (2013).
+\dQuote{Gene selection with guided regularized random forest.}
+\emph{Pattern Recognition}, \bold{46}(12), 3483--3489.
+\doi{10.1016/j.patcog.2013.05.021}.
+}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.
