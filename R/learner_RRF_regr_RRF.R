@@ -9,6 +9,9 @@
 #' @templateVar id regr.RRF
 #' @template learner
 #'
+#' @references
+#' `r format_bib("deng2012rrf", "deng2013grrf")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
