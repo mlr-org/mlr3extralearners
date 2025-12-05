@@ -14,18 +14,21 @@ get_xgb_mat = function(task, objective, private, row_ids = NULL) {
     times[status != 1] = -1L * times[status != 1]
     data = xgboost::xgb.DMatrix(
       data = as_numeric_matrix(data),
+      weight = private$.get_weights(task),
       label = times
     )
   } else { # AFT
     y_lower_bound = y_upper_bound = times
     y_upper_bound[status == 0] = Inf
 
-    data = xgboost::xgb.DMatrix(as_numeric_matrix(data))
-    xgboost::setinfo(data, "label_lower_bound", y_lower_bound)
-    xgboost::setinfo(data, "label_upper_bound", y_upper_bound)
-  }
+    data = xgboost::xgb.DMatrix(
+      data = as_numeric_matrix(data),
+      weight = private$.get_weights(task),
+      label_lower_bound = y_lower_bound,
+      label_upper_bound = y_upper_bound
+    )
 
-  xgboost::setinfo(data, "weight", private$.get_weights(task))
+  }
 
   data
 }

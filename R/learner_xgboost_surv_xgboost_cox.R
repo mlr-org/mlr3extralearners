@@ -58,23 +58,33 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         disable_in_tune = list(early_stopping_rounds = NULL)
       )
       ps = ps(
-        alpha                       = p_dbl(0, default = 0, tags = "train"),
+        reg_alpha                   = p_dbl(0, default = 0, tags = "train"),
+        alpha                       = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
         callbacks                   = p_uty(default = list(), tags = "train"),
+        base_margin                 = p_uty(default = NULL, tags = c("train", "predict")),
+        custom_metric               = p_uty(default = NULL, tags = "train"),
+        eta                         = p_dbl(0, 1, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
         colsample_bylevel           = p_dbl(0, 1, default = 1, tags = "train"),
         colsample_bynode            = p_dbl(0, 1, default = 1, tags = "train"),
         colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
         disable_default_eval_metric = p_lgl(default = FALSE, tags = "train"),
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
-        eta                         = p_dbl(0, 1, default = 0.3, tags = "train"),
+        evals                       = p_uty(default = NULL, tags = "train"),
+        eval_set                    = p_uty(default = NULL, tags = "train"),
+        learning_rate               = p_dbl(0, 1, default = 0.3, tags = "train"),
         feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
-        feval                       = p_uty(default = NULL, tags = "train"),
-        gamma                       = p_dbl(0, default = 0, tags = "train"),
+        feature_weights             = p_uty(default = NULL, tags = "train"),
+        gamma                       = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
+        huber_slope                 = p_dbl(default = 0, tags = "train"),
+        quantile_alpha              = p_dbl(0, 1, default = 0.5, tags = "train"),
+        min_split_loss              = p_dbl(0, default = 0, tags = "train"),
         grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train"),
         interaction_constraints     = p_uty(tags = "train"),
         iterationrange              = p_uty(tags = "predict"),
-        lambda                      = p_dbl(0, default = 1, tags = "train"),
+        reg_lambda                  = p_dbl(0, default = 1, tags = "train"),
+        lambda                      = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
         lambda_bias                 = p_dbl(0, default = 0, tags = "train"),
         max_bin                     = p_int(2L, default = 256L, tags = "train"),
         max_delta_step              = p_dbl(0, default = 0, tags = "train"),
@@ -82,12 +92,13 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         max_leaves                  = p_int(0L, default = 0L, tags = "train"),
         maximize                    = p_lgl(default = NULL, special_vals = list(NULL), tags = "train"),
         min_child_weight            = p_dbl(0, default = 1, tags = "train"),
-        missing                     = p_dbl(default = NA, tags = c("train", "predict"), special_vals = list(NA, NA_real_, NULL)), #nolint
         monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train"),
+        multi_strategy              = p_uty(default = NULL, tags = "train"),
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
         nrounds                     = p_nrounds,
-        nthread                     = p_int(1L, default = 1L, tags = c("train", "threads")),
+        nthreads                    = p_int(1L, default = 1L, tags = c("train", "threads")),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
+        monitor_training            = p_uty(default = NULL, tags = "train"),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
         print_every_n               = p_int(1L, default = 1L, tags = "train"),
         process_type                = p_fct(c("default", "update"), default = "default", tags = "train"),
@@ -100,6 +111,11 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         scale_pos_weight            = p_dbl(default = 1, tags = "train"),
         seed_per_iteration          = p_lgl(default = FALSE, tags = "train"),
         skip_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
+        use_rmm                     = p_lgl(default = FALSE, tags = "train"),
+        max_cached_hist_node        = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
+        extmem_single_page          = p_lgl(default = FALSE, tags = "train"),
+        max_cat_to_onehot           = p_int(default = 4L, tags = "train"),
+        max_cat_threshold           = p_int(default = 64L, tags = "train"),
         strict_shape                = p_lgl(default = FALSE, tags = "predict"),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
         top_k                       = p_int(0, default = 0, tags = "train"),
@@ -107,9 +123,13 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         tweedie_variance_power      = p_dbl(1, 2, default = 1.5, tags = "train"),
         updater                     = p_uty(tags = "train"), # Default depends on the selected booster
         verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
-        watchlist                   = p_uty(default = NULL, tags = "train"),
         xgb_model                   = p_uty(tags = "train"),
-        device                      = p_uty(tags = "train")
+        weights                     = p_uty(default = NULL, tags = "train"),
+        device                      = p_uty(tags = "train"),
+        y                           = p_uty(default = NULL, tags = "train"),
+        missing                     = p_dbl(default = NA, tags = "predict", special_vals = list(NA, NA_real_, NULL)),
+        avoid_transpose             = p_lgl(default = FALSE, tags = "predict"),
+        validate_features           = p_lgl(default = TRUE, tags = "predict")
       )
       # param deps
       ps$add_dep("print_every_n", "verbose", CondEqual$new(1L))
@@ -127,7 +147,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       # custom defaults
-      ps$values = list(nrounds = 1000L, nthread = 1L, verbose = 0L)
+      ps$values = list(nrounds = 1000L, nthreads = 1L, verbose = 0L)
 
       super$initialize(
         id = "surv.xgboost.cox",
