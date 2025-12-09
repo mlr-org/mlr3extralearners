@@ -1,6 +1,6 @@
-# mlr3extralearners (development version)
+# mlr3extralearners 1.3.1
 
-# mlr3extralearners dev
+* Update website to include citation information
 
 # mlr3extralearners 1.3.0
 

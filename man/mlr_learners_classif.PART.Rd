@@ -6,7 +6,7 @@
 \title{Classification PART Learner}
 \description{
 Regression partition tree.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::PART()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:PART]{RWeka::PART()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -73,7 +73,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.PART")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.PART")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.PART")
 print(learner)
