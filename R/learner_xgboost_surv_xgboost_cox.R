@@ -248,11 +248,24 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         test_data = get_xgb_mat(internal_valid_task, pv$objective, private)
         # XGBoost uses the last element in the watchlist as
         # the early stopping set
-        pv$watchlist = c(pv$watchlist, list(test = test_data))
+        pv$evals = c(pv$evals, list(test = test_data))
       }
 
       structure(list(
-        model = invoke(xgboost::xgb.train, data = data, .args = pv),
+        model = xgboost::xgb.train(
+          params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)],
+          data = data,
+          nrounds = pv$nrounds,
+          evals = pv$evals,
+          custom_metric = pv$custom_metric,
+          verbose = pv$verbose,
+          print_every_n = pv$print_every_n,
+          early_stopping_rounds = pv$early_stopping_rounds,
+          maximize = pv$maximize,
+          save_period = pv$save_period,
+          save_name = pv$save_name,
+          callbacks = pv$callbacks %??% list()
+        ),
         train_data = data # for breslow
       ), class = "xgboost_cox_model")
     },

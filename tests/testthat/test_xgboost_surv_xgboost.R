@@ -36,12 +36,12 @@ test_that("validation and internal tuning: aft", {
   )
 
   learner$train(task)
-  expect_named(learner$model$evaluation_log, c("iter", "test_aft_nloglik"))
+  expect_named(attributes(learner$model)$evaluation_log, c("iter", "test_aft_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    learner$model$evaluation[get("iter") == 10, "test_aft_nloglik"][[1L]]
+    attributes(learner$model)$evaluation[get("iter") == 10, "test_aft_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -57,7 +57,7 @@ test_that("validation and internal tuning: aft", {
   )
   learner$train(task)
   expect_equal(learner$internal_tuned_values, NULL)
-  expect_named(learner$model$evaluation_log, c("iter", "test_aft_nloglik"))
+  expect_named(attributes(learner$model)$evaluation_log, c("iter", "test_aft_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
 
@@ -79,7 +79,7 @@ test_that("validation and internal tuning: aft", {
   learner$train(task)
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    learner$model$evaluation_log$test_aft_nloglik[learner$internal_tuned_values$nrounds]
+    attributes(learner$model)$evaluation$test_aft_nloglik[learner$internal_tuned_values$nrounds]
   )
 
   learner = lrn("surv.xgboost.aft")
@@ -89,7 +89,7 @@ test_that("validation and internal tuning: aft", {
 
   learner = lrn("surv.xgboost.aft", validate = 0.3, nrounds = 10)
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$aft_nloglik, learner$model$evaluation_log$test_aft_nloglik[10L])
+  expect_equal(learner$internal_valid_scores$aft_nloglik, attributes(learner$model)$evaluation$test_aft_nloglik[10L])
   expect_true(is.null(learner$internal_tuned_values))
 })
 

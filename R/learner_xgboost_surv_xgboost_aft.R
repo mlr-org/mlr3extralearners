@@ -58,7 +58,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         alpha                       = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
-        callbacks                   = p_uty(default = list(), tags = "train"),
+        callbacks                   = p_uty(default = NULL, tags = "train"),
         base_margin                 = p_uty(default = NULL, tags = c("train", "predict")),
         custom_metric               = p_uty(default = NULL, tags = "train"),
         eta                         = p_dbl(0, 1, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
@@ -194,15 +194,15 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(NULL)
       }
-      list(nrounds = self$model$niter)
+      list(nrounds = nrow(attributes(learner$model)$evaluation_log))
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(self$model$evaluation_log)) {
+      if (is.null(attributes(learner$model)$evaluation_log)) {
         return(named_list())
       }
       patterns = NULL
-      as.list(self$model$evaluation_log[
+      as.list(attributes(learner$model)$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")
@@ -223,7 +223,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         test_data = get_xgb_mat(internal_valid_task, pv$objective, private)
         # XGBoost uses the last element in the evals-param as
         # the early stopping set
-        params$evals = c(pv$evals, list(test = test_data))
+        pv$evals = c(pv$evals, list(test = test_data))
       }
 
       xgboost::xgb.train(
