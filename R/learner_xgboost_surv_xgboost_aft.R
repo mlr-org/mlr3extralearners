@@ -194,15 +194,15 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(NULL)
       }
-      list(nrounds = nrow(attributes(learner$model)$evaluation_log))
+      list(nrounds = nrow(attributes(self$model)$evaluation_log))
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(attributes(learner$model)$evaluation_log)) {
+      if (is.null(attributes(self$model)$evaluation_log)) {
         return(named_list())
       }
       patterns = NULL
-      as.list(attributes(learner$model)$evaluation_log[
+      as.list(attributes(self$model)$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")

@@ -219,15 +219,15 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(NULL)
       }
-      list(nrounds = self$model$model$niter)
+      list(nrounds = nrow(attributes(self$model$model)$evaluation_log))
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(self$model$model$evaluation_log)) {
+      if (is.null(attributes(self$model$model)$evaluation_log)) {
         return(named_list())
       }
       patterns = NULL
-      as.list(self$model$model$evaluation_log[
+      as.list(attributes(self$model$model)$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")

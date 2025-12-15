@@ -27,7 +27,6 @@ test_that("autotest aft", {
   expect_true(result, info = result$error)
 })
 
-
 test_that("validation and internal tuning: aft", {
   learner = lrn("surv.xgboost.aft",
     nrounds = 10,
@@ -41,7 +40,7 @@ test_that("validation and internal tuning: aft", {
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    attributes(learner$model)$evaluation[get("iter") == 10, "test_aft_nloglik"][[1L]]
+    attributes(learner$model)$evaluation_log[get("iter") == 10, "test_aft_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -62,7 +61,7 @@ test_that("validation and internal tuning: aft", {
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
 
   learner = lrn("surv.xgboost.aft",
-    nrounds = to_tune(upper = 1000, internal = TRUE),
+    nrounds = paradox::to_tune(upper = 1000, internal = TRUE),
     validate = 0.2
   )
   s = learner$param_set$search_space()
@@ -79,7 +78,7 @@ test_that("validation and internal tuning: aft", {
   learner$train(task)
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    attributes(learner$model)$evaluation$test_aft_nloglik[learner$internal_tuned_values$nrounds]
+    attributes(learner$model)$evaluation_log$test_aft_nloglik[learner$internal_tuned_values$nrounds]
   )
 
   learner = lrn("surv.xgboost.aft")
@@ -89,11 +88,12 @@ test_that("validation and internal tuning: aft", {
 
   learner = lrn("surv.xgboost.aft", validate = 0.3, nrounds = 10)
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$aft_nloglik, attributes(learner$model)$evaluation$test_aft_nloglik[10L])
+  expect_equal(learner$internal_valid_scores$aft_nloglik, attributes(learner$model)$evaluation_log$test_aft_nloglik[10L])
   expect_true(is.null(learner$internal_tuned_values))
 })
 
 test_that("validation and internal tuning: cox", {
+  browser()
   learner = lrn("surv.xgboost.cox",
     nrounds = 10,
     early_stopping_rounds = 10,
@@ -101,12 +101,12 @@ test_that("validation and internal tuning: cox", {
   )
 
   learner$train(task)
-  expect_named(learner$model$model$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_named(attributes(learner$model$model)$evaluation_log, c("iter", "test_cox_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
   expect_equal(
     learner$internal_valid_scores$cox_nloglik,
-    learner$model$model$evaluation[get("iter") == 10, "test_cox_nloglik"][[1L]]
+    attributes(learner$model$model)$evaluation_log[get("iter") == 10, "test_cox_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -122,12 +122,12 @@ test_that("validation and internal tuning: cox", {
   )
   learner$train(task)
   expect_equal(learner$internal_tuned_values, NULL)
-  expect_named(learner$model$model$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_named(attributes(learner$model$model)$evaluation_log, c("iter", "test_cox_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
 
   learner = lrn("surv.xgboost.cox",
-    nrounds = to_tune(upper = 1000, internal = TRUE),
+    nrounds = paradox::to_tune(upper = 1000, internal = TRUE),
     validate = 0.2
   )
   s = learner$param_set$search_space()
@@ -144,7 +144,7 @@ test_that("validation and internal tuning: cox", {
   learner$train(task)
   expect_equal(
     learner$internal_valid_scores$cox_nloglik,
-    learner$model$model$evaluation_log$test_cox_nloglik[learner$internal_tuned_values$nrounds]
+    attributes(learner$model$model)$evaluation_log$test_cox_nloglik[learner$internal_tuned_values$nrounds]
   )
 
   learner = lrn("surv.xgboost.cox")
@@ -154,7 +154,7 @@ test_that("validation and internal tuning: cox", {
 
   learner = lrn("surv.xgboost.cox", validate = 0.3, nrounds = 10)
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$cox_nloglik, learner$model$model$evaluation_log$test_cox_nloglik[10L])
+  expect_equal(learner$internal_valid_scores$cox_nloglik, attributes(learner$model$model)$evaluation_log$test_cox_nloglik[10L])
   expect_true(is.null(learner$internal_tuned_values))
 })
 
