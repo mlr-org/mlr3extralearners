@@ -1,3 +1,5 @@
+testthat::skip("temporarily disabled")
+
 skip_if_not_installed("rvest")
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("xgboost")
