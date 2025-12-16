@@ -15,7 +15,7 @@ Calls randomForestSRC::rfsrc() from randomForestSRC."><meta name="robots" conten
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -274,7 +274,7 @@ average across causes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                     Number of events: 1=12, 2=74</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 9.148</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 8.968</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -283,28 +283,28 @@ average across causes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: surv-CR</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: logrankCR *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.26160991, 0.19874229</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.12546468, 0.15027187</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span>cause <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co"># VIMP for cause = 1</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bili        copper           sex         edema          chol </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2591242683  0.1029830856  0.0513315599  0.0450869585  0.0348395336 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       protime      platelet       ascites           age           ast </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0346684907  0.0316449246  0.0288352660  0.0250709411  0.0185075920 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         stage       albumin        hepato          trig           trt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0173578265  0.0163374525  0.0070740750 -0.0007364771 -0.0013309361 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      alk.phos       spiders </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0072577398 -0.0104437052 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bili           ast        copper       protime         edema </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4278100173  0.0890548961  0.0766454159  0.0762561762  0.0576588327 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       ascites           age          chol      platelet        hepato </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0538727395  0.0434977271  0.0336255405  0.0184340549  0.0167816408 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           sex       albumin         stage       spiders          trig </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0130076591  0.0089767616  0.0062360189  0.0050367001  0.0030789096 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      alk.phos           trt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0013919559 -0.0003755014 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span>cause <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># VIMP for cause = 2</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bili         edema       ascites        copper       albumin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1764577399  0.1135185856  0.0930070685  0.0803730287  0.0518307367 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           age       protime          chol      platelet         stage </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0496249282  0.0393955596  0.0235683755  0.0197629247  0.0170150120 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           ast           sex      alk.phos       spiders          trig </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0096211303  0.0058244433  0.0029173128  0.0027687067  0.0024113689 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        hepato           trt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0013421213 -0.0001864821 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bili         edema       ascites        copper       protime </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2583918083  0.1524758037  0.0896171094  0.0625541350  0.0591346831 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           age       albumin          chol           ast      alk.phos </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0409753140  0.0340089875  0.0214371647  0.0128944552  0.0123374734 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          trig      platelet        hepato       spiders         stage </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0099974704  0.0065012898  0.0044244612  0.0031013885  0.0019805013 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           trt           sex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0003944867 -0.0004046985 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">oob_error</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># weighted-mean across causes</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2075145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1468104</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -312,7 +312,7 @@ average across causes.</p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cmprsk.auc </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8668172 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8713119 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

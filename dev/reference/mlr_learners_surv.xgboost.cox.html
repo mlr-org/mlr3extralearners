@@ -19,7 +19,7 @@ set to survival:cox and eval_metric to cox-nloglik."><meta name="robots" content
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.3.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -314,38 +314,28 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .internal.setinfo.xgb.DMatrix(object, name, info):</span> [10:48:50] xgboost_R.cc:167: Array or matrix has unsupported type.</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> Stack trace:</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (0) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x826fd) [0x7f36be2826fd]</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (1) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x7b345) [0x7f36be27b345]</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (2) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(XGDMatrixSetInfo_R+0x71) [0x7f36be27b411]</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (3) /opt/R/4.5.2/lib/R/lib/libR.so(+0x103c5e) [0x7f37d3b03c5e]</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (4) /opt/R/4.5.2/lib/R/lib/libR.so(+0x1499a8) [0x7f37d3b4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $model</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> ##### xgb.Booster</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> raw: 882.4 Kb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> call:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     nthread = 1L, objective = "survival:cox", eval_metric = "cox-nloglik")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> params (as set within xgb.train):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   nthread = "1", objective = "survival:cox", eval_metric = "cox-nloglik", validate_parameters = "TRUE"</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> xgb.attributes:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   niter</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> # of features: 6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> niter: 1000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> nfeatures : 6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> $train_data</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> xgb.DMatrix  dim: 670 x 6  info: label  colnames: yes</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"class")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "xgboost_cox_model"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays        los     revasc        age      sysbp   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.63790737 0.15864047 0.10020505 0.04905887 0.04734136 0.00684688 </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> No model stored</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Cannot predict, Learner 'surv.xgboost.cox' has not been trained yet</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> → Class: Mlr3ErrorInput</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.826735 </span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'predictions' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

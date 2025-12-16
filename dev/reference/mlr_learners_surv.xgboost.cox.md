@@ -339,36 +339,26 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Error in .internal.setinfo.xgb.DMatrix(object, name, info): [10:48:50] xgboost_R.cc:167: Array or matrix has unsupported type.
+#> Stack trace:
+#>   [bt] (0) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x826fd) [0x7f36be2826fd]
+#>   [bt] (1) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x7b345) [0x7f36be27b345]
+#>   [bt] (2) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(XGDMatrixSetInfo_R+0x71) [0x7f36be27b411]
+#>   [bt] (3) /opt/R/4.5.2/lib/R/lib/libR.so(+0x103c5e) [0x7f37d3b03c5e]
+#>   [bt] (4) /opt/R/4.5.2/lib/R/lib/libR.so(+0x1499a8) [0x7f37d3b4
 
 print(learner$model)
-#> $model
-#> ##### xgb.Booster
-#> raw: 882.4 Kb 
-#> call:
-#>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, 
-#>     nthread = 1L, objective = "survival:cox", eval_metric = "cox-nloglik")
-#> params (as set within xgb.train):
-#>   nthread = "1", objective = "survival:cox", eval_metric = "cox-nloglik", validate_parameters = "TRUE"
-#> xgb.attributes:
-#>   niter
-#> # of features: 6 
-#> niter: 1000
-#> nfeatures : 6 
-#> 
-#> $train_data
-#> xgb.DMatrix  dim: 670 x 6  info: label  colnames: yes
-#> 
-#> attr(,"class")
-#> [1] "xgboost_cox_model"
+#> NULL
 print(learner$importance())
-#> revascdays        los     revasc        age      sysbp   stchange 
-#> 0.63790737 0.15864047 0.10020505 0.04905887 0.04734136 0.00684688 
+#> Error: No model stored
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
+#> Error: 
+#> ✖ Cannot predict, Learner 'surv.xgboost.cox' has not been trained yet
+#> → Class: Mlr3ErrorInput
 
 # Score the predictions
 predictions$score()
-#> surv.cindex 
-#>    0.826735 
+#> Error: object 'predictions' not found
 ```

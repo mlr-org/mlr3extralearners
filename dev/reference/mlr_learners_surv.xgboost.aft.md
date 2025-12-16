@@ -293,29 +293,26 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Error in .internal.setinfo.xgb.DMatrix(object, name, info): [10:48:49] xgboost_R.cc:167: Array or matrix has unsupported type.
+#> Stack trace:
+#>   [bt] (0) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x826fd) [0x7f36be2826fd]
+#>   [bt] (1) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x7b345) [0x7f36be27b345]
+#>   [bt] (2) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(XGDMatrixSetInfo_R+0x71) [0x7f36be27b411]
+#>   [bt] (3) /opt/R/4.5.2/lib/R/lib/libR.so(+0x103c5e) [0x7f37d3b03c5e]
+#>   [bt] (4) /opt/R/4.5.2/lib/R/lib/libR.so(+0x1499a8) [0x7f37d3b4
 
 print(learner$model)
-#> ##### xgb.Booster
-#> raw: 2.5 Mb 
-#> call:
-#>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, 
-#>     nthread = 1L, objective = "survival:aft", eval_metric = "aft-nloglik")
-#> params (as set within xgb.train):
-#>   nthread = "1", objective = "survival:aft", eval_metric = "aft-nloglik", validate_parameters = "TRUE"
-#> xgb.attributes:
-#>   niter
-#> # of features: 6 
-#> niter: 1000
-#> nfeatures : 6 
+#> NULL
 print(learner$importance())
-#>  revascdays      revasc         los       sysbp         age    stchange 
-#> 0.333157752 0.319164444 0.138096425 0.114412882 0.087260520 0.007907977 
+#> Error: No model stored
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
+#> Error: 
+#> ✖ Cannot predict, Learner 'surv.xgboost.aft' has not been trained yet
+#> → Class: Mlr3ErrorInput
 
 # Score the predictions
 predictions$score()
-#> surv.cindex 
-#>   0.8312348 
+#> Error: object 'predictions' not found
 ```
