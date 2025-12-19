@@ -57,13 +57,9 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
+Calculated using \code{predict.flexsurvreg(type = "lp", ...)}.
 Higher linear predictor gives higher hazard (equivalently, lower survival)
 for the spline models.
-Calculated using \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} and the estimated coefficients.
-For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
-and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
-vector is \eqn{lp = \hat{\beta} X^T}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
