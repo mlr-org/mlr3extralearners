@@ -65,7 +65,7 @@ Suggests:
     catboost,
     class,
     coin,
-    CoxBoost,
+    CoxBoost (>= 1.5.1),
     crs,
     Cubist,
     curl,
@@ -132,7 +132,6 @@ VignetteBuilder:
     knitr,
     rmarkdown
 Remotes:
-    binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
