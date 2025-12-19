@@ -166,7 +166,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      xgb_imp(self$model)
+      xgb_imp(self$actual_model)
     },
 
     #' @description
@@ -213,23 +213,17 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     },
         #' @field model (any)\cr
     #' The fitted model. Only available after `$train()` has been called.
-    model = function(rhs) {
+    actual_model = function(rhs) {
       if (!missing(rhs)) {
         if (inherits(rhs, "xgb.Booster")) {
           rhs = list(
             structure("wrapper", model = rhs)
           )
         }
-        self$state$model = rhs
+        self$state$actual_model = rhs
       }
       # workaround https://github.com/Rdatatable/data.table/issues/7456
       attributes(self$state$model[[1]])$model
-    },
-        #' @field train_data (any)\cr
-    #' The data the model has been trained on. Only available after `$train()` has been called.
-    train_data = function(rhs) {
-      browser()
-      attributes(self$state$model[[1]])$train_data
     }
   ),
 
@@ -292,12 +286,11 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     },
 
     .predict = function(task) {
-      browser()
       pv = self$param_set$get_values(tags = "predict")
       # manually add 'objective'
       pv = c(pv, objective = "survival:cox")
 
-      model = self$model
+      model = self$actual_model
       newdata = as_numeric_matrix(ordered_features(task, self))
       # linear predictor on the test set
       lp_test = log(invoke(
@@ -307,7 +300,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ))
 
       # linear predictor on the train set
-      train_data = self$train_data
+      train_data = attributes(self$state$model[[1]])$train_data
       lp_train = log(invoke(
         predict, model,
         newdata = train_data,
