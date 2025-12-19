@@ -1,13 +1,13 @@
 #' @title Survival Flexible Parametric Spline Learner
 #' @author RaphaelS1
-#' @name mlr_learners_surv.flexsurvspline
+#' @name mlr_learners_surv.flexspline
 #'
 #' @description
 #' Flexible survival regression using the Royston/Parmar spline model.
 #' Calls [flexsurv::flexsurvspline()] from \CRANpkg{flexsurv}.
 #'
 #' @template learner
-#' @templateVar id surv.flexsurvspline
+#' @templateVar id surv.flexspline
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -30,7 +30,7 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.flexsurvspline")
+#' @examplesIf learner_is_runnable("surv.flexspline")
 #' library(survival)
 #'
 #' # Define the task, split to train/test set
@@ -39,8 +39,8 @@
 #' part = partition(task)
 #'
 #' # Define the learner
-#' learner = lrn("surv.flexsurvspline", k = 1,
-#'   formula = Surv(time, status) ~ age + ph.karno + sex,
+#' learner = lrn("surv.flexspline", k = 1,
+#'   formula = survival::Surv(time, status) ~ age + ph.karno + sex,
 #'   anc = list(gamma1 = ~ sex))
 #'
 #' # Train the learner on the training ids
@@ -86,13 +86,13 @@ LearnerSurvFlexSpline = R6Class("LearnerSurvFlexSpline",
       )
 
       super$initialize(
-        id = "surv.flexsurvspline",
+        id = "surv.flexspline",
         packages = c("mlr3extralearners", "flexsurv", "survival"),
         feature_types = c("logical", "integer", "factor", "numeric"),
         predict_types = c("crank", "lp", "distr", "response"),
         param_set = param_set,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_surv.flexsurvspline",
+        man = "mlr3extralearners::mlr_learners_surv.flexspline",
         label = "Flexible Parametric Splines"
       )
     }
@@ -185,4 +185,4 @@ predict_flexsurvreg = function(object, task, learner, form) {
   list(crank = lp, lp = lp, distr = surv, response = response)
 }
 
-.extralrns_dict$add("surv.flexsurvspline", LearnerSurvFlexSpline)
+.extralrns_dict$add("surv.flexspline", LearnerSurvFlexSpline)

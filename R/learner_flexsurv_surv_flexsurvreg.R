@@ -1,13 +1,13 @@
 #' @title Survival Flexible Parametric Learner
 #' @author bblodfon
-#' @name mlr_learners_surv.flexsurvreg
+#' @name mlr_learners_surv.flexreg
 #'
 #' @description
 #' Flexible parametric learner.
 #' Calls [flexsurv::flexsurvreg()] from \CRANpkg{flexsurv}.
 #'
 #' @template learner
-#' @templateVar id surv.flexsurvreg
+#' @templateVar id surv.flexreg
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -26,7 +26,7 @@
 #' `r format_bib("jackson2016flexsurv")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.flexsurvreg")
+#' @examplesIf learner_is_runnable("surv.flexreg")
 #' library(survival)
 #'
 #' # Define the task, split to train/test set
@@ -35,8 +35,8 @@
 #' part = partition(task)
 #'
 #' # Define the learner
-#' learner = lrn("surv.flexsurvreg",
-#'   formula = Surv(time, status) ~ age + ph.karno + sex,
+#' learner = lrn("surv.flexreg",
+#'   formula = survival::Surv(time, status) ~ age + ph.karno + sex,
 #'   anc = list(shape = ~ sex), dist = "weibull")
 #'
 #' # Train the learner on the training ids
@@ -82,13 +82,13 @@ LearnerSurvFlexReg = R6Class("LearnerSurvFlexReg",
       )
 
       super$initialize(
-        id = "surv.flexsurvreg",
+        id = "surv.flexreg",
         packages = c("mlr3extralearners", "flexsurv", "survival"),
         feature_types = c("logical", "integer", "factor", "numeric"),
         predict_types = c("crank", "lp", "distr", "response"),
         param_set = param_set,
         properties = "weights",
-        man = "mlr3extralearners::mlr_learners_surv.flexsurvreg",
+        man = "mlr3extralearners::mlr_learners_surv.flexreg",
         label = "Flexible Parametric Regression"
       )
     }
@@ -162,4 +162,4 @@ LearnerSurvFlexReg = R6Class("LearnerSurvFlexReg",
   )
 )
 
-.extralrns_dict$add("surv.flexsurvreg", LearnerSurvFlexReg)
+.extralrns_dict$add("surv.flexreg", LearnerSurvFlexReg)
