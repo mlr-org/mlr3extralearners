@@ -4,7 +4,7 @@ test_that("autotest", {
   withr::local_seed(200)
   learner = lrn("surv.flexspline", k = 1, scale = "normal", inits = c(0.1, 1))
   expect_learner(learner)
-  # sanity excluded due to issues in optimisation (it's too easy...)
+  # sanity excluded due to issues in optimization (it's too easy...)
   result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
   expect_true(result, info = result$error)
 })
@@ -87,4 +87,15 @@ test_that("formula interface works", {
                                     anc = list(gamma1 = ~ sex), k = 1)
   lp2 = predict(model2, newdata = task$data(), type = "lp")[[2L]]
   expect_equal(p2$lp, lp2)
+})
+
+test_that("times parameter works", {
+  withr::local_seed(42)
+  task = tsk("rats")
+  part = partition(task, ratio = 0.8)
+  learner = lrn("surv.flexspline", k = 1, times = c(50, 100, 150))
+  learner$train(task, part$train)
+  p = learner$predict(task, part$test)
+  expect_equal(ncol(p$data$distr), 3)
+  expect_equal(as.numeric(colnames(p$data$distr)), c(50, 100, 150))
 })
