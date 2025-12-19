@@ -93,7 +93,6 @@ test_that("validation and internal tuning: aft", {
 })
 
 test_that("validation and internal tuning: cox", {
-  browser()
   learner = lrn("surv.xgboost.cox",
     nrounds = 10,
     early_stopping_rounds = 10,

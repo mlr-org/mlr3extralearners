@@ -166,7 +166,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      xgb_imp(self$model$model)
+      xgb_imp(self$model)
     },
 
     #' @description
@@ -210,6 +210,26 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' Whether the learner has been marshaled.
     marshaled = function() {
       learner_marshaled(self)
+    },
+        #' @field model (any)\cr
+    #' The fitted model. Only available after `$train()` has been called.
+    model = function(rhs) {
+      if (!missing(rhs)) {
+        if (inherits(rhs, "xgb.Booster")) {
+          rhs = list(
+            structure("wrapper", model = rhs)
+          )
+        }
+        self$state$model = rhs
+      }
+      # workaround https://github.com/Rdatatable/data.table/issues/7456
+      attributes(self$state$model[[1]])$model
+    },
+        #' @field train_data (any)\cr
+    #' The data the model has been trained on. Only available after `$train()` has been called.
+    train_data = function(rhs) {
+      browser()
+      attributes(self$state$model[[1]])$train_data
     }
   ),
 
@@ -219,15 +239,15 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(NULL)
       }
-      list(nrounds = nrow(attributes(self$model$model)$evaluation_log))
+      list(nrounds = attributes(self$model)$early_stop$best_iteration)
     },
 
     .extract_internal_valid_scores = function() {
-      if (is.null(attributes(self$model$model)$evaluation_log)) {
+      if (is.null(attributes(self$model)$evaluation_log)) {
         return(named_list())
       }
       patterns = NULL
-      as.list(attributes(self$model$model)$evaluation_log[
+      as.list(attributes(self$model)$evaluation_log[
         get(".N"),
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")
@@ -251,8 +271,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         pv$evals = c(pv$evals, list(test = test_data))
       }
 
-      structure(list(
-        model = xgboost::xgb.train(
+      model = xgboost::xgb.train(
           params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)],
           data = data,
           nrounds = pv$nrounds,
@@ -265,17 +284,20 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
           save_period = pv$save_period,
           save_name = pv$save_name,
           callbacks = pv$callbacks %??% list()
-        ),
-        train_data = data # for breslow
-      ), class = "xgboost_cox_model")
+        )
+      
+      list(
+        structure("wrapper", model = model, train_data = data, class = "xgboost_cox_model")
+      )
     },
 
     .predict = function(task) {
+      browser()
       pv = self$param_set$get_values(tags = "predict")
       # manually add 'objective'
       pv = c(pv, objective = "survival:cox")
 
-      model = self$model$model
+      model = self$model
       newdata = as_numeric_matrix(ordered_features(task, self))
       # linear predictor on the test set
       lp_test = log(invoke(
@@ -285,7 +307,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ))
 
       # linear predictor on the train set
-      train_data = self$model$train_data
+      train_data = self$train_data
       lp_train = log(invoke(
         predict, model,
         newdata = train_data,

@@ -186,6 +186,20 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         private$.validate = mlr3::assert_validate(rhs)
       }
       private$.validate
+    },
+    #' @field model (any)\cr
+    #' The fitted model. Only available after `$train()` has been called.
+    model = function(rhs) {
+      if (!missing(rhs)) {
+        if (inherits(rhs, "xgb.Booster")) {
+          rhs = list(
+            structure("wrapper", model = rhs)
+          )
+        }
+        self$state$model = rhs
+      }
+      # workaround https://github.com/Rdatatable/data.table/issues/7456
+      attributes(self$state$model[[1]])$model
     }
   ),
   private = list(
@@ -194,20 +208,25 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       if (is.null(self$state$param_vals$early_stopping_rounds)) {
         return(NULL)
       }
-      list(nrounds = nrow(attributes(self$model)$evaluation_log))
+      list(nrounds = attributes(self$model)$early_stop$best_iteration)
     },
 
     .extract_internal_valid_scores = function() {
       if (is.null(attributes(self$model)$evaluation_log)) {
         return(named_list())
       }
-      patterns = NULL
-      as.list(attributes(self$model)$evaluation_log[
-        get(".N"),
+      iter = attributes(self$model)$early_stop$best_iteration
+      if (is.null(iter)) {
+        iter = xgboost::xgb.get.num.boosted.rounds(self$model)
+      }
+      log = attributes(self$model)$evaluation_log
+      as.list(log[
+        iter,
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
         .SDcols = patterns("^test_")
       ])
     },
+
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       # manually add 'objective' and 'eval_metric'
@@ -226,7 +245,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         pv$evals = c(pv$evals, list(test = test_data))
       }
 
-      xgboost::xgb.train(
+      model = xgboost::xgb.train(
         params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)],
         data = data,
         nrounds = pv$nrounds,
@@ -239,6 +258,10 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         save_period = pv$save_period,
         save_name = pv$save_name,
         callbacks = pv$callbacks %??% list()
+      )
+
+      list(
+        structure("wrapper", model = model)
       )
     },
 
