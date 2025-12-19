@@ -13,13 +13,9 @@
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
+#' Calculated using `predict.flexsurvreg(type = "lp", ...)`.
 #' Higher linear predictor gives higher hazard (equivalently, lower survival)
 #' for the spline models.
-#' Calculated using [flexsurv::flexsurvspline()] and the estimated coefficients.
-#' For fitted coefficients, \eqn{\hat{\beta} = (\hat{\beta_0},...,\hat{\beta_P})},
-#' and the test data covariates \eqn{X^T = (X_0,...,X_P)^T}, where \eqn{X_0}{X0}
-#' is a column of \eqn{1}s and \eqn{\hat{\beta_0} = \hat{\gamma_0}}, the linear predictor
-#' vector is \eqn{lp = \hat{\beta} X^T}.
 #' 2. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' Calculated using `predict.flexsurvreg(type = "survival", ...)`.
@@ -124,65 +120,91 @@ LearnerSurvFlexSpline = R6Class("LearnerSurvFlexSpline",
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
-      invoke(predict_flexsurvreg, self$model, task, learner = self, form = pv$formula)
+      newdata = ordered_features(task, self)
+
+      # get the linear predictors (no transformation is needed)
+      lp = invoke(predict, self$model, newdata = newdata, type = "lp")[[2L]]
+
+      # get survival probabilities in a list
+      p = invoke(predict, self$model, newdata = newdata, type = "survival", .args = pv)[[1L]]
+
+      times = p[[1]]$.eval_time
+      ut = unique(times)
+
+      # remove survival probabilities at duplicated time points
+      dup = !duplicated(times)
+      surv = t(vapply(
+        p, function(.x) .x$.pred_survival[dup],
+        numeric(length(ut))
+      ))
+      colnames(surv) = ut
+
+      # get mean survival times
+      response = invoke(predict, self$model, newdata = newdata, type = "response")[[1L]]
+
+      # return all predict types for this learner
+      list(crank = lp, lp = lp, distr = surv, response = response)
     }
   )
 )
 
-predict_flexsurvreg = function(object, task, learner, form) {
-  newdata = ordered_features(task, learner)
-
-  if (is.null(form)) {
-    form = task$formula(task$feature_names)
-  }
-  # remove left hand side (which is needed only during training)
-  form = form[-2]
-
-  # Intercept (1) + variables X
-  X = stats::model.matrix(form, data = newdata, xlev = task$levels())
-
-  # define matrix of coefficients (gamma0 and X, without intercept)
-  coeffs = matrix(object$coefficients[c("gamma0", colnames(X)[-1])], nrow = 1)
-
-  # collect fitted parameters
-  pars = matrix(object$res.t[object$dlist$pars, "est"],
-    nrow = nrow(newdata),
-    ncol = length(object$dlist$pars), byrow = TRUE)
-  colnames(pars) = object$dlist$pars
-
-  # calculate the linear predictor as gamma0 + (beta * X)
-  pars[, "gamma0"] = coeffs %*% t(X)
-
-  # if any inverse transformations exist then apply them
-  invs = sapply(object$dlist$inv.transforms, function(tr) body(tr) != "x")
-  if (any(invs)) {
-    for (i in which(invs)) {
-      pars[, i] = object$dlist$inv.transforms[[i]](pars[, i])
-    }
-  }
-
-  # once inverse transformed we can collect the linear predictor
-  lp = pars[, "gamma0"]
-
-  # get survival probabilities in a list
-  p = invoke(predict, learner$model, type = "survival", newdata = newdata)$.pred
-
-  times = p[[1]]$.eval_time
-  ut = unique(times)
-
-  # remove survival probabilities at duplicated time points
-  dup = !duplicated(times)
-  surv = t(vapply(
-    p, function(.x) .x$.pred_survival[dup],
-    numeric(length(ut))
-  ))
-  colnames(surv) = ut
-
-  # get mean survival times
-  response = invoke(predict, learner$model, type = "response", newdata = newdata)[[1]]
-
-  # return all predict types for this learner
-  list(crank = lp, lp = lp, distr = surv, response = response)
-}
+# predict_flexsurvreg = function(object, task, learner, form) {
+#   newdata = ordered_features(task, learner)
+#
+#   if (is.null(form)) {
+#     form = task$formula(task$feature_names)
+#   }
+#   # remove left hand side (which is needed only during training)
+#   form = form[-2]
+#
+#   # Intercept (1) + variables X
+#   X = stats::model.matrix(form, data = newdata, xlev = task$levels())
+#
+#   # define matrix of coefficients (gamma0 and X, without intercept)
+#   coeffs = matrix(object$coefficients[c("gamma0", colnames(X)[-1])], nrow = 1)
+#
+#   # collect fitted parameters
+#   pars = matrix(object$res.t[object$dlist$pars, "est"],
+#     nrow = nrow(newdata),
+#     ncol = length(object$dlist$pars), byrow = TRUE)
+#   colnames(pars) = object$dlist$pars
+#
+#   # calculate the linear predictor as gamma0 + (beta * X)
+#   pars[, "gamma0"] = coeffs %*% t(X)
+#
+#   # if any inverse transformations exist then apply them
+#   invs = sapply(object$dlist$inv.transforms, function(tr) body(tr) != "x")
+#   if (any(invs)) {
+#     for (i in which(invs)) {
+#       pars[, i] = object$dlist$inv.transforms[[i]](pars[, i])
+#     }
+#   }
+#
+#   # once inverse transformed we can collect the linear predictor
+#   lp = pars[, "gamma0"]
+#   browser()
+#
+#   lp = invoke(predict, learner$model, type = "lp", newdata = newdata)[[2L]]
+#
+#   # get survival probabilities in a list
+#   p = invoke(predict, learner$model, type = "survival", newdata = newdata)[[1L]]
+#
+#   times = p[[1]]$.eval_time
+#   ut = unique(times)
+#
+#   # remove survival probabilities at duplicated time points
+#   dup = !duplicated(times)
+#   surv = t(vapply(
+#     p, function(.x) .x$.pred_survival[dup],
+#     numeric(length(ut))
+#   ))
+#   colnames(surv) = ut
+#
+#   # get mean survival times
+#   response = invoke(predict, learner$model, type = "response", newdata = newdata)[[1L]]
+#
+#   # return all predict types for this learner
+#   list(crank = lp, lp = lp, distr = surv, response = response)
+# }
 
 .extralrns_dict$add("surv.flexspline", LearnerSurvFlexSpline)
