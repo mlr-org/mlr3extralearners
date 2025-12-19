@@ -74,7 +74,7 @@ Suggests:
     evtree,
     ExhaustiveSearch,
     fastai (>= 2.2.2),
-    flexsurv (>= 2.3),
+    flexsurv (>= 2.3.2),
     FNN,
     formattable,
     future,
