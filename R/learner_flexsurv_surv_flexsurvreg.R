@@ -122,8 +122,8 @@ LearnerSurvFlexReg = R6Class("LearnerSurvFlexReg",
       pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      # get linear predictors
-      lp = invoke(predict, self$model, newdata = newdata, type = "lp")$.pred_link
+      # get the linear predictors
+      lp = invoke(predict, self$model, newdata = newdata, type = "lp")[[2L]]
       # flexsurv returns on the natural scale of the location parameter, e.g. exp(lp)
       # thus we transform back to the original scale (beta*X)
       dlist = self$model$dlist
@@ -154,7 +154,7 @@ LearnerSurvFlexReg = R6Class("LearnerSurvFlexReg",
       colnames(surv) = ut
 
       # get mean survival times
-      response = invoke(predict, self$model, type = "response", newdata = newdata)[[1L]]
+      response = invoke(predict, self$model, newdata = newdata, type = "response")[[1L]]
 
       # return all predict types for this learner
       list(crank = lp, lp = lp, distr = surv, response = response)
