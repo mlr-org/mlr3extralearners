@@ -371,7 +371,8 @@ All excluded parameters should have a comment justifying their exclusion.
 
 In our example, the final paramtest script looks like:
 
-```{r, eval = testthat_available && rpart_available}
+```{r, eval = FALSE}
+library(testthat)
 test_that("paramtest", {
   learner = LearnerRegrRpartSimple$new()
 
@@ -391,7 +392,9 @@ test_that("paramtest", {
   expect_true(result, info = result$error)
 })
 ```
-
+```
+Test passed with 2 successes 🥇.
+```
 
 ## Contributing to mlr3extralearners
 
