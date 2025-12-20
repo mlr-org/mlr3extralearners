@@ -1,5 +1,19 @@
 # mlr3extralearners (development version)
 
+## New features
+
+* New Learners:
+  - `LearnerSurvFlexReg`
+
+## Breaking Changes
+
+* `lrn("surv.flexible")` (`LearnerSurvFlexible`) was renamed to `lrn("surv.flexsurvspline")` (`LearnerSurvFlexSpline`) to properly reflect the wrapped train function (Royston/Parmar spline model).
+
+## Other
+
+* `CoxBoost` is now on CRAN, so we removed it from `Remotes`
+* `lrn("surv.flexsurvspline")` predicts linear predictors using `predict.flexsurvreg()`. We had a manual version which was the same, so no functionality changed.
+
 # mlr3extralearners 1.3.1
 
 * Update website to include citation information

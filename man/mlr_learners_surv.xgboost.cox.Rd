@@ -141,7 +141,7 @@ performance scores.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.xgboost.cox")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.xgboost.cox")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.xgboost.cox")
 print(learner)

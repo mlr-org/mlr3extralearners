@@ -2,9 +2,8 @@ skip_if_not_installed("mlr3proba")
 skip_if_not_installed("survival")
 skip_if_not_installed("flexsurv")
 
-test_that("paramtest surv.flexible train", {
-  task = tsk("rats")
-  learner = lrn("surv.flexible")
+test_that("paramtest surv.flexspline train", {
+  learner = lrn("surv.flexspline")
   fun_list = list(flexsurv::flexsurvspline, flexsurv::flexsurvreg, survival::survreg.control)
   exclude = c(
     "data", # handled internally
@@ -25,4 +24,21 @@ test_that("paramtest surv.flexible train", {
   expect_paramtest(paramtest)
 })
 
-# no predict time parameters
+test_that("paramtest surv.flexspline predict", {
+  learner = lrn("surv.flexspline")
+  fun_list = list(flexsurv:::predict.flexsurvreg)
+  exclude = c(
+    "object", # handled internally
+    "newdata", # handled internally
+    "formula", # needed for lp prediction
+    "type", # handled internally
+    "start", # not supported
+    "conf.int", # not needed
+    "conf.level", # not needed
+    "se.fit", # not needed
+    "p" # not supported
+  )
+
+  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
+  expect_paramtest(paramtest)
+})
