@@ -9,22 +9,22 @@ test_that("autotest", {
   expect_true(result, info = result$error)
 })
 
-test_that("manual test", {
+test_that("manual prediction test", {
   withr::local_seed(1)
   task = tsk("rats")
-  learn = lrn("surv.flexspline", k = 1, scale = "normal", inits = c(1, 1, 1))
-  learn$train(task)
-  p = learn$predict(task)
+  learner = lrn("surv.flexspline", k = 1, scale = "normal", inits = c(1, 1, 1))
+  learner$train(task)
+  p = learner$predict(task)
   # Comparison to flexsurv
   expect_equal(
     p$lp[1:20],
-    summary(learn$model,
+    summary(learner$model,
       task$data(cols = task$feature_names),
       se = FALSE, ci = FALSE, type = "link", tidy = TRUE)[1:20, 2]
   )
   expect_equal(
     p$distr[2]$survival(1:23),
-    summary(learn$model,
+    summary(learner$model,
       task$data(cols = task$feature_names),
       se = FALSE, ci = FALSE, type = "survival", tidy = TRUE, t = 1:23)[24:46, 2],
     tolerance = 0.0001
