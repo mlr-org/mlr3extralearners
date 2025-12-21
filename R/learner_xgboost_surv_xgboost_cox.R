@@ -166,7 +166,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #'
     #' @return Named `numeric()`.
     importance = function() {
-      xgb_imp(self$actual_model)
+      xgb_imp(self$booster_model)
     },
 
     #' @description
@@ -213,17 +213,20 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     },
         #' @field model (any)\cr
     #' The fitted model. Only available after `$train()` has been called.
-    actual_model = function(rhs) {
+    model = function(rhs) {
       if (!missing(rhs)) {
         if (inherits(rhs, "xgb.Booster")) {
           rhs = list(
             structure("wrapper", model = rhs)
           )
         }
-        self$state$actual_model = rhs
+        self$state$model = rhs
       }
       # workaround https://github.com/Rdatatable/data.table/issues/7456
-      attributes(self$state$model[[1]])$model
+      structure(list(structure("wrapper",
+          model = attributes(self$state$model[[1]])$model,
+          train_data = attributes(self$state$model[[1]])$train_data)),
+        class = c("xgboost_cox_model"))
     }
   ),
 
@@ -279,7 +282,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
           save_name = pv$save_name,
           callbacks = pv$callbacks %??% list()
         )
-      
+        
       list(
         structure("wrapper", model = model, train_data = data, class = "xgboost_cox_model")
       )
@@ -290,7 +293,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       # manually add 'objective'
       pv = c(pv, objective = "survival:cox")
 
-      model = self$actual_model
+      model = attributes(self$model[[1]])$model
       newdata = as_numeric_matrix(ordered_features(task, self))
       # linear predictor on the test set
       lp_test = log(invoke(
@@ -300,7 +303,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ))
 
       # linear predictor on the train set
-      train_data = attributes(self$state$model[[1]])$train_data
+      train_data = attributes(self$model[[1]])$train_data
       lp_train = log(invoke(
         predict, model,
         newdata = train_data,
@@ -328,14 +331,14 @@ marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
   # so we save it to a temporary file and then read it back as a raw vector.
   on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
-  xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
+  xgboost::xgb.DMatrix.save(attributes(model[[1]])$train_data, "xgb.data")
   train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
 
   structure(list(
     # The booster object (model$model) itself can be saved and loaded directly.
     # See https://xgboost.readthedocs.io/en/stable/R-package/migration_guide.html#migrating-code-from-previous-xgboost-versions,  # nolint
     # bullet point "Booster objects".
-    model = model$model,
+    model = attributes(model[[1]])$model,
     train_data = train_data,
     packages = c("mlr3extralearners", "xgboost")
   ), class = c("xgboost_cox_model_marshaled", "marshaled"))
@@ -347,7 +350,7 @@ unmarshal_model.xgboost_cox_model_marshaled = function(model, ...) {
   # so we write the stored raw vector to a temporary file and then read it back.
   on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
-  writeBin(model$train_data, tmp)
+  writeBin(model$model, tmp)
   train_data = xgboost::xgb.DMatrix(tmp)
 
   structure(list(
