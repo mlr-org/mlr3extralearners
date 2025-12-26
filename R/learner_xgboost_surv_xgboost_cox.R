@@ -28,8 +28,8 @@
 #'
 #' @section Initial parameter values:
 #' - `nrounds` is initialized to 1000.
-#' - `nthread` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
-#' - `verbose` is initialized to 0.
+#' - `nthreads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
+#' - `verbose` and `verbosity` are both initialized to 0.
 #'
 #' @templateVar id surv.xgboost.cox
 #' @template learner
@@ -55,17 +55,15 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
             stop("Parameter 'early_stopping_rounds' must be set to use internal tuning.")
           }
           assert_integerish(domain$upper, len = 1L, any.missing = FALSE)}, .parent = topenv()),
-        disable_in_tune = list(early_stopping_rounds = NULL)
+        disable_in_tune = list(early_stopping_rounds = NULL),
+        init = 1000L
       )
       ps = ps(
-        reg_alpha                   = p_dbl(0, default = 0, tags = "train"),
-        alpha                       = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
+        alpha                       = p_dbl(0, default = 0, tags = "train"),
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
         callbacks                   = p_uty(default = list(), tags = "train"),
-        base_margin                 = p_uty(default = NULL, tags = c("train", "predict")),
         custom_metric               = p_uty(default = NULL, tags = "train"),
-        eta                         = p_dbl(0, 1, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
         colsample_bylevel           = p_dbl(0, 1, default = 1, tags = "train"),
         colsample_bynode            = p_dbl(0, 1, default = 1, tags = "train"),
         colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
@@ -76,15 +74,13 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         learning_rate               = p_dbl(0, 1, default = 0.3, tags = "train"),
         feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
         feature_weights             = p_uty(default = NULL, tags = "train"),
-        gamma                       = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
+        gamma                       = p_dbl(0, default = 0, tags = "train"),
         huber_slope                 = p_dbl(default = 0, tags = "train"),
         quantile_alpha              = p_dbl(0, 1, default = 0.5, tags = "train"),
-        min_split_loss              = p_dbl(0, default = 0, tags = "train"),
         grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train"),
         interaction_constraints     = p_uty(tags = "train"),
         iterationrange              = p_uty(tags = "predict"),
-        reg_lambda                  = p_dbl(0, default = 1, tags = "train"),
-        lambda                      = p_dbl(0, default = NULL, tags = "train", special_vals = list(NULL)), # legacy alias
+        lambda                      = p_dbl(0, default = 1, tags = "train"),
         lambda_bias                 = p_dbl(0, default = 0, tags = "train"),
         max_bin                     = p_int(2L, default = 256L, tags = "train"),
         max_delta_step              = p_dbl(0, default = 0, tags = "train"),
@@ -96,7 +92,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         multi_strategy              = p_uty(default = NULL, tags = "train"),
         normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
         nrounds                     = p_nrounds,
-        nthreads                    = p_int(1L, default = 1L, tags = c("train", "threads")),
+        nthreads                    = p_int(1L, init = 1L, tags = c("train", "threads")),
         num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
         monitor_training            = p_uty(default = NULL, tags = "train"),
         one_drop                    = p_lgl(default = FALSE, tags = "train"),
@@ -116,19 +112,16 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         extmem_single_page          = p_lgl(default = FALSE, tags = "train"),
         max_cat_to_onehot           = p_int(default = 4L, tags = "train"),
         max_cat_threshold           = p_int(default = 64L, tags = "train"),
-        strict_shape                = p_lgl(default = FALSE, tags = "predict"),
         subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
         top_k                       = p_int(0, default = 0, tags = "train"),
         tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"), #nolint
         tweedie_variance_power      = p_dbl(1, 2, default = 1.5, tags = "train"),
         updater                     = p_uty(tags = "train"), # Default depends on the selected booster
-        verbose                     = p_int(0L, 2L, default = 1L, tags = "train"),
+        verbose                     = p_int(0L, 2L, init = 0L, tags = "train"),
+        verbosity                   = p_int(0L, 2L, init = 0L, tags = "train"),
         xgb_model                   = p_uty(tags = "train"),
-        weights                     = p_uty(default = NULL, tags = "train"),
         device                      = p_uty(tags = "train"),
-        y                           = p_uty(default = NULL, tags = "train"),
         missing                     = p_dbl(default = NA, tags = "predict", special_vals = list(NA, NA_real_, NULL)),
-        avoid_transpose             = p_lgl(default = FALSE, tags = "predict"),
         validate_features           = p_lgl(default = TRUE, tags = "predict")
       )
       # param deps
@@ -145,9 +138,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
       ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
-
-      # custom defaults
-      ps$values = list(nrounds = 1000L, nthreads = 1L, verbose = 0L)
 
       super$initialize(
         id = "surv.xgboost.cox",
