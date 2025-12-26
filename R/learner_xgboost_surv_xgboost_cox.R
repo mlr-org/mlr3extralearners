@@ -226,7 +226,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       structure(list(structure("wrapper",
           model = attributes(self$state$model[[1]])$model,
           train_data = attributes(self$state$model[[1]])$train_data)),
-        class = c("xgboost_cox_model"))
+        class = "xgboost_cox_model")
     }
   ),
 
@@ -254,17 +254,17 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
       pv = self$param_set$get_values(tags = "train")
       # manually add 'objective' and 'eval_metric'
       pv = c(pv, objective = "survival:cox", eval_metric = "cox-nloglik")
-
-      data = get_xgb_mat(task, pv$objective, private)
+      weights = private$.get_weights(task)
+      data = get_xgb_mat(task, pv$objective, weights)
 
       internal_valid_task = task$internal_valid_task
       if (!is.null(pv$early_stopping_rounds) && is.null(internal_valid_task)) {
         stopf("Learner (%s): Configure field 'validate' to enable early stopping.", self$id)
       }
       if (!is.null(internal_valid_task)) {
-        test_data = get_xgb_mat(internal_valid_task, pv$objective, private)
-        # XGBoost uses the last element in the watchlist as
-        # the early stopping set
+        test_weights = private$.get_weights(internal_valid_task)
+        test_data = get_xgb_mat(internal_valid_task, pv$objective, test_weights)
+        # XGBoost uses the last element in the watchlist as the early stopping set
         pv$evals = c(pv$evals, list(test = test_data))
       }
 
@@ -282,7 +282,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
           save_name = pv$save_name,
           callbacks = pv$callbacks %??% list()
         )
-        
+
       list(
         structure("wrapper", model = model, train_data = data, class = "xgboost_cox_model")
       )
