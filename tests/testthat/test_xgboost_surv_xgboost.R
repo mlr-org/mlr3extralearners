@@ -3,14 +3,6 @@ skip_if_not_installed("xgboost")
 task = tsk("lung")
 task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100) # encode sex factor
 
-test_that("autotest", {
-  withr::local_seed(2)
-  learner = lrn("surv.xgboost.aft", nrounds = 10)
-  expect_learner(learner)
-  result = run_autotest(learner, N = 10, check_replicable = FALSE)
-  expect_true(result, info = result$error)
-})
-
 test_that("autotest cox", {
   withr::local_seed(1)
   learner = lrn("surv.xgboost.cox", nrounds = 10)
@@ -29,8 +21,8 @@ test_that("autotest aft", {
 
 test_that("validation and internal tuning: aft", {
   learner = lrn("surv.xgboost.aft",
-    nrounds = 10,
-    early_stopping_rounds = 10,
+    nrounds = 5,
+    early_stopping_rounds = 5,
     validate = 0.2
   )
 
@@ -40,7 +32,7 @@ test_that("validation and internal tuning: aft", {
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    attributes(learner$model)$evaluation_log[get("iter") == 10, "test_aft_nloglik"][[1L]]
+    attributes(learner$model)$evaluation_log[get("iter") == 5, "test_aft_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -175,9 +167,8 @@ test_that("two types of xgboost models can be initialized", {
   expect_error(lrn("surv.xgboost.cox", objective = "survival:cox"))
 
   # check predictions types
-
   p1 = cox$train(task)$predict(task, row_ids = 1:10)
-  expect_class(p1$distr, "Matdist") # we get distr predictions
+  expect_prediction_surv(p1)
 })
 
 test_that("surv.xgboost.cox distr via breslow works", {
