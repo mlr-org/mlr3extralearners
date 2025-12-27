@@ -151,11 +151,13 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     internal_valid_scores = function() {
       self$state$internal_valid_scores
     },
+
     #' @field internal_tuned_values
     #' Returns the early stopped iterations if `early_stopping_rounds` was set during training.
     internal_tuned_values = function() {
       self$state$internal_tuned_values
     },
+
     #' @field validate
     #' How to construct the internal validation data. This parameter can be either `NULL`,
     #' a ratio, `"test"`, or `"predefined"`.
@@ -165,6 +167,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
       }
       private$.validate
     },
+
     #' @field model (any)\cr
     #' The fitted model. Only available after `$train()` has been called.
     model = function(rhs) {
