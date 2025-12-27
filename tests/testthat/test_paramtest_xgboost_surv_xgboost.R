@@ -10,8 +10,8 @@ test_that("surv.xgboost", {
     "custom_metric", # not supported for survival
     "data", # handled by mlr3
     "objective", # handled by mlr3
-    "seed", # not available in xgb.params doc?
-    "num_class", # parameters is for multiclassification objectives, not survival
+    "num_class", # multi-class only
+    "multi_strategy", # multi-class only
     "eval_metric", # handled by mlr3
     "eta", # alias for parameter learning_rate
     "min_split_loss", # alias for parameter gamma
@@ -24,6 +24,9 @@ test_that("surv.xgboost", {
     "lambdarank_unbiased", # rank only
     "lambdarank_bias_norm", # rank only
     "ndcg_exp_gain", # rank only
+    "tweedie_variance_power", # for regression only
+    "huber_slope", # for regression only
+    "quantile_alpha", # for quantile regression only
     "aft_loss_distribution", # only for AFT objective, not for Cox
     "aft_loss_distribution_scale" # only for AFT objective, not for Cox
     # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
