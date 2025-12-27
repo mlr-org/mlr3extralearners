@@ -18,25 +18,21 @@ get_xgb_mat = function(task, objective, weights = NULL, row_ids = NULL) {
     label = times
     label[status != 1] = -label[status != 1]
 
-    return(
-      xgboost::xgb.DMatrix(
-        data   = x_mat,
-        label  = label,
-        weight = weights
-      )
+    xgboost::xgb.DMatrix(
+      data   = x_mat,
+      label  = label,
+      weight = weights
     )
   } else if (objective == "survival:aft") {
     lower = times
     upper = times
     upper[status == 0] = Inf # right-censoring
 
-    return(
-      xgboost::xgb.DMatrix(
-        data              = x_mat,
-        label_lower_bound = lower,
-        label_upper_bound = upper,
-        weight            = weights
-      )
+    xgboost::xgb.DMatrix(
+      data              = x_mat,
+      label_lower_bound = lower,
+      label_upper_bound = upper,
+      weight            = weights
     )
   } else {
     stop("Unsupported xgboost survival objective: ", objective)
