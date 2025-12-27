@@ -91,7 +91,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.cforest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.cforest")) withAutoprint(\{ # examplesIf}
 task = tsk("iris")
 learner = lrn("classif.cforest", ntree = 50)
 splits = partition(task)

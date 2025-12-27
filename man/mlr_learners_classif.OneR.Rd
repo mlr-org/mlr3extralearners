@@ -6,7 +6,7 @@
 \title{Classification OneR Learner}
 \description{
 One Rule classification algorithm that yields an extremely simple model.
-Calls \code{\link[RWeka:OneR]{RWeka::OneR()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::OneR()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -65,7 +65,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.OneR")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.OneR")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.OneR")
 print(learner)

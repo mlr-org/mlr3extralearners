@@ -6,7 +6,7 @@
 \title{Classification J48 Learner}
 \description{
 Decision tree algorithm.
-Calls \code{\link[RWeka:IBk]{RWeka::IBk()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_classifier_lazy]{RWeka::IBk()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -77,7 +77,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.J48")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.J48")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.J48")
 print(learner)
