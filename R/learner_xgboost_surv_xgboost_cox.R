@@ -63,53 +63,50 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         base_score                  = p_dbl(default = 0.5, tags = "train"),
         booster                     = p_fct(c("gbtree", "gblinear", "dart"), default = "gbtree", tags = "train"),
         callbacks                   = p_uty(default = list(), tags = "train"),
-        colsample_bylevel           = p_dbl(0, 1, default = 1, tags = "train"),
-        colsample_bynode            = p_dbl(0, 1, default = 1, tags = "train"),
-        colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train"),
+        seed                        = p_int(tags = "train"),
+        colsample_bylevel           = p_dbl(0, 1, default = 1, tags = "train", depends = quote(booster == "gbtree")),
+        colsample_bynode            = p_dbl(0, 1, default = 1, tags = "train", depends = quote(booster == "gbtree")),
+        colsample_bytree            = p_dbl(0, 1, default = 1, tags = "train", depends = quote(booster == "gbtree")),
         disable_default_eval_metric = p_lgl(default = FALSE, tags = "train"),
         early_stopping_rounds       = p_int(1L, default = NULL, special_vals = list(NULL), tags = "train"),
         evals                       = p_uty(default = NULL, tags = "train"),
         learning_rate               = p_dbl(0, 1, default = 0.3, tags = "train"),
-        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train"), #nolint
+        feature_selector            = p_fct(c("cyclic", "shuffle", "random", "greedy", "thrifty"), default = "cyclic", tags = "train", depends = quote(booster == "gblinear")), #nolint
         gamma                       = p_dbl(0, default = 0, tags = "train"),
-        huber_slope                 = p_dbl(default = 0, tags = "train"),
-        quantile_alpha              = p_dbl(0, 1, default = 0.5, tags = "train"),
-        grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train"),
-        interaction_constraints     = p_uty(tags = "train"),
+        grow_policy                 = p_fct(c("depthwise", "lossguide"), default = "depthwise", tags = "train", depends = quote(booster == "gbtree" && tree_method %in% c("hist", "approx"))),
+        interaction_constraints     = p_uty(tags = "train", depends = quote(booster == "gbtree")),
         iterationrange              = p_uty(tags = "predict"),
         lambda                      = p_dbl(0, default = 1, tags = "train"),
-        max_bin                     = p_int(2L, default = 256L, tags = "train"),
-        max_delta_step              = p_dbl(0, default = 0, tags = "train"),
-        max_depth                   = p_int(0L, default = 6L, tags = "train"),
-        max_leaves                  = p_int(0L, default = 0L, tags = "train"),
+        max_bin                     = p_int(2L, default = 256L, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
+        max_delta_step              = p_dbl(0, default = 0, tags = "train", depends = quote(booster == "gbtree")),
+        max_depth                   = p_int(0L, default = 6L, tags = "train", depends = quote(booster == "gbtree")),
+        max_leaves                  = p_int(0L, default = 0L, tags = "train", depends = quote(booster == "gbtree")),
         maximize                    = p_lgl(default = NULL, special_vals = list(NULL), tags = "train"),
-        min_child_weight            = p_dbl(0, default = 1, tags = "train"),
-        monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train"),
-        multi_strategy              = p_uty(default = NULL, tags = "train"),
-        normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train"),
+        min_child_weight            = p_dbl(0, default = 1, tags = "train", depends = quote(booster == "gbtree")),
+        monotone_constraints        = p_int(-1L, 1L, default = 0L, tags = "train", depends = quote(booster == "gbtree")),
+        normalize_type              = p_fct(c("tree", "forest"), default = "tree", tags = "train", depends = quote(booster == "dart")),
         nrounds                     = p_nrounds,
         nthread                     = p_int(1L, init = 1L, tags = c("train", "threads")),
-        num_parallel_tree           = p_int(1L, default = 1L, tags = "train"),
-        one_drop                    = p_lgl(default = FALSE, tags = "train"),
-        print_every_n               = p_int(1L, default = 1L, tags = "train"),
-        rate_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
-        refresh_leaf                = p_lgl(default = TRUE, tags = "train"),
-        sampling_method             = p_fct(c("uniform", "gradient_based"), default = "uniform", tags = "train"),
-        sample_type                 = p_fct(c("uniform", "weighted"), default = "uniform", tags = "train"),
+        num_parallel_tree           = p_int(1L, default = 1L, tags = "train", depends = quote(booster == "gbtree")),
+        one_drop                    = p_lgl(default = FALSE, tags = "train", depends = quote(booster == "dart")),
+        print_every_n               = p_int(1L, default = 1L, tags = "train", depends = quote(verbose == 1L)),
+        rate_drop                   = p_dbl(0, 1, default = 0, tags = "train", depends = quote(booster == "dart")),
+        refresh_leaf                = p_lgl(default = TRUE, tags = "train", depends = quote(booster == "gbtree")),
+        sampling_method             = p_fct(c("uniform", "gradient_based"), default = "uniform", tags = "train", depends = quote(booster == "gbtree")),
+        sample_type                 = p_fct(c("uniform", "weighted"), default = "uniform", tags = "train", depends = quote(booster == "dart")),
         save_name                   = p_uty(tags = "train"),
         save_period                 = p_int(0L, tags = "train"),
-        scale_pos_weight            = p_dbl(default = 1, tags = "train"),
+        scale_pos_weight            = p_dbl(default = 1, tags = "train", depends = quote(booster == "gbtree")),
         seed_per_iteration          = p_lgl(default = FALSE, tags = "train"),
-        skip_drop                   = p_dbl(0, 1, default = 0, tags = "train"),
+        skip_drop                   = p_dbl(0, 1, default = 0, tags = "train", depends = quote(booster == "dart")),
         use_rmm                     = p_lgl(default = FALSE, tags = "train"),
-        max_cached_hist_node        = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
-        extmem_single_page          = p_lgl(default = FALSE, tags = "train"),
-        max_cat_to_onehot           = p_int(default = 4L, tags = "train"),
-        max_cat_threshold           = p_int(default = 64L, tags = "train"),
-        subsample                   = p_dbl(0, 1, default = 1, tags = "train"),
-        top_k                       = p_int(0, default = 0, tags = "train"),
-        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train"), #nolint
-        tweedie_variance_power      = p_dbl(1, 2, default = 1.5, tags = "train"),
+        max_cached_hist_node        = p_int(default = NULL, special_vals = list(NULL), tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
+        extmem_single_page          = p_lgl(default = FALSE, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
+        max_cat_to_onehot           = p_int(default = 4L, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
+        max_cat_threshold           = p_int(default = 64L, tags = "train", depends = quote(tree_method %in% c("hist", "approx"))),
+        subsample                   = p_dbl(0, 1, default = 1, tags = "train", depends = quote(booster == "gbtree")),
+        top_k                       = p_int(0, default = 0, tags = "train", depends = quote(feature_selector %in% c("greedy", "thrifty") && booster == "gblinear")),
+        tree_method                 = p_fct(c("auto", "exact", "approx", "hist", "gpu_hist"), default = "auto", tags = "train", depends = quote(booster %in% c("gbtree", "dart"))), #nolint
         updater                     = p_uty(tags = "train"), # Default depends on the selected booster
         verbose                     = p_int(0L, 2L, init = 0L, tags = "train"),
         verbosity                   = p_int(0L, 2L, init = 0L, tags = "train"),
@@ -118,20 +115,6 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         missing                     = p_dbl(default = NA, tags = "predict", special_vals = list(NA, NA_real_, NULL)),
         validate_features           = p_lgl(default = TRUE, tags = "predict")
       )
-      # param deps
-      ps$add_dep("print_every_n", "verbose", CondEqual$new(1L))
-      ps$add_dep("sample_type", "booster", CondEqual$new("dart"))
-      ps$add_dep("normalize_type", "booster", CondEqual$new("dart"))
-      ps$add_dep("rate_drop", "booster", CondEqual$new("dart"))
-      ps$add_dep("skip_drop", "booster", CondEqual$new("dart"))
-      ps$add_dep("one_drop", "booster", CondEqual$new("dart"))
-      ps$add_dep("tree_method", "booster", CondAnyOf$new(c("gbtree", "dart")))
-      ps$add_dep("grow_policy", "tree_method", CondEqual$new("hist"))
-      ps$add_dep("max_leaves", "grow_policy", CondEqual$new("lossguide"))
-      ps$add_dep("max_bin", "tree_method", CondEqual$new("hist"))
-      ps$add_dep("feature_selector", "booster", CondEqual$new("gblinear"))
-      ps$add_dep("top_k", "booster", CondEqual$new("gblinear"))
-      ps$add_dep("top_k", "feature_selector", CondAnyOf$new(c("greedy", "thrifty")))
 
       super$initialize(
         id = "surv.xgboost.cox",
