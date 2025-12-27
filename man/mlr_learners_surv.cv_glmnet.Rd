@@ -111,7 +111,7 @@ effectively disabling the offset adjustment during prediction.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.cv_glmnet")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.cv_glmnet")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.cv_glmnet")
 print(learner)
