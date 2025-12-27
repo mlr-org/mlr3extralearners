@@ -25,7 +25,8 @@ test_that("surv.xgboost", {
     "lambdarank_bias_norm", # rank only
     "ndcg_exp_gain", # rank only
     "aft_loss_distribution", # only for AFT objective, not for Cox
-    "aft_loss_distribution_scale" # not in the doc?
+    "aft_loss_distribution_scale" # only for AFT objective, not for Cox
+    # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
   )
 
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
