@@ -21,8 +21,8 @@ test_that("autotest aft", {
 
 test_that("validation and internal tuning: aft", {
   learner = lrn("surv.xgboost.aft",
-    nrounds = 5,
-    early_stopping_rounds = 5,
+    nrounds = 10,
+    early_stopping_rounds = 10,
     validate = 0.2
   )
 
@@ -30,9 +30,10 @@ test_that("validation and internal tuning: aft", {
   expect_named(attributes(learner$model)$evaluation_log, c("iter", "test_aft_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "aft_nloglik")
+  best_iter = attributes(learner$model)$early_stop$best_iteration
   expect_equal(
     learner$internal_valid_scores$aft_nloglik,
-    attributes(learner$model)$evaluation_log[get("iter") == 5, "test_aft_nloglik"][[1L]]
+    attributes(learner$model)$evaluation_log[get("iter") == best_iter, "test_aft_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
