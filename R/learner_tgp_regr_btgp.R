@@ -38,14 +38,20 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
           }
           "tree must be numeric length 2 with first element in [0, 1] and second >= 0"
         }),
-        BTE = p_uty(default = c(2000, 7000, 2), tags = "train", custom_check = function(x) {
-          checkmate::checkIntegerish(x, len = 3, lower = 0, any.missing = FALSE)
-        }),
+        BTE = p_uty(
+          default = c(2000L, 7000L, 2L),
+          tags = c("train", "predict"),
+          custom_check = mlr3misc::crate(function(x) {
+            if (!checkmate::test_integerish(x, len = 3, lower = 0)) {
+              return("`BTE` must be an integerish vector of length 3 with non-negative entries")
+            }
+            TRUE
+          })
+        ),
         R = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
         m0r1 = p_lgl(default = TRUE, tags = "train"),
         linburn = p_lgl(default = FALSE, tags = "train"),
         itemps = p_uty(default = NULL, tags = "train"),
-        pred.n = p_lgl(default = TRUE, tags = c("train", "predict")),
         krige = p_lgl(default = TRUE, tags = c("train", "predict")),
         zcov = p_lgl(default = FALSE, tags = c("train", "predict")),
         Ds2x = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -59,7 +65,6 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
 
       param_set$values = list(
         BTE = c(200, 400, 2),
-        pred.n = FALSE,
         verb = 0L
       )
 
@@ -85,6 +90,8 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       if (length(encoded$factor_levels)) {
         pars$basemax = encoded$basemax
       }
+
+      pars$pred.n = FALSE
 
       model = invoke(
         tgp::btgp,
