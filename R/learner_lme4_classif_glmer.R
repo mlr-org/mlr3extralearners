@@ -149,7 +149,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       success = levels[[2L]]
       failure = levels[[1L]]
 
-      response = factor(ifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
+      response = factor(fifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
 
       if (self$predict_type == "prob") {
         prob = cbind(prob, 1 - prob)
