@@ -29,8 +29,7 @@ test_that("autotest", {
 
 test_that("eval protocol", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -133,8 +132,7 @@ test_that("validation and inner tuning works", {
 
 test_that("custom inner validation measure", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -253,8 +251,7 @@ test_that("custom inner validation measure", {
 
 test_that("marshaling works for classif.fastai", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -292,8 +289,7 @@ test_that("marshaling works for classif.fastai", {
 
 test_that("n_threads parameter works", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
