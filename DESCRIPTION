@@ -125,6 +125,7 @@ Suggests:
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
+    tgp,
     tensorflow (>= 2.0.0),
     testthat,
     xgboost (>= 1.7.8.1)
