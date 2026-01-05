@@ -49,8 +49,7 @@ test_that("eval protocol", {
 
 test_that("validation and inner tuning works", {
   expect_true(callr::r(function() {
-    py = Sys.getenv("MLR3EXTRALEARNERS_PYTHON", unset = "managed")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
