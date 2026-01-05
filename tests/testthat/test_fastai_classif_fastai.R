@@ -3,8 +3,7 @@ skip_if_not_installed("reticulate")
 
 test_that("autotest", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-    Sys.setenv(RETICULATE_PYTHON = py)
+    Sys.setenv(RETICULATE_PYTHON = "managed")
     library(mlr3)
     library(mlr3proba)
     library(mlr3extralearners)
@@ -16,8 +15,7 @@ test_that("autotest", {
     mirai::daemons(1, .compute = "mlr3_encapsulation")
 
     mirai::everywhere({
-      py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
-      Sys.setenv(RETICULATE_PYTHON = py)
+      Sys.setenv(RETICULATE_PYTHON = "managed")
     }, .compute = "mlr3_encapsulation")
 
     learner = lrn("classif.fastai", layers = c(200, 100))
@@ -52,7 +50,7 @@ test_that("eval protocol", {
 
 test_that("validation and inner tuning works", {
   expect_true(callr::r(function() {
-    py = path.expand("~/.virtualenvs/r-reticulate/bin/python")
+    py = Sys.getenv("MLR3EXTRALEARNERS_PYTHON", unset = "managed")
     Sys.setenv(RETICULATE_PYTHON = py)
     library(mlr3)
     library(mlr3proba)

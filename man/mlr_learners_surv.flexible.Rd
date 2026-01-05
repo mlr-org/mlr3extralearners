@@ -83,7 +83,7 @@ implementation of, \link{LearnerSurvParametric}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.flexible")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.flexible")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(survival)
 
 # Define the task, split to train/test set

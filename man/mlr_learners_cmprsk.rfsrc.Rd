@@ -94,7 +94,7 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 print(learner)
