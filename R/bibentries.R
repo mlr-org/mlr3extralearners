@@ -824,5 +824,25 @@ bibentries = c( # nolint start
     number = "10",
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
+  ),
+  gramacy2007tgp = bibentry("article",
+    title = "tgp: An R Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design Optimization",
+    author = "Robert B. Gramacy and Herbert K.H. Lee",
+    journal = "Journal of Statistical Software",
+    year = "2007",
+    volume = "19",
+    number = "9",
+    pages = "1--46",
+    doi = "10.18637/jss.v019.i09"
+  ),
+  gramacy2010tgp = bibentry("article",
+    title = "Categorical inputs, sensitivity analysis, optimization and importance tempering with tgp version 2, an R package for Treed Gaussian Process models",
+    author = "Robert B. Gramacy and Matthew Taddy",
+    journal = "Journal of Statistical Software",
+    year = "2010",
+    volume = "33",
+    number = "6",
+    pages = "1--48",
+    doi = "10.18637/jss.v033.i06"
   )
 ) # nolint end
