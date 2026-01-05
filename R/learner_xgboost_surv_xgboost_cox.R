@@ -134,7 +134,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' @return Named `numeric()`.
     importance = function() {
       #xgb_imp(self$xgb_model)
-      xgb_imp(self$model$booster)
+      xgb_imp(self$model$model)
     },
 
     #' @description
@@ -184,65 +184,27 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     #' Whether the learner has been marshaled.
     marshaled = function() {
       learner_marshaled(self)
+    },
+
+    #' @field model (any)\cr
+    #' The fitted model. Only available after `$train()` has been called.
+    model = function(rhs) {
+      if (!missing(rhs)) {
+        if (inherits(rhs, "xgboost_cox_model")) {
+          rhs = set_class(list(
+            structure("wrapper", model = rhs)
+          ), "xgboost_cox_model_wrapper")
+        }
+        self$state$model = rhs
+      }
+
+      if (inherits(self$state$model, "xgboost_cox_model_marshaled")) {
+        return(self$state$model)
+      }
+
+      # workaround https://github.com/Rdatatable/data.table/issues/7456
+      attributes(self$state$model[[1]])$model
     }
-
-    # @field model (any)\cr
-    # The fitted xgboost model. Only available after `$train()` has been called.
-    #xgb_model = function() {
-      #browser()
-      #if (!missing(rhs)) {
-      #  if (inherits(rhs, "xgb.Booster")) {
-      #    rhs = list(
-      #      structure("wrapper", model = rhs)
-      #    )
-      #  }
-
-        # self$state$model = rhs
-      #}
-
-      #attributes(self$model[[1]])$model
-
-      # if (inherits(learner$state$model, "marshaled")) {
-      #   self$state$model$marshaled
-      # } else {
-      #   # workaround https://github.com/Rdatatable/data.table/issues/7456
-      #   attributes(self$state$model[[1]])$model
-      # }
-
-      #structure(list(structure("wrapper",
-      #    model = attributes(self$state$model[[1]])$model,
-      #    train_data = attributes(self$state$model[[1]])$train_data)),
-      #  class = "xgboost_cox_model")
-    #}
-
-    # #' @field model (any)\cr
-    # #' The fitted model. Only available after `$train()` has been called.
-    # model = function(rhs) {
-    #   #browser()
-    #   if (!missing(rhs)) {
-    #     if (inherits(rhs, "xgb.Booster")) {
-    #       rhs = list(
-    #         structure("wrapper", model = rhs)
-    #       )
-    #     }
-    #     #else if (inherits(rhs, "xgb.Booster_marshaled")) {
-    #     #  rhs = rhs$marshaled
-    #     #}
-    #     self$state$model = rhs
-    #   }
-    #
-    #   if (inherits(learner$state$model, "marshaled")) {
-    #     self$state$model$marshaled
-    #   } else {
-    #     # workaround https://github.com/Rdatatable/data.table/issues/7456
-    #     attributes(self$state$model[[1]])$model
-    #   }
-    #
-    #   #structure(list(structure("wrapper",
-    #   #    model = attributes(self$state$model[[1]])$model,
-    #   #    train_data = attributes(self$state$model[[1]])$train_data)),
-    #   #  class = "xgboost_cox_model")
-    # }
   ),
 
   private = list(
@@ -291,7 +253,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         pv$evals = c(pv$evals, list(test = test_data))
       }
 
-      model = xgboost::xgb.train(
+      model = list(model = xgboost::xgb.train(
           params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)],
           data = data,
           nrounds = pv$nrounds,
@@ -303,32 +265,23 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
           save_period = pv$save_period,
           save_name = pv$save_name,
           callbacks = pv$callbacks %??% list()
-        )
+      ))
 
-      # add training data
-      #attributes(model)$train_data = data
+      model$train_data = data
+      model = set_class(model, "xgboost_cox_model")
+
       # workaround https://github.com/Rdatatable/data.table/issues/7456
-      # structure(
-      #   list(
-      #     structure("wrapper", model = model)
-      #   ),
-      #   class = "xgboost_cox_model"
-      # )
-
-      model_env = new.env(parent = emptyenv())
-      model_env$booster = model
-      model_env$train_data = data
-      class(model_env) = "xgboost_cox_model"
-      model_env
+      set_class(list(
+        structure("wrapper", model = model)
+      ), "xgboost_cox_model_wrapper")
     },
 
     .predict = function(task) {
       pv = self$param_set$get_values(tags = "predict")
       pv = c(pv, objective = "survival:cox") # manually add 'objective'
 
-      # browser()
       # model = self$xgb_model
-      model = self$model$booster
+      model = self$model$model
       newdata = as_numeric_matrix(ordered_features(task, self))
 
       # linear predictor on the test set
@@ -354,66 +307,50 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
 
 .extralrns_dict$add("surv.xgboost.cox", LearnerSurvXgboostCox)
 
+
 #' @export
 marshal_model.xgboost_cox_model = function(model, inplace = FALSE, ...) {
   # xgb.DMatrix cannot be saved to a raw vector, but only to a file,
   # so we save it to a temporary file and then read it back as a raw vector.
-  #browser()
-  #xgb_model = attributes(model[[1]])$model
-  #xgb_model = model$booster
   on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
-  #xgboost::xgb.DMatrix.save(attributes(model[[1]])$train_data, "xgb.data")
-  #xgboost::xgb.DMatrix.save(attributes(xgb_model)$train_data, "xgb.data")
   xgboost::xgb.DMatrix.save(model$train_data, "xgb.data")
   train_data = readBin("xgb.data", what = "raw", n = file.info("xgb.data")$size)
-  # store the training data in binary format that can be serialized
-  # attributes(xgb_model)$train_data = train_data
 
-  model_env = new.env(parent = emptyenv())
-  model_env$marshaled = model$booster # model the same
-  model_env$train_data = train_data # binary format
-  model_env$packages = c("mlr3extralearners", "xgboost")
-  class(model_env) = c("xgboost_cox_model_marshaled", "marshaled")
-  model_env
-
-  #structure(
-  #  list(
+  structure(list(
+    structure("wrapper", model = list(
       # The booster object (model$model) itself can be saved and loaded directly.
       # See https://xgboost.readthedocs.io/en/stable/R-package/migration_guide.html#migrating-code-from-previous-xgboost-versions,  # nolint
       # bullet point "Booster objects".
-  #    marshaled = xgb_model,
-  #    packages = c("mlr3extralearners", "xgboost")
-  #  ),
-  #  class = c("xgboost_cox_model_marshaled", "marshaled")
-  #)
+      model = model$model,
+      train_data = train_data,
+      packages = c("mlr3extralearners", "xgboost"))
+    )
+  ), class = c("xgboost_cox_model_marshaled", "marshaled"))
+}
+
+#' @export
+marshal_model.xgboost_cox_model_wrapper = function(model, inplace = FALSE, ...) {
+  model = attributes(model[[1]])$model
+  marshal_model(model, inplace, ...)
 }
 
 #' @export
 unmarshal_model.xgboost_cox_model_marshaled = function(model, ...) {
-  #browser()
-  xgb_model = model$marshaled
   # xgb.DMatrix cannot be read from a raw vector, but only from a file,
   # so we write the stored raw vector to a temporary file and then read it back.
+  model = attributes(model[[1]])$model
   on.exit(unlink(tmp), add = TRUE)
   tmp = tempfile(fileext = ".buffer")
-  # writeBin(model$model, tmp)
-  # get training data (xgb.DMatrix) from raw data file
-  #writeBin(attributes(xgb_model)$train_data, tmp)
   writeBin(model$train_data, tmp)
   train_data = xgboost::xgb.DMatrix(tmp)
-  #attributes(xgb_model)$train_data = train_data
 
-  model_env = new.env(parent = emptyenv())
-  model_env$booster = xgb_model
-  model_env$train_data = train_data
-  class(model_env) = "xgboost_cox_model"
-  model_env
+  model = structure(list(
+    model = model$model,
+    train_data = train_data
+  ), class = "xgboost_cox_model")
 
-  # structure(
-  #   list(
-  #     structure("wrapper", model = xgb_model)
-  #   ),
-  #   class = "xgboost_cox_model"
-  # )
+  set_class(list(
+    structure("wrapper", model = model)
+  ), "xgboost_cox_model_wrapper")
 }
