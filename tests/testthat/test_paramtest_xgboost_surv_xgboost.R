@@ -42,7 +42,7 @@ test_that("predict surv.xgboost", {
   learner_cox = lrn("surv.xgboost.cox")
   learner_aft = lrn("surv.xgboost.aft")
 
-  fun = xgboost:::predict.xgb.Booster
+  fun = xgboost:::predict.xgb.Booster # nolint
   exclude = c(
     "object", # handled by mlr3
     "newdata", # handled by mlr3
