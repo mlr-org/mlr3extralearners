@@ -32,6 +32,28 @@ bibentries = c( # nolint start
     year    = "2023"
   ),
 
+  gramacy2007tgp = bibentry("article",
+    title     = "Bayesian Treed Gaussian Process Models with an Application to Computer Modeling",
+    author    = "Gramacy, Robert B. and Lee, Herbert K. H.",
+    journal   = "Journal of the American Statistical Association",
+    year      = "2008",
+    volume    = "103",
+    number    = "483",
+    pages     = "1119--1130",
+    doi       = "10.1198/016214508000000689"
+  ),
+
+  gramacy2010tgp = bibentry("article",
+    title     = "Categorical Inputs, Sensitivity Analysis, and High-Dimensional Macros with Treed Gaussian Process Models",
+    author    = "Gramacy, Robert B. and Taddy, Matthew",
+    journal   = "Technometrics",
+    year      = "2010",
+    volume    = "52",
+    number    = "2",
+    pages     = "143--160",
+    doi       = "10.1198/TECH.2010.09174"
+  ),
+
   hothorn_2015 = bibentry("article",
     author      = "Torsten Hothorn and Achim Zeileis",
     title       = "partykit: A Modular Toolkit for Recursive Partytioning in R",

@@ -126,6 +126,7 @@ Suggests:
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
+    tgp,
     testthat,
     xgboost (>= 1.7.8.1)
 VignetteBuilder:
