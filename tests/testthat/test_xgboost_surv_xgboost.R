@@ -93,13 +93,13 @@ test_that("validation and internal tuning: cox", {
   )
 
   learner$train(task)
-  expect_named(attributes(learner$model$booster)$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_named(attributes(learner$model)$evaluation_log, c("iter", "test_cox_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
-  best_iter = attributes(learner$model$booster)$early_stop$best_iteration
+  best_iter = attributes(learner$model)$early_stop$best_iteration
   expect_equal(
     learner$internal_valid_scores$cox_nloglik,
-    attributes(learner$model$booster)$evaluation_log[get("iter") == best_iter, "test_cox_nloglik"][[1L]]
+    attributes(learner$model)$evaluation_log[get("iter") == best_iter, "test_cox_nloglik"][[1L]]
   )
 
   expect_list(learner$internal_tuned_values, types = "integerish")
@@ -115,7 +115,7 @@ test_that("validation and internal tuning: cox", {
   )
   learner$train(task)
   expect_equal(learner$internal_tuned_values, NULL)
-  expect_named(attributes(learner$model$booster)$evaluation_log, c("iter", "test_cox_nloglik"))
+  expect_named(attributes(learner$model)$evaluation_log, c("iter", "test_cox_nloglik"))
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "cox_nloglik")
 
@@ -137,7 +137,7 @@ test_that("validation and internal tuning: cox", {
   learner$train(task)
   expect_equal(
     learner$internal_valid_scores$cox_nloglik,
-    attributes(learner$model$booster)$evaluation_log$test_cox_nloglik[learner$internal_tuned_values$nrounds]
+    attributes(learner$model)$evaluation_log$test_cox_nloglik[learner$internal_tuned_values$nrounds]
   )
 
   learner = lrn("surv.xgboost.cox")
@@ -147,7 +147,7 @@ test_that("validation and internal tuning: cox", {
 
   learner = lrn("surv.xgboost.cox", validate = 0.3, nrounds = 10)
   learner$train(task)
-  expect_equal(learner$internal_valid_scores$cox_nloglik, attributes(learner$model$booster)$evaluation_log$test_cox_nloglik[10L])
+  expect_equal(learner$internal_valid_scores$cox_nloglik, attributes(learner$model)$evaluation_log$test_cox_nloglik[10L])
   expect_true(is.null(learner$internal_tuned_values))
 })
 
@@ -189,55 +189,4 @@ test_that("surv.xgboost.cox distr via breslow works", {
   )
 
   expect_equal(surv, p_test$data$distr)
-})
-
-test_that("marshaling works for surv.xgboost.cox", {
-  # Basically the same test as `expect_marshalable_learner()`,
-  # but uses `all.equal()` to compare xgb.DMatrix objects rather than `expect_equal`.
-  # The latter always throws an error unless two objects are identical, i.e.,
-  # with the same externalptr etc.
-
-  learner = lrn("surv.xgboost.cox",
-    nrounds = 10,
-    early_stopping_rounds = 10,
-    validate = 0.2
-  )
-
-  learner$train(task)
-
-  expect_true("marshal" %in% learner$properties)
-  learner$state = NULL
-
-  has_public = function(learner, x) {
-    exists(x, learner, inherits = FALSE)
-  }
-
-  expect_true(has_public(learner, "marshal") && checkmate::test_function(learner$marshal, nargs = 0))
-  expect_true(has_public(learner, "unmarshal") && checkmate::test_function(learner$unmarshal, nargs = 0))
-  expect_true(has_public(learner, "marshaled"))
-
-  expect_equal(learner$marshaled, FALSE)
-
-  learner$train(task)
-  model = learner$model$booster
-  train_data = learner$model$train_data
-  class_prev = class(model)
-  expect_false(learner$marshaled)
-  expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
-  expect_invisible(learner$marshal())
-  if (!inherits(learner, "GraphLearner")) {
-    expect_true(learner$marshaled)
-  }
-  expect_equal(mlr3::is_marshaled_model(learner$model), learner$marshaled)
-
-  # unmarshaling works
-  expect_invisible(learner$unmarshal())
-  # can predict after unmarshaling
-  expect_prediction(learner$predict(task))
-  # model is reset (this is different from `expect_marshalable_learner`)
-  expect_equal(learner$model$booster, model)
-  expect_true(all.equal(learner$model$train_data, train_data))
-  # marshaled is set accordingly
-  expect_false(learner$marshaled)
-  expect_equal(class(learner$model$booster), class_prev)
 })
