@@ -28,15 +28,6 @@ By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr
 }
 }
 
-\section{Saving this learner}{
-
-In order to save a \code{LearnerSurvXgboostCox} for later usage,
-it is necessary to call the \verb{$marshal()} method on the \code{Learner}
-before writing it to disk, as the object will otherwise not be saved correctly.
-After loading a marshaled \code{LearnerSurvXgboostCox} into R again,
-you then need to call \verb{$unmarshal()} to transform it into a useable state.
-}
-
 \section{Initial parameter values}{
 
 \itemize{
@@ -196,9 +187,10 @@ bblodfon
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
 \item{\code{internal_valid_scores}}{(named \code{list()} or \code{NULL})
-The validation scores extracted from the xgboost model's \code{evaluation_log}.
-If early stopping is activated, this contains the validation scores of
-the model for the optimal \code{nrounds}, otherwise the \code{nrounds} for the final model.}
+Validation metrics extracted from the xgboost model's \code{evaluation_log}.
+If early stopping is enabled, the scores correspond to the
+\code{best_iteration} selected by early stopping. Otherwise, the scores are
+taken from the final boosting round (\code{nrounds}).}
 
 \item{\code{internal_tuned_values}}{(named \code{list()} or \code{NULL})
 If early stopping is activated, this returns a list with the early stopped
@@ -208,8 +200,8 @@ Otherwise \code{NULL}.}
 \item{\code{validate}}{How to construct the internal validation data.
 This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
 
-\item{\code{marshaled}}{(\code{logical(1)})\cr
-Whether the learner has been marshaled.}
+\item{\code{model}}{(any)\cr
+The fitted model. Only available after \verb{$train()} has been called.}
 }
 \if{html}{\out{</div>}}
 }
@@ -218,8 +210,6 @@ Whether the learner has been marshaled.}
 \itemize{
 \item \href{#method-LearnerSurvXgboostCox-new}{\code{LearnerSurvXgboostCox$new()}}
 \item \href{#method-LearnerSurvXgboostCox-importance}{\code{LearnerSurvXgboostCox$importance()}}
-\item \href{#method-LearnerSurvXgboostCox-marshal}{\code{LearnerSurvXgboostCox$marshal()}}
-\item \href{#method-LearnerSurvXgboostCox-unmarshal}{\code{LearnerSurvXgboostCox$unmarshal()}}
 \item \href{#method-LearnerSurvXgboostCox-clone}{\code{LearnerSurvXgboostCox$clone()}}
 }
 }
@@ -261,42 +251,6 @@ The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xg
 
 \subsection{Returns}{
 Named \code{numeric()}.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-marshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-marshal}{}}}
-\subsection{Method \code{marshal()}}{
-Marshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$marshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-unmarshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-unmarshal}{}}}
-\subsection{Method \code{unmarshal()}}{
-Unmarshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$unmarshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
-}
-\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}
