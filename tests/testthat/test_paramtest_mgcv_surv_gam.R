@@ -1,10 +1,10 @@
 skip_if_not_installed("mgcv")
 
-test_that("classif.gam train", {
-  learner = lrn("classif.gam")
+test_that("paramtest surv.gam train", {
+  learner = lrn("surv.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)
   exclude = c(
-    "family", # we support only binomial
+    "family", # handled internally
     "data", # handled internally
     "weights", # handled internally
     "subset", # handled internally
@@ -20,9 +20,9 @@ test_that("classif.gam train", {
   expect_paramtest(paramtest)
 })
 
-test_that("classif.gam predict", {
-  learner = lrn("classif.gam")
-  fun_list = list(mgcv::predict.gam)
+test_that("paramtest surv.gam predict", {
+  learner = lrn("surv.gam")
+  fun = mgcv::predict.gam
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
@@ -35,6 +35,6 @@ test_that("classif.gam predict", {
     "iterms.type" # not relevant
   )
 
-  paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")
+  paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
 })
