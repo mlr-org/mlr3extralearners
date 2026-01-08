@@ -1,6 +1,6 @@
 #' @title Cox Proportional Hazards Generalized Additive Learner
 #' @author bblodfon
-#' @name mlr_learners_surv.gam
+#' @name mlr_learners_surv.gam.cox
 #'
 #' @description
 #' Generalized additive models.
@@ -10,23 +10,21 @@
 #' @inheritSection mlr_learners_regr.gam Offset
 #'
 #' @template learner
-#' @templateVar id surv.gam
+#' @templateVar id surv.gam.cox
 #'
 #' @references
-#' `r format_bib("wood2012mgcv")`
+#' `r format_bib("wood2012mgcv", "wood2016")`
 #'
-#' @examplesIf learner_is_runnable("surv.gam")
+#' @examplesIf learner_is_runnable("surv.gam.cox")
 #' # simple example
 #' t = tsk("lung")
-#' l = lrn("surv.gam")
-#' l$param_set$set_values(
-#'   formula = time ~ s(age, k = 5) + ph.karno + sex
-#' )
+#' l = lrn("surv.gam.cox")
+#' l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
 #' l$train(t)
 #' l$model
 #' @export
-LearnerSurvGam = R6Class("LearnerSurvGam",
-  inherit = LearnerSurv,
+LearnerSurvGamCox = R6Class("LearnerSurvGamCox",
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
@@ -78,13 +76,13 @@ LearnerSurvGam = R6Class("LearnerSurvGam",
       )
 
       super$initialize(
-        id = "surv.gam",
+        id = "surv.gam.cox",
         packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("crank", "lp", "distr"),
         param_set = param_set,
         properties = "offset",
-        man = "mlr3extralearners::mlr_learners_surv.gam",
+        man = "mlr3extralearners::mlr_learners_surv.gam.cox",
         label = "CoxPH Generalized Additive Model"
       )
     }
@@ -103,7 +101,9 @@ LearnerSurvGam = R6Class("LearnerSurvGam",
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset
       }
+
       if (is.null(pars$formula)) {
+        # GLM-like formula, no smooth terms
         formula = stats::as.formula(paste(
           task$target_names[1L],
           "~",
@@ -118,12 +118,7 @@ LearnerSurvGam = R6Class("LearnerSurvGam",
         mgcv::gam.control()
       }
 
-      invoke(
-        mgcv::gam,
-        data = data,
-        .args = pars,
-        control = control_obj
-      )
+      invoke(mgcv::gam, data = data, control = control_obj, .args = pars)
     },
 
     .predict = function(task) {
@@ -152,4 +147,4 @@ LearnerSurvGam = R6Class("LearnerSurvGam",
   )
 )
 
-.extralrns_dict$add("surv.gam", LearnerSurvGam)
+.extralrns_dict$add("surv.gam.cox", LearnerSurvGamCox)

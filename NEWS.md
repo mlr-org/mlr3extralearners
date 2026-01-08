@@ -3,7 +3,7 @@
 ## New Features
 
 * New Learners:
-  - `LearnerSurvGam`
+  - `LearnerSurvGamCox`
 
 # mlr3extralearners 1.3.1
 

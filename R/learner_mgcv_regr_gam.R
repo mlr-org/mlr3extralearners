@@ -111,6 +111,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       }
 
       if (is.null(pars$formula)) {
+        # GLM-like formula, no smooth terms
         formula = stats::as.formula(paste(
           task$target_names,
           "~",

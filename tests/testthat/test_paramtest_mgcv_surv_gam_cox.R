@@ -1,7 +1,7 @@
 skip_if_not_installed("mgcv")
 
 test_that("paramtest surv.gam train", {
-  learner = lrn("surv.gam")
+  learner = lrn("surv.gam.cox")
   fun_list = list(mgcv::gam, mgcv::gam.control)
   exclude = c(
     "family", # handled internally
@@ -21,7 +21,7 @@ test_that("paramtest surv.gam train", {
 })
 
 test_that("paramtest surv.gam predict", {
-  learner = lrn("surv.gam")
+  learner = lrn("surv.gam.cox")
   fun = mgcv::predict.gam
   exclude = c(
     "object", # handled internally
