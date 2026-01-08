@@ -60,6 +60,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    in.out \tab untyped \tab NULL \tab  \tab - \cr
    drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nei \tab untyped \tab - \tab  \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    irls.reg \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    epsilon \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -77,7 +78,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    efs.lspmax \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    efs.tol \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab - \cr
-   nei \tab untyped \tab - \tab  \tab - \cr
    ncv.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -86,7 +86,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.gam")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.gam")) withAutoprint(\{ # examplesIf}
 # simple example
 t = tsk("mtcars")
 l = lrn("regr.gam")
