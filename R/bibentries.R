@@ -650,6 +650,16 @@ bibentries = c( # nolint start
     publisher = "ASA Websites",
     doi = "10.1198/016214502753479248"
   ),
+  clemmensen2011sda = bibentry("article",
+    title = "Sparse discriminant analysis",
+    author = "Clemmensen, Line and Hastie, Trevor and Witten, Daniela and Ersboll, Bjarne",
+    year = "2011",
+    journal = "Journal of the American Statistical Association",
+    volume = "106",
+    number = "496",
+    pages = "1519--1531",
+    doi = "10.1198/jasa.2011.tm09728"
+  ),
   Srivastava2007mdeb = bibentry("article",
     title = "Comparison of Discrimination Methods for High Dimensional Data",
     author = "Srivastava, M. and Kubokawa, T.",
