@@ -70,6 +70,7 @@ Suggests:
     Cubist,
     curl,
     dbarts,
+    deepnet,
     earth,
     evtree,
     ExhaustiveSearch,
