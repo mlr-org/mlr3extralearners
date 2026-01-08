@@ -1,5 +1,10 @@
 # mlr3extralearners (development version)
 
+## New Features
+
+* New Learners:
+  - `LearnerSurvGam`
+
 # mlr3extralearners 1.3.1
 
 * Update website to include citation information
