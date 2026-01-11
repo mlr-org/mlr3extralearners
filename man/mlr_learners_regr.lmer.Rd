@@ -48,6 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    restart_edge \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    boundary.tol \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    calc.derivs \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   autoscale \tab untyped \tab NULL \tab  \tab - \cr
    check.nobs.vs.rankZ \tab character \tab ignore \tab ignore, warning, message, stop \tab - \cr
    check.nobs.vs.nlev \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
    check.nlev.gtreq.5 \tab character \tab ignore \tab ignore, warning, message, stop \tab - \cr
@@ -56,6 +57,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    check.rankX \tab character \tab message+drop.cols \tab message+drop.cols, silent.drop.cols, warn+drop.cols, stop.deficient, ignore \tab - \cr
    check.scaleX \tab character \tab warning \tab warning, stop, silent.rescale, message+rescale, warn+rescale, ignore \tab - \cr
    check.formula.LHS \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
+   check.conv.nobsmax \tab numeric \tab 10000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   check.conv.nparmax \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    check.conv.grad \tab untyped \tab "lme4::.makeCC(\"warning\", tol = 2e-3, relTol = NULL)" \tab  \tab - \cr
    check.conv.singular \tab untyped \tab "lme4::.makeCC(action = \"message\", tol = formals(lme4::isSingular)$tol)" \tab  \tab - \cr
    check.conv.hess \tab untyped \tab "lme4::.makeCC(action = \"warning\", tol = 1e-6)" \tab  \tab - \cr

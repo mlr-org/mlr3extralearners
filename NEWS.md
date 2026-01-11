@@ -12,7 +12,9 @@
 ## Other
 
 * `CoxBoost` is now on CRAN, so we removed it from `Remotes`
-* `lrn("surv.flexsurvspline")` predicts linear predictors using `predict.flexsurvreg()`. We had a manual version which was the same, so no functionality changed.
+* `lrn("surv.flexsurvspline")` predicts linear predictors using `predict.flexsurvreg()`. We were doing manually the same exact prediction, so no functionality was changed.
+* compatibility: `xgboost` 3.1.2.1 (survival learners)
+* parameter updates for `regr.lmer`/`glmer` learners
 
 # mlr3extralearners 1.3.1
 
