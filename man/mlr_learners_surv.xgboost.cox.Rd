@@ -28,21 +28,12 @@ By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr
 }
 }
 
-\section{Saving this learner}{
-
-In order to save a \code{LearnerSurvXgboostCox} for later usage,
-it is necessary to call the \verb{$marshal()} method on the \code{Learner}
-before writing it to disk, as the object will otherwise not be saved correctly.
-After loading a marshaled \code{LearnerSurvXgboostCox} into R again,
-you then need to call \verb{$unmarshal()} to transform it into a useable state.
-}
-
 \section{Initial parameter values}{
 
 \itemize{
 \item \code{nrounds} is initialized to 1000.
 \item \code{nthread} is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.
-\item \code{verbose} is initialized to 0.
+\item \code{verbose} and \code{verbosity} are both initialized to 0.
 }
 }
 
@@ -71,35 +62,33 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    base_score \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    booster \tab character \tab gbtree \tab gbtree, gblinear, dart \tab - \cr
    callbacks \tab untyped \tab list() \tab  \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    colsample_bylevel \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bynode \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    colsample_bytree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    disable_default_eval_metric \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    early_stopping_rounds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   eta \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   evals \tab untyped \tab NULL \tab  \tab - \cr
+   learning_rate \tab numeric \tab 0.3 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    feature_selector \tab character \tab cyclic \tab cyclic, shuffle, random, greedy, thrifty \tab - \cr
-   feval \tab untyped \tab NULL \tab  \tab - \cr
    gamma \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    grow_policy \tab character \tab depthwise \tab depthwise, lossguide \tab - \cr
    interaction_constraints \tab untyped \tab - \tab  \tab - \cr
    iterationrange \tab untyped \tab - \tab  \tab - \cr
    lambda \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   lambda_bias \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_bin \tab integer \tab 256 \tab  \tab \eqn{[2, \infty)}{[2, Inf)} \cr
    max_delta_step \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_depth \tab integer \tab 6 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_leaves \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maximize \tab logical \tab NULL \tab TRUE, FALSE \tab - \cr
    min_child_weight \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   missing \tab numeric \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    monotone_constraints \tab integer \tab 0 \tab  \tab \eqn{[-1, 1]}{[-1, 1]} \cr
    normalize_type \tab character \tab tree \tab tree, forest \tab - \cr
    nrounds \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nthread \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nthread \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    num_parallel_tree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    one_drop \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    print_every_n \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   process_type \tab character \tab default \tab default, update \tab - \cr
    rate_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    refresh_leaf \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    sampling_method \tab character \tab uniform \tab uniform, gradient_based \tab - \cr
@@ -109,16 +98,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    scale_pos_weight \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    seed_per_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    skip_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   strict_shape \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use_rmm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   max_cached_hist_node \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   extmem_single_page \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_cat_threshold \tab integer \tab 64 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    subsample \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    top_k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    tree_method \tab character \tab auto \tab auto, exact, approx, hist, gpu_hist \tab - \cr
-   tweedie_variance_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    updater \tab untyped \tab - \tab  \tab - \cr
-   verbose \tab integer \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
-   watchlist \tab untyped \tab NULL \tab  \tab - \cr
+   verbose \tab integer \tab - \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
+   verbosity \tab integer \tab - \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    xgb_model \tab untyped \tab - \tab  \tab - \cr
    device \tab untyped \tab - \tab  \tab - \cr
+   missing \tab numeric \tab NA \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   validate_features \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -192,16 +186,22 @@ bblodfon
 \section{Active bindings}{
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
-\item{\code{internal_valid_scores}}{The last observation of the validation scores for all metrics.
-Extracted from \code{model$evaluation_log}}
+\item{\code{internal_valid_scores}}{(named \code{list()} or \code{NULL})
+Validation metrics extracted from the xgboost model's \code{evaluation_log}.
+If early stopping is enabled, the scores correspond to the
+\code{best_iteration} selected by early stopping. Otherwise, the scores are
+taken from the final boosting round (\code{nrounds}).}
 
-\item{\code{internal_tuned_values}}{Returns the early stopped iterations if \code{early_stopping_rounds} was set during training.}
+\item{\code{internal_tuned_values}}{(named \code{list()} or \code{NULL})
+If early stopping is activated, this returns a list with the early stopped
+iterations (\code{nrounds}), which is extracted from the best iteration of the model.
+Otherwise \code{NULL}.}
 
-\item{\code{validate}}{How to construct the internal validation data. This parameter can be either \code{NULL},
-a ratio, \code{"test"}, or \code{"predefined"}.}
+\item{\code{validate}}{How to construct the internal validation data.
+This parameter can be either \code{NULL}, a ratio, \code{"test"}, or \code{"predefined"}.}
 
-\item{\code{marshaled}}{(\code{logical(1)})\cr
-Whether the learner has been marshaled.}
+\item{\code{model}}{(any)\cr
+The fitted model. Only available after \verb{$train()} has been called.}
 }
 \if{html}{\out{</div>}}
 }
@@ -210,8 +210,6 @@ Whether the learner has been marshaled.}
 \itemize{
 \item \href{#method-LearnerSurvXgboostCox-new}{\code{LearnerSurvXgboostCox$new()}}
 \item \href{#method-LearnerSurvXgboostCox-importance}{\code{LearnerSurvXgboostCox$importance()}}
-\item \href{#method-LearnerSurvXgboostCox-marshal}{\code{LearnerSurvXgboostCox$marshal()}}
-\item \href{#method-LearnerSurvXgboostCox-unmarshal}{\code{LearnerSurvXgboostCox$unmarshal()}}
 \item \href{#method-LearnerSurvXgboostCox-clone}{\code{LearnerSurvXgboostCox$clone()}}
 }
 }
@@ -253,42 +251,6 @@ The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xg
 
 \subsection{Returns}{
 Named \code{numeric()}.
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-marshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-marshal}{}}}
-\subsection{Method \code{marshal()}}{
-Marshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$marshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
-}
-\if{html}{\out{</div>}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerSurvXgboostCox-unmarshal"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-unmarshal}{}}}
-\subsection{Method \code{unmarshal()}}{
-Unmarshal the learner's model.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$unmarshal(...)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{...}}{(any)\cr
-Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
-}
-\if{html}{\out{</div>}}
 }
 }
 \if{html}{\out{<hr>}}
