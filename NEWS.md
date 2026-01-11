@@ -5,6 +5,11 @@
 * New Learners:
   - `LearnerSurvGamCox`
 
+## Other
+
+* compatibility: `xgboost` 3.1.2.1 (survival learners)
+* parameter updates for `regr.lmer`/`glmer` learners
+
 # mlr3extralearners 1.3.1
 
 * Update website to include citation information
