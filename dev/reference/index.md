@@ -419,6 +419,9 @@
 - [`mlr_learners_surv.flexspline`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexspline.md)
   [`LearnerSurvFlexSpline`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexspline.md)
   : Survival Flexible Parametric Spline Learner
+- [`mlr_learners_surv.gam.cox`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gam.cox.md)
+  [`LearnerSurvGamCox`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gam.cox.md)
+  : Cox Proportional Hazards Generalized Additive Learner
 - [`mlr_learners_surv.gamboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
   [`LearnerSurvGAMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
   : Boosted Generalized Additive Survival Learner
