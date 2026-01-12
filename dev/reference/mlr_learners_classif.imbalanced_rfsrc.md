@@ -261,10 +261,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=70, R=69
+#>            Frequency of class labels: M=74, R=65
 #>                      Number of trees: 3000
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 17.056
+#>        Average no. of terminal nodes: 17.282
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -273,47 +273,47 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: auc *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.0145
-#>                    (OOB) Brier score: 0.13360835
-#>         (OOB) Normalized Brier score: 0.53443342
-#>                            (OOB) AUC: 0.93064182
-#>                       (OOB) Log-loss: 0.42955136
-#>                         (OOB) PR-AUC: 0.92539963
-#>                         (OOB) G-mean: 0.84588885
-#>    (OOB) Requested performance error: 0.15411115
+#>                     Imbalanced ratio: 1.1385
+#>                    (OOB) Brier score: 0.13726494
+#>         (OOB) Normalized Brier score: 0.54905975
+#>                            (OOB) AUC: 0.92557173
+#>                       (OOB) Log-loss: 0.43838837
+#>                         (OOB) PR-AUC: 0.91902126
+#>                         (OOB) G-mean: 0.80538727
+#>    (OOB) Requested performance error: 0.19461273
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 64  6      0.0857
-#>          R 15 54      0.2174
+#>          M 65  9      0.1216
+#>          R 17 48      0.2615
 #> 
-#>       (OOB) Misclassification rate: 0.1510791
+#>       (OOB) Misclassification rate: 0.1870504
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>          V17          V21          V18           V4          V45          V48 
-#>  0.015812401  0.015812401  0.014441711  0.014441711  0.014441711  0.014441711 
-#>          V31          V11          V37          V12          V16          V36 
-#>  0.012452006  0.009352565  0.009352565  0.007868905  0.007868905  0.007868905 
-#>          V39           V1          V25           V3          V44          V47 
-#>  0.007868905  0.006634525  0.006634525  0.006634525  0.006634525  0.006634525 
-#>           V5          V50          V51          V56          V57          V59 
-#>  0.006634525  0.006634525  0.006634525  0.006634525  0.006634525  0.006634525 
-#>           V8          V52           V9          V14          V15          V19 
-#>  0.006634525  0.001347250  0.001347250  0.000000000  0.000000000  0.000000000 
-#>          V26          V27          V28          V29          V30          V32 
+#>          V21           V9          V36          V43          V52          V16 
+#>  0.025574399  0.013668170  0.010915724  0.010915724  0.010915724  0.008433607 
+#>          V17          V20          V27          V37          V42          V23 
+#>  0.008433607  0.008433607  0.008433607  0.008433607  0.008433607  0.002326593 
+#>          V51          V14          V15          V19          V22          V24 
+#>  0.002326593  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
+#>          V25          V26          V29           V3          V31          V35 
 #>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V33          V34          V38          V42          V43          V46 
+#>          V38           V4          V41          V49          V53          V54 
 #>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V53          V54          V55          V58           V6          V60 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>           V7          V49          V10          V13           V2          V22 
-#>  0.000000000 -0.001100702 -0.006582892 -0.006582892 -0.006582892 -0.006582892 
-#>          V23          V24          V35          V40          V41          V20 
-#> -0.006582892 -0.006582892 -0.006582892 -0.006582892 -0.006582892 -0.007796375 
+#>          V58           V7          V28          V44           V1          V18 
+#>  0.000000000  0.000000000 -0.006171640 -0.006171640 -0.008346205 -0.008346205 
+#>           V2          V30          V32          V33          V34          V39 
+#> -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 
+#>          V40          V47          V48           V5          V50          V55 
+#> -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 
+#>          V56          V57          V59           V6          V60           V8 
+#> -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 -0.008346205 
+#>          V10          V11          V13          V45          V46          V12 
+#> -0.012296700 -0.012296700 -0.012296700 -0.012296700 -0.014581802 -0.018376218 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -321,5 +321,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>   0.115942 
 ```
