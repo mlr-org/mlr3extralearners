@@ -72,7 +72,7 @@ The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.coxboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.coxboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.coxboost")
 print(learner)
