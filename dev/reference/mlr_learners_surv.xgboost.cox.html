@@ -84,22 +84,12 @@ represented in rows and time points in columns.
 By default, the Breslow estimator is used via <code><a href="https://mlr3proba.mlr-org.com/reference/breslow.html" class="external-link">mlr3proba::breslow()</a></code>.</p></li>
 </ol></div>
     <div class="section level2">
-    <h2 id="saving-this-learner">Saving this learner<a class="anchor" aria-label="anchor" href="#saving-this-learner"></a></h2>
-
-
-<p>In order to save a <code>LearnerSurvXgboostCox</code> for later usage,
-it is necessary to call the <code>$marshal()</code> method on the <code>Learner</code>
-before writing it to disk, as the object will otherwise not be saved correctly.
-After loading a marshaled <code>LearnerSurvXgboostCox</code> into R again,
-you then need to call <code>$unmarshal()</code> to transform it into a useable state.</p>
-    </div>
-    <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
 
 <ul><li><p><code>nrounds</code> is initialized to 1000.</p></li>
 <li><p><code>nthread</code> is initialized to 1 to avoid conflicts with parallelization via <a href="https://CRAN.R-project.org/package=future" class="external-link"><span class="pkg">future</span></a>.</p></li>
-<li><p><code>verbose</code> is initialized to 0.</p></li>
+<li><p><code>verbose</code> and <code>verbosity</code> are both initialized to 0.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -120,7 +110,7 @@ you then need to call <code>$unmarshal()</code> to transform it into a useable s
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>base_score</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>booster</td><td>character</td><td>gbtree</td><td>gbtree, gblinear, dart</td><td>-</td></tr><tr><td>callbacks</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>colsample_bylevel</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bynode</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bytree</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>disable_default_eval_metric</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>early_stopping_rounds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>eta</td><td>numeric</td><td>0.3</td><td></td><td>\([0, 1]\)</td></tr><tr><td>feature_selector</td><td>character</td><td>cyclic</td><td>cyclic, shuffle, random, greedy, thrifty</td><td>-</td></tr><tr><td>feval</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>grow_policy</td><td>character</td><td>depthwise</td><td>depthwise, lossguide</td><td>-</td></tr><tr><td>interaction_constraints</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>iterationrange</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>lambda_bias</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_bin</td><td>integer</td><td>256</td><td></td><td>\([2, \infty)\)</td></tr><tr><td>max_delta_step</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_depth</td><td>integer</td><td>6</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_leaves</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maximize</td><td>logical</td><td>NULL</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>min_child_weight</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>missing</td><td>numeric</td><td>NA</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>monotone_constraints</td><td>integer</td><td>0</td><td></td><td>\([-1, 1]\)</td></tr><tr><td>normalize_type</td><td>character</td><td>tree</td><td>tree, forest</td><td>-</td></tr><tr><td>nrounds</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nthread</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num_parallel_tree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>one_drop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>print_every_n</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>process_type</td><td>character</td><td>default</td><td>default, update</td><td>-</td></tr><tr><td>rate_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>refresh_leaf</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampling_method</td><td>character</td><td>uniform</td><td>uniform, gradient_based</td><td>-</td></tr><tr><td>sample_type</td><td>character</td><td>uniform</td><td>uniform, weighted</td><td>-</td></tr><tr><td>save_name</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>save_period</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale_pos_weight</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed_per_iteration</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>skip_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>strict_shape</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>subsample</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>top_k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>tree_method</td><td>character</td><td>auto</td><td>auto, exact, approx, hist, gpu_hist</td><td>-</td></tr><tr><td>tweedie_variance_power</td><td>numeric</td><td>1.5</td><td></td><td>\([1, 2]\)</td></tr><tr><td>updater</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>verbose</td><td>integer</td><td>1</td><td></td><td>\([0, 2]\)</td></tr><tr><td>watchlist</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>xgb_model</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>alpha</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>base_score</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>booster</td><td>character</td><td>gbtree</td><td>gbtree, gblinear, dart</td><td>-</td></tr><tr><td>callbacks</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>colsample_bylevel</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bynode</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>colsample_bytree</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>disable_default_eval_metric</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>early_stopping_rounds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>evals</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>learning_rate</td><td>numeric</td><td>0.3</td><td></td><td>\([0, 1]\)</td></tr><tr><td>feature_selector</td><td>character</td><td>cyclic</td><td>cyclic, shuffle, random, greedy, thrifty</td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>grow_policy</td><td>character</td><td>depthwise</td><td>depthwise, lossguide</td><td>-</td></tr><tr><td>interaction_constraints</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>iterationrange</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>lambda</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_bin</td><td>integer</td><td>256</td><td></td><td>\([2, \infty)\)</td></tr><tr><td>max_delta_step</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_depth</td><td>integer</td><td>6</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>max_leaves</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maximize</td><td>logical</td><td>NULL</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>min_child_weight</td><td>numeric</td><td>1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>monotone_constraints</td><td>integer</td><td>0</td><td></td><td>\([-1, 1]\)</td></tr><tr><td>normalize_type</td><td>character</td><td>tree</td><td>tree, forest</td><td>-</td></tr><tr><td>nrounds</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nthread</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>num_parallel_tree</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>one_drop</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>print_every_n</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>rate_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>refresh_leaf</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampling_method</td><td>character</td><td>uniform</td><td>uniform, gradient_based</td><td>-</td></tr><tr><td>sample_type</td><td>character</td><td>uniform</td><td>uniform, weighted</td><td>-</td></tr><tr><td>save_name</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>save_period</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale_pos_weight</td><td>numeric</td><td>1</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>seed_per_iteration</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>skip_drop</td><td>numeric</td><td>0</td><td></td><td>\([0, 1]\)</td></tr><tr><td>use_rmm</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>max_cached_hist_node</td><td>integer</td><td>NULL</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>extmem_single_page</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>max_cat_to_onehot</td><td>integer</td><td>4</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>max_cat_threshold</td><td>integer</td><td>64</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>subsample</td><td>numeric</td><td>1</td><td></td><td>\([0, 1]\)</td></tr><tr><td>top_k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>tree_method</td><td>character</td><td>auto</td><td>auto, exact, approx, hist, gpu_hist</td><td>-</td></tr><tr><td>updater</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>verbose</td><td>integer</td><td>-</td><td></td><td>\([0, 2]\)</td></tr><tr><td>verbosity</td><td>integer</td><td>-</td><td></td><td>\([0, 2]\)</td></tr><tr><td>xgb_model</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>device</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>missing</td><td>numeric</td><td>NA</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>validate_features</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="early-stopping">Early stopping<a class="anchor" aria-label="anchor" href="#early-stopping"></a></h2>
 
@@ -172,22 +162,28 @@ ACM.
     <div class="section level2">
     <h2 id="active-bindings">Active bindings<a class="anchor" aria-label="anchor" href="#active-bindings"></a></h2>
     <p></p><div class="r6-active-bindings"><dl><dt><code>internal_valid_scores</code></dt>
-<dd><p>The last observation of the validation scores for all metrics.
-Extracted from <code>model$evaluation_log</code></p></dd>
+<dd><p>(named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> or <code>NULL</code>)
+Validation metrics extracted from the xgboost model's <code>evaluation_log</code>.
+If early stopping is enabled, the scores correspond to the
+<code>best_iteration</code> selected by early stopping. Otherwise, the scores are
+taken from the final boosting round (<code>nrounds</code>).</p></dd>
 
 
 <dt><code>internal_tuned_values</code></dt>
-<dd><p>Returns the early stopped iterations if <code>early_stopping_rounds</code> was set during training.</p></dd>
+<dd><p>(named <code><a href="https://rdrr.io/r/base/list.html" class="external-link">list()</a></code> or <code>NULL</code>)
+If early stopping is activated, this returns a list with the early stopped
+iterations (<code>nrounds</code>), which is extracted from the best iteration of the model.
+Otherwise <code>NULL</code>.</p></dd>
 
 
 <dt><code>validate</code></dt>
-<dd><p>How to construct the internal validation data. This parameter can be either <code>NULL</code>,
-a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
+<dd><p>How to construct the internal validation data.
+This parameter can be either <code>NULL</code>, a ratio, <code>"test"</code>, or <code>"predefined"</code>.</p></dd>
 
 
-<dt><code>marshaled</code></dt>
-<dd><p>(<code>logical(1)</code>)<br>
-Whether the learner has been marshaled.</p></dd>
+<dt><code>model</code></dt>
+<dd><p>(any)<br>
+The fitted model. Only available after <code>$train()</code> has been called.</p></dd>
 
 
 </dl><p></p></div>
@@ -200,8 +196,6 @@ Whether the learner has been marshaled.</p></dd>
 
 <ul><li><p><a href="#method-LearnerSurvXgboostCox-new"><code>LearnerSurvXgboostCox$new()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvXgboostCox-importance"><code>LearnerSurvXgboostCox$importance()</code></a></p></li>
-<li><p><a href="#method-LearnerSurvXgboostCox-marshal"><code>LearnerSurvXgboostCox$marshal()</code></a></p></li>
-<li><p><a href="#method-LearnerSurvXgboostCox-unmarshal"><code>LearnerSurvXgboostCox$unmarshal()</code></a></p></li>
 <li><p><a href="#method-LearnerSurvXgboostCox-clone"><code>LearnerSurvXgboostCox$clone()</code></a></p></li>
 </ul></div><p><details><summary>Inherited methods</summary><ul><li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="base_learner"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-base_learner"><code>mlr3::Learner$base_learner()</code></a></span></li>
 <li><span class="pkg-link" data-pkg="mlr3" data-topic="Learner" data-id="configure"><a href="https://mlr3.mlr-org.com/reference/Learner.html#method-configure"><code>mlr3::Learner$configure()</code></a></span></li>
@@ -234,49 +228,15 @@ Whether the learner has been marshaled.</p></dd>
 <p>Named <code><a href="https://rdrr.io/r/base/numeric.html" class="external-link">numeric()</a></code>.</p>
 </div>
 
-</div><p></p><hr><a id="method-LearnerSurvXgboostCox-marshal"></a><div class="section">
-<h3 id="method-marshal-">Method <code>marshal()</code><a class="anchor" aria-label="anchor" href="#method-marshal-"></a></h3>
-<p>Marshal the learner's model.</p><div class="section">
-<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvXgboostCox</span><span class="op">$</span><span class="fu">marshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>...</code></dt>
-<dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::marshal_model()</a></code>.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-
-</div><p></p><hr><a id="method-LearnerSurvXgboostCox-unmarshal"></a><div class="section">
-<h3 id="method-unmarshal-">Method <code>unmarshal()</code><a class="anchor" aria-label="anchor" href="#method-unmarshal-"></a></h3>
-<p>Unmarshal the learner's model.</p><div class="section">
-<h4 id="usage-3">Usage<a class="anchor" aria-label="anchor" href="#usage-3"></a></h4>
-<p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvXgboostCox</span><span class="op">$</span><span class="fu">unmarshal</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></span></code></pre></div><p></p></div>
-</div>
-
-<div class="section">
-<h4 id="arguments-1">Arguments<a class="anchor" aria-label="anchor" href="#arguments-1"></a></h4>
-<p></p><div class="arguments"><dl><dt><code>...</code></dt>
-<dd><p>(any)<br>
-Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference/marshaling.html" class="external-link">mlr3::unmarshal_model()</a></code>.</p></dd>
-
-
-</dl><p></p></div>
-</div>
-
 </div><p></p><hr><a id="method-LearnerSurvXgboostCox-clone"></a><div class="section">
 <h3 id="method-clone-">Method <code>clone()</code><a class="anchor" aria-label="anchor" href="#method-clone-"></a></h3>
 <p>The objects of this class are cloneable with this method.</p><div class="section">
-<h4 id="usage-4">Usage<a class="anchor" aria-label="anchor" href="#usage-4"></a></h4>
+<h4 id="usage-2">Usage<a class="anchor" aria-label="anchor" href="#usage-2"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerSurvXgboostCox</span><span class="op">$</span><span class="fu">clone</span><span class="op">(</span>deep <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><p></p></div>
 </div>
 
 <div class="section">
-<h4 id="arguments-2">Arguments<a class="anchor" aria-label="anchor" href="#arguments-2"></a></h4>
+<h4 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h4>
 <p></p><div class="arguments"><dl><dt><code>deep</code></dt>
 <dd><p>Whether to make a deep clone.</p></dd>
 
@@ -296,14 +256,13 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerSurvXgboostCox&gt;</span><span style="font-weight: bold;"> (surv.xgboost.cox): Extreme Gradient Boosting Cox</span> <span style="color: #00BBBB;">───</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: nrounds=1000, nthread=1, verbose=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: nrounds=1000, nthread=1, verbose=0, verbosity=0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Validate: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3proba</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">xgboost</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [crank], distr, and lp</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, internal_tuning, marshal, missings, validation, and</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> weights</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, internal_tuning, missings, validation, and weights</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
@@ -314,28 +273,30 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in .internal.setinfo.xgb.DMatrix(object, name, info):</span> [10:48:50] xgboost_R.cc:167: Array or matrix has unsupported type.</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> Stack trace:</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (0) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x826fd) [0x7f36be2826fd]</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (1) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(+0x7b345) [0x7f36be27b345]</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (2) /home/runner/work/_temp/Library/xgboost/libs/xgboost.so(XGDMatrixSetInfo_R+0x71) [0x7f36be27b411]</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (3) /opt/R/4.5.2/lib/R/lib/libR.so(+0x103c5e) [0x7f37d3b03c5e]</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span>   [bt] (4) /opt/R/4.5.2/lib/R/lib/libR.so(+0x1499a8) [0x7f37d3b4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ##### xgb.Booster</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> call:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   xgboost::xgb.train(params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)], </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     data = data, nrounds = pv$nrounds, evals = pv$evals, verbose = pv$verbose, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     print_every_n = pv$print_every_n, early_stopping_rounds = pv$early_stopping_rounds, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     maximize = pv$maximize, save_period = pv$save_period, save_name = pv$save_name, </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     callbacks = pv$callbacks %??% list())</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # of features: 6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> # of rounds:  1000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> callbacks:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    lp_train, times, status </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> No model stored</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      sysbp revascdays        los     revasc        age   stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.48659951 0.23907252 0.09871223 0.08322981 0.08089301 0.01149292 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> </span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span style="color: #BB0000;">✖</span> Cannot predict, Learner 'surv.xgboost.cox' has not been trained yet</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> → Class: Mlr3ErrorInput</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'predictions' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8682978 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
