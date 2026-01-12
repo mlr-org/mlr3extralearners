@@ -1,4 +1,3 @@
-testthat::skip("temporarily disabled")
 skip_if_not_installed("xgboost")
 
 task = tsk("lung")
