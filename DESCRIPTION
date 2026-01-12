@@ -91,7 +91,7 @@ Suggests:
     lme4 (>= 1.1-38),
     mboost (>= 2.9-10),
     mda,
-    mgcv,
+    mgcv (>= 1.9-4),
     mirai,
     mlr3cluster,
     mlr3learners (>= 0.12.0),

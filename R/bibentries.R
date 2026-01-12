@@ -257,6 +257,17 @@ bibentries = c( # nolint start
     author = "Wood, Simon",
     year = "2012"
   ),
+  wood2016 = bibentry("article",
+    title = "Smoothing Parameter and Model Selection for General Smooth Models",
+    author = "Wood, Simon N. and Pya, Natalya and Safken, Benjamin",
+    journal = "Journal of the American Statistical Association",
+    volume = "111",
+    number = "516",
+    pages = "1548--1563",
+    year = "2016",
+    publisher = "American Statistical Association",
+    doi = "10.1080/01621459.2016.1180986"
+  ),
   goeman2010l1 = bibentry("article",
     title = "L1 penalized estimation in the Cox proportional hazards model",
     author = "Goeman, Jelle J",

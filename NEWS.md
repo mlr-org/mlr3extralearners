@@ -1,8 +1,9 @@
 # mlr3extralearners (development version)
 
-## New features
+## New Features
 
 * New Learners:
+  - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
 
 ## Breaking Changes
