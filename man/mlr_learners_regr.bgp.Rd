@@ -7,12 +7,12 @@
 \description{
 Bayesian Gaussian process regression.
 Calls \code{\link[tgp:btgp]{tgp::bgp()}} from \CRANpkg{tgp}.
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{
 
 \itemize{
 \item \code{BTE} is initialized to \code{c(200, 400, 2)} to keep runtimes manageable in tests.
-\item \code{pred.n} is initialized to \code{FALSE} to avoid computing predictions during training.
 \item \code{verb} is initialized to \code{0} to silence printing.
 }
 }

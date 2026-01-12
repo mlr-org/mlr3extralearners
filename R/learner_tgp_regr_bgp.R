@@ -5,10 +5,10 @@
 #' @description
 #' Bayesian Gaussian process regression.
 #' Calls [tgp::bgp()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
 #' * `BTE` is initialized to `c(200, 400, 2)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.bgp
@@ -76,7 +76,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
 
-      pars$pred.n = FALSE
       if (!is.null(pars$BTE)) {
         pars$BTE = as.integer(pars$BTE)
       }
@@ -93,7 +92,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       pars = self$param_set$get_values(tags = "predict")
       newdata = as_numeric_matrix(ordered_features(task, self))
 
-      pars$pred.n = FALSE
       if (!is.null(pars$BTE)) {
         pars$BTE = as.integer(pars$BTE)
       }
@@ -118,3 +116,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
 )
 
 .extralrns_dict$add("regr.bgp", LearnerRegrBgp)
+
+
+# noch reinschreiben in die Dokumentation, dass wir uns aktiv für ZZkm als Output entscheidne
