@@ -89,8 +89,8 @@ Suggests:
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
-    lme4,
     MASS,
+    lme4 (>= 1.1-38),
     mboost (>= 2.9-10),
     mda,
     mgcv,
@@ -108,7 +108,7 @@ Suggests:
     pseudo,
     qgam,
     randomForest,
-    randomForestSRC (>= 3.4.3),
+    randomForestSRC (>= 3.5.0),
     ranger (>= 0.17.0),
     remotes,
     rFerns,
@@ -130,7 +130,7 @@ Suggests:
     survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
     testthat,
-    xgboost (>= 1.7.8.1)
+    xgboost (>= 3.1.2.1)
 VignetteBuilder:
     knitr,
     rmarkdown

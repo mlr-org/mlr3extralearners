@@ -63,6 +63,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   use.uno \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab none \tab - \cr
    case.depth \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    marginal.xvar \tab untyped \tab NULL \tab  \tab - \cr
@@ -94,7 +95,7 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("cmprsk.rfsrc")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("cmprsk.rfsrc", importance = "TRUE")
 print(learner)
