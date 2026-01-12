@@ -7,12 +7,12 @@
 \description{
 Bayesian treed Gaussian process regression model.
 Calls \code{\link[tgp:btgp]{tgp::btgp()}} from \CRANpkg{tgp}.
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{
 
 \itemize{
 \item \code{BTE} is initialized to \code{c(200, 400, 2)} to keep runtimes manageable in tests.
-\item \code{pred.n} is initialized to \code{FALSE} to avoid computing predictions during training.
 \item \code{verb} is initialized to \code{0} to silence printing.
 }
 }
@@ -42,12 +42,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
    corr \tab character \tab expsep \tab exp, expsep, matern, sim \tab - \cr
    tree \tab untyped \tab c(0.5, 2) \tab  \tab - \cr
-   BTE \tab untyped \tab c(2000, 7000, 2) \tab  \tab - \cr
+   BTE \tab untyped \tab c(2000L, 7000L, 2L) \tab  \tab - \cr
    R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    linburn \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    itemps \tab untyped \tab NULL \tab  \tab - \cr
-   pred.n \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

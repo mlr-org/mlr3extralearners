@@ -5,10 +5,10 @@
 #' @description
 #' Bayesian treed Gaussian process regression model.
 #' Calls [tgp::btgp()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
 #' * `BTE` is initialized to `c(200, 400, 2)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.btgp
@@ -91,9 +91,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
         pars$basemax = encoded$basemax
       }
 
-      pars$pred.n = FALSE
-
-      model = invoke(
+      model = mlr3misc::invoke(
         tgp::btgp,
         X = encoded$data,
         Z = target,
@@ -113,7 +111,6 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
 
       encoded = private$.encode_features(newdata, self$model$factor_levels)
 
-      # ensure identical column ordering as in training
       if (!is.null(self$model$column_names)) {
         missing_cols = setdiff(self$model$column_names, encoded$column_names)
         if (length(missing_cols)) {
@@ -124,7 +121,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
         encoded$data = encoded$data[, self$model$column_names, drop = FALSE]
       }
 
-      pred = invoke(
+      pred = mlr3misc::invoke(
         predict,
         self$model$model,
         XX = encoded$data,
