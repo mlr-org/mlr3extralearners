@@ -5,6 +5,7 @@
 #' @description
 #' Bayesian CART regression model.
 #' Calls [tgp::bcart()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' Factor features are one-hot encoded with reference encoding before fitting, matching the
 #' behavior of the original mlr learner. If factors are present, `basemax` is set to the number
@@ -12,7 +13,6 @@
 #'
 #' @section Initial parameter values:
 #' * `BTE` is initialized to `c(200L, 400L, 2L)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.bcart
@@ -89,8 +89,6 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
         pars$basemax = encoded$basemax
       }
 
-      pars$pred.n = FALSE
-
       model = mlr3misc::invoke(
         tgp::bcart,
         X = encoded$data,
@@ -111,18 +109,13 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
 
       encoded = private$.encode_features(newdata, self$model$factor_levels)
 
-      pars$pred.n = FALSE
-
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
-
       if (!is.null(self$model$column_names)) {
         missing_cols = setdiff(self$model$column_names, encoded$column_names)
         if (length(missing_cols)) {
-          encoded$data = cbind(encoded$data, matrix(0,
-            nrow = nrow(encoded$data), ncol = length(missing_cols),
-            dimnames = list(NULL, missing_cols)))
+          encoded$data = cbind(
+            encoded$data, 
+            matrix(0, nrow = nrow(encoded$data), ncol = length(missing_cols), dimnames = list(NULL, missing_cols))
+          )
         }
         encoded$data = encoded$data[, self$model$column_names, drop = FALSE]
       }
@@ -135,7 +128,7 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
       )
 
       if (self$predict_type == "response") {
-        list(response = pred$ZZ.km)
+        list(response = pred$ZZ.km) # what should be chosen here
       } else {
         if (is.null(pred$ZZ.ks2)) {
           stop("Standard errors requested but `ZZ.ks2` was not returned; try setting `krige = TRUE`.")
