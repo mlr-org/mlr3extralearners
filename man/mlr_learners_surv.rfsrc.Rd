@@ -73,6 +73,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    estimator \tab character \tab nelson \tab nelson, kaplan \tab - \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   use.uno \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab none \tab - \cr
    case.depth \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

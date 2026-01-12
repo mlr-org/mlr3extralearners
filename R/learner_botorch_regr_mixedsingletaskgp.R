@@ -36,7 +36,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     #' @description
     #' Marshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`marshal_model()`].
+    #'   Additional arguments passed to [`mlr3::marshal_model()`].
     marshal = function(...) {
       mlr3::learner_marshal(.learner = self, ...)
     },
@@ -44,7 +44,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     #' @description
     #' Unmarshal the learner's model.
     #' @param ... (any)\cr
-    #'   Additional arguments passed to [`unmarshal_model()`].
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`].
     unmarshal = function(...) {
       mlr3::learner_unmarshal(.learner = self, ...)
     }
