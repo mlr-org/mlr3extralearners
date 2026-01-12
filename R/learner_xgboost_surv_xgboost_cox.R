@@ -195,6 +195,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
         iter = xgboost::xgb.get.num.boosted.rounds(model)
       }
       log = attributes(model)$evaluation_log
+      patterns = NULL # silence data.table note
       as.list(log[
         iter,
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
