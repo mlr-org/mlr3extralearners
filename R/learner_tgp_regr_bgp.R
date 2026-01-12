@@ -76,10 +76,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
 
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
-
       mlr3misc::invoke(
         tgp::bgp,
         X = data,
@@ -91,10 +87,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = as_numeric_matrix(ordered_features(task, self))
-
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
 
       pred = mlr3misc::invoke(
         predict,
