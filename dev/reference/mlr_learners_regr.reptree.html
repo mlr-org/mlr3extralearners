@@ -238,16 +238,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> drat &lt; 4.32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 266.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 116.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   am &lt; 0.5 : 22.43 (2/0) [1/8.7]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   am &gt;= 0.5 : 21.55 (2/0) [2/1.7]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 116.5 : 18.9 (2/0.06) [1/2.72]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 266.9 : 14.73 (6/1.74) [3/8.44]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> drat &gt;= 4.32 : 28.2 (2/4.84) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 3.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 117.95 : 30.88 (3/7.27) [2/1.75]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 117.95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   cyl &lt; 5 : 23.6 (2/0.64) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   cyl &gt;= 5 : 19.4 (2/0.04) [1/29.16]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 3.33 : 15.16 (7/8.87) [4/7.95]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -256,7 +254,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 41.42404 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.29069 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
