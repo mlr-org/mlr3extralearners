@@ -73,6 +73,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    ptn.count \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    estimator \tab character \tab nelson \tab nelson, kaplan \tab - \cr
    cores \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   use.uno \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    save.memory \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    perf.type \tab character \tab - \tab none \tab - \cr
    case.depth \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -115,7 +116,7 @@ learners and use all the \strong{unique event times from the train set}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.rfsrc")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("surv.rfsrc", importance = "TRUE")
 print(learner)
