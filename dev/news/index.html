@@ -54,8 +54,24 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
 <div class="section level3">
+<h3 id="new-features-development-version">New features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<ul><li>New Learners:
+<ul><li><code>LearnerSurvFlexReg</code></li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<ul><li>
+<code>lrn("surv.flexible")</code> (<code>LearnerSurvFlexible</code>) was renamed to <code>lrn("surv.flexsurvspline")</code> (<code>LearnerSurvFlexSpline</code>) to properly reflect the wrapped train function (Royston/Parmar spline model).</li>
+</ul></div>
+<div class="section level3">
 <h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
-<ul><li>compatibility: <code>xgboost</code> 3.1.2.1 (survival learners)</li>
+<ul><li>
+<code>CoxBoost</code> is now on CRAN, so we removed it from <code>Remotes</code>
+</li>
+<li>
+<code>lrn("surv.flexsurvspline")</code> predicts linear predictors using <code>predict.flexsurvreg()</code>. We were doing manually the same exact prediction, so no functionality was changed.</li>
+<li>compatibility: <code>xgboost</code> 3.1.2.1 (survival learners)</li>
 <li>parameter updates for <code>regr.lmer</code>/<code>glmer</code> learners</li>
 <li>updates for <code>randomForestSRC</code> 3.5.0 (<code>use.uno</code> parameter)</li>
 </ul></div>

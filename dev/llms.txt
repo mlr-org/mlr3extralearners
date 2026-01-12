@@ -542,8 +542,11 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_surv.cv_glmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
   [`LearnerSurvCVGlmnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.cv_glmnet.md)
   : Cross-Validated GLM with Elastic Net Regularization Survival Learner
-- [`mlr_learners_surv.flexible`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexible.md)
-  [`LearnerSurvFlexible`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexible.md)
+- [`mlr_learners_surv.flexreg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexreg.md)
+  [`LearnerSurvFlexReg`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexreg.md)
+  : Survival Flexible Parametric Learner
+- [`mlr_learners_surv.flexspline`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexspline.md)
+  [`LearnerSurvFlexSpline`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.flexspline.md)
   : Survival Flexible Parametric Spline Learner
 - [`mlr_learners_surv.gamboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
   [`LearnerSurvGAMBoost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.gamboost.md)
