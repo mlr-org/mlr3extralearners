@@ -3,8 +3,19 @@
 #' @name mlr_learners_surv.gam.cox
 #'
 #' @description
-#' Generalized additive models.
-#' Calls [mgcv::gam()] from package \CRANpkg{mgcv} with `family` set to [mgcv::cox.ph()].
+#' Cox proportional hazards model fitted via generalized additive modeling.
+#' Internally calls [mgcv::gam()] from the \CRANpkg{mgcv} package with
+#' `family = mgcv::cox.ph()`. The censoring indicator is passed via the
+#' `weights` argument.
+#'
+#' @section Prediction types:
+#' Three types of prediction are returned for this learner:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation. Calls [mgcv::predict.gam()] with `type = "link"`.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
 #'
 #' @inheritSection mlr_learners_regr.gam Formula
 #' @inheritSection mlr_learners_regr.gam Offset
