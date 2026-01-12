@@ -226,7 +226,7 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> Linear regression on cyl
 #> 
-#> -3.09 * cyl + 39.21
+#> -3.01 * cyl + 38.78
 #> 
 #> Predicting 0 if attribute value is missing.
 #> 
@@ -238,5 +238,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.72699 
+#> 13.25398 
 ```

@@ -223,8 +223,8 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> The independent probability of a class
 #> --------------------------------------
-#> M    0.56
-#> R    0.44
+#> M    0.52
+#> R    0.48
 #> 
 #> The probability of a word given the class
 #> -----------------------------------------
@@ -254,7 +254,7 @@ print(learner$model)
 #> V3   0   0   
 #> V30  0.03    0.03    
 #> V31  0.03    0.03    
-#> V32  0.02    0.03    
+#> V32  0.03    0.03    
 #> V33  0.02    0.03    
 #> V34  0.02    0.03    
 #> V35  0.02    0.03    
@@ -271,7 +271,7 @@ print(learner$model)
 #> V45  0.01    0.01    
 #> V46  0.01    0.01    
 #> V47  0.01    0.01    
-#> V48  0.01    0.01    
+#> V48  0.01    0   
 #> V49  0   0   
 #> V5   0.01    0   
 #> V50  0   0   
@@ -298,5 +298,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4057971 
+#>  0.4202899 
 ```

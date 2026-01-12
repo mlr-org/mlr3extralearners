@@ -257,24 +257,22 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: Logloss</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 60 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V12        V51        V31        V49        V23         V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.71674485 6.37304381 5.90581630 5.68809386 3.70508328 3.55953867 3.38590848 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V48         V4        V45        V15        V27        V28         V6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.92639837 2.92610635 2.82705883 2.63768362 2.50307200 2.39280883 2.28120739 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V10        V46        V52        V43        V47        V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.10736583 1.85789117 1.75412723 1.68448066 1.62085571 1.58354322 1.42332845 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V1        V24         V7        V44        V21        V13        V50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.41104257 1.32179153 1.29557846 1.22182089 1.21475345 1.10592124 1.08141725 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V26        V53        V17        V37        V33        V56        V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.07458776 1.04368172 1.02871507 0.96793966 0.95799106 0.91201478 0.89610663 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V58        V14        V57        V41        V54        V25        V29 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.86740610 0.86125410 0.85398398 0.85047769 0.84768489 0.81940223 0.81434557 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V35        V38         V5        V60         V2        V34        V39 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.76425246 0.75716441 0.74099933 0.73503538 0.72259398 0.69159158 0.68346488 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V19        V55        V18        V59         V3         V8        V40 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.65425911 0.63061678 0.56522314 0.52234008 0.45332534 0.39350526 0.38757530 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V30        V42        V32        V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.35659197 0.31408450 0.26762087 0.05168207 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V11        V9       V49       V12       V13       V45       V10       V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.8972286 5.2805671 4.2143611 4.1892433 3.7502930 3.4719321 3.3013007 3.2143447 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V27       V36       V46       V31       V51       V21       V23       V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.0769567 3.0209858 2.9789983 2.7625275 2.7096844 2.5511328 2.4994575 2.2508042 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V4        V2       V48       V35       V17       V18       V28       V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.1385073 1.9752339 1.9510169 1.8672359 1.8620875 1.8300173 1.6280976 1.5831283 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V41       V39       V26       V58       V24        V8       V59       V54 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.4362839 1.3164424 1.2765065 1.2678402 1.2468121 1.1879717 1.1865527 1.1240452 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V14        V1       V55       V15       V29       V16        V3       V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1.1116101 1.1115967 1.0963088 1.0181421 0.9853551 0.9745572 0.9222087 0.8558585 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V7        V6        V5       V22       V25       V43       V56       V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8051926 0.7956958 0.7694494 0.7590602 0.7562091 0.7354776 0.6918568 0.6436235 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V19       V53       V30       V33       V60       V42       V34       V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6345174 0.5715362 0.4981267 0.4782791 0.4782073 0.4609949 0.4258172 0.4115177 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V44       V40       V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3473139 0.2545060 0.2436487 0.1157357 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -282,7 +280,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.08695652 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

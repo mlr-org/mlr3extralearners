@@ -261,21 +261,21 @@ print(learner$model)
 #> 
 #>      Linear combinations: Accelerated Cox regression
 #>           N observations: 670
-#>                 N events: 229
+#>                 N events: 220
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
-#>  Average leaves per tree: 41.942
+#>  Average leaves per tree: 40.276
 #> Min observations in leaf: 5
 #>       Min events in leaf: 1
-#>           OOB stat value: 0.84
+#>           OOB stat value: 0.83
 #>            OOB stat type: Harrell's C-index
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#> revascdays     revasc        los        age      sysbp   stchange 
-#> 0.60495899 0.52749446 0.23380484 0.18026059 0.11641042 0.09402174 
+#> revascdays     revasc        los        age   stchange      sysbp 
+#>  0.5797059  0.5665710  0.2159437  0.1944533  0.1340816  0.1123317 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>    0.845398 
+#>   0.8547647 
 ```

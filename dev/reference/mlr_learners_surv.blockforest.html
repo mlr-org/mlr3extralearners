@@ -216,24 +216,24 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age         los    stchange       sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.137079834 0.072708270 0.041762561 0.026178772 0.015609355 0.007476553 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.101129500 0.066384948 0.039206212 0.018699802 0.011416082 0.009345318 </span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status      crank     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1  180  FALSE   9.690758 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        2    5  FALSE  21.315733 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        8    2  FALSE  33.578158 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---        ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      988   16   TRUE 119.535402 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      992   26   TRUE 122.618536 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1000   15  FALSE  72.290040 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status    crank     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1  180  FALSE 21.06491 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2    5  FALSE 16.34661 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        3    2  FALSE 50.86002 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---      ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      994    7  FALSE 83.93942 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      996   69   TRUE 73.20977 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     1000   15  FALSE 78.90652 &lt;list[1]&gt;</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.827399 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8380703 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

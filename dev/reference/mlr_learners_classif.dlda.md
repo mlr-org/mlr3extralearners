@@ -162,7 +162,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (53.96%), R (46.04%) 
+#>   M (54.68%), R (45.32%) 
 
 
 # Make predictions for the test rows
