@@ -68,6 +68,9 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
         calc.derivs = p_lgl(
           default = TRUE,
           tags = "train"),
+        autoscale = p_uty(
+          default = NULL,
+          tags = "train"),
         # Input checks
         check.nobs.vs.rankZ = p_fct(
           levels = action_levels,
@@ -109,6 +112,16 @@ LearnerRegrLmer = R6Class("LearnerRegrLmer",
           tags = "train"
         ),
         # Convergence checks
+        check.conv.nobsmax = p_dbl(
+          default = 1e4,
+          lower = 1,
+          tags = "train"
+        ),
+        check.conv.nparmax = p_dbl(
+          default = 10,
+          lower = 1,
+          tags = "train"
+        ),
         check.conv.grad = p_uty(
           default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)',
           tags = "train"

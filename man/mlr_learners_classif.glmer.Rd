@@ -54,6 +54,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    restart_edge \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    boundary.tol \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    calc.derivs \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   autoscale \tab untyped \tab NULL \tab  \tab - \cr
    check.nobs.vs.rankZ \tab character \tab ignore \tab ignore, warning, message, stop \tab - \cr
    check.nobs.vs.nlev \tab character \tab stop \tab ignore, warning, message, stop \tab - \cr
    check.nlev.gtreq.5 \tab character \tab ignore \tab ignore, warning, message, stop \tab - \cr
@@ -66,6 +67,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nAGQ \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    mustart \tab untyped \tab - \tab  \tab - \cr
    etastart \tab untyped \tab - \tab  \tab - \cr
+   check.conv.nobsmax \tab numeric \tab 10000 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   check.conv.nparmax \tab numeric \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    check.conv.grad \tab untyped \tab "lme4::.makeCC(\"warning\", tol = 2e-3, relTol = NULL)" \tab  \tab - \cr
    check.conv.singular \tab untyped \tab "lme4::.makeCC( action = \"message\", tol = formals(lme4::isSingular)$tol)" \tab  \tab - \cr
    check.conv.hess \tab untyped \tab "lme4::.makeCC(action = \"warning\", tol = 1e-6)" \tab  \tab - \cr
@@ -90,7 +93,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.glmer")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.glmer")) withAutoprint(\{ # examplesIf}
 
 # Define the Learner and set parameter values
 learner = lrn("classif.glmer",

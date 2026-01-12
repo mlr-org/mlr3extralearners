@@ -6,7 +6,7 @@
 \title{Classification Random Forest Learner from Weka}
 \description{
 Class for constructing a random forest.
-Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
@@ -96,7 +96,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.random_forest_weka")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.random_forest_weka")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.random_forest_weka")
 print(learner)

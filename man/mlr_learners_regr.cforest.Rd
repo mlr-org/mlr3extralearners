@@ -91,7 +91,7 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.cforest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.cforest")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.cforest")
 print(learner)
