@@ -85,6 +85,7 @@ Suggests:
     kernlab,
     klaR,
     knitr,
+    laGP (>= 1.5-9),
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
