@@ -202,6 +202,18 @@ bibentries = c( # nolint start
     year = "2002",
     publisher = "Wiley Online Library"
   ),
+  jackson2016flexsurv = bibentry("article",
+    title   = "flexsurv: A Platform for Parametric Survival Modeling in R",
+    author  = "Jackson, Christopher H.",
+    journal = "Journal of Statistical Software",
+    volume  = "70",
+    number  = "8",
+    pages   = "1--33",
+    year    = "2016",
+    publisher = "American Statistical Association",
+    doi     = "10.18637/JSS.V070.I08",
+    url     = "https://www.jstatsoft.org/index.php/jss/article/view/v070i08"
+  ),
   friedman2002stochastic = bibentry("article",
     title = "Stochastic gradient boosting",
     author = "Friedman, Jerome H",
