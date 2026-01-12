@@ -6,6 +6,7 @@
 
 - compatibility: `xgboost` 3.1.2.1 (survival learners)
 - parameter updates for `regr.lmer`/`glmer` learners
+- updates for `randomForestSRC` 3.5.0 (`use.uno` parameter)
 
 ## mlr3extralearners 1.3.1
 

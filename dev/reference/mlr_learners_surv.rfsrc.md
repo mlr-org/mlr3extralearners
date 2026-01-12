@@ -77,6 +77,7 @@ instantiated via
 | ptn.count      | integer   | 0       |                                          | \\\[0, \infty)\\   |
 | estimator      | character | nelson  | nelson, kaplan                           | \-                 |
 | cores          | integer   | 1       |                                          | \\\[1, \infty)\\   |
+| use.uno        | logical   | TRUE    | TRUE, FALSE                              | \-                 |
 | save.memory    | logical   | FALSE   | TRUE, FALSE                              | \-                 |
 | perf.type      | character | \-      | none                                     | \-                 |
 | case.depth     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
