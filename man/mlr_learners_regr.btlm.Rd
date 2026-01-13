@@ -8,15 +8,13 @@
 Bayesian treed linear model regression.
 Calls \code{\link[tgp:btgp]{tgp::btlm()}} from \CRANpkg{tgp}.
 
-Factor features are one-hot encoded with reference encoding before fitting, matching the
-behavior of the original mlr learner. If factors are present, \code{basemax} is set to the number
-of non-factor features so that tree proposals account for the numeric part of the design.
+Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, \code{basemax} is set to the number of non-factor features
+so that tree proposals account for the numeric part of the design.
 }
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{BTE} is initialized to \code{c(200L, 400L, 2L)} to keep runtimes manageable in tests.
-\item \code{pred.n} is initialized to \code{FALSE} to avoid computing predictions during training.
 \item \code{verb} is initialized to \code{0} to silence printing.
 }
 }

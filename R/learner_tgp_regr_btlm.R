@@ -6,13 +6,11 @@
 #' Bayesian treed linear model regression.
 #' Calls [tgp::btlm()] from \CRANpkg{tgp}.
 #'
-#' Factor features are one-hot encoded with reference encoding before fitting, matching the
-#' behavior of the original mlr learner. If factors are present, `basemax` is set to the number
-#' of non-factor features so that tree proposals account for the numeric part of the design.
+#' Factor features are one-hot encoded with reference encoding before fitting.
+#' If factors are present, `basemax` is set to the number of non-factor features
+#' so that tree proposals account for the numeric part of the design.
 #'
 #' @section Initial parameter values:
-#' * `BTE` is initialized to `c(200L, 400L, 2L)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.btlm
@@ -63,7 +61,6 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
       )
 
       param_set$values = list(
-        BTE = c(200L, 400L, 2L),
         verb = 0L
       )
 
@@ -90,8 +87,6 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
         pars$basemax = encoded$basemax
       }
 
-      pars$pred.n = FALSE
-
       model = mlr3misc::invoke(
         tgp::btlm,
         X = encoded$data,
@@ -111,8 +106,6 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
       newdata = ordered_features(task, self)
 
       encoded = private$.encode_features(newdata, self$model$factor_levels)
-
-      pars$pred.n = FALSE
 
       if (!is.null(pars$BTE)) {
         pars$BTE = as.integer(pars$BTE)
