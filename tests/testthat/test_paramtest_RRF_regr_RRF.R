@@ -12,8 +12,7 @@ test_that("paramtest regr.RRF train", {
     "cutoff", # classification only
     "norm.votes", # classification only
     "subset", # handled via mlr3
-    "na.action", # handled via mlr3
-    "weights" # mlr3
+    "na.action" # handled via mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
