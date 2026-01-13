@@ -11,7 +11,7 @@
 #' @template learner
 #'
 #' @references
-#' `frbs` package: <https://cran.r-project.org/package=frbs>
+#' `r format_bib("riza2015frbs")`
 #'
 #' @template seealso_learner
 #' @template example

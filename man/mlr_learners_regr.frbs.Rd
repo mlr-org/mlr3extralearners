@@ -82,7 +82,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\code{frbs} package: \url{https://cran.r-project.org/package=frbs}
+Riza LS, Bergmeir C, Herrera F, Benitez JM (2015).
+\dQuote{frbs: Fuzzy Rule-Based Systems for Classification and Regression in R.}
+\emph{Journal of Statistical Software}, \bold{65}(6), 1--30.
+\url{http://www.jstatsoft.org/v65/i06/}.
 }
 \seealso{
 \itemize{
