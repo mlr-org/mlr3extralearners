@@ -8,6 +8,9 @@
 Principal Component Regression model.
 Calls \code{\link[pls:mvr]{pls::pcr()}} from \CRANpkg{pls}.
 }
+\note{
+During prediction, all components \code{ncomp} used in training are used.
+}
 \section{Initial parameter values}{
 
 \itemize{
@@ -45,14 +48,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    ncomp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    method \tab character \tab cppls \tab kernelpls, widekernelpls, simpls, oscorespls, cppls, svdpc \tab - \cr
    scale \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   model \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    y \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.pcr")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.pcr")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.pcr")
 print(learner)

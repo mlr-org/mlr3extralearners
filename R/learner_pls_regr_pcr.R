@@ -13,6 +13,9 @@
 #'   - Reason for change: keeps model objects compact because predictions do not
 #'     require the stored model frame.
 #'
+#' @note
+#' During prediction, all components `ncomp` used in training are used.
+#'
 #' @templateVar id regr.pcr
 #' @template learner
 #'
@@ -37,11 +40,10 @@ LearnerRegrPcr = R6Class("LearnerRegrPcr",
           tags = "train"
         ),
         scale = p_lgl(default = FALSE, tags = "train"),
-        model = p_lgl(default = TRUE, tags = "train"),
+        model = p_lgl(init = FALSE, tags = "train"),
         x = p_lgl(default = FALSE, tags = "train"),
         y = p_lgl(default = FALSE, tags = "train")
       )
-      param_set$set_values(model = FALSE)
 
       super$initialize(
         id = "regr.pcr",
@@ -59,7 +61,7 @@ LearnerRegrPcr = R6Class("LearnerRegrPcr",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
       formula = task$formula()
-      data = task$data(cols = c(task$feature_names, task$target_names))
+      data = task$data()
 
       invoke(pls::pcr,
         formula = formula,
