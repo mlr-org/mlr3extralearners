@@ -128,7 +128,7 @@ LearnerClassifExhaustiveSearch = R6Class(
           type = "response")
       )
       if (self$predict_type == "response") {
-        list(response = ifelse(p < 0.5, task$negative, task$positive))
+        list(response = fifelse(p < 0.5, task$negative, task$positive))
       } else {
         list(prob = pprob_to_matrix((1 - p), task))
       }
