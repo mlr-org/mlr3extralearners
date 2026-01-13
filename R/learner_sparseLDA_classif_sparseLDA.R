@@ -46,7 +46,6 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
   ),
   private = list(
     .train = function(task) {
-      # get parameters for training
       pars = self$param_set$get_values(tags = "train")
 
       target = task$truth()
@@ -70,10 +69,8 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
       )
     },
     .predict = function(task) {
-      # get parameters with tag "predict"
       pars = self$param_set$get_values(tags = "predict")
 
-      # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
 
       pred = invoke(predict, self$model, newdata = newdata, .args = pars)
