@@ -17,7 +17,7 @@ test_that("paramtest regr.btlm train", {
 
 test_that("paramtest regr.btlm predict", {
   learner = lrn("regr.btlm")
-  fun = tgp:::predict.tgp
+  fun = tgp:::predict.tgp # nolint
   exclude = c(
     "object", # handled via mlr3
     "XX", # handled via mlr3
