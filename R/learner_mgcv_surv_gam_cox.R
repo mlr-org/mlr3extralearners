@@ -1,45 +1,47 @@
-#' @title Regression Generalized Additive Model Learner
-#' @author pierrecamilleri
-#' @name mlr_learners_regr.gam
+#' @title Cox Proportional Hazards Generalized Additive Learner
+#' @author bblodfon
+#' @name mlr_learners_surv.gam.cox
 #'
 #' @description
-#' Generalized additive models. Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
+#' Cox proportional hazards model fitted via generalized additive modeling.
+#' Internally calls [mgcv::gam()] from the \CRANpkg{mgcv} package with
+#' `family = mgcv::cox.ph()`. The censoring indicator is passed via the
+#' `weights` argument.
 #'
-#' @section Formula:
-#' A gam formula specific to the task at hand is required for the `formula`
-#' parameter (see example and `?mgcv::formula.gam`). Beware, if no formula is provided, a fallback formula is
-#' used that will make the gam behave like a glm (this behavior is required
-#' for the unit tests). Only features specified in the formula will be used,
-#' superseding columns with col_roles "feature" in the task.
+#' @section Prediction types:
+#' Three types of prediction are returned for this learner:
+#' 1. `lp`: a vector of linear predictors (relative risk scores), one per
+#' observation. Calls [mgcv::predict.gam()] with `type = "link"`.
+#' 2. `crank`: same as `lp`.
+#' 3. `distr`: a survival matrix in two dimensions, where observations are
+#' represented in rows and time points in columns.
+#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
 #'
-#' @section Offset:
-#' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [mgcv::gam()].
-#' No offset is applied during prediction for this learner.
+#' @inheritSection mlr_learners_regr.gam Formula
+#' @inheritSection mlr_learners_regr.gam Offset
 #'
 #' @template learner
-#' @templateVar id regr.gam
+#' @templateVar id surv.gam.cox
 #'
 #' @references
-#' `r format_bib("hastie2017generalized", "wood2012mgcv")`
+#' `r format_bib("wood2012mgcv", "wood2016")`
 #'
-#' @examplesIf learner_is_runnable("regr.gam")
+#' @examplesIf learner_is_runnable("surv.gam.cox")
 #' # simple example
-#' t = tsk("mtcars")
-#' l = lrn("regr.gam")
-#' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
+#' t = tsk("lung")
+#' l = lrn("surv.gam.cox")
+#' l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
 #' l$train(t)
 #' l$model
 #' @export
-LearnerRegrGam = R6Class("LearnerRegrGam",
-  inherit = LearnerRegr,
+LearnerSurvGamCox = R6Class("LearnerSurvGamCox",
+  inherit = mlr3proba::LearnerSurv,
 
   public = list(
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        family = p_fct(default = "gaussian", levels = c("gaussian", "poisson"), tags = "train"),
         formula = p_uty(tags = "train"),
         method = p_fct(
           levels = c("GCV.Cp", "GACV.Cp", "REML", "P-REML", "ML", "P-ML"),
@@ -62,12 +64,13 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         nei = p_uty(tags = "train"),
         # from mgcv::gam.control()
         nthreads = p_int(default = 1L, lower = 1L, tags = c("train", "threads")),
+        ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
         irls.reg = p_dbl(default = 0.0, lower = 0, tags = "train"),
         epsilon = p_dbl(default = 1e-07, lower = 0, tags = "train"),
         maxit = p_int(default = 200L, tags = "train"),
-        trace = p_lgl(default = FALSE, tags = "train"),
         mgcv.tol = p_dbl(default = 1e-07, lower = 0, tags = "train"),
         mgcv.half = p_int(default = 15L, lower = 0L, tags = "train"),
+        trace = p_lgl(default = FALSE, tags = "train"),
         rank.tol = p_dbl(default = .Machine$double.eps^0.5, lower = 0, tags = "train"),
         nlm = p_uty(default = list(), tags = "train"),
         optim = p_uty(default = list(), tags = "train"),
@@ -77,7 +80,6 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
         efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
         scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher", tags = "train"),
-        ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
         # from mgcv::predict.gam()
         block.size = p_int(default = 1000L, tags = "predict"),
@@ -85,14 +87,14 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       )
 
       super$initialize(
-        id = "regr.gam",
+        id = "surv.gam.cox",
         packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric", "factor"),
-        predict_types = c("response", "se"),
+        predict_types = c("crank", "lp", "distr"),
         param_set = param_set,
-        properties = c("weights", "offset"),
-        man = "mlr3extralearners::mlr_learners_regr.gam",
-        label = "Generalized Additive Regression Model"
+        properties = "offset",
+        man = "mlr3extralearners::mlr_learners_surv.gam.cox",
+        label = "CoxPH Generalized Additive Model"
       )
     }
   ),
@@ -104,7 +106,8 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       pars = pars[names(pars) %nin% formalArgs(mgcv::gam.control)]
 
       data = task$data(cols = c(task$feature_names, task$target_names))
-      pars$weights = private$.get_weights(task)
+      pars$weights = task$status()
+      pars$family = "cox.ph"
 
       if ("offset" %in% task$properties) {
         pars$offset = task$offset$offset
@@ -113,7 +116,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       if (is.null(pars$formula)) {
         # GLM-like formula, no smooth terms
         formula = stats::as.formula(paste(
-          task$target_names,
+          task$target_names[1L],
           "~",
           paste(task$feature_names, collapse = " + ")
         ))
@@ -126,36 +129,33 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         mgcv::gam.control()
       }
 
-      invoke(
-        mgcv::gam,
-        data = data,
-        .args = pars,
-        control = control_obj
-      )
+      invoke(mgcv::gam, data = data, control = control_obj, .args = pars)
     },
 
     .predict = function(task) {
-      pars = self$param_set$get_values(tags = "predict")
+      pv = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      include_se = (self$predict_type == "se")
+      model = self$model
 
-      preds = invoke(
+      lp_test = as.numeric(invoke(
         predict,
-        self$model,
+        model,
         newdata = newdata,
-        type = "response",
+        type = "link",
         newdata.guaranteed = TRUE,
-        se.fit = include_se,
-        .args = pars
+        .args = pv
+      ))
+
+      surv = mlr3proba::breslow(
+        times = model$y, # times (train set)
+        status = model$prior.weights, # status (train set)
+        lp_train = model$linear.predictors, # lp (train set)
+        lp_test = lp_test
       )
 
-      if (include_se) {
-        list(response = preds$fit, se = preds$se)
-      } else {
-        list(response = preds)
-      }
+      mlr3proba::surv_return(surv = surv, crank = lp_test, lp = lp_test)
     }
   )
 )
 
-.extralrns_dict$add("regr.gam", LearnerRegrGam)
+.extralrns_dict$add("surv.gam.cox", LearnerSurvGamCox)
