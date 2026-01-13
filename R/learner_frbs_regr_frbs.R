@@ -64,7 +64,8 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      data_train = as.matrix(task$data())
+      data_train = task$data(cols = c(task$feature_names, task$target_names))
+      data_train = as.matrix(data_train)
       method = pv$method.type
       control = pv
       control$method.type = NULL
@@ -78,6 +79,7 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
     },
 
     .predict = function(task) {  
+      browser()
       newdata = as.matrix(ordered_features(task, self), drop = FALSE)
       pred = mlr3misc::invoke(predict, self$model, newdata = newdata)
 
