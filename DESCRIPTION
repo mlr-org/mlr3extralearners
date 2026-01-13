@@ -102,7 +102,7 @@ Suggests:
     nnet,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
-    pls,
+    pls (>= 2.8-5),
     polyreg,
     prioritylasso (>= 0.3.1),
     pseudo,

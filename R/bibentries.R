@@ -80,6 +80,16 @@ bibentries = c( # nolint start
     pages         = "1--16"
   ),
 
+  jolliffe1982note = bibentry("article",
+    title       = "A note on the use of principal components in regression",
+    author      = "Jolliffe, Ian T.",
+    journal     = "Journal of the Royal Statistical Society. Series C (Applied Statistics)",
+    year        = "1982",
+    volume      = "31",
+    number      = "3",
+    pages       = "300--303"
+  ),
+
   dorogush2018catboost = bibentry("article",
     title = "CatBoost: gradient boosting with categorical features support",
     author = "Dorogush, Anna Veronika and Ershov, Vasily and Gulin, Andrey",
