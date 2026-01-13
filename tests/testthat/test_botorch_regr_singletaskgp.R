@@ -1,5 +1,3 @@
-skip_if_not_installed("botorch")
-
 test_that("autotest: regr.botorch_singletaskgp", {
   expect_true(callr::r(function() {
     Sys.setenv(RETICULATE_PYTHON = "managed")
