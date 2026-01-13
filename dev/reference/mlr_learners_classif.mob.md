@@ -197,5 +197,14 @@ learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
-#> Error in model.frame.default(delete.response(object$terms), newdata, xlev = xlev): factor epith_c_size has new levels 9
+#> 
+#> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
+#>  row_ids     truth  response
+#>        9    benign malignant
+#>       10    benign malignant
+#>       11    benign malignant
+#>      ---       ---       ---
+#>      670    benign malignant
+#>      673    benign malignant
+#>      676 malignant malignant
 ```

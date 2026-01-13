@@ -334,6 +334,9 @@
 - [`mlr_learners_regr.multilayer_perceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.multilayer_perceptron.md)
   [`LearnerRegrMultilayerPerceptron`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.multilayer_perceptron.md)
   : Regression MultilayerPerceptron Learner
+- [`mlr_learners_regr.pcr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.pcr.md)
+  [`LearnerRegrPcr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.pcr.md)
+  : Principal Component Regression Learner
 - [`mlr_learners_regr.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
   [`LearnerRegrPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
   : Regression L1 and L2 Penalized Learner
