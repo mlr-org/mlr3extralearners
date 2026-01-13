@@ -1,6 +1,3 @@
-# skipping due to reticulate::py_require()
-# can not properly install fastai
-skip_on_ci()
 skip_if_not_installed("fastai")
 skip_if_not_installed("reticulate")
 
