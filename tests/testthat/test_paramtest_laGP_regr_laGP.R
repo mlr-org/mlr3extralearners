@@ -4,8 +4,16 @@ test_that("paramtest regr.laGP predict", {
   learner = lrn("regr.laGP")
   fun = laGP::aGP
 
-  tested = c("start", "end", "d", "g", "method", "close", "numrays", "verb")
-  exclude = setdiff(names(formals(fun)), tested)
+  exclude = c(
+    "X", # handled internally
+    "Z", # handled internally
+    "XX", # handled internally
+    "Xi.ret", # handled internally
+    "num.gpus", # not exposed
+    "gpu.threads", # not exposed
+    "omp.threads", # not exposed
+    "nn.gpu" # not exposed
+  )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
