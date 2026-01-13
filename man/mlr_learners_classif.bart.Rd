@@ -75,7 +75,7 @@ and therefore the offset parameter in \code{dbarts:::predict.bart} is irrelevant
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.bart")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.bart")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.bart")
 print(learner)

@@ -76,7 +76,7 @@ This prediction type if only available for \code{"type"} equal to \code{regressi
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.svm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.svm")) withAutoprint(\{ # examplesIf}
 set.seed(123)
 # Define the Learner and set parameter values
 learner = lrn("surv.svm", gamma = 0.1)
