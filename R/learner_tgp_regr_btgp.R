@@ -8,7 +8,6 @@
 #' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
-#' * `BTE` is initialized to `c(200, 400, 2)` to keep runtimes manageable in tests.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.btgp
@@ -64,7 +63,6 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       )
 
       param_set$values = list(
-        BTE = c(200, 400, 2),
         verb = 0L
       )
 
