@@ -5,10 +5,10 @@
 #' @description
 #' Bayesian Gaussian process regression with jumps to the limiting linear model.
 #' Calls [tgp::bgpllm()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
 #' * `BTE` is initialized to `c(200L, 400L, 2L)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.bgpllm
@@ -86,11 +86,6 @@ LearnerRegrBgpllm = R6Class("LearnerRegrBgpllm",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$pred.n = FALSE
-
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = task$truth()
@@ -104,11 +99,6 @@ LearnerRegrBgpllm = R6Class("LearnerRegrBgpllm",
     },
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      pars$pred.n = FALSE
-
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
 
       newdata = as_numeric_matrix(ordered_features(task, self))
 
