@@ -8,10 +8,10 @@ test_that("paramtest regr.gpfit train", {
     "X", # handled by mlr3
     "Y", # handled by mlr3
     "corr", # reparameterized via type/power/matern_nu_k
-    "type",
-    "power",
-    "matern_nu_k",
-    "scale"
+    "type", # handled by learner (builds corr)
+    "power", # handled by learner (corr for exponential)
+    "matern_nu_k", # handled by learner (corr nu for matern)
+    "scale" # handled by learner (pre-scales data)
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -25,8 +25,7 @@ test_that("paramtest regr.gpfit predict", {
   exclude = c(
     "object", # handled by mlr3
     "xnew", # handled by mlr3
-    "lite",
-    "M"
+    "M" # not exposed by learner
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
