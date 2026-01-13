@@ -17,19 +17,32 @@
 #' @templateVar id regr.laGP
 #' @template learner
 #'
+#' @references
+#' `r format_bib("gramacy2016lagp")`
+#'
 #' @export
 #' @template seealso_learner
 #' @examplesIf learner_is_runnable("regr.laGP")
-#' # Learner defined using a small neighborhood size for this task
+#' # Define the Learner (use a small neighborhood size for this task)
 #' learner = lrn("regr.laGP", end = 15)
 #' print(learner)
+#'
+#' # Define a Task
 #' task = tsk("mtcars")
+#'
+#' # Create train and test set
 #' ids = partition(task)
+#'
+#' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
+#'
 #' print(learner$model)
+#'
+#' # Make predictions for the test rows
 #' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
 #' predictions$score()
-#' 
 LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
   inherit = LearnerRegr,
 

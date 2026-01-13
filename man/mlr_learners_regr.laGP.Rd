@@ -50,16 +50,33 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \examples{
 \dontshow{if (learner_is_runnable("regr.laGP")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
-# Learner defined using a small neighborhood size for this task
+# Define the Learner (use a small neighborhood size for this task)
 learner = lrn("regr.laGP", end = 15)
 print(learner)
+
+# Define a Task
 task = tsk("mtcars")
+
+# Create train and test set
 ids = partition(task)
+
+# Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 print(learner$model)
+
+# Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
 predictions$score()
 \dontshow{\}) # examplesIf}
+}
+\references{
+Gramacy, B. R (2016).
+\dQuote{laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R.}
+\emph{Journal of Statistical Software}, \bold{72}(1), 1--46.
+\doi{10.18637/jss.v072.i01}.
 }
 \seealso{
 \itemize{
