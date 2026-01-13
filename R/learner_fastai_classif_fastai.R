@@ -152,7 +152,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      assert_python_packages("fastai")
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "pydicom", "kornia"))
       torch = reticulate::import("torch")
       torch$set_num_threads(as.integer(pars$num_workers))
 
@@ -303,7 +303,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
-      assert_python_packages("fastai")
+      assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "pydicom", "kornia"))
       torch = reticulate::import("torch")
       torch$set_num_threads(as.integer(pars$num_workers))
 
