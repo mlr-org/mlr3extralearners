@@ -131,6 +131,8 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       } else {
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
-    },
+    }
+  )
+)
 
 .extralrns_dict$add("regr.btgp", LearnerRegrBtgp)
