@@ -189,7 +189,7 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  0.02158609 
+#> Offset:  -0.05040235 
 #> Number of baselearners:  60 
 #> 
 
@@ -210,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2898551 
 ```

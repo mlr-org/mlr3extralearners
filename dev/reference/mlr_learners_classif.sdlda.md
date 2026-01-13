@@ -161,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (48.92%), R (51.08%) 
+#>   M (56.83%), R (43.17%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.4637681 
 ```
