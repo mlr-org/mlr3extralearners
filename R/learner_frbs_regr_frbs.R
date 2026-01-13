@@ -79,7 +79,6 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
     },
 
     .predict = function(task) {  
-      browser()
       newdata = as.matrix(ordered_features(task, self), drop = FALSE)
       pred = mlr3misc::invoke(predict, self$model, newdata = newdata)
 
