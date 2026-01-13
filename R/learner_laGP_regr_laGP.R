@@ -5,6 +5,8 @@
 #' @description
 #' Local approximate Gaussian process for regression.
 #' Calls [laGP::aGP()] from \CRANpkg{laGP}.
+#' 
+#' @note
 #' Parameters `start` and `end` tune the initial and maximum neighborhood sizes
 #' used for the local GP fit, `d` can fix the length-scale parameters, `g`
 #' configures the nugget/regularization term, and `method` selects the search
@@ -17,7 +19,17 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf learner_is_runnable("regr.laGP")
+#' # Learner defined using a small neighborhood size for this task
+#' learner = lrn("regr.laGP", end = 15)
+#' print(learner)
+#' task = tsk("mtcars")
+#' ids = partition(task)
+#' learner$train(task, row_ids = ids$train)
+#' print(learner$model)
+#' predictions = learner$predict(task, row_ids = ids$test)
+#' predictions$score()
+#' 
 LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
   inherit = LearnerRegr,
 
@@ -29,7 +41,7 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
 
       ps = ps(
         start = p_int(default = 6L, lower = 6L, tags = "predict"),
-        end = p_int(default = 50L, lower = 6L, tags = "predict"), # >start? check with Marc
+        end = p_int(default = 50L, lower = 6L, tags = "predict"),
         d = p_uty(default = NULL, special_vals = list(NULL), tags = "predict"),
         g = p_uty(default = 1 / 10000, tags = "predict"),
         method = p_fct(default = "alc",

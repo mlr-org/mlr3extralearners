@@ -37,7 +37,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.rotationForest")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.rotationForest")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.rotationForest")
 print(learner)
