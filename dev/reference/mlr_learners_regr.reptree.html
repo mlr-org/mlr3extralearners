@@ -238,10 +238,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt; 118 : 25.4 (4/10.48) [4/24.04]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;= 118 : 15.17 (10/7.44) [3/0.63]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt; 7 : 26.6 (6/9.75) [4/48.02]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;= 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &lt; 3.5 : 16.85 (4/2.56) [2/3.08]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &gt;= 3.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &lt; 3.1 : 10.4 (2/0) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &gt;= 3.1 : 14.47 (2/0.25) [1/4]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -250,7 +254,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22.70503 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31.16831 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

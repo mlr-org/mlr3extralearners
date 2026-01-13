@@ -196,12 +196,12 @@ print(learner$model)
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#> (Intercept)          V1         V11         V12         V16         V21 
-#>   0.5289410  -5.5373657  -0.6812303  -0.9695026   0.6769151  -0.3503998 
-#>         V24         V31         V36         V40         V44         V45 
-#>  -0.2455563   0.9202940   1.0596689   0.6606226  -0.3638871  -1.5546390 
-#>         V49         V51         V52 
-#>  -3.3440196  -3.6656507 -21.5142877 
+#> (Intercept)         V11         V12         V15         V20         V21 
+#>   2.2688988  -3.1074823  -0.9583973   0.5934133  -0.2011352  -0.4406372 
+#>         V24         V28         V36         V39          V4         V44 
+#>  -0.3395937  -0.3615423   0.9443532  -0.4334223  -2.3753753  -0.6716908 
+#>         V45         V49         V52 
+#>  -1.1525891  -3.5954920  -9.0834099 
 #> attr(,"offset")
 #> [1] -0.1083355
 #> 

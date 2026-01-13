@@ -213,7 +213,7 @@ print(learner$model)
 #> Survival svm approach              : regression 
 #> Type of Kernel                     : lin_kernel 
 #> Optimization solver used           : quadprog 
-#> Number of support vectors retained : 7 
+#> Number of support vectors retained : 11 
 #> survivalsvm version                : 0.0.6 
 
 # Make predictions for the test rows

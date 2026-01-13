@@ -238,10 +238,9 @@ print(learner$model)
 #> Rule: 1
 #> 
 #> mpg = 
-#>  3.8998 * am 
-#>  - 0.0168 * disp 
-#>  - 0.0413 * hp 
-#>  + 28.6726 [21/43.681%]
+#>  -0.0364 * hp 
+#>  - 4.7522 * wt 
+#>  + 40.4471 [21/33.929%]
 #> 
 #> 
 
@@ -252,5 +251,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.296089 
+#> 12.01985 
 ```
