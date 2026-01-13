@@ -55,14 +55,14 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars$weights = private$.get_weights(task)
 
       data = task$data()
-      # Build a formula that safely quotes non-standard / UTF-8 column names
+      
       formula = mlr3misc::formulate(
         lhs = task$target_names,
         rhs = task$feature_names,
         quote = c("left", "right"),
         env = environment())
 
-      invoke(pls::plsr,
+      mlr3misc::invoke(pls::plsr,
         formula = formula,
         data = data,
         .args = pars)
@@ -72,7 +72,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      pred = invoke(predict, self$model,
+      pred = mlr3misc:invoke(predict, self$model,
         newdata = newdata,
         type = "response",
         comps = seq_len(self$model$ncomp),
