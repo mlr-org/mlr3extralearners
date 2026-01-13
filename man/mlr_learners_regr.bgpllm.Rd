@@ -12,7 +12,6 @@ For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{BTE} is initialized to \code{c(200L, 400L, 2L)} to keep runtimes manageable in tests.
 \item \code{verb} is initialized to \code{0} to silence printing.
 }
 }
