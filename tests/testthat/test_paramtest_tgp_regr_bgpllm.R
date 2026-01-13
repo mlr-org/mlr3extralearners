@@ -16,7 +16,7 @@ test_that("regr.bgpllm train", {
 
 test_that("regr.bgpllm predict", {
   learner = lrn("regr.bgpllm")
-  fun = tgp:::predict.tgp
+  fun = tgp:::predict.tgp # nolint
   exclude = c(
     "object", # handled internally
     "XX", # handled internally
