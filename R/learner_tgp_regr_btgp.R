@@ -5,7 +5,7 @@
 #' @description
 #' Bayesian treed Gaussian process regression model.
 #' Calls [tgp::btgp()] from \CRANpkg{tgp}.
-#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
+#' For the predicted mean `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
 #'
 #' @section Initial parameter values:
 #' * `verb` is initialized to `0` to silence printing.
@@ -59,11 +59,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
         nu = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
         MAP = p_lgl(default = TRUE, tags = "predict"),
         trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb = p_int(default = 1L, lower = 0L, upper = 4L, tags = c("train", "predict"))
-      )
-
-      param_set$values = list(
-        verb = 0L
+        verb = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -83,7 +79,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       data = task$data(cols = task$feature_names)
       target = task$truth()
 
-      encoded = private$.encode_features(data)
+      encoded = encode_features_btgp(data)
 
       if (length(encoded$factor_levels)) {
         pars$basemax = encoded$basemax
@@ -107,7 +103,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      encoded = private$.encode_features(newdata, self$model$factor_levels)
+      encoded = encode_features_btgp(newdata, self$model$factor_levels)
 
       if (!is.null(self$model$column_names)) {
         missing_cols = setdiff(self$model$column_names, encoded$column_names)
@@ -131,66 +127,66 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       } else {
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
-    },
-
-    .encode_features = function(data, factor_levels = NULL) {
-      data = as.data.frame(data)
-      factor_cols = names(data)[vapply(data, inherits, logical(1), what = "factor")]
-      numeric_cols = setdiff(names(data), factor_cols)
-
-      if (is.null(factor_levels)) {
-        factor_levels = if (length(factor_cols)) {
-          stats::setNames(lapply(factor_cols, function(col) levels(data[[col]])), factor_cols)
-        } else {
-          list()
-        }
-      }
-
-      dummy_mats = list()
-      if (length(factor_cols)) {
-        for (col in factor_cols) {
-          lvls = factor_levels[[col]]
-          f = factor(data[[col]], levels = lvls)
-          if (anyNA(f)) {
-            stop(sprintf("Factor column '%s' contains missing or unseen levels.", col))
-          }
-          mm = stats::model.matrix(~ f)
-          if (ncol(mm) > 1L) {
-            mm = mm[, -1, drop = FALSE]
-            colnames(mm) = make.names(sprintf("%s.%s", col, lvls[-1]))
-            dummy_mats[[col]] = mm
-          }
-        }
-      }
-
-      encoded = if (length(numeric_cols)) {
-        as.data.frame(data[, numeric_cols, drop = FALSE])
-      } else {
-        NULL
-      }
-
-      if (length(dummy_mats)) {
-        encoded = if (is.null(encoded)) {
-          do.call(cbind, dummy_mats)
-        } else {
-          cbind(encoded, do.call(cbind, dummy_mats))
-        }
-      }
-
-      if (is.null(encoded)) {
-        encoded = matrix(, nrow = nrow(data), ncol = 0)
-      }
-
-      mat = as.matrix(encoded)
-
-      list(
-        data = mat,
-        factor_levels = factor_levels,
-        basemax = max(1L, length(numeric_cols)),
-        column_names = colnames(mat)
-      )
     }
   )
 )
+
+encode_features_btgp = function(data, factor_levels = NULL) {
+  data = as.data.frame(data)
+  factor_cols = names(data)[vapply(data, inherits, logical(1), what = "factor")]
+  numeric_cols = setdiff(names(data), factor_cols)
+
+  if (is.null(factor_levels)) {
+    factor_levels = if (length(factor_cols)) {
+      stats::setNames(lapply(factor_cols, function(col) levels(data[[col]])), factor_cols)
+    } else {
+      list()
+    }
+  }
+
+  dummy_mats = list()
+  if (length(factor_cols)) {
+    for (col in factor_cols) {
+      lvls = factor_levels[[col]]
+      f = factor(data[[col]], levels = lvls)
+      if (anyNA(f)) {
+        stop(sprintf("Factor column '%s' contains missing or unseen levels.", col))
+      }
+      mm = stats::model.matrix(~ f)
+      if (ncol(mm) > 1L) {
+        mm = mm[, -1, drop = FALSE]
+        colnames(mm) = make.names(sprintf("%s.%s", col, lvls[-1]))
+        dummy_mats[[col]] = mm
+      }
+    }
+  }
+
+  encoded = if (length(numeric_cols)) {
+    as.data.frame(data[, numeric_cols, drop = FALSE])
+  } else {
+    NULL
+  }
+
+  if (length(dummy_mats)) {
+    encoded = if (is.null(encoded)) {
+      do.call(cbind, dummy_mats)
+    } else {
+      cbind(encoded, do.call(cbind, dummy_mats))
+    }
+  }
+
+  if (is.null(encoded)) {
+    encoded = matrix(, nrow = nrow(data), ncol = 0)
+  }
+
+  mat = as.matrix(encoded)
+
+  list(
+    data = mat,
+    factor_levels = factor_levels,
+    basemax = max(1L, length(numeric_cols)),
+    column_names = colnames(mat)
+  )
+}
 
 .extralrns_dict$add("regr.btgp", LearnerRegrBtgp)
