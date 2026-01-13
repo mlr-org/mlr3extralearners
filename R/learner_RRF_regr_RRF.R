@@ -97,7 +97,7 @@ LearnerRegrRRF = R6Class("LearnerRegrRRF",
       formula = task$formula()
       data = task$data()
 
-      invoke(RRF::RRF,
+      mlr3misc::invoke(RRF::RRF,
         formula = formula,
         data = data,
         .args = pars)
@@ -106,7 +106,7 @@ LearnerRegrRRF = R6Class("LearnerRegrRRF",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      pred = invoke(predict, self$model,
+      pred = mlr3misc::invoke(predict, self$model,
         newdata = newdata,
         type = self$predict_type,
         .args = pars)
