@@ -82,7 +82,7 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       )
 
       # custom defaults
-      param_set$values = list(mc.cores = 1, quiet = TRUE, importance = "count",
+      param_set$values = list(mc.cores = 1L, quiet = TRUE, importance = "count",
                               which.curve = 0.5) # 0.5 quantile => median posterior
 
       super$initialize(
@@ -120,9 +120,9 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
       pars = self$param_set$get_values(tags = "train")
 
       if (pars$importance == "prob") {
-        sort(self$model$model$varprob.mean[-1], decreasing = TRUE)
+        sort(self$model$model$varprob.mean[-1L], decreasing = TRUE)
       } else {
-        sort(self$model$model$varcount.mean[-1], decreasing = TRUE)
+        sort(self$model$model$varcount.mean[-1L], decreasing = TRUE)
       }
     }
   ),
@@ -134,10 +134,10 @@ LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
 
       x.train = as.data.frame(task$data(cols = task$feature_names)) # nolint
       truth = task$truth()
-      times = truth[, 1]
-      delta = truth[, 2] # delta => status
+      times = truth[, 1L]
+      delta = truth[, 2L] # delta => status
 
-      .fun = ifelse(.Platform$OS.type == "windows", BART::surv.bart, BART::mc.surv.bart)
+      .fun = if (.Platform$OS.type == "windows") BART::surv.bart else BART::mc.surv.bart
 
       model = invoke(
         .fun,
