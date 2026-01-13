@@ -9,6 +9,9 @@
 #' @templateVar id regr.plsr
 #' @template learner
 #'
+#' @note
+#' During prediction, all components `ncomp` used in training are used.
+#'
 #' @references
 #' `r format_bib("mevik_2007")`
 #'
@@ -26,15 +29,13 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
         method = p_fct(default = "kernelpls",
           levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"),
           tags = "train"),
-        scale = p_lgl(default = TRUE, tags = "train"),
+        scale = p_lgl(init = TRUE, tags = "train"),
         center = p_lgl(default = TRUE, tags = "train"),
         validation = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
         model = p_lgl(default = TRUE, tags = "train"),
         x = p_lgl(default = FALSE, tags = "train"),
         y = p_lgl(default = FALSE, tags = "train")
       )
-
-      ps$values = list(scale = TRUE)
 
       super$initialize(
         id = "regr.plsr",
@@ -53,7 +54,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars = self$param_set$get_values(tags = "train")
       pars$weights = private$.get_weights(task)
 
-      data = task$data(cols = c(task$feature_names, task$target_names))
+      data = task$data()
       # Build a formula that safely quotes non-standard / UTF-8 column names
       formula = mlr3misc::formulate(
         lhs = task$target_names,
