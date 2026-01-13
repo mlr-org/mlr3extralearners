@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.3.1
+Version: 1.3.1.9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -65,7 +65,7 @@ Suggests:
     catboost,
     class,
     coin,
-    CoxBoost,
+    CoxBoost (>= 1.5.1),
     crs,
     Cubist,
     curl,
@@ -74,7 +74,7 @@ Suggests:
     evtree,
     ExhaustiveSearch,
     fastai (>= 2.2.2),
-    flexsurv (>= 2.3),
+    flexsurv (>= 2.3.2),
     FNN,
     formattable,
     future,
@@ -88,10 +88,10 @@ Suggests:
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
-    lme4,
+    lme4 (>= 1.1-38),
     mboost (>= 2.9-10),
     mda,
-    mgcv,
+    mgcv (>= 1.9-4),
     mirai,
     mlr3cluster,
     mlr3learners (>= 0.12.0),
@@ -106,7 +106,7 @@ Suggests:
     pseudo,
     qgam,
     randomForest,
-    randomForestSRC (>= 3.4.3),
+    randomForestSRC (>= 3.5.0),
     ranger (>= 0.17.0),
     remotes,
     rFerns,
@@ -128,12 +128,11 @@ Suggests:
     tensorflow (>= 2.0.0),
     testthat,
     tgp,
-    xgboost (>= 1.7.8.1)
+    xgboost (>= 3.1.2.1)
 VignetteBuilder:
     knitr,
     rmarkdown
 Remotes:
-    binderh/CoxBoost,
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,

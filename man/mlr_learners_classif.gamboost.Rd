@@ -53,7 +53,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.gamboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.gamboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.gamboost")
 print(learner)
