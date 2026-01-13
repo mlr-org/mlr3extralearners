@@ -80,6 +80,16 @@ bibentries = c( # nolint start
     pages         = "1--16"
   ),
 
+  jolliffe1982note = bibentry("article",
+    title       = "A note on the use of principal components in regression",
+    author      = "Jolliffe, Ian T.",
+    journal     = "Journal of the Royal Statistical Society. Series C (Applied Statistics)",
+    year        = "1982",
+    volume      = "31",
+    number      = "3",
+    pages       = "300--303"
+  ),
+
   dorogush2018catboost = bibentry("article",
     title = "CatBoost: gradient boosting with categorical features support",
     author = "Dorogush, Anna Veronika and Ershov, Vasily and Gulin, Andrey",
@@ -180,6 +190,18 @@ bibentries = c( # nolint start
     year = "2002",
     publisher = "Wiley Online Library"
   ),
+  jackson2016flexsurv = bibentry("article",
+    title   = "flexsurv: A Platform for Parametric Survival Modeling in R",
+    author  = "Jackson, Christopher H.",
+    journal = "Journal of Statistical Software",
+    volume  = "70",
+    number  = "8",
+    pages   = "1--33",
+    year    = "2016",
+    publisher = "American Statistical Association",
+    doi     = "10.18637/JSS.V070.I08",
+    url     = "https://www.jstatsoft.org/index.php/jss/article/view/v070i08"
+  ),
   friedman2002stochastic = bibentry("article",
     title = "Stochastic gradient boosting",
     author = "Friedman, Jerome H",
@@ -244,6 +266,17 @@ bibentries = c( # nolint start
     title = "mgcv: Mixed GAM Computation Vehicle with GCV/AIC/REML smoothness estimation",
     author = "Wood, Simon",
     year = "2012"
+  ),
+  wood2016 = bibentry("article",
+    title = "Smoothing Parameter and Model Selection for General Smooth Models",
+    author = "Wood, Simon N. and Pya, Natalya and Safken, Benjamin",
+    journal = "Journal of the American Statistical Association",
+    volume = "111",
+    number = "516",
+    pages = "1548--1563",
+    year = "2016",
+    publisher = "American Statistical Association",
+    doi = "10.1080/01621459.2016.1180986"
   ),
   goeman2010l1 = bibentry("article",
     title = "L1 penalized estimation in the Cox proportional hazards model",
