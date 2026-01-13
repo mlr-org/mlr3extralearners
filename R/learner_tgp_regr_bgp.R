@@ -8,7 +8,6 @@
 #' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
-#' * `BTE` is initialized to `c(200, 400, 2)` to keep runtimes manageable in tests.
 #' * `verb` is initialized to `0` to silence printing.
 #'
 #' @templateVar id regr.bgp
@@ -55,7 +54,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       )
 
       param_set$values = list(
-        BTE = c(200L, 400L, 2L),
         verb = 0L
       )
 
@@ -108,6 +106,3 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
 )
 
 .extralrns_dict$add("regr.bgp", LearnerRegrBgp)
-
-
-# noch reinschreiben in die Dokumentation, dass wir uns aktiv für ZZkm als Output entscheidne
