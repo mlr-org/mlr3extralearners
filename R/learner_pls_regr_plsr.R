@@ -55,7 +55,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars$weights = private$.get_weights(task)
 
       data = task$data()
-      
+
       formula = mlr3misc::formulate(
         lhs = task$target_names,
         rhs = task$feature_names,
@@ -72,7 +72,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      pred = mlr3misc:invoke(predict, self$model,
+      pred = mlr3misc::invoke(predict, self$model,
         newdata = newdata,
         type = "response",
         comps = seq_len(self$model$ncomp),
