@@ -282,6 +282,9 @@
 - [`mlr_learners_regr.fnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fnn.md)
   [`LearnerRegrFNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.fnn.md)
   : Regression Fast Nearest Neighbor Search Learner
+- [`mlr_learners_regr.frbs`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.frbs.md)
+  [`LearnerRegrFrbs`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.frbs.md)
+  : Regression Fuzzy Rule-based System Learner
 - [`mlr_learners_regr.gam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gam.md)
   [`LearnerRegrGam`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gam.md)
   : Regression Generalized Additive Model Learner

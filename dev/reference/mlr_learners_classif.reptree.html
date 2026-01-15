@@ -238,14 +238,20 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &lt; 0.23 : R (33/6) [27/11]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &gt;= 0.23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &lt; 0.84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V51 &lt; 0.02 : R (23/9) [7/3]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V51 &gt;= 0.02 : M (8/0) [4/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &gt;= 0.84 : M (28/1) [9/1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &lt; 0.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V46 &lt; 0.11 : R (22/0) [12/4]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V46 &gt;= 0.11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V20 &lt; 0.5 : R (11/1) [8/1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V20 &gt;= 0.5 : M (10/2) [3/1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V12 &gt;= 0.22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &lt; 0.71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V52 &lt; 0.01 : R (6/0) [1/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   V52 &gt;= 0.01</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V55 &lt; 0.01 : R (8/3) [3/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   V55 &gt;= 0.01 : M (10/0) [6/2]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   V27 &gt;= 0.71 : M (25/1) [14/2]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 13</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -254,7 +260,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

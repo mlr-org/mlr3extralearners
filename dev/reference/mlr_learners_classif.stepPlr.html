@@ -188,24 +188,24 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   7.84822 -52.43057  18.15201 -22.58670 -28.76275  11.74144  -4.79934 -19.31492 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  32.27086 -78.03924   5.33345 -19.04522 -31.92370  17.01023  -3.77607 -17.60207 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  24.57802  18.52835 -22.10297   1.27640 -18.93856  -2.16058   9.01500  -5.83309 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  19.53229  23.65450 -27.12086  -4.54951 -33.95023  17.94196 -21.42098  -9.76440 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.21108 -13.38812   1.15324  12.07567  -2.53260 -14.23357  26.25811  87.58450 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   6.06823 -37.23614  20.79621   4.77945   8.54373  -6.60202   0.28852  90.86895 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -52.32766  76.04523 -39.25050  -6.29375  21.28736 -18.44981  22.63889 -12.86321 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -23.62543  31.96556 -18.48936   4.14172   1.91515   3.64214  -0.69231  24.04271 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  16.57315 -13.27181 -51.38961   7.54878   5.99553  -2.66443  16.31333 -29.70620 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.70682 -25.23785 -37.89024  15.91532   7.91296 -28.17638 -16.63260 -10.48722 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  35.75061 -50.10829   5.30409 -31.29983 -33.37998  -7.62053  63.67691 -54.05965 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   5.28566 -24.70842  26.86752 -93.59421 -17.91560  28.65991  74.35590  -4.18135 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -56.21027 -43.56432 -38.64481  17.22041   7.30959  36.24653 -13.82113  -8.49131 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -31.60838   9.83778  13.93668  25.38269  12.36318   8.39601 -30.87036 -33.33685 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -22.85092 -20.89260  55.29023   6.20822 -15.90681 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -12.43980 -21.22607  44.05773  57.97674 -44.96388 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.11 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.72 on 92.55 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 191.48 on 138 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 17.98 on 93.61 degrees of freedom</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 241.95 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -215,7 +215,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3333333 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
