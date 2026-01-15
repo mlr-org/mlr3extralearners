@@ -815,6 +815,14 @@ bibentries = c( # nolint start
     pages = "448-461",
     doi = "10.1109/TPAMI.2009.23"
   ),
+  rong2022deepnet = bibentry("article",
+    title = "deepnet: Deep Learning Toolkit in R",
+    author = "Rong, Xiao",
+    journal = "R package version 0.2.1",
+    year = "2022",
+    url = "https://CRAN.R-project.org/package=deepnet",
+    doi = "10.32614/CRAN.package.deepnet"
+  ),
   kursa2014rferns = bibentry("article",
     title = "rFerns: An Implementation of the Random Ferns Method for General-Purpose Machine Learning",
     author = "Miron B. Kursa",
