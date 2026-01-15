@@ -37,27 +37,27 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
    bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
-   corr \tab character \tab expsep \tab exp, expsep, matern, sim \tab - \cr
    BTE \tab untyped \tab c(1000L, 4000L, 2L) \tab  \tab - \cr
-   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   itemps \tab untyped \tab NULL \tab  \tab - \cr
-   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   corr \tab character \tab expsep \tab exp, expsep, matern, sim \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   sens.p \tab untyped \tab NULL \tab  \tab - \cr
-   nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   itemps \tab untyped \tab NULL \tab  \tab - \cr
+   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
+   nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   sens.p \tab untyped \tab NULL \tab  \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verb \tab integer \tab 1 \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
+   verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
+   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.bgp")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.bgp")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.bgp")
 print(learner)
@@ -82,15 +82,15 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Gramacy, B. R, Lee, H. HK (2008).
-\dQuote{Bayesian Treed Gaussian Process Models with an Application to Computer Modeling.}
-\emph{Journal of the American Statistical Association}, \bold{103}(483), 1119--1130.
-\doi{10.1198/016214508000000689}.
+Gramacy RB (2007).
+\dQuote{tgp: An R Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models.}
+\emph{Journal of Statistical Software}, \bold{19}(9), 1--46.
+\doi{10.18637/jss.v019.i09}.
 
-Gramacy, B. R, Taddy, Matthew (2010).
-\dQuote{Categorical Inputs, Sensitivity Analysis, and High-Dimensional Macros with Treed Gaussian Process Models.}
-\emph{Technometrics}, \bold{52}(2), 143--160.
-\doi{10.1198/TECH.2010.09174}.
+Gramacy RB, Taddy M (2010).
+\dQuote{Categorical Inputs, Sensitivity Analysis, Optimization and Importance Tempering with tgp Version 2, an R Package for Treed Gaussian Process Models.}
+\emph{Journal of Statistical Software}, \bold{33}(6), 1--48.
+\doi{10.18637/jss.v033.i06}.
 }
 \seealso{
 \itemize{
