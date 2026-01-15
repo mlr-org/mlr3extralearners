@@ -68,6 +68,7 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
       pv = self$param_set$get_values(tags = "train")
       data_train = as.matrix(task$data())
 
+      # remove null arguments to keep defaults
       args = discard(list(
         data.train = data_train,
         method.type = pv$method.type,
