@@ -9,6 +9,7 @@
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
+  - `LearnerRegrFrbs`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
   - `LearnerRegrBtgp`
