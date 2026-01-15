@@ -28,8 +28,8 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
       param_set = ps(
         lambda = p_dbl(default = 1e-6, lower = 0, tags = "train"),
         maxIte = p_int(default = 100L, lower = 0L, tags = "train"),
-        tol    = p_dbl(default = 1e-6, lower = 0, tags = "train")
-        trace  = p_lgl(default = FALSE, tags = "train"),
+        tol    = p_dbl(default = 1e-6, lower = 0, tags = "train"),
+        trace  = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -61,19 +61,16 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
         }
       }
 
-      invoke(
-        sparseLDA::sda,
+      invoke(sparseLDA::sda,
         x = x,
         y = y,
         .args = pars
       )
     },
     .predict = function(task) {
-      pars = self$param_set$get_values(tags = "predict")
-
       newdata = ordered_features(task, self)
 
-      pred = invoke(predict, self$model, newdata = newdata, .args = pars)
+      pred = predict(object = self$model, newdata = newdata)
 
       if (self$predict_type == "response") {
         list(response = pred$class)

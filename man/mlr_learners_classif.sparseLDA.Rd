@@ -39,13 +39,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    lambda \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    maxIte \tab integer \tab 100 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    tol \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.sparseLDA")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.sparseLDA")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.sparseLDA")
 print(learner)
