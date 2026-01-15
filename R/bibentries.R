@@ -267,6 +267,16 @@ bibentries = c( # nolint start
     author = "Wood, Simon",
     year = "2012"
   ),
+  mevik_2007 = bibentry("article",
+    title = "The pls Package: Principal Component and Partial Least Squares Regression in R",
+    author = "Mevik, Bjorn-Helge and Wehrens, Ron",
+    journal = "Journal of Statistical Software",
+    year = "2007",
+    volume = "18",
+    number = "2",
+    pages = "1--24",
+    doi = "10.18637/jss.v018.i02"
+  ),
   wood2016 = bibentry("article",
     title = "Smoothing Parameter and Model Selection for General Smooth Models",
     author = "Wood, Simon N. and Pya, Natalya and Safken, Benjamin",
@@ -828,6 +838,26 @@ bibentries = c( # nolint start
     doi = "10.1093/BIOSTATISTICS/KXU010",
     URL = "https://doi.org/10.1093/BIOSTATISTICS/KXU010"
   ),
+  deng2012rrf = bibentry("inproceedings",
+    title = "Feature selection via regularized trees",
+    author = "Deng, Houtao and Runger, George",
+    booktitle = "2012 International Joint Conference on Neural Networks (IJCNN)",
+    pages = "1--8",
+    year = "2012",
+    organization = "IEEE",
+    doi = "10.1109/IJCNN.2012.6252640"
+  ),
+  deng2013grrf = bibentry("article",
+    title = "Gene selection with guided regularized random forest",
+    author = "Deng, Houtao and Runger, George",
+    journal = "Pattern Recognition",
+    volume = "46",
+    number = "12",
+    pages = "3483--3489",
+    year = "2013",
+    publisher = "Elsevier",
+    doi = "10.1016/j.patcog.2013.05.021"
+  ),
   rodriguez2006rf = bibentry("article",
     author="Rodriguez, J.J. and Kuncheva, L.I. and Alonso, C.J.",
     journal="IEEE Transactions on Pattern Analysis and Machine Intelligence",
@@ -867,6 +897,16 @@ bibentries = c( # nolint start
     pages = "1--23",
     year = "2015",
     doi = "10.18637/jss.v064.i12"
+  ),
+  gramacy2016lagp = bibentry("article",
+    title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
+    author = "Gramacy, Robert B.",
+    journal = "Journal of Statistical Software",
+    year = "2016",
+    volume = "72",
+    number = "1",
+    pages = "1--46",
+    doi = "10.18637/jss.v072.i01"
   )
 ) # nolint end
 

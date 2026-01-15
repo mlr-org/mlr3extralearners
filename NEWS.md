@@ -6,6 +6,10 @@
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
   - `LearnerRegrGPfit`
+  - `LearnerRegrRRF`
+  - `LearnerRegrPcr`
+  - `LearnerRegrPlsr`
+  - `LearnerRegrLaGP`
 
 ## Breaking Changes
 
