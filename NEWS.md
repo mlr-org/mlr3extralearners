@@ -9,6 +9,7 @@
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
+  - `LearnerClassifDbnDNN`
 
 ## Breaking Changes
 

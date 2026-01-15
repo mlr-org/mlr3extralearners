@@ -5,6 +5,8 @@
 #' @description
 #' Deep neural network with weights initialized by a deep belief network.
 #' Calls [deepnet::dbn.dnn.train()] from \CRANpkg{deepnet}.
+#' 
+#' This learner works with tasks that have at least two features.
 #'
 #' @section Initial parameter values:
 #' - `hidden` defaults to `10`.
@@ -26,33 +28,19 @@ LearnerClassifDbnDNN = R6Class("LearnerClassifDbnDNN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        hidden = p_uty(default = 10L, tags = "train", custom_check = function(x) {
+        hidden = p_uty(init = 10L, tags = "train", custom_check = function(x) {
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
         }),
-        activationfun = p_fct(levels = c("sigm", "linear", "tanh"), default = "sigm", tags = "train"),
-        learningrate = p_dbl(default = 0.8, lower = 0, tags = "train"),
-        momentum = p_dbl(default = 0.5, lower = 0, tags = "train"),
-        learningrate_scale = p_dbl(default = 1, lower = 0, tags = "train"),
-        numepochs = p_int(default = 3L, lower = 1L, tags = "train"),
-        batchsize = p_int(default = 100L, lower = 1L, tags = "train"),
-        output = p_fct(levels = c("sigm", "linear", "softmax"), default = "sigm", tags = "train"),
-        hidden_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        cd = p_int(default = 1L, lower = 1L, tags = "train")
-      )
-
-      param_set$values = list(
-        hidden = 10L,
-        activationfun = "sigm",
-        learningrate = 0.8,
-        momentum = 0.5,
-        learningrate_scale = 1,
-        numepochs = 3L,
-        batchsize = 100L,
-        output = "softmax",
-        hidden_dropout = 0,
-        visible_dropout = 0,
-        cd = 1L
+        activationfun = p_fct(levels = c("sigm", "linear", "tanh"), init = "sigm", tags = "train"),
+        learningrate = p_dbl(init = 0.8, lower = 0, tags = "train"),
+        momentum = p_dbl(init = 0.5, lower = 0, tags = "train"),
+        learningrate_scale = p_dbl(init = 1, lower = 0, tags = "train"),
+        numepochs = p_int(init = 3L, lower = 1L, tags = "train"),
+        batchsize = p_int(init = 100L, lower = 1L, tags = "train"),
+        output = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
+        hidden_dropout = p_dbl(init = 0, lower = 0, upper = 1, tags = "train"),
+        visible_dropout = p_dbl(init = 0, lower = 0, upper = 1, tags = "train"),
+        cd = p_int(init = 1L, lower = 1L, tags = "train")
       )
 
       super$initialize(
@@ -71,10 +59,6 @@ LearnerClassifDbnDNN = R6Class("LearnerClassifDbnDNN",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-
-      if (!is.null(pars$hidden)) {
-        pars$hidden = as.integer(pars$hidden)
-      }
 
       x = data.matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())

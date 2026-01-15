@@ -92,7 +92,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.priority_lasso")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.priority_lasso")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner and set parameter values
 learner = lrn("classif.priority_lasso", type.measure = "auc",
   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))

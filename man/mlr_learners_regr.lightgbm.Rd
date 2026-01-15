@@ -167,7 +167,7 @@ If \code{first_metric_only = FALSE} (default), the learner stops when any metric
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.lightgbm")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.lightgbm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.lightgbm")
 print(learner)
