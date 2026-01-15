@@ -1,5 +1,20 @@
 # mlr3extralearners (development version)
 
+## New Features
+
+* New Learners:
+  - `LearnerSurvGamCox`
+  - `LearnerSurvFlexReg`
+  - `LearnerRegrRRF`
+  - `LearnerRegrPcr`
+  - `LearnerRegrPlsr`
+  - `LearnerRegrLaGP`
+  - `LearnerClassifNNTrain`
+
+## Breaking Changes
+
+* `lrn("surv.flexible")` (`LearnerSurvFlexible`) was renamed to `lrn("surv.flexsurvspline")` (`LearnerSurvFlexSpline`) to properly reflect the wrapped train function (Royston/Parmar spline model).
+
 ## Other
 
 * compatibility: `xgboost` 3.1.2.1 (survival learners)
