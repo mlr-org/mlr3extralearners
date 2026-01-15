@@ -894,6 +894,16 @@ bibentries = c( # nolint start
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
   ),
+  macdonald2015gpfit = bibentry("article",
+    title = "GPfit: Gaussian process model fitting using a new optimization algorithm",
+    author = "MacDonald, B. and Ranjan, R. and Chipman, H.",
+    journal = "Journal of Statistical Software",
+    volume = "64",
+    number = "12",
+    pages = "1--23",
+    year = "2015",
+    doi = "10.18637/jss.v064.i12"
+  ),
   riza2015frbs = bibentry("article",
     title = "{frbs}: Fuzzy Rule-Based Systems for Classification and Regression in {R}",
     author = "Lala Septem Riza and Christoph Bergmeir and Francisco Herrera and Jose Manuel Benitez",
@@ -916,3 +926,4 @@ bibentries = c( # nolint start
   )
 
 ) # nolint end
+

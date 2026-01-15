@@ -4,17 +4,20 @@
 #'
 #' @description
 #' Gaussian process regression via [GPfit::GP_fit()] from \CRANpkg{GPfit}.
-#' Inputs are optionally scaled to the unit hypercube (GPfit assumes this
-#' domain for optimization). The correlation kernel is configured via
-#' `type`, `power`, and `matern_nu_k`, matching the original mlr S3 learner.
 #'
 #' @template learner
 #' @templateVar id regr.gpfit
 #'
+#' @note
+#' As the optimization routine assumes that the inputs are scaled to the unit hypercube,
+#' the input gets scaled for each variable by default.
+#' If this is not wanted, `scale = FALSE`` has to be set.
+#' We replace the GPfit parameter `corr = list(type = 'exponential',power = 1.95)` to be separate parameters `type` and `power`,
+#' in the case of `corr = list(type = 'matern', nu = 0.5)`, the separate parameters are `type` and `matern_nu_k = 0`,
+#' and nu is computed by `nu = (2 * matern_nu_k + 1) / 2 = 0.5`.
+#'
 #' @references
-#' MacDonald, B., Ranjan, R., & Chipman, H. (2015).
-#' GPfit: Gaussian process model fitting using a new optimization algorithm.
-#' Journal of Statistical Software, 64(12), 1–23.
+#' `r format_bib("macdonald2015gpfit")`
 #'
 #' @export
 #' @template seealso_learner
@@ -56,9 +59,8 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
 
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      
-      d = list()
-      d$data = as_numeric_matrix(task$data(cols = task$feature_names))
+
+      d = list(data = as_numeric_matrix(task$data(cols = task$feature_names)))
       d$target = task$truth()
 
       low = apply(d$data, 2, min)
@@ -91,7 +93,7 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
         corr = corr_pars,
         .args = train_pars
       )
-      
+
       list(
         model = model,
         scaled = isTRUE(pv$scale),

@@ -6,9 +6,11 @@
 \title{Regression Gaussian Process Learner (GPfit)}
 \description{
 Gaussian process regression via \code{\link[GPfit:GP_fit]{GPfit::GP_fit()}} from \CRANpkg{GPfit}.
-Inputs are optionally scaled to the unit hypercube (GPfit assumes this
-domain for optimization). The correlation kernel is configured via
-\code{type}, \code{power}, and \code{matern_nu_k}, matching the original mlr S3 learner.
+}
+\note{
+As the optimization routine assumes that the inputs are scaled to the unit hypercube,
+the input gets scaled for each variable by default.
+If this is not wanted, \verb{scale = FALSE`` has to be set. We replace the GPfit parameter }corr = list(type = 'exponential',power = 1.95)\verb{to be separate parameters}type\code{and}power\verb{, in the case of }corr = list(type = 'matern', nu = 0.5)\verb{, the separate parameters are }type\code{and}matern_nu_k = 0\verb{, and nu is computed by }nu = (2 * matern_nu_k + 1) / 2 = 0.5`.
 }
 \section{Dictionary}{
 
@@ -44,7 +46,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.gpfit")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.gpfit")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.gpfit")
 print(learner)
@@ -69,9 +71,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-MacDonald, B., Ranjan, R., & Chipman, H. (2015).
-GPfit: Gaussian process model fitting using a new optimization algorithm.
-Journal of Statistical Software, 64(12), 1–23.
+MacDonald, B., Ranjan, R., Chipman, H. (2015).
+\dQuote{GPfit: Gaussian process model fitting using a new optimization algorithm.}
+\emph{Journal of Statistical Software}, \bold{64}(12), 1--23.
+\doi{10.18637/jss.v064.i12}.
 }
 \seealso{
 \itemize{
