@@ -31,26 +31,9 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        bprior  = p_fct(default = "bflat", levels = c("b0", "b0not", "bflat", "bmle", "bmznot", "bmzt"), tags = "train"),
-        BTE     = p_uty(default = c(2000L, 7000L, 2L), tags = c("train", "predict"), custom_check = mlr3misc::crate({function(x) {
-          if (!checkmate::test_integerish(x, len = 3, lower = 0)) {
-            return("`BTE` must be an integerish vector of length 3 with non-negative entries")
-          }
-          TRUE
-        }})),
-        corr    = p_fct(default = "expsep", levels = c("exp", "expsep", "matern", "sim"), tags = "train"),
-        Ds2x    = p_lgl(default = FALSE, tags = c("train", "predict")),
-        improv  = p_lgl(default = FALSE, tags = c("train", "predict")),
-        itemps  = p_uty(default = NULL, tags = "train"),
-        krige   = p_lgl(default = TRUE, tags = c("train", "predict")),
-        linburn = p_lgl(default = FALSE, tags = "train"),
-        m0r1    = p_lgl(default = TRUE, tags = "train"),
-        MAP     = p_lgl(default = TRUE, tags = "predict"),
         meanfn  = p_fct(default = "linear", levels = c("constant", "linear"), tags = "train"),
-        pred.n  = p_lgl(init = FALSE, tags = c("train", "predict")),
-        nu      = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
-        R       = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
-        trace   = p_lgl(default = FALSE, tags = c("train", "predict")),
+        bprior  = p_fct(default = "bflat", levels = c("b0", "b0not", "bflat", "bmle", "bmznot", "bmzt"), tags = "train"),
+        corr    = p_fct(default = "expsep", levels = c("exp", "expsep", "matern", "sim"), tags = "train"),
         tree    = p_uty(default = c(0.5, 2), tags = "train", custom_check = mlr3misc::crate({function(x) {
           if (checkmate::test_numeric(x, len = 2, any.missing = FALSE)) {
             if (x[1] >= 0 && x[1] <= 1 && x[2] >= 0) {
@@ -59,8 +42,25 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
           }
           "`tree` must be numeric length 2 with first element in [0, 1] and second >= 0"
         }})),
+        BTE     = p_uty(default = c(2000L, 7000L, 2L), tags = c("train", "predict"), custom_check = mlr3misc::crate({function(x) {
+          if (!checkmate::test_integerish(x, len = 3, lower = 0)) {
+            return("`BTE` must be an integerish vector of length 3 with non-negative entries")
+          }
+          TRUE
+        }})),
+        R       = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
+        m0r1    = p_lgl(default = TRUE, tags = "train"),
+        linburn = p_lgl(default = FALSE, tags = "train"),
+        itemps  = p_uty(default = NULL, tags = "train"),
+        pred.n  = p_lgl(init = FALSE, tags = c("train", "predict")),
+        krige   = p_lgl(default = TRUE, tags = c("train", "predict")),
+        zcov    = p_lgl(default = FALSE, tags = c("train", "predict")),
+        Ds2x    = p_lgl(default = FALSE, tags = c("train", "predict")),
+        improv  = p_lgl(default = FALSE, tags = c("train", "predict")),
+        nu      = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
+        trace   = p_lgl(default = FALSE, tags = c("train", "predict")),
         verb    = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
-        zcov    = p_lgl(default = FALSE, tags = c("train", "predict"))
+        MAP     = p_lgl(default = TRUE, tags = "predict")
       )
 
       super$initialize(
