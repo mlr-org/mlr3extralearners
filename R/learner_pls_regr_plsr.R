@@ -24,17 +24,15 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
-        ncomp = p_int(lower = 1L, tags = "train"),
-        method = p_fct(default = "kernelpls",
-          levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"),
-          tags = "train"),
-        scale = p_lgl(init = TRUE, tags = "train"),
-        center = p_lgl(default = TRUE, tags = "train"),
-        validation = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
-        model = p_lgl(default = TRUE, tags = "train"),
-        x = p_lgl(default = FALSE, tags = "train"),
-        y = p_lgl(default = FALSE, tags = "train")
+      param_set = ps(
+        ncomp       = p_int(lower = 1L, tags = "train"),
+        method      = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train"),
+        scale       = p_lgl(default = TRUE, tags = "train"),
+        center      = p_lgl(default = TRUE, tags = "train"),
+        validation  = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
+        model       = p_lgl(default = TRUE, tags = "train"),
+        x           = p_lgl(default = FALSE, tags = "train"),
+        y           = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -42,8 +40,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
         packages = "pls",
         feature_types = c("numeric", "integer", "factor"),
         predict_types = "response",
-        param_set = ps,
-        properties = "weights",
+        param_set = param_set,
         man = "mlr3extralearners::mlr_learners_regr.plsr",
         label = "Partial Least Squares Regression"
       )
@@ -52,9 +49,6 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      pars$weights = private$.get_weights(task)
-
-      data = task$data()
 
       formula = mlr3misc::formulate(
         lhs = task$target_names,
@@ -64,7 +58,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
 
       mlr3misc::invoke(pls::plsr,
         formula = formula,
-        data = data,
+        data = task$data(),
         .args = pars)
     },
 
@@ -75,7 +69,6 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pred = mlr3misc::invoke(predict, self$model,
         newdata = newdata,
         type = "response",
-        comps = seq_len(self$model$ncomp),
         .args = pars)
 
       list(response = pred[, 1L])
