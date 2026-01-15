@@ -1,3 +1,5 @@
+skip_if_not_installed("deepnet")
+
 test_that("autotest", {
   withr::local_seed(123)
   learner = lrn("classif.nnTrain", numepochs = 20, learningrate = 0.5)
