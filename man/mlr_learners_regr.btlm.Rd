@@ -41,20 +41,20 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
    bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
-   tree \tab untyped \tab c(0.5, 2) \tab  \tab - \cr
    BTE \tab untyped \tab c(2000L, 7000L, 2L) \tab  \tab - \cr
-   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   itemps \tab untyped \tab NULL \tab  \tab - \cr
-   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   itemps \tab untyped \tab NULL \tab  \tab - \cr
+   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   tree \tab untyped \tab c(0.5, 2) \tab  \tab - \cr
    verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
+   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
