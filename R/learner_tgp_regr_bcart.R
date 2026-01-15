@@ -13,6 +13,7 @@
 #'
 #' @section Initial parameter values:
 #' * `verb` is initialized to `0` to silence printing.
+#' * `pred.n` is initialized to `FALSE` to skip prediction during training.
 #'
 #' @templateVar id regr.bcart
 #' @template learner
@@ -52,16 +53,13 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
         R = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
         m0r1 = p_lgl(default = TRUE, tags = "train"),
         itemps = p_uty(default = NULL, tags = "train"),
+        pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
         krige = p_lgl(default = TRUE, tags = c("train", "predict")),
         zcov = p_lgl(default = FALSE, tags = c("train", "predict")),
         Ds2x = p_lgl(default = FALSE, tags = c("train", "predict")),
         improv = p_lgl(default = FALSE, tags = c("train", "predict")),
         trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb = p_int(default = 1L, lower = 0L, upper = 4L, tags = c("train", "predict"))
-      )
-
-      param_set$values = list(
-        verb = 0L
+        verb = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -75,6 +73,7 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
       )
     }
   ),
+
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
@@ -83,11 +82,7 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
 
       encoded = encode_features(data)
 
-      if (length(encoded$factor_levels)) {
-        pars$basemax = encoded$basemax
-      }
-
-      model = mlr3misc::invoke(
+      model = invoke(
         tgp::bcart,
         X = encoded$data,
         Z = target,
@@ -107,18 +102,15 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
 
       encoded = encode_features(newdata, self$model$factor_levels)
 
-      if (!is.null(self$model$column_names)) {
-        missing_cols = setdiff(self$model$column_names, encoded$column_names)
-        if (length(missing_cols)) {
-          encoded$data = cbind(
-            encoded$data, 
-            matrix(0, nrow = nrow(encoded$data), ncol = length(missing_cols), dimnames = list(NULL, missing_cols))
-          )
-        }
-        encoded$data = encoded$data[, self$model$column_names, drop = FALSE]
+      if (length(encoded$factor_levels)) {
+        pars$basemax = encoded$basemax
       }
 
-      pred = mlr3misc::invoke(
+      if (self$predict_type == "se") {
+        pars$krige = TRUE
+      }
+
+      pred = invoke(
         predict,
         self$model$model,
         XX = encoded$data,
@@ -126,11 +118,8 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
       )
 
       if (self$predict_type == "response") {
-        list(response = pred$ZZ.km) # what should be chosen here
+        list(response = pred$ZZ.km)
       } else {
-        if (is.null(pred$ZZ.ks2)) {
-          stop("Standard errors requested but `ZZ.ks2` was not returned; try setting `krige = TRUE`.")
-        }
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
     }
