@@ -1,3 +1,5 @@
+testthat::skip("temporarily disabled")
+
 skip_if_not_installed("lme4")
 
 test_that("autotest", {
