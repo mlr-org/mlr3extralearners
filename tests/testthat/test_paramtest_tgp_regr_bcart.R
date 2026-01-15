@@ -8,8 +8,8 @@ test_that("paramtest regr.bcart train", {
     "Z", # handled via mlr3
     "XX", # handled via predict
     "pred.n", # set internally to FALSE
-    "sens.p",
-    "MAP"
+    "sens.p", # not exposed
+    "MAP" # not exposed
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
@@ -22,8 +22,8 @@ test_that("paramtest regr.bcart predict", {
     "object", # handled via mlr3
     "XX", # handled via mlr3
     "pred.n", # set internally to FALSE
-    "sens.p",
-    "MAP"
+    "sens.p", # not exposed
+    "MAP" # not exposed
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)
