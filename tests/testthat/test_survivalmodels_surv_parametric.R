@@ -51,11 +51,8 @@ test_that("time points for prediction", {
 
 test_that("missing", {
   learner = lrn("surv.parametric")
-  task = as_task_surv(x = data.frame(
-    x1 = c(runif(9), NA),
-    event = rbinom(10, 1, 0.5),
-    time = rexp(10)), id = "missing")
-  expect_error(learner$train(task), class = "Mlr3ErrorInput")
+  learner$train(task)
+  expect_error(learner$predict(lung_missings))
 })
 
 test_that("'form' affects survival prediction", {

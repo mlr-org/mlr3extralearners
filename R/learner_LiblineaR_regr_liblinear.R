@@ -77,7 +77,7 @@ LearnerRegrLiblineaR = R6Class("LearnerRegrLiblineaR",
       train = task$data(cols = task$feature_names)
       target = task$truth()
 
-      type = pars$type %??% 11
+      type = ifelse(is.null(pars$type), 11, pars$type)
       pars = pars[names(pars) != "type"]
 
       invoke(LiblineaR::LiblineaR, data = train, target = target, type = type, .args = pars)

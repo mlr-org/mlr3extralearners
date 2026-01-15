@@ -89,7 +89,7 @@ LearnerClassifBst = R6Class("LearnerClassifBst",
       features = task$feature_names
 
       # Recode target to -1/+1
-      data[[target]] = fifelse(data[[target]] == task$positive, 1, -1)
+      data[[target]] = ifelse(data[[target]] == task$positive, 1, -1)
 
       # Split control parameters
       ctrl_pars = formalArgs(bst::bst_control)
@@ -116,11 +116,11 @@ LearnerClassifBst = R6Class("LearnerClassifBst",
       p = invoke(predict, self$model, newdata = newdata, type = "response", .args = pars)
 
       if (self$predict_type == "response") {
-        list(response = factor(fifelse(p > 0, task$positive, task$negative)))
+        list(response = factor(ifelse(p > 0, task$positive, task$negative)))
       } else {
         # Convert to probabilities using sigmoid
         probs = 1 / (1 + exp(-p))
-        list(prob = matrix(c(1 - probs, probs), ncol = 2L, dimnames = list(NULL, c(task$negative, task$positive))))
+        list(prob = matrix(c(1 - probs, probs), ncol = 2, dimnames = list(NULL, c(task$negative, task$positive))))
       }
     }
   )
