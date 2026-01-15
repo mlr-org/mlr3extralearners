@@ -263,7 +263,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       is_binary = length(task$class_names) == 2L
       truth = task$data(cols = task$target_names)[[1L]]
       label = if (is_binary) {
-        ifelse(truth == task$positive, 1L, 0L)
+        fifelse(truth == task$positive, 1L, 0L)
       } else {
         as.integer(truth) - 1L
       }
@@ -285,7 +285,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
       test_pool = if (!is.null(internal_valid_task)) {
         # create test labels
         test_label = if (length(internal_valid_task$class_names) == 2L) {
-          ifelse(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]] == internal_valid_task$positive, 1L, 0L)
+          fifelse(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]] == internal_valid_task$positive, 1L, 0L)
         } else {
           as.integer(internal_valid_task$data(cols = internal_valid_task$target_names)[[1L]]) - 1L
         }
@@ -333,7 +333,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
       if (self$predict_type == "response") {
         response = if (is_binary) {
-          ifelse(preds == 1L, yes = task$positive, no = task$negative)
+          fifelse(preds == 1L, yes = task$positive, no = task$negative)
         } else {
           class_names[preds + 1L]
         }

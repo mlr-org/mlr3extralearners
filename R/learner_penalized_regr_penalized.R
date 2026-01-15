@@ -63,7 +63,7 @@ LearnerRegrPenalized = R6Class("LearnerRegrPenalized",
     .train = function(task) {
       # get parameters for training
       pars = self$param_set$get_values(tags = "train")
-      if (length(pars$unpenalized) == 0) {
+      if (length(pars$unpenalized) == 0L) {
         # if no "unpenalized" features, penalize all (no need to set `pars$unpenalized`)
         penalized = formulate(rhs = task$feature_names)
       } else {
@@ -92,7 +92,7 @@ LearnerRegrPenalized = R6Class("LearnerRegrPenalized",
       # Again the penalized and unpenalized covariates are automatically converted to the
       # correct formula
       pars = self$param_set$get_values(tags = "predict")
-      if (length(pars$unpenalized) == 0) {
+      if (length(pars$unpenalized) == 0L) {
         penalized = formulate(rhs = task$feature_names)
       } else {
         penalized = formulate(rhs = task$feature_names[task$feature_names %nin% pars$unpenalized])
@@ -101,7 +101,7 @@ LearnerRegrPenalized = R6Class("LearnerRegrPenalized",
 
       # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
-      type = ifelse(self$predict_type == "prob", "response", "class")
+      type = if (self$predict_type == "prob") "response" else "class"
       # The penalized package does not have a 'type' argument for predict, so we
       # always get the numeric prediction:
       with_package("penalized", {
