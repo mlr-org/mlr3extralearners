@@ -180,10 +180,10 @@ print(learner$model)
 #>  parameter : tau = 0.01 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0132437929204591 
+#>  Hyperparameter : sigma =  0.0132953177658467 
 #> 
 #> Number of data points used for training : 46 
-#> Training error : 0.043165 
+#> Training error : 0.014388 
 
 
 # Make predictions for the test rows
