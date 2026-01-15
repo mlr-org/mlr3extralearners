@@ -1,4 +1,5 @@
 #' @title Regression Regularized Random Forest Learner
+#'
 #' @author awinterstetter
 #' @name mlr_learners_regr.RRF
 #'
@@ -24,30 +25,27 @@ LearnerRegrRRF = R6Class("LearnerRegrRRF",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        ntree = p_int(default = 500L, lower = 1L, tags = "train"),
-        mtry = p_int(lower = 1L, tags = "train"),
-        nodesize = p_int(lower = 1L, tags = "train"),
-        replace = p_lgl(default = TRUE, tags = "train"),
-        flagReg = p_int(default = 1L, lower = 0L, tags = "train"),
-        coefReg = p_dbl(default = 0.8, depends = quote(flagReg == 1L), tags = "train"),
-        feaIni = p_uty(
-          depends = quote(flagReg == 1L),
-          custom_check = function(x) checkmate::checkInteger(x, lower = 0, any.missing = FALSE),
-          tags = "train"),
-        corr.bias = p_lgl(default = FALSE, tags = "train"),
-        maxnodes = p_int(lower = 1L, tags = "train"),
-        importance = p_lgl(default = FALSE, tags = "train"),
-        localImp = p_lgl(default = FALSE, tags = "train"),
-        nPerm = p_int(default = 1L, lower = 1L, tags = "train"),
-        proximity = p_lgl(default = FALSE, tags = c("train", "predict")),
-        oob.prox = p_lgl(default = FALSE, tags = "train"),
-        do.trace = p_lgl(default = FALSE, tags = "train"),
-        keep.inbag = p_lgl(default = FALSE, tags = "train"),
-        keep.forest = p_lgl(default = TRUE, tags = "train"),
-        strata = p_uty(tags = "train"),
-        sampsize = p_uty(tags = "train"),
-        predict.all = p_lgl(default = FALSE, tags = "predict"),
-        nodes = p_lgl(default = FALSE, tags = "predict")
+        ntree          = p_int(default = 500L, lower = 1L, tags = "train"),
+        mtry           = p_int(lower = 1L, tags = "train"),
+        nodesize       = p_int(lower = 1L, tags = "train"),
+        replace        = p_lgl(default = TRUE, tags = "train"),
+        flagReg        = p_int(default = 1L, lower = 0L, tags = "train"),
+        coefReg        = p_dbl(default = 0.8, depends = quote(flagReg == 1L), tags = "train"),
+        feaIni         = p_uty(depends = quote(flagReg == 1L), custom_check = function(x) checkmate::checkInteger(x, lower = 0, any.missing = FALSE), tags = "train"),
+        corr.bias      = p_lgl(default = FALSE, tags = "train"),
+        maxnodes       = p_int(lower = 1L, tags = "train"),
+        importance     = p_lgl(default = FALSE, tags = "train"),
+        localImp       = p_lgl(default = FALSE, tags = "train"),
+        nPerm          = p_int(default = 1L, lower = 1L, tags = "train"),
+        proximity      = p_lgl(default = FALSE, tags = c("train", "predict")),
+        oob.prox       = p_lgl(default = FALSE, tags = "train"),
+        do.trace       = p_lgl(default = FALSE, tags = "train"),
+        keep.inbag     = p_lgl(default = FALSE, tags = "train"),
+        keep.forest    = p_lgl(default = TRUE, tags = "train"),
+        strata         = p_uty(tags = "train"),
+        sampsize       = p_uty(tags = "train"),
+        predict.all    = p_lgl(default = FALSE, tags = "predict"),
+        nodes          = p_lgl(default = FALSE, tags = "predict")
       )
 
       super$initialize(
@@ -72,8 +70,9 @@ LearnerRegrRRF = R6Class("LearnerRegrRRF",
 
       imp = self$model$importance
       if (is.null(imp)) {
-        stop("No importance available. Try setting 'importance' to TRUE.")
+        stop("No importance available. Set 'importance = TRUE' in the parameter set.")
       }
+
       imp = data.frame(imp)
       colnames(imp)[colnames(imp) == "X.IncMSE"] = "%IncMSE"
 
@@ -94,19 +93,19 @@ LearnerRegrRRF = R6Class("LearnerRegrRRF",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-      formula = task$formula()
-      data = task$data()
 
       mlr3misc::invoke(RRF::RRF,
-        formula = formula,
-        data = data,
+        formula = task$formula(),
+        data = task$data(),
         .args = pars)
     },
 
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
-      pred = mlr3misc::invoke(predict, self$model,
+
+      pred = mlr3misc::invoke(predict,
+        object = self$model,
         newdata = newdata,
         type = self$predict_type,
         .args = pars)

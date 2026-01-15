@@ -100,7 +100,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.gam.cox")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.gam.cox")) withAutoprint(\{ # examplesIf}
 # simple example
 t = tsk("lung")
 l = lrn("surv.gam.cox")
