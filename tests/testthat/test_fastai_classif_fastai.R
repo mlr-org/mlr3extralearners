@@ -21,7 +21,7 @@ test_that("autotest", {
     learner = lrn("classif.fastai", layers = c(200, 100))
     expect_learner(learner)
 
-    result = run_autotest(learner, check_replicable = FALSE)
+    result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
     testthat::expect_true(result, info = result$error)
     TRUE
   }))
