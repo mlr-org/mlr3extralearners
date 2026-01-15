@@ -142,7 +142,7 @@ LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
       p = drop(p)
       classnames = self$model$glmnet.fit[[1L]]$classnames
       if (self$predict_type == "response") {
-        response = ifelse(p <= 0.5, classnames[1L], classnames[2L])
+        response = fifelse(p <= 0.5, classnames[1L], classnames[2L])
         list(response = drop(response))
       } else {
         prob = cbind(1 - p, p)
