@@ -83,7 +83,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
       data = task$data(cols = task$feature_names)
       target = task$truth()
 
-      encoded = private$.encode_features(data)
+      encoded = encode_features(data)
 
       if (length(encoded$factor_levels)) {
         pars$basemax = encoded$basemax
