@@ -5,17 +5,15 @@
 #' @description
 #' Bayesian treed Gaussian process with jumps to the limiting linear model.
 #' Calls [tgp::btgpllm()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
-#' Factor features are one-hot encoded with reference encoding before fitting, matching the
-#' behavior of the original mlr learner. If factors are present, `basemax` is set to the number
-#' of non-factor features so that tree proposals account for the numeric part of the design.
+#' Factor features are one-hot encoded with reference encoding before fitting.
+#' If factors are present, `basemax` is set to the number of non-factor features so 
+#' that tree proposals account for the numeric part of the design.
 #'
 #' @section Initial parameter values:
-#' * `pred.n`
-#'   * Actual default: `TRUE`
-#'   * Adjusted default: `FALSE`
-#'   * Reason for change: avoids generating predictions for the original training design during
-#'     both training and prediction, mirroring the mlr implementation.
+#' * `verb` is initialized to `0` to silence printing.
+#' * `pred.n` is initialized to `FALSE` to skip prediction during training.
 #'
 #' @templateVar id regr.btgpllm
 #' @template learner
@@ -71,21 +69,15 @@ LearnerRegrBtgpllm = R6Class("LearnerRegrBtgpllm",
         m0r1 = p_lgl(default = TRUE, tags = "train"),
         linburn = p_lgl(default = FALSE, tags = "train"),
         itemps = p_uty(default = NULL, tags = "train"),
+        pred.n  = p_lgl(init = FALSE, tags = c("train", "predict")),
         krige = p_lgl(default = TRUE, tags = c("train", "predict")),
         zcov = p_lgl(default = FALSE, tags = c("train", "predict")),
         Ds2x = p_lgl(default = FALSE, tags = c("train", "predict")),
         improv = p_lgl(default = FALSE, tags = c("train", "predict")),
-        sens.p = p_uty(default = NULL, tags = c("train", "predict")),
         nu = p_dbl(default = 1.5, tags = "train", depends = corr == "matern"),
         MAP = p_lgl(default = TRUE, tags = "predict"),
         trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb = p_int(default = 1L, lower = 0L, upper = 4L, tags = c("train", "predict"))
-      )
-
-      param_set$values = list(
-        BTE = c(200, 7000, 2),
-        trace = FALSE,
-        verb = 0L
+        verb = p_int(init = 1L, lower = 0L, upper = 4L, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -112,9 +104,7 @@ LearnerRegrBtgpllm = R6Class("LearnerRegrBtgpllm",
         pars$basemax = encoded$basemax
       }
 
-      pars$pred.n = FALSE
-
-      model = mlr3misc::invoke(
+      model = invoke(
         tgp::btgpllm,
         X = encoded$data,
         Z = target,
@@ -130,12 +120,8 @@ LearnerRegrBtgpllm = R6Class("LearnerRegrBtgpllm",
     .predict = function(task) {
       pars = self$param_set$get_values(tags = "predict")
       encoded = private$.encode_features(task$data(cols = task$feature_names), self$model$factor_levels)
-      pars$pred.n = FALSE
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model$model,
         XX = encoded$data,
