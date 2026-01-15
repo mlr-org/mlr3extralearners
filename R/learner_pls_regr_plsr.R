@@ -25,14 +25,14 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        ncomp       = p_int(lower = 1L, tags = "train"),
-        method      = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train"),
-        scale       = p_lgl(default = TRUE, tags = "train"),
-        center      = p_lgl(default = TRUE, tags = "train"),
-        validation  = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
-        model       = p_lgl(default = TRUE, tags = "train"),
-        x           = p_lgl(default = FALSE, tags = "train"),
-        y           = p_lgl(default = FALSE, tags = "train")
+        ncomp      = p_int(lower = 1L, tags = "train"),
+        method     = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train"),
+        scale      = p_lgl(default = TRUE, tags = "train"),
+        center     = p_lgl(default = TRUE, tags = "train"),
+        validation = p_fct(default = "none", levels = c("none", "CV", "LOO"), tags = "train"),
+        model      = p_lgl(default = TRUE, tags = "train"),
+        x          = p_lgl(default = FALSE, tags = "train"),
+        y          = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -69,6 +69,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pred = mlr3misc::invoke(predict, self$model,
         newdata = newdata,
         type = "response",
+        comps = seq_len(self$model$ncomp),
         .args = pars)
 
       list(response = pred[, 1L])
