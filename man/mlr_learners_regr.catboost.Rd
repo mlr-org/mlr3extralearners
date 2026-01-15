@@ -141,7 +141,7 @@ For information on how to configure the validation set, see the \emph{Validation
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.catboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.catboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.catboost")
 print(learner)

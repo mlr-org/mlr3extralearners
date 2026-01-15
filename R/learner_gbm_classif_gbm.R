@@ -109,10 +109,10 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
 
       if (self$predict_type == "response") {
         if (task$properties %in% "twoclass") {
-          p = as.factor(ifelse(p > 0.5, task$positive, task$negative))
+          p = as.factor(fifelse(p > 0.5, task$positive, task$negative))
           list(response = p)
         } else {
-          ind = apply(p, 1, which.max)
+          ind = apply(p, 1L, which.max)
           cns = colnames(p)
           list(response = factor(cns[ind], levels = cns))
         }
@@ -127,7 +127,7 @@ LearnerClassifGBM = R6Class("LearnerClassifGBM",
           # return a matrix see also
           # https://stackoverflow.com/questions/58702027/
           # r-convert-array-to-matrix-with-one-row
-          p = array(c(p), dim(p)[-3], dimnames = dimnames(p)[1:2])
+          p = array(c(p), dim(p)[-3L], dimnames = dimnames(p)[1:2])
           list(prob = p)
         }
       }
