@@ -82,7 +82,7 @@ set to 1 by default.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.rfsrc")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.rfsrc")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.rfsrc", importance = "TRUE")
 print(learner)

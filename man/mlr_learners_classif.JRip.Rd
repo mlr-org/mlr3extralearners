@@ -6,7 +6,7 @@
 \title{Classification JRip Learner}
 \description{
 Repeated Incremental Pruning to Produce Error Reduction.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::JRip()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:JRip]{RWeka::JRip()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -71,7 +71,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.JRip")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.JRip")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.JRip")
 print(learner)
