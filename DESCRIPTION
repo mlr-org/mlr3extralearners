@@ -78,6 +78,7 @@ Suggests:
     fastai (>= 2.2.2),
     flexsurv (>= 2.3.2),
     FNN,
+    frbs,
     formattable,
     future,
     gbm (>= 2.2.2),
@@ -118,6 +119,7 @@ Suggests:
     rmarkdown,
     rotationForest,
     rpart,
+    RRF (>= 1.9.4.1),
     rsm,
     rvest,
     RWeka,
@@ -129,8 +131,11 @@ Suggests:
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
+    tgp,
     tensorflow (>= 2.0.0),
+    tgp,
     testthat,
+    tgp,
     xgboost (>= 3.1.2.1)
 VignetteBuilder:
     knitr,

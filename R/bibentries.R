@@ -838,6 +838,26 @@ bibentries = c( # nolint start
     doi = "10.1093/BIOSTATISTICS/KXU010",
     URL = "https://doi.org/10.1093/BIOSTATISTICS/KXU010"
   ),
+  deng2012rrf = bibentry("inproceedings",
+    title = "Feature selection via regularized trees",
+    author = "Deng, Houtao and Runger, George",
+    booktitle = "2012 International Joint Conference on Neural Networks (IJCNN)",
+    pages = "1--8",
+    year = "2012",
+    organization = "IEEE",
+    doi = "10.1109/IJCNN.2012.6252640"
+  ),
+  deng2013grrf = bibentry("article",
+    title = "Gene selection with guided regularized random forest",
+    author = "Deng, Houtao and Runger, George",
+    journal = "Pattern Recognition",
+    volume = "46",
+    number = "12",
+    pages = "3483--3489",
+    year = "2013",
+    publisher = "Elsevier",
+    doi = "10.1016/j.patcog.2013.05.021"
+  ),
   rodriguez2006rf = bibentry("article",
     author="Rodriguez, J.J. and Kuncheva, L.I. and Alonso, C.J.",
     journal="IEEE Transactions on Pattern Analysis and Machine Intelligence",
@@ -866,6 +886,26 @@ bibentries = c( # nolint start
     url = "https://CRAN.R-project.org/package=deepnet",
     doi = "10.32614/CRAN.package.deepnet"
   ),
+  gramacy2007tgp = bibentry("article",
+    title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models",
+    author = "Robert B. Gramacy",
+    journal = "Journal of Statistical Software",
+    year = "2007",
+    volume = "19",
+    number = "9",
+    pages = "1--46",
+    doi = "10.18637/jss.v019.i09"
+  ),
+  gramacy2010tgp = bibentry("article",
+    title = "Categorical Inputs, Sensitivity Analysis, Optimization and Importance Tempering with tgp Version 2, an {R} Package for Treed Gaussian Process Models",
+    author = "Robert B. Gramacy and Matthew Taddy",
+    journal = "Journal of Statistical Software",
+    year = "2010",
+    volume = "33",
+    number = "6",
+    pages = "1--48",
+    doi = "10.18637/jss.v033.i06"
+  ),
   kursa2014rferns = bibentry("article",
     title = "rFerns: An Implementation of the Random Ferns Method for General-Purpose Machine Learning",
     author = "Miron B. Kursa",
@@ -875,6 +915,16 @@ bibentries = c( # nolint start
     number = "10",
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
+  ),
+  riza2015frbs = bibentry("article",
+    title = "{frbs}: Fuzzy Rule-Based Systems for Classification and Regression in {R}",
+    author = "Lala Septem Riza and Christoph Bergmeir and Francisco Herrera and Jose Manuel Benitez",
+    journal = "Journal of Statistical Software",
+    year = "2015",
+    volume = "65",
+    number = "6",
+    pages = "1--30",
+    url = "http://www.jstatsoft.org/v65/i06/"
   ),
   gramacy2016lagp = bibentry("article",
     title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
@@ -886,4 +936,5 @@ bibentries = c( # nolint start
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
   )
+
 ) # nolint end
