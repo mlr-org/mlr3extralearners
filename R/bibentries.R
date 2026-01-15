@@ -888,6 +888,16 @@ bibentries = c( # nolint start
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
   ),
+  riza2015frbs = bibentry("article",
+    title = "{frbs}: Fuzzy Rule-Based Systems for Classification and Regression in {R}",
+    author = "Lala Septem Riza and Christoph Bergmeir and Francisco Herrera and Jose Manuel Benitez",
+    journal = "Journal of Statistical Software",
+    year = "2015",
+    volume = "65",
+    number = "6",
+    pages = "1--30",
+    url = "http://www.jstatsoft.org/v65/i06/"
+  ),
   gramacy2016lagp = bibentry("article",
     title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
     author = "Gramacy, Robert B.",
@@ -898,4 +908,5 @@ bibentries = c( # nolint start
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
   )
+
 ) # nolint end
