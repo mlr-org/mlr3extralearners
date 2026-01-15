@@ -249,6 +249,9 @@
 - [`mlr_learners_regr.bst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.md)
   [`LearnerRegrBst`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bst.md)
   : Regression Gradient Boosting Learner
+- [`mlr_learners_regr.btgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgp.md)
+  [`LearnerRegrBtgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgp.md)
+  : Regression Bayesian Treed Gaussian Process Learner
 - [`mlr_learners_regr.catboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.md)
   [`LearnerRegrCatboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.catboost.md)
   : Gradient Boosted Decision Trees Regression Learner

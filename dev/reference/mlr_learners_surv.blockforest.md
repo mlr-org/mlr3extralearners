@@ -201,23 +201,23 @@ learner = lrn("surv.blockforest", blocks = blocks,
 learner$train(task, row_ids = ids$train)
 # feature importance
 learner$importance()
-#>  revascdays      revasc         age         los    stchange       sysbp 
-#> 0.115536749 0.089984747 0.036876483 0.008184461 0.004975114 0.002609013 
+#>  revascdays      revasc         age         los       sysbp    stchange 
+#> 0.113555203 0.067798587 0.040618497 0.025714966 0.005125523 0.004791427 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
 #>  row_ids time status     crank     distr
-#>        4    5  FALSE  9.771765 <list[1]>
-#>        9  180  FALSE  8.111974 <list[1]>
-#>       15    5  FALSE 14.694836 <list[1]>
+#>        1  180  FALSE 14.771953 <list[1]>
+#>        5  180  FALSE 12.516166 <list[1]>
+#>        9  180  FALSE  7.680491 <list[1]>
 #>      ---  ---    ---       ---       ---
-#>      996   69   TRUE 65.042574 <list[1]>
-#>      997    2   TRUE 98.905087 <list[1]>
-#>      998  180  FALSE 36.447025 <list[1]>
+#>      992   26   TRUE 97.653554 <list[1]>
+#>      994    7  FALSE 86.265001 <list[1]>
+#>      997    2   TRUE 97.830893 <list[1]>
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8302649 
+#>   0.8051583 
 ```
