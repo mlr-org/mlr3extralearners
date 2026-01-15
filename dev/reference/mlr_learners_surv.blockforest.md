@@ -2,7 +2,7 @@
 
 Random survival forests for blocks of clinical and omics covariate data.
 Calls
-[`blockForest::blockfor()`](https://rdrr.io/pkg/blockForest/man/blockfor.html)
+[`blockForest::blockfor()`](https://bips-hb.github.io/blockForest/reference/blockfor.html)
 from package
 [blockForest](https://CRAN.R-project.org/package=blockForest).
 
@@ -201,23 +201,23 @@ learner = lrn("surv.blockforest", blocks = blocks,
 learner$train(task, row_ids = ids$train)
 # feature importance
 learner$importance()
-#>   revascdays       revasc          age          los     stchange        sysbp 
-#> 0.1119655098 0.0609309166 0.0386350488 0.0207985416 0.0031325883 0.0007928078 
+#>  revascdays      revasc         age         los    stchange       sysbp 
+#> 0.117332107 0.069028286 0.032875205 0.022747269 0.014939423 0.007911551 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids  time status    crank     distr
-#>        6   5.0  FALSE 41.85747 <list[1]>
-#>       10 180.0  FALSE 16.03322 <list[1]>
-#>       11 115.0   TRUE 32.22265 <list[1]>
-#>      ---   ---    ---      ---       ---
-#>      993  53.0   TRUE 76.59161 <list[1]>
-#>      995   0.5   TRUE 94.22184 <list[1]>
-#>      998 180.0  FALSE 34.43296 <list[1]>
+#>  row_ids time status      crank     distr
+#>        6    5  FALSE  42.060136 <list[1]>
+#>        7  180  FALSE   4.165594 <list[1]>
+#>        8    2  FALSE  24.638253 <list[1]>
+#>      ---  ---    ---        ---       ---
+#>      991    8   TRUE  47.244326 <list[1]>
+#>      992   26   TRUE 105.104138 <list[1]>
+#>      993   53   TRUE  89.344423 <list[1]>
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8336599 
+#>   0.8335202 
 ```

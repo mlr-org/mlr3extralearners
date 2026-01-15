@@ -222,6 +222,9 @@
 - [`mlr_learners_regr.M5Rules`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.M5Rules.md)
   [`LearnerRegrM5Rules`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.M5Rules.md)
   : Regression M5Rules Learner
+- [`mlr_learners_regr.RRF`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.RRF.md)
+  [`LearnerRegrRRF`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.RRF.md)
+  : Regression Regularized Random Forest Learner
 - [`mlr_learners_regr.abess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.md)
   [`LearnerRegrAbess`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.abess.md)
   : Regression Abess Learner
@@ -306,6 +309,9 @@
 - [`mlr_learners_regr.ksvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ksvm.md)
   [`LearnerRegrKSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.ksvm.md)
   : Regression Kernlab Support Vector Machine
+- [`mlr_learners_regr.laGP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.laGP.md)
+  [`LearnerRegrLaGP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.laGP.md)
+  : Regression Local Approximate Gaussian Process Learner
 - [`mlr_learners_regr.liblinear`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.liblinear.md)
   [`LearnerRegrLiblineaR`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.liblinear.md)
   : L2-Regularized Support Vector Regression Learner
@@ -340,6 +346,9 @@
 - [`mlr_learners_regr.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
   [`LearnerRegrPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.penalized.md)
   : Regression L1 and L2 Penalized Learner
+- [`mlr_learners_regr.plsr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.plsr.md)
+  [`LearnerRegrPlsr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.plsr.md)
+  : Partial Least Squares Regression
 - [`mlr_learners_regr.polyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
   [`LearnerRegrPoly`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.polyFit.md)
   : Polynomial Regression Learner

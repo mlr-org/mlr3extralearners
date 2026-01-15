@@ -1,7 +1,7 @@
 # BlockForest Regression Learner
 
 Random forests for blocks of clinical and omics covariate data. Calls
-[`blockForest::blockfor()`](https://rdrr.io/pkg/blockForest/man/blockfor.html)
+[`blockForest::blockfor()`](https://bips-hb.github.io/blockForest/reference/blockfor.html)
 from package
 [blockForest](https://CRAN.R-project.org/package=blockForest). The
 training model includes only the `$forest` slot, excluding the
@@ -190,25 +190,25 @@ learner = lrn("regr.blockforest", blocks = blocks,
 learner$train(task, row_ids = ids$train)
 # feature importance
 learner$importance()
-#>        cyl         wt       carb         am         hp       drat         vs 
-#> 11.4271280  6.3987396  5.1043927  4.3886770  3.6674103  1.2960704  1.1058870 
-#>       gear       disp       qsec 
-#>  0.6543439  0.5494816 -0.2092882 
+#>        cyl         am         wt       disp       gear       carb         vs 
+#> 16.7548035  6.6220082  5.2453030  4.4729153  2.6521842  1.9010675  1.1094306 
+#>       qsec       drat         hp 
+#>  0.7734589  0.5035441  0.2524368 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        1  21.0 19.28503
-#>        9  22.8 22.18148
-#>       12  16.4 16.19595
+#>        6  18.1 19.91700
+#>        8  24.4 21.92667
+#>       10  19.2 19.11576
 #>      ---   ---      ---
-#>       28  30.4 25.64026
-#>       31  15.0 17.46816
-#>       32  21.4 24.87776
+#>       24  13.3 14.71030
+#>       25  19.2 16.34721
+#>       31  15.0 17.04672
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 7.114285 
+#> 4.748674 
 ```

@@ -44,6 +44,8 @@
 
 - **Nikolai German**. Contributor.
 
+- **Alexander Winterstetter**. Contributor.
+
 ## Citation
 
 Source:
