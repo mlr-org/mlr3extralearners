@@ -878,6 +878,26 @@ bibentries = c( # nolint start
     pages = "448-461",
     doi = "10.1109/TPAMI.2009.23"
   ),
+  gramacy2007tgp = bibentry("article",
+    title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models",
+    author = "Robert B. Gramacy",
+    journal = "Journal of Statistical Software",
+    year = "2007",
+    volume = "19",
+    number = "9",
+    pages = "1--46",
+    doi = "10.18637/jss.v019.i09"
+  ),
+  gramacy2010tgp = bibentry("article",
+    title = "Categorical Inputs, Sensitivity Analysis, Optimization and Importance Tempering with tgp Version 2, an {R} Package for Treed Gaussian Process Models",
+    author = "Robert B. Gramacy and Matthew Taddy",
+    journal = "Journal of Statistical Software",
+    year = "2010",
+    volume = "33",
+    number = "6",
+    pages = "1--48",
+    doi = "10.18637/jss.v033.i06"
+  ),
   kursa2014rferns = bibentry("article",
     title = "rFerns: An Implementation of the Random Ferns Method for General-Purpose Machine Learning",
     author = "Miron B. Kursa",
@@ -898,6 +918,16 @@ bibentries = c( # nolint start
     year = "2015",
     doi = "10.18637/jss.v064.i12"
   ),
+  riza2015frbs = bibentry("article",
+    title = "{frbs}: Fuzzy Rule-Based Systems for Classification and Regression in {R}",
+    author = "Lala Septem Riza and Christoph Bergmeir and Francisco Herrera and Jose Manuel Benitez",
+    journal = "Journal of Statistical Software",
+    year = "2015",
+    volume = "65",
+    number = "6",
+    pages = "1--30",
+    url = "http://www.jstatsoft.org/v65/i06/"
+  ),
   gramacy2016lagp = bibentry("article",
     title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
     author = "Gramacy, Robert B.",
@@ -908,5 +938,6 @@ bibentries = c( # nolint start
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
   )
+
 ) # nolint end
 
