@@ -58,7 +58,7 @@ skip_if_not_installed_py = function(...) {
   # We:
   # * Don't want to run the tests locally if they are not available, as this will mean
   #   other contributors always have to download the python packages
-  # * Want to run the tests in GHA. If installation fails there, we want to notice, etcept
+  # * Want to run the tests in GHA. If installation fails there, we want to notice, except
   # * We test only suggested packages in GHA
   if (!all(available) && (!in_gha || only_suggests)) {
     skip(paste0("Python packages ", paste(pkgs[!available], collapse = ", "), " not available."))
