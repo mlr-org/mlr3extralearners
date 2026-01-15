@@ -66,7 +66,8 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
   private = list(
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      data_train = as.matrix(task$data())
+      # frbs needs the target in the last column
+      data_train = as.matrix(task$data(cols = c(task$feature_names, task$target_names) ))
 
       # remove null arguments to keep defaults
       args = discard(list(
