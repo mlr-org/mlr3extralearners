@@ -77,7 +77,7 @@ LearnerRegrBgpllm = R6Class("LearnerRegrBgpllm",
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = task$truth()
 
-      mlr3misc::invoke(
+      invoke(
         tgp::bgpllm,
         X = x,
         Z = y,
@@ -93,7 +93,7 @@ LearnerRegrBgpllm = R6Class("LearnerRegrBgpllm",
         pars$krige = TRUE
       }
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model,
         XX = newdata,

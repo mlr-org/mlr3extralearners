@@ -82,7 +82,7 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
         pars$basemax = encoded$basemax
       }
 
-      model = mlr3misc::invoke(tgp::btlm,
+      model = invoke(tgp::btlm,
         X = encoded$data,
         Z = task$truth(),
         .args = pars
@@ -120,7 +120,7 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
         pars$krige = TRUE
       }
 
-      pred = mlr3misc::invoke(predict,
+      pred = invoke(predict,
         object = self$model$model,
         XX = encoded$data,
         .args = pars

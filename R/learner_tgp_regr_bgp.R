@@ -66,7 +66,7 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       pars = self$param_set$get_values(tags = "train")
       data = as_numeric_matrix(task$data(cols = task$feature_names))
 
-      mlr3misc::invoke(tgp::bgp,
+      invoke(tgp::bgp,
         X = data,
         Z = task$truth(),
         .args = pars
@@ -81,7 +81,7 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
         pars$krige = TRUE
       }
 
-      pred = mlr3misc::invoke(predict,
+      pred = invoke(predict,
         object = self$model,
         XX = newdata,
         .args = pars

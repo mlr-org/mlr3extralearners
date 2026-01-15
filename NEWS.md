@@ -9,6 +9,11 @@
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
+  - `LearnerRegrBgp`
+  - `LearnerRegrBgpllm`
+  - `LearnerRegrBtgp`
+  - `LearnerRegrBtlm`
+
 
 ## Breaking Changes
 
