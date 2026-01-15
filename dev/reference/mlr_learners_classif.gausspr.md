@@ -172,7 +172,7 @@ print(learner$model)
 #> Problem type: classification 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0136277683097102 
+#>  Hyperparameter : sigma =  0.0109107109582106 
 #> 
 #> Number of training instances learned : 139 
 #> Train error : 0.071942446 
@@ -184,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>   0.173913 
 ```

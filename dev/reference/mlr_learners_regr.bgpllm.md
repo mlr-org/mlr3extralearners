@@ -34,23 +34,23 @@ instantiated via
 |        |           |                     |                                      |                       |
 |--------|-----------|---------------------|--------------------------------------|-----------------------|
 | Id     | Type      | Default             | Levels                               | Range                 |
-| meanfn | character | linear              | constant, linear                     | \-                    |
 | bprior | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
-| corr   | character | expsep              | exp, expsep, matern, sim             | \-                    |
-| gamma  | untyped   | c(10, 0.2, 0.7)     |                                      | \-                    |
 | BTE    | untyped   | c(2000L, 4000L, 2L) |                                      | \-                    |
-| R      | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| corr   | character | expsep              | exp, expsep, matern, sim             | \-                    |
+| Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| gamma  | untyped   | c(10, 0.2, 0.7)     |                                      | \-                    |
+| improv | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | itemps | untyped   | NULL                |                                      | \-                    |
 | krige  | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| improv | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| sens.p | untyped   | NULL                |                                      | \-                    |
+| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
 | MAP    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| meanfn | character | linear              | constant, linear                     | \-                    |
 | nu     | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
+| R      | integer   | 1                   |                                      | \\\[1, \infty)\\      |
+| sens.p | untyped   | NULL                |                                      | \-                    |
 | trace  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| verb   | integer   | 1                   |                                      | \\\[0, 4\]\\          |
+| verb   | integer   | \-                  |                                      | \\\[0, 4\]\\          |
+| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 
 ## References
 
@@ -202,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.62726 
+#> 33.99355 
 ```
