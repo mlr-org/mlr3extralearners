@@ -27,14 +27,12 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ps(
+      param_set = ps(
         start = p_int(default = 6L, lower = 6L, tags = "predict"),
-        end = p_int(default = 50L, lower = 6L, tags = "predict"), # >start? check with Marc
+        end = p_int(default = 50L, lower = 6L, tags = "predict"),
         d = p_uty(default = NULL, special_vals = list(NULL), tags = "predict"),
         g = p_uty(default = 1 / 10000, tags = "predict"),
-        method = p_fct(default = "alc",
-          levels = c("alc", "alcray", "efi", "mspe", "nn"),
-          tags = "predict"),
+        method = p_fct(default = "alc", levels = c("alc", "alcray", "efi", "mspe", "nn"), tags = "predict"),
         close = p_int(lower = 0L, tags = "predict"),
         numrays = p_int(lower = 0L, depends = method == "alcray", tags = "predict"),
         verb = p_dbl(default = 0, tags = "predict")
@@ -45,7 +43,7 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
         packages = c("mlr3extralearners", "laGP"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "se"),
-        param_set = ps,
+        param_set = param_set,
         label = "Local Approximate Gaussian Process",
         man = "mlr3extralearners::mlr_learners_regr.laGP"
       )
@@ -55,8 +53,8 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
   private = list(
     .train = function(task) {
       list(
-        X = as_numeric_matrix(task$data(cols = task$feature_names)),
-        Z = task$truth()
+        x = as_numeric_matrix(task$data(cols = task$feature_names)),
+        z = task$truth()
       )
     },
 
@@ -64,8 +62,8 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
       pars = self$param_set$get_values(tags = "predict")
       pred = invoke(
         laGP::aGP,
-        X = self$model$X,
-        Z = self$model$Z,
+        X = self$model$x,
+        Z = self$model$z,
         XX = as_numeric_matrix(ordered_features(task, self)),
         Xi.ret = FALSE,
         .args = pars
