@@ -69,7 +69,7 @@ Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.flexspline")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.flexspline")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 library(survival)
 
 # Define the task, split to train/test set

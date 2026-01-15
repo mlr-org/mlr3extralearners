@@ -83,7 +83,7 @@ the baseline hazard and compose the survival distributions from the \code{lp} pr
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.cv_coxboost")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.cv_coxboost")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 task = tsk("rats")
 task$col_roles$feature = c("litter", "rx")
 learner = lrn("surv.cv_coxboost", maxstepno = 20)

@@ -13,6 +13,7 @@ For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 
 \itemize{
 \item \code{verb} is initialized to \code{0} to silence printing.
+\item \code{pred.n} is initialized to \code{FALSE} to skip prediction during training.
 }
 }
 
@@ -48,6 +49,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    meanfn \tab character \tab linear \tab constant, linear \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sens.p \tab untyped \tab NULL \tab  \tab - \cr
@@ -58,7 +60,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.bgpllm")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.bgpllm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.bgpllm")
 print(learner)

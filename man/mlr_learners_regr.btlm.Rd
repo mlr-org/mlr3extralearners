@@ -7,6 +7,7 @@
 \description{
 Bayesian treed linear model regression.
 Calls \code{\link[tgp:btgp]{tgp::btlm()}} from \CRANpkg{tgp}.
+For the predicted mean \code{ZZ.km} and for the predicted variance \code{ZZ.ks2} are chosen.
 
 Factor features are one-hot encoded with reference encoding before fitting.
 If factors are present, \code{basemax} is set to the number of non-factor features
@@ -59,7 +60,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.btlm")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.btlm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.btlm")
 print(learner)
