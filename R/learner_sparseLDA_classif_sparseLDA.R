@@ -28,8 +28,8 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
       param_set = ps(
         lambda = p_dbl(default = 1e-6, lower = 0, tags = "train"),
         maxIte = p_int(default = 100L, lower = 0L, tags = "train"),
-        trace = p_lgl(default = FALSE, tags = "train"),
-        tol = p_dbl(default = 1e-6, lower = 0, tags = "train")
+        tol    = p_dbl(default = 1e-6, lower = 0, tags = "train")
+        trace  = p_lgl(default = FALSE, tags = "train"),
       )
 
       super$initialize(
