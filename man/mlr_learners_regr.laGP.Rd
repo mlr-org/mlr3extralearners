@@ -49,15 +49,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-<<<<<<< HEAD
 \dontshow{if (learner_is_runnable("regr.laGP")) withAutoprint(\{ # examplesIf}
-# Define the Learner
-learner = lrn("regr.laGP")
-=======
-\dontshow{if (learner_is_runnable("regr.laGP")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner (use a small neighborhood size for this task)
 learner = lrn("regr.laGP", end = 15)
->>>>>>> a236489dddcdbc448a805b2daa1bd61325b2b347
 print(learner)
 
 # Define a Task

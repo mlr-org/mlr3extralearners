@@ -117,6 +117,7 @@ Suggests:
     rmarkdown,
     rotationForest,
     rpart,
+    RRF (>= 1.9.4.1),
     rsm,
     rvest,
     RWeka,
