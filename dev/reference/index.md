@@ -234,6 +234,12 @@
 - [`mlr_learners_regr.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   [`LearnerRegrBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   : Regression BART (Bayesian Additive Regression Trees) Learner
+- [`mlr_learners_regr.bgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgp.md)
+  [`LearnerRegrBgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgp.md)
+  : Regression Bayesian Gaussian Process Learner
+- [`mlr_learners_regr.bgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgpllm.md)
+  [`LearnerRegrBgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgpllm.md)
+  : Regression Bayesian Gaussian Process LLM Learner
 - [`mlr_learners_regr.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   [`LearnerRegrBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   : BlockForest Regression Learner
