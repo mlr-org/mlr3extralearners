@@ -857,5 +857,15 @@ bibentries = c( # nolint start
     number = "10",
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
+  ),
+  gramacy2016lagp = bibentry("article",
+    title = "laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R",
+    author = "Gramacy, Robert B.",
+    journal = "Journal of Statistical Software",
+    year = "2016",
+    volume = "72",
+    number = "1",
+    pages = "1--46",
+    doi = "10.18637/jss.v072.i01"
   )
 ) # nolint end
