@@ -69,6 +69,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pred = mlr3misc::invoke(predict, self$model,
         newdata = newdata,
         type = "response",
+        # specifying comps forces that pred is a matrix
         comps = seq_len(self$model$ncomp),
         .args = pars)
 
