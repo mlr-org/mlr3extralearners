@@ -5,11 +5,11 @@
 #' @description
 #' Bayesian linear regression model.
 #' Calls [tgp::blm()] from \CRANpkg{tgp}.
+#' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:
-#' * `BTE` is initialized to `c(200, 400, 2)` to keep runtimes manageable in tests.
-#' * `pred.n` is initialized to `FALSE` to avoid computing predictions during training.
 #' * `verb` is initialized to `0` to silence printing.
+#' * `pred.n` is initialized to `FALSE` to skip prediction during training.
 #'
 #' @templateVar id regr.blm
 #' @template learner
@@ -42,19 +42,14 @@ LearnerRegrBlm = R6Class("LearnerRegrBlm",
         R = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
         m0r1 = p_lgl(default = TRUE, tags = "train"),
         itemps = p_uty(default = NULL, tags = "train"),
+        pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
         krige = p_lgl(default = TRUE, tags = c("train", "predict")),
         zcov = p_lgl(default = FALSE, tags = c("train", "predict")),
         Ds2x = p_lgl(default = FALSE, tags = c("train", "predict")),
         improv = p_lgl(default = FALSE, tags = c("train", "predict")),
-        sens.p = p_uty(default = NULL, tags = c("train", "predict")),
-        MAP = p_lgl(default = TRUE, tags = "predict"),
         trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb = p_int(default = 1L, lower = 0L, upper = 4L, tags = c("train", "predict"))
-      )
-
-      param_set$values = list(
-        BTE = c(200L, 400L, 2L),
-        verb = 0L
+        verb = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
+        MAP = p_lgl(default = TRUE, tags = "predict")
       )
 
       super$initialize(
@@ -74,12 +69,7 @@ LearnerRegrBlm = R6Class("LearnerRegrBlm",
       data = as_numeric_matrix(task$data(cols = task$feature_names))
       target = task$truth()
 
-      pars$pred.n = FALSE
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
-      }
-
-      mlr3misc::invoke(
+      invoke(
         tgp::blm,
         X = data,
         Z = target,
@@ -91,12 +81,11 @@ LearnerRegrBlm = R6Class("LearnerRegrBlm",
       pars = self$param_set$get_values(tags = "predict")
       newdata = as_numeric_matrix(ordered_features(task, self))
 
-      pars$pred.n = FALSE
-      if (!is.null(pars$BTE)) {
-        pars$BTE = as.integer(pars$BTE)
+      if (self$predict_type == "se") {
+        pars$krige = TRUE
       }
 
-      pred = mlr3misc::invoke(
+      pred = invoke(
         predict,
         self$model,
         XX = newdata,
@@ -106,9 +95,6 @@ LearnerRegrBlm = R6Class("LearnerRegrBlm",
       if (self$predict_type == "response") {
         list(response = pred$ZZ.km)
       } else {
-        if (is.null(pred$ZZ.ks2)) {
-          stop("Standard errors requested but `ZZ.ks2` was not returned; try setting `krige = TRUE`.")
-        }
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
     }

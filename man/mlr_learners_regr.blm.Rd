@@ -7,13 +7,13 @@
 \description{
 Bayesian linear regression model.
 Calls \code{\link[tgp:btgp]{tgp::blm()}} from \CRANpkg{tgp}.
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{BTE} is initialized to \code{c(200, 400, 2)} to keep runtimes manageable in tests.
-\item \code{pred.n} is initialized to \code{FALSE} to avoid computing predictions during training.
 \item \code{verb} is initialized to \code{0} to silence printing.
+\item \code{pred.n} is initialized to \code{FALSE} to skip prediction during training.
 }
 }
 
@@ -44,14 +44,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    itemps \tab untyped \tab NULL \tab  \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   sens.p \tab untyped \tab NULL \tab  \tab - \cr
-   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verb \tab integer \tab 1 \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
+   verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
+   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 
