@@ -134,6 +134,7 @@ Suggests:
     tensorflow (>= 2.0.0),
     tgp,
     testthat,
+    tgp,
     xgboost (>= 3.1.2.1)
 VignetteBuilder:
     knitr,
