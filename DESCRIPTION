@@ -27,7 +27,8 @@ Authors@R: c(
     person("Baisu", "Zhou", , "baisu.zhou@outlook.com", role = "ctb"),
     person("Marc", "Becker", , "marcbecker@posteo.de", role = "ctb",
            comment = c(ORCID = "0000-0002-8115-0400")),
-    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb")
+    person("Nikolai", "German", , "niko.german@gmail.com", role = "ctb"),
+    person("Alexander", "Winterstetter", , "alexanderwinterstetter@gmail.com", role = "ctb")
   )
 Description: Extra learners for use in mlr3.
 License: LGPL-3
@@ -86,6 +87,7 @@ Suggests:
     kernlab,
     klaR,
     knitr,
+    laGP (>= 1.5-9),
     lgr,
     LiblineaR,
     lightgbm (>= 4.5.0),
@@ -116,6 +118,7 @@ Suggests:
     rmarkdown,
     rotationForest,
     rpart,
+    RRF (>= 1.9.4.1),
     rsm,
     rvest,
     RWeka,
