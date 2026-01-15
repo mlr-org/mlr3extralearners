@@ -66,7 +66,7 @@ Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.flexreg")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.flexreg")) withAutoprint(\{ # examplesIf}
 library(survival)
 
 # Define the task, split to train/test set

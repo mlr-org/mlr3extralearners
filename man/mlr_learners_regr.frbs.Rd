@@ -30,34 +30,35 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   method.type \tab character \tab WM \tab WM, SBC, HYFIS, ANFIS, DENFIS, FS.HGD, FIR.DM, GFS.FR.MOGUL, GFS.THRIFT, GFS.LT.RS \tab - \cr
-   num.labels \tab integer \tab 7 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   type.mf \tab character \tab GAUSSIAN \tab TRIANGLE, TRAPEZOID, GAUSSIAN, SIGMOID, BELL \tab - \cr
-   type.defuz \tab character \tab WAM \tab WAM, FIRST.MAX, LAST.MAX, MEAN.MAX, COG \tab - \cr
-   type.tnorm \tab character \tab MIN \tab MIN, HAMACHER, YAGER, PRODUCT, BOUNDED \tab - \cr
-   type.snorm \tab character \tab MAX \tab MAX, HAMACHER, YAGER, PRODUCT, BOUNDED \tab - \cr
-   type.implication.func \tab character \tab ZADEH \tab DIENES_RESHER, LUKASIEWICZ, ZADEH, GOGUEN, GODEL, SHARP, MIZUMOTO, DUBOIS_PRADE, MIN \tab - \cr
-   max.iter \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   step.size \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   r.a \tab numeric \tab 0.5 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
+   alpha.heuristic \tab numeric \tab 1 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
+   d \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Dthr \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    eps.high \tab numeric \tab 0.5 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
    eps.low \tab numeric \tab 0.15 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
-   alpha.heuristic \tab numeric \tab 1 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
-   Dthr \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   d \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   persen_cross \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   max.gen \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   max.tune \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   persen_mutant \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    epsilon \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   popu.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max.gen \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max.iter \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max.tune \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   method.type \tab character \tab WM \tab WM, SBC, HYFIS, ANFIS, DENFIS, FS.HGD, FIR.DM, GFS.FR.MOGUL, GFS.THRIFT, GFS.LT.RS \tab - \cr
    mode.tuning \tab character \tab GLOBAL \tab GLOBAL, LOCAL \tab - \cr
+   num.labels \tab integer \tab 7 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   persen_cross \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   persen_mutant \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   popu.size \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   r.a \tab numeric \tab 0.5 \tab  \tab \eqn{[2.22044604925031e-16, \infty)}{[2.22044604925031e-16, Inf)} \cr
+   range.data \tab untyped \tab NULL \tab  \tab - \cr
    rule.selection \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   step.size \tab numeric \tab 0.01 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   type.defuz \tab character \tab WAM \tab WAM, FIRST.MAX, LAST.MAX, MEAN.MAX, COG \tab - \cr
+   type.implication.func \tab character \tab ZADEH \tab DIENES_RESHER, LUKASIEWICZ, ZADEH, GOGUEN, GODEL, SHARP, MIZUMOTO, DUBOIS_PRADE, MIN \tab - \cr
+   type.mf \tab character \tab GAUSSIAN \tab TRIANGLE, TRAPEZOID, GAUSSIAN, SIGMOID, BELL \tab - \cr
+   type.snorm \tab character \tab MAX \tab MAX, HAMACHER, YAGER, PRODUCT, BOUNDED \tab - \cr
+   type.tnorm \tab character \tab MIN \tab MIN, HAMACHER, YAGER, PRODUCT, BOUNDED \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.frbs")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.frbs")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.frbs")
 print(learner)

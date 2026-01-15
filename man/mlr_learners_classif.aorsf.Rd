@@ -20,7 +20,7 @@ the parameter \code{na_action}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.aorsf")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.aorsf")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.aorsf", importance = "anova")
 print(learner)
