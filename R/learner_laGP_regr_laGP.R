@@ -5,6 +5,8 @@
 #' @description
 #' Local approximate Gaussian process for regression.
 #' Calls [laGP::aGP()] from \CRANpkg{laGP}.
+#'
+#' @note
 #' Parameters `start` and `end` tune the initial and maximum neighborhood sizes
 #' used for the local GP fit, `d` can fix the length-scale parameters, `g`
 #' configures the nugget/regularization term, and `method` selects the search
@@ -15,9 +17,32 @@
 #' @templateVar id regr.laGP
 #' @template learner
 #'
+#' @references
+#' `r format_bib("gramacy2016lagp")`
+#'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @examplesIf learner_is_runnable("regr.laGP")
+#' # Define the Learner (use a small neighborhood size for this task)
+#' learner = lrn("regr.laGP", end = 15)
+#' print(learner)
+#'
+#' # Define a Task
+#' task = tsk("mtcars")
+#'
+#' # Create train and test set
+#' ids = partition(task)
+#'
+#' # Train the learner on the training ids
+#' learner$train(task, row_ids = ids$train)
+#'
+#' print(learner$model)
+#'
+#' # Make predictions for the test rows
+#' predictions = learner$predict(task, row_ids = ids$test)
+#'
+#' # Score the predictions
+#' predictions$score()
 LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
   inherit = LearnerRegr,
 
@@ -30,7 +55,7 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
       param_set = ps(
         start = p_int(default = 6L, lower = 6L, tags = "predict"),
         end = p_int(default = 50L, lower = 6L, tags = "predict"),
-        d = p_uty(default = NULL, special_vals = list(NULL), tags = "predict"),
+        d = p_uty(default = NULL, tags = "predict"),
         g = p_uty(default = 1 / 10000, tags = "predict"),
         method = p_fct(default = "alc", levels = c("alc", "alcray", "efi", "mspe", "nn"), tags = "predict"),
         close = p_int(lower = 0L, tags = "predict"),

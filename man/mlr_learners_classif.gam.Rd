@@ -6,20 +6,10 @@
 \title{Classification Generalized Additive Model Learner}
 \description{
 Generalized additive models.
-Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
+Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv} with \code{family} set to \code{binomial}.
 
-Multiclass classification is not implemented yet.
+Multilabel classification is not implemented yet.
 }
-\section{Formula}{
-
-A gam formula specific to the task at hand is required for the \code{formula}
-parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is
-provided, a fallback formula is used that will make the gam behave like a
-glm (this behavior is required for the unit tests). Only features specified
-in the formula will be used, superseding columns with col_roles "feature"
-in the task.
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -56,6 +46,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    in.out \tab untyped \tab NULL \tab  \tab - \cr
    drop.unused.levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    drop.intercept \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nei \tab untyped \tab - \tab  \tab - \cr
    nthreads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    irls.reg \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    epsilon \tab numeric \tab 1e-07 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
@@ -67,18 +58,25 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nlm \tab untyped \tab list() \tab  \tab - \cr
    optim \tab untyped \tab list() \tab  \tab - \cr
    newton \tab untyped \tab list() \tab  \tab - \cr
-   outerPIsteps \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    idLinksBases \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    scalePenalty \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    efs.lspmax \tab integer \tab 15 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    efs.tol \tab numeric \tab 0.1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    scale.est \tab character \tab fletcher \tab fletcher, pearson, deviance \tab - \cr
    edge.correct \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   nei \tab untyped \tab - \tab  \tab - \cr
    ncv.threads \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    block.size \tab integer \tab 1000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    unconditional \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
+}
+
+\section{Formula}{
+
+A gam formula specific to the task at hand is required for the \code{formula}
+parameter (see example and \code{?mgcv::formula.gam}). Beware, if no formula is provided, a fallback formula is
+used that will make the gam behave like a glm (this behavior is required
+for the unit tests). Only features specified in the formula will be used,
+superseding columns with col_roles "feature" in the task.
 }
 
 \section{Offset}{
@@ -89,7 +87,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.gam")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.gam")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # simple example
 t = tsk("spam")$filter(1:1000)
 l = lrn("classif.gam")

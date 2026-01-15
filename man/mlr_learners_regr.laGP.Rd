@@ -7,6 +7,8 @@
 \description{
 Local approximate Gaussian process for regression.
 Calls \code{\link[laGP:aGP]{laGP::aGP()}} from \CRANpkg{laGP}.
+}
+\note{
 Parameters \code{start} and \code{end} tune the initial and maximum neighborhood sizes
 used for the local GP fit, \code{d} can fix the length-scale parameters, \code{g}
 configures the nugget/regularization term, and \code{method} selects the search
@@ -47,9 +49,15 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
+<<<<<<< HEAD
 \dontshow{if (learner_is_runnable("regr.laGP")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.laGP")
+=======
+\dontshow{if (learner_is_runnable("regr.laGP")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+# Define the Learner (use a small neighborhood size for this task)
+learner = lrn("regr.laGP", end = 15)
+>>>>>>> a236489dddcdbc448a805b2daa1bd61325b2b347
 print(learner)
 
 # Define a Task
@@ -63,13 +71,18 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 
-
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 
 # Score the predictions
 predictions$score()
 \dontshow{\}) # examplesIf}
+}
+\references{
+Gramacy, B. R (2016).
+\dQuote{laGP: Large-Scale Spatial Modeling via Local Approximate Gaussian Processes in R.}
+\emph{Journal of Statistical Software}, \bold{72}(1), 1--46.
+\doi{10.18637/jss.v072.i01}.
 }
 \seealso{
 \itemize{
