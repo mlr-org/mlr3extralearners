@@ -5,6 +5,7 @@
 #' @description
 #' Bayesian treed linear model regression.
 #' Calls [tgp::btlm()] from \CRANpkg{tgp}.
+#' For the predicted mean `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
 #'
 #' Factor features are one-hot encoded with reference encoding before fitting.
 #' If factors are present, `basemax` is set to the number of non-factor features
@@ -42,6 +43,7 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
         itemps = p_uty(default = NULL, tags = "train"),
         krige  = p_lgl(default = TRUE, tags = c("train", "predict")),
         m0r1   = p_lgl(default = TRUE, tags = "train"),
+        MAP    = p_lgl(default = TRUE, tags = "predict"),
         meanfn = p_fct(default = "linear", levels = c("constant", "linear"), tags = "train"),
         pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
         R      = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
@@ -113,6 +115,11 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
         encoded$data = encoded$data[, self$model$column_names, drop = FALSE]
       }
 
+      
+      if (self$predict_type == "se") {
+        pars$krige = TRUE
+      }
+
       pred = mlr3misc::invoke(predict,
         object = self$model$model,
         XX = encoded$data,
@@ -122,9 +129,6 @@ LearnerRegrBtlm = R6Class("LearnerRegrBtlm",
       if (self$predict_type == "response") {
         list(response = pred$ZZ.km)
       } else {
-        if (is.null(pred$ZZ.ks2)) {
-          stop("Standard errors requested but `ZZ.ks2` was not returned; try setting `krige = TRUE`.")
-        }
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
     }

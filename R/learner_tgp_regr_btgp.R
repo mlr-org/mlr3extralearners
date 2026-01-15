@@ -6,9 +6,14 @@
 #' Bayesian treed Gaussian process regression model.
 #' Calls [tgp::btgp()] from \CRANpkg{tgp}.
 #' For the predicted mean `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
+#' 
+#' Factor features are one-hot encoded with reference encoding before fitting.
+#' If factors are present, `basemax` is set to the number of non-factor features
+#' so that tree proposals account for the numeric part of the design.
 #'
 #' @section Initial parameter values:
 #' * `verb` is initialized to `0` to silence printing.
+#' * `pred.n` is initialized to `FALSE` to skip prediction during training.
 #'
 #' @templateVar id regr.btgp
 #' @template learner
@@ -42,9 +47,9 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
         m0r1    = p_lgl(default = TRUE, tags = "train"),
         MAP     = p_lgl(default = TRUE, tags = "predict"),
         meanfn  = p_fct(default = "linear", levels = c("constant", "linear"), tags = "train"),
+        pred.n  = p_lgl(init = FALSE, tags = c("train", "predict")),
         nu      = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
         R       = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
-        sens.p  = p_uty(default = NULL, tags = c("train", "predict")),
         trace   = p_lgl(default = FALSE, tags = c("train", "predict")),
         tree    = p_uty(default = c(0.5, 2), tags = "train", custom_check = mlr3misc::crate({function(x) {
           if (checkmate::test_numeric(x, len = 2, any.missing = FALSE)) {
@@ -104,6 +109,10 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
           encoded$data = cbind(encoded$data, matrix(0, nrow = nrow(encoded$data), ncol = length(missing_cols), dimnames = list(NULL, missing_cols)))
         }
         encoded$data = encoded$data[, self$model$column_names, drop = FALSE]
+      }
+
+      if (self$predict_type == "se") {
+        pars$krige = TRUE
       }
 
       pred = mlr3misc::invoke(predict,

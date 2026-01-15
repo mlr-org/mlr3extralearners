@@ -7,7 +7,7 @@ test_that("regr.bgpllm train", {
     "X", # handled internally
     "Z", # handled internally
     "XX", # handled internally
-    "pred.n" # set internally
+    "sens.p" # requires tgp::sens output; not exposed in learner
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -20,7 +20,7 @@ test_that("regr.bgpllm predict", {
   exclude = c(
     "object", # handled internally
     "XX", # handled internally
-    "pred.n" # set internally
+    "sens.p" # requires tgp::sens output; not exposed in learner
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

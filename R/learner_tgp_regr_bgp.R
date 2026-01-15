@@ -9,6 +9,7 @@
 #'
 #' @section Initial parameter values:
 #' * `verb` is initialized to `0` to silence printing.
+#' * `pred.n` is initialized to `FALSE` to skip prediction during training.
 #'
 #' @templateVar id regr.bgp
 #' @template learner
@@ -41,9 +42,9 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
         m0r1   = p_lgl(default = TRUE, tags = "train"),
         MAP    = p_lgl(default = TRUE, tags = "predict"),
         meanfn = p_fct(default = "linear", levels = c("constant", "linear"), tags = "train"),
+        pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
         nu     = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
         R      = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
-        sens.p = p_uty(default = NULL, tags = c("train", "predict")),
         trace  = p_lgl(default = FALSE, tags = c("train", "predict")),
         verb   = p_int(init= 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
         zcov   = p_lgl(default = FALSE, tags = c("train", "predict"))
@@ -76,6 +77,10 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       pars = self$param_set$get_values(tags = "predict")
       newdata = as_numeric_matrix(ordered_features(task, self))
 
+      if (self$predict_type == "se") {
+        pars$krige = TRUE
+      }
+
       pred = mlr3misc::invoke(predict,
         object = self$model,
         XX = newdata,
@@ -85,9 +90,6 @@ LearnerRegrBgp = R6Class("LearnerRegrBgp",
       if (self$predict_type == "response") {
         list(response = pred$ZZ.km)
       } else {
-        if (is.null(pred$ZZ.ks2)) {
-          stop("Standard errors requested but `ZZ.ks2` was not returned; try setting `krige = TRUE`.")
-        }
         list(response = pred$ZZ.km, se = sqrt(pred$ZZ.ks2))
       }
     }

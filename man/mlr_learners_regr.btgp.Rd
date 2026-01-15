@@ -8,11 +8,16 @@
 Bayesian treed Gaussian process regression model.
 Calls \code{\link[tgp:btgp]{tgp::btgp()}} from \CRANpkg{tgp}.
 For the predicted mean \code{ZZ.km} and for the predicted variance \code{ZZ.ks2} are chosen.
+
+Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, \code{basemax} is set to the number of non-factor features
+so that tree proposals account for the numeric part of the design.
 }
 \section{Initial parameter values}{
 
 \itemize{
 \item \code{verb} is initialized to \code{0} to silence printing.
+\item \code{pred.n} is initialized to \code{FALSE} to skip prediction during training.
 }
 }
 
@@ -48,6 +53,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    meanfn \tab character \tab linear \tab constant, linear \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    sens.p \tab untyped \tab NULL \tab  \tab - \cr
@@ -59,7 +65,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.btgp")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.btgp")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.btgp")
 print(learner)
