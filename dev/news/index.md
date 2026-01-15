@@ -11,6 +11,7 @@
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
+  - `LearnerClassifNNTrain`
 
 ### Breaking Changes
 

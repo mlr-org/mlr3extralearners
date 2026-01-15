@@ -246,14 +246,34 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 163.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.027 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.5876 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.2666 [21/42.541%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	3.3761 * am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0074 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0346 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 24.7749 [11/33.687%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	disp &gt; 101.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0983 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0196 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 37.8506 [6/8.139%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	1.0845 * qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 11.4969 [4/53.076%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -264,7 +284,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.16095 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.641755 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

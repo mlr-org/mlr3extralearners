@@ -285,6 +285,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.neuralnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.neuralnet.md)
   [`LearnerClassifNeuralnet`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.neuralnet.md)
   : Classification Neural Network Learner
+- [`mlr_learners_classif.nnTrain`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.nnTrain.md)
+  [`LearnerClassifNNTrain`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.nnTrain.md)
+  : Classification Neural Network Learner
 - [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   : Classification L1 and L2 Penalized Learner
