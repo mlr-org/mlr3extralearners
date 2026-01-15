@@ -6,7 +6,7 @@
 \title{Classification Logistic Model Trees Learner}
 \description{
 Classification tree with logistic regression models at the leaves.
-Calls \code{\link[RWeka:Weka_classifier_trees]{RWeka::LMT()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:LMT]{RWeka::LMT()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -73,7 +73,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.LMT")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.LMT")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.LMT")
 print(learner)

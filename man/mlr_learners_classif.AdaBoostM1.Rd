@@ -6,7 +6,7 @@
 \title{Classification AdaBoostM1 Learner}
 \description{
 Adaptive boosting algorithm for classification.
-Calls \code{\link[RWeka:Weka_classifier_meta]{RWeka::AdaBoostM1()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:AdaBoostM1]{RWeka::AdaBoostM1()}} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 
@@ -69,7 +69,7 @@ since their ids contain irregular pattern
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.AdaBoostM1")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.AdaBoostM1")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.AdaBoostM1")
 print(learner)
