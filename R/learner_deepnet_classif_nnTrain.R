@@ -24,21 +24,19 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        initW = p_uty(tags = "train"),
-        initB = p_uty(tags = "train"),
-        hidden = p_uty(default = 10L, tags = "train", custom_check = function(x) {
-          check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
-        }),
+        activationfun        = p_fct(levels = c("sigm", "linear", "tanh"), default = "sigm", tags = "train"),
+        batchsize            = p_int(default = 100L, lower = 1L, tags = "train"),
+        hidden               = p_uty(default = 10L, tags = "train", custom_check = mlr3misc::crate({function(x) {check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)}})),
+        hidden_dropout       = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        initB                = p_uty(tags = "train"),
+        initW                = p_uty(tags = "train"),
+        learningrate         = p_dbl(default = 0.8, lower = 0, tags = "train"),
+        learningrate_scale   = p_dbl(default = 1, lower = 0, tags = "train"),
         max.number.of.layers = p_int(lower = 1L, tags = "train"),
-        activationfun = p_fct(levels = c("sigm", "linear", "tanh"), default = "sigm", tags = "train"),
-        learningrate = p_dbl(default = 0.8, lower = 0, tags = "train"),
-        momentum = p_dbl(default = 0.5, lower = 0, tags = "train"),
-        learningrate_scale = p_dbl(default = 1, lower = 0, tags = "train"),
-        numepochs = p_int(default = 3L, lower = 1L, tags = "train"),
-        batchsize = p_int(default = 100L, lower = 1L, tags = "train"),
-        output = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
-        hidden_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train")
+        momentum             = p_dbl(default = 0.5, lower = 0, tags = "train"),
+        numepochs            = p_int(default = 3L, lower = 1L, tags = "train"),
+        output               = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
+        visible_dropout      = p_dbl(default = 0, lower = 0, upper = 1, tags = "train")
       )
 
       super$initialize(
@@ -75,8 +73,7 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
         onehot[ind, i] = 1
       }
 
-      mlr3misc::invoke(
-        deepnet::nn.train,
+      mlr3misc::invoke(deepnet::nn.train,
         x = x,
         y = onehot,
         .args = pars
@@ -85,12 +82,8 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
 
     .predict = function(task) {
       newdata = data.matrix(ordered_features(task, self))
-      
-      pred = mlr3misc::invoke(
-        deepnet::nn.predict,
-        self$model,
-        newdata
-      )
+
+      pred = deepnet::nn.predict(nn = self$model, x = newdata)
       class_names = task$class_names
 
       prob = as.matrix(pred)
