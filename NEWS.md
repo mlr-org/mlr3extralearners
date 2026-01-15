@@ -5,6 +5,8 @@
 * New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
+  - `LearnerRegrPcr`
+  - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
 
 ## Breaking Changes

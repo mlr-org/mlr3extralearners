@@ -267,6 +267,16 @@ bibentries = c( # nolint start
     author = "Wood, Simon",
     year = "2012"
   ),
+  mevik_2007 = bibentry("article",
+    title = "The pls Package: Principal Component and Partial Least Squares Regression in R",
+    author = "Mevik, Bjorn-Helge and Wehrens, Ron",
+    journal = "Journal of Statistical Software",
+    year = "2007",
+    volume = "18",
+    number = "2",
+    pages = "1--24",
+    doi = "10.18637/jss.v018.i02"
+  ),
   wood2016 = bibentry("article",
     title = "Smoothing Parameter and Model Selection for General Smooth Models",
     author = "Wood, Simon N. and Pya, Natalya and Safken, Benjamin",
