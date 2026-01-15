@@ -38,7 +38,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
+      param_set = ps(
         family = p_fct(default = "gaussian", levels = c("gaussian", "poisson"), tags = "train"),
         formula = p_uty(tags = "train"),
         method = p_fct(
@@ -59,6 +59,8 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         in.out = p_uty(default = NULL, tags = "train"),
         drop.unused.levels = p_lgl(default = TRUE, tags = "train"),
         drop.intercept = p_lgl(default = FALSE, tags = "train"),
+        nei = p_uty(tags = "train"),
+        # from mgcv::gam.control()
         nthreads = p_int(default = 1L, lower = 1L, tags = c("train", "threads")),
         irls.reg = p_dbl(default = 0.0, lower = 0, tags = "train"),
         epsilon = p_dbl(default = 1e-07, lower = 0, tags = "train"),
@@ -70,16 +72,14 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         nlm = p_uty(default = list(), tags = "train"),
         optim = p_uty(default = list(), tags = "train"),
         newton = p_uty(default = list(), tags = "train"),
-        outerPIsteps = p_int(default = 0L, lower = 0L, tags = "train"),
         idLinksBases = p_lgl(default = TRUE, tags = "train"),
         scalePenalty = p_lgl(default = TRUE, tags = "train"),
         efs.lspmax = p_int(default = 15L, lower = 0L, tags = "train"),
         efs.tol = p_dbl(default = .1, lower = 0, tags = "train"),
         scale.est = p_fct(levels = c("fletcher", "pearson", "deviance"), default = "fletcher", tags = "train"),
-        nei = p_uty(tags = "train"),
         ncv.threads = p_int(default = 1, lower = 1, tags = "train"),
         edge.correct = p_lgl(default = FALSE, tags = "train"),
-        # prediction
+        # from mgcv::predict.gam()
         block.size = p_int(default = 1000L, tags = "predict"),
         unconditional = p_lgl(default = FALSE, tags = "predict")
       )
@@ -89,7 +89,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         packages = c("mlr3extralearners", "mgcv"),
         feature_types = c("logical", "integer", "numeric", "factor"),
         predict_types = c("response", "se"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("weights", "offset"),
         man = "mlr3extralearners::mlr_learners_regr.gam",
         label = "Generalized Additive Regression Model"
@@ -111,6 +111,7 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
       }
 
       if (is.null(pars$formula)) {
+        # GLM-like formula, no smooth terms
         formula = stats::as.formula(paste(
           task$target_names,
           "~",
@@ -119,11 +120,10 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
         pars$formula = formula
       }
 
-      if (length(control_pars)) {
-        control_obj = invoke(mgcv::gam.control, .args = control_pars)
-        pars = pars[!(names(pars) %in% names(control_pars))]
+      control_obj = if (length(control_pars)) {
+        invoke(mgcv::gam.control, .args = control_pars)
       } else {
-        control_obj = mgcv::gam.control()
+        mgcv::gam.control()
       }
 
       invoke(
@@ -135,13 +135,8 @@ LearnerRegrGam = R6Class("LearnerRegrGam",
     },
 
     .predict = function(task) {
-      # get parameters with tag "predict"
-
       pars = self$param_set$get_values(tags = "predict")
-
-      # get newdata and ensure same ordering in train and predict
       newdata = ordered_features(task, self)
-
       include_se = (self$predict_type == "se")
 
       preds = invoke(
