@@ -6,7 +6,7 @@
 \title{Classification Bayes Network Learner}
 \description{
 Bayes Network learning using various search algorithms.
-Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{\link[RWeka:make_Weka_classifier]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 
@@ -77,20 +77,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \section{Parameters}{
-\tabular{lllll}{
-   Id \tab Type \tab Default \tab Levels \tab Range \cr
-   subset \tab untyped \tab - \tab  \tab - \cr
-   na.action \tab untyped \tab - \tab  \tab - \cr
-   D \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   B \tab untyped \tab - \tab  \tab - \cr
-   Q \tab character \tab - \tab global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, \link{...} \tab - \cr
-   E \tab character \tab - \tab estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator \tab - \cr
-   output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   num_decimal_places \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   batch_size \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   options \tab untyped \tab NULL \tab  \tab - \cr
-}
+
+`r paste(mlr3misc::rd_info(lrn("classif.bayes_net")$param_set), collapse = "\n")`
 }
 
 \examples{

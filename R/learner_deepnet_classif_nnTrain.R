@@ -5,7 +5,6 @@
 #' Calls [deepnet::nn.train()] from \CRANpkg{deepnet}.
 #'
 #' @section Initial parameter values:
-#' - `hidden` defaults to `10`.
 #' - `output` is set to `"softmax"` for probabilistic classification.
 #'
 #' @templateVar id classif.nnTrain

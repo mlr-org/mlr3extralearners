@@ -432,6 +432,13 @@ bibentries = c( # nolint start
     year = "2018",
     publisher = "BioMed Central"
   ),
+  rong2014deepnet = bibentry("manual",
+    title = "{deepnet}: Deep Learning Toolkit in R",
+    author = "Xiao Rong",
+    year = "2014",
+    note = "R package version 0.2.1",
+    url = "https://CRAN.R-project.org/package=deepnet"
+  ),
   zhao2019dnnsurv = bibentry("article",
     title = "Dnnsurv: Deep neural networks for survival analysis using pseudo values",
     author = "Zhao, Lili and Feng, Dai",
