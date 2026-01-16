@@ -9,7 +9,6 @@
 #' This learner works with tasks that have at least two features.
 #'
 #' @section Initial parameter values:
-#' - `hidden` defaults to `10`.
 #' - `output` is set to `"softmax"` to enable class probabilities.
 #'
 #' @templateVar id classif.dbnDNN

@@ -27,25 +27,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \section{Parameters}{
-\tabular{lllll}{
-   Id \tab Type \tab Default \tab Levels \tab Range \cr
-   formula \tab untyped \tab - \tab  \tab - \cr
-   anc \tab untyped \tab - \tab  \tab - \cr
-   bhazard \tab untyped \tab - \tab  \tab - \cr
-   rtrunc \tab untyped \tab - \tab  \tab - \cr
-   dist \tab character \tab - \tab gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, \link{...} \tab - \cr
-   inits \tab untyped \tab - \tab  \tab - \cr
-   fixedpars \tab untyped \tab - \tab  \tab - \cr
-   cl \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   hessian \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   hess.control \tab untyped \tab - \tab  \tab - \cr
-   maxiter \tab integer \tab 30 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   rel.tolerance \tab numeric \tab 1e-09 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   toler.chol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   debug \tab integer \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   outer.max \tab integer \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   times \tab untyped \tab - \tab  \tab - \cr
-}
+
+`r paste(mlr3misc::rd_info(lrn("surv.flexreg")$param_set), collapse = "\n")`
 }
 
 \section{Prediction types}{
@@ -66,7 +49,7 @@ Calculated using \code{predict.flexsurvreg(type = "survival", ...)}.
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.flexreg")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.flexreg")) withAutoprint(\{ # examplesIf}
 library(survival)
 
 # Define the task, split to train/test set

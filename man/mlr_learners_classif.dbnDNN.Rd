@@ -13,7 +13,6 @@ This learner works with tasks that have at least two features.
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{hidden} defaults to \code{10}.
 \item \code{output} is set to \code{"softmax"} to enable class probabilities.
 }
 }
@@ -54,7 +53,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.dbnDNN")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.dbnDNN")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.dbnDNN")
 print(learner)

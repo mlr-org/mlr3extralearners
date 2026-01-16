@@ -82,7 +82,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.multilayer_perceptron")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.multilayer_perceptron")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.multilayer_perceptron")
 print(learner)
