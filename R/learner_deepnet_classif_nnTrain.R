@@ -5,7 +5,6 @@
 #' Calls [deepnet::nn.train()] from \CRANpkg{deepnet}.
 #'
 #' @section Initial parameter values:
-#' - `hidden` defaults to `10`.
 #' - `output` is set to `"softmax"` for probabilistic classification.
 #'
 #' @templateVar id classif.nnTrain
@@ -29,7 +28,7 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
         hidden = p_uty(default = 10L, tags = "train", custom_check = function(x) {
           check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
         }),
-        max.number.of.layers = p_int(lower = 1L, tags = "train"),
+        max_number_of_layers = p_int(lower = 1L, tags = "train"),
         activationfun = p_fct(levels = c("sigm", "linear", "tanh"), default = "sigm", tags = "train"),
         learningrate = p_dbl(default = 0.8, lower = 0, tags = "train"),
         momentum = p_dbl(default = 0.5, lower = 0, tags = "train"),
@@ -57,13 +56,13 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
 
-      if (!is.null(pars$max.number.of.layers) && !is.null(pars$hidden)) {
-        max_layers = pars$max.number.of.layers
+      if (!is.null(pars$max_number_of_layers) && !is.null(pars$hidden)) {
+        max_layers = pars$max_number_of_layers
         if (length(pars$hidden) > max_layers) {
           pars$hidden = pars$hidden[seq_len(max_layers)]
         }
       }
-      pars$max.number.of.layers = NULL
+      pars$max_number_of_layers = NULL
 
       x = data.matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())

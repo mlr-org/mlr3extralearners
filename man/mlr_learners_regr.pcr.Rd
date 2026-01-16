@@ -55,7 +55,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.pcr")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.pcr")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.pcr")
 print(learner)

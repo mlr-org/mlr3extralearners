@@ -34,7 +34,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ncomp \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    method \tab character \tab kernelpls \tab kernelpls, widekernelpls, simpls, oscorespls \tab - \cr
-   scale \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   scale \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    center \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    validation \tab character \tab none \tab none, CV, LOO \tab - \cr
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -44,7 +44,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.plsr")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.plsr")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.plsr")
 print(learner)

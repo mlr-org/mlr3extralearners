@@ -14,13 +14,6 @@ Calls \code{\link[deepnet:nn.train]{deepnet::nn.train()}} from \CRANpkg{deepnet}
 }
 }
 
-\section{Custom mlr3 parameters}{
-
-\itemize{
-\item \code{max.number.of.layers} limits the number of hidden layers passed via \code{hidden}.
-}
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -44,22 +37,22 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    initW \tab untyped \tab - \tab  \tab - \cr
    initB \tab untyped \tab - \tab  \tab - \cr
-   hidden \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   max.number.of.layers \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   hidden \tab untyped \tab 10L \tab  \tab - \cr
+   max_number_of_layers \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    activationfun \tab character \tab sigm \tab sigm, linear, tanh \tab - \cr
    learningrate \tab numeric \tab 0.8 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    momentum \tab numeric \tab 0.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    learningrate_scale \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    numepochs \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    batchsize \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   output \tab character \tab sigm \tab sigm, linear, softmax \tab - \cr
+   output \tab character \tab - \tab sigm, linear, softmax \tab - \cr
    hidden_dropout \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    visible_dropout \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("classif.nnTrain")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("classif.nnTrain")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("classif.nnTrain")
 print(learner)
