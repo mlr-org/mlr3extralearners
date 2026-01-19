@@ -20,7 +20,7 @@
 #' columns correspond to time points.
 #' Calculated using [ncvreg::predict.cv.ncvsurv()] with `type = "survival"`.
 #' By default the Kalbfleisch-Prentice estimator is used for the survival function
-#' and the time grid is defined by the unique event times in the training data.
+#' and the time grid is defined by the unique time points in the training data.
 #'
 #' @templateVar id surv.cv_ncvsurv
 #' @template learner

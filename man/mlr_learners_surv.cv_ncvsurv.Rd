@@ -24,7 +24,7 @@ Calculated using \code{\link[ncvreg:predict.ncvreg]{ncvreg::predict.cv.ncvsurv()
 columns correspond to time points.
 Calculated using \code{\link[ncvreg:predict.ncvreg]{ncvreg::predict.cv.ncvsurv()}} with \code{type = "survival"}.
 By default the Kalbfleisch-Prentice estimator is used for the survival function
-and the time grid is defined by the unique event times in the training data.
+and the time grid is defined by the unique time points in the training data.
 }
 }
 
@@ -41,7 +41,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \itemize{
 \item Task type: \dQuote{surv}
 \item Predict Types: \dQuote{crank}, \dQuote{distr}, \dQuote{lp}
-\item Feature Types: \dQuote{logical}, \dQuote{integer}, \dQuote{numeric}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}
 \item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3proba}, \CRANpkg{mlr3extralearners}, \CRANpkg{ncvreg}
 }
 }
@@ -158,10 +158,10 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvNCVsurv-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvNCVsurv-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Returns the set of selected features as reported by \code{\link[ncvreg:predict.ncvreg]{ncvreg::predict.cv.ncvsurv()}}
-with \code{type} set to \code{"vars"}.
+Returns the set of selected features which have non-zero coefficients.
+Calls the internal \code{coef.cv.ncvreg()} function.
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvNCVsurv$selected_features(lambda)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{LearnerSurvNCVsurv$selected_features(lambda = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -173,7 +173,7 @@ Custom \code{lambda}, defaults to the lambda with the minimum CV error.}
 \if{html}{\out{</div>}}
 }
 \subsection{Returns}{
-(\code{character()}) of feature names.
+(\code{character()}) vector of feature names.
 }
 }
 \if{html}{\out{<hr>}}
