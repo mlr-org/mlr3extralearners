@@ -101,6 +101,7 @@ Suggests:
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
     mvtnorm,
+    ncvreg (>= 3.16.0),
     neuralnet,
     nnet,
     partykit (>= 1.2-21),

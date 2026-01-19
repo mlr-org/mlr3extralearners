@@ -935,6 +935,17 @@ bibentries = c( # nolint start
     number = "1",
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
+  ),
+  breheny_2011 = bibentry("article",
+    title = "Coordinate descent algorithms for nonconvex penalized regression, with applications to biological feature selection",
+    author = "Patrick Breheny and Jian Huang",
+    year    = "2011",
+    journal = "Annals of Applied Statistics",
+    volume  = "5",
+    number  = "1",
+    pages   = "232--253",
+    doi     = "10.1214/10-AOAS388",
+    issn    = "1932-6157"
   )
 
 ) # nolint end
