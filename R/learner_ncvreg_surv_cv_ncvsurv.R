@@ -68,7 +68,7 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
       super$initialize(
         id = "surv.cv_ncvsurv",
         param_set = param_set,
-        feature_types = c("logical", "integer", "numeric"),
+        feature_types = c("integer", "numeric"),
         predict_types = c("crank", "lp", "distr"),
         properties = "selected_features",
         packages = c("mlr3extralearners", "ncvreg"),
@@ -78,16 +78,23 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
     },
 
     #' @description
-    #' Returns the set of selected features as reported by [ncvreg::predict.cv.ncvsurv()]
-    #' with `type` set to `"vars"`.
+    #' Returns the set of selected features which have non-zero coefficients.
+    #' Calls the internal `coef.cv.ncvreg()` function.
     #'
     #' @param lambda (`numeric(1)`)\cr
     #' Custom `lambda`, defaults to the lambda with the minimum CV error.
     #'
-    #' @return (`character()`) of feature names.
+    #' @return (`character()`) vector of feature names.
     selected_features = function(lambda = NULL) {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+
       lambda = lambda %??% self$model$lambda.min
-      predict(self$model, type = "vars", lambda = lambda)
+
+      coefs = invoke(stats::coef, self$model, lambda = lambda)
+      coefs = coefs[coefs != 0]
+      names(coefs)
     }
   ),
 
