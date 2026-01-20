@@ -2,7 +2,8 @@
 
 Bayesian treed linear model regression. Calls
 [`tgp::btlm()`](https://rdrr.io/pkg/tgp/man/btgp.html) from
-[tgp](https://CRAN.R-project.org/package=tgp).
+[tgp](https://CRAN.R-project.org/package=tgp). For the predicted mean
+`ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
 
 Factor features are one-hot encoded with reference encoding before
 fitting. If factors are present, `basemax` is set to the number of
@@ -40,20 +41,21 @@ instantiated via
 |        |           |                     |                                      |                  |
 |--------|-----------|---------------------|--------------------------------------|------------------|
 | Id     | Type      | Default             | Levels                               | Range            |
+| meanfn | character | linear              | constant, linear                     | \-               |
 | bprior | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-               |
+| tree   | untyped   | c(0.5, 2)           |                                      | \-               |
 | BTE    | untyped   | c(2000L, 7000L, 2L) |                                      | \-               |
+| R      | integer   | 1                   |                                      | \\\[1, \infty)\\ |
+| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-               |
+| itemps | untyped   | NULL                |                                      | \-               |
+| pred.n | logical   | \-                  | TRUE, FALSE                          | \-               |
+| krige  | logical   | TRUE                | TRUE, FALSE                          | \-               |
+| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-               |
 | Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-               |
 | improv | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| itemps | untyped   | NULL                |                                      | \-               |
-| krige  | logical   | TRUE                | TRUE, FALSE                          | \-               |
-| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-               |
-| meanfn | character | linear              | constant, linear                     | \-               |
-| pred.n | logical   | \-                  | TRUE, FALSE                          | \-               |
-| R      | integer   | 1                   |                                      | \\\[1, \infty)\\ |
 | trace  | logical   | FALSE               | TRUE, FALSE                          | \-               |
-| tree   | untyped   | c(0.5, 2)           |                                      | \-               |
 | verb   | integer   | \-                  |                                      | \\\[0, 4\]\\     |
-| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-               |
+| MAP    | logical   | TRUE                | TRUE, FALSE                          | \-               |
 
 ## References
 
@@ -212,5 +214,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 33.14774 
+#> 47.71193 
 ```

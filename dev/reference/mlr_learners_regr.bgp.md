@@ -9,6 +9,8 @@ ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 
 - `verb` is initialized to `0` to silence printing.
 
+- `pred.n` is initialized to `FALSE` to skip prediction during training.
+
 ## Dictionary
 
 This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
@@ -34,22 +36,22 @@ instantiated via
 |        |           |                     |                                      |                       |
 |--------|-----------|---------------------|--------------------------------------|-----------------------|
 | Id     | Type      | Default             | Levels                               | Range                 |
+| meanfn | character | linear              | constant, linear                     | \-                    |
 | bprior | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
-| BTE    | untyped   | c(1000L, 4000L, 2L) |                                      | \-                    |
 | corr   | character | expsep              | exp, expsep, matern, sim             | \-                    |
+| BTE    | untyped   | c(1000L, 4000L, 2L) |                                      | \-                    |
+| R      | integer   | 1                   |                                      | \\\[1, \infty)\\      |
+| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| itemps | untyped   | NULL                |                                      | \-                    |
+| pred.n | logical   | \-                  | TRUE, FALSE                          | \-                    |
+| krige  | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | Ds2x   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | improv | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| itemps | untyped   | NULL                |                                      | \-                    |
-| krige  | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| m0r1   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| MAP    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| meanfn | character | linear              | constant, linear                     | \-                    |
 | nu     | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
-| R      | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| sens.p | untyped   | NULL                |                                      | \-                    |
 | trace  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | verb   | integer   | \-                  |                                      | \\\[0, 4\]\\          |
-| zcov   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| MAP    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
 
 ## References
 
@@ -160,7 +162,7 @@ print(learner)
 #> 
 #> ── <LearnerRegrBgp> (regr.bgp): Bayesian Gaussian Process ──────────────────────
 #> • Model: -
-#> • Parameters: verb=0
+#> • Parameters: pred.n=FALSE, verb=0
 #> • Packages: mlr3, mlr3extralearners, and tgp
 #> • Predict Types: [response] and se
 #> • Feature Types: integer and numeric
@@ -183,9 +185,8 @@ print(learner$model)
 #> It is basically a list with the following entries:
 #> 
 #>  [1] X        n        d        Z        nn       Xsplit   BTE      R       
-#>  [9] linburn  g        dparams  itemps   bimprov  Zp.mean  Zp.km    Zp.vark 
-#> [17] Zp.q     Zp.s2    Zp.ks2   Zp.q1    Zp.med   Zp.q2    ess      gpcs    
-#> [25] response improv   parts    trees    posts    params   m0r1    
+#>  [9] linburn  g        dparams  itemps   bimprov  ess      gpcs     response
+#> [17] improv   parts    trees    posts    params   m0r1    
 #> 
 #> See ?btgp for an explanation of the individual entries.  
 #> See plot.tgp and tgp.trees for help with visualization.
@@ -201,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 23.17468 
+#> 37.04888 
 ```

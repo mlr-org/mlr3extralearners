@@ -210,47 +210,47 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V12           V11           V49           V48           V10 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.311616e-02  1.809233e-02  1.788801e-02  1.622663e-02  1.497112e-02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V36           V51           V45            V9           V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.448141e-02  1.277872e-02  8.962840e-03  8.835929e-03  6.955893e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V35           V13           V37           V44           V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5.041260e-03  4.975835e-03  4.913830e-03  4.672315e-03  3.374286e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V27           V46           V50           V55           V18 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3.248211e-03  3.031761e-03  2.767048e-03  2.736213e-03  2.465726e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V59           V23            V2           V24           V42 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  2.171559e-03  2.009527e-03  1.933539e-03  1.784847e-03  1.762408e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V5            V7            V3            V4           V56 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.758710e-03  1.756533e-03  1.607435e-03  1.603394e-03  1.488296e-03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V17           V57           V34           V33           V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.472176e-03  1.469535e-03  1.275951e-03  9.850267e-04  9.510552e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V15           V29            V1           V43            V6 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.395305e-04  9.180828e-04  8.510128e-04  8.505478e-04  7.257803e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V31           V41           V58           V38           V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7.218172e-04  5.671677e-04  3.536585e-04  3.080990e-04  1.771639e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V28           V14           V30           V19           V25 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.076832e-04  8.617157e-05 -6.037736e-05 -1.129129e-04 -2.041818e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V54           V60           V16           V39           V26 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -2.112578e-04 -2.550505e-04 -3.349696e-04 -4.815252e-04 -5.443125e-04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V40           V52           V32            V8           V20 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -7.385527e-04 -7.579063e-04 -9.034032e-04 -2.069024e-03 -2.299114e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V11           V10           V51           V13           V28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.872571e-02  1.526245e-02  1.455377e-02  1.236951e-02  1.167456e-02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V21           V12           V36           V49           V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.126872e-02  1.055352e-02  9.312208e-03  8.677789e-03  7.971452e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V16           V48           V35           V17           V55 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  6.704724e-03  6.573546e-03  5.303345e-03  4.972442e-03  4.807145e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V6           V23            V5           V14           V19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.764890e-03  4.629893e-03  4.487971e-03  4.472289e-03  3.981424e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V31            V4           V46           V47           V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  3.792406e-03  3.243830e-03  3.175860e-03  3.139502e-03  2.987846e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V37           V39           V27           V29           V43 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.983400e-03  2.902632e-03  2.811464e-03  2.719307e-03  2.718002e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V59            V9           V42           V50           V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.679378e-03  2.437538e-03  2.271908e-03  2.227784e-03  2.094504e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V7           V45           V34           V15           V32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.073811e-03  2.003521e-03  1.920032e-03  1.855774e-03  1.764083e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V41           V18           V54            V8           V26 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.724044e-03  1.528497e-03  1.340094e-03  1.282367e-03  1.120521e-03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V38           V56            V2           V33           V58 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9.402060e-04  8.164176e-04  6.547646e-04  5.514368e-04  2.261533e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V22            V3           V30           V24           V60 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000e+00 -4.483846e-05 -3.773585e-04 -4.740741e-04 -6.950540e-04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V1           V25           V40           V53           V44 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -7.235024e-04 -1.028348e-03 -1.029337e-03 -1.539819e-03 -2.544559e-03 </span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionClassif&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">69</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response    prob.M    prob.R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1     R        M 0.6108413 0.3891587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3     R        M 0.5217778 0.4782222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        4     R        R 0.4816429 0.5183571</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      199     M        M 0.8404444 0.1595556</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      200     M        M 0.7603968 0.2396032</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      202     M        M 0.8751905 0.1248095</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response    prob.M     prob.R</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        9     R        R 0.3261587 0.67384127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       15     R        M 0.5075714 0.49242857</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       17     R        R 0.4605397 0.53946032</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---       ---        ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      196     M        M 0.9457143 0.05428571</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      202     M        M 0.9308571 0.06914286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      208     M        R 0.4207302 0.57926984</span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

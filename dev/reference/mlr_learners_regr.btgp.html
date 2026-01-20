@@ -7,9 +7,15 @@
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Regression Bayesian Treed Gaussian Process Learner — mlr_learners_regr.btgp"><meta name="description" content="Bayesian treed Gaussian process regression model.
 Calls tgp::btgp() from tgp.
-For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen."><meta property="og:description" content="Bayesian treed Gaussian process regression model.
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
+Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, basemax is set to the number of non-factor features
+so that tree proposals account for the numeric part of the design."><meta property="og:description" content="Bayesian treed Gaussian process regression model.
 Calls tgp::btgp() from tgp.
-For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen."><meta name="robots" content="noindex"></head><body>
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
+Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, basemax is set to the number of non-factor features
+so that tree proposals account for the numeric part of the design."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -60,6 +66,9 @@ For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.">
     <p>Bayesian treed Gaussian process regression model.
 Calls <code><a href="https://rdrr.io/pkg/tgp/man/btgp.html" class="external-link">tgp::btgp()</a></code> from <a href="https://CRAN.R-project.org/package=tgp" class="external-link"><span class="pkg">tgp</span></a>.
 For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>ZZ.ks2</code> are chosen.</p>
+<p>Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, <code>basemax</code> is set to the number of non-factor features
+so that tree proposals account for the numeric part of the design.</p>
     </div>
 
 
@@ -68,6 +77,7 @@ For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>Z
 
 
 <ul><li><p><code>verb</code> is initialized to <code>0</code> to silence printing.</p></li>
+<li><p><code>pred.n</code> is initialized to <code>FALSE</code> to skip prediction during training.</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
@@ -88,7 +98,7 @@ For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>Z
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>bprior</td><td>character</td><td>bflat</td><td>b0, b0not, bflat, bmle, bmznot, bmzt</td><td>-</td></tr><tr><td>BTE</td><td>untyped</td><td>c(2000L, 7000L, 2L)</td><td></td><td>-</td></tr><tr><td>corr</td><td>character</td><td>expsep</td><td>exp, expsep, matern, sim</td><td>-</td></tr><tr><td>Ds2x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>improv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>itemps</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>krige</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>linburn</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>m0r1</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>MAP</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>meanfn</td><td>character</td><td>linear</td><td>constant, linear</td><td>-</td></tr><tr><td>nu</td><td>numeric</td><td>1.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>R</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>sens.p</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>tree</td><td>untyped</td><td>c(0.5, 2)</td><td></td><td>-</td></tr><tr><td>verb</td><td>integer</td><td>-</td><td></td><td>\([0, 4]\)</td></tr><tr><td>zcov</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>meanfn</td><td>character</td><td>linear</td><td>constant, linear</td><td>-</td></tr><tr><td>bprior</td><td>character</td><td>bflat</td><td>b0, b0not, bflat, bmle, bmznot, bmzt</td><td>-</td></tr><tr><td>corr</td><td>character</td><td>expsep</td><td>exp, expsep, matern, sim</td><td>-</td></tr><tr><td>tree</td><td>untyped</td><td>c(0.5, 2)</td><td></td><td>-</td></tr><tr><td>BTE</td><td>untyped</td><td>c(2000L, 7000L, 2L)</td><td></td><td>-</td></tr><tr><td>R</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>m0r1</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>linburn</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>itemps</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>pred.n</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>krige</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>zcov</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Ds2x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>improv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nu</td><td>numeric</td><td>1.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verb</td><td>integer</td><td>-</td><td></td><td>\([0, 4]\)</td></tr><tr><td>MAP</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Gramacy RB (2007).
@@ -178,7 +188,7 @@ For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>Z
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrBtgp&gt;</span><span style="font-weight: bold;"> (regr.btgp): Bayesian Treed Gaussian Process</span> <span style="color: #00BBBB;">──────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: verb=0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: pred.n=FALSE, verb=0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">tgp</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response] and se</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, and factor</span>
@@ -202,9 +212,8 @@ For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>Z
 <span class="r-out co"><span class="r-pr">#&gt;</span> It is basically a list with the following entries:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] X        n        d        Z        nn       Xsplit   BTE      R       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] linburn  g        dparams  itemps   bimprov  Zp.mean  Zp.km    Zp.vark </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [17] Zp.q     Zp.s2    Zp.ks2   Zp.q1    Zp.med   Zp.q2    ess      gpcs    </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [25] response improv   parts    trees    posts    params   m0r1    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] linburn  g        dparams  itemps   bimprov  ess      gpcs     response</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [17] improv   parts    trees    posts    params   m0r1    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> See ?btgp for an explanation of the individual entries.  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> See plot.tgp and tgp.trees for help with visualization.</span>
@@ -227,7 +236,7 @@ For the predicted mean <code>ZZ.km</code> and for the predicted variance <code>Z
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33.71941 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26.46643 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

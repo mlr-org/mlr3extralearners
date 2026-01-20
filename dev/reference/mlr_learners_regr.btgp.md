@@ -5,9 +5,16 @@ Bayesian treed Gaussian process regression model. Calls
 [tgp](https://CRAN.R-project.org/package=tgp). For the predicted mean
 `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
 
+Factor features are one-hot encoded with reference encoding before
+fitting. If factors are present, `basemax` is set to the number of
+non-factor features so that tree proposals account for the numeric part
+of the design.
+
 ## Initial parameter values
 
 - `verb` is initialized to `0` to silence printing.
+
+- `pred.n` is initialized to `FALSE` to skip prediction during training.
 
 ## Dictionary
 
@@ -34,24 +41,24 @@ instantiated via
 |         |           |                     |                                      |                       |
 |---------|-----------|---------------------|--------------------------------------|-----------------------|
 | Id      | Type      | Default             | Levels                               | Range                 |
+| meanfn  | character | linear              | constant, linear                     | \-                    |
 | bprior  | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
-| BTE     | untyped   | c(2000L, 7000L, 2L) |                                      | \-                    |
 | corr    | character | expsep              | exp, expsep, matern, sim             | \-                    |
+| tree    | untyped   | c(0.5, 2)           |                                      | \-                    |
+| BTE     | untyped   | c(2000L, 7000L, 2L) |                                      | \-                    |
+| R       | integer   | 1                   |                                      | \\\[1, \infty)\\      |
+| m0r1    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| linburn | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| itemps  | untyped   | NULL                |                                      | \-                    |
+| pred.n  | logical   | \-                  | TRUE, FALSE                          | \-                    |
+| krige   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| zcov    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | Ds2x    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | improv  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| itemps  | untyped   | NULL                |                                      | \-                    |
-| krige   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| linburn | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| m0r1    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| MAP     | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| meanfn  | character | linear              | constant, linear                     | \-                    |
 | nu      | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
-| R       | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| sens.p  | untyped   | NULL                |                                      | \-                    |
 | trace   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| tree    | untyped   | c(0.5, 2)           |                                      | \-                    |
 | verb    | integer   | \-                  |                                      | \\\[0, 4\]\\          |
-| zcov    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| MAP     | logical   | TRUE                | TRUE, FALSE                          | \-                    |
 
 ## References
 
@@ -162,7 +169,7 @@ print(learner)
 #> 
 #> ── <LearnerRegrBtgp> (regr.btgp): Bayesian Treed Gaussian Process ──────────────
 #> • Model: -
-#> • Parameters: verb=0
+#> • Parameters: pred.n=FALSE, verb=0
 #> • Packages: mlr3, mlr3extralearners, and tgp
 #> • Predict Types: [response] and se
 #> • Feature Types: integer, numeric, and factor
@@ -186,9 +193,8 @@ print(learner$model)
 #> It is basically a list with the following entries:
 #> 
 #>  [1] X        n        d        Z        nn       Xsplit   BTE      R       
-#>  [9] linburn  g        dparams  itemps   bimprov  Zp.mean  Zp.km    Zp.vark 
-#> [17] Zp.q     Zp.s2    Zp.ks2   Zp.q1    Zp.med   Zp.q2    ess      gpcs    
-#> [25] response improv   parts    trees    posts    params   m0r1    
+#>  [9] linburn  g        dparams  itemps   bimprov  ess      gpcs     response
+#> [17] improv   parts    trees    posts    params   m0r1    
 #> 
 #> See ?btgp for an explanation of the individual entries.  
 #> See plot.tgp and tgp.trees for help with visualization.
@@ -211,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 33.71941 
+#> 26.46643 
 ```
