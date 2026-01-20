@@ -10,12 +10,17 @@
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
   - `LearnerRegrFrbs`
+  - `LearnerRegrBcart`
+  - `LearnerRegrBlm`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
+  - `LearnerRegrBlm`
   - `LearnerRegrBtgp`
   - `LearnerRegrBtlm`
-  - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNNTrain`
+  - `LearnerClassifSaeDNN`
+  - `LearnerClassifSparseLDA`
 
 ## Breaking Changes
 
