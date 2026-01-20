@@ -35,6 +35,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.catboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.cforest.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ctree.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dbnDNN.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_stump.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_table.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dlda.html</loc></url>

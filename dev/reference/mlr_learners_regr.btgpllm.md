@@ -41,25 +41,25 @@ instantiated via
 |         |           |                     |                                      |                       |
 |---------|-----------|---------------------|--------------------------------------|-----------------------|
 | Id      | Type      | Default             | Levels                               | Range                 |
-| meanfn  | character | linear              | constant, linear                     | \-                    |
 | bprior  | character | bflat               | b0, b0not, bflat, bmle, bmznot, bmzt | \-                    |
 | corr    | character | expsep              | exp, expsep, matern, sim             | \-                    |
+| Ds2x    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| improv  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| itemps  | untyped   | NULL                |                                      | \-                    |
+| krige   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| linburn | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| m0r1    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| MAP     | logical   | TRUE                | TRUE, FALSE                          | \-                    |
+| meanfn  | character | linear              | constant, linear                     | \-                    |
+| nu      | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
+| pred.n  | logical   | \-                  | TRUE, FALSE                          | \-                    |
+| R       | integer   | 1                   |                                      | \\\[1, \infty)\\      |
+| trace   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
+| verb    | integer   | \-                  |                                      | \\\[0, 4\]\\          |
+| zcov    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
 | tree    | untyped   | c(0.5, 2)           |                                      | \-                    |
 | gamma   | untyped   | c(10, 0.2, 0.7)     |                                      | \-                    |
 | BTE     | untyped   | c(2000L, 7000L, 2L) |                                      | \-                    |
-| R       | integer   | 1                   |                                      | \\\[1, \infty)\\      |
-| m0r1    | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| linburn | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| itemps  | untyped   | NULL                |                                      | \-                    |
-| pred.n  | logical   | \-                  | TRUE, FALSE                          | \-                    |
-| krige   | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| zcov    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| Ds2x    | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| improv  | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| nu      | numeric   | 1.5                 |                                      | \\(-\infty, \infty)\\ |
-| MAP     | logical   | TRUE                | TRUE, FALSE                          | \-                    |
-| trace   | logical   | FALSE               | TRUE, FALSE                          | \-                    |
-| verb    | integer   | \-                  |                                      | \\\[0, 4\]\\          |
 
 ## References
 
@@ -182,15 +182,15 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 #> 
 #> burn in:
-#> r=1000 d=[0/0.865449 0/1.62761 0/1.73326 0/0.0203155 0/1.24351 0/0.939477 0.0589809 0/0.68676 0/0.762728 0/0.742239]; n=21
-#> r=2000 d=[0/0.729075 0/0.9219 0/0.436532 0/0.0211686 0/1.06372 0/1.28267 0.0547909 0/0.634479 0.483966 0/1.42794]; n=21
+#> r=1000 d=[0/0.926017 0/0.894526 0/0.718013 0.0186632 0/2.11726 0/1.51491 0/0.688492 0/1.01759 0/1.24326 0/0.779987]; n=21
+#> r=2000 d=[0/0.814724 1.24852 0.0783898 0.0107352 0.0798215 0.0709407 1.04548 0.590438 0/0.885121 1.46225]; n=21
 #> 
 #> Sampling @ nn=0 pred locs:
-#> r=1000 d=[0/0.599486 0/1.43333 0/1.03909 0/0.225077 0/1.15175 0/1.09938 0/0.719927 0.0138611 0/1.09109 0.0148817]; mh=1 n=21
-#> r=2000 d=[0.102836 1.04416 0/0.889724 0.0617445 1.45731 0.800126 0.184524 0.112312 0.591983 0.0914127]; mh=1 n=21
-#> r=3000 d=[0.0266601 0/0.99763 0.965474 0.0389575 0.547027 0/1.0054 0/0.827054 0.0663265 1.47163 0/0.822583]; mh=1 n=21
-#> r=4000 d=[0.0399052 0/0.913824 0/0.70111 0.279279 0/0.959669 0/0.619421 0.536289 0.0297568 0/0.926243 0/1.2954]; mh=1 n=21
-#> r=5000 d=[0.0116637 0.223339 0.0367976 0.0118841 0/1.56214 0/0.561514 0/0.927777 0.00898454 0/0.725431 0/0.249913]; mh=1 n=21
+#> r=1000 d=[0.0828325 0/1.13186 0.0549167 0.0429212 0.00505349 0.0956538 0/1.54086 0/0.98579 0/1.25252 0.669617]; mh=1 n=21
+#> r=2000 d=[0.00780347 0/1.01963 0.00114271 0.0140229 0.0585566 0.0284443 0.231336 0/1.05924 0.794941 0/0.942693]; mh=1 n=21
+#> r=3000 d=[0.0238402 1.00539 0.0560418 0.0343645 0.0811915 0/0.0179027 1.29266 0/1.25334 0/0.811366 0/0.825]; mh=1 n=21
+#> r=4000 d=[0/1.21139 0/1.15777 0/0.0288777 0.0731465 0.152631 0/1.24913 0/0.94649 0/1.20316 0/1.22471 0.0543032]; mh=1 n=21
+#> r=5000 d=[0/1.12628 0/0.859951 0.0150562 0.000168284 0/0.00693119 0/1.26948 0/0.0540331 0/1.3158 0/0.0233271 0/0.0636028]; mh=1 n=21
 #> Grow: 0%, 
 #> 
 
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 29.71863 
+#> 37.24268 
 ```

@@ -224,9 +224,9 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> Linear regression on cyl
+#> Linear regression on wt
 #> 
-#> -3.14 * cyl + 39.62
+#> -5.77 * wt + 39.17
 #> 
 #> Predicting 0 if attribute value is missing.
 #> 
@@ -238,5 +238,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.49597 
+#> 13.09406 
 ```

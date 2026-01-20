@@ -98,7 +98,7 @@ that tree proposals account for the numeric part of the design.</p>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>meanfn</td><td>character</td><td>linear</td><td>constant, linear</td><td>-</td></tr><tr><td>bprior</td><td>character</td><td>bflat</td><td>b0, b0not, bflat, bmle, bmznot, bmzt</td><td>-</td></tr><tr><td>corr</td><td>character</td><td>expsep</td><td>exp, expsep, matern, sim</td><td>-</td></tr><tr><td>tree</td><td>untyped</td><td>c(0.5, 2)</td><td></td><td>-</td></tr><tr><td>gamma</td><td>untyped</td><td>c(10, 0.2, 0.7)</td><td></td><td>-</td></tr><tr><td>BTE</td><td>untyped</td><td>c(2000L, 7000L, 2L)</td><td></td><td>-</td></tr><tr><td>R</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>m0r1</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>linburn</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>itemps</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>pred.n</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>krige</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>zcov</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>Ds2x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>improv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nu</td><td>numeric</td><td>1.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>MAP</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verb</td><td>integer</td><td>-</td><td></td><td>\([0, 4]\)</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>bprior</td><td>character</td><td>bflat</td><td>b0, b0not, bflat, bmle, bmznot, bmzt</td><td>-</td></tr><tr><td>corr</td><td>character</td><td>expsep</td><td>exp, expsep, matern, sim</td><td>-</td></tr><tr><td>Ds2x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>improv</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>itemps</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>krige</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>linburn</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>m0r1</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>MAP</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>meanfn</td><td>character</td><td>linear</td><td>constant, linear</td><td>-</td></tr><tr><td>nu</td><td>numeric</td><td>1.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>pred.n</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>R</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>verb</td><td>integer</td><td>-</td><td></td><td>\([0, 4]\)</td></tr><tr><td>zcov</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>tree</td><td>untyped</td><td>c(0.5, 2)</td><td></td><td>-</td></tr><tr><td>gamma</td><td>untyped</td><td>c(10, 0.2, 0.7)</td><td></td><td>-</td></tr><tr><td>BTE</td><td>untyped</td><td>c(2000L, 7000L, 2L)</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Gramacy RB (2007).
@@ -201,15 +201,15 @@ that tree proposals account for the numeric part of the design.</p>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> burn in:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0/0.865449 0/1.62761 0/1.73326 0/0.0203155 0/1.24351 0/0.939477 0.0589809 0/0.68676 0/0.762728 0/0.742239]; n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0/0.729075 0/0.9219 0/0.436532 0/0.0211686 0/1.06372 0/1.28267 0.0547909 0/0.634479 0.483966 0/1.42794]; n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0/0.926017 0/0.894526 0/0.718013 0.0186632 0/2.11726 0/1.51491 0/0.688492 0/1.01759 0/1.24326 0/0.779987]; n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0/0.814724 1.24852 0.0783898 0.0107352 0.0798215 0.0709407 1.04548 0.590438 0/0.885121 1.46225]; n=21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sampling @ nn=0 pred locs:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0/0.599486 0/1.43333 0/1.03909 0/0.225077 0/1.15175 0/1.09938 0/0.719927 0.0138611 0/1.09109 0.0148817]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0.102836 1.04416 0/0.889724 0.0617445 1.45731 0.800126 0.184524 0.112312 0.591983 0.0914127]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=3000 d=[0.0266601 0/0.99763 0.965474 0.0389575 0.547027 0/1.0054 0/0.827054 0.0663265 1.47163 0/0.822583]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=4000 d=[0.0399052 0/0.913824 0/0.70111 0.279279 0/0.959669 0/0.619421 0.536289 0.0297568 0/0.926243 0/1.2954]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=5000 d=[0.0116637 0.223339 0.0367976 0.0118841 0/1.56214 0/0.561514 0/0.927777 0.00898454 0/0.725431 0/0.249913]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0.0828325 0/1.13186 0.0549167 0.0429212 0.00505349 0.0956538 0/1.54086 0/0.98579 0/1.25252 0.669617]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0.00780347 0/1.01963 0.00114271 0.0140229 0.0585566 0.0284443 0.231336 0/1.05924 0.794941 0/0.942693]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=3000 d=[0.0238402 1.00539 0.0560418 0.0343645 0.0811915 0/0.0179027 1.29266 0/1.25334 0/0.811366 0/0.825]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=4000 d=[0/1.21139 0/1.15777 0/0.0288777 0.0731465 0.152631 0/1.24913 0/0.94649 0/1.20316 0/1.22471 0.0543032]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=5000 d=[0/1.12628 0/0.859951 0.0150562 0.000168284 0/0.00693119 0/1.26948 0/0.0540331 0/1.3158 0/0.0233271 0/0.0636028]; mh=1 n=21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Grow: 0%, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -247,7 +247,7 @@ that tree proposals account for the numeric part of the design.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29.71863 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37.24268 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

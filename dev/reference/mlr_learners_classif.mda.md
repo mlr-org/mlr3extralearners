@@ -168,13 +168,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  48.63  75.43  89.70  95.99 100.00 
+#>  52.21  74.02  85.09  95.84 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
 #> Training Misclassification Error: 0.01439 ( N = 139 )
 #> 
-#> Deviance: 7.335 
+#> Deviance: 9.093 
 
 
 # Make predictions for the test rows

@@ -68,6 +68,9 @@
 - [`mlr_learners_classif.ctree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ctree.md)
   [`LearnerClassifCTree`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.ctree.md)
   : Classification Conditional Inference Tree Learner
+- [`mlr_learners_classif.dbnDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dbnDNN.md)
+  [`LearnerClassifDbnDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.dbnDNN.md)
+  : Deep Neural Network with DBN Pretraining Learner
 - [`mlr_learners_classif.decision_stump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_stump.md)
   [`LearnerClassifDecisionStump`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.decision_stump.md)
   : Classification Decision Stump Learner
