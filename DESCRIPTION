@@ -71,6 +71,7 @@ Suggests:
     Cubist,
     curl,
     dbarts,
+    deepnet (>= 0.2.1),
     earth,
     elasticnet,
     evtree,

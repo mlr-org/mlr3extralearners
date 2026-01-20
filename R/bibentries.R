@@ -432,6 +432,13 @@ bibentries = c( # nolint start
     year = "2018",
     publisher = "BioMed Central"
   ),
+  rong2014deepnet = bibentry("manual",
+    title = "{deepnet}: Deep Learning Toolkit in R",
+    author = "Xiao Rong",
+    year = "2014",
+    note = "R package version 0.2.1",
+    url = "https://CRAN.R-project.org/package=deepnet"
+  ),
   zhao2019dnnsurv = bibentry("article",
     title = "Dnnsurv: Deep neural networks for survival analysis using pseudo values",
     author = "Zhao, Lili and Feng, Dai",
@@ -887,6 +894,14 @@ bibentries = c( # nolint start
     number = "3",
     pages = "448-461",
     doi = "10.1109/TPAMI.2009.23"
+  ),
+  rong2022deepnet = bibentry("article",
+    title = "deepnet: Deep Learning Toolkit in R",
+    author = "Rong, Xiao",
+    journal = "R package version 0.2.1",
+    year = "2022",
+    url = "https://CRAN.R-project.org/package=deepnet",
+    doi = "10.32614/CRAN.package.deepnet"
   ),
   gramacy2007tgp = bibentry("article",
     title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models",
