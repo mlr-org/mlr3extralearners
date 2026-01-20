@@ -237,6 +237,9 @@
 - [`mlr_learners_regr.bart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   [`LearnerRegrBart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bart.md)
   : Regression BART (Bayesian Additive Regression Trees) Learner
+- [`mlr_learners_regr.bcart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bcart.md)
+  [`LearnerRegrBcart`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bcart.md)
+  : Regression Bayesian CART Learner
 - [`mlr_learners_regr.bgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgp.md)
   [`LearnerRegrBgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgp.md)
   : Regression Bayesian Gaussian Process Learner
@@ -264,6 +267,9 @@
 - [`mlr_learners_regr.btgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgp.md)
   [`LearnerRegrBtgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgp.md)
   : Regression Bayesian Treed Gaussian Process Learner
+- [`mlr_learners_regr.btgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgpllm.md)
+  [`LearnerRegrBtgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btgpllm.md)
+  : Regression Bayesian Treed Gaussian Process LLM Learner
 - [`mlr_learners_regr.btlm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btlm.md)
   [`LearnerRegrBtlm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.btlm.md)
   : Regression Bayesian Treed Linear Model Learner

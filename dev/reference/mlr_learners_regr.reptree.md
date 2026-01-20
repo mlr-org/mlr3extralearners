@@ -230,14 +230,12 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> hp < 190
-#> |   disp < 107.6 : 30.53 (2/2.4) [1/25.5]
-#> |   disp >= 107.6
-#> |   |   hp < 116.5 : 21.45 (4/0.05) [4/5.59]
-#> |   |   hp >= 116.5 : 19.2 (4/0.13) [0/0]
-#> hp >= 190 : 13.02 (4/3.07) [2/5.11]
+#> wt < 2.7 : 27 (4/14.41) [2/85.66]
+#> wt >= 2.7
+#> |   hp < 212.5 : 18.65 (7/2.83) [4/14.42]
+#> |   hp >= 212.5 : 14.33 (3/0.49) [1/0.25]
 #> 
-#> Size of the tree : 7
+#> Size of the tree : 5
 
 
 # Make predictions for the test rows
@@ -246,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.443106 
+#> 13.39785 
 ```
