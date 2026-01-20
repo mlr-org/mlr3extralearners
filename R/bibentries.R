@@ -916,16 +916,6 @@ bibentries = c( # nolint start
     pages = "1--13",
     url = "https://www.jstatsoft.org/v61/i10/"
   ),
-  gramacy2007tgp = bibentry("article",
-    title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design",
-    author = "Gramacy, Robert B.",
-    journal = "Journal of Statistical Software",
-    year = "2007",
-    volume = "19",
-    number = "9",
-    pages = "1--46",
-    doi = "10.18637/jss.v019.i09"
-  ),
   riza2015frbs = bibentry("article",
     title = "{frbs}: Fuzzy Rule-Based Systems for Classification and Regression in {R}",
     author = "Lala Septem Riza and Christoph Bergmeir and Francisco Herrera and Jose Manuel Benitez",
