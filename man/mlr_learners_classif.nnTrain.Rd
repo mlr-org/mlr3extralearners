@@ -10,6 +10,7 @@ Calls \code{\link[deepnet:nn.train]{deepnet::nn.train()}} from \CRANpkg{deepnet}
 \section{Initial parameter values}{
 
 \itemize{
+\item \code{hidden} defaults to \code{10}.
 \item \code{output} is set to \code{"softmax"} for probabilistic classification.
 }
 }
