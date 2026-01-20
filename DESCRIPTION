@@ -71,7 +71,7 @@ Suggests:
     Cubist,
     curl,
     dbarts,
-    deepnet,
+    deepnet (>= 0.2.1),
     earth,
     evtree,
     ExhaustiveSearch,
