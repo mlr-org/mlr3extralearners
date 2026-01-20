@@ -32,7 +32,7 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
         initW                = p_uty(tags = "train"),
         learningrate         = p_dbl(default = 0.8, lower = 0, tags = "train"),
         learningrate_scale   = p_dbl(default = 1, lower = 0, tags = "train"),
-        max.number.of.layers = p_int(lower = 1L, tags = "train"),
+        max_number_of_layers = p_int(lower = 1L, tags = "train"),
         momentum             = p_dbl(default = 0.5, lower = 0, tags = "train"),
         numepochs            = p_int(default = 3L, lower = 1L, tags = "train"),
         output               = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
@@ -55,13 +55,13 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
 
-      if (!is.null(pars$max.number.of.layers) && !is.null(pars$hidden)) {
-        max_layers = pars$max.number.of.layers
+      if (!is.null(pars$max_number_of_layers) && !is.null(pars$hidden)) {
+        max_layers = pars$max_number_of_layers
         if (length(pars$hidden) > max_layers) {
           pars$hidden = pars$hidden[seq_len(max_layers)]
         }
       }
-      pars$max.number.of.layers = NULL
+      pars$max_number_of_layers = NULL
 
       x = data.matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())

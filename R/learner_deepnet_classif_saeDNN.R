@@ -6,6 +6,7 @@
 #' Calls [deepnet::sae.dnn.train()] from \CRANpkg{deepnet}.
 #'
 #' @section Initial parameter values:
+#' - `hidden` defaults to `10`.
 #' - `output` is set to `"softmax"` for probabilistic classification.
 #'
 #' @templateVar id classif.saeDNN
@@ -24,25 +25,18 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        activationfun = p_fct(
-          levels = c("sigm", "linear", "tanh"),
-          default = "sigm", tags = "train"),
-        batchsize = p_int(default = 100L, lower = 1L, tags = "train"),
-        hidden = p_uty(
-          default = 10L, tags = "train",
-          custom_check = mlr3misc::crate({
-            function(x) {
-              check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
-            }
-          })),
-        hidden_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        hidden = p_uty(default = 10L, tags = "train", custom_check = mlr3misc::crate({function(x) {check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)}})),
+        activationfun = p_fct(levels = c("sigm", "linear", "tanh"), default = "sigm", tags = "train"),
         learningrate = p_dbl(default = 0.8, lower = 0, tags = "train"),
-        learningrate_scale = p_dbl(default = 1, lower = 0, tags = "train"),
         momentum = p_dbl(default = 0.5, lower = 0, tags = "train"),
+        learningrate_scale = p_dbl(default = 1, lower = 0, tags = "train"),
         numepochs = p_int(default = 3L, lower = 1L, tags = "train"),
+        batchsize = p_int(default = 100L, lower = 1L, tags = "train"),
         output = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
         sae_output = p_fct(levels = c("sigm", "linear", "softmax"), default = "linear", tags = "train"),
-        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train")
+        hidden_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
+        max_number_of_layers = p_int(lower = 1L, tags = "train")
       )
 
       super$initialize(
@@ -60,6 +54,14 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
+
+      if (!is.null(pars$max_number_of_layers) && !is.null(pars$hidden)) {
+        max_layers = pars$max_number_of_layers
+        if (length(pars$hidden) > max_layers) {
+          pars$hidden = pars$hidden[seq_len(max_layers)]
+        }
+      }
+      pars$max_number_of_layers = NULL
 
       x = data.matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
