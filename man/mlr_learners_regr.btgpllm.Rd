@@ -7,21 +7,17 @@
 \description{
 Bayesian treed Gaussian process with jumps to the limiting linear model.
 Calls \code{\link[tgp:btgp]{tgp::btgpllm()}} from \CRANpkg{tgp}.
+For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 
-Factor features are one-hot encoded with reference encoding before fitting, matching the
-behavior of the original mlr learner. If factors are present, \code{basemax} is set to the number
-of non-factor features so that tree proposals account for the numeric part of the design.
+Factor features are one-hot encoded with reference encoding before fitting.
+If factors are present, \code{basemax} is set to the number of non-factor features so
+that tree proposals account for the numeric part of the design.
 }
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{pred.n}
-\itemize{
-\item Actual default: \code{TRUE}
-\item Adjusted default: \code{FALSE}
-\item Reason for change: avoids generating predictions for the original training design during
-both training and prediction, mirroring the mlr implementation.
-}
+\item \code{verb} is initialized to \code{0} to silence printing.
+\item \code{pred.n} is initialized to \code{FALSE} to skip prediction during training.
 }
 }
 
@@ -56,20 +52,20 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    linburn \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    itemps \tab untyped \tab NULL \tab  \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   sens.p \tab untyped \tab NULL \tab  \tab - \cr
    nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   verb \tab integer \tab 1 \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
    MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.btgpllm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.btgpllm")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.btgpllm")
 print(learner)
@@ -94,8 +90,8 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Gramacy, B. R (2007).
-\dQuote{tgp: An R Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design.}
+Gramacy RB (2007).
+\dQuote{tgp: An R Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models.}
 \emph{Journal of Statistical Software}, \bold{19}(9), 1--46.
 \doi{10.18637/jss.v019.i09}.
 }
