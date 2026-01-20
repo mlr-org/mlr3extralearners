@@ -35,8 +35,7 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
         output = p_fct(levels = c("sigm", "linear", "softmax"), init = "softmax", tags = "train"),
         sae_output = p_fct(levels = c("sigm", "linear", "softmax"), default = "linear", tags = "train"),
         hidden_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train"),
-        max_number_of_layers = p_int(lower = 1L, tags = "train")
+        visible_dropout = p_dbl(default = 0, lower = 0, upper = 1, tags = "train")
       )
 
       super$initialize(
@@ -54,14 +53,6 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
   private = list(
     .train = function(task) {
       pars = self$param_set$get_values(tags = "train")
-
-      if (!is.null(pars$max_number_of_layers) && !is.null(pars$hidden)) {
-        max_layers = pars$max_number_of_layers
-        if (length(pars$hidden) > max_layers) {
-          pars$hidden = pars$hidden[seq_len(max_layers)]
-        }
-      }
-      pars$max_number_of_layers = NULL
 
       x = data.matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
