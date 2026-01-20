@@ -56,7 +56,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
         quote = c("left", "right"),
         env = environment())
 
-      mlr3misc::invoke(pls::plsr,
+      invoke(pls::plsr,
         formula = formula,
         data = task$data(),
         .args = pars)
@@ -66,7 +66,7 @@ LearnerRegrPlsr = R6Class("LearnerRegrPlsr",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
 
-      pred = mlr3misc::invoke(predict, self$model,
+      pred = invoke(predict, self$model,
         newdata = newdata,
         type = "response",
         # specifying comps forces that pred is a matrix
