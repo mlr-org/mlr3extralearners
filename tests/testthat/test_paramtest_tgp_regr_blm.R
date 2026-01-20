@@ -1,11 +1,11 @@
 skip_if_not_installed("tgp")
 
-test_that("paramtest regr.btgp train", {
-  learner = lrn("regr.btgp")
-  fun = tgp::btgp
+test_that("paramtest regr.blm train", {
+  learner = lrn("regr.blm")
+  fun = tgp::blm
   exclude = c(
-    "X", # handled by mlr3
-    "Z", # handled by mlr3
+    "X", # handled via mlr3
+    "Z", # handled via mlr3
     "XX", # handled via predict
     "sens.p" # requires tgp::sens output; not exposed in learner
   )
@@ -13,12 +13,13 @@ test_that("paramtest regr.btgp train", {
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest regr.btgp predict", {
-  learner = lrn("regr.btgp")
+test_that("paramtest regr.blm predict", {
+  learner = lrn("regr.blm")
   fun = tgp:::predict.tgp # nolint
   exclude = c(
-    "object", # mlr3
-    "XX", # mlr3
+    "object", # handled via mlr3
+    "XX", # handled via mlr3
+    "pred.n", # set internally
     "sens.p" # requires tgp::sens output; not exposed in learner
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
