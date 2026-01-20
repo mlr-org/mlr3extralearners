@@ -13,6 +13,7 @@ For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 
 \itemize{
 \item \code{verb} is initialized to \code{0} to silence printing.
+\item \code{pred.n} is initialized to \code{FALSE} to skip prediction during training.
 }
 }
 
@@ -37,23 +38,23 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
-   BTE \tab untyped \tab c(2000L, 4000L, 2L) \tab  \tab - \cr
-   corr \tab character \tab expsep \tab exp, expsep, matern, sim \tab - \cr
-   Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   gamma \tab untyped \tab c(10, 0.2, 0.7) \tab  \tab - \cr
-   improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   itemps \tab untyped \tab NULL \tab  \tab - \cr
-   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    meanfn \tab character \tab linear \tab constant, linear \tab - \cr
-   nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
+   corr \tab character \tab expsep \tab exp, expsep, matern, sim \tab - \cr
+   gamma \tab untyped \tab c(10, 0.2, 0.7) \tab  \tab - \cr
+   BTE \tab untyped \tab c(2000L, 4000L, 2L) \tab  \tab - \cr
    R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   sens.p \tab untyped \tab NULL \tab  \tab - \cr
+   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   itemps \tab untyped \tab NULL \tab  \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   nu \tab numeric \tab 1.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
-   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 

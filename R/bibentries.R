@@ -878,6 +878,14 @@ bibentries = c( # nolint start
     pages = "448-461",
     doi = "10.1109/TPAMI.2009.23"
   ),
+  rong2022deepnet = bibentry("article",
+    title = "deepnet: Deep Learning Toolkit in R",
+    author = "Rong, Xiao",
+    journal = "R package version 0.2.1",
+    year = "2022",
+    url = "https://CRAN.R-project.org/package=deepnet",
+    doi = "10.32614/CRAN.package.deepnet"
+  ),
   gramacy2007tgp = bibentry("article",
     title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models",
     author = "Robert B. Gramacy",
