@@ -243,6 +243,9 @@
 - [`mlr_learners_regr.bgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgpllm.md)
   [`LearnerRegrBgpllm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.bgpllm.md)
   : Regression Bayesian Gaussian Process LLM Learner
+- [`mlr_learners_regr.blm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blm.md)
+  [`LearnerRegrBlm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blm.md)
+  : Regression Bayesian Linear Model Learner
 - [`mlr_learners_regr.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   [`LearnerRegrBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   : BlockForest Regression Learner
