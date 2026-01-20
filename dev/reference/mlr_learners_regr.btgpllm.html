@@ -201,15 +201,15 @@ that tree proposals account for the numeric part of the design.</p>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> burn in:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0/0.926017 0/0.894526 0/0.718013 0.0186632 0/2.11726 0/1.51491 0/0.688492 0/1.01759 0/1.24326 0/0.779987]; n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0/0.814724 1.24852 0.0783898 0.0107352 0.0798215 0.0709407 1.04548 0.590438 0/0.885121 1.46225]; n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0]; n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0.849002 0.525533 0/0.969786 0/1.2705 0/1.22752 0/1.01139 0.0113964 0.00397031 0.333594 0/1.0287]; n=21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Sampling @ nn=0 pred locs:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0.0828325 0/1.13186 0.0549167 0.0429212 0.00505349 0.0956538 0/1.54086 0/0.98579 0/1.25252 0.669617]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0.00780347 0/1.01963 0.00114271 0.0140229 0.0585566 0.0284443 0.231336 0/1.05924 0.794941 0/0.942693]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=3000 d=[0.0238402 1.00539 0.0560418 0.0343645 0.0811915 0/0.0179027 1.29266 0/1.25334 0/0.811366 0/0.825]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=4000 d=[0/1.21139 0/1.15777 0/0.0288777 0.0731465 0.152631 0/1.24913 0/0.94649 0/1.20316 0/1.22471 0.0543032]; mh=1 n=21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> r=5000 d=[0/1.12628 0/0.859951 0.0150562 0.000168284 0/0.00693119 0/1.26948 0/0.0540331 0/1.3158 0/0.0233271 0/0.0636028]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=1000 d=[0/0.0177524 0/0.680348 0/1.03716 0/1.45086 0.00675168 0/0.547828 0.0143214 0.00385906 0/1.06324 0/1.02992]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=2000 d=[0.0335434 0/0.697317 0/0.860667 0/0.693064 0/0.0876545 0/0.965634 0.0188247 0.102813 0/0.994102 0/0.960575]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=3000 d=[0.0276927 1.19788 0/0.575291 0.543014 0/0.0640097 0/1.31041 0.11387 0.0179989 0/0.825597 0/1.41869]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=4000 d=[0.0516258 0/1.29506 0.907597 1.00107 0.0780943 0.588078 0.00507177 0.00583913 0/0.738578 0/0.82561]; mh=1 n=21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> r=5000 d=[0.131392 0/0.879914 0/1.11056 0/1.07185 0/0.0275785 0/0.79626 0/0.0960077 0/0.0870721 0/0.0553967 0/0.921344]; mh=1 n=21</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Grow: 0%, </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -247,7 +247,7 @@ that tree proposals account for the numeric part of the design.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37.24268 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.59189 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

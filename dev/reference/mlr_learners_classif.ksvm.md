@@ -171,11 +171,11 @@ print(learner$model)
 #>  parameter : cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0138248094913761 
+#>  Hyperparameter : sigma =  0.0115684760502424 
 #> 
-#> Number of Support Vectors : 106 
+#> Number of Support Vectors : 107 
 #> 
-#> Objective Function Value : -56.9332 
+#> Objective Function Value : -61.5461 
 #> Training error : 0.035971 
 
 

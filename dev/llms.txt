@@ -339,6 +339,9 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.smo`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.smo.md)
   [`LearnerClassifSMO`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.smo.md)
   : Classification Support Vector Machine Learner
+- [`mlr_learners_classif.sparseLDA`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sparseLDA.md)
+  [`LearnerClassifSparseLDA`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sparseLDA.md)
+  : Sparse Discriminant Analysis
 - [`mlr_learners_classif.stepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
   [`LearnerClassifStepPlr`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.stepPlr.md)
   : Classification Logistic Regression Learner
