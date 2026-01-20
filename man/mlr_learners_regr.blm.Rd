@@ -38,25 +38,25 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
    bprior \tab character \tab bflat \tab b0, b0not, bflat, bmle, bmznot, bmzt \tab - \cr
-   BTE \tab untyped \tab c(1000L, 4000L, 3L) \tab  \tab - \cr
-   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   itemps \tab untyped \tab NULL \tab  \tab - \cr
-   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
-   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    Ds2x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    improv \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   itemps \tab untyped \tab NULL \tab  \tab - \cr
+   krige \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   m0r1 \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   meanfn \tab character \tab linear \tab constant, linear \tab - \cr
+   pred.n \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   R \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    verb \tab integer \tab - \tab  \tab \eqn{[0, 4]}{[0, 4]} \cr
-   MAP \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   zcov \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   BTE \tab untyped \tab c(1000L, 4000L, 3L) \tab  \tab - \cr
 }
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("regr.blm")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("regr.blm")) withAutoprint(\{ # examplesIf}
 # Define the Learner
 learner = lrn("regr.blm")
 print(learner)
