@@ -32,7 +32,17 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
     initialize = function() {
       param_set = ps(
         bprior = p_fct(default = "bflat", levels = c("b0", "b0not", "bflat", "bmle", "bmznot", "bmzt"), tags = "train"),
-        tree = p_uty(default = c(0.5, 2), tags = "train", custom_check = function(x) {
+        Ds2x   = p_lgl(default = FALSE, tags = c("train", "predict")),
+        improv = p_lgl(default = FALSE, tags = c("train", "predict")),
+        itemps = p_uty(default = NULL, tags = "train"),
+        krige  = p_lgl(default = TRUE, tags = c("train", "predict")),
+        m0r1   = p_lgl(default = TRUE, tags = "train"),
+        pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
+        R      = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
+        trace  = p_lgl(default = FALSE, tags = c("train", "predict")),
+        verb   = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
+        zcov   = p_lgl(default = FALSE, tags = c("train", "predict")),
+        tree   = p_uty(default = c(0.5, 2), tags = "train", custom_check = function(x) {
           if (checkmate::test_numeric(x, len = 2, any.missing = FALSE)) {
             if (x[1] >= 0 && x[1] <= 1 && x[2] >= 0) {
               return(TRUE)
@@ -40,7 +50,7 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
           }
           "tree must be numeric length 2 with first element in [0, 1] and second >= 0"
         }),
-        BTE = p_uty(
+        BTE    = p_uty(
           default = c(2000L, 7000L, 2L),
           tags = c("train", "predict"),
           custom_check = mlr3misc::crate(function(x) {
@@ -49,17 +59,7 @@ LearnerRegrBcart = R6Class("LearnerRegrBcart",
             }
             TRUE
           })
-        ),
-        R = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
-        m0r1 = p_lgl(default = TRUE, tags = "train"),
-        itemps = p_uty(default = NULL, tags = "train"),
-        pred.n = p_lgl(init = FALSE, tags = c("train", "predict")),
-        krige = p_lgl(default = TRUE, tags = c("train", "predict")),
-        zcov = p_lgl(default = FALSE, tags = c("train", "predict")),
-        Ds2x = p_lgl(default = FALSE, tags = c("train", "predict")),
-        improv = p_lgl(default = FALSE, tags = c("train", "predict")),
-        trace = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict"))
+        )
       )
 
       super$initialize(
