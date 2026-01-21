@@ -132,7 +132,7 @@ Suggests:
     sparsediscrim,
     stats,
     stepPlr,
-    survdnn,
+    survdnn (>= 0.7.5),
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
