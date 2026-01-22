@@ -169,7 +169,7 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 9
 #>    N predictors per node: 3
-#>  Average leaves per tree: 3.258
+#>  Average leaves per tree: 2.896
 #> Min observations in leaf: 5
 #>           OOB stat value: 0.99
 #>            OOB stat type: AUC-ROC
@@ -177,10 +177,10 @@ print(learner$model)
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>     bare_nuclei    cl_thickness      cell_shape       cell_size     bl_cromatin 
-#>       0.5061275       0.4651741       0.4534091       0.4285714       0.4090323 
+#>     bare_nuclei    cl_thickness      cell_shape     bl_cromatin       cell_size 
+#>       0.6135057       0.5246827       0.5145228       0.4585153       0.4499253 
 #>   marg_adhesion normal_nucleoli    epith_c_size         mitoses 
-#>       0.3835458       0.3401937       0.2719512       0.2375000 
+#>       0.4206128       0.3770718       0.3374827       0.1652470 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -188,5 +188,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#> 0.01777778 
+#> 0.03111111 
 ```
