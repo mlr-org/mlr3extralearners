@@ -5,7 +5,7 @@
 #' @importFrom mlr3 mlr_learners LearnerClassif LearnerRegr lrn lrns marshal_model unmarshal_model assert_validate learner_marshal learner_unmarshal learner_marshaled
 #' @importFrom mlr3cmprsk LearnerCompRisks
 #' @importFrom stats predict na.omit setNames formula as.formula qnorm
-#' @importFrom data.table := fifelse
+#' @importFrom data.table :=
 #' @importFrom methods formalArgs getMethod
 #' @importFrom utils getFromNamespace packageVersion capture.output
 #' @importFrom withr local_seed

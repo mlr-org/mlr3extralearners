@@ -3,17 +3,28 @@ skip_if_not_installed("mgcv")
 test_that("classif.gam train", {
   learner = lrn("classif.gam")
   fun_list = list(mgcv::gam, mgcv::gam.control)
+
   exclude = c(
-    "family", # we support only binomial
+    "outerPIsteps", # weird errors in rcmdcheck (different result on devel and release)
+    "family", # handled relatively to type of task
     "data", # handled internally
     "weights", # handled internally
     "subset", # handled internally
     "na.action", # handled internally
-    "offset", # handled by mlr3
     "control", # handled via "train" parameters
     "fit", # A model should be fitted
     "discrete", # experimental, should not be modified
-    "keepData" # no need to keep the data, as the model frame is kept either way
+    "keepData", # handled internally
+    "object", # handled internally
+    "newdata", # handled internally
+    "type", # handled internally
+    "newdata.guaranteed", # handled internally
+    "na.action", # handled internally
+    "se.fit", # not supported for classification
+    "terms", # not relevant for predict type "prob" or "response"
+    "exclude", # not relevant for predict type "prob" or "response"
+    "iterms.type", # not relevant for predict type "prob" or "response"
+    "offset" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
@@ -23,16 +34,26 @@ test_that("classif.gam train", {
 test_that("classif.gam predict", {
   learner = lrn("classif.gam")
   fun_list = list(mgcv::predict.gam)
+
   exclude = c(
+    "family", # handled relatively to type of task
+    "data", # handled internally
+    "weights", # handled internally
+    "subset", # handled internally
+    "na.action", # handled internally
+    "control", # handled via "train" parameters
+    "fit", # A model should be fitted
+    "discrete", # experimental, should not be modified
+    "keepData", # handled internally
     "object", # handled internally
     "newdata", # handled internally
     "type", # handled internally
-    "se.fit", # handled internally
-    "terms", # not relevant
-    "exclude", # not relevant
     "newdata.guaranteed", # handled internally
     "na.action", # handled internally
-    "iterms.type" # not relevant
+    "se.fit", # not supported for classification
+    "terms", # not relevant for predict type "prob" or "response"
+    "exclude", # not relevant for predict type "prob" or "response"
+    "iterms.type" # not relevant for predict type "prob" or "response"
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "predict")

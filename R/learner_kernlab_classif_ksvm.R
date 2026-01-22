@@ -98,7 +98,8 @@ LearnerClassifKSVM = R6Class("LearnerClassifKSVM",
       newdata = ordered_features(task, self)
       pars = self$param_set$get_values(tags = "predict")
 
-      predict_type = if (self$predict_type == "prob") "probabilities" else "response"
+      predict_type = ifelse(self$predict_type == "prob",
+        "probabilities", "response")
       p = invoke(kernlab::predict, self$model,
         newdata = newdata,
         type = predict_type,

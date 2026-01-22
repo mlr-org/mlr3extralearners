@@ -184,7 +184,6 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
         iter = xgboost::xgb.get.num.boosted.rounds(self$model)
       }
       log = attributes(self$model)$evaluation_log
-      patterns = NULL # silence data.table note
       as.list(log[
         iter,
         set_names(get(".SD"), gsub("^test_", "", colnames(get(".SD")))),
