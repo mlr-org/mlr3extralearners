@@ -7,7 +7,7 @@ test_that("paramtest regr.bgp train", {
     "X", # handled by mlr3
     "Z", # handled by mlr3
     "XX", # handled via predict
-    "pred.n" # set internally to avoid in-sample predictions during training
+    "sens.p" # requires tgp::sens output; not exposed in learner
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
@@ -19,7 +19,7 @@ test_that("paramtest regr.bgp predict", {
   exclude = c(
     "object", # handled by mlr3
     "XX", # handled by mlr3
-    "pred.n" # set internally
+    "sens.p" # requires tgp::sens output; not exposed in learner
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
   expect_paramtest(paramtest)

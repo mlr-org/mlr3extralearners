@@ -62,7 +62,7 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$model$record_evals$test, c("rmse"))
+  expect_named(learner$model$record_evals$test, "rmse")
   expect_list(learner$internal_valid_scores, types = "numeric")
   expect_equal(names(learner$internal_valid_scores), "rmse")
 
@@ -84,9 +84,9 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$model$record_evals$test, c("rmse"))
+  expect_named(learner$model$record_evals$test, "rmse")
   expect_list(learner$internal_valid_scores, types = "numeric")
-  expect_equal(names(learner$internal_valid_scores), c("rmse"))
+  expect_equal(names(learner$internal_valid_scores), "rmse")
 
 
   # mlr3 measure
@@ -101,9 +101,9 @@ test_that("custom inner validation measure", {
 
   learner$train(task)
 
-  expect_named(learner$model$record_evals$test, c("regr.rmse"))
+  expect_named(learner$model$record_evals$test, "regr.rmse")
   expect_list(learner$internal_valid_scores, types = "numeric")
-  expect_equal(names(learner$internal_valid_scores), c("regr.rmse"))
+  expect_equal(names(learner$internal_valid_scores), "regr.rmse")
 
   # multiple measures
   task = tsk("mtcars")

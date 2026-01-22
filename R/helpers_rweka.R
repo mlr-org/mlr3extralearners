@@ -29,17 +29,17 @@ rweka_train = function(data, formula, pars, weka_learner, nested_pars = NULL) {
     if (any(ind)) {
       arg_names_extra = arg_names[ind]
       ctrl[[par]] = c(list(ctrl[[par]]), pars_extra[which(names(pars_extra) %in% arg_names_extra)])
-      names(ctrl[[par]]) = c("", gsub(suffix, replacement = "", x = arg_names_extra))
+      names(ctrl[[par]]) = c("", gsub(suffix, "", arg_names_extra))
     }
   }
   # add I or F params to control if there is weight param in IBk
-  if (grepl("IBk", capture.output(weka_learner)[1])) {
-    if (length(pars_extra) > 0 && grepl("weight", names(pars_extra))) {
+  if (grepl("IBk", capture.output(weka_learner)[1], fixed = TRUE)) {
+    if (length(pars_extra) > 0 && grepl("weight", names(pars_extra), fixed = TRUE)) {
       ctrl[[pars$weight]] = TRUE
     }
   }
   if (length(ctrl) > 0L) {
-    names(ctrl) = gsub("_", replacement = "-", x = names(ctrl))
+    names(ctrl) = gsub("_", "-", names(ctrl), fixed = TRUE)
     ctrl = invoke(RWeka::Weka_control, .args = ctrl)
   }
 
@@ -54,7 +54,7 @@ rweka_predict = function(newdata, pars, predict_type, model) {
     p = invoke(predict, model, newdata = newdata, type = "prob", .args = pars)
   }
   retval[[predict_type]] = p
-  return(retval)
+  retval
 }
 
 #' @export

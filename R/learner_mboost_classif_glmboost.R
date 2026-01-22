@@ -25,7 +25,7 @@ LearnerClassifGLMBoost = R6Class("LearnerClassifGLMBoost",
     #' Create a `LearnerClassifGLMBoost` object.
     initialize = function() {
       ps = ps(
-        family = p_fct(default = c("Binomial"),
+        family = p_fct(default = "Binomial",
           levels = c("Binomial", "AdaExp", "AUC", "custom"), tags = "train"),
         custom.family = p_uty(tags = "train"),
         link = p_fct(default = "logit",

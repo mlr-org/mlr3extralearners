@@ -123,7 +123,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' The importance scores are extracted from the model slot `importance`.
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model$importance) & !is.null(self$model)) {
+      if (is.null(self$model$importance) && !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 

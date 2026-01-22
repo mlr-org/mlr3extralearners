@@ -122,7 +122,7 @@ LearnerSurvCForest = R6Class("LearnerSurvCForest",
         # can also predict weights, node, but not really useful here
         predict_types = c("crank", "distr"),
         feature_types = c("integer", "numeric", "factor", "ordered"),
-        properties = c("weights"),
+        properties = "weights",
         packages = c("mlr3extralearners", "partykit", "sandwich", "coin"),
         man = "mlr3extralearners::mlr_learners_surv.cforest",
         label = "Conditional Random Forest"

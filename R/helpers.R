@@ -5,18 +5,18 @@ toproper = function(str, split = " ", fixed = TRUE) {
       paste0(toupper(substr(x, 1, 1)), tolower(substr(x, 2, 1000)), collapse = split)
     }
   )
-  return(unlist(str))
+  unlist(str)
 }
 
 # a less robust but faster version of devtools::as.package
 pkg_root = function(path = ".") {
   path = normalizePath(path)
 
-  if (!grepl("mlr3extralearners", path)) {
+  if (!grepl("mlr3extralearners", path, fixed = TRUE)) {
     stopf("Path (%s) is not in mlr3extralearners directory.", path)
   }
 
-  while (TRUE) {
+  repeat {
     if (file.exists(file.path(path, "DESCRIPTION"))) {
       return(path)
     } else {
@@ -78,15 +78,15 @@ format_rweka_once = function(x) {
   }
   last_char = substr(x, nchar(x), nchar(x))
   if (last_char == "-") x = substr(x, 1, nchar(x) - 1)
-  x = gsub("-", "_", x)
-  return(x)
+  x = gsub("-", "_", x, fixed = TRUE)
+  x
 }
 
 # Vectorized formatting
 format_rweka = function(x) {
   x = x[(nchar(x) > 0)]
   x = map_chr(x, format_rweka_once)
-  return(x)
+  x
 }
 
 # Get the RWeka control arguments for function f and translate them into mlr3 style
@@ -95,7 +95,7 @@ weka_control_args = function(f) {
   arg_names = arg_desc$Name
   exclude = format_rweka(arg_names)
   exclude = unique(exclude)
-  return(exclude)
+  exclude
 }
 
 ordered_features = function(task, learner) {

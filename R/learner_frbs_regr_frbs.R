@@ -82,7 +82,7 @@ LearnerRegrFrbs = R6Class("LearnerRegrFrbs",
 
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self), drop = FALSE)
-      pred = mlr3misc::invoke(predict, object = self$model, newdata = newdata)
+      pred = invoke(predict, object = self$model, newdata = newdata)
 
       if (is.matrix(pred) || is.data.frame(pred)) {
         pred = pred[, 1L]
