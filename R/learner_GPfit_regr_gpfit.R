@@ -29,18 +29,18 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
-      ps = ps(
-        control = p_uty(init = NULL,
+      param_set = ps(
+        control = p_uty(default = NULL,
           custom_check = function(x) checkmate::check_numeric(x, len = 3, lower = 1, any.missing = FALSE, null.ok = TRUE),
           tags = "train"),
         nug_thres = p_dbl(init = 20, lower = 0, tags = "train"),
         trace = p_lgl(init = FALSE, tags = "train"),
         maxit = p_int(init = 100L, lower = 1L, tags = "train"),
         optim_start = p_uty(init = NULL, special_vals = list(NULL), tags = "train"),
-        scale = p_lgl(init = TRUE, tags = "train"),
-        type = p_fct(init = "exponential", levels = c("exponential", "matern"), tags = "train"),
-        matern_nu_k = p_int(default = 0L, lower = 0L, depends = quote(type == "matern"), tags = "train"),
-        power = p_dbl(init = 1.95, lower = 1, upper = 2, depends = quote(type == "exponential"), tags = "train")
+        scale = p_lgl(init = TRUE, tags = c("train", "predict")),
+        type = p_fct(default = "exponential", levels = c("exponential", "matern"), tags = "train"),
+        matern_nu_k = p_int(default = 0L, lower = 0L, depends = type == "matern", tags = "train"),
+        power = p_dbl(default = 1.95, lower = 1, upper = 2, depends = type == "exponential", tags = "train")
       )
 
       super$initialize(
@@ -48,7 +48,7 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
         packages = c("mlr3extralearners", "GPfit"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "se"),
-        param_set = ps,
+        param_set = param_set,
         label = "Gaussian Process (GPfit)",
         man = "mlr3extralearners::mlr_learners_regr.gpfit"
       )
@@ -76,9 +76,13 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
       } else {
         mlist = list(scaled = FALSE, not_const = not_const)
       }
-      corr_pars = pv[names(pv) %in% c("scale", "type", "matern_nu_k", "power")]
-      if (corr_pars$type == "exponential") {
-        corr_pars$matern_nu_k = NULL
+
+      corr_pars = pv[names(pv) %in% c("type", "matern_nu_k", "power")]
+      
+      if (!is.null(corr_pars$type)) {
+        if (corr_pars$type == "exponential") {
+         corr_pars$matern_nu_k = NULL
+        }
       }
 
       train_pars = pv[names(pv) %nin% c("scale", "type", "matern_nu_k", "power")]
@@ -88,27 +92,25 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
 
       model = mlr3misc::invoke(
         GPfit::GP_fit,
-        X = d$data,
+        X = d$data[, not_const, drop = FALSE],
         Y = d$target,
-        corr = corr_pars,
+        if (!is.null(corr_pars)) corr = corr_pars,
         .args = train_pars
       )
 
       list(
         model = model,
-        scaled = isTRUE(pv$scale),
-        not_const = not_const,
-        low = low[not_const],
-        high = high[not_const]
+        mlist = mlist
       )
-    },
+      },
 
     .predict = function(task) {
+      pv = self$param_set$get_values(tags = "predict")
       state = self$model
       newdata = ordered_features(task, self)
       x_new = as_numeric_matrix(newdata[, state$not_const, with = FALSE, drop = FALSE])
 
-      if (state$scaled) {
+      if (pv$scale) {
         rng = state$high - state$low
         x_new = sweep(x_new, 2, state$low, "-")
         x_new = sweep(x_new, 2, rng, "/")
