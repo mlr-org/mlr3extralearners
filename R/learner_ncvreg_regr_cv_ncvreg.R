@@ -81,7 +81,8 @@ LearnerRegrNCVreg = R6Class("LearnerRegrNCVreg",
 
       coefs = invoke(stats::coef, self$model, lambda = lambda)
       coefs = coefs[coefs != 0]
-      names(coefs)
+
+      names(coefs[-1]) # remove "(Intercept)" that is always included by default first
     }
   ),
 
