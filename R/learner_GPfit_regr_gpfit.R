@@ -30,9 +30,7 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
     initialize = function() {
 
       param_set = ps(
-        control = p_uty(default = NULL,
-          custom_check = function(x) checkmate::check_numeric(x, len = 3, lower = 1, any.missing = FALSE, null.ok = TRUE),
-          tags = "train"),
+        control = p_uty(default = NULL, tags = "train"),
         nug_thres = p_dbl(init = 20, lower = 0, tags = "train"),
         trace = p_lgl(init = FALSE, tags = "train"),
         maxit = p_int(init = 100L, lower = 1L, tags = "train"),
@@ -78,23 +76,17 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
       }
 
       corr_pars = pv[names(pv) %in% c("type", "matern_nu_k", "power")]
-      
-      if (!is.null(corr_pars$type)) {
-        if (corr_pars$type == "exponential") {
-         corr_pars$matern_nu_k = NULL
-        }
-      }
 
       train_pars = pv[names(pv) %nin% c("scale", "type", "matern_nu_k", "power")]
-      if (is.null(pv$control)) {
-        train_pars$control = NULL
+      
+      if (length(corr_pars) > 0) {
+        train_pars$corr = corr_pars
       }
 
       model = mlr3misc::invoke(
         GPfit::GP_fit,
         X = d$data[, not_const, drop = FALSE],
         Y = d$target,
-        if (!is.null(corr_pars)) corr = corr_pars,
         .args = train_pars
       )
 
@@ -108,11 +100,11 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
       pv = self$param_set$get_values(tags = "predict")
       state = self$model
       newdata = ordered_features(task, self)
-      x_new = as_numeric_matrix(newdata[, state$not_const, with = FALSE, drop = FALSE])
+      x_new = as_numeric_matrix(newdata[, state$mlist$not_const, with = FALSE, drop = FALSE])
 
       if (pv$scale) {
-        rng = state$high - state$low
-        x_new = sweep(x_new, 2, state$low, "-")
+        rng = state$mlist$high - state$mlist$low
+        x_new = sweep(x_new, 2, state$mlist$low, "-")
         x_new = sweep(x_new, 2, rng, "/")
       }
 
