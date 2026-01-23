@@ -114,7 +114,7 @@ LearnerCompRisksRandomForestSRC = R6Class("LearnerCompRisksRandomForestSRC",
     #' @param cause Integer value indicating the event of interest
     #' @return Named `numeric()`.
     importance = function(cause = 1) {
-      if (is.null(self$model$importance) & !is.null(self$model)) {
+      if (is.null(self$model$importance) && !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 
