@@ -9,7 +9,13 @@
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
+  - `LearnerRegrFrbs`
+  - `LearnerRegrBgp`
+  - `LearnerRegrBgpllm`
+  - `LearnerRegrBtgp`
+  - `LearnerRegrBtlm`
   - `LearnerClassifNNTrain`
+  - `LearnerClassifDbnDNN`
 
 ## Breaking Changes
 
