@@ -70,7 +70,7 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
     .predict = function(task) {
       newdata = ordered_features(task, self)
 
-      pred = predict(object = self$model, newdata = newdata)
+      pred = invoke(sparseLDA::predict, object = self$model, newdata = newdata)
 
       if (self$predict_type == "response") {
         list(response = pred$class)
