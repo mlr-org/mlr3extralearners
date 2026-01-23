@@ -211,7 +211,7 @@ The objects of this class are cloneable with this method.
 learner = lrn("classif.JRip")
 print(learner)
 #> 
-#> ── <LearnerClassifJRip> (classif.JRip): Propositional Rule Learner. ────────────
+#> ── <LearnerClassifJRip> (classif.JRip): Propositional Rule Learner ─────────────
 #> • Model: -
 #> • Parameters: list()
 #> • Packages: mlr3, mlr3extralearners, and RWeka
