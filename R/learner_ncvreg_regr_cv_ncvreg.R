@@ -1,6 +1,6 @@
 #' @title Cross-Validated MCP- or SCAD-penalized Regression Learner
 #' @author bblodfon
-#' @name mlr_learners_regr.cv_ncvsurv
+#' @name mlr_learners_regr.cv_ncvreg
 #'
 #' @description
 #' MCP- or SCAD-penalized regression models with k-fold cross validation
@@ -9,7 +9,7 @@
 #' `"gaussian"` (default). Poisson family is also supported.
 #' Covariates are internally standardized by `ncvreg` prior to model fitting.
 #'
-#' @templateVar id regr.cv_ncvregr
+#' @templateVar id regr.cv_ncvreg
 #' @template learner
 #'
 #' @references
@@ -26,6 +26,7 @@ LearnerRegrNCVreg = R6Class("LearnerRegrNCVreg",
     initialize = function() {
       param_set = ps(
         ## --- core model (ncvreg) ---
+        family         = p_fct(levels  = c("gaussian", "poisson"), default = "gaussian", tags = "train"),
         penalty        = p_fct(levels  = c("MCP", "SCAD", "lasso"), default = "MCP", tags = "train"),
         gamma          = p_dbl(lower = 0L, tags = "train"),
         alpha          = p_dbl(lower = 0L, upper = 1L, default = 1L, tags = "train"),
@@ -58,7 +59,7 @@ LearnerRegrNCVreg = R6Class("LearnerRegrNCVreg",
         predict_types = "response",
         properties = "selected_features",
         packages = c("mlr3extralearners", "ncvreg"),
-        man = "mlr3extralearners::mlr_learners_regr.cv_ncvregr",
+        man = "mlr3extralearners::mlr_learners_regr.cv_ncvreg",
         label = "MCP- or SCAD-penalized Regression Model"
       )
     },
@@ -110,4 +111,4 @@ LearnerRegrNCVreg = R6Class("LearnerRegrNCVreg",
   )
 )
 
-.extralrns_dict$add("regr.cv_ncvregr", LearnerRegrNCVreg)
+.extralrns_dict$add("regr.cv_ncvreg", LearnerRegrNCVreg)
