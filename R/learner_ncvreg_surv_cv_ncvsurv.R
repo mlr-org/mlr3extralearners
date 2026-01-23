@@ -38,13 +38,13 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        ## --- core model ---
+        ## --- core model (ncvsurv) ---
         penalty        = p_fct(levels  = c("MCP", "SCAD", "lasso"), default = "MCP", tags = "train"),
         gamma          = p_dbl(lower = 0L, tags = "train"),
         alpha          = p_dbl(lower = 0L, upper = 1L, default = 1L, tags = "train"),
         lambda.min     = p_dbl(lower = 0L, tags = "train"),
-        lambda         = p_uty(tags = "train"), # lambda path
         nlambda        = p_int(lower = 1L, default = 100L, tags = "train"),
+        lambda         = p_uty(tags = "train"), # lambda path
         ## --- optimization / convergence ---
         eps            = p_dbl(default = 1e-4, tags = "train"),
         max.iter       = p_int(lower = 1L, default = 10000L, tags = "train"),
@@ -53,7 +53,7 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
         penalty.factor = p_uty(tags = "train"),
         warn           = p_lgl(default = TRUE, tags = "train"),
         returnX        = p_lgl(default = TRUE, tags = "train"),
-        ## --- CV-specific ---
+        ## --- CV-specific (cv.ncvsurv) ---
         cluster        = p_uty(tags = "train"),
         nfolds         = p_int(default = 10L, tags = "train"),
         fold           = p_uty(tags = "train"),
