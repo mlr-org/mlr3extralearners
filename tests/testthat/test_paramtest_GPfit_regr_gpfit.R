@@ -25,7 +25,8 @@ test_that("paramtest regr.gpfit predict", {
   exclude = c(
     "object", # handled by mlr3
     "xnew", # handled by mlr3
-    "M" # not exposed by learner
+    "M", # not exposed by learner
+    "scale" # handled by learner
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
