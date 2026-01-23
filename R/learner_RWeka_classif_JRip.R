@@ -64,7 +64,7 @@ LearnerClassifJRip = R6Class("LearnerClassifJRip",
         param_set = ps,
         properties = c("twoclass", "multiclass", "marshal"),
         man = "mlr3extralearners::mlr_learners_classif.JRip",
-        label = "Propositional Rule Learner."
+        label = "Propositional Rule Learner"
       )
     },
 
