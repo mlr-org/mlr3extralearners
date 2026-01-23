@@ -67,7 +67,7 @@ LearnerClassifSda = R6Class("LearnerClassifSda",
       # Calculate predictions for the selected predict type.
       type = self$predict_type
 
-      p = invoke(sda::predict, self$model, Xtest = as.matrix(newdata), .args = pars)
+      p = invoke(sda::predict.sda, self$model, Xtest = as.matrix(newdata), .args = pars)
 
       if (type == "response") {
         list(response = p$class)

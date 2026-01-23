@@ -68,9 +68,10 @@ LearnerClassifSparseLDA = R6Class("LearnerClassifSparseLDA",
       )
     },
     .predict = function(task) {
+      browser()
       newdata = ordered_features(task, self)
 
-      pred = invoke(sparseLDA::predict, object = self$model, newdata = newdata)
+      pred = invoke(sparseLDA::predict.sda, object = self$model, newdata = newdata)
 
       if (self$predict_type == "response") {
         list(response = pred$class)
