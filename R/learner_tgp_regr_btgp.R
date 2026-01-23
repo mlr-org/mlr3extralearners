@@ -6,7 +6,7 @@
 #' Bayesian treed Gaussian process regression model.
 #' Calls [tgp::btgp()] from \CRANpkg{tgp}.
 #' For the predicted mean `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
-#' 
+#'
 #' Factor features are one-hot encoded with reference encoding before fitting.
 #' If factors are present, `basemax` is set to the number of non-factor features
 #' so that tree proposals account for the numeric part of the design.
@@ -57,7 +57,7 @@ LearnerRegrBtgp = R6Class("LearnerRegrBtgp",
         zcov    = p_lgl(default = FALSE, tags = c("train", "predict")),
         Ds2x    = p_lgl(default = FALSE, tags = c("train", "predict")),
         improv  = p_lgl(default = FALSE, tags = c("train", "predict")),
-        nu      = p_dbl(default = 1.5, tags = "train", depends = quote(corr == "matern")),
+        nu      = p_dbl(default = 1.5, depends = quote(corr == "matern"), tags = "train"),
         trace   = p_lgl(default = FALSE, tags = c("train", "predict")),
         verb    = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
         MAP     = p_lgl(default = TRUE, tags = "predict")

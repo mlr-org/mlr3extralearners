@@ -9,6 +9,8 @@ test_that("autotest", {
     set.seed(1L)
   }
 
-  result = run_autotest(learner, exclude = "single", configure_learner = cfg)
+  suppressMessages(capture.output({
+    result = run_autotest(learner, exclude = "single", configure_learner = cfg)
+  }))
   expect_true(result, info = result$error)
 })

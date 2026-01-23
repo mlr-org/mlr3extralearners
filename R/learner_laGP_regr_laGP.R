@@ -59,7 +59,7 @@ LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
         g = p_uty(default = 1 / 10000, tags = "predict"),
         method = p_fct(default = "alc", levels = c("alc", "alcray", "efi", "mspe", "nn"), tags = "predict"),
         close = p_int(lower = 0L, tags = "predict"),
-        numrays = p_int(lower = 0L, depends = method == "alcray", tags = "predict"),
+        numrays = p_int(lower = 0L, depends = quote(method == "alcray"), tags = "predict"),
         verb = p_dbl(default = 0, tags = "predict")
       )
 
