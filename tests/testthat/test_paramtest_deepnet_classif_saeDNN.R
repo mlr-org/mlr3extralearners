@@ -5,9 +5,7 @@ test_that("paramtest classif.saeDNN train", {
   fun = deepnet::sae.dnn.train
   exclude = c(
     "x", # handled internally
-    "y", # handled internally
-    "max.number.of.layers" # handled internally
-
+    "y" # handled internally
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
