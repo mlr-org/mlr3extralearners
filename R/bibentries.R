@@ -432,6 +432,13 @@ bibentries = c( # nolint start
     year = "2018",
     publisher = "BioMed Central"
   ),
+  rong2014deepnet = bibentry("manual",
+    title = "{deepnet}: Deep Learning Toolkit in R",
+    author = "Xiao Rong",
+    year = "2014",
+    note = "R package version 0.2.1",
+    url = "https://CRAN.R-project.org/package=deepnet"
+  ),
   zhao2019dnnsurv = bibentry("article",
     title = "Dnnsurv: Deep neural networks for survival analysis using pseudo values",
     author = "Zhao, Lili and Feng, Dai",
@@ -692,6 +699,16 @@ bibentries = c( # nolint start
     pages = "77--87",
     publisher = "ASA Websites",
     doi = "10.1198/016214502753479248"
+  ),
+  clemmensen2011sda = bibentry("article",
+    title = "Sparse discriminant analysis",
+    author = "Clemmensen, Line and Hastie, Trevor and Witten, Daniela and Ersboll, Bjarne",
+    year = "2011",
+    journal = "Journal of the American Statistical Association",
+    volume = "106",
+    number = "496",
+    pages = "1519--1531",
+    doi = "10.1198/jasa.2011.tm09728"
   ),
   Srivastava2007mdeb = bibentry("article",
     title = "Comparison of Discrimination Methods for High Dimensional Data",
