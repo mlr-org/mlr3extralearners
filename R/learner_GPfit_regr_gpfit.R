@@ -37,8 +37,8 @@ LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
         optim_start = p_uty(init = NULL, special_vals = list(NULL), tags = "train"),
         scale = p_lgl(init = TRUE, tags = c("train", "predict")),
         type = p_fct(default = "exponential", levels = c("exponential", "matern"), tags = "train"),
-        matern_nu_k = p_int(default = 0L, lower = 0L, depends = type == "matern", tags = "train"),
-        power = p_dbl(default = 1.95, lower = 1, upper = 2, depends = type == "exponential", tags = "train")
+        matern_nu_k = p_int(default = 0L, lower = 0L, depends = quote(type == "matern"), tags = "train"),
+        power = p_dbl(default = 1.95, lower = 1, upper = 2, depends = quote(type == "exponential"), tags = "train")
       )
 
       super$initialize(
