@@ -98,6 +98,7 @@ LearnerRegrNCVreg = R6Class("LearnerRegrNCVreg",
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
+
       # rename `pred_lambda` to `lambda`
       if (!is.null(pv$pred_lambda)) {
         pv$lambda = pv$pred_lambda

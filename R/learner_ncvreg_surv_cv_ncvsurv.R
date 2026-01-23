@@ -110,6 +110,7 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pv = self$param_set$get_values(tags = "predict")
+
       # rename `pred_lambda` to `lambda`
       if (!is.null(pv$pred_lambda)) {
         pv$lambda = pv$pred_lambda
@@ -120,12 +121,19 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
       lp = invoke(predict, self$model, X = newdata, type = "link", .args = pv)
 
       # get survival matrix
-      S_list = invoke(predict, self$model, X = newdata, type = "survival", .args = pv)
-      utimes = unique(attr(S_list, "time")) # unique time points from the train set
-      surv_mat = do.call(
-        rbind,
-        lapply(S_list, function(S) S(utimes))
-      )
+      surv = invoke(predict, self$model, X = newdata, type = "survival", .args = pv)
+
+      if (!inherits(surv, "list")) {
+        # edge case: 1 observation, need to convert to a list
+        utimes = unique(attr(surv, "time"))
+        surv_mat = matrix(surv(utimes), nrow = 1)
+      } else {
+        utimes = unique(attr(surv, "time")) # unique time points from the train set
+        surv_mat = do.call(
+          rbind,
+          lapply(surv, function(S) S(utimes))
+        )
+      }
 
       mlr3proba::surv_return(times = utimes, surv = surv_mat, lp = lp)
     }
