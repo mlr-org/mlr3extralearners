@@ -15,6 +15,7 @@
   - `LearnerRegrBgpllm`
   - `LearnerRegrBtgp`
   - `LearnerRegrBtlm`
+  - `LearnerRegrNCVReg`
   - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
 
