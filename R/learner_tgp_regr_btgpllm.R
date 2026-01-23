@@ -45,7 +45,7 @@ LearnerRegrBtgpllm = R6Class("LearnerRegrBtgpllm",
         pred.n  = p_lgl(init = FALSE, tags = c("train", "predict")),
         R       = p_int(default = 1L, lower = 1L, tags = c("train", "predict")),
         trace   = p_lgl(default = FALSE, tags = c("train", "predict")),
-        verb    = p_int(init = 1L, lower = 0L, upper = 4L, tags = c("train", "predict")),
+        verb    = p_int(init = 0L, lower = 0L, upper = 4L, tags = c("train", "predict")),
         zcov    = p_lgl(default = FALSE, tags = c("train", "predict")),
         tree    = p_uty(default = c(0.5, 2), tags = "train", custom_check = function(x) {
           if (checkmate::test_numeric(x, len = 2, any.missing = FALSE)) {
