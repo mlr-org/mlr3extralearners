@@ -164,7 +164,7 @@ print(learner)
 #> 
 #> ── <LearnerRegrBtgpllm> (regr.btgpllm): Bayesian Treed Gaussian Process with Lim
 #> • Model: -
-#> • Parameters: pred.n=FALSE, verb=1
+#> • Parameters: pred.n=FALSE, verb=0
 #> • Packages: mlr3, mlr3extralearners, and tgp
 #> • Predict Types: [response] and se
 #> • Feature Types: logical, integer, numeric, factor, and ordered
@@ -180,19 +180,6 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
-#> 
-#> burn in:
-#> r=1000 d=[0/0.888832 0/1.11998 0.0618923 0/0.843242 1.03966 1.16728 0/0.656053 0.026457 0/1.14454 0/0.825531]; n=21
-#> r=2000 d=[0]; n=21
-#> 
-#> Sampling @ nn=0 pred locs:
-#> r=1000 d=[0/1.10773 0/0.628229 0.0110664 0.065053 0/0.801406 0.135115 0/0.41729 0/1.08307 0/0.217963 0/0.318174]; mh=1 n=21
-#> r=2000 d=[0/0.881655 0/1.22063 0/0.38244 0.174908 0/1.16404 0/0.0441549 0/0.724513 0/1.14119 0/0.0180054 0/1.17409]; mh=1 n=21
-#> r=3000 d=[0/0.518058 0.0281192 0/1.07786 0.0957666 0/0.692943 0.00281099 0/1.35276 0/0.111688 0/0.675003 0/0.713738]; mh=1 n=21
-#> r=4000 d=[0.0348013 0.0337696 0.702156 0.00569078 0.0133974 0.0216774 0.048343 0.713522 0.676207 0.0616663]; mh=1 n=21
-#> r=5000 d=[0.0314309 0.0546403 0/1.49728 0.000278022 0.0355789 0.0186867 0/1.23201 0/0.943595 0.740915 0.0277356]; mh=1 n=21
-#> Grow: 0%, 
-#> 
 
 print(learner$model)
 #> $model
@@ -221,12 +208,9 @@ print(learner$model)
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
-#> 
-#> Kriging @ nn=11 predictive locs:
-#> 
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 26.59383 
+#> 69.93368 
 ```

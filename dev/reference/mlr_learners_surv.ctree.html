@@ -201,27 +201,21 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 73</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 2: 2.000 (n = 22)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [7] age &lt;= 60: 99.000 (n = 22)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [8] age &gt; 60: 19.000 (n = 43)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [10] age &lt;= 54: Inf (n = 78)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [11] age &gt; 54: Inf (n = 191)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] revascdays &gt; 171: Inf (n = 104)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [13] age &gt; 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [14] revascdays &lt;= 173</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [15] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [16] sysbp &lt;= 140: 8.000 (n = 61)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [17] sysbp &gt; 140: 46.000 (n = 30)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [18] revasc &gt; 0: Inf (n = 82)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [19] revascdays &gt; 173: Inf (n = 37)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 1: 1.000 (n = 14)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 1: 36.000 (n = 66)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [7] revasc &gt; 0: Inf (n = 247)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &gt; 171: Inf (n = 89)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [9] age &gt; 73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &lt;= 169</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [11] revasc &lt;= 0: 24.000 (n = 106)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] revasc &gt; 0: Inf (n = 102)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] revascdays &gt; 169: Inf (n = 46)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -230,7 +224,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7958845 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7862557 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
