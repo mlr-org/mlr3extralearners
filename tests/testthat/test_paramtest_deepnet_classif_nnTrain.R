@@ -6,7 +6,7 @@ test_that("paramtest classif.nnTrain train", {
   exclude = c(
     "x", # handled internally
     "y", # handled internally
-    "max.number.of.layers" # handled internally
+    "max_number_of_layers" # handled internally
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
