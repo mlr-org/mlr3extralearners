@@ -3,7 +3,7 @@ skip_if_not_installed("pls")
 
 test_that("classif.plsdaCaret train", {
   learner = lrn("classif.plsdaCaret")
-  fun = caret::plsda
+  fun = caret::plsda.default
   exclude = c(
     "x", # handled internally
     "y" # handled internally
