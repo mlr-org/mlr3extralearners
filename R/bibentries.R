@@ -952,6 +952,21 @@ bibentries = c( # nolint start
     number = "1",
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
+  ),
+  kohonen_1990 = bibentry("article",
+    title = "The self-organizing map",
+    author = "Kohonen, Teuvo",
+    journal = "Proceedings of the IEEE",
+    year = "1990",
+    volume = "78",
+    pages = "1464--1480"
+  ),
+  kohonen_1995 = bibentry("book",
+    title = "Self-Organizing Maps",
+    author = "Kohonen, Teuvo",
+    year = "1995",
+    publisher = "Springer",
+    address = "Berlin"
   )
 
 ) # nolint end
