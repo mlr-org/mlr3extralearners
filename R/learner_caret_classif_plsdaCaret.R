@@ -24,7 +24,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       param_set = ps(
         ncomp = p_int(default = 2L, lower = 1L, tags = "train"),
         probMethod = p_fct(default = "softmax", levels = c("softmax", "Bayes"), tags = "train"),
-        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"),tags = "train")
+        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "predict")
       )
 
       super$initialize(
@@ -46,7 +46,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       y = task$truth()
 
       invoke(
-        caret::plsda,
+        caret::plsda.default,
         x = x,
         y = y,
         .args = pars

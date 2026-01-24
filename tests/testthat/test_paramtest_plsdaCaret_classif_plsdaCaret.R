@@ -6,7 +6,8 @@ test_that("classif.plsdaCaret train", {
   fun = caret:::plsda.default # nolint
   exclude = c(
     "x", # handled internally
-    "y" # handled internally
+    "y", # handled internally
+    "prior" # not exposed by learner
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
