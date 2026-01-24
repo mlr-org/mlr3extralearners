@@ -24,7 +24,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       param_set = ps(
         ncomp = p_int(default = 2L, lower = 1L, tags = "train"),
         probMethod = p_fct(default = "softmax", levels = c("softmax", "Bayes"), tags = "train"),
-        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "predict")
+        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train")
       )
 
       super$initialize(

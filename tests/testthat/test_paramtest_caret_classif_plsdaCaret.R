@@ -7,6 +7,7 @@ test_that("classif.plsdaCaret train", {
   exclude = c(
     "x", # handled internally
     "y", # handled internally
+    "method", # forwarded via ... to pls::plsr()
     "prior" # not exposed by learner
   )
 
