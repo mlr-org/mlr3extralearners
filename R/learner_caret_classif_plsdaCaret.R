@@ -46,7 +46,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       y = task$truth()
 
       invoke(
-        caret::plsda.default,
+        caret:::plsda.default, # nolint
         x = x,
         y = y,
         .args = pars
@@ -58,7 +58,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       pred_type = if (self$predict_type == "response") "class" else "prob"
 
       pred = invoke(
-        predict,
+        caret:::predict.plsda, # nolint
         self$model,
         newdata = newdata,
         type = pred_type,
