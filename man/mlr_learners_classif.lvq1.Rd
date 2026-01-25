@@ -8,6 +8,9 @@
 Learning Vector Quantization 1.
 Calls \code{\link[class:lvqinit]{class::lvqinit()}}, \code{\link[class:lvq1]{class::lvq1()}}, and \code{\link[class:lvqtest]{class::lvqtest()}} from \CRANpkg{class}.
 }
+\note{
+The learner does not work on tasks with two target groups and one feature.
+}
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:

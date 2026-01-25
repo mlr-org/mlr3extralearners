@@ -6,6 +6,9 @@
 #' Learning Vector Quantization 1.
 #' Calls [class::lvqinit()], [class::lvq1()], and [class::lvqtest()] from \CRANpkg{class}.
 #'
+#' @note
+#' The learner does not work on tasks with two target groups and one feature.
+#' 
 #' @templateVar id classif.lvq1
 #' @template learner
 #'
@@ -48,16 +51,17 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
       d = as.matrix(task$data(cols = task$feature_names))
       target = task$truth()
 
-      init_pars = pars[names(pars) %in% c("size", "prior", "k")]
-      init_args = c(list(x = d, cl = target), init_pars)
+      cdbk_pars = pars[names(pars) %in% c("size", "prior", "k")]
+      cdbk_args = c(list(x = d, cl = target), cdbk_pars)
       codebk = invoke(
         class::lvqinit, 
-        .args = init_args)
+        .args = cdbk_args)
 
-      train_pars = pars[names(pars) %in% c("niter", "alpha")]
-      train_args = c(list(x = d, cl = target, codebk = codebk), train_pars)
+      lvq_pars = pars[names(pars) %in% c("niter", "alpha")]
+      lvq_args = c(list(x = d, cl = target, codebk = codebk), lvq_pars)
 
-      invoke(class::lvq1, .args = train_args)
+      invoke(class::lvq1, .args = lvq_args)
+      
     },
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
