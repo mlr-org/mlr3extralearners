@@ -46,7 +46,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       y = task$truth()
 
       invoke(
-        caret:::plsda.default, # nolint
+        caret::plsda, # nolint
         x = x,
         y = y,
         .args = pars
