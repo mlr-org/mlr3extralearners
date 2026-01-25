@@ -18,6 +18,7 @@
   - `LearnerRegrNCVReg`
   - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNCVreg`
 
 ## Breaking Changes
 
