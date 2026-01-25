@@ -5,7 +5,7 @@
 \alias{LearnerSurvNCVsurv}
 \title{Cross-Validated MCP- or SCAD-penalized Survival Learner}
 \description{
-MCP- or SCAD-penalized regression survival models with k-fold cross validation
+MCP- or SCAD-penalized regression survival model with k-fold cross validation
 for choosing the regularization parameter lambda.
 Calls \code{\link[ncvreg:cv.ncvreg]{ncvreg::cv.ncvsurv()}} from package \CRANpkg{ncvreg}.
 Covariates are internally standardized by \code{ncvreg} prior to model fitting.

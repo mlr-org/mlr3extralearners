@@ -3,7 +3,7 @@
 #' @name mlr_learners_surv.cv_ncvsurv
 #'
 #' @description
-#' MCP- or SCAD-penalized regression survival models with k-fold cross validation
+#' MCP- or SCAD-penalized regression survival model with k-fold cross validation
 #' for choosing the regularization parameter lambda.
 #' Calls [ncvreg::cv.ncvsurv()] from package \CRANpkg{ncvreg}.
 #' Covariates are internally standardized by `ncvreg` prior to model fitting.
