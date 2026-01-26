@@ -55,19 +55,23 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
       cdbk_args = c(list(x = d, cl = target), cdbk_pars)
       codebk = invoke(
         class::lvqinit, 
-        .args = cdbk_args)
+        .args = cdbk_args
+      )
 
       lvq_pars = pars[names(pars) %in% c("niter", "alpha")]
       lvq_args = c(list(x = d, cl = target, codebk = codebk), lvq_pars)
 
-      invoke(class::lvq1, .args = lvq_args)
+      invoke(class::lvq1,
+        .args = lvq_args
+      )
       
     },
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pred = invoke(class::lvqtest,
         codebk = self$model,
-        test = newdata)
+        test = newdata
+      )
       list(response = pred)
     }
   )
