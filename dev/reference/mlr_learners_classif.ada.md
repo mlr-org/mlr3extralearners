@@ -198,12 +198,12 @@ print(learner$model)
 #> 
 #> Train Error: 0.007 
 #> 
-#> Out-Of-Bag Error:  0.036  iteration= 46 
+#> Out-Of-Bag Error:  0.036  iteration= 40 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
 #> train.err1 train.kap1 
-#>         42         42 
+#>         44         44 
 #> 
 
 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.1594203 
 ```

@@ -222,9 +222,9 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> cyl <= 5.0 : 26.983333333333334
-#> cyl > 5.0 : 16.96666666666667
-#> cyl is missing : 19.82857142857143
+#> disp <= 117.95 : 31.566666666666663
+#> disp > 117.95 : 17.916666666666668
+#> disp is missing : 19.866666666666664
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 18.45982 
+#> 24.69778 
 ```

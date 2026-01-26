@@ -7,6 +7,7 @@
 - New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
+  - `LearnerSurvNCVsurv`
   - `LearnerRegrRRF`
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
@@ -16,8 +17,10 @@
   - `LearnerRegrBgpllm`
   - `LearnerRegrBtgp`
   - `LearnerRegrBtlm`
+  - `LearnerRegrNCVReg`
   - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNCVreg`
 
 ### Breaking Changes
 
@@ -35,7 +38,7 @@
 - parameter updates for `regr.lmer`/`glmer` learners
 - updates for `randomForestSRC` 3.5.0 (`use.uno` parameter)
 - performance improvement: use of
-  [`data.table::fifelse`](https://rdatatable.gitlab.io/data.table/reference/fifelse.html)
+  [`data.table::fifelse`](https://rdrr.io/pkg/data.table/man/fifelse.html)
   ([@m-muecke](https://github.com/m-muecke))
 
 ## mlr3extralearners 1.3.1
