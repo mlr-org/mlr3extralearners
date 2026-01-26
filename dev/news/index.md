@@ -13,13 +13,17 @@
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
   - `LearnerRegrFrbs`
+  - `LearnerRegrBcart`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
+  - `LearnerRegrBlm`
   - `LearnerRegrBtgp`
+  - `LearnerRegrBtgpllm`
   - `LearnerRegrBtlm`
   - `LearnerRegrNCVReg`
-  - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNNTrain`
+  - `LearnerClassifSparseLDA`
   - `LearnerClassifNCVreg`
 
 ### Breaking Changes
