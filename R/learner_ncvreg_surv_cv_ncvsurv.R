@@ -120,20 +120,20 @@ LearnerSurvNCVsurv = R6Class("LearnerSurvNCVsurv",
       # best lambda by default is used
       lp = invoke(predict, self$model, X = newdata, type = "link", .args = pv)
 
-      # get survival matrix
+      # get survival distribution prediction
       surv = invoke(predict, self$model, X = newdata, type = "survival", .args = pv)
 
-      if (!inherits(surv, "list")) {
-        # edge case: 1 observation, need to convert to a list
-        utimes = unique(attr(surv, "time"))
-        surv_mat = matrix(surv(utimes), nrow = 1)
-      } else {
-        utimes = unique(attr(surv, "time")) # unique time points from the train set
-        surv_mat = do.call(
-          rbind,
-          lapply(surv, function(S) S(utimes))
-        )
-      }
+      # unique time points from the train set
+      utimes = unique(attr(surv, "time"))
+
+      # normalize to list (handle edge case for 1 observation)
+      surv_list = if (is.list(surv)) surv else list(surv)
+
+      # convert to survival matrix
+      surv_mat = do.call(
+        rbind,
+        lapply(surv_list, function(S) S(utimes))
+      )
 
       mlr3proba::surv_return(times = utimes, surv = surv_mat, lp = lp)
     }
