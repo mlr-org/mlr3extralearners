@@ -10,7 +10,6 @@ Calls \code{\link[deepnet:sae.dnn.train]{deepnet::sae.dnn.train()}} from \CRANpk
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{hidden} defaults to \code{10}.
 \item \code{output} is set to \code{"softmax"} for probabilistic classification.
 }
 }
@@ -47,7 +46,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    sae_output \tab character \tab linear \tab sigm, linear, softmax \tab - \cr
    hidden_dropout \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    visible_dropout \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   max_number_of_layers \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 

@@ -10,7 +10,6 @@ Calls \code{\link[deepnet:nn.train]{deepnet::nn.train()}} from \CRANpkg{deepnet}
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{hidden} defaults to \code{10}.
 \item \code{output} is set to \code{"softmax"} for probabilistic classification.
 }
 }
@@ -47,7 +46,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    max_number_of_layers \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    momentum \tab numeric \tab 0.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    numepochs \tab integer \tab 3 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   output \tab character \tab - \tab sigm, linear, softmax \tab - \cr
    output \tab character \tab - \tab sigm, linear, softmax \tab - \cr
    visible_dropout \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
 }
