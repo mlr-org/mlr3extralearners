@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_regr_glmboost.R" class="external-link"><code>R/learner_mboost_regr_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_mboost_regr_glmboost.R" class="external-link"><code>R/learner_mboost_regr_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glmboost.Rd</code></div>
     </div>
 
@@ -202,15 +202,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.34762 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.9619 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am         carb          cyl         drat         gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16.181779007  1.180221123 -0.446969588 -1.273136847  1.205165006 -0.885522758 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           hp           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.004224483 -2.422708739 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am         carb          cyl         disp           hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.326994912  1.773833681 -0.248255893 -0.404525252  0.001206267 -0.023141459 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         qsec           wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.004534912 -2.924207508 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.34762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.9619</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -220,7 +220,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.386884 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.202809 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

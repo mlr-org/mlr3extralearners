@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Multinomial Naive Bayes Learner From Weka</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_naive_bayes_multinomial.R" class="external-link"><code>R/learner_RWeka_classif_naive_bayes_multinomial.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_RWeka_classif_naive_bayes_multinomial.R" class="external-link"><code>R/learner_RWeka_classif_naive_bayes_multinomial.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.naive_bayes_multinomial.Rd</code></div>
     </div>
 
@@ -240,14 +240,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The independent probability of a class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> --------------------------------------</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.55</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M	0.57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R	0.43</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> The probability of a word given the class</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	M	R	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V1	0	0	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V10	0.02	0.01	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V10	0.01	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V11	0.02	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V12	0.02	0.01	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V13	0.02	0.01	</span>
@@ -255,7 +255,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V15	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V16	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V17	0.02	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V18	0.02	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V18	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V19	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V2	0	0	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V20	0.03	0.03	</span>
@@ -269,14 +269,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> V28	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V29	0.04	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V3	0	0	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.03	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V30	0.03	0.04	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V31	0.03	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V32	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V33	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V34	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V35	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V36	0.02	0.03	</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.02	</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> V37	0.02	0.03	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V38	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V39	0.02	0.02	</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> V4	0	0	</span>
@@ -315,7 +315,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3188406 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

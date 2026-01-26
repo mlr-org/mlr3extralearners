@@ -50,7 +50,7 @@ Calls ada::ada() from ada."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Boosting Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_ada_classif_ada.R" class="external-link"><code>R/learner_ada_classif_ada.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_ada_classif_ada.R" class="external-link"><code>R/learner_ada_classif_ada.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.ada.Rd</code></div>
     </div>
 
@@ -201,12 +201,12 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Final Confusion Matrix for Data:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           Final Prediction</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> True value  M  R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          M 77  0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          R  0 62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          M 73  2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          R  1 63</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Train Error: 0 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Train Error: 0.022 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Out-Of-Bag Error:  0.036  iteration= 47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Out-Of-Bag Error:  0.065  iteration= 50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Additional Estimates of number of iterations:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -221,7 +221,7 @@ Calls <code><a href="https://rdrr.io/pkg/ada/man/ada.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

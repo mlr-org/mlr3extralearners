@@ -50,7 +50,7 @@ Calls bst::bst() from bst."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Gradient Boosting Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_bst_regr_bst.R" class="external-link"><code>R/learner_bst_regr_bst.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_bst_regr_bst.R" class="external-link"><code>R/learner_bst_regr_bst.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.bst.Rd</code></div>
     </div>
 
@@ -193,15 +193,15 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Base learner:  ls </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.23333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.65714 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           am         carb          cyl         disp         drat         gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  4.271454469 -0.335514520  0.000000000 -0.009554777  0.000000000  0.000000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           hp         qsec           vs           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000000000  0.000000000  2.701423013  0.000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            am          carb           cyl          disp          drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.9173808190  0.0000000000  0.0000000000 -0.0141745491  0.0000000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          gear            hp          qsec            vs            wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000000 -0.0004901315  0.0000000000  4.5622253413  0.0000000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.23333</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.65714</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -211,7 +211,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.266082 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.19165 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
