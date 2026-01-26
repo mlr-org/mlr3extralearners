@@ -3,6 +3,7 @@
 ## New Features
 
 * New Learners:
+* New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
   - `LearnerSurvNCVsurv`
@@ -11,13 +12,17 @@
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
   - `LearnerRegrFrbs`
+  - `LearnerRegrBcart`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
+  - `LearnerRegrBlm`
   - `LearnerRegrBtgp`
+  - `LearnerRegrBtgpllm`
   - `LearnerRegrBtlm`
   - `LearnerRegrNCVReg`
-  - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNNTrain`
+  - `LearnerClassifSparseLDA`
   - `LearnerClassifNCVreg`
 
 ## Breaking Changes
