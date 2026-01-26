@@ -3,7 +3,6 @@
 ## New Features
 
 * New Learners:
-* New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
   - `LearnerSurvNCVsurv`
