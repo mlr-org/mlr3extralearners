@@ -16,6 +16,7 @@
   - `LearnerRegrBtlm`
   - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifLvq1`
 
 ## Breaking Changes
 
