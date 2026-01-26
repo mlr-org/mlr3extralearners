@@ -15,7 +15,7 @@ Calls partykit::ctree() from partykit."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls partykit::ctree() from partykit."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Conditional Inference Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_partykit_regr_ctree.R" class="external-link"><code>R/learner_partykit_regr_ctree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_regr_ctree.R" class="external-link"><code>R/learner_partykit_regr_ctree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.ctree.Rd</code></div>
     </div>
 
@@ -193,8 +193,8 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class="externa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] wt &lt;= 3.215: 23.958 (n = 12, err = 327.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [3] wt &gt; 3.215: 15.000 (n = 9, err = 78.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] disp &lt;= 160: 25.118 (n = 11, err = 243.3)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [3] disp &gt; 160: 16.000 (n = 10, err = 76.1)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 2</span>
@@ -206,7 +206,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class="externa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.762904 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.64431 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

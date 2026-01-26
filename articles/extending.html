@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
       <h1>Creating a new Learner</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
       <div class="d-none name"><code>extending.Rmd</code></div>
     </div>
 
@@ -522,14 +522,14 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span>  <span class="co"># # basic learner properties</span></span>
+<span>  <span class="co"># basic learner properties</span></span>
 <span>  <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span>, check_man <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="co"># you can skip tests using the `exclude` argument</span></span>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="font-weight: bold;">Test passed with 20 successes 🎉</span>.</span></span></code></pre>
+<pre><code><span><span class="co"># Test passed with 20 successes 🥇.</span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="checking-parameters">Checking Parameters<a class="anchor" aria-label="anchor" href="#checking-parameters"></a>
@@ -566,7 +566,8 @@ ParamSet.</li>
 exclusion.</p>
 <p>In our example, the final paramtest script looks like:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"paramtest"</span>, <span class="op">{</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"paramtest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span>  <span class="va">exclude</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"formula"</span>, <span class="st">"data"</span>, <span class="st">"weights"</span>, <span class="st">"subset"</span>, <span class="st">"na.action"</span>, <span class="st">"method"</span>, <span class="st">"model"</span>,</span>
@@ -584,7 +585,7 @@ exclusion.</p>
 <span>  <span class="va">result</span> <span class="op">=</span> <span class="fu">run_paramtest</span><span class="op">(</span><span class="va">learner</span>, <span class="fu">rpart</span><span class="fu">:::</span><span class="va"><a href="https://rdrr.io/pkg/rpart/man/predict.rpart.html" class="external-link">predict.rpart</a></span>, <span class="va">exclude</span>, tag <span class="op">=</span> <span class="st">"predict"</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="font-weight: bold;">Test passed with 2 successes 🌈</span>.</span></span></code></pre>
+<pre><code>Test passed with 2 successes 🥇.</code></pre>
 </div>
 </div>
 <div class="section level2">

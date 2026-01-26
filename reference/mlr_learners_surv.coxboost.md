@@ -223,7 +223,7 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> 100 boosting steps resulting in 4 non-zero coefficients  
-#> partial log-likelihood: -1088.338 
+#> partial log-likelihood: -1162.8 
 
 
 # Make predictions for the test rows
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8151984 
+#>   0.8510524 
 ```

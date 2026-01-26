@@ -15,7 +15,7 @@ Calls LiblineaR::LiblineaR() from LiblineaR."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls LiblineaR::LiblineaR() from LiblineaR."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>L2-Regularized Support Vector Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_LiblineaR_regr_liblinear.R" class="external-link"><code>R/learner_LiblineaR_regr_liblinear.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_LiblineaR_regr_liblinear.R" class="external-link"><code>R/learner_LiblineaR_regr_liblinear.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.liblinear.Rd</code></div>
     </div>
 
@@ -204,10 +204,10 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              am        carb       cyl        disp      drat      gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.06417687 0.005489426 0.1715216 -0.04589939 0.2946119 0.2868137</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              hp     qsec         vs         wt       Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.01753984 1.361553 0.08438762 0.09224601 0.06784647</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              am       carb       cyl        disp      drat      gear         hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.06534888 0.01809321 0.1698665 -0.04488136 0.2908182 0.2904998 0.01824534</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          qsec         vs         wt       Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.365441 0.08637284 0.08758977 0.06748402</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -225,7 +225,7 @@ by the mlr3learner. The default value is set to th default of the respective
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.59876 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.25357 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

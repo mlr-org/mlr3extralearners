@@ -62,6 +62,7 @@ instantiated via
 | in.out             | untyped   | NULL                 |                                         | \-                    |
 | drop.unused.levels | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | drop.intercept     | logical   | FALSE                | TRUE, FALSE                             | \-                    |
+| nei                | untyped   | \-                   |                                         | \-                    |
 | nthreads           | integer   | 1                    |                                         | \\\[1, \infty)\\      |
 | irls.reg           | numeric   | 0                    |                                         | \\\[0, \infty)\\      |
 | epsilon            | numeric   | 1e-07                |                                         | \\\[0, \infty)\\      |
@@ -73,13 +74,11 @@ instantiated via
 | nlm                | untyped   | list()               |                                         | \-                    |
 | optim              | untyped   | list()               |                                         | \-                    |
 | newton             | untyped   | list()               |                                         | \-                    |
-| outerPIsteps       | integer   | 0                    |                                         | \\\[0, \infty)\\      |
 | idLinksBases       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | scalePenalty       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | efs.lspmax         | integer   | 15                   |                                         | \\\[0, \infty)\\      |
 | efs.tol            | numeric   | 0.1                  |                                         | \\\[0, \infty)\\      |
 | scale.est          | character | fletcher             | fletcher, pearson, deviance             | \-                    |
-| nei                | untyped   | \-                   |                                         | \-                    |
 | ncv.threads        | integer   | 1                    |                                         | \\\[1, \infty)\\      |
 | edge.correct       | logical   | FALSE                | TRUE, FALSE                             | \-                    |
 | block.size         | integer   | 1000                 |                                         | \\(-\infty, \infty)\\ |

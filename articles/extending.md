@@ -447,7 +447,7 @@ library(testthat)
 test_that("autotest", {
   learner = LearnerRegrRpartSimple$new()
 
-  # # basic learner properties
+  # basic learner properties
   expect_learner(learner, check_man = FALSE)
 
   # you can skip tests using the `exclude` argument
@@ -456,7 +456,7 @@ test_that("autotest", {
 })
 ```
 
-    ## Test passed with 20 successes 🎉.
+    # Test passed with 20 successes 🥇.
 
 ### Checking Parameters
 
@@ -494,6 +494,7 @@ exclusion.
 In our example, the final paramtest script looks like:
 
 ``` r
+library(testthat)
 test_that("paramtest", {
   learner = LearnerRegrRpartSimple$new()
 
@@ -514,7 +515,7 @@ test_that("paramtest", {
 })
 ```
 
-    ## Test passed with 2 successes 🌈.
+    Test passed with 2 successes 🥇.
 
 ## Contributing to mlr3extralearners
 

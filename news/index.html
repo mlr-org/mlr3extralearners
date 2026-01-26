@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,9 +48,54 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.4.0" id="mlr3extralearners-140">mlr3extralearners 1.4.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-140"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-4-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-4-0"></a></h3>
+<ul><li>New Learners:
+<ul><li><code>LearnerSurvGamCox</code></li>
+<li><code>LearnerSurvFlexReg</code></li>
+<li><code>LearnerSurvNCVsurv</code></li>
+<li><code>LearnerRegrRRF</code></li>
+<li><code>LearnerRegrPcr</code></li>
+<li><code>LearnerRegrPlsr</code></li>
+<li><code>LearnerRegrLaGP</code></li>
+<li><code>LearnerRegrFrbs</code></li>
+<li><code>LearnerRegrBcart</code></li>
+<li><code>LearnerRegrBgp</code></li>
+<li><code>LearnerRegrBgpllm</code></li>
+<li><code>LearnerRegrBlm</code></li>
+<li><code>LearnerRegrBtgp</code></li>
+<li><code>LearnerRegrBtgpllm</code></li>
+<li><code>LearnerRegrBtlm</code></li>
+<li><code>LearnerRegrNCVReg</code></li>
+<li><code>LearnerClassifDbnDNN</code></li>
+<li><code>LearnerClassifNNTrain</code></li>
+<li><code>LearnerClassifSparseLDA</code></li>
+<li><code>LearnerClassifNCVreg</code></li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="breaking-changes-1-4-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-4-0"></a></h3>
+<ul><li>
+<code>lrn("surv.flexible")</code> (<code>LearnerSurvFlexible</code>) was renamed to <code>lrn("surv.flexsurvspline")</code> (<code>LearnerSurvFlexSpline</code>) to properly reflect the wrapped train function (Royston/Parmar spline model).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-1-4-0">Other<a class="anchor" aria-label="anchor" href="#other-1-4-0"></a></h3>
+<ul><li>
+<code>CoxBoost</code> is now on CRAN, so we removed it from <code>Remotes</code>
+</li>
+<li>
+<code>lrn("surv.flexsurvspline")</code> predicts linear predictors using <code>predict.flexsurvreg()</code>. We were doing manually the same exact prediction, so no functionality was changed.</li>
+<li>compatibility: <code>xgboost</code> 3.1.2.1 (survival learners)</li>
+<li>parameter updates for <code>regr.lmer</code>/<code>glmer</code> learners</li>
+<li>updates for <code>randomForestSRC</code> 3.5.0 (<code>use.uno</code> parameter)</li>
+<li>performance improvement: use of <code><a href="https://rdrr.io/pkg/data.table/man/fifelse.html" class="external-link">data.table::fifelse</a></code> (<a href="https://github.com/m-muecke" class="external-link">@m-muecke</a>)</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.3.1" id="mlr3extralearners-131">mlr3extralearners 1.3.1<a class="anchor" aria-label="anchor" href="#mlr3extralearners-131"></a></h2>
 <ul><li>Update website to include citation information</li>

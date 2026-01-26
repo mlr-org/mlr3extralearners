@@ -15,7 +15,7 @@ Calls fastai::tabular_learner() from package fastai."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls fastai::tabular_learner() from package fastai."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Neural Network Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_fastai_classif_fastai.R" class="external-link"><code>R/learner_fastai_classif_fastai.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_fastai_classif_fastai.R" class="external-link"><code>R/learner_fastai_classif_fastai.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.fastai.Rd</code></div>
     </div>
 
@@ -82,10 +82,10 @@ After loading a marshaled <code>lrn("classif.fastai")</code> into R again, you t
 
 
 <ul><li><p><code>n_epoch</code>:
-Needs to be set for <code><a href="https://generics.r-lib.org/reference/fit.html" class="external-link">fastai::fit()</a></code> to work.
+Needs to be set for <code><a href="https://rdrr.io/pkg/fastai/man/reexports.html" class="external-link">fastai::fit()</a></code> to work.
 If no value is given, it is set to 5.</p></li>
 <li><p><code>eval_metric</code>:
-Needs to be set for <code><a href="https://rdrr.io/r/stats/predict.html" class="external-link">fastai::predict()</a></code> to work.
+Needs to be set for <code><a href="https://rdrr.io/pkg/fastai/man/reexports.html" class="external-link">fastai::predict()</a></code> to work.
 If no value is given, it is set to <code><a href="https://rdrr.io/pkg/fastai/man/accuracy.html" class="external-link">fastai::accuracy()</a></code>.</p></li>
 </ul></div>
     <div class="section level2">

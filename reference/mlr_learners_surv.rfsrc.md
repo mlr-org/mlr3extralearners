@@ -77,6 +77,7 @@ instantiated via
 | ptn.count      | integer   | 0       |                                          | \\\[0, \infty)\\   |
 | estimator      | character | nelson  | nelson, kaplan                           | \-                 |
 | cores          | integer   | 1       |                                          | \\\[1, \infty)\\   |
+| use.uno        | logical   | TRUE    | TRUE, FALSE                              | \-                 |
 | save.memory    | logical   | FALSE   | TRUE, FALSE                              | \-                 |
 | perf.type      | character | \-      | none                                     | \-                 |
 | case.depth     | logical   | FALSE   | TRUE, FALSE                              | \-                 |
@@ -306,11 +307,11 @@ print(learner$model)
 #>        Number of random split points: 10
 #>                           (OOB) CRPS: 15.83020651
 #>              (OOB) standardized CRPS: 0.08943619
-#>    (OOB) Requested performance error: 0.15546588
+#>    (OOB) Requested performance error: 0.15439021
 #> 
 print(learner$importance())
 #>  revascdays      revasc         age       sysbp         los    stchange 
-#> 0.449139609 0.295457919 0.105002137 0.098504656 0.031973593 0.004243069 
+#> 0.450384970 0.293419797 0.107573361 0.098651321 0.031602951 0.004330762 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)

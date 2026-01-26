@@ -61,3 +61,6 @@ Other contributors:
   ([ORCID](https://orcid.org/0000-0002-8115-0400)) \[contributor\]
 
 - Nikolai German <niko.german@gmail.com> \[contributor\]
+
+- Alexander Winterstetter <alexanderwinterstetter@gmail.com>
+  \[contributor\]

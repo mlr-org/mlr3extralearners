@@ -15,7 +15,7 @@ Calls randomForestSRC::rfsrc() from randomForestSRC."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls randomForestSRC::rfsrc() from randomForestSRC."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Random Forest Competing Risks Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_randomForestSRC_cmprsk_rfsrc.R" class="external-link"><code>R/learner_randomForestSRC_cmprsk_rfsrc.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_randomForestSRC_cmprsk_rfsrc.R" class="external-link"><code>R/learner_randomForestSRC_cmprsk_rfsrc.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_cmprsk.rfsrc.Rd</code></div>
     </div>
 
@@ -79,7 +79,7 @@ Calls <code><a href="https://www.randomforestsrc.org//reference/rfsrc.html" clas
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ntree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>nodesize</td><td>integer</td><td>15</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nodedepth</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>logrankCR</td><td>logrankCR, logrank</td><td>-</td></tr><tr><td>nsplit</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>importance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, none, anti, permute, random</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>bootstrap</td><td>character</td><td>by.root</td><td>by.root, by.node, none, by.user</td><td>-</td></tr><tr><td>samptype</td><td>character</td><td>swor</td><td>swor, swr</td><td>-</td></tr><tr><td>samp</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>membership</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampsize</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sampsize.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>na.action</td><td>character</td><td>na.omit</td><td>na.omit, na.impute</td><td>-</td></tr><tr><td>nimpute</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntime</td><td>integer</td><td>150</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cause</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>proximity</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>distance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>forest.wt</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>xvar.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>split.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>forest</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.used</td><td>character</td><td>FALSE</td><td>FALSE, all.trees</td><td>-</td></tr><tr><td>split.depth</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, -1]\)</td></tr><tr><td>do.trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>get.tree</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>outcome</td><td>character</td><td>train</td><td>train, test</td><td>-</td></tr><tr><td>ptn.count</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cores</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>save.memory</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>perf.type</td><td>character</td><td>-</td><td>none</td><td>-</td></tr><tr><td>case.depth</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>marginal.xvar</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ntree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>nodesize</td><td>integer</td><td>15</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>nodedepth</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>splitrule</td><td>character</td><td>logrankCR</td><td>logrankCR, logrank</td><td>-</td></tr><tr><td>nsplit</td><td>integer</td><td>10</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>importance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, none, anti, permute, random</td><td>-</td></tr><tr><td>block.size</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>bootstrap</td><td>character</td><td>by.root</td><td>by.root, by.node, none, by.user</td><td>-</td></tr><tr><td>samptype</td><td>character</td><td>swor</td><td>swor, swr</td><td>-</td></tr><tr><td>samp</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>membership</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sampsize</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>sampsize.ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>na.action</td><td>character</td><td>na.omit</td><td>na.omit, na.impute</td><td>-</td></tr><tr><td>nimpute</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>ntime</td><td>integer</td><td>150</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cause</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>proximity</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>distance</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>forest.wt</td><td>character</td><td>FALSE</td><td>FALSE, TRUE, inbag, oob, all</td><td>-</td></tr><tr><td>xvar.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>split.wt</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>forest</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>var.used</td><td>character</td><td>FALSE</td><td>FALSE, all.trees</td><td>-</td></tr><tr><td>split.depth</td><td>character</td><td>FALSE</td><td>FALSE, all.trees, by.tree</td><td>-</td></tr><tr><td>seed</td><td>integer</td><td>-</td><td></td><td>\((-\infty, -1]\)</td></tr><tr><td>do.trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>get.tree</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>outcome</td><td>character</td><td>train</td><td>train, test</td><td>-</td></tr><tr><td>ptn.count</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>cores</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>save.memory</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>use.uno</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>perf.type</td><td>character</td><td>-</td><td>none</td><td>-</td></tr><tr><td>case.depth</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>marginal.xvar</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="initial-parameter-values">Initial parameter values<a class="anchor" aria-label="anchor" href="#initial-parameter-values"></a></h2>
 
@@ -274,7 +274,7 @@ average across causes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                     Number of events: 1=12, 2=74</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Forest terminal node size: 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 8.812</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Average no. of terminal nodes: 9.36</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>               Total no. of variables: 17</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Resampling used to grow trees: swor</span>
@@ -283,26 +283,28 @@ average across causes.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               Family: surv-CR</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                       Splitting rule: logrankCR *random*</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        Number of random split points: 10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.12526427, 0.16938213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    (OOB) Requested performance error: 0.32864659, 0.256327</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span>cause <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="co"># VIMP for cause = 1</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         bili       copper        edema          age      protime      ascites </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.374890167  0.224548537  0.073011268  0.044766034  0.041983480  0.032744001 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chol          ast          sex      albumin     platelet       hepato </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.026779640  0.016179893  0.012370637  0.011641258  0.005516998  0.003179171 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          trt      spiders     alk.phos         trig        stage </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.001420685 -0.002288279 -0.002890636 -0.005046998 -0.011340014 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bili       protime           age         stage        copper </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1943952279  0.0606311142  0.0500378200  0.0318726815  0.0248004714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          trig          chol      platelet       ascites         edema </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0230637878  0.0174438486  0.0168017607  0.0127577127  0.0087937152 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           sex       albumin       spiders           trt           ast </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0081182574  0.0030719271  0.0018518846 -0.0002615852 -0.0021018581 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      alk.phos        hepato </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0031800461 -0.0048637388 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span>cause <span class="op">=</span> <span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="co"># VIMP for cause = 2</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bili         edema        copper       ascites       albumin </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1733589257  0.1495768571  0.1120418436  0.0905105035  0.0497829529 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           age       protime         stage          chol           ast </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0335246364  0.0257649076  0.0249035022  0.0233546304  0.0212223721 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       spiders      alk.phos          trig      platelet           sex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0151678414  0.0146517304  0.0100993512  0.0047567388  0.0036549787 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           trt        hepato </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0004037396 -0.0007525041 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bili       ascites       albumin         edema          chol </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1799292298  0.0731044482  0.0640895241  0.0514529507  0.0482868191 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           age       protime          trig        copper        hepato </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0476633597  0.0345180086  0.0299201365  0.0297292306  0.0194746270 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      alk.phos      platelet           ast           sex       spiders </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0185677410  0.0110253175  0.0085004838  0.0006703364  0.0006144143 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         stage           trt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0009511494 -0.0011985001 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">oob_error</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># weighted-mean across causes</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1632261</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.2664181</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -310,7 +312,7 @@ average across causes.</p></dd>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> cmprsk.auc </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8514918 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.942714 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

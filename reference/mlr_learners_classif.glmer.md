@@ -51,6 +51,7 @@ instantiated via
 | restart_edge             | logical   | FALSE                                                                        | TRUE, FALSE                                                                 | \-               |
 | boundary.tol             | numeric   | 1e-05                                                                        |                                                                             | \\\[0, \infty)\\ |
 | calc.derivs              | logical   | TRUE                                                                         | TRUE, FALSE                                                                 | \-               |
+| autoscale                | untyped   | NULL                                                                         |                                                                             | \-               |
 | check.nobs.vs.rankZ      | character | ignore                                                                       | ignore, warning, message, stop                                              | \-               |
 | check.nobs.vs.nlev       | character | stop                                                                         | ignore, warning, message, stop                                              | \-               |
 | check.nlev.gtreq.5       | character | ignore                                                                       | ignore, warning, message, stop                                              | \-               |
@@ -63,6 +64,8 @@ instantiated via
 | nAGQ                     | integer   | 1                                                                            |                                                                             | \\\[0, \infty)\\ |
 | mustart                  | untyped   | \-                                                                           |                                                                             | \-               |
 | etastart                 | untyped   | \-                                                                           |                                                                             | \-               |
+| check.conv.nobsmax       | numeric   | 10000                                                                        |                                                                             | \\\[1, \infty)\\ |
+| check.conv.nparmax       | numeric   | 20                                                                           |                                                                             | \\\[1, \infty)\\ |
 | check.conv.grad          | untyped   | "lme4::.makeCC(\\warning\\, tol = 2e-3, relTol = NULL)"                      |                                                                             | \-               |
 | check.conv.singular      | untyped   | "lme4::.makeCC( action = \\message\\, tol = formals(lme4::isSingular)\$tol)" |                                                                             | \-               |
 | check.conv.hess          | untyped   | "lme4::.makeCC(action = \\warning\\, tol = 1e-6)"                            |                                                                             | \-               |

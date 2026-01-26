@@ -2,19 +2,10 @@
 
 Generalized additive models. Calls
 [`mgcv::gam()`](https://rdrr.io/pkg/mgcv/man/gam.html) from package
-[mgcv](https://CRAN.R-project.org/package=mgcv).
+[mgcv](https://CRAN.R-project.org/package=mgcv) with `family` set to
+`binomial`.
 
-Multiclass classification is not implemented yet.
-
-## Formula
-
-A gam formula specific to the task at hand is required for the `formula`
-parameter (see example and
-[`?mgcv::formula.gam`](https://rdrr.io/pkg/mgcv/man/formula.gam.html)).
-Beware, if no formula is provided, a fallback formula is used that will
-make the gam behave like a glm (this behavior is required for the unit
-tests). Only features specified in the formula will be used, superseding
-columns with col_roles "feature" in the task.
+Multilabel classification is not implemented yet.
 
 ## Dictionary
 
@@ -56,6 +47,7 @@ instantiated via
 | in.out             | untyped   | NULL                 |                                         | \-                    |
 | drop.unused.levels | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | drop.intercept     | logical   | FALSE                | TRUE, FALSE                             | \-                    |
+| nei                | untyped   | \-                   |                                         | \-                    |
 | nthreads           | integer   | 1                    |                                         | \\\[1, \infty)\\      |
 | irls.reg           | numeric   | 0                    |                                         | \\\[0, \infty)\\      |
 | epsilon            | numeric   | 1e-07                |                                         | \\\[0, \infty)\\      |
@@ -67,17 +59,25 @@ instantiated via
 | nlm                | untyped   | list()               |                                         | \-                    |
 | optim              | untyped   | list()               |                                         | \-                    |
 | newton             | untyped   | list()               |                                         | \-                    |
-| outerPIsteps       | integer   | 0                    |                                         | \\\[0, \infty)\\      |
 | idLinksBases       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | scalePenalty       | logical   | TRUE                 | TRUE, FALSE                             | \-                    |
 | efs.lspmax         | integer   | 15                   |                                         | \\\[0, \infty)\\      |
 | efs.tol            | numeric   | 0.1                  |                                         | \\\[0, \infty)\\      |
 | scale.est          | character | fletcher             | fletcher, pearson, deviance             | \-                    |
 | edge.correct       | logical   | FALSE                | TRUE, FALSE                             | \-                    |
-| nei                | untyped   | \-                   |                                         | \-                    |
 | ncv.threads        | integer   | 1                    |                                         | \\\[1, \infty)\\      |
 | block.size         | integer   | 1000                 |                                         | \\(-\infty, \infty)\\ |
 | unconditional      | logical   | FALSE                | TRUE, FALSE                             | \-                    |
+
+## Formula
+
+A gam formula specific to the task at hand is required for the `formula`
+parameter (see example and
+[`?mgcv::formula.gam`](https://rdrr.io/pkg/mgcv/man/formula.gam.html)).
+Beware, if no formula is provided, a fallback formula is used that will
+make the gam behave like a glm (this behavior is required for the unit
+tests). Only features specified in the formula will be used, superseding
+columns with col_roles "feature" in the task.
 
 ## Offset
 

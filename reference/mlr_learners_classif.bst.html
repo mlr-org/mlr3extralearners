@@ -15,7 +15,7 @@ Calls bst::bst() from bst."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls bst::bst() from bst."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Gradient Boosting Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_bst_classif_bst.R" class="external-link"><code>R/learner_bst_classif_bst.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_bst_classif_bst.R" class="external-link"><code>R/learner_bst_classif_bst.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.bst.Rd</code></div>
     </div>
 
@@ -197,31 +197,29 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-out co"><span class="r-pr">#&gt;</span> Base learner:  ls </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 50 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0.1079137 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  0.1366906 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V1         V10         V11         V12         V13         V14 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.25316580  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V15         V16         V17         V18         V19          V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.44417798 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V20         V21         V22         V23         V24         V25 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V26         V27         V28         V29          V3         V30 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V31         V32         V33         V34         V35         V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.05833397  0.00000000  0.00000000  0.00000000  0.00000000 -0.61402718 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V37         V38         V39          V4         V40         V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V42         V43         V44         V45         V46         V47 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.93127579  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V48         V49          V5         V50         V51         V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.36215190  0.00000000  0.00000000  2.14111602  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V53         V54         V55         V56         V57         V58 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V59          V6         V60          V7          V8          V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V1        V10        V11        V12        V13        V14        V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2941813  0.0000000  0.4969828  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V16        V17        V18        V19         V2        V20        V21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V22        V23        V24        V25        V26        V27        V28 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V29         V3        V30        V31        V32        V33        V34 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V35        V36        V37        V38        V39         V4        V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.2605150 -0.3940014  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V41        V42        V43        V44        V45        V46        V47 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.2336338  0.7695030  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V48        V49         V5        V50        V51        V52        V53 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V54        V55        V56        V57        V58        V59         V6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V60         V7         V8         V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.0000000  0.0000000  0.0000000  0.0000000 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1079137</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0.1366906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -231,7 +229,7 @@ Calls <code><a href="https://rdrr.io/pkg/bst/man/bst.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3333333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3478261 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

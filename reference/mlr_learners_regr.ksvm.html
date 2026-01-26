@@ -15,7 +15,7 @@ Calls kernlab::ksvm() from kernlab."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls kernlab::ksvm() from kernlab."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Kernlab Support Vector Machine</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_kernlab_regr_ksvm.R" class="external-link"><code>R/learner_kernlab_regr_ksvm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_kernlab_regr_ksvm.R" class="external-link"><code>R/learner_kernlab_regr_ksvm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.ksvm.Rd</code></div>
     </div>
 
@@ -186,12 +186,12 @@ Calls <code><a href="https://rdrr.io/pkg/kernlab/man/ksvm.html" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span>  parameter : epsilon = 0.1  cost C = 1 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gaussian Radial Basis kernel function. </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Hyperparameter : sigma =  0.749719136545067 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Hyperparameter : sigma =  0.0613997042354401 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Support Vectors : 19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Support Vectors : 18 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Objective Function Value : -5.2973 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Training error : 0.078384 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Objective Function Value : -5.5094 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Training error : 0.125823 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -200,7 +200,7 @@ Calls <code><a href="https://rdrr.io/pkg/kernlab/man/ksvm.html" class="external-
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34.06537 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  12.5028 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

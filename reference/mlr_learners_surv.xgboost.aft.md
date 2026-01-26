@@ -26,15 +26,6 @@ This learner returns three prediction types:
 
 3.  `crank`: same as `lp`.
 
-## Initial parameter values
-
-- `nrounds` is initialized to 1000.
-
-- `nthread` is initialized to 1 to avoid conflicts with parallelization
-  via [future](https://CRAN.R-project.org/package=future).
-
-- `verbose` is initialized to 0.
-
 ## Early stopping
 
 Early stopping can be used to find the optimal number of boosting
@@ -83,37 +74,34 @@ instantiated via
 | alpha                       | numeric   | 0         |                                          | \\\[0, \infty)\\      |
 | base_score                  | numeric   | 0.5       |                                          | \\(-\infty, \infty)\\ |
 | booster                     | character | gbtree    | gbtree, gblinear, dart                   | \-                    |
-| callbacks                   | untyped   | list()    |                                          | \-                    |
+| callbacks                   | untyped   | NULL      |                                          | \-                    |
+| seed                        | integer   | \-        |                                          | \\(-\infty, \infty)\\ |
 | colsample_bylevel           | numeric   | 1         |                                          | \\\[0, 1\]\\          |
 | colsample_bynode            | numeric   | 1         |                                          | \\\[0, 1\]\\          |
 | colsample_bytree            | numeric   | 1         |                                          | \\\[0, 1\]\\          |
 | disable_default_eval_metric | logical   | FALSE     | TRUE, FALSE                              | \-                    |
+| evals                       | untyped   | NULL      |                                          | \-                    |
 | early_stopping_rounds       | integer   | NULL      |                                          | \\\[1, \infty)\\      |
-| eta                         | numeric   | 0.3       |                                          | \\\[0, 1\]\\          |
+| learning_rate               | numeric   | 0.3       |                                          | \\\[0, 1\]\\          |
 | feature_selector            | character | cyclic    | cyclic, shuffle, random, greedy, thrifty | \-                    |
-| feval                       | untyped   | NULL      |                                          | \-                    |
 | gamma                       | numeric   | 0         |                                          | \\\[0, \infty)\\      |
 | grow_policy                 | character | depthwise | depthwise, lossguide                     | \-                    |
 | interaction_constraints     | untyped   | \-        |                                          | \-                    |
 | iterationrange              | untyped   | \-        |                                          | \-                    |
 | lambda                      | numeric   | 1         |                                          | \\\[0, \infty)\\      |
-| lambda_bias                 | numeric   | 0         |                                          | \\\[0, \infty)\\      |
 | max_bin                     | integer   | 256       |                                          | \\\[2, \infty)\\      |
 | max_delta_step              | numeric   | 0         |                                          | \\\[0, \infty)\\      |
 | max_depth                   | integer   | 6         |                                          | \\\[0, \infty)\\      |
 | max_leaves                  | integer   | 0         |                                          | \\\[0, \infty)\\      |
 | maximize                    | logical   | NULL      | TRUE, FALSE                              | \-                    |
 | min_child_weight            | numeric   | 1         |                                          | \\\[0, \infty)\\      |
-| missing                     | numeric   | NA        |                                          | \\(-\infty, \infty)\\ |
 | monotone_constraints        | integer   | 0         |                                          | \\\[-1, 1\]\\         |
 | normalize_type              | character | tree      | tree, forest                             | \-                    |
 | nrounds                     | integer   | \-        |                                          | \\\[1, \infty)\\      |
-| nthread                     | integer   | 1         |                                          | \\\[1, \infty)\\      |
-| ntreelimit                  | integer   | \-        |                                          | \\\[1, \infty)\\      |
+| nthread                     | integer   | \-        |                                          | \\\[1, \infty)\\      |
 | num_parallel_tree           | integer   | 1         |                                          | \\\[1, \infty)\\      |
 | one_drop                    | logical   | FALSE     | TRUE, FALSE                              | \-                    |
 | print_every_n               | integer   | 1         |                                          | \\\[1, \infty)\\      |
-| process_type                | character | default   | default, update                          | \-                    |
 | rate_drop                   | numeric   | 0         |                                          | \\\[0, 1\]\\          |
 | refresh_leaf                | logical   | TRUE      | TRUE, FALSE                              | \-                    |
 | sampling_method             | character | uniform   | uniform, gradient_based                  | \-                    |
@@ -123,16 +111,30 @@ instantiated via
 | scale_pos_weight            | numeric   | 1         |                                          | \\(-\infty, \infty)\\ |
 | seed_per_iteration          | logical   | FALSE     | TRUE, FALSE                              | \-                    |
 | skip_drop                   | numeric   | 0         |                                          | \\\[0, 1\]\\          |
-| strict_shape                | logical   | FALSE     | TRUE, FALSE                              | \-                    |
+| use_rmm                     | logical   | FALSE     | TRUE, FALSE                              | \-                    |
+| max_cached_hist_node        | integer   | NULL      |                                          | \\(-\infty, \infty)\\ |
+| extmem_single_page          | logical   | FALSE     | TRUE, FALSE                              | \-                    |
+| max_cat_to_onehot           | integer   | 4         |                                          | \\(-\infty, \infty)\\ |
+| max_cat_threshold           | integer   | 64        |                                          | \\(-\infty, \infty)\\ |
 | subsample                   | numeric   | 1         |                                          | \\\[0, 1\]\\          |
 | top_k                       | integer   | 0         |                                          | \\\[0, \infty)\\      |
 | tree_method                 | character | auto      | auto, exact, approx, hist, gpu_hist      | \-                    |
-| tweedie_variance_power      | numeric   | 1.5       |                                          | \\\[1, 2\]\\          |
 | updater                     | untyped   | \-        |                                          | \-                    |
-| verbose                     | integer   | 1         |                                          | \\\[0, 2\]\\          |
-| watchlist                   | untyped   | NULL      |                                          | \-                    |
+| verbose                     | integer   | \-        |                                          | \\\[0, 2\]\\          |
+| verbosity                   | integer   | \-        |                                          | \\\[0, 2\]\\          |
 | xgb_model                   | untyped   | \-        |                                          | \-                    |
 | device                      | untyped   | \-        |                                          | \-                    |
+| missing                     | numeric   | NA        |                                          | \\(-\infty, \infty)\\ |
+| validate_features           | logical   | TRUE      | TRUE, FALSE                              | \-                    |
+
+## Initial parameter values
+
+- `nrounds` is initialized to 1000.
+
+- `nthread` is initialized to 1 to avoid conflicts with parallelization
+  via [future](https://CRAN.R-project.org/package=future).
+
+- `verbose` and `verbosity` are both initialized to 0.
 
 ## References
 
@@ -200,6 +202,11 @@ bblodfon
 
   How to construct the internal validation data. This parameter can be
   either `NULL`, a ratio, `"test"`, or `"predefined"`.
+
+- `model`:
+
+  (any)  
+  The fitted model. Only available after `$train()` has been called.
 
 ## Methods
 
@@ -276,7 +283,7 @@ print(learner)
 #> 
 #> ── <LearnerSurvXgboostAFT> (surv.xgboost.aft): Extreme Gradient Boosting AFT ───
 #> • Model: -
-#> • Parameters: nrounds=1000, nthread=1, verbose=0
+#> • Parameters: nrounds=1000, nthread=1, verbose=0, verbosity=0
 #> • Validate: NULL
 #> • Packages: mlr3, mlr3proba, mlr3extralearners, and xgboost
 #> • Predict Types: [crank], lp, and response
@@ -296,20 +303,17 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> ##### xgb.Booster
-#> raw: 2.5 Mb 
 #> call:
-#>   xgboost::xgb.train(data = data, nrounds = 1000L, verbose = 0L, 
-#>     nthread = 1L, objective = "survival:aft", eval_metric = "aft-nloglik")
-#> params (as set within xgb.train):
-#>   nthread = "1", objective = "survival:aft", eval_metric = "aft-nloglik", validate_parameters = "TRUE"
-#> xgb.attributes:
-#>   niter
+#>   xgboost::xgb.train(params = pv[names(pv) %in% formalArgs(xgboost::xgb.params)], 
+#>     data = data, nrounds = pv$nrounds, evals = pv$evals, verbose = pv$verbose, 
+#>     print_every_n = pv$print_every_n, early_stopping_rounds = pv$early_stopping_rounds, 
+#>     maximize = pv$maximize, save_period = pv$save_period, save_name = pv$save_name, 
+#>     callbacks = pv$callbacks %??% list())
 #> # of features: 6 
-#> niter: 1000
-#> nfeatures : 6 
+#> # of rounds:  1000 
 print(learner$importance())
 #>  revascdays      revasc         los       sysbp         age    stchange 
-#> 0.333157752 0.319164444 0.138096425 0.114412882 0.087260520 0.007907977 
+#> 0.333152092 0.319069397 0.138087356 0.114430717 0.087400950 0.007859488 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -317,5 +321,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8312348 
+#>   0.8323826 
 ```

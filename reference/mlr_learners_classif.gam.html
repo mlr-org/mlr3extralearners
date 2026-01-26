@@ -6,10 +6,10 @@
     }
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Generalized Additive Model Learner — mlr_learners_classif.gam"><meta name="description" content="Generalized additive models.
-Calls mgcv::gam() from package mgcv.
-Multiclass classification is not implemented yet."><meta property="og:description" content="Generalized additive models.
-Calls mgcv::gam() from package mgcv.
-Multiclass classification is not implemented yet."></head><body>
+Calls mgcv::gam() from package mgcv with family set to binomial.
+Multilabel classification is not implemented yet."><meta property="og:description" content="Generalized additive models.
+Calls mgcv::gam() from package mgcv with family set to binomial.
+Multilabel classification is not implemented yet."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -17,7 +17,7 @@ Multiclass classification is not implemented yet."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,28 +52,17 @@ Multiclass classification is not implemented yet."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Generalized Additive Model Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_mgcv_classif_gam.R" class="external-link"><code>R/learner_mgcv_classif_gam.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mgcv_classif_gam.R" class="external-link"><code>R/learner_mgcv_classif_gam.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.gam.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
     <p>Generalized additive models.
-Calls <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html" class="external-link">mgcv::gam()</a></code> from package <a href="https://CRAN.R-project.org/package=mgcv" class="external-link"><span class="pkg">mgcv</span></a>.</p>
-<p>Multiclass classification is not implemented yet.</p>
+Calls <code><a href="https://rdrr.io/pkg/mgcv/man/gam.html" class="external-link">mgcv::gam()</a></code> from package <a href="https://CRAN.R-project.org/package=mgcv" class="external-link"><span class="pkg">mgcv</span></a> with <code>family</code> set to <code>binomial</code>.</p>
+<p>Multilabel classification is not implemented yet.</p>
     </div>
 
 
-    <div class="section level2">
-    <h2 id="formula">Formula<a class="anchor" aria-label="anchor" href="#formula"></a></h2>
-
-
-<p>A gam formula specific to the task at hand is required for the <code>formula</code>
-parameter (see example and <code><a href="https://rdrr.io/pkg/mgcv/man/formula.gam.html" class="external-link">?mgcv::formula.gam</a></code>). Beware, if no formula is
-provided, a fallback formula is used that will make the gam behave like a
-glm (this behavior is required for the unit tests). Only features specified
-in the formula will be used, superseding columns with col_roles "feature"
-in the task.</p>
-    </div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
 
@@ -93,7 +82,17 @@ in the task.</p>
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>method</td><td>character</td><td>GCV.Cp</td><td>GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML</td><td>-</td></tr><tr><td>optimizer</td><td>untyped</td><td>c("outer", "newton")</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>select</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>knots</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>sp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>min.sp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>H</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>paraPen</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>G</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>in.out</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>drop.unused.levels</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>drop.intercept</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>irls.reg</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxit</td><td>integer</td><td>200</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mgcv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>mgcv.half</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>rank.tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nlm</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>optim</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>newton</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>outerPIsteps</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>idLinksBases</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scalePenalty</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>efs.lspmax</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>efs.tol</td><td>numeric</td><td>0.1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale.est</td><td>character</td><td>fletcher</td><td>fletcher, pearson, deviance</td><td>-</td></tr><tr><td>edge.correct</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nei</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>ncv.threads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>block.size</td><td>integer</td><td>1000</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>unconditional</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>formula</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>method</td><td>character</td><td>GCV.Cp</td><td>GCV.Cp, GACV.Cp, REML, P-REML, ML, P-ML</td><td>-</td></tr><tr><td>optimizer</td><td>untyped</td><td>c("outer", "newton")</td><td></td><td>-</td></tr><tr><td>scale</td><td>numeric</td><td>0</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>select</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>knots</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>sp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>min.sp</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>H</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>gamma</td><td>numeric</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>paraPen</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>G</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>in.out</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>drop.unused.levels</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>drop.intercept</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>nei</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>nthreads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>irls.reg</td><td>numeric</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>maxit</td><td>integer</td><td>200</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>mgcv.tol</td><td>numeric</td><td>1e-07</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>mgcv.half</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>rank.tol</td><td>numeric</td><td>1.490116e-08</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>nlm</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>optim</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>newton</td><td>untyped</td><td>list()</td><td></td><td>-</td></tr><tr><td>idLinksBases</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scalePenalty</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>efs.lspmax</td><td>integer</td><td>15</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>efs.tol</td><td>numeric</td><td>0.1</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>scale.est</td><td>character</td><td>fletcher</td><td>fletcher, pearson, deviance</td><td>-</td></tr><tr><td>edge.correct</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>ncv.threads</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>block.size</td><td>integer</td><td>1000</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>unconditional</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+    <div class="section level2">
+    <h2 id="formula">Formula<a class="anchor" aria-label="anchor" href="#formula"></a></h2>
+
+
+<p>A gam formula specific to the task at hand is required for the <code>formula</code>
+parameter (see example and <code><a href="https://rdrr.io/pkg/mgcv/man/formula.gam.html" class="external-link">?mgcv::formula.gam</a></code>). Beware, if no formula is provided, a fallback formula is
+used that will make the gam behave like a glm (this behavior is required
+for the unit tests). Only features specified in the formula will be used,
+superseding columns with col_roles "feature" in the task.</p>
+    </div>
     <div class="section level2">
     <h2 id="offset">Offset<a class="anchor" aria-label="anchor" href="#offset"></a></h2>
 

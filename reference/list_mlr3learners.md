@@ -15,7 +15,7 @@ list_mlr3learners(select = NULL, filter = NULL)
 
   [`character()`](https://rdrr.io/r/base/character.html)  
   Passed to
-  [data.table::subset](https://rdatatable.gitlab.io/data.table/reference/subset.data.table.html).
+  [data.table::subset](https://rdrr.io/pkg/data.table/man/subset.data.table.html).
 
 - filter:
 

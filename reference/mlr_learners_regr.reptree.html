@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.3.1</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Decision Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.3.1/R/learner_RWeka_regr_reptree.R" class="external-link"><code>R/learner_RWeka_regr_reptree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_reptree.R" class="external-link"><code>R/learner_RWeka_regr_reptree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.reptree.Rd</code></div>
     </div>
 
@@ -238,14 +238,12 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 163.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 92 : 27.9 (3/1.41) [1/64]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 92 : 21.54 (4/1.71) [1/0.03]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 163.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 195 : 17.94 (2/0.49) [5/6.05]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 195 : 13.84 (5/3.61) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt; 118 : 24.7 (6/11.65) [3/35.27]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;= 118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &lt; 192.5 : 17.54 (5/2.51) [3/3.13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   hp &gt;= 192.5 : 13.55 (3/4.87) [1/2.35]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 5</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -254,7 +252,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.62178 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.94116 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
