@@ -96,7 +96,7 @@ Jolliffe, T. I (1982).
 }
 }
 \author{
-alexander
+awinterstetter
 }
 \section{Super classes}{
 \code{\link[mlr3:Learner]{mlr3::Learner}} -> \code{\link[mlr3:LearnerRegr]{mlr3::LearnerRegr}} -> \code{LearnerRegrPcr}
