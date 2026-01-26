@@ -5,6 +5,7 @@
 * New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
+  - `LearnerSurvNCVsurv`
   - `LearnerRegrRRF`
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
@@ -14,8 +15,10 @@
   - `LearnerRegrBgpllm`
   - `LearnerRegrBtgp`
   - `LearnerRegrBtlm`
+  - `LearnerRegrNCVReg`
   - `LearnerClassifNNTrain`
   - `LearnerClassifDbnDNN`
+  - `LearnerClassifNCVreg`
 
 ## Breaking Changes
 
