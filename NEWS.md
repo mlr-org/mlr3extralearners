@@ -3,24 +3,33 @@
 ## New Features
 
 * New Learners:
+  - `LearnerClassifSaeDNN`
+
+# mlr3extralearners 1.4.0
+
+## New Features
+
+* New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
+  - `LearnerSurvNCVsurv`
   - `LearnerRegrRRF`
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
   - `LearnerRegrFrbs`
   - `LearnerRegrBcart`
-  - `LearnerRegrBlm`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
   - `LearnerRegrBlm`
   - `LearnerRegrBtgp`
+  - `LearnerRegrBtgpllm`
   - `LearnerRegrBtlm`
+  - `LearnerRegrNCVReg`
   - `LearnerClassifDbnDNN`
   - `LearnerClassifNNTrain`
-  - `LearnerClassifSaeDNN`
   - `LearnerClassifSparseLDA`
+  - `LearnerClassifNCVreg`
 
 ## Breaking Changes
 
