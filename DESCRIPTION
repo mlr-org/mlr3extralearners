@@ -1,6 +1,6 @@
 Package: mlr3extralearners
 Title: Extra Learners For mlr3
-Version: 1.3.1.9000
+Version: 1.4.0.9000
 Authors@R: c(
     person("Raphael", "Sonabend", , "raphaelsonabend@gmail.com", role = "aut",
            comment = c(ORCID = "0000-0001-9225-4654")),
@@ -79,7 +79,7 @@ Suggests:
     fastai (>= 2.2.2),
     flexsurv (>= 2.3),
     FNN,
-    frbs,
+    frbs (>= 3.2-0),
     formattable,
     future,
     gbm (>= 2.2.2),
@@ -104,6 +104,7 @@ Suggests:
     mlr3learners (>= 0.12.0),
     mlr3pipelines,
     mvtnorm,
+    ncvreg (>= 3.16.0),
     neuralnet,
     nnet,
     partykit (>= 1.2-21),
@@ -127,18 +128,16 @@ Suggests:
     RWeka,
     sandwich,
     sda (>= 1.3.9),
-    sparseLDA,
+    sparseLDA (>= 0.1-9),
     sparsediscrim,
     stats,
     stepPlr,
     survival,
     survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
-    tgp,
     tensorflow (>= 2.0.0),
-    tgp,
     testthat,
-    tgp,
+    tgp (>= 2.4-23),
     xgboost (>= 3.1.2.1)
 VignetteBuilder:
     knitr,
