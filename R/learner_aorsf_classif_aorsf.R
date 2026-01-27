@@ -13,6 +13,9 @@
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 #' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
+#' @templateVar id classif.aorsf
+#' @template learner
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
