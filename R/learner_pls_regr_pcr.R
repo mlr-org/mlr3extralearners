@@ -1,5 +1,5 @@
 #' @title Principal Component Regression Learner
-#' @author alexander
+#' @author awinterstetter
 #' @name mlr_learners_regr.pcr
 #'
 #' @description
