@@ -1,22 +1,33 @@
 # mlr3extralearners (development version)
 
+* New Learners:
+- `LearnerClassifLvq1`
+
+# mlr3extralearners 1.4.0
+
 ## New Features
 
 * New Learners:
   - `LearnerSurvGamCox`
   - `LearnerSurvFlexReg`
+  - `LearnerSurvNCVsurv`
   - `LearnerRegrRRF`
   - `LearnerRegrPcr`
   - `LearnerRegrPlsr`
   - `LearnerRegrLaGP`
   - `LearnerRegrFrbs`
+  - `LearnerRegrBcart`
   - `LearnerRegrBgp`
   - `LearnerRegrBgpllm`
+  - `LearnerRegrBlm`
   - `LearnerRegrBtgp`
+  - `LearnerRegrBtgpllm`
   - `LearnerRegrBtlm`
-  - `LearnerClassifNNTrain`
+  - `LearnerRegrNCVReg`
   - `LearnerClassifDbnDNN`
-  - `LearnerClassifLvq1`
+  - `LearnerClassifNNTrain`
+  - `LearnerClassifSparseLDA`
+  - `LearnerClassifNCVreg`
 
 ## Breaking Changes
 
