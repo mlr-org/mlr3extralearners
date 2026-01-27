@@ -63,6 +63,7 @@ Suggests:
     bst,
     C50,
     callr,
+    caret (>= 7.0-1),
     catboost,
     class,
     coin,

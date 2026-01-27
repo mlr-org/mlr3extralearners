@@ -277,6 +277,16 @@ bibentries = c( # nolint start
     pages = "1--24",
     doi = "10.18637/jss.v018.i02"
   ),
+  kuhn2008caret = bibentry("article",
+    title = "Building Predictive Models in R Using the caret Package",
+    author = "Kuhn, Max",
+    journal = "Journal of Statistical Software",
+    year = "2008",
+    volume = "28",
+    number = "5",
+    pages = "1--26",
+    doi = "10.18637/jss.v028.i05"
+  ),
   wood2016 = bibentry("article",
     title = "Smoothing Parameter and Model Selection for General Smooth Models",
     author = "Wood, Simon N. and Pya, Natalya and Safken, Benjamin",
