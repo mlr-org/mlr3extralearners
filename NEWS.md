@@ -1,5 +1,8 @@
 # mlr3extralearners (development version)
 
+* New Learners:
+  - `LearnerRegrGPfit`
+
 # mlr3extralearners 1.4.0
 
 ## New Features
@@ -32,12 +35,9 @@
 
 ## Other
 
-* `CoxBoost` is now on CRAN, so we removed it from `Remotes`
-* `lrn("surv.flexsurvspline")` predicts linear predictors using `predict.flexsurvreg()`. We were doing manually the same exact prediction, so no functionality was changed.
 * compatibility: `xgboost` 3.1.2.1 (survival learners)
 * parameter updates for `regr.lmer`/`glmer` learners
 * updates for `randomForestSRC` 3.5.0 (`use.uno` parameter)
-* performance improvement: use of `data.table::fifelse` (@m-muecke)
 
 # mlr3extralearners 1.3.1
 

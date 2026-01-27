@@ -98,7 +98,7 @@ LearnerClassifAdaBoosting = R6Class("LearnerClassifAdaBoosting",
       newdata = ordered_features(task, self)
 
       # Calculate predictions for the selected predict type.
-      type = if (self$predict_type == "response") "vector" else "probs"
+      type = ifelse(self$predict_type == "response", "vector", "probs")
       pred = invoke(predict, self$model, newdata = newdata, type = type, .args = pars)
 
       if (type == "probs") {

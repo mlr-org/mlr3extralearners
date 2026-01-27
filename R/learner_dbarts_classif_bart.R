@@ -119,7 +119,7 @@ LearnerClassifBart = R6Class("LearnerClassifBart",
       ))
 
       if (self$predict_type == "response") {
-        list(response = fifelse(p >= 0.5, task$positive, task$negative))
+        list(response = ifelse(p >= 0.5, task$positive, task$negative))
       } else {
         list(prob = pprob_to_matrix(p, task))
       }
