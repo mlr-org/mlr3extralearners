@@ -396,6 +396,73 @@ test_that("paramtest", {
 Test passed with 2 successes 🥇.
 ```
 
+## Documenting the Learner
+
+When documenting a learner, examples are crucial to help users understand how to use it.
+The `mlr3extralearners` package uses roxygen2 templates to standardize examples across learners.
+
+### Example Templates
+
+There are three main approaches for learner examples:
+
+1. **Standard template (`@template example`)**: Use this for most learners. It automatically generates a complete example that creates the learner, trains it on an appropriate task (sonar for classification, mtcars for regression, grace for survival), makes predictions, and scores them. If the learner has the `"importance"` property, it also prints the importance scores.
+
+2. **Simple template (`@template simple_example`)**: Use this when the learner cannot easily run on standard tasks without additional configuration, or when training is very slow. This template only creates and prints the learner without training.
+
+3. **Custom templates (`@template example_<name>`)**: Use these when a learner requires specific parameters or task setup that differs from the standard template.
+
+### When to Use Custom Templates
+
+Create a custom template in `man-roxygen/example_<name>.R` when:
+
+* **The learner requires specific parameters to compute importance**: Some learners (e.g., `randomForest`, `rfsrc`, `ranger`) have the `"importance"` property but require an explicit parameter to be set (e.g., `importance = "TRUE"` or `importance = "permutation"`).
+
+* **The learner requires a formula parameter**: Learners like `lme4` (mixed-effects models), `mgcv` (GAMs), or `flexsurv` need a custom formula to demonstrate their functionality.
+
+* **The learner requires custom parameters for small datasets**: Some learners like `laGP` need parameter adjustments (e.g., `end = 15`) to work on small datasets like mtcars.
+
+* **The learner requires a custom task or data setup**: Learners like `prioritylasso` or `blockForest` require a `blocks` parameter that partitions features.
+
+* **The learner has special methods to demonstrate**: The `cmprsk.rfsrc` learner has cause-specific importance that should be shown in the example.
+
+### Creating a Custom Template
+
+Custom templates are placed in `man-roxygen/` and should:
+
+1. Start with a comment explaining why the template is custom
+2. Use roxygen2 template syntax with `<%` and `%>` for R code
+3. Reference the `id` variable (set via `@templateVar id <learner-id>` in the learner file)
+
+Here's an example structure:
+
+```r
+# Custom template for <package> learners (<learner-ids>)
+# Reason: <explanation of why standard template cannot be used>
+<%
+l = lrn(id)
+is_classif = "LearnerClassif" %in% class(l)
+# ... conditional logic based on learner type
+%>
+#'
+#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
+#' # Example code here using <%= id %> for the learner ID
+```
+
+### Using Templates in Learner Files
+
+In your learner's R file, add the template reference in the roxygen documentation:
+
+```r
+#' @templateVar id regr.mylearner
+#' @template learner
+#'
+#' @template seealso_learner
+#' @template example
+#' @export
+```
+
+For custom templates, replace `@template example` with `@template example_<name>`.
+
 ## Contributing to mlr3extralearners
 
 When adding a `Learner` to `mlr3extralearners` there are some additional requirements that have to be satisfied:

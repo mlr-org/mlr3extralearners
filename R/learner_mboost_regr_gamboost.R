@@ -16,7 +16,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(

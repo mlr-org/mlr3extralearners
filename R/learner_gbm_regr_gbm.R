@@ -27,7 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 LearnerRegrGBM = R6Class("LearnerRegrGBM",
   inherit = LearnerRegr,
   public = list(
