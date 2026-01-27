@@ -1,5 +1,10 @@
 # mlr3extralearners (development version)
 
+## New Features
+
+* New Learners:
+  - `LearnerClassifMLP`
+
 # mlr3extralearners 1.4.0
 
 ## New Features
