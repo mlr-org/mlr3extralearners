@@ -200,11 +200,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
 #>  row_ids     truth  response
-#>        5    benign    benign
-#>       11    benign    benign
+#>        6 malignant malignant
+#>        7    benign malignant
 #>       13 malignant malignant
 #>      ---       ---       ---
-#>      677    benign    benign
-#>      679    benign    benign
-#>      682 malignant malignant
+#>      669    benign malignant
+#>      672    benign malignant
+#>      681 malignant malignant
 ```
