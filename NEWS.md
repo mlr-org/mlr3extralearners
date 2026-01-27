@@ -1,5 +1,7 @@
 # mlr3extralearners (development version)
 
+## New Features
+
 * New Learners:
   - `LearnerClassifPlsdaCaret`
 
