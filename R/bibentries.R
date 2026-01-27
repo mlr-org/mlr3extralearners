@@ -903,6 +903,14 @@ bibentries = c( # nolint start
     url = "https://CRAN.R-project.org/package=deepnet",
     doi = "10.32614/CRAN.package.deepnet"
   ),
+  bergmeir2023rsnns = bibentry("article",
+    title = "RSNNS: Neural Networks using the Stuttgart Neural Network Simulator (SNNS)",
+    author = "Bergmeir, Christoph and Benitez, Jose M.",
+    journal = "R package version 0.4-17",
+    year = "2023",
+    url = "https://CRAN.R-project.org/package=RSNNS",
+    doi = "10.32614/CRAN.package.RSNNS"
+  ),
   gramacy2007tgp = bibentry("article",
     title = "tgp: An {R} Package for Bayesian Nonstationary, Semiparametric Nonlinear Regression and Design by Treed Gaussian Process Models",
     author = "Robert B. Gramacy",
