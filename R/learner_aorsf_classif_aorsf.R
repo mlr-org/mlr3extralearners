@@ -14,28 +14,7 @@
 #' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.aorsf")
-#' # Define the Learner
-#' learner = lrn("classif.aorsf", importance = "anova")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("breast_cancer")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
-#'
+#' @template example
 #' @export
 LearnerClassifObliqueRandomForest = R6Class("LearnerClassifObliqueRandomForest",
   inherit = LearnerClassif,

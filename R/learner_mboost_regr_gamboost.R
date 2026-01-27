@@ -16,10 +16,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' # Define the Learner
-#' learner = lrn("regr.gamboost", baselearner = "bols")
-#' print(learner)
+#' @template simple_example
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(

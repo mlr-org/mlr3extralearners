@@ -19,30 +19,6 @@ the parameter \code{na_action}.
 }
 }
 
-\examples{
-\dontshow{if (learner_is_runnable("classif.aorsf")) withAutoprint(\{ # examplesIf}
-# Define the Learner
-learner = lrn("classif.aorsf", importance = "anova")
-print(learner)
-
-# Define a Task
-task = tsk("breast_cancer")
-# Create train and test set
-ids = partition(task)
-
-# Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
-print(learner$model)
-print(learner$importance())
-
-# Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
-
-# Score the predictions
-predictions$score()
-\dontshow{\}) # examplesIf}
-}
 \seealso{
 \itemize{
 \item \link[mlr3misc:Dictionary]{Dictionary} of \link[mlr3:Learner]{Learners}: \link[mlr3:mlr_learners]{mlr3::mlr_learners}.

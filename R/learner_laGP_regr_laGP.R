@@ -22,27 +22,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("regr.laGP")
-#' # Define the Learner (use a small neighborhood size for this task)
-#' learner = lrn("regr.laGP", end = 15)
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("mtcars")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_laGP
 LearnerRegrLaGP = R6Class("LearnerRegrLaGP",
   inherit = LearnerRegr,
 

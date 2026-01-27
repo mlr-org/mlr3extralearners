@@ -86,7 +86,9 @@ learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
 # Define a Task
 task = tsk("mtcars")
 
+# Train the learner
 learner$train(task)
+
 print(learner$model)
 \dontshow{\}) # examplesIf}
 }

@@ -27,10 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' # Define the Learner
-#' learner = lrn("regr.gbm")
-#' print(learner)
+#' @template simple_example
 LearnerRegrGBM = R6Class("LearnerRegrGBM",
   inherit = LearnerRegr,
   public = list(
