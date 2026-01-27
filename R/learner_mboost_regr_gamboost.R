@@ -28,7 +28,7 @@ LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
         baselearner = p_fct(default = "bbs",
           levels = c("bbs", "bols", "btree"), tags = "train"),
         dfbase = p_int(default = 4L, tags = "train"),
-        family = p_fct(default = c("Gaussian"),
+        family = p_fct(default = "Gaussian",
           levels = c(
             "Gaussian", "Laplace", "Huber", "Poisson", "GammaReg",
             "NBinomial", "Hurdle", "custom"), tags = "train"),

@@ -50,7 +50,7 @@ LearnerSurvSVM = R6Class("LearnerSurvSVM",
           tags = "train"),
         diff.meth = p_fct(
           levels = c("makediff1", "makediff2", "makediff3"),
-          tags = c("train")),
+          tags = "train"),
         gamma = p_dbl(default = NULL, special_vals = list(NULL), tags = "train"),
         mu = p_dbl(default = NULL, special_vals = list(NULL), tags = "train"),
         opt.meth = p_fct(

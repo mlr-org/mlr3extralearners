@@ -12,7 +12,8 @@
 #' @importFrom survdistr vec_interp
 "_PACKAGE"
 
-utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD", "S", "K", "calibrator"))
+utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD",
+                         "S", "K", "calibrator", "corr"))
 
 # Silence rcmdcheck.
 local_seed

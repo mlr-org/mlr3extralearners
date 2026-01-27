@@ -432,6 +432,13 @@ bibentries = c( # nolint start
     year = "2018",
     publisher = "BioMed Central"
   ),
+  rong2014deepnet = bibentry("manual",
+    title = "{deepnet}: Deep Learning Toolkit in R",
+    author = "Xiao Rong",
+    year = "2014",
+    note = "R package version 0.2.1",
+    url = "https://CRAN.R-project.org/package=deepnet"
+  ),
   zhao2019dnnsurv = bibentry("article",
     title = "Dnnsurv: Deep neural networks for survival analysis using pseudo values",
     author = "Zhao, Lili and Feng, Dai",
@@ -693,6 +700,16 @@ bibentries = c( # nolint start
     publisher = "ASA Websites",
     doi = "10.1198/016214502753479248"
   ),
+  clemmensen2011sda = bibentry("article",
+    title = "Sparse discriminant analysis",
+    author = "Clemmensen, Line and Hastie, Trevor and Witten, Daniela and Ersboll, Bjarne",
+    year = "2011",
+    journal = "Journal of the American Statistical Association",
+    volume = "106",
+    number = "496",
+    pages = "1519--1531",
+    doi = "10.1198/jasa.2011.tm09728"
+  ),
   Srivastava2007mdeb = bibentry("article",
     title = "Comparison of Discrimination Methods for High Dimensional Data",
     author = "Srivastava, M. and Kubokawa, T.",
@@ -935,6 +952,17 @@ bibentries = c( # nolint start
     number = "1",
     pages = "1--46",
     doi = "10.18637/jss.v072.i01"
+  ),
+  breheny_2011 = bibentry("article",
+    title = "Coordinate descent algorithms for nonconvex penalized regression, with applications to biological feature selection",
+    author = "Patrick Breheny and Jian Huang",
+    year    = "2011",
+    journal = "Annals of Applied Statistics",
+    volume  = "5",
+    number  = "1",
+    pages   = "232--253",
+    doi     = "10.1214/10-AOAS388",
+    issn    = "1932-6157"
   )
 
 ) # nolint end

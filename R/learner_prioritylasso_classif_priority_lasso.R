@@ -7,7 +7,7 @@
 #' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
 #'
 #' @section Initial parameter values:
-#' - `family` is set to `"binomial"` and canno be changed
+#' - `family` is set to `"binomial"` and cannot be changed
 #'
 #' @templateVar id classif.priority_lasso
 #' @template learner
