@@ -13,29 +13,11 @@
 #' * `n_thread`: This parameter is initialized to 1 (default is 0) to avoid conflicts with the mlr3 parallelization.
 #' * `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 #'
+#' @templateVar id regr.aorsf
+#' @template learner
+#'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("regr.aorsf")
-#' # Define the Learner
-#' learner = lrn("regr.aorsf", importance = "anova")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("mtcars")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
-#'
+#' @template example
 #' @export
 LearnerRegrObliqueRandomForest = R6Class("LearnerRegrObliqueRandomForest",
   inherit = LearnerRegr,

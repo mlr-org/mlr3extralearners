@@ -94,7 +94,6 @@ No offset is applied during prediction for this learner.
 
 \examples{
 \dontshow{if (learner_is_runnable("classif.glmer")) withAutoprint(\{ # examplesIf}
-
 # Define the Learner and set parameter values
 learner = lrn("classif.glmer",
   formula = credit_risk ~ (1 | credit_history) + job + property + telephone + savings)

@@ -34,7 +34,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 #' @export
 LearnerSurvMBoost = R6Class("LearnerSurvMBoost",
   inherit = mlr3proba::LearnerSurv,

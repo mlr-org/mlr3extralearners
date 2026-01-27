@@ -15,28 +15,7 @@
 #' `r format_bib("obrien2019imbrfsrc", "chen2004imbrf")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.imbalanced_rfsrc")
-#' # Define the Learner
-#' learner = lrn("classif.imbalanced_rfsrc", importance = "TRUE")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
-#'
+#' @template example_rfsrc
 #' @export
 LearnerClassifImbalancedRandomForestSRC = R6Class("LearnerClassifImbalancedRandomForestSRC",
   inherit = LearnerClassif,

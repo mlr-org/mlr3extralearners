@@ -27,12 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.cforest")
-#' task = tsk("rats")
-#' learner = lrn("surv.cforest", ntree = 50)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
+#' @template example
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(

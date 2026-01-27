@@ -38,7 +38,7 @@
 #' `r format_bib("sparapani2021nonparametric", "chipman2010bart")`
 #'
 #' @template seealso_learner
-#' @template simple_example
+#' @template example_simple
 #' @export
 LearnerSurvLearnerSurvBART = R6Class("LearnerSurvLearnerSurvBART",
   inherit = mlr3proba::LearnerSurv,

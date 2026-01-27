@@ -27,24 +27,7 @@
 #' @templateVar id classif.exhaustive_search
 #'
 #' @template seealso_learner
-#'
-#' @examplesIf learner_is_runnable("classif.exhaustive_search")
-#' # define the learner
-#' learner = lrn("classif.exhaustive_search", predict_type = "prob", combsUpTo = 3)
-#'
-#' # define the task
-#' # and subset to 3 features to speed up the example
-#' tsk_sonar = tsk("sonar")$select(c("V1", "V2", "V3"))
-#'
-#' # train the learner
-#' learner$train(tsk_sonar)
-#'
-#' # extract selected features
-#' learner$selected_features()
-#'
-#' # predict on training task
-#' learner$predict(tsk_sonar)
-#'
+#' @template example_exhaustive_search
 #' @export
 
 LearnerClassifExhaustiveSearch = R6Class(
