@@ -63,7 +63,8 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
         onehot[ind, i] = 1
       }
 
-      mlr3misc::invoke(deepnet::sae.dnn.train,
+      invoke(
+        deepnet::sae.dnn.train,
         x = x,
         y = onehot,
         .args = pars
@@ -73,13 +74,15 @@ LearnerClassifSaeDNN = R6Class("LearnerClassifSaeDNN",
     .predict = function(task) {
       newdata = data.matrix(ordered_features(task, self))
 
-      pred = deepnet::nn.predict(nn = self$model, x = newdata)
+      pred = invoke(
+        deepnet::nn.predict,
+        self$model,
+        newdata
+      )
+        
       class_names = task$class_names
 
       prob = as.matrix(pred)
-      if (ncol(prob) == 1L && length(class_names) == 2L) {
-        prob = cbind(1 - prob[, 1L], prob[, 1L])
-      }
       colnames(prob) = class_names
 
       if (self$predict_type == "response") {

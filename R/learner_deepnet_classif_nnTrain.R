@@ -72,7 +72,8 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
         onehot[ind, i] = 1
       }
 
-      mlr3misc::invoke(deepnet::nn.train,
+      invoke(
+        deepnet::nn.train,
         x = x,
         y = onehot,
         .args = pars
@@ -86,9 +87,6 @@ LearnerClassifNNTrain = R6Class("LearnerClassifNNTrain",
       class_names = task$class_names
 
       prob = as.matrix(pred)
-      if (ncol(prob) == 1L && length(class_names) == 2L) {
-        prob = cbind(1 - prob[, 1L], prob[, 1L])
-      }
       colnames(prob) = class_names
 
       if (self$predict_type == "response") {
