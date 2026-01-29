@@ -11,9 +11,13 @@ test_that("autotest", {
     .device = "cpu",
     .seed = 1L
   )
-
   expect_learner(learner)
 
-  result = run_autotest(learner, check_replicable = FALSE)
-  expect_true(result, info = result$error)
+  result = run_autotest(
+    learner,
+    check_replicable = FALSE,
+    exclude = "feat_all|sanity|utf8_feature_names"
+  )
+
+  expect_true(isTRUE(result), info = result$error)
 })

@@ -14,9 +14,9 @@
 #' For `loss` \code{"cox"} / \code{"cox_l2"} this is a log-risk score (higher implies worse prognosis).
 #' For \code{"aft"}, [predict.survdnn()] returns the predicted log-time location \eqn{\mu(x)}
 #' (higher implies better prognosis), therefore the learner internally negates it such that higher
-#' values imply higher risk (consistent with \CRANpkg{mlr3proba} conventions). For \code{"coxtime"},
+#' values imply higher risk (consistent with \CRANpkg{mlr3} conventions). For \code{"coxtime"},
 #' this is \eqn{g(t_0, x)} evaluated at a reference time.}
-#' \item{`crank`}{Same as `lp`.}
+#' \item{`crank`}{is derived from `lp` by `surv_return()`.}
 #' \item{`distr`}{A survival matrix (rows = observations, columns = time points) based on
 #' \code{predict(type = "survival")}. By default, predictions are evaluated on the unique event times
 #' of the training data.}
@@ -24,6 +24,8 @@
 #'
 #' @template learner
 #' @templateVar id surv.survdnn
+#' @template seealso_learner
+#' @template example
 #' @export
 LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   inherit = mlr3proba::LearnerSurv,
@@ -70,6 +72,14 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
+      # compute training Surv once and attach it to the model (survives encapsulation)
+      y_train = stats::model.response(stats::model.frame(task$formula(), task$data()))
+      n_events = sum(y_train[, "status"] == 1)
+
+      # guard: Cox-type objectives require at least one observed event
+      if (pv$loss %in% c("cox", "cox_l2", "coxtime") && n_events == 0L) {
+        mlr3misc::stopf("No events in training data (all observations are censored). Loss '%s' requires at least one event.", pv$loss)
+      }
 
       model = mlr3misc::invoke(
         survdnn::survdnn,
@@ -78,10 +88,17 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
         .args = pv
       )
 
-      # store training survival outcome + default time grid for predictions
-      y_train = stats::model.response(stats::model.frame(task$formula(), task$data()))
-      self$state$y_train = y_train
-      self$state$times_train = sort(unique(y_train[, "time"][y_train[, "status"] == 1]))
+      # default time grid:
+      ## Cox / Cox-L2 / Cox-Time: unique event times (per construction)
+      ## AFT: all unique observed times (can be all-censored)
+      if (pv$loss %in% c("aft")) {
+        times_train = sort(unique(y_train[, "time"]))
+      } else {
+        times_train = sort(unique(y_train[, "time"][y_train[, "status"] == 1]))
+      }
+
+      attr(model, "y_train") = y_train
+      attr(model, "times_train") = times_train
 
       model
     },
@@ -103,11 +120,14 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
         lp = -lp
       }
 
-      times = self$state$times_train
+      times = attr(model, "times_train")
 
-      # fallback: no events in training data (all censored)
+
+      # always return a distr prediction
       if (length(times) == 0L) {
-        return(mlr3proba::surv_return(crank = lp, lp = lp))
+        times = 1
+        surv = matrix(1, nrow = nrow(newdata), ncol = 1L)
+        return(mlr3proba::surv_return(times = times, surv = surv, lp = lp))
       }
 
       surv_df = mlr3misc::invoke(
