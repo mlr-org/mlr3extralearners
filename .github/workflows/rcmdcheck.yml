@@ -56,8 +56,7 @@ jobs:
       - name: Install torch backend
         if: ${{ !matrix.config.depends_only }}
         run: |
-          R -q -e 'install.packages("torch")'
-          R -q -e 'torch::install_torch()'
+          R -q -e 'if (!torch::torch_is_installed()) torch::install_torch()'
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
