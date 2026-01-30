@@ -15,9 +15,9 @@ test_that("autotest", {
 
   result = run_autotest(
     learner,
-    check_replicable = FALSE,
-    exclude = "feat_all|sanity|utf8_feature_names"
+    check_replicable = FALSE#,
+    #exclude = "feat_all|sanity|utf8_feature_names"
   )
 
-  expect_true(isTRUE(result), info = result$error)
+  expect_true(result)
 })
