@@ -72,7 +72,6 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   private = list(
 
     .train = function(task) {
-      browser()
       pv = self$param_set$get_values(tags = "train")
       # get training Surv object and attach it to the model (survives encapsulation)
       y_train = task$truth()
