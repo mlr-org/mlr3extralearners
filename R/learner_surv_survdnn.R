@@ -72,12 +72,14 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
-      # compute training Surv once and attach it to the model (survives encapsulation)
-      y_train = stats::model.response(stats::model.frame(task$formula(), task$data()))
-      n_events = sum(y_train[, "status"] == 1)
+      # get training Surv object and attach it to the model (survives encapsulation)
+      y_train = task$truth()
+      event_times = task$unique_event_times()
+      n_events = length(event_times)
 
       # guard: Cox-type objectives require at least one observed event
-      if (pv$loss %in% c("cox", "cox_l2", "coxtime") && n_events == 0L) {
+      loss = pv$loss %??% "cox"
+      if (loss %in% c("cox", "cox_l2", "coxtime") && n_events == 0L) {
         mlr3misc::stopf("No events in training data (all observations are censored). Loss '%s' requires at least one event.", pv$loss)
       }
 
@@ -91,10 +93,10 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
       # default time grid:
       ## Cox / Cox-L2 / Cox-Time: unique event times (per construction)
       ## AFT: all unique observed times (can be all-censored)
-      if (pv$loss %in% c("aft")) {
-        times_train = sort(unique(y_train[, "time"]))
+      if (identical(loss, "aft")) {
+        times_train = task$unique_times()
       } else {
-        times_train = sort(unique(y_train[, "time"][y_train[, "status"] == 1]))
+        times_train = event_times
       }
 
       attr(model, "y_train") = y_train
@@ -122,7 +124,6 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 
       times = attr(model, "times_train")
 
-
       # always return a distr prediction
       if (length(times) == 0L) {
         times = 1
@@ -145,4 +146,4 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   )
 )
 
-.extralrns_dict$add("surv.survdnn", function() LearnerSurvDNN$new())
+.extralrns_dict$add("surv.survdnn", LearnerSurvDNN)
