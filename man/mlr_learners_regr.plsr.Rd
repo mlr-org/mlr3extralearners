@@ -6,7 +6,7 @@
 \title{Partial Least Squares Regression}
 \description{
 Partial least squares regression.
-Calls \code{\link[pls:mvr]{pls::plsr()}} from \CRANpkg{pls}.
+Calls \code{\link[pls:plsr]{pls::plsr()}} from \CRANpkg{pls}.
 }
 \note{
 During prediction, all components \code{ncomp} used in training are used.

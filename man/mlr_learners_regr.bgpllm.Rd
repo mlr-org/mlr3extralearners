@@ -6,7 +6,7 @@
 \title{Regression Bayesian Gaussian Process LLM Learner}
 \description{
 Bayesian Gaussian process regression with jumps to the limiting linear model.
-Calls \code{\link[tgp:btgp]{tgp::bgpllm()}} from \CRANpkg{tgp}.
+Calls \code{\link[tgp:bgpllm]{tgp::bgpllm()}} from \CRANpkg{tgp}.
 For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{

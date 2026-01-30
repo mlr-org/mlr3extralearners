@@ -6,7 +6,7 @@
 \title{Regression Bayesian Linear Model Learner}
 \description{
 Bayesian linear regression model.
-Calls \code{\link[tgp:btgp]{tgp::blm()}} from \CRANpkg{tgp}.
+Calls \code{\link[tgp:blm]{tgp::blm()}} from \CRANpkg{tgp}.
 For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{
