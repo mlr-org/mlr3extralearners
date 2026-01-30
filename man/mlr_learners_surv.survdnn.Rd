@@ -144,6 +144,7 @@ Whether the learner has been marshaled.}
 \if{html}{\out{<a id="method-LearnerSurvDNN-new"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvDNN-new}{}}}
 \subsection{Method \code{new()}}{
+Creates a new instance of this \link[R6:R6Class]{R6} class.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvDNN$new()}\if{html}{\out{</div>}}
 }
@@ -153,11 +154,19 @@ Whether the learner has been marshaled.}
 \if{html}{\out{<a id="method-LearnerSurvDNN-marshal"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvDNN-marshal}{}}}
 \subsection{Method \code{marshal()}}{
-Marshal the learner's model (required for encapsulation / saveRDS).
+Marshal the learner's model.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvDNN$marshal(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::marshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvDNN-unmarshal"></a>}}
@@ -168,6 +177,14 @@ Unmarshal the learner's model.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvDNN$unmarshal(...)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{...}}{(any)\cr
+Additional arguments passed to \code{\link[mlr3:marshaling]{mlr3::unmarshal_model()}}.}
+}
+\if{html}{\out{</div>}}
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerSurvDNN-clone"></a>}}

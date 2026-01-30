@@ -6,7 +6,7 @@
 \title{Regression Bayesian Treed Linear Model Learner}
 \description{
 Bayesian treed linear model regression.
-Calls \code{\link[tgp:btlm]{tgp::btlm()}} from \CRANpkg{tgp}.
+Calls \code{\link[tgp:btgp]{tgp::btlm()}} from \CRANpkg{tgp}.
 For the predicted mean \code{ZZ.km} and for the predicted variance \code{ZZ.ks2} are chosen.
 
 Factor features are one-hot encoded with reference encoding before fitting.
