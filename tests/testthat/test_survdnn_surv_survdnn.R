@@ -13,10 +13,17 @@ test_that("autotest", {
   )
   expect_learner(learner)
 
+  cfg_lrn = function(learner, task) {
+    # for sanity task, change loss and epochs
+    if (identical(task$id, "sanity")) {
+      learner$param_set$set_values(loss = "coxtime", epochs = 20L)
+    }
+  }
+
   result = run_autotest(
     learner,
-    check_replicable = FALSE#,
-    #exclude = "feat_all|sanity|utf8_feature_names"
+    check_replicable = FALSE,
+    configure_learner = cfg_lrn
   )
 
   expect_true(result, info = result$error)
