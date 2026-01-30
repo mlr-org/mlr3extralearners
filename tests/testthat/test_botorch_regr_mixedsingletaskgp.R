@@ -1,5 +1,7 @@
 test_that("autotest: regr.botorch_mixedsingletaskgp", {
   expect_true(callr::r(function() {
+    Sys.unsetenv("RETICULATE_PYTHON")
+    Sys.unsetenv("RETICULATE_PYTHON_ENV")
     Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
@@ -11,6 +13,8 @@ test_that("autotest: regr.botorch_mixedsingletaskgp", {
     mirai::daemons(1, .compute = "mlr3_encapsulation")
 
     mirai::everywhere({
+      Sys.unsetenv("RETICULATE_PYTHON")
+      Sys.unsetenv("RETICULATE_PYTHON_ENV")
       Sys.setenv(RETICULATE_PYTHON = "managed")
     }, .compute = "mlr3_encapsulation")
 
