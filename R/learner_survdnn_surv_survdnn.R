@@ -56,13 +56,14 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 
       super$initialize(
         id = "surv.survdnn",
-        packages = c("mlr3extralearners", "survdnn"),
+        param_set = param_set,
         feature_types = c("integer", "numeric", "factor", "ordered"),
         predict_types = c("crank", "lp", "distr"),
         # survdnn currently does not support observation weights and does not
         # train with missings (it omits or fails).
         properties = character(0),
-        param_set = param_set,
+        packages = c("mlr3extralearners", "survdnn"),
+        man = "mlr3extralearners::mlr_learners_surv.survdnn",
         label = "SurvDNN (torch-based deep survival models)"
       )
     }
@@ -71,6 +72,7 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   private = list(
 
     .train = function(task) {
+      browser()
       pv = self$param_set$get_values(tags = "train")
       # get training Surv object and attach it to the model (survives encapsulation)
       y_train = task$truth()
