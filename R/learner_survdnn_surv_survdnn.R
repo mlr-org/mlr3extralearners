@@ -31,6 +31,8 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   inherit = mlr3proba::LearnerSurv,
 
   public = list(
+    #' @description
+    #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
 
       param_set = ps(
@@ -66,17 +68,19 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
         label = "SurvDNN (torch-based deep survival models)"
       )
     },
-
     #' @description
-    #' Marshal the learner's model (required for encapsulation / saveRDS).
+    #' Marshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::marshal_model()`][mlr3::marshaling()].
     marshal = function(...) {
-      mlr3::learner_marshal(.learner = self, ...)
+      learner_marshal(.learner = self, ...)
     },
-
     #' @description
     #' Unmarshal the learner's model.
+    #' @param ... (any)\cr
+    #'   Additional arguments passed to [`mlr3::unmarshal_model()`][mlr3::marshaling()].
     unmarshal = function(...) {
-      mlr3::learner_unmarshal(.learner = self, ...)
+      learner_unmarshal(.learner = self, ...)
     }
   ),
 
@@ -84,7 +88,7 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
     #' @field marshaled (`logical(1)`)
     #' Whether the learner has been marshaled.
     marshaled = function() {
-      mlr3::learner_marshaled(self)
+      learner_marshaled(self)
     }
   ),
 
@@ -168,8 +172,6 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 )
 
 .extralrns_dict$add("surv.survdnn", LearnerSurvDNN)
-
-
 
 #' @export
 marshal_model.survdnn = function(model, inplace = FALSE, ...) {
