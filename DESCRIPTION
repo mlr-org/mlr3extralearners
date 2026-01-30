@@ -50,6 +50,7 @@ Imports:
     R6,
     reticulate,
     survdistr (>= 0.0.1),
+    torch (>= 0.16.3),
     withr
 Suggests:
     abess,

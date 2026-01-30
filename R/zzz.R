@@ -10,6 +10,7 @@
 #' @importFrom utils getFromNamespace packageVersion capture.output
 #' @importFrom withr local_seed
 #' @importFrom survdistr vec_interp
+#' @importFrom torch torch_save torch_load
 "_PACKAGE"
 
 utils::globalVariables(c("name", "id", "mlr3_package", "required_packages", ".SD",
