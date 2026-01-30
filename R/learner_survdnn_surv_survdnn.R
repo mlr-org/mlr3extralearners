@@ -16,7 +16,7 @@
 #' (higher implies better prognosis), therefore the learner internally negates it such that higher
 #' values imply higher risk (consistent with \CRANpkg{mlr3} conventions). For \code{"coxtime"},
 #' this is \eqn{g(t_0, x)} evaluated at a reference time.}
-#' \item{`crank`}{is derived from `lp` by `surv_return()`.}
+#' \item{`crank`}{same as `lp`.}
 #' \item{`distr`}{A survival matrix (rows = observations, columns = time points) based on
 #' \code{predict(type = "survival")}. By default, predictions are evaluated on the unique event times
 #' of the training data.}
