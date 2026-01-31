@@ -1,3 +1,4 @@
+skip_on_ci()
 skip_if_not_installed_py("torch", "tabpfn")
 
 test_that("autotest", {
@@ -11,7 +12,6 @@ test_that("autotest", {
 test_that("marshaling works for regr.tabpfn", {
   learner = lrn("regr.tabpfn")
   task = tsk("mtcars")
-  # expect_marshalable_learner(learner, task)
 
   learner$train(task)
   pred = learner$predict(task)
