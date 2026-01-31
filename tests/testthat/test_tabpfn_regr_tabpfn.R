@@ -1,4 +1,3 @@
-skip_on_ci()
 skip_if_not_installed_py("torch", "tabpfn")
 
 test_that("autotest", {
