@@ -139,10 +139,10 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
     .train = function(task) {
 
       conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
-        return(FALSE)
+        FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init(strict_version_check = FALSE)
+        h2o::h2o.init()
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -162,13 +162,21 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
     },
 
     .predict = function(task) {
+
+      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
+        FALSE
+      })
+      if (!inherits(conn.up, "H2OConnection")) {
+        h2o::h2o.init()
+      }
+
       newdata = h2o::as.h2o(ordered_features(task, self))
 
       p = h2o::h2o.predict(self$model, newdata = newdata)
 
       if (self$predict_type == "response") {
         response = factor(as.vector(p$predict), levels = task$class_names)
-        return(list(response = response))
+        list(response = response)
       }
 
       prob = as.matrix(p[, -1])
