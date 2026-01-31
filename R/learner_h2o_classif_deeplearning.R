@@ -27,11 +27,10 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL),
           depends = quote(balance_classes == TRUE), tags = "train"),
         max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
-        max_hit_ratio_k = p_int(lower = 0L, default = 0L, tags = "train"),
         # checkpoint
         # pretrained_autoencoder
         # overwrite_with_best_model
-        use_all_factor_level = p_lgl(default = TRUE, tags = "train"),
+        use_all_factor_levels = p_lgl(default = TRUE, tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         activation = p_fct(levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout", "Maxout", "MaxoutWithDropout"), default = "Rectifier", tags = "train"),
         hidden = p_uty(default = c(200L, 200L), tags = "train"),
