@@ -175,6 +175,8 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
 
 #' @export
 marshal_model.survdnn = function(model, inplace = FALSE, ...) {
+  mlr3misc::require_namespaces("torch")
+
   # model is a fitted object from survdnn::survdnn() (class "survdnn")
   # torch external pointers must be converted to a raw payload
   if (!inherits(model$model, "nn_module")) {
@@ -212,6 +214,8 @@ marshal_model.survdnn = function(model, inplace = FALSE, ...) {
 
 #' @export
 unmarshal_model.survdnn_marshaled = function(model, inplace = FALSE, ...) {
+  mlr3misc::require_namespaces("torch")
+
   tmp = tempfile(fileext = ".pt")
   writeBin(model$marshaled, tmp)
 
