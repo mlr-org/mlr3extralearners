@@ -19,63 +19,47 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        ignore_const_cols             = p_lgl(default = TRUE, tags = "train"),
-        score_each_iteration          = p_lgl(default = FALSE, tags = "train"),
+        ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
+        score_each_iteration = p_lgl(default = FALSE, tags = "train"),
         # weights_column
         # offset_column
-        balance_classes               = p_lgl(default = FALSE, tags = "train"),
-        class_sampling_factors        = p_dbl(default = NULL, special_vals = list(NULL), tags = "train"),
-        max_after_balance_size        = p_dbl(default = 5, tags = "train"),
-        max_hit_ratio_k               = p_int(lower = 0L, default = 0L, tags = "train"),
+        balance_classes = p_lgl(default = FALSE, tags = "train"),
+        class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL),
+          depends = quote(balance_classes == TRUE), tags = "train"),
+        max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
+        max_hit_ratio_k = p_int(lower = 0L, default = 0L, tags = "train"),
         # checkpoint
         # pretrained_autoencoder
         # overwrite_with_best_model
-        use_all_factor_level          = p_lgl(default = TRUE, tags = "train"),
-        standardize                   = p_lgl(default = TRUE, tags = "train"),
-        activation                    = p_fct(
-          levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout",
-            "Maxout", "MaxoutWithDropout"),
-          default = "Rectifier",
-          tags = "train"
-        ),
-        hidden                        = p_uty(default = c(200L, 200L), tags = "train"),
-        epochs                        = p_dbl(lower = 1, default = 10, tags = "train"),
-        train_samples_per_iteration   = p_int(lower = -2L, default = -2L, tags = "train"),
-        target_ratio_comm_to_comp     = p_dbl(default = 0.05, tags = "train"),
-        seed                          = p_int(default = -1L, tags = "train"),
-        adaptive_rate                 = p_lgl(default = TRUE, tags = "train"),
-        rho                           = p_dbl(lower = 0, default = 0.99, tags = "train"),
-        epsilon                       = p_dbl(lower = 1e-10, upper = 1e-4, default = 1e-08, tags = "train"),
-        rate                          = p_dbl(lower = 0, upper = 1, default = 0.005, tags = "train"),
-        rate_annealing                = p_dbl(lower = 0, default = 1e-06, tags = "train"),
-        rate_decay                    = p_dbl(lower = 0, default = 1, tags = "train"),
-        momentum_start                = p_dbl(default = 0, tags = "train"),
-        momentum_ramp                 = p_dbl(default = 1e+06, tags = "train"),
-        momentum_stable               = p_dbl(default = 0, tags = "train"),
+        use_all_factor_level = p_lgl(default = TRUE, tags = "train"),
+        standardize = p_lgl(default = TRUE, tags = "train"),
+        activation = p_fct(levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout", "Maxout", "MaxoutWithDropout"), default = "Rectifier", tags = "train"),
+        hidden = p_uty(default = c(200L, 200L), tags = "train"),
+        epochs = p_dbl(lower = 1, default = 10, tags = "train"),
+        train_samples_per_iteration = p_int(lower = -2L, default = -2L, tags = "train"),
+        target_ratio_comm_to_comp = p_dbl(default = 0.05, tags = "train"),
+        seed = p_int(default = -1L, tags = "train"),
+        adaptive_rate = p_lgl(default = TRUE, tags = "train"),
+        rho = p_dbl(lower = 0, default = 0.99, tags = "train"),
+        epsilon = p_dbl(lower = 1e-10, upper = 1e-4, default = 1e-08, tags = "train"),
+        rate = p_dbl(lower = 0, upper = 1, default = 0.005, tags = "train"),
+        rate_annealing = p_dbl(lower = 0, default = 1e-06, tags = "train"),
+        rate_decay = p_dbl(lower = 0, default = 1, tags = "train"),
+        momentum_start = p_dbl(default = 0, tags = "train"),
+        momentum_ramp = p_dbl(default = 1e+06, tags = "train"),
+        momentum_stable = p_dbl(default = 0, tags = "train"),
         nesterov_accelerated_gradient = p_lgl(default = TRUE, tags = "train"),
-        input_dropout_ratio           = p_dbl(default = 0, tags = "train"),
-        hidden_dropout_ratios         = p_dbl(default = 0.5, tags = "train"),
-        l1                            = p_dbl(default = 0, tags = "train"),
-        l2                            = p_dbl(default = 0, tags = "train"),
-        max_w2                        = p_dbl(default = Inf, tags = "train"),
-        initial_weight_distribution   = p_fct(
-          levels = c("UniformAdaptive", "Uniform", "Normal"),
-          default = "UniformAdaptive",
-          tags = "train"
-        ),
-        initial_weight_scale          = p_dbl(default = 1, tags = "train"),
+        input_dropout_ratio = p_dbl(default = 0, tags = "train"),
+        hidden_dropout_ratios = p_dbl(default = 0.5, tags = "train"),
+        l1 = p_dbl(default = 0, tags = "train"),
+        l2 = p_dbl(default = 0, tags = "train"),
+        max_w2 = p_dbl(default = Inf, tags = "train"),
+        initial_weight_distribution = p_fct(levels = c("UniformAdaptive", "Uniform", "Normal"), default = "UniformAdaptive", tags = "train"),
+        initial_weight_scale = p_dbl(default = 1, tags = "train"),
         # initial_weights
         # initial_bias
-        loss                          = p_fct(
-          levels = c("Automatic", "CrossEntropy", "Quadratic", "Absolute", "Huber"),
-          default = "Automatic",
-          tags = "train"
-        ),
-        distribution                  = p_fct(
-          levels = c("AUTO", "bernoulli", "multinomial"),
-          default = "AUTO",
-          tags = "train"
-        ),
+        loss = p_fct(levels = c("Automatic", "CrossEntropy", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
+        distribution = p_fct(levels = c("AUTO", "bernoulli", "multinomial"), default = "AUTO", tags = "train"),
         # quantile_alpha
         # tweedie_power
         # huber_alpha
@@ -96,7 +80,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         replicate_training_data = p_lgl(default = TRUE, tags = "train"),
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
-        missing_values_handling = p_fct(levels = c("MeanImputation", "Skip"),default = "MeanImputation",tags = "train"),
+        missing_values_handling = p_fct(levels = c("MeanImputation", "Skip"), default = "MeanImputation", tags = "train"),
         autoencoder = p_lgl(default = FALSE, tags = "train"),
         sparse = p_lgl(default = FALSE, tags = "train"),
         average_activation = p_dbl(default = 0, tags = "train"),
@@ -105,21 +89,13 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         reproducible = p_lgl(default = FALSE, tags = "train"),
         export_weights_and_biases = p_lgl(default = FALSE, tags = "train"),
         mini_batch_size = p_int(default = 1L, tags = "train"),
-        categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"),default = "AUTO",tags = "train"),
+        categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), default = "AUTO", tags = "train"),
         elastic_averaging = p_lgl(default = FALSE, tags = "train"),
-        elastic_averaging_moving_rate = p_dbl(default = 0.9, tags = "train"),
-        elastic_averaging_regularization = p_dbl(default = 0.001, tags = "train"),
+        elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
+        elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
         verbose = p_lgl(default = FALSE, tags = "train")
       )
-      ps$add_dep("class_sampling_factors", "balance_classes",
-        CondEqual$new(TRUE))
-      ps$add_dep("max_after_balance_size", "balance_classes",
-        CondEqual$new(TRUE))
-      ps$add_dep("elastic_averaging_moving_rate", "elastic_averaging",
-        CondEqual$new(TRUE))
-      ps$add_dep("elastic_averaging_regularization", "elastic_averaging",
-        CondEqual$new(TRUE))
 
       super$initialize(
         id = "classif.h2o.deeplearning",
