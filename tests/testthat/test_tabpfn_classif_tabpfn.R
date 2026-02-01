@@ -2,8 +2,6 @@ skip_if_not_installed_py("torch", "tabpfn")
 
 test_that("autotest", {
   expect_true(callr::r(function() {
-    #Sys.unsetenv("RETICULATE_PYTHON")
-    #Sys.unsetenv("RETICULATE_PYTHON_ENV")
     Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
@@ -21,8 +19,6 @@ test_that("autotest", {
     mirai::daemons(1, .compute = "mlr3_encapsulation")
 
     mirai::everywhere({
-      #Sys.unsetenv("RETICULATE_PYTHON")
-      #Sys.unsetenv("RETICULATE_PYTHON_ENV")
       Sys.setenv(RETICULATE_PYTHON = "managed")
     }, .compute = "mlr3_encapsulation")
 
@@ -38,12 +34,11 @@ test_that("autotest", {
 
 test_that("marshaling works for classif.tabpfn", {
   expect_true(callr::r(function() {
-    #Sys.unsetenv("RETICULATE_PYTHON")
-    #Sys.unsetenv("RETICULATE_PYTHON_ENV")
     Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
     library(mlr3extralearners)
+    library(testthat)
 
     lapply(
       list.files(
@@ -57,8 +52,6 @@ test_that("marshaling works for classif.tabpfn", {
     mirai::daemons(1, .compute = "mlr3_encapsulation")
 
     mirai::everywhere({
-      #Sys.unsetenv("RETICULATE_PYTHON")
-      #Sys.unsetenv("RETICULATE_PYTHON_ENV")
       Sys.setenv(RETICULATE_PYTHON = "managed")
     }, .compute = "mlr3_encapsulation")
 
@@ -97,6 +90,8 @@ test_that("other tests", {
 
     library(mlr3)
     library(mlr3extralearners)
+    library(testthat)
+    library(checkmate)
 
     lapply(
       list.files(
