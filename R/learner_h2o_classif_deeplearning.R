@@ -9,6 +9,9 @@
 #' @templateVar id classif.h2o.deeplearning
 #' @template learner
 #'
+#' @references
+#' `r format_bib("fryda2025h2o")`
+#'
 #' @template seealso_learner
 #' @template example
 #' @export
@@ -66,7 +69,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         score_validation_samples = p_int(default = 0L, tags = "train"),
         score_duty_cycle = p_dbl(default = 0.1, tags = "train"),
         classification_stop = p_dbl(lower = -1, default = 0, tags = "train"),
-        # regression_stop
         stopping_rounds = p_int(lower = 0L, default = 5L, tags = "train"),
         stopping_metric = p_fct(levels = c("AUTO", "logloss", "AUC", "lift_top_group", "misclassification", "AUCPR", "mean_per_class_error", "custom", "custom_increasing"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0, tags = "train"),
@@ -75,12 +77,15 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         diagnostics = p_lgl(default = TRUE, tags = "train"),
         fast_mode = p_lgl(default = TRUE, tags = "train"),
         force_load_balance = p_lgl(default = TRUE, tags = "train"),
+        variable_importances = p_lgl(default = TRUE, tags = "train"),
         replicate_training_data = p_lgl(default = TRUE, tags = "train"),
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
         missing_values_handling = p_fct(levels = c("MeanImputation", "Skip"), default = "MeanImputation", tags = "train"),
+        quiet_mode = p_lgl(init = TRUE, tags = "train"),
         autoencoder = p_lgl(default = FALSE, tags = "train"),
         sparse = p_lgl(default = FALSE, tags = "train"),
+        col_major = p_lgl(default = FALSE, tags = "train"),
         average_activation = p_dbl(default = 0, tags = "train"),
         sparsity_beta = p_dbl(default = 0, tags = "train"),
         # max_categorical_features
@@ -92,7 +97,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
-        verbose = p_lgl(init = TRUE, tags = "train")
+        verbose = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -101,10 +106,31 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = ps,
-        properties = c("weights", "twoclass", "multiclass", "missings"),
+        properties = c("weights", "twoclass", "multiclass", "missings", "importance"),
         man = "mlr3extralearners::mlr_learners_classif.h2o.deeplearning",
         label = "H2O Deep Learning"
       )
+    },
+
+    #' @description
+    #' Variable importance scores computed by H2O.
+    #' Requires `variable_importances = TRUE`.
+    #' @return Named `numeric()`.
+    importance = function() {
+      if (is.null(self$model)) {
+        stopf("No model stored")
+      }
+      pars = self$param_set$get_values()
+      if (isFALSE(pars$variable_importances)) {
+        stop("No importance available. Set 'variable_importances = TRUE'.")
+      }
+      imp = h2o::h2o.varimp(self$model)
+      if (is.null(imp) || !nrow(imp)) {
+        stop("No importance available from H2O.")
+      }
+      scores = imp$relative_importance
+      names(scores) = imp$variable
+      sort(scores, decreasing = TRUE)
     }
   ),
 
@@ -131,8 +157,12 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
       }
 
       training_frame = h2o::as.h2o(data)
-      invoke(h2o::h2o.deeplearning, y = target, x = feature,
-        training_frame = training_frame, .args = pars)
+      invoke(h2o::h2o.deeplearning,
+        y = target,
+        x = feature,
+        training_frame = training_frame,
+        .args = pars
+      )
     },
 
     .predict = function(task) {
@@ -146,15 +176,15 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
 
       newdata = h2o::as.h2o(ordered_features(task, self))
 
-      p = h2o::h2o.predict(self$model, newdata = newdata)
+      pred = h2o::h2o.predict(self$model, newdata = newdata)
 
       if (self$predict_type == "response") {
-        response = factor(as.vector(p$predict), levels = task$class_names)
+        response = factor(as.vector(pred$predict), levels = task$class_names)
         return(list(response = response))
       }
 
-      prob = as.matrix(p[, -1])
-      colnames(prob) = names(p)[-1]
+      prob = as.matrix(pred[, -1])
+      colnames(prob) = names(pred)[-1]
       prob = prob[, task$class_names, drop = FALSE]
 
       list(prob = prob)

@@ -34,8 +34,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    class_sampling_factors \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_hit_ratio_k \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   use_all_factor_level \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   use_all_factor_levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    activation \tab character \tab Rectifier \tab Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout \tab - \cr
    hidden \tab untyped \tab c(200L, 200L) \tab  \tab - \cr
@@ -75,12 +74,15 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   variable_importances \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    replicate_training_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip \tab - \cr
+   quiet_mode \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    autoencoder \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   col_major \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_activation \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    reproducible \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -110,7 +112,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-
+print(learner$importance())
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -118,6 +120,11 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 \dontshow{\}) # examplesIf}
+}
+\references{
+Fryda T, LeDell E, Gill N, Aiello S, Fu A, Candel A, Click C, Kraljevic T, Nykodym T, Aboyoun P, Kurka M, Malohlava M, Poirier S, Wong W (2025).
+\emph{h2o: R Interface for the 'H2O' Scalable Machine Learning Platform}.
+R package version 3.46.0.9, \url{https://github.com/h2oai/h2o-3}.
 }
 \seealso{
 \itemize{
@@ -140,6 +147,7 @@ awinterstetter
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifH2ODeeplearning-new}{\code{LearnerClassifH2ODeeplearning$new()}}
+\item \href{#method-LearnerClassifH2ODeeplearning-importance}{\code{LearnerClassifH2ODeeplearning$importance()}}
 \item \href{#method-LearnerClassifH2ODeeplearning-clone}{\code{LearnerClassifH2ODeeplearning$clone()}}
 }
 }
@@ -170,6 +178,20 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2ODeeplearning$new()}\if{html}{\out{</div>}}
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-LearnerClassifH2ODeeplearning-importance"></a>}}
+\if{latex}{\out{\hypertarget{method-LearnerClassifH2ODeeplearning-importance}{}}}
+\subsection{Method \code{importance()}}{
+Variable importance scores computed by H2O.
+Requires \code{variable_importances = TRUE}.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2ODeeplearning$importance()}\if{html}{\out{</div>}}
+}
+
+\subsection{Returns}{
+Named \code{numeric()}.
+}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifH2ODeeplearning-clone"></a>}}
