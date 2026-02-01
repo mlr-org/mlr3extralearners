@@ -8,7 +8,7 @@ test_that("autotest", {
     h2o::h2o.init(ip = "127.0.0.1", startH2O = TRUE)
   }, .compute = "mlr3_encapsulation")
 
-  learner = lrn("classif.h2o.deeplearning", epochs = 7, hidden = c(10L, 10L), seed = 42L)
+  learner = lrn("classif.h2o.deeplearning", epochs = 10, hidden = c(20L, 20L), seed = 42L)
   expect_learner(learner)
 
   result = run_autotest(learner, check_replicable = FALSE)

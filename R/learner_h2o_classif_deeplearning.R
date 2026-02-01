@@ -151,7 +151,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
 
       if (self$predict_type == "response") {
         response = factor(as.vector(p$predict), levels = task$class_names)
-        list(response = response)
+        return(list(response = response))
       }
 
       prob = as.matrix(p[, -1])
