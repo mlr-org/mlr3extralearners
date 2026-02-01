@@ -25,7 +25,7 @@
 #' @template learner
 #' @templateVar id surv.survdnn
 #' @template seealso_learner
-#' @template example
+#' @template example_survdnn
 #' @export
 LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
   inherit = mlr3proba::LearnerSurv,

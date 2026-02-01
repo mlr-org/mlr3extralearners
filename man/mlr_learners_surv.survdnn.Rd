@@ -66,24 +66,23 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 
 \examples{
 \dontshow{if (learner_is_runnable("surv.survdnn")) withAutoprint(\{ # examplesIf}
+
 # Define the Learner
-learner = lrn("surv.survdnn")
+learner = lrn("surv.survdnn", epochs = 42L, loss = "cox")
 print(learner)
 
-# Define a Task
-task = tsk("grace")
-
-# Create train and test set
-ids = partition(task)
+# Define the task, split to train/test set
+task = tsk("lung")
+set.seed(42)
+part = partition(task)
 
 # Train the learner on the training ids
-learner$train(task, row_ids = ids$train)
-
+learner$train(task, row_ids = part$train)
 print(learner$model)
 
-
 # Make predictions for the test rows
-predictions = learner$predict(task, row_ids = ids$test)
+predictions = learner$predict(task, row_ids = part$test)
+print(predictions)
 
 # Score the predictions
 predictions$score()
