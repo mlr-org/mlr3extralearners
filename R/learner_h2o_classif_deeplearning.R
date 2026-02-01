@@ -24,8 +24,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         # weights_column
         # offset_column
         balance_classes = p_lgl(default = FALSE, tags = "train"),
-        class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL),
-          depends = quote(balance_classes == TRUE), tags = "train"),
+        class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL), depends = quote(balance_classes == TRUE), tags = "train"),
         max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
         # checkpoint
         # pretrained_autoencoder
@@ -93,7 +92,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
-        verbose = p_lgl(default = FALSE, tags = "train")
+        verbose = p_lgl(init = TRUE, tags = "train")
       )
 
       super$initialize(
