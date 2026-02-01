@@ -84,6 +84,7 @@ Suggests:
     future,
     gbm (>= 2.2.2),
     glmnet (>= 4.1-6),
+    GPfit (>= 1.0-9),
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
