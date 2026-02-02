@@ -188,10 +188,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>              am        carb       cyl        disp     drat      gear
-#> [1,] 0.06538182 0.000479908 0.1754006 -0.03246089 0.309768 0.2925615
-#>               hp     qsec         vs         wt       Bias
-#> [1,] 0.000502609 1.325385 0.07595593 0.07877556 0.06810964
+#>              am        carb       cyl        disp      drat     gear         hp
+#> [1,] 0.06649954 -0.01159468 0.1596756 -0.03816938 0.2823709 0.267122 0.01634018
+#>          qsec         vs         wt       Bias
+#> [1,] 1.303724 0.08777124 0.08107599 0.06459331
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +209,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.030613 
+#> 9.748823 
 ```

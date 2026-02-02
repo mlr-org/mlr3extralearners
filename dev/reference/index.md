@@ -509,6 +509,9 @@
 - [`mlr_learners_surv.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.rfsrc.md)
   [`LearnerSurvRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.rfsrc.md)
   : Survival Random Forest SRC Learner
+- [`mlr_learners_surv.survdnn`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.survdnn.md)
+  [`LearnerSurvDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.survdnn.md)
+  : SurvDNN Survival Learner
 - [`mlr_learners_surv.svm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.svm.md)
   [`LearnerSurvSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_surv.svm.md)
   : Survival Support Vector Machine Learner
