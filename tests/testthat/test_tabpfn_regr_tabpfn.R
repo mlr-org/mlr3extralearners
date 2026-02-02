@@ -112,7 +112,7 @@ test_that("other tests", {
 
     # categorical feature columns are encoded correctly ----
     n = 6
-    task = mlr3::as_task_classif(
+    task = mlr3::as_task_regr(
       data.frame(
         x1 = sample(1:3, n, replace = TRUE),
         x2 = sample(1:3, n, replace = TRUE),
