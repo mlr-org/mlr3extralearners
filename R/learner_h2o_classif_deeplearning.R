@@ -21,7 +21,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
     #' @description
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
-      ps = ps(
+      param_set = ps(
         ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
         # weights_column
@@ -105,7 +105,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         packages = "h2o",
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
-        param_set = ps,
+        param_set = param_set,
         properties = c("weights", "twoclass", "multiclass", "missings", "importance"),
         man = "mlr3extralearners::mlr_learners_classif.h2o.deeplearning",
         label = "H2O Deep Learning"
