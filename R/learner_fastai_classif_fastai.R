@@ -115,36 +115,36 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
   ),
 
   active = list(
-    #' @field internal_valid_scores (named `list()` or `NULL`)
-    #' The validation scores extracted from `eval_protocol` which itself is set by fitting the `fastai::tab_learner`.
-    #' If early stopping is activated, this contains the validation scores of the model for the optimal `n_epoch`,
-    #' otherwise the `n_epoch` for the final model.
-    internal_valid_scores = function() {
-      self$state$internal_valid_scores
-    },
+   #' @field internal_valid_scores (named `list()` or `NULL`)
+   #' The validation scores extracted from `eval_protocol` which itself is set by fitting the `fastai::tab_learner`.
+   #' If early stopping is activated, this contains the validation scores of the model for the optimal `n_epoch`,
+   #' otherwise the `n_epoch` for the final model.
+   internal_valid_scores = function() {
+     self$state$internal_valid_scores
+   },
 
-    #' @field internal_tuned_values (named `list()` or `NULL`)
-    #' If early stopping is activated, this returns a list with `n_epoch`,
-    #' which is the last epoch that yielded improvement w.r.t. the `patience`, extracted by `max(eval_protocol$epoch)+1`
-    internal_tuned_values = function() {
-      self$state$internal_tuned_values
-    },
+   #' @field internal_tuned_values (named `list()` or `NULL`)
+   #' If early stopping is activated, this returns a list with `n_epoch`,
+   #' which is the last epoch that yielded improvement w.r.t. the `patience`, extracted by `max(eval_protocol$epoch)+1`
+   internal_tuned_values = function() {
+     self$state$internal_tuned_values
+   },
 
-    #' @field validate (`numeric(1)` or `character(1)` or `NULL`)
-    #' How to construct the internal validation data. This parameter can be either `NULL`,
-    #' a ratio, `"test"`, or `"predefined"`.
-    validate = function(rhs) {
-      if (!missing(rhs)) {
-        private$.validate = assert_validate(rhs)
-      }
-      private$.validate
-    },
+   #' @field validate (`numeric(1)` or `character(1)` or `NULL`)
+   #' How to construct the internal validation data. This parameter can be either `NULL`,
+   #' a ratio, `"test"`, or `"predefined"`.
+   validate = function(rhs) {
+     if (!missing(rhs)) {
+       private$.validate = assert_validate(rhs)
+     }
+     private$.validate
+   },
 
-    #' @field marshaled (`logical(1)`)
-    #' Whether the learner has been marshaled.
-    marshaled = function() {
-      learner_marshaled(self)
-    }
+   #' @field marshaled (`logical(1)`)
+   #' Whether the learner has been marshaled.
+   marshaled = function() {
+     learner_marshaled(self)
+   }
   ),
 
   private = list(
