@@ -97,7 +97,8 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
-        verbose = p_lgl(default = FALSE, tags = "train")
+        verbose = p_lgl(init = FALSE, tags = "train"),
+        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -156,13 +157,29 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         pars$weights_column = ".mlr_weights"
       }
 
+      quiet = pars$quiet
+      pars$quiet = NULL
+
       training_frame = h2o::as.h2o(data)
-      invoke(h2o::h2o.deeplearning,
-        y = target,
-        x = feature,
-        training_frame = training_frame,
-        .args = pars
-      )
+
+      train_fun = function() {
+        invoke(h2o::h2o.deeplearning,
+          y = target,
+          x = feature,
+          training_frame = training_frame,
+          .args = pars
+        )
+      }
+
+      if (quiet == TRUE) {
+        utils::capture.output({
+          model = train_fun()
+        })
+      } else {
+        model = train_fun()
+      }
+
+      model
     },
 
     .predict = function(task) {
@@ -176,7 +193,20 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
 
       newdata = h2o::as.h2o(ordered_features(task, self))
 
-      pred = h2o::h2o.predict(self$model, newdata = newdata)
+      pars = self$param_set$get_values(tags = "predict")
+      quiet = pars$quiet
+
+      pred_fun = function() {
+        h2o::h2o.predict(self$model, newdata = newdata)
+      }
+
+      if (quiet == TRUE) {
+        utils::capture.output({
+          pred = pred_fun()
+        })
+      } else {
+        pred = pred_fun()
+      }
 
       if (self$predict_type == "response") {
         response = factor(as.vector(pred$predict), levels = task$class_names)
