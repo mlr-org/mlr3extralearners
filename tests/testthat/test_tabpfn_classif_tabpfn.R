@@ -1,7 +1,7 @@
 skip_if_not_installed_py("torch", "tabpfn")
 skip_if(
   Sys.getenv("HF_TOKEN") == "" && Sys.getenv("HUGGINGFACE_HUB_TOKEN") == "",
-  reason = "Hugging Face token not available (required for gated TabPFN models)"
+  message = "Hugging Face token not available (required for gated TabPFN models)"
 )
 
 test_that("autotest", {
