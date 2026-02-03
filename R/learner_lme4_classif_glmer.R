@@ -51,6 +51,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         restart_edge = p_lgl(default = FALSE, tags = "train"),
         boundary.tol = p_dbl(default = 1e-5, lower = 0, tags = "train"),
         calc.derivs = p_lgl(default = TRUE, tags = "train"),
+        autoscale = p_uty(default = NULL, tags = "train"),
         check.nobs.vs.rankZ = p_fct(levels = action_levels, default = "ignore", tags = "train"),
         check.nobs.vs.nlev = p_fct(levels = action_levels, default = "stop", tags = "train"),
         check.nlev.gtreq.5 = p_fct(levels = action_levels, default = "ignore", tags = "train"),
@@ -68,6 +69,8 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
         mustart = p_uty(tags = "train"),
         etastart = p_uty(tags = "train"),
         # Convergence checks
+        check.conv.nobsmax = p_dbl(default = 1e4, lower = 1, tags = "train"),
+        check.conv.nparmax = p_dbl(default = 20, lower = 1, tags = "train"),
         check.conv.grad = p_uty(default = 'lme4::.makeCC("warning", tol = 2e-3, relTol = NULL)', tags = "train"),
         check.conv.singular = p_uty(default = 'lme4::.makeCC( action = "message", tol = formals(lme4::isSingular)$tol)',
           tags = "train"),
@@ -149,7 +152,7 @@ LearnerClassifGlmer = R6Class("LearnerClassifGlmer",
       success = levels[[2L]]
       failure = levels[[1L]]
 
-      response = factor(ifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
+      response = factor(fifelse(prob >= 0.5, 1, 0), levels = c(1, 0), labels = c(success, failure))
 
       if (self$predict_type == "prob") {
         prob = cbind(prob, 1 - prob)

@@ -1,4 +1,58 @@
-# mlr3extralearners dev
+# mlr3extralearners (development version)
+
+## New Features
+
+* New Learners:
+  - `LearnerSurvDNN`
+
+## Other
+
+- Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
+
+# mlr3extralearners 1.4.0
+
+## New Features
+
+* New Learners:
+  - `LearnerSurvGamCox`
+  - `LearnerSurvFlexReg`
+  - `LearnerSurvNCVsurv`
+  - `LearnerRegrRRF`
+  - `LearnerRegrPcr`
+  - `LearnerRegrPlsr`
+  - `LearnerRegrLaGP`
+  - `LearnerRegrFrbs`
+  - `LearnerRegrBcart`
+  - `LearnerRegrBgp`
+  - `LearnerRegrBgpllm`
+  - `LearnerRegrBlm`
+  - `LearnerRegrBtgp`
+  - `LearnerRegrBtgpllm`
+  - `LearnerRegrBtlm`
+  - `LearnerRegrNCVReg`
+  - `LearnerClassifDbnDNN`
+  - `LearnerClassifNNTrain`
+  - `LearnerClassifSparseLDA`
+  - `LearnerClassifNCVreg`
+
+## Breaking Changes
+
+* `lrn("surv.flexible")` (`LearnerSurvFlexible`) was renamed to `lrn("surv.flexsurvspline")` (`LearnerSurvFlexSpline`) to properly reflect the wrapped train function (Royston/Parmar spline model).
+
+## Other
+
+* `CoxBoost` is now on CRAN, so we removed it from `Remotes`
+* `lrn("surv.flexsurvspline")` predicts linear predictors using `predict.flexsurvreg()`. We were doing manually the same exact prediction, so no functionality was changed.
+* compatibility: `xgboost` 3.1.2.1 (survival learners)
+* parameter updates for `regr.lmer`/`glmer` learners
+* updates for `randomForestSRC` 3.5.0 (`use.uno` parameter)
+* performance improvement: use of `data.table::fifelse` (@m-muecke)
+
+# mlr3extralearners 1.3.1
+
+* Update website to include citation information
+
+# mlr3extralearners 1.3.0
 
 * Add `formula` and `anc` params to `surv.flexible` learner, as well as `response` predict type (mean survival time).
 * Fix `regr.gamboost` regression predictions (#498).

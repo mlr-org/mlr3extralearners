@@ -43,6 +43,8 @@ Other contributors:
   \item Baisu Zhou \email{baisu.zhou@outlook.com} [contributor]
   \item Marc Becker \email{marcbecker@posteo.de} (\href{https://orcid.org/0000-0002-8115-0400}{ORCID}) [contributor]
   \item Nikolai German \email{niko.german@gmail.com} [contributor]
+  \item Alexander Winterstetter \email{alexanderwinterstetter@gmail.com} [contributor]
+  \item Imad El Badisy \email{elbadisyimad@gmail.com} [contributor]
 }
 
 }

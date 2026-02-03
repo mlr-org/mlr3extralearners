@@ -100,6 +100,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
         ptn.count      = p_int(default = 0L, lower = 0L, tags = "predict"),
         estimator      = p_fct(default = "nelson", levels = c("nelson", "kaplan"), tags = "predict"),
         cores          = p_int(default = 1L, lower = 1L, tags = c("train", "predict", "threads")),
+        use.uno        = p_lgl(default = TRUE, tags = "train"),
         save.memory    = p_lgl(default = FALSE, tags = "train"),
         perf.type      = p_fct(levels = "none", tags = "train"),
         case.depth     = p_lgl(default = FALSE, tags = c("train", "predict")),
@@ -122,7 +123,7 @@ LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
     #' The importance scores are extracted from the model slot `importance`.
     #' @return Named `numeric()`.
     importance = function() {
-      if (is.null(self$model$importance) & !is.null(self$model)) {
+      if (is.null(self$model$importance) && !is.null(self$model)) {
         stopf("Set 'importance' to one of: {'TRUE', 'permute', 'random', 'anti'}.")
       }
 

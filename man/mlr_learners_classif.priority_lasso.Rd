@@ -11,7 +11,7 @@ Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} 
 \section{Initial parameter values}{
 
 \itemize{
-\item \code{family} is set to \code{"binomial"} and canno be changed
+\item \code{family} is set to \code{"binomial"} and cannot be changed
 }
 }
 

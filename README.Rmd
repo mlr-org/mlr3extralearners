@@ -24,6 +24,7 @@ Extra Learners for **[mlr3](https://github.com/mlr-org/mlr3/)**.
 [![RCMD Check](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml/badge.svg)](https://github.com/mlr-org/mlr3extralearners/actions/workflows/rcmdcheck.yml)
 [![StackOverflow](https://img.shields.io/badge/stackoverflow-mlr3-orange.svg)](https://stackoverflow.com/questions/tagged/mlr3)
 [![Mattermost](https://img.shields.io/badge/chat-mattermost-orange.svg)](https://lmmisld-lmu-stats-slds.srv.mwn.de/mlr_invite/)
+[![DOI](https://joss.theoj.org/papers/10.21105/joss.08331/status.svg)](https://doi.org/10.21105/joss.08331)
 <!-- badges: end -->
 
 ## What is mlr3extralearners?
@@ -73,7 +74,7 @@ lrn("regr.gbm")
 
 install_learners("regr.gbm")
 
-learner <-lrn("regr.gbm")
+learner = lrn("regr.gbm")
 learner
 #> <LearnerRegrGBM:regr.gbm>: Gradient Boosting
 #> * Model: -
@@ -85,15 +86,15 @@ learner
 ```
 
 ```{r, echo = FALSE}
-learner <- lrn("regr.gbm")
+learner = lrn("regr.gbm")
 ```
 
 You can now use the learner to fit a model and make predictions.
 
 ```{r}
-task <- tsk("california_housing")
+task = tsk("california_housing")
 task
-split <- partition(task)
+split = partition(task)
 learner$train(task, split$train)
 learner$predict(task, split$test)
 ```
@@ -107,3 +108,11 @@ An in-depth tutorial on how to add learners can be found in the [package website
 ## Acknowledgements
 
 This R package is developed as part of the [Mathematical Research Data Initiative](https://www.mardi4nfdi.de/about/mission).
+
+## Citing mlr3extralearners
+
+If you use `mlr3extralearners`, please cite our [JOSS paper](https://doi.org/10.21105/joss.08331):
+
+```{r echo = FALSE, comment = ""}
+toBibtex(citation("mlr3extralearners"))
+```
