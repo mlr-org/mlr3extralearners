@@ -36,28 +36,7 @@
 #' `r format_bib("ishwaran_2008", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.rfsrc")
-#' # Define the Learner
-#' learner = lrn("surv.rfsrc", importance = "TRUE")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("grace")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_rfsrc
 #' @export
 LearnerSurvRandomForestSRC = R6Class("LearnerSurvRandomForestSRC",
   inherit = mlr3proba::LearnerSurv,

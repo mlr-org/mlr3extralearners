@@ -66,9 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-# Define the Learner
-learner = lrn("regr.gbm")
-print(learner)
+lrn("regr.gbm")
 }
 \references{
 Friedman, H J (2002).

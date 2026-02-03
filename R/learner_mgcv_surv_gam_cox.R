@@ -26,13 +26,7 @@
 #' @references
 #' `r format_bib("wood2012mgcv", "wood2016")`
 #'
-#' @examplesIf learner_is_runnable("surv.gam.cox")
-#' # simple example
-#' t = tsk("lung")
-#' l = lrn("surv.gam.cox")
-#' l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
-#' l$train(t)
-#' l$model
+#' @template example_gam
 #' @export
 LearnerSurvGamCox = R6Class("LearnerSurvGamCox",
   inherit = mlr3proba::LearnerSurv,

@@ -16,11 +16,27 @@ are scaled internally to sum to 100.
 
 \examples{
 \dontshow{if (learner_is_runnable("classif.evtree")) withAutoprint(\{ # examplesIf}
-task = tsk("iris")
-learner = lrn("classif.evtree", ntrees = 50)
-splits = partition(task)
-learner$train(task, splits$train)
-pred = learner$predict(task, splits$test)
+# Define the Learner
+learner = lrn("classif.evtree")
+print(learner)
+
+# Define a Task
+task = tsk("sonar")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \seealso{

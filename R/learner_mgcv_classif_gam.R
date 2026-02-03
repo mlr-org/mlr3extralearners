@@ -17,15 +17,7 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
-#' @examplesIf learner_is_runnable("classif.gam")
-#' # simple example
-#' t = tsk("spam")$filter(1:1000)
-#' l = lrn("classif.gam")
-#' l$param_set$set_values(
-#'   formula = type ~ s(george, k = 3) + s(charDollar, k = 3) + s(edu)
-#' )
-#' l$train(t)
-#' l$model
+#' @template example_gam
 #' @export
 LearnerClassifGam = R6Class("LearnerClassifGam",
   inherit = LearnerClassif,

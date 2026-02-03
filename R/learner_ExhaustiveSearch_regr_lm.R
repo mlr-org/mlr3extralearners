@@ -29,22 +29,7 @@
 #'
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("regr.exhaustive_search")
-#' # define learner
-#' learner = LearnerRegrExhaustiveSearch$new()
-#' learner$predict_type = "se"
-#'
-#' # define task
-#' tsk_cars = tsk("mtcars")
-#'
-#' # train learner
-#' learner$train(tsk_cars)
-#'
-#' # extract selected features
-#' learner$selected_features()
-#'
-#' # predict on training task
-#' learner$predict(tsk_cars)
+#' @template example_exhaustive_search
 #' @export
 
 LearnerRegrExhaustiveSearch = R6Class(
