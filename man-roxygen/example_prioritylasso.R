@@ -1,6 +1,6 @@
 # Custom template for prioritylasso learners (classif.priority_lasso, regr.priority_lasso, surv.priority_lasso)
 # Reason: These learners require a blocks parameter to define feature groups,
-# which is essential to demonstrate the priority lasso methodology.
+# which is essential to demonstrate the lasso methodology for multi-omics data.
 <%
 l = lrn(id)
 is_classif = "LearnerClassif" %in% class(l)
@@ -13,22 +13,30 @@ if (is_surv) {
 %>
 #' # Define a Task
 #' task = tsk("grace")
+#'
 #' # Create train and test set
 #' ids = partition(task)
+#'
 #' # check task's features
 #' task$feature_names
+#'
 #' # partition features to 2 blocks
 #' blocks = list(bl1 = 1:3, bl2 = 4:6)
+#'
 #' # define learner
 #' learner = lrn("<%= id %>", blocks = blocks, block1.penalization = FALSE,
 #'               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
+#'
 #' # Train the learner on the training ids
 #' learner$train(task, row_ids = ids$train)
+#'
 #' # selected features
 #' learner$selected_features()
+#'
 #' # Make predictions for the test observations
 #' pred = learner$predict(task, row_ids = ids$test)
 #' pred
+#'
 #' # Score the predictions
 #' pred$score()
 <%

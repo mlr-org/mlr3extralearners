@@ -1,6 +1,5 @@
 # Custom template for survival SVM learner (surv.svm)
-# Reason: This learner requires gamma parameter to be set explicitly,
-# and works better with the "rats" task rather than "grace".
+# Reason: This learner requires gamma parameter to be set explicitly
 #'
 #' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' set.seed(123)

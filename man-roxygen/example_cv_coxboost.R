@@ -1,6 +1,6 @@
 # Custom template for CoxBoost learner (surv.cv_coxboost)
 # Reason: This learner requires manual feature selection via col_roles to work properly,
-# and uses a specific task setup that differs from the standard example.
+# and works only on numeric features.
 #'
 #' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' task = tsk("rats")
