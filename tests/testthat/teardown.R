@@ -8,6 +8,10 @@ if (requireNamespace("reticulate", quietly = TRUE)) {
   python_temp_dir = dirname(reticulate::py_run_string("import tempfile; x=tempfile.NamedTemporaryFile().name", local = TRUE)$x)
   detritus = list.files(python_temp_dir, pattern = "^uv-setuptools-[0-9A-Fa-f]{16}\\.lock$", full.names = TRUE)
   if (length(detritus)) unlink(detritus)
+
+  # created by tabpfn test
+  detritus = list.files(python_temp_dir, pattern = "^torchinductor_runner$", full.names = TRUE)
+  if (length(detritus)) unlink(detritus)
 }
 
 unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
