@@ -10,8 +10,11 @@ if (requireNamespace("reticulate", quietly = TRUE)) {
   if (length(detritus)) unlink(detritus)
 
   # created by tabpfn test
-  detritus = list.files(python_temp_dir, pattern = "^torchinductor_runner$", full.names = TRUE)
+  detritus = list.files(python_temp_dir, pattern = "torchinductor_runner", full.names = TRUE)
+  if (length(detritus)) unlink(detritus)
+
+  # created by fastai test
+  detritus = list.files(python_temp_dir, pattern = "^tmp[a-z0-9]{8}$", full.names = TRUE)
   if (length(detritus)) unlink(detritus)
 }
 
-unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
