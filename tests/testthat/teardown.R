@@ -18,3 +18,15 @@ if (requireNamespace("reticulate", quietly = TRUE)) {
   if (length(detritus)) unlink(detritus)
 }
 
+
+detritus = list.files(tempdir(), pattern = "^uv-setuptools-[0-9A-Fa-f]{16}\\.lock$", full.names = TRUE)
+if (length(detritus)) unlink(detritus)
+
+# created by tabpfn test
+detritus = list.files(tempdir(), pattern = "torchinductor_runner", full.names = TRUE)
+if (length(detritus)) unlink(detritus)
+
+# created by fastai test
+detritus = list.files(tempdir(), pattern = "^tmp[a-z0-9]{8}$", full.names = TRUE)
+if (length(detritus)) unlink(detritus)
+
