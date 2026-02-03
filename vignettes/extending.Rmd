@@ -209,7 +209,7 @@ model = rpart::rpart(mpg ~ ., data = mtcars, xval = 0)
 We need to pass the formula notation `mpg ~ .`, the data and the hyperparameters.
 To get the hyperparameters, we call `self$param_set$get_values(tag = "train")` and thereby query all parameters that are using during `"train"`.
 Then, the dataset is extracted from the `Task`.
-Because the learner has the property `"weights"`, we insert the weights of the task if there are any.
+Because the learner has the property `"weights"`, we insert the weights of the task if there are any, by calling `$.get_weights()` to retrieve them.
 Then we obtain the formula from the task using `task$formula()` and access the training data using `task$data()`.
 Last, we call the upstream function `rpart::rpart()` with the data and pass all hyperparameters via argument `.args` using the `mlr3misc::invoke()` function.
 The latter is simply an optimized version of `do.call()` that we use within the `mlr3` ecosystem.
@@ -319,7 +319,8 @@ If it runs without erroring, that's a very good start!
 
 ### Autotest
 
-To ensure that your learner is able to handle all kinds of different properties and feature types, we have written an "autotest" that checks the learner for different combinations of such.
+To ensure that a learner correctly handles different task properties, feature types, and edge cases, `mlr3extralearners` relies on a standardized autotest framework.
+The autotest systematically evaluates learners across many automatically generated tasks.
 In addition to the autotest we also check some other learner properties using `expect_learner()`.
 See section *run_autotest* and *expect_learner* of `?mlr_test_helpers` for an explanation.
 Because these functions are not in the `mlr3` namespace, we have to source them from the `./testthat` subfolder of the installed `mlr3` package
@@ -331,7 +332,7 @@ lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.
 lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 ```
 
-We now perform the autotest.
+Below is an example for a simple regression learner:
 By setting `expect_learner(..., check_man = FALSE)`, we disable a test that verifies that the correct manual page exists, which is only relevant when adding the learner to `mlr3extralearners`.
 
 ```{r, eval = FALSE}
@@ -349,6 +350,61 @@ test_that("autotest", {
 ```
 ```
 # Test passed with 20 successes 🥇.
+```
+
+### Skipping tests for optional dependencies
+
+Always add an explicit skip at the top of test files for all learners, for example:
+```{r, eval = FALSE}
+skip_if_not_installed("RpkgName")
+```
+
+This ensures tests fail gracefully on GitHub Actions, where we have a specific workflow that doesn't install packages listed in `Suggests`.
+
+For `Python`-based learners, use the corresponding `reticulate` helper:
+```{r, eval = FALSE}
+skip_if_not_installed_py("PythonpkgName")
+```
+
+### Special considerations for Python learners
+
+`Python`-based learners (via reticulate) **must be isolated from the main R session** during testing.
+This is required for both correctness and stability.
+
+In particular:
+
+- Python learners often depend on Python `torch`, while some R learners depend on the R `torch` package, which loads `libtorch`.
+- Loading multiple `libtorch` binaries (from R and Python, or from different builds) in the same R session can lead to crashes.
+- Different Python learners often require conflicting package dependencies.
+
+Therefore, all Python learner tests must be executed in a fresh R session using `callr`.
+
+A minimal pattern looks like this:
+
+```{r, eval = FALSE}
+skip_if_not_installed_py("torch", "tabpfn")
+test_that("autotest: classif.tabpfn", {
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+
+    library(mlr3)
+    library(mlr3extralearners)
+
+    lapply(
+      list.files(system.file("testthat", package = "mlr3"),
+                 pattern = "^helper.*\\.[rR]",
+                 full.names = TRUE),
+      source
+    )
+
+    learner = lrn("classif.tabpfn")
+    expect_learner(learner)
+
+    result = run_autotest(learner, check_replicable = FALSE)
+    testthat::expect_true(result, info = result$error)
+    TRUE
+  }))
+})
 ```
 
 ### Checking Parameters
@@ -467,10 +523,10 @@ For custom templates, replace `@template example` with `@template example_<name>
 
 When adding a `Learner` to `mlr3extralearners` there are some additional requirements that have to be satisfied:
 
-* Adding the line `.extralrns_dict$add("<learner-id>", function() <LearnerName>$new())` to the bottom of the learner file to add the learner to the learners `Dictionary`.
+* Adding the line `.extralrns_dict$add("<learner-id>", <LearnerClassName>)` to the bottom of the learner file to add the learner to the learners `Dictionary`.
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
 * The learner must be properly documented. Check the other learners for how to do this.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
 * The tests must pass in the CI (also check the CodeFactor results).
 * Update the `NEWS.md` file and describe that you added the learner.
-* Add yourself as a contributor
+* Add yourself as a contributor (`ctb` role)

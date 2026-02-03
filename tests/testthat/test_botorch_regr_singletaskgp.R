@@ -3,7 +3,6 @@ test_that("autotest: regr.botorch_singletaskgp", {
     Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
-    library(mlr3proba)
     library(mlr3extralearners)
 
     lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
