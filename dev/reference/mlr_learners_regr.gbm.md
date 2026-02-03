@@ -177,9 +177,7 @@ The objects of this class are cloneable with this method.
 ## Examples
 
 ``` r
-# Define the Learner
-learner = lrn("regr.gbm")
-print(learner)
+lrn("regr.gbm")
 #> 
 #> ── <LearnerRegrGBM> (regr.gbm): Gradient Boosting ──────────────────────────────
 #> • Model: -

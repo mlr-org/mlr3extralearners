@@ -14,6 +14,63 @@ using the parameter `na_action`.
 
 - `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 
+## Dictionary
+
+This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
+instantiated via
+[lrn()](https://mlr3.mlr-org.com/reference/mlr_sugar.html):
+
+    lrn("regr.aorsf")
+
+## Meta Information
+
+- Task type: “regr”
+
+- Predict Types: “response”
+
+- Feature Types: “integer”, “numeric”, “factor”, “ordered”
+
+- Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
+  [aorsf](https://CRAN.R-project.org/package=aorsf)
+
+## Parameters
+
+|                         |           |          |                              |                       |
+|-------------------------|-----------|----------|------------------------------|-----------------------|
+| Id                      | Type      | Default  | Levels                       | Range                 |
+| attach_data             | logical   | TRUE     | TRUE, FALSE                  | \-                    |
+| epsilon                 | numeric   | 1e-09    |                              | \\\[0, \infty)\\      |
+| importance              | character | anova    | none, anova, negate, permute | \-                    |
+| importance_max_pvalue   | numeric   | 0.01     |                              | \\\[1e-04, 0.9999\]\\ |
+| leaf_min_events         | integer   | 1        |                              | \\\[1, \infty)\\      |
+| leaf_min_obs            | integer   | 5        |                              | \\\[1, \infty)\\      |
+| max_iter                | integer   | 20       |                              | \\\[1, \infty)\\      |
+| method                  | character | glm      | glm, net, pca, random        | \-                    |
+| mtry                    | integer   | NULL     |                              | \\\[1, \infty)\\      |
+| mtry_ratio              | numeric   | \-       |                              | \\\[0, 1\]\\          |
+| n_retry                 | integer   | 3        |                              | \\\[0, \infty)\\      |
+| n_split                 | integer   | 5        |                              | \\\[1, \infty)\\      |
+| n_thread                | integer   | \-       |                              | \\\[0, \infty)\\      |
+| n_tree                  | integer   | 500      |                              | \\\[1, \infty)\\      |
+| na_action               | character | fail     | fail, impute_meanmode        | \-                    |
+| net_mix                 | numeric   | 0.5      |                              | \\(-\infty, \infty)\\ |
+| oobag                   | logical   | FALSE    | TRUE, FALSE                  | \-                    |
+| oobag_eval_every        | integer   | NULL     |                              | \\\[1, \infty)\\      |
+| oobag_fun               | untyped   | NULL     |                              | \-                    |
+| oobag_pred_type         | character | mean     | none, leaf, mean             | \-                    |
+| pred_aggregate          | logical   | TRUE     | TRUE, FALSE                  | \-                    |
+| sample_fraction         | numeric   | 0.632    |                              | \\\[0, 1\]\\          |
+| sample_with_replacement | logical   | TRUE     | TRUE, FALSE                  | \-                    |
+| scale_x                 | logical   | FALSE    | TRUE, FALSE                  | \-                    |
+| split_min_events        | integer   | 5        |                              | \\\[1, \infty)\\      |
+| split_min_obs           | integer   | 10       |                              | \\\[1, \infty)\\      |
+| split_min_stat          | numeric   | NULL     |                              | \\\[0, \infty)\\      |
+| split_rule              | character | variance | variance                     | \-                    |
+| target_df               | integer   | NULL     |                              | \\\[1, \infty)\\      |
+| tree_seeds              | integer   | NULL     |                              | \\\[1, \infty)\\      |
+| verbose_progress        | logical   | FALSE    | TRUE, FALSE                  | \-                    |
+
 ## See also
 
 - [Dictionary](https://mlr3misc.mlr-org.com/reference/Dictionary.html)
@@ -138,12 +195,12 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("regr.aorsf", importance = "anova")
+learner = lrn("regr.aorsf")
 print(learner)
 #> 
 #> ── <LearnerRegrObliqueRandomForest> (regr.aorsf): Oblique Random Forest Regresso
 #> • Model: -
-#> • Parameters: importance=anova, n_thread=1
+#> • Parameters: n_thread=1
 #> • Packages: mlr3, mlr3extralearners, and aorsf
 #> • Predict Types: [response]
 #> • Feature Types: integer, numeric, factor, and ordered
@@ -153,6 +210,7 @@ print(learner)
 
 # Define a Task
 task = tsk("mtcars")
+
 # Create train and test set
 ids = partition(task)
 
@@ -167,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.234
+#>  Average leaves per tree: 3.236
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.63
+#>           OOB stat value: 0.71
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>        cyl         am         hp         wt       qsec       disp       gear 
-#> 0.11146497 0.05864198 0.05373134 0.04360465 0.03743316 0.03125000 0.02915452 
-#>         vs       carb       drat 
-#> 0.02769231 0.02346041 0.01275510 
+#>        disp          wt         cyl          hp        drat          am 
+#> 0.103723404 0.077844311 0.061093248 0.037356322 0.028490028 0.026470588 
+#>        carb        qsec          vs        gear 
+#> 0.021472393 0.019390582 0.006779661 0.006024096 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -186,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.45079 
+#> 7.987155 
 ```

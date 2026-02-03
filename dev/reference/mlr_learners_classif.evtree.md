@@ -99,9 +99,60 @@ The objects of this class are cloneable with this method.
 ## Examples
 
 ``` r
-task = tsk("iris")
-learner = lrn("classif.evtree", ntrees = 50)
-splits = partition(task)
-learner$train(task, splits$train)
-pred = learner$predict(task, splits$test)
+# Define the Learner
+learner = lrn("classif.evtree")
+print(learner)
+#> 
+#> ── <LearnerClassifEvtree> (classif.evtree): Evolutionary learning of globally op
+#> • Model: -
+#> • Parameters: list()
+#> • Packages: mlr3 and evtree
+#> • Predict Types: [response] and prob
+#> • Feature Types: integer, numeric, and factor
+#> • Encapsulation: none (fallback: -)
+#> • Properties: multiclass, twoclass, and weights
+#> • Other settings: use_weights = 'use'
+
+# Define a Task
+task = tsk("sonar")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+#> 
+#> Model formula:
+#> Class ~ V1 + V10 + V11 + V12 + V13 + V14 + V15 + V16 + V17 + 
+#>     V18 + V19 + V2 + V20 + V21 + V22 + V23 + V24 + V25 + V26 + 
+#>     V27 + V28 + V29 + V3 + V30 + V31 + V32 + V33 + V34 + V35 + 
+#>     V36 + V37 + V38 + V39 + V4 + V40 + V41 + V42 + V43 + V44 + 
+#>     V45 + V46 + V47 + V48 + V49 + V5 + V50 + V51 + V52 + V53 + 
+#>     V54 + V55 + V56 + V57 + V58 + V59 + V6 + V60 + V7 + V8 + 
+#>     V9
+#> 
+#> Fitted party:
+#> [1] root
+#> |   [2] V47 < 0.0373: R (n = 10, err = 0.0%)
+#> |   [3] V47 >= 0.0373
+#> |   |   [4] V37 < 0.4786
+#> |   |   |   [5] V10 < 0.1508
+#> |   |   |   |   [6] V59 < 0.0073: R (n = 25, err = 4.0%)
+#> |   |   |   |   [7] V59 >= 0.0073: M (n = 7, err = 0.0%)
+#> |   |   |   [8] V10 >= 0.1508: M (n = 65, err = 12.3%)
+#> |   |   [9] V37 >= 0.4786: R (n = 32, err = 18.8%)
+#> 
+#> Number of inner nodes:    4
+#> Number of terminal nodes: 5
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
+#> classif.ce 
+#>  0.3623188 
 ```

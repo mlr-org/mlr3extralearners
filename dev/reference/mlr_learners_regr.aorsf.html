@@ -77,6 +77,26 @@ the parameter <code>na_action</code>.</p>
 <li><p><code>pred_simplify</code> has to be TRUE, otherwise response is NA in prediction</p></li>
 </ul></div>
     <div class="section level2">
+    <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>
+
+
+<p>This <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learner</a> can be instantiated via <a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn()</a>:</p>
+<p></p><div class="sourceCode"><pre><code><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">lrn</span>(<span class="st">"regr.aorsf"</span>)</span></code></pre><p></p></div>
+    </div>
+    <div class="section level2">
+    <h2 id="meta-information">Meta Information<a class="anchor" aria-label="anchor" href="#meta-information"></a></h2>
+
+
+<ul><li><p>Task type: “regr”</p></li>
+<li><p>Predict Types: “response”</p></li>
+<li><p>Feature Types: “integer”, “numeric”, “factor”, “ordered”</p></li>
+<li><p>Required Packages: <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a>, <a href="https://CRAN.R-project.org/package=mlr3extralearners" class="external-link"><span class="pkg">mlr3extralearners</span></a>, <a href="https://CRAN.R-project.org/package=aorsf" class="external-link"><span class="pkg">aorsf</span></a></p></li>
+</ul></div>
+    <div class="section level2">
+    <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
+
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>attach_data</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>epsilon</td><td>numeric</td><td>1e-09</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>importance</td><td>character</td><td>anova</td><td>none, anova, negate, permute</td><td>-</td></tr><tr><td>importance_max_pvalue</td><td>numeric</td><td>0.01</td><td></td><td>\([1e-04, 0.9999]\)</td></tr><tr><td>leaf_min_events</td><td>integer</td><td>1</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>leaf_min_obs</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>max_iter</td><td>integer</td><td>20</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>method</td><td>character</td><td>glm</td><td>glm, net, pca, random</td><td>-</td></tr><tr><td>mtry</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>mtry_ratio</td><td>numeric</td><td>-</td><td></td><td>\([0, 1]\)</td></tr><tr><td>n_retry</td><td>integer</td><td>3</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>n_split</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>n_thread</td><td>integer</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>n_tree</td><td>integer</td><td>500</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>na_action</td><td>character</td><td>fail</td><td>fail, impute_meanmode</td><td>-</td></tr><tr><td>net_mix</td><td>numeric</td><td>0.5</td><td></td><td>\((-\infty, \infty)\)</td></tr><tr><td>oobag</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>oobag_eval_every</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>oobag_fun</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>oobag_pred_type</td><td>character</td><td>mean</td><td>none, leaf, mean</td><td>-</td></tr><tr><td>pred_aggregate</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>sample_fraction</td><td>numeric</td><td>0.632</td><td></td><td>\([0, 1]\)</td></tr><tr><td>sample_with_replacement</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>scale_x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>split_min_events</td><td>integer</td><td>5</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_obs</td><td>integer</td><td>10</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>split_min_stat</td><td>numeric</td><td>NULL</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>split_rule</td><td>character</td><td>variance</td><td>variance</td><td>-</td></tr><tr><td>target_df</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>tree_seeds</td><td>integer</td><td>NULL</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>verbose_progress</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
@@ -174,12 +194,12 @@ the parameter <code>na_action</code>.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define the Learner</span></span></span>
-<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.aorsf"</span>, importance <span class="op">=</span> <span class="st">"anova"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.aorsf"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;LearnerRegrObliqueRandomForest&gt;</span><span style="font-weight: bold;"> (regr.aorsf): Oblique Random Forest Regresso</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Model: -</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: importance=anova, n_thread=1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Parameters: n_thread=1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Packages: <span style="color: #0000BB;">mlr3</span>, <span style="color: #0000BB;">mlr3extralearners</span>, and <span style="color: #0000BB;">aorsf</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Predict Types: [response]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
@@ -189,6 +209,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
@@ -203,18 +224,18 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.234</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.236</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.71</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl         am         hp         wt       qsec       disp       gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.11146497 0.05864198 0.05373134 0.04360465 0.03743316 0.03125000 0.02915452 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         vs       carb       drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.02769231 0.02346041 0.01275510 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        disp          wt         cyl          hp        drat          am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.103723404 0.077844311 0.061093248 0.037356322 0.028490028 0.026470588 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        carb        qsec          vs        gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.021472393 0.019390582 0.006779661 0.006024096 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -222,7 +243,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.45079 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.987155 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

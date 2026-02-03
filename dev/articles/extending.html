@@ -652,6 +652,105 @@ exclusion.</p>
 </div>
 </div>
 <div class="section level2">
+<h2 id="documenting-the-learner">Documenting the Learner<a class="anchor" aria-label="anchor" href="#documenting-the-learner"></a>
+</h2>
+<p>When documenting a learner, examples are crucial to help users
+understand how to use it. The <code>mlr3extralearners</code> package
+uses roxygen2 templates to standardize examples across learners.</p>
+<div class="section level3">
+<h3 id="example-templates">Example Templates<a class="anchor" aria-label="anchor" href="#example-templates"></a>
+</h3>
+<p>There are three main approaches for learner examples:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Standard template
+(<code>@template example</code>)</strong>: Use this for most learners.
+It automatically generates a complete example that creates the learner,
+trains it on an appropriate task (sonar for classification, mtcars for
+regression, grace for survival), makes predictions, and scores them. If
+the learner has the <code>"importance"</code> property, it also prints
+the importance scores.</p></li>
+<li><p><strong>Simple template
+(<code>@template simple_example</code>)</strong>: Use this when the
+learner cannot easily run on standard tasks without additional
+configuration, or when training is very slow. This template only creates
+and prints the learner without training.</p></li>
+<li><p><strong>Custom templates
+(<code>@template example_&lt;name&gt;</code>)</strong>: Use these when a
+learner requires specific parameters or task setup that differs from the
+standard template.</p></li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="when-to-use-custom-templates">When to Use Custom Templates<a class="anchor" aria-label="anchor" href="#when-to-use-custom-templates"></a>
+</h3>
+<p>Create a custom template in
+<code>man-roxygen/example_&lt;name&gt;.R</code> when:</p>
+<ul>
+<li><p><strong>The learner requires specific parameters to compute
+importance</strong>: Some learners (e.g., <code>randomForest</code>,
+<code>rfsrc</code>, <code>ranger</code>) have the
+<code>"importance"</code> property but require an explicit parameter to
+be set (e.g., <code>importance = "TRUE"</code> or
+<code>importance = "permutation"</code>).</p></li>
+<li><p><strong>The learner requires a formula parameter</strong>:
+Learners like <code>lme4</code> (mixed-effects models),
+<code>mgcv</code> (GAMs), or <code>flexsurv</code> need a custom formula
+to demonstrate their functionality.</p></li>
+<li><p><strong>The learner requires custom parameters for small
+datasets</strong>: Some learners like <code>laGP</code> need parameter
+adjustments (e.g., <code>end = 15</code>) to work on small datasets like
+mtcars.</p></li>
+<li><p><strong>The learner requires a custom task or data
+setup</strong>: Learners like <code>prioritylasso</code> or
+<code>blockForest</code> require a <code>blocks</code> parameter that
+partitions features.</p></li>
+<li><p><strong>The learner has special methods to demonstrate</strong>:
+The <code>cmprsk.rfsrc</code> learner has cause-specific importance that
+should be shown in the example.</p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="creating-a-custom-template">Creating a Custom Template<a class="anchor" aria-label="anchor" href="#creating-a-custom-template"></a>
+</h3>
+<p>Custom templates are placed in <code>man-roxygen/</code> and
+should:</p>
+<ol style="list-style-type: decimal">
+<li>Start with a comment explaining why the template is custom</li>
+<li>Use roxygen2 template syntax with <code>&lt;%</code> and
+<code>%&gt;</code> for R code</li>
+<li>Reference the <code>id</code> variable (set via
+<code>@templateVar id &lt;learner-id&gt;</code> in the learner
+file)</li>
+</ol>
+<p>Here’s an example structure:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="using-templates-in-learner-files">Using Templates in Learner Files<a class="anchor" aria-label="anchor" href="#using-templates-in-learner-files"></a>
+</h3>
+<p>In your learner’s R file, add the template reference in the roxygen
+documentation:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#' @templateVar id regr.mylearner</span></span>
+<span><span class="co">#' @template learner</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @template seealso_learner</span></span>
+<span><span class="co">#' @template example</span></span>
+<span><span class="co">#' @export</span></span></code></pre></div>
+<p>For custom templates, replace <code>@template example</code> with
+<code>@template example_&lt;name&gt;</code>.</p>
+</div>
+</div>
+<div class="section level2">
 <h2 id="contributing-to-mlr3extralearners">Contributing to mlr3extralearners<a class="anchor" aria-label="anchor" href="#contributing-to-mlr3extralearners"></a>
 </h2>
 <p>When adding a <code>Learner</code> to <code>mlr3extralearners</code>

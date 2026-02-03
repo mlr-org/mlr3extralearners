@@ -175,40 +175,48 @@ The objects of this class are cloneable with this method.
 ``` r
 # Define a Task
 task = tsk("mtcars")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
 #>  [1] "am"   "carb" "cyl"  "disp" "drat" "gear" "hp"   "qsec" "vs"   "wt"  
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:10)
+
 # define learner
 learner = lrn("regr.blockforest", blocks = blocks,
               importance = "permutation", nsets = 10,
               num.trees = 50, num.trees.pre = 10, splitrule = "variance")
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # feature importance
 learner$importance()
-#>        cyl       carb         hp       disp         wt         am       qsec 
-#>  7.9768564  6.7066433  3.1972018  2.4298616  2.0932744  1.8486363  1.5010576 
-#>         vs       drat       gear 
-#> -0.1505673 -0.2716905 -0.2876693 
+#>         cyl          am          hp        carb          wt        disp 
+#> 11.13177026 10.84870877  5.85977587  4.70658330  3.32827384  2.95219243 
+#>        gear          vs        drat        qsec 
+#>  2.78942298  1.96065014  1.19251683  0.06365037 
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        1  21.0 19.45549
-#>        3  22.8 25.98208
-#>        9  22.8 22.40024
+#>        1  21.0 21.03608
+#>        2  21.0 21.03608
+#>        4  21.4 19.61234
 #>      ---   ---      ---
-#>       26  27.3 27.81558
-#>       28  30.4 24.91832
-#>       30  19.7 19.40215
+#>       26  27.3 28.91295
+#>       29  15.8 18.48170
+#>       32  21.4 25.87351
+
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 6.967741 
+#> 6.199056 
 ```

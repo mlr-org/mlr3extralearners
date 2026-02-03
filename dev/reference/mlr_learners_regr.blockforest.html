@@ -197,42 +197,50 @@ not needed for downstream use or not reliable for performance estimation.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Create train and test set</span></span></span>
 <span class="r-in"><span><span class="va">ids</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/partition.html" class="external-link">partition</a></span><span class="op">(</span><span class="va">task</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># check task's features</span></span></span>
 <span class="r-in"><span><span class="va">task</span><span class="op">$</span><span class="va">feature_names</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "am"   "carb" "cyl"  "disp" "drat" "gear" "hp"   "qsec" "vs"   "wt"  </span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># partition features to 2 blocks</span></span></span>
 <span class="r-in"><span><span class="va">blocks</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>bl1 <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, bl2 <span class="op">=</span> <span class="fl">4</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># define learner</span></span></span>
 <span class="r-in"><span><span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"regr.blockforest"</span>, blocks <span class="op">=</span> <span class="va">blocks</span>,</span></span>
 <span class="r-in"><span>              importance <span class="op">=</span> <span class="st">"permutation"</span>, nsets <span class="op">=</span> <span class="fl">10</span>,</span></span>
 <span class="r-in"><span>              num.trees <span class="op">=</span> <span class="fl">50</span>, num.trees.pre <span class="op">=</span> <span class="fl">10</span>, splitrule <span class="op">=</span> <span class="st">"variance"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl       carb         hp       disp         wt         am       qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7.9768564  6.7066433  3.1972018  2.4298616  2.0932744  1.8486363  1.5010576 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         vs       drat       gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.1505673 -0.2716905 -0.2876693 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         cyl          am          hp        carb          wt        disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.13177026 10.84870877  5.85977587  4.70658330  3.32827384  2.95219243 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        gear          vs        drat        qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.78942298  1.96065014  1.19251683  0.06365037 </span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">11</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 19.45549</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3  22.8 25.98208</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        9  22.8 22.40024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 21.03608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2  21.0 21.03608</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        4  21.4 19.61234</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       26  27.3 27.81558</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       28  30.4 24.91832</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       30  19.7 19.40215</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       26  27.3 28.91295</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       29  15.8 18.48170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 25.87351</span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.967741 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.199056 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

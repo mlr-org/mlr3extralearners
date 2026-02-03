@@ -185,39 +185,47 @@ The objects of this class are cloneable with this method.
 ``` r
 # Define a Task
 task = tsk("grace")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
+
 # define learner
 learner = lrn("surv.blockforest", blocks = blocks,
               importance = "permutation", nsets = 10,
               num.trees = 50, num.trees.pre = 10, splitrule = "logrank")
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # feature importance
 learner$importance()
-#>  revascdays      revasc         age         los       sysbp    stchange 
-#> 0.142033676 0.078926069 0.025483203 0.013875474 0.010585243 0.003643289 
+#> revascdays     revasc        age        los   stchange      sysbp 
+#> 0.13554011 0.06720204 0.02106890 0.01874526 0.01280955 0.00960047 
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
 #>  row_ids time status     crank     distr
-#>        7  180  FALSE  6.195094 <list[1]>
-#>        8    2  FALSE 19.523705 <list[1]>
-#>       10  180  FALSE 11.022673 <list[1]>
+#>        5  180  FALSE 15.222548 <list[1]>
+#>        6    5  FALSE 48.957945 <list[1]>
+#>        7  180  FALSE  8.299653 <list[1]>
 #>      ---  ---    ---       ---       ---
-#>      997    2   TRUE 86.744047 <list[1]>
-#>      998  180  FALSE 22.923259 <list[1]>
-#>      999    3   TRUE 46.962900 <list[1]>
+#>      994    7  FALSE 65.306044 <list[1]>
+#>      996   69   TRUE 64.497175 <list[1]>
+#>      998  180  FALSE 21.014407 <list[1]>
+
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8443319 
+#>   0.8340896 
 ```

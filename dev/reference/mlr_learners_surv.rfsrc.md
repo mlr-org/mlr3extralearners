@@ -284,7 +284,6 @@ print(learner)
 
 # Define a Task
 task = tsk("grace")
-
 # Create train and test set
 ids = partition(task)
 

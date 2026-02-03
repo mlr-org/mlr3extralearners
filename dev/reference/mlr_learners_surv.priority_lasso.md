@@ -223,22 +223,29 @@ The objects of this class are cloneable with this method.
 ``` r
 # Define a Task
 task = tsk("grace")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
+
 # define learner
 learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # selected features
 learner$selected_features()
 #> [1] "age"        "los"        "revasc"     "revascdays"
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
@@ -252,6 +259,7 @@ pred
 #>      990   12   TRUE 4.3805176 4.3805176 <list[1]>
 #>      992   26   TRUE 4.2569360 4.2569360 <list[1]>
 #>      997    2   TRUE 4.2401111 4.2401111 <list[1]>
+
 # Score the predictions
 pred$score()
 #> surv.cindex 
