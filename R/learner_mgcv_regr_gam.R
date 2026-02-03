@@ -23,13 +23,7 @@
 #' @references
 #' `r format_bib("hastie2017generalized", "wood2012mgcv")`
 #'
-#' @examplesIf learner_is_runnable("regr.gam")
-#' # simple example
-#' t = tsk("mtcars")
-#' l = lrn("regr.gam")
-#' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
-#' l$train(t)
-#' l$model
+#' @template example_gam
 #' @export
 LearnerRegrGam = R6Class("LearnerRegrGam",
   inherit = LearnerRegr,

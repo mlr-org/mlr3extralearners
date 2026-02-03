@@ -63,23 +63,31 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \dontshow{if (learner_is_runnable("regr.blockforest")) withAutoprint(\{ # examplesIf}
 # Define a Task
 task = tsk("mtcars")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:10)
+
 # define learner
 learner = lrn("regr.blockforest", blocks = blocks,
               importance = "permutation", nsets = 10,
               num.trees = 50, num.trees.pre = 10, splitrule = "variance")
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # feature importance
 learner$importance()
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
+
 # Score the predictions
 pred$score()
 \dontshow{\}) # examplesIf}
