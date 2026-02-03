@@ -318,7 +318,7 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       invisible(tab_learner$remove_cb(tab_learner$progress))
 
       # prevent python from printing evaluation protocol
-      fit = getFromNamespace("fit", "fastai")
+      #fit = getFromNamespace("fit", "fastai")
       invisible(reticulate::py_capture_output({
         eval_protocol = invoke(
           fit,
