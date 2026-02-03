@@ -6,7 +6,7 @@
 \title{Survival Random Forest SRC Learner}
 \description{
 Random survival forest.
-Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
+Calls \code{randomForestSRC::rfsrc()} from \CRANpkg{randomForestSRC}.
 }
 \section{Prediction types}{
 
@@ -14,8 +14,8 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
-Calculated using the internal \code{\link[randomForestSRC:predict.rfsrc]{randomForestSRC::predict.rfsrc()}} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+Calculated using the internal \code{randomForestSRC::predict.rfsrc()} function.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 

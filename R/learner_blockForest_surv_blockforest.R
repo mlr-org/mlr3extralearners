@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random survival forests for blocks of clinical and omics covariate data.
-#' Calls [blockForest::blockfor()] from package \CRANpkg{blockForest}.
+#' Calls `blockForest::blockfor()` from package \CRANpkg{blockForest}.
 #'
 #' In this learner, only the trained forest object (`$forest`) is retained. The
 #' optimized block-specific tuning parameters (`paramvalues`) and the biased OOB
@@ -16,7 +16,7 @@
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
 #' Calculated using the internal `blockForest:::predict.blockForest()` function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @section Initial parameter values:
 #' - `num.threads` is initialized to 1 to avoid conflicts with parallelization via \CRANpkg{future}.

@@ -6,7 +6,7 @@
 \title{Boosted Generalized Additive Regression Learner}
 \description{
 Fit a generalized additive regression model using a boosting algorithm.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}}  from \CRANpkg{mboost}.
+Calls \code{mboost::gamboost()}  from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Evolutionary learning of globally optimal classification trees.
-#' Calls [evtree::evtree()] from\CRANpkg{evtree}.
+#' Calls `evtree::evtree()` from\CRANpkg{evtree}.
 #'
 #' @section Initial parameter values:
 #' `pmutatemajor`, `pmutateminor`, `pcrossover`, `psplit`, and `pprune`,

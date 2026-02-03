@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a generalized linear classification model using a boosting algorithm.
-#' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
+#' Calls `mboost::glmboost()` from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id classif.glmboost

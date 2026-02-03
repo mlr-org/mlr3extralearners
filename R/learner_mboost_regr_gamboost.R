@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a generalized additive regression model using a boosting algorithm.
-#' Calls [mboost::gamboost()]  from \CRANpkg{mboost}.
+#' Calls `mboost::gamboost()`  from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id regr.gamboost

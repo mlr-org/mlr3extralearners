@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forest for classification.
-#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::rfsrc()` from \CRANpkg{randomForestSRC}.
 #'
 #' @template learner
 #' @templateVar id classif.rfsrc

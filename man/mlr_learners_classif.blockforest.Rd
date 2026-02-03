@@ -6,7 +6,7 @@
 \title{BlockForest Classification Learner}
 \description{
 Random forests for blocks of clinical and omics covariate data.
-Calls \code{\link[blockForest:blockfor]{blockForest::blockfor()}} from package \CRANpkg{blockForest}.
+Calls \code{blockForest::blockfor()} from package \CRANpkg{blockForest}.
 
 In this learner, only the trained forest object (\verb{$forest}) is retained. The
 optimized block-specific tuning parameters (\code{paramvalues}) and the biased OOB

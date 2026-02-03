@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient Boosting Regression Algorithm.
-#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#' Calls `gbm::gbm()` from \CRANpkg{gbm}.
 #'
 #' Weights are ignored for quantile prediction.
 #'

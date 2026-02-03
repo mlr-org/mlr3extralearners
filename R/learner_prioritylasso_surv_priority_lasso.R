@@ -4,9 +4,9 @@
 #'
 #' @description
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-#' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
+#' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
 #' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
-#' as `prioritylasso()` calls [glmnet::cv.glmnet()] during training phase.
+#' as `prioritylasso()` calls `glmnet::cv.glmnet()` during training phase.
 #' Note that `prioritylasso()` has ways to deal with block-wise missing data,
 #' but this feature is not supported currently.
 #'
@@ -14,11 +14,11 @@
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [prioritylasso::predict.prioritylasso()].
+#' Calculated using `prioritylasso::predict.prioritylasso()`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mlr3proba::breslow()] where the Breslow estimator is used
+#' Calculated using `mlr3proba::breslow()` where the Breslow estimator is used
 #' for computing the baseline hazard.
 #'
 #' @section Initial parameter values:

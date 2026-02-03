@@ -6,7 +6,7 @@
 \title{Regression Gradient Boosting Machine Learner}
 \description{
 Gradient Boosting Regression Algorithm.
-Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
+Calls \code{gbm::gbm()} from \CRANpkg{gbm}.
 
 Weights are ignored for quantile prediction.
 }

@@ -3,7 +3,7 @@
 #' @name mlr_learners_regr.gam
 #'
 #' @description
-#' Generalized additive models. Calls [mgcv::gam()] from package \CRANpkg{mgcv}.
+#' Generalized additive models. Calls `mgcv::gam()` from package \CRANpkg{mgcv}.
 #'
 #' @section Formula:
 #' A gam formula specific to the task at hand is required for the `formula`
@@ -14,7 +14,7 @@
 #'
 #' @section Offset:
 #' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [mgcv::gam()].
+#' incorporated during training via the `offset` argument in `mgcv::gam()`.
 #' No offset is applied during prediction for this learner.
 #'
 #' @template learner

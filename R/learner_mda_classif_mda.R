@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Mixture Discriminant Analysis.
-#' Calls [mda::mda()] from \CRANpkg{mda}.
+#' Calls `mda::mda()` from \CRANpkg{mda}.
 #'
 #' @section Initial parameter values:
 #' * `keep.fitted`: Set to `FALSE` by default for speed.

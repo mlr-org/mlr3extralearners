@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Survival support vector machine.
-#' Calls [survivalsvm::survivalsvm()] from \CRANpkg{survivalsvm}.
+#' Calls `survivalsvm::survivalsvm()` from \CRANpkg{survivalsvm}.
 #'
 #' @template learner
 #' @templateVar id surv.svm

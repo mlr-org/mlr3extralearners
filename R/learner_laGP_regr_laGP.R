@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Local approximate Gaussian process for regression.
-#' Calls [laGP::aGP()] from \CRANpkg{laGP}.
+#' Calls `laGP::aGP()` from \CRANpkg{laGP}.
 #'
 #' @note
 #' Parameters `start` and `end` tune the initial and maximum neighborhood sizes

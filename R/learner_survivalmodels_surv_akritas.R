@@ -4,18 +4,18 @@
 #'
 #' @description
 #' Survival akritas estimator.
-#' Calls [survivalmodels::akritas()] from package 'survivalmodels'.
+#' Calls `survivalmodels::akritas()` from package 'survivalmodels'.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [survivalmodels::predict.akritas()] function.
+#' Calculated using the internal `survivalmodels::predict.akritas()` function.
 #' The survival matrix uses the unique time points from the training set.
 #' We advise to set the parameter `ntime` which allows to adjust the granularity
 #' of these time points to a reasonable number (e.g. `150`).
 #' This avoids large execution times during prediction.
-#' 2. `crank`: the expected mortality using [survivalmodels::surv_to_risk()].
+#' 2. `crank`: the expected mortality using `survivalmodels::surv_to_risk()`.
 #'
 #' @template learner
 #' @templateVar id surv.akritas

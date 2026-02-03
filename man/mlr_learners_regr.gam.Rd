@@ -5,7 +5,7 @@
 \alias{LearnerRegrGam}
 \title{Regression Generalized Additive Model Learner}
 \description{
-Generalized additive models. Calls \code{\link[mgcv:gam]{mgcv::gam()}} from package \CRANpkg{mgcv}.
+Generalized additive models. Calls \code{mgcv::gam()} from package \CRANpkg{mgcv}.
 }
 \section{Formula}{
 
@@ -19,7 +19,7 @@ superseding columns with col_roles "feature" in the task.
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+incorporated during training via the \code{offset} argument in \code{mgcv::gam()}.
 No offset is applied during prediction for this learner.
 }
 

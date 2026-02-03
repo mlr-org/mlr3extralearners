@@ -6,9 +6,9 @@
 \title{Survival Priority Lasso Learner}
 \description{
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
+Calls \code{prioritylasso::prioritylasso()} from \CRANpkg{prioritylasso}.
 Many parameters for this survival learner are the same as \link{mlr_learners_surv.cv_glmnet}
-as \code{prioritylasso()} calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} during training phase.
+as \code{prioritylasso()} calls \code{glmnet::cv.glmnet()} during training phase.
 Note that \code{prioritylasso()} has ways to deal with block-wise missing data,
 but this feature is not supported currently.
 }
@@ -18,11 +18,11 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[prioritylasso:predict.prioritylasso]{prioritylasso::predict.prioritylasso()}}.
+Calculated using \code{prioritylasso::predict.prioritylasso()}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}} where the Breslow estimator is used
+Calculated using \code{mlr3proba::breslow()} where the Breslow estimator is used
 for computing the baseline hazard.
 }
 }

@@ -4,19 +4,19 @@
 #'
 #' @description
 #' Gradient boosting with regression trees for survival analysis.
-#' Calls [mboost::blackboost()] from \CRANpkg{mboost}.
+#' Calls `mboost::blackboost()` from \CRANpkg{mboost}.
 #'
 #' @section Prediction types:
 #' This learner returns two to three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [mboost::predict.blackboost()].
+#' Calculated using `mboost::predict.blackboost()`.
 #' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
 #' families represent AFT-style distributions where lower `lp` values indicate higher risk.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mboost::survFit()].
+#' Calculated using `mboost::survFit()`.
 #' This prediction type is present only when the `family` distribution parameter
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
@@ -27,7 +27,7 @@
 #' @inheritSection mlr_learners_regr.glmboost Offset
 #'
 #' @details
-#' `distr` prediction made by [mboost::survFit()].
+#' `distr` prediction made by `mboost::survFit()`.
 #'
 #' @references
 #' `r format_bib("buhlmann2003boosting")`

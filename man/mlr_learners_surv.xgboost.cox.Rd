@@ -7,7 +7,7 @@
 \description{
 eXtreme Gradient Boosting regression using a \strong{Cox Proportional Hazards}
 objective.
-Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
+Calls \code{xgboost::xgb.train()} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:cox} and \code{eval_metric} to \code{cox-nloglik}.
 }
 \note{
@@ -24,7 +24,7 @@ observation.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}}.
+By default, the Breslow estimator is used via \code{mlr3proba::breslow()}.
 }
 }
 
@@ -244,7 +244,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvXgboostCox-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvXgboostCox-importance}{}}}
 \subsection{Method \code{importance()}}{
-The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xgboost::xgb.importance()}}.
+The importance scores are calculated with \code{xgboost::xgb.importance()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostCox$importance()}\if{html}{\out{</div>}}
 }

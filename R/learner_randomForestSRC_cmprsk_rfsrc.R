@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random survival forests for competing risks.
-#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::rfsrc()` from \CRANpkg{randomForestSRC}.
 #'
 #' @template learner
 #' @templateVar id cmprsk.rfsrc

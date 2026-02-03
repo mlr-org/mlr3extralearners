@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Multivariate Adaptive Regression Splines.
-#' Calls [mda::mars()] from \CRANpkg{mda}.
+#' Calls `mda::mars()` from \CRANpkg{mda}.
 #'
 #' @templateVar id regr.mars
 #' @template learner

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Imbalanced Random forest for classification between two classes.
-#' Calls [randomForestSRC::imbalanced.rfsrc()] from from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::imbalanced.rfsrc()` from from \CRANpkg{randomForestSRC}.
 #'
 #' @inheritSection mlr_learners_classif.rfsrc Custom mlr3 parameters
 #'
