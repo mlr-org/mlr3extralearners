@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Categorical Regression Splines.
-#' Calls [crs::crs()] from \CRANpkg{crs}.
+#' Calls `crs::crs()` from \CRANpkg{crs}.
 #'
 #' @templateVar id regr.crs
 #' @template learner

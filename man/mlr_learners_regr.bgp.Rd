@@ -6,7 +6,7 @@
 \title{Regression Bayesian Gaussian Process Learner}
 \description{
 Bayesian Gaussian process regression.
-Calls \code{\link[tgp:btgp]{tgp::bgp()}} from \CRANpkg{tgp}.
+Calls \code{tgp::bgp()} from \CRANpkg{tgp}.
 For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 }
 \section{Initial parameter values}{

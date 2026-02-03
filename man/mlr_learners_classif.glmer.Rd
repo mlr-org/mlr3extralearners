@@ -6,7 +6,7 @@
 \title{Classification Linear Mixed Effect Learner}
 \description{
 Generalized linear model with random effects.
-Calls \code{\link[lme4:glmer]{lme4::glmer()}} from \CRANpkg{lme4}.
+Calls \code{lme4::glmer()} from \CRANpkg{lme4}.
 }
 \section{Initial parameter values}{
 
@@ -88,7 +88,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[lme4:lmer]{lme4::lmer()}}.
+incorporated during training via the \code{offset} argument in \code{lme4::lmer()}.
 No offset is applied during prediction for this learner.
 }
 

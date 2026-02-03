@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Simple and fast neural nets for tabular data classification.
-#' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
+#' Calls `fastai::tabular_learner()` from package \CRANpkg{fastai}.
 #'
 #' @section Installation:
 #' The Python dependencies are automatically installed via `reticulate::py_require()`.
@@ -19,10 +19,10 @@
 #'
 #' @section Initial parameter values:
 #' - `n_epoch`:
-#'   Needs to be set for [fastai::fit()] to work.
+#'   Needs to be set for `fastai::fit()` to work.
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
-#'   Needs to be set for [fastai::predict()] to work.
+#'   Needs to be set for `fastai::predict()` to work.
 #'   If no value is given, it is set to `fastai::accuracy()`.
 #'
 #' @templateVar id classif.fastai

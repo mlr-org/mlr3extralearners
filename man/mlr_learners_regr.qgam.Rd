@@ -6,7 +6,7 @@
 \title{Generalized Additive Quantile Regression Model}
 \description{
 Quantile Regression with generalized additive models.
-Calls \code{\link[qgam:qgam]{qgam::qgam()}} from package \CRANpkg{qgam}.
+Calls \code{qgam::qgam()} from package \CRANpkg{qgam}.
 }
 \section{Form}{
 
@@ -17,7 +17,7 @@ The features specified in the formula need to be the same as columns with col_ro
 
 \section{Quantile}{
 
-The quantile for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:qgam]{qgam::qgam()}}, is set using the value specified in \code{learner$quantiles}.
+The quantile for the Learner, i.e. \code{qu} parameter from \code{qgam::qgam()}, is set using the value specified in \code{learner$quantiles}.
 }
 
 \section{Dictionary}{

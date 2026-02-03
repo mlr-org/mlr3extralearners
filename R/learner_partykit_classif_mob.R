@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Model-based recursive partitioning algorithm.
-#' Calls [partykit::mob()] from \CRANpkg{mob}.
+#' Calls `partykit::mob()` from \CRANpkg{mob}.
 #'
 #' @templateVar id classif.mob
 #' @template learner

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forests for blocks of clinical and omics covariate data.
-#' Calls [blockForest::blockfor()] from package \CRANpkg{blockForest}.
+#' Calls `blockForest::blockfor()` from package \CRANpkg{blockForest}.
 #'
 #' In this learner, only the trained forest object (`$forest`) is retained. The
 #' optimized block-specific tuning parameters (`paramvalues`) and the biased OOB

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forests for blocks of clinical and omics covariate data.
-#' Calls [blockForest::blockfor()] from package \CRANpkg{blockForest}.
+#' Calls `blockForest::blockfor()` from package \CRANpkg{blockForest}.
 #' The training model includes only the `$forest` slot, excluding the `paramvalues`
 #' and the `biased_oob_error_donotuse`.
 #'

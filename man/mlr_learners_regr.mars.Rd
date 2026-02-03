@@ -6,7 +6,7 @@
 \title{Regression Mars Learner}
 \description{
 Multivariate Adaptive Regression Splines.
-Calls \code{\link[mda:mars]{mda::mars()}} from \CRANpkg{mda}.
+Calls \code{mda::mars()} from \CRANpkg{mda}.
 }
 \section{Dictionary}{
 

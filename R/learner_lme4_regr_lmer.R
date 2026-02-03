@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Linear model with random effects.
-#' Calls [lme4::lmer()] from \CRANpkg{lme4}.
+#' Calls `lme4::lmer()` from \CRANpkg{lme4}.
 #'
 #' @template section_formula
 #'
@@ -13,7 +13,7 @@
 #'
 #' @section Offset:
 #' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [lme4::lmer()].
+#' incorporated during training via the `offset` argument in `lme4::lmer()`.
 #' No offset is applied during prediction for this learner.
 #'
 #' @references

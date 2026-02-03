@@ -6,11 +6,11 @@
 \title{Classification L1 and L2 Penalized Learner}
 \description{
 Penalized (L1 and L2) Logistic Regression.
-Calls \code{\link[penalized:penalized]{penalized::penalized()}} from: \CRANpkg{penalized}.
+Calls \code{penalized::penalized()} from: \CRANpkg{penalized}.
 }
 \details{
 The \code{penalized} and \code{unpenalized} arguments in the learner are implemented slightly
-differently than in \code{\link[penalized:penalized]{penalized::penalized()}}. Here, there is no parameter for \code{penalized} but
+differently than in \code{penalized::penalized()}. Here, there is no parameter for \code{penalized} but
 instead it is assumed that every variable is penalized unless stated in the \code{unpenalized}
 parameter.
 }

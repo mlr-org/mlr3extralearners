@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Flexible parametric learner.
-#' Calls [flexsurv::flexsurvreg()] from \CRANpkg{flexsurv}.
+#' Calls `flexsurv::flexsurvreg()` from \CRANpkg{flexsurv}.
 #'
 #' @template learner
 #' @templateVar id surv.flexreg

@@ -6,7 +6,7 @@
 \title{Regression Support Vector Machine Learner}
 \description{
 Support Vector Machine for regression.
-Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{RWeka::make_Weka_classifier()} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

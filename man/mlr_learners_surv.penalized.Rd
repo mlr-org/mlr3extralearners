@@ -6,11 +6,11 @@
 \title{Survival L1 and L2 Penalized Cox Learner}
 \description{
 Penalized (L1 and L2) Cox Proportional Hazards model.
-Calls \code{\link[penalized:penalized]{penalized::penalized()}} from \CRANpkg{penalized}.
+Calls \code{penalized::penalized()} from \CRANpkg{penalized}.
 }
 \details{
 The \code{penalized} and \code{unpenalized} arguments in the learner are implemented slightly
-differently than in \code{\link[penalized:penalized]{penalized::penalized()}}. Here, there is no parameter for \code{penalized} but
+differently than in \code{penalized::penalized()}. Here, there is no parameter for \code{penalized} but
 instead it is assumed that every variable is penalized unless stated in the \code{unpenalized}
 parameter.
 }
@@ -20,10 +20,10 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using the internal \code{\link[penalized:predict]{penalized::predict()}} function.
-By default the Breslow estimator \code{\link[penalized:breslow]{penalized::breslow()}} is used for computing
+Calculated using the internal \code{penalized::predict()} function.
+By default the Breslow estimator \code{penalized::breslow()} is used for computing
 the baseline hazard.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 
@@ -156,7 +156,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{latex}{\out{\hypertarget{method-LearnerSurvPenalized-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
 Selected features are extracted with the method \code{coef()} of the S4 model
-object, see \code{\link[penalized:penfit]{penalized::penfit()}}.
+object, see \code{penalized::penfit()}.
 By default it returns features with non-zero coefficients.
 
 \strong{Note}: Selected features can be retrieved only for datasets with

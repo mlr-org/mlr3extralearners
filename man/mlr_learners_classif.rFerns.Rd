@@ -7,7 +7,7 @@
 \description{
 Ensemble machine learning algorithm based on Random Ferns, which are a simplified,
 faster alternative to Random Forests.
-Calls \code{\link[rFerns:rFerns]{rFerns::rFerns()}} from \CRANpkg{rFerns}.
+Calls \code{rFerns::rFerns()} from \CRANpkg{rFerns}.
 }
 \section{Initial parameter values}{
 

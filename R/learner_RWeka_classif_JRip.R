@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Repeated Incremental Pruning to Produce Error Reduction.
-#' Calls [RWeka::JRip()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::JRip()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.JRip

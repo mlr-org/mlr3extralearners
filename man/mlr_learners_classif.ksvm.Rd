@@ -6,7 +6,7 @@
 \title{Classification Kernlab Support Vector Machine}
 \description{
 Support vector machine for classification.
-Calls \code{\link[kernlab:ksvm]{kernlab::ksvm()}} from \CRANpkg{kernlab}.
+Calls \code{kernlab::ksvm()} from \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
 

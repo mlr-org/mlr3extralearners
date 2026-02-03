@@ -7,7 +7,7 @@
 \description{
 Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 number of steps.
-Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} or \code{\link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost()}} from package 'CoxBoost'.
+Calls \code{CoxBoost::CoxBoost()} or \code{CoxBoost::cv.CoxBoost()} from package 'CoxBoost'.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
@@ -16,8 +16,8 @@ cross-validation of boosting step number, respectively. Tuning using the interna
 multiple hyperparameters, \CRANpkg{mlr3tuning} and \link{LearnerSurvCoxboost} will likely give better
 results.
 
-If \code{penalty == "optimCoxBoostPenalty"} then \link[CoxBoost:optimCoxBoostPenalty]{CoxBoost::optimCoxBoostPenalty} is used to determine
-the penalty value to be used in \link[CoxBoost:cv.CoxBoost]{CoxBoost::cv.CoxBoost}.
+If \code{penalty == "optimCoxBoostPenalty"} then \code{CoxBoost::optimCoxBoostPenalty()} is used to determine
+the penalty value to be used in \code{CoxBoost::cv.CoxBoost()}.
 }
 \section{Dictionary}{
 

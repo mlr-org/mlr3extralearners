@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient boosting algorithm that also supports categorical data.
-#' Calls [catboost::catboost.train()] from package 'catboost'.
+#' Calls `catboost::catboost.train()` from package 'catboost'.
 #'
 #' @template learner
 #' @templateVar id classif.catboost
@@ -211,7 +211,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
     #' @description
     #' The importance scores are calculated using
-    #' [`catboost.get_feature_importance`][catboost::catboost.get_feature_importance],
+    #' `catboost::catboost.get_feature_importance()`,
     #' setting `type = "FeatureImportance"`, returned for 'all'.
     #' @return Named `numeric()`.
     importance = function() {
