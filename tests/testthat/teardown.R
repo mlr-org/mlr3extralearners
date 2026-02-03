@@ -9,3 +9,5 @@ if (requireNamespace("reticulate", quietly = TRUE)) {
   detritus = list.files(python_temp_dir, pattern = "^uv-setuptools-[0-9A-Fa-f]{16}\\.lock$", full.names = TRUE)
   if (length(detritus)) unlink(detritus)
 }
+
+unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
