@@ -1,4 +1,4 @@
-# r cmd check workflow of the mlr3 ecosystem v0.3.1
+# r cmd check workflow without suggests of the mlr3 ecosystem v0.3.1
 # https://github.com/mlr-org/actions
 on:
   workflow_dispatch:
@@ -14,28 +14,23 @@ on:
   pull_request:
     branches:
       - main
-  schedule:
-    - cron:  '0 4 * * 1'
 
-name: RCMD Check
+name: no-suggest-cmd-check
 
 jobs:
-  R-CMD-check:
+  no-suggest-cmd-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})${{ matrix.config.depends_only && ' – noSuggests' || '' }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
+
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     strategy:
       fail-fast: false
       matrix:
         config:
-          - {os: ubuntu-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'devel'}
-
-    env:
-      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-      HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      HUGGINGFACE_HUB_TOKEN: ${{ secrets.HF_TOKEN }}
+          - {os: ubuntu-latest,   r: 'release'}
 
     steps:
       - uses: actions/checkout@v6
@@ -48,15 +43,14 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: |
+            any::rcmdcheck
+            any::testthat
+            any::knitr
+            any::rmarkdown
           needs: check
-          cache: "always"
-
-      - name: Install torch backend
-        if: ${{ !matrix.config.depends_only }}
-        run: |
-          R -q -e 'install.packages("torch")'
-          R -q -e 'torch::install_torch()'
+          dependencies: '"hard"'
+          cache: false
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
@@ -65,4 +59,5 @@ jobs:
 
       - uses: r-lib/actions/check-r-package@v2
         with:
+          args: 'c("--no-manual", "--as-cran")'
           error-on: '"note"'
