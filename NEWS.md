@@ -1,5 +1,8 @@
 # mlr3extralearners (development version)
 
+* New Learners:
+  - `LearnerRegrGPfit`
+
 # mlr3extralearners 1.4.0
 
 ## New Features
