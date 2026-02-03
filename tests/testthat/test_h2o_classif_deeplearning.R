@@ -3,11 +3,11 @@ test_that("autotest", {
 
   compute = "mlr3_encapsulation_h2o"
   mirai::daemons(1, .compute = compute)
-  on.exit(mirai::daemons(0, .compute = compute), add = TRUE)
+  on.exit(mirai::daemons(0, .compute = compute))
 
   mirai::everywhere({
     library(h2o)
-    h2o::h2o.init(ip = "127.0.0.1", startH2O = TRUE)
+    h2o::h2o.init(ip = "localhost", startH2O = TRUE)
   }, .compute = compute)
 
   learner = lrn("classif.h2o.deeplearning", epochs = 10, hidden = c(20L, 20L), seed = 42L)
