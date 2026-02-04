@@ -35,7 +35,6 @@ test_that("autotest", {
     result = run_autotest(learner, check_replicable = FALSE)
     testthat::expect_true(result, info = result$error)
 
-    unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
     TRUE
   }))
 })
@@ -86,7 +85,6 @@ test_that("marshaling works for classif.tabpfn", {
     expect_false(learner$marshaled)
     expect_equal(class(learner$model), class_prev)
 
-    unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
     TRUE
   }))
 })
@@ -209,7 +207,6 @@ test_that("other tests", {
     learner2$train(task)
     expect_equal(learner1$predict(task), learner2$predict(task))
 
-    unlink(list.files(tempdir(), full.names = TRUE), recursive = TRUE, force = TRUE)
     TRUE
   }))
 })
