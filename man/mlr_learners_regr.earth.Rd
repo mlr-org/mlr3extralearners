@@ -9,7 +9,7 @@ This is an alternative implementation of MARS (Multivariate Adaptive Regression 
 MARS is trademarked and thus not used as the name. The name "earth" stands for
 "Enhanced Adaptive Regression Through Hinges".
 
-Calls \code{\link[earth:earth]{earth::earth()}} from \CRANpkg{earth}.
+Calls \code{earth::earth()} from \CRANpkg{earth}.
 }
 \details{
 Methods for variance estimations are not yet implemented.

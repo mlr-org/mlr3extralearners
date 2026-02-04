@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Deep neural network with weights initialized by a deep belief network.
-#' Calls [deepnet::dbn.dnn.train()] from \CRANpkg{deepnet}.
+#' Calls `deepnet::dbn.dnn.train()` from \CRANpkg{deepnet}.
 #' 
 #' This learner works with tasks that have at least two features.
 #'

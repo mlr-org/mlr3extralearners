@@ -6,7 +6,7 @@
 \title{Regression Gaussian Process Learner}
 \description{
 Gaussian process for regression.
-Calls \code{\link[kernlab:gausspr]{kernlab::gausspr()}} from \CRANpkg{kernlab}.
+Calls \code{kernlab::gausspr()} from \CRANpkg{kernlab}.
 Parameters \code{sigma}, \code{degree}, \code{scale}, \code{offset} and \code{order} are
 added to make tuning \code{kpar} easier. If \code{kpar} is provided then these
 new parameters are ignored. If none are provided then the default

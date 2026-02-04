@@ -6,7 +6,7 @@
 \title{Classification Boosting Learner}
 \description{
 Classification boosting algorithm.
-Calls \code{\link[adabag:boosting]{adabag::boosting()}} from \CRANpkg{adabag}.
+Calls \code{adabag::boosting()} from \CRANpkg{adabag}.
 }
 \section{Initial parameter values}{
 

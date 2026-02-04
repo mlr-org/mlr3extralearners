@@ -3,8 +3,8 @@
 #' @name mlr_learners_regr.cforest
 #'
 #' @description
-#' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
-#' Calls [partykit::cforest()] from \CRANpkg{partykit}.
+#' A random forest based on conditional inference trees (`partykit::ctree()`).
+#' Calls `partykit::cforest()` from \CRANpkg{partykit}.
 #'
 #' @template learner
 #' @templateVar id regr.cforest

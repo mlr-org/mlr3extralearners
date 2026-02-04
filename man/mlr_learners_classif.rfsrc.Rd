@@ -6,7 +6,7 @@
 \title{Classification Random Forest SRC Learner}
 \description{
 Random forest for classification.
-Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
+Calls \code{randomForestSRC::rfsrc()} from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
 

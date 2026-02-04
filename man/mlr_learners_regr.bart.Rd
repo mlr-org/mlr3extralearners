@@ -6,7 +6,7 @@
 \title{Regression BART (Bayesian Additive Regression Trees) Learner}
 \description{
 Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
-Calls \code{\link[dbarts:bart]{dbarts::bart()}} from \CRANpkg{dbarts}.
+Calls \code{dbarts::bart()} from \CRANpkg{dbarts}.
 }
 \section{Dictionary}{
 

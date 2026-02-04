@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Adaptive best-subset selection for regression.
-#' Calls [abess::abess()] from \CRANpkg{abess}.
+#' Calls `abess::abess()` from \CRANpkg{abess}.
 #'
 #' @templateVar id regr.abess
 #' @template learner
@@ -75,7 +75,7 @@ LearnerRegrAbess = R6Class("LearnerRegrAbess",
       )
     },
     #' @description
-    #' Extract the name of selected features from the model by [abess::extract()].
+    #' Extract the name of selected features from the model by `abess::extract()`.
     #' @return The names of selected features
     selected_features = function() {
       abess::extract(self$model)$support.vars

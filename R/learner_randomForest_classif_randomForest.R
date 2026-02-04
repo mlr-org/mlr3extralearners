@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forest for classification.
-#' Calls [randomForest::randomForest()] from \CRANpkg{randomForest}.
+#' Calls `randomForest::randomForest()` from \CRANpkg{randomForest}.
 #'
 #' @template learner
 #' @templateVar id classif.randomForest
@@ -13,27 +13,7 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.randomForest")
-#' # Define the Learner
-#' learner = lrn("classif.randomForest", importance = "accuracy")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_randomForest
 #' @export
 LearnerClassifRandomForest = R6Class("LearnerClassifRandomForest",
   inherit = LearnerClassif,

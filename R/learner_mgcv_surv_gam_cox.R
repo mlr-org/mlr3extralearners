@@ -4,18 +4,18 @@
 #'
 #' @description
 #' Cox proportional hazards model fitted via generalized additive modeling.
-#' Internally calls [mgcv::gam()] from the \CRANpkg{mgcv} package with
+#' Internally calls `mgcv::gam()` from the \CRANpkg{mgcv} package with
 #' `family = mgcv::cox.ph()`. The censoring indicator is passed via the
 #' `weights` argument.
 #'
 #' @section Prediction types:
 #' Three types of prediction are returned for this learner:
 #' 1. `lp`: a vector of linear predictors (relative risk scores), one per
-#' observation. Calls [mgcv::predict.gam()] with `type = "link"`.
+#' observation. Calls `mgcv::predict.gam()` with `type = "link"`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
+#' By default, the Breslow estimator is used via `mlr3proba::breslow()`.
 #'
 #' @inheritSection mlr_learners_regr.gam Formula
 #' @inheritSection mlr_learners_regr.gam Offset
@@ -26,13 +26,7 @@
 #' @references
 #' `r format_bib("wood2012mgcv", "wood2016")`
 #'
-#' @examplesIf learner_is_runnable("surv.gam.cox")
-#' # simple example
-#' t = tsk("lung")
-#' l = lrn("surv.gam.cox")
-#' l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
-#' l$train(t)
-#' l$model
+#' @template example_gam
 #' @export
 LearnerSurvGamCox = R6Class("LearnerSurvGamCox",
   inherit = mlr3proba::LearnerSurv,

@@ -6,7 +6,7 @@
 \title{Deep Neural Network with DBN Pretraining Learner}
 \description{
 Deep neural network with weights initialized by a deep belief network.
-Calls \code{\link[deepnet:dbn.dnn.train]{deepnet::dbn.dnn.train()}} from \CRANpkg{deepnet}.
+Calls \code{deepnet::dbn.dnn.train()} from \CRANpkg{deepnet}.
 
 This learner works with tasks that have at least two features.
 }

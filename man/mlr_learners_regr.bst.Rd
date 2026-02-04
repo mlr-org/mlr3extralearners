@@ -6,7 +6,7 @@
 \title{Regression Gradient Boosting Learner}
 \description{
 Regression gradient boosting learner.
-Calls \code{\link[bst:bst]{bst::bst()}} from \CRANpkg{bst}.
+Calls \code{bst::bst()} from \CRANpkg{bst}.
 }
 \section{Initial parameter values}{
 
