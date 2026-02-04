@@ -6,7 +6,7 @@
 \title{Classification K-nearest Neighbour Learner}
 \description{
 K-nearest neighbor classification.
-Calls \code{\link[class:knn]{class::knn()}} from \CRANpkg{class}.
+Calls \code{class::knn()} from \CRANpkg{class}.
 }
 \section{Dictionary}{
 

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' L2 regularized support vector regression.
-#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#' Calls `LiblineaR::LiblineaR()` from \CRANpkg{LiblineaR}.
 #'
 #' @template learner
 #' @templateVar id regr.liblinear

@@ -6,7 +6,7 @@
 \title{Classification Abess Learner}
 \description{
 Adaptive best-subset selection for classification.
-Calls \code{\link[abess:abess]{abess::abess()}} from \CRANpkg{abess}.
+Calls \code{abess::abess()} from \CRANpkg{abess}.
 }
 \section{Dictionary}{
 
@@ -148,7 +148,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerClassifAbess-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerClassifAbess-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Extract the name of selected features from the model by \code{\link[abess:extract.abess]{abess::extract()}}.
+Extract the name of selected features from the model by \code{abess::extract()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifAbess$selected_features()}\if{html}{\out{</div>}}
 }

@@ -6,7 +6,7 @@
 \title{Random Forest Competing Risks Learner}
 \description{
 Random survival forests for competing risks.
-Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
+Calls \code{randomForestSRC::rfsrc()} from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
 

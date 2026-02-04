@@ -6,7 +6,7 @@
 \title{Regression Model-based Recursive Partitioning Learner}
 \description{
 Model-based recursive partitioning algorithm.
-Calls \code{\link[partykit:mob]{partykit::mob()}} from \CRANpkg{mob}.
+Calls \code{partykit::mob()} from \CRANpkg{mob}.
 }
 \section{Dictionary}{
 

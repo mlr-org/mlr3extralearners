@@ -4,6 +4,11 @@
 
 * New Learners:
   - `LearnerClassifPlsdaCaret`
+  - `LearnerSurvDNN`
+
+## Other
+
+- Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
 
 # mlr3extralearners 1.4.0
 

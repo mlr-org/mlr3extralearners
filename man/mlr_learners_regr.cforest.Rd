@@ -5,8 +5,8 @@
 \alias{LearnerRegrCForest}
 \title{Regression Conditional Random Forest Learner}
 \description{
-A random forest based on conditional inference trees (\link[partykit:ctree]{ctree}).
-Calls \code{\link[partykit:cforest]{partykit::cforest()}} from \CRANpkg{partykit}.
+A random forest based on conditional inference trees (\code{partykit::ctree()}).
+Calls \code{partykit::cforest()} from \CRANpkg{partykit}.
 }
 \section{Dictionary}{
 

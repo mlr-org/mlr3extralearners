@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously.
-#' Calls [qgam::mqgam()] from package \CRANpkg{qgam}.
+#' Calls `qgam::mqgam()` from package \CRANpkg{qgam}.
 #'
 #' @section Form:
 #' For the `form` parameter, a gam formula specific to the [Task][mlr3::Task] is required (see example and `?mgcv::formula.gam`).
@@ -12,7 +12,7 @@
 #' The features specified in the formula need to be the same as columns with col_roles "feature" in the task.
 #'
 #' @section Quantile:
-#' The quantiles for the Learner, i.e. `qu` parameter from [qgam::mqgam()], is set using the values specified in `learner$quantiles`.
+#' The quantiles for the Learner, i.e. `qu` parameter from `qgam::mqgam()`, is set using the values specified in `learner$quantiles`.
 #' The response quantile can be specified using `learner$quantile_response`.
 #'
 #' @templateVar id regr.mqgam

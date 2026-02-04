@@ -6,7 +6,7 @@
 \title{Regression Random Forest SRC Learner}
 \description{
 Random forest for regression.
-Calls \code{\link[randomForestSRC:rfsrc]{randomForestSRC::rfsrc()}} from \CRANpkg{randomForestSRC}.
+Calls \code{randomForestSRC::rfsrc()} from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
 

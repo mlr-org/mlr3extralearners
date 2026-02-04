@@ -8,7 +8,7 @@
 Minimum Distance Empirical Bayesian classification, designed for small-sample, high-dimensional data.
 Empirical Bayes estimator where the eigenvalues of the pooled sample covariance matrix are shrunken towards
 the identity matrix.
-Calls \code{\link[sparsediscrim:lda_emp_bayes]{sparsediscrim::lda_emp_bayes()}} from FIXME: \CRANpkg{sparsediscrim}.
+Calls \code{sparsediscrim::lda_emp_bayes()} from FIXME: \CRANpkg{sparsediscrim}.
 }
 \section{Dictionary}{
 

@@ -8,7 +8,7 @@
 Classification using Rotation Forest algorithm.
 Training this learner works only for tasks with at least two features.
 The task must not have utf8 feature names.
-Calls \code{\link[rotationForest:rotationForest]{rotationForest::rotationForest()}} from \CRANpkg{rotationForest}.
+Calls \code{rotationForest::rotationForest()} from \CRANpkg{rotationForest}.
 }
 \section{Dictionary}{
 

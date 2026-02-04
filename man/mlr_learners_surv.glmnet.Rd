@@ -6,7 +6,7 @@
 \title{GLM with Elastic Net Regularization Survival Learner}
 \description{
 Generalized linear models with elastic net regularization.
-Calls \code{\link[glmnet:glmnet]{glmnet::glmnet()}} from package \CRANpkg{glmnet}.
+Calls \code{glmnet::glmnet()} from package \CRANpkg{glmnet}.
 }
 \section{Initial parameter values}{
 
@@ -21,22 +21,22 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+Calculated using \code{glmnet::predict.coxnet()}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[glmnet:survfit.coxnet]{glmnet::survfit.coxnet()}}.
+Calculated using \code{glmnet::survfit.coxnet()}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
-into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+into survival predictions and are described in \code{survival::survfit.coxph()}.
 By default the Breslow estimator is used for computing the baseline hazard.
 }
 
-\strong{Caution}: This learner is different to learners calling \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}}
+\strong{Caution}: This learner is different to learners calling \code{glmnet::cv.glmnet()}
 in that it does not use the internal optimization of parameter \code{lambda}.
 Instead, \code{lambda} needs to be tuned by the user (e.g., via \CRANpkg{mlr3tuning}).
 When \code{lambda} is tuned, the \code{glmnet} will be trained for each tuning iteration.
 While fitting the whole path of \code{lambda}s would be more efficient, as is done
-by default in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}, tuning/selecting the parameter at prediction time
+by default in \code{glmnet::glmnet()}, tuning/selecting the parameter at prediction time
 (using parameter \code{s}) is currently not supported in \CRANpkg{mlr3}
 (at least not in efficient manner).
 Tuning the \code{s} parameter is, therefore, currently discouraged.
@@ -51,9 +51,9 @@ custom resampling strategies (blocked design, stratification).
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.
+incorporated during training via the \code{offset} argument in \code{glmnet::glmnet()}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.coxnet()}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
@@ -208,7 +208,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvGlmnet-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGlmnet-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Returns the set of selected features as reported by \code{\link[glmnet:predict.glmnet]{glmnet::predict.glmnet()}}
+Returns the set of selected features as reported by \code{glmnet::predict.glmnet()}
 with \code{type} set to \code{"nonzero"}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvGlmnet$selected_features(lambda = NULL)}\if{html}{\out{</div>}}

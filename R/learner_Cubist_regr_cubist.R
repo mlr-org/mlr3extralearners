@@ -5,7 +5,7 @@
 #' @description
 #' Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
 #' linear regression models at the terminal leaves.
-#' Calls [Cubist::cubist()] from \CRANpkg{Cubist}.
+#' Calls `Cubist::cubist()` from \CRANpkg{Cubist}.
 #'
 #' @template learner
 #' @templateVar id regr.cubist

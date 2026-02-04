@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Least squares support vector machine for classification.
-#' Calls [kernlab::lssvm()] from \CRANpkg{kernlab}.
+#' Calls `kernlab::lssvm()` from \CRANpkg{kernlab}.
 #' Parameters `sigma`, `degree`, `scale`, `offset`, `order`, `length`,
 #' `lambda`, and `normalized` are added to make tuning `kpar` easier.
 #' If `kpar` is provided then these new parameters are ignored. If none are

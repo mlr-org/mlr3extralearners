@@ -23,6 +23,7 @@ test_that("autotest", {
 
     result = run_autotest(learner, check_replicable = FALSE, exclude = "sanity")
     testthat::expect_true(result, info = result$error)
+
     TRUE
   }))
 })
@@ -42,6 +43,7 @@ test_that("eval protocol", {
     task = tsk("sonar")
     learner$train(task)
     testthat::expect_true(is.list(learner$model$eval_protocol))
+
     TRUE
   }))
 })
@@ -125,6 +127,7 @@ test_that("validation and inner tuning works", {
     learner$train(task)
     expect_equal(learner$internal_valid_scores$accuracy, learner$model$eval_protocol$accuracy[10L])
     expect_null(learner$internal_tuned_values)
+
     TRUE
     }))
   })
@@ -244,6 +247,7 @@ test_that("custom inner validation measure", {
     expect_numeric(learner$model$eval_protocol$classif.logloss, len = 10)
     expect_list(learner$internal_valid_scores, types = "numeric")
     expect_equal(names(learner$internal_valid_scores), "classif.logloss")
+
     TRUE
   }))
 })
@@ -282,6 +286,7 @@ test_that("marshaling works for classif.fastai", {
     expect_equal(learner$predict(task), pred)
     expect_false(learner$marshaled)
     expect_equal(class(learner$model), class_prev)
+
     TRUE
   }))
 })
@@ -303,6 +308,7 @@ test_that("n_threads parameter works", {
     task = tsk("sonar")
     learner$train(task)
     expect_prediction(learner$predict(task))
+
     TRUE
   }))
 })
