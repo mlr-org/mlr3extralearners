@@ -30,3 +30,4 @@ if (length(detritus)) unlink(detritus)
 detritus = list.files(tempdir(), pattern = "^tmp[a-z0-9]{8}$", full.names = TRUE)
 if (length(detritus)) unlink(detritus)
 
+unlink(tools::R_user_dir("reticulate", "cache"), recursive = TRUE)
