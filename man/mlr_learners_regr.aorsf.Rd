@@ -6,7 +6,7 @@
 \title{Oblique Random Forest Regressor}
 \description{
 Accelerated oblique random regression forest.
-Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Calls \code{aorsf::orsf()} from \CRANpkg{aorsf}.
 Note that although the learner has the property \code{"missing"} and it can in
 principle deal with missing values, the behaviour has to be configured using
 the parameter \code{na_action}.

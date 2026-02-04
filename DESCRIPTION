@@ -48,7 +48,6 @@ Imports:
     mlr3proba (>= 0.8.2),
     paradox (>= 1.0.1),
     R6,
-    reticulate,
     survdistr (>= 0.0.1),
     withr
 Suggests:
@@ -118,6 +117,7 @@ Suggests:
     randomForestSRC (>= 3.5.0),
     ranger (>= 0.17.0),
     remotes,
+    reticulate,
     rFerns,
     rJava,
     rmarkdown,

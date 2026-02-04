@@ -5,14 +5,14 @@
 #' @description
 #' Deep neural network survival models from package \CRANpkg{survdnn}, aimed at
 #' tabular (low to moderate-dimensional) covariate settings using torch-based
-#' multilayer perceptrons. The learner wraps [survdnn::survdnn()].
+#' multilayer perceptrons. The learner wraps `survdnn::survdnn()`.
 #'
 #' @section Prediction types:
 #' This learner supports the following prediction types:
 #' \describe{
 #' \item{`lp`}{A numeric vector of linear predictors, one per observation.
 #' For `loss` \code{"cox"} / \code{"cox_l2"} this is a log-risk score (higher implies worse prognosis).
-#' For \code{"aft"}, [predict.survdnn()] returns the predicted log-time location \eqn{\mu(x)}
+#' For \code{"aft"}, `predict.survdnn()` returns the predicted log-time location \eqn{\mu(x)}
 #' (higher implies better prognosis), therefore the learner internally negates it such that higher
 #' values imply higher risk (consistent with \CRANpkg{mlr3} conventions). For \code{"coxtime"},
 #' this is \eqn{g(t_0, x)} evaluated at a reference time.}
@@ -164,7 +164,7 @@ LearnerSurvDNN = R6::R6Class("LearnerSurvDNN",
         type = "survival"
       )
       surv = as.matrix(surv_df)
-      
+
       # crank is automatically derived from lp if not provided
       mlr3proba::surv_return(times = times, surv = surv, lp = lp)
     }

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear model with random effects.
-#' Calls [lme4::glmer()] from \CRANpkg{lme4}.
+#' Calls `lme4::glmer()` from \CRANpkg{lme4}.
 #'
 #' @section Initial parameter values:
 #' * `family` - Is set to `stats::binomial(link = "logit")`.

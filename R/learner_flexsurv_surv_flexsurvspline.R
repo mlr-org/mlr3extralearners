@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Flexible survival regression using the Royston/Parmar spline model.
-#' Calls [flexsurv::flexsurvspline()] from \CRANpkg{flexsurv}.
+#' Calls `flexsurv::flexsurvspline()` from \CRANpkg{flexsurv}.
 #'
 #' @template learner
 #' @templateVar id surv.flexspline

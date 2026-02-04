@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification gradient boosting learner.
-#' Calls [bst::bst()] from \CRANpkg{bst}.
+#' Calls `bst::bst()` from \CRANpkg{bst}.
 #'
 #' @section Initial parameter values:
 #' * `Learner = "ls"`: Default base learner type

@@ -6,7 +6,7 @@
 \title{BlockForest Survival Learner}
 \description{
 Random survival forests for blocks of clinical and omics covariate data.
-Calls \code{\link[blockForest:blockfor]{blockForest::blockfor()}} from package \CRANpkg{blockForest}.
+Calls \code{blockForest::blockfor()} from package \CRANpkg{blockForest}.
 
 In this learner, only the trained forest object (\verb{$forest}) is retained. The
 optimized block-specific tuning parameters (\code{paramvalues}) and the biased OOB
@@ -20,7 +20,7 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{blockForest:::predict.blockForest()} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 

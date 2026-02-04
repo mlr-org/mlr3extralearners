@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Decision Tree Algorithm.
-#' Calls [C50::C5.0.formula()] from \CRANpkg{C50}.
+#' Calls `C50::C5.0.formula()` from \CRANpkg{C50}.
 #'
 #'
 #' @template learner

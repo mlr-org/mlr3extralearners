@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forest for classification.
-#' Calls [randomForest::randomForest()] from \CRANpkg{randomForest}.
+#' Calls `randomForest::randomForest()` from \CRANpkg{randomForest}.
 #'
 #' @template learner
 #' @templateVar id classif.randomForest

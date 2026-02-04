@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-#' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
+#' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"binomial"` and cannot be changed

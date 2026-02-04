@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Adaptive boosting algorithm for classification.
-#' Calls [RWeka::AdaBoostM1()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::AdaBoostM1()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.AdaBoostM1

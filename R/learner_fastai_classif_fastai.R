@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Simple and fast neural nets for tabular data classification.
-#' Calls [fastai::tabular_learner()] from package \CRANpkg{fastai}.
+#' Calls `fastai::tabular_learner()` from package \CRANpkg{fastai}.
 #'
 #' @section Installation:
 #' The Python dependencies are automatically installed via `reticulate::py_require()`.
@@ -19,10 +19,10 @@
 #'
 #' @section Initial parameter values:
 #' - `n_epoch`:
-#'   Needs to be set for [fastai::fit()] to work.
+#'   Needs to be set for `fastai::fit()` to work.
 #'   If no value is given, it is set to 5.
 #' - `eval_metric`:
-#'   Needs to be set for [fastai::predict()] to work.
+#'   Needs to be set for `fastai::predict()` to work.
 #'   If no value is given, it is set to `fastai::accuracy()`.
 #'
 #' @templateVar id classif.fastai
@@ -151,6 +151,11 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
     .validate = NULL,
 
     .train = function(task) {
+      # the fastai R package loads the fastai Python package in .onLoad()
+      # R CMD check will download and install the fastai Python package when `fastai::` is checked
+      # this is a note
+      # thus we have to use getFromNamespace() to avoid `fastai::`
+
       pars = self$param_set$get_values(tags = "train")
       assert_python_packages(c("IPython", "torch", "torchvision", "fastai", "pydicom", "kornia"))
       torch = reticulate::import("torch")
@@ -165,31 +170,50 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       patience = pars$patience
 
       metrics = if (is.character(eval_metric)) {
+        accuracy = getFromNamespace("accuracy", "fastai")
+        error_rate = getFromNamespace("error_rate", "fastai")
+        top_k_accuracy = getFromNamespace("top_k_accuracy", "fastai")
+        APScoreBinary = getFromNamespace("APScoreBinary", "fastai")
+        BalancedAccuracy = getFromNamespace("BalancedAccuracy", "fastai")
+        BrierScore = getFromNamespace("BrierScore", "fastai")
+        CohenKappa = getFromNamespace("CohenKappa", "fastai")
+        F1Score = getFromNamespace("F1Score", "fastai")
+        FBeta = getFromNamespace("FBeta", "fastai")
+        HammingLoss = getFromNamespace("HammingLoss", "fastai")
+        Jaccard = getFromNamespace("Jaccard", "fastai")
+        Precision = getFromNamespace("Precision", "fastai")
+        Recall = getFromNamespace("Recall", "fastai")
+        RocAuc = getFromNamespace("RocAuc", "fastai")
+        RocAucBinary = getFromNamespace("RocAucBinary", "fastai")
+        MatthewsCorrCoef = getFromNamespace("MatthewsCorrCoef", "fastai")
+
         # match character to fastai metric
         # these objects must be created here because they break when serialized
         switch(eval_metric,
-          "accuracy" = fastai::accuracy(),
-          "error_rate" = fastai::error_rate(),
-          "top_k_accuracy" = fastai::top_k_accuracy(),
-          "APScoreBinary" = fastai::APScoreBinary(),
-          "BalancedAccuracy" = fastai::BalancedAccuracy(),
-          "BrierScore" = fastai::BrierScore(),
-          "CohenKappa" = fastai::CohenKappa(),
-          "F1Score" = fastai::F1Score(),
-          "FBeta" = fastai::FBeta(),
-          "HammingLoss" = fastai::HammingLoss(),
-          "Jaccard" = fastai::Jaccard(),
-          "Precision" = fastai::Precision(),
-          "Recall" = fastai::Recall(),
-          "RocAuc" = fastai::RocAuc(),
-          "RocAucBinary" = fastai::RocAucBinary(),
-          "MatthewsCorrCoef" = fastai::MatthewsCorrCoef(),
+          "accuracy" = accuracy(),
+          "error_rate" = error_rate(),
+          "top_k_accuracy" = top_k_accuracy(),
+          "APScoreBinary" = APScoreBinary(),
+          "BalancedAccuracy" = BalancedAccuracy(),
+          "BrierScore" = BrierScore(),
+          "CohenKappa" = CohenKappa(),
+          "F1Score" = F1Score(),
+          "FBeta" = FBeta(),
+          "HammingLoss" = HammingLoss(),
+          "Jaccard" = Jaccard(),
+          "Precision" = Precision(),
+          "Recall" = Recall(),
+          "RocAuc" = RocAuc(),
+          "RocAucBinary" = RocAucBinary(),
+          "MatthewsCorrCoef" = MatthewsCorrCoef(),
           error_config("Unknown eval_metric")
         )
       } else if(inherits(eval_metric, "Measure")) {
         # wrap mlr3 measure into fastai metric
+        AccumMetric = getFromNamespace("AccumMetric", "fastai")
+
         invoke(
-          fastai::AccumMetric,
+          AccumMetric,
           fastai_measure_wrapper,
           flatten = FALSE,
           msr = eval_metric,
@@ -198,16 +222,21 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         )
       } else {
         # fastai fails without a metric
-        fastai::accuracy()
+        accuracy = getFromNamespace("accuracy", "fastai")
+        accuracy()
       }
 
-      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(fastai::Categorify())
+      Categorify = getFromNamespace("Categorify", "fastai")
+      if (length(cat_cols) && is.null(pars$procs)) pars$procs = list(Categorify())
 
       # match parameters to fastai functions
       fastai2 = getFromNamespace("fastai2", ns = "fastai")
-      args_dt = formalArgs(fastai::TabularDataTable)
+      TabularDataTable = getFromNamespace("TabularDataTable", "fastai")
+      tabular_config = getFromNamespace("tabular_config", "fastai")
+
+      args_dt = formalArgs(TabularDataTable)
       args_dl = formalArgs(fastai2$data$load$DataLoader)
-      args_config = formalArgs(fastai::tabular_config)
+      args_config = formalArgs(tabular_config)
       args_fit = formalArgs(fastai2$learner$Learner$fit)
 
       pv_dt = pars[names(pars) %in% args_dt]
@@ -231,8 +260,9 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       }
 
       # set data into a format suitable for fastai
+      TabularDataTable = getFromNamespace("TabularDataTable", "fastai")
       df_fai = invoke(
-        fastai::TabularDataTable,
+        TabularDataTable,
         df = full_data,
         cat_names = cat_cols,
         cont_names = num_cols,
@@ -241,14 +271,16 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         .args = pv_dt
       )
 
+      dataloaders = getFromNamespace("dataloaders", "fastai")
       dl = invoke(
-        fastai::dataloaders,
+        dataloaders,
         df_fai,
         .args = pv_dl
       )
 
+      tabular_config = getFromNamespace("tabular_config", "fastai")
       config = invoke(
-        fastai::tabular_config,
+        tabular_config,
         .args = pv_config
       )
 
@@ -257,7 +289,8 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
         dl$train$wgts = weights / sum(weights)
       }
 
-      tab_learner = fastai::tabular_learner(
+      tabular_learner = getFromNamespace("tabular_learner", "fastai")
+      tab_learner = tabular_learner(
         dls = dl,
         layers = pv_layers,
         config = config,
@@ -275,8 +308,9 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
           np$less
         }
 
+        EarlyStoppingCallback = getFromNamespace("EarlyStoppingCallback", "fastai")
         tab_learner$add_cb(
-          fastai::EarlyStoppingCallback(monitor = monitor, comp = comp, patience = patience)
+          EarlyStoppingCallback(monitor = monitor, comp = comp, patience = patience)
         )
       }
 
@@ -284,9 +318,10 @@ LearnerClassifFastai = R6Class("LearnerClassifFastai",
       invisible(tab_learner$remove_cb(tab_learner$progress))
 
       # prevent python from printing evaluation protocol
+      fit = getFromNamespace("fit.fastai.tabular.learner.TabularLearner", "fastai")
       invisible(reticulate::py_capture_output({
         eval_protocol = invoke(
-          fastai::fit,
+          fit,
           object = tab_learner,
           .args = pv_fit
         )
@@ -352,8 +387,9 @@ fastai_measure_wrapper = function(pred, dtrain, msr = NULL, lvl = NULL, ...) {
   reticulate::py_require("fastai")
 
   # label is a vector of labels (0, 1, ..., n_classes - 1)
-  pred = fastai::as_array(pred)
-  truth = factor(as.vector(fastai::as_array(dtrain)), levels = lvl)
+  as_array = getFromNamespace("as_array", "fastai")
+  pred = as_array(pred)
+  truth = factor(as.vector(as_array(dtrain)), levels = lvl)
   # transform log odds to probabilities
   pred_exp = exp(pred)
   pred_mat = pred_exp / rowSums(pred_exp)

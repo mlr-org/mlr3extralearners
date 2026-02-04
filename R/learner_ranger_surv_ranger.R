@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Random survival forest.
-#' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
+#' Calls `ranger::ranger()` from package \CRANpkg{ranger}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
-#' Calculated using the internal [ranger::predict.ranger()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' Calculated using the internal `ranger::predict.ranger()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @section Custom mlr3 parameters:
 #' - `mtry`: This hyperparameter can alternatively be set via our hyperparameter

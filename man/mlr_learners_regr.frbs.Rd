@@ -7,7 +7,7 @@
 \description{
 Fuzzy rule-based regression learner supporting multiple inference engines such as WM, HYFIS,
 ANFIS, DENFIS, SBC, and several genetic fuzzy systems.
-Calls \code{\link[frbs:frbs.learn]{frbs::frbs.learn()}} from \CRANpkg{frbs}.
+Calls \code{frbs::frbs.learn()} from \CRANpkg{frbs}.
 }
 \section{Dictionary}{
 

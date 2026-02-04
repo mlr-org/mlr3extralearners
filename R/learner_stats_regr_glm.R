@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear model.
-#' Calls [stats::glm()] from base package 'stats'.
+#' Calls `stats::glm()` from base package 'stats'.
 #' For logistic regression please use \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
 #'
 #' @templateVar id regr.glm
@@ -18,7 +18,7 @@
 #'
 #' @section Offset:
 #' If a `Task` has a column with the role `offset`, it will automatically be used during training.
-#' The offset is incorporated through the formula interface to ensure compatibility with [stats::glm()].
+#' The offset is incorporated through the formula interface to ensure compatibility with `stats::glm()`.
 #' We add it to the model formula as `offset(<column_name>)` and also include it in the training data.
 #' During prediction, the default behavior is to use the offset column from the
 #' test set (enabled by `use_pred_offset = TRUE`).

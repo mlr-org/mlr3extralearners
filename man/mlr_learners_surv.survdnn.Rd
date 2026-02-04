@@ -7,7 +7,7 @@
 \description{
 Deep neural network survival models from package \CRANpkg{survdnn}, aimed at
 tabular (low to moderate-dimensional) covariate settings using torch-based
-multilayer perceptrons. The learner wraps \code{\link[survdnn:survdnn]{survdnn::survdnn()}}.
+multilayer perceptrons. The learner wraps \code{survdnn::survdnn()}.
 }
 \section{Prediction types}{
 
@@ -15,7 +15,7 @@ This learner supports the following prediction types:
 \describe{
 \item{\code{lp}}{A numeric vector of linear predictors, one per observation.
 For \code{loss} \code{"cox"} / \code{"cox_l2"} this is a log-risk score (higher implies worse prognosis).
-For \code{"aft"}, \code{\link[survdnn:predict.survdnn]{survdnn::predict.survdnn()}} returns the predicted log-time location \eqn{\mu(x)}
+For \code{"aft"}, \code{predict.survdnn()} returns the predicted log-time location \eqn{\mu(x)}
 (higher implies better prognosis), therefore the learner internally negates it such that higher
 values imply higher risk (consistent with \CRANpkg{mlr3} conventions). For \code{"coxtime"},
 this is \eqn{g(t_0, x)} evaluated at a reference time.}

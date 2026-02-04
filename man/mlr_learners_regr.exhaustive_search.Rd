@@ -7,7 +7,7 @@
 \description{
 Linear Regression, where the features used in the model are selected by running Exhaustive Search.
 
-Calls \code{\link[ExhaustiveSearch:ExhaustiveSearch]{ExhaustiveSearch::ExhaustiveSearch()}} from \CRANpkg{ExhaustiveSearch}.
+Calls \code{ExhaustiveSearch::ExhaustiveSearch()} from \CRANpkg{ExhaustiveSearch}.
 }
 \section{Initial parameter values}{
 

@@ -1,4 +1,6 @@
-skip_if_not_installed_py("torch", "tabpfn")
+skip_if_not_installed("reticulate")
+skip_if_not_installed("callr")
+
 skip_if(
   Sys.getenv("HF_TOKEN") == "" && Sys.getenv("HUGGINGFACE_HUB_TOKEN") == "",
   message = "Hugging Face token not available (required for gated TabPFN models)"
@@ -32,6 +34,7 @@ test_that("autotest", {
     # reproducibility is not guaranteed, hence check_replicable = FALSE
     result = run_autotest(learner, check_replicable = FALSE)
     testthat::expect_true(result, info = result$error)
+
     TRUE
   }))
 })
@@ -81,6 +84,7 @@ test_that("marshaling works for classif.tabpfn", {
     expect_equal(learner$predict(task), pred)
     expect_false(learner$marshaled)
     expect_equal(class(learner$model), class_prev)
+
     TRUE
   }))
 })

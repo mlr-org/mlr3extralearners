@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear models with elastic net regularization.
-#' Calls [glmnet::glmnet()] from package \CRANpkg{glmnet}.
+#' Calls `glmnet::glmnet()` from package \CRANpkg{glmnet}.
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` and cannot be changed.
@@ -13,21 +13,21 @@
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [glmnet::predict.coxnet()].
+#' Calculated using `glmnet::predict.coxnet()`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [glmnet::survfit.coxnet()].
+#' Calculated using `glmnet::survfit.coxnet()`.
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
-#' into survival predictions and are described in [survival::survfit.coxph()].
+#' into survival predictions and are described in `survival::survfit.coxph()`.
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
-#' **Caution**: This learner is different to learners calling [glmnet::cv.glmnet()]
+#' **Caution**: This learner is different to learners calling `glmnet::cv.glmnet()`
 #' in that it does not use the internal optimization of parameter `lambda`.
 #' Instead, `lambda` needs to be tuned by the user (e.g., via \CRANpkg{mlr3tuning}).
 #' When `lambda` is tuned, the `glmnet` will be trained for each tuning iteration.
 #' While fitting the whole path of `lambda`s would be more efficient, as is done
-#' by default in [glmnet::glmnet()], tuning/selecting the parameter at prediction time
+#' by default in `glmnet::glmnet()`, tuning/selecting the parameter at prediction time
 #' (using parameter `s`) is currently not supported in \CRANpkg{mlr3}
 #' (at least not in efficient manner).
 #' Tuning the `s` parameter is, therefore, currently discouraged.
@@ -40,9 +40,9 @@
 #'
 #' @section Offset:
 #' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [glmnet::glmnet()].
+#' incorporated during training via the `offset` argument in `glmnet::glmnet()`.
 #' During prediction, the offset column from the test set is used only if
-#' `use_pred_offset = TRUE` (default), passed via the `newoffset` argument in [glmnet::predict.coxnet()].
+#' `use_pred_offset = TRUE` (default), passed via the `newoffset` argument in `glmnet::predict.coxnet()`.
 #' Otherwise, if the user sets `use_pred_offset = FALSE`, a zero offset is applied,
 #' effectively disabling the offset adjustment during prediction.
 #'
@@ -119,7 +119,7 @@ LearnerSurvGlmnet = R6Class("LearnerSurvGlmnet",
     },
 
     #' @description
-    #' Returns the set of selected features as reported by [glmnet::predict.glmnet()]
+    #' Returns the set of selected features as reported by `glmnet::predict.glmnet()`
     #' with `type` set to `"nonzero"`.
     #'
     #' @param lambda (`numeric(1)`)\cr

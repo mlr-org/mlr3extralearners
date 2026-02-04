@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized additive models.
-#' Calls [mgcv::gam()] from package \CRANpkg{mgcv} with `family` set to `binomial`.
+#' Calls `mgcv::gam()` from package \CRANpkg{mgcv} with `family` set to `binomial`.
 #'
 #' Multilabel classification is not implemented yet.
 #'

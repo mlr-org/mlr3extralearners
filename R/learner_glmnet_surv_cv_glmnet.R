@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Generalized linear models with elastic net regularization.
-#' Calls [glmnet::cv.glmnet()] from package \CRANpkg{glmnet}.
+#' Calls `glmnet::cv.glmnet()` from package \CRANpkg{glmnet}.
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"cox"` and cannot be changed.
@@ -13,13 +13,13 @@
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [glmnet::predict.cv.glmnet()].
+#' Calculated using `glmnet::predict.cv.glmnet()`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [glmnet::survfit.cv.glmnet()].
+#' Calculated using `glmnet::survfit.cv.glmnet()`.
 #' Parameters `stype` and `ctype` relate to how `lp` predictions are transformed
-#' into survival predictions and are described in [survival::survfit.coxph()].
+#' into survival predictions and are described in `survival::survfit.coxph()`.
 #' By default the Breslow estimator is used for computing the baseline hazard.
 #'
 #' @inheritSection mlr_learners_surv.glmnet Offset
@@ -101,7 +101,7 @@ LearnerSurvCVGlmnet = R6Class("LearnerSurvCVGlmnet",
     },
 
     #' @description
-    #' Returns the set of selected features as reported by [glmnet::predict.glmnet()]
+    #' Returns the set of selected features as reported by `glmnet::predict.glmnet()`
     #' with `type` set to `"nonzero"`.
     #'
     #' @param lambda (`numeric(1)`)\cr
