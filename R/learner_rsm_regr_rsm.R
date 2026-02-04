@@ -4,10 +4,10 @@
 #'
 #' @description
 #' Fit a linear model with a response-surface component.
-#' Calls [rsm::rsm()] from \CRANpkg{rsm}.
+#' Calls `rsm::rsm()` from \CRANpkg{rsm}.
 #'
 #' @section Custom mlr3 parameters:
-#' - `modelfun`: This parameter controls how the formula for [rsm::rsm()] is created. Possible values are:
+#' - `modelfun`: This parameter controls how the formula for `rsm::rsm()` is created. Possible values are:
 #'   - `"FO"` - first order
 #'   - `"TWI"` - wo-way interactions, this is with 1st oder terms
 #'   - `"SO"` - full second order

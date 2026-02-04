@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a generalized additive classification model using a boosting algorithm.
-#' Calls [mboost::gamboost()]  from \CRANpkg{mboost}.
+#' Calls `mboost::gamboost()`  from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id classif.gamboost

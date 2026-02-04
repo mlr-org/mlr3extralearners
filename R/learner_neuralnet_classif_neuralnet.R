@@ -2,7 +2,7 @@
 #' @name mlr_learners_classif.neuralnet
 #'
 #' @description
-#' Calls [neuralnet::neuralnet()] from \CRANpkg{neuralnet}.
+#' Calls `neuralnet::neuralnet()` from \CRANpkg{neuralnet}.
 #'
 #' @section Initial parameter values:
 #' - `err.fct` is set to `"ce"`.

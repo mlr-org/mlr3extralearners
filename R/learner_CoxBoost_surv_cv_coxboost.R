@@ -5,7 +5,7 @@
 #' @description
 #' Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 #' number of steps.
-#' Calls [CoxBoost::CoxBoost()] or [CoxBoost::cv.CoxBoost()] from package 'CoxBoost'.
+#' Calls `CoxBoost::CoxBoost()` or `CoxBoost::cv.CoxBoost()` from package 'CoxBoost'.
 #'
 #' @inheritSection mlr_learners_surv.coxboost Prediction types
 #' @template learner
@@ -20,21 +20,15 @@
 #' multiple hyperparameters, \CRANpkg{mlr3tuning} and [LearnerSurvCoxboost] will likely give better
 #' results.
 #'
-#' If `penalty == "optimCoxBoostPenalty"` then [CoxBoost::optimCoxBoostPenalty] is used to determine
-#' the penalty value to be used in [CoxBoost::cv.CoxBoost].
+#' If `penalty == "optimCoxBoostPenalty"` then `CoxBoost::optimCoxBoostPenalty()` is used to determine
+#' the penalty value to be used in `CoxBoost::cv.CoxBoost()`.
 #'
 #' @references
 #' `r format_bib("binder2009boosting")`
 #'
 #' @template seealso_learner
+#' @template example_cv_coxboost
 #' @export
-#' @examplesIf learner_is_runnable("surv.cv_coxboost")
-#' task = tsk("rats")
-#' task$col_roles$feature = c("litter", "rx")
-#' learner = lrn("surv.cv_coxboost", maxstepno = 20)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
 LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
   inherit = mlr3proba::LearnerSurv,
 

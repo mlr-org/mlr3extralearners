@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient boosting algorithm that also supports categorical data.
-#' Calls [catboost::catboost.train()] from package 'catboost'.
+#' Calls `catboost::catboost.train()` from package 'catboost'.
 #'
 #' @template learner
 #' @templateVar id classif.catboost
@@ -40,30 +40,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.catboost")
-#' # Define the Learner
-#' learner = lrn("classif.catboost",
-#'   iterations = 100)
-#'
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example
 LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   inherit = LearnerClassif,
   public = list(
@@ -234,7 +211,7 @@ LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
 
     #' @description
     #' The importance scores are calculated using
-    #' [`catboost.get_feature_importance`][catboost::catboost.get_feature_importance],
+    #' `catboost::catboost.get_feature_importance()`,
     #' setting `type = "FeatureImportance"`, returned for 'all'.
     #' @return Named `numeric()`.
     importance = function() {

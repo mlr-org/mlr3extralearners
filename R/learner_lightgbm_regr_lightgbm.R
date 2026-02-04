@@ -4,9 +4,9 @@
 #'
 #' @description
 #' Gradient boosting algorithm.
-#' Calls [lightgbm::lightgbm()] from \CRANpkg{lightgbm}.
+#' Calls `lightgbm::lightgbm()` from \CRANpkg{lightgbm}.
 #' The list of parameters can be found [here](https://lightgbm.readthedocs.io/en/latest/Parameters.html#)
-#' and in the documentation of [lightgbm::lgb.train()].
+#' and in the documentation of `lightgbm::lgb.train()`.
 #'
 #' @template learner
 #' @templateVar id regr.lightgbm

@@ -6,7 +6,7 @@
 \title{Survival Akritas Estimator Learner}
 \description{
 Survival akritas estimator.
-Calls \code{\link[survivalmodels:akritas]{survivalmodels::akritas()}} from package 'survivalmodels'.
+Calls \code{survivalmodels::akritas()} from package 'survivalmodels'.
 }
 \section{Prediction types}{
 
@@ -14,12 +14,12 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using the internal \code{\link[survivalmodels:predict.akritas]{survivalmodels::predict.akritas()}} function.
+Calculated using the internal \code{survivalmodels::predict.akritas()} function.
 The survival matrix uses the unique time points from the training set.
 We advise to set the parameter \code{ntime} which allows to adjust the granularity
 of these time points to a reasonable number (e.g. \code{150}).
 This avoids large execution times during prediction.
-\item \code{crank}: the expected mortality using \code{\link[survivalmodels:surv_to_risk]{survivalmodels::surv_to_risk()}}.
+\item \code{crank}: the expected mortality using \code{survivalmodels::surv_to_risk()}.
 }
 }
 

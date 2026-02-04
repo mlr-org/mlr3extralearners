@@ -2,7 +2,7 @@
 #' @name mlr_learners_classif.nnTrain
 #'
 #' @description
-#' Calls [deepnet::nn.train()] from \CRANpkg{deepnet}.
+#' Calls `deepnet::nn.train()` from \CRANpkg{deepnet}.
 #'
 #' @section Initial parameter values:
 #' - `output` is set to `"softmax"` for probabilistic classification.

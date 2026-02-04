@@ -5,7 +5,7 @@
 \alias{LearnerClassifNNTrain}
 \title{Classification Neural Network Learner}
 \description{
-Calls \code{\link[deepnet:nn.train]{deepnet::nn.train()}} from \CRANpkg{deepnet}.
+Calls \code{deepnet::nn.train()} from \CRANpkg{deepnet}.
 }
 \section{Initial parameter values}{
 

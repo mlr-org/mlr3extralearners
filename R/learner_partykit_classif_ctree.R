@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification Partition Tree where a significance test is used to determine the univariate
-#' splits. Calls [partykit::ctree()] from \CRANpkg{partykit}.
+#' splits. Calls `partykit::ctree()` from \CRANpkg{partykit}.
 #'
 #'
 #' @template learner

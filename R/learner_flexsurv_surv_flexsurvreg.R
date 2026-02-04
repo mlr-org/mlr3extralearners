@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Flexible parametric learner.
-#' Calls [flexsurv::flexsurvreg()] from \CRANpkg{flexsurv}.
+#' Calls `flexsurv::flexsurvreg()` from \CRANpkg{flexsurv}.
 #'
 #' @template learner
 #' @templateVar id surv.flexreg
@@ -26,29 +26,7 @@
 #' `r format_bib("jackson2016flexsurv")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.flexreg")
-#' library(survival)
-#'
-#' # Define the task, split to train/test set
-#' task = tsk("lung")
-#' set.seed(42)
-#' part = partition(task)
-#'
-#' # Define the learner
-#' learner = lrn("surv.flexreg",
-#'   formula = survival::Surv(time, status) ~ age + ph.karno + sex,
-#'   anc = list(shape = ~ sex), dist = "weibull")
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, part$train)
-#' print(learner$model)
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, part$test)
-#' print(predictions)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_flexsurv
 #' @export
 LearnerSurvFlexReg = R6Class("LearnerSurvFlexReg",
   inherit = mlr3proba::LearnerSurv,

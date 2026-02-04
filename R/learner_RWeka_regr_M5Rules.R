@@ -5,7 +5,7 @@
 #' @description
 #' Algorithm for inducing [decision lists](https://en.wikipedia.org/wiki/Decision_list) from
 #' model trees.
-#' Calls [RWeka::M5Rules()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::M5Rules()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id regr.M5Rules
