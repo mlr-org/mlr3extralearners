@@ -6,7 +6,7 @@
 \title{Shrinkage Discriminant Analysis}
 \description{
 Shrinkage Discriminant Analysis for classification.
-Calls \code{\link[sda:sda]{sda::sda()}} from \CRANpkg{sda}.
+Calls \code{sda::sda()} from \CRANpkg{sda}.
 }
 \section{Dictionary}{
 

@@ -6,7 +6,7 @@
 \title{Regression Gradient Boosting Machine Learner}
 \description{
 Gradient Boosting Regression Algorithm.
-Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
+Calls \code{gbm::gbm()} from \CRANpkg{gbm}.
 
 Weights are ignored for quantile prediction.
 }
@@ -66,9 +66,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-# Define the Learner
-learner = lrn("regr.gbm")
-print(learner)
+lrn("regr.gbm")
 }
 \references{
 Friedman, H J (2002).

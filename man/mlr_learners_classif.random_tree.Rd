@@ -6,7 +6,7 @@
 \title{Classification Random Tree Learner}
 \description{
 Tree that considers K randomly chosen attributes at each node.
-Calls \code{\link[RWeka:Weka_interfaces]{RWeka::make_Weka_classifier()}} from \CRANpkg{RWeka}.
+Calls \code{RWeka::make_Weka_classifier()} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

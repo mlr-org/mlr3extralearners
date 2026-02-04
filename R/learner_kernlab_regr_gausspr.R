@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gaussian process for regression.
-#' Calls [kernlab::gausspr()] from \CRANpkg{kernlab}.
+#' Calls `kernlab::gausspr()` from \CRANpkg{kernlab}.
 #' Parameters `sigma`, `degree`, `scale`, `offset` and `order` are
 #' added to make tuning `kpar` easier. If `kpar` is provided then these
 #' new parameters are ignored. If none are provided then the default

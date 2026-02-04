@@ -1,7 +1,14 @@
 # mlr3extralearners (development version)
 
-* New Learners:
+
+## New Features
+
 - `LearnerClassifLvq1`
+- `LearnerSurvDNN`
+
+## Other
+
+- Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
 
 # mlr3extralearners 1.4.0
 

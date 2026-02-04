@@ -6,7 +6,7 @@
 \title{Regression Regularized Random Forest Learner}
 \description{
 Regularized random forest for regression.
-Calls \code{\link[RRF:RRF]{RRF::RRF()}} from \CRANpkg{RRF}.
+Calls \code{RRF::RRF()} from \CRANpkg{RRF}.
 }
 \section{Dictionary}{
 

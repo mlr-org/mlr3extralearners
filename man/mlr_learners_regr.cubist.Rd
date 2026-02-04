@@ -7,7 +7,7 @@
 \description{
 Rule-based model that is an extension of Quinlan's M5 model tree. Each tree contains
 linear regression models at the terminal leaves.
-Calls \code{\link[Cubist:cubist]{Cubist::cubist()}} from \CRANpkg{Cubist}.
+Calls \code{Cubist::cubist()} from \CRANpkg{Cubist}.
 }
 \section{Dictionary}{
 

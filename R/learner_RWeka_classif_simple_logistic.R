@@ -4,7 +4,7 @@
 #'
 #' @description
 #' LogitBoost with simple regression functions as base learners.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::make_Weka_classifier()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

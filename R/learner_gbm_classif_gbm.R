@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient Boosting Classification Algorithm.
-#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#' Calls `gbm::gbm()` from \CRANpkg{gbm}.
 #'
 #' @template learner
 #' @templateVar id classif.gbm

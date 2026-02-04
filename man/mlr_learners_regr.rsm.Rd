@@ -6,12 +6,12 @@
 \title{Regression Response Surface Model Learner}
 \description{
 Fit a linear model with a response-surface component.
-Calls \code{\link[rsm:rsm]{rsm::rsm()}} from \CRANpkg{rsm}.
+Calls \code{rsm::rsm()} from \CRANpkg{rsm}.
 }
 \section{Custom mlr3 parameters}{
 
 \itemize{
-\item \code{modelfun}: This parameter controls how the formula for \code{\link[rsm:rsm]{rsm::rsm()}} is created. Possible values are:
+\item \code{modelfun}: This parameter controls how the formula for \code{rsm::rsm()} is created. Possible values are:
 \itemize{
 \item \code{"FO"} - first order
 \item \code{"TWI"} - wo-way interactions, this is with 1st oder terms

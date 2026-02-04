@@ -6,7 +6,7 @@
 \title{Generalized Additive Quantile Regression Model for Multiple Quantiles}
 \description{
 Quantile Regression with generalized additive models for fitting a learner on multiple quantiles simultaneously.
-Calls \code{\link[qgam:mqgam]{qgam::mqgam()}} from package \CRANpkg{qgam}.
+Calls \code{qgam::mqgam()} from package \CRANpkg{qgam}.
 }
 \section{Form}{
 
@@ -17,7 +17,7 @@ The features specified in the formula need to be the same as columns with col_ro
 
 \section{Quantile}{
 
-The quantiles for the Learner, i.e. \code{qu} parameter from \code{\link[qgam:mqgam]{qgam::mqgam()}}, is set using the values specified in \code{learner$quantiles}.
+The quantiles for the Learner, i.e. \code{qu} parameter from \code{qgam::mqgam()}, is set using the values specified in \code{learner$quantiles}.
 The response quantile can be specified using \code{learner$quantile_response}.
 }
 

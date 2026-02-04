@@ -5,7 +5,7 @@
 #' @description
 #' MCP- or SCAD-penalized regression models with k-fold cross validation
 #' for choosing the regularization parameter lambda.
-#' Calls [ncvreg::cv.ncvreg()] from package \CRANpkg{ncvreg} with `family` set to
+#' Calls `ncvreg::cv.ncvreg()` from package \CRANpkg{ncvreg} with `family` set to
 #' `"gaussian"` (default). Poisson family is also supported.
 #' Covariates are internally standardized by `ncvreg` prior to model fitting.
 #'

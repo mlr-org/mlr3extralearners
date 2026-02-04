@@ -6,9 +6,9 @@
 \title{Regression LightGBM Learner}
 \description{
 Gradient boosting algorithm.
-Calls \code{\link[lightgbm:lightgbm]{lightgbm::lightgbm()}} from \CRANpkg{lightgbm}.
+Calls \code{lightgbm::lightgbm()} from \CRANpkg{lightgbm}.
 The list of parameters can be found \href{https://lightgbm.readthedocs.io/en/latest/Parameters.html#}{here}
-and in the documentation of \code{\link[lightgbm:lgb.train]{lightgbm::lgb.train()}}.
+and in the documentation of \code{lightgbm::lgb.train()}.
 }
 \section{Dictionary}{
 

@@ -3,15 +3,15 @@
 #' @name mlr_learners_surv.cforest
 #'
 #' @description
-#' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
-#' Calls [partykit::cforest()] from \CRANpkg{partykit}.
+#' A random forest based on conditional inference trees (`partykit::ctree()`).
+#' Calls `partykit::cforest()` from \CRANpkg{partykit}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [partykit::predict.cforest()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' Calculated using the internal `partykit::predict.cforest()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.cforest
@@ -27,12 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.cforest")
-#' task = tsk("rats")
-#' learner = lrn("surv.cforest", ntree = 50)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
+#' @template example
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(

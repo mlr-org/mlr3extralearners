@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Decision Stump Learner.
-#' Calls [RWeka::DecisionStump()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::DecisionStump()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:
