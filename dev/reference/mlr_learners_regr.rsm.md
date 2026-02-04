@@ -168,27 +168,27 @@ print(learner$model)
 #> 
 #> Coefficients:
 #>                                               (Intercept)  
-#>                                                  30.34304  
+#>                                                  0.832564  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  
-#>                                                   3.76447  
+#>                                                  2.552875  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  
-#>                                                   0.18695  
+#>                                                 -1.108468  
 #>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  
-#>                                                  -0.62393  
+#>                                                  0.566797  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  
-#>                                                   0.01830  
+#>                                                 -0.010020  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  
-#>                                                  -0.62086  
+#>                                                  2.071505  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  
-#>                                                  -0.10695  
+#>                                                  1.529637  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  
-#>                                                  -0.03266  
+#>                                                 -0.003271  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  
-#>                                                   0.48676  
+#>                                                  0.655515  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  
-#>                                                   0.41542  
+#>                                                 -0.292270  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  
-#>                                                  -4.36366  
+#>                                                 -1.351988  
 #> 
 
 
@@ -198,5 +198,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.515864 
+#> 10.34004 
 ```

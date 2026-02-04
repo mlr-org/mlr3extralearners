@@ -261,16 +261,16 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 21
-#> Number of Rules : 7
+#> Number of Rules : 10
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 43
-#>  Merit of best subset found:    2.225
+#>  Total number of subsets evaluated: 57
+#>  Merit of best subset found:    2.354
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 11,1
+#> Feature set: 5,10,1
 
 
 # Make predictions for the test rows
@@ -279,5 +279,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.91862 
+#> 12.85046 
 ```

@@ -28,6 +28,6 @@ install_learners(.keys, repos = "https://cloud.r-project.org", ...)
 
   (`ANY`)  
   Additional options to pass to
-  [utils::install.packages](https://rdrr.io/r/utils/install.packages.html)
+  [`utils::install.packages()`](https://rdrr.io/r/utils/install.packages.html)
   or
-  [remotes::install_github](https://remotes.r-lib.org/reference/install_github.html).
+  [`remotes::install_github()`](https://remotes.r-lib.org/reference/install_github.html).

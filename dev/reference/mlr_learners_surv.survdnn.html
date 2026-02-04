@@ -70,7 +70,7 @@ multilayer perceptrons. The learner wraps <code><a href="https://rdrr.io/pkg/sur
 <p>This learner supports the following prediction types:</p><dl><dt><code>lp</code></dt>
 <dd><p>A numeric vector of linear predictors, one per observation.
 For <code>loss</code> <code>"cox"</code> / <code>"cox_l2"</code> this is a log-risk score (higher implies worse prognosis).
-For <code>"aft"</code>, <code><a href="https://rdrr.io/pkg/survdnn/man/predict.survdnn.html" class="external-link">survdnn::predict.survdnn()</a></code> returns the predicted log-time location \(\mu(x)\)
+For <code>"aft"</code>, <code>predict.survdnn()</code> returns the predicted log-time location \(\mu(x)\)
 (higher implies better prognosis), therefore the learner internally negates it such that higher
 values imply higher risk (consistent with <a href="https://CRAN.R-project.org/package=mlr3" class="external-link"><span class="pkg">mlr3</span></a> conventions). For <code>"coxtime"</code>,
 this is \(g(t_0, x)\) evaluated at a reference time.</p></dd>

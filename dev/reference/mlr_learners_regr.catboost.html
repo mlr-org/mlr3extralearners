@@ -190,7 +190,7 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 </div><p></p><hr><a id="method-LearnerRegrCatboost-importance"></a><div class="section">
 <h3 id="method-importance-">Method <code>importance()</code><a class="anchor" aria-label="anchor" href="#method-importance-"></a></h3>
 <p>The importance scores are calculated using
-<code><a href="https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html" class="external-link">catboost.get_feature_importance</a></code>,
+<code><a href="https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html" class="external-link">catboost::catboost.get_feature_importance()</a></code>,
 setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div class="section">
 <h4 id="usage-1">Usage<a class="anchor" aria-label="anchor" href="#usage-1"></a></h4>
 <p></p><div class="r"><div class="sourceCode"><pre><code><span><span class="va">LearnerRegrCatboost</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><p></p></div>
@@ -253,10 +253,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl      disp        wt        hp      qsec      drat        vs        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.800032 18.113690 18.043305  6.805263  6.777026  6.518007  6.175338  6.159028 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      carb      gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  5.350453  4.257856 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      carb       cyl        hp      disp      gear      qsec      drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.975488 17.554928 14.477377 14.225051 12.535464  8.219198  6.163002  4.058863 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        am        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.835045  1.955585 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -264,7 +264,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.357434 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.641412 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

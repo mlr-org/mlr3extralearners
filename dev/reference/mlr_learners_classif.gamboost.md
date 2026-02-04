@@ -189,16 +189,13 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.07930252 
+#> Offset:  -0.1083355 
 #> Number of baselearners:  60 
 #> 
 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.

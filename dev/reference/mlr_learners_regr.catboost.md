@@ -243,7 +243,7 @@ Create a `LearnerRegrCatboost` object.
 ### Method `importance()`
 
 The importance scores are calculated using
-[`catboost.get_feature_importance`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
+[`catboost::catboost.get_feature_importance()`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
 setting `type = "FeatureImportance"`, returned for 'all'.
 
 #### Usage
@@ -303,10 +303,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>       cyl      disp        wt        hp      qsec      drat        vs        am 
-#> 21.800032 18.113690 18.043305  6.805263  6.777026  6.518007  6.175338  6.159028 
-#>      carb      gear 
-#>  5.350453  4.257856 
+#>        wt      carb       cyl        hp      disp      gear      qsec      drat 
+#> 17.975488 17.554928 14.477377 14.225051 12.535464  8.219198  6.163002  4.058863 
+#>        am        vs 
+#>  2.835045  1.955585 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +314,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.357434 
+#> 9.641412 
 ```

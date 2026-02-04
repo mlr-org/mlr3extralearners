@@ -6,8 +6,8 @@
     }
   };
 </script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Regression Neural Network Learner — mlr_learners_regr.brnn"><meta name="description" content="Bayesian regularization for feed-forward neural networks.
-Calls brnn::brnn from brnn."><meta property="og:description" content="Bayesian regularization for feed-forward neural networks.
-Calls brnn::brnn from brnn."><meta name="robots" content="noindex"></head><body>
+Calls brnn::brnn() from brnn."><meta property="og:description" content="Bayesian regularization for feed-forward neural networks.
+Calls brnn::brnn() from brnn."><meta name="robots" content="noindex"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -56,7 +56,7 @@ Calls brnn::brnn from brnn."><meta name="robots" content="noindex"></head><body>
 
     <div class="ref-description section level2">
     <p>Bayesian regularization for feed-forward neural networks.
-Calls <a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brnn::brnn</a> from <a href="https://CRAN.R-project.org/package=brnn" class="external-link"><span class="pkg">brnn</span></a>.</p>
+Calls <code><a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brnn::brnn()</a></code> from <a href="https://CRAN.R-project.org/package=brnn" class="external-link"><span class="pkg">brnn</span></a>.</p>
     </div>
 
 
@@ -175,7 +175,7 @@ Calls <a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brn
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of parameters (weights and biases) to estimate: 24 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Nguyen-Widrow method</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Scaling factor= 0.7234904 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 9.2424 	 alpha= 2.6783 	 beta= 10.6227 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> gamma= 8.2219 	 alpha= 3.1502 	 beta= 11.6888 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> A Bayesian regularized neural network </span>
@@ -190,7 +190,7 @@ Calls <a href="https://rdrr.io/pkg/brnn/man/brnn.html" class="external-link">brn
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.790036 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7.579249 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

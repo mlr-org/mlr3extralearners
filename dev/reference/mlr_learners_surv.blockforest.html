@@ -221,8 +221,8 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los   stchange      sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.13554011 0.06720204 0.02106890 0.01874526 0.01280955 0.00960047 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age        los      sysbp   stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.12387416 0.04251316 0.02365265 0.02303542 0.01667712 0.01333989 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -230,18 +230,18 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status     crank     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        5  180  FALSE 15.222548 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6    5  FALSE 48.957945 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7  180  FALSE  8.299653 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        2    5  FALSE  22.95476 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5  180  FALSE  19.30813 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        8    2  FALSE  32.49795 &lt;list[1]&gt;</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      994    7  FALSE 65.306044 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      996   69   TRUE 64.497175 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      998  180  FALSE 21.014407 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      988   16   TRUE 100.29036 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      993   53   TRUE  81.09495 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      996   69   TRUE  72.42978 &lt;list[1]&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8340896 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8335688 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

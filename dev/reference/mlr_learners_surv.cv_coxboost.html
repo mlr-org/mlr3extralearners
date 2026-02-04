@@ -70,8 +70,8 @@ cross-validation of boosting step number, respectively. Tuning using the interna
 LearnerSurvCVCoxboost may be more efficient when tuning <code>stepno</code> only. However, for tuning
 multiple hyperparameters, <a href="https://CRAN.R-project.org/package=mlr3tuning" class="external-link"><span class="pkg">mlr3tuning</span></a> and <a href="mlr_learners_surv.coxboost.html">LearnerSurvCoxboost</a> will likely give better
 results.</p>
-<p>If <code>penalty == "optimCoxBoostPenalty"</code> then <a href="https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html" class="external-link">CoxBoost::optimCoxBoostPenalty</a> is used to determine
-the penalty value to be used in <a href="https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html" class="external-link">CoxBoost::cv.CoxBoost</a>.</p>
+<p>If <code>penalty == "optimCoxBoostPenalty"</code> then <code><a href="https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html" class="external-link">CoxBoost::optimCoxBoostPenalty()</a></code> is used to determine
+the penalty value to be used in <code><a href="https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html" class="external-link">CoxBoost::cv.CoxBoost()</a></code>.</p>
     </div>
     <div class="section level2">
     <h2 id="dictionary">Dictionary<a class="anchor" aria-label="anchor" href="#dictionary"></a></h2>

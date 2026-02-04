@@ -14,11 +14,10 @@ This learner supports the following prediction types:
 
   A numeric vector of linear predictors, one per observation. For `loss`
   `"cox"` / `"cox_l2"` this is a log-risk score (higher implies worse
-  prognosis). For `"aft"`,
-  [`survdnn::predict.survdnn()`](https://rdrr.io/pkg/survdnn/man/predict.survdnn.html)
-  returns the predicted log-time location \\\mu(x)\\ (higher implies
-  better prognosis), therefore the learner internally negates it such
-  that higher values imply higher risk (consistent with
+  prognosis). For `"aft"`, `predict.survdnn()` returns the predicted
+  log-time location \\\mu(x)\\ (higher implies better prognosis),
+  therefore the learner internally negates it such that higher values
+  imply higher risk (consistent with
   [mlr3](https://CRAN.R-project.org/package=mlr3) conventions). For
   `"coxtime"`, this is \\g(t_0, x)\\ evaluated at a reference time.
 

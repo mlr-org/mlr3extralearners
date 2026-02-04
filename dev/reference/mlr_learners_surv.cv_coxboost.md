@@ -20,9 +20,9 @@ tuning `stepno` only. However, for tuning multiple hyperparameters,
 will likely give better results.
 
 If `penalty == "optimCoxBoostPenalty"` then
-[CoxBoost::optimCoxBoostPenalty](https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html)
+[`CoxBoost::optimCoxBoostPenalty()`](https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html)
 is used to determine the penalty value to be used in
-[CoxBoost::cv.CoxBoost](https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html).
+[`CoxBoost::cv.CoxBoost()`](https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html).
 
 ## Dictionary
 
