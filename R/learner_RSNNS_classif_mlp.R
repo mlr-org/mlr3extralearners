@@ -21,24 +21,21 @@ LearnerClassifMLP = R6Class("LearnerClassifMLP",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        size = p_uty(default = 5L, tags = "train",
-          custom_check = mlr3misc::crate({function(x) {
-            check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)
-          }})),
-        maxit = p_int(default = 100L, lower = 1L, tags = "train"),
-        initFunc = p_uty(default = "Randomize_Weights", tags = "train"),
-        initFuncParams = p_uty(tags = "train"),
-        learnFunc = p_uty(default = "Std_Backpropagation", tags = "train"),
-        learnFuncParams = p_uty(tags = "train"),
-        updateFunc = p_uty(default = "Topological_Order", tags = "train"),
+        hiddenActFunc    = p_uty(default = "Act_Logistic", tags = "train"),
+        initFunc         = p_uty(default = "Randomize_Weights", tags = "train"),
+        initFuncParams   = p_uty(tags = "train"),
+        inputsTest       = p_uty(tags = "train"),
+        learnFunc        = p_uty(default = "Std_Backpropagation", tags = "train"),
+        learnFuncParams  = p_uty(tags = "train"),
+        linOut           = p_lgl(default = FALSE, tags = "train"),
+        maxit            = p_int(default = 100L, lower = 1L, tags = "train"),
+        pruneFunc        = p_uty(tags = "train"),
+        pruneFuncParams  = p_uty(tags = "train"),
+        shufflePatterns  = p_lgl(default = TRUE, tags = "train"),
+        size             = p_uty(default = 5L, tags = "train", custom_check = mlr3misc::crate({function(x) {check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)}})),
+        targetsTest      = p_uty(tags = "train"),
+        updateFunc       = p_uty(default = "Topological_Order", tags = "train"),
         updateFuncParams = p_uty(tags = "train"),
-        hiddenActFunc = p_uty(default = "Act_Logistic", tags = "train"),
-        shufflePatterns = p_lgl(default = TRUE, tags = "train"),
-        linOut = p_lgl(default = FALSE, tags = "train"),
-        inputsTest = p_uty(tags = "train"),
-        targetsTest = p_uty(tags = "train"),
-        pruneFunc = p_uty(tags = "train"),
-        pruneFuncParams = p_uty(tags = "train")
       )
 
       super$initialize(
