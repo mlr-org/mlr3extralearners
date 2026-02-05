@@ -1,9 +1,10 @@
 # mlr3extralearners (development version)
 
+
 ## New Features
 
-* New Learners:
-  - `LearnerSurvDNN`
+- `LearnerClassifLvq1`
+- `LearnerSurvDNN`
 
 ## Other
 
