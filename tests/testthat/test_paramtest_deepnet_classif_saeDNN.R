@@ -1,19 +1,18 @@
 skip_if_not_installed("deepnet")
 
-test_that("paramtest classif.nnTrain train", {
-  learner = lrn("classif.nnTrain")
-  fun = deepnet::nn.train
+test_that("paramtest classif.saeDNN train", {
+  learner = lrn("classif.saeDNN")
+  fun = deepnet::sae.dnn.train
   exclude = c(
     "x", # handled internally
-    "y", # handled internally
-    "max_number_of_layers" # handled internally
+    "y" # handled internally
   )
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
   expect_paramtest(paramtest)
 })
 
-test_that("paramtest classif.nnTrain predict", {
-  learner = lrn("classif.nnTrain")
+test_that("paramtest classif.saeDNN predict", {
+  learner = lrn("classif.saeDNN")
   fun = deepnet::nn.predict
   exclude = c(
     "nn", # handled internally
