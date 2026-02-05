@@ -5,6 +5,7 @@
 ### New Features
 
 - New Learners:
+  - `LearnerRegrGPfit`
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
