@@ -208,24 +208,24 @@ learner$train(task, row_ids = ids$train)
 # feature importance
 learner$importance()
 #>  revascdays      revasc         age         los    stchange       sysbp 
-#> 0.116536758 0.067752095 0.029047529 0.013936223 0.010354875 0.005118365 
+#> 0.118330867 0.064610062 0.026628063 0.020517381 0.017392421 0.008307698 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids time status    crank     distr
-#>        2    5  FALSE 18.76462 <list[1]>
-#>        3    2  FALSE 57.13515 <list[1]>
-#>        6    5  FALSE 58.20276 <list[1]>
-#>      ---  ---    ---      ---       ---
-#>      992   26   TRUE 89.30891 <list[1]>
-#>      993   53   TRUE 86.90745 <list[1]>
-#>      996   69   TRUE 80.19348 <list[1]>
+#>  row_ids  time status     crank     distr
+#>        3   2.0  FALSE 50.620333 <list[1]>
+#>        4   5.0  FALSE  9.253302 <list[1]>
+#>        5 180.0  FALSE 14.866147 <list[1]>
+#>      ---   ---    ---       ---       ---
+#>      994   7.0  FALSE 94.637566 <list[1]>
+#>      995   0.5   TRUE 81.176160 <list[1]>
+#>      999   3.0   TRUE 66.182285 <list[1]>
 
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8696282 
+#>    0.849342 
 ```

@@ -246,33 +246,23 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt;= 118 : </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 101.55 : LM1 (4/34.361%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  101.55 : LM2 (8/22.48%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;  118 : LM3 (9/15.404%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt;= 120.65 : LM1 (6/29.66%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;  120.65 : LM2 (15/23.069%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.8355 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0202 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.5754 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.4844</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.033 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0238 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.7596 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 38.693</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.8355 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0167 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0127 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.5754 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 35.286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0295 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.0971 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 34.3686</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.473 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.7724 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 34.1669</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -281,7 +271,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  7.23345 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.879708 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

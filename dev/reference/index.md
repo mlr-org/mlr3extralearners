@@ -147,6 +147,9 @@
 - [`mlr_learners_classif.mdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
   [`LearnerClassifMdeb`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mdeb.md)
   : Classification Linear Discriminant Analysis Learner
+- [`mlr_learners_classif.mlp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp.md)
+  [`LearnerClassifMLP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mlp.md)
+  : Classification Multilayer Perceptron Learner
 - [`mlr_learners_classif.mob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)
   [`LearnerClassifMob`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mob.md)
   : Classification Model-based Recursive Partitioning Learner
