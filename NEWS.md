@@ -3,6 +3,7 @@
 ## New Features
 
 * New Learners:
+  - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
 

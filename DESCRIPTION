@@ -124,6 +124,7 @@ Suggests:
     rotationForest,
     rpart,
     RRF (>= 1.9.4.1),
+    RSNNS (>= 0.4-17),
     rsm,
     rvest,
     RWeka,
