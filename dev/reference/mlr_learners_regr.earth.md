@@ -194,11 +194,11 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> Selected 4 of 10 terms, and 2 of 10 predictors
-#> Termination condition: GRSq -Inf at 10 terms
-#> Importance: wt, qsec, am-unused, carb-unused, cyl-unused, disp-unused, ...
-#> Number of terms at each degree of interaction: 1 3 (additive model)
-#> GCV 5.96847    RSS 55.70572    GRSq 0.8352323    RSq 0.9192638
+#> Selected 5 of 9 terms, and 3 of 10 predictors
+#> Termination condition: GRSq -Inf at 9 terms
+#> Importance: hp, wt, carb, am-unused, cyl-unused, disp-unused, drat-unused, ...
+#> Number of terms at each degree of interaction: 1 4 (additive model)
+#> GCV 2.749777    RSS 18.85561    GRSq 0.8414644    RSq 0.9429272
 
 
 # Make predictions for the test rows
@@ -207,5 +207,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.843578 
+#>  22.2539 
 ```
