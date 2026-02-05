@@ -3,8 +3,8 @@
 #' @name mlr_learners_classif.cforest
 #'
 #' @description
-#' A random forest based on conditional inference trees ([ctree][partykit::ctree]).
-#' Calls [partykit::cforest()] from \CRANpkg{partykit}.
+#' A random forest based on conditional inference trees (`partykit::ctree()`).
+#' Calls `partykit::cforest()` from \CRANpkg{partykit}.
 #'
 #' @template learner
 #' @templateVar id classif.cforest
@@ -20,12 +20,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.cforest")
-#' task = tsk("iris")
-#' learner = lrn("classif.cforest", ntree = 50)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
+#' @template example
 LearnerClassifCForest = R6Class("LearnerClassifCForest",
   inherit = LearnerClassif, public = list(
 

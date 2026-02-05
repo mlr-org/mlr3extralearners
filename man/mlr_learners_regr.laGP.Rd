@@ -6,7 +6,7 @@
 \title{Regression Local Approximate Gaussian Process Learner}
 \description{
 Local approximate Gaussian process for regression.
-Calls \code{\link[laGP:aGP]{laGP::aGP()}} from \CRANpkg{laGP}.
+Calls \code{laGP::aGP()} from \CRANpkg{laGP}.
 }
 \note{
 Parameters \code{start} and \code{end} tune the initial and maximum neighborhood sizes

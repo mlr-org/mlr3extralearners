@@ -8,7 +8,7 @@
 Shrinkage-based Diagonal Linear Discriminant Analysis classfier.
 Type of Naive Bayes classifiers that improves the estimation of the pooled variances by
 using a shrinkage-based estimator of the pooled covariance matrix.
-Calls \code{\link[sparsediscrim:lda_shrink_cov]{sparsediscrim::lda_shrink_cov()}} \CRANpkg{sparsediscrim}.
+Calls \code{sparsediscrim::lda_shrink_cov()} \CRANpkg{sparsediscrim}.
 }
 \section{Dictionary}{
 

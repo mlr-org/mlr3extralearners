@@ -6,7 +6,7 @@
 \title{Generalized Linear Regression}
 \description{
 Generalized linear model.
-Calls \code{\link[stats:glm]{stats::glm()}} from base package 'stats'.
+Calls \code{stats::glm()} from base package 'stats'.
 For logistic regression please use \code{\link[mlr3learners]{mlr_learners_classif.log_reg}}.
 }
 \section{Dictionary}{
@@ -64,7 +64,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Offset}{
 
 If a \code{Task} has a column with the role \code{offset}, it will automatically be used during training.
-The offset is incorporated through the formula interface to ensure compatibility with \code{\link[stats:glm]{stats::glm()}}.
+The offset is incorporated through the formula interface to ensure compatibility with \code{stats::glm()}.
 We add it to the model formula as \verb{offset(<column_name>)} and also include it in the training data.
 During prediction, the default behavior is to use the offset column from the
 test set (enabled by \code{use_pred_offset = TRUE}).

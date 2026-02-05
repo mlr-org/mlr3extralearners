@@ -7,7 +7,7 @@
 \description{
 eXtreme Gradient Boosting regression using an \strong{Accelerated Failure Time}
 objective.
-Calls \code{\link[xgboost:xgb.train]{xgboost::xgb.train()}} from package \CRANpkg{xgboost} with \code{objective}
+Calls \code{xgboost::xgb.train()} from package \CRANpkg{xgboost} with \code{objective}
 set to \code{survival:aft} and \code{eval_metric} to \code{aft-nloglik}.
 }
 \note{
@@ -244,7 +244,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvXgboostAFT-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvXgboostAFT-importance}{}}}
 \subsection{Method \code{importance()}}{
-The importance scores are calculated with \code{\link[xgboost:xgb.importance]{xgboost::xgb.importance()}}.
+The importance scores are calculated with \code{xgboost::xgb.importance()}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvXgboostAFT$importance()}\if{html}{\out{</div>}}
 }

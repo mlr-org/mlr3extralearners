@@ -6,7 +6,7 @@
 \title{Fast Nearest Neighbour Classification}
 \description{
 Fast Nearest Neighbour Classification.
-Calls \code{\link[FNN:knn]{FNN::knn()}} from \CRANpkg{FNN}.
+Calls \code{FNN::knn()} from \CRANpkg{FNN}.
 }
 \section{Dictionary}{
 

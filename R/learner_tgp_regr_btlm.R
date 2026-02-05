@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian treed linear model regression.
-#' Calls [tgp::btlm()] from \CRANpkg{tgp}.
+#' Calls `tgp::btlm()` from \CRANpkg{tgp}.
 #' For the predicted mean `ZZ.km` and for the predicted variance `ZZ.ks2` are chosen.
 #'
 #' Factor features are one-hot encoded with reference encoding before fitting.

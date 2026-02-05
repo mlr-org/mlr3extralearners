@@ -5,7 +5,7 @@
 #' @description
 #' eXtreme Gradient Boosting regression using a **Cox Proportional Hazards**
 #' objective.
-#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
+#' Calls `xgboost::xgb.train()` from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:cox` and `eval_metric` to `cox-nloglik`.
 #'
 #' @section Prediction types:
@@ -15,7 +15,7 @@
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' By default, the Breslow estimator is used via [mlr3proba::breslow()].
+#' By default, the Breslow estimator is used via `mlr3proba::breslow()`.
 #'
 #' @template note_xgboost
 #'
@@ -122,7 +122,7 @@ LearnerSurvXgboostCox = R6Class("LearnerSurvXgboostCox",
     },
 
     #' @description
-    #' The importance scores are calculated with [xgboost::xgb.importance()].
+    #' The importance scores are calculated with `xgboost::xgb.importance()`.
     #'
     #' @return Named `numeric()`.
     importance = function() {

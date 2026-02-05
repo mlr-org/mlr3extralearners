@@ -7,7 +7,7 @@
 \description{
 Linear Regression, where the features used in the model are selected by running Exhaustive Search.
 
-Calls \code{\link[ExhaustiveSearch:ExhaustiveSearch]{ExhaustiveSearch::ExhaustiveSearch()}} from \CRANpkg{ExhaustiveSearch}.
+Calls \code{ExhaustiveSearch::ExhaustiveSearch()} from \CRANpkg{ExhaustiveSearch}.
 }
 \section{Initial parameter values}{
 
@@ -71,8 +71,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("regr.exhaustive_search")) withAutoprint(\{ # examplesIf}
 # define learner
-learner = LearnerRegrExhaustiveSearch$new()
-learner$predict_type = "se"
+learner = lrn("regr.exhaustive_search", predict_type = "se")
 
 # define task
 tsk_cars = tsk("mtcars")

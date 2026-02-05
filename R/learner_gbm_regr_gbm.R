@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Gradient Boosting Regression Algorithm.
-#' Calls [gbm::gbm()] from \CRANpkg{gbm}.
+#' Calls `gbm::gbm()` from \CRANpkg{gbm}.
 #'
 #' Weights are ignored for quantile prediction.
 #'
@@ -27,10 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' # Define the Learner
-#' learner = lrn("regr.gbm")
-#' print(learner)
+#' @template example_simple
 LearnerRegrGBM = R6Class("LearnerRegrGBM",
   inherit = LearnerRegr,
   public = list(

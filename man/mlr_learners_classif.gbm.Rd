@@ -6,7 +6,7 @@
 \title{Gradient Boosting Classification Learner}
 \description{
 Gradient Boosting Classification Algorithm.
-Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
+Calls \code{gbm::gbm()} from \CRANpkg{gbm}.
 }
 \section{Dictionary}{
 

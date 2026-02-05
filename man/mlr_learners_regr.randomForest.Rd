@@ -6,7 +6,7 @@
 \title{Regression Random Forest Learner}
 \description{
 Random forest for regression.
-Calls \code{\link[randomForest:randomForest]{randomForest::randomForest()}} from \CRANpkg{randomForest}.
+Calls \code{randomForest::randomForest()} from \CRANpkg{randomForest}.
 }
 \section{Dictionary}{
 

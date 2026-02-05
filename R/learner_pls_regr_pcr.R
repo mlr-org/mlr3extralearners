@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Principal Component Regression model.
-#' Calls [pls::pcr()] from \CRANpkg{pls}.
+#' Calls `pls::pcr()` from \CRANpkg{pls}.
 #'
 #' @section Initial parameter values:
 #' - `model`

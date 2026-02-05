@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-#' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
+#' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
 #'
 #' @section Initial parameter values:
 #' - `family` is set to `"binomial"` and cannot be changed
@@ -16,20 +16,7 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.priority_lasso")
-#' # Define the Learner and set parameter values
-#' learner = lrn("classif.priority_lasso", type.measure = "auc",
-#'   blocks = list(bp1 = 1:4, bp2 = 5:9, bp3 = 10:28, bp4 = 29:1028))
-#' print(learner)
-#'
-#' # Define a Task
-#' task = mlr3::as_task_classif(prioritylasso::pl_data, target = "pl_out")
-#'
-#' # Train the learner
-#' learner$train(task)
-#'
-#' # print the model
-#' print(learner$model)
+#' @template example_prioritylasso
 #' @export
 LearnerClassifPriorityLasso = R6Class("LearnerClassifPriorityLasso",
   inherit = LearnerClassif,

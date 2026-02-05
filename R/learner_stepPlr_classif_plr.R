@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Logistic regression with a quadratic penalization on the coefficient.
-#' Calls [stepPlr::plr()] from \CRANpkg{stepPlr}.
+#' Calls `stepPlr::plr()` from \CRANpkg{stepPlr}.
 #'
 #' @templateVar id classif.stepPlr
 #' @template learner

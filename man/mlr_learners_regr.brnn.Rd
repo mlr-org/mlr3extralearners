@@ -6,7 +6,7 @@
 \title{Regression Neural Network Learner}
 \description{
 Bayesian regularization for feed-forward neural networks.
-Calls \link[brnn:brnn]{brnn::brnn} from \CRANpkg{brnn}.
+Calls \code{brnn::brnn()} from \CRANpkg{brnn}.
 }
 \section{Dictionary}{
 

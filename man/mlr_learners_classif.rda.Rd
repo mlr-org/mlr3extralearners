@@ -6,7 +6,7 @@
 \title{Classification Discriminant Analysis Learner}
 \description{
 Regularized Discriminant Analysis.
-Calls \code{\link[klaR:rda]{klaR::rda()}} from: \CRANpkg{klaR}.
+Calls \code{klaR::rda()} from: \CRANpkg{klaR}.
 }
 \section{Dictionary}{
 

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
-#' Calls [dbarts::bart()] from \CRANpkg{dbarts}.
+#' Calls `dbarts::bart()` from \CRANpkg{dbarts}.
 #'
 #' @template learner
 #' @templateVar id regr.bart
