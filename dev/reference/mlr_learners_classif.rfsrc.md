@@ -256,10 +256,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=73, R=66
+#>            Frequency of class labels: M=69, R=70
 #>                      Number of trees: 500
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 16.844
+#>        Average no. of terminal nodes: 16.788
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -268,51 +268,51 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: gini *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.1061
-#>                    (OOB) Brier score: 0.13346972
-#>         (OOB) Normalized Brier score: 0.53387888
-#>                            (OOB) AUC: 0.92382731
-#>                       (OOB) Log-loss: 0.42477729
-#>                         (OOB) PR-AUC: 0.91805249
-#>                         (OOB) G-mean: 0.8421493
-#>    (OOB) Requested performance error: 0.15107914, 0.08219178, 0.22727273
+#>                     Imbalanced ratio: 1.0145
+#>                    (OOB) Brier score: 0.13560003
+#>         (OOB) Normalized Brier score: 0.54240013
+#>                            (OOB) AUC: 0.91759834
+#>                       (OOB) Log-loss: 0.43002076
+#>                         (OOB) PR-AUC: 0.92957854
+#>                         (OOB) G-mean: 0.79020924
+#>    (OOB) Requested performance error: 0.20863309, 0.15942029, 0.25714286
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 67  6      0.0822
-#>          R 15 51      0.2273
+#>          M 58 11      0.1594
+#>          R 18 52      0.2571
 #> 
-#>       (OOB) Misclassification rate: 0.1510791
+#>       (OOB) Misclassification rate: 0.2086331
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>           V11           V36           V12           V10           V47 
-#>  6.216667e-02  5.186651e-02  4.185667e-02  4.008112e-02  3.815434e-02 
-#>           V48           V39           V13            V9           V37 
-#>  3.001486e-02  2.713824e-02  2.542959e-02  2.507330e-02  2.402490e-02 
-#>           V52           V31           V20           V28           V49 
-#>  1.734066e-02  1.539794e-02  1.392746e-02  1.379743e-02  1.282126e-02 
-#>           V32           V45           V33           V17            V5 
-#>  1.236933e-02  1.235974e-02  1.165737e-02  1.084348e-02  1.050640e-02 
-#>           V35           V18           V29           V40           V27 
-#>  1.003683e-02  9.618545e-03  9.481316e-03  9.305337e-03  9.218986e-03 
-#>            V6           V16           V23           V21           V46 
-#>  9.184834e-03  8.982912e-03  8.142760e-03  8.099477e-03  7.845562e-03 
-#>           V26           V19           V22           V30           V15 
-#>  7.708222e-03  6.542194e-03  5.821601e-03  5.809276e-03  5.642009e-03 
-#>            V3            V4           V14           V44           V54 
-#>  5.527638e-03  5.406283e-03  5.267562e-03  5.247429e-03  4.967003e-03 
-#>           V60           V51           V34           V42           V59 
-#>  4.796529e-03  4.695271e-03  4.499254e-03  4.470657e-03  4.342766e-03 
-#>            V8           V38            V1           V24           V53 
-#>  4.204031e-03  3.607611e-03  3.486954e-03  3.335694e-03  2.912489e-03 
-#>            V2           V58           V43            V7           V50 
-#>  2.636588e-03  2.343326e-03  1.760599e-03  1.589688e-03  1.436671e-03 
-#>           V55           V25           V41           V57           V56 
-#>  1.026283e-03  5.702354e-04  5.352235e-06 -7.484559e-06 -2.050331e-03 
+#>           V12           V11           V36            V9           V37 
+#>  7.158098e-02  5.669443e-02  3.021119e-02  2.905650e-02  2.730467e-02 
+#>           V48           V10           V51           V13           V17 
+#>  2.500313e-02  2.234376e-02  2.036315e-02  1.961009e-02  1.857189e-02 
+#>           V44           V28            V1           V58            V4 
+#>  1.586885e-02  1.265416e-02  1.237556e-02  1.212657e-02  1.176391e-02 
+#>           V21           V18           V49           V23           V43 
+#>  1.105660e-02  1.102142e-02  1.099626e-02  1.077392e-02  1.048444e-02 
+#>           V45           V47           V25           V30            V7 
+#>  1.047655e-02  9.655501e-03  9.010015e-03  8.567989e-03  8.159966e-03 
+#>           V42           V50           V27           V20           V16 
+#>  7.561976e-03  7.541064e-03  7.429738e-03  7.385088e-03  6.951037e-03 
+#>           V60           V52           V39           V54           V59 
+#>  6.894642e-03  6.407745e-03  6.099250e-03  6.086705e-03  5.818649e-03 
+#>           V32           V57           V46           V15           V22 
+#>  5.705856e-03  5.532795e-03  5.505391e-03  5.231480e-03  5.078999e-03 
+#>           V26            V6           V40           V53           V19 
+#>  4.808014e-03  4.627282e-03  4.331855e-03  4.197665e-03  3.915273e-03 
+#>           V38           V29            V8           V34           V35 
+#>  3.771515e-03  3.195519e-03  3.186647e-03  3.086118e-03  2.920894e-03 
+#>            V2            V5           V31           V55           V41 
+#>  2.920796e-03  2.755641e-03  2.623881e-03  2.436344e-03  2.233946e-03 
+#>           V24            V3           V14           V56           V33 
+#>  1.603451e-03  1.584493e-03  1.178325e-03 -4.367802e-07 -7.139307e-04 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -320,5 +320,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.2028986 
 ```

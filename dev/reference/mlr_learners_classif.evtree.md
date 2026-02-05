@@ -135,21 +135,17 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V45 < 0.4305
-#> |   |   [3] V30 < 0.2526: R (n = 11, err = 18.2%)
-#> |   |   [4] V30 >= 0.2526
-#> |   |   |   [5] V12 < 0.2023
-#> |   |   |   |   [6] V26 < 0.5218: M (n = 11, err = 18.2%)
-#> |   |   |   |   [7] V26 >= 0.5218: R (n = 37, err = 2.7%)
-#> |   |   |   [8] V12 >= 0.2023
-#> |   |   |   |   [9] V51 < 0.0118
-#> |   |   |   |   |   [10] V31 < 0.4505: M (n = 10, err = 0.0%)
-#> |   |   |   |   |   [11] V31 >= 0.4505: R (n = 14, err = 7.1%)
-#> |   |   |   |   [12] V51 >= 0.0118: M (n = 39, err = 12.8%)
-#> |   [13] V45 >= 0.4305: M (n = 17, err = 0.0%)
+#> |   [2] V20 < 0.5167
+#> |   |   [3] V16 < 0.399
+#> |   |   |   [4] V12 < 0.2251: R (n = 34, err = 5.9%)
+#> |   |   |   [5] V12 >= 0.2251: M (n = 20, err = 5.0%)
+#> |   |   [6] V16 >= 0.399: R (n = 13, err = 7.7%)
+#> |   [7] V20 >= 0.5167
+#> |   |   [8] V42 < 0.0866: R (n = 11, err = 9.1%)
+#> |   |   [9] V42 >= 0.0866: M (n = 61, err = 19.7%)
 #> 
-#> Number of inner nodes:    6
-#> Number of terminal nodes: 7
+#> Number of inner nodes:    4
+#> Number of terminal nodes: 5
 
 
 # Make predictions for the test rows
@@ -158,5 +154,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.2318841 
 ```

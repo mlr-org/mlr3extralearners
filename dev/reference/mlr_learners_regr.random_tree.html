@@ -238,38 +238,36 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> RandomTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 2.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   qsec &lt; 19.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt; 87.05</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 77.35 : 30.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 77.35 : 27.3 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;= 87.05 : 30.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   qsec &gt;= 19.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &lt; 4.15 : 32.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &gt;= 4.15 : 33.9 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 2.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   qsec &lt; 18.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &lt; 450</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   cyl &lt; 7 : 19.7 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   cyl &gt;= 7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &lt; 3.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   carb &lt; 2.5 : 19.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   carb &gt;= 2.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   qsec &lt; 17.7 : 16.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   qsec &gt;= 17.7 : 15.2 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   drat &gt;= 3.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &lt; 3.3 : 15.8 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   wt &gt;= 3.3 : 14.97 (3/0.04)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   disp &gt;= 450 : 10.4 (2/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   qsec &gt;= 18.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 3.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &lt; 127.35 : 22.8 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &gt;= 127.35 : 24.4 (1/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 95 : 21.43 (3/0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 3.34 : 18.1 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 2.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   vs &lt; 0.5 : 26 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   vs &gt;= 0.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   gear &lt; 4.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &lt; 74.9 : 33.9 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   disp &gt;= 74.9 : 32.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   gear &gt;= 4.5 : 30.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 2.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 266.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &lt; 3.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   vs &lt; 0.5 : 21 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   vs &gt;= 0.5 : 21.43 (3/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   wt &gt;= 3.33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   qsec &lt; 18.6 : 19.2 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   qsec &gt;= 18.6 : 17.95 (2/0.02)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 266.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &lt; 3.04 : 10.4 (2/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   drat &gt;= 3.04</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &lt; 205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &lt; 289.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   qsec &lt; 17.8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   wt &lt; 3.9 : 17.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   |   wt &gt;= 3.9 : 16.4 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   qsec &gt;= 17.8 : 15.2 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   disp &gt;= 289.9 : 15.2 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   hp &gt;= 205</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &lt; 15.63 : 13.3 (1/0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   qsec &gt;= 15.63 : 14.5 (2/0.04)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 29</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -278,7 +276,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.233434 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17.99354 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
