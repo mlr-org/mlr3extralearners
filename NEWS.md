@@ -4,6 +4,7 @@
 
 * New Learners:
   - `LearnerClassifMLP`
+  - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
 
 ## Other
