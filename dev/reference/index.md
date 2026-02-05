@@ -198,6 +198,9 @@
 - [`mlr_learners_classif.rotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
   [`LearnerClassifRotationForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.rotationForest.md)
   : Classification Rotation Forest Learner
+- [`mlr_learners_classif.saeDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.saeDNN.md)
+  [`LearnerClassifSaeDNN`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.saeDNN.md)
+  : Classification Stacked Autoencoder Deep Neural Network Learner
 - [`mlr_learners_classif.sda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sda.md)
   [`LearnerClassifSda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.sda.md)
   : Shrinkage Discriminant Analysis

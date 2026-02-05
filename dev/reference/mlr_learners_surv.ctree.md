@@ -218,24 +218,20 @@ print(learner$model)
 #> Fitted party:
 #> [1] root
 #> |   [2] age <= 70
-#> |   |   [3] revascdays <= 150
-#> |   |   |   [4] revasc <= 0
-#> |   |   |   |   [5] los <= 3: 3.000 (n = 29)
-#> |   |   |   |   [6] los > 3: 45.000 (n = 44)
-#> |   |   |   [7] revasc > 0
-#> |   |   |   |   [8] sysbp <= 114: Inf (n = 32)
-#> |   |   |   |   [9] sysbp > 114: Inf (n = 188)
-#> |   |   [10] revascdays > 150: Inf (n = 90)
-#> |   [11] age > 70
-#> |   |   [12] revascdays <= 169
-#> |   |   |   [13] revasc <= 0
-#> |   |   |   |   [14] stchange <= 0: 69.000 (n = 42)
-#> |   |   |   |   [15] stchange > 0: 18.000 (n = 67)
-#> |   |   |   [16] revasc > 0: Inf (n = 127)
-#> |   |   [17] revascdays > 169: Inf (n = 51)
+#> |   |   [3] revascdays <= 171
+#> |   |   |   [4] revasc <= 0: 28.000 (n = 72)
+#> |   |   |   [5] revasc > 0: Inf (n = 213)
+#> |   |   [6] revascdays > 171: Inf (n = 81)
+#> |   [7] age > 70
+#> |   |   [8] revascdays <= 167
+#> |   |   |   [9] revasc <= 0
+#> |   |   |   |   [10] stchange <= 0: 80.000 (n = 30)
+#> |   |   |   |   [11] stchange > 0: 20.000 (n = 76)
+#> |   |   |   [12] revasc > 0: Inf (n = 138)
+#> |   |   [13] revascdays > 167: Inf (n = 60)
 #> 
-#> Number of inner nodes:    8
-#> Number of terminal nodes: 9
+#> Number of inner nodes:    6
+#> Number of terminal nodes: 7
 
 
 # Make predictions for the test rows
@@ -244,5 +240,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8264984 
+#>    0.812624 
 ```

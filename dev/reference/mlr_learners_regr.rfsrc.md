@@ -256,7 +256,7 @@ print(learner$model)
 #>                          Sample size: 21
 #>                      Number of trees: 500
 #>            Forest terminal node size: 5
-#>        Average no. of terminal nodes: 2.66
+#>        Average no. of terminal nodes: 2.16
 #> No. of variables tried at each split: 4
 #>               Total no. of variables: 10
 #>        Resampling used to grow trees: swor
@@ -265,14 +265,14 @@ print(learner$model)
 #>                               Family: regr
 #>                       Splitting rule: mse *random*
 #>        Number of random split points: 10
-#>                      (OOB) R squared: 0.6400819
-#>    (OOB) Requested performance error: 10.79147588
+#>                      (OOB) R squared: 0.70291287
+#>    (OOB) Requested performance error: 13.06437818
 #> 
 print(learner$importance())
-#>          hp        disp          wt         cyl        drat        carb 
-#> 28.51303226 22.62238271 22.32104918  5.39224018  3.86870092  1.48590124 
-#>          vs        qsec        gear          am 
-#>  0.83693919  0.43752996  0.05583848  0.00000000 
+#>        disp         cyl          wt          hp        carb          vs 
+#> 22.77699781 16.14661626 15.67405367 12.06201170  1.65284493  0.95230092 
+#>        drat        gear          am        qsec 
+#>  0.51569226  0.44802567  0.04752701 -0.12807232 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -280,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.17158 
+#> 6.552097 
 ```
