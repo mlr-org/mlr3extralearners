@@ -35,7 +35,7 @@ LearnerClassifMLP = R6Class("LearnerClassifMLP",
         size             = p_uty(default = 5L, tags = "train", custom_check = mlr3misc::crate({function(x) {check_integerish(x, lower = 1, any.missing = FALSE, min.len = 1)}})),
         targetsTest      = p_uty(tags = "train"),
         updateFunc       = p_uty(default = "Topological_Order", tags = "train"),
-        updateFuncParams = p_uty(tags = "train"),
+        updateFuncParams = p_uty(tags = "train")
       )
 
       super$initialize(
