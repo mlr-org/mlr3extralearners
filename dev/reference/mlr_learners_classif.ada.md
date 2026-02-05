@@ -193,17 +193,17 @@ print(learner$model)
 #> Final Confusion Matrix for Data:
 #>           Final Prediction
 #> True value  M  R
-#>          M 73  2
-#>          R  1 63
+#>          M 71  1
+#>          R  1 66
 #> 
-#> Train Error: 0.022 
+#> Train Error: 0.014 
 #> 
-#> Out-Of-Bag Error:  0.029  iteration= 50 
+#> Out-Of-Bag Error:  0.05  iteration= 50 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
 #> train.err1 train.kap1 
-#>         47         47 
+#>         42         42 
 #> 
 
 
