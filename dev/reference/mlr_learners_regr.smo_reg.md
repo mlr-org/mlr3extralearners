@@ -271,21 +271,21 @@ print(learner$model)
 #> SMOreg
 #> 
 #> weights (not support vectors):
-#>  +       0.273  * (normalized) am
-#>  -       0.2418 * (normalized) carb
-#>  +       0.1189 * (normalized) cyl
-#>  +       0.1934 * (normalized) disp
-#>  +       0.3675 * (normalized) drat
-#>  +       0.1266 * (normalized) gear
-#>  -       0.0018 * (normalized) hp
-#>  +       0.1333 * (normalized) qsec
-#>  +       0.1687 * (normalized) vs
-#>  -       0.114  * (normalized) wt
-#>  +       0.1507
+#>  +       0.0262 * (normalized) am
+#>  -       0.1608 * (normalized) carb
+#>  +       0.0101 * (normalized) cyl
+#>  -       0.0197 * (normalized) disp
+#>  +       0.1944 * (normalized) drat
+#>  +       0.1066 * (normalized) gear
+#>  -       0.1474 * (normalized) hp
+#>  +       0.0125 * (normalized) qsec
+#>  +       0.1428 * (normalized) vs
+#>  -       0.2407 * (normalized) wt
+#>  +       0.4123
 #> 
 #> 
 #> 
-#> Number of kernel evaluations: 231 (97.12% cached)
+#> Number of kernel evaluations: 231 (95.744% cached)
 
 
 # Make predictions for the test rows
@@ -294,5 +294,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 20.74469 
+#> 7.995809 
 ```

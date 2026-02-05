@@ -255,13 +255,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.43465045592705165
+#> Average Target Value : 0.40891590678824724
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.25982007302610166
-#>     Highest Value = 0.8773198916843326
+#>     Lowest Value = -0.27535717048498853
+#>     Highest Value = 0.850690872629756
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.21478343947247996
-#>     Highest Value = 0.22644156206141244
+#>     Lowest Value = -0.18180705822906254
+#>     Highest Value = 0.2534436608654542
 #>  
 #> 
 
@@ -272,5 +272,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.540424 
+#>  6.83941 
 ```
