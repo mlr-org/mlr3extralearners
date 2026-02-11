@@ -79,6 +79,7 @@ Suggests:
     fastai (>= 2.2.2),
     flexsurv (>= 2.3.2),
     FNN,
+    fuser,
     formattable,
     frbs (>= 3.2-0),
     future,
@@ -159,4 +160,3 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.3
-
