@@ -1,5 +1,5 @@
 skip_if_not_installed("mlr3proba")
-skip_if_not_installed("xgboost")
+skip_if_not_installed("xgboost", minimum_version = "3.1.2.1")
 
 test_that("surv.xgboost", {
   learner_cox = lrn("surv.xgboost.cox")

@@ -1,4 +1,4 @@
-skip_if_not_installed("xgboost")
+skip_if_not_installed("xgboost", minimum_version = "3.1.2.1")
 
 task = tsk("lung")
 task = mlr3pipelines::po("encode")$train(list(task))[[1]]$filter(1:100) # encode sex factor
