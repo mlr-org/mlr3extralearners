@@ -208,8 +208,9 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         pred = pred_fun()
       }
 
+      response = factor(as.vector(pred$predict), levels = task$class_names)
+
       if (self$predict_type == "response") {
-        response = factor(as.vector(pred$predict), levels = task$class_names)
         return(list(response = response))
       }
 
@@ -217,7 +218,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
       colnames(prob) = names(pred)[-1]
       prob = prob[, task$class_names, drop = FALSE]
 
-      list(prob = prob)
+      list(prob = prob, response = response)
     }
   )
 )
