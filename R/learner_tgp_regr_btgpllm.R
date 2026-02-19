@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian treed Gaussian process with jumps to the limiting linear model.
-#' Calls [tgp::btgpllm()] from \CRANpkg{tgp}.
+#' Calls `tgp::btgpllm()` from \CRANpkg{tgp}.
 #' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' Factor features are one-hot encoded with reference encoding before fitting.

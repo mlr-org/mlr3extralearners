@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a Survival Cox model with a likelihood based boosting algorithm.
-#' Calls [CoxBoost::CoxBoost()] from package 'CoxBoost'.
+#' Calls `CoxBoost::CoxBoost()` from package 'CoxBoost'.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types, using the internal `predict.CoxBoost()` function:

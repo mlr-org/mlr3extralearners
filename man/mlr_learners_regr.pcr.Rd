@@ -6,7 +6,7 @@
 \title{Principal Component Regression Learner}
 \description{
 Principal Component Regression model.
-Calls \code{\link[pls:mvr]{pls::pcr()}} from \CRANpkg{pls}.
+Calls \code{pls::pcr()} from \CRANpkg{pls}.
 }
 \note{
 During prediction, all components \code{ncomp} used in training are used.

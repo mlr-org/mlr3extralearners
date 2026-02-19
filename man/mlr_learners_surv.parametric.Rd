@@ -6,15 +6,15 @@
 \title{Survival Fully Parametric Learner}
 \description{
 Parametric survival model.
-Calls \code{\link[survivalmodels:parametric]{survivalmodels::parametric()}} from package 'survivalmodels'.
+Calls \code{survivalmodels::parametric()} from package 'survivalmodels'.
 }
 \details{
 This learner allows you to choose a \strong{distribution} and a \strong{model form} to compose
 a predicted survival probability distribution \eqn{S(t)}.
 
-The predict method is implemented in \code{\link[survivalmodels:predict.parametric]{survivalmodels::predict.parametric()}}.
+The predict method is implemented in \code{survivalmodels::predict.parametric()}.
 Our implementation is more efficient for composition to distributions than
-\code{\link[survival:predict.survreg]{survival::predict.survreg()}}.
+\code{survival::predict.survreg()}.
 
 The available model forms with their respective survival functions, are as follows:
 \itemize{

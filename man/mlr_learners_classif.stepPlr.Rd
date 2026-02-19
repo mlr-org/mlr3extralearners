@@ -6,7 +6,7 @@
 \title{Classification Logistic Regression Learner}
 \description{
 Logistic regression with a quadratic penalization on the coefficient.
-Calls \code{\link[stepPlr:plr]{stepPlr::plr()}} from \CRANpkg{stepPlr}.
+Calls \code{stepPlr::plr()} from \CRANpkg{stepPlr}.
 }
 \section{Dictionary}{
 

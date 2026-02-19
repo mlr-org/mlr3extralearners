@@ -6,7 +6,7 @@
 \title{Regression Bayesian Treed Gaussian Process Learner}
 \description{
 Bayesian treed Gaussian process regression model.
-Calls \code{\link[tgp:btgp]{tgp::btgp()}} from \CRANpkg{tgp}.
+Calls \code{tgp::btgp()} from \CRANpkg{tgp}.
 For the predicted mean \code{ZZ.km} and for the predicted variance \code{ZZ.ks2} are chosen.
 
 Factor features are one-hot encoded with reference encoding before fitting.

@@ -6,5 +6,5 @@ test_that("autotest", {
   suppressMessages(capture.output({
     result = run_autotest(learner)
   }))
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

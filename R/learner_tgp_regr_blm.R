@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian linear regression model.
-#' Calls [tgp::blm()] from \CRANpkg{tgp}.
+#' Calls `tgp::blm()` from \CRANpkg{tgp}.
 #' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' @section Initial parameter values:

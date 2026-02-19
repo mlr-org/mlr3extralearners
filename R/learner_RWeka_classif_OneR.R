@@ -4,7 +4,7 @@
 #'
 #' @description
 #' One Rule classification algorithm that yields an extremely simple model.
-#' Calls [RWeka::OneR()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::OneR()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.OneR

@@ -4,17 +4,17 @@
 #'
 #' @description
 #' Non-parametric estimator of the cumulative hazard rate function.
-#' Calls [survival::survfit()] from \CRANpkg{survival}.
+#' Calls `survival::survfit()` from \CRANpkg{survival}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
 #' The cumulative hazard \eqn{H(t)} is calculated using the train data and the
-#' default parameters of the [survival::survfit()] function, i.e. `ctype = 1`,
+#' default parameters of the `survival::survfit()` function, i.e. `ctype = 1`,
 #' which uses the Nelson-Aalen formula.
 #' Then for each test observation the survival curve is \eqn{S(t) = \exp{(-H(t))}}.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.nelson

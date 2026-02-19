@@ -6,7 +6,7 @@
 \title{Cox Proportional Hazards Generalized Additive Learner}
 \description{
 Cox proportional hazards model fitted via generalized additive modeling.
-Internally calls \code{\link[mgcv:gam]{mgcv::gam()}} from the \CRANpkg{mgcv} package with
+Internally calls \code{mgcv::gam()} from the \CRANpkg{mgcv} package with
 \code{family = mgcv::cox.ph()}. The censoring indicator is passed via the
 \code{weights} argument.
 }
@@ -15,11 +15,11 @@ Internally calls \code{\link[mgcv:gam]{mgcv::gam()}} from the \CRANpkg{mgcv} pac
 Three types of prediction are returned for this learner:
 \enumerate{
 \item \code{lp}: a vector of linear predictors (relative risk scores), one per
-observation. Calls \code{\link[mgcv:predict.gam]{mgcv::predict.gam()}} with \code{type = "link"}.
+observation. Calls \code{mgcv::predict.gam()} with \code{type = "link"}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-By default, the Breslow estimator is used via \code{\link[mlr3proba:breslow]{mlr3proba::breslow()}}.
+By default, the Breslow estimator is used via \code{mlr3proba::breslow()}.
 }
 }
 
@@ -95,7 +95,7 @@ superseding columns with col_roles "feature" in the task.
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[mgcv:gam]{mgcv::gam()}}.
+incorporated during training via the \code{offset} argument in \code{mgcv::gam()}.
 No offset is applied during prediction for this learner.
 }
 

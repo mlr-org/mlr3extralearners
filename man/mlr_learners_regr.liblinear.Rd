@@ -6,7 +6,7 @@
 \title{L2-Regularized Support Vector Regression Learner}
 \description{
 L2 regularized support vector regression.
-Calls \code{\link[LiblineaR:LiblineaR]{LiblineaR::LiblineaR()}} from \CRANpkg{LiblineaR}.
+Calls \code{LiblineaR::LiblineaR()} from \CRANpkg{LiblineaR}.
 }
 \details{
 Type of SVR depends on \code{type} argument:

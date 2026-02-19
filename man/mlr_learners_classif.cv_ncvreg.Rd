@@ -7,7 +7,7 @@
 \description{
 MCP- or SCAD-penalized binary classification model with k-fold cross validation
 for choosing the regularization parameter lambda.
-Calls \code{\link[ncvreg:cv.ncvreg]{ncvreg::cv.ncvreg()}} from package \CRANpkg{ncvreg} with \code{family} set to
+Calls \code{ncvreg::cv.ncvreg()} from package \CRANpkg{ncvreg} with \code{family} set to
 \code{"binomial"}.
 Covariates are internally standardized by \code{ncvreg} prior to model fitting.
 }

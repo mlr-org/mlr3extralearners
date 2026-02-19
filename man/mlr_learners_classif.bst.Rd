@@ -6,7 +6,7 @@
 \title{Classification Gradient Boosting Learner}
 \description{
 Classification gradient boosting learner.
-Calls \code{\link[bst:bst]{bst::bst()}} from \CRANpkg{bst}.
+Calls \code{bst::bst()} from \CRANpkg{bst}.
 }
 \note{
 Only classification-appropriate loss functions are available for the \code{family} parameter.

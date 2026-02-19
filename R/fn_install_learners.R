@@ -4,8 +4,8 @@
 #' @param .keys (`character()`) \cr Keys passed to [mlr_learners][mlr3::mlr_learners] specifying
 #' learners to install.
 #' @param repos (`character(1)`) \cr Passed to [utils::install.packages].
-#' @param ... (`ANY`) \cr Additional options to pass to [utils::install.packages] or
-#' [remotes::install_github].
+#' @param ... (`ANY`) \cr Additional options to pass to `utils::install.packages()` or
+#' `remotes::install_github()`.
 #' @export
 install_learners = function(.keys, repos = "https://cloud.r-project.org", ...) {
   sapply(.keys, function(.key) {

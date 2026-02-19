@@ -6,7 +6,7 @@
 \title{Gradient Boosted Decision Trees Classification Learner}
 \description{
 Gradient boosting algorithm that also supports categorical data.
-Calls \code{\link[catboost:catboost.train]{catboost::catboost.train()}} from package 'catboost'.
+Calls \code{catboost::catboost.train()} from package 'catboost'.
 }
 \section{Dictionary}{
 
@@ -149,9 +149,7 @@ For information on how to configure the validation set, see the \emph{Validation
 \examples{
 \dontshow{if (learner_is_runnable("classif.catboost")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = lrn("classif.catboost",
-  iterations = 100)
-
+learner = lrn("classif.catboost")
 print(learner)
 
 # Define a Task
@@ -248,7 +246,7 @@ Create a \code{LearnerClassifCatboost} object.
 \if{latex}{\out{\hypertarget{method-LearnerClassifCatboost-importance}{}}}
 \subsection{Method \code{importance()}}{
 The importance scores are calculated using
-\code{\link[catboost:catboost.get_feature_importance]{catboost.get_feature_importance}},
+\code{catboost::catboost.get_feature_importance()},
 setting \code{type = "FeatureImportance"}, returned for 'all'.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifCatboost$importance()}\if{html}{\out{</div>}}

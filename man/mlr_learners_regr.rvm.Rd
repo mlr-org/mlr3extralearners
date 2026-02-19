@@ -10,7 +10,7 @@ Parameters \code{sigma}, \code{degree}, \code{scale}, \code{offset}, \code{order
 \code{lambda}, and \code{normalized} are added to make tuning \code{kpar} easier.
 If \code{kpar} is provided then these new parameters are ignored. If none are
 provided then the default "automatic" is used for \code{kpar}.
-Calls \code{\link[kernlab:rvm]{kernlab::rvm()}} from package \CRANpkg{kernlab}.
+Calls \code{kernlab::rvm()} from package \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
 

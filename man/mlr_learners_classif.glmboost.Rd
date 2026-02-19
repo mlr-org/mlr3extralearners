@@ -6,7 +6,7 @@
 \title{Boosted Generalized Linear Classification Learner}
 \description{
 Fit a generalized linear classification model using a boosting algorithm.
-Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
+Calls \code{mboost::glmboost()} from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 

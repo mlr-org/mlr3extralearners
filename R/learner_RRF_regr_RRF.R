@@ -5,7 +5,7 @@
 #'
 #' @description
 #' Regularized random forest for regression.
-#' Calls [RRF::RRF()] from \CRANpkg{RRF}.
+#' Calls `RRF::RRF()` from \CRANpkg{RRF}.
 #'
 #' @templateVar id regr.RRF
 #' @template learner

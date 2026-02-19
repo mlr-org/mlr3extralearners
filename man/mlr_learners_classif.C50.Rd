@@ -6,7 +6,7 @@
 \title{Classification C5.0 Learner}
 \description{
 Decision Tree Algorithm.
-Calls \code{\link[C50:C5.0]{C50::C5.0.formula()}} from \CRANpkg{C50}.
+Calls \code{C50::C5.0.formula()} from \CRANpkg{C50}.
 }
 \section{Dictionary}{
 

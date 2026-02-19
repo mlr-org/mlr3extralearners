@@ -6,7 +6,7 @@
 \title{Regression Linear Mixed Effects Learner}
 \description{
 Linear model with random effects.
-Calls \code{\link[lme4:lmer]{lme4::lmer()}} from \CRANpkg{lme4}.
+Calls \code{lme4::lmer()} from \CRANpkg{lme4}.
 }
 \section{Formula}{
 
@@ -74,7 +74,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[lme4:lmer]{lme4::lmer()}}.
+incorporated during training via the \code{offset} argument in \code{lme4::lmer()}.
 No offset is applied during prediction for this learner.
 }
 
@@ -86,7 +86,9 @@ learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
 # Define a Task
 task = tsk("mtcars")
 
+# Train the learner
 learner$train(task)
+
 print(learner$model)
 \dontshow{\}) # examplesIf}
 }

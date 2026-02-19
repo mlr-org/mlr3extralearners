@@ -5,7 +5,7 @@
 #' @description
 #' Fuzzy rule-based regression learner supporting multiple inference engines such as WM, HYFIS,
 #' ANFIS, DENFIS, SBC, and several genetic fuzzy systems.
-#' Calls [frbs::frbs.learn()] from \CRANpkg{frbs}.
+#' Calls `frbs::frbs.learn()` from \CRANpkg{frbs}.
 #'
 #' @templateVar id regr.frbs
 #' @template learner

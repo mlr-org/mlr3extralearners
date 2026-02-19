@@ -5,7 +5,7 @@
 #' @description
 #' MCP- or SCAD-penalized regression survival model with k-fold cross validation
 #' for choosing the regularization parameter lambda.
-#' Calls [ncvreg::cv.ncvsurv()] from package \CRANpkg{ncvreg}.
+#' Calls `ncvreg::cv.ncvsurv()` from package \CRANpkg{ncvreg}.
 #' Covariates are internally standardized by `ncvreg` prior to model fitting.
 #'
 #' @section Prediction types:
@@ -13,12 +13,12 @@
 #' corresponding to the minimum cross-validation error is used):
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [ncvreg::predict.cv.ncvsurv()] with `type = "link"`.
+#' Calculated using `ncvreg::predict.cv.ncvsurv()` with `type = "link"`.
 #' 2. `crank`: identical to `lp`.
 #' 3. `distr`: a survival probability matrix with dimensions
 #' `n_obs × n_times`, where rows correspond to observations and
 #' columns correspond to time points.
-#' Calculated using [ncvreg::predict.cv.ncvsurv()] with `type = "survival"`.
+#' Calculated using `ncvreg::predict.cv.ncvsurv()` with `type = "survival"`.
 #' By default the Kalbfleisch-Prentice estimator is used for the survival function
 #' and the time grid is defined by the unique time points in the training data.
 #'

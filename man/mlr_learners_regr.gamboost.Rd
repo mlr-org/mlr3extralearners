@@ -6,7 +6,7 @@
 \title{Boosted Generalized Additive Regression Learner}
 \description{
 Fit a generalized additive regression model using a boosting algorithm.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}}  from \CRANpkg{mboost}.
+Calls \code{mboost::gamboost()}  from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 
@@ -53,9 +53,7 @@ No offset is applied during prediction for this learner.
 }
 
 \examples{
-# Define the Learner
-learner = lrn("regr.gamboost", baselearner = "bols")
-print(learner)
+lrn("regr.gamboost")
 }
 \references{
 Bühlmann, Peter, Yu, Bin (2003).

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Random forest for classification.
-#' Calls [randomForestSRC::rfsrc()] from \CRANpkg{randomForestSRC}.
+#' Calls `randomForestSRC::rfsrc()` from \CRANpkg{randomForestSRC}.
 #'
 #' @template learner
 #' @templateVar id classif.rfsrc
@@ -23,27 +23,7 @@
 #' `r format_bib("breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.rfsrc")
-#' # Define the Learner
-#' learner = lrn("classif.rfsrc", importance = "TRUE")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("sonar")
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_rfsrc
 #' @export
 LearnerClassifRandomForestSRC = R6Class("LearnerClassifRandomForestSRC",
   inherit = LearnerClassif,

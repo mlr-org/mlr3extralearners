@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Instance based algorithm: K-nearest neighbours regression.
-#' Calls [RWeka::IBk()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::IBk()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id regr.IBk

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Classification using ada.
-#' Calls [ada::ada()] from \CRANpkg{ada}.
+#' Calls `ada::ada()` from \CRANpkg{ada}.
 #'
 #' @section Initial parameter values:
 #' - `xval` is set to `0` by default for speed.

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Partial least squares regression.
-#' Calls [pls::plsr()] from \CRANpkg{pls}.
+#' Calls `pls::plsr()` from \CRANpkg{pls}.
 #'
 #' @templateVar id regr.plsr
 #' @template learner

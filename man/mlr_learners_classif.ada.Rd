@@ -6,7 +6,7 @@
 \title{Classification Boosting Learner}
 \description{
 Classification using ada.
-Calls \code{\link[ada:ada]{ada::ada()}} from \CRANpkg{ada}.
+Calls \code{ada::ada()} from \CRANpkg{ada}.
 }
 \section{Initial parameter values}{
 

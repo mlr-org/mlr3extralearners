@@ -4,7 +4,7 @@
 #'
 #' @description
 #' K-nearest neighbor classification.
-#' Calls [class::knn()] from \CRANpkg{class}.
+#' Calls `class::knn()` from \CRANpkg{class}.
 #'
 #' @templateVar id classif.knn
 #' @template learner

@@ -4,9 +4,9 @@
 #'
 #' @description
 #' Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-#' Calls [prioritylasso::prioritylasso()] from \CRANpkg{prioritylasso}.
+#' Calls `prioritylasso::prioritylasso()` from \CRANpkg{prioritylasso}.
 #' Many parameters for this survival learner are the same as [mlr_learners_surv.cv_glmnet]
-#' as `prioritylasso()` calls [glmnet::cv.glmnet()] during training phase.
+#' as `prioritylasso()` calls `glmnet::cv.glmnet()` during training phase.
 #' Note that `prioritylasso()` has ways to deal with block-wise missing data,
 #' but this feature is not supported currently.
 #'
@@ -14,11 +14,11 @@
 #' This learner returns three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [prioritylasso::predict.prioritylasso()].
+#' Calculated using `prioritylasso::predict.prioritylasso()`.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mlr3proba::breslow()] where the Breslow estimator is used
+#' Calculated using `mlr3proba::breslow()` where the Breslow estimator is used
 #' for computing the baseline hazard.
 #'
 #' @section Initial parameter values:
@@ -32,27 +32,7 @@
 #' `r format_bib("klau2018priolasso")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.priority_lasso")
-#' # Define a Task
-#' task = tsk("grace")
-#' # Create train and test set
-#' ids = partition(task)
-#' # check task's features
-#' task$feature_names
-#' # partition features to 2 blocks
-#' blocks = list(bl1 = 1:3, bl2 = 4:6)
-#' # define learner
-#' learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
-#'               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#' # selected features
-#' learner$selected_features()
-#' # Make predictions for the test observations
-#' pred = learner$predict(task, row_ids = ids$test)
-#' pred
-#' # Score the predictions
-#' pred$score()
+#' @template example_prioritylasso
 #' @export
 LearnerSurvPriorityLasso = R6Class("LearnerSurvPriorityLasso",
   inherit = mlr3proba::LearnerSurv,

@@ -5,5 +5,5 @@ test_that("autotest", {
   expect_learner(learner)
   result = run_autotest(learner, exclude = "single_factor || single_ordered")
   # crs can't handle tasks with only one feature
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

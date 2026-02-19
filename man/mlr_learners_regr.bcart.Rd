@@ -6,7 +6,7 @@
 \title{Regression Bayesian CART Learner}
 \description{
 Bayesian CART regression model.
-Calls \code{\link[tgp:btgp]{tgp::bcart()}} from \CRANpkg{tgp}.
+Calls \code{tgp::bcart()} from \CRANpkg{tgp}.
 For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 
 Factor features are one-hot encoded with reference encoding before fitting, matching the

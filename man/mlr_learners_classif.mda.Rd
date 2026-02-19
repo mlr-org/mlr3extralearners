@@ -6,7 +6,7 @@
 \title{Classification Discriminant Analysis Learner}
 \description{
 Mixture Discriminant Analysis.
-Calls \code{\link[mda:mda]{mda::mda()}} from \CRANpkg{mda}.
+Calls \code{mda::mda()} from \CRANpkg{mda}.
 }
 \section{Initial parameter values}{
 

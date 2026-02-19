@@ -7,7 +7,7 @@
 \title{Classification Imbalanced Random Forest Src Learner}
 \description{
 Imbalanced Random forest for classification between two classes.
-Calls \code{\link[randomForestSRC:imbalanced.rfsrc]{randomForestSRC::imbalanced.rfsrc()}} from from \CRANpkg{randomForestSRC}.
+Calls \code{randomForestSRC::imbalanced.rfsrc()} from from \CRANpkg{randomForestSRC}.
 }
 \section{Dictionary}{
 

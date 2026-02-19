@@ -8,7 +8,7 @@
 #' `lambda`, and `normalized` are added to make tuning `kpar` easier.
 #' If `kpar` is provided then these new parameters are ignored. If none are
 #' provided then the default "automatic" is used for `kpar`.
-#' Calls [kernlab::rvm()] from package \CRANpkg{kernlab}.
+#' Calls `kernlab::rvm()` from package \CRANpkg{kernlab}.
 #'
 #' @template learner
 #' @templateVar id regr.rvm

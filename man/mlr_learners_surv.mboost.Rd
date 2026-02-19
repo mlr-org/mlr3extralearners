@@ -6,10 +6,10 @@
 \title{Boosted Generalized Additive Survival Learner}
 \description{
 Model-based boosting for survival analysis.
-Calls \code{\link[mboost:gamboost]{mboost::mboost()}} from \CRANpkg{mboost}.
+Calls \code{mboost::mboost()} from \CRANpkg{mboost}.
 }
 \details{
-\code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
+\code{distr} prediction made by \code{mboost::survFit()}.
 }
 \section{Prediction types}{
 
@@ -17,13 +17,13 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.mboost()}}.
+Calculated using \code{mboost::predict.mboost()}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}}.
+Calculated using \code{mboost::survFit()}.
 This prediction type is present only when the \code{family} distribution parameter
 is equal to \code{"coxph"} (default).
 By default the Breslow estimator is used for computing the baseline hazard.
@@ -139,7 +139,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvMBoost-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvMBoost-importance}{}}}
 \subsection{Method \code{importance()}}{
-The importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} with the
+The importance scores are extracted with the function \code{mboost::varimp()} with the
 default arguments.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvMBoost$importance()}\if{html}{\out{</div>}}
@@ -153,7 +153,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:methods]{mboost::variable.names.mboost()}}, with
+Selected features are extracted with the function \code{mboost::variable.names.mboost()}, with
 \code{used.only = TRUE}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvMBoost$selected_features()}\if{html}{\out{</div>}}

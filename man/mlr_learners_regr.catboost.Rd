@@ -6,7 +6,7 @@
 \title{Gradient Boosted Decision Trees Regression Learner}
 \description{
 Gradient boosting algorithm that also supports categorical data.
-Calls \code{\link[catboost:catboost.train]{catboost::catboost.train()}} from package 'catboost'.
+Calls \code{catboost::catboost.train()} from package 'catboost'.
 }
 \section{Dictionary}{
 
@@ -240,7 +240,7 @@ Create a \code{LearnerRegrCatboost} object.
 \if{latex}{\out{\hypertarget{method-LearnerRegrCatboost-importance}{}}}
 \subsection{Method \code{importance()}}{
 The importance scores are calculated using
-\code{\link[catboost:catboost.get_feature_importance]{catboost.get_feature_importance}},
+\code{catboost::catboost.get_feature_importance()},
 setting \code{type = "FeatureImportance"}, returned for 'all'.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrCatboost$importance()}\if{html}{\out{</div>}}

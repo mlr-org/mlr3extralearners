@@ -6,7 +6,7 @@
 \title{Regression Kernlab Support Vector Machine}
 \description{
 Support Vector Regression.
-Calls \code{\link[kernlab:ksvm]{kernlab::ksvm()}} from \CRANpkg{kernlab}.
+Calls \code{kernlab::ksvm()} from \CRANpkg{kernlab}.
 }
 \section{Dictionary}{
 

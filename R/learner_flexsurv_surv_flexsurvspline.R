@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Flexible survival regression using the Royston/Parmar spline model.
-#' Calls [flexsurv::flexsurvspline()] from \CRANpkg{flexsurv}.
+#' Calls `flexsurv::flexsurvspline()` from \CRANpkg{flexsurv}.
 #'
 #' @template learner
 #' @templateVar id surv.flexspline
@@ -26,29 +26,7 @@
 #' `r format_bib("royston2002flexible")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.flexspline")
-#' library(survival)
-#'
-#' # Define the task, split to train/test set
-#' task = tsk("lung")
-#' set.seed(42)
-#' part = partition(task)
-#'
-#' # Define the learner
-#' learner = lrn("surv.flexspline", k = 1,
-#'   formula = survival::Surv(time, status) ~ age + ph.karno + sex,
-#'   anc = list(gamma1 = ~ sex))
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, part$train)
-#' print(learner$model)
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, part$test)
-#' print(predictions)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_flexsurv
 #' @export
 LearnerSurvFlexSpline = R6Class("LearnerSurvFlexSpline",
   inherit = mlr3proba::LearnerSurv,

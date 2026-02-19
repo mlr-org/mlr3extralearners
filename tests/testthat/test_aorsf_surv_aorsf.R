@@ -6,7 +6,7 @@ test_that("autotest", {
   expect_learner(learner)
   result = run_autotest(learner, N = 30, exclude = "utf8_feature_names",
                         check_replicable = FALSE)
-  expect_true(result)
+  expect_true(result, info = result$error)
 })
 
 test_that("predicted time matches aorsf", {

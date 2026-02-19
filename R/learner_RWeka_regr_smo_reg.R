@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Support Vector Machine for regression.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::make_Weka_classifier()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

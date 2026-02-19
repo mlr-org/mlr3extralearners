@@ -6,7 +6,7 @@
 \title{Regression Conditional Inference Tree Learner}
 \description{
 Regression Partition Tree where a significance test is used to determine the univariate splits.
-Calls \code{\link[partykit:ctree]{partykit::ctree()}} from \CRANpkg{partykit}.
+Calls \code{partykit::ctree()} from \CRANpkg{partykit}.
 }
 \section{Dictionary}{
 

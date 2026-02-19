@@ -6,7 +6,7 @@
 \title{Survival Cox Model with Likelihood Based Boosting Learner}
 \description{
 Fit a Survival Cox model with a likelihood based boosting algorithm.
-Calls \code{\link[CoxBoost:CoxBoost]{CoxBoost::CoxBoost()}} from package 'CoxBoost'.
+Calls \code{CoxBoost::CoxBoost()} from package 'CoxBoost'.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal

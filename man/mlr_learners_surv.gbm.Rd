@@ -6,7 +6,7 @@
 \title{Survival Gradient Boosting Machine Learner}
 \description{
 Gradient Boosting for Survival Analysis.
-Calls \code{\link[gbm:gbm]{gbm::gbm()}} from \CRANpkg{gbm}.
+Calls \code{gbm::gbm()} from \CRANpkg{gbm}.
 }
 \section{Prediction types}{
 

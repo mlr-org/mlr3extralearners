@@ -3,7 +3,7 @@
 #'
 #' @description
 #' Polynomial regression.
-#' Calls [polyreg::polyFit()] from \CRANpkg{polyreg}.
+#' Calls `polyreg::polyFit()` from \CRANpkg{polyreg}.
 #'
 #' @section Initial parameter values:
 #' * `deg`: We have set this to 2, pretty arbitrarily.

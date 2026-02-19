@@ -209,7 +209,7 @@ model = rpart::rpart(mpg ~ ., data = mtcars, xval = 0)
 We need to pass the formula notation `mpg ~ .`, the data and the hyperparameters.
 To get the hyperparameters, we call `self$param_set$get_values(tag = "train")` and thereby query all parameters that are using during `"train"`.
 Then, the dataset is extracted from the `Task`.
-Because the learner has the property `"weights"`, we insert the weights of the task if there are any.
+Because the learner has the property `"weights"`, we insert the weights of the task if there are any, by calling `$.get_weights()` to retrieve them.
 Then we obtain the formula from the task using `task$formula()` and access the training data using `task$data()`.
 Last, we call the upstream function `rpart::rpart()` with the data and pass all hyperparameters via argument `.args` using the `mlr3misc::invoke()` function.
 The latter is simply an optimized version of `do.call()` that we use within the `mlr3` ecosystem.
@@ -319,7 +319,8 @@ If it runs without erroring, that's a very good start!
 
 ### Autotest
 
-To ensure that your learner is able to handle all kinds of different properties and feature types, we have written an "autotest" that checks the learner for different combinations of such.
+To ensure that a learner correctly handles different task properties, feature types, and edge cases, `mlr3extralearners` relies on a standardized autotest framework.
+The autotest systematically evaluates learners across many automatically generated tasks.
 In addition to the autotest we also check some other learner properties using `expect_learner()`.
 See section *run_autotest* and *expect_learner* of `?mlr_test_helpers` for an explanation.
 Because these functions are not in the `mlr3` namespace, we have to source them from the `./testthat` subfolder of the installed `mlr3` package
@@ -331,7 +332,7 @@ lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.
 lapply(list.files(system.file("testthat", package = "mlr3proba"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 ```
 
-We now perform the autotest.
+Below is an example for a simple regression learner:
 By setting `expect_learner(..., check_man = FALSE)`, we disable a test that verifies that the correct manual page exists, which is only relevant when adding the learner to `mlr3extralearners`.
 
 ```{r, eval = FALSE}
@@ -349,6 +350,61 @@ test_that("autotest", {
 ```
 ```
 # Test passed with 20 successes 🥇.
+```
+
+### Skipping tests for optional dependencies
+
+Always add an explicit skip at the top of test files for all learners, for example:
+```{r, eval = FALSE}
+skip_if_not_installed("RpkgName")
+```
+
+This ensures tests fail gracefully on GitHub Actions, where we have a specific workflow that doesn't install packages listed in `Suggests`.
+
+For `Python`-based learners, use the corresponding `reticulate` helper:
+```{r, eval = FALSE}
+skip_if_not_installed_py("PythonpkgName")
+```
+
+### Special considerations for Python learners
+
+`Python`-based learners (via reticulate) **must be isolated from the main R session** during testing.
+This is required for both correctness and stability.
+
+In particular:
+
+- Python learners often depend on Python `torch`, while some R learners depend on the R `torch` package, which loads `libtorch`.
+- Loading multiple `libtorch` binaries (from R and Python, or from different builds) in the same R session can lead to crashes.
+- Different Python learners often require conflicting package dependencies.
+
+Therefore, all Python learner tests must be executed in a fresh R session using `callr`.
+
+A minimal pattern looks like this:
+
+```{r, eval = FALSE}
+skip_if_not_installed_py("torch", "tabpfn")
+test_that("autotest: classif.tabpfn", {
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+
+    library(mlr3)
+    library(mlr3extralearners)
+
+    lapply(
+      list.files(system.file("testthat", package = "mlr3"),
+                 pattern = "^helper.*\\.[rR]",
+                 full.names = TRUE),
+      source
+    )
+
+    learner = lrn("classif.tabpfn")
+    expect_learner(learner)
+
+    result = run_autotest(learner, check_replicable = FALSE)
+    testthat::expect_true(result, info = result$error)
+    TRUE
+  }))
+})
 ```
 
 ### Checking Parameters
@@ -396,14 +452,81 @@ test_that("paramtest", {
 Test passed with 2 successes 🥇.
 ```
 
+## Documenting the Learner
+
+When documenting a learner, examples are crucial to help users understand how to use it.
+The `mlr3extralearners` package uses roxygen2 templates to standardize examples across learners.
+
+### Example Templates
+
+There are three main approaches for learner examples:
+
+1. **Standard template (`@template example`)**: Use this for most learners. It automatically generates a complete example that creates the learner, trains it on an appropriate task (sonar for classification, mtcars for regression, grace for survival), makes predictions, and scores them. If the learner has the `"importance"` property, it also prints the importance scores.
+
+2. **Simple template (`@template simple_example`)**: Use this when the learner cannot easily run on standard tasks without additional configuration, or when training is very slow. This template only creates and prints the learner without training.
+
+3. **Custom templates (`@template example_<name>`)**: Use these when a learner requires specific parameters or task setup that differs from the standard template.
+
+### When to Use Custom Templates
+
+Create a custom template in `man-roxygen/example_<name>.R` when:
+
+* **The learner requires specific parameters to compute importance**: Some learners (e.g., `randomForest`, `rfsrc`, `ranger`) have the `"importance"` property but require an explicit parameter to be set (e.g., `importance = "TRUE"` or `importance = "permutation"`).
+
+* **The learner requires a formula parameter**: Learners like `lme4` (mixed-effects models), `mgcv` (GAMs), or `flexsurv` need a custom formula to demonstrate their functionality.
+
+* **The learner requires custom parameters for small datasets**: Some learners like `laGP` need parameter adjustments (e.g., `end = 15`) to work on small datasets like mtcars.
+
+* **The learner requires a custom task or data setup**: Learners like `prioritylasso` or `blockForest` require a `blocks` parameter that partitions features.
+
+* **The learner has special methods to demonstrate**: The `cmprsk.rfsrc` learner has cause-specific importance that should be shown in the example.
+
+### Creating a Custom Template
+
+Custom templates are placed in `man-roxygen/` and should:
+
+1. Start with a comment explaining why the template is custom
+2. Use roxygen2 template syntax with `<%` and `%>` for R code
+3. Reference the `id` variable (set via `@templateVar id <learner-id>` in the learner file)
+
+Here's an example structure:
+
+```r
+# Custom template for <package> learners (<learner-ids>)
+# Reason: <explanation of why standard template cannot be used>
+<%
+l = lrn(id)
+is_classif = "LearnerClassif" %in% class(l)
+# ... conditional logic based on learner type
+%>
+#'
+#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
+#' # Example code here using <%= id %> for the learner ID
+```
+
+### Using Templates in Learner Files
+
+In your learner's R file, add the template reference in the roxygen documentation:
+
+```r
+#' @templateVar id regr.mylearner
+#' @template learner
+#'
+#' @template seealso_learner
+#' @template example
+#' @export
+```
+
+For custom templates, replace `@template example` with `@template example_<name>`.
+
 ## Contributing to mlr3extralearners
 
 When adding a `Learner` to `mlr3extralearners` there are some additional requirements that have to be satisfied:
 
-* Adding the line `.extralrns_dict$add("<learner-id>", function() <LearnerName>$new())` to the bottom of the learner file to add the learner to the learners `Dictionary`.
+* Adding the line `.extralrns_dict$add("<learner-id>", <LearnerClassName>)` to the bottom of the learner file to add the learner to the learners `Dictionary`.
 * Add the learner dependencies to *Suggests* (and not e.g. to *Imports*) in the DESCRIPTION file.
 * The learner must be properly documented. Check the other learners for how to do this.
 * Conforming to the `mlr3` [style guide](https://github.com/mlr-org/mlr3/wiki/Style-Guide).
 * The tests must pass in the CI (also check the CodeFactor results).
 * Update the `NEWS.md` file and describe that you added the learner.
-* Add yourself as a contributor
+* Add yourself as a contributor (`ctb` role)

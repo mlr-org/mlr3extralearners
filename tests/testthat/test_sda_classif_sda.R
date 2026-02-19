@@ -7,5 +7,5 @@ test_that("autotest", {
   capture.output({
     result = run_autotest(learner)
   })
-  expect_true(result)
+  expect_true(result, info = result$error)
 })

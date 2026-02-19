@@ -7,7 +7,7 @@
 \description{
 Algorithm for inducing \href{https://en.wikipedia.org/wiki/Decision_list}{decision lists} from
 model trees.
-Calls \code{\link[RWeka:Weka_classifier_rules]{RWeka::M5Rules()}} from \CRANpkg{RWeka}.
+Calls \code{RWeka::M5Rules()} from \CRANpkg{RWeka}.
 }
 \section{Dictionary}{
 

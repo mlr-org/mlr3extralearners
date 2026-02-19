@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Parametric survival model.
-#' Calls [survivalmodels::parametric()] from package 'survivalmodels'.
+#' Calls `survivalmodels::parametric()` from package 'survivalmodels'.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -29,9 +29,9 @@
 #' This learner allows you to choose a **distribution** and a **model form** to compose
 #' a predicted survival probability distribution \eqn{S(t)}.
 #'
-#' The predict method is implemented in [survivalmodels::predict.parametric()].
+#' The predict method is implemented in `survivalmodels::predict.parametric()`.
 #' Our implementation is more efficient for composition to distributions than
-#' [survival::predict.survreg()].
+#' `survival::predict.survreg()`.
 #'
 #' The available model forms with their respective survival functions, are as follows:
 #'

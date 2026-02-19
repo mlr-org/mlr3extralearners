@@ -31,7 +31,6 @@ jobs:
         config:
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'devel'}
-          - {os: ubuntu-latest, r: 'release', depends_only: true}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -53,14 +52,17 @@ jobs:
           needs: check
           cache: "always"
 
+      - name: Install torch backend
+        if: ${{ !matrix.config.depends_only }}
+        run: |
+          R -q -e 'install.packages("torch")'
+          R -q -e 'torch::install_torch()'
+
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
         with:
           limit-access-to-actor: true
 
       - uses: r-lib/actions/check-r-package@v2
-        env:
-          _R_CHECK_DEPENDS_ONLY_: ${{ matrix.config.depends_only && 'TRUE' || 'FALSE' }}
-          NOT_CRAN: ${{ matrix.config.depends_only && 'FALSE' || 'TRUE' }}
         with:
-          error-on: '"error"'
+          error-on: '"note"'

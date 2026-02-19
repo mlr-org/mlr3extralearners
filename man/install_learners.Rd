@@ -12,8 +12,8 @@ learners to install.}
 
 \item{repos}{(\code{character(1)}) \cr Passed to \link[utils:install.packages]{utils::install.packages}.}
 
-\item{...}{(\code{ANY}) \cr Additional options to pass to \link[utils:install.packages]{utils::install.packages} or
-\link[remotes:install_github]{remotes::install_github}.}
+\item{...}{(\code{ANY}) \cr Additional options to pass to \code{utils::install.packages()} or
+\code{remotes::install_github()}.}
 }
 \description{
 Install required dependencies for specified learners. Works for packages on

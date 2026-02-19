@@ -6,7 +6,7 @@
 \title{Accelerated Oblique Random Survival Forest Learner}
 \description{
 Accelerated oblique random survival forest.
-Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Calls \code{aorsf::orsf()} from \CRANpkg{aorsf}.
 Note that although the learner has the property \code{"missing"} and it can in
 principle deal with missing values, the behaviour has to be configured using
 the parameter \code{na_action}.
@@ -37,7 +37,7 @@ represented in rows and (unique event) time points in columns.
 Calculated using the internal \code{predict.ObliqueForest()} function.
 \item \code{response}: the restricted mean survival time of each test observation,
 derived from the survival matrix prediction (\code{distr}).
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 

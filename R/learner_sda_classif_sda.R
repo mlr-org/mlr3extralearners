@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Shrinkage Discriminant Analysis for classification.
-#' Calls [sda::sda()] from \CRANpkg{sda}.
+#' Calls `sda::sda()` from \CRANpkg{sda}.
 #'
 #' @templateVar id classif.sda
 #' @template learner
