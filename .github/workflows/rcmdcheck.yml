@@ -49,6 +49,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
+          extra-repositories: https://xoopr.r-universe.dev
           needs: check
           cache: "always"
 

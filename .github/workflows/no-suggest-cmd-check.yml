@@ -48,6 +48,7 @@ jobs:
             any::testthat
             any::knitr
             any::rmarkdown
+          extra-repositories: https://xoopr.r-universe.dev
           needs: check
           dependencies: '"hard"'
           cache: false
