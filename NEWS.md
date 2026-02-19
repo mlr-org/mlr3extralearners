@@ -3,11 +3,12 @@
 
 ## New Features
 
-- `LearnerClassifLvq1`
+* New Learners:
+  - `LearnerClassifLvq1`
   - `LearnerRegrGPfit`
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
-- `LearnerSurvDNN`
+  - `LearnerSurvDNN`
 
 ## Other
 
