@@ -15,8 +15,6 @@ if (requireNamespace("reticulate", quietly = TRUE)) {
   if (length(detritus)) unlink(detritus, recursive = TRUE, force = TRUE)
 
   # created by fastai test
-  detritus = list.files(python_temp_dir, pattern = "^tmp[a-z0-9]{8}$", full.names = TRUE)
-  if (length(detritus)) unlink(detritus, recursive = TRUE, force = TRUE)
-  detritus = list.files(python_temp_dir, pattern = "^tmp[A-Za-z0-9]*_[A-Za-z0-9]*$", full.names = TRUE)
+  detritus = list.files(python_temp_dir, pattern = "^tmp[A-Za-z0-9_]{8}$", full.names = TRUE)
   if (length(detritus)) unlink(detritus, recursive = TRUE, force = TRUE)
 }

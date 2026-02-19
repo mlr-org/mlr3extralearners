@@ -4,6 +4,9 @@
 ## New Features
 
 - `LearnerClassifLvq1`
+  - `LearnerRegrGPfit`
+  - `LearnerClassifMLP`
+  - `LearnerClassifSaeDNN`
 - `LearnerSurvDNN`
 
 ## Other
