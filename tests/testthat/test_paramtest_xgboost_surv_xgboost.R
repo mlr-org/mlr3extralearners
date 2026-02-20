@@ -29,7 +29,7 @@ test_that("surv.xgboost", {
     "quantile_alpha", # for quantile regression only
     "aft_loss_distribution", # only for AFT objective, not for Cox
     "aft_loss_distribution_scale", # only for AFT objective, not for Cox
-    "extmem_single_page" # inconsisten behavior on CI
+    "extmem_single_page" # inconsistent behavior on CI
     # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
   )
 
