@@ -28,8 +28,9 @@ test_that("surv.xgboost", {
     "huber_slope", # for regression only
     "quantile_alpha", # for quantile regression only
     "aft_loss_distribution", # only for AFT objective, not for Cox
-    "aft_loss_distribution_scale" # only for AFT objective, not for Cox
+    "aft_loss_distribution_scale", # only for AFT objective, not for Cox
     # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
+    "extmem_single_page" # inconsistent behavior on CI
   )
 
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
