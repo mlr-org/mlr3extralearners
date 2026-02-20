@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Penalized (L1 and L2) Logistic Regression.
-#' Calls [penalized::penalized()] from: \CRANpkg{penalized}.
+#' Calls `penalized::penalized()` from: \CRANpkg{penalized}.
 #'
 #' @section Initial parameter values:
 #' - `trace` is set to `"FALSE"` to disable printing output during model training.
@@ -14,7 +14,7 @@
 #'
 #' @details
 #' The `penalized` and `unpenalized` arguments in the learner are implemented slightly
-#' differently than in [penalized::penalized()]. Here, there is no parameter for `penalized` but
+#' differently than in `penalized::penalized()`. Here, there is no parameter for `penalized` but
 #' instead it is assumed that every variable is penalized unless stated in the `unpenalized`
 #' parameter.
 #'

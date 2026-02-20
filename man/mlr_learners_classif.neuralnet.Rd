@@ -5,7 +5,7 @@
 \alias{LearnerClassifNeuralnet}
 \title{Classification Neural Network Learner}
 \description{
-Calls \code{\link[neuralnet:neuralnet]{neuralnet::neuralnet()}} from \CRANpkg{neuralnet}.
+Calls \code{neuralnet::neuralnet()} from \CRANpkg{neuralnet}.
 }
 \section{Initial parameter values}{
 

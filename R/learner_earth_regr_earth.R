@@ -7,7 +7,7 @@
 #' MARS is trademarked and thus not used as the name. The name "earth" stands for
 #' "Enhanced Adaptive Regression Through Hinges".
 #'
-#' Calls [earth::earth()] from \CRANpkg{earth}.
+#' Calls `earth::earth()` from \CRANpkg{earth}.
 #'
 #' @template learner
 #' @templateVar id regr.earth

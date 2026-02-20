@@ -6,7 +6,7 @@
 \title{Survival Flexible Parametric Spline Learner}
 \description{
 Flexible survival regression using the Royston/Parmar spline model.
-Calls \code{\link[flexsurv:flexsurvspline]{flexsurv::flexsurvspline()}} from \CRANpkg{flexsurv}.
+Calls \code{flexsurv::flexsurvspline()} from \CRANpkg{flexsurv}.
 }
 \section{Dictionary}{
 

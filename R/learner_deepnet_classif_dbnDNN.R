@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Deep neural network with weights initialized by a deep belief network.
-#' Calls [deepnet::dbn.dnn.train()] from \CRANpkg{deepnet}.
+#' Calls `deepnet::dbn.dnn.train()` from \CRANpkg{deepnet}.
 #' 
 #' This learner works with tasks that have at least two features.
 #'
@@ -85,19 +85,21 @@ LearnerClassifDbnDNN = R6Class("LearnerClassifDbnDNN",
         self$model,
         newdata
       )
+      
+      class_names = task$class_names
 
-      pred = as.matrix(pred)
-      colnames(pred) = task$class_names
+      prob = as.matrix(pred)
+      colnames(prob) = class_names
 
       if (self$predict_type == "response") {
         response = factor(
-          task$class_names[max.col(pred, ties.method = "first")],
-          levels = task$class_names
+          class_names[max.col(prob, ties.method = "first")],
+          levels = class_names
         )
         return(list(response = response))
       }
 
-      list(prob = pred)
+      list(prob = prob)
     }
   )
 )

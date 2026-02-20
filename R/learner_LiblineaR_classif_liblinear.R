@@ -4,7 +4,7 @@
 #'
 #' @description
 #' L2 regularized support vector classification.
-#' Calls [LiblineaR::LiblineaR()] from \CRANpkg{LiblineaR}.
+#' Calls `LiblineaR::LiblineaR()` from \CRANpkg{LiblineaR}.
 #'
 #' @template learner
 #' @templateVar id classif.liblinear
@@ -24,7 +24,7 @@
 #' (Hsu et al. 2003).
 #'
 #' Note that probabilistic predictions are only available for types `0`, `6`, and `7`.
-#' The default `epsilon` value depends on the `type` parameter, see [LiblineaR::LiblineaR].
+#' The default `epsilon` value depends on the `type` parameter, see `LiblineaR::LiblineaR()`.
 #'
 #' @references
 #' `r format_bib("fan2008liblinear")`

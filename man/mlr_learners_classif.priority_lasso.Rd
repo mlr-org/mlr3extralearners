@@ -6,7 +6,7 @@
 \title{Classification Priority Lasso Learner}
 \description{
 Patient outcome prediction based on multi-omics data taking practitioners’ preferences into account.
-Calls \code{\link[prioritylasso:prioritylasso]{prioritylasso::prioritylasso()}} from \CRANpkg{prioritylasso}.
+Calls \code{prioritylasso::prioritylasso()} from \CRANpkg{prioritylasso}.
 }
 \section{Initial parameter values}{
 

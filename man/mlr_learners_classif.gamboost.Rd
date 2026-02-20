@@ -6,7 +6,7 @@
 \title{Boosted Generalized Additive Classification Learner}
 \description{
 Fit a generalized additive classification model using a boosting algorithm.
-Calls \code{\link[mboost:gamboost]{mboost::gamboost()}}  from \CRANpkg{mboost}.
+Calls \code{mboost::gamboost()}  from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 

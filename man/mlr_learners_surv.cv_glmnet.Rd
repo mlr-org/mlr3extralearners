@@ -6,7 +6,7 @@
 \title{Cross-Validated GLM with Elastic Net Regularization Survival Learner}
 \description{
 Generalized linear models with elastic net regularization.
-Calls \code{\link[glmnet:cv.glmnet]{glmnet::cv.glmnet()}} from package \CRANpkg{glmnet}.
+Calls \code{glmnet::cv.glmnet()} from package \CRANpkg{glmnet}.
 }
 \section{Initial parameter values}{
 
@@ -21,13 +21,13 @@ This learner returns three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[glmnet:predict.cv.glmnet]{glmnet::predict.cv.glmnet()}}.
+Calculated using \code{glmnet::predict.cv.glmnet()}.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[glmnet:survfit.cv.glmnet]{glmnet::survfit.cv.glmnet()}}.
+Calculated using \code{glmnet::survfit.cv.glmnet()}.
 Parameters \code{stype} and \code{ctype} relate to how \code{lp} predictions are transformed
-into survival predictions and are described in \code{\link[survival:survfit.coxph]{survival::survfit.coxph()}}.
+into survival predictions and are described in \code{survival::survfit.coxph()}.
 By default the Breslow estimator is used for computing the baseline hazard.
 }
 }
@@ -103,9 +103,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Offset}{
 
 If a \code{Task} contains a column with the \code{offset} role, it is automatically
-incorporated during training via the \code{offset} argument in \code{\link[glmnet:glmnet]{glmnet::glmnet()}}.
+incorporated during training via the \code{offset} argument in \code{glmnet::glmnet()}.
 During prediction, the offset column from the test set is used only if
-\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{\link[glmnet:predict.glmnet]{glmnet::predict.coxnet()}}.
+\code{use_pred_offset = TRUE} (default), passed via the \code{newoffset} argument in \code{glmnet::predict.coxnet()}.
 Otherwise, if the user sets \code{use_pred_offset = FALSE}, a zero offset is applied,
 effectively disabling the offset adjustment during prediction.
 }
@@ -196,7 +196,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvCVGlmnet-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvCVGlmnet-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Returns the set of selected features as reported by \code{\link[glmnet:predict.glmnet]{glmnet::predict.glmnet()}}
+Returns the set of selected features as reported by \code{glmnet::predict.glmnet()}
 with \code{type} set to \code{"nonzero"}.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{LearnerSurvCVGlmnet$selected_features(lambda = NULL)}\if{html}{\out{</div>}}

@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Support vector machine for classification.
-#' Calls [kernlab::ksvm()] from \CRANpkg{kernlab}.
+#' Calls `kernlab::ksvm()` from \CRANpkg{kernlab}.
 #'
 #' @template learner
 #' @templateVar id classif.ksvm

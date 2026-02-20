@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Regression partition tree.
-#' Calls [RWeka::PART()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::PART()` from \CRANpkg{RWeka}.
 #'
 #' @template learner
 #' @templateVar id classif.PART

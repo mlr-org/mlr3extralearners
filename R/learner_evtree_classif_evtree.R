@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Evolutionary learning of globally optimal classification trees.
-#' Calls [evtree::evtree()] from\CRANpkg{evtree}.
+#' Calls `evtree::evtree()` from\CRANpkg{evtree}.
 #'
 #' @section Initial parameter values:
 #' `pmutatemajor`, `pmutateminor`, `pcrossover`, `psplit`, and `pprune`,
@@ -13,12 +13,7 @@
 #' @templateVar id classif.evtree
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("classif.evtree")
-#' task = tsk("iris")
-#' learner = lrn("classif.evtree", ntrees = 50)
-#' splits = partition(task)
-#' learner$train(task, splits$train)
-#' pred = learner$predict(task, splits$test)
+#' @template example
 #' @export
 LearnerClassifEvtree = R6Class("LearnerClassifEvtree",
   inherit = LearnerClassif,

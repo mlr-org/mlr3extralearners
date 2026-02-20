@@ -6,7 +6,7 @@
 \title{Survival Support Vector Machine Learner}
 \description{
 Survival support vector machine.
-Calls \code{\link[survivalsvm:survivalsvm]{survivalsvm::survivalsvm()}} from \CRANpkg{survivalsvm}.
+Calls \code{survivalsvm::survivalsvm()} from \CRANpkg{survivalsvm}.
 }
 \details{
 Four possible SVMs can be implemented, dependent on the \code{type} parameter. These correspond

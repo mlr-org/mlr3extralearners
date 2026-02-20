@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Simple Decision Table majority classifier.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::make_Weka_classifier()` from \CRANpkg{RWeka}.
 #'
 #' @section Initial parameter values:
 #' - `E`:

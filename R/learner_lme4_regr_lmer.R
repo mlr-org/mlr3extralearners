@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Linear model with random effects.
-#' Calls [lme4::lmer()] from \CRANpkg{lme4}.
+#' Calls `lme4::lmer()` from \CRANpkg{lme4}.
 #'
 #' @template section_formula
 #'
@@ -13,22 +13,14 @@
 #'
 #' @section Offset:
 #' If a `Task` contains a column with the `offset` role, it is automatically
-#' incorporated during training via the `offset` argument in [lme4::lmer()].
+#' incorporated during training via the `offset` argument in `lme4::lmer()`.
 #' No offset is applied during prediction for this learner.
 #'
 #' @references
 #' `r format_bib("bates2010lme4")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("regr.lmer")
-#' # Define the Learner and set parameter values
-#' learner = lrn("regr.lmer", formula = mpg ~ (1 | gear))
-#'
-#' # Define a Task
-#' task = tsk("mtcars")
-#'
-#' learner$train(task)
-#' print(learner$model)
+#' @template example_lme4
 #' @export
 LearnerRegrLmer = R6Class("LearnerRegrLmer",
   inherit = LearnerRegr,

@@ -6,7 +6,7 @@
 \title{Regression Splines Learner}
 \description{
 Categorical Regression Splines.
-Calls \code{\link[crs:crs]{crs::crs()}} from \CRANpkg{crs}.
+Calls \code{crs::crs()} from \CRANpkg{crs}.
 }
 \section{Dictionary}{
 

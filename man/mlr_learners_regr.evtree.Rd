@@ -6,7 +6,7 @@
 \title{Regression Decision Tree Learner}
 \description{
 Evolutionary learning of globally optimal regression trees.
-Calls \code{\link[evtree:evtree]{evtree::evtree()}} from\CRANpkg{evtree}.
+Calls \code{evtree::evtree()} from\CRANpkg{evtree}.
 }
 \section{Initial parameter values}{
 

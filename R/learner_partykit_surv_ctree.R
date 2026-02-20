@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Survival Partition Tree where a significance test is used to determine the univariate splits.
-#' Calls [partykit::ctree()] from \CRANpkg{partykit}.
+#' Calls `partykit::ctree()` from \CRANpkg{partykit}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal [partykit::predict.party()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' Calculated using the internal `partykit::predict.party()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @template learner
 #' @templateVar id surv.ctree

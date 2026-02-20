@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian regularization for feed-forward neural networks.
-#' Calls [brnn::brnn] from \CRANpkg{brnn}.
+#' Calls `brnn::brnn()` from \CRANpkg{brnn}.
 #'
 #' @templateVar id regr.brnn
 #' @template learner

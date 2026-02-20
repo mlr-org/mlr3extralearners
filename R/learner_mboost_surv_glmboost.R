@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fits a generalized linear survival model using a boosting algorithm.
-#' Calls [mboost::glmboost()] from \CRANpkg{mboost}.
+#' Calls `mboost::glmboost()` from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id surv.glmboost
@@ -13,13 +13,13 @@
 #' This learner returns two to three prediction types:
 #' 1. `lp`: a vector containing the linear predictors (relative risk scores),
 #' where each score corresponds to a specific test observation.
-#' Calculated using [mboost::predict.glmboost()].
+#' Calculated using `mboost::predict.glmboost()`.
 #' If the `family` parameter is not `"coxph"`, `-lp` is returned, since non-coxph
 #' families represent AFT-style distributions where lower `lp` values indicate higher risk.
 #' 2. `crank`: same as `lp`.
 #' 3. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using [mboost::survFit()].
+#' Calculated using `mboost::survFit()`.
 #' This prediction type is present only when the `family` distribution parameter
 #' is equal to `"coxph"` (default).
 #' By default the Breslow estimator is used for computing the baseline hazard.
@@ -78,7 +78,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     },
 
     #' @description
-    #' Importance scores are extracted with the function [mboost::varimp()] and
+    #' Importance scores are extracted with the function `mboost::varimp()` and
     #' represent a feature's individual contribution to the risk reduction per
     #' boosting step of the fitted model.
     #' The higher the risk reduction, the larger the feature importance.
@@ -107,7 +107,7 @@ LearnerSurvGLMBoost = R6Class("LearnerSurvGLMBoost",
     },
 
     #' @description
-    #' Selected features are extracted with the function [mboost::coef.glmboost()]
+    #' Selected features are extracted with the function `mboost::coef.glmboost()`
     #' which by default returns features with non-zero coefficients and for the
     #' final number of boosting iterations.
     #'

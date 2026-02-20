@@ -6,10 +6,10 @@
 \title{Gradient Boosting with Regression Trees Survival Learner}
 \description{
 Gradient boosting with regression trees for survival analysis.
-Calls \code{\link[mboost:blackboost]{mboost::blackboost()}} from \CRANpkg{mboost}.
+Calls \code{mboost::blackboost()} from \CRANpkg{mboost}.
 }
 \details{
-\code{distr} prediction made by \code{\link[mboost:survFit]{mboost::survFit()}}.
+\code{distr} prediction made by \code{mboost::survFit()}.
 }
 \section{Prediction types}{
 
@@ -17,13 +17,13 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.blackboost()}}.
+Calculated using \code{mboost::predict.blackboost()}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}}.
+Calculated using \code{mboost::survFit()}.
 This prediction type is present only when the \code{family} distribution parameter
 is equal to \code{"coxph"} (default).
 By default the Breslow estimator is used for computing the baseline hazard.

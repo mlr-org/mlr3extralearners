@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Implements base routines for generating M5 Model trees and rules.
-#' Calls [RWeka::M5P()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::M5P()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

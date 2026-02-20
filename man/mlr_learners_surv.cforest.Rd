@@ -5,8 +5,8 @@
 \alias{LearnerSurvCForest}
 \title{Survival Conditional Random Forest Learner}
 \description{
-A random forest based on conditional inference trees (\link[partykit:ctree]{ctree}).
-Calls \code{\link[partykit:cforest]{partykit::cforest()}} from \CRANpkg{partykit}.
+A random forest based on conditional inference trees (\code{partykit::ctree()}).
+Calls \code{partykit::cforest()} from \CRANpkg{partykit}.
 }
 \section{Prediction types}{
 
@@ -14,8 +14,8 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using the internal \code{\link[partykit:cforest]{partykit::predict.cforest()}} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+Calculated using the internal \code{partykit::predict.cforest()} function.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 
@@ -110,11 +110,27 @@ Note that \code{mtry} and \code{mtryratio} are mutually exclusive.
 
 \examples{
 \dontshow{if (learner_is_runnable("surv.cforest")) withAutoprint(\{ # examplesIf}
-task = tsk("rats")
-learner = lrn("surv.cforest", ntree = 50)
-splits = partition(task)
-learner$train(task, splits$train)
-pred = learner$predict(task, splits$test)
+# Define the Learner
+learner = lrn("surv.cforest")
+print(learner)
+
+# Define a Task
+task = tsk("grace")
+
+# Create train and test set
+ids = partition(task)
+
+# Train the learner on the training ids
+learner$train(task, row_ids = ids$train)
+
+print(learner$model)
+
+
+# Make predictions for the test rows
+predictions = learner$predict(task, row_ids = ids$test)
+
+# Score the predictions
+predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{

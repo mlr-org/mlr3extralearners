@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Bayesian CART regression model.
-#' Calls [tgp::bcart()] from \CRANpkg{tgp}.
+#' Calls `tgp::bcart()` from \CRANpkg{tgp}.
 #' For the predicted mean ZZ.km and for the predicted variance ZZ.ks2 are chosen.
 #'
 #' Factor features are one-hot encoded with reference encoding before fitting, matching the

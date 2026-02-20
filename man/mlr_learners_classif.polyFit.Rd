@@ -6,7 +6,7 @@
 \title{Polynomial GLM Learner}
 \description{
 Polynomial GLM.
-Calls \code{\link[polyreg:polyFit]{polyreg::polyFit()}} from \CRANpkg{polyreg}.
+Calls \code{polyreg::polyFit()} from \CRANpkg{polyreg}.
 }
 \section{Initial parameter values}{
 

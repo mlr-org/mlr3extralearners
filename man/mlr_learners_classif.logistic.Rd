@@ -6,7 +6,7 @@
 \title{Classification Logistic Regression Learner}
 \description{
 Multinomial Logistic Regression model with a ridge estimator.
-Calls \code{\link[RWeka:Weka_classifier_functions]{RWeka::Logistic()}} from \CRANpkg{RWeka}.
+Calls \code{RWeka::Logistic()} from \CRANpkg{RWeka}.
 }
 \section{Custom mlr3 parameters}{
 

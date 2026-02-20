@@ -6,7 +6,7 @@
 \title{Boosted Generalized Linear Survival Learner}
 \description{
 Fits a generalized linear survival model using a boosting algorithm.
-Calls \code{\link[mboost:glmboost]{mboost::glmboost()}} from \CRANpkg{mboost}.
+Calls \code{mboost::glmboost()} from \CRANpkg{mboost}.
 }
 \section{Dictionary}{
 
@@ -52,13 +52,13 @@ This learner returns two to three prediction types:
 \enumerate{
 \item \code{lp}: a vector containing the linear predictors (relative risk scores),
 where each score corresponds to a specific test observation.
-Calculated using \code{\link[mboost:methods]{mboost::predict.glmboost()}}.
+Calculated using \code{mboost::predict.glmboost()}.
 If the \code{family} parameter is not \code{"coxph"}, \code{-lp} is returned, since non-coxph
 families represent AFT-style distributions where lower \code{lp} values indicate higher risk.
 \item \code{crank}: same as \code{lp}.
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using \code{\link[mboost:survFit]{mboost::survFit()}}.
+Calculated using \code{mboost::survFit()}.
 This prediction type is present only when the \code{family} distribution parameter
 is equal to \code{"coxph"} (default).
 By default the Breslow estimator is used for computing the baseline hazard.
@@ -158,7 +158,7 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-importance"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-importance}{}}}
 \subsection{Method \code{importance()}}{
-Importance scores are extracted with the function \code{\link[mboost:varimp]{mboost::varimp()}} and
+Importance scores are extracted with the function \code{mboost::varimp()} and
 represent a feature's individual contribution to the risk reduction per
 boosting step of the fitted model.
 The higher the risk reduction, the larger the feature importance.
@@ -178,7 +178,7 @@ Named \code{numeric()}.
 \if{html}{\out{<a id="method-LearnerSurvGLMBoost-selected_features"></a>}}
 \if{latex}{\out{\hypertarget{method-LearnerSurvGLMBoost-selected_features}{}}}
 \subsection{Method \code{selected_features()}}{
-Selected features are extracted with the function \code{\link[mboost:methods]{mboost::coef.glmboost()}}
+Selected features are extracted with the function \code{mboost::coef.glmboost()}
 which by default returns features with non-zero coefficients and for the
 final number of boosting iterations.
 

@@ -6,7 +6,7 @@
 \title{Classification Least Squares Support Vector Machine Learner}
 \description{
 Least squares support vector machine for classification.
-Calls \code{\link[kernlab:lssvm]{kernlab::lssvm()}} from \CRANpkg{kernlab}.
+Calls \code{kernlab::lssvm()} from \CRANpkg{kernlab}.
 Parameters \code{sigma}, \code{degree}, \code{scale}, \code{offset}, \code{order}, \code{length},
 \code{lambda}, and \code{normalized} are added to make tuning \code{kpar} easier.
 If \code{kpar} is provided then these new parameters are ignored. If none are

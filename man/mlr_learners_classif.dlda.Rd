@@ -10,7 +10,7 @@ Belongs to the family of Naive Bayes classifiers, where the distributions of
 each class are assumed to be multivariate normal and to share a common
 covariance matrix. Off-diagonal elements of the pooled sample covariance matrix
 are set to zero
-Calls \code{\link[sparsediscrim:lda_diag]{sparsediscrim::lda_diag()}} from \CRANpkg{sparsediscrim}.
+Calls \code{sparsediscrim::lda_diag()} from \CRANpkg{sparsediscrim}.
 }
 \section{Dictionary}{
 

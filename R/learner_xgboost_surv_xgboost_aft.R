@@ -5,7 +5,7 @@
 #' @description
 #' eXtreme Gradient Boosting regression using an **Accelerated Failure Time**
 #' objective.
-#' Calls [xgboost::xgb.train()] from package \CRANpkg{xgboost} with `objective`
+#' Calls `xgboost::xgb.train()` from package \CRANpkg{xgboost} with `objective`
 #' set to `survival:aft` and `eval_metric` to `aft-nloglik`.
 #'
 #' @section Prediction types:
@@ -120,7 +120,7 @@ LearnerSurvXgboostAFT = R6Class("LearnerSurvXgboostAFT",
     },
 
     #' @description
-    #' The importance scores are calculated with [xgboost::xgb.importance()].
+    #' The importance scores are calculated with `xgboost::xgb.importance()`.
     #'
     #' @return Named `numeric()`.
     importance = function() {

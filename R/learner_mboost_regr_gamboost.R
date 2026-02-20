@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Fit a generalized additive regression model using a boosting algorithm.
-#' Calls [mboost::gamboost()]  from \CRANpkg{mboost}.
+#' Calls `mboost::gamboost()`  from \CRANpkg{mboost}.
 #'
 #' @template learner
 #' @templateVar id regr.gamboost
@@ -16,10 +16,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @examples
-#' # Define the Learner
-#' learner = lrn("regr.gamboost", baselearner = "bols")
-#' print(learner)
+#' @template example_simple
 LearnerRegrGAMBoost = R6Class("LearnerRegrGAMBoost",
   inherit = LearnerRegr,
   public = list(

@@ -1,5 +1,17 @@
 # mlr3extralearners (development version)
 
+## New Features
+
+* New Learners:
+  - `LearnerRegrGPfit`
+  - `LearnerClassifMLP`
+  - `LearnerClassifSaeDNN`
+  - `LearnerSurvDNN`
+
+## Other
+
+- Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
+
 # mlr3extralearners 1.4.0
 
 ## New Features

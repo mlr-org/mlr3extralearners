@@ -6,7 +6,7 @@
 \title{Classification Neural Network Learner}
 \description{
 Simple and fast neural nets for tabular data classification.
-Calls \code{\link[fastai:tabular_learner]{fastai::tabular_learner()}} from package \CRANpkg{fastai}.
+Calls \code{fastai::tabular_learner()} from package \CRANpkg{fastai}.
 }
 \section{Installation}{
 
@@ -27,10 +27,10 @@ After loading a marshaled \code{lrn("classif.fastai")} into R again, you then ne
 
 \itemize{
 \item \code{n_epoch}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::fit()}} to work.
+Needs to be set for \code{fastai::fit()} to work.
 If no value is given, it is set to 5.
 \item \code{eval_metric}:
-Needs to be set for \code{\link[fastai:reexports]{fastai::predict()}} to work.
+Needs to be set for \code{fastai::predict()} to work.
 If no value is given, it is set to \code{fastai::accuracy()}.
 }
 }

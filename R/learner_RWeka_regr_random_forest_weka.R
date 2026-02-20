@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Class for constructing a forest of random trees.
-#' Calls [RWeka::make_Weka_classifier()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::make_Weka_classifier()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

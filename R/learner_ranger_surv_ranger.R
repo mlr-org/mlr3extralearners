@@ -4,14 +4,14 @@
 #'
 #' @description
 #' Random survival forest.
-#' Calls [ranger::ranger()] from package \CRANpkg{ranger}.
+#' Calls `ranger::ranger()` from package \CRANpkg{ranger}.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and (unique event) time points in columns.
-#' Calculated using the internal [ranger::predict.ranger()] function.
-#' 2. `crank`: the expected mortality using [mlr3proba::surv_return()].
+#' Calculated using the internal `ranger::predict.ranger()` function.
+#' 2. `crank`: the expected mortality using `mlr3proba::surv_return()`.
 #'
 #' @section Custom mlr3 parameters:
 #' - `mtry`: This hyperparameter can alternatively be set via our hyperparameter
@@ -28,28 +28,7 @@
 #' `r format_bib("wright_2017", "breiman_2001")`
 #'
 #' @template seealso_learner
-#' @examplesIf learner_is_runnable("surv.ranger")
-#' # Define the Learner
-#' learner = lrn("surv.ranger", importance = "permutation")
-#' print(learner)
-#'
-#' # Define a Task
-#' task = tsk("grace")
-#'
-#' # Create train and test set
-#' ids = partition(task)
-#'
-#' # Train the learner on the training ids
-#' learner$train(task, row_ids = ids$train)
-#'
-#' print(learner$model)
-#' print(learner$importance())
-#'
-#' # Make predictions for the test rows
-#' predictions = learner$predict(task, row_ids = ids$test)
-#'
-#' # Score the predictions
-#' predictions$score()
+#' @template example_ranger
 #' @export
 LearnerSurvRanger = R6Class("LearnerSurvRanger",
   inherit = mlr3proba::LearnerSurv,

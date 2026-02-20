@@ -6,7 +6,7 @@
 \title{Survival Conditional Inference Tree Learner}
 \description{
 Survival Partition Tree where a significance test is used to determine the univariate splits.
-Calls \code{\link[partykit:ctree]{partykit::ctree()}} from \CRANpkg{partykit}.
+Calls \code{partykit::ctree()} from \CRANpkg{partykit}.
 }
 \section{Prediction types}{
 
@@ -14,8 +14,8 @@ This learner returns two prediction types:
 \enumerate{
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
-Calculated using the internal \code{\link[partykit:party-predict]{partykit::predict.party()}} function.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+Calculated using the internal \code{partykit::predict.party()} function.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 

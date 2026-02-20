@@ -5,7 +5,7 @@
 #' @description
 #' MCP- or SCAD-penalized binary classification model with k-fold cross validation
 #' for choosing the regularization parameter lambda.
-#' Calls [ncvreg::cv.ncvreg()] from package \CRANpkg{ncvreg} with `family` set to
+#' Calls `ncvreg::cv.ncvreg()` from package \CRANpkg{ncvreg} with `family` set to
 #' `"binomial"`.
 #' Covariates are internally standardized by `ncvreg` prior to model fitting.
 #'

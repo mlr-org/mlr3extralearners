@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Support Vector classifier trained with John Platt's sequential minimal optimization algorithm.
-#' Calls [RWeka::SMO()] from \CRANpkg{RWeka}.
+#' Calls `RWeka::SMO()` from \CRANpkg{RWeka}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `output_debug_info`:

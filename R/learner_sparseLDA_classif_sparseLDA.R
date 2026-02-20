@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Sparse Linear Discriminant Analysis for classification.
-#' Calls [sparseLDA::sda()] from \CRANpkg{sparseLDA}.
+#' Calls `sparseLDA::sda()` from \CRANpkg{sparseLDA}.
 #'
 #' @section Custom mlr3 parameters:
 #' - `Q` is set internally to `min(n_features, n_classes - 1)` when not supplied.

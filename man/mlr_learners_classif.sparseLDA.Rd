@@ -6,7 +6,7 @@
 \title{Sparse Discriminant Analysis}
 \description{
 Sparse Linear Discriminant Analysis for classification.
-Calls \code{\link[sparseLDA:sda]{sparseLDA::sda()}} from \CRANpkg{sparseLDA}.
+Calls \code{sparseLDA::sda()} from \CRANpkg{sparseLDA}.
 }
 \section{Custom mlr3 parameters}{
 

@@ -6,7 +6,7 @@
 \title{Survival Flexible Parametric Learner}
 \description{
 Flexible parametric learner.
-Calls \code{\link[flexsurv:flexsurvreg]{flexsurv::flexsurvreg()}} from \CRANpkg{flexsurv}.
+Calls \code{flexsurv::flexsurvreg()} from \CRANpkg{flexsurv}.
 }
 \section{Dictionary}{
 

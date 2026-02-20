@@ -6,7 +6,7 @@
 \title{Oblique Random Forest Classifier}
 \description{
 Accelerated oblique random classification forest.
-Calls \code{\link[aorsf:orsf]{aorsf::orsf()}} from \CRANpkg{aorsf}.
+Calls \code{aorsf::orsf()} from \CRANpkg{aorsf}.
 Note that although the learner has the property \code{"missing"} and it can in
 principle deal with missing values, the behaviour has to be configured using
 the parameter \code{na_action}.
@@ -19,14 +19,70 @@ the parameter \code{na_action}.
 }
 }
 
+\section{Dictionary}{
+
+This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
+
+\if{html}{\out{<div class="sourceCode">}}\preformatted{lrn("classif.aorsf")
+}\if{html}{\out{</div>}}
+}
+
+\section{Meta Information}{
+
+\itemize{
+\item Task type: \dQuote{classif}
+\item Predict Types: \dQuote{response}, \dQuote{prob}
+\item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}, \dQuote{ordered}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{aorsf}
+}
+}
+
+\section{Parameters}{
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   attach_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   epsilon \tab numeric \tab 1e-09 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   importance \tab character \tab anova \tab none, anova, negate, permute \tab - \cr
+   importance_max_pvalue \tab numeric \tab 0.01 \tab  \tab \eqn{[1e-04, 0.9999]}{[1e-04, 0.9999]} \cr
+   leaf_min_events \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   leaf_min_obs \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_iter \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   method \tab character \tab glm \tab glm, net, pca, random \tab - \cr
+   mtry \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   mtry_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   n_retry \tab integer \tab 3 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_split \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   n_thread \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   n_tree \tab integer \tab 500 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   na_action \tab character \tab fail \tab fail, impute_meanmode \tab - \cr
+   net_mix \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   oobag \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   oobag_eval_every \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   oobag_fun \tab untyped \tab NULL \tab  \tab - \cr
+   oobag_pred_type \tab character \tab prob \tab none, leaf, prob, class \tab - \cr
+   pred_aggregate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   sample_fraction \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   sample_with_replacement \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   scale_x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   split_min_events \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   split_min_obs \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   split_min_stat \tab numeric \tab NULL \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   split_rule \tab character \tab gini \tab gini, cstat \tab - \cr
+   target_df \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   tree_seeds \tab integer \tab NULL \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   verbose_progress \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+}
+}
+
 \examples{
 \dontshow{if (learner_is_runnable("classif.aorsf")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = lrn("classif.aorsf", importance = "anova")
+learner = lrn("classif.aorsf")
 print(learner)
 
 # Define a Task
-task = tsk("breast_cancer")
+task = tsk("sonar")
+
 # Create train and test set
 ids = partition(task)
 

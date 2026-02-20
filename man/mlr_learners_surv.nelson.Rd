@@ -6,7 +6,7 @@
 \title{Survival Nelson-Aalen Estimator Learner}
 \description{
 Non-parametric estimator of the cumulative hazard rate function.
-Calls \code{\link[survival:survfit]{survival::survfit()}} from \CRANpkg{survival}.
+Calls \code{survival::survfit()} from \CRANpkg{survival}.
 }
 \section{Prediction types}{
 
@@ -15,10 +15,10 @@ This learner returns two prediction types:
 \item \code{distr}: a survival matrix in two dimensions, where observations are
 represented in rows and time points in columns.
 The cumulative hazard \eqn{H(t)} is calculated using the train data and the
-default parameters of the \code{\link[survival:survfit]{survival::survfit()}} function, i.e. \code{ctype = 1},
+default parameters of the \code{survival::survfit()} function, i.e. \code{ctype = 1},
 which uses the Nelson-Aalen formula.
 Then for each test observation the survival curve is \eqn{S(t) = \exp{(-H(t))}}.
-\item \code{crank}: the expected mortality using \code{\link[mlr3proba:surv_return]{mlr3proba::surv_return()}}.
+\item \code{crank}: the expected mortality using \code{mlr3proba::surv_return()}.
 }
 }
 

@@ -8,7 +8,7 @@
 Bayesian Additive Regression Trees are similar to gradient boosting algorithms.
 The classification problem is solved by 0-1 encoding of the two-class targets and setting the
 decision threshold to p = 0.5 during the prediction phase.
-Calls \code{\link[dbarts:bart]{dbarts::bart()}} from \CRANpkg{dbarts}.
+Calls \code{dbarts::bart()} from \CRANpkg{dbarts}.
 }
 \section{Dictionary}{
 
