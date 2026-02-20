@@ -1,5 +1,5 @@
 skip_if_not_installed("mlr3proba")
-skip_if_not_installed("xgboost")
+skip_if_not_installed("xgboost", minimum_version = "3.1.2.1")
 
 test_that("surv.xgboost", {
   learner_cox = lrn("surv.xgboost.cox")
@@ -31,6 +31,11 @@ test_that("surv.xgboost", {
     "aft_loss_distribution_scale" # only for AFT objective, not for Cox
     # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
   )
+
+  # Some CI environments expose a reduced xgboost API surface.
+  if (!("extmem_single_page" %in% names(formals(xgboost::xgb.params)))) {
+    exclude = c(exclude, "extmem_single_page")
+  }
 
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
   expect_paramtest(paramtest_cox)

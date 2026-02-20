@@ -64,6 +64,8 @@ jobs:
           install.packages("xgboost", repos = "https://cloud.r-project.org")
           cat("xgboost:", as.character(utils::packageVersion("xgboost")), "\n")
           stopifnot(utils::packageVersion("xgboost") >= "3.1.2.1")
+          cat("has extmem_single_page:", "extmem_single_page" %in% names(formals(xgboost::xgb.params)), "\n")
+          stopifnot("extmem_single_page" %in% names(formals(xgboost::xgb.params)))
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
