@@ -56,7 +56,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       pars = self$param_set$get_values(tags = "predict")
       newdata = ordered_features(task, self)
       pred_type = if (self$predict_type == "response") "class" else "prob"
-      pred_fun = getS3method("predict", "plsda", envir = asNamespace("caret"))
+      pred_fun = utils::getS3method("predict", "plsda", envir = asNamespace("caret"))
 
       pred = invoke(
         pred_fun,
