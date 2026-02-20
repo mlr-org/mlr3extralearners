@@ -48,7 +48,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck
+          extra-packages: any::rcmdcheck, github::xoopR/ooplah, github::xoopR/dictionar6, github::xoopR/param6, github::xoopR/set6, github::xoopR/distr6
           needs: check
           cache: "always"
 
@@ -57,6 +57,13 @@ jobs:
         run: |
           R -q -e 'install.packages("torch")'
           R -q -e 'torch::install_torch()'
+
+      - name: Force xgboost >= 3.1.2.1
+        shell: Rscript {0}
+        run: |
+          install.packages("xgboost", repos = "https://cloud.r-project.org")
+          cat("xgboost:", as.character(utils::packageVersion("xgboost")), "\n")
+          stopifnot(utils::packageVersion("xgboost") >= "3.1.2.1")
 
       - uses: mxschmitt/action-tmate@v3
         if: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
