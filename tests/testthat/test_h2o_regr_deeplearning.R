@@ -10,7 +10,7 @@ test_that("autotest", {
     h2o::h2o.init(ip = "127.0.0.1", startH2O = TRUE)
   }, .compute = compute)
 
-  learner = lrn("regr.h2o.deeplearning", epochs = 10, hidden = c(20L, 20L), seed = 42L)
+  learner = lrn("regr.h2o.deeplearning", epochs = 10, hidden = c(20L, 20L), seed = 42L, reproducible = TRUE)
   expect_learner(learner)
 
   result = run_autotest(learner, check_replicable = FALSE)
