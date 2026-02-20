@@ -136,7 +136,7 @@ marshal_model.botorch_gp_model = function(model, inplace = FALSE, ...) {
 
 #' @export
 unmarshal_model.botorch_gp_model_marshaled = function(model, inplace = FALSE, ...) {
-  reticulate::py_require(c("torch", "botorch", "gpytorch", "pickle"))
+  reticulate::py_require(c("torch", "botorch", "gpytorch"))
   pickle = reticulate::import("pickle")
   model_obj = pickle$loads(reticulate::r_to_py(model$marshaled))
   structure(list(model = model_obj), class = "botorch_gp_model")
