@@ -3,14 +3,14 @@ test_that("autotest", {
 
   compute = "mlr3_encapsulation_h2o"
   mirai::daemons(1, .compute = compute)
-  on.exit(mirai::daemons(0, .compute = compute))
+  on.exit(mirai::daemons(0, .compute = compute), add = TRUE)
 
   mirai::everywhere({
     library(h2o)
     h2o::h2o.init(ip = "localhost", startH2O = TRUE)
   }, .compute = compute)
 
-  learner = lrn("classif.h2o.gbm", ntrees = 10L, max_depth = 3L, min_rows = 1, seed = 42L, reproducible = TRUE)
+  learner = lrn("classif.h2o.gbm", ntrees = 10L, max_depth = 3L, min_rows = 1, seed = 42L)
   expect_learner(learner)
 
   result = run_autotest(learner, check_replicable = FALSE, exclude = "feat_all")
