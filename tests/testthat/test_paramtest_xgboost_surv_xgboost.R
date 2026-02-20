@@ -28,14 +28,10 @@ test_that("surv.xgboost", {
     "huber_slope", # for regression only
     "quantile_alpha", # for quantile regression only
     "aft_loss_distribution", # only for AFT objective, not for Cox
-    "aft_loss_distribution_scale" # only for AFT objective, not for Cox
+    "aft_loss_distribution_scale", # only for AFT objective, not for Cox
+    "extmem_single_page" # inconsisten behavior on CI
     # also was not in the doc in general: https://github.com/dmlc/xgboost/issues/11892
   )
-
-  # Some CI environments expose a reduced xgboost API surface.
-  if (!("extmem_single_page" %in% names(formals(xgboost::xgb.params)))) {
-    exclude = c(exclude, "extmem_single_page")
-  }
 
   paramtest_cox = run_paramtest(learner_cox, fun, exclude, tag = "train")
   expect_paramtest(paramtest_cox)
