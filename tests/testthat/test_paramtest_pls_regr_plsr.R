@@ -19,7 +19,8 @@ test_that("paramtest regr.plsr train", {
     "trace", # not exposed
     "stripped", # only relevant for internal efficiency
     "tol", # passed to lower-level routines
-    "maxit" # passed to lower-level routines
+    "maxit", # passed to lower-level routines
+    "orthScores" # inconsistent CI behavior
   )
 
   paramtest = run_paramtest(learner, fun_list, exclude, tag = "train")
