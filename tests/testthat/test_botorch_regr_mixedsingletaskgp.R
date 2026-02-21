@@ -11,7 +11,7 @@ test_that("autotest: regr.botorch_mixedsingletaskgp", {
     lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
     mirai::daemons(1, .compute = "mlr3_encapsulation_botorch_mixed")
-    on.exit(mirai::daemons(0, .compute = compute), add = TRUE)
+    on.exit(mirai::daemons(0, .compute =  "mlr3_encapsulation_botorch_mixed"), add = TRUE)
 
     mirai::everywhere({
       Sys.setenv(RETICULATE_PYTHON = "managed", OMP_NUM_THREADS = "1")
