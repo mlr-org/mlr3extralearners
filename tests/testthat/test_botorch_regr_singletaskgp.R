@@ -10,12 +10,11 @@ test_that("autotest: regr.botorch_singletaskgp", {
 
     lapply(list.files(system.file("testthat", package = "mlr3"), pattern = "^helper.*\\.[rR]", full.names = TRUE), source)
 
-    mirai::daemons(1, .compute = "mlr3_encapsulation_botorch_single")
-    on.exit(mirai::daemons(0, .compute = "mlr3_encapsulation_botorch_single"), add = TRUE)
+    mirai::daemons(1, .compute = "mlr3_encapsulation")
 
     mirai::everywhere({
-      Sys.setenv(RETICULATE_PYTHON = "managed", OMP_NUM_THREADS = "1")
-    }, .compute = "mlr3_encapsulation_botorch_single")
+      Sys.setenv(RETICULATE_PYTHON = "managed")
+    }, .compute = "mlr3_encapsulation")
 
     learner = mlr3::lrn("regr.botorch_singletaskgp")
     expect_learner(learner)

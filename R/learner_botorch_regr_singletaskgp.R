@@ -125,7 +125,7 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
 
 #' @export
 marshal_model.botorch_gp_model = function(model, inplace = FALSE, ...) {
-  reticulate::py_require(c("torch", "botorch", "gpytorch", "pickle"))
+  reticulate::py_require(c("torch", "botorch", "gpytorch"))
   pickle = reticulate::import("pickle")
   pickled_model = pickle$dumps(model$model)
   structure(list(
