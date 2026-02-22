@@ -121,7 +121,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init()))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -151,12 +151,10 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init()))
       }
 
       newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
-
-      pars = self$param_set$get_values(tags = "predict")
 
       pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
