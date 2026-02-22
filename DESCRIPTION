@@ -152,7 +152,12 @@ Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
-    RaphaelS1/survivalmodels
+    RaphaelS1/survivalmodels,
+    xoopR/ooplah,
+    xoopR/dictionar6,
+    xoopR/set6,
+    xoopR/param6,
+    xoopR/distr6
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
