@@ -71,7 +71,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib("macdonald2015gpfit")}
+MacDonald B, Ranjan P, Chipman H (2015).
+\dQuote{GPfit: An R Package for Fitting a Gaussian Process Model to Deterministic Simulator Outputs.}
+\emph{Journal of Statistical Software}, \bold{64}(12), 1--23.
+\doi{10.18637/jss.v064.i12}, \url{https://www.jstatsoft.org/v64/i12/}.
 }
 \seealso{
 \itemize{

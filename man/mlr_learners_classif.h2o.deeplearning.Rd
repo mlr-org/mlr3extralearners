@@ -92,7 +92,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    elastic_averaging_moving_rate \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -147,7 +146,6 @@ awinterstetter
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifH2ODeeplearning-new}{\code{LearnerClassifH2ODeeplearning$new()}}
-\item \href{#method-LearnerClassifH2ODeeplearning-importance}{\code{LearnerClassifH2ODeeplearning$importance()}}
 \item \href{#method-LearnerClassifH2ODeeplearning-clone}{\code{LearnerClassifH2ODeeplearning$clone()}}
 }
 }
@@ -178,20 +176,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2ODeeplearning$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifH2ODeeplearning-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifH2ODeeplearning-importance}{}}}
-\subsection{Method \code{importance()}}{
-Variable importance scores computed by H2O.
-Requires \code{variable_importances = TRUE}.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2ODeeplearning$importance()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-Named \code{numeric()}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifH2ODeeplearning-clone"></a>}}

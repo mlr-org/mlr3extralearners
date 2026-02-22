@@ -95,10 +95,8 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), default = "AUTO", tags = "train"),
         elastic_averaging = p_lgl(default = FALSE, tags = "train"),
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
-        elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
+        elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train")
         # export_checkpoints_dir
-        verbose = p_lgl(init = FALSE, tags = "train"),
-        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
       )
 
       super$initialize(
@@ -111,27 +109,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         man = "mlr3extralearners::mlr_learners_classif.h2o.deeplearning",
         label = "H2O Deep Learning"
       )
-    },
-
-    #' @description
-    #' Variable importance scores computed by H2O.
-    #' Requires `variable_importances = TRUE`.
-    #' @return Named `numeric()`.
-    importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-      pars = self$param_set$get_values()
-      if (isFALSE(pars$variable_importances)) {
-        stop("No importance available. Set 'variable_importances = TRUE'.")
-      }
-      imp = h2o::h2o.varimp(self$model)
-      if (is.null(imp) || !nrow(imp)) {
-        stop("No importance available from H2O.")
-      }
-      scores = imp$relative_importance
-      names(scores) = imp$variable
-      sort(scores, decreasing = TRUE)
     }
   ),
 
@@ -157,30 +134,15 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         pars$weights_column = ".mlr_weights"
       }
 
-      quiet = pars$quiet
-      pars$quiet = NULL
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      training_frame = h2o::as.h2o(data)
-
-      train_fun = function() {
-        invoke(h2o::h2o.deeplearning,
+      h2o::h2o.no_progress(invoke(h2o::h2o.deeplearning,
           y = target,
           x = feature,
           training_frame = training_frame,
           .args = pars
-        )
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          model = train_fun()
-        })
-      } else {
-        model = train_fun()
-      }
-
-      model
-    },
+      ))
+      },
 
     .predict = function(task) {
 
@@ -196,17 +158,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
       pars = self$param_set$get_values(tags = "predict")
       quiet = pars$quiet
 
-      pred_fun = function() {
-        h2o::h2o.predict(self$model, newdata = newdata)
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          pred = pred_fun()
-        })
-      } else {
-        pred = pred_fun()
-      }
+      h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
       response = factor(as.vector(pred$predict), levels = task$class_names)
 
