@@ -46,10 +46,18 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
+      - name: Install mlr3proba from r-universe
+        run: |
+          install.packages(
+            "mlr3proba",
+            repos = c(
+              mlrorg = "https://mlr-org.r-universe.dev"
+            )
+          )
+        shell: Rscript {0}
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-repositories: |
-            https://mlr-org.r-universe.dev
           extra-packages: any::rcmdcheck
           needs: check
           cache: "always"
