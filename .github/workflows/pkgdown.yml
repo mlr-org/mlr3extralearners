@@ -28,13 +28,8 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v2
 
       - uses: r-lib/actions/setup-r@v2
-
-      - name: Set repositories
-        run: |
-          Rscript -e 'options(repos = c(
-            mlrorg = "https://mlr-org.r-universe.dev",
-            CRAN = "https://cloud.r-project.org"
-          ))'
+        with:
+          extra-repositories: https://mlr-org.r-universe.dev
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
