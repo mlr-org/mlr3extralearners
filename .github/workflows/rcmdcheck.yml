@@ -45,6 +45,10 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
+      
+      - name: Install pak
+        run: install.packages("pak")
+        shell: Rscript {0}
 
       - name: Install distr6 stack
         run: |
