@@ -45,25 +45,12 @@ jobs:
       - uses: r-lib/actions/setup-r@v2
         with:
           r-version: ${{ matrix.config.r }}
-      
-      - name: Install pak
-        run: install.packages("pak")
-        shell: Rscript {0}
-
-      - name: Install distr6 stack
-        run: |
-          pak::pkg_install(c(
-            "xoopR/ooplah",
-            "xoopR/dictionar6",
-            "xoopR/set6",
-            "xoopR/param6",
-            "xoopR/distr6"
-          ))
-        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::rcmdcheck, github::xoopR/ooplah, github::xoopR/dictionar6, github::xoopR/param6, github::xoopR/set6, github::xoopR/distr6
+          extra-repositories: |
+            https://mlr-org.r-universe.dev
+          extra-packages: any::rcmdcheck
           needs: check
           cache: "always"
 
