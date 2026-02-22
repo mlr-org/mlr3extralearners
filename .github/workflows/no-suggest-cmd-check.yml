@@ -48,11 +48,6 @@ jobs:
             any::testthat
             any::knitr
             any::rmarkdown
-            github::xoopR/ooplah
-            github::xoopR/dictionar6
-            github::xoopR/param6
-            github::xoopR/set6
-            github::xoopR/distr6
           needs: check
           dependencies: '"hard"'
           cache: false
