@@ -153,12 +153,12 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         h2o::h2o.init()
       }
 
-      newdata = h2o::as.h2o(ordered_features(task, self))
+      newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
       pars = self$param_set$get_values(tags = "predict")
       quiet = pars$quiet
 
-      h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
+      pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
       response = factor(as.vector(pred$predict), levels = task$class_names)
 
