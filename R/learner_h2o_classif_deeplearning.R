@@ -95,8 +95,9 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), default = "AUTO", tags = "train"),
         elastic_averaging = p_lgl(default = FALSE, tags = "train"),
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
-        elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train")
+        elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
+        verbose = p_lgl(init = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -156,7 +157,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
       newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
       pars = self$param_set$get_values(tags = "predict")
-      quiet = pars$quiet
 
       pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 

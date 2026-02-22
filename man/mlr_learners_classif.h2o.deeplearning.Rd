@@ -92,6 +92,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    elastic_averaging_moving_rate \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   verbose \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
