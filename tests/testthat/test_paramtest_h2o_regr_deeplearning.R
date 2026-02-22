@@ -25,7 +25,6 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "classification_stop", # classification only
     "max_hit_ratio_k", # classification only
     "variable_importances", # not exposed
-    "quiet", # handled by mlr3 wrapper
     "quiet_mode", # use verbose instead
     "col_major", # not exposed
     "max_categorical_features", # not exposed
@@ -44,8 +43,7 @@ test_that("paramtest regr.h2o.deeplearning predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

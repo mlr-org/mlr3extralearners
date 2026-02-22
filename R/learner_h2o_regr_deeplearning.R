@@ -98,8 +98,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         # export_checkpoints_dir
-        verbose = p_lgl(init = FALSE, tags = "train"),
-        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
+        verbose = p_lgl(init = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -123,7 +122,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init()))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -137,29 +136,14 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         pars$weights_column = ".mlr_weights"
       }
 
-      quiet = pars$quiet
-      pars$quiet = NULL
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      training_frame = h2o::as.h2o(data)
-
-      train_fun = function() {
-        invoke(h2o::h2o.deeplearning,
-          y = target,
-          x = feature,
-          training_frame = training_frame,
-          .args = pars
-        )
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          model = train_fun()
-        })
-      } else {
-        model = train_fun()
-      }
-
-      model
+      h2o::h2o.no_progress(invoke(h2o::h2o.deeplearning,
+        y = target,
+        x = feature,
+        training_frame = training_frame,
+        .args = pars
+      ))
     },
 
     .predict = function(task) {
@@ -168,25 +152,12 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init()))
       }
 
-      newdata = h2o::as.h2o(ordered_features(task, self))
+      newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
-      pars = self$param_set$get_values(tags = "predict")
-      quiet = pars$quiet
-
-      pred_fun = function() {
-        h2o::h2o.predict(self$model, newdata = newdata)
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          pred = pred_fun()
-        })
-      } else {
-        pred = pred_fun()
-      }
+      pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
       list(response = as.vector(pred$predict))
     }
