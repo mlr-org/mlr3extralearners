@@ -151,8 +151,8 @@ VignetteBuilder:
 Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
-    RaphaelS1/survivalmodels,
-    r-universe/mlr3proba
+    mlr-org/mlr3proba,
+    RaphaelS1/survivalmodels
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false

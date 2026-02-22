@@ -46,6 +46,13 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
+      - name: Set repositories
+        run: |
+          Rscript -e 'options(repos = c(
+            mlrorg = "https://mlr-org.r-universe.dev",
+            CRAN = "https://cloud.r-project.org"
+          ))'
+
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: any::rcmdcheck
