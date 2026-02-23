@@ -74,7 +74,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   variable_importances \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    replicate_training_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -112,7 +111,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance())
+
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)

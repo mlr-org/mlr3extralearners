@@ -31,7 +31,8 @@ test_that("paramtest classif.h2o.deeplearning train", {
     "export_checkpoints_dir", # not exposed
     "auc_type", # not exposed
     "custom_metric_func", # not exposed
-    "gainslift_bins" # not exposed
+    "gainslift_bins", # not exposed
+    "variable_importances" # no variable importance method in mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -43,8 +44,7 @@ test_that("paramtest classif.h2o.deeplearning predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
