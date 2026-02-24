@@ -31,9 +31,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   class_sampling_factors \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
    overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -62,7 +59,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    max_w2 \tab numeric \tab Inf \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    initial_weight_distribution \tab character \tab UniformAdaptive \tab UniformAdaptive, Uniform, Normal \tab - \cr
    initial_weight_scale \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   loss \tab character \tab Automatic \tab Automatic, CrossEntropy, Quadratic, Absolute, Huber \tab - \cr
+   loss \tab character \tab Automatic \tab Automatic, Quantile, Quadratic, Absolute, Huber \tab - \cr
    distribution \tab character \tab AUTO \tab AUTO, gaussian, poisson, gamma, tweedie, laplace, huber, quantile \tab - \cr
    quantile_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    tweedie_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
@@ -71,16 +68,15 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score_training_samples \tab integer \tab 10000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    score_validation_samples \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    score_duty_cycle \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   regression_stop \tab numeric \tab 1e+06 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   regression_stop \tab numeric \tab 1e-06 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    stopping_rounds \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
    stopping_tolerance \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   score_validation_sampling \tab character \tab Uniform \tab Uniform, Stratified \tab - \cr
+   score_validation_sampling \tab character \tab Uniform \tab Uniform \tab - \cr
    diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   variable_importances \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    replicate_training_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

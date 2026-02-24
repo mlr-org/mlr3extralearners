@@ -24,9 +24,6 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
       param_set = ps(
         ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
-        balance_classes = p_lgl(default = FALSE, tags = "train"),
-        class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL), depends = quote(balance_classes == TRUE), tags = "train"),
-        max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
         checkpoint = p_uty(default = NULL, tags = "train"),
         pretrained_autoencoder = p_uty(default = NULL, tags = "train"),
         overwrite_with_best_model = p_lgl(default = TRUE, tags = "train"),
@@ -55,7 +52,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         max_w2 = p_dbl(default = Inf, tags = "train"),
         initial_weight_distribution = p_fct(levels = c("UniformAdaptive", "Uniform", "Normal"), default = "UniformAdaptive", tags = "train"),
         initial_weight_scale = p_dbl(default = 1, tags = "train"),
-        loss = p_fct(levels = c("Automatic", "CrossEntropy", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
+        loss = p_fct(levels = c("Automatic", "Quantile", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
         distribution = p_fct(levels = c("AUTO", "gaussian", "poisson", "gamma", "tweedie", "laplace", "huber", "quantile"), default = "AUTO", tags = "train"),
         quantile_alpha = p_dbl(default = 0.5, lower = 0, upper = 1, depends = quote(distribution == "quantile"), tags = "train"),
         tweedie_power = p_dbl(default = 1.5, lower = 1, upper = 2, depends = quote(distribution == "tweedie"), tags = "train"),
@@ -64,16 +61,15 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         score_training_samples = p_int(default = 10000L, tags = "train"),
         score_validation_samples = p_int(default = 0L, tags = "train"),
         score_duty_cycle = p_dbl(default = 0.1, tags = "train"),
-        regression_stop = p_dbl(lower = -1, default = 1e+06, tags = "train"),
+        regression_stop = p_dbl(lower = -1, default = 1e-06, tags = "train"),
         stopping_rounds = p_int(lower = 0L, default = 5L, tags = "train"),
         stopping_metric = p_fct(levels = c("AUTO", "deviance", "MSE", "RMSE", "MAE", "RMSLE"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0, tags = "train"),
         max_runtime_secs = p_dbl(lower = 0, default = 0, tags = "train"),
-        score_validation_sampling = p_fct(levels = c("Uniform", "Stratified"), default = "Uniform", tags = "train"),
+        score_validation_sampling = p_fct(levels = "Uniform", default = "Uniform", tags = "train"),
         diagnostics = p_lgl(default = TRUE, tags = "train"),
         fast_mode = p_lgl(default = TRUE, tags = "train"),
         force_load_balance = p_lgl(default = TRUE, tags = "train"),
-        variable_importances = p_lgl(default = TRUE, tags = "train"),
         replicate_training_data = p_lgl(default = TRUE, tags = "train"),
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
@@ -141,7 +137,6 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
     },
 
     .predict = function(task) {
-
       conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))

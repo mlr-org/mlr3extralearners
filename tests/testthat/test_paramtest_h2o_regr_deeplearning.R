@@ -17,6 +17,9 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "fold_column", # resampling handled by mlr3
     "weights_column", # handled by mlr3
     "offset_column", # no offset property
+    "balance_classes", # classification only
+    "class_sampling_factors", # classification only
+    "max_after_balance_size", # classification only
     "initial_weights", # not exposed
     "initial_biases", # not exposed
     "classification_stop", # classification only
