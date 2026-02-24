@@ -117,9 +117,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
 
     .train = function(task) {
 
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
-        FALSE
-      })
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init()))
       }
