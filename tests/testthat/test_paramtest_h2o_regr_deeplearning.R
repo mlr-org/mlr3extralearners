@@ -16,12 +16,12 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "fold_assignment", # resampling handled by mlr3
     "fold_column", # resampling handled by mlr3
     "weights_column", # handled by mlr3
-    "offset_column", # not supported
+    "offset_column", # no offset property
     "initial_weights", # not exposed
     "initial_biases", # not exposed
     "classification_stop", # classification only
     "max_hit_ratio_k", # classification only
-    "variable_importances", # not exposed
+    "variable_importances", # no importance property
     "auc_type", # classification only
     "gainslift_bins" # classification only
   )
