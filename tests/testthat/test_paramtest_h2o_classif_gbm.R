@@ -15,12 +15,13 @@ test_that("paramtest classif.h2o.gbm train", {
     "keep_cross_validation_fold_assignment", # resampling handled by mlr3
     "fold_assignment", # resampling handled by mlr3
     "fold_column", # resampling handled by mlr3
-    "offset_column", # not supported
+    "offset_column", # no offset property
     "weights_column", # handled by mlr3
     "distribution", # handled by mlr3 wrapper
     "quantile_alpha", # regression only
     "tweedie_power", # regression only
     "huber_alpha", # regression only
+    "r2_stopping", # no longer supported by h2o
     "calibrate_model", # not exposed
     "calibration_frame", # not exposed
     "calibration_method" # not exposed
