@@ -15,13 +15,9 @@ test_that("paramtest classif.h2o.randomForest train", {
     "keep_cross_validation_fold_assignment", # resampling handled by mlr3
     "fold_assignment", # resampling handled by mlr3
     "fold_column", # resampling handled by mlr3
-    "offset_column", # not supported
+    "offset_column", # no offset property
     "weights_column", # handled by mlr3
-    "checkpoint", # not exposed
-    "calibration_frame", # not exposed
-    "custom_metric_func", # not exposed
-    "export_checkpoints_dir", # not exposed
-    "quiet" # handled by mlr3 wrapper
+    "calibration_frame" # not exposed
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -33,8 +29,7 @@ test_that("paramtest classif.h2o.randomForest predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

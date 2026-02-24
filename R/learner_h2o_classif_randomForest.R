@@ -28,6 +28,7 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
         balance_classes = p_lgl(default = FALSE, tags = "train"),
         class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL), depends = quote(balance_classes == TRUE), tags = "train"),
         max_after_balance_size = p_dbl(lower = 0, default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
+        checkpoint = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         ntrees = p_int(lower = 1L, default = 50L, tags = "train"),
         max_depth = p_int(lower = 1L, default = 20L, tags = "train"),
         min_rows = p_dbl(lower = 1, default = 1, tags = "train"),
@@ -48,6 +49,7 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
         col_sample_rate_change_per_level = p_dbl(lower = 0, default = 1, tags = "train"),
         col_sample_rate_per_tree = p_dbl(lower = 0, upper = 1, default = 1, tags = "train"),
         min_split_improvement = p_dbl(lower = 0, default = 1e-05, tags = "train"),
+        export_checkpoints_dir = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         histogram_type = p_fct(levels = c("AUTO", "UniformAdaptive", "Random", "QuantilesGlobal", "RoundRobin", "UniformRobust"), default = "AUTO", tags = "train"),
         categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), default = "AUTO", tags = "train"),
         calibrate_model = p_lgl(default = FALSE, tags = "train"),
@@ -56,6 +58,7 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
         check_constant_response = p_lgl(default = TRUE, tags = "train"),
         gainslift_bins = p_int(lower = -1L, default = -1L, tags = "train"),
         auc_type = p_fct(levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), default = "AUTO", tags = "train"),
+        custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train")
       )
 
@@ -93,11 +96,11 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
 
       target = task$target_names
       feature = task$feature_names
-      training_frame = h2o::as.h2o(data)
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      h2o::h2o.no_progress(invoke(h2o::h2o.glm,
+      h2o::h2o.no_progress(invoke(h2o::h2o.randomForest,
           y = target,
-          x = features,
+          x = feature,
           training_frame = training_frame,
           .args = pars
       ))
