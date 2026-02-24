@@ -16,14 +16,14 @@ test_that("paramtest classif.h2o.deeplearning train", {
     "fold_assignment", # resampling handled by mlr3
     "fold_column", # resampling handled by mlr3
     "weights_column", # handled by mlr3
-    "offset_column", # not supported
+    "offset_column", # no offset property
     "initial_weights", # not exposed
     "initial_biases", # not exposed
     "quantile_alpha", # regression only
     "tweedie_power", # regression only
     "huber_alpha", # regression only
     "regression_stop", # regression only
-    "variable_importances" # no variable importance method
+    "variable_importances" # no importance property
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
