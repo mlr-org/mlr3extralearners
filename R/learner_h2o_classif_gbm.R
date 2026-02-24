@@ -22,16 +22,50 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
+        score_each_iteration = p_lgl(default = FALSE, tags = "train"),
+        score_tree_interval = p_int(default = 0L, lower = 0L, tags = "train"),
+        ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         ntrees = p_int(default = 50L, lower = 1L, tags = "train"),
         max_depth = p_int(default = 5L, lower = 1L, tags = "train"),
         min_rows = p_dbl(default = 10, lower = 1, tags = "train"),
         learn_rate = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
+        learn_rate_annealing = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
         nbins = p_int(default = 20L, lower = 1L, tags = "train"),
+        nbins_top_level = p_int(default = 1024L, lower = 1L, tags = "train"),
         nbins_cats = p_int(default = 1024L, lower = 1L, tags = "train"),
+        r2_stopping = p_dbl(default = Inf, tags = "train"),
+        stopping_rounds = p_int(default = 0L, lower = 0L, tags = "train"),
+        stopping_metric = p_fct(default = "AUTO", levels = c("AUTO", "logloss", "AUC", "AUCPR", "lift_top_group", "misclassification", "mean_per_class_error", "custom", "custom_increasing"), tags = "train"),
+        stopping_tolerance = p_dbl(default = 0.001, lower = 0, tags = "train"),
+        max_runtime_secs = p_dbl(default = 0, lower = 0, tags = "train"),
+        checkpoint = p_uty(default = NULL, tags = "train"),
+        build_tree_one_node = p_lgl(default = FALSE, tags = "train"),
         balance_classes = p_lgl(default = FALSE, tags = "train"),
+        class_sampling_factors = p_uty(default = NULL, tags = "train"),
         max_after_balance_size = p_dbl(default = 1, lower = 0, tags = "train"),
-        seed = p_int(tags = "train"),
-        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
+        sample_rate = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
+        sample_rate_per_class = p_uty(default = NULL, tags = "train"),
+        col_sample_rate = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
+        col_sample_rate_change_per_level = p_dbl(default = 1, lower = 0, tags = "train"),
+        col_sample_rate_per_tree = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
+        min_split_improvement = p_dbl(default = 1e-05, lower = 0, tags = "train"),
+        histogram_type = p_fct(default = "AUTO", levels = c("AUTO", "UniformAdaptive", "Random", "QuantilesGlobal", "RoundRobin", "UniformRobust"), tags = "train"),
+        max_abs_leafnode_pred = p_dbl(default = Inf, lower = 0, tags = "train"),
+        pred_noise_bandwidth = p_dbl(default = 0, lower = 0, tags = "train"),
+        categorical_encoding = p_fct(default = "AUTO", levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), tags = "train"),
+        custom_metric_func = p_uty(default = NULL, tags = "train"),
+        custom_distribution_func = p_uty(default = NULL, tags = "train"),
+        export_checkpoints_dir = p_uty(default = NULL, tags = "train"),
+        in_training_checkpoints_dir = p_uty(default = NULL, tags = "train"),
+        in_training_checkpoints_tree_interval = p_int(default = 1L, lower = 1L, tags = "train"),
+        monotone_constraints = p_uty(default = NULL, tags = "train"),
+        check_constant_response = p_lgl(default = TRUE, tags = "train"),
+        gainslift_bins = p_int(default = -1L, lower = -1L, tags = "train"),
+        auc_type = p_fct(default = "AUTO", levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), tags = "train"),
+        interaction_constraints = p_uty(default = NULL, tags = "train"),
+        auto_rebalance = p_lgl(default = TRUE, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train"),
+        seed = p_int(tags = "train")
       )
 
       super$initialize(
@@ -40,28 +74,10 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
-        properties = c("weights", "twoclass", "multiclass", "missings", "importance"),
+        properties = c("weights", "twoclass", "multiclass", "missings"),
         man = "mlr3extralearners::mlr_learners_classif.h2o.gbm",
         label = "H2O GBM"
       )
-    },
-
-    #' @description
-    #' Variable importance scores computed by H2O.
-    #' @return Named `numeric()`.
-    importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-
-      imp = h2o::h2o.varimp(self$model)
-      if (is.null(imp) || !nrow(imp)) {
-        stop("No importance available from H2O.")
-      }
-
-      scores = imp$relative_importance
-      names(scores) = imp$variable
-      sort(scores, decreasing = TRUE)
     }
   ),
 
@@ -73,7 +89,7 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -87,30 +103,15 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
         pars$weights_column = ".mlr_weights"
       }
 
-      quiet = pars$quiet
-      pars$quiet = NULL
-
       pars$distribution = if (length(task$class_names) == 2L) "bernoulli" else "multinomial"
-      training_frame = h2o::as.h2o(data)
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      train_fun = function() {
-        invoke(h2o::h2o.gbm,
+      h2o::h2o.no_progress(invoke(h2o::h2o.gbm,
           y = target,
           x = features,
           training_frame = training_frame,
           .args = pars
-        )
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          model = train_fun()
-        })
-      } else {
-        model = train_fun()
-      }
-
-      model
+      ))
     },
 
     .predict = function(task) {
@@ -119,25 +120,14 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
-      newdata = h2o::as.h2o(ordered_features(task, self))
+      newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
       pars = self$param_set$get_values(tags = "predict")
-      quiet = pars$quiet
 
-      pred_fun = function() {
-        h2o::h2o.predict(self$model, newdata = newdata)
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          pred = pred_fun()
-        })
-      } else {
-        pred = pred_fun()
-      }
+      pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
       response = factor(as.vector(pred$predict), levels = task$class_names)
 
@@ -147,16 +137,6 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
 
       prob = as.matrix(pred[, -1L])
       prob_names = names(pred)[-1L]
-
-      if (all(grepl("^p[[:digit:]]+$", prob_names))) {
-        stripped = sub("^p", "", prob_names)
-        if (all(task$class_names %in% stripped)) {
-          prob_names = stripped
-        }
-      }
-
-      colnames(prob) = prob_names
-      prob = prob[, task$class_names, drop = FALSE]
 
       list(prob = prob, response = response)
     }

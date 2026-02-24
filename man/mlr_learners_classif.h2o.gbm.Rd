@@ -29,16 +29,50 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
+   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_depth \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_rows \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   r2_stopping \tab numeric \tab Inf \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error, custom, custom_increasing \tab - \cr
+   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
    max_after_balance_size \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   sample_rate_per_class \tab untyped \tab NULL \tab  \tab - \cr
+   col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
+   max_abs_leafnode_pred \tab numeric \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
+   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
+   custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   in_training_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   in_training_checkpoints_tree_interval \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
+   interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   quiet \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -58,7 +92,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance())
+
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -93,7 +127,6 @@ awinterstetter
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifH2OGBM-new}{\code{LearnerClassifH2OGBM$new()}}
-\item \href{#method-LearnerClassifH2OGBM-importance}{\code{LearnerClassifH2OGBM$importance()}}
 \item \href{#method-LearnerClassifH2OGBM-clone}{\code{LearnerClassifH2OGBM$clone()}}
 }
 }
@@ -124,19 +157,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2OGBM$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifH2OGBM-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifH2OGBM-importance}{}}}
-\subsection{Method \code{importance()}}{
-Variable importance scores computed by H2O.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2OGBM$importance()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-Named \code{numeric()}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifH2OGBM-clone"></a>}}
