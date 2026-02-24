@@ -50,13 +50,24 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    stopping_metric \tab character \tab AUTO \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    quantile_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    tweedie_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    huber_alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   quiet \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   checkpoint \tab untyped \tab - \tab  \tab - \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   in_training_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   in_training_checkpoints_tree_interval \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -76,7 +87,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance())
+
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -111,7 +122,6 @@ awinterstetter
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerRegrH2OGBM-new}{\code{LearnerRegrH2OGBM$new()}}
-\item \href{#method-LearnerRegrH2OGBM-importance}{\code{LearnerRegrH2OGBM$importance()}}
 \item \href{#method-LearnerRegrH2OGBM-clone}{\code{LearnerRegrH2OGBM$clone()}}
 }
 }
@@ -142,19 +152,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerRegrH2OGBM$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerRegrH2OGBM-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerRegrH2OGBM-importance}{}}}
-\subsection{Method \code{importance()}}{
-Variable importance scores computed by H2O.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerRegrH2OGBM$importance()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-Named \code{numeric()}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerRegrH2OGBM-clone"></a>}}

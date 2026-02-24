@@ -31,37 +31,41 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
         seed = p_int(default = -1L, tags = "train"),
         learn_rate = p_dbl(default = 0.1, lower = 0, upper = 1, tags = "train"),
         learn_rate_annealing = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
-        distribution = p_fct(levels = c("poisson", "laplace", "tweedie", "gaussian", "huber",
-          "gamma", "quantile"),
+        distribution = p_fct(levels = c("poisson", "laplace", "tweedie", "gaussian", "huber", "gamma", "quantile"),
         default = "gaussian", tags = "train"),
         sample_rate = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
         col_sample_rate = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
-        col_sample_rate_change_per_level = p_dbl(default = 1, lower = 0, upper = 1,
-          tags = "train"),
+        col_sample_rate_change_per_level = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
         col_sample_rate_per_tree = p_dbl(default = 1, lower = 0, upper = 1, tags = "train"),
         max_abs_leafnode_pred = p_dbl(default = Inf, lower = 0, tags = "train"),
         pred_noise_bandwidth = p_dbl(default = 0, lower = 0, tags = "train"),
-        categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal",
-          "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse"),
+        categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse"),
         default = "AUTO", tags = "train"),
         min_split_improvement = p_dbl(default = 1e-05, lower = 0, tags = "train"),
-        histogram_type = p_fct(levels = c("AUTO", "UniformAdaptive", "Random", "QuantilesGlobal",
-          "RoundRobin"),
+        histogram_type = p_fct(levels = c("AUTO", "UniformAdaptive", "Random", "QuantilesGlobal", "RoundRobin"),
         default = "AUTO", tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
         score_tree_interval = p_int(default = 0L, lower = 0L, tags = "train"),
+        ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         stopping_rounds = p_int(default = 0L, lower = 0L, tags = "train"),
-        stopping_metric = p_fct(levels = c("AUTO", "deviance", "logloss", "MSE", "RMSE", "MAE",
-          "RMSLE"),
-        default = "AUTO", tags = "train"),
+        stopping_metric = p_fct(levels = c("AUTO", "deviance", "logloss", "MSE", "RMSE", "MAE", "RMSLE"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(default = 0.001, lower = 0, tags = "train"),
-        quantile_alpha = p_dbl(default = 0.5, lower = 0, upper = 1,
-          depends = quote(distribution == "quantile"), tags = "train"),
-        tweedie_power = p_dbl(default = 1.5, lower = 1, upper = 2,
-          depends = quote(distribution == "tweedie"), tags = "train"),
-        huber_alpha = p_dbl(default = 0.9, lower = 0, upper = 1,
-          depends = quote(distribution == "huber"), tags = "train"),
-        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
+        max_runtime_secs = p_dbl(default = 0, lower = 0, tags = "train"),
+        build_tree_one_node = p_lgl(default = FALSE, tags = "train"),
+        quantile_alpha = p_dbl(default = 0.5, lower = 0, upper = 1, depends = quote(distribution == "quantile"), tags = "train"),
+        tweedie_power = p_dbl(default = 1.5, lower = 1, upper = 2, depends = quote(distribution == "tweedie"), tags = "train"),
+        huber_alpha = p_dbl(default = 0.9, lower = 0, upper = 1, depends = quote(distribution == "huber"), tags = "train"),
+        checkpoint = p_uty(tags = "train"),
+        export_checkpoints_dir = p_uty(default = NULL, tags = "train"),
+        in_training_checkpoints_dir = p_uty(default = NULL, tags = "train"),
+        in_training_checkpoints_tree_interval = p_int(default = 1L, lower = 1L, tags = "train"),
+        monotone_constraints = p_uty(default = NULL, tags = "train"),
+        check_constant_response = p_lgl(default = TRUE, tags = "train"),
+        interaction_constraints = p_uty(default = NULL, tags = "train"),
+        auto_rebalance = p_lgl(default = TRUE, tags = "train"),
+        custom_metric_func = p_uty(default = NULL, tags = "train"),
+        custom_distribution_func = p_uty(default = NULL, tags = "train"),
+        verbose = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -70,28 +74,10 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
         feature_types = c("integer", "numeric", "factor"),
         predict_types = "response",
         param_set = param_set,
-        properties = c("weights", "missings", "importance"),
+        properties = c("weights", "missings"),
         man = "mlr3extralearners::mlr_learners_regr.h2o.gbm",
         label = "H2O GBM"
       )
-    },
-
-    #' @description
-    #' Variable importance scores computed by H2O.
-    #' @return Named `numeric()`.
-    importance = function() {
-      if (is.null(self$model)) {
-        stopf("No model stored")
-      }
-
-      imp = h2o::h2o.varimp(self$model)
-      if (is.null(imp) || !nrow(imp)) {
-        stop("No importance available from H2O.")
-      }
-
-      scores = imp$relative_importance
-      names(scores) = imp$variable
-      sort(scores, decreasing = TRUE)
     }
   ),
 
@@ -103,7 +89,7 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init(ip = "127.0.0.1", startH2O = TRUE)
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -117,29 +103,15 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
         pars$weights_column = ".mlr_weights"
       }
 
-      quiet = pars$quiet
-      pars$quiet = NULL
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      training_frame = h2o::as.h2o(data)
-
-      train_fun = function() {
-        invoke(h2o::h2o.gbm,
+      h2o::h2o.no_progress(invoke(h2o::h2o.gbm,
           y = target,
           x = features,
           training_frame = training_frame,
           .args = pars
         )
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          model = train_fun()
-        })
-      } else {
-        model = train_fun()
-      }
-
-      model
+      )
     },
 
     .predict = function(task) {
@@ -148,25 +120,12 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init(ip = "127.0.0.1", startH2O = TRUE)
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
-      newdata = h2o::as.h2o(ordered_features(task, self))
+      newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
-      pars = self$param_set$get_values(tags = "predict")
-      quiet = pars$quiet
-
-      pred_fun = function() {
-        h2o::h2o.predict(self$model, newdata = newdata)
-      }
-
-      if (quiet == TRUE) {
-        utils::capture.output({
-          pred = pred_fun()
-        })
-      } else {
-        pred = pred_fun()
-      }
+      pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
       list(response = as.vector(pred$predict))
     }
