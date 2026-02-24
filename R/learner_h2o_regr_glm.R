@@ -10,12 +10,8 @@
 #' @template learner
 #'
 #' @section Model family:
-#' The `family` parameter is fixed to `"gaussian"`.
-#'
-#' @section Missing values:
-#' H2O GLM supports native missing value handling. By default, `missing_values_handling`
-#' is set to `"MeanImputation"` if explicitly set by the user.
-#'
+#' This learner calls [h2o::h2o.glm()] with `family = "gaussian"`
+#
 #' @references
 #' `r format_bib("fryda2025h2o")`
 #'
@@ -30,39 +26,21 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        # core / optimization
         seed = p_int(default = -1L, tags = "train"),
         ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
         score_iteration_interval = p_int(default = -1L, tags = "train"),
-        solver = p_fct(
-          levels = c(
-            "AUTO", "IRLSM", "L_BFGS", "COORDINATE_DESCENT_NAIVE",
-            "COORDINATE_DESCENT", "GRADIENT_DESCENT_LH", "GRADIENT_DESCENT_SQERR"),
-          default = "IRLSM",
-          tags = "train"
-        ),
+        solver = p_fct(levels = c("AUTO", "IRLSM", "L_BFGS", "COORDINATE_DESCENT_NAIVE", "COORDINATE_DESCENT", "GRADIENT_DESCENT_LH", "GRADIENT_DESCENT_SQERR"), default = "IRLSM", tags = "train"),
         alpha = p_uty(default = 0.5, tags = "train"),
         lambda = p_uty(default = 1e-5, tags = "train"),
         lambda_search = p_lgl(default = FALSE, tags = "train"),
         early_stopping = p_lgl(default = TRUE, tags = "train"),
         nlambdas = p_int(lower = 1L, depends = quote(lambda_search == TRUE), tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
-        missing_values_handling = p_fct(
-          levels = c("MeanImputation", "Skip", "PlugValues"),
-          tags = "train"
-        ),
-        plug_values = p_uty(
-          default = NULL,
-          special_vals = list(NULL),
-          depends = quote(missing_values_handling == "PlugValues"),
-          tags = "train"
-        ),
+        missing_values_handling = p_fct(levels = c("MeanImputation", "Skip", "PlugValues"), tags = "train"),
+        plug_values = p_uty(default = NULL, special_vals = list(NULL), depends = quote(missing_values_handling == "PlugValues"), tags = "train"),
         compute_p_values = p_lgl(default = FALSE, tags = "train"),
-        dispersion_parameter_method = p_fct(
-          levels = c("deviance", "pearson", "ml"),
-          tags = "train"
-        ),
+        dispersion_parameter_method = p_fct(levels = c("deviance", "pearson", "ml"), tags = "train"),
         init_dispersion_parameter = p_dbl(default = 1, tags = "train"),
         remove_collinear_columns = p_lgl(default = FALSE, tags = "train"),
         intercept = p_lgl(default = TRUE, tags = "train"),
@@ -71,11 +49,7 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
         objective_epsilon = p_dbl(default = -1, tags = "train"),
         beta_epsilon = p_dbl(lower = 0, default = 0, tags = "train"),
         gradient_epsilon = p_dbl(default = -1, tags = "train"),
-        link = p_fct(
-          levels = c("family_default", "identity", "log", "inverse"),
-          default = "identity",
-          tags = "train"
-        ),
+        link = p_fct(levels = c("family_default", "identity", "log", "inverse"), default = "identity", tags = "train"),
         startval = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         calc_like = p_lgl(default = FALSE, tags = "train"),
         cold_start = p_lgl(default = FALSE, tags = "train"),
@@ -86,21 +60,12 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
         interaction_pairs = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         obj_reg = p_dbl(default = -1, tags = "train"),
         stopping_rounds = p_int(lower = 0L, default = 0L, tags = "train"),
-        stopping_metric = p_fct(
-          levels = c(
-            "AUTO", "deviance", "logloss", "MSE", "RMSE", "MAE", "RMSLE", "AUC",
-            "AUCPR", "lift_top_group", "misclassification", "mean_per_class_error",
-            "custom", "custom_increasing"),
-          default = "AUTO",
-          tags = "train"
-        ),
+        stopping_metric = p_fct(levels = c("AUTO", "deviance", "logloss", "MSE", "RMSE", "MAE", "RMSLE", "AUC", "AUCPR", "lift_top_group", "misclassification", "mean_per_class_error", "custom", "custom_increasing"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0.001, tags = "train"),
         control_variables = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         max_runtime_secs = p_dbl(lower = 0, default = 0, tags = "train"),
         custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         generate_scoring_history = p_lgl(default = FALSE, tags = "train"),
-
-        # gaussian / dispersion-related options
         dispersion_epsilon = p_dbl(lower = 0, default = 1e-4, tags = "train"),
         max_iterations_dispersion = p_int(lower = 0L, default = 3000L, tags = "train"),
         build_null_model = p_lgl(default = FALSE, tags = "train"),
@@ -108,8 +73,6 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
         generate_variable_inflation_factors = p_lgl(default = FALSE, tags = "train"),
         dispersion_learning_rate = p_dbl(lower = 0, default = 0.5, tags = "train"),
         influence = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
-
-        # constraints / advanced optimization
         linear_constraints = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         init_optimal_glm = p_lgl(default = FALSE, tags = "train"),
         separate_linear_beta = p_lgl(default = FALSE, tags = "train"),
@@ -117,10 +80,7 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
         constraint_tau = p_dbl(default = 10, tags = "train"),
         constraint_alpha = p_dbl(default = 0.1, tags = "train"),
         constraint_beta = p_dbl(default = 0.9, tags = "train"),
-        constraint_c0 = p_dbl(default = 10, tags = "train"),
-
-        # wrapper-level verbosity control
-        quiet = p_lgl(init = TRUE, tags = c("train", "predict"))
+        constraint_c0 = p_dbl(default = 10, tags = "train")
       )
 
       super$initialize(
@@ -138,9 +98,9 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
 
   private = list(
     .train = function(task) {
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) FALSE)
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -154,61 +114,27 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
         pars$weights_column = ".mlr_weights"
       }
 
-      quiet = pars$quiet
-      pars$quiet = NULL
+      training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      training_frame = h2o::as.h2o(data)
-
-      train_fun = function() {
-        invoke(h2o::h2o.glm,
-          y = target,
-          x = feature,
-          training_frame = training_frame,
-          family = "gaussian",
-          .args = pars
-        )
-      }
-
-      if (isTRUE(quiet)) {
-        utils::capture.output({
-          model = train_fun()
-        })
-      } else {
-        model = train_fun()
-      }
-
-      model
+      h2o::h2o.no_progress(invoke(h2o::glm,
+        y = target,
+        x = feature,
+        training_frame = training_frame,
+        .args = pars
+      ))
     },
 
     .predict = function(task) {
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) FALSE)
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
-        h2o::h2o.init()
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
-      pars = self$param_set$get_values(tags = "predict")
-      quiet = pars$quiet
-      pars$quiet = NULL
+      newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
 
-      newdata = h2o::as.h2o(ordered_features(task, self))
+      pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
-      predict_fun = function() {
-        invoke(h2o::h2o.predict,
-          object = self$model,
-          newdata = newdata,
-          .args = pars
-        )
-      }
-
-      if (isTRUE(quiet)) {
-        utils::capture.output({
-          pred = predict_fun()
-        })
-      } else {
-        pred = predict_fun()
-      }
-
-      list(response = as.data.frame(pred)$predict)
+      list(response = as.vector(pred$predict))
     }
   )
 )

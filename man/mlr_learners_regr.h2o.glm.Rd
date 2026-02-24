@@ -29,31 +29,67 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   max_iterations \tab integer \tab 50 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   solver \tab character \tab IRLSM \tab IRLSM, L_BFGS \tab - \cr
-   link \tab character \tab identity \tab identity, log, inverse \tab - \cr
-   alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   lambda \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_iteration_interval \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   solver \tab character \tab IRLSM \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR \tab - \cr
+   alpha \tab untyped \tab 0.5 \tab  \tab - \cr
+   lambda \tab untyped \tab 1e-05 \tab  \tab - \cr
    lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   early_stopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    nlambdas \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   missing_values_handling \tab character \tab - \tab MeanImputation, Skip, PlugValues \tab - \cr
+   plug_values \tab untyped \tab NULL \tab  \tab - \cr
+   compute_p_values \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   dispersion_parameter_method \tab character \tab - \tab deviance, pearson, ml \tab - \cr
+   init_dispersion_parameter \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   remove_collinear_columns \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   non_negative \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   max_iterations \tab integer \tab 50 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   link \tab character \tab identity \tab family_default, identity, log, inverse \tab - \cr
+   startval \tab untyped \tab NULL \tab  \tab - \cr
+   calc_like \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   cold_start \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    beta_constraints \tab untyped \tab NULL \tab  \tab - \cr
-   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   quiet \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   max_active_predictors \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   interactions \tab untyped \tab NULL \tab  \tab - \cr
+   interaction_pairs \tab untyped \tab NULL \tab  \tab - \cr
+   obj_reg \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE, AUC, AUCPR, lift_top_group, \link{...} \tab - \cr
+   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   control_variables \tab untyped \tab NULL \tab  \tab - \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
+   generate_scoring_history \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   dispersion_epsilon \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_iterations_dispersion \tab integer \tab 3000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   build_null_model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fix_dispersion_parameter \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   generate_variable_inflation_factors \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   dispersion_learning_rate \tab numeric \tab 0.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   influence \tab untyped \tab NULL \tab  \tab - \cr
+   linear_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   init_optimal_glm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   separate_linear_beta \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   constraint_eta0 \tab numeric \tab 0.1258925 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   constraint_tau \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   constraint_alpha \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   constraint_beta \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   constraint_c0 \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
 \section{Model family}{
 
-The \code{family} parameter is fixed to \code{"gaussian"}.
-}
-
-\section{Missing values}{
-
-The default value of \code{missing_values_handling} in \code{h2o::h2o.glm()} is \code{"MeanImputation"},
-so missing values are mean-imputed by default.
+This learner calls \code{\link[h2o:h2o.glm]{h2o::h2o.glm()}} with \code{family = "gaussian"}
 }
 
 \examples{
