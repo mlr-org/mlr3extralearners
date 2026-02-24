@@ -7,6 +7,7 @@
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
+  - `LearnerClassifH2OGLM`
 
 ## Other
 

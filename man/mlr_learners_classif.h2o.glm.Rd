@@ -6,23 +6,8 @@
 \title{Classification H2O GLM Learner}
 \description{
 Generalized linear classification model.
-Calls \code{\link[h2o:h2o.glm]{h2o::h2o.glm()}} from package \CRANpkg{h2o} with \code{family}
-always set to \code{"binomial"}.
+Calls \code{\link[h2o:h2o.glm]{h2o::h2o.glm()}} from package \CRANpkg{h2o} with \code{family} always set to \code{"binomial"}.
 }
-\section{Initial parameter values}{
-
-\itemize{
-\item \code{family}
-\itemize{
-\item Fixed to \code{"binomial"} by this learner wrapper.
-}
-\item \code{missing_values_handling}
-\itemize{
-\item H2O default is \code{"MeanImputation"}.
-}
-}
-}
-
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:

@@ -6,12 +6,6 @@
 #' Generalized linear classification model.
 #' Calls [h2o::h2o.glm()] from package \CRANpkg{h2o} with `family` always set to `"binomial"`.
 #'
-#' @section Initial parameter values:
-#' - `family`
-#'   - Fixed to `"binomial"` by this learner wrapper.
-#' - `missing_values_handling`
-#'   - H2O default is `"MeanImputation"`.
-#'
 #' @templateVar id classif.h2o.glm
 #' @template learner
 #'
