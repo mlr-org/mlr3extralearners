@@ -24,14 +24,12 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
       param_set = ps(
         ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
-        # weights_column
-        # offset_column
         balance_classes = p_lgl(default = FALSE, tags = "train"),
         class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL), depends = quote(balance_classes == TRUE), tags = "train"),
         max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
-        # checkpoint
-        # pretrained_autoencoder
-        # overwrite_with_best_model
+        checkpoint = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
+        pretrained_autoencoder = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
+        overwrite_with_best_model = p_lgl(default = TRUE, tags = "train"),
         use_all_factor_levels = p_lgl(default = TRUE, tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         activation = p_fct(levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout", "Maxout", "MaxoutWithDropout"), default = "Rectifier", tags = "train"),
@@ -57,13 +55,8 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         max_w2 = p_dbl(default = Inf, tags = "train"),
         initial_weight_distribution = p_fct(levels = c("UniformAdaptive", "Uniform", "Normal"), default = "UniformAdaptive", tags = "train"),
         initial_weight_scale = p_dbl(default = 1, tags = "train"),
-        # initial_weights
-        # initial_bias
         loss = p_fct(levels = c("Automatic", "CrossEntropy", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
         distribution = p_fct(levels = c("AUTO", "bernoulli", "multinomial"), default = "AUTO", tags = "train"),
-        # quantile_alpha
-        # tweedie_power
-        # huber_alpha
         score_interval = p_dbl(default = 5, tags = "train"),
         score_training_samples = p_int(default = 10000L, tags = "train"),
         score_validation_samples = p_int(default = 0L, tags = "train"),
@@ -77,7 +70,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         diagnostics = p_lgl(default = TRUE, tags = "train"),
         fast_mode = p_lgl(default = TRUE, tags = "train"),
         force_load_balance = p_lgl(default = TRUE, tags = "train"),
-        # variable_importances
         replicate_training_data = p_lgl(default = TRUE, tags = "train"),
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
@@ -88,7 +80,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         col_major = p_lgl(default = FALSE, tags = "train"),
         average_activation = p_dbl(default = 0, tags = "train"),
         sparsity_beta = p_dbl(default = 0, tags = "train"),
-        # max_categorical_features
+        max_categorical_features = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
         reproducible = p_lgl(default = FALSE, tags = "train"),
         export_weights_and_biases = p_lgl(default = FALSE, tags = "train"),
         mini_batch_size = p_int(default = 1L, tags = "train"),
@@ -96,7 +88,10 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         elastic_averaging = p_lgl(default = FALSE, tags = "train"),
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
-        # export_checkpoints_dir
+        export_checkpoints_dir = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
+        auc_type = p_fct(levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), default = "AUTO", tags = "train"),
+        custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
+        gainslift_bins = p_int(lower = -1L, default = -1L, tags = "train"),
         verbose = p_lgl(init = FALSE, tags = "train")
       )
 

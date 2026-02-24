@@ -17,21 +17,13 @@ test_that("paramtest classif.h2o.deeplearning train", {
     "fold_column", # resampling handled by mlr3
     "weights_column", # handled by mlr3
     "offset_column", # not supported
-    "checkpoint", # not exposed
-    "pretrained_autoencoder", # not exposed
-    "overwrite_with_best_model", # not exposed
     "initial_weights", # not exposed
     "initial_biases", # not exposed
     "quantile_alpha", # regression only
     "tweedie_power", # regression only
     "huber_alpha", # regression only
     "regression_stop", # regression only
-    "max_categorical_features", # not exposed
-    "export_checkpoints_dir", # not exposed
-    "auc_type", # not exposed
-    "custom_metric_func", # not exposed
-    "gainslift_bins", # not exposed
-    "variable_importances" # no variable importance method in mlr3
+    "variable_importances" # no variable importance method
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

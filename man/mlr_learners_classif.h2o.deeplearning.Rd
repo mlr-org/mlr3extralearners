@@ -34,6 +34,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    class_sampling_factors \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
+   overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    use_all_factor_levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    activation \tab character \tab Rectifier \tab Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout \tab - \cr
@@ -84,6 +87,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    col_major \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_activation \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_categorical_features \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    reproducible \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    export_weights_and_biases \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    mini_batch_size \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -91,6 +95,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    elastic_averaging_moving_rate \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
+   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
+   gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    verbose \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
