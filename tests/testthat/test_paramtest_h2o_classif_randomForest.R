@@ -17,7 +17,10 @@ test_that("paramtest classif.h2o.randomForest train", {
     "fold_column", # resampling handled by mlr3
     "offset_column", # no offset property
     "weights_column", # handled by mlr3
-    "calibration_frame" # not exposed
+    "calibrate_model", # not exposed
+    "calibration_frame", # not exposed
+    "calibration_method", # not exposed
+    "r2_stopping" # not supported by h2o anymore
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
