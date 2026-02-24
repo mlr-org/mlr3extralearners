@@ -138,6 +138,16 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
       prob = as.matrix(pred[, -1L])
       prob_names = names(pred)[-1L]
 
+      # H2O-predict may return probability columns as p0, p1, etc. for integer-like class labels, so we need to strip the p to create final prob-table correctly
+      int_response = grepl("^[[:digit:]]+$", as.character(as.vector(pred$predict)))
+      p_cols = grepl("^p[[:digit:]]+$", prob_names)
+      if (any(int_response) && any(p_cols)) {
+        prob_names[p_cols] = sub("^p", "", prob_names[p_cols])
+      }
+
+      colnames(prob) = prob_names
+      prob = prob[, task$class_names, drop = FALSE]
+
       list(prob = prob, response = response)
     }
   )
