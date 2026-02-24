@@ -17,21 +17,13 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "fold_column", # resampling handled by mlr3
     "weights_column", # handled by mlr3
     "offset_column", # not supported
-    "checkpoint", # not exposed
-    "pretrained_autoencoder", # not exposed
-    "overwrite_with_best_model", # not exposed
     "initial_weights", # not exposed
     "initial_biases", # not exposed
     "classification_stop", # classification only
     "max_hit_ratio_k", # classification only
     "variable_importances", # not exposed
-    "quiet_mode", # use verbose instead
-    "col_major", # not exposed
-    "max_categorical_features", # not exposed
-    "export_checkpoints_dir", # not exposed
-    "auc_type", # not exposed
-    "custom_metric_func", # not exposed
-    "gainslift_bins" # not exposed
+    "auc_type", # classification only
+    "gainslift_bins" # classification only
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
