@@ -85,9 +85,7 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
 
     .train = function(task) {
 
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
-        FALSE
-      })
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
@@ -116,16 +114,12 @@ LearnerClassifH2OGBM = R6Class("LearnerClassifH2OGBM", inherit = LearnerClassif,
 
     .predict = function(task) {
 
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
-        FALSE
-      })
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
-
-      pars = self$param_set$get_values(tags = "predict")
 
       pred = h2o::h2o.no_progress(h2o::h2o.predict(self$model, newdata = newdata))
 
