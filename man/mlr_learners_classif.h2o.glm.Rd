@@ -18,7 +18,7 @@ always set to \code{"binomial"}.
 }
 \item \code{missing_values_handling}
 \itemize{
-\item Not exposed; H2O default \code{"MeanImputation"} is used.
+\item H2O default is \code{"MeanImputation"}.
 }
 }
 }
@@ -45,19 +45,49 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    max_iterations \tab integer \tab 50 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   objective_epsilon \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   gradient_epsilon \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   solver \tab character \tab IRLSM \tab IRLSM, L_BFGS \tab - \cr
-   link \tab character \tab logit \tab logit, log \tab - \cr
+   solver \tab character \tab IRLSM \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT, COORDINATE_DESCENT_NAIVE \tab - \cr
+   link \tab character \tab logit \tab family_default, logit, log \tab - \cr
+   ignore_const_cols \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   score_each_iteration \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   score_iteration_interval \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    prior \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nlambdas \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   early_stopping \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   stopping_rounds \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_metric \tab untyped \tab - \tab  \tab - \cr
+   stopping_tolerance \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   missing_values_handling \tab character \tab - \tab MeanImputation, Skip, PlugValues \tab - \cr
+   plug_values \tab untyped \tab - \tab  \tab - \cr
+   compute_p_values \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   remove_collinear_columns \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    beta_constraints \tab untyped \tab - \tab  \tab - \cr
+   non_negative \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   startval \tab untyped \tab - \tab  \tab - \cr
+   calc_like \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   cold_start \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   max_active_predictors \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   interactions \tab untyped \tab - \tab  \tab - \cr
+   interaction_pairs \tab untyped \tab - \tab  \tab - \cr
+   obj_reg \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   balance_classes \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   class_sampling_factors \tab untyped \tab - \tab  \tab - \cr
+   max_after_balance_size \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_runtime_secs \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   generate_scoring_history \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   build_null_model \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   generate_variable_inflation_factors \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   gainslift_bins \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   init_optimal_glm \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   quiet \tab logical \tab - \tab TRUE, FALSE \tab - \cr
 }
 }
 
@@ -77,7 +107,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-print(learner$importance())
+
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -112,7 +142,6 @@ awinterstetter
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-LearnerClassifH2OGLM-new}{\code{LearnerClassifH2OGLM$new()}}
-\item \href{#method-LearnerClassifH2OGLM-importance}{\code{LearnerClassifH2OGLM$importance()}}
 \item \href{#method-LearnerClassifH2OGLM-clone}{\code{LearnerClassifH2OGLM$clone()}}
 }
 }
@@ -143,19 +172,6 @@ Creates a new instance of this \link[R6:R6Class]{R6} class.
 \if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2OGLM$new()}\if{html}{\out{</div>}}
 }
 
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-LearnerClassifH2OGLM-importance"></a>}}
-\if{latex}{\out{\hypertarget{method-LearnerClassifH2OGLM-importance}{}}}
-\subsection{Method \code{importance()}}{
-Variable importance scores computed by H2O.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{LearnerClassifH2OGLM$importance()}\if{html}{\out{</div>}}
-}
-
-\subsection{Returns}{
-Named \code{numeric()}.
-}
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-LearnerClassifH2OGLM-clone"></a>}}

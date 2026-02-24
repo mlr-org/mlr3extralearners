@@ -28,21 +28,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   size \tab untyped \tab 5L \tab  \tab - \cr
-   maxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   hiddenActFunc \tab untyped \tab "Act_Logistic" \tab  \tab - \cr
    initFunc \tab untyped \tab "Randomize_Weights" \tab  \tab - \cr
    initFuncParams \tab untyped \tab - \tab  \tab - \cr
+   inputsTest \tab untyped \tab - \tab  \tab - \cr
    learnFunc \tab untyped \tab "Std_Backpropagation" \tab  \tab - \cr
    learnFuncParams \tab untyped \tab - \tab  \tab - \cr
-   updateFunc \tab untyped \tab "Topological_Order" \tab  \tab - \cr
-   updateFuncParams \tab untyped \tab - \tab  \tab - \cr
-   hiddenActFunc \tab untyped \tab "Act_Logistic" \tab  \tab - \cr
-   shufflePatterns \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    linOut \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   inputsTest \tab untyped \tab - \tab  \tab - \cr
-   targetsTest \tab untyped \tab - \tab  \tab - \cr
+   maxit \tab integer \tab 100 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    pruneFunc \tab untyped \tab - \tab  \tab - \cr
    pruneFuncParams \tab untyped \tab - \tab  \tab - \cr
+   shufflePatterns \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   size \tab untyped \tab 5L \tab  \tab - \cr
+   targetsTest \tab untyped \tab - \tab  \tab - \cr
+   updateFunc \tab untyped \tab "Topological_Order" \tab  \tab - \cr
+   updateFuncParams \tab untyped \tab - \tab  \tab - \cr
 }
 }
 
@@ -72,7 +72,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib("rsnns2023")}
+Bergmeir, Christoph, Benitez, M. J (2023).
+\dQuote{RSNNS: Neural Networks using the Stuttgart Neural Network Simulator (SNNS).}
+\emph{R package version 0.4-17}.
+\doi{10.32614/CRAN.package.RSNNS}, \url{https://CRAN.R-project.org/package=RSNNS}.
 }
 \seealso{
 \itemize{
