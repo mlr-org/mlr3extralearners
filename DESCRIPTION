@@ -45,7 +45,7 @@ Imports:
     methods,
     mlr3cmprsk (>= 0.0.1),
     mlr3misc (>= 0.19.0),
-    mlr3proba (>= 0.8.2),
+    mlr3proba (>= 0.8.7),
     paradox (>= 1.0.1),
     R6,
     survdistr (>= 0.0.1),
@@ -84,6 +84,7 @@ Suggests:
     future,
     gbm (>= 2.2.2),
     glmnet (>= 4.1-6),
+    h2o,
     GPfit (>= 1.0-9),
     jsonlite,
     keras (>= 2.3.0),
@@ -159,4 +160,3 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.3
-
