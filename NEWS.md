@@ -7,6 +7,7 @@
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
+  - `LearnerRegrH2ODeeplearning`
 
 ## Other
 
