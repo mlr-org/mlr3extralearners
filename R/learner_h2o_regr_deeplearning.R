@@ -118,7 +118,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        invisible(capture.output(h2o::h2o.init()))
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       pars = self$param_set$get_values(tags = "train")
@@ -148,7 +148,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         FALSE
       })
       if (!inherits(conn.up, "H2OConnection")) {
-        invisible(capture.output(h2o::h2o.init()))
+        invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
 
       newdata = h2o::h2o.no_progress(h2o::as.h2o(ordered_features(task, self)))
