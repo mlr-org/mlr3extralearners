@@ -15,18 +15,18 @@ test_that("paramtest regr.h2o.gbm train", {
     "keep_cross_validation_fold_assignment", # resampling handled by mlr3
     "fold_assignment", # resampling handled by mlr3
     "fold_column", # resampling handled by mlr3
-    "offset_column", # not supported
+    "offset_column", # no offset property
     "weights_column", # handled by mlr3
     "balance_classes", # classification only
     "class_sampling_factors", # classification only
     "max_after_balance_size", # classification only
-    "r2_stopping", # not exposed
+    "r2_stopping", # no longer supported by h2o
     "sample_rate_per_class", # classification only
     "calibrate_model", # not exposed
     "calibration_frame", # not exposed
     "calibration_method", # not exposed
-    "gainslift_bins", # not exposed
-    "auc_type" # not exposed
+    "gainslift_bins", # classification only
+    "auc_type" # classification only
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

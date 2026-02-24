@@ -52,7 +52,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -67,6 +67,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
    auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
+   custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
