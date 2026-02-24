@@ -110,7 +110,6 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
     },
 
     .predict = function(task) {
-
       conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
