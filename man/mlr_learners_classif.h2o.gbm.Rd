@@ -48,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
-   max_after_balance_size \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_rate_per_class \tab untyped \tab NULL \tab  \tab - \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
