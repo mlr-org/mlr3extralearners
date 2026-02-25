@@ -20,29 +20,22 @@ test_that("paramtest classif.h2o.glm train", {
     "offset_column", # not supported
     "weights_column", # handled by mlr3
     "family", # handled by mlr3 wrapper
+    "rand_family", # not supported (family is fixed to binomial)
     "tweedie_variance_power", # not exposed
     "tweedie_link_power", # not exposed
     "theta", # not exposed
     "dispersion_parameter_method", # not exposed
     "init_dispersion_parameter", # not exposed
-    "control_variables", # not exposed
     "custom_metric_func", # not exposed
     "auc_type", # not exposed (twoclass wrapper)
+    "rand_link", # not supported (family is fixed to binomial)
     "dispersion_epsilon", # not exposed
     "tweedie_epsilon", # not exposed
     "max_iterations_dispersion", # not exposed
     "fix_dispersion_parameter", # not exposed
     "fix_tweedie_variance_power", # not exposed
     "dispersion_learning_rate", # not exposed
-    "influence", # not exposed
-    "linear_constraints", # not exposed
-    "separate_linear_beta", # not exposed
-    "constraint_eta0", # not exposed
-    "constraint_tau", # not exposed
-    "constraint_alpha", # not exposed
-    "constraint_beta", # not exposed
-    "constraint_c0", # not exposed
-    "quiet" # handled by mlr3 wrapper
+    "influence" # not exposed
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -54,8 +47,7 @@ test_that("paramtest classif.h2o.glm predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

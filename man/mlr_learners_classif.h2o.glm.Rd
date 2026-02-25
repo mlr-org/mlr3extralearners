@@ -58,6 +58,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    non_negative \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    startval \tab untyped \tab - \tab  \tab - \cr
    calc_like \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   HGLM \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   random_columns \tab untyped \tab - \tab  \tab - \cr
    cold_start \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    max_active_predictors \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    interactions \tab untyped \tab - \tab  \tab - \cr
@@ -71,7 +73,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    build_null_model \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    generate_variable_inflation_factors \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    gainslift_bins \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   init_optimal_glm \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
