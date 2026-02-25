@@ -29,11 +29,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   max_iterations \tab integer \tab 50 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_iterations \tab integer \tab 50 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   objective_epsilon \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   gradient_epsilon \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   objective_epsilon \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   gradient_epsilon \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    solver \tab character \tab IRLSM \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT, COORDINATE_DESCENT_NAIVE \tab - \cr
    link \tab character \tab logit \tab family_default, logit, log \tab - \cr
@@ -41,14 +41,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score_each_iteration \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    score_iteration_interval \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   prior \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   prior \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    lambda \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    nlambdas \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[-1, 1]}{[-1, 1]} \cr
    early_stopping \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    stopping_rounds \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab untyped \tab - \tab  \tab - \cr
+   stopping_metric \tab character \tab - \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE, AUC, AUCPR, lift_top_group, \link{...} \tab - \cr
    stopping_tolerance \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    missing_values_handling \tab character \tab - \tab MeanImputation, Skip, PlugValues \tab - \cr
    plug_values \tab untyped \tab - \tab  \tab - \cr
@@ -64,7 +64,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    max_active_predictors \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    interactions \tab untyped \tab - \tab  \tab - \cr
    interaction_pairs \tab untyped \tab - \tab  \tab - \cr
-   obj_reg \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   obj_reg \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    balance_classes \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    class_sampling_factors \tab untyped \tab - \tab  \tab - \cr
    max_after_balance_size \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
