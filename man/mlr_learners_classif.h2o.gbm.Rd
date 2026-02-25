@@ -60,7 +60,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
    custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
-   custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    in_training_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    in_training_checkpoints_tree_interval \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr

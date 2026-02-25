@@ -24,7 +24,8 @@ test_that("paramtest classif.h2o.gbm train", {
     "r2_stopping", # no longer supported by h2o
     "calibrate_model", # not exposed
     "calibration_frame", # not exposed
-    "calibration_method" # not exposed
+    "calibration_method", # not exposed
+    "custom distribution_func" # distribution handled by mlr3wrapper
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
