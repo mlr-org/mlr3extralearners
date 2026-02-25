@@ -34,6 +34,9 @@ jobs:
           extra-packages: any::pkgdown, local::.
           needs: website
 
+      - name: Print h2o version
+        run: R -q -e 'if (requireNamespace("h2o", quietly = TRUE)) cat(as.character(utils::packageVersion("h2o")), "\n") else cat("h2o not installed\n")'
+
       - name: Install template
         run: pak::pkg_install("mlr-org/mlr3pkgdowntemplate")
         shell: Rscript {0}

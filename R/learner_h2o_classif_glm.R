@@ -104,7 +104,7 @@ LearnerClassifH2OGLM = R6Class("LearnerClassifH2OGLM", inherit = LearnerClassif,
       pars$family = "binomial"
       training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-       h2o::h2o.no_progress(invoke(h2o::h2o.glm,
+      h2o::h2o.no_progress(invoke(h2o::h2o.glm,
           y = target,
           x = features,
           training_frame = training_frame,
