@@ -17,11 +17,20 @@ test_that("paramtest regr.h2o.randomForest train", {
     "fold_column", # resampling handled by mlr3
     "offset_column", # not supported
     "weights_column", # handled by mlr3
+    "balance_classes", # classification only
+    "class_sampling_factors", # classification only
+    "max_after_balance_size", # classification only
+    "sample_rate_per_class", # classification only
+    "binomial_double_trees", # classification only
     "checkpoint", # not exposed
+    "calibrate_model", # classification only
     "calibration_frame", # not exposed
+    "calibration_method", # classification only
+    "distribution", # deprecated / ignored for random forest
     "custom_metric_func", # not exposed
     "export_checkpoints_dir", # not exposed
-    "quiet" # handled by mlr3 wrapper
+    "gainslift_bins", # classification only
+    "auc_type" # classification only
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -33,8 +42,7 @@ test_that("paramtest regr.h2o.randomForest predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")
