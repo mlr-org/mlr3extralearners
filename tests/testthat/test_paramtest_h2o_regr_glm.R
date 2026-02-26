@@ -30,8 +30,7 @@ test_that("paramtest regr.h2o.glm train", {
     "auc_type", # classification metrics only
     "tweedie_epsilon", # tweedie family only
     "fix_tweedie_variance_power", # tweedie family only
-    "gainslift_bins", # classification metrics only
-    "quiet" # handled by mlr3 wrapper
+    "gainslift_bins" # classification metrics only
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -43,8 +42,7 @@ test_that("paramtest regr.h2o.glm predict", {
   fun = h2o::h2o.predict
   exclude = c(
     "object", # handled by mlr3
-    "newdata", # handled by mlr3
-    "quiet" # handled by mlr3 wrapper
+    "newdata" # handled by mlr3
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

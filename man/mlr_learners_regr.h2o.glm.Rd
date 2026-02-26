@@ -30,10 +30,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   random_columns \tab untyped \tab NULL \tab  \tab - \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_iteration_interval \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    solver \tab character \tab IRLSM \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR \tab - \cr
+   rand_family \tab untyped \tab NULL \tab  \tab - \cr
    alpha \tab untyped \tab 0.5 \tab  \tab - \cr
    lambda \tab untyped \tab 1e-05 \tab  \tab - \cr
    lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -53,8 +55,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    link \tab character \tab identity \tab family_default, identity, log, inverse \tab - \cr
+   rand_link \tab untyped \tab NULL \tab  \tab - \cr
    startval \tab untyped \tab NULL \tab  \tab - \cr
    calc_like \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   HGLM \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    cold_start \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    beta_constraints \tab untyped \tab NULL \tab  \tab - \cr
@@ -63,9 +67,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    interaction_pairs \tab untyped \tab NULL \tab  \tab - \cr
    obj_reg \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE, AUC, AUCPR, lift_top_group, \link{...} \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE, custom, custom_increasing \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   control_variables \tab untyped \tab NULL \tab  \tab - \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    generate_scoring_history \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
@@ -76,14 +79,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    generate_variable_inflation_factors \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    dispersion_learning_rate \tab numeric \tab 0.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    influence \tab untyped \tab NULL \tab  \tab - \cr
-   linear_constraints \tab untyped \tab NULL \tab  \tab - \cr
-   init_optimal_glm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   separate_linear_beta \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   constraint_eta0 \tab numeric \tab 0.1258925 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   constraint_tau \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   constraint_alpha \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   constraint_beta \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   constraint_c0 \tab numeric \tab 10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
