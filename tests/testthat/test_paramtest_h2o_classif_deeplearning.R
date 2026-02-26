@@ -23,7 +23,9 @@ test_that("paramtest classif.h2o.deeplearning train", {
     "tweedie_power", # regression only
     "huber_alpha", # regression only
     "regression_stop", # regression only
-    "variable_importances" # no importance property
+    "variable_importances", # no importance property
+    "use_all_factor_levels", # no importance property
+    "col_major" # deprecated parameter
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

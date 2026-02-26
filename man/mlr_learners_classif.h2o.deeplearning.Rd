@@ -37,7 +37,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
    overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   use_all_factor_levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    activation \tab character \tab Rectifier \tab Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout \tab - \cr
    hidden \tab untyped \tab c(200L, 200L) \tab  \tab - \cr
@@ -59,10 +58,10 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    hidden_dropout_ratios \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    l1 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    l2 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_w2 \tab numeric \tab Inf \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_w2 \tab numeric \tab 3.402823e+38 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    initial_weight_distribution \tab character \tab UniformAdaptive \tab UniformAdaptive, Uniform, Normal \tab - \cr
    initial_weight_scale \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   loss \tab character \tab Automatic \tab Automatic, CrossEntropy, Quadratic, Absolute, Huber \tab - \cr
+   loss \tab character \tab Automatic \tab Automatic, CrossEntropy, Quadratic \tab - \cr
    distribution \tab character \tab AUTO \tab AUTO, bernoulli, multinomial \tab - \cr
    score_interval \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    score_training_samples \tab integer \tab 10000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -70,7 +69,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score_duty_cycle \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    classification_stop \tab numeric \tab 0 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    stopping_rounds \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error, custom, custom_increasing \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error \tab - \cr
    stopping_tolerance \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    score_validation_sampling \tab character \tab Uniform \tab Uniform, Stratified \tab - \cr
@@ -81,10 +80,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip \tab - \cr
-   quiet_mode \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   quiet_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    autoencoder \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   col_major \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_activation \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_categorical_features \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -99,7 +97,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
    custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   verbose \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

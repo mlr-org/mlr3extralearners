@@ -30,7 +30,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         checkpoint = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         pretrained_autoencoder = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         overwrite_with_best_model = p_lgl(default = TRUE, tags = "train"),
-        use_all_factor_levels = p_lgl(default = TRUE, tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         activation = p_fct(levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout", "Maxout", "MaxoutWithDropout"), default = "Rectifier", tags = "train"),
         hidden = p_uty(default = c(200L, 200L), tags = "train"),
@@ -52,10 +51,10 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         hidden_dropout_ratios = p_dbl(default = 0.5, tags = "train"),
         l1 = p_dbl(default = 0, tags = "train"),
         l2 = p_dbl(default = 0, tags = "train"),
-        max_w2 = p_dbl(default = Inf, tags = "train"),
+        max_w2 = p_dbl(default = 3.4028235e+38, tags = "train"),
         initial_weight_distribution = p_fct(levels = c("UniformAdaptive", "Uniform", "Normal"), default = "UniformAdaptive", tags = "train"),
         initial_weight_scale = p_dbl(default = 1, tags = "train"),
-        loss = p_fct(levels = c("Automatic", "CrossEntropy", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
+        loss = p_fct(levels = c("Automatic", "CrossEntropy", "Quadratic"), default = "Automatic", tags = "train"),
         distribution = p_fct(levels = c("AUTO", "bernoulli", "multinomial"), default = "AUTO", tags = "train"),
         score_interval = p_dbl(default = 5, tags = "train"),
         score_training_samples = p_int(default = 10000L, tags = "train"),
@@ -63,7 +62,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         score_duty_cycle = p_dbl(default = 0.1, tags = "train"),
         classification_stop = p_dbl(lower = -1, default = 0, tags = "train"),
         stopping_rounds = p_int(lower = 0L, default = 5L, tags = "train"),
-        stopping_metric = p_fct(levels = c("AUTO", "logloss", "AUC", "lift_top_group", "misclassification", "AUCPR", "mean_per_class_error", "custom", "custom_increasing"), default = "AUTO", tags = "train"),
+        stopping_metric = p_fct(levels = c("AUTO", "logloss", "AUC", "lift_top_group", "misclassification", "AUCPR", "mean_per_class_error"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0, tags = "train"),
         max_runtime_secs = p_dbl(lower = 0, default = 0, tags = "train"),
         score_validation_sampling = p_fct(levels = c("Uniform", "Stratified"), default = "Uniform", tags = "train"),
@@ -74,10 +73,9 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
         missing_values_handling = p_fct(levels = c("MeanImputation", "Skip"), default = "MeanImputation", tags = "train"),
-        quiet_mode = p_lgl(init = TRUE, tags = "train"),
+        quiet_mode = p_lgl(default = TRUE, tags = "train"),
         autoencoder = p_lgl(default = FALSE, tags = "train"),
         sparse = p_lgl(default = FALSE, tags = "train"),
-        col_major = p_lgl(default = FALSE, tags = "train"),
         average_activation = p_dbl(default = 0, tags = "train"),
         sparsity_beta = p_dbl(default = 0, tags = "train"),
         max_categorical_features = p_int(default = NULL, special_vals = list(NULL), tags = "train"),
@@ -92,7 +90,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         auc_type = p_fct(levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), default = "AUTO", tags = "train"),
         custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         gainslift_bins = p_int(lower = -1L, default = -1L, tags = "train"),
-        verbose = p_lgl(init = FALSE, tags = "train")
+        verbose = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(
@@ -140,9 +138,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
 
     .predict = function(task) {
 
-      conn.up = tryCatch(h2o::h2o.getConnection(), error = function(err) {
-        FALSE
-      })
+      conn.up = try(h2o::h2o.getConnection())
       if (!inherits(conn.up, "H2OConnection")) {
         invisible(capture.output(h2o::h2o.init(ip = "127.0.0.1")))
       }
