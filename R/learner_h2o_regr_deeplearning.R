@@ -27,7 +27,6 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         checkpoint = p_uty(default = NULL, tags = "train"),
         pretrained_autoencoder = p_uty(default = NULL, tags = "train"),
         overwrite_with_best_model = p_lgl(default = TRUE, tags = "train"),
-        use_all_factor_levels = p_lgl(default = TRUE, tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         activation = p_fct(levels = c("Rectifier", "Tanh", "TanhWithDropout", "RectifierWithDropout", "Maxout", "MaxoutWithDropout"), default = "Rectifier", tags = "train"),
         hidden = p_uty(default = c(200L, 200L), tags = "train"),

@@ -34,7 +34,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
    overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   use_all_factor_levels \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    activation \tab character \tab Rectifier \tab Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout \tab - \cr
    hidden \tab untyped \tab c(200L, 200L) \tab  \tab - \cr
