@@ -49,7 +49,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         hidden_dropout_ratios = p_dbl(default = 0.5, tags = "train"),
         l1 = p_dbl(default = 0, tags = "train"),
         l2 = p_dbl(default = 0, tags = "train"),
-        max_w2 = p_dbl(default = Inf, tags = "train"),
+        max_w2 = p_dbl(default = 3.4028235e+38, tags = "train"),
         initial_weight_distribution = p_fct(levels = c("UniformAdaptive", "Uniform", "Normal"), default = "UniformAdaptive", tags = "train"),
         initial_weight_scale = p_dbl(default = 1, tags = "train"),
         loss = p_fct(levels = c("Automatic", "Quantile", "Quadratic", "Absolute", "Huber"), default = "Automatic", tags = "train"),
@@ -66,7 +66,6 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         stopping_metric = p_fct(levels = c("AUTO", "deviance", "MSE", "RMSE", "MAE", "RMSLE"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0, tags = "train"),
         max_runtime_secs = p_dbl(lower = 0, default = 0, tags = "train"),
-        score_validation_sampling = p_fct(levels = "Uniform", default = "Uniform", tags = "train"),
         diagnostics = p_lgl(default = TRUE, tags = "train"),
         fast_mode = p_lgl(default = TRUE, tags = "train"),
         force_load_balance = p_lgl(default = TRUE, tags = "train"),
@@ -74,10 +73,9 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         single_node_mode = p_lgl(default = FALSE, tags = "train"),
         shuffle_training_data = p_lgl(default = FALSE, tags = "train"),
         missing_values_handling = p_fct(levels = c("MeanImputation", "Skip"), default = "MeanImputation", tags = "train"),
-        quiet_mode = p_lgl(init = TRUE, tags = "train"),
+        quiet_mode = p_lgl(default = FALSE, tags = "train"),
         autoencoder = p_lgl(default = FALSE, tags = "train"),
         sparse = p_lgl(default = FALSE, tags = "train"),
-        col_major = p_lgl(default = FALSE, tags = "train"),
         average_activation = p_dbl(default = 0, tags = "train"),
         sparsity_beta = p_dbl(default = 0, tags = "train"),
         max_categorical_features = p_int(lower = 1L, default = 2147483647L, tags = "train"),
@@ -90,7 +88,7 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         export_checkpoints_dir = p_uty(default = NULL, tags = "train"),
         custom_metric_func = p_uty(default = NULL, tags = "train"),
-        verbose = p_lgl(init = FALSE, tags = "train")
+        verbose = p_lgl(default = FALSE, tags = "train")
       )
 
       super$initialize(

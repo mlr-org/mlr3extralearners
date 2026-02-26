@@ -56,7 +56,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    hidden_dropout_ratios \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    l1 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    l2 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_w2 \tab numeric \tab Inf \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_w2 \tab numeric \tab 3.402823e+38 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    initial_weight_distribution \tab character \tab UniformAdaptive \tab UniformAdaptive, Uniform, Normal \tab - \cr
    initial_weight_scale \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    loss \tab character \tab Automatic \tab Automatic, Quantile, Quadratic, Absolute, Huber \tab - \cr
@@ -73,7 +73,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
    stopping_tolerance \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   score_validation_sampling \tab character \tab Uniform \tab Uniform \tab - \cr
    diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -81,10 +80,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip \tab - \cr
-   quiet_mode \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   quiet_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    autoencoder \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   col_major \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_activation \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_categorical_features \tab integer \tab 2147483647 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -97,7 +95,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
-   verbose \tab logical \tab - \tab TRUE, FALSE \tab - \cr
+   verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 

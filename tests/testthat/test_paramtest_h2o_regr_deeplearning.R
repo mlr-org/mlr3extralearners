@@ -26,7 +26,9 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "max_hit_ratio_k", # classification only
     "variable_importances", # no importance property
     "auc_type", # classification only
-    "gainslift_bins" # classification only
+    "gainslift_bins", # classification only
+    "score_validation_sampling", # only one level for regression learner
+    "col_major" # deprecated
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
