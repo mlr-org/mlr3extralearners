@@ -971,6 +971,16 @@ bibentries = c( # nolint start
     pages   = "232--253",
     doi     = "10.1214/10-AOAS388",
     issn    = "1932-6157"
-  )
+  ),
+  macdonald2015gpfit = bibentry("article",
+    title = "GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs",
+    author = "MacDonald, B. and Ranjan, P. and Chipman, H.",
+    year = "2015",
+    journal = "Journal of Statistical Software",
+    volume = "64",
+    pages = "1--23",
+    doi = "10.18637/jss.v064.i12",
+    issn = "1548-7660"
+)
 
 ) # nolint end
