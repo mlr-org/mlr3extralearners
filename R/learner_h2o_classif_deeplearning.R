@@ -25,7 +25,7 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         ignore_const_cols = p_lgl(default = TRUE, tags = "train"),
         score_each_iteration = p_lgl(default = FALSE, tags = "train"),
         balance_classes = p_lgl(default = FALSE, tags = "train"),
-        class_sampling_factors = p_dbl(default = NULL, special_vals = list(NULL), depends = quote(balance_classes == TRUE), tags = "train"),
+        class_sampling_factors = p_uty(default = NULL, depends = quote(balance_classes == TRUE), tags = "train"),
         max_after_balance_size = p_dbl(default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
         checkpoint = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         pretrained_autoencoder = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),

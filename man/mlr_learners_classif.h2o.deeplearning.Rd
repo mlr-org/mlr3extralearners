@@ -32,7 +32,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   class_sampling_factors \tab numeric \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
    max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
