@@ -45,10 +45,9 @@ Imports:
     methods,
     mlr3cmprsk (>= 0.0.1),
     mlr3misc (>= 0.19.0),
-    mlr3proba (>= 0.8.2),
+    mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),
     R6,
-    survdistr (>= 0.0.1),
     withr
 Suggests:
     abess,
@@ -109,7 +108,7 @@ Suggests:
     nnet,
     partykit (>= 1.2-21),
     penalized (>= 0.9-52),
-    pls (>= 2.8-5),
+    pls (>= 2.9-0),
     polyreg,
     prioritylasso (>= 0.3.1),
     pseudo,
@@ -125,8 +124,8 @@ Suggests:
     rotationForest,
     rpart,
     RRF (>= 1.9.4.1),
-    RSNNS (>= 0.4-17),
     rsm,
+    RSNNS (>= 0.4-17),
     rvest,
     RWeka,
     sandwich,
@@ -135,6 +134,7 @@ Suggests:
     sparseLDA (>= 0.1-9),
     stats,
     stepPlr,
+    survdistr (>= 0.0.1),
     survdnn (>= 0.7.5),
     survival,
     survivalmodels (>= 0.1.19),
@@ -143,7 +143,7 @@ Suggests:
     testthat,
     tgp (>= 2.4-23),
     torch (>= 0.16.3),
-    xgboost (>= 3.1.2.1)
+    xgboost (>= 3.2.0.1)
 VignetteBuilder:
     knitr,
     rmarkdown
@@ -159,4 +159,3 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.3
-

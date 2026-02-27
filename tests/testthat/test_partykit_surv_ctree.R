@@ -1,6 +1,7 @@
 skip_if_not_installed("partykit")
 skip_if_not_installed("coin")
 skip_if_not_installed("sandwich")
+skip_if_not_installed("survdistr")
 
 test_that("autotest", {
   withr::local_seed(42)
