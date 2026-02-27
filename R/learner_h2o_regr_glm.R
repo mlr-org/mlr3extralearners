@@ -111,7 +111,7 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
 
       training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      h2o::h2o.no_progress(invoke(h2o::glm,
+      h2o::h2o.no_progress(invoke(h2o::h2o.glm,
         y = target,
         x = feature,
         training_frame = training_frame,
