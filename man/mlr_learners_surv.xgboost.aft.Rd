@@ -110,7 +110,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    skip_drop \tab numeric \tab 0 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    use_rmm \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    max_cached_hist_node \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   extmem_single_page \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    max_cat_to_onehot \tab integer \tab 4 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_cat_threshold \tab integer \tab 64 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    subsample \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
