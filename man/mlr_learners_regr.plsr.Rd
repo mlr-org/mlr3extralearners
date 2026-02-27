@@ -40,6 +40,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    x \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    y \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   orthScores \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
 
