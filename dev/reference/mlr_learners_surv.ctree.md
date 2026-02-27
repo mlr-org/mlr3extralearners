@@ -39,7 +39,8 @@ instantiated via
   [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [partykit](https://CRAN.R-project.org/package=partykit),
   [coin](https://CRAN.R-project.org/package=coin),
-  [sandwich](https://CRAN.R-project.org/package=sandwich)
+  [sandwich](https://CRAN.R-project.org/package=sandwich),
+  [survdistr](https://CRAN.R-project.org/package=survdistr)
 
 ## Parameters
 
@@ -193,7 +194,8 @@ print(learner)
 #> ── <LearnerSurvCTree> (surv.ctree): Conditional Inference Tree ─────────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3, mlr3proba, mlr3extralearners, partykit, coin, and sandwich
+#> • Packages: mlr3, mlr3proba, mlr3extralearners, partykit, coin, sandwich, and
+#> survdistr
 #> • Predict Types: [crank] and distr
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -218,20 +220,22 @@ print(learner$model)
 #> Fitted party:
 #> [1] root
 #> |   [2] age <= 66
-#> |   |   [3] revascdays <= 170
-#> |   |   |   [4] revasc <= 0
-#> |   |   |   |   [5] los <= 3: 2.000 (n = 18)
-#> |   |   |   |   [6] los > 3: 73.000 (n = 31)
-#> |   |   |   [7] revasc > 0: Inf (n = 183)
-#> |   |   [8] revascdays > 170: Inf (n = 69)
+#> |   |   [3] revasc <= 0
+#> |   |   |   [4] revascdays <= 170
+#> |   |   |   |   [5] los <= 3: 5.000 (n = 24)
+#> |   |   |   |   [6] los > 3: 99.000 (n = 29)
+#> |   |   |   [7] revascdays > 170: Inf (n = 57)
+#> |   |   [8] revasc > 0: Inf (n = 189)
 #> |   [9] age > 66
-#> |   |   [10] revascdays <= 173
-#> |   |   |   [11] revasc <= 0: 36.000 (n = 128)
-#> |   |   |   [12] revasc > 0: Inf (n = 170)
-#> |   |   [13] revascdays > 173: Inf (n = 71)
+#> |   |   [10] revascdays <= 169
+#> |   |   |   [11] revasc <= 0
+#> |   |   |   |   [12] stchange <= 0: 88.000 (n = 46)
+#> |   |   |   |   [13] stchange > 0: 12.000 (n = 81)
+#> |   |   |   [14] revasc > 0: Inf (n = 168)
+#> |   |   [15] revascdays > 169: Inf (n = 76)
 #> 
-#> Number of inner nodes:    6
-#> Number of terminal nodes: 7
+#> Number of inner nodes:    7
+#> Number of terminal nodes: 8
 
 
 # Make predictions for the test rows
@@ -240,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8097246 
+#>   0.7943044 
 ```

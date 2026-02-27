@@ -113,7 +113,6 @@ instantiated via
 | skip_drop                   | numeric   | 0         |                                          | \\\[0, 1\]\\          |
 | use_rmm                     | logical   | FALSE     | TRUE, FALSE                              | \-                    |
 | max_cached_hist_node        | integer   | NULL      |                                          | \\(-\infty, \infty)\\ |
-| extmem_single_page          | logical   | FALSE     | TRUE, FALSE                              | \-                    |
 | max_cat_to_onehot           | integer   | 4         |                                          | \\(-\infty, \infty)\\ |
 | max_cat_threshold           | integer   | 64        |                                          | \\(-\infty, \infty)\\ |
 | subsample                   | numeric   | 1         |                                          | \\\[0, 1\]\\          |

@@ -1,7 +1,7 @@
 # Principal Component Regression Learner
 
 Principal Component Regression model. Calls
-[`pls::pcr()`](https://rdrr.io/pkg/pls/man/mvr.html) from
+[`pls::pcr()`](https://khliland.github.io/pls/reference/mvr.html) from
 [pls](https://CRAN.R-project.org/package=pls).
 
 ## Note
@@ -173,7 +173,7 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> Principal component regression, fitted with the singular value decomposition algorithm.
 #> Call:
-#> pcr(formula = formula, data = data, model = FALSE)
+#> pls::pcr(formula = formula, data = data, model = FALSE)
 
 
 # Make predictions for the test rows
@@ -182,5 +182,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.752017 
+#> 7.080802 
 ```

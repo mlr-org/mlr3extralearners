@@ -1,7 +1,7 @@
 # Partial Least Squares Regression
 
 Partial least squares regression. Calls
-[`pls::plsr()`](https://rdrr.io/pkg/pls/man/mvr.html) from
+[`pls::plsr()`](https://khliland.github.io/pls/reference/mvr.html) from
 [pls](https://CRAN.R-project.org/package=pls).
 
 ## Note
@@ -40,6 +40,7 @@ instantiated via
 | model      | logical   | TRUE      | TRUE, FALSE                                  | \-               |
 | x          | logical   | FALSE     | TRUE, FALSE                                  | \-               |
 | y          | logical   | FALSE     | TRUE, FALSE                                  | \-               |
+| orthScores | logical   | FALSE     | TRUE, FALSE                                  | \-               |
 
 ## References
 
@@ -164,7 +165,7 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> Partial least squares regression, fitted with the kernel algorithm.
 #> Call:
-#> plsr(formula = formula, data = task$data())
+#> pls::plsr(formula = formula, data = task$data())
 
 
 # Make predictions for the test rows
@@ -173,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 30.15477 
+#> 13.09539 
 ```

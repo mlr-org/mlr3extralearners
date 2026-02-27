@@ -85,7 +85,11 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>control</td><td>untyped</td><td>NULL</td><td></td><td>-</td></tr><tr><td>nug_thres</td><td>numeric</td><td>-</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>trace</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>maxit</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>optim_start</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>scale</td><td>logical</td><td>-</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>type</td><td>character</td><td>exponential</td><td>exponential, matern</td><td>-</td></tr><tr><td>matern_nu_k</td><td>integer</td><td>0</td><td></td><td>\([0, \infty)\)</td></tr><tr><td>power</td><td>numeric</td><td>1.95</td><td></td><td>\([1, 2]\)</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><code>r format_bib("macdonald2015gpfit")</code></p>
+    <p>MacDonald, B., Ranjan, P., Chipman, H. (2015).
+“GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs.”
+<em>Journal of Statistical Software</em>, <b>64</b>, 1–23.
+ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-link">doi:10.18637/jss.v064.i12</a>
+.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -190,11 +194,11 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.1595304  -8.785053        -10  -8.060125  -7.397818   0.362155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -8.403527  -7.051852        -10  -5.623472        -10  -9.002866</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   1.366509  0.5593852  -8.378369   0.2543255</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -5.040361  0.7137313  -5.227005    1.198128</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 38.45304</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 78.27087</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -210,11 +214,11 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   4.000   8.000 460.000   4.430   5.000 245.000  22.900   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   4.000   8.000 472.000   4.930   5.000 264.000  20.220   1.000   5.345 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 78.700  2.760  3.000 62.000 15.410  0.000  1.513 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -225,7 +229,7 @@ If this is not wanted, <code>scale = FALSE`` has to be set. We replace the GPfit
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  9.88129 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30.00071 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

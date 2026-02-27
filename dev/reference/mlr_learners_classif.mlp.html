@@ -76,10 +76,14 @@
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>size</td><td>untyped</td><td>5L</td><td></td><td>-</td></tr><tr><td>maxit</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>initFunc</td><td>untyped</td><td>"Randomize_Weights"</td><td></td><td>-</td></tr><tr><td>initFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>learnFunc</td><td>untyped</td><td>"Std_Backpropagation"</td><td></td><td>-</td></tr><tr><td>learnFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>updateFunc</td><td>untyped</td><td>"Topological_Order"</td><td></td><td>-</td></tr><tr><td>updateFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>hiddenActFunc</td><td>untyped</td><td>"Act_Logistic"</td><td></td><td>-</td></tr><tr><td>shufflePatterns</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>linOut</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>inputsTest</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>targetsTest</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pruneFunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pruneFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>hiddenActFunc</td><td>untyped</td><td>"Act_Logistic"</td><td></td><td>-</td></tr><tr><td>initFunc</td><td>untyped</td><td>"Randomize_Weights"</td><td></td><td>-</td></tr><tr><td>initFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>inputsTest</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>learnFunc</td><td>untyped</td><td>"Std_Backpropagation"</td><td></td><td>-</td></tr><tr><td>learnFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>linOut</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>maxit</td><td>integer</td><td>100</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>pruneFunc</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>pruneFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>shufflePatterns</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>size</td><td>untyped</td><td>5L</td><td></td><td>-</td></tr><tr><td>targetsTest</td><td>untyped</td><td>-</td><td></td><td>-</td></tr><tr><td>updateFunc</td><td>untyped</td><td>"Topological_Order"</td><td></td><td>-</td></tr><tr><td>updateFuncParams</td><td>untyped</td><td>-</td><td></td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><code>r format_bib("rsnns2023")</code></p>
+    <p>Bergmeir, Christoph, Benitez, M. J (2023).
+“RSNNS: Neural Networks using the Stuttgart Neural Network Simulator (SNNS).”
+<em>R package version 0.4-17</em>.
+<a href="https://doi.org/10.32614/CRAN.package.RSNNS" class="external-link">doi:10.32614/CRAN.package.RSNNS</a>
+, <a href="https://CRAN.R-project.org/package=RSNNS" class="external-link">https://CRAN.R-project.org/package=RSNNS</a>.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -205,7 +209,7 @@
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -5,10 +5,10 @@
       fontURL: "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"
     }
   };
-</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Linear Discriminant Analysis Learner — mlr_learners_classif.sdlda"><meta name="description" content="Shrinkage-based Diagonal Linear Discriminant Analysis classfier.
+</script><script src="../lightswitch.js"></script><script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet"><script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Roboto-0.4.10/font.css" rel="stylesheet"><link href="../deps/JetBrains_Mono-0.4.10/font.css" rel="stylesheet"><link href="../deps/Roboto_Slab-0.4.10/font.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet"><link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet"><script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Classification Linear Discriminant Analysis Learner — mlr_learners_classif.sdlda"><meta name="description" content="Shrinkage-based Diagonal Linear Discriminant Analysis classifier.
 Type of Naive Bayes classifiers that improves the estimation of the pooled variances by
 using a shrinkage-based estimator of the pooled covariance matrix.
-Calls sparsediscrim::lda_shrink_cov() sparsediscrim."><meta property="og:description" content="Shrinkage-based Diagonal Linear Discriminant Analysis classfier.
+Calls sparsediscrim::lda_shrink_cov() sparsediscrim."><meta property="og:description" content="Shrinkage-based Diagonal Linear Discriminant Analysis classifier.
 Type of Naive Bayes classifiers that improves the estimation of the pooled variances by
 using a shrinkage-based estimator of the pooled covariance matrix.
 Calls sparsediscrim::lda_shrink_cov() sparsediscrim."><meta name="robots" content="noindex"></head><body>
@@ -59,7 +59,7 @@ Calls sparsediscrim::lda_shrink_cov() sparsediscrim."><meta name="robots" conten
     </div>
 
     <div class="ref-description section level2">
-    <p>Shrinkage-based Diagonal Linear Discriminant Analysis classfier.
+    <p>Shrinkage-based Diagonal Linear Discriminant Analysis classifier.
 Type of Naive Bayes classifiers that improves the estimation of the pooled variances by
 using a shrinkage-based estimator of the pooled covariance matrix.
 Calls <code><a href="https://topepo.github.io/sparsediscrim/reference/lda_shrink_cov.html" class="external-link">sparsediscrim::lda_shrink_cov()</a></code> <a href="https://CRAN.R-project.org/package=sparsediscrim" class="external-link"><span class="pkg">sparsediscrim</span></a>.</p>
@@ -193,7 +193,7 @@ ISSN 0006341X, 15410420, <a href="http://www.jstor.org/stable/20640622" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of Features: 60 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Classes and Prior Probabilities:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   M (55.4%), R (44.6%) </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   M (50.36%), R (49.64%) </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -202,7 +202,7 @@ ISSN 0006341X, 15410420, <a href="http://www.jstor.org/stable/20640622" class="e
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.4927536 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5942029 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
