@@ -48,7 +48,6 @@ Imports:
     mlr3proba (>= 0.8.2),
     paradox (>= 1.0.1),
     R6,
-    survdistr (>= 0.0.1),
     withr
 Suggests:
     abess,
@@ -125,8 +124,8 @@ Suggests:
     rotationForest,
     rpart,
     RRF (>= 1.9.4.1),
-    RSNNS (>= 0.4-17),
     rsm,
+    RSNNS (>= 0.4-17),
     rvest,
     RWeka,
     sandwich,
@@ -135,6 +134,7 @@ Suggests:
     sparseLDA (>= 0.1-9),
     stats,
     stepPlr,
+    survdistr (>= 0.0.1),
     survdnn (>= 0.7.5),
     survival,
     survivalmodels (>= 0.1.19),
@@ -159,4 +159,3 @@ Encoding: UTF-8
 NeedsCompilation: no
 Roxygen: list(markdown = TRUE, r6 = TRUE)
 RoxygenNote: 7.3.3
-

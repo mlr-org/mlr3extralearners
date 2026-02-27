@@ -11,6 +11,7 @@
 ## Other
 
 - Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
+- `survdistr` is now on Suggests (used for constant interpolation of the Kaplan-Meier predictions of the `partykit` survival learners)
 
 # mlr3extralearners 1.4.0
 
