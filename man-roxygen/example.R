@@ -1,6 +1,11 @@
 <%
 pkgs = setdiff(lrn(id)$packages, c("mlr3", "mlr3learners"))
 l  = lrn(id)
+learner_args = if (exists("example_learner_args")) {
+paste0(", ", example_learner_args)
+} else {
+""
+}
 task_id = if ("LearnerClassif" %in% class(l)) {
 "sonar"
 } else if ("LearnerRegr" %in% class(l)) {
@@ -12,7 +17,7 @@ task_id = if ("LearnerClassif" %in% class(l)) {
 #'
 #' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
 #' # Define the Learner
-#' <%= sprintf("learner = lrn(\"%s\")", id)%>
+#' <%= sprintf("learner = lrn(\"%s\"%s)", id, learner_args)%>
 #' print(learner)
 #'
 #' # Define a Task

@@ -15,6 +15,7 @@
 #'
 #' @template learner
 #' @templateVar id surv.cforest
+#' @templateVar example_learner_args ntree = 50L
 #'
 #' @inheritSection mlr_learners_classif.cforest Custom mlr3 parameters
 #'

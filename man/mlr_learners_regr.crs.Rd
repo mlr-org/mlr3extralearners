@@ -70,7 +70,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("regr.crs")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = lrn("regr.crs")
+learner = lrn("regr.crs", cv = "none", degree = 1L, segments = 1L)
 print(learner)
 
 # Define a Task

@@ -7,6 +7,7 @@
 #' Calls `crs::crs()` from \CRANpkg{crs}.
 #'
 #' @templateVar id regr.crs
+#' @templateVar example_learner_args cv = "none", degree = 1L, segments = 1L
 #' @template learner
 #'
 #' @template seealso_learner

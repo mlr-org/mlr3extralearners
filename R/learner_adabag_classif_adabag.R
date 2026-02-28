@@ -16,6 +16,7 @@
 #' `r format_bib("adabag2013")`
 #'
 #' @templateVar id classif.adabag
+#' @templateVar example_learner_args mfinal = 20L, maxdepth = 10L
 #' @template learner
 #'
 #'

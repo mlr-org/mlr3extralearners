@@ -48,7 +48,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \examples{
 \dontshow{if (learner_is_runnable("regr.gpfit")) withAutoprint(\{ # examplesIf}
 # Define the Learner
-learner = lrn("regr.gpfit")
+learner = lrn("regr.gpfit", maxit = 20L)
 print(learner)
 
 # Define a Task

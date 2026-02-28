@@ -8,6 +8,7 @@
 #'
 #' @template learner
 #' @templateVar id classif.cforest
+#' @templateVar example_learner_args ntree = 50L
 #'
 #' @section Custom mlr3 parameters:
 #' - `mtry`:
