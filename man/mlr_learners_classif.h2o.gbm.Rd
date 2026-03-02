@@ -32,11 +32,12 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
+   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_depth \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_rows \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -44,11 +45,11 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error, custom, custom_increasing \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
-   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_rate_per_class \tab untyped \tab NULL \tab  \tab - \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
@@ -70,7 +71,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
    auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
 }
 }
 
