@@ -7,10 +7,13 @@
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
+  - `LearnerRegrH2OGLM`
 
 ## Other
 
 - Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
+- `survdistr` is now on Suggests (used for constant interpolation of the Kaplan-Meier predictions of the `partykit` survival learners)
+- Updated `mlr3proba` (`0.8.8`), `pls` and `xgboost` to the most recent CRAN versions
 
 # mlr3extralearners 1.4.0
 

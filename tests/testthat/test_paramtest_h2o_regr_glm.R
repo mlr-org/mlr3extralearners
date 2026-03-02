@@ -10,8 +10,6 @@ test_that("paramtest regr.h2o.glm train", {
     "model_id", # not exposed
     "validation_frame", # resampling handled by mlr3
     "nfolds", # resampling handled by mlr3
-    "checkpoint", # not exposed
-    "export_checkpoints_dir", # not exposed
     "keep_cross_validation_models", # resampling handled by mlr3
     "keep_cross_validation_predictions", # resampling handled by mlr3
     "keep_cross_validation_fold_assignment", # resampling handled by mlr3
@@ -22,7 +20,7 @@ test_that("paramtest regr.h2o.glm train", {
     "family", # fixed to gaussian
     "tweedie_variance_power", # tweedie family only
     "tweedie_link_power", # tweedie family only
-    "theta", # non-gaussian families only
+    "theta", # dispersion parameter for neg. binomial regression; not relevant here
     "prior", # classification-oriented / non-gaussian use
     "balance_classes", # classification only
     "class_sampling_factors", # classification only
@@ -30,7 +28,8 @@ test_that("paramtest regr.h2o.glm train", {
     "auc_type", # classification metrics only
     "tweedie_epsilon", # tweedie family only
     "fix_tweedie_variance_power", # tweedie family only
-    "gainslift_bins" # classification metrics only
+    "custom_metric_func", # custom levels not exposed for glm learner
+    "gainslift_bins" # classification metrics only    
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
