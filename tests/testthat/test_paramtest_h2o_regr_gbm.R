@@ -26,7 +26,8 @@ test_that("paramtest regr.h2o.gbm train", {
     "calibration_frame", # not exposed
     "calibration_method", # not exposed
     "gainslift_bins", # classification only
-    "auc_type" # classification only
+    "auc_type", # classification only
+    "custom_metric_func" # custom levels only for Python client
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

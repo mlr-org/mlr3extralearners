@@ -38,16 +38,16 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   distribution \tab character \tab gaussian \tab poisson, laplace, tweedie, gaussian, huber, gamma, quantile, custom \tab - \cr
+   distribution \tab character \tab gaussian \tab AUTO, poisson, laplace, tweedie, gaussian, huber, gamma, quantile, custom \tab - \cr
    sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    max_abs_leafnode_pred \tab numeric \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse \tab - \cr
+   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
    min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin \tab - \cr
+   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
@@ -67,7 +67,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
    auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
