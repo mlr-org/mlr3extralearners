@@ -31,7 +31,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::., github::xoopR/ooplah, github::xoopR/dictionar6, github::xoopR/param6, github::xoopR/set6, github::xoopR/distr6
+          extra-packages: any::pkgdown, local::.
           needs: website
 
       - name: Install template

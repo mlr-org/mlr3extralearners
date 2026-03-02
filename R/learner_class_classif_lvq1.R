@@ -25,16 +25,16 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        size = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
-        prior = p_uty(default = NULL, tags = "train"),
+        alpha = p_dbl(default = 0.03, lower = 0, tags = "train"),
         k = p_int(default = 5L, lower = 1L, tags = "train"),
         niter = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train"),
-        alpha = p_dbl(default = 0.03, lower = 0, tags = "train")
+        prior = p_uty(default = NULL, tags = "train"),
+        size = p_int(default = NULL, lower = 1L, special_vals = list(NULL), tags = "train")
       )
 
       super$initialize(
         id = "classif.lvq1",
-        packages = "class",
+        packages = c("mlr3extralearners", "class"),
         feature_types = c("integer", "numeric"),
         predict_types = "response",
         param_set = param_set,
@@ -62,7 +62,7 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
       lvq_args = c(list(x = d, cl = target, codebk = codebk), lvq_pars)
 
       invoke(
-        class::lvq1,
+        .f = class::lvq1,
         .args = lvq_args
       )
       
@@ -70,7 +70,7 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
     .predict = function(task) {
       newdata = as.matrix(ordered_features(task, self))
       pred = invoke(
-        class::lvqtest,
+        .f = class::lvqtest,
         codebk = self$model,
         test = newdata
       )

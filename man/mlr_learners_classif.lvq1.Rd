@@ -25,18 +25,18 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{class}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{class}
 }
 }
 
 \section{Parameters}{
 \tabular{llll}{
    Id \tab Type \tab Default \tab Range \cr
-   size \tab integer \tab NULL \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   prior \tab untyped \tab NULL \tab - \cr
+   alpha \tab numeric \tab 0.03 \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    k \tab integer \tab 5 \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    niter \tab integer \tab NULL \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   alpha \tab numeric \tab 0.03 \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   prior \tab untyped \tab NULL \tab - \cr
+   size \tab integer \tab NULL \tab \eqn{[1, \infty)}{[1, Inf)} \cr
 }
 }
 
@@ -66,13 +66,7 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Kohonen, Teuvo (1990).
-\dQuote{The self-organizing map.}
-\emph{Proceedings of the IEEE}, \bold{78}, 1464--1480.
-
-Kohonen, Teuvo (1995).
-\emph{Self-Organizing Maps}.
-Springer, Berlin.
+\verb{r format_bib("kohonen_1990", "kohonen_1995")}
 }
 \seealso{
 \itemize{

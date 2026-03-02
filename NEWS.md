@@ -10,6 +10,7 @@
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
   - `LearnerClassifH2ODeeplearning`
+  - `LearnerClassifLvq1`
 
 ## Other
 
