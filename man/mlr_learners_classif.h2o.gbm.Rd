@@ -42,7 +42,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error, custom, custom_increasing \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -53,14 +53,13 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    sample_rate_per_class \tab untyped \tab NULL \tab  \tab - \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
    max_abs_leafnode_pred \tab numeric \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
-   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    in_training_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    in_training_checkpoints_tree_interval \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
