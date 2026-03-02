@@ -33,8 +33,42 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \section{Parameters}{
-
-`r paste(mlr3misc::rd_info(lrn("regr.earth")$param_set), collapse = "\n")`
+\tabular{lllll}{
+   Id \tab Type \tab Default \tab Levels \tab Range \cr
+   wp \tab untyped \tab NULL \tab  \tab - \cr
+   offset \tab untyped \tab NULL \tab  \tab - \cr
+   keepxy \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   trace \tab character \tab 0 \tab 0, .3, .5, 1, 2, 3, 4, 5 \tab - \cr
+   degree \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   penalty \tab numeric \tab 2 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   nk \tab untyped \tab NULL \tab  \tab - \cr
+   thresh \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   minspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   endspan \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   newvar.penalty \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   fast.k \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   fast.beta \tab integer \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   linpreds \tab untyped \tab FALSE \tab  \tab - \cr
+   allowed \tab untyped \tab - \tab  \tab - \cr
+   pmethod \tab character \tab backward \tab backward, none, exhaustive, forward, seqrep, cv \tab - \cr
+   nprune \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   nfold \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   ncross \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stratify \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   varmod.method \tab character \tab none \tab none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, \link{...} \tab - \cr
+   varmod.exponent \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.conv \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   varmod.clamp \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   varmod.minspan \tab numeric \tab -3 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Scale.y \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   Adjust.endspan \tab numeric \tab 2 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   Auto.linpreds \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   Force.weights \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   Use.beta.cache \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   Force.xtx.prune \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   Get.leverages \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   Exhaustive.tol \tab numeric \tab 1e-10 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+}
 }
 
 \examples{
