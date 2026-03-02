@@ -20,15 +20,14 @@ test_that("paramtest regr.h2o.randomForest train", {
     "balance_classes", # classification only
     "class_sampling_factors", # classification only
     "max_after_balance_size", # classification only
+    "r2_stopping", # no longer supported by h2o
     "sample_rate_per_class", # classification only
     "binomial_double_trees", # classification only
-    "checkpoint", # not exposed
     "calibrate_model", # classification only
     "calibration_frame", # not exposed
     "calibration_method", # classification only
     "distribution", # deprecated / ignored for random forest
-    "custom_metric_func", # not exposed
-    "export_checkpoints_dir", # not exposed
+    "custom_metric_func", # not supported for randomForest Learner
     "gainslift_bins", # classification only
     "auc_type" # classification only
   )

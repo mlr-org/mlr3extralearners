@@ -38,20 +38,21 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   r2_stopping \tab numeric \tab Inf \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE, custom, custom_increasing \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    mtries \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    sample_rate \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
    categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
