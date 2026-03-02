@@ -158,6 +158,7 @@ LearnerRegrLightGBM = R6Class("LearnerRegrLightGBM",
         # GPU parameters
         gpu_platform_id = p_int(default = -1L, tags = "train"),
         gpu_device_id = p_int(default = -1L, tags = "train"),
+        gpu_device_id_list = p_uty(default = NULL, tags = "train"),
         gpu_use_dp = p_lgl(default = FALSE, tags = "train"),
         num_gpu = p_int(default = 1L, lower = 1L, tags = "train"),
 

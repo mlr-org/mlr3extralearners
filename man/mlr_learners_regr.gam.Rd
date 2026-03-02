@@ -88,8 +88,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \dontshow{if (learner_is_runnable("regr.gam")) withAutoprint(\{ # examplesIf}
 # simple example
 t = tsk("mtcars")
-l = lrn("regr.gam")
-l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
+l = lrn("regr.gam", formula = mpg ~ cyl + am + s(disp) + s(hp))
 l$train(t)
 l$model
 \dontshow{\}) # examplesIf}

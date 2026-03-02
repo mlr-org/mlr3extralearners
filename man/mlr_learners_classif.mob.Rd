@@ -71,12 +71,6 @@ library(mlr3)
 logit_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   glm(y ~ 1, family = binomial, start = start, ...)
 }
-learner = LearnerClassifMob$new()
-learner$param_set$values$rhs = "."
-learner$param_set$values$fit = logit_
-learner$param_set$values$additional = list(maxit = 100)
-learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
-learner$properties = c("twoclass", "weights")
 
 predict_fun = function(object, newdata, task, .type) {
   p = unname(predict(object, newdata = newdata, type = "response"))
@@ -90,8 +84,17 @@ predict_fun = function(object, newdata, task, .type) {
     y
   }
 }
+
+learner = lrn("classif.mob",
+    rhs = ".", 
+    fit = logit_,
+    additional = list(maxit = 100),
+    feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+    properties = c("twoclass", "weights"),
+    predict_fun = predict_fun
+)
+
 task = tsk("breast_cancer")
-learner$param_set$values$predict_fun = predict_fun
 ids = partition(task)
 learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
