@@ -20,6 +20,8 @@ test_that("paramtest classif.h2o.randomForest train", {
     "calibrate_model", # not exposed
     "calibration_frame", # not exposed
     "calibration_method", # not exposed
+    "distribution", # deprecated / not applicable for randomForest learner
+    "custom_metric_func", # not applicable for randomForest learner
     "r2_stopping" # not supported by h2o anymore
   )
 

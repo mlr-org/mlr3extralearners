@@ -30,13 +30,13 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
         max_after_balance_size = p_dbl(lower = 0, default = 5, depends = quote(balance_classes == TRUE), tags = "train"),
         checkpoint = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         ntrees = p_int(lower = 1L, default = 50L, tags = "train"),
-        max_depth = p_int(lower = 1L, default = 20L, tags = "train"),
+        max_depth = p_int(lower = 0L, default = 20L, tags = "train"),
         min_rows = p_dbl(lower = 1, default = 1, tags = "train"),
         nbins = p_int(lower = 1L, default = 20L, tags = "train"),
         nbins_top_level = p_int(lower = 1L, default = 1024L, tags = "train"),
         nbins_cats = p_int(lower = 1L, default = 1024L, tags = "train"),
         stopping_rounds = p_int(lower = 0L, default = 0L, tags = "train"),
-        stopping_metric = p_fct(levels = c("AUTO", "deviance", "logloss", "AUC", "AUCPR", "lift_top_group", "misclassification", "mean_per_class_error", "custom", "custom_increasing"), default = "AUTO", tags = "train"),
+        stopping_metric = p_fct(levels = c("AUTO", "logloss", "AUC", "AUCPR", "lift_top_group", "misclassification", "mean_per_class_error"), default = "AUTO", tags = "train"),
         stopping_tolerance = p_dbl(lower = 0, default = 0.001, tags = "train"),
         max_runtime_secs = p_dbl(lower = 0, default = 0, tags = "train"),
         seed = p_int(default = -1L, tags = "train"),
@@ -51,11 +51,9 @@ LearnerClassifH2ORandomForest = R6Class("LearnerClassifH2ORandomForest", inherit
         export_checkpoints_dir = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         histogram_type = p_fct(levels = c("AUTO", "UniformAdaptive", "Random", "QuantilesGlobal", "RoundRobin", "UniformRobust"), default = "AUTO", tags = "train"),
         categorical_encoding = p_fct(levels = c("AUTO", "Enum", "OneHotInternal", "OneHotExplicit", "Binary", "Eigen", "LabelEncoder", "SortByResponse", "EnumLimited"), default = "AUTO", tags = "train"),
-        distribution = p_fct(levels = c("AUTO", "bernoulli", "multinomial"), default = "AUTO", tags = "train"),
         check_constant_response = p_lgl(default = TRUE, tags = "train"),
         gainslift_bins = p_int(lower = -1L, default = -1L, tags = "train"),
         auc_type = p_fct(levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), default = "AUTO", tags = "train"),
-        custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train")
       )
 
