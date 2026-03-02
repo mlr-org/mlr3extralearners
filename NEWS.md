@@ -7,8 +7,9 @@
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
+  - `LearnerClassifH2ODeeplearning`
   - `LearnerRegrH2ODeeplearning`
-
+  
 ## Other
 
 - Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
