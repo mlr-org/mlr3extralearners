@@ -93,7 +93,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging_moving_rate \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
-   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }

@@ -86,7 +86,6 @@ LearnerRegrH2ODeeplearning = R6Class("LearnerRegrH2ODeeplearning", inherit = Lea
         elastic_averaging_moving_rate = p_dbl(default = 0.9, depends = quote(elastic_averaging == TRUE), tags = "train"),
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         export_checkpoints_dir = p_uty(default = NULL, tags = "train"),
-        custom_metric_func = p_uty(default = NULL, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train")
       )
 

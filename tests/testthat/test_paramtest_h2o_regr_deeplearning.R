@@ -29,6 +29,7 @@ test_that("paramtest regr.h2o.deeplearning train", {
     "auc_type", # classification only
     "gainslift_bins", # classification only
     "score_validation_sampling", # only one level for regression learner
+    "custom_metric_func", # custom levels not exposed for deeplearning learner
     "col_major" # deprecated
   )
 
