@@ -95,7 +95,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
-   custom_metric_func \tab untyped \tab NULL \tab  \tab - \cr
    gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }

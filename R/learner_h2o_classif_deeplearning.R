@@ -88,7 +88,6 @@ LearnerClassifH2ODeeplearning = R6Class("LearnerClassifH2ODeeplearning", inherit
         elastic_averaging_regularization = p_dbl(default = 0.001, depends = quote(elastic_averaging == TRUE), tags = "train"),
         export_checkpoints_dir = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         auc_type = p_fct(levels = c("AUTO", "NONE", "MACRO_OVR", "WEIGHTED_OVR", "MACRO_OVO", "WEIGHTED_OVO"), default = "AUTO", tags = "train"),
-        custom_metric_func = p_uty(default = NULL, special_vals = list(NULL), tags = "train"),
         gainslift_bins = p_int(lower = -1L, default = -1L, tags = "train"),
         verbose = p_lgl(default = FALSE, tags = "train")
       )

@@ -25,6 +25,7 @@ test_that("paramtest classif.h2o.deeplearning train", {
     "regression_stop", # regression only
     "variable_importances", # no importance property
     "use_all_factor_levels", # no importance property
+    "custom_metric_func", # custom levels not exposed for deeplearning learner
     "col_major" # deprecated parameter
   )
 
