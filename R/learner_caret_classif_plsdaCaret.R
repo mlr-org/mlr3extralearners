@@ -23,13 +23,13 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
     initialize = function() {
       param_set = ps(
         ncomp = p_int(default = 2L, lower = 1L, tags = "train"),
-        probMethod = p_fct(default = "softmax", levels = c("softmax", "Bayes"), tags = "train"),
-        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train")
+        method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train"),
+        probMethod = p_fct(default = "softmax", levels = c("softmax", "Bayes"), tags = "train")
       )
 
       super$initialize(
         id = "classif.plsdaCaret",
-        packages = c("caret", "pls"),
+        packages = c("mlr3extralearners", "caret", "pls"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
@@ -46,7 +46,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       y = task$truth()
 
       invoke(
-        caret::plsda,
+        .f = caret::plsda,
         x = x,
         y = y,
         .args = pars
@@ -59,7 +59,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       pred_fun = utils::getS3method("predict", "plsda", envir = asNamespace("caret"))
 
       pred = invoke(
-        pred_fun,
+        .f = pred_fun,
         self$model,
         newdata = newdata,
         type = pred_type,

@@ -22,7 +22,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{caret}, \CRANpkg{pls}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{caret}, \CRANpkg{pls}
 }
 }
 
@@ -30,8 +30,8 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ncomp \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   probMethod \tab character \tab softmax \tab softmax, Bayes \tab - \cr
    method \tab character \tab kernelpls \tab kernelpls, widekernelpls, simpls, oscorespls \tab - \cr
+   probMethod \tab character \tab softmax \tab softmax, Bayes \tab - \cr
 }
 }
 
