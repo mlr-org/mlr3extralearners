@@ -54,7 +54,7 @@ LearnerClassifLvq1 = R6Class("LearnerClassifLvq1",
       cdbk_pars = pars[names(pars) %in% c("size", "prior", "k")]
       cdbk_args = c(list(x = d, cl = target), cdbk_pars)
       codebk = invoke(
-        class::lvqinit, 
+        .f = class::lvqinit, 
         .args = cdbk_args
       )
 
