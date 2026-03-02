@@ -117,6 +117,9 @@
 - [`mlr_learners_classif.glmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmer.md)
   [`LearnerClassifGlmer`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmer.md)
   : Classification Linear Mixed Effect Learner
+- [`mlr_learners_classif.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.deeplearning.md)
+  [`LearnerClassifH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.deeplearning.md)
+  : Classification H2O Deep Learning Learner
 - [`mlr_learners_classif.imbalanced_rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   [`LearnerClassifImbalancedRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   : Classification Imbalanced Random Forest Src Learner

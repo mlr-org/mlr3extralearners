@@ -51,6 +51,7 @@
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.gbm.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmboost.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.glmer.html</loc></url>
+<url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.deeplearning.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.knn.html</loc></url>
 <url><loc>https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.kstar.html</loc></url>

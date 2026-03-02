@@ -228,7 +228,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> VotedPerceptron: Number of perceptrons=64
+#> VotedPerceptron: Number of perceptrons=66
 
 
 # Make predictions for the test rows
