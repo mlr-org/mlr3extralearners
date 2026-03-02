@@ -3,7 +3,7 @@ skip_if_not_installed("callr")
 
 test_that("autotest: regr.botorch_singletaskgp", {
   expect_true(callr::r(function() {
-    Sys.setenv(RETICULATE_PYTHON = "managed", OMP_NUM_THREADS = "1")
+    Sys.setenv(RETICULATE_PYTHON = "managed")
 
     library(mlr3)
     library(mlr3extralearners)
