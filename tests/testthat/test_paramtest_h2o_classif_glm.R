@@ -10,8 +10,6 @@ test_that("paramtest classif.h2o.glm train", {
     "model_id", # not exposed
     "validation_frame", # resampling handled by mlr3
     "nfolds", # resampling handled by mlr3
-    "checkpoint", # not exposed
-    "export_checkpoints_dir", # not exposed
     "keep_cross_validation_models", # resampling handled by mlr3
     "keep_cross_validation_predictions", # resampling handled by mlr3
     "keep_cross_validation_fold_assignment", # resampling handled by mlr3
@@ -23,10 +21,9 @@ test_that("paramtest classif.h2o.glm train", {
     "rand_family", # not supported (family is fixed to binomial)
     "tweedie_variance_power", # not exposed
     "tweedie_link_power", # not exposed
-    "theta", # not exposed
-    "dispersion_parameter_method", # not exposed
-    "init_dispersion_parameter", # not exposed
-    "custom_metric_func", # not exposed
+    "theta", # dispersion parameter for neg. binomial regression; not relevant here
+    "dispersion_parameter_method", # family is set to gaussian
+    "init_dispersion_parameter", # family is set to gaussian
     "auc_type", # not exposed (twoclass wrapper)
     "rand_link", # not supported (family is fixed to binomial)
     "dispersion_epsilon", # not exposed
@@ -35,6 +32,7 @@ test_that("paramtest classif.h2o.glm train", {
     "fix_dispersion_parameter", # not exposed
     "fix_tweedie_variance_power", # not exposed
     "dispersion_learning_rate", # not exposed
+    "custom_metric_func", # custom levels not exposed for glm learner
     "influence" # not exposed
   )
 

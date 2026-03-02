@@ -31,12 +31,14 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    max_iterations \tab integer \tab 50 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    beta_epsilon \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    objective_epsilon \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    gradient_epsilon \tab numeric \tab - \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    solver \tab character \tab IRLSM \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT, COORDINATE_DESCENT_NAIVE \tab - \cr
-   link \tab character \tab logit \tab family_default, logit, log \tab - \cr
+   link \tab character \tab logit \tab family_default, logit \tab - \cr
    ignore_const_cols \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    score_each_iteration \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    score_iteration_interval \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
@@ -48,7 +50,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    lambda_min_ratio \tab numeric \tab - \tab  \tab \eqn{[-1, 1]}{[-1, 1]} \cr
    early_stopping \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    stopping_rounds \tab integer \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab - \tab AUTO, deviance, logloss, MSE, RMSE, MAE, RMSLE, AUC, AUCPR, lift_top_group, \link{...} \tab - \cr
+   stopping_metric \tab character \tab - \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error \tab - \cr
    stopping_tolerance \tab numeric \tab - \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    missing_values_handling \tab character \tab - \tab MeanImputation, Skip, PlugValues \tab - \cr
    plug_values \tab untyped \tab - \tab  \tab - \cr
