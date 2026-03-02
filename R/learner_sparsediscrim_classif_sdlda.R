@@ -3,7 +3,7 @@
 #' @name mlr_learners_classif.sdlda
 #'
 #' @description
-#' Shrinkage-based Diagonal Linear Discriminant Analysis classfier.
+#' Shrinkage-based Diagonal Linear Discriminant Analysis classifier.
 #' Type of Naive Bayes classifiers that improves the estimation of the pooled variances by
 #' using a shrinkage-based estimator of the pooled covariance matrix.
 #' Calls `sparsediscrim::lda_shrink_cov()` \CRANpkg{sparsediscrim}.
