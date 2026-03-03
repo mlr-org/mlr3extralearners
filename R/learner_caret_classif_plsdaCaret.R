@@ -22,7 +22,8 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       param_set = ps(
-        ncomp = p_int(default = 2L, lower = 1L, tags = "train"),
+        ncomp = p_int(default = 2L, lower = 1L, tags = c("train", "predict")),
+        prior = p_uty(default = "softmax", depends = quote(probMethod == "Bayes")),
         probMethod = p_fct(default = "softmax", levels = c("softmax", "Bayes"), tags = "train"),
         method = p_fct(default = "kernelpls", levels = c("kernelpls", "widekernelpls", "simpls", "oscorespls"), tags = "train")
       )
@@ -46,7 +47,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       y = task$truth()
 
       invoke(
-        caret::plsda,
+        .f = caret::plsda,
         x = x,
         y = y,
         .args = pars
@@ -59,7 +60,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
       pred_fun = utils::getS3method("predict", "plsda", envir = asNamespace("caret"))
 
       pred = invoke(
-        pred_fun,
+        .f = pred_fun,
         self$model,
         newdata = newdata,
         type = pred_type,

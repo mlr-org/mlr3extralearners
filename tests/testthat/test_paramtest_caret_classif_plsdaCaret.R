@@ -7,8 +7,7 @@ test_that("classif.plsdaCaret train", {
   exclude = c(
     "x", # handled internally
     "y", # handled internally
-    "method", # forwarded via ... to pls::plsr()
-    "prior" # not exposed by learner
+    "method" # forwarded via ... to pls::plsr()
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")
@@ -21,8 +20,7 @@ test_that("classif.plsdaCaret predict", {
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
-    "type", # handled internally
-    "ncomp" # handled internally
+    "type" # handled internally
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "predict")

@@ -30,6 +30,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
    ncomp \tab integer \tab 2 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   prior \tab untyped \tab "softmax" \tab  \tab - \cr
    probMethod \tab character \tab softmax \tab softmax, Bayes \tab - \cr
    method \tab character \tab kernelpls \tab kernelpls, widekernelpls, simpls, oscorespls \tab - \cr
 }
