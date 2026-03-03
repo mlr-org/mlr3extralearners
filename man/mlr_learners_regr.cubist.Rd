@@ -38,6 +38,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    label \tab untyped \tab "outcome" \tab  \tab - \cr
    neighbors \tab integer \tab - \tab  \tab \eqn{[0, 9]}{[0, 9]} \cr
+   strip_time_stamps \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
 }
 }
 

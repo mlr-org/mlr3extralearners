@@ -66,7 +66,7 @@ LearnerRegrH2OGBM = R6Class("LearnerRegrH2OGBM", inherit = LearnerRegr,
 
       super$initialize(
         id = "regr.h2o.gbm",
-        packages = "h2o",
+        packages = c("mlr3extralearners", "h2o"),
         feature_types = c("integer", "numeric", "factor"),
         predict_types = "response",
         param_set = param_set,
