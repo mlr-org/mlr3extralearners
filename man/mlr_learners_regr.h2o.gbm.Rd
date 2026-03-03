@@ -29,45 +29,45 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   max_depth \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   min_rows \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   distribution \tab character \tab gaussian \tab AUTO, poisson, laplace, tweedie, gaussian, huber, gamma, quantile, custom \tab - \cr
-   sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
+   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   checkpoint \tab untyped \tab - \tab  \tab - \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   max_abs_leafnode_pred \tab numeric \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
-   min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
-   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
-   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   quantile_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   tweedie_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
-   huber_alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   checkpoint \tab untyped \tab - \tab  \tab - \cr
+   custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
+   distribution \tab character \tab gaussian \tab AUTO, poisson, laplace, tweedie, gaussian, huber, gamma, quantile, custom \tab - \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
+   huber_alpha \tab numeric \tab 0.9 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    in_training_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
    in_training_checkpoints_tree_interval \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
-   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    interaction_constraints \tab untyped \tab NULL \tab  \tab - \cr
-   auto_rebalance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   custom_distribution_func \tab untyped \tab NULL \tab  \tab - \cr
+   learn_rate \tab numeric \tab 0.1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   learn_rate_annealing \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   max_abs_leafnode_pred \tab numeric \tab Inf \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_depth \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   min_rows \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
+   nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   pred_noise_bandwidth \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   quantile_alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
+   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   tweedie_power \tab numeric \tab 1.5 \tab  \tab \eqn{[1, 2]}{[1, 2]} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
