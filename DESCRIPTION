@@ -68,7 +68,7 @@ Suggests:
     coin,
     CoxBoost (>= 1.5.1),
     crs,
-    Cubist,
+    Cubist (>= 0.6.0),
     curl,
     dbarts,
     deepnet (>= 0.2.1),
