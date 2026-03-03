@@ -125,6 +125,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    machines \tab untyped \tab "" \tab  \tab - \cr
    gpu_platform_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    gpu_device_id \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   gpu_device_id_list \tab untyped \tab NULL \tab  \tab - \cr
    gpu_use_dp \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    num_gpu \tab integer \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    start_iteration_predict \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr

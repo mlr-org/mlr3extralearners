@@ -30,7 +30,7 @@ LearnerClassifPlsdaCaret = R6Class("LearnerClassifPlsdaCaret",
 
       super$initialize(
         id = "classif.plsdaCaret",
-        packages = c("caret", "pls"),
+        packages = c("mlr3extralearners", "caret", "pls"),
         feature_types = c("integer", "numeric"),
         predict_types = c("response", "prob"),
         param_set = param_set,
