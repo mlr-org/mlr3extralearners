@@ -97,6 +97,14 @@ bibentries = c( # nolint start
     year = "2018"
   ),
 
+  fryda2025h2o = bibentry("manual",
+    title = "h2o: R Interface for the 'H2O' Scalable Machine Learning Platform",
+    author = "Tomas Fryda and Erin LeDell and Navdeep Gill and Spencer Aiello and Anqi Fu and Arno Candel and Cliff Click and Tom Kraljevic and Tomas Nykodym and Patrick Aboyoun and Michal Kurka and Michal Malohlava and Sebastien Poirier and Wendy Wong",
+    year = "2025",
+    note = "R package version 3.46.0.9",
+    url = "https://github.com/h2oai/h2o-3"
+  ),
+
   binder2009boosting = bibentry("article",
     title = "Boosting for high-dimensional time-to-event data with competing risks",
     author = "Binder, Harald and Allignol, Arthur and Schumacher, Martin and Beyersmann, Jan",
@@ -981,6 +989,16 @@ bibentries = c( # nolint start
     pages   = "232--253",
     doi     = "10.1214/10-AOAS388",
     issn    = "1932-6157"
-  )
+  ),
+  macdonald2015gpfit = bibentry("article",
+    title = "GPfit: An R package for fitting a Gaussian process model to deterministic simulator outputs",
+    author = "MacDonald, B. and Ranjan, P. and Chipman, H.",
+    year = "2015",
+    journal = "Journal of Statistical Software",
+    volume = "64",
+    pages = "1--23",
+    doi = "10.18637/jss.v064.i12",
+    issn = "1548-7660"
+)
 
 ) # nolint end
