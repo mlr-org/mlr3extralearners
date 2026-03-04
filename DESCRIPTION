@@ -85,6 +85,7 @@ Suggests:
     glmnet (>= 4.1-6),
     h2o,
     GPfit (>= 1.0-9),
+    h2o (>= 3.44.0.3),
     jsonlite,
     keras (>= 2.3.0),
     kernlab,
