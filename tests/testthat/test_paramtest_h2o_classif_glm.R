@@ -22,15 +22,15 @@ test_that("paramtest classif.h2o.glm train", {
     "tweedie_variance_power", # not exposed
     "tweedie_link_power", # not exposed
     "theta", # dispersion parameter for neg. binomial regression; not relevant here
-    "dispersion_parameter_method", # family is set to gaussian
-    "init_dispersion_parameter", # family is set to gaussian
+    "dispersion_parameter_method", # no dispersion estimation here
+    "init_dispersion_parameter", # no dispersion estimation here
     "auc_type", # not exposed (twoclass wrapper)
     "rand_link", # not supported (family is fixed to binomial)
     "dispersion_epsilon", # not exposed
-    "tweedie_epsilon", # not exposed
+    "tweedie_epsilon", # only for regression
     "max_iterations_dispersion", # not exposed
-    "fix_dispersion_parameter", # not exposed
-    "fix_tweedie_variance_power", # not exposed
+    "fix_dispersion_parameter", # only for regression
+    "fix_tweedie_variance_power", # only for regression
     "dispersion_learning_rate", # not exposed
     "custom_metric_func", # custom levels not exposed for glm learner
     "influence" # not exposed
