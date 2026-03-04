@@ -23,6 +23,8 @@
 #' @export
 #' @template seealso_learner
 #' @template example
+#' @templateVar example_learner_args maxit = 5L, scale = FALSE
+ 
 LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
   inherit = LearnerRegr,
   public = list(
