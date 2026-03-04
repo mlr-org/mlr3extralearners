@@ -94,16 +94,13 @@ LearnerClassifH2OGLM = R6Class("LearnerClassifH2OGLM", inherit = LearnerClassif,
 
       pars = self$param_set$get_values(tags = "train")
 
-      # enforce that default alpha = 0 when solver is L-BFGS
-      alpha_set_by_user = "alpha" %in% names(self$param_set$values)
-      if (!alpha_set_by_user) {
+      # enforce that default alpha = 0 when solver is L_BFGS
+      if (!("alpha" %in% names(pars)) & ("solver" %in% names(pars))) {
         if (pars$solver == "L_BFGS") {
           pars$alpha = 0
         }
       }
 
-      target = task$target_names
-      features = task$feature_names
       data = task$data()
 
       weights = private$.get_weights(task)
@@ -115,9 +112,10 @@ LearnerClassifH2OGLM = R6Class("LearnerClassifH2OGLM", inherit = LearnerClassif,
       pars$family = "binomial"
       training_frame = h2o::h2o.no_progress(h2o::as.h2o(data))
 
-      h2o::h2o.no_progress(invoke(h2o::h2o.glm,
-          y = target,
-          x = features,
+      h2o::h2o.no_progress(invoke(
+          .f = h2o::h2o.glm,
+          y = task$target_names,
+          x = task$feature_names,
           training_frame = training_frame,
           .args = pars
       ))
