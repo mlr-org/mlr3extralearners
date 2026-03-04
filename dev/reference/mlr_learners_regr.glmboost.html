@@ -202,15 +202,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.95714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  21.02857 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)         carb          cyl         disp         drat         gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15.243296150 -0.061634363 -0.595625608  0.001019427  0.144790000  0.183492930 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           hp         qsec           vs           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.016832710  0.041417507  0.426768507 -3.771273273 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          am        carb         cyl        disp        drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.31452696  2.05928860 -0.49722252 -0.90950899  0.00203722  0.47382830 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        gear          hp        qsec          vs          wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.01888046 -0.01035178  0.04118166  0.65747505 -2.27916725 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.95714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 21.02857</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -220,7 +220,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8.41254 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.586312 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -174,6 +174,9 @@
 - [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.penalized.md)
   : Classification L1 and L2 Penalized Learner
+- [`mlr_learners_classif.plsdaCaret`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.plsdaCaret.md)
+  [`LearnerClassifPlsdaCaret`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.plsdaCaret.md)
+  : Partial Least Squares Discriminant Analysis Learner
 - [`mlr_learners_classif.polyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.polyFit.md)
   [`LearnerClassifPolyFit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.polyFit.md)
   : Polynomial GLM Learner

@@ -22,6 +22,7 @@ instantiated via
 - Feature Types: “integer”, “numeric”, “factor”
 
 - Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [h2o](https://CRAN.R-project.org/package=h2o)
 
 ## Parameters
@@ -29,73 +30,73 @@ instantiated via
 |                                  |           |                 |                                                                                                      |                       |
 |----------------------------------|-----------|-----------------|------------------------------------------------------------------------------------------------------|-----------------------|
 | Id                               | Type      | Default         | Levels                                                                                               | Range                 |
-| ignore_const_cols                | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| score_each_iteration             | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| balance_classes                  | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| class_sampling_factors           | untyped   | NULL            |                                                                                                      | \-                    |
-| max_after_balance_size           | numeric   | 5               |                                                                                                      | \\(-\infty, \infty)\\ |
-| checkpoint                       | untyped   | NULL            |                                                                                                      | \-                    |
-| pretrained_autoencoder           | untyped   | NULL            |                                                                                                      | \-                    |
-| overwrite_with_best_model        | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| standardize                      | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
 | activation                       | character | Rectifier       | Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout                    | \-                    |
-| hidden                           | untyped   | c(200L, 200L)   |                                                                                                      | \-                    |
-| epochs                           | numeric   | 10              |                                                                                                      | \\\[1, \infty)\\      |
-| train_samples_per_iteration      | integer   | -2              |                                                                                                      | \\\[-2, \infty)\\     |
-| target_ratio_comm_to_comp        | numeric   | 0.05            |                                                                                                      | \\(-\infty, \infty)\\ |
-| seed                             | integer   | -1              |                                                                                                      | \\(-\infty, \infty)\\ |
 | adaptive_rate                    | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| rho                              | numeric   | 0.99            |                                                                                                      | \\\[0, \infty)\\      |
-| epsilon                          | numeric   | 1e-08           |                                                                                                      | \\\[1e-10, 1e-04\]\\  |
-| rate                             | numeric   | 0.005           |                                                                                                      | \\\[0, 1\]\\          |
-| rate_annealing                   | numeric   | 1e-06           |                                                                                                      | \\\[0, \infty)\\      |
-| rate_decay                       | numeric   | 1               |                                                                                                      | \\\[0, \infty)\\      |
-| momentum_start                   | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| momentum_ramp                    | numeric   | 1e+06           |                                                                                                      | \\(-\infty, \infty)\\ |
-| momentum_stable                  | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| nesterov_accelerated_gradient    | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| input_dropout_ratio              | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| hidden_dropout_ratios            | numeric   | 0.5             |                                                                                                      | \\(-\infty, \infty)\\ |
-| l1                               | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| l2                               | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| max_w2                           | numeric   | 3.402823e+38    |                                                                                                      | \\(-\infty, \infty)\\ |
-| initial_weight_distribution      | character | UniformAdaptive | UniformAdaptive, Uniform, Normal                                                                     | \-                    |
-| initial_weight_scale             | numeric   | 1               |                                                                                                      | \\(-\infty, \infty)\\ |
-| loss                             | character | Automatic       | Automatic, CrossEntropy, Quadratic                                                                   | \-                    |
-| distribution                     | character | AUTO            | AUTO, bernoulli, multinomial                                                                         | \-                    |
-| score_interval                   | numeric   | 5               |                                                                                                      | \\(-\infty, \infty)\\ |
-| score_training_samples           | integer   | 10000           |                                                                                                      | \\(-\infty, \infty)\\ |
-| score_validation_samples         | integer   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| score_duty_cycle                 | numeric   | 0.1             |                                                                                                      | \\(-\infty, \infty)\\ |
-| classification_stop              | numeric   | 0               |                                                                                                      | \\\[-1, \infty)\\     |
-| stopping_rounds                  | integer   | 5               |                                                                                                      | \\\[0, \infty)\\      |
-| stopping_metric                  | character | AUTO            | AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error                   | \-                    |
-| stopping_tolerance               | numeric   | 0               |                                                                                                      | \\\[0, \infty)\\      |
-| max_runtime_secs                 | numeric   | 0               |                                                                                                      | \\\[0, \infty)\\      |
-| score_validation_sampling        | character | Uniform         | Uniform, Stratified                                                                                  | \-                    |
-| diagnostics                      | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| fast_mode                        | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| force_load_balance               | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| replicate_training_data          | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
-| single_node_mode                 | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| shuffle_training_data            | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| missing_values_handling          | character | MeanImputation  | MeanImputation, Skip                                                                                 | \-                    |
-| quiet_mode                       | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| auc_type                         | character | AUTO            | AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO                                         | \-                    |
 | autoencoder                      | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| sparse                           | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
 | average_activation               | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| sparsity_beta                    | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
-| max_categorical_features         | integer   | NULL            |                                                                                                      | \\(-\infty, \infty)\\ |
-| reproducible                     | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| export_weights_and_biases        | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
-| mini_batch_size                  | integer   | 1               |                                                                                                      | \\(-\infty, \infty)\\ |
+| balance_classes                  | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
 | categorical_encoding             | character | AUTO            | AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited | \-                    |
+| checkpoint                       | untyped   | NULL            |                                                                                                      | \-                    |
+| class_sampling_factors           | untyped   | NULL            |                                                                                                      | \-                    |
+| classification_stop              | numeric   | 0               |                                                                                                      | \\\[-1, \infty)\\     |
+| diagnostics                      | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| distribution                     | character | AUTO            | AUTO, bernoulli, multinomial                                                                         | \-                    |
 | elastic_averaging                | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
 | elastic_averaging_moving_rate    | numeric   | 0.9             |                                                                                                      | \\(-\infty, \infty)\\ |
 | elastic_averaging_regularization | numeric   | 0.001           |                                                                                                      | \\(-\infty, \infty)\\ |
+| epochs                           | numeric   | 10              |                                                                                                      | \\\[1, \infty)\\      |
+| epsilon                          | numeric   | 1e-08           |                                                                                                      | \\\[1e-10, 1e-04\]\\  |
 | export_checkpoints_dir           | untyped   | NULL            |                                                                                                      | \-                    |
-| auc_type                         | character | AUTO            | AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO                                         | \-                    |
+| export_weights_and_biases        | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| fast_mode                        | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| force_load_balance               | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
 | gainslift_bins                   | integer   | -1              |                                                                                                      | \\\[-1, \infty)\\     |
+| hidden                           | untyped   | c(200L, 200L)   |                                                                                                      | \-                    |
+| hidden_dropout_ratios            | numeric   | 0.5             |                                                                                                      | \\(-\infty, \infty)\\ |
+| ignore_const_cols                | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| initial_weight_distribution      | character | UniformAdaptive | UniformAdaptive, Uniform, Normal                                                                     | \-                    |
+| initial_weight_scale             | numeric   | 1               |                                                                                                      | \\(-\infty, \infty)\\ |
+| input_dropout_ratio              | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| l1                               | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| l2                               | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| loss                             | character | Automatic       | Automatic, CrossEntropy, Quadratic                                                                   | \-                    |
+| max_after_balance_size           | numeric   | 5               |                                                                                                      | \\(-\infty, \infty)\\ |
+| max_categorical_features         | integer   | NULL            |                                                                                                      | \\(-\infty, \infty)\\ |
+| max_runtime_secs                 | numeric   | 0               |                                                                                                      | \\\[0, \infty)\\      |
+| max_w2                           | numeric   | 3.402823e+38    |                                                                                                      | \\(-\infty, \infty)\\ |
+| mini_batch_size                  | integer   | 1               |                                                                                                      | \\(-\infty, \infty)\\ |
+| missing_values_handling          | character | MeanImputation  | MeanImputation, Skip                                                                                 | \-                    |
+| momentum_ramp                    | numeric   | 1e+06           |                                                                                                      | \\(-\infty, \infty)\\ |
+| momentum_stable                  | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| momentum_start                   | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| nesterov_accelerated_gradient    | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| overwrite_with_best_model        | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| pretrained_autoencoder           | untyped   | NULL            |                                                                                                      | \-                    |
+| quiet_mode                       | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| rate                             | numeric   | 0.005           |                                                                                                      | \\\[0, 1\]\\          |
+| rate_annealing                   | numeric   | 1e-06           |                                                                                                      | \\\[0, \infty)\\      |
+| rate_decay                       | numeric   | 1               |                                                                                                      | \\\[0, \infty)\\      |
+| replicate_training_data          | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| reproducible                     | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| rho                              | numeric   | 0.99            |                                                                                                      | \\\[0, \infty)\\      |
+| score_duty_cycle                 | numeric   | 0.1             |                                                                                                      | \\(-\infty, \infty)\\ |
+| score_each_iteration             | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| score_interval                   | numeric   | 5               |                                                                                                      | \\(-\infty, \infty)\\ |
+| score_training_samples           | integer   | 10000           |                                                                                                      | \\(-\infty, \infty)\\ |
+| score_validation_samples         | integer   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| score_validation_sampling        | character | Uniform         | Uniform, Stratified                                                                                  | \-                    |
+| seed                             | integer   | -1              |                                                                                                      | \\(-\infty, \infty)\\ |
+| shuffle_training_data            | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| single_node_mode                 | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| sparse                           | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
+| sparsity_beta                    | numeric   | 0               |                                                                                                      | \\(-\infty, \infty)\\ |
+| standardize                      | logical   | TRUE            | TRUE, FALSE                                                                                          | \-                    |
+| stopping_metric                  | character | AUTO            | AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error                   | \-                    |
+| stopping_rounds                  | integer   | 5               |                                                                                                      | \\\[0, \infty)\\      |
+| stopping_tolerance               | numeric   | 0               |                                                                                                      | \\\[0, \infty)\\      |
+| target_ratio_comm_to_comp        | numeric   | 0.05            |                                                                                                      | \\(-\infty, \infty)\\ |
+| train_samples_per_iteration      | integer   | -2              |                                                                                                      | \\\[-2, \infty)\\     |
 | verbose                          | logical   | FALSE           | TRUE, FALSE                                                                                          | \-                    |
 
 ## References
@@ -218,7 +219,7 @@ ids = partition(task)
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
 #> Warning: 
-#> Your H2O cluster version is (2 years, 2 months and 9 days) old. There may be a newer version available.
+#> Your H2O cluster version is (2 years, 2 months and 11 days) old. There may be a newer version available.
 #> Please download and install the latest version from: https://h2o-release.s3.amazonaws.com/h2o/latest_stable.html
 
 print(learner$model)
@@ -226,27 +227,27 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1772455678928_1 
+#> Model ID:  DeepLearning_model_R_1772631530563_1 
 #> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 1,390 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    60     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.006835 0.004646 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.029023 0.111292 0.000000
-#> 4     4     2   Softmax      NA 0.000000 0.000000  0.002185 0.000890 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.008191 0.005865 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.022980 0.080024 0.000000
+#> 4     4     2   Softmax      NA 0.000000 0.000000  0.002250 0.000971 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2    0.000109   0.091923  0.493855 0.009165
-#> 3   -0.000741   0.069720  0.997626 0.005519
-#> 4    0.001226   0.412305  0.000002 0.001697
+#> 2   -0.000752   0.091702  0.494457 0.008615
+#> 3   -0.000405   0.069563  0.998275 0.004630
+#> 4   -0.003350   0.392904 -0.000000 0.001858
 #> 
 #> 
 #> H2OBinomialMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  0.00134771
-#> RMSE:  0.03671116
-#> LogLoss:  0.008448052
+#> MSE:  0.01155853
+#> RMSE:  0.1075106
+#> LogLoss:  0.04344179
 #> Mean Per-Class Error:  0
 #> AUC:  1
 #> AUCPR:  1
@@ -254,30 +255,30 @@ print(learner$model)
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error    Rate
-#> M      69  0 0.000000   =0/69
-#> R       0 70 0.000000   =0/70
-#> Totals 69 70 0.000000  =0/139
+#> M      76  0 0.000000   =0/76
+#> R       0 63 0.000000   =0/63
+#> Totals 76 63 0.000000  =0/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.930033  1.000000  54
-#> 2                       max f2  0.930033  1.000000  54
-#> 3                 max f0point5  0.930033  1.000000  54
-#> 4                 max accuracy  0.930033  1.000000  54
+#> 1                       max f1  0.988349  1.000000  52
+#> 2                       max f2  0.988349  1.000000  52
+#> 3                 max f0point5  0.988349  1.000000  52
+#> 4                 max accuracy  0.988349  1.000000  52
 #> 5                max precision  1.000000  1.000000   0
-#> 6                   max recall  0.930033  1.000000  54
+#> 6                   max recall  0.988349  1.000000  52
 #> 7              max specificity  1.000000  1.000000   0
-#> 8             max absolute_mcc  0.930033  1.000000  54
-#> 9   max min_per_class_accuracy  0.930033  1.000000  54
-#> 10 max mean_per_class_accuracy  0.930033  1.000000  54
-#> 11                     max tns  1.000000 69.000000   0
+#> 8             max absolute_mcc  0.988349  1.000000  52
+#> 9   max min_per_class_accuracy  0.988349  1.000000  52
+#> 10 max mean_per_class_accuracy  0.988349  1.000000  52
+#> 11                     max tns  1.000000 76.000000   0
 #> 12                     max fns  1.000000 56.000000   0
-#> 13                     max fps  0.000000 69.000000 123
-#> 14                     max tps  0.930033 70.000000  54
+#> 13                     max fps  0.000000 76.000000 128
+#> 14                     max tps  0.988349 63.000000  52
 #> 15                     max tnr  1.000000  1.000000   0
-#> 16                     max fnr  1.000000  0.800000   0
-#> 17                     max fpr  0.000000  1.000000 123
-#> 18                     max tpr  0.930033  1.000000  54
+#> 16                     max fnr  1.000000  0.888889   0
+#> 17                     max fpr  0.000000  1.000000 128
+#> 18                     max tpr  0.988349  1.000000  52
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -290,5 +291,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.2608696 
 ```
