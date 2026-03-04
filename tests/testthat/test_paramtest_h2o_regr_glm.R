@@ -28,8 +28,15 @@ test_that("paramtest regr.h2o.glm train", {
     "auc_type", # classification metrics only
     "tweedie_epsilon", # tweedie family only
     "fix_tweedie_variance_power", # tweedie family only
+    "dispersion_epsilon", # only relevant for non-gaussian families
+    "dispersion_learning_rate", # only relevant for non-gaussian families
+    "dispersion_parameter_method", # only relevant for non-gaussian families
+    "fix_dispersion_parameter", # only relevant for non-gaussian families
+    "init_dispersion_parameter", # only relevant for non-gaussian families
+    "max_iterations_dispersion", # only relevant for non-gaussian families
     "custom_metric_func", # custom levels not exposed for glm learner
-    "gainslift_bins" # classification metrics only    
+    "gainslift_bins", # classification metrics only
+    "influence"
   )
 
   paramtest = run_paramtest(learner, fun, exclude, tag = "train")

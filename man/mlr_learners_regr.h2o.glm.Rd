@@ -22,64 +22,57 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{h2o}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{h2o}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
-   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
-   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   random_columns \tab untyped \tab NULL \tab  \tab - \cr
-   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   score_iteration_interval \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   solver \tab character \tab AUTO \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR \tab - \cr
-   rand_family \tab untyped \tab NULL \tab  \tab - \cr
-   alpha \tab untyped \tab NULL \tab  \tab - \cr
-   lambda \tab untyped \tab NULL \tab  \tab - \cr
-   lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   early_stopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   nlambdas \tab integer \tab - \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   missing_values_handling \tab character \tab - \tab MeanImputation, Skip, PlugValues \tab - \cr
-   plug_values \tab untyped \tab NULL \tab  \tab - \cr
-   compute_p_values \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   dispersion_parameter_method \tab character \tab - \tab deviance, pearson, ml \tab - \cr
-   init_dispersion_parameter \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   remove_collinear_columns \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   non_negative \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   max_iterations \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   beta_epsilon \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   link \tab character \tab family_default \tab family_default, identity, log, inverse \tab - \cr
-   rand_link \tab untyped \tab NULL \tab  \tab - \cr
-   startval \tab untyped \tab NULL \tab  \tab - \cr
-   calc_like \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   HGLM \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   cold_start \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   lambda_min_ratio \tab numeric \tab -1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   alpha \tab numeric \tab 0.5 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    beta_constraints \tab untyped \tab NULL \tab  \tab - \cr
-   max_active_predictors \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   beta_epsilon \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   build_null_model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   calc_like \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   cold_start \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   compute_p_values \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   early_stopping \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   generate_scoring_history \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   generate_variable_inflation_factors \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   HGLM \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    interactions \tab untyped \tab NULL \tab  \tab - \cr
    interaction_pairs \tab untyped \tab NULL \tab  \tab - \cr
-   obj_reg \tab numeric \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
-   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   lambda \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   lambda_min_ratio \tab numeric \tab -1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   link \tab character \tab family_default \tab family_default, identity, log, inverse \tab - \cr
+   max_active_predictors \tab integer \tab -1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   max_iterations \tab integer \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   generate_scoring_history \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   dispersion_epsilon \tab numeric \tab 1e-04 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_iterations_dispersion \tab integer \tab 3000 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   build_null_model \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   fix_dispersion_parameter \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   generate_variable_inflation_factors \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   dispersion_learning_rate \tab numeric \tab 0.5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   influence \tab untyped \tab NULL \tab  \tab - \cr
+   missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip, PlugValues \tab - \cr
+   nlambdas \tab integer \tab -1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   non_negative \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   obj_reg \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   plug_values \tab untyped \tab NULL \tab  \tab - \cr
+   random_columns \tab untyped \tab NULL \tab  \tab - \cr
+   rand_family \tab untyped \tab NULL \tab  \tab - \cr
+   rand_link \tab untyped \tab NULL \tab  \tab - \cr
+   remove_collinear_columns \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_iteration_interval \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   solver \tab character \tab AUTO \tab AUTO, IRLSM, L_BFGS, COORDINATE_DESCENT_NAIVE, COORDINATE_DESCENT, GRADIENT_DESCENT_LH, GRADIENT_DESCENT_SQERR \tab - \cr
+   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   startval \tab untyped \tab NULL \tab  \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
+   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
 }
 }
 
