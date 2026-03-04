@@ -33,7 +33,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
    check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   checkpoint \tab untyped \tab - \tab  \tab - \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
    col_sample_rate \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
    col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
