@@ -51,18 +51,18 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    interaction_pairs \tab untyped \tab NULL \tab  \tab - \cr
    intercept \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    lambda \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   lambda_min_ratio \tab numeric \tab -1 \tab  \tab \eqn{[-1, 1]}{[-1, 1]} \cr
+   lambda_min_ratio \tab numeric \tab -1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    lambda_search \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    link \tab character \tab logit \tab family_default, logit \tab - \cr
-   max_active_predictors \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_active_predictors \tab integer \tab -1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_iterations \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   max_iterations \tab integer \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip, PlugValues \tab - \cr
-   nlambdas \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   nlambdas \tab integer \tab -1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    non_negative \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   obj_reg \tab numeric \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   obj_reg \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    plug_values \tab untyped \tab NULL \tab  \tab - \cr
    prior \tab numeric \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    random_columns \tab untyped \tab NULL \tab  \tab - \cr
