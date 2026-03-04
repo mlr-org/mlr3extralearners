@@ -8,6 +8,7 @@
   - `LearnerClassifSaeDNN`
   - `LearnerSurvDNN`
   - `LearnerClassifH2ORandomForest`
+  - `LearnerClassifH2ODeeplearning`
 
 ## Other
 
