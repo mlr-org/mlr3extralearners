@@ -1,5 +1,6 @@
 # mlr3extralearners (development version)
 
+
 ## New Features
 
 * New Learners:
@@ -9,6 +10,7 @@
   - `LearnerClassifPlsdaCaret`
   - `LearnerSurvDNN`
   - `LearnerClassifH2ODeeplearning`
+  - `LearnerClassifLvq1`
 
 ## Other
 
