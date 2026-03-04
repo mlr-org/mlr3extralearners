@@ -53,7 +53,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    max_depth \tab integer \tab 5 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   min_rows \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   min_rows \tab integer \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
    min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    monotone_constraints \tab untyped \tab NULL \tab  \tab - \cr
    nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
@@ -65,7 +65,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    sample_rate_per_class \tab untyped \tab NULL \tab  \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   seed \tab integer \tab - \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, AUCPR, lift_top_group, misclassification, mean_per_class_error \tab - \cr
    stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
