@@ -94,9 +94,8 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
       pars = self$param_set$get_values(tags = "train")
       pars$family = "gaussian"
 
-      # enforce that default alpha = 0 when solver is L-BFGS
-      alpha_set_by_user = "alpha" %in% names(self$param_set$values)
-      if (!alpha_set_by_user) {
+      # enforce that default alpha = 0 when solver is L_BFGS
+      if (all(c("alpha", "solver") %in% names(self$param_set$values))) {
         if (pars$solver == "L_BFGS") {
           pars$alpha = 0
         }
