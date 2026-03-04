@@ -11,7 +11,7 @@
 #'
 #' @template seealso_learner
 #' @template example
-#' @templateVar example_learner_args degree = 1, cv = "none", complexity = "degree"
+#' @templateVar example_learner_args cv = "none", complexity = "degree"
 #' @export
 LearnerRegrCrs = R6Class("LearnerRegrCrs",
   inherit = LearnerRegr,
