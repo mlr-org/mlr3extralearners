@@ -135,17 +135,15 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V45 < 0.3263
-#> |   |   [3] V52 < 0.0071: R (n = 28, err = 10.7%)
-#> |   |   [4] V52 >= 0.0071
-#> |   |   |   [5] V12 < 0.1734: R (n = 27, err = 14.8%)
-#> |   |   |   [6] V12 >= 0.1734
-#> |   |   |   |   [7] V37 < 0.5382: M (n = 50, err = 10.0%)
-#> |   |   |   |   [8] V37 >= 0.5382: R (n = 8, err = 0.0%)
-#> |   [9] V45 >= 0.3263: M (n = 26, err = 3.8%)
+#> |   [2] V11 < 0.1582: R (n = 45, err = 15.6%)
+#> |   [3] V11 >= 0.1582
+#> |   |   [4] V52 < 0.0089
+#> |   |   |   [5] V23 < 0.8302: R (n = 22, err = 13.6%)
+#> |   |   |   [6] V23 >= 0.8302: M (n = 8, err = 0.0%)
+#> |   |   [7] V52 >= 0.0089: M (n = 64, err = 12.5%)
 #> 
-#> Number of inner nodes:    4
-#> Number of terminal nodes: 5
+#> Number of inner nodes:    3
+#> Number of terminal nodes: 4
 
 
 # Make predictions for the test rows

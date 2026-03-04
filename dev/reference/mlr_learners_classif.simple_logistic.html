@@ -246,20 +246,42 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -1.54 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 2.92 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 1.08 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -0.85 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * 3.83 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * 3.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.27 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 3.85 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * -1.13 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * -1.07 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 0.83 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * 0.8  +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.58 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -0.78 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -2.58 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * 0.74 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * 7.25 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * 1.28 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 2.42 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 15.81 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 19.87 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -2.61 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V9] * 3.84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.54 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -2.92 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -1.08 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 0.85 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * -3.83 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * -3.67</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2.27 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -3.85 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * 1.13 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V16] * 1.07 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -0.83 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * -0.8 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.58 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 0.78 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 2.58 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * -0.74 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * -7.25 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * -1.28 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -2.42 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -15.81 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -19.87 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 2.61 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V9] * -3.84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -269,7 +291,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

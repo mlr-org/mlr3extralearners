@@ -120,6 +120,9 @@
 - [`mlr_learners_classif.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.deeplearning.md)
   [`LearnerClassifH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.deeplearning.md)
   : Classification H2O Deep Learning Learner
+- [`mlr_learners_classif.h2o.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.gbm.md)
+  [`LearnerClassifH2OGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.gbm.md)
+  : Classification H2O GBM Learner
 - [`mlr_learners_classif.imbalanced_rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   [`LearnerClassifImbalancedRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   : Classification Imbalanced Random Forest Src Learner
@@ -144,6 +147,9 @@
 - [`mlr_learners_classif.lssvm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lssvm.md)
   [`LearnerClassifLSSVM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lssvm.md)
   : Classification Least Squares Support Vector Machine Learner
+- [`mlr_learners_classif.lvq1`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lvq1.md)
+  [`LearnerClassifLvq1`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.lvq1.md)
+  : Classification Learning Vector Quantization 1
 - [`mlr_learners_classif.mda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mda.md)
   [`LearnerClassifMda`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.mda.md)
   : Classification Discriminant Analysis Learner
@@ -357,6 +363,9 @@
 - [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.gpfit.md)
   : Regression Gaussian Process Learner (GPfit)
+- [`mlr_learners_regr.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
+  [`LearnerRegrH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
+  : Regression H2O Deep Learning Learner
 - [`mlr_learners_regr.kstar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   [`LearnerRegrKStar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   : Regression KStar Learner
