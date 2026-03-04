@@ -22,80 +22,80 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{h2o}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{h2o}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
-   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
-   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
-   pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
-   overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    activation \tab character \tab Rectifier \tab Rectifier, Tanh, TanhWithDropout, RectifierWithDropout, Maxout, MaxoutWithDropout \tab - \cr
-   hidden \tab untyped \tab c(200L, 200L) \tab  \tab - \cr
-   epochs \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   train_samples_per_iteration \tab integer \tab -2 \tab  \tab \eqn{[-2, \infty)}{[-2, Inf)} \cr
-   target_ratio_comm_to_comp \tab numeric \tab 0.05 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    adaptive_rate \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   rho \tab numeric \tab 0.99 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{[1e-10, 1e-04]}{[1e-10, 1e-04]} \cr
-   rate \tab numeric \tab 0.005 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   rate_annealing \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   rate_decay \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   momentum_start \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   momentum_ramp \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   momentum_stable \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   nesterov_accelerated_gradient \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   input_dropout_ratio \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   hidden_dropout_ratios \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   l1 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   l2 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_w2 \tab numeric \tab 3.402823e+38 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   initial_weight_distribution \tab character \tab UniformAdaptive \tab UniformAdaptive, Uniform, Normal \tab - \cr
-   initial_weight_scale \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   loss \tab character \tab Automatic \tab Automatic, CrossEntropy, Quadratic \tab - \cr
-   distribution \tab character \tab AUTO \tab AUTO, bernoulli, multinomial \tab - \cr
-   score_interval \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   score_training_samples \tab integer \tab 10000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   score_validation_samples \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   score_duty_cycle \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   classification_stop \tab numeric \tab 0 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   stopping_rounds \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error \tab - \cr
-   stopping_tolerance \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   score_validation_sampling \tab character \tab Uniform \tab Uniform, Stratified \tab - \cr
-   diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   replicate_training_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip \tab - \cr
-   quiet_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
    autoencoder \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    average_activation \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   max_categorical_features \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   reproducible \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   export_weights_and_biases \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   mini_batch_size \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   balance_classes \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   class_sampling_factors \tab untyped \tab NULL \tab  \tab - \cr
+   classification_stop \tab numeric \tab 0 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   diagnostics \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   distribution \tab character \tab AUTO \tab AUTO, bernoulli, multinomial \tab - \cr
    elastic_averaging \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    elastic_averaging_moving_rate \tab numeric \tab 0.9 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    elastic_averaging_regularization \tab numeric \tab 0.001 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   epochs \tab numeric \tab 10 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   epsilon \tab numeric \tab 1e-08 \tab  \tab \eqn{[1e-10, 1e-04]}{[1e-10, 1e-04]} \cr
    export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
-   auc_type \tab character \tab AUTO \tab AUTO, NONE, MACRO_OVR, WEIGHTED_OVR, MACRO_OVO, WEIGHTED_OVO \tab - \cr
+   export_weights_and_biases \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   fast_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   force_load_balance \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   hidden \tab untyped \tab c(200L, 200L) \tab  \tab - \cr
+   hidden_dropout_ratios \tab numeric \tab 0.5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   initial_weight_distribution \tab character \tab UniformAdaptive \tab UniformAdaptive, Uniform, Normal \tab - \cr
+   initial_weight_scale \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   input_dropout_ratio \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   l1 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   l2 \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   loss \tab character \tab Automatic \tab Automatic, CrossEntropy, Quadratic \tab - \cr
+   max_after_balance_size \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_categorical_features \tab integer \tab NULL \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_w2 \tab numeric \tab 3.402823e+38 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   mini_batch_size \tab integer \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   missing_values_handling \tab character \tab MeanImputation \tab MeanImputation, Skip \tab - \cr
+   momentum_ramp \tab numeric \tab 1e+06 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   momentum_stable \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   momentum_start \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   nesterov_accelerated_gradient \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   overwrite_with_best_model \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   pretrained_autoencoder \tab untyped \tab NULL \tab  \tab - \cr
+   quiet_mode \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   rate \tab numeric \tab 0.005 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   rate_annealing \tab numeric \tab 1e-06 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   rate_decay \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   replicate_training_data \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   reproducible \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   rho \tab numeric \tab 0.99 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   score_duty_cycle \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   score_interval \tab numeric \tab 5 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   score_training_samples \tab integer \tab 10000 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   score_validation_samples \tab integer \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   score_validation_sampling \tab character \tab Uniform \tab Uniform, Stratified \tab - \cr
+   seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   shuffle_training_data \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   single_node_mode \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   sparse \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   sparsity_beta \tab numeric \tab 0 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   standardize \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, logloss, AUC, lift_top_group, misclassification, AUCPR, mean_per_class_error \tab - \cr
+   stopping_rounds \tab integer \tab 5 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_tolerance \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   target_ratio_comm_to_comp \tab numeric \tab 0.05 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
+   train_samples_per_iteration \tab integer \tab -2 \tab  \tab \eqn{[-2, \infty)}{[-2, Inf)} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }

@@ -6,6 +6,7 @@
   - `LearnerRegrGPfit`
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
+  - `LearnerClassifPlsdaCaret`
   - `LearnerSurvDNN`
   - `LearnerClassifH2ODeeplearning`
 
