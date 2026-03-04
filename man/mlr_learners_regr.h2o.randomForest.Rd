@@ -22,38 +22,38 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{regr}
 \item Predict Types: \dQuote{response}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{h2o}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{h2o}
 }
 }
 
 \section{Parameters}{
 \tabular{lllll}{
    Id \tab Type \tab Default \tab Levels \tab Range \cr
+   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
+   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
+   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
+   col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, 2]}{[0, 2]} \cr
+   col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
+   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
+   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   max_depth \tab integer \tab 20 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   min_rows \tab numeric \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   mtries \tab integer \tab -1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
+   sample_rate \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_tree_interval \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   ntrees \tab integer \tab 50 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   max_depth \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   min_rows \tab numeric \tab 1 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins \tab integer \tab 20 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins_top_level \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   nbins_cats \tab integer \tab 1024 \tab  \tab \eqn{[1, \infty)}{[1, Inf)} \cr
-   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
-   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   max_runtime_secs \tab numeric \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    seed \tab integer \tab -1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
-   build_tree_one_node \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   mtries \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
-   sample_rate \tab numeric \tab 0.632 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   checkpoint \tab untyped \tab NULL \tab  \tab - \cr
-   col_sample_rate_change_per_level \tab numeric \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   col_sample_rate_per_tree \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
-   min_split_improvement \tab numeric \tab 1e-05 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
-   histogram_type \tab character \tab AUTO \tab AUTO, UniformAdaptive, Random, QuantilesGlobal, RoundRobin, UniformRobust \tab - \cr
-   categorical_encoding \tab character \tab AUTO \tab AUTO, Enum, OneHotInternal, OneHotExplicit, Binary, Eigen, LabelEncoder, SortByResponse, EnumLimited \tab - \cr
-   export_checkpoints_dir \tab untyped \tab NULL \tab  \tab - \cr
-   check_constant_response \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
+   stopping_metric \tab character \tab AUTO \tab AUTO, deviance, MSE, RMSE, MAE, RMSLE \tab - \cr
+   stopping_rounds \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
+   stopping_tolerance \tab numeric \tab 0.001 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    verbose \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
 }
 }
