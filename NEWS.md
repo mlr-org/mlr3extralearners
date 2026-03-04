@@ -10,6 +10,7 @@
   - `LearnerClassifPlsdaCaret`
   - `LearnerSurvDNN`
   - `LearnerClassifH2ODeeplearning`
+  - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
 
 ## Other
