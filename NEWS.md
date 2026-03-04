@@ -1,14 +1,19 @@
 # mlr3extralearners (development version)
 
+
 ## New Features
 
 * New Learners:
   - `LearnerRegrGPfit`
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
+  - `LearnerClassifPlsdaCaret`
   - `LearnerSurvDNN`
+  - `LearnerClassifH2OGBM`
   - `LearnerClassifH2ODeeplearning`
   - `LearnerRegrH2OGBM`
+  - `LearnerRegrH2ODeeplearning`
+  - `LearnerClassifLvq1`
 
 ## Other
 
