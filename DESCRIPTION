@@ -151,7 +151,7 @@ VignetteBuilder:
     rmarkdown
 Remotes:
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3cmprsk,
+    mlr-org/mlr3cmprsk@survdistr_update,
     mlr-org/mlr3proba,
     mlr-org/survdistr@updates,
     RaphaelS1/survivalmodels
