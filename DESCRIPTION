@@ -136,7 +136,7 @@ Suggests:
     sparseLDA (>= 0.1-9),
     stats,
     stepPlr,
-    survdistr (>= 0.0.1),
+    survdistr (>= 0.0.2),
     survdnn (>= 0.7.5),
     survival,
     survivalmodels (>= 0.1.19),
