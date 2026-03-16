@@ -15,7 +15,6 @@
 #'
 #' @template learner
 #' @templateVar id surv.cforest
-#' @templateVar example_learner_args ntree = 50L
 #'
 #' @inheritSection mlr_learners_classif.cforest Custom mlr3 parameters
 #'
@@ -28,7 +27,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_surv_cforest
 LearnerSurvCForest = R6Class("LearnerSurvCForest",
   inherit = mlr3proba::LearnerSurv,
   public = list(

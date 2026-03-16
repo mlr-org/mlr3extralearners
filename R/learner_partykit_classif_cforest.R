@@ -8,7 +8,6 @@
 #'
 #' @template learner
 #' @templateVar id classif.cforest
-#' @templateVar example_learner_args ntree = 50L
 #'
 #' @section Custom mlr3 parameters:
 #' - `mtry`:
@@ -21,7 +20,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_classif_cforest
 LearnerClassifCForest = R6Class("LearnerClassifCForest",
   inherit = LearnerClassif, public = list(
 

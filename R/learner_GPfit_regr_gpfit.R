@@ -7,7 +7,6 @@
 #'
 #' @template learner
 #' @templateVar id regr.gpfit
-#' @templateVar example_learner_args maxit = 20L
 #'
 #' @note
 #' As the optimization routine assumes that the inputs are scaled to the unit hypercube,
@@ -22,8 +21,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
-#' @templateVar example_learner_args maxit = 5L, scale = FALSE
+#' @template example_gpfit
  
 LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
   inherit = LearnerRegr,

@@ -8,7 +8,6 @@
 #'
 #' @template learner
 #' @templateVar id classif.catboost
-#' @templateVar example_learner_args iterations = 50L, depth = 3L
 #'
 #' @section Installation:
 #' See \url{https://catboost.ai/en/docs/concepts/r-installation}.
@@ -41,7 +40,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_catboost
 LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   inherit = LearnerClassif,
   public = list(

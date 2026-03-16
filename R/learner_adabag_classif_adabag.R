@@ -16,12 +16,11 @@
 #' `r format_bib("adabag2013")`
 #'
 #' @templateVar id classif.adabag
-#' @templateVar example_learner_args mfinal = 20L, maxdepth = 10L
 #' @template learner
 #'
 #'
 #' @template seealso_learner
-#' @template example
+#' @template example_adabag
 #' @export
 LearnerClassifAdabag = R6Class("LearnerClassifAdabag",
   inherit = LearnerClassif,

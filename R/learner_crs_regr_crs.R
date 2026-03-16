@@ -10,8 +10,7 @@
 #' @template learner
 #'
 #' @template seealso_learner
-#' @template example
-#' @templateVar example_learner_args cv = "none", complexity = "knots"
+#' @template example_crs
 #' @export
 LearnerRegrCrs = R6Class("LearnerRegrCrs",
   inherit = LearnerRegr,
