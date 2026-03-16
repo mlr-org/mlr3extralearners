@@ -317,9 +317,9 @@ learner$importance()
 
 If it runs without erroring, that's a very good start!
 
-### Weighted Training and Evaluation
+### Weighted Training
 
-The following example uses separate weight columns to show how the task columns with the role `weights_learner` influences model fitting.
+The following example assigns the `weights_learner`-role to a task column to show how weights influence model fitting.
 
 ```{r, eval = rpart_available}
 task = tsk("mtcars")
