@@ -315,38 +315,40 @@ p$score(msr("regr.mse"))
 learner$importance()
 ```
 
-For weighted performance evaluation, provide task weights with role `weights_measure` and then score as usual.
-If you want the same weights for both fitting and evaluation, assign the same column to both roles.
-
 If it runs without erroring, that's a very good start!
 
 ### Weighted Training and Evaluation
 
-The following example uses separate weight columns to show how the task columns with the role `weights_learner` influences model fitting and the role `weights_measure` influences performance scoring.
+The following example uses separate weight columns to show how the task columns with the role `weights_learner` influences model fitting.
 
 ```{r, eval = rpart_available}
 task = tsk("mtcars")
-# define learner weights based on dedicated columns
+
+# row ids with am == 1
+row_ids_am_1 = task$row_ids[task$data(cols = "am")[["am"]] == 1L]
+
+# unweighted learner
+learner = LearnerRegrRpartSimple$new()
+pred = learner$train(task)$predict(task)
+pred$filter(row_ids_am_1)$score(msr("regr.mse"))
+
+# define learner weights based on am-columns with value "1"
 task_wt = tsk("mtcars")$cbind(data.table::data.table(
-  w_fit = ifelse(task$data(cols = "cyl")[[1L]] == 8, 3, 1),
-  w_eval = ifelse(task$data(cols = "am")[[1L]] == 1, 2, 1)
+  w_fit = ifelse(task$data(cols = "am")[[1L]] == 1, 30, 1)
 ))
+
 # set column roles so the learner can recognize which columns determine the respective weights
 task_wt$set_col_roles(cols = "w_fit", roles = "weights_learner")
-task_wt$set_col_roles(cols = "w_eval", roles = "weights_measure")
 
-# train, predict and evaluate on unweighted and weighted task 
-learner_unweighted = LearnerRegrRpartSimple$new()
-pred_unweighted = learner_unweighted$train(task)$predict(task)
-mse_unweighted = pred_unweighted$score(msr("regr.mse"))
+# weighted learner
+learner = LearnerRegrRpartSimple$new()
+pred2 = learner$train(task_wt)$predict(task_wt)
 
-learner_weighted = LearnerRegrRpartSimple$new()
-pred_weighted = learner_weighted$train(task_wt)$predict(task_wt)
-mse_weighted = pred_weighted$score(msr("regr.mse"))
+pred2$filter(row_ids_am_1)$score(msr("regr.mse"))
 
-# mse of an unweighted learner to one with weights during training and evaluation
-c(mse_unweighted = mse_unweighted, mse_weighted = mse_weighted)
 ```
+
+Based on the Mean Squared Error for the subset of cars having `am == 1` it becomes evident, that the weighted learner focuses more on minimizing the error for those observations than for the others.
 
 ### Autotest
 
