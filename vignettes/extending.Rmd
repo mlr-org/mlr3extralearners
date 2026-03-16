@@ -325,7 +325,7 @@ The following example uses separate weight columns to show how the task columns 
 task = tsk("mtcars")
 
 # row ids with am == 1
-row_ids_am_1 = task$row_ids[task$data(cols = "am")[["am"]] == 1L]
+row_ids_am_1 = task$row_ids[task$data(cols = "am") == 1L]
 
 # unweighted learner
 learner = LearnerRegrRpartSimple$new()
@@ -341,14 +341,13 @@ task_wt = tsk("mtcars")$cbind(data.table::data.table(
 task_wt$set_col_roles(cols = "w_fit", roles = "weights_learner")
 
 # weighted learner
-learner = LearnerRegrRpartSimple$new()
-pred2 = learner$train(task_wt)$predict(task_wt)
+learner_wt = LearnerRegrRpartSimple$new()
+pred_wt = learner_wt$train(task_wt)$predict(task_wt)
 
-pred2$filter(row_ids_am_1)$score(msr("regr.mse"))
-
+pred_wt$filter(row_ids_am_1)$score(msr("regr.mse"))
 ```
 
-Based on the Mean Squared Error for the subset of cars having `am == 1` it becomes evident, that the weighted learner focuses more on minimizing the error for those observations than for the others.
+Based on the Mean Squared Error for the subset of cars having `am == 1` it becomes evident, that the weighted learner focuses more on minimizing the error for those observations than the unweighted learner.
 
 ### Autotest
 
