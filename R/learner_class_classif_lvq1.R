@@ -13,7 +13,7 @@
 #' @template learner
 #'
 #' @references
-#' `r format_bib("kohonen_1990", "kohonen_1995")`
+#' `r format_bib("knn2002")`
 #'
 #' @template seealso_learner
 #' @template example
