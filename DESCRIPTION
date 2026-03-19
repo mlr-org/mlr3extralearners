@@ -43,7 +43,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3cmprsk (>= 0.0.1),
+    mlr3cmprsk (>= 0.0.2),
     mlr3misc (>= 0.19.0),
     mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),
@@ -151,9 +151,9 @@ VignetteBuilder:
     rmarkdown
 Remotes:
     catboost/catboost/catboost/R-package,
-    mlr-org/mlr3cmprsk@survdistr_update,
+    mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
-    mlr-org/survdistr@updates,
+    mlr-org/survdistr,
     RaphaelS1/survivalmodels
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
