@@ -311,8 +311,8 @@ print(learner$model)
 #> # of features: 6 
 #> # of rounds:  1000 
 print(learner$importance())
-#>  revascdays      revasc         los       sysbp         age    stchange 
-#> 0.333152092 0.319069397 0.138087356 0.114430717 0.087400950 0.007859488 
+#> revascdays     revasc      sysbp        los        age   stchange 
+#> 0.32751012 0.28630255 0.13809079 0.13411513 0.10391156 0.01006985 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -320,5 +320,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8323826 
+#>   0.8298369 
 ```

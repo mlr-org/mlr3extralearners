@@ -283,8 +283,8 @@ The fitted model. Only available after <code>$train()</code> has been called.</p
 <span class="r-out co"><span class="r-pr">#&gt;</span> # of features: 6 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> # of rounds:  1000 </span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         los       sysbp         age    stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.333152092 0.319069397 0.138087356 0.114430717 0.087400950 0.007859488 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc      sysbp        los        age   stchange </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.32751012 0.28630255 0.13809079 0.13411513 0.10391156 0.01006985 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -292,7 +292,7 @@ The fitted model. Only available after <code>$train()</code> has been called.</p
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8323826 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8298369 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

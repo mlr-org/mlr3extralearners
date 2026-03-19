@@ -311,8 +311,8 @@ print(learner$model)
 #> callbacks:
 #>    lp_train, times, status 
 print(learner$importance())
-#>      sysbp revascdays        los     revasc        age   stchange 
-#> 0.48659951 0.23907252 0.09871223 0.08322981 0.08089301 0.01149292 
+#> revascdays        los     revasc        age      sysbp   stchange 
+#> 0.33672370 0.18326133 0.16404690 0.14731189 0.13039624 0.03825995 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -320,5 +320,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8682978 
+#>   0.8594859 
 ```

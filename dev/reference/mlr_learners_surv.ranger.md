@@ -259,11 +259,11 @@ print(learner$model)
 #> Target node size:                 3 
 #> Variable importance mode:         permutation 
 #> Splitrule:                        logrank 
-#> Number of unique death times:     90 
-#> OOB prediction error (1-C):       0.162056 
+#> Number of unique death times:     95 
+#> OOB prediction error (1-C):       0.1574868 
 print(learner$importance())
-#>  revascdays      revasc         age         los       sysbp    stchange 
-#> 0.149241402 0.081140272 0.028707648 0.022576588 0.008786808 0.003505263 
+#>   revascdays       revasc          age          los        sysbp     stchange 
+#> 0.1667780969 0.0830075091 0.0336119273 0.0228497731 0.0096547591 0.0008487549 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -271,5 +271,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8547831 
+#>   0.8475963 
 ```

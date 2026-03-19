@@ -267,8 +267,8 @@ print(learner$model)
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 71
-#>  Merit of best subset found:    2.711
+#>  Total number of subsets evaluated: 47
+#>  Merit of best subset found:    3.147
 #> Evaluation (for feature selection): CV (leave one out) 
 #> Feature set: 2,4,1
 
@@ -279,5 +279,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.99762 
+#> 9.481744 
 ```

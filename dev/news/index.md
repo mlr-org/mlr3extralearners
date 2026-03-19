@@ -160,7 +160,7 @@
   not available.
 - `distr6` dependency is removed. `partykit` survival learners use
   constant interpolation of the predicted Kaplan-Meier curves via
-  [`survdistr::vec_interp()`](https://survdistr.mlr-org.com/reference/vec_interp.html)
+  `survdistr::vec_interp()`
 
 ## mlr3extralearners 1.1.0
 

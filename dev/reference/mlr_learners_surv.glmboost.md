@@ -257,13 +257,13 @@ print(learner$model)
 #> 
 #> Coefficients: 
 #>          age       revasc   revascdays 
-#>  0.015662534 -1.001937565 -0.008186369 
+#>  0.019082691 -0.872117378 -0.008241094 
 #> attr(,"offset")
 #> [1] 0
 #> 
 print(learner$importance())
 #> revascdays     revasc        age        los   stchange      sysbp 
-#> 0.07668577 0.06223734 0.03107030 0.00000000 0.00000000 0.00000000 
+#> 0.07942384 0.05232532 0.03827182 0.00000000 0.00000000 0.00000000 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -271,5 +271,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8369658 
+#>   0.8208261 
 ```

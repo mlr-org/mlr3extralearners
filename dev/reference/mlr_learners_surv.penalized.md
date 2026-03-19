@@ -217,7 +217,7 @@ print(learner$model)
 #> Penalized cox regression object
 #> 6 regression coefficients
 #> 
-#> Loglikelihood =   -1376.473 
+#> Loglikelihood =   -1339.679 
 #> 
 #> $task_has_factors
 #> [1] FALSE
@@ -230,5 +230,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>    0.817465 
+#>   0.8233584 
 ```

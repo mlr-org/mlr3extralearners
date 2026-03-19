@@ -292,10 +292,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 670
-#>                     Number of deaths: 217
+#>                     Number of deaths: 212
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 26.432
+#>        Average no. of terminal nodes: 26.666
 #> No. of variables tried at each split: 3
 #>               Total no. of variables: 6
 #>        Resampling used to grow trees: swor
@@ -304,13 +304,13 @@ print(learner$model)
 #>                               Family: surv
 #>                       Splitting rule: logrank *random*
 #>        Number of random split points: 10
-#>                           (OOB) CRPS: 15.83020651
-#>              (OOB) standardized CRPS: 0.08943619
-#>    (OOB) Requested performance error: 0.15439021
+#>                           (OOB) CRPS: 14.90762815
+#>              (OOB) standardized CRPS: 0.08422389
+#>    (OOB) Requested performance error: 0.14961853
 #> 
 print(learner$importance())
-#>  revascdays      revasc         age       sysbp         los    stchange 
-#> 0.450384970 0.293419797 0.107573361 0.098651321 0.031602951 0.004330762 
+#>   revascdays       revasc          age        sysbp          los     stchange 
+#> 0.4464947545 0.3347880156 0.1017551724 0.0949489713 0.0396289841 0.0009562275 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -318,5 +318,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8317563 
+#>   0.8041303 
 ```

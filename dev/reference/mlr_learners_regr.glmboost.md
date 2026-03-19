@@ -184,17 +184,15 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  20.20476 
+#> Offset:  18.93333 
 #> 
 #> Coefficients: 
-#>   (Intercept)            am          carb           cyl          disp 
-#> 13.9335942507  0.1487761501 -0.2321810215 -1.0938798866  0.0006870459 
-#>          drat          gear            hp          qsec            vs 
-#>  0.4712326235 -0.0549372188 -0.0077052806  0.1312973759 -0.0156117100 
-#>            wt 
-#> -2.9954452870 
+#>  (Intercept)           am         carb          cyl         disp         drat 
+#> 10.404217333  1.598118598 -0.425397568 -0.651033401 -0.012834345  0.660823323 
+#>           hp         qsec           wt 
+#> -0.009936485  0.074926993 -1.220544111 
 #> attr(,"offset")
-#> [1] 20.20476
+#> [1] 18.93333
 #> 
 
 
@@ -204,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.811248 
+#> 8.912928 
 ```

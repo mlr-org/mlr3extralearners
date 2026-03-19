@@ -226,10 +226,12 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> V11:
-#>  < 0.17885    -> R
-#>  >= 0.17885   -> M
-#> (109/139 instances correct)
+#> V12:
+#>  < 0.20074999999999998    -> R
+#>  < 0.32725    -> M
+#>  < 0.35145000000000004    -> R
+#>  >= 0.35145000000000004   -> M
+#> (108/139 instances correct)
 #> 
 
 
@@ -239,5 +241,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.3333333 
 ```

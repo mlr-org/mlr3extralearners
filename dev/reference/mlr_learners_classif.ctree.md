@@ -209,13 +209,15 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.197: R (n = 60, err = 25.0%)
-#> |   [3] V11 > 0.197
-#> |   |   [4] V17 <= 0.6613: M (n = 56, err = 10.7%)
-#> |   |   [5] V17 > 0.6613: R (n = 23, err = 47.8%)
+#> |   [2] V11 <= 0.1786
+#> |   |   [3] V52 <= 0.0112: R (n = 34, err = 5.9%)
+#> |   |   [4] V52 > 0.0112: R (n = 19, err = 36.8%)
+#> |   [5] V11 > 0.1786
+#> |   |   [6] V17 <= 0.6613: M (n = 58, err = 13.8%)
+#> |   |   [7] V17 > 0.6613: R (n = 28, err = 42.9%)
 #> 
-#> Number of inner nodes:    2
-#> Number of terminal nodes: 3
+#> Number of inner nodes:    3
+#> Number of terminal nodes: 4
 
 
 # Make predictions for the test rows
@@ -224,5 +226,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2753623 
 ```
