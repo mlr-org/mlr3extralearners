@@ -9,6 +9,7 @@
   - `LearnerClassifSaeDNN`
   - `LearnerClassifPlsdaCaret`
   - `LearnerSurvDNN`
+  - `LearnerClassifH2OGLM`
   - `LearnerClassifH2OGBM`
   - `LearnerClassifH2ODeeplearning`
   - `LearnerRegrH2OGBM`
