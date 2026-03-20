@@ -22,7 +22,7 @@
 #' the penalty value to be used in `CoxBoost::cv.CoxBoost()`.
 #'
 #' @references
-#' `r format_bib("binder2009boosting")`
+#' `r format_bib("binder2008")`
 #'
 #' @template seealso_learner
 #' @template example_cv_coxboost

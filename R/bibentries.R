@@ -105,7 +105,22 @@ bibentries = c( # nolint start
     url = "https://github.com/h2oai/h2o-3"
   ),
 
-  binder2009boosting = bibentry("article",
+  binder2008 = bibentry("article",
+    title = "Allowing for mandatory covariates in boosting estimation of sparse high-dimensional survival models",
+    author = "Binder, Harald and Schumacher, Martin",
+    journal = "BMC Bioinformatics",
+    volume = "9",
+    number = "1",
+    pages = "1-10",
+    year = "2008",
+    doi = "10.1186/1471-2105-9-14",
+    issn = "14712105",
+    publisher = "BioMed Central",
+    pmid = "18186927",
+    month = "1"
+  ),
+
+  binder2009 = bibentry("article",
     title = "Boosting for high-dimensional time-to-event data with competing risks",
     author = "Binder, Harald and Allignol, Arthur and Schumacher, Martin and Beyersmann, Jan",
     journal = "Bioinformatics",

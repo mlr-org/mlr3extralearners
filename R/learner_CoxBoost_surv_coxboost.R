@@ -26,7 +26,7 @@
 #' results.
 #'
 #' @references
-#' `r format_bib("binder2009boosting")`
+#' `r format_bib("binder2008")`
 #'
 #' @template seealso_learner
 #' @template example

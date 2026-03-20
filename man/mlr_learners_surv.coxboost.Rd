@@ -91,9 +91,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-Binder, Harald, Allignol, Arthur, Schumacher, Martin, Beyersmann, Jan (2009).
-\dQuote{Boosting for high-dimensional time-to-event data with competing risks.}
-\emph{Bioinformatics}, \bold{25}(7), 890--896.
+Binder, Harald, Schumacher, Martin (2008).
+\dQuote{Allowing for mandatory covariates in boosting estimation of sparse high-dimensional survival models.}
+\emph{BMC Bioinformatics}, \bold{9}(1), 1-10.
+ISSN 14712105, \doi{10.1186/1471-2105-9-14}.
 }
 \seealso{
 \itemize{
