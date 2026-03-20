@@ -95,7 +95,7 @@ LearnerRegrH2OGLM = R6Class("LearnerRegrH2OGLM",
       pars$family = "gaussian"
 
       # enforce that default alpha = 0 when solver is L_BFGS
-      if (!("alpha" %in% names(pars)) & ("solver" %in% names(pars))) {
+      if (!("alpha" %in% names(pars)) && ("solver" %in% names(pars))) {
         if (pars$solver == "L_BFGS") {
           pars$alpha = 0
         }
