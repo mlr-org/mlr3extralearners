@@ -8,6 +8,14 @@
 Generalized linear classification model.
 Calls \code{\link[h2o:h2o.glm]{h2o::h2o.glm()}} from package \CRANpkg{h2o} with \code{family} always set to \code{"binomial"}.
 }
+\section{H2O Connection}{
+
+If no running H2O connection is found, the learner will automatically start a local H2O server
+on \verb{127.0.0.1} via \code{\link[h2o:h2o.init]{h2o::h2o.init()}}.
+If you want to connect to a remote H2O cluster, call \code{\link[h2o:h2o.init]{h2o::h2o.init()}} with the appropriate
+arguments before training or predicting.
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
@@ -22,7 +30,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \item Task type: \dQuote{classif}
 \item Predict Types: \dQuote{response}, \dQuote{prob}
 \item Feature Types: \dQuote{integer}, \dQuote{numeric}, \dQuote{factor}
-\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{h2o}
+\item Required Packages: \CRANpkg{mlr3}, \CRANpkg{mlr3extralearners}, \CRANpkg{h2o}
 }
 }
 
@@ -44,7 +52,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    gainslift_bins \tab integer \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
    generate_scoring_history \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    generate_variable_inflation_factors \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
-   gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   gradient_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    HGLM \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    ignore_const_cols \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
    interactions \tab untyped \tab NULL \tab  \tab - \cr
@@ -64,7 +72,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    objective_epsilon \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    obj_reg \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    plug_values \tab untyped \tab NULL \tab  \tab - \cr
-   prior \tab numeric \tab -1 \tab  \tab \eqn{[-1, \infty)}{[-1, Inf)} \cr
+   prior \tab numeric \tab -1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    random_columns \tab untyped \tab NULL \tab  \tab - \cr
    remove_collinear_columns \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    score_each_iteration \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
