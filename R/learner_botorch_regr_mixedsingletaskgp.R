@@ -21,9 +21,8 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     initialize = function() {
       ps = ps(
         device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train"),
-        kernel = p_fct(default = "rbf", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train", init = "rbf"),
-        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
-        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train", init = "standardize")
+        input_transform = p_fct(levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
+        outcome_transform = p_fct(levels = c("standardize", "log", "none"), tags = "train", init = "standardize")
       )
       super$initialize(
         id = "regr.botorch_mixedsingletaskgp",
@@ -72,7 +71,6 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       pars = self$param_set$get_values(tags = "train")
       device = pars$device
-      kernel = pars$kernel
 
       x = task$data(cols = task$feature_names)
       y = task$truth()
@@ -101,34 +99,18 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       input_transform = switch(input_trafo,
         normalize = input_transforms$Normalize(d = ncol(x)),
         standardize = input_transforms$InputStandardize(d = ncol(x)),
-        log10 = input_transforms$Log10(),
-        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        log10 = input_transforms$Log10(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L)), d = ncol(x)),
         none = NULL
       )
 
       outcome_transform = switch(outcome_trafo,
         standardize = outcome_transforms$Standardize(m = 1L),
         log = outcome_transforms$Log(),
-        power = outcome_transforms$Power(),
-        bilog = outcome_transforms$Bilog(),
         none = NULL
       )
 
-      covar_module = switch(kernel,
-        matern_2.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 2.5)),
-        matern_1.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 1.5)),
-        matern_0.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 0.5)),
-        rbf = gpytorch$kernels$ScaleKernel(gpytorch$kernels$RBFKernel()),
-        linear = gpytorch$kernels$ScaleKernel(gpytorch$kernels$LinearKernel()),
-        polynomial = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PolynomialKernel(power = 2L)),
-        periodic = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PeriodicKernel()),
-        cosine = gpytorch$kernels$ScaleKernel(gpytorch$kernels$CosineKernel()),
-        rq = gpytorch$kernels$ScaleKernel(gpytorch$kernels$RQKernel()),
-        piecewise_polynomial = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PiecewisePolynomialKernel()),
-        constant = gpytorch$kernels$ScaleKernel(gpytorch$kernels$ConstantKernel())
-      )
-
-      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims, covar_module = covar_module, input_transform = input_transform, outcome_transform = outcome_transform)
+      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims, input_transform = input_transform, outcome_transform = outcome_transform)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
 
@@ -140,15 +122,15 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 
-      # compute the posterior distribution and extract the mean and covariance matrix
+      # compute the posterior distribution and extract the mean and variance
       # disable gradient computation with torch.no_grad() for efficiency
       reticulate::py_run_string("def predict_gp(model, x_py):
         import torch
         with torch.no_grad():
             posterior = model.posterior(x_py)
             mean = posterior.mean.cpu().numpy()
-            covar = posterior.mvn.covariance_matrix.cpu().numpy()
-        return mean, covar")
+            variance = posterior.variance.cpu().numpy()
+        return mean, variance")
 
       gp = self$model$model
       # change the model to evaluation mode
@@ -163,13 +145,12 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       posterior = reticulate::py$predict_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
-      covar = posterior[[2]]
+      variance = as.numeric(posterior[[2]])
 
       if (self$predict_type == "response") {
         list(response = mean)
       } else {
-        sd = sqrt(diag(covar))
-        list(response = mean, se = sd)
+        list(response = mean, se = sqrt(variance))
       }
     }
   )

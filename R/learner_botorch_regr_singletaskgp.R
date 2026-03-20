@@ -21,9 +21,9 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
     initialize = function() {
       param_set = ps(
         device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = c("train", "predict")),
-        kernel = p_fct(default = "rbf", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train", init = "rbf"),
-        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
-        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train", init = "standardize")
+        kernel = p_fct(levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train", init = "rbf"),
+        input_transform = p_fct(levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
+        outcome_transform = p_fct(levels = c("standardize", "log", "none"), tags = "train", init = "standardize")
       )
 
       super$initialize(
@@ -90,16 +90,14 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
       input_transform = switch(input_trafo,
         normalize = input_transforms$Normalize(d = ncol(x)),
         standardize = input_transforms$InputStandardize(d = ncol(x)),
-        log10 = input_transforms$Log10(),
-        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        log10 = input_transforms$Log10(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L)), d = ncol(x)),
         none = NULL
       )
 
       outcome_transform = switch(outcome_trafo,
         standardize = outcome_transforms$Standardize(m = 1L),
         log = outcome_transforms$Log(),
-        power = outcome_transforms$Power(),
-        bilog = outcome_transforms$Bilog(),
         none = NULL
       )
 
@@ -128,15 +126,15 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 
-      # compute the posterior distribution and extract the mean and covariance matrix
+      # compute the posterior distribution and extract the mean and variance
       # disable gradient computation with torch.no_grad() for efficiency
       reticulate::py_run_string("def predict_gp(model, x_py):
         import torch
         with torch.no_grad():
             posterior = model.posterior(x_py)
             mean = posterior.mean.cpu().numpy()
-            covar = posterior.mvn.covariance_matrix.cpu().numpy()
-        return mean, covar")
+            variance = posterior.variance.cpu().numpy()
+        return mean, variance")
 
       gp = self$model$model
       # change the model to evaluation mode
@@ -147,13 +145,12 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
 
       posterior = reticulate::py$predict_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
-      covar = posterior[[2]]
+      variance = as.numeric(posterior[[2]])
 
       if (self$predict_type == "response") {
         list(response = mean)
       } else {
-        sd = sqrt(diag(covar))
-        list(response = mean, se = sd)
+        list(response = mean, se = sqrt(variance))
       }
     }
   )
