@@ -66,7 +66,10 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib("kohonen_1990", "kohonen_1995")}
+Venables WN, Ripley BD (2002).
+\emph{Modern Applied Statistics with S}, Fourth edition.
+Springer, New York.
+ISBN 0-387-95457-0, \url{https://www.stats.ox.ac.uk/pub/MASS4/}.
 }
 \seealso{
 \itemize{

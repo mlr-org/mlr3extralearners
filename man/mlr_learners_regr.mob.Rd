@@ -71,16 +71,19 @@ library(mlr3)
 lm_ = function(y, x, start = NULL, weights = NULL, offset = NULL, ...) {
   lm(y ~ 1, ...)
 }
-learner = LearnerRegrMob$new()
-learner$param_set$values$rhs = "."
-learner$param_set$values$fit = lm_
-learner$feature_types = c("logical", "integer", "numeric", "factor", "ordered")
 
 predict_fun = function(object, newdata, task, .type) {
   preds = predict(object, newdata = newdata, type = "response", se.fit = TRUE)
   cbind(preds$fit, preds$se.fit)
 }
-learner$param_set$values$predict_fun = predict_fun
+
+learner = lrn("regr.mob",
+    rhs = ".", 
+    fit = lm_,
+    feature_types = c("logical", "integer", "numeric", "factor", "ordered"),
+    predict_fun = predict_fun
+)
+
 task = tsk("mtcars")
 ids = partition(task)
 learner$train(task, row_ids = ids$train)

@@ -83,7 +83,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    na.action \tab untyped \tab - \tab  \tab - \cr
    D \tab logical \tab - \tab TRUE, FALSE \tab - \cr
    B \tab untyped \tab - \tab  \tab - \cr
-   Q \tab character \tab - \tab global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, \link{...} \tab - \cr
+   Q \tab character \tab - \tab global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, etc. \tab - \cr
    E \tab character \tab - \tab estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator \tab - \cr
    output_debug_info \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    do_not_check_capabilities \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr

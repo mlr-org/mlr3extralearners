@@ -103,8 +103,7 @@ No offset is applied during prediction for this learner.
 \dontshow{if (learner_is_runnable("surv.gam.cox")) withAutoprint(\{ # examplesIf}
 # simple example
 t = tsk("lung")
-l = lrn("surv.gam.cox")
-l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
+l = lrn("surv.gam.cox", formula = time ~ s(age, k = 5) + ph.karno + sex)
 l$train(t)
 l$model
 \dontshow{\}) # examplesIf}

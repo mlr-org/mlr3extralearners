@@ -21,7 +21,8 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_gpfit
+ 
 LearnerRegrGPfit = R6Class("LearnerRegrGPfit",
   inherit = LearnerRegr,
   public = list(

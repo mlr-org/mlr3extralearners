@@ -62,7 +62,15 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib(c("kuhn2008caret", "mevik_2007"))}
+Kuhn, Max (2008).
+\dQuote{Building Predictive Models in R Using the caret Package.}
+\emph{Journal of Statistical Software}, \bold{28}(5), 1--26.
+\doi{10.18637/jss.v028.i05}.
+
+Mevik, Bjorn-Helge, Wehrens, Ron (2007).
+\dQuote{The pls Package: Principal Component and Partial Least Squares Regression in R.}
+\emph{Journal of Statistical Software}, \bold{18}(2), 1--24.
+\doi{10.18637/jss.v018.i02}.
 }
 \seealso{
 \itemize{

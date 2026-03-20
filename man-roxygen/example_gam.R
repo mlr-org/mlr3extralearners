@@ -21,14 +21,12 @@ if (is_classif) {
 } else if (is_surv) {
 %>
 #' t = tsk("lung")
-#' l = lrn("<%= id %>")
-#' l$param_set$set_values(formula = time ~ s(age, k = 5) + ph.karno + sex)
+#' l = lrn("<%= id %>", formula = time ~ s(age, k = 5) + ph.karno + sex)
 <%
 } else {
 %>
 #' t = tsk("mtcars")
-#' l = lrn("<%= id %>")
-#' l$param_set$values$formula = mpg ~ cyl + am + s(disp) + s(hp)
+#' l = lrn("<%= id %>", formula = mpg ~ cyl + am + s(disp) + s(hp))
 <%
 }
 %>

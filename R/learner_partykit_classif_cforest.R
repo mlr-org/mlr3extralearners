@@ -20,7 +20,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_classif_cforest
 LearnerClassifCForest = R6Class("LearnerClassifCForest",
   inherit = LearnerClassif, public = list(
 
