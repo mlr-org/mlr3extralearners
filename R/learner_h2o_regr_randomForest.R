@@ -6,6 +6,12 @@
 #' Regression random forest learner.
 #' Calls [h2o::h2o.randomForest()] from package \CRANpkg{h2o}.
 #'
+#' @section H2O Connection:
+#' If no running H2O connection is found, the learner will automatically start a local H2O server
+#' on `127.0.0.1` via [h2o::h2o.init()].
+#' If you want to connect to a remote H2O cluster, call [h2o::h2o.init()] with the appropriate
+#' arguments before training or predicting.
+#'
 #' @templateVar id regr.h2o.randomForest
 #' @template learner
 #'
