@@ -95,7 +95,7 @@ LearnerClassifH2OGLM = R6Class("LearnerClassifH2OGLM", inherit = LearnerClassif,
       pars = self$param_set$get_values(tags = "train")
 
       # enforce that default alpha = 0 when solver is L_BFGS
-      if (!("alpha" %in% names(pars)) & ("solver" %in% names(pars))) {
+      if (!("alpha" %in% names(pars)) && ("solver" %in% names(pars))) {
         if (pars$solver == "L_BFGS") {
           pars$alpha = 0
         }
