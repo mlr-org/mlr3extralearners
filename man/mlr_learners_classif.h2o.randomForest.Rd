@@ -8,6 +8,14 @@
 Classification random forest learner.
 Calls \code{\link[h2o:h2o.randomForest]{h2o::h2o.randomForest()}} from package \CRANpkg{h2o}.
 }
+\section{H2O Connection}{
+
+If no running H2O connection is found, the learner will automatically start a local H2O server
+on \verb{127.0.0.1} via \code{\link[h2o:h2o.init]{h2o::h2o.init()}}.
+If you want to connect to a remote H2O cluster, call \code{\link[h2o:h2o.init]{h2o::h2o.init()}} with the appropriate
+arguments before training or predicting.
+}
+
 \section{Dictionary}{
 
 This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{lrn()}:
