@@ -4,6 +4,7 @@
 #'
 #' @description
 #' Gaussian Process via [botorch](https://botorch.org/) and [gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP`.
+#' See [here](https://botorch.readthedocs.io/en/latest/models.html#module-botorch.models.gp_regression_mixed) for more details.
 #' Uses \CRANpkg{reticulate} to interface with Python.
 #'
 #' @templateVar id regr.botorch_mixedsingletaskgp
@@ -19,7 +20,10 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train")
+        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train"),
+        kernel = p_fct(default = "matern_2.5", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train"),
+        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train"),
+        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train")
       )
       super$initialize(
         id = "regr.botorch_mixedsingletaskgp",
@@ -68,6 +72,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       pars = self$param_set$get_values(tags = "train")
       device = pars$device
+      kernel = pars$kernel %??% "matern_2.5"
 
       x = task$data(cols = task$feature_names)
       y = task$truth()
@@ -87,7 +92,43 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       # 0-based categorical dimensions
       cat_dims = reticulate::r_to_py(unname(as.list(cols - 1L)))
 
-      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims)
+      input_trafo = pars$input_transform %??% "normalize"
+      outcome_trafo = pars$outcome_transform %??% "standardize"
+
+      input_transforms = botorch$models$transforms$input
+      outcome_transforms = botorch$models$transforms$outcome
+
+      input_transform = switch(input_trafo,
+        normalize = input_transforms$Normalize(d = ncol(x)),
+        standardize = input_transforms$InputStandardize(d = ncol(x)),
+        log10 = input_transforms$Log10(),
+        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        none = NULL
+      )
+
+      outcome_transform = switch(outcome_trafo,
+        standardize = outcome_transforms$Standardize(m = 1L),
+        log = outcome_transforms$Log(),
+        power = outcome_transforms$Power(),
+        bilog = outcome_transforms$Bilog(),
+        none = NULL
+      )
+
+      covar_module = switch(kernel,
+        matern_2.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 2.5)),
+        matern_1.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 1.5)),
+        matern_0.5 = gpytorch$kernels$ScaleKernel(gpytorch$kernels$MaternKernel(nu = 0.5)),
+        rbf = gpytorch$kernels$ScaleKernel(gpytorch$kernels$RBFKernel()),
+        linear = gpytorch$kernels$ScaleKernel(gpytorch$kernels$LinearKernel()),
+        polynomial = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PolynomialKernel(power = 2L)),
+        periodic = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PeriodicKernel()),
+        cosine = gpytorch$kernels$ScaleKernel(gpytorch$kernels$CosineKernel()),
+        rq = gpytorch$kernels$ScaleKernel(gpytorch$kernels$RQKernel()),
+        piecewise_polynomial = gpytorch$kernels$ScaleKernel(gpytorch$kernels$PiecewisePolynomialKernel()),
+        constant = gpytorch$kernels$ScaleKernel(gpytorch$kernels$ConstantKernel())
+      )
+
+      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims, covar_module = covar_module, input_transform = input_transform, outcome_transform = outcome_transform)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
 
