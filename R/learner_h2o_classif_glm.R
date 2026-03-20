@@ -73,7 +73,7 @@ LearnerClassifH2OGLM = R6Class("LearnerClassifH2OGLM", inherit = LearnerClassif,
 
       super$initialize(
         id = "classif.h2o.glm",
-        packages = "h2o",
+        packages = c("mlr3extralearners", "h2o"),
         feature_types = c("integer", "numeric", "factor"),
         predict_types = c("response", "prob"),
         param_set = param_set,
