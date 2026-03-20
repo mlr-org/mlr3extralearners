@@ -5,13 +5,11 @@
 #' @description
 #' Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 #' number of steps.
-#' Calls `CoxBoost::CoxBoost()` or `CoxBoost::cv.CoxBoost()` from package 'CoxBoost'.
+#' Calls `CoxBoost::CoxBoost()` or `CoxBoost::cv.CoxBoost()` from package \CRANpkg{CoxBoost}.
 #'
 #' @inheritSection mlr_learners_surv.coxboost Prediction types
 #' @template learner
 #' @templateVar id surv.cv_coxboost
-#'
-#' @template install_coxboost
 #'
 #' @details
 #' Use [LearnerSurvCoxboost] and [LearnerSurvCVCoxboost] for Cox boosting without and with internal

@@ -66,7 +66,15 @@ predictions$score()
 \dontshow{\}) # examplesIf}
 }
 \references{
-\verb{r format_bib("kohonen_1990", "kohonen_1995")}
+Kohonen, Teuvo (1990).
+\dQuote{The self-organizing map.}
+\emph{Proceedings of the IEEE}, \bold{78}(9), 1464--1480.
+\doi{10.1109/5.58325}.
+
+Kohonen, Teuvo (1995).
+\emph{Self-Organizing Maps}, volume 30 series Springer Series in Information Sciences.
+Springer, Berlin.
+ISBN 978-3540967120.
 }
 \seealso{
 \itemize{

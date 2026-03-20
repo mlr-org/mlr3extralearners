@@ -7,7 +7,7 @@
 \description{
 Fits a survival Cox model using likelihood based boosting and internal cross-validation for the
 number of steps.
-Calls \code{CoxBoost::CoxBoost()} or \code{CoxBoost::cv.CoxBoost()} from package 'CoxBoost'.
+Calls \code{CoxBoost::CoxBoost()} or \code{CoxBoost::cv.CoxBoost()} from package \CRANpkg{CoxBoost}.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
@@ -61,12 +61,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    at.step \tab untyped \tab - \tab  \tab - \cr
 }
-}
-
-\section{Installation}{
-
-The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
-\code{remotes::install_github("binderh/CoxBoost")}.
 }
 
 \section{Prediction types}{

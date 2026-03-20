@@ -6,7 +6,7 @@
 \title{Survival Cox Model with Likelihood Based Boosting Learner}
 \description{
 Fit a Survival Cox model with a likelihood based boosting algorithm.
-Calls \code{CoxBoost::CoxBoost()} from package 'CoxBoost'.
+Calls \code{CoxBoost::CoxBoost()} from package \CRANpkg{CoxBoost}.
 }
 \details{
 Use \link{LearnerSurvCoxboost} and \link{LearnerSurvCVCoxboost} for Cox boosting without and with internal
@@ -63,12 +63,6 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    trace \tab logical \tab FALSE \tab TRUE, FALSE \tab - \cr
    at.step \tab untyped \tab - \tab  \tab - \cr
 }
-}
-
-\section{Installation}{
-
-The package 'CoxBoost' is not on CRAN and has to be installed from GitHub using
-\code{remotes::install_github("binderh/CoxBoost")}.
 }
 
 \examples{
