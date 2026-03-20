@@ -366,6 +366,9 @@
 - [`mlr_learners_regr.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
   [`LearnerRegrH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.deeplearning.md)
   : Regression H2O Deep Learning Learner
+- [`mlr_learners_regr.h2o.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.gbm.md)
+  [`LearnerRegrH2OGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.gbm.md)
+  : Regression H2O GBM Learner
 - [`mlr_learners_regr.kstar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   [`LearnerRegrKStar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   : Regression KStar Learner

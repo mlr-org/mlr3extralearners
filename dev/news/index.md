@@ -12,6 +12,7 @@
   - `LearnerSurvDNN`
   - `LearnerClassifH2OGBM`
   - `LearnerClassifH2ODeeplearning`
+  - `LearnerRegrH2OGBM`
   - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
 
