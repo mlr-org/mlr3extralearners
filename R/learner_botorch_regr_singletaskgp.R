@@ -21,9 +21,9 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
     initialize = function() {
       param_set = ps(
         device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = c("train", "predict")),
-        kernel = p_fct(default = "matern_2.5", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train"),
-        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train"),
-        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train")
+        kernel = p_fct(default = "rbf", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train", init = "rbf"),
+        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
+        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train", init = "standardize")
       )
 
       super$initialize(
@@ -74,15 +74,15 @@ LearnerRegrBotorchSingleTaskGP = R6Class("LearnerRegrBotorchSingleTaskGP",
 
       pars = self$param_set$get_values(tags = "train")
       device = pars$device
-      kernel = pars$kernel %??% "matern_2.5"
+      kernel = pars$kernel
 
       x = as_numeric_matrix(task$data(cols = task$feature_names))
       y = as.numeric(task$truth())
       x_py = torch$as_tensor(x, dtype = torch$float64, device = device)
       y_py = torch$as_tensor(matrix(y, ncol = 1), dtype = torch$float64, device = device)
 
-      input_trafo = pars$input_transform %??% "normalize"
-      outcome_trafo = pars$outcome_transform %??% "standardize"
+      input_trafo = pars$input_transform
+      outcome_trafo = pars$outcome_transform
 
       input_transforms = botorch$models$transforms$input
       outcome_transforms = botorch$models$transforms$outcome

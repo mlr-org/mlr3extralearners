@@ -21,9 +21,9 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     initialize = function() {
       ps = ps(
         device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train"),
-        kernel = p_fct(default = "matern_2.5", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train"),
-        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train"),
-        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train")
+        kernel = p_fct(default = "rbf", levels = c("matern_2.5", "matern_1.5", "matern_0.5", "rbf", "linear", "polynomial", "periodic", "cosine", "rq", "piecewise_polynomial", "constant"), tags = "train", init = "rbf"),
+        input_transform = p_fct(default = "normalize", levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
+        outcome_transform = p_fct(default = "standardize", levels = c("standardize", "log", "power", "bilog", "none"), tags = "train", init = "standardize")
       )
       super$initialize(
         id = "regr.botorch_mixedsingletaskgp",
@@ -72,7 +72,7 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       pars = self$param_set$get_values(tags = "train")
       device = pars$device
-      kernel = pars$kernel %??% "matern_2.5"
+      kernel = pars$kernel
 
       x = task$data(cols = task$feature_names)
       y = task$truth()
@@ -92,8 +92,8 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       # 0-based categorical dimensions
       cat_dims = reticulate::r_to_py(unname(as.list(cols - 1L)))
 
-      input_trafo = pars$input_transform %??% "normalize"
-      outcome_trafo = pars$outcome_transform %??% "standardize"
+      input_trafo = pars$input_transform
+      outcome_trafo = pars$outcome_transform
 
       input_transforms = botorch$models$transforms$input
       outcome_transforms = botorch$models$transforms$outcome
