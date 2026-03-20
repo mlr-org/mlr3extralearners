@@ -173,7 +173,7 @@ print(learner$model)
 #> classes = M, R 
 #> 
 #> Top 5 predictors (out of 60):
-#>  V47, V37, V17, V41, V18
+#>  V44, V18, V19, V14, V37
 
 
 # Make predictions for the test rows

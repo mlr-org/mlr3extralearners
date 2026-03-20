@@ -204,8 +204,8 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] wt <= 3.19: 25.125 (n = 8, err = 158.7)
-#> |   [3] wt > 3.19: 15.285 (n = 13, err = 95.4)
+#> |   [2] wt <= 3.19: 25.067 (n = 9, err = 184.3)
+#> |   [3] wt > 3.19: 15.408 (n = 12, err = 94.4)
 #> 
 #> Number of inner nodes:    1
 #> Number of terminal nodes: 2
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 25.28597 
+#> 22.74155 
 ```

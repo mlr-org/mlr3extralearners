@@ -252,6 +252,12 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_classif.h2o.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.gbm.md)
   [`LearnerClassifH2OGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.gbm.md)
   : Classification H2O GBM Learner
+- [`mlr_learners_classif.h2o.glm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.glm.md)
+  [`LearnerClassifH2OGLM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.glm.md)
+  : Classification H2O GLM Learner
+- [`mlr_learners_classif.h2o.randomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.randomForest.md)
+  [`LearnerClassifH2ORandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.h2o.randomForest.md)
+  : Classification H2O Random Forest Learner
 - [`mlr_learners_classif.imbalanced_rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   [`LearnerClassifImbalancedRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   : Classification Imbalanced Random Forest Src Learner
@@ -498,6 +504,12 @@ paper](https://doi.org/10.21105/joss.08331):
 - [`mlr_learners_regr.h2o.gbm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.gbm.md)
   [`LearnerRegrH2OGBM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.gbm.md)
   : Regression H2O GBM Learner
+- [`mlr_learners_regr.h2o.glm`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.glm.md)
+  [`LearnerRegrH2OGLM`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.glm.md)
+  : Generalized Linear Regression H2O Learner
+- [`mlr_learners_regr.h2o.randomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.randomForest.md)
+  [`LearnerRegrH2ORandomForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.h2o.randomForest.md)
+  : Regression H2O Random Forest Learner
 - [`mlr_learners_regr.kstar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   [`LearnerRegrKStar`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.kstar.md)
   : Regression KStar Learner
