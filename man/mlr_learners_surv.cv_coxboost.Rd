@@ -17,7 +17,7 @@ multiple hyperparameters, \CRANpkg{mlr3tuning} and \link{LearnerSurvCoxboost} wi
 results.
 
 If \code{penalty == "optimCoxBoostPenalty"} then \code{CoxBoost::optimCoxBoostPenalty()} is used to determine
-the penalty value to be used in \code{CoxBoost::cv.CoxBoost()}.
+the penalty value and optimal step to be used in \code{CoxBoost::CoxBoost()}.
 }
 \section{Dictionary}{
 

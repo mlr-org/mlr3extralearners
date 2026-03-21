@@ -19,7 +19,7 @@
 #' results.
 #'
 #' If `penalty == "optimCoxBoostPenalty"` then `CoxBoost::optimCoxBoostPenalty()` is used to determine
-#' the penalty value to be used in `CoxBoost::cv.CoxBoost()`.
+#' the penalty value and optimal step to be used in `CoxBoost::CoxBoost()`.
 #'
 #' @references
 #' `r format_bib("binder2008")`
@@ -35,14 +35,17 @@ LearnerSurvCVCoxboost = R6Class("LearnerSurvCVCoxboost",
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
+        # cv.CoxBoost parameters
         maxstepno = p_int(default = 100, lower = 0, tags = "train"),
         K = p_int(default = 10, lower = 2, tags = "train"),
         type = p_fct(default = "verweij", levels = c("verweij", "naive"), tags = "train"),
         folds = p_uty(default = NULL, tags = "train"),
+        # optimCoxBoostPenalty parameters
         minstepno = p_int(default = 50, lower = 0, tags = "train"),
         start.penalty = p_dbl(tags = "train"),
         iter.max = p_int(default = 10, lower = 1, tags = "train"),
         upper.margin = p_dbl(default = 0.05, lower = 0, upper = 1, tags = "train"),
+        # CoxBoost parameters
         unpen.index = p_uty(tags = "train"),
         standardize = p_lgl(default = TRUE, tags = "train"),
         penalty = p_dbl(special_vals = list("optimCoxBoostPenalty"), tags = "train"),
