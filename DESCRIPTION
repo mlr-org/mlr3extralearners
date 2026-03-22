@@ -43,7 +43,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3cmprsk (>= 0.0.2),
+    mlr3cmprsk (>= 0.0.3),
     mlr3misc (>= 0.19.0),
     mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),

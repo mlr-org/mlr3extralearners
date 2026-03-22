@@ -105,7 +105,22 @@ bibentries = c( # nolint start
     url = "https://github.com/h2oai/h2o-3"
   ),
 
-  binder2009boosting = bibentry("article",
+  binder2008 = bibentry("article",
+    title = "Allowing for mandatory covariates in boosting estimation of sparse high-dimensional survival models",
+    author = "Binder, Harald and Schumacher, Martin",
+    journal = "BMC Bioinformatics",
+    volume = "9",
+    number = "1",
+    pages = "1-10",
+    year = "2008",
+    doi = "10.1186/1471-2105-9-14",
+    issn = "14712105",
+    publisher = "BioMed Central",
+    pmid = "18186927",
+    month = "1"
+  ),
+
+  binder2009 = bibentry("article",
     title = "Boosting for high-dimensional time-to-event data with competing risks",
     author = "Binder, Harald and Allignol, Arthur and Schumacher, Martin and Beyersmann, Jan",
     journal = "Bioinformatics",
@@ -999,6 +1014,25 @@ bibentries = c( # nolint start
     pages = "1--23",
     doi = "10.18637/jss.v064.i12",
     issn = "1548-7660"
-)
-
+  ),
+  kohonen_1990 = bibentry("article",
+    title = "The self-organizing map",
+    author = "Kohonen, Teuvo",
+    journal = "Proceedings of the IEEE",
+    year = "1990",
+    volume = "78",
+    number = "9",
+    pages = "1464--1480",
+    doi = "10.1109/5.58325"
+  ),
+  kohonen_1995 = bibentry("book",
+    title = "Self-Organizing Maps",
+    author = "Kohonen, Teuvo",
+    year = "1995",
+    publisher = "Springer",
+    address = "Berlin",
+    series = "Springer Series in Information Sciences",
+    volume = "30",
+    isbn = "978-3540967120"
+  )
 ) # nolint end

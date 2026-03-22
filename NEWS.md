@@ -1,9 +1,9 @@
 # mlr3extralearners (development version)
 
-
 ## New Features
 
 * New Learners:
+  - `LearnerCompRisksCoxboost`
   - `LearnerRegrGPfit`
   - `LearnerClassifMLP`
   - `LearnerClassifSaeDNN`
