@@ -82,7 +82,16 @@ Calls <code><a href="https://rdrr.io/pkg/caret/man/plsda.html" class="external-l
 <table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ncomp</td><td>integer</td><td>2</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>prior</td><td>untyped</td><td>"softmax"</td><td></td><td>-</td></tr><tr><td>probMethod</td><td>character</td><td>softmax</td><td>softmax, Bayes</td><td>-</td></tr><tr><td>method</td><td>character</td><td>kernelpls</td><td>kernelpls, widekernelpls, simpls, oscorespls</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p><code>r format_bib(c("kuhn2008caret", "mevik_2007"))</code></p>
+    <p>Kuhn, Max (2008).
+“Building Predictive Models in R Using the caret Package.”
+<em>Journal of Statistical Software</em>, <b>28</b>(5), 1–26.
+<a href="https://doi.org/10.18637/jss.v028.i05" class="external-link">doi:10.18637/jss.v028.i05</a>
+.</p>
+<p>Mevik, Bjorn-Helge, Wehrens, Ron (2007).
+“The pls Package: Principal Component and Partial Least Squares Regression in R.”
+<em>Journal of Statistical Software</em>, <b>18</b>(2), 1–24.
+<a href="https://doi.org/10.18637/jss.v018.i02" class="external-link">doi:10.18637/jss.v018.i02</a>
+.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -188,7 +197,7 @@ Calls <code><a href="https://rdrr.io/pkg/caret/man/plsda.html" class="external-l
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

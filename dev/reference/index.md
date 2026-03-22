@@ -563,6 +563,9 @@
 
 ## Competing Risks Learners
 
+- [`mlr_learners_cmprsk.coxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.coxboost.md)
+  [`LearnerCompRisksCoxboost`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.coxboost.md)
+  : Competing Risks Cox Learner with Likelihood Based Boosting
 - [`mlr_learners_cmprsk.rfsrc`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.rfsrc.md)
   [`LearnerCompRisksRandomForestSRC`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_cmprsk.rfsrc.md)
   : Random Forest Competing Risks Learner

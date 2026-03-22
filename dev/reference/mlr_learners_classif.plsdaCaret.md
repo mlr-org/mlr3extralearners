@@ -37,7 +37,14 @@ instantiated via
 
 ## References
 
-`r format_bib(c("kuhn2008caret", "mevik_2007"))`
+Kuhn, Max (2008). “Building Predictive Models in R Using the caret
+Package.” *Journal of Statistical Software*, **28**(5), 1–26.
+[doi:10.18637/jss.v028.i05](https://doi.org/10.18637/jss.v028.i05) .
+
+Mevik, Bjorn-Helge, Wehrens, Ron (2007). “The pls Package: Principal
+Component and Partial Least Squares Regression in R.” *Journal of
+Statistical Software*, **18**(2), 1–24.
+[doi:10.18637/jss.v018.i02](https://doi.org/10.18637/jss.v018.i02) .
 
 ## See also
 
@@ -163,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2463768 
 ```

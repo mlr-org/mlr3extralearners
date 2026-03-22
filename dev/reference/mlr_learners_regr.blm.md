@@ -200,5 +200,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.94282 
+#> 33.85301 
 ```
