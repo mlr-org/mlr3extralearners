@@ -6,6 +6,7 @@
 \title{BoTorch SingleTaskGP Regression Learner}
 \description{
 Gaussian Process via \href{https://botorch.org/}{botorch} and \href{https://gpytorch.ai/}{gpytorch}, using the \code{SingleTaskGP} model.
+See \href{https://botorch.readthedocs.io/en/latest/models.html#botorch.models.gp_regression.SingleTaskGP}{here} for more details.
 Uses \CRANpkg{reticulate} to interface with Python.
 }
 \section{Dictionary}{
@@ -30,6 +31,9 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{llll}{
    Id \tab Type \tab Default \tab Levels \cr
    device \tab character \tab cpu \tab cpu, cuda \cr
+   kernel \tab character \tab matern_2.5 \tab matern_2.5, matern_1.5, matern_0.5, rbf, linear, polynomial, periodic, cosine, rq, piecewise_polynomial, \link{...} \cr
+   input_transform \tab character \tab normalize \tab normalize, standardize, log10, warp, none \cr
+   outcome_transform \tab character \tab standardize \tab standardize, log, power, bilog, none \cr
 }
 }
 

@@ -24,3 +24,47 @@ test_that("autotest: regr.botorch_mixedsingletaskgp", {
     TRUE
   }))
 })
+
+test_that("input_transforms: regr.botorch_mixedsingletaskgp", {
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+
+    library(mlr3)
+    library(mlr3extralearners)
+
+    dat = cbind(mtcars[, c("mpg", "cyl")], am = factor(mtcars$am))
+    task = mlr3::as_task_regr(dat, target = "mpg")
+    transforms = c("normalize", "standardize", "log10", "warp", "none")
+
+    for (trafo in transforms) {
+      learner = mlr3::lrn("regr.botorch_mixedsingletaskgp", input_transform = trafo)
+      learner$train(task)
+      prediction = learner$predict(task)
+      checkmate::expect_class(prediction, "PredictionRegr", info = sprintf("input_transform: %s", trafo))
+    }
+
+    TRUE
+  }))
+})
+
+test_that("outcome_transforms: regr.botorch_mixedsingletaskgp", {
+  expect_true(callr::r(function() {
+    Sys.setenv(RETICULATE_PYTHON = "managed")
+
+    library(mlr3)
+    library(mlr3extralearners)
+
+    dat = cbind(mtcars[, c("mpg", "cyl")], am = factor(mtcars$am))
+    task = mlr3::as_task_regr(dat, target = "mpg")
+    transforms = c("standardize", "log", "none")
+
+    for (trafo in transforms) {
+      learner = mlr3::lrn("regr.botorch_mixedsingletaskgp", outcome_transform = trafo)
+      learner$train(task)
+      prediction = learner$predict(task)
+      checkmate::expect_class(prediction, "PredictionRegr", info = sprintf("outcome_transform: %s", trafo))
+    }
+
+    TRUE
+  }))
+})

@@ -4,6 +4,7 @@
 #'
 #' @description
 #' Gaussian Process via [botorch](https://botorch.org/) and [gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP`.
+#' See [here](https://botorch.readthedocs.io/en/latest/models.html#module-botorch.models.gp_regression_mixed) for more details.
 #' Uses \CRANpkg{reticulate} to interface with Python.
 #'
 #' @templateVar id regr.botorch_mixedsingletaskgp
@@ -19,7 +20,9 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
     #' Creates a new instance of this [R6][R6::R6Class] class.
     initialize = function() {
       ps = ps(
-        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train")
+        device = p_fct(default = "cpu", levels = c("cpu", "cuda"), tags = "train"),
+        input_transform = p_fct(levels = c("normalize", "standardize", "log10", "warp", "none"), tags = "train", init = "normalize"),
+        outcome_transform = p_fct(levels = c("standardize", "log", "none"), tags = "train", init = "standardize")
       )
       super$initialize(
         id = "regr.botorch_mixedsingletaskgp",
@@ -87,7 +90,27 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       # 0-based categorical dimensions
       cat_dims = reticulate::r_to_py(unname(as.list(cols - 1L)))
 
-      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims)
+      input_trafo = pars$input_transform
+      outcome_trafo = pars$outcome_transform
+
+      input_transforms = botorch$models$transforms$input
+      outcome_transforms = botorch$models$transforms$outcome
+
+      input_transform = switch(input_trafo,
+        normalize = input_transforms$Normalize(d = ncol(x)),
+        standardize = input_transforms$InputStandardize(d = ncol(x)),
+        log10 = input_transforms$Log10(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L))),
+        warp = input_transforms$Warp(indices = reticulate::r_to_py(as.list(seq_len(ncol(x)) - 1L)), d = ncol(x)),
+        none = NULL
+      )
+
+      outcome_transform = switch(outcome_trafo,
+        standardize = outcome_transforms$Standardize(m = 1L),
+        log = outcome_transforms$Log(),
+        none = NULL
+      )
+
+      gp = MixedSingleTaskGP(x_py, y_py, cat_dims = cat_dims, input_transform = input_transform, outcome_transform = outcome_transform)
       mll = ExactMarginalLogLikelihood(gp$likelihood, gp)
       botorch$fit$fit_gpytorch_mll(mll)
 
@@ -99,15 +122,15 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
       torch = reticulate::import("torch")
       pars = self$param_set$get_values(tags = "predict")
 
-      # compute the posterior distribution and extract the mean and covariance matrix
+      # compute the posterior distribution and extract the mean and variance
       # disable gradient computation with torch.no_grad() for efficiency
       reticulate::py_run_string("def predict_gp(model, x_py):
         import torch
         with torch.no_grad():
             posterior = model.posterior(x_py)
             mean = posterior.mean.cpu().numpy()
-            covar = posterior.mvn.covariance_matrix.cpu().numpy()
-        return mean, covar")
+            variance = posterior.variance.cpu().numpy()
+        return mean, variance")
 
       gp = self$model$model
       # change the model to evaluation mode
@@ -122,13 +145,12 @@ LearnerRegrBotorchMixedSingleTaskGP = R6Class("LearnerRegrBotorchMixedSingleTask
 
       posterior = reticulate::py$predict_gp(gp, x_py)
       mean = as.numeric(posterior[[1]])
-      covar = posterior[[2]]
+      variance = as.numeric(posterior[[2]])
 
       if (self$predict_type == "response") {
         list(response = mean)
       } else {
-        sd = sqrt(diag(covar))
-        list(response = mean, se = sd)
+        list(response = mean, se = sqrt(variance))
       }
     }
   )
