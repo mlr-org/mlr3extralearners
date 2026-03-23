@@ -29,13 +29,12 @@ instantiated via
 
 ## Parameters
 
-|                   |           |             |                                                                                                                                                  |
-|-------------------|-----------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| Id                | Type      | Default     | Levels                                                                                                                                           |
-| device            | character | cpu         | cpu, cuda                                                                                                                                        |
-| kernel            | character | matern_2.5  | matern_2.5, matern_1.5, matern_0.5, rbf, linear, polynomial, periodic, cosine, rq, piecewise_polynomial, [...](https://rdrr.io/r/base/dots.html) |
-| input_transform   | character | normalize   | normalize, standardize, log10, warp, none                                                                                                        |
-| outcome_transform | character | standardize | standardize, log, power, bilog, none                                                                                                             |
+|                   |           |         |                                           |
+|-------------------|-----------|---------|-------------------------------------------|
+| Id                | Type      | Default | Levels                                    |
+| device            | character | cpu     | cpu, cuda                                 |
+| input_transform   | character | \-      | normalize, standardize, log10, warp, none |
+| outcome_transform | character | \-      | standardize, log, none                    |
 
 ## Author
 
