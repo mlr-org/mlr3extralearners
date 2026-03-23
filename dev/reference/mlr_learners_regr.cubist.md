@@ -174,7 +174,7 @@ print(learner$model)
 #> Number of predictors: 10 
 #> 
 #> Number of committees: 1 
-#> Number of rules: 2 
+#> Number of rules: 1 
 #> 
 
 
@@ -184,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.468701 
+#> 7.785883 
 ```

@@ -171,6 +171,7 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Warning: did not converge in 10 iterations
 
 print(learner$model)
 #> $model
@@ -181,11 +182,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  -1.350568  -9.396761        -10  -1.153189  -9.398275  -1.172286
+#> [1] -0.4184549  -9.994771        -10  -7.759452 -0.1526632  -8.984065
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  -9.033541   1.238528  -2.072735   0.1452861
+#> [1]  0.9546343   1.259864  -6.930721 -0.03653495
 #> 
-#> sigma^2_hat: [1] 59.81926
+#> sigma^2_hat: [1] 41.54069
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,11 +202,11 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 460.000   4.930   5.000 335.000  22.900   1.000   5.424 
+#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.220   1.000   5.424 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 75.700  3.000  3.000 52.000 14.500  0.000  1.513 
+#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.615 
 #> 
 #> 
 
@@ -216,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.02819 
+#> 9.259962 
 ```

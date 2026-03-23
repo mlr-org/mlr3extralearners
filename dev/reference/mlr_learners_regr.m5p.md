@@ -234,15 +234,28 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
-#> LM1 (21/31.581%)
+#> 
+#> hp <= 96 : LM1 (7/28.887%)
+#> hp >  96 : LM2 (14/21.946%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  1.0004 * qsec 
-#>  - 6.7632 * wt 
-#>  + 23.4388
+#>  2.8882 * am 
+#>  - 0.0355 * disp 
+#>  - 0.02 * hp 
+#>  + 0.5195 * qsec 
+#>  - 1.3701 * wt 
+#>  + 23.5901
 #> 
-#> Number of Rules : 1
+#> LM num: 2
+#> mpg = 
+#>  2.1911 * am 
+#>  - 0.0261 * hp 
+#>  + 0.3941 * qsec 
+#>  - 2.0753 * wt 
+#>  + 22.4105
+#> 
+#> Number of Rules : 2
 
 
 # Make predictions for the test rows
@@ -251,5 +264,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 20.43634 
+#> 7.507679 
 ```
