@@ -1,4 +1,4 @@
-skip_if_not_installed("survivalmodels")
+skip_if_not_installed("survivalmodels_mlr3")
 
 test_that("autotest aft", {
   withr::local_seed(1)
