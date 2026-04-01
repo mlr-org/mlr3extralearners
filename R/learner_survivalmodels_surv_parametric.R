@@ -4,7 +4,7 @@
 #'
 #' @description
 #' Parametric survival model.
-#' Calls `survivalmodels::parametric()` from package 'survivalmodels'.
+#' Calls `survivalmodels_mlr3::parametric()` from package 'survivalmodels_mlr3'.
 #'
 #' @section Prediction types:
 #' This learner returns three prediction types:
@@ -29,7 +29,7 @@
 #' This learner allows you to choose a **distribution** and a **model form** to compose
 #' a predicted survival probability distribution \eqn{S(t)}.
 #'
-#' The predict method is implemented in `survivalmodels::predict.parametric()`.
+#' The predict method is implemented in `survivalmodels_mlr3::predict.parametric()`.
 #' Our implementation is more efficient for composition to distributions than
 #' `survival::predict.survreg()`.
 #'
@@ -113,7 +113,7 @@ LearnerSurvParametric = R6Class("LearnerSurvParametric",
       pv$weights = private$.get_weights(task)
 
       invoke(
-        survivalmodels::parametric,
+        survivalmodels_mlr3::parametric,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],

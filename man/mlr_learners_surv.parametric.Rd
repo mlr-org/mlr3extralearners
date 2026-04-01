@@ -6,13 +6,13 @@
 \title{Survival Fully Parametric Learner}
 \description{
 Parametric survival model.
-Calls \code{survivalmodels::parametric()} from package 'survivalmodels'.
+Calls \code{survivalmodels_mlr3::parametric()} from package 'survivalmodels_mlr3'.
 }
 \details{
 This learner allows you to choose a \strong{distribution} and a \strong{model form} to compose
 a predicted survival probability distribution \eqn{S(t)}.
 
-The predict method is implemented in \code{survivalmodels::predict.parametric()}.
+The predict method is implemented in \code{survivalmodels_mlr3::predict.parametric()}.
 Our implementation is more efficient for composition to distributions than
 \code{survival::predict.survreg()}.
 
@@ -107,7 +107,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \section{Installation}{
 
 Package 'survivalmodels' is not on CRAN and has to be install from GitHub via
-\code{remotes::install_github("RaphaelS1/survivalmodels")}.
+\code{remotes::install_github("mlr-org/survivalmodels_mlr3")}.
 }
 
 \references{

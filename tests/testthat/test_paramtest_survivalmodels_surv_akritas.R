@@ -1,9 +1,9 @@
 skip_if_not_installed("mlr3proba")
-skip_if_not_installed("survivalmodels")
+skip_if_not_installed("survivalmodels_mlr3")
 
 test_that("paramtest surv.akritas train", {
   learner = lrn("surv.akritas")
-  fun = survivalmodels::akritas
+  fun = survivalmodels_mlr3::akritas
   exclude = c(
     "formula", # unused
     "data", # handled internally
@@ -20,7 +20,7 @@ test_that("paramtest surv.akritas train", {
 
 test_that("paramtest surv.akritas predict", {
   learner = lrn("surv.akritas")
-  fun = survivalmodels:::predict.akritas # nolint
+  fun = survivalmodels_mlr3:::predict.akritas # nolint
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
