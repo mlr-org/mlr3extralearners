@@ -198,16 +198,16 @@ print(learner$model)
 #> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), 
 #>     num.threads = 1L)
 #> 
-#>   support.size       dev      GIC
-#> 1            0 17.247574 59.80110
-#> 2            1  3.564259 29.25365
-#> 3            2  2.524453 24.57365
-#> 4            3  1.732446 19.23093
-#> 5            4  1.449280 18.04668
-#> 6            5  1.336660 18.91149
-#> 7            6  1.290539 20.73768
-#> 8            7  1.268878 22.94578
-#> 9            8  1.232180 24.89304
+#>   support.size        dev       GIC
+#> 1            0 10.3295918 49.035268
+#> 2            1  2.2978039 20.034600
+#> 3            2  1.9375507 19.017056
+#> 4            3  1.2252686 11.957071
+#> 5            4  0.9160183  8.412181
+#> 6            5  0.8834414 10.215311
+#> 7            6  0.8501594 11.972457
+#> 8            7  0.8147881 13.643616
+#> 9            8  0.8070646 16.007173
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.99313 
+#> 29.22029 
 ```

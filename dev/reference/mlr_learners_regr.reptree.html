@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."><meta name="robots" content="no
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -238,12 +238,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt; 3.29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &lt; 2.23 : 30.17 (2/4.84) [2/18.66]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &gt;= 2.23 : 21.51 (5/1.37) [2/0.03]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;= 3.29 : 14.85 (7/8.06) [3/8.75]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &lt; 94 : 28.4 (4/13.05) [1/6.25]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> hp &gt;= 94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 266.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 116.5 : 21.62 (3/0.05) [2/1.13]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 116.5 : 18.9 (2/0.06) [1/2.72]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 266.9 : 14.99 (5/0.46) [3/11.87]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -252,7 +254,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.034195 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.83015 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

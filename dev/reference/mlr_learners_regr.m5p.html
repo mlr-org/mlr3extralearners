@@ -15,7 +15,7 @@ Calls RWeka::M5P() from RWeka."><meta name="robots" content="noindex"></head><bo
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -245,16 +245,33 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LM1 (21/32.382%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt;= 7 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 101.55 : LM1 (4/12.838%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  101.55 : LM2 (10/21.475%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;  7 : LM3 (7/7.547%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	4.9843 * am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.8282 * carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0235 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 29.085</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.5744 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0349 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0185 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 0.1102 * qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.9758</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.5744 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0357 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0228 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 38.5049</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-2.0753 * cyl </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.4035</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -263,7 +280,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.59344 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10.92515 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
