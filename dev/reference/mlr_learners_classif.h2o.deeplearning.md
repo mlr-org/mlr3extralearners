@@ -227,27 +227,27 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1775045205642_1 
+#> Model ID:  DeepLearning_model_R_1775059190297_1 
 #> Status of Neuron Layers: predicting Class, 2-class classification, bernoulli distribution, CrossEntropy loss, 52,802 weights/biases, 632.9 KB, 1,390 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    60     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.007799 0.005047 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.025737 0.073210 0.000000
-#> 4     4     2   Softmax      NA 0.000000 0.000000  0.002506 0.000843 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005155 0.003080 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.014831 0.047652 0.000000
+#> 4     4     2   Softmax      NA 0.000000 0.000000  0.001717 0.000726 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2    0.000085   0.091709  0.493996 0.007172
-#> 3   -0.000988   0.069592  0.998206 0.003734
-#> 4   -0.024257   0.391711  0.000005 0.000268
+#> 2    0.000283   0.091799  0.494076 0.007437
+#> 3   -0.001467   0.069813  0.998639 0.003981
+#> 4    0.018206   0.396698  0.000000 0.001059
 #> 
 #> 
 #> H2OBinomialMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  0.002634557
-#> RMSE:  0.05132793
-#> LogLoss:  0.01407108
+#> MSE:  0.06523326
+#> RMSE:  0.255408
+#> LogLoss:  0.1885572
 #> Mean Per-Class Error:  0
 #> AUC:  1
 #> AUCPR:  1
@@ -255,30 +255,30 @@ print(learner$model)
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error    Rate
-#> M      73  0 0.000000   =0/73
-#> R       0 66 0.000000   =0/66
-#> Totals 73 66 0.000000  =0/139
+#> M      74  0 0.000000   =0/74
+#> R       0 65 0.000000   =0/65
+#> Totals 74 65 0.000000  =0/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.938058  1.000000  54
-#> 2                       max f2  0.938058  1.000000  54
-#> 3                 max f0point5  0.938058  1.000000  54
-#> 4                 max accuracy  0.938058  1.000000  54
+#> 1                       max f1  0.060518  1.000000  61
+#> 2                       max f2  0.060518  1.000000  61
+#> 3                 max f0point5  0.060518  1.000000  61
+#> 4                 max accuracy  0.060518  1.000000  61
 #> 5                max precision  1.000000  1.000000   0
-#> 6                   max recall  0.938058  1.000000  54
+#> 6                   max recall  0.060518  1.000000  61
 #> 7              max specificity  1.000000  1.000000   0
-#> 8             max absolute_mcc  0.938058  1.000000  54
-#> 9   max min_per_class_accuracy  0.938058  1.000000  54
-#> 10 max mean_per_class_accuracy  0.938058  1.000000  54
-#> 11                     max tns  1.000000 73.000000   0
-#> 12                     max fns  1.000000 59.000000   0
-#> 13                     max fps  0.000000 73.000000 127
-#> 14                     max tps  0.938058 66.000000  54
+#> 8             max absolute_mcc  0.060518  1.000000  61
+#> 9   max min_per_class_accuracy  0.060518  1.000000  61
+#> 10 max mean_per_class_accuracy  0.060518  1.000000  61
+#> 11                     max tns  1.000000 74.000000   0
+#> 12                     max fns  1.000000 62.000000   0
+#> 13                     max fps  0.000000 74.000000 135
+#> 14                     max tps  0.060518 65.000000  61
 #> 15                     max tnr  1.000000  1.000000   0
-#> 16                     max fnr  1.000000  0.893939   0
-#> 17                     max fpr  0.000000  1.000000 127
-#> 18                     max tpr  0.938058  1.000000  54
+#> 16                     max fnr  1.000000  0.953846   0
+#> 17                     max fpr  0.000000  1.000000 135
+#> 18                     max tpr  0.060518  1.000000  61
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -291,5 +291,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.1449275 
 ```
