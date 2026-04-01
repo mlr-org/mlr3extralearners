@@ -223,37 +223,45 @@ The objects of this class are cloneable with this method.
 ``` r
 # Define a Task
 task = tsk("grace")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
+
 # define learner
 learner = lrn("surv.priority_lasso", blocks = blocks, block1.penalization = FALSE,
               lambda.type = "lambda.1se", standardize = TRUE, nfolds = 5)
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # selected features
 learner$selected_features()
 #> [1] "age"        "los"        "revasc"     "revascdays"
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids time status     crank        lp     distr
-#>        1  180  FALSE 0.6958959 0.6958959 <list[1]>
-#>        4    5  FALSE 1.1111496 1.1111496 <list[1]>
-#>        6    5  FALSE 1.4526302 1.4526302 <list[1]>
-#>      ---  ---    ---       ---       ---       ---
-#>      990   12   TRUE 4.3805176 4.3805176 <list[1]>
-#>      992   26   TRUE 4.2569360 4.2569360 <list[1]>
-#>      997    2   TRUE 4.2401111 4.2401111 <list[1]>
+#>  row_ids  time status     crank        lp     distr
+#>        1 180.0  FALSE 0.4866469 0.4866469 <list[1]>
+#>        6   5.0  FALSE 1.4541591 1.4541591 <list[1]>
+#>        8   2.0  FALSE 1.1603427 1.1603427 <list[1]>
+#>      ---   ---    ---       ---       ---       ---
+#>      995   0.5   TRUE 3.9088136 3.9088136 <list[1]>
+#>      996  69.0   TRUE 3.9355365 3.9355365 <list[1]>
+#>     1000  15.0  FALSE 3.7133697 3.7133697 <list[1]>
+
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.7224306 
+#>   0.7351317 
 ```

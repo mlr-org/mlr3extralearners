@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,9 +48,44 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.0" id="mlr3extralearners-150">mlr3extralearners 1.5.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-150"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-5-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-5-0"></a></h3>
+<ul><li>New Learners:
+<ul><li><code>LearnerCompRisksCoxboost</code></li>
+<li><code>LearnerRegrGPfit</code></li>
+<li><code>LearnerClassifMLP</code></li>
+<li><code>LearnerClassifSaeDNN</code></li>
+<li><code>LearnerClassifPlsdaCaret</code></li>
+<li><code>LearnerSurvDNN</code></li>
+<li><code>LearnerRegrH2ORandomForest</code></li>
+<li><code>LearnerRegrH2OGLM</code></li>
+<li><code>LearnerClassifH2OGLM</code></li>
+<li><code>LearnerClassifH2OGBM</code></li>
+<li><code>LearnerClassifH2ORandomForest</code></li>
+<li><code>LearnerClassifH2ODeeplearning</code></li>
+<li><code>LearnerRegrH2OGBM</code></li>
+<li><code>LearnerRegrH2ODeeplearning</code></li>
+<li><code>LearnerClassifLvq1</code></li>
+</ul></li>
+</ul></div>
+<div class="section level3">
+<h3 id="enhancements-1-5-0">Enhancements<a class="anchor" aria-label="anchor" href="#enhancements-1-5-0"></a></h3>
+<ul><li>Added kernel and input/output transformation parameters to <code>LearnerRegrBotorchSingleTaskGP</code> and <code>LearnerRegrBotorchMixedSingleTaskGP</code>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="other-1-5-0">Other<a class="anchor" aria-label="anchor" href="#other-1-5-0"></a></h3>
+<ul><li>Updated <code>Extending</code> vignette to incorporate information about skipping tests and considerations for testing <code>Python</code> learners</li>
+<li>
+<code>survdistr</code> is now on Suggests (used for constant interpolation of the Kaplan-Meier predictions of the <code>partykit</code> survival learners)</li>
+<li>Updated <code>mlr3proba</code> (<code>0.8.8</code>), <code>pls</code> and <code>xgboost</code> to the most recent CRAN versions</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.4.0" id="mlr3extralearners-140">mlr3extralearners 1.4.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-140"></a></h2>
 <div class="section level3">
@@ -167,7 +202,7 @@
 <li>The package no longer uses <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code> in the tests and instead uses <code><a href="https://withr.r-lib.org/reference/with_seed.html" class="external-link">withr::local_seed()</a></code> This means the auto tests will be stochastic like they should be.</li>
 <li>The CI now checks that RCMD-check passes when suggested packages are not available.</li>
 <li>
-<code>distr6</code> dependency is removed. <code>partykit</code> survival learners use constant interpolation of the predicted Kaplan-Meier curves via <code><a href="https://survdistr.mlr-org.com/reference/vec_interp.html" class="external-link">survdistr::vec_interp()</a></code>
+<code>distr6</code> dependency is removed. <code>partykit</code> survival learners use constant interpolation of the predicted Kaplan-Meier curves via <code>survdistr::vec_interp()</code>
 </li>
 </ul></div>
 </div>

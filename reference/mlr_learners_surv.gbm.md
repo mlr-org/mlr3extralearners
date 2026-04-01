@@ -227,7 +227,7 @@ print(learner$model)
 #> There were 6 predictors of which 6 had non-zero influence.
 print(learner$importance())
 #> revascdays     revasc        age        los      sysbp   stchange 
-#>  42.741172  22.733969  16.410456  10.933982   4.261469   2.918951 
+#>  40.520525  20.990032  18.989743  12.884578   4.547412   2.067711 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -236,5 +236,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8369758 
+#>   0.8462706 
 ```

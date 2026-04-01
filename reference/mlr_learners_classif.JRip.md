@@ -234,11 +234,12 @@ print(learner$model)
 #> JRIP rules:
 #> ===========
 #> 
-#> (V12 <= 0.2237) and (V20 <= 0.5224) => Class=R (38.0/3.0)
-#> (V48 <= 0.0755) and (V31 >= 0.4161) => Class=R (18.0/2.0)
-#>  => Class=M (83.0/15.0)
+#> (V49 >= 0.0455) and (V37 <= 0.4441) => Class=M (47.0/4.0)
+#> (V31 <= 0.356) and (V21 >= 0.581) => Class=M (16.0/3.0)
+#> (V12 >= 0.2251) and (V27 >= 0.8787) => Class=M (9.0/1.0)
+#>  => Class=R (67.0/5.0)
 #> 
-#> Number of Rules : 3
+#> Number of Rules : 4
 #> 
 
 
@@ -248,5 +249,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.2318841 
 ```

@@ -185,39 +185,47 @@ The objects of this class are cloneable with this method.
 ``` r
 # Define a Task
 task = tsk("grace")
+
 # Create train and test set
 ids = partition(task)
+
 # check task's features
 task$feature_names
 #> [1] "age"        "los"        "revasc"     "revascdays" "stchange"  
 #> [6] "sysbp"     
+
 # partition features to 2 blocks
 blocks = list(bl1 = 1:3, bl2 = 4:6)
+
 # define learner
 learner = lrn("surv.blockforest", blocks = blocks,
               importance = "permutation", nsets = 10,
               num.trees = 50, num.trees.pre = 10, splitrule = "logrank")
+
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+
 # feature importance
 learner$importance()
-#>   revascdays       revasc          age          los     stchange        sysbp 
-#> 0.1401173548 0.0782830741 0.0241798524 0.0148801822 0.0020409999 0.0007147686 
+#> revascdays     revasc        age   stchange        los      sysbp 
+#> 0.13095595 0.06396289 0.02747254 0.01881307 0.01370247 0.01126585 
+
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids  time status    crank     distr
-#>        2   5.0  FALSE 18.96707 <list[1]>
-#>        4   5.0  FALSE 12.68339 <list[1]>
-#>        5 180.0  FALSE 21.65499 <list[1]>
-#>      ---   ---    ---      ---       ---
-#>      995   0.5   TRUE 76.32965 <list[1]>
-#>      999   3.0   TRUE 66.82826 <list[1]>
-#>     1000  15.0  FALSE 47.20694 <list[1]>
+#>  row_ids time status    crank     distr
+#>       10  180  FALSE 14.62531 <list[1]>
+#>       11  115   TRUE 44.48967 <list[1]>
+#>       14   12   TRUE 19.36271 <list[1]>
+#>      ---  ---    ---      ---       ---
+#>      989   67   TRUE 68.33172 <list[1]>
+#>      991    8   TRUE 73.48324 <list[1]>
+#>      998  180  FALSE 38.17182 <list[1]>
+
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8623797 
+#>   0.8413351 
 ```

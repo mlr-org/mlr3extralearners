@@ -15,7 +15,7 @@ Calls RWeka::JRip() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::JRip() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification JRip Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_RWeka_classif_JRip.R" class="external-link"><code>R/learner_RWeka_classif_JRip.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_JRip.R" class="external-link"><code>R/learner_RWeka_classif_JRip.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.JRip.Rd</code></div>
     </div>
 
@@ -244,11 +244,12 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> JRIP rules:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ===========</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (V12 &lt;= 0.2237) and (V20 &lt;= 0.5224) =&gt; Class=R (38.0/3.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (V48 &lt;= 0.0755) and (V31 &gt;= 0.4161) =&gt; Class=R (18.0/2.0)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  =&gt; Class=M (83.0/15.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (V49 &gt;= 0.0455) and (V37 &lt;= 0.4441) =&gt; Class=M (47.0/4.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (V31 &lt;= 0.356) and (V21 &gt;= 0.581) =&gt; Class=M (16.0/3.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (V12 &gt;= 0.2251) and (V27 &gt;= 0.8787) =&gt; Class=M (9.0/1.0)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  =&gt; Class=R (67.0/5.0)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -258,7 +259,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

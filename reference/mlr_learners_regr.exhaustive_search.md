@@ -173,8 +173,7 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # define learner
-learner = LearnerRegrExhaustiveSearch$new()
-learner$predict_type = "se"
+learner = lrn("regr.exhaustive_search", predict_type = "se")
 
 # define task
 tsk_cars = tsk("mtcars")

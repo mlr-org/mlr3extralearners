@@ -117,6 +117,18 @@
 - [`mlr_learners_classif.glmer`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmer.md)
   [`LearnerClassifGlmer`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.glmer.md)
   : Classification Linear Mixed Effect Learner
+- [`mlr_learners_classif.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.deeplearning.md)
+  [`LearnerClassifH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.deeplearning.md)
+  : Classification H2O Deep Learning Learner
+- [`mlr_learners_classif.h2o.gbm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.gbm.md)
+  [`LearnerClassifH2OGBM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.gbm.md)
+  : Classification H2O GBM Learner
+- [`mlr_learners_classif.h2o.glm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.glm.md)
+  [`LearnerClassifH2OGLM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.glm.md)
+  : Classification H2O GLM Learner
+- [`mlr_learners_classif.h2o.randomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.randomForest.md)
+  [`LearnerClassifH2ORandomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.h2o.randomForest.md)
+  : Classification H2O Random Forest Learner
 - [`mlr_learners_classif.imbalanced_rfsrc`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   [`LearnerClassifImbalancedRandomForestSRC`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.imbalanced_rfsrc.md)
   : Classification Imbalanced Random Forest Src Learner
@@ -141,12 +153,18 @@
 - [`mlr_learners_classif.lssvm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lssvm.md)
   [`LearnerClassifLSSVM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lssvm.md)
   : Classification Least Squares Support Vector Machine Learner
+- [`mlr_learners_classif.lvq1`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lvq1.md)
+  [`LearnerClassifLvq1`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.lvq1.md)
+  : Classification Learning Vector Quantization 1
 - [`mlr_learners_classif.mda`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mda.md)
   [`LearnerClassifMda`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mda.md)
   : Classification Discriminant Analysis Learner
 - [`mlr_learners_classif.mdeb`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mdeb.md)
   [`LearnerClassifMdeb`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mdeb.md)
   : Classification Linear Discriminant Analysis Learner
+- [`mlr_learners_classif.mlp`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp.md)
+  [`LearnerClassifMLP`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mlp.md)
+  : Classification Multilayer Perceptron Learner
 - [`mlr_learners_classif.mob`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.md)
   [`LearnerClassifMob`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.mob.md)
   : Classification Model-based Recursive Partitioning Learner
@@ -168,6 +186,9 @@
 - [`mlr_learners_classif.penalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.penalized.md)
   [`LearnerClassifPenalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.penalized.md)
   : Classification L1 and L2 Penalized Learner
+- [`mlr_learners_classif.plsdaCaret`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.plsdaCaret.md)
+  [`LearnerClassifPlsdaCaret`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.plsdaCaret.md)
+  : Partial Least Squares Discriminant Analysis Learner
 - [`mlr_learners_classif.polyFit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.polyFit.md)
   [`LearnerClassifPolyFit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.polyFit.md)
   : Polynomial GLM Learner
@@ -198,6 +219,9 @@
 - [`mlr_learners_classif.rotationForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.rotationForest.md)
   [`LearnerClassifRotationForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.rotationForest.md)
   : Classification Rotation Forest Learner
+- [`mlr_learners_classif.saeDNN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.saeDNN.md)
+  [`LearnerClassifSaeDNN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.saeDNN.md)
+  : Classification Stacked Autoencoder Deep Neural Network Learner
 - [`mlr_learners_classif.sda`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.sda.md)
   [`LearnerClassifSda`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_classif.sda.md)
   : Shrinkage Discriminant Analysis
@@ -342,6 +366,21 @@
 - [`mlr_learners_regr.glmboost`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glmboost.md)
   [`LearnerRegrGLMBoost`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.glmboost.md)
   : Boosted Generalized Linear Regression Learner
+- [`mlr_learners_regr.gpfit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gpfit.md)
+  [`LearnerRegrGPfit`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.gpfit.md)
+  : Regression Gaussian Process Learner (GPfit)
+- [`mlr_learners_regr.h2o.deeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.deeplearning.md)
+  [`LearnerRegrH2ODeeplearning`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.deeplearning.md)
+  : Regression H2O Deep Learning Learner
+- [`mlr_learners_regr.h2o.gbm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.gbm.md)
+  [`LearnerRegrH2OGBM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.gbm.md)
+  : Regression H2O GBM Learner
+- [`mlr_learners_regr.h2o.glm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.glm.md)
+  [`LearnerRegrH2OGLM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.glm.md)
+  : Generalized Linear Regression H2O Learner
+- [`mlr_learners_regr.h2o.randomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.randomForest.md)
+  [`LearnerRegrH2ORandomForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.h2o.randomForest.md)
+  : Regression H2O Random Forest Learner
 - [`mlr_learners_regr.kstar`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.kstar.md)
   [`LearnerRegrKStar`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.kstar.md)
   : Regression KStar Learner
@@ -509,6 +548,9 @@
 - [`mlr_learners_surv.rfsrc`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.rfsrc.md)
   [`LearnerSurvRandomForestSRC`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.rfsrc.md)
   : Survival Random Forest SRC Learner
+- [`mlr_learners_surv.survdnn`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.survdnn.md)
+  [`LearnerSurvDNN`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.survdnn.md)
+  : SurvDNN Survival Learner
 - [`mlr_learners_surv.svm`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.svm.md)
   [`LearnerSurvSVM`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.svm.md)
   : Survival Support Vector Machine Learner
@@ -521,6 +563,9 @@
 
 ## Competing Risks Learners
 
+- [`mlr_learners_cmprsk.coxboost`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_cmprsk.coxboost.md)
+  [`LearnerCompRisksCoxboost`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_cmprsk.coxboost.md)
+  : Competing Risks Cox Learner with Likelihood Based Boosting
 - [`mlr_learners_cmprsk.rfsrc`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_cmprsk.rfsrc.md)
   [`LearnerCompRisksRandomForestSRC`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_cmprsk.rfsrc.md)
   : Random Forest Competing Risks Learner

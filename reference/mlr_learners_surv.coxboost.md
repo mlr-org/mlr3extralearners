@@ -3,7 +3,7 @@
 Fit a Survival Cox model with a likelihood based boosting algorithm.
 Calls
 [`CoxBoost::CoxBoost()`](https://rdrr.io/pkg/CoxBoost/man/CoxBoost.html)
-from package 'CoxBoost'.
+from package [CoxBoost](https://CRAN.R-project.org/package=CoxBoost).
 
 ## Details
 
@@ -73,16 +73,12 @@ instantiated via
 | trace           | logical   | FALSE   | TRUE, FALSE                    | \-                    |
 | at.step         | untyped   | \-      |                                | \-                    |
 
-## Installation
-
-The package 'CoxBoost' is not on CRAN and has to be installed from
-GitHub using `remotes::install_github("binderh/CoxBoost")`.
-
 ## References
 
-Binder, Harald, Allignol, Arthur, Schumacher, Martin, Beyersmann, Jan
-(2009). “Boosting for high-dimensional time-to-event data with competing
-risks.” *Bioinformatics*, **25**(7), 890–896.
+Binder, Harald, Schumacher, Martin (2008). “Allowing for mandatory
+covariates in boosting estimation of sparse high-dimensional survival
+models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105,
+[doi:10.1186/1471-2105-9-14](https://doi.org/10.1186/1471-2105-9-14) .
 
 ## See also
 
@@ -223,7 +219,7 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> 100 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -1132.518 
+#> partial log-likelihood: -1186.172 
 
 
 # Make predictions for the test rows
@@ -232,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8130522 
+#>   0.8586137 
 ```

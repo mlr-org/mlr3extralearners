@@ -5,7 +5,7 @@ cross-validation for the number of steps. Calls
 [`CoxBoost::CoxBoost()`](https://rdrr.io/pkg/CoxBoost/man/CoxBoost.html)
 or
 [`CoxBoost::cv.CoxBoost()`](https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html)
-from package 'CoxBoost'.
+from package [CoxBoost](https://CRAN.R-project.org/package=CoxBoost).
 
 ## Details
 
@@ -20,9 +20,9 @@ tuning `stepno` only. However, for tuning multiple hyperparameters,
 will likely give better results.
 
 If `penalty == "optimCoxBoostPenalty"` then
-[CoxBoost::optimCoxBoostPenalty](https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html)
-is used to determine the penalty value to be used in
-[CoxBoost::cv.CoxBoost](https://rdrr.io/pkg/CoxBoost/man/cv.CoxBoost.html).
+[`CoxBoost::optimCoxBoostPenalty()`](https://rdrr.io/pkg/CoxBoost/man/optimCoxBoostPenalty.html)
+is used to determine the penalty value and optimal step to be used in
+[`CoxBoost::CoxBoost()`](https://rdrr.io/pkg/CoxBoost/man/CoxBoost.html).
 
 ## Dictionary
 
@@ -71,11 +71,6 @@ instantiated via
 | trace           | logical   | FALSE   | TRUE, FALSE                    | \-                    |
 | at.step         | untyped   | \-      |                                | \-                    |
 
-## Installation
-
-The package 'CoxBoost' is not on CRAN and has to be installed from
-GitHub using `remotes::install_github("binderh/CoxBoost")`.
-
 ## Prediction types
 
 This learner returns three prediction types, using the internal
@@ -94,9 +89,10 @@ This learner returns three prediction types, using the internal
 
 ## References
 
-Binder, Harald, Allignol, Arthur, Schumacher, Martin, Beyersmann, Jan
-(2009). “Boosting for high-dimensional time-to-event data with competing
-risks.” *Bioinformatics*, **25**(7), 890–896.
+Binder, Harald, Schumacher, Martin (2008). “Allowing for mandatory
+covariates in boosting estimation of sparse high-dimensional survival
+models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105,
+[doi:10.1186/1471-2105-9-14](https://doi.org/10.1186/1471-2105-9-14) .
 
 ## See also
 

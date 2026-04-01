@@ -1,7 +1,7 @@
 # Regression Neural Network Learner
 
 Bayesian regularization for feed-forward neural networks. Calls
-[brnn::brnn](https://rdrr.io/pkg/brnn/man/brnn.html) from
+[`brnn::brnn()`](https://rdrr.io/pkg/brnn/man/brnn.html) from
 [brnn](https://CRAN.R-project.org/package=brnn).
 
 ## Dictionary
@@ -159,7 +159,7 @@ learner$train(task, row_ids = ids$train)
 #> Number of parameters (weights and biases) to estimate: 24 
 #> Nguyen-Widrow method
 #> Scaling factor= 0.7234904 
-#> gamma= 7.0425     alpha= 3.5336   beta= 11.4997 
+#> gamma= 11.858     alpha= 2.1819   beta= 14.1308 
 
 print(learner$model)
 #> A Bayesian regularized neural network 
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.21205 
+#> 14.52367 
 ```

@@ -173,7 +173,7 @@ print(learner$model)
 #> Call: survfit(formula = task$formula(1), data = task$data())
 #> 
 #>        n events median 0.95LCL 0.95UCL
-#> [1,] 670    214     NA      NA      NA
+#> [1,] 670    217     NA      NA      NA
 
 
 # Make predictions for the test rows

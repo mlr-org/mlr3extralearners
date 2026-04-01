@@ -15,7 +15,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Support Vector Machine Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_RWeka_regr_smo_reg.R" class="external-link"><code>R/learner_RWeka_regr_smo_reg.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_smo_reg.R" class="external-link"><code>R/learner_RWeka_regr_smo_reg.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.smo_reg.Rd</code></div>
     </div>
 
@@ -259,21 +259,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SMOreg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> weights (not support vectors):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0552 * (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.003  * (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0115 * (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1288 * (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2456 * (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0128 * (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.3512 * (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0796 * (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0856 * (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.4226 * (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7507</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0699 * (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.112  * (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2183 * (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1034 * (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0217 * (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0016 * (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1018 * (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0495 * (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0397 * (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2429 * (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.7253</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (94.77% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (97.199% cached)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -282,7 +282,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18.19922 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.787697 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

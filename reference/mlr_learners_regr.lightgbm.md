@@ -127,6 +127,7 @@ instantiated via
 | machines                     | untyped   | ""         |                                                                                 | \-                    |
 | gpu_platform_id              | integer   | -1         |                                                                                 | \\(-\infty, \infty)\\ |
 | gpu_device_id                | integer   | -1         |                                                                                 | \\(-\infty, \infty)\\ |
+| gpu_device_id_list           | untyped   | NULL       |                                                                                 | \-                    |
 | gpu_use_dp                   | logical   | FALSE      | TRUE, FALSE                                                                     | \-                    |
 | num_gpu                      | integer   | 1          |                                                                                 | \\\[1, \infty)\\      |
 | start_iteration_predict      | integer   | 0          |                                                                                 | \\(-\infty, \infty)\\ |
@@ -342,5 +343,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 41.04495 
+#> 50.79486 
 ```

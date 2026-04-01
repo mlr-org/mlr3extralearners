@@ -15,7 +15,7 @@ Calls pls::plsr() from pls."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,13 +50,13 @@ Calls pls::plsr() from pls."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Partial Least Squares Regression</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_pls_regr_plsr.R" class="external-link"><code>R/learner_pls_regr_plsr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_pls_regr_plsr.R" class="external-link"><code>R/learner_pls_regr_plsr.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.plsr.Rd</code></div>
     </div>
 
     <div class="ref-description section level2">
     <p>Partial least squares regression.
-Calls <code><a href="https://rdrr.io/pkg/pls/man/mvr.html" class="external-link">pls::plsr()</a></code> from <a href="https://CRAN.R-project.org/package=pls" class="external-link"><span class="pkg">pls</span></a>.</p>
+Calls <code><a href="https://khliland.github.io/pls/reference/mvr.html" class="external-link">pls::plsr()</a></code> from <a href="https://CRAN.R-project.org/package=pls" class="external-link"><span class="pkg">pls</span></a>.</p>
     </div>
 
 
@@ -83,7 +83,7 @@ Calls <code><a href="https://rdrr.io/pkg/pls/man/mvr.html" class="external-link"
     <div class="section level2">
     <h2 id="parameters">Parameters<a class="anchor" aria-label="anchor" href="#parameters"></a></h2>
 
-<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ncomp</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>method</td><td>character</td><td>kernelpls</td><td>kernelpls, widekernelpls, simpls, oscorespls</td><td>-</td></tr><tr><td>scale</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>validation</td><td>character</td><td>none</td><td>none, CV, LOO</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
+<table class="table table"><tr><td>Id</td><td>Type</td><td>Default</td><td>Levels</td><td>Range</td></tr><tr><td>ncomp</td><td>integer</td><td>-</td><td></td><td>\([1, \infty)\)</td></tr><tr><td>method</td><td>character</td><td>kernelpls</td><td>kernelpls, widekernelpls, simpls, oscorespls</td><td>-</td></tr><tr><td>scale</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>center</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>validation</td><td>character</td><td>none</td><td>none, CV, LOO</td><td>-</td></tr><tr><td>model</td><td>logical</td><td>TRUE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>x</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>y</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr><tr><td>orthScores</td><td>logical</td><td>FALSE</td><td>TRUE, FALSE</td><td>-</td></tr></table></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
     <p>Mevik, Bjorn-Helge, Wehrens, Ron (2007).
@@ -188,7 +188,7 @@ Calls <code><a href="https://rdrr.io/pkg/pls/man/mvr.html" class="external-link"
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Partial least squares regression, fitted with the kernel algorithm.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Call:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> plsr(formula = formula, data = task$data())</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> pls::plsr(formula = formula, data = task$data())</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -197,7 +197,7 @@ Calls <code><a href="https://rdrr.io/pkg/pls/man/mvr.html" class="external-link"
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16.23194 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27.24397 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

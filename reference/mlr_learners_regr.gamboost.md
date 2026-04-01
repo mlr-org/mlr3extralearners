@@ -146,13 +146,11 @@ The objects of this class are cloneable with this method.
 ## Examples
 
 ``` r
-# Define the Learner
-learner = lrn("regr.gamboost", baselearner = "bols")
-print(learner)
+lrn("regr.gamboost")
 #> 
 #> ── <LearnerRegrGAMBoost> (regr.gamboost): Boosted Generalized Additive Model ───
 #> • Model: -
-#> • Parameters: baselearner=bols
+#> • Parameters: list()
 #> • Packages: mlr3, mlr3extralearners, and mboost
 #> • Predict Types: [response]
 #> • Feature Types: integer, numeric, factor, and ordered

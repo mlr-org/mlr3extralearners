@@ -39,7 +39,8 @@ instantiated via
   [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
   [partykit](https://CRAN.R-project.org/package=partykit),
   [coin](https://CRAN.R-project.org/package=coin),
-  [sandwich](https://CRAN.R-project.org/package=sandwich)
+  [sandwich](https://CRAN.R-project.org/package=sandwich),
+  [survdistr](https://CRAN.R-project.org/package=survdistr)
 
 ## Parameters
 
@@ -193,7 +194,8 @@ print(learner)
 #> ── <LearnerSurvCTree> (surv.ctree): Conditional Inference Tree ─────────────────
 #> • Model: -
 #> • Parameters: list()
-#> • Packages: mlr3, mlr3proba, mlr3extralearners, partykit, coin, and sandwich
+#> • Packages: mlr3, mlr3proba, mlr3extralearners, partykit, coin, sandwich, and
+#> survdistr
 #> • Predict Types: [crank] and distr
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
@@ -217,33 +219,23 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 60
-#> |   |   [3] revascdays <= 169
-#> |   |   |   [4] revasc <= 0: 73.000 (n = 31)
+#> |   [2] age <= 70
+#> |   |   [3] revascdays <= 170
+#> |   |   |   [4] revasc <= 0: 22.000 (n = 70)
 #> |   |   |   [5] revasc > 0
-#> |   |   |   |   [6] stchange <= 0: Inf (n = 45)
-#> |   |   |   |   [7] stchange > 0: Inf (n = 69)
-#> |   |   [8] revascdays > 169: Inf (n = 52)
-#> |   [9] age > 60
-#> |   |   [10] revascdays <= 171
+#> |   |   |   |   [6] stchange <= 0: Inf (n = 103)
+#> |   |   |   |   [7] stchange > 0: Inf (n = 126)
+#> |   |   [8] revascdays > 170: Inf (n = 79)
+#> |   [9] age > 70
+#> |   |   [10] revascdays <= 168
 #> |   |   |   [11] revasc <= 0
-#> |   |   |   |   [12] sysbp <= 112
-#> |   |   |   |   |   [13] revascdays <= 10
-#> |   |   |   |   |   |   [14] revascdays <= 2: 1.000 (n = 8)
-#> |   |   |   |   |   |   [15] revascdays > 2: 5.000 (n = 14)
-#> |   |   |   |   |   [16] revascdays > 10: 59.000 (n = 13)
-#> |   |   |   |   [17] sysbp > 112
-#> |   |   |   |   |   [18] stchange <= 0: 77.000 (n = 50)
-#> |   |   |   |   |   [19] stchange > 0: 11.000 (n = 67)
-#> |   |   |   [20] revasc > 0
-#> |   |   |   |   [21] age <= 86: Inf (n = 224)
-#> |   |   |   |   [22] age > 86: 14.000 (n = 11)
-#> |   |   [23] revascdays > 171
-#> |   |   |   [24] revascdays <= 177: Inf (n = 7)
-#> |   |   |   [25] revascdays > 177: Inf (n = 79)
+#> |   |   |   |   [12] stchange <= 0: 85.000 (n = 36)
+#> |   |   |   |   [13] stchange > 0: 8.000 (n = 67)
+#> |   |   |   [14] revasc > 0: Inf (n = 134)
+#> |   |   [15] revascdays > 168: Inf (n = 55)
 #> 
-#> Number of inner nodes:    12
-#> Number of terminal nodes: 13
+#> Number of inner nodes:    7
+#> Number of terminal nodes: 8
 
 
 # Make predictions for the test rows
@@ -252,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.7710602 
+#>    0.819512 
 ```

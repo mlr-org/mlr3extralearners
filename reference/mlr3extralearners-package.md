@@ -64,3 +64,5 @@ Other contributors:
 
 - Alexander Winterstetter <alexanderwinterstetter@gmail.com>
   \[contributor\]
+
+- Imad El Badisy <elbadisyimad@gmail.com> \[contributor\]

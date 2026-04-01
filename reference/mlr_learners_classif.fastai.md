@@ -27,12 +27,12 @@ need to call `$unmarshal()` to transform it into a useable state.
 ## Initial parameter values
 
 - `n_epoch`: Needs to be set for
-  [`fastai::fit()`](https://rdrr.io/pkg/fastai/man/reexports.html) to
+  [`fastai::fit()`](https://generics.r-lib.org/reference/fit.html) to
   work. If no value is given, it is set to 5.
 
 - `eval_metric`: Needs to be set for
-  [`fastai::predict()`](https://rdrr.io/pkg/fastai/man/reexports.html)
-  to work. If no value is given, it is set to
+  [`fastai::predict()`](https://rdrr.io/r/stats/predict.html) to work.
+  If no value is given, it is set to
   [`fastai::accuracy()`](https://rdrr.io/pkg/fastai/man/accuracy.html).
 
 ## Dictionary

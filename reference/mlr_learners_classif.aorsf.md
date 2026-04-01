@@ -14,6 +14,63 @@ using the parameter `na_action`.
 
 - `pred_simplify` has to be TRUE, otherwise response is NA in prediction
 
+## Dictionary
+
+This [Learner](https://mlr3.mlr-org.com/reference/Learner.html) can be
+instantiated via
+[lrn()](https://mlr3.mlr-org.com/reference/mlr_sugar.html):
+
+    lrn("classif.aorsf")
+
+## Meta Information
+
+- Task type: “classif”
+
+- Predict Types: “response”, “prob”
+
+- Feature Types: “integer”, “numeric”, “factor”, “ordered”
+
+- Required Packages: [mlr3](https://CRAN.R-project.org/package=mlr3),
+  [mlr3extralearners](https://CRAN.R-project.org/package=mlr3extralearners),
+  [aorsf](https://CRAN.R-project.org/package=aorsf)
+
+## Parameters
+
+|                         |           |         |                              |                       |
+|-------------------------|-----------|---------|------------------------------|-----------------------|
+| Id                      | Type      | Default | Levels                       | Range                 |
+| attach_data             | logical   | TRUE    | TRUE, FALSE                  | \-                    |
+| epsilon                 | numeric   | 1e-09   |                              | \\\[0, \infty)\\      |
+| importance              | character | anova   | none, anova, negate, permute | \-                    |
+| importance_max_pvalue   | numeric   | 0.01    |                              | \\\[1e-04, 0.9999\]\\ |
+| leaf_min_events         | integer   | 1       |                              | \\\[1, \infty)\\      |
+| leaf_min_obs            | integer   | 5       |                              | \\\[1, \infty)\\      |
+| max_iter                | integer   | 20      |                              | \\\[1, \infty)\\      |
+| method                  | character | glm     | glm, net, pca, random        | \-                    |
+| mtry                    | integer   | NULL    |                              | \\\[1, \infty)\\      |
+| mtry_ratio              | numeric   | \-      |                              | \\\[0, 1\]\\          |
+| n_retry                 | integer   | 3       |                              | \\\[0, \infty)\\      |
+| n_split                 | integer   | 5       |                              | \\\[1, \infty)\\      |
+| n_thread                | integer   | \-      |                              | \\\[0, \infty)\\      |
+| n_tree                  | integer   | 500     |                              | \\\[1, \infty)\\      |
+| na_action               | character | fail    | fail, impute_meanmode        | \-                    |
+| net_mix                 | numeric   | 0.5     |                              | \\(-\infty, \infty)\\ |
+| oobag                   | logical   | FALSE   | TRUE, FALSE                  | \-                    |
+| oobag_eval_every        | integer   | NULL    |                              | \\\[1, \infty)\\      |
+| oobag_fun               | untyped   | NULL    |                              | \-                    |
+| oobag_pred_type         | character | prob    | none, leaf, prob, class      | \-                    |
+| pred_aggregate          | logical   | TRUE    | TRUE, FALSE                  | \-                    |
+| sample_fraction         | numeric   | 0.632   |                              | \\\[0, 1\]\\          |
+| sample_with_replacement | logical   | TRUE    | TRUE, FALSE                  | \-                    |
+| scale_x                 | logical   | FALSE   | TRUE, FALSE                  | \-                    |
+| split_min_events        | integer   | 5       |                              | \\\[1, \infty)\\      |
+| split_min_obs           | integer   | 10      |                              | \\\[1, \infty)\\      |
+| split_min_stat          | numeric   | NULL    |                              | \\\[0, \infty)\\      |
+| split_rule              | character | gini    | gini, cstat                  | \-                    |
+| target_df               | integer   | NULL    |                              | \\\[1, \infty)\\      |
+| tree_seeds              | integer   | NULL    |                              | \\\[1, \infty)\\      |
+| verbose_progress        | logical   | FALSE   | TRUE, FALSE                  | \-                    |
+
 ## See also
 
 - [Dictionary](https://mlr3misc.mlr-org.com/reference/Dictionary.html)
@@ -138,12 +195,12 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("classif.aorsf", importance = "anova")
+learner = lrn("classif.aorsf")
 print(learner)
 #> 
 #> ── <LearnerClassifObliqueRandomForest> (classif.aorsf): Oblique Random Forest Cl
 #> • Model: -
-#> • Parameters: importance=anova, n_thread=1
+#> • Parameters: n_thread=1
 #> • Packages: mlr3, mlr3extralearners, and aorsf
 #> • Predict Types: [response] and prob
 #> • Feature Types: integer, numeric, factor, and ordered
@@ -153,7 +210,8 @@ print(learner)
 #> • Other settings: use_weights = 'use'
 
 # Define a Task
-task = tsk("breast_cancer")
+task = tsk("sonar")
+
 # Create train and test set
 ids = partition(task)
 
@@ -164,23 +222,37 @@ print(learner$model)
 #> ---------- Oblique random classification forest
 #> 
 #>      Linear combinations: Logistic regression
-#>           N observations: 458
+#>           N observations: 139
 #>                N classes: 2
 #>                  N trees: 500
-#>       N predictors total: 9
-#>    N predictors per node: 3
-#>  Average leaves per tree: 2.952
+#>       N predictors total: 60
+#>    N predictors per node: 8
+#>  Average leaves per tree: 5.096
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.99
+#>           OOB stat value: 0.89
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>     bare_nuclei      cell_shape       cell_size    cl_thickness     bl_cromatin 
-#>       0.5540721       0.5268226       0.5073099       0.4946667       0.4861878 
-#> normal_nucleoli   marg_adhesion    epith_c_size         mitoses 
-#>       0.3862661       0.3446920       0.3175676       0.2370487 
+#>        V11         V4        V12        V52         V9        V36        V21 
+#> 0.43277311 0.38219895 0.34347826 0.32286996 0.29729730 0.27317073 0.25114155 
+#>        V10         V3        V13        V49        V48         V1        V20 
+#> 0.22270742 0.21782178 0.20627803 0.19047619 0.18644068 0.18376068 0.18309859 
+#>        V16        V45        V46        V35        V22        V17        V47 
+#> 0.15929204 0.15350877 0.14423077 0.14285714 0.14090909 0.14018692 0.13793103 
+#>        V44        V51        V23        V53        V19        V18        V15 
+#> 0.13750000 0.12903226 0.12077295 0.11374408 0.11363636 0.11214953 0.10599078 
+#>        V28        V58        V24        V43         V2         V5        V31 
+#> 0.10476190 0.09852217 0.09777778 0.09543568 0.08144796 0.07407407 0.07234043 
+#>        V40        V42        V37        V60        V32        V14        V56 
+#> 0.06698565 0.06603774 0.06584362 0.06103286 0.05940594 0.05641026 0.05603448 
+#>        V57        V34        V59         V8        V27         V6        V29 
+#> 0.05429864 0.05418719 0.05347594 0.05286344 0.04651163 0.04587156 0.04464286 
+#>        V50        V39        V33        V38        V25        V54        V30 
+#> 0.04405286 0.04245283 0.04186047 0.04128440 0.03980100 0.03952569 0.03636364 
+#>         V7        V41        V55        V26 
+#> 0.03314917 0.02941176 0.02643172 0.02643172 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -188,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#> 0.01777778 
+#>  0.2318841 
 ```

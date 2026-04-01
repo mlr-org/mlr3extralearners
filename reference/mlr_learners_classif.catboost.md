@@ -249,7 +249,7 @@ Create a `LearnerClassifCatboost` object.
 ### Method `importance()`
 
 The importance scores are calculated using
-[`catboost.get_feature_importance`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
+[`catboost::catboost.get_feature_importance()`](https://rdrr.io/pkg/catboost/man/catboost.get_feature_importance.html),
 setting `type = "FeatureImportance"`, returned for 'all'.
 
 #### Usage
@@ -280,16 +280,14 @@ The objects of this class are cloneable with this method.
 
 ``` r
 # Define the Learner
-learner = lrn("classif.catboost",
-  iterations = 100)
-
+learner = lrn("classif.catboost")
 print(learner)
 #> 
 #> ── <LearnerClassifCatboost> (classif.catboost): Gradient Boosting ──────────────
 #> • Model: -
 #> • Parameters: loss_function_twoclass=Logloss,
 #> loss_function_multiclass=MultiClass, thread_count=1, logging_level=Silent,
-#> allow_writing_files=FALSE, save_snapshot=FALSE, iterations=100
+#> allow_writing_files=FALSE, save_snapshot=FALSE
 #> • Validate: NULL
 #> • Packages: mlr3, mlr3extralearners, and catboost
 #> • Predict Types: [response] and prob
@@ -309,26 +307,28 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> CatBoost model (100 trees)
+#> CatBoost model (1000 trees)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>       V11        V9       V12       V48       V36        V4       V17       V18 
-#> 9.4434117 8.6531025 8.0654706 5.0543597 3.4495968 3.0690512 3.0405914 3.0290924 
-#>       V37       V16       V46       V23       V57       V45       V44       V15 
-#> 2.8633711 2.8570637 2.5286552 2.3062606 1.8756722 1.8375232 1.8294633 1.6353672 
-#>        V1       V53       V28       V49       V13       V22       V21        V5 
-#> 1.5058714 1.4363497 1.4310224 1.4018995 1.3825243 1.3351998 1.3299898 1.3021354 
-#>       V10       V26       V59       V55       V51       V27       V31        V6 
-#> 1.2711613 1.1461496 1.0999870 1.0762313 1.0502645 1.0486589 1.0306638 1.0208956 
-#>        V7       V54       V58       V14       V25       V50        V2       V43 
-#> 0.9898938 0.9700196 0.9100156 0.8969297 0.8950844 0.8842934 0.8834740 0.8489900 
-#>       V38       V39       V41       V33       V47       V35        V3       V19 
-#> 0.8324266 0.7419316 0.7306583 0.7289300 0.7281292 0.7077070 0.6927973 0.6894536 
-#>        V8       V32       V29       V56       V40       V24       V30       V20 
-#> 0.6283510 0.5996608 0.5916481 0.5509557 0.5083031 0.4500314 0.4343841 0.4274628 
-#>       V60       V42       V52       V34 
-#> 0.3979186 0.3720669 0.3350798 0.1663466 
+#>        V12        V11        V36        V48         V9        V51         V4 
+#> 11.9057224  7.3458851  3.7986893  3.6121715  3.2662534  3.2314081  3.1802790 
+#>        V37        V23        V16        V10        V49        V43        V45 
+#>  3.0692400  2.9164912  2.4892716  2.3684239  2.3569796  2.2975438  1.7383484 
+#>        V31        V44        V26        V27        V24        V17        V59 
+#>  1.7323590  1.6713754  1.5519101  1.5412069  1.4767229  1.4298700  1.3902477 
+#>         V1        V52        V47        V46        V21        V42        V19 
+#>  1.3504327  1.2952173  1.2861832  1.2696184  1.2502871  1.2482413  1.2243198 
+#>        V29        V13        V28        V39        V15        V58        V22 
+#>  1.2127642  1.1827367  1.1682963  1.1412866  1.1238541  1.0998760  1.0832830 
+#>        V55         V7        V14        V18         V6        V25         V2 
+#>  1.0452613  1.0452120  1.0200505  1.0095560  0.9263527  0.8828622  0.8599244 
+#>        V53         V8         V3        V20         V5        V35        V54 
+#>  0.8583652  0.8009741  0.7472797  0.7431855  0.7222412  0.7204236  0.7189494 
+#>        V50        V56        V32        V38        V30        V33        V41 
+#>  0.6873867  0.6695181  0.6579941  0.6553641  0.6197725  0.5813658  0.5806598 
+#>        V60        V34        V40        V57 
+#>  0.5755430  0.5660240  0.5370087  0.4619289 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -336,5 +336,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>   0.173913 
 ```

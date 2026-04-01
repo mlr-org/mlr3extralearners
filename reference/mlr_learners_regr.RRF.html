@@ -15,7 +15,7 @@ Calls RRF::RRF() from RRF."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,7 +50,7 @@ Calls RRF::RRF() from RRF."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Regularized Random Forest Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/R/learner_RRF_regr_RRF.R" class="external-link"><code>R/learner_RRF_regr_RRF.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RRF_regr_RRF.R" class="external-link"><code>R/learner_RRF_regr_RRF.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.RRF.Rd</code></div>
     </div>
 
@@ -221,13 +221,13 @@ IEEE.
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      Number of trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> No. of variables tried at each split: 3</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 7.493792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 77.79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           Mean of squared residuals: 5.945833</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     % Var explained: 85.66</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         wt         hp       disp       drat        cyl       qsec       carb </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 157.819216 150.789499 123.953813  85.737412  53.464946  22.312590  16.638113 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         am       gear         vs </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  13.350894  10.784752   6.857987 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        hp      disp        wt       cyl      drat      qsec        vs      carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 184.55435 172.50506 139.73561 100.99590  77.47780  45.20287  37.09878  15.46034 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        am      gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  12.67974   5.43839 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -235,7 +235,7 @@ IEEE.
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5.205058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.921955 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

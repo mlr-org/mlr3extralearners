@@ -1,7 +1,7 @@
 # Classification Linear Discriminant Analysis Learner
 
-Shrinkage-based Diagonal Linear Discriminant Analysis classfier. Type of
-Naive Bayes classifiers that improves the estimation of the pooled
+Shrinkage-based Diagonal Linear Discriminant Analysis classifier. Type
+of Naive Bayes classifiers that improves the estimation of the pooled
 variances by using a shrinkage-based estimator of the pooled covariance
 matrix. Calls
 [`sparsediscrim::lda_shrink_cov()`](https://topepo.github.io/sparsediscrim/reference/lda_shrink_cov.html)
@@ -161,7 +161,7 @@ print(learner$model)
 #> Number of Features: 60 
 #> 
 #> Classes and Prior Probabilities:
-#>   M (53.96%), R (46.04%) 
+#>   M (51.8%), R (48.2%) 
 
 
 # Make predictions for the test rows
@@ -170,5 +170,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.5217391 
+#>  0.5652174 
 ```

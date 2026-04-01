@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.4.0</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Released version">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -82,7 +82,7 @@
       <h1>Creating a new Learner</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.4.0/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/vignettes/extending.Rmd" class="external-link"><code>vignettes/extending.Rmd</code></a></small>
       <div class="d-none name"><code>extending.Rmd</code></div>
     </div>
 
@@ -361,7 +361,8 @@ and the hyperparameters. To get the hyperparameters, we call
 all parameters that are using during <code>"train"</code>. Then, the
 dataset is extracted from the <code>Task</code>. Because the learner has
 the property <code>"weights"</code>, we insert the weights of the task
-if there are any. Then we obtain the formula from the task using
+if there are any, by calling <code>$.get_weights()</code> to retrieve
+them. Then we obtain the formula from the task using
 <code>task$formula()</code> and access the training data using
 <code>task$data()</code>. Last, we call the upstream function
 <code><a href="https://rdrr.io/pkg/rpart/man/rpart.html" class="external-link">rpart::rpart()</a></code> with the data and pass all hyperparameters
@@ -498,9 +499,10 @@ function. The manual page for these functions can be accessed via
 <div class="section level3">
 <h3 id="autotest">Autotest<a class="anchor" aria-label="anchor" href="#autotest"></a>
 </h3>
-<p>To ensure that your learner is able to handle all kinds of different
-properties and feature types, we have written an “autotest” that checks
-the learner for different combinations of such. In addition to the
+<p>To ensure that a learner correctly handles different task properties,
+feature types, and edge cases, <code>mlr3extralearners</code> relies on
+a standardized autotest framework. The autotest systematically evaluates
+learners across many automatically generated tasks. In addition to the
 autotest we also check some other learner properties using
 <code>expect_learner()</code>. See section <em>run_autotest</em> and
 <em>expect_learner</em> of <code><a href="https://mlr3.mlr-org.com/reference/mlr_test_helpers.html" class="external-link">?mlr_test_helpers</a></code> for an
@@ -513,7 +515,7 @@ from the <code>mlr3proba</code> package.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span>
 <span><span class="co"># mlr3proba</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3proba"</span><span class="op">)</span>, pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="va">source</span><span class="op">)</span></span></code></pre></div>
-<p>We now perform the autotest. By setting
+<p>Below is an example for a simple regression learner: By setting
 <code>expect_learner(..., check_man = FALSE)</code>, we disable a test
 that verifies that the correct manual page exists, which is only
 relevant when adding the learner to <code>mlr3extralearners</code>.</p>
@@ -530,6 +532,66 @@ relevant when adding the learner to <code>mlr3extralearners</code>.</p>
 <span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
 <span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co"># Test passed with 20 successes 🥇.</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="skipping-tests-for-optional-dependencies">Skipping tests for optional dependencies<a class="anchor" aria-label="anchor" href="#skipping-tests-for-optional-dependencies"></a>
+</h3>
+<p>Always add an explicit skip at the top of test files for all
+learners, for example:</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://testthat.r-lib.org/reference/skip.html" class="external-link">skip_if_not_installed</a></span><span class="op">(</span><span class="st">"RpkgName"</span><span class="op">)</span></span></code></pre></div>
+<p>This ensures tests fail gracefully on GitHub Actions, where we have a
+specific workflow that doesn’t install packages listed in
+<code>Suggests</code>.</p>
+<p>For <code>Python</code>-based learners, use the corresponding
+<code>reticulate</code> helper:</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">skip_if_not_installed_py</span><span class="op">(</span><span class="st">"PythonpkgName"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="special-considerations-for-python-learners">Special considerations for Python learners<a class="anchor" aria-label="anchor" href="#special-considerations-for-python-learners"></a>
+</h3>
+<p><code>Python</code>-based learners (via reticulate) <strong>must be
+isolated from the main R session</strong> during testing. This is
+required for both correctness and stability.</p>
+<p>In particular:</p>
+<ul>
+<li>Python learners often depend on Python <code>torch</code>, while
+some R learners depend on the R <code>torch</code> package, which loads
+<code>libtorch</code>.</li>
+<li>Loading multiple <code>libtorch</code> binaries (from R and Python,
+or from different builds) in the same R session can lead to
+crashes.</li>
+<li>Different Python learners often require conflicting package
+dependencies.</li>
+</ul>
+<p>Therefore, all Python learner tests must be executed in a fresh R
+session using <code>callr</code>.</p>
+<p>A minimal pattern looks like this:</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">skip_if_not_installed_py</span><span class="op">(</span><span class="st">"torch"</span>, <span class="st">"tabpfn"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"autotest: classif.tabpfn"</span>, <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="fu">callr</span><span class="fu">::</span><span class="fu"><a href="https://callr.r-lib.org/reference/r.html" class="external-link">r</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>RETICULATE_PYTHON <span class="op">=</span> <span class="st">"managed"</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3.mlr-org.com" class="external-link">mlr3</a></span><span class="op">)</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://mlr3extralearners.mlr-org.com">mlr3extralearners</a></span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"testthat"</span>, package <span class="op">=</span> <span class="st">"mlr3"</span><span class="op">)</span>,</span>
+<span>                 pattern <span class="op">=</span> <span class="st">"^helper.*\\.[rR]"</span>,</span>
+<span>                 full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>      <span class="va">source</span></span>
+<span>    <span class="op">)</span></span>
+<span></span>
+<span>    <span class="va">learner</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">lrn</a></span><span class="op">(</span><span class="st">"classif.tabpfn"</span><span class="op">)</span></span>
+<span>    <span class="fu">expect_learner</span><span class="op">(</span><span class="va">learner</span><span class="op">)</span></span>
+<span></span>
+<span>    <span class="va">result</span> <span class="op">=</span> <span class="fu">run_autotest</span><span class="op">(</span><span class="va">learner</span>, check_replicable <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>    <span class="fu">testthat</span><span class="fu">::</span><span class="fu"><a href="https://testthat.r-lib.org/reference/logical-expectations.html" class="external-link">expect_true</a></span><span class="op">(</span><span class="va">result</span>, info <span class="op">=</span> <span class="va">result</span><span class="op">$</span><span class="va">error</span><span class="op">)</span></span>
+<span>    <span class="cn">TRUE</span></span>
+<span>  <span class="op">}</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="checking-parameters">Checking Parameters<a class="anchor" aria-label="anchor" href="#checking-parameters"></a>
@@ -565,7 +627,7 @@ ParamSet.</li>
 <p>All excluded parameters should have a comment justifying their
 exclusion.</p>
 <p>In our example, the final paramtest script looks like:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://testthat.r-lib.org" class="external-link">testthat</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://testthat.r-lib.org/reference/test_that.html" class="external-link">test_that</a></span><span class="op">(</span><span class="st">"paramtest"</span>, <span class="op">{</span></span>
 <span>  <span class="va">learner</span> <span class="op">=</span> <span class="va">LearnerRegrRpartSimple</span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
@@ -589,13 +651,112 @@ exclusion.</p>
 </div>
 </div>
 <div class="section level2">
+<h2 id="documenting-the-learner">Documenting the Learner<a class="anchor" aria-label="anchor" href="#documenting-the-learner"></a>
+</h2>
+<p>When documenting a learner, examples are crucial to help users
+understand how to use it. The <code>mlr3extralearners</code> package
+uses roxygen2 templates to standardize examples across learners.</p>
+<div class="section level3">
+<h3 id="example-templates">Example Templates<a class="anchor" aria-label="anchor" href="#example-templates"></a>
+</h3>
+<p>There are three main approaches for learner examples:</p>
+<ol style="list-style-type: decimal">
+<li><p><strong>Standard template
+(<code>@template example</code>)</strong>: Use this for most learners.
+It automatically generates a complete example that creates the learner,
+trains it on an appropriate task (sonar for classification, mtcars for
+regression, grace for survival), makes predictions, and scores them. If
+the learner has the <code>"importance"</code> property, it also prints
+the importance scores.</p></li>
+<li><p><strong>Simple template
+(<code>@template simple_example</code>)</strong>: Use this when the
+learner cannot easily run on standard tasks without additional
+configuration, or when training is very slow. This template only creates
+and prints the learner without training.</p></li>
+<li><p><strong>Custom templates
+(<code>@template example_&lt;name&gt;</code>)</strong>: Use these when a
+learner requires specific parameters or task setup that differs from the
+standard template.</p></li>
+</ol>
+</div>
+<div class="section level3">
+<h3 id="when-to-use-custom-templates">When to Use Custom Templates<a class="anchor" aria-label="anchor" href="#when-to-use-custom-templates"></a>
+</h3>
+<p>Create a custom template in
+<code>man-roxygen/example_&lt;name&gt;.R</code> when:</p>
+<ul>
+<li><p><strong>The learner requires specific parameters to compute
+importance</strong>: Some learners (e.g., <code>randomForest</code>,
+<code>rfsrc</code>, <code>ranger</code>) have the
+<code>"importance"</code> property but require an explicit parameter to
+be set (e.g., <code>importance = "TRUE"</code> or
+<code>importance = "permutation"</code>).</p></li>
+<li><p><strong>The learner requires a formula parameter</strong>:
+Learners like <code>lme4</code> (mixed-effects models),
+<code>mgcv</code> (GAMs), or <code>flexsurv</code> need a custom formula
+to demonstrate their functionality.</p></li>
+<li><p><strong>The learner requires custom parameters for small
+datasets</strong>: Some learners like <code>laGP</code> need parameter
+adjustments (e.g., <code>end = 15</code>) to work on small datasets like
+mtcars.</p></li>
+<li><p><strong>The learner requires a custom task or data
+setup</strong>: Learners like <code>prioritylasso</code> or
+<code>blockForest</code> require a <code>blocks</code> parameter that
+partitions features.</p></li>
+<li><p><strong>The learner has special methods to demonstrate</strong>:
+The <code>cmprsk.rfsrc</code> learner has cause-specific importance that
+should be shown in the example.</p></li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="creating-a-custom-template">Creating a Custom Template<a class="anchor" aria-label="anchor" href="#creating-a-custom-template"></a>
+</h3>
+<p>Custom templates are placed in <code>man-roxygen/</code> and
+should:</p>
+<ol style="list-style-type: decimal">
+<li>Start with a comment explaining why the template is custom</li>
+<li>Use roxygen2 template syntax with <code>&lt;%</code> and
+<code>%&gt;</code> for R code</li>
+<li>Reference the <code>id</code> variable (set via
+<code>@templateVar id &lt;learner-id&gt;</code> in the learner
+file)</li>
+</ol>
+<p>Here’s an example structure:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="co"># Custom template for &lt;package&gt; learners (&lt;learner-ids&gt;)</span></span>
+<span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a><span class="co"># Reason: &lt;explanation of why standard template cannot be used&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3" tabindex="-1"></a><span class="sc">&lt;</span>%</span>
+<span id="cb19-4"><a href="#cb19-4" tabindex="-1"></a>l <span class="ot">=</span> <span class="fu">lrn</span>(id)</span>
+<span id="cb19-5"><a href="#cb19-5" tabindex="-1"></a>is_classif <span class="ot">=</span> <span class="st">"LearnerClassif"</span> <span class="sc">%in%</span> <span class="fu">class</span>(l)</span>
+<span id="cb19-6"><a href="#cb19-6" tabindex="-1"></a><span class="co"># ... conditional logic based on learner type</span></span>
+<span id="cb19-7"><a href="#cb19-7" tabindex="-1"></a>%<span class="sc">&gt;</span></span>
+<span id="cb19-8"><a href="#cb19-8" tabindex="-1"></a><span class="co">#'</span></span>
+<span id="cb19-9"><a href="#cb19-9" tabindex="-1"></a><span class="co">#' &lt;%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %&gt;</span></span>
+<span id="cb19-10"><a href="#cb19-10" tabindex="-1"></a><span class="co">#' # Example code here using &lt;%= id %&gt; for the learner ID</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="using-templates-in-learner-files">Using Templates in Learner Files<a class="anchor" aria-label="anchor" href="#using-templates-in-learner-files"></a>
+</h3>
+<p>In your learner’s R file, add the template reference in the roxygen
+documentation:</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#' @templateVar id regr.mylearner</span></span>
+<span><span class="co">#' @template learner</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @template seealso_learner</span></span>
+<span><span class="co">#' @template example</span></span>
+<span><span class="co">#' @export</span></span></code></pre></div>
+<p>For custom templates, replace <code>@template example</code> with
+<code>@template example_&lt;name&gt;</code>.</p>
+</div>
+</div>
+<div class="section level2">
 <h2 id="contributing-to-mlr3extralearners">Contributing to mlr3extralearners<a class="anchor" aria-label="anchor" href="#contributing-to-mlr3extralearners"></a>
 </h2>
 <p>When adding a <code>Learner</code> to <code>mlr3extralearners</code>
 there are some additional requirements that have to be satisfied:</p>
 <ul>
 <li>Adding the line
-<code>.extralrns_dict$add("&lt;learner-id&gt;", function() &lt;LearnerName&gt;$new())</code>
+<code>.extralrns_dict$add("&lt;learner-id&gt;", &lt;LearnerClassName&gt;)</code>
 to the bottom of the learner file to add the learner to the learners
 <code>Dictionary</code>.</li>
 <li>Add the learner dependencies to <em>Suggests</em> (and not e.g. to
@@ -608,7 +769,7 @@ guide</a>.</li>
 results).</li>
 <li>Update the <code>NEWS.md</code> file and describe that you added the
 learner.</li>
-<li>Add yourself as a contributor</li>
+<li>Add yourself as a contributor (<code>ctb</code> role)</li>
 </ul>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

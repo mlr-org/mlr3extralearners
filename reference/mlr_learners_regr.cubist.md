@@ -27,17 +27,18 @@ instantiated via
 
 ## Parameters
 
-|               |         |           |             |                       |
-|---------------|---------|-----------|-------------|-----------------------|
-| Id            | Type    | Default   | Levels      | Range                 |
-| committees    | integer | \-        |             | \\\[1, 100\]\\        |
-| unbiased      | logical | FALSE     | TRUE, FALSE | \-                    |
-| rules         | integer | 100       |             | \\\[1, \infty)\\      |
-| extrapolation | numeric | 100       |             | \\\[0, 100\]\\        |
-| sample        | integer | 0         |             | \\\[0, \infty)\\      |
-| seed          | integer | \-        |             | \\(-\infty, \infty)\\ |
-| label         | untyped | "outcome" |             | \-                    |
-| neighbors     | integer | \-        |             | \\\[0, 9\]\\          |
+|                   |         |           |             |                       |
+|-------------------|---------|-----------|-------------|-----------------------|
+| Id                | Type    | Default   | Levels      | Range                 |
+| committees        | integer | \-        |             | \\\[1, 100\]\\        |
+| unbiased          | logical | FALSE     | TRUE, FALSE | \-                    |
+| rules             | integer | 100       |             | \\\[1, \infty)\\      |
+| extrapolation     | numeric | 100       |             | \\\[0, 100\]\\        |
+| sample            | integer | 0         |             | \\\[0, \infty)\\      |
+| seed              | integer | \-        |             | \\(-\infty, \infty)\\ |
+| label             | untyped | "outcome" |             | \-                    |
+| neighbors         | integer | \-        |             | \\\[0, 9\]\\          |
+| strip_time_stamps | logical | TRUE      | TRUE, FALSE | \-                    |
 
 ## References
 
@@ -183,5 +184,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  10.9479 
+#> 8.767363 
 ```

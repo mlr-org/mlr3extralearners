@@ -1,7 +1,9 @@
 # BoTorch SingleTaskGP Regression Learner
 
 Gaussian Process via [botorch](https://botorch.org/) and
-[gpytorch](https://gpytorch.ai/), using the `SingleTaskGP` model. Uses
+[gpytorch](https://gpytorch.ai/), using the `SingleTaskGP` model. See
+[here](https://botorch.readthedocs.io/en/latest/models.html#botorch.models.gp_regression.SingleTaskGP)
+for more details. Uses
 [reticulate](https://CRAN.R-project.org/package=reticulate) to interface
 with Python.
 
@@ -27,10 +29,13 @@ instantiated via
 
 ## Parameters
 
-|        |           |         |           |
-|--------|-----------|---------|-----------|
-| Id     | Type      | Default | Levels    |
-| device | character | cpu     | cpu, cuda |
+|                   |           |         |                                                                                                                                                  |
+|-------------------|-----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| Id                | Type      | Default | Levels                                                                                                                                           |
+| device            | character | cpu     | cpu, cuda                                                                                                                                        |
+| kernel            | character | \-      | matern_2.5, matern_1.5, matern_0.5, rbf, linear, polynomial, periodic, cosine, rq, piecewise_polynomial, [...](https://rdrr.io/r/base/dots.html) |
+| input_transform   | character | \-      | normalize, standardize, log10, warp, none                                                                                                        |
+| outcome_transform | character | \-      | standardize, log, none                                                                                                                           |
 
 ## Author
 

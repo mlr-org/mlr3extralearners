@@ -1,7 +1,9 @@
 # BoTorch MixedSingleTaskGP Regression Learner
 
 Gaussian Process via [botorch](https://botorch.org/) and
-[gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP`. Uses
+[gpytorch](https://gpytorch.ai/), using the `MixedSingleTaskGP`. See
+[here](https://botorch.readthedocs.io/en/latest/models.html#module-botorch.models.gp_regression_mixed)
+for more details. Uses
 [reticulate](https://CRAN.R-project.org/package=reticulate) to interface
 with Python.
 
@@ -27,10 +29,12 @@ instantiated via
 
 ## Parameters
 
-|        |           |         |           |
-|--------|-----------|---------|-----------|
-| Id     | Type      | Default | Levels    |
-| device | character | cpu     | cpu, cuda |
+|                   |           |         |                                           |
+|-------------------|-----------|---------|-------------------------------------------|
+| Id                | Type      | Default | Levels                                    |
+| device            | character | cpu     | cpu, cuda                                 |
+| input_transform   | character | \-      | normalize, standardize, log10, warp, none |
+| outcome_transform | character | \-      | standardize, log, none                    |
 
 ## Author
 

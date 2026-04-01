@@ -1,5 +1,41 @@
 # Changelog
 
+## mlr3extralearners 1.5.0
+
+### New Features
+
+- New Learners:
+  - `LearnerCompRisksCoxboost`
+  - `LearnerRegrGPfit`
+  - `LearnerClassifMLP`
+  - `LearnerClassifSaeDNN`
+  - `LearnerClassifPlsdaCaret`
+  - `LearnerSurvDNN`
+  - `LearnerRegrH2ORandomForest`
+  - `LearnerRegrH2OGLM`
+  - `LearnerClassifH2OGLM`
+  - `LearnerClassifH2OGBM`
+  - `LearnerClassifH2ORandomForest`
+  - `LearnerClassifH2ODeeplearning`
+  - `LearnerRegrH2OGBM`
+  - `LearnerRegrH2ODeeplearning`
+  - `LearnerClassifLvq1`
+
+### Enhancements
+
+- Added kernel and input/output transformation parameters to
+  `LearnerRegrBotorchSingleTaskGP` and
+  `LearnerRegrBotorchMixedSingleTaskGP`
+
+### Other
+
+- Updated `Extending` vignette to incorporate information about skipping
+  tests and considerations for testing `Python` learners
+- `survdistr` is now on Suggests (used for constant interpolation of the
+  Kaplan-Meier predictions of the `partykit` survival learners)
+- Updated `mlr3proba` (`0.8.8`), `pls` and `xgboost` to the most recent
+  CRAN versions
+
 ## mlr3extralearners 1.4.0
 
 ### New Features
@@ -136,7 +172,7 @@
   not available.
 - `distr6` dependency is removed. `partykit` survival learners use
   constant interpolation of the predicted Kaplan-Meier curves via
-  [`survdistr::vec_interp()`](https://survdistr.mlr-org.com/reference/vec_interp.html)
+  `survdistr::vec_interp()`
 
 ## mlr3extralearners 1.1.0
 

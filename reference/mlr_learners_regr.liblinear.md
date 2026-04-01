@@ -58,7 +58,7 @@ instantiated via
   - Initial value: 0.001
 
   - Reason for change: `svr_eps` is type dependent and the "type" is
-    handled by the mlr3learner. The default value is set to th default
+    handled by the mlr3learner. The default value is set to the default
     of the respective "type".
 
 ## References
@@ -188,10 +188,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>              am        carb      cyl        disp      drat      gear         hp
-#> [1,] 0.08038788 -0.04202453 0.146252 -0.04095852 0.2746271 0.2919581 0.02527773
-#>          qsec         vs         wt       Bias
-#> [1,] 1.275541 0.08606386 0.06339122 0.06366772
+#>              am       carb       cyl       disp      drat      gear          hp
+#> [1,] 0.06306303 0.01735457 0.1599132 -0.0306682 0.2739086 0.2776042 0.002569019
+#>          qsec        vs        wt       Bias
+#> [1,] 1.269451 0.0701445 0.0978603 0.06328185
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +209,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.268707 
+#> 21.23686 
 ```
