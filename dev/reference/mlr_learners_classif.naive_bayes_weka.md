@@ -231,367 +231,367 @@ print(learner$model)
 #> 
 #>                  Class
 #> Attribute            M       R
-#>                  (0.5)   (0.5)
+#>                 (0.53)  (0.47)
 #> ===============================
 #> V1
-#>   mean           0.0358   0.023
-#>   std. dev.      0.0272  0.0157
-#>   weight sum         70      69
+#>   mean           0.0343  0.0214
+#>   std. dev.      0.0263  0.0124
+#>   weight sum         74      65
 #>   precision      0.0011  0.0011
 #> 
 #> V10
-#>   mean           0.2532  0.1655
-#>   std. dev.      0.1445  0.1201
-#>   weight sum         70      69
-#>   precision      0.0051  0.0051
+#>   mean           0.2447  0.1483
+#>   std. dev.      0.1359   0.098
+#>   weight sum         74      65
+#>   precision      0.0046  0.0046
 #> 
 #> V11
-#>   mean           0.2977  0.1814
-#>   std. dev.      0.1353  0.1201
-#>   weight sum         70      69
-#>   precision      0.0052  0.0052
+#>   mean           0.2869  0.1649
+#>   std. dev.       0.125  0.1016
+#>   weight sum         74      65
+#>   precision      0.0047  0.0047
 #> 
 #> V12
-#>   mean            0.316   0.204
-#>   std. dev.      0.1266  0.1428
-#>   weight sum         70      69
-#>   precision       0.005   0.005
+#>   mean            0.302  0.1781
+#>   std. dev.      0.1234   0.113
+#>   weight sum         74      65
+#>   precision       0.004   0.004
 #> 
 #> V13
-#>   mean           0.3211   0.235
-#>   std. dev.      0.1309  0.1448
-#>   weight sum         70      69
-#>   precision      0.0052  0.0052
+#>   mean           0.3153   0.215
+#>   std. dev.      0.1299  0.1207
+#>   weight sum         74      65
+#>   precision      0.0051  0.0051
 #> 
 #> V14
-#>   mean           0.3142  0.2771
-#>   std. dev.      0.1468  0.1701
-#>   weight sum         70      69
-#>   precision      0.0057  0.0057
-#> 
-#> V15
-#>   mean            0.331  0.3167
-#>   std. dev.      0.1856  0.2233
-#>   weight sum         70      69
-#>   precision      0.0073  0.0073
-#> 
-#> V16
-#>   mean           0.3839  0.3835
-#>   std. dev.      0.2073  0.2616
-#>   weight sum         70      69
-#>   precision      0.0073  0.0073
-#> 
-#> V17
-#>   mean           0.4203  0.4326
-#>   std. dev.      0.2474  0.3003
-#>   weight sum         70      69
+#>   mean           0.3261  0.2643
+#>   std. dev.      0.1644  0.1462
+#>   weight sum         74      65
 #>   precision      0.0072  0.0072
 #> 
+#> V15
+#>   mean            0.342   0.309
+#>   std. dev.      0.1986  0.1951
+#>   weight sum         74      65
+#>   precision      0.0068  0.0068
+#> 
+#> V16
+#>   mean           0.3905  0.3818
+#>   std. dev.      0.2156  0.2433
+#>   weight sum         74      65
+#>   precision       0.007   0.007
+#> 
+#> V17
+#>   mean           0.4217  0.4165
+#>   std. dev.      0.2398  0.2872
+#>   weight sum         74      65
+#>   precision      0.0071  0.0071
+#> 
 #> V18
-#>   mean           0.4595  0.4671
-#>   std. dev.      0.2689  0.2744
-#>   weight sum         70      69
-#>   precision      0.0069  0.0069
+#>   mean           0.4611  0.4453
+#>   std. dev.      0.2598  0.2749
+#>   weight sum         74      65
+#>   precision      0.0068  0.0068
 #> 
 #> V19
-#>   mean           0.5487  0.4757
-#>   std. dev.      0.2577  0.2528
-#>   weight sum         70      69
-#>   precision      0.0064  0.0064
+#>   mean           0.5411  0.4714
+#>   std. dev.      0.2555  0.2732
+#>   weight sum         74      65
+#>   precision      0.0069  0.0069
 #> 
 #> V2
-#>   mean           0.0484  0.0289
-#>   std. dev.      0.0345  0.0192
-#>   weight sum         70      69
-#>   precision      0.0012  0.0012
+#>   mean           0.0463  0.0304
+#>   std. dev.      0.0418  0.0256
+#>   weight sum         74      65
+#>   precision      0.0018  0.0018
 #> 
 #> V20
-#>   mean            0.632  0.4948
-#>   std. dev.      0.2428  0.2468
-#>   weight sum         70      69
+#>   mean           0.6136  0.5017
+#>   std. dev.      0.2627  0.2759
+#>   weight sum         74      65
 #>   precision      0.0069  0.0069
 #> 
 #> V21
-#>   mean           0.6897  0.5392
-#>   std. dev.      0.2311  0.2393
-#>   weight sum         70      69
-#>   precision      0.0071  0.0071
+#>   mean           0.6593  0.5545
+#>   std. dev.      0.2564  0.2585
+#>   weight sum         74      65
+#>   precision      0.0072  0.0072
 #> 
 #> V22
-#>   mean           0.6895  0.5683
-#>   std. dev.      0.2265   0.253
-#>   weight sum         70      69
+#>   mean           0.6613  0.5751
+#>   std. dev.      0.2466  0.2667
+#>   weight sum         74      65
 #>   precision      0.0072  0.0072
 #> 
 #> V23
-#>   mean           0.6805  0.6268
-#>   std. dev.       0.247  0.2271
-#>   weight sum         70      69
+#>   mean           0.6637  0.6147
+#>   std. dev.      0.2528  0.2424
+#>   weight sum         74      65
 #>   precision      0.0071  0.0071
 #> 
 #> V24
-#>   mean           0.6844  0.6638
-#>   std. dev.      0.2455  0.2252
-#>   weight sum         70      69
-#>   precision      0.0071  0.0071
+#>   mean            0.669  0.6641
+#>   std. dev.      0.2482  0.2279
+#>   weight sum         74      65
+#>   precision      0.0072  0.0072
 #> 
 #> V25
-#>   mean           0.6658  0.6712
-#>   std. dev.      0.2476  0.2572
-#>   weight sum         70      69
-#>   precision      0.0074  0.0074
+#>   mean           0.6598  0.6872
+#>   std. dev.      0.2454   0.239
+#>   weight sum         74      65
+#>   precision      0.0073  0.0073
 #> 
 #> V26
-#>   mean           0.6892  0.7012
-#>   std. dev.      0.2349  0.2315
-#>   weight sum         70      69
-#>   precision      0.0069  0.0069
+#>   mean           0.6814  0.7238
+#>   std. dev.       0.246  0.2221
+#>   weight sum         74      65
+#>   precision       0.007   0.007
 #> 
 #> V27
-#>   mean           0.6995  0.6991
-#>   std. dev.      0.2621  0.2021
-#>   weight sum         70      69
-#>   precision      0.0074  0.0074
+#>   mean            0.694  0.7085
+#>   std. dev.      0.2729  0.2044
+#>   weight sum         74      65
+#>   precision      0.0075  0.0075
 #> 
 #> V28
-#>   mean           0.7036  0.6785
-#>   std. dev.      0.2593  0.2044
-#>   weight sum         70      69
-#>   precision      0.0069  0.0069
-#> 
-#> V29
-#>   mean           0.6368  0.6331
-#>   std. dev.      0.2547  0.2418
-#>   weight sum         70      69
+#>   mean           0.7092  0.6733
+#>   std. dev.      0.2641  0.1951
+#>   weight sum         74      65
 #>   precision      0.0074  0.0074
 #> 
+#> V29
+#>   mean           0.6517  0.6155
+#>   std. dev.      0.2553  0.2378
+#>   weight sum         74      65
+#>   precision      0.0075  0.0075
+#> 
 #> V3
-#>   mean           0.0532  0.0366
-#>   std. dev.      0.0363  0.0266
-#>   weight sum         70      69
-#>   precision      0.0015  0.0015
+#>   mean           0.0519  0.0355
+#>   std. dev.      0.0498    0.03
+#>   weight sum         74      65
+#>   precision      0.0024  0.0024
 #> 
 #> V30
-#>   mean           0.5675   0.572
-#>   std. dev.      0.2208  0.2472
-#>   weight sum         70      69
-#>   precision      0.0071  0.0071
-#> 
-#> V31
-#>   mean           0.4614  0.5211
-#>   std. dev.      0.2179  0.2071
-#>   weight sum         70      69
-#>   precision      0.0066  0.0066
-#> 
-#> V32
-#>   mean           0.4082  0.4431
-#>   std. dev.      0.2003  0.2093
-#>   weight sum         70      69
-#>   precision      0.0064  0.0064
-#> 
-#> V33
-#>   mean           0.3933  0.4342
-#>   std. dev.      0.1864  0.2155
-#>   weight sum         70      69
-#>   precision      0.0067  0.0067
-#> 
-#> V34
-#>   mean           0.3775   0.427
-#>   std. dev.      0.1971   0.243
-#>   weight sum         70      69
+#>   mean           0.5913  0.5461
+#>   std. dev.      0.2242  0.2401
+#>   weight sum         74      65
 #>   precision      0.0068  0.0068
 #> 
+#> V31
+#>   mean           0.4944  0.5077
+#>   std. dev.      0.2284  0.2095
+#>   weight sum         74      65
+#>   precision      0.0063  0.0063
+#> 
+#> V32
+#>   mean           0.4352   0.435
+#>   std. dev.      0.2101  0.2256
+#>   weight sum         74      65
+#>   precision      0.0065  0.0065
+#> 
+#> V33
+#>   mean           0.3981  0.4039
+#>   std. dev.      0.1967  0.2222
+#>   weight sum         74      65
+#>   precision       0.007   0.007
+#> 
+#> V34
+#>   mean           0.3724  0.4067
+#>   std. dev.      0.2122  0.2528
+#>   weight sum         74      65
+#>   precision      0.0069  0.0069
+#> 
 #> V35
-#>   mean           0.3488  0.4255
-#>   std. dev.      0.2463  0.2549
-#>   weight sum         70      69
-#>   precision      0.0071  0.0071
+#>   mean           0.3547  0.4333
+#>   std. dev.       0.252  0.2618
+#>   weight sum         74      65
+#>   precision      0.0072  0.0072
 #> 
 #> V36
-#>   mean           0.3207  0.4313
-#>   std. dev.      0.2485   0.257
-#>   weight sum         70      69
+#>   mean           0.3368  0.4291
+#>   std. dev.      0.2598   0.265
+#>   weight sum         74      65
 #>   precision      0.0072  0.0072
 #> 
 #> V37
-#>   mean           0.3148  0.4106
-#>   std. dev.      0.2184  0.2357
-#>   weight sum         70      69
+#>   mean           0.3293   0.373
+#>   std. dev.      0.2366  0.2395
+#>   weight sum         74      65
 #>   precision      0.0067  0.0067
 #> 
 #> V38
-#>   mean           0.3369  0.3546
-#>   std. dev.      0.2019   0.229
-#>   weight sum         70      69
-#>   precision      0.0069  0.0069
-#> 
-#> V39
-#>   mean           0.3403  0.3116
-#>   std. dev.      0.1812   0.225
-#>   weight sum         70      69
+#>   mean           0.3349  0.3179
+#>   std. dev.      0.2067  0.2126
+#>   weight sum         74      65
 #>   precision      0.0071  0.0071
 #> 
+#> V39
+#>   mean           0.3251    0.31
+#>   std. dev.      0.1733  0.2144
+#>   weight sum         74      65
+#>   precision      0.0069  0.0069
+#> 
 #> V4
-#>   mean           0.0629  0.0404
-#>   std. dev.      0.0427    0.03
-#>   weight sum         70      69
-#>   precision       0.002   0.002
+#>   mean           0.0717  0.0426
+#>   std. dev.      0.0614  0.0325
+#>   weight sum         74      65
+#>   precision      0.0034  0.0034
 #> 
 #> V40
-#>   mean           0.3019  0.3122
-#>   std. dev.      0.1538  0.2052
-#>   weight sum         70      69
+#>   mean           0.2978  0.3102
+#>   std. dev.      0.1602  0.2002
+#>   weight sum         74      65
 #>   precision      0.0066  0.0066
 #> 
 #> V41
-#>   mean             0.29  0.2867
-#>   std. dev.      0.1592  0.1959
-#>   weight sum         70      69
-#>   precision      0.0063  0.0063
+#>   mean           0.3082  0.2703
+#>   std. dev.      0.1746  0.1582
+#>   weight sum         74      65
+#>   precision      0.0054  0.0054
 #> 
 #> V42
-#>   mean           0.3081  0.2637
-#>   std. dev.      0.1731  0.1802
-#>   weight sum         70      69
-#>   precision      0.0058  0.0058
+#>   mean           0.3219  0.2352
+#>   std. dev.       0.179  0.1444
+#>   weight sum         74      65
+#>   precision      0.0059  0.0059
 #> 
 #> V43
-#>   mean           0.2891  0.2212
-#>   std. dev.      0.1456  0.1401
-#>   weight sum         70      69
-#>   precision      0.0056  0.0056
+#>   mean           0.2923  0.2069
+#>   std. dev.       0.149  0.1217
+#>   weight sum         74      65
+#>   precision      0.0054  0.0054
 #> 
 #> V44
-#>   mean           0.2454  0.1777
-#>   std. dev.       0.139  0.1161
-#>   weight sum         70      69
-#>   precision      0.0058  0.0058
+#>   mean           0.2525  0.1749
+#>   std. dev.      0.1494  0.1078
+#>   weight sum         74      65
+#>   precision      0.0057  0.0057
 #> 
 #> V45
-#>   mean           0.2377  0.1483
-#>   std. dev.      0.1726  0.1057
-#>   weight sum         70      69
+#>   mean           0.2494  0.1356
+#>   std. dev.      0.1739  0.0907
+#>   weight sum         74      65
 #>   precision      0.0051  0.0051
 #> 
 #> V46
-#>   mean           0.1946  0.1208
-#>   std. dev.       0.155  0.1042
-#>   weight sum         70      69
-#>   precision      0.0055  0.0055
+#>   mean           0.2009  0.1055
+#>   std. dev.      0.1567  0.0784
+#>   weight sum         74      65
+#>   precision      0.0054  0.0054
 #> 
 #> V47
-#>   mean           0.1415  0.0984
-#>   std. dev.      0.0981  0.0745
-#>   weight sum         70      69
-#>   precision      0.0042  0.0042
+#>   mean           0.1469  0.0902
+#>   std. dev.      0.0972  0.0561
+#>   weight sum         74      65
+#>   precision       0.004   0.004
 #> 
 #> V48
-#>   mean           0.1057  0.0719
-#>   std. dev.      0.0677  0.0507
-#>   weight sum         70      69
+#>   mean           0.1122  0.0654
+#>   std. dev.      0.0662  0.0402
+#>   weight sum         74      65
 #>   precision      0.0024  0.0024
 #> 
 #> V49
-#>   mean           0.0626  0.0381
-#>   std. dev.      0.0367  0.0312
-#>   weight sum         70      69
-#>   precision      0.0015  0.0015
+#>   mean           0.0649  0.0365
+#>   std. dev.      0.0372  0.0247
+#>   weight sum         74      65
+#>   precision      0.0013  0.0013
 #> 
 #> V5
-#>   mean           0.0865  0.0609
-#>   std. dev.      0.0532  0.0462
-#>   weight sum         70      69
-#>   precision      0.0024  0.0024
+#>   mean           0.0939  0.0632
+#>   std. dev.      0.0623  0.0507
+#>   weight sum         74      65
+#>   precision       0.003   0.003
 #> 
 #> V50
-#>   mean           0.0219  0.0175
-#>   std. dev.      0.0138  0.0124
-#>   weight sum         70      69
+#>   mean           0.0229  0.0173
+#>   std. dev.       0.014  0.0106
+#>   weight sum         74      65
 #>   precision      0.0007  0.0007
 #> 
 #> V51
-#>   mean           0.0198  0.0121
-#>   std. dev.      0.0155  0.0093
-#>   weight sum         70      69
+#>   mean           0.0201  0.0115
+#>   std. dev.      0.0153   0.007
+#>   weight sum         74      65
 #>   precision      0.0009  0.0009
 #> 
 #> V52
-#>   mean           0.0159  0.0107
-#>   std. dev.      0.0117  0.0077
-#>   weight sum         70      69
-#>   precision      0.0007  0.0007
+#>   mean           0.0179  0.0107
+#>   std. dev.       0.012  0.0061
+#>   weight sum         74      65
+#>   precision      0.0006  0.0006
 #> 
 #> V53
-#>   mean           0.0115  0.0097
-#>   std. dev.       0.007  0.0058
-#>   weight sum         70      69
-#>   precision      0.0003  0.0003
+#>   mean           0.0128  0.0099
+#>   std. dev.      0.0077  0.0066
+#>   weight sum         74      65
+#>   precision      0.0004  0.0004
 #> 
 #> V54
-#>   mean           0.0128  0.0092
-#>   std. dev.      0.0085  0.0046
-#>   weight sum         70      69
+#>   mean           0.0121  0.0096
+#>   std. dev.      0.0079  0.0053
+#>   weight sum         74      65
 #>   precision      0.0003  0.0003
 #> 
 #> V55
-#>   mean           0.0093  0.0084
-#>   std. dev.      0.0067  0.0049
-#>   weight sum         70      69
-#>   precision      0.0003  0.0003
-#> 
-#> V56
-#>   mean           0.0088  0.0077
-#>   std. dev.      0.0056  0.0052
-#>   weight sum         70      69
+#>   mean           0.0098  0.0087
+#>   std. dev.      0.0076  0.0051
+#>   weight sum         74      65
 #>   precision      0.0004  0.0004
 #> 
-#> V57
-#>   mean           0.0075  0.0077
-#>   std. dev.      0.0055  0.0059
-#>   weight sum         70      69
+#> V56
+#>   mean           0.0088  0.0073
+#>   std. dev.      0.0062  0.0044
+#>   weight sum         74      65
 #>   precision      0.0003  0.0003
+#> 
+#> V57
+#>   mean           0.0078  0.0072
+#>   std. dev.      0.0053   0.005
+#>   weight sum         74      65
+#>   precision      0.0002  0.0002
 #> 
 #> V58
-#>   mean           0.0084  0.0061
-#>   std. dev.      0.0058  0.0047
-#>   weight sum         70      69
-#>   precision      0.0003  0.0003
+#>   mean            0.009  0.0066
+#>   std. dev.      0.0071  0.0049
+#>   weight sum         74      65
+#>   precision      0.0004  0.0004
 #> 
 #> V59
-#>   mean           0.0088  0.0067
-#>   std. dev.      0.0064  0.0045
-#>   weight sum         70      69
+#>   mean           0.0087  0.0073
+#>   std. dev.      0.0063   0.005
+#>   weight sum         74      65
 #>   precision      0.0004  0.0004
 #> 
 #> V6
-#>   mean           0.1142  0.0939
-#>   std. dev.      0.0528  0.0559
-#>   weight sum         70      69
-#>   precision      0.0019  0.0019
+#>   mean           0.1176  0.0925
+#>   std. dev.      0.0548  0.0665
+#>   weight sum         74      65
+#>   precision      0.0028  0.0028
 #> 
 #> V60
-#>   mean           0.0072   0.006
-#>   std. dev.      0.0062  0.0038
-#>   weight sum         70      69
+#>   mean           0.0069  0.0061
+#>   std. dev.      0.0065  0.0037
+#>   weight sum         74      65
 #>   precision      0.0005  0.0005
 #> 
 #> V7
-#>   mean           0.1295   0.113
-#>   std. dev.      0.0586  0.0563
-#>   weight sum         70      69
-#>   precision      0.0024  0.0024
+#>   mean           0.1324  0.1108
+#>   std. dev.      0.0582  0.0633
+#>   weight sum         74      65
+#>   precision      0.0028  0.0028
 #> 
 #> V8
-#>   mean           0.1591  0.1214
-#>   std. dev.       0.089  0.0805
-#>   weight sum         70      69
+#>   mean           0.1495  0.1098
+#>   std. dev.      0.0901  0.0696
+#>   weight sum         74      65
 #>   precision      0.0034  0.0034
 #> 
 #> V9
-#>   mean           0.2166  0.1442
-#>   std. dev.      0.1275  0.1026
-#>   weight sum         70      69
-#>   precision       0.005   0.005
+#>   mean           0.2079  0.1235
+#>   std. dev.       0.129  0.0823
+#>   weight sum         74      65
+#>   precision      0.0049  0.0049
 #> 
 #> 
 
@@ -602,5 +602,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.3768116 
 ```

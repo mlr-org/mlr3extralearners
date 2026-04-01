@@ -2,6 +2,8 @@
 
 ## mlr3extralearners (development version)
 
+## mlr3extralearners 1.5.0
+
 ### New Features
 
 - New Learners:
@@ -20,6 +22,12 @@
   - `LearnerRegrH2OGBM`
   - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
+
+### Enhancements
+
+- Added kernel and input/output transformation parameters to
+  `LearnerRegrBotorchSingleTaskGP` and
+  `LearnerRegrBotorchMixedSingleTaskGP`
 
 ### Other
 
