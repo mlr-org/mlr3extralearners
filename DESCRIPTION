@@ -139,7 +139,7 @@ Suggests:
     survdistr (>= 0.0.2),
     survdnn (>= 0.7.5),
     survival,
-    survivalmodels_mlr3 (>= 0.1.19),
+    survivalmodelsmlr3 (>= 0.1.19),
     survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
     testthat,
@@ -154,7 +154,7 @@ Remotes:
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
     mlr-org/survdistr,
-    mlr-org/survivalmodels_mlr3
+    mlr-org/survivalmodelsmlr3
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false

@@ -4,18 +4,18 @@
 #'
 #' @description
 #' Survival akritas estimator.
-#' Calls `survivalmodels_mlr3::akritas()` from package 'survivalmodels_mlr3'.
+#' Calls `survivalmodelsmlr3::akritas()` from package 'survivalmodelsmlr3'.
 #'
 #' @section Prediction types:
 #' This learner returns two prediction types:
 #' 1. `distr`: a survival matrix in two dimensions, where observations are
 #' represented in rows and time points in columns.
-#' Calculated using the internal `survivalmodels_mlr3::predict.akritas()` function.
+#' Calculated using the internal `survivalmodelsmlr3::predict.akritas()` function.
 #' The survival matrix uses the unique time points from the training set.
 #' We advise to set the parameter `ntime` which allows to adjust the granularity
 #' of these time points to a reasonable number (e.g. `150`).
 #' This avoids large execution times during prediction.
-#' 2. `crank`: the expected mortality using `survivalmodels_mlr3::surv_to_risk()`.
+#' 2. `crank`: the expected mortality using `survivalmodelsmlr3::surv_to_risk()`.
 #'
 #' @template learner
 #' @templateVar id surv.akritas
@@ -46,7 +46,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
         feature_types = c("logical", "integer", "character", "numeric", "factor"),
         predict_types = c("crank", "distr"),
         param_set = ps,
-        packages = c("mlr3extralearners", "survivalmodels_mlr3"),
+        packages = c("mlr3extralearners", "survivalmodelsmlr3"),
         man = "mlr3extralearners::mlr_learners_surv.akritas",
         label = "Akritas Estimator"
       )
@@ -57,7 +57,7 @@ LearnerSurvAkritas = R6Class("LearnerSurvAkritas",
     .train = function(task) {
       pv = self$param_set$get_values(tags = "train")
       invoke(
-        survivalmodels_mlr3::akritas,
+        survivalmodelsmlr3::akritas,
         data = data.table::setDF(task$data()),
         time_variable = task$target_names[1L],
         status_variable = task$target_names[2L],

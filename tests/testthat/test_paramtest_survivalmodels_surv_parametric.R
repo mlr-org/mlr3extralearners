@@ -1,10 +1,10 @@
 skip_if_not_installed("mlr3proba")
 skip_if_not_installed("survival")
-skip_if_not_installed("survivalmodels_mlr3")
+skip_if_not_installed("survivalmodelsmlr3")
 
 test_that("paramtest surv.parametric train", {
   learner = lrn("surv.parametric")
-  fun = list(survivalmodels_mlr3::parametric, survival::survreg)
+  fun = list(survivalmodelsmlr3::parametric, survival::survreg)
   exclude = c(
     "maxiter", # control parameter
     "rel.tolerance", # control parameter
@@ -31,7 +31,7 @@ test_that("paramtest surv.parametric train", {
 
 test_that("paramtest surv.parametric predict", {
   learner = lrn("surv.parametric")
-  fun = survivalmodels_mlr3:::predict.parametric
+  fun = survivalmodelsmlr3:::predict.parametric
   exclude = c(
     "object", # handled internally
     "newdata", # handled internally
