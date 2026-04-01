@@ -247,5 +247,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8579019 
+#>   0.8555362 
 ```

@@ -17,7 +17,7 @@ Calls rFerns::rFerns() from rFerns."><meta name="robots" content="noindex"></hea
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -229,32 +229,32 @@ turns importance calculation off. To enable importance calculation by default,
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  Forest of 1000 ferns of a depth 5.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  OOB error 18.71%; OOB confusion matrix:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  OOB error 16.55%; OOB confusion matrix:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          True</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Predicted  M  R</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         M 60 15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         R 11 53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         M 62 13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         R 10 54</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V10          V11          V12           V9          V37          V49 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.113255202  0.112310967  0.105428505  0.068244879  0.067715471  0.065923056 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V36          V48          V47          V44          V46          V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.058520319  0.053149010  0.050187250  0.048227984  0.042348838  0.040412228 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V21          V52          V31          V13          V29          V19 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.038063255  0.036104240  0.034970683  0.034162877  0.033955634  0.031335596 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V43          V17          V45          V20          V15          V28 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.029808831  0.029250435  0.028717673  0.028222986  0.027394374  0.026029111 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V5          V22           V8          V14          V27          V23 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.024068594  0.023695001  0.022340607  0.022032230  0.021224133  0.021126641 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V1          V50          V39          V35          V58          V38 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.019798467  0.019370298  0.019274802  0.018774913  0.018274784  0.018064097 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V4          V16          V34          V18          V33           V2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.017474495  0.017041658  0.016593755  0.016127467  0.015511480  0.014130509 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V24          V41          V59          V26           V6          V40 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.010855675  0.010694704  0.009784999  0.009154485  0.009133250  0.008800203 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V32          V25          V55           V3          V30          V42 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.008406991  0.007138614  0.006678023  0.006448302  0.006351193  0.006102429 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V53          V54           V7          V57          V56          V60 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.003932648  0.002964572  0.002876534  0.001818745  0.001402890 -0.003790044 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V48           V9          V12          V47          V49 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.146663149  0.105218189  0.103248150  0.098556437  0.084660222  0.082707599 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V10          V35          V36          V21          V37          V46 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.065980303  0.064586939  0.059072937  0.054806533  0.051333641  0.050037710 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V13           V4          V34          V20          V51          V33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.048691126  0.048519796  0.042443731  0.035230142  0.034399139  0.033456525 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V18          V14          V28          V23          V52          V27 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.032496851  0.032234397  0.032198122  0.030929050  0.030907010  0.028370486 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V15          V45          V44          V19          V29           V1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.027835364  0.027476281  0.026898535  0.026079354  0.024300063  0.023673249 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V16          V59          V26          V58          V30           V2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.023339225  0.022586752  0.022365897  0.021594964  0.021439993  0.020915333 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V32          V31           V7          V17          V43           V8 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.020796913  0.020306200  0.018646720  0.017817548  0.016887409  0.016636053 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V22          V55          V53          V56          V42           V5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.015901827  0.013946486  0.013338284  0.012907806  0.012176474  0.011887784 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V39           V6          V41          V57           V3          V38 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.010743926  0.010693534  0.010653950  0.010625423  0.010488050  0.006660500 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V54          V40          V24          V25          V60          V50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.004211206  0.002394743  0.001783369  0.001248658 -0.001487213 -0.003087216 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -262,7 +262,7 @@ turns importance calculation off. To enable importance calculation by default,
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1304348 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -235,33 +235,46 @@ print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
 #> 
-#> cyl <= 5 : 
-#> |   disp <= 107.6 : LM1 (4/12.227%)
-#> |   disp >  107.6 : LM2 (4/5.823%)
-#> cyl >  5 : LM3 (13/22.402%)
+#> wt <= 3.45 : 
+#> |   disp <= 101.55 : LM1 (3/22.297%)
+#> |   disp >  101.55 : 
+#> |   |   hp <= 116.5 : LM2 (6/6.139%)
+#> |   |   hp >  116.5 : LM3 (2/3.888%)
+#> wt >  3.45 : LM4 (10/17.026%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  -1.1541 * cyl 
-#>  - 0.0411 * disp 
-#>  + 0.0794 * qsec 
-#>  - 2.1706 * wt 
-#>  + 39.8212
+#>  -0.0193 * disp 
+#>  + 2.1767 * drat 
+#>  - 0.0423 * hp 
+#>  - 1.6197 * wt 
+#>  + 27.9825
 #> 
 #> LM num: 2
 #> mpg = 
-#>  -1.1541 * cyl 
-#>  - 0.0339 * disp 
-#>  - 2.1706 * wt 
-#>  + 39.6793
+#>  -0.0151 * disp 
+#>  + 2.1767 * drat 
+#>  - 0.0448 * hp 
+#>  - 1.6197 * wt 
+#>  + 26.7363
 #> 
 #> LM num: 3
 #> mpg = 
-#>  -1.6568 * cyl 
-#>  - 2.6314 * wt 
-#>  + 38.1706
+#>  -0.0151 * disp 
+#>  + 2.1767 * drat 
+#>  - 0.043 * hp 
+#>  - 1.6197 * wt 
+#>  + 26.518
 #> 
-#> Number of Rules : 3
+#> LM num: 4
+#> mpg = 
+#>  -0.0101 * disp 
+#>  + 2.2638 * drat 
+#>  - 0.0198 * hp 
+#>  - 1.6845 * wt 
+#>  + 21.8254
+#> 
+#> Number of Rules : 4
 
 
 # Make predictions for the test rows
@@ -270,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.437533 
+#> 7.298027 
 ```
