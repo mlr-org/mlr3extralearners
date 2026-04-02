@@ -65,7 +65,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 }
 
 \examples{
-\dontshow{if (learner_is_runnable("surv.survdnn")) withAutoprint(\{ # examplesIf}
+\dontshow{if (learner_is_runnable("surv.survdnn") && torch::torch_is_installed()) withAutoprint(\{ # examplesIf}
 
 # Define the Learner
 learner = lrn("surv.survdnn", epochs = 42L, loss = "cox")
