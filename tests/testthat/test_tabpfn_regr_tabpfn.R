@@ -6,6 +6,11 @@ skip_if(
   message = "Hugging Face token not available (required for gated TabPFN models)"
 )
 
+skip_if(
+  Sys.getenv("TABPFN_TOKEN") == "",
+  message = "TabPFN token not available (required for gated TabPFN models)"
+)
+
 test_that("autotest", {
   expect_true(callr::r(function() {
     Sys.setenv(RETICULATE_PYTHON = "managed")
