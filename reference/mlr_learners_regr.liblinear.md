@@ -78,7 +78,7 @@ Chih-Jen (2008). “LIBLINEAR: A library for large linear classification.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -188,10 +188,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>              am       carb       cyl       disp      drat      gear          hp
-#> [1,] 0.06306303 0.01735457 0.1599132 -0.0306682 0.2739086 0.2776042 0.002569019
-#>          qsec        vs        wt       Bias
-#> [1,] 1.269451 0.0701445 0.0978603 0.06328185
+#>              am       carb       cyl      disp      drat      gear          hp
+#> [1,] 0.06701041 0.01939247 0.1808837 -0.038547 0.2852935 0.2742294 0.004787944
+#>          qsec         vs         wt       Bias
+#> [1,] 1.345519 0.08536856 0.09867816 0.06491676
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +209,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 21.23686 
+#> 16.82083 
 ```

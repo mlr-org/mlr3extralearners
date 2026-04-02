@@ -65,7 +65,7 @@ statistics & data analysis*, **38**(4), 367–378.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 39 had non-zero influence.
+#> There were 60 predictors of which 38 had non-zero influence.
 print(learner$importance())
-#>        V12        V45        V36        V11        V10        V49        V37 
-#> 18.8083059 14.3641740 13.8029196 12.4145951  6.2907369  6.1439058  5.7995613 
-#>        V48        V51         V9        V21         V5        V52        V16 
-#>  4.4694774  3.9378686  3.9107501  3.7575231  3.0141948  2.8193802  2.6295906 
-#>        V13        V28        V55        V32        V27         V6        V31 
-#>  2.3777362  2.0285431  1.9020727  1.7105729  1.5544360  1.4185809  1.4170830 
-#>         V4         V8        V33        V24        V50        V39        V20 
-#>  1.4014616  1.3572801  1.3087983  1.2463961  0.9086610  0.8831198  0.6853713 
-#>        V25        V54         V3        V26        V17        V59        V43 
-#>  0.6714648  0.6524551  0.6344116  0.5917677  0.5796446  0.4814134  0.4642830 
-#>        V56        V47        V38        V35         V1        V14        V15 
-#>  0.4322278  0.4273952  0.3844261  0.2991762  0.0000000  0.0000000  0.0000000 
-#>        V18        V19         V2        V22        V23        V29        V30 
+#>        V12        V11        V21        V37        V45        V51        V13 
+#> 15.4213334 13.7560909 11.1972723  9.3236872  9.0913517  7.3010539  6.0952972 
+#>        V36        V16        V28        V49        V55        V43        V24 
+#>  4.9110455  3.9757329  3.7540215  3.7088220  3.5464662  3.5373948  3.2387453 
+#>        V31        V48         V1        V47        V59        V10         V2 
+#>  2.6388034  2.5860040  2.5588652  2.0597332  1.8459367  1.7357157  1.6812807 
+#>        V27        V60        V54        V14         V3        V40        V57 
+#>  1.6189202  1.5917895  1.5528769  1.5479993  1.3928646  1.1204343  1.0768007 
+#>        V23         V9        V42         V4        V39        V56        V38 
+#>  1.0173720  0.9942080  0.9370682  0.8519200  0.7981823  0.5570575  0.5416048 
+#>        V30         V6        V15        V17        V18        V19        V20 
+#>  0.4384221  0.4027480  0.3525819  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V22        V25        V26        V29        V32        V33        V34 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V34        V40        V41        V42        V44        V46        V53 
+#>        V35        V41        V44        V46         V5        V50        V52 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V57        V58        V60         V7 
+#>        V53        V58         V7         V8 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows

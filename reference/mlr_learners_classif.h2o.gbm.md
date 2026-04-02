@@ -89,7 +89,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -196,52 +196,52 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: gbm
-#> Model ID:  GBM_model_R_1775044617067_4 
+#> Model ID:  GBM_model_R_1775124662382_4 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50                9470         4
+#> 1              50                       50                9310         4
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         5    4.96000          8         12    10.40000
+#> 1         5    4.96000          6         12    10.20000
 #> 
 #> 
 #> H2OBinomialMetrics: gbm
 #> ** Reported on training data. **
 #> 
-#> MSE:  0.0008182408
-#> RMSE:  0.02860491
-#> LogLoss:  0.0248504
+#> MSE:  0.0009110435
+#> RMSE:  0.0301835
+#> LogLoss:  0.02598935
 #> Mean Per-Class Error:  0
 #> AUC:  1
 #> AUCPR:  1
 #> Gini:  1
-#> R^2:  0.9967133
+#> R^2:  0.9963237
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error    Rate
-#> M      74  0 0.000000   =0/74
-#> R       0 65 0.000000   =0/65
-#> Totals 74 65 0.000000  =0/139
+#> M      76  0 0.000000   =0/76
+#> R       0 63 0.000000   =0/63
+#> Totals 76 63 0.000000  =0/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.912777  1.000000  64
-#> 2                       max f2  0.912777  1.000000  64
-#> 3                 max f0point5  0.912777  1.000000  64
-#> 4                 max accuracy  0.912777  1.000000  64
-#> 5                max precision  0.993026  1.000000   0
-#> 6                   max recall  0.912777  1.000000  64
-#> 7              max specificity  0.993026  1.000000   0
-#> 8             max absolute_mcc  0.912777  1.000000  64
-#> 9   max min_per_class_accuracy  0.912777  1.000000  64
-#> 10 max mean_per_class_accuracy  0.912777  1.000000  64
-#> 11                     max tns  0.993026 74.000000   0
-#> 12                     max fns  0.993026 64.000000   0
-#> 13                     max fps  0.006072 74.000000 138
-#> 14                     max tps  0.912777 65.000000  64
-#> 15                     max tnr  0.993026  1.000000   0
-#> 16                     max fnr  0.993026  0.984615   0
-#> 17                     max fpr  0.006072  1.000000 138
-#> 18                     max tpr  0.912777  1.000000  64
+#> 1                       max f1  0.925359  1.000000  62
+#> 2                       max f2  0.925359  1.000000  62
+#> 3                 max f0point5  0.925359  1.000000  62
+#> 4                 max accuracy  0.925359  1.000000  62
+#> 5                max precision  0.990692  1.000000   0
+#> 6                   max recall  0.925359  1.000000  62
+#> 7              max specificity  0.990692  1.000000   0
+#> 8             max absolute_mcc  0.925359  1.000000  62
+#> 9   max min_per_class_accuracy  0.925359  1.000000  62
+#> 10 max mean_per_class_accuracy  0.925359  1.000000  62
+#> 11                     max tns  0.990692 76.000000   0
+#> 12                     max fns  0.990692 62.000000   0
+#> 13                     max fps  0.004994 76.000000 138
+#> 14                     max tps  0.925359 63.000000  62
+#> 15                     max tnr  0.990692  1.000000   0
+#> 16                     max fnr  0.990692  0.984127   0
+#> 17                     max fpr  0.004994  1.000000 138
+#> 18                     max tpr  0.925359  1.000000  62
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -254,5 +254,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.3188406 
 ```

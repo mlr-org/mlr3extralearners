@@ -117,7 +117,7 @@ not needed for downstream use or not reliable for performance estimation.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -218,10 +218,10 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       cyl        hp        am      carb      disp        wt      gear      drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  8.436249  6.897333  4.099447  3.878971  2.712551  2.402760  2.173337  1.756838 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        vs      qsec </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  1.210514 -0.201243 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          wt        disp         cyl          hp        carb          am </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.25189112  7.85981970  5.88462074  4.39405366  2.57993390  1.36786709 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        qsec          vs        drat        gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.96024174  0.09798470  0.01067883 -0.05623494 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -229,18 +229,18 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">11</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 19.79239</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        4  21.4 19.67919</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        5  18.7 16.96869</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        1  21.0 20.22020</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        3  22.8 28.00290</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        4  21.4 19.37223</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       23  15.2 17.18986</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       28  30.4 24.52918</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 24.39768</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       20  33.9 28.71798</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       22  15.5 17.98838</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       23  15.2 18.45964</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8.440806 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.507371 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

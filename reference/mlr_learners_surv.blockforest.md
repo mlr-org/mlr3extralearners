@@ -88,7 +88,7 @@ blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -207,25 +207,25 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#> revascdays     revasc        age   stchange        los      sysbp 
-#> 0.13095595 0.06396289 0.02747254 0.01881307 0.01370247 0.01126585 
+#>  revascdays      revasc         age         los       sysbp    stchange 
+#> 0.127708458 0.058587338 0.036277448 0.016692591 0.006764935 0.005892653 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
 pred
 #> 
 #> ── <PredictionSurv> for 330 observations: ──────────────────────────────────────
-#>  row_ids time status    crank     distr
-#>       10  180  FALSE 14.62531 <list[1]>
-#>       11  115   TRUE 44.48967 <list[1]>
-#>       14   12   TRUE 19.36271 <list[1]>
-#>      ---  ---    ---      ---       ---
-#>      989   67   TRUE 68.33172 <list[1]>
-#>      991    8   TRUE 73.48324 <list[1]>
-#>      998  180  FALSE 38.17182 <list[1]>
+#>  row_ids  time status     crank     distr
+#>        1 180.0  FALSE  9.492406 <list[1]>
+#>        3   2.0  FALSE 45.833130 <list[1]>
+#>       13 180.0  FALSE 35.299354 <list[1]>
+#>      ---   ---    ---       ---       ---
+#>      994   7.0  FALSE 92.239425 <list[1]>
+#>      995   0.5   TRUE 91.253231 <list[1]>
+#>      998 180.0  FALSE 21.126268 <list[1]>
 
 # Score the predictions
 pred$score()
 #> surv.cindex 
-#>   0.8413351 
+#>   0.8602308 
 ```

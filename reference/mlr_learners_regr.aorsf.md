@@ -82,7 +82,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -225,7 +225,7 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.248
+#>  Average leaves per tree: 3.254
 #> Min observations in leaf: 5
 #>           OOB stat value: 0.70
 #>            OOB stat type: RSQ
@@ -233,10 +233,10 @@ print(learner$model)
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>       disp         wt        cyl         hp       drat       carb         vs 
-#> 0.15197568 0.10133333 0.07720588 0.05958549 0.03636364 0.03403141 0.03112840 
-#>       qsec       gear         am 
-#> 0.02879581 0.01533742 0.01461988 
+#>         wt         hp       disp        cyl       carb       gear       qsec 
+#> 0.45910290 0.17464789 0.13483146 0.12979351 0.11475410 0.08940397 0.04871060 
+#>         am         vs       drat 
+#> 0.03389831 0.02875399 0.01149425 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.93626 
+#> 19.78092 
 ```

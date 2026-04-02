@@ -82,7 +82,7 @@ Machine Learning*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -235,22 +235,33 @@ print(learner$model)
 #> M5 pruned model tree:
 #> (using smoothed linear models)
 #> 
-#> cyl <= 5 : LM1 (8/40.822%)
-#> cyl >  5 : LM2 (13/27.766%)
+#> wt <= 3.325 : 
+#> |   disp <= 101.55 : LM1 (4/38.86%)
+#> |   disp >  101.55 : LM2 (8/8.967%)
+#> wt >  3.325 : LM3 (9/9.464%)
 #> 
 #> LM num: 1
 #> mpg = 
-#>  -1.8098 * cyl 
-#>  - 0.0447 * disp 
-#>  + 39.0286
+#>  -0.0167 * disp 
+#>  - 0.0472 * hp 
+#>  - 2.2395 * wt 
+#>  + 37.675
 #> 
 #> LM num: 2
 #> mpg = 
-#>  -1.4866 * cyl 
-#>  - 0.0165 * hp 
-#>  + 31.3569
+#>  -0.0138 * disp 
+#>  - 0.0496 * hp 
+#>  - 2.2395 * wt 
+#>  + 36.564
 #> 
-#> Number of Rules : 2
+#> LM num: 3
+#> mpg = 
+#>  -0.0115 * disp 
+#>  - 0.0286 * hp 
+#>  - 2.5194 * wt 
+#>  + 33.7691
+#> 
+#> Number of Rules : 3
 
 
 # Make predictions for the test rows
@@ -259,5 +270,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.31501 
+#>  9.47577 
 ```

@@ -108,7 +108,7 @@ Conference on Machine Learning*, 174–189.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -267,10 +267,10 @@ print(learner$model)
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 47
-#>  Merit of best subset found:    2.288
+#>  Total number of subsets evaluated: 57
+#>  Merit of best subset found:    3.018
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 4,5,1
+#> Feature set: 5,10,1
 
 
 # Make predictions for the test rows
@@ -279,5 +279,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 17.34758 
+#> 7.081807 
 ```

@@ -160,7 +160,7 @@ arXiv:1810.11363*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -303,10 +303,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>       cyl        wt      carb      disp        am      drat      qsec        hp 
-#> 15.662423 14.159016 11.590719 11.209926 11.202284 10.978143  7.561622  6.886308 
-#>      gear        vs 
-#>  6.658645  4.090914 
+#>      carb       cyl        hp      disp        wt      qsec      gear      drat 
+#> 21.305349 17.976997 12.749846 11.116498 10.358956  7.594620  7.348398  5.163859 
+#>        vs        am 
+#>  3.504680  2.880797 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +314,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.371363 
+#> 11.36434 
 ```

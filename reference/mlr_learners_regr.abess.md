@@ -75,7 +75,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -198,16 +198,16 @@ print(learner$model)
 #> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), 
 #>     num.threads = 1L)
 #> 
-#>   support.size       dev      GIC
-#> 1            0 12.409342 52.88744
-#> 2            1  3.264832 27.41094
-#> 3            2  2.243281 22.09387
-#> 4            3  2.050463 22.77009
-#> 5            4  1.880302 23.51435
-#> 6            5  1.866644 25.92483
-#> 7            6  1.814258 27.89063
-#> 8            7  1.763852 29.86248
-#> 9            8  1.709881 31.77345
+#>   support.size        dev       GIC
+#> 1            0 13.0700000 53.976710
+#> 2            1  2.6370364 22.926339
+#> 3            2  1.3858447 11.979645
+#> 4            3  1.1072917  9.830967
+#> 5            4  0.9706900  9.629566
+#> 6            5  0.9106410 10.852109
+#> 7            6  0.9009749 13.191580
+#> 8            7  0.8853558 15.387906
+#> 9            8  0.8656407 17.478564
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  9.94234 
+#> 13.78011 
 ```

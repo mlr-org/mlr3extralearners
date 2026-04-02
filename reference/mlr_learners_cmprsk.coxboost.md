@@ -102,7 +102,7 @@ risks.” *Bioinformatics*, **25**(7), 890–896.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -240,14 +240,14 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #> cause '1':
-#> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -51.29482 
+#> 10 boosting steps resulting in 3 non-zero coefficients  
+#> partial log-likelihood: -53.10814 
 #> 
 #> cause '2':
 #> 10 boosting steps resulting in 6 non-zero coefficients  
-#> partial log-likelihood: -296.2869 
+#> partial log-likelihood: -279.6032 
 print(learner$selected_features(cause = 1)) # for cause = 1
-#> [1] "age"  "chol"
+#> [1] "age"      "copper"   "alk.phos"
 print(learner$selected_features(cause = 2)) # for cause = 2
 #> [1] "age"      "copper"   "platelet" "albumin"  "bili"     "protime" 
 
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.8477312 
+#>  0.8028103 
 ```

@@ -86,7 +86,7 @@ logistic regression*, volume 398. John Wiley & Sons.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -213,13 +213,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>    16.66463      1.40659      0.12109      0.14931      0.01465     -0.74324  
+#>     8.01731      3.14520     -3.22006     -0.16583     -0.01072      2.02188  
 #>        gear           hp         qsec           vs           wt  
-#>     1.31511     -0.02631      0.90828      0.02848     -5.21589  
+#>     4.39253      0.01563     -0.42622      1.26480      1.71033  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       665.5 
-#> Residual Deviance: 67.92     AIC: 108.2
+#> Null Deviance:       645.7 
+#> Residual Deviance: 34.65     AIC: 94.11
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.627368 
+#> 28.04499 
 ```

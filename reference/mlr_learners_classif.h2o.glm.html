@@ -100,7 +100,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -193,72 +193,72 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialModel: glm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1775044617067_56 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1775124662382_56 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM Model: summary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     family  link                               regularization</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.04603 )</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 binomial logit Elastic Net (alpha = 0.5, lambda = 0.05041 )</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number_of_predictors_total number_of_active_predictors number_of_iterations</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         60                          25                    7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         60                          27                    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     training_frame</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_bc88_11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_87a2_11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: glm coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       names coefficients standardized_coefficients</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Intercept     2.875752                 -0.184175</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2        V1   -10.358211                 -0.256991</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Intercept     3.206199                 -0.383084</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        V1    -7.723798                 -0.196824</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 3       V10     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4       V11    -3.843714                 -0.497269</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5       V12    -1.538212                 -0.218343</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4       V11    -4.823268                 -0.645511</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       V12    -1.830391                 -0.247629</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ---</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    names coefficients standardized_coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 56   V59     0.000000                  0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 57    V6     0.000000                  0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 58   V60     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 59    V7     0.000000                  0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59    V7     0.410467                  0.026906</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 60    V8     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 61    V9    -0.902241                 -0.107246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61    V9     0.000000                  0.000000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2OBinomialMetrics: glm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.112288</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.335094</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.3700123</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1162935</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9421642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.9455423</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8843284</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.5502661</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance:  102.8634</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AIC:  154.8634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  0.1085481</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  0.3294664</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LogLoss:  0.3611654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Per-Class Error:  0.1227482</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUC:  0.9428152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AUCPR:  0.9431422</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Gini:  0.8856305</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R^2:  0.5606917</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance:  100.404</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AIC:  156.404</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         M  R    Error     Rate</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> M      66  6 0.083333    =6/72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R      10 57 0.149254   =10/67</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 76 63 0.115108  =16/139</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> M      73  4 0.051948    =4/77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R      12 50 0.193548   =12/62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Totals 85 54 0.115108  =16/139</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Maximum Metrics: Maximum metrics at their respective thresholds</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         metric threshold     value idx</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.528056  0.876923  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.335170  0.924370  88</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.528056  0.893417  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.528056  0.884892  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  0.976820  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.135078  1.000000 118</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  0.976820  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.528056  0.770293  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.528056  0.850746  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.528056  0.883706  62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  0.976820 72.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  0.976820 66.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.001235 72.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.135078 67.000000 118</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  0.976820  1.000000   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  0.976820  0.985075   0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.001235  1.000000 138</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.135078  1.000000 118</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                       max f1  0.491482  0.862069  53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                       max f2  0.320854  0.898204  85</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 max f0point5  0.583101  0.925197  47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4                 max accuracy  0.583101  0.884892  47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5                max precision  0.967408  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6                   max recall  0.155773  1.000000 111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7              max specificity  0.967408  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8             max absolute_mcc  0.583101  0.778935  47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   max min_per_class_accuracy  0.429843  0.844156  64</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 max mean_per_class_accuracy  0.491482  0.877252  53</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11                     max tns  0.967408 77.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12                     max fns  0.967408 61.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13                     max fps  0.002012 77.000000 138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14                     max tps  0.155773 62.000000 111</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15                     max tnr  0.967408  1.000000   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16                     max fnr  0.967408  0.983871   0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17                     max fpr  0.002012  1.000000 138</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18                     max tpr  0.155773  1.000000 111</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Gains/Lift Table: Extract with `h2o.gainsLift(&lt;model&gt;, &lt;data&gt;)` or `h2o.gainsLift(&lt;model&gt;, valid=&lt;T/F&gt;, xval=&lt;T/F&gt;)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -271,7 +271,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3043478 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

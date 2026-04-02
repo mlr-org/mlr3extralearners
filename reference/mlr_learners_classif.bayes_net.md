@@ -100,7 +100,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -259,14 +259,14 @@ print(learner$model)
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
-#> V13(1): Class 
+#> V13(2): Class 
 #> V14(1): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
 #> V18(1): Class 
 #> V19(1): Class 
-#> V2(1): Class 
+#> V2(2): Class 
 #> V20(1): Class 
 #> V21(1): Class 
 #> V22(1): Class 
@@ -275,7 +275,7 @@ print(learner$model)
 #> V25(1): Class 
 #> V26(1): Class 
 #> V27(1): Class 
-#> V28(2): Class 
+#> V28(1): Class 
 #> V29(1): Class 
 #> V3(1): Class 
 #> V30(1): Class 
@@ -283,9 +283,9 @@ print(learner$model)
 #> V32(1): Class 
 #> V33(1): Class 
 #> V34(1): Class 
-#> V35(1): Class 
+#> V35(2): Class 
 #> V36(2): Class 
-#> V37(1): Class 
+#> V37(2): Class 
 #> V38(1): Class 
 #> V39(1): Class 
 #> V4(1): Class 
@@ -293,7 +293,7 @@ print(learner$model)
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
-#> V44(2): Class 
+#> V44(1): Class 
 #> V45(1): Class 
 #> V46(1): Class 
 #> V47(2): Class 
@@ -315,11 +315,11 @@ print(learner$model)
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -946.3980390437498
-#> LogScore BDeu: -965.2949438974355
-#> LogScore MDL: -970.0794006524508
-#> LogScore ENTROPY: -913.3329504214479
-#> LogScore AIC: -936.332950421448
+#> LogScore Bayes: -1136.295977172056
+#> LogScore BDeu: -1158.6286829082296
+#> LogScore MDL: -1163.5031608172005
+#> LogScore ENTROPY: -1096.8877627199363
+#> LogScore AIC: -1123.8877627199363
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.1594203 
 ```

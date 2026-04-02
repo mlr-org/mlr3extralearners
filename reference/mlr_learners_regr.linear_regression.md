@@ -83,7 +83,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -238,11 +238,11 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>       0.0188 * disp +
-#>       1.3822 * gear +
-#>      -0.0543 * hp +
-#>      -4.3484 * wt +
-#>      31.8918
+#>      -3.5866 * carb +
+#>       1.7433 * cyl +
+#>       6.4686 * drat +
+#>       6.574  * gear +
+#>     -27.1733
 
 
 # Make predictions for the test rows
@@ -251,5 +251,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.96393 
+#> 35.78405 
 ```

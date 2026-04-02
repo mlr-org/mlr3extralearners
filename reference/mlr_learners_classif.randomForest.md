@@ -67,7 +67,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -209,36 +209,36 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 7
 #> 
-#>         OOB estimate of  error rate: 20.14%
+#>         OOB estimate of  error rate: 23.74%
 #> Confusion matrix:
 #>    M  R class.error
-#> M 71  8   0.1012658
-#> R 20 40   0.3333333
+#> M 62 11   0.1506849
+#> R 22 44   0.3333333
 print(learner$importance())
-#>           V12           V11           V49            V9           V48 
-#>  3.258467e-02  2.003541e-02  1.395119e-02  1.255678e-02  1.134811e-02 
-#>           V47           V46           V36           V44           V45 
-#>  1.075497e-02  9.356843e-03  8.492538e-03  7.540437e-03  7.129719e-03 
-#>           V10            V1           V17           V37           V28 
-#>  6.636790e-03  4.492712e-03  4.323986e-03  3.829520e-03  3.633454e-03 
-#>           V43           V13           V18           V15           V19 
-#>  3.392352e-03  3.116035e-03  2.844689e-03  2.735362e-03  2.654199e-03 
-#>           V52           V21           V22           V16           V23 
-#>  2.561198e-03  2.478945e-03  2.431145e-03  2.297523e-03  2.267893e-03 
-#>           V31           V51            V4           V24           V35 
-#>  2.128511e-03  2.112878e-03  1.995462e-03  1.976395e-03  1.826035e-03 
-#>           V27            V6           V20           V14           V32 
-#>  1.822101e-03  1.586150e-03  1.559772e-03  1.393657e-03  1.200339e-03 
-#>           V30           V33            V2            V8           V60 
-#>  1.125404e-03  1.067526e-03  9.795363e-04  9.210911e-04  7.741858e-04 
-#>           V58           V53           V29           V25           V54 
-#>  7.737435e-04  7.605461e-04  7.023955e-04  6.669056e-04  5.980273e-04 
-#>           V41           V26           V38            V7           V55 
-#>  5.856318e-04  5.713049e-04  5.686024e-04  5.022406e-04  4.019354e-04 
-#>           V50           V59            V3           V39            V5 
-#>  3.531167e-04  2.858396e-04  2.365023e-04  2.146737e-04  2.078849e-04 
-#>           V42           V57           V56           V40           V34 
-#>  1.780684e-04  1.169745e-04  8.873766e-05  5.987642e-05 -1.453075e-04 
+#>           V11           V10            V9           V12           V45 
+#>  2.714041e-02  1.789222e-02  1.655098e-02  1.465728e-02  1.113218e-02 
+#>            V4           V48           V49           V36           V23 
+#>  8.264376e-03  8.075377e-03  7.949388e-03  6.425339e-03  5.811201e-03 
+#>           V37           V13           V21           V47            V5 
+#>  5.775094e-03  5.296473e-03  5.064846e-03  4.949056e-03  4.558594e-03 
+#>           V28           V46            V8           V44           V17 
+#>  4.422826e-03  4.200097e-03  4.155302e-03  4.137747e-03  3.886355e-03 
+#>            V1            V6           V59           V43           V20 
+#>  3.640248e-03  3.188487e-03  3.172542e-03  3.155719e-03  2.952173e-03 
+#>           V51           V42           V15           V27           V34 
+#>  2.927500e-03  2.593565e-03  2.261090e-03  2.122227e-03  2.118000e-03 
+#>           V25           V33           V32           V16           V19 
+#>  2.090759e-03  2.030660e-03  1.943615e-03  1.934996e-03  1.898623e-03 
+#>           V18           V22            V2           V50           V52 
+#>  1.781431e-03  1.659087e-03  1.568003e-03  1.469157e-03  1.424759e-03 
+#>           V31           V30           V26           V14            V3 
+#>  1.378189e-03  1.346387e-03  1.300852e-03  1.234245e-03  1.199866e-03 
+#>           V41           V55           V38           V54            V7 
+#>  1.182436e-03  1.046261e-03  9.466201e-04  7.881772e-04  5.061304e-04 
+#>           V60           V40           V35           V58           V39 
+#>  4.172158e-04  3.939936e-04  3.699370e-04  1.122935e-04 -5.366228e-06 
+#>           V29           V24           V56           V57           V53 
+#> -7.295028e-05 -1.098584e-04 -2.238116e-04 -3.525674e-04 -9.191491e-04 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.1594203 
 ```

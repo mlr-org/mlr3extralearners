@@ -93,7 +93,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -188,25 +188,25 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  22.20149 -27.32879  11.18151 -59.17540  19.07673  -0.45774  -5.67531  -2.64084 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  20.95855 -23.51562   5.38756 -34.95790 -29.35195  25.56465  -2.72001  -2.31398 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  14.50418   3.16546  21.71280 -22.79212 -20.73000 -12.82012   8.76215 -28.06768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.02977   3.91804   8.66437   1.72032  35.94476 -20.58543  27.89202 -42.58223 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  44.12308 -42.31438  13.22537   9.26868 -26.63035  30.33125  -7.44765  76.67633 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  46.01901 -64.65130  45.45362 -18.82143   7.69979  -1.65455  -2.03600  18.90646 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -29.83808  41.84578 -28.92451   3.50043  20.06879 -23.74930  26.96166  13.07568 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -13.67369  26.42123 -18.20777  -9.92060  35.51717 -33.55739  15.03521  30.81029 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -19.26470   0.57374 -44.49719  27.96941 -15.62820 -16.23109  -4.11783 -33.02327 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -17.14242 -18.23162 -33.22592   6.06610  17.84944 -37.09464  14.55675  -8.17175 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  30.59673 -35.11940  31.29002 -59.91688 -59.70207  -7.23216  45.60304 -25.52549 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -16.97932 -10.40583  17.65397 -30.70122 -27.00646   2.04265  57.69936 -97.06223 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -73.15541 -52.28080  11.79181  15.02387   3.51023  39.22795 -23.50403 -24.89118 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -43.46026 -40.89733 -40.35499  13.95480 -12.98003  34.15863 -17.96279 -21.35670 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -19.85663 -15.24060  13.84437  15.65706  -2.96704 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -37.33071 -36.45583  42.68415  19.95717   2.41284 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.63 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 17.92 on 94.48 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 237.59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.11 on 138 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.15 on 93.77 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 235.32 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +215,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

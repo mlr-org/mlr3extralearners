@@ -130,7 +130,7 @@ If <code>first_metric_only = FALSE</code> (default), the learner stops when any 
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -255,24 +255,24 @@ Extracted from <code>model$evaluation_log</code></p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Objective: binary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted to dataset with 60 columns</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V9          V11          V12          V36          V43          V45 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.1129691077 0.0920475826 0.0860600945 0.0855680926 0.0550699762 0.0520567817 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V48          V23          V52          V59          V31          V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0349448727 0.0344934198 0.0339439032 0.0335823774 0.0288460546 0.0285821432 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V20          V16          V21          V27          V49          V55 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0274008464 0.0255558511 0.0249615980 0.0227278927 0.0212519851 0.0190423796 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V37          V28          V32           V2          V13          V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0172396765 0.0171480517 0.0142963585 0.0121042733 0.0119908397 0.0099821767 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V38          V46          V58          V44          V10          V29 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0099772658 0.0096920521 0.0090736162 0.0085478686 0.0084175568 0.0065769650 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V42          V39           V4          V57          V33          V53 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0060864241 0.0054012865 0.0052429424 0.0042026478 0.0032723943 0.0027354323 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V50           V7          V34          V17          V54          V41 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0024892507 0.0022566398 0.0020932283 0.0016507862 0.0015829169 0.0013230248 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           V1          V60          V18          V47          V30          V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0011609912 0.0010831796 0.0010142525 0.0009875152 0.0009800952 0.0008803785 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          V40           V5          V14          V19 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0005708610 0.0005045126 0.0002079940 0.0001215862 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V11          V45          V36          V12           V9          V49 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0962116284 0.0910445725 0.0896472411 0.0674001858 0.0579196665 0.0527607943 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V51          V43          V20          V21          V26          V31 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0491593551 0.0441495621 0.0353960593 0.0341285328 0.0304825964 0.0277821236 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V16          V47          V27          V52          V23           V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0252721457 0.0247333734 0.0236505567 0.0191182625 0.0175992537 0.0172376352 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V53          V55          V48          V22          V17          V15 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0149019026 0.0133476443 0.0128059550 0.0126946545 0.0124659606 0.0123278410 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V5          V60          V59          V37          V54          V57 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0100710795 0.0096942527 0.0096736049 0.0091443366 0.0089189821 0.0087810284 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V28          V42           V8          V46           V1          V38 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0076522312 0.0074076463 0.0073140726 0.0060527316 0.0054351534 0.0045428747 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V44          V19          V56          V29          V32          V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0043596891 0.0043366621 0.0024293873 0.0022399617 0.0018587564 0.0016770642 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V34           V7          V18          V39           V6           V2 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0011745414 0.0010698050 0.0009425403 0.0008951591 0.0008831880 0.0007398186 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V35          V33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.0003024843 0.0001654453 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>

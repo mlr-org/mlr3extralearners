@@ -64,7 +64,7 @@ statistical software*, **11**(9), 1–20.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -173,12 +173,12 @@ print(learner$model)
 #>  parameter : epsilon = 0.1  cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.105836914801946 
+#>  Hyperparameter : sigma =  0.141868858164976 
 #> 
-#> Number of Support Vectors : 18 
+#> Number of Support Vectors : 20 
 #> 
-#> Objective Function Value : -5.4928 
-#> Training error : 0.111945 
+#> Objective Function Value : -5.468 
+#> Training error : 0.107153 
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.96397 
+#> 13.67321 
 ```

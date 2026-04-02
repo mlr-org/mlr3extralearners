@@ -98,7 +98,7 @@ Mackay DJ (1998). “Introduction to Gaussian Processes.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -255,13 +255,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.43201621073961494
+#> Average Target Value : 0.42034632034632036
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.2682976627879835
-#>     Highest Value = 0.879319247840475
+#>     Lowest Value = -0.27174793869048514
+#>     Highest Value = 0.886335018767649
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.1786624694726546
-#>     Highest Value = 0.23940976105050082
+#>     Lowest Value = -0.1746639550907541
+#>     Highest Value = 0.2532743934338184
 #>  
 #> 
 
@@ -272,5 +272,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.495263 
+#> 7.349862 
 ```

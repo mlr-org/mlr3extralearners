@@ -91,7 +91,7 @@ models.” *BMC Bioinformatics*, **9**(1), 1-10. ISSN 14712105,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -218,8 +218,8 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> 100 boosting steps resulting in 5 non-zero coefficients  
-#> partial log-likelihood: -1186.172 
+#> 100 boosting steps resulting in 6 non-zero coefficients  
+#> partial log-likelihood: -1200.911 
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8586137 
+#>   0.8330418 
 ```

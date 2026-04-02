@@ -20,7 +20,7 @@ are scaled internally to sum to 100.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -135,14 +135,14 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V12 < 0.2226
-#> |   |   [3] V9 < 0.1357: R (n = 35, err = 5.7%)
-#> |   |   [4] V9 >= 0.1357
-#> |   |   |   [5] V20 < 0.5933: R (n = 10, err = 0.0%)
-#> |   |   |   [6] V20 >= 0.5933: M (n = 13, err = 0.0%)
-#> |   [7] V12 >= 0.2226
-#> |   |   [8] V52 < 0.0069: R (n = 16, err = 37.5%)
-#> |   |   [9] V52 >= 0.0069: M (n = 65, err = 12.3%)
+#> |   [2] V11 < 0.1125: R (n = 22, err = 9.1%)
+#> |   [3] V11 >= 0.1125
+#> |   |   [4] V12 < 0.199
+#> |   |   |   [5] V20 < 0.8321: R (n = 23, err = 8.7%)
+#> |   |   |   [6] V20 >= 0.8321: M (n = 9, err = 11.1%)
+#> |   |   [7] V12 >= 0.199
+#> |   |   |   [8] V34 < 0.6942: M (n = 75, err = 16.0%)
+#> |   |   |   [9] V34 >= 0.6942: R (n = 10, err = 30.0%)
 #> 
 #> Number of inner nodes:    4
 #> Number of terminal nodes: 5
@@ -154,5 +154,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3043478 
+#>  0.2463768 
 ```

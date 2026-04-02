@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -230,12 +230,14 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> hp < 93 : 28.67 (3/17.25) [1/5.29]
-#> hp >= 93
-#> |   disp < 266.9 : 20.19 (6/2.51) [2/4.5]
-#> |   disp >= 266.9 : 15.06 (5/0.61) [4/7.84]
+#> wt < 3.33
+#> |   wt < 2.3 : 30.07 (3/3.41) [3/20.83]
+#> |   wt >= 2.3 : 22.04 (5/1.65) [3/0.66]
+#> wt >= 3.33
+#> |   drat < 3.19 : 16.68 (4/2.01) [0/0]
+#> |   drat >= 3.19 : 14.67 (2/0.02) [1/0.3]
 #> 
-#> Size of the tree : 5
+#> Size of the tree : 7
 
 
 # Make predictions for the test rows
@@ -244,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 16.80021 
+#> 15.09234 
 ```

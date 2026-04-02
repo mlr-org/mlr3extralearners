@@ -118,7 +118,7 @@ Networks*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -271,21 +271,21 @@ print(learner$model)
 #> SMOreg
 #> 
 #> weights (not support vectors):
-#>  +       0.0699 * (normalized) am
-#>  -       0.112  * (normalized) carb
-#>  -       0.2183 * (normalized) cyl
-#>  -       0.1034 * (normalized) disp
-#>  +       0.0217 * (normalized) drat
-#>  +       0.0016 * (normalized) gear
-#>  -       0.1018 * (normalized) hp
-#>  -       0.0495 * (normalized) qsec
-#>  +       0.0397 * (normalized) vs
-#>  -       0.2429 * (normalized) wt
-#>  +       0.7253
+#>  +       0.3189 * (normalized) am
+#>  -       0.3188 * (normalized) carb
+#>  -       0.199  * (normalized) cyl
+#>  -       0.0492 * (normalized) disp
+#>  -       0.0865 * (normalized) drat
+#>  -       0.1146 * (normalized) gear
+#>  +       0.0802 * (normalized) hp
+#>  +       0.0694 * (normalized) qsec
+#>  +       0.1241 * (normalized) vs
+#>  -       0.2117 * (normalized) wt
+#>  +       0.5539
 #> 
 #> 
 #> 
-#> Number of kernel evaluations: 231 (97.199% cached)
+#> Number of kernel evaluations: 231 (97.967% cached)
 
 
 # Make predictions for the test rows
@@ -294,5 +294,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.787697 
+#> 17.12446 
 ```

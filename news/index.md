@@ -20,12 +20,15 @@
   - `LearnerRegrH2OGBM`
   - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
-
-### Enhancements
-
-- Added kernel and input/output transformation parameters to
+  - `LearnerRegrBotorchFullyBayesian`
+- Added kernel and input/output transformations for
   `LearnerRegrBotorchSingleTaskGP` and
-  `LearnerRegrBotorchMixedSingleTaskGP`
+  `LearnerRegrBotorchMixedSingleTaskGP`.
+
+### Breaking Changes
+
+- Moved `LearnerSurvAkritas` and `LearnerSurvParametric` to the attic.
+  See <https://github.com/mlr-org/mlr3extralearners/issues/549>.
 
 ### Other
 

@@ -76,7 +76,7 @@ regularized random forest.” *Pattern Recognition*, **46**(12),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -218,13 +218,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 5.945833
-#>                     % Var explained: 85.66
+#>           Mean of squared residuals: 7.712794
+#>                     % Var explained: 79.61
 print(learner$importance())
-#>        hp      disp        wt       cyl      drat      qsec        vs      carb 
-#> 184.55435 172.50506 139.73561 100.99590  77.47780  45.20287  37.09878  15.46034 
-#>        am      gear 
-#>  12.67974   5.43839 
+#>         wt       disp         hp        cyl       drat       carb       qsec 
+#> 187.934768 180.828081 115.199174 103.820378  68.650041  24.204171  21.107875 
+#>       gear         vs         am 
+#>   8.270866   8.169040   6.613283 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.921955 
+#> 4.972545 
 ```

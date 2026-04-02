@@ -83,7 +83,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -190,23 +190,23 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: drf
-#> Model ID:  DRF_model_R_1775044617067_112 
+#> Model ID:  DRF_model_R_1775124662382_112 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               10612         4
+#> 1              50                       50               10690         4
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         8    5.20000          6         18    12.26000
+#> 1         7    5.52000          8         16    12.42000
 #> 
 #> 
 #> H2ORegressionMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  5.989792
-#> RMSE:  2.447405
-#> MAE:  1.987125
-#> RMSLE:  0.1128679
-#> Mean Residual Deviance :  5.989792
+#> MSE:  3.948506
+#> RMSE:  1.987085
+#> MAE:  1.688445
+#> RMSLE:  0.1061001
+#> Mean Residual Deviance :  3.948506
 #> 
 #> 
 #> 
@@ -219,5 +219,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 3.643701 
+#> 16.19243 
 ```

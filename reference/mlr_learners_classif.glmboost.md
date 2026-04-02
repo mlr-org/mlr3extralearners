@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -189,23 +189,21 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.03598675 
+#> Offset:  -0.09379931 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#> (Intercept)          V1         V11         V12         V16         V20 
-#>  1.70694924 -4.92905654 -1.42056528 -0.44417332  0.43716097 -0.41703885 
-#>         V21         V22         V29         V36         V37          V4 
-#> -0.34192032 -0.08920769 -0.37750054  0.42819056  0.38260867 -5.13633958 
-#>         V41         V44         V45         V49         V51         V52 
-#>  0.19360313 -0.45659178 -0.74015724 -6.40698002 -4.30828345 -1.58441044 
-#>         V57 
-#>  8.11456497 
+#> (Intercept)         V11         V12         V16         V20         V21 
+#>   2.1813597  -1.8855806  -1.3248990   0.1416078  -0.5050819  -0.1550640 
+#>         V23         V28         V31         V36         V37          V4 
+#>  -0.2409026  -0.7517916   0.1664153   1.2474502   0.1416665  -0.8913550 
+#>         V44         V45         V49         V51         V52 
+#>  -1.1011148  -1.4205147  -3.2159749  -1.0468615 -20.6495146 
 #> attr(,"offset")
-#> [1] -0.03598675
+#> [1] -0.09379931
 #> 
 
 

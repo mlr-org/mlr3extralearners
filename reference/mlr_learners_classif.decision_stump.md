@@ -68,7 +68,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -222,21 +222,21 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V11 <= 0.17045 : R
-#> V11 > 0.17045 : M
+#> V11 <= 0.17070000000000002 : R
+#> V11 > 0.17070000000000002 : M
 #> V11 is missing : M
 #> 
 #> Class distributions
 #> 
-#> V11 <= 0.17045
+#> V11 <= 0.17070000000000002
 #> M    R   
-#> 0.2  0.8 
-#> V11 > 0.17045
+#> 0.16 0.84    
+#> V11 > 0.17070000000000002
 #> M    R   
-#> 0.6741573033707865   0.3258426966292135  
+#> 0.7078651685393258   0.29213483146067415 
 #> V11 is missing
 #> M    R   
-#> 0.5035971223021583   0.49640287769784175 
+#> 0.5107913669064749   0.4892086330935252  
 #> 
 
 
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.2463768 
 ```

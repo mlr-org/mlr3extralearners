@@ -106,7 +106,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -202,26 +202,26 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11        V12        V13        V14       V15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2856148 -0.7175238 -1.127842 -0.7694177 -0.4811015 -0.2083728 0.1918859</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V1        V10       V11       V12        V13         V14       V15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2393352 -0.7132251 -1.186104 -1.037922 -0.7509016 -0.09646513 0.2648387</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            V16       V17       V18        V19         V2        V20        V21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.7525818 0.9364299 0.5155447 -0.2163045 -0.3461965 -0.5990326 -0.5441712</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V22        V23        V24      V25      V26       V27        V28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.3021157 -0.3671563 -0.1531443 0.436185 0.228819 0.1031981 -0.2568113</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V29        V3        V30       V31       V32       V33       V34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2538275 -0.308066 -0.2016873 0.9967392 0.1760431 -0.213132 0.1448004</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            V35       V36       V37       V38       V39         V4       V40</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.4581064 0.9892614 0.5763334 0.1930618 0.1701633 -0.6259025 0.6900814</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V41        V42        V43        V44       V45        V46</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.3458067 -0.7712583 -0.9840395 -0.8945802 -1.152833 -0.7347157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V47        V48        V49         V5        V50        V51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.4295247 -0.5733126 -0.4125323 -0.3845414 -0.0508791 -0.1128763</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             V52         V53         V54        V55          V56         V57</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.1065241 -0.04194166 -0.06949996 0.01035722 -0.009407567 0.002066108</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59         V6         V60        V7           V8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.05086598 -0.06417631 -0.1416512 -0.04128339 0.1444211 -0.005853854</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.6130993 0.4449434 0.2876784 -0.2170967 -0.2664004 -0.1212935 -0.4677614</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V22         V23        V24       V25       V26         V27</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.5023897 -0.04297988 -0.1268369 0.3106031 0.1742721 -0.03458045</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V28        V29         V3         V30      V31        V32       V33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.2220412 -0.2386928 -0.3047802 -0.03616971 1.059978 0.08392441 0.1862832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            V34       V35       V36       V37         V38        V39        V4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.2702586 0.1064693 0.7780759 0.9871662 0.008017672 -0.3264137 -0.473641</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           V40      V41        V42        V43       V44       V45        V46</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.371685 0.167289 -0.4344687 -0.9664674 -1.267637 -1.239547 -0.9429018</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             V47        V48        V49         V5         V50         V51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6992825 -0.6461085 -0.4406855 -0.4457246 -0.03465582 -0.07713578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V52         V53         V54        V55         V56       V57</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.04724368 -0.02897777 -0.05067284 0.01875376 -0.02214225 0.0158362</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              V58         V59         V6         V60        V7        V8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.05576269 -0.04996819 -0.1301471 -0.02680863 0.1901859 0.1821099</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>              V9      Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.7276977 0.5992492</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] -0.6066744 0.8301302</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -243,7 +243,7 @@ The default <code>epsilon</code> value depends on the <code>type</code> paramete
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1884058 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2318841 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

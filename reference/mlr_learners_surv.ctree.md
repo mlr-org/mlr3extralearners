@@ -109,7 +109,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -219,23 +219,25 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 70
-#> |   |   [3] revascdays <= 170
-#> |   |   |   [4] revasc <= 0: 22.000 (n = 70)
+#> |   [2] age <= 74
+#> |   |   [3] revascdays <= 171
+#> |   |   |   [4] revasc <= 0: 30.000 (n = 89)
 #> |   |   |   [5] revasc > 0
-#> |   |   |   |   [6] stchange <= 0: Inf (n = 103)
-#> |   |   |   |   [7] stchange > 0: Inf (n = 126)
-#> |   |   [8] revascdays > 170: Inf (n = 79)
-#> |   [9] age > 70
+#> |   |   |   |   [6] age <= 63: Inf (n = 151)
+#> |   |   |   |   [7] age > 63: Inf (n = 115)
+#> |   |   [8] revascdays > 171: Inf (n = 96)
+#> |   [9] age > 74
 #> |   |   [10] revascdays <= 168
 #> |   |   |   [11] revasc <= 0
-#> |   |   |   |   [12] stchange <= 0: 85.000 (n = 36)
-#> |   |   |   |   [13] stchange > 0: 8.000 (n = 67)
-#> |   |   |   [14] revasc > 0: Inf (n = 134)
-#> |   |   [15] revascdays > 168: Inf (n = 55)
+#> |   |   |   |   [12] stchange <= 0
+#> |   |   |   |   |   [13] sysbp <= 129: 50.000 (n = 15)
+#> |   |   |   |   |   [14] sysbp > 129: 105.000 (n = 19)
+#> |   |   |   |   [15] stchange > 0: 12.000 (n = 61)
+#> |   |   |   [16] revasc > 0: 172.000 (n = 85)
+#> |   |   [17] revascdays > 168: Inf (n = 39)
 #> 
-#> Number of inner nodes:    7
-#> Number of terminal nodes: 8
+#> Number of inner nodes:    8
+#> Number of terminal nodes: 9
 
 
 # Make predictions for the test rows
@@ -244,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>    0.819512 
+#>   0.8175714 
 ```

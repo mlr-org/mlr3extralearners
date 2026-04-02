@@ -90,7 +90,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -199,12 +199,12 @@ learner$train(task, row_ids = ids$train)
 learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionClassif> for 225 observations: ───────────────────────────────────
-#>  row_ids     truth  response
-#>        1    benign malignant
-#>        2    benign malignant
-#>        7    benign malignant
-#>      ---       ---       ---
-#>      674    benign malignant
-#>      680    benign malignant
-#>      682 malignant malignant
+#>  row_ids  truth  response
+#>        1 benign malignant
+#>        3 benign malignant
+#>        4 benign malignant
+#>      ---    ---       ---
+#>      677 benign malignant
+#>      679 benign malignant
+#>      680 benign malignant
 ```

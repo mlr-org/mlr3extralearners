@@ -81,7 +81,7 @@ intelligence*, 1–12. Springer.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -233,23 +233,47 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model rules 
 #> (using smoothed linear models) :
-#> Number of Rules : 2
+#> Number of Rules : 4
 #> 
 #> Rule: 1
 #> IF
-#>  disp > 101.55
+#>  hp > 116.5
+#>  wt > 3.48
 #> THEN
 #> 
 #> mpg = 
-#>  1.4485 * am 
-#>  - 0.9917 * carb 
-#>  - 0.0247 * disp 
-#>  + 27.7368 [16/28.151%]
+#>  -0.0075 * disp 
+#>  - 0.0169 * hp 
+#>  - 3.1785 * wt 
+#>  + 33.2102 [7/10.113%]
 #> 
 #> Rule: 2
+#> IF
+#>  hp <= 92
+#> THEN
 #> 
 #> mpg = 
-#>  + 30.88 [5/100%]
+#>  -0.0237 * disp 
+#>  - 0.0746 * hp 
+#>  + 34.4749 [4/26.671%]
+#> 
+#> Rule: 3
+#> IF
+#>  hp <= 116.5
+#>  hp > 96
+#> THEN
+#> 
+#> mpg = 
+#>  -0.0391 * hp 
+#>  - 1.2892 * wt 
+#>  + 29.1541 [4/11.877%]
+#> 
+#> Rule: 4
+#> 
+#> mpg = 
+#>  -2.0324 * cyl 
+#>  - 5.3751 * drat 
+#>  + 51.733 [6/23.288%]
 #> 
 #> 
 
@@ -260,5 +284,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  3.33989 
+#> 14.50309 
 ```

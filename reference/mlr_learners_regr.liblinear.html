@@ -108,7 +108,7 @@ by the mlr3learner. The default value is set to the default of the respective
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -204,10 +204,10 @@ by the mlr3learner. The default value is set to the default of the respective
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 11</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $W</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              am       carb       cyl       disp      drat      gear          hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.06306303 0.01735457 0.1599132 -0.0306682 0.2739086 0.2776042 0.002569019</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          qsec        vs        wt       Bias</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.269451 0.0701445 0.0978603 0.06328185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              am       carb       cyl      disp      drat      gear          hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.06701041 0.01939247 0.1808837 -0.038547 0.2852935 0.2742294 0.004787944</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          qsec         vs         wt       Bias</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 1.345519 0.08536856 0.09867816 0.06491676</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $Bias</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] 1</span>
@@ -225,7 +225,7 @@ by the mlr3learner. The default value is set to the default of the respective
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.23686 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16.82083 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

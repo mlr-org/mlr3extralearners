@@ -109,7 +109,7 @@ In <em>Poster papers of the 9th European Conference on Machine Learning</em>.</p
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -246,22 +246,33 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model tree:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt;= 5 : LM1 (8/40.822%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;  5 : LM2 (13/27.766%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &lt;= 3.325 : </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt;= 101.55 : LM1 (4/38.86%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;  101.55 : LM2 (8/8.967%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> wt &gt;  3.325 : LM3 (9/9.464%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.8098 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0447 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 39.0286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0167 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0472 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.2395 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 37.675</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-1.4866 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0165 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 31.3569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0138 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0496 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.2395 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 36.564</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> LM num: 3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0115 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0286 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.5194 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.7691</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 3</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -270,7 +281,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.31501 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  9.47577 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -87,7 +87,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -241,17 +241,17 @@ print(learner$model)
 #> 
 #> mpg = 
 #> 
-#>          2.9839 (normalized) am
-#>  +      -6.4584 (normalized) carb
-#>  +       3.879  (normalized) cyl
-#>  +      -0.907  (normalized) disp
-#>  +       8.5571 (normalized) drat
-#>  +       2.238  (normalized) gear
-#>  +      -3.6579 (normalized) hp
-#>  +       6.8225 (normalized) qsec
-#>  +      -0.6027 (normalized) vs
-#>  +      -5.9644 (normalized) wt
-#>  +      15.8445
+#>          8.0985 (normalized) am
+#>  +      -7.4582 (normalized) carb
+#>  +       3.4826 (normalized) cyl
+#>  +      -3.14   (normalized) disp
+#>  +       4.8489 (normalized) drat
+#>  +      -0.9573 (normalized) gear
+#>  +      -0.8303 (normalized) hp
+#>  +       6.7982 (normalized) qsec
+#>  +       1.9291 (normalized) vs
+#>  +      -2.4487 (normalized) wt
+#>  +      14.8851
 
 
 # Make predictions for the test rows
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.25673 
+#> 17.64383 
 ```
