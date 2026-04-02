@@ -139,7 +139,6 @@ Suggests:
     survdistr (>= 0.0.2),
     survdnn (>= 0.7.5),
     survival,
-    survivalmodels (>= 0.1.19),
     survivalsvm (>= 0.0.5),
     tensorflow (>= 2.0.0),
     testthat,
@@ -153,8 +152,7 @@ Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
     mlr-org/mlr3proba,
-    mlr-org/survdistr,
-    RaphaelS1/survivalmodels
+    mlr-org/survdistr
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false
