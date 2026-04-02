@@ -90,7 +90,7 @@ annals of statistics*, **19**(1), 1–67.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -181,7 +181,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: twoclass and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -195,13 +195,13 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> GLM (family binomial, link logit):
 #>  nulldev  df       dev  df   devratio     AIC iters converged
-#>  192.515 138   39.2741 125      0.796   67.27     8         1
+#>  192.515 138   34.8222 124      0.819   64.82     8         1
 #> 
-#> Earth selected 14 of 21 terms, and 10 of 60 predictors
-#> Termination condition: RSq changed by less than 0.001 at 21 terms
-#> Importance: V11, V36, V45, V23, V28, V39, V43, V17, V19, V26, V1-unused, ...
-#> Number of terms at each degree of interaction: 1 13 (additive model)
-#> Earth GCV 0.1142556    RSS 10.31095    GRSq 0.5489462    RSq 0.7028975
+#> Earth selected 15 of 22 terms, and 10 of 60 predictors
+#> Termination condition: RSq changed by less than 0.001 at 22 terms
+#> Importance: V11, V45, V36, V51, V23, V39, V40, V27, V42, V20, V1-unused, ...
+#> Number of terms at each degree of interaction: 1 14 (additive model)
+#> Earth GCV 0.1145582    RSS 9.97233    GRSq 0.5477517    RSq 0.7126547
 
 
 # Make predictions for the test rows
@@ -210,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.2753623 
 ```

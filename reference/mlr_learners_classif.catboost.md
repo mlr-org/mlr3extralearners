@@ -166,7 +166,7 @@ arXiv:1810.11363*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -295,7 +295,7 @@ print(learner)
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, internal_tuning, missings, multiclass, twoclass,
 #> validation, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -311,24 +311,22 @@ print(learner$model)
 #> Loss function: Logloss
 #> Fit to 60 feature(s)
 print(learner$importance())
-#>        V11        V36         V9        V12        V23        V10        V45 
-#> 10.1320418  4.0998466  3.8149025  3.5395315  3.0327330  3.0135266  3.0123788 
-#>        V16        V48        V43         V4        V37        V51        V31 
-#>  2.9032560  2.8164151  2.8072813  2.7574464  2.6661051  2.6129572  2.4411982 
-#>        V52        V28        V27        V47        V49        V46        V54 
-#>  2.2843985  2.2839342  2.0672901  2.0302644  1.9536074  1.9316924  1.7029370 
-#>        V17        V21         V5        V55        V18        V44         V6 
-#>  1.6167811  1.4277442  1.4171737  1.3598533  1.3383953  1.3304982  1.2311911 
-#>        V33         V1        V13        V35        V32        V19        V20 
-#>  1.1679133  1.1114817  1.1087169  1.0856397  1.0530954  1.0397153  1.0119977 
-#>        V59        V24         V2        V40        V29        V22        V26 
-#>  0.9850179  0.9799573  0.9424551  0.9190739  0.9179228  0.9063784  0.8993720 
-#>        V14        V42        V15        V39         V8        V34         V7 
-#>  0.8829769  0.8591953  0.8358134  0.8287315  0.8061129  0.7600907  0.7106114 
-#>        V53        V30        V50        V58        V41         V3        V57 
-#>  0.6949574  0.6769741  0.6292401  0.6291673  0.6145827  0.6097304  0.5769140 
-#>        V25        V38        V56        V60 
-#>  0.5568861  0.5348690  0.5257114  0.5133170 
+#>       V48       V11       V12       V31       V23       V13       V21       V51 
+#> 8.3868353 4.9975139 4.6427220 4.5117578 4.0837848 4.0540815 3.9564349 3.7627940 
+#>       V36       V49       V20        V4       V27       V16       V10       V28 
+#> 3.1871417 3.0827709 2.5118177 2.3878165 2.1803527 2.0740304 2.0282154 1.9318883 
+#>        V9       V15        V5       V45       V22       V57       V55       V37 
+#> 1.8534107 1.6953451 1.6072305 1.6049780 1.5172812 1.4553624 1.4303147 1.4145456 
+#>       V17       V47       V54        V2       V29       V46       V18        V6 
+#> 1.3165878 1.2732000 1.2722578 1.1706497 1.1546016 1.0459671 1.0438698 1.0262301 
+#>       V44       V43       V26       V59       V39       V42       V19       V60 
+#> 1.0126319 1.0027620 0.9883733 0.9154497 0.9055759 0.9033996 0.9018583 0.8888712 
+#>        V8       V58       V32       V24       V35       V38       V25       V33 
+#> 0.8832288 0.8220392 0.7926220 0.7593860 0.7173342 0.7083266 0.7063779 0.6843161 
+#>       V40       V50       V52       V14        V1       V41       V53        V7 
+#> 0.6542599 0.6449918 0.6384193 0.6135003 0.5935114 0.5882169 0.5849402 0.5781403 
+#>       V30       V56        V3       V34 
+#> 0.5097162 0.4850848 0.4279770 0.4268994 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -336,5 +334,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>  0.1594203 
 ```

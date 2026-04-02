@@ -72,7 +72,7 @@ Transactions on Pattern Analysis and Machine Intelligence*, **32**(3),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -195,7 +195,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, multiclass, oob_error, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -210,32 +210,36 @@ print(learner$model)
 #> 
 #>  Forest of 1000 ferns of a depth 5.
 #> 
-#>  OOB error 17.99%; OOB confusion matrix:
+#>  OOB error 20.14%; OOB confusion matrix:
 #>          True
 #> Predicted  M  R
-#>         M 64 11
-#>         R 14 50
+#>         M 61 11
+#>         R 17 50
 print(learner$importance())
-#>         V11         V48         V10         V12         V47         V49 
-#> 0.120733648 0.101311867 0.099360424 0.095708544 0.081364834 0.078013344 
-#>          V9         V46         V21         V36         V51         V20 
-#> 0.075421036 0.073589970 0.070275101 0.069777658 0.065266418 0.060966431 
-#>         V45         V13         V19         V22          V5         V37 
-#> 0.059273157 0.054616451 0.047985104 0.046196900 0.040143228 0.038243951 
-#>         V44         V35         V50         V52         V23          V2 
-#> 0.035477028 0.034614260 0.033311202 0.031659627 0.029112473 0.029028002 
-#>         V28         V34          V6         V27         V14         V15 
-#> 0.027977340 0.026866089 0.026760031 0.024388913 0.024051610 0.023930957 
-#>         V43         V58         V18         V32          V3         V29 
-#> 0.021951811 0.020903730 0.020762847 0.020121952 0.018992002 0.018929371 
-#>         V31          V4         V16         V24         V42         V25 
-#> 0.018531714 0.016894284 0.016763033 0.016198509 0.015031920 0.014606305 
-#>         V17          V8          V1         V53         V57         V56 
-#> 0.014287815 0.014251116 0.013069333 0.012664768 0.011879772 0.011161375 
-#>         V55         V38         V59          V7         V41         V26 
-#> 0.010080258 0.010059285 0.009174478 0.008519742 0.008338385 0.007256195 
-#>         V33         V60         V54         V30         V40         V39 
-#> 0.007058253 0.006124451 0.005136457 0.004792738 0.004455013 0.001036132 
+#>           V11           V12           V10            V9           V49 
+#>  0.1032734625  0.0863999420  0.0799061895  0.0753247175  0.0641779022 
+#>           V21           V28           V23           V51           V29 
+#>  0.0590815497  0.0564975908  0.0551008691  0.0531859809  0.0510175513 
+#>           V20           V13           V37           V36           V46 
+#>  0.0503724638  0.0475188475  0.0468564260  0.0451492461  0.0435098193 
+#>           V48           V45           V47           V17           V35 
+#>  0.0414001577  0.0410176571  0.0393725069  0.0364352109  0.0352667073 
+#>           V43           V44           V22            V8            V1 
+#>  0.0346861130  0.0321939811  0.0310992514  0.0289373674  0.0274539801 
+#>           V27           V34           V58           V15           V18 
+#>  0.0254077467  0.0250039881  0.0227638846  0.0225794993  0.0211138672 
+#>           V31           V16           V53           V14           V30 
+#>  0.0202644402  0.0194857566  0.0184494945  0.0177866391  0.0175117197 
+#>           V24           V32           V26           V33           V50 
+#>  0.0155887448  0.0144919398  0.0138699989  0.0138106038  0.0128214552 
+#>           V19           V39           V59            V7           V42 
+#>  0.0127756786  0.0118991237  0.0117717077  0.0108221123  0.0100837723 
+#>           V52           V40           V25           V60            V4 
+#>  0.0097161670  0.0094527457  0.0091025827  0.0080544102  0.0079839457 
+#>           V55            V6           V41            V2            V5 
+#>  0.0059720322  0.0048477395  0.0047640339  0.0044616707  0.0043100574 
+#>           V56            V3           V38           V54           V57 
+#>  0.0022764603  0.0018522074  0.0014746613 -0.0008152243 -0.0024015565 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -243,5 +247,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.1449275 
 ```

@@ -99,7 +99,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -242,7 +242,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, selected_features, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -256,7 +256,7 @@ print(learner$model)
 #>                          Sample size: 21
 #>                      Number of trees: 500
 #>            Forest terminal node size: 5
-#>        Average no. of terminal nodes: 2.568
+#>        Average no. of terminal nodes: 2.366
 #> No. of variables tried at each split: 4
 #>               Total no. of variables: 10
 #>        Resampling used to grow trees: swor
@@ -265,14 +265,14 @@ print(learner$model)
 #>                               Family: regr
 #>                       Splitting rule: mse *random*
 #>        Number of random split points: 10
-#>                      (OOB) R squared: 0.68695079
-#>    (OOB) Requested performance error: 13.03431074
+#>                      (OOB) R squared: 0.64845695
+#>    (OOB) Requested performance error: 14.80188746
 #> 
 print(learner$importance())
-#>        disp          wt         cyl          hp        drat        carb 
-#> 28.16126450 26.86891534 12.74737723 11.15402216  2.70817738  0.81872001 
-#>          vs          am        gear        qsec 
-#>  0.78828226  0.68886774  0.19980481  0.05174383 
+#>       disp         wt        cyl         hp         vs       carb         am 
+#> 27.0671303 17.3697160 14.5416737  8.1926166  1.6536216  1.3954288  1.2268088 
+#>       drat       qsec       gear 
+#>  0.8171310  0.5208420  0.2720803 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -280,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 2.170205 
+#> 3.445942 
 ```

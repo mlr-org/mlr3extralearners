@@ -58,7 +58,7 @@ of Statistical Software*, **32**, 1–17.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -149,7 +149,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -168,27 +168,27 @@ print(learner$model)
 #> 
 #> Coefficients:
 #>                                               (Intercept)  
-#>                                                -33.673516  
+#>                                                   3.80367  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  
-#>                                                 -2.178214  
+#>                                                   1.04986  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  
-#>                                                 -0.558083  
+#>                                                   0.08082  
 #>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  
-#>                                                  3.397142  
+#>                                                  -1.84353  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  
-#>                                                  0.009619  
+#>                                                   0.02114  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  
-#>                                                  8.515561  
+#>                                                   0.11920  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  
-#>                                                  4.112752  
+#>                                                  -0.17050  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  
-#>                                                 -0.017511  
+#>                                                   0.02130  
 #> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  
-#>                                                 -0.116740  
+#>                                                   2.29410  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  
-#>                                                  8.571626  
+#>                                                  -2.16952  
 #>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  
-#>                                                 -3.122168  
+#>                                                  -6.17596  
 #> 
 
 
@@ -198,5 +198,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 63.57014 
+#>  19.7479 
 ```

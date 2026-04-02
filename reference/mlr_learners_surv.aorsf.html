@@ -56,7 +56,7 @@ the parameter na_action.'></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Accelerated Oblique Random Survival Forest Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_surv_aorsf.R" class="external-link"><code>R/learner_aorsf_surv_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_aorsf_surv_aorsf.R" class="external-link"><code>R/learner_aorsf_surv_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.aorsf.Rd</code></div>
     </div>
 
@@ -128,7 +128,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -231,7 +231,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, missings, oob_error, and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
@@ -247,21 +247,21 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Linear combinations: Accelerated Cox regression</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           N observations: 670</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 N events: 210</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 41.052</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 39.212</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Min events in leaf: 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.83</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.84</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: Harrell's C-index</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        los        age      sysbp   stchange </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5587283  0.4962979  0.2219651  0.2203532  0.1371248  0.1134618 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.5849834  0.5353423  0.2078240  0.1968268  0.1205036  0.1043530 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -269,7 +269,7 @@ derived from the survival matrix prediction (<code>distr</code>).</p></li>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.861057 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8529662 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

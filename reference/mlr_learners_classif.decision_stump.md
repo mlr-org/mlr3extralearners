@@ -68,7 +68,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -206,7 +206,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, missings, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -222,21 +222,21 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> V11 <= 0.17070000000000002 : R
-#> V11 > 0.17070000000000002 : M
+#> V11 <= 0.19795000000000001 : R
+#> V11 > 0.19795000000000001 : M
 #> V11 is missing : M
 #> 
 #> Class distributions
 #> 
-#> V11 <= 0.17070000000000002
+#> V11 <= 0.19795000000000001
 #> M    R   
-#> 0.16 0.84    
-#> V11 > 0.17070000000000002
+#> 0.2631578947368421   0.7368421052631579  
+#> V11 > 0.19795000000000001
 #> M    R   
-#> 0.7078651685393258   0.29213483146067415 
+#> 0.7682926829268293   0.23170731707317074 
 #> V11 is missing
 #> M    R   
-#> 0.5107913669064749   0.4892086330935252  
+#> 0.5611510791366906   0.43884892086330934 
 #> 
 
 
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.2318841 
 ```

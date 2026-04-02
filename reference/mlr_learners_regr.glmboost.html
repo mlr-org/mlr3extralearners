@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_regr_glmboost.R" class="external-link"><code>R/learner_mboost_regr_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_mboost_regr_glmboost.R" class="external-link"><code>R/learner_mboost_regr_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glmboost.Rd</code></div>
     </div>
 
@@ -99,7 +99,7 @@ No offset is applied during prediction for this learner.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -176,7 +176,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: offset and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -202,15 +202,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.52381 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  19.98571 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   (Intercept)            am           cyl          disp          gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17.6684889907 -0.3302898491 -0.7006087179  0.0007281954  0.0879417375 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            hp          qsec            vs            wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -0.0159421061  0.0061955093  0.4253537416 -3.5251822469 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           am          cyl         disp           hp         qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.652568298  1.678589555 -0.920544410  0.000285759 -0.010672174  0.209111670 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           vs           wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.212383959 -2.776576283 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.52381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 19.98571</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -220,7 +220,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.86632 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6.139647 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -94,7 +94,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -185,7 +185,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -204,8 +204,8 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] cyl <= 4: 27.887 (n = 8, err = 148.3)
-#> |   [3] cyl > 4: 16.823 (n = 13, err = 126.4)
+#> |   [2] disp <= 146.7: 26.200 (n = 8, err = 186.9)
+#> |   [3] disp > 146.7: 16.662 (n = 13, err = 102.1)
 #> 
 #> Number of inner nodes:    1
 #> Number of terminal nodes: 2
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.10989 
+#> 13.47758 
 ```

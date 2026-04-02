@@ -98,7 +98,7 @@ Mackay DJ (1998). “Introduction to Gaussian Processes.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -236,7 +236,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal and missings
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -255,13 +255,13 @@ print(learner$model)
 #> 
 #> All values shown based on: Normalize training data
 #> 
-#> Average Target Value : 0.42034632034632036
+#> Average Target Value : 0.43181818181818177
 #> Inverted Covariance Matrix:
-#>     Lowest Value = -0.27174793869048514
-#>     Highest Value = 0.886335018767649
+#>     Lowest Value = -0.2454883304520862
+#>     Highest Value = 0.8700245052664167
 #> Inverted Covariance Matrix * Target-value Vector:
-#>     Lowest Value = -0.1746639550907541
-#>     Highest Value = 0.2532743934338184
+#>     Lowest Value = -0.14993961441494255
+#>     Highest Value = 0.29053099654864134
 #>  
 #> 
 
@@ -272,5 +272,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.349862 
+#> 13.03423 
 ```

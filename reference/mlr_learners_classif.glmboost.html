@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Classification Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.glmboost.Rd</code></div>
     </div>
 
@@ -99,7 +99,7 @@ No offset is applied during prediction for this learner.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -176,7 +176,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: offset, twoclass, and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -207,21 +207,23 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.09379931 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.05040235 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         V11         V12         V16         V20         V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   2.1813597  -1.8855806  -1.3248990   0.1416078  -0.5050819  -0.1550640 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V23         V28         V31         V36         V37          V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.2409026  -0.7517916   0.1664153   1.2474502   0.1416665  -0.8913550 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V44         V45         V49         V51         V52 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -1.1011148  -1.4205147  -3.2159749  -1.0468615 -20.6495146 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          V11          V12          V16          V20          V21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.78492726  -0.82234797  -1.42403621   0.64333919  -0.29416283  -0.47681138 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V22          V24          V28          V36          V39           V4 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.17665978  -0.04210224  -0.35403673   0.89434237  -0.16075329  -1.08611381 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V44          V45          V47          V48          V49          V52 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.08037064  -1.23637779  -0.38293701  -1.87129497  -2.33871282 -11.49118552 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V54           V9 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -7.68202136  -0.47183232 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.09379931</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.05040235</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -231,7 +233,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2608696 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1449275 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

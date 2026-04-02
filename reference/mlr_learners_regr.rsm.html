@@ -50,7 +50,7 @@ Calls rsm::rsm() from rsm."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Response Surface Model Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_rsm_regr_rsm.R" class="external-link"><code>R/learner_rsm_regr_rsm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_rsm_regr_rsm.R" class="external-link"><code>R/learner_rsm_regr_rsm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.rsm.Rd</code></div>
     </div>
 
@@ -100,7 +100,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -177,7 +177,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -196,27 +196,27 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                               (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                -33.673516  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   3.80367  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)am  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -2.178214  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   1.04986  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)carb  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.558083  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.08082  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)cyl  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  3.397142  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -1.84353  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)disp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  0.009619  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.02114  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  8.515561  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.11920  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)gear  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  4.112752  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -0.17050  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)hp  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.017511  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   0.02130  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)qsec  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -0.116740  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                   2.29410  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)vs  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  8.571626  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -2.16952  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   FO(am, carb, cyl, disp, drat, gear, hp, qsec, vs, wt)wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                                 -3.122168  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                  -6.17596  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -226,7 +226,7 @@ Calls <code><a href="https://github.com/rvlenth/rsm/reference/rsm.html" class="e
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 63.57014 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  19.7479 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

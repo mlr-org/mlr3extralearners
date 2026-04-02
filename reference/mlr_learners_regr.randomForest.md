@@ -65,7 +65,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -189,7 +189,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, oob_error, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -207,13 +207,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 6.703308
-#>                     % Var explained: 76.33
+#>           Mean of squared residuals: 7.481117
+#>                     % Var explained: 77.12
 print(learner$importance())
-#>         hp        cyl       disp         wt       drat         vs       qsec 
-#> 7.72025715 6.41763155 6.28082211 5.45704333 1.26505156 0.56814109 0.50881505 
-#>       carb       gear         am 
-#> 0.50275486 0.22948630 0.04283258 
+#>      disp        wt        hp       cyl      drat      gear      carb        am 
+#> 9.6018085 8.2735439 5.4737603 5.4721060 1.3407261 0.6248070 0.6242765 0.6022844 
+#>        vs      qsec 
+#> 0.4520404 0.1640461 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -221,5 +221,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.172788 
+#> 3.927539 
 ```

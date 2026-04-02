@@ -122,7 +122,7 @@ forests.” *Journal of Computational and Graphical Statistics*, 1–16.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -245,7 +245,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("grace")
@@ -261,21 +261,21 @@ print(learner$model)
 #> 
 #>      Linear combinations: Accelerated Cox regression
 #>           N observations: 670
-#>                 N events: 220
+#>                 N events: 210
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
-#>  Average leaves per tree: 41.052
+#>  Average leaves per tree: 39.212
 #> Min observations in leaf: 5
 #>       Min events in leaf: 1
-#>           OOB stat value: 0.83
+#>           OOB stat value: 0.84
 #>            OOB stat type: Harrell's C-index
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
 #> revascdays     revasc        los        age      sysbp   stchange 
-#>  0.5587283  0.4962979  0.2219651  0.2203532  0.1371248  0.1134618 
+#>  0.5849834  0.5353423  0.2078240  0.1968268  0.1205036  0.1043530 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>    0.861057 
+#>   0.8529662 
 ```

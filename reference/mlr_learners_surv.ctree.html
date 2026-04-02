@@ -50,7 +50,7 @@ Calls partykit::ctree() from partykit."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Survival Conditional Inference Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_surv_ctree.R" class="external-link"><code>R/learner_partykit_surv_ctree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_partykit_surv_ctree.R" class="external-link"><code>R/learner_partykit_surv_ctree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.ctree.Rd</code></div>
     </div>
 
@@ -106,7 +106,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -183,7 +183,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"grace"</span><span class="op">)</span></span></span>
@@ -202,25 +202,21 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 74</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 71</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0: 30.000 (n = 89)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] age &lt;= 63: Inf (n = 151)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [7] age &gt; 63: Inf (n = 115)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &gt; 171: Inf (n = 96)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [9] age &gt; 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &lt;= 168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [11] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [12] stchange &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [13] sysbp &lt;= 129: 50.000 (n = 15)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [14] sysbp &gt; 129: 105.000 (n = 19)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [15] stchange &gt; 0: 12.000 (n = 61)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [16] revasc &gt; 0: 172.000 (n = 85)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 168: Inf (n = 39)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0: 30.000 (n = 85)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] revasc &gt; 0: Inf (n = 218)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] revascdays &gt; 171: Inf (n = 78)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] age &gt; 71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &lt;= 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] revasc &lt;= 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [10] stchange &lt;= 0: 85.000 (n = 36)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [11] stchange &gt; 0: 16.000 (n = 80)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] revasc &gt; 0: Inf (n = 121)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] revascdays &gt; 173: Inf (n = 52)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -229,7 +225,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8175714 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8059512 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

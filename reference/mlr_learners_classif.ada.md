@@ -66,7 +66,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -173,7 +173,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: missings, oob_error, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -193,17 +193,17 @@ print(learner$model)
 #> Final Confusion Matrix for Data:
 #>           Final Prediction
 #> True value  M  R
-#>          M 74  1
-#>          R  2 62
+#>          M 77  0
+#>          R  1 61
 #> 
-#> Train Error: 0.022 
+#> Train Error: 0.007 
 #> 
-#> Out-Of-Bag Error:  0.05  iteration= 41 
+#> Out-Of-Bag Error:  0.014  iteration= 33 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
 #> train.err1 train.kap1 
-#>         46         46 
+#>         31         31 
 #> 
 
 

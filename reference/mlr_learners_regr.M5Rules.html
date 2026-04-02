@@ -52,7 +52,7 @@ Calls RWeka::M5Rules() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression M5Rules Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_M5Rules.R" class="external-link"><code>R/learner_RWeka_regr_M5Rules.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_RWeka_regr_M5Rules.R" class="external-link"><code>R/learner_RWeka_regr_M5Rules.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.M5Rules.Rd</code></div>
     </div>
 
@@ -110,7 +110,7 @@ Springer.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -232,7 +232,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -246,47 +246,23 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> M5 pruned model rules </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (using smoothed linear models) :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 116.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	wt &gt; 3.48</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 94</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0075 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0169 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 3.1785 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.2102 [7/10.113%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0404 * hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 2.3685 * wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 33.0826 [16/22.333%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &lt;= 92</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0237 * disp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 0.0746 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 34.4749 [4/26.671%]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> IF</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &lt;= 116.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	hp &gt; 96</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> THEN</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.0391 * hp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 1.2892 * wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 29.1541 [4/11.877%]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Rule: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	-2.0324 * cyl </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	- 5.3751 * drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 51.733 [6/23.288%]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	-0.1167 * disp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	+ 40.9151 [5/30.095%]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -297,7 +273,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14.50309 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11.38801 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

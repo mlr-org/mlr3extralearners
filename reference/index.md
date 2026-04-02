@@ -285,9 +285,6 @@
 - [`mlr_learners_regr.blockforest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.blockforest.md)
   [`LearnerRegrBlockForest`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.blockforest.md)
   : BlockForest Regression Learner
-- [`mlr_learners_regr.botorch_fullybayesian`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.botorch_fullybayesian.md)
-  [`LearnerRegrBotorchFullyBayesian`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.botorch_fullybayesian.md)
-  : BoTorch Fully Bayesian SingleTaskGP Regression Learner
 - [`mlr_learners_regr.botorch_mixedsingletaskgp`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
   [`LearnerRegrBotorchMixedSingleTaskGP`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
   : BoTorch MixedSingleTaskGP Regression Learner
@@ -475,6 +472,9 @@
 
 ## Survival Learners
 
+- [`mlr_learners_surv.akritas`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.akritas.md)
+  [`LearnerSurvAkritas`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.akritas.md)
+  : Survival Akritas Estimator Learner
 - [`mlr_learners_surv.aorsf`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.aorsf.md)
   [`LearnerSurvAorsf`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.aorsf.md)
   : Accelerated Oblique Random Survival Forest Learner
@@ -533,6 +533,9 @@
 - [`mlr_learners_surv.nelson`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.nelson.md)
   [`LearnerSurvNelson`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.nelson.md)
   : Survival Nelson-Aalen Estimator Learner
+- [`mlr_learners_surv.parametric`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.parametric.md)
+  [`LearnerSurvParametric`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.parametric.md)
+  : Survival Fully Parametric Learner
 - [`mlr_learners_surv.penalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.penalized.md)
   [`LearnerSurvPenalized`](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.penalized.md)
   : Survival L1 and L2 Penalized Cox Learner

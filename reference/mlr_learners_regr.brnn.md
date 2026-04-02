@@ -55,7 +55,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -146,7 +146,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -159,7 +159,7 @@ learner$train(task, row_ids = ids$train)
 #> Number of parameters (weights and biases) to estimate: 24 
 #> Nguyen-Widrow method
 #> Scaling factor= 0.7234904 
-#> gamma= 8.306      alpha= 2.6147   beta= 11.6793 
+#> gamma= 7.5921     alpha= 3.5625   beta= 11.4014 
 
 print(learner$model)
 #> A Bayesian regularized neural network 
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.85438 
+#> 8.944088 
 ```

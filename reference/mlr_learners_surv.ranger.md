@@ -110,7 +110,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -234,7 +234,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, character, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, oob_error, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("grace")

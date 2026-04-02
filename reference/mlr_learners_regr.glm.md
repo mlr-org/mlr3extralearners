@@ -86,7 +86,7 @@ logistic regression*, volume 398. John Wiley & Sons.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -177,7 +177,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, character, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: offset and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -213,13 +213,13 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> (Intercept)           am         carb          cyl         disp         drat  
-#>     8.01731      3.14520     -3.22006     -0.16583     -0.01072      2.02188  
+#>    2.054542     1.041784    -0.419438    -1.210065     0.008363     0.108067  
 #>        gear           hp         qsec           vs           wt  
-#>     4.39253      0.01563     -0.42622      1.26480      1.71033  
+#>    0.586940     0.017195     1.964408    -2.086322    -4.396661  
 #> 
 #> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual
-#> Null Deviance:       645.7 
-#> Residual Deviance: 34.65     AIC: 94.11
+#> Null Deviance:       740.8 
+#> Residual Deviance: 80.29     AIC: 111.8
 
 
 # Make predictions for the test rows
@@ -228,5 +228,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 28.04499 
+#> 14.87366 
 ```

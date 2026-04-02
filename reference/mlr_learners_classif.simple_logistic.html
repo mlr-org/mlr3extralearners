@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification SimpleLogistic Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_classif_simple_logistic.R" class="external-link"><code>R/learner_RWeka_classif_simple_logistic.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_RWeka_classif_simple_logistic.R" class="external-link"><code>R/learner_RWeka_classif_simple_logistic.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.simple_logistic.Rd</code></div>
     </div>
 
@@ -109,7 +109,7 @@ In <em>9th European Conference on Principles and Practice of Knowledge Discovery
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -231,7 +231,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: marshal, missings, multiclass, and twoclass</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'error', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -246,64 +246,66 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SimpleLogistic:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class M :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -3.08 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 19.54 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 4.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * -1.29 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * -0.65 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 0.41 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * 0.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * 0.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V28] * 0.74 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.45 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * -3.61 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -1.65 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V32] * 1.38 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -0.99 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V37] * -1.06 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * 0.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * 5.75 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * 1.22 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 2.08 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 6.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V5] * -1.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * -7.42 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 20.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 13.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * 22.52 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V55] * -25.89 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * -18.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -1.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -3.2 + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * 10.09 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * 1.79 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * 2.51 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V17] * -1.18 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * 1.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * 0.7  +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * 0.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V26] * -0.45 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * 0.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * -7.31 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V30] * 0.35 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * -0.57 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * -0.7 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * 10.05 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V40] * -1.72 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * 1.75 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * 2.38 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * 2.85 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * 16.5 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * -35.41 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * 18.29 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * 12.67 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * 18.42 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V56] * 15.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * -24.92 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * -2.33 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V8] * -3.02 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V9] * 0.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Class R :</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3.08 + </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -19.54 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -4.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V14] * 1.29 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V15] * 0.65 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -0.41 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V22] * -0.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * -0.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V28] * -0.74 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.45 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * 3.61 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 1.65 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V32] * -1.38 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 0.99 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V37] * 1.06 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V39] * -0.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * -5.75 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V44] * -1.22 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -2.08 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -6.39 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V5] * 1.82 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * 7.42 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -20.47 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -13.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * -22.52 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V55] * 25.89 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * 18.94 +</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 1.6 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3.2  + </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V1] * -10.09 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V11] * -1.79 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V12] * -2.51 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V17] * 1.18 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V21] * -1.71 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V23] * -0.7 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V24] * -0.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V26] * 0.45 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V29] * -0.46 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V3] * 7.31 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V30] * -0.35 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V31] * 0.57 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V36] * 0.7  +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V4] * -10.05 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V40] * 1.72 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V43] * -1.75 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V45] * -2.38 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V47] * -2.85 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V49] * -16.5 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V50] * 35.41 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V51] * -18.29 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V52] * -12.67 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V54] * -18.42 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V56] * -15.89 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V57] * 24.92 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V7] * 2.33 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V8] * 3.02 +</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [V9] * -0.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

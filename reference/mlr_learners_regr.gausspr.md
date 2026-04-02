@@ -65,7 +65,7 @@ statistical software*, **11**(9), 1–20.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -156,7 +156,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, character, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -173,10 +173,10 @@ print(learner$model)
 #> Problem type: regression 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0692245325840038 
+#>  Hyperparameter : sigma =  0.533910445650866 
 #> 
 #> Number of training instances learned : 21 
-#> Train error : 0.117839707 
+#> Train error : 0.130279495 
 
 
 # Make predictions for the test rows
@@ -185,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.026773 
+#> 12.40277 
 ```

@@ -81,7 +81,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -172,7 +172,7 @@ print(learner)
 #> • Feature Types: numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -195,15 +195,15 @@ print(learner$model)
 #> Base learner:  ls 
 #> Number of boosting iterations: mstop = 50 
 #> Step size:  0.1 
-#> Offset:  19.8619 
+#> Offset:  19.92857 
 #> 
 #> Coefficients: 
-#>          am        carb         cyl        disp        drat        gear 
-#>  3.37853900 -0.02518165  0.00000000 -0.01064321  0.00000000  0.00000000 
-#>          hp        qsec          vs          wt 
-#>  0.00000000  0.00000000  4.34137749  0.00000000 
+#>           am         carb          cyl         disp         drat         gear 
+#>  4.637762388 -0.173781991  0.000000000 -0.009733503  0.000000000  0.000000000 
+#>           hp         qsec           vs           wt 
+#>  0.000000000  0.000000000  2.835637103  0.000000000 
 #> attr(,"offset")
-#> [1] 19.8619
+#> [1] 19.92857
 #> 
 
 
@@ -213,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.27569 
+#> 15.04416 
 ```

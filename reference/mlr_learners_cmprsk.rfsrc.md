@@ -112,7 +112,7 @@ M. B (2014). “Random survival forests for competing risks.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -274,7 +274,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, selected_features, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("pbc")
@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 8.846
+#>        Average no. of terminal nodes: 9.61
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,26 +302,26 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.34349342, 0.19355849
+#>    (OOB) Requested performance error: 0.32674314, 0.24518668
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>         bili          age      protime        stage        edema      albumin 
-#>  0.171475910  0.074844811  0.065043111  0.045940783  0.030272538  0.021929117 
-#>         chol      ascites       hepato     platelet          ast          trt 
-#>  0.016981146  0.012305829  0.009059142  0.007165795  0.006450430  0.002192586 
-#>      spiders          sex     alk.phos         trig       copper 
-#>  0.002146517  0.001350321 -0.003682899 -0.005041246 -0.010262778 
+#>         bili      protime         chol          age        edema     platelet 
+#>  0.247168256  0.079344887  0.057543516  0.046947534  0.045780911  0.032389408 
+#>       copper      ascites        stage          sex     alk.phos       hepato 
+#>  0.016234381  0.015440397  0.013246761  0.008744848  0.008241326  0.005319649 
+#>      spiders          trt          ast         trig      albumin 
+#> -0.001657343 -0.002105572 -0.005790595 -0.006653954 -0.009737999 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili         edema           age        copper       ascites 
-#>  0.2017714955  0.1028505136  0.0888431166  0.0734557290  0.0733146572 
-#>       albumin       protime          chol          trig      alk.phos 
-#>  0.0670573134  0.0398218615  0.0387582330  0.0338124819  0.0077180601 
-#>      platelet         stage           ast       spiders           trt 
-#>  0.0077056365  0.0073020809  0.0018903151  0.0005647609 -0.0005245883 
-#>           sex        hepato 
-#> -0.0007562682 -0.0017467951 
+#>          bili         edema       protime        copper          chol 
+#>  0.1173220649  0.0829570345  0.0677287700  0.0553875149  0.0536077652 
+#>       ascites       albumin           age          trig      platelet 
+#>  0.0456319400  0.0447172450  0.0358844029  0.0279661724  0.0204426485 
+#>      alk.phos           ast         stage       spiders        hepato 
+#>  0.0094942114  0.0088833109  0.0044431076  0.0029101380  0.0013143479 
+#>           trt           sex 
+#>  0.0004668701 -0.0019505283 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.2144796
+#> [1] 0.2565666
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.8987835 
+#>  0.9190241 
 ```

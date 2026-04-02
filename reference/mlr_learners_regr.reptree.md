@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -214,7 +214,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -230,12 +230,12 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> wt < 3.33
-#> |   wt < 2.3 : 30.07 (3/3.41) [3/20.83]
-#> |   wt >= 2.3 : 22.04 (5/1.65) [3/0.66]
-#> wt >= 3.33
-#> |   drat < 3.19 : 16.68 (4/2.01) [0/0]
-#> |   drat >= 3.19 : 14.67 (2/0.02) [1/0.3]
+#> cyl < 5 : 26.78 (3/6) [2/22.4]
+#> cyl >= 5
+#> |   hp < 177.5 : 19.61 (6/1.19) [2/3.24]
+#> |   hp >= 177.5
+#> |   |   carb < 3.5 : 16.85 (2/0.2) [0/0]
+#> |   |   carb >= 3.5 : 13.92 (3/1.09) [3/6.22]
 #> 
 #> Size of the tree : 7
 
@@ -246,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.09234 
+#> 17.64444 
 ```

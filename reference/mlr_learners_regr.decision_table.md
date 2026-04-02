@@ -108,7 +108,7 @@ Conference on Machine Learning*, 174–189.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -246,7 +246,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -261,16 +261,16 @@ print(learner$model)
 #> Decision Table:
 #> 
 #> Number of training instances: 21
-#> Number of Rules : 10
+#> Number of Rules : 12
 #> Non matches covered by Majority class.
 #>  Best first.
 #>  Start set: no attributes
 #>  Search direction: forward
 #>  Stale search after 5 node expansions
-#>  Total number of subsets evaluated: 57
-#>  Merit of best subset found:    3.018
+#>  Total number of subsets evaluated: 53
+#>  Merit of best subset found:    2.794
 #> Evaluation (for feature selection): CV (leave one out) 
-#> Feature set: 5,10,1
+#> Feature set: 2,7,8,1
 
 
 # Make predictions for the test rows
@@ -279,5 +279,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 7.081807 
+#> 16.59576 
 ```

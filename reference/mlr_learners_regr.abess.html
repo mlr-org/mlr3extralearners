@@ -50,7 +50,7 @@ Calls abess::abess() from abess."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Abess Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_abess_regr_abess.R" class="external-link"><code>R/learner_abess_regr_abess.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_abess_regr_abess.R" class="external-link"><code>R/learner_abess_regr_abess.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.abess.Rd</code></div>
     </div>
 
@@ -93,7 +93,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -182,7 +182,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: selected_features and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -198,16 +198,16 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-out co"><span class="r-pr">#&gt;</span> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     num.threads = 1L)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   support.size        dev       GIC</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 13.0700000 53.976710</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  2.6370364 22.926339</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  1.3858447 11.979645</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  1.1072917  9.830967</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  0.9706900  9.629566</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  0.9106410 10.852109</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  0.9009749 13.191580</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  0.8853558 15.387906</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  0.8656407 17.478564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   support.size       dev      GIC</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1            0 19.361497 62.22901</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2            1  4.785148 35.43942</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3            2  3.476153 31.29159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4            3  2.678643 28.38222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5            4  2.392294 28.57159</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6            5  2.199164 29.36747</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7            6  1.828874 28.05913</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            7  1.778933 30.04127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            8  1.520985 29.31508</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -216,7 +216,7 @@ classification tasks and to <code>"multinomial"</code> for multiclass classifica
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13.78011 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21.41449 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

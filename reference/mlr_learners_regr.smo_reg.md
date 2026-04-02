@@ -118,7 +118,7 @@ Networks*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -256,7 +256,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal and missings
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -271,21 +271,21 @@ print(learner$model)
 #> SMOreg
 #> 
 #> weights (not support vectors):
-#>  +       0.3189 * (normalized) am
-#>  -       0.3188 * (normalized) carb
-#>  -       0.199  * (normalized) cyl
-#>  -       0.0492 * (normalized) disp
-#>  -       0.0865 * (normalized) drat
-#>  -       0.1146 * (normalized) gear
-#>  +       0.0802 * (normalized) hp
-#>  +       0.0694 * (normalized) qsec
-#>  +       0.1241 * (normalized) vs
-#>  -       0.2117 * (normalized) wt
-#>  +       0.5539
+#>  +       0.0912 * (normalized) am
+#>  -       0.2107 * (normalized) carb
+#>  -       0.106  * (normalized) cyl
+#>  +       0.0516 * (normalized) disp
+#>  -       0.0209 * (normalized) drat
+#>  +       0.0916 * (normalized) gear
+#>  -       0.0169 * (normalized) hp
+#>  +       0.1374 * (normalized) qsec
+#>  +       0.0086 * (normalized) vs
+#>  -       0.4642 * (normalized) wt
+#>  +       0.5675
 #> 
 #> 
 #> 
-#> Number of kernel evaluations: 231 (97.967% cached)
+#> Number of kernel evaluations: 231 (95.263% cached)
 
 
 # Make predictions for the test rows
@@ -294,5 +294,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 17.12446 
+#> 5.507007 
 ```

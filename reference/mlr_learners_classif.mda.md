@@ -58,7 +58,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -149,7 +149,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: multiclass and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -168,13 +168,13 @@ print(learner$model)
 #> 
 #> Percent Between-Group Variance Explained:
 #>     v1     v2     v3     v4     v5 
-#>  58.48  76.92  88.97  96.57 100.00 
+#>  39.41  73.82  88.60  96.60 100.00 
 #> 
 #> Degrees of Freedom (per dimension): 61 
 #> 
-#> Training Misclassification Error: 0.01439 ( N = 139 )
+#> Training Misclassification Error: 0.00719 ( N = 139 )
 #> 
-#> Deviance: 18.732 
+#> Deviance: 5.761 
 
 
 # Make predictions for the test rows

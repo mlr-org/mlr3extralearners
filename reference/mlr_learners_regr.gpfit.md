@@ -69,7 +69,7 @@ fitting a Gaussian process model to deterministic simulator outputs.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -161,7 +161,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -181,11 +181,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]        -10  -6.874507  -5.690784   1.255508  0.5182275        -10
+#> [1]  -9.900689        -10  -9.684203        -10   1.121007 -0.1552783
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  -6.112393    1.37149  -8.550798   -5.920995
+#> [1]  0.3807808  -3.271144  -8.086661   -5.172585
 #> 
-#> sigma^2_hat: [1] 31.76519
+#> sigma^2_hat: [1] 115.9759
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -205,7 +205,7 @@ print(learner$model)
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 75.700  2.760  3.000 52.000 14.600  0.000  1.615 
+#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.513 
 #> 
 #> 
 
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.76508 
+#> 22.20295 
 ```

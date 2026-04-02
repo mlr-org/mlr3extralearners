@@ -109,7 +109,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -200,7 +200,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("grace")
@@ -219,25 +219,21 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 74
+#> |   [2] age <= 71
 #> |   |   [3] revascdays <= 171
-#> |   |   |   [4] revasc <= 0: 30.000 (n = 89)
-#> |   |   |   [5] revasc > 0
-#> |   |   |   |   [6] age <= 63: Inf (n = 151)
-#> |   |   |   |   [7] age > 63: Inf (n = 115)
-#> |   |   [8] revascdays > 171: Inf (n = 96)
-#> |   [9] age > 74
-#> |   |   [10] revascdays <= 168
-#> |   |   |   [11] revasc <= 0
-#> |   |   |   |   [12] stchange <= 0
-#> |   |   |   |   |   [13] sysbp <= 129: 50.000 (n = 15)
-#> |   |   |   |   |   [14] sysbp > 129: 105.000 (n = 19)
-#> |   |   |   |   [15] stchange > 0: 12.000 (n = 61)
-#> |   |   |   [16] revasc > 0: 172.000 (n = 85)
-#> |   |   [17] revascdays > 168: Inf (n = 39)
+#> |   |   |   [4] revasc <= 0: 30.000 (n = 85)
+#> |   |   |   [5] revasc > 0: Inf (n = 218)
+#> |   |   [6] revascdays > 171: Inf (n = 78)
+#> |   [7] age > 71
+#> |   |   [8] revascdays <= 173
+#> |   |   |   [9] revasc <= 0
+#> |   |   |   |   [10] stchange <= 0: 85.000 (n = 36)
+#> |   |   |   |   [11] stchange > 0: 16.000 (n = 80)
+#> |   |   |   [12] revasc > 0: Inf (n = 121)
+#> |   |   [13] revascdays > 173: Inf (n = 52)
 #> 
-#> Number of inner nodes:    8
-#> Number of terminal nodes: 9
+#> Number of inner nodes:    6
+#> Number of terminal nodes: 7
 
 
 # Make predictions for the test rows
@@ -246,5 +242,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8175714 
+#>   0.8059512 
 ```

@@ -82,7 +82,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -206,7 +206,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -225,18 +225,18 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 10
 #>    N predictors per node: 4
-#>  Average leaves per tree: 3.254
+#>  Average leaves per tree: 3.246
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.70
+#>           OOB stat value: 0.66
 #>            OOB stat type: RSQ
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>         wt         hp       disp        cyl       carb       gear       qsec 
-#> 0.45910290 0.17464789 0.13483146 0.12979351 0.11475410 0.08940397 0.04871060 
-#>         am         vs       drat 
-#> 0.03389831 0.02875399 0.01149425 
+#>         wt       carb         am        cyl       gear         hp       disp 
+#> 0.14525140 0.14484680 0.10882353 0.08307692 0.07738095 0.06111111 0.05775076 
+#>       qsec       drat         vs 
+#> 0.02989130 0.02623907 0.00877193 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -244,5 +244,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 19.78092 
+#> 11.95565 
 ```

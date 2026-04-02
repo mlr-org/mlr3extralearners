@@ -75,7 +75,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -182,7 +182,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: selected_features and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -198,16 +198,16 @@ print(learner$model)
 #> abess.default(x = task$data(cols = task$feature_names), y = as.matrix(task$data(cols = task$target_names)), 
 #>     num.threads = 1L)
 #> 
-#>   support.size        dev       GIC
-#> 1            0 13.0700000 53.976710
-#> 2            1  2.6370364 22.926339
-#> 3            2  1.3858447 11.979645
-#> 4            3  1.1072917  9.830967
-#> 5            4  0.9706900  9.629566
-#> 6            5  0.9106410 10.852109
-#> 7            6  0.9009749 13.191580
-#> 8            7  0.8853558 15.387906
-#> 9            8  0.8656407 17.478564
+#>   support.size       dev      GIC
+#> 1            0 19.361497 62.22901
+#> 2            1  4.785148 35.43942
+#> 3            2  3.476153 31.29159
+#> 4            3  2.678643 28.38222
+#> 5            4  2.392294 28.57159
+#> 6            5  2.199164 29.36747
+#> 7            6  1.828874 28.05913
+#> 8            7  1.778933 30.04127
+#> 9            8  1.520985 29.31508
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 13.78011 
+#> 21.41449 
 ```

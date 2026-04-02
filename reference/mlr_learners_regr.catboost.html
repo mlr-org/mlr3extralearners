@@ -50,7 +50,7 @@ Calls catboost::catboost.train() from package 'catboost'."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Gradient Boosted Decision Trees Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_catboost_regr_catboost.R" class="external-link"><code>R/learner_catboost_regr_catboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.catboost.Rd</code></div>
     </div>
 
@@ -126,7 +126,7 @@ For information on how to configure the validation set, see the <em>Validation</
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -237,7 +237,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: numeric, factor, and ordered</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: importance, internal_tuning, missings, validation, and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -253,10 +253,10 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: RMSE</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 10 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      carb       cyl        hp      disp        wt      qsec      gear      drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21.305349 17.976997 12.749846 11.116498 10.358956  7.594620  7.348398  5.163859 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        vs        am </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  3.504680  2.880797 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        wt      carb       cyl      disp      gear      drat      qsec        hp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22.675419 16.301250 12.822885 11.681595  8.595416  7.890183  6.906408  5.494663 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        am        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  4.232913  3.399266 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -264,7 +264,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11.36434 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4.424849 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

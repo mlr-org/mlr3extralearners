@@ -62,7 +62,7 @@ statistical software*, **11**(9), 1–20.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -153,7 +153,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, character, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: multiclass, twoclass, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -171,12 +171,12 @@ print(learner$model)
 #>  parameter : cost C = 1 
 #> 
 #> Gaussian Radial Basis kernel function. 
-#>  Hyperparameter : sigma =  0.0135603849945009 
+#>  Hyperparameter : sigma =  0.0134669339468557 
 #> 
-#> Number of Support Vectors : 110 
+#> Number of Support Vectors : 106 
 #> 
-#> Objective Function Value : -58.7381 
-#> Training error : 0.007194 
+#> Objective Function Value : -57.6564 
+#> Training error : 0.035971 
 
 
 # Make predictions for the test rows
@@ -185,5 +185,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>  0.1449275 
 ```

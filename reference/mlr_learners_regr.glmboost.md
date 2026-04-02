@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -158,7 +158,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: offset and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -184,15 +184,15 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  19.52381 
+#> Offset:  19.98571 
 #> 
 #> Coefficients: 
-#>   (Intercept)            am           cyl          disp          gear 
-#> 17.6684889907 -0.3302898491 -0.7006087179  0.0007281954  0.0879417375 
-#>            hp          qsec            vs            wt 
-#> -0.0159421061  0.0061955093  0.4253537416 -3.5251822469 
+#>  (Intercept)           am          cyl         disp           hp         qsec 
+#> 11.652568298  1.678589555 -0.920544410  0.000285759 -0.010672174  0.209111670 
+#>           vs           wt 
+#> -0.212383959 -2.776576283 
 #> attr(,"offset")
-#> [1] 19.52381
+#> [1] 19.98571
 #> 
 
 
@@ -202,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.86632 
+#> 6.139647 
 ```

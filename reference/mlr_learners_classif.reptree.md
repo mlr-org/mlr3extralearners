@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -214,7 +214,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, missings, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -230,14 +230,14 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V45 < 0.23
-#> |   V12 < 0.15 : R (19/1) [15/5]
-#> |   V12 >= 0.15
-#> |   |   V51 < 0.01
-#> |   |   |   V55 < 0.01 : M (9/2) [6/2]
-#> |   |   |   V55 >= 0.01 : R (17/2) [3/1]
-#> |   |   V51 >= 0.01 : M (27/3) [11/4]
-#> V45 >= 0.23 : M (20/0) [12/2]
+#> V12 < 0.17
+#> |   V26 < 0.49 : M (4/1) [3/0]
+#> |   V26 >= 0.49 : R (24/0) [18/3]
+#> V12 >= 0.17
+#> |   V9 < 0.15
+#> |   |   V33 < 0.53 : M (18/7) [8/2]
+#> |   |   V33 >= 0.53 : R (9/0) [3/1]
+#> |   V9 >= 0.15 : M (37/4) [15/4]
 #> 
 #> Size of the tree : 9
 
@@ -248,5 +248,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.2753623 
 ```

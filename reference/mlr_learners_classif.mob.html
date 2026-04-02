@@ -50,7 +50,7 @@ Calls partykit::mob() from mob."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Model-based Recursive Partitioning Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_classif_mob.R" class="external-link"><code>R/learner_partykit_classif_mob.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_partykit_classif_mob.R" class="external-link"><code>R/learner_partykit_classif_mob.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.mob.Rd</code></div>
     </div>
 
@@ -97,7 +97,7 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/mob.html" class="external-
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -192,14 +192,14 @@ Calls <code><a href="https://rdrr.io/pkg/partykit/man/mob.html" class="external-
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionClassif&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">225</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  truth  response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1 benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3 benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        4 benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---    ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      677 benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      679 benign malignant</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      680 benign malignant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids     truth  response</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5    benign malignant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7    benign    benign</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       11    benign malignant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---       ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      678    benign malignant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      681 malignant malignant</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      683 malignant malignant</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

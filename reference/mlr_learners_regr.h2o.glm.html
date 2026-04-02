@@ -50,7 +50,7 @@ Calls h2o::h2o.glm() from package h2o."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Generalized Linear Regression H2O Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_h2o_regr_glm.R" class="external-link"><code>R/learner_h2o_regr_glm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_h2o_regr_glm.R" class="external-link"><code>R/learner_h2o_regr_glm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.h2o.glm.Rd</code></div>
     </div>
 
@@ -106,7 +106,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -183,7 +183,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: integer, numeric, and factor</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: missings and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"mtcars"</span><span class="op">)</span></span></span>
@@ -199,43 +199,43 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-out co"><span class="r-pr">#&gt;</span> ==============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionModel: glm</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1775124662382_111 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Model ID:  GLM_model_R_1775130291318_111 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> GLM Model: summary</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     family     link                              regularization</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0238 )</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0004 )</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   number_of_predictors_total number_of_active_predictors number_of_iterations</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 1                         10                           9                    1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     training_frame</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_87a2_31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 data_sid_ac76_31</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: glm coefficients</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        names coefficients standardized_coefficients</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Intercept    21.777764                 19.214286</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2         am     0.986280                  0.490786</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3       carb    -0.232889                 -0.390691</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4        cyl    -0.310986                 -0.586923</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5       disp    -0.006009                 -0.813105</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6       drat     1.390174                  0.855520</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7       gear     0.000000                  0.000000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8         hp    -0.011103                 -0.822118</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9       qsec     0.091936                  0.140842</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10        vs     0.129449                  0.064415</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11        wt    -1.074250                 -1.175157</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  Intercept    23.711461                 19.509524</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2         am     0.481225                  0.246275</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3       carb    -0.204850                 -0.344523</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        cyl    -0.388543                 -0.733298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5       disp    -0.005299                 -0.734832</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6       drat     0.884241                  0.491102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7       gear     0.453191                  0.355194</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8         hp    -0.010582                 -0.808890</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9       qsec     0.000000                  0.000000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10        vs     0.538219                  0.267825</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11        wt    -1.112022                 -1.244098</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> H2ORegressionMetrics: glm</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ** Reported on training data. **</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  6.459314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  2.541518</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  1.980009</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.1193221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  6.459314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R^2 :  0.8185114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance :747.4057</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MSE:  5.306094</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSE:  2.303496</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> MAE:  1.941346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> RMSLE:  0.1172926</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean Residual Deviance :  5.306094</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> R^2 :  0.8370598</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance :683.8581</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Null D.o.F. :20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance :135.6456</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance :111.428</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Residual D.o.F. :11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> AIC :120.7714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> AIC :116.6414</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -248,7 +248,7 @@ R package version 3.46.0.9, <a href="https://github.com/h2oai/h2o-3" class="exte
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  10.0196 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.52434 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

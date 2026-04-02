@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -214,7 +214,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal and missings
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -230,40 +230,46 @@ print(learner$model)
 #> RandomTree
 #> ==========
 #> 
-#> hp < 118
-#> |   wt < 2.3
-#> |   |   wt < 1.77 : 30.4 (2/0)
-#> |   |   wt >= 1.77
-#> |   |   |   carb < 1.5 : 27.3 (1/0)
-#> |   |   |   carb >= 1.5 : 26 (1/0)
-#> |   wt >= 2.3
-#> |   |   hp < 79.5 : 24.4 (1/0)
-#> |   |   hp >= 79.5
-#> |   |   |   qsec < 17.53 : 21 (1/0)
-#> |   |   |   qsec >= 17.53 : 21.43 (3/0)
-#> hp >= 118
-#> |   hp < 192.5
-#> |   |   drat < 3.08
-#> |   |   |   wt < 3.75
-#> |   |   |   |   carb < 2.5 : 15.5 (1/0)
-#> |   |   |   |   carb >= 2.5 : 17.3 (1/0)
-#> |   |   |   wt >= 3.75 : 15.2 (1/0)
-#> |   |   drat >= 3.08
-#> |   |   |   qsec < 17.18
-#> |   |   |   |   disp < 380 : 18.7 (1/0)
-#> |   |   |   |   disp >= 380 : 19.2 (1/0)
-#> |   |   |   qsec >= 17.18
-#> |   |   |   |   cyl < 7
+#> disp < 120.65
+#> |   wt < 1.89
+#> |   |   disp < 83.1 : 33.9 (1/0)
+#> |   |   disp >= 83.1 : 30.4 (1/0)
+#> |   wt >= 1.89
+#> |   |   drat < 4.25 : 27.3 (1/0)
+#> |   |   drat >= 4.25 : 26 (1/0)
+#> disp >= 120.65
+#> |   hp < 116.5
+#> |   |   drat < 2.92 : 18.1 (1/0)
+#> |   |   drat >= 2.92
+#> |   |   |   hp < 102
+#> |   |   |   |   disp < 143.75 : 22.8 (1/0)
+#> |   |   |   |   disp >= 143.75 : 24.4 (1/0)
+#> |   |   |   hp >= 102
+#> |   |   |   |   vs < 0.5 : 21 (1/0)
+#> |   |   |   |   vs >= 0.5 : 21.4 (2/0)
+#> |   hp >= 116.5
+#> |   |   hp < 177.5
+#> |   |   |   hp < 162.5
+#> |   |   |   |   drat < 3.34 : 15.5 (1/0)
+#> |   |   |   |   drat >= 3.34
 #> |   |   |   |   |   qsec < 18.6 : 19.2 (1/0)
 #> |   |   |   |   |   qsec >= 18.6 : 17.8 (1/0)
-#> |   |   |   |   cyl >= 7 : 15.2 (1/0)
-#> |   hp >= 192.5
-#> |   |   wt < 4.54
-#> |   |   |   am < 0.5 : 13.3 (1/0)
-#> |   |   |   am >= 0.5 : 15 (1/0)
-#> |   |   wt >= 4.54 : 10.4 (2/0)
+#> |   |   |   hp >= 162.5
+#> |   |   |   |   carb < 4
+#> |   |   |   |   |   qsec < 17.04 : 18.7 (1/0)
+#> |   |   |   |   |   qsec >= 17.04 : 19.2 (1/0)
+#> |   |   |   |   carb >= 4 : 19.7 (1/0)
+#> |   |   hp >= 177.5
+#> |   |   |   qsec < 16.41
+#> |   |   |   |   disp < 350.5 : 13.3 (1/0)
+#> |   |   |   |   disp >= 350.5 : 15.8 (1/0)
+#> |   |   |   qsec >= 16.41
+#> |   |   |   |   qsec < 17.8
+#> |   |   |   |   |   qsec < 17.5 : 16.4 (1/0)
+#> |   |   |   |   |   qsec >= 17.5 : 17.3 (1/0)
+#> |   |   |   |   qsec >= 17.8 : 15.2 (1/0)
 #> 
-#> Size of the tree : 33
+#> Size of the tree : 39
 
 
 # Make predictions for the test rows
@@ -272,5 +278,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 9.726061 
+#> 13.30455 
 ```

@@ -50,7 +50,7 @@ Calls stepPlr::plr() from stepPlr."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification Logistic Regression Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_stepPlr_classif_plr.R" class="external-link"><code>R/learner_stepPlr_classif_plr.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_stepPlr_classif_plr.R" class="external-link"><code>R/learner_stepPlr_classif_plr.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.stepPlr.Rd</code></div>
     </div>
 
@@ -93,7 +93,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -170,7 +170,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Feature Types: logical, integer, and numeric</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Encapsulation: none (fallback: -)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> • Properties: twoclass and weights</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use'</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> • Other settings: use_weights = 'use', predict_raw = 'FALSE'</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Define a Task</span></span></span>
 <span class="r-in"><span><span class="va">task</span> <span class="op">=</span> <span class="fu"><a href="https://mlr3.mlr-org.com/reference/mlr_sugar.html" class="external-link">tsk</a></span><span class="op">(</span><span class="st">"sonar"</span><span class="op">)</span></span></span>
@@ -188,25 +188,25 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Intercept        V1       V10       V11       V12       V13       V14       V15 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  20.95855 -23.51562   5.38756 -34.95790 -29.35195  25.56465  -2.72001  -2.31398 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  17.78041 -51.15632  31.34691 -42.61745  -0.39522 -13.80158  15.70530  -3.01815 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V16       V17       V18       V19        V2       V20       V21       V22 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.02977   3.91804   8.66437   1.72032  35.94476 -20.58543  27.89202 -42.58223 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -13.05653  23.92729 -16.77355  16.94380  37.02617  -5.82843   2.69260 -13.18271 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V23       V24       V25       V26       V27       V28       V29        V3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  46.01901 -64.65130  45.45362 -18.82143   7.69979  -1.65455  -2.03600  18.90646 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  12.28640 -30.20353  11.54447   8.13228 -11.68242  15.73396  -6.88405  75.50588 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V30       V31       V32       V33       V34       V35       V36       V37 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -13.67369  26.42123 -18.20777  -9.92060  35.51717 -33.55739  15.03521  30.81029 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -18.10350  37.55363 -26.00608  -2.27407  19.68718 -23.09059  19.08305   6.88902 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V38       V39        V4       V40       V41       V42       V43       V44 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -17.14242 -18.23162 -33.22592   6.06610  17.84944 -37.09464  14.55675  -8.17175 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   4.46253 -20.57561 -99.20937  33.37896  -9.01969  -1.98025  -9.86831 -16.36706 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V45       V46       V47       V48       V49        V5       V50       V51 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -16.97932 -10.40583  17.65397 -30.70122 -27.00646   2.04265  57.69936 -97.06223 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -18.99729   2.23720 -31.21527 -19.08265 -52.84026   5.55115  76.72821 -26.36629 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       V52       V53       V54       V55       V56       V57       V58       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -43.46026 -40.89733 -40.35499  13.95480 -12.98003  34.15863 -17.96279 -21.35670 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -22.83487  -6.43977  21.88481  24.08742  -0.85975  11.55708 -57.54018 -32.86871 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        V6       V60        V7        V8        V9 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> -37.33071 -36.45583  42.68415  19.95717   2.41284 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -13.61944 -29.48427  32.42542  29.91075 -35.11941 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.11 on 138 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.15 on 93.77 degrees of freedom</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 235.32 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     Null deviance: 192.63 on 138 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual deviance: 12.67 on 93.62 degrees of freedom</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Score: deviance + 4.9 * df = 236.58 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -215,7 +215,7 @@ ISSN 1465-4644, <a href="https://doi.org/10.1093/biostatistics/kxm010" class="ex
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2898551 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.173913 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

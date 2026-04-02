@@ -86,7 +86,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
+  <https://mlr3book.mlr-org.com/basics.html#learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -177,7 +177,7 @@ print(learner)
 #> • Feature Types: numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -200,11 +200,11 @@ print(learner$model)
 #> Base learner:  ls 
 #> Number of boosting iterations: mstop = 50 
 #> Step size:  0.1 
-#> Offset:  0.09352518 
+#> Offset:  0.0647482 
 #> 
 #> Coefficients: 
 #>          V1         V10         V11         V12         V13         V14 
-#>  0.00000000  0.00000000  0.60184310  0.13673950  0.00000000  0.00000000 
+#>  0.00000000  0.00000000  0.79610698  0.00000000  0.00000000  0.00000000 
 #>         V15         V16         V17         V18         V19          V2 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V20         V21         V22         V23         V24         V25 
@@ -212,19 +212,19 @@ print(learner$model)
 #>         V26         V27         V28         V29          V3         V30 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V31         V32         V33         V34         V35         V36 
-#> -0.01795794  0.00000000  0.00000000  0.00000000  0.00000000 -0.70181949 
+#> -0.06261167  0.00000000  0.00000000  0.00000000  0.00000000 -0.66304507 
 #>         V37         V38         V39          V4         V40         V41 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V42         V43         V44         V45         V46         V47 
-#>  0.00000000  0.00000000  0.00000000  0.13258537  0.00000000  0.00000000 
+#>  0.00000000  0.00000000  0.00000000  0.73701233  0.00000000  0.00000000 
 #>         V48         V49          V5         V50         V51         V52 
-#>  0.00000000  2.26909848  0.00000000  0.00000000  0.00000000  0.00000000 
+#>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V53         V54         V55         V56         V57         V58 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #>         V59          V6         V60          V7          V8          V9 
 #>  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000  0.00000000 
 #> attr(,"offset")
-#> [1] 0.09352518
+#> [1] 0.0647482
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.2753623 
 ```
