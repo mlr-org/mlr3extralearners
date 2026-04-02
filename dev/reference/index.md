@@ -285,6 +285,9 @@
 - [`mlr_learners_regr.blockforest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   [`LearnerRegrBlockForest`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.blockforest.md)
   : BlockForest Regression Learner
+- [`mlr_learners_regr.botorch_fullybayesian`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_fullybayesian.md)
+  [`LearnerRegrBotorchFullyBayesian`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_fullybayesian.md)
+  : BoTorch Fully Bayesian SingleTaskGP Regression Learner
 - [`mlr_learners_regr.botorch_mixedsingletaskgp`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
   [`LearnerRegrBotorchMixedSingleTaskGP`](https://mlr3extralearners.mlr-org.com/dev/reference/mlr_learners_regr.botorch_mixedsingletaskgp.md)
   : BoTorch MixedSingleTaskGP Regression Learner
