@@ -20,7 +20,7 @@
   - `LearnerClassifLvq1`
   - `LearnerRegrBotorchFullyBayesian`
 
-* Added kernel and input/output transformations for `LearnerRegrBotorchSingleTaskGP` and `LearnerRegrBotorchMixedSingleTaskGP`.
+- Added kernel and input/output transformations for `LearnerRegrBotorchSingleTaskGP` and `LearnerRegrBotorchMixedSingleTaskGP`.
 
 ## Breaking Changes
 
