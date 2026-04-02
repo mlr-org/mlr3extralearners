@@ -1,7 +1,7 @@
 # Custom template for survdnn learner (surv.survdnn)
 # Reason: This learner takes more then 5 secs to fit a simple dataset
-#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\")", id) %>
-#' 
+#' <%= sprintf("@examplesIf learner_is_runnable(\"%s\") && torch::torch_is_installed()", id) %>
+#'
 #' # Define the Learner
 #' learner = lrn("<%= id %>", epochs = 42L, loss = "cox")
 #' print(learner)
@@ -21,4 +21,4 @@
 #'
 #' # Score the predictions
 #' predictions$score()
-#' 
+#'

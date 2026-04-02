@@ -121,7 +121,7 @@ test_that("other tests", {
         x1 = sample(1:3, n, replace = TRUE),
         x2 = sample(1:3, n, replace = TRUE),
         x3 = sample(1:3, n, replace = TRUE),
-        y = sample(c(0, 1), n, replace = TRUE)
+        y = c(0, 1, sample(c(0, 1), n - 2, replace = TRUE))
       ),
       target = "y"
     )
