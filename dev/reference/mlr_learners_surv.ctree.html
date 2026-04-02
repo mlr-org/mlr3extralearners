@@ -202,27 +202,25 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [5] los &lt;= 1: 1.000 (n = 14)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] los &gt; 1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [7] age &lt;= 62: 77.000 (n = 40)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [8] age &gt; 62: 19.000 (n = 42)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [10] age &lt;= 54: Inf (n = 71)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [11] age &gt; 54: Inf (n = 174)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] revascdays &gt; 171: Inf (n = 95)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [13] age &gt; 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [14] revascdays &lt;= 167</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [15] revasc &lt;= 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [16] stchange &lt;= 0: 85.000 (n = 40)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [17] stchange &gt; 0: 12.000 (n = 56)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [18] revasc &gt; 0: 174.000 (n = 94)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [19] revascdays &gt; 167: Inf (n = 44)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0: 28.000 (n = 54)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] revasc &gt; 0: Inf (n = 169)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] revascdays &gt; 170: Inf (n = 70)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] age &gt; 66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &lt;= 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] revasc &lt;= 0: 26.000 (n = 133)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] revasc &gt; 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [11] sysbp &lt;= 124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [12] los &lt;= 5: 4.000 (n = 17)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [13] los &gt; 5: Inf (n = 29)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [14] sysbp &gt; 124</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [15] los &lt;= 19: Inf (n = 109)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   |   [16] los &gt; 19: 51.000 (n = 12)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [17] revascdays &gt; 173: Inf (n = 77)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:     9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -231,7 +229,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8080507 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8009889 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

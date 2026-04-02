@@ -197,110 +197,110 @@ print(learner$model)
 #> 
 #> $rule
 #>       [,1] [,2] [,3] [,4]       [,5]  [,6]   [,7] [,8]       [,9]  [,10] [,11]
-#>  [1,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#>  [2,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
+#>  [1,] "IF" "am" "is" "vv.large" "and" "carb" "is" "medium"   "and" "cyl" "is" 
+#>  [2,] "IF" "am" "is" "vv.large" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
 #>  [3,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
-#>  [4,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#>  [5,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
-#>  [6,] "IF" "am" "is" "vv.small" "and" "carb" "is" "large"    "and" "cyl" "is" 
-#>  [7,] "IF" "am" "is" "vv.large" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#>  [8,] "IF" "am" "is" "vv.large" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#>  [9,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#> [10,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
+#>  [4,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
+#>  [5,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
+#>  [6,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
+#>  [7,] "IF" "am" "is" "vv.small" "and" "carb" "is" "medium"   "and" "cyl" "is" 
+#>  [8,] "IF" "am" "is" "vv.small" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
+#>  [9,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
+#> [10,] "IF" "am" "is" "vv.small" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
 #> [11,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
-#> [12,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
-#> [13,] "IF" "am" "is" "vv.small" "and" "carb" "is" "large"    "and" "cyl" "is" 
-#> [14,] "IF" "am" "is" "vv.small" "and" "carb" "is" "large"    "and" "cyl" "is" 
-#> [15,] "IF" "am" "is" "vv.large" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#> [16,] "IF" "am" "is" "vv.small" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#> [17,] "IF" "am" "is" "vv.large" "and" "carb" "is" "small"    "and" "cyl" "is" 
-#> [18,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
-#> [19,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.large" "and" "cyl" "is" 
-#> [20,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
+#> [12,] "IF" "am" "is" "vv.small" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
+#> [13,] "IF" "am" "is" "vv.small" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
+#> [14,] "IF" "am" "is" "vv.small" "and" "carb" "is" "medium"   "and" "cyl" "is" 
+#> [15,] "IF" "am" "is" "vv.small" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
+#> [16,] "IF" "am" "is" "vv.small" "and" "carb" "is" "medium"   "and" "cyl" "is" 
+#> [17,] "IF" "am" "is" "vv.small" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
+#> [18,] "IF" "am" "is" "vv.small" "and" "carb" "is" "medium"   "and" "cyl" "is" 
+#> [19,] "IF" "am" "is" "vv.large" "and" "carb" "is" "vv.small" "and" "cyl" "is" 
+#> [20,] "IF" "am" "is" "vv.large" "and" "carb" "is" "v.small"  "and" "cyl" "is" 
 #>       [,12]      [,13] [,14]  [,15] [,16]      [,17] [,18]  [,19] [,20]     
-#>  [1,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "vv.small"
-#>  [2,] "medium"   "and" "disp" "is"  "v.small"  "and" "drat" "is"  "medium"  
+#>  [1,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "vv.large"
+#>  [2,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "large"   
 #>  [3,] "medium"   "and" "disp" "is"  "medium"   "and" "drat" "is"  "v.small" 
-#>  [4,] "vv.large" "and" "disp" "is"  "v.large"  "and" "drat" "is"  "v.small" 
-#>  [5,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "medium"  
+#>  [4,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "medium"  
+#>  [5,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "v.small" 
 #>  [6,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "v.small" 
-#>  [7,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "medium"  
-#>  [8,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "v.large" 
-#>  [9,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "medium"  
-#> [10,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "large"   
+#>  [7,] "medium"   "and" "disp" "is"  "v.small"  "and" "drat" "is"  "v.large" 
+#>  [8,] "vv.large" "and" "disp" "is"  "v.large"  "and" "drat" "is"  "v.small" 
+#>  [9,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "v.large" 
+#> [10,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "vv.small"
 #> [11,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "large"   
-#> [12,] "medium"   "and" "disp" "is"  "v.small"  "and" "drat" "is"  "medium"  
-#> [13,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "v.small" 
-#> [14,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "v.small" 
+#> [12,] "vv.large" "and" "disp" "is"  "medium"   "and" "drat" "is"  "small"   
+#> [13,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "small"   
+#> [14,] "vv.large" "and" "disp" "is"  "large"    "and" "drat" "is"  "large"   
 #> [15,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "large"   
-#> [16,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "medium"  
-#> [17,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "vv.large"
+#> [16,] "vv.large" "and" "disp" "is"  "vv.large" "and" "drat" "is"  "small"   
+#> [17,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "large"   
 #> [18,] "vv.large" "and" "disp" "is"  "vv.large" "and" "drat" "is"  "v.small" 
-#> [19,] "vv.large" "and" "disp" "is"  "vv.large" "and" "drat" "is"  "vv.small"
-#> [20,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "large"   
+#> [19,] "vv.small" "and" "disp" "is"  "vv.small" "and" "drat" "is"  "v.large" 
+#> [20,] "vv.small" "and" "disp" "is"  "v.small"  "and" "drat" "is"  "vv.large"
 #>       [,21] [,22]  [,23] [,24]      [,25] [,26] [,27] [,28]      [,29] [,30] 
-#>  [1,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "medium"   "and" "qsec"
-#>  [2,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "small"    "and" "qsec"
-#>  [3,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "small"    "and" "qsec"
-#>  [4,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "large"    "and" "qsec"
-#>  [5,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "vv.large" "and" "qsec"
-#>  [6,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "large"    "and" "qsec"
-#>  [7,] "and" "gear" "is"  "vv.large" "and" "hp"  "is"  "small"    "and" "qsec"
-#>  [8,] "and" "gear" "is"  "vv.large" "and" "hp"  "is"  "v.small"  "and" "qsec"
+#>  [1,] "and" "gear" "is"  "vv.large" "and" "hp"  "is"  "large"    "and" "qsec"
+#>  [2,] "and" "gear" "is"  "vv.large" "and" "hp"  "is"  "v.small"  "and" "qsec"
+#>  [3,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "v.small"  "and" "qsec"
+#>  [4,] "and" "gear" "is"  "vv.large" "and" "hp"  "is"  "vv.large" "and" "qsec"
+#>  [5,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "medium"   "and" "qsec"
+#>  [6,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "medium"   "and" "qsec"
+#>  [7,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "v.small"  "and" "qsec"
+#>  [8,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "small"    "and" "qsec"
 #>  [9,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
-#> [10,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
-#> [11,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
-#> [12,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "small"    "and" "qsec"
-#> [13,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "large"    "and" "qsec"
+#> [10,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "small"    "and" "qsec"
+#> [11,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "v.small"  "and" "qsec"
+#> [12,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "small"    "and" "qsec"
+#> [13,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "small"    "and" "qsec"
 #> [14,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "large"    "and" "qsec"
-#> [15,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "small"    "and" "qsec"
-#> [16,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "v.small"  "and" "qsec"
-#> [17,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
-#> [18,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "vv.large" "and" "qsec"
-#> [19,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "v.large"  "and" "qsec"
-#> [20,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
+#> [15,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
+#> [16,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "large"    "and" "qsec"
+#> [17,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "v.small"  "and" "qsec"
+#> [18,] "and" "gear" "is"  "vv.small" "and" "hp"  "is"  "medium"   "and" "qsec"
+#> [19,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "vv.small" "and" "qsec"
+#> [20,] "and" "gear" "is"  "medium"   "and" "hp"  "is"  "v.small"  "and" "qsec"
 #>       [,31] [,32]      [,33] [,34] [,35] [,36]      [,37] [,38] [,39]
-#>  [1,] "is"  "v.small"  "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [2,] "is"  "v.small"  "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [3,] "is"  "medium"   "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#>  [4,] "is"  "v.small"  "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [5,] "is"  "vv.small" "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [6,] "is"  "small"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [7,] "is"  "v.small"  "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#>  [8,] "is"  "v.small"  "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#>  [9,] "is"  "large"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [10,] "is"  "medium"   "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [11,] "is"  "medium"   "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [12,] "is"  "small"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [13,] "is"  "small"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#> [14,] "is"  "small"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#> [15,] "is"  "medium"   "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [16,] "is"  "vv.large" "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [17,] "is"  "small"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
-#> [18,] "is"  "small"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
-#> [19,] "is"  "small"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [1,] "is"  "vv.small" "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [2,] "is"  "medium"   "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#>  [3,] "is"  "v.large"  "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#>  [4,] "is"  "vv.small" "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [5,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [6,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [7,] "is"  "large"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#>  [8,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#>  [9,] "is"  "v.large"  "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#> [10,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [11,] "is"  "large"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#> [12,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [13,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [14,] "is"  "v.small"  "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [15,] "is"  "vv.large" "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#> [16,] "is"  "medium"   "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [17,] "is"  "vv.large" "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
+#> [18,] "is"  "large"    "and" "vs"  "is"  "vv.small" "and" "wt"  "is" 
+#> [19,] "is"  "v.large"  "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
 #> [20,] "is"  "large"    "and" "vs"  "is"  "vv.large" "and" "wt"  "is" 
 #>       [,40]      [,41]  [,42] [,43] [,44]     
 #>  [1,] "medium"   "THEN" "mpg" "is"  "v.small" 
-#>  [2,] "small"    "THEN" "mpg" "is"  "medium"  
+#>  [2,] "vv.small" "THEN" "mpg" "is"  "v.large" 
 #>  [3,] "medium"   "THEN" "mpg" "is"  "medium"  
-#>  [4,] "large"    "THEN" "mpg" "is"  "small"   
-#>  [5,] "large"    "THEN" "mpg" "is"  "v.small" 
-#>  [6,] "large"    "THEN" "mpg" "is"  "small"   
-#>  [7,] "vv.small" "THEN" "mpg" "is"  "v.large" 
-#>  [8,] "v.small"  "THEN" "mpg" "is"  "large"   
-#>  [9,] "medium"   "THEN" "mpg" "is"  "large"   
-#> [10,] "v.small"  "THEN" "mpg" "is"  "vv.large"
-#> [11,] "v.small"  "THEN" "mpg" "is"  "large"   
-#> [12,] "medium"   "THEN" "mpg" "is"  "small"   
+#>  [4,] "medium"   "THEN" "mpg" "is"  "v.small" 
+#>  [5,] "large"    "THEN" "mpg" "is"  "small"   
+#>  [6,] "medium"   "THEN" "mpg" "is"  "small"   
+#>  [7,] "medium"   "THEN" "mpg" "is"  "small"   
+#>  [8,] "large"    "THEN" "mpg" "is"  "small"   
+#>  [9,] "v.small"  "THEN" "mpg" "is"  "v.large" 
+#> [10,] "medium"   "THEN" "mpg" "is"  "v.small" 
+#> [11,] "v.small"  "THEN" "mpg" "is"  "medium"  
+#> [12,] "medium"   "THEN" "mpg" "is"  "v.small" 
 #> [13,] "medium"   "THEN" "mpg" "is"  "small"   
 #> [14,] "large"    "THEN" "mpg" "is"  "v.small" 
-#> [15,] "small"    "THEN" "mpg" "is"  "medium"  
-#> [16,] "medium"   "THEN" "mpg" "is"  "medium"  
-#> [17,] "vv.small" "THEN" "mpg" "is"  "v.large" 
-#> [18,] "vv.large" "THEN" "mpg" "is"  "v.small" 
-#> [19,] "vv.large" "THEN" "mpg" "is"  "vv.small"
-#> [20,] "v.small"  "THEN" "mpg" "is"  "vv.large"
+#> [15,] "medium"   "THEN" "mpg" "is"  "large"   
+#> [16,] "vv.large" "THEN" "mpg" "is"  "v.small" 
+#> [17,] "v.small"  "THEN" "mpg" "is"  "medium"  
+#> [18,] "vv.large" "THEN" "mpg" "is"  "vv.small"
+#> [19,] "v.small"  "THEN" "mpg" "is"  "vv.large"
+#> [20,] "small"    "THEN" "mpg" "is"  "medium"  
 #> 
 #> $varinp.mf
 #>        vv.small    v.small      small     medium      large    v.large
@@ -378,77 +378,77 @@ print(learner$model)
 #> 
 #> $degree.ante
 #>                
-#>  [1,] 0.6843873
-#>  [2,] 0.6402767
-#>  [3,] 0.6323824
-#>  [4,] 0.6088822
-#>  [5,] 0.5953166
-#>  [6,] 0.5104901
-#>  [7,] 0.5906054
-#>  [8,] 0.5503877
-#>  [9,] 0.4725141
-#> [10,] 0.4615453
-#> [11,] 0.4615453
-#> [12,] 0.4468445
-#> [13,] 0.4038929
-#> [14,] 0.4368938
-#> [15,] 0.4462898
-#> [16,] 0.4589006
-#> [17,] 0.3733294
-#> [18,] 0.3921187
-#> [19,] 0.4058346
-#> [20,] 0.3666172
+#>  [1,] 0.4248785
+#>  [2,] 0.5433813
+#>  [3,] 0.5393832
+#>  [4,] 0.5352743
+#>  [5,] 0.5092745
+#>  [6,] 0.5092745
+#>  [7,] 0.4725141
+#>  [8,] 0.3851057
+#>  [9,] 0.4789988
+#> [10,] 0.4880249
+#> [11,] 0.3913072
+#> [12,] 0.4585351
+#> [13,] 0.3851057
+#> [14,] 0.4700406
+#> [15,] 0.4746896
+#> [16,] 0.3780528
+#> [17,] 0.4208254
+#> [18,] 0.4725141
+#> [19,] 0.4789988
+#> [20,] 0.4143391
 #> 
 #> $rule.data.num
 #>       [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11]
-#>  [1,]    1   10   21   26   29   36   46   51   57    67    72
-#>  [2,]    7   14   18   23   32   39   45   51   57    66    74
-#>  [3,]    1    8   18   25   30   36   45   53   63    67    74
-#>  [4,]    1   10   21   27   30   36   47   51   57    68    73
-#>  [5,]    1   14   21   26   32   36   49   50   57    68    72
-#>  [6,]    1   12   21   25   30   36   47   52   57    68    73
-#>  [7,]    7   10   15   22   32   42   45   51   63    64    76
-#>  [8,]    7   10   15   23   34   42   44   51   57    65    75
-#>  [9,]    1   10   15   23   32   39   43   54   63    67    75
-#> [10,]    7    8   15   22   33   39   43   53   63    65    77
-#> [11,]    7    8   15   22   33   39   43   53   63    65    75
-#> [12,]    1   14   18   23   32   39   45   52   63    67    73
-#> [13,]    1   12   21   25   30   36   47   52   57    67    73
-#> [14,]    1   12   21   25   30   36   47   52   57    68    72
-#> [15,]    7   10   15   23   33   39   45   53   63    66    74
-#> [16,]    1   10   15   23   32   39   44   56   63    67    74
-#> [17,]    7   10   15   22   35   39   43   52   63    64    76
-#> [18,]    1   14   21   28   30   36   49   52   57    70    72
-#> [19,]    1   14   21   28   29   36   48   52   57    70    71
-#> [20,]    7    8   15   22   33   39   43   54   63    65    77
+#>  [1,]    7   11   21   26   35   42   47   50   57    67    72
+#>  [2,]    7    9   15   22   33   42   44   53   63    64    76
+#>  [3,]    1    8   18   25   30   36   44   55   63    67    74
+#>  [4,]    7   14   21   25   32   42   49   50   57    67    72
+#>  [5,]    1   10   21   25   30   36   46   53   57    68    73
+#>  [6,]    1   10   21   25   30   36   46   53   57    67    73
+#>  [7,]    1   11   18   23   34   39   44   54   63    67    73
+#>  [8,]    1    9   21   27   30   36   45   53   57    68    73
+#>  [9,]    7    8   15   22   34   39   43   55   63    65    76
+#> [10,]    1    9   21   26   29   36   45   53   57    67    72
+#> [11,]    7    8   15   22   33   39   44   54   63    65    74
+#> [12,]    1    9   21   25   31   36   45   53   57    67    72
+#> [13,]    1    9   21   26   31   36   45   53   57    67    73
+#> [14,]    1   11   21   26   33   36   47   51   57    68    72
+#> [15,]    1    9   15   23   33   39   43   56   63    67    75
+#> [16,]    1   11   21   28   31   36   47   53   57    70    72
+#> [17,]    1    8   15   23   33   36   44   56   63    65    74
+#> [18,]    1   11   21   28   30   36   46   54   57    70    71
+#> [19,]    7    8   15   22   34   39   43   55   63    65    77
+#> [20,]    7    9   15   23   35   39   44   54   63    66    74
 #> 
 #> $degree.rule
-#>                 
-#>  [1,] 0.68438727
-#>  [2,] 0.64027666
-#>  [3,] 0.63238236
-#>  [4,] 0.60888224
-#>  [5,] 0.59531663
-#>  [6,] 0.59110655
-#>  [7,] 0.59060538
-#>  [8,] 0.55038767
-#>  [9,] 0.52245242
-#> [10,] 0.45045471
-#> [11,] 0.33284074
-#> [12,] 0.22013182
-#> [13,] 0.20687868
-#> [14,] 0.18747679
-#> [15,] 0.13900452
-#> [16,] 0.10632742
-#> [17,] 0.04514255
-#> [18,] 0.03834348
-#> [19,] 0.00000000
-#> [20,] 0.00000000
+#>                  
+#>  [1,] 0.598330969
+#>  [2,] 0.569717165
+#>  [3,] 0.539383183
+#>  [4,] 0.535274335
+#>  [5,] 0.509274479
+#>  [6,] 0.509274479
+#>  [7,] 0.479549879
+#>  [8,] 0.479549879
+#>  [9,] 0.464049755
+#> [10,] 0.464049755
+#> [11,] 0.448460226
+#> [12,] 0.322907724
+#> [13,] 0.247000214
+#> [14,] 0.163429876
+#> [15,] 0.126222930
+#> [16,] 0.114651857
+#> [17,] 0.003031321
+#> [18,] 0.000000000
+#> [19,] 0.000000000
+#> [20,] 0.000000000
 #> 
 #> $range.data.ori
 #>      [,1] [,2] [,3]  [,4] [,5] [,6] [,7]  [,8] [,9] [,10] [,11]
-#> [1,]    0    1    4  71.1 2.76    3   52 15.41    0 1.513  10.4
-#> [2,]    1    4    8 472.0 4.93    5  245 22.90    1 5.345  33.9
+#> [1,]    0    1    4  78.7 2.76    3   62 14.50    0 1.513  10.4
+#> [2,]    1    8    8 472.0 4.22    5  335 20.01    1 5.424  32.4
 #> 
 #> $type.mf
 #> [1] "GAUSSIAN"
@@ -492,5 +492,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.08853 
+#> 24.87766 
 ```
