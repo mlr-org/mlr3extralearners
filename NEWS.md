@@ -19,6 +19,11 @@
   - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
 
+## Breaking Changes
+
+- Moved `LearnerSurvAkritas` and `LearnerSurvParametric` to the attic.
+See https://github.com/mlr-org/mlr3extralearners/issues/549.
+
 ## Other
 
 - Updated `Extending` vignette to incorporate information about skipping tests and considerations for testing `Python` learners
