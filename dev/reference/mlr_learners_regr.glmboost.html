@@ -202,13 +202,15 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.84286 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  20.23333 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)          cyl         disp           hp         qsec           wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14.086169595 -0.930519974  0.001649880 -0.007571505  0.318610655 -4.529888802 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)          am        carb         cyl        disp        drat </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -2.06408395  2.07817442 -0.66080713 -0.15656752  0.00321952  2.19369298 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          hp        qsec          wt </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> -0.02788893  0.26507189 -1.74164039 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.84286</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] 20.23333</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -218,7 +220,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.25578 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5.233679 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
