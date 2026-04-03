@@ -197,53 +197,53 @@ print(learner$model)
 #> ==============
 #> 
 #> H2OBinomialModel: drf
-#> Model ID:  DRF_model_R_1775211581060_58 
+#> Model ID:  DRF_model_R_1775213313924_58 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               13479         5
+#> 1              50                       50               13740         5
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         9    6.80000         12         21    16.86000
+#> 1        10    6.56000         11         22    17.24000
 #> 
 #> 
 #> H2OBinomialMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  0.1382678
-#> RMSE:  0.3718438
-#> LogLoss:  0.4352308
-#> Mean Per-Class Error:  0.1696355
-#> AUC:  0.9092792
-#> AUCPR:  0.9086713
-#> Gini:  0.8185584
-#> R^2:  0.4466711
+#> MSE:  0.1401528
+#> RMSE:  0.3743698
+#> LogLoss:  0.4431885
+#> Mean Per-Class Error:  0.1475052
+#> AUC:  0.9064449
+#> AUCPR:  0.9014191
+#> Gini:  0.8128898
+#> R^2:  0.4370288
 #> 
 #> Confusion Matrix (vertical: actual; across: predicted) for F1-optimal threshold:
 #>         M  R    Error     Rate
-#> M      49 22 0.309859   =22/71
-#> R       2 66 0.029412    =2/68
-#> Totals 51 88 0.172662  =24/139
+#> M      59 15 0.202703   =15/74
+#> R       6 59 0.092308    =6/65
+#> Totals 65 74 0.151079  =21/139
 #> 
 #> Maximum Metrics: Maximum metrics at their respective thresholds
 #>                         metric threshold     value idx
-#> 1                       max f1  0.388889  0.846154  49
-#> 2                       max f2  0.388889  0.916667  49
-#> 3                 max f0point5  0.565217  0.851449  34
-#> 4                 max accuracy  0.529412  0.834532  39
+#> 1                       max f1  0.428571  0.848921  47
+#> 2                       max f2  0.391304  0.899705  51
+#> 3                 max f0point5  0.578947  0.849802  31
+#> 4                 max accuracy  0.461538  0.848921  43
 #> 5                max precision  1.000000  1.000000   0
-#> 6                   max recall  0.277778  1.000000  61
+#> 6                   max recall  0.157895  1.000000  76
 #> 7              max specificity  1.000000  1.000000   0
-#> 8             max absolute_mcc  0.388889  0.685300  49
-#> 9   max min_per_class_accuracy  0.500000  0.788732  42
-#> 10 max mean_per_class_accuracy  0.529412  0.833368  39
-#> 11                     max tns  1.000000 71.000000   0
+#> 8             max absolute_mcc  0.428571  0.704990  47
+#> 9   max min_per_class_accuracy  0.461538  0.846154  43
+#> 10 max mean_per_class_accuracy  0.428571  0.852495  47
+#> 11                     max tns  1.000000 74.000000   0
 #> 12                     max fns  1.000000 63.000000   0
-#> 13                     max fps  0.052632 71.000000  81
-#> 14                     max tps  0.277778 68.000000  61
+#> 13                     max fps  0.050000 74.000000  91
+#> 14                     max tps  0.157895 65.000000  76
 #> 15                     max tnr  1.000000  1.000000   0
-#> 16                     max fnr  1.000000  0.926471   0
-#> 17                     max fpr  0.052632  1.000000  81
-#> 18                     max tpr  0.277778  1.000000  61
+#> 16                     max fnr  1.000000  0.969231   0
+#> 17                     max fpr  0.050000  1.000000  91
+#> 18                     max tpr  0.157895  1.000000  76
 #> 
 #> Gains/Lift Table: Extract with `h2o.gainsLift(<model>, <data>)` or `h2o.gainsLift(<model>, valid=<T/F>, xval=<T/F>)`
 #> 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>   0.115942 
 ```
