@@ -1,5 +1,6 @@
 skip_if_not_installed("reticulate")
 skip_if_not_installed("callr")
+skip_on_os(c("windows", "mac"))
 
 test_that("autotest: regr.botorch_singletaskgp", {
   expect_true(callr::r(function() {

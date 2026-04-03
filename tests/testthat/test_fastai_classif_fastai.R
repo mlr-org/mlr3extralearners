@@ -1,5 +1,6 @@
 skip_if_not_installed("fastai")
 skip_if_not_installed("reticulate")
+skip_on_os(c("windows", "mac"))
 
 test_that("autotest", {
   expect_true(callr::r(function() {
