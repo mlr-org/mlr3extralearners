@@ -159,13 +159,13 @@ learner$train(task, row_ids = ids$train)
 #> Number of parameters (weights and biases) to estimate: 24 
 #> Nguyen-Widrow method
 #> Scaling factor= 0.7234904 
-#> gamma= 7.1994     alpha= 3.659    beta= 9.8447 
+#> gamma= 0.7319     alpha= 1.3867   beta= 1.4539 
 
 print(learner$model)
 #> A Bayesian regularized neural network 
 #> 10 - 2 - 1 with 24 weights, biases and connection strengths
 #> Inputs and output were  normalized
-#> Training finished because  Changes in F= beta*SCE + alpha*Ew in last 3 iterations less than 0.001 
+#> Training finished because  Maximum number of epochs reached 
 
 
 # Make predictions for the test rows
@@ -174,5 +174,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.485786 
+#> 66.85065 
 ```
