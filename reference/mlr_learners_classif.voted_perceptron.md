@@ -228,7 +228,7 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> VotedPerceptron: Number of perceptrons=63
+#> VotedPerceptron: Number of perceptrons=66
 
 
 # Make predictions for the test rows
@@ -237,5 +237,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2608696 
+#>  0.3188406 
 ```

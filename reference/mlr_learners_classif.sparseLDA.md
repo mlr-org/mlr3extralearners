@@ -173,7 +173,7 @@ print(learner$model)
 #> classes = M, R 
 #> 
 #> Top 5 predictors (out of 60):
-#>  V19, V22, V21, V14, V20
+#>  V10, V28, V18, V42, V6
 
 
 # Make predictions for the test rows
@@ -182,5 +182,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.4202899 
 ```
