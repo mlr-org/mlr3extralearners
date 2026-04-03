@@ -1,11 +1,12 @@
 # Changelog
 
-## mlr3extralearners 1.5.0-9000
+## mlr3extralearners 1.5.1
 
-### Bug Fixes
+### Other
 
 - Skip `fastai` and `botorch` tests on Windows and macOS where the
   Python backends crash or time out.
+- Skip `tabpfn` tests until token work reliable again.
 
 ## mlr3extralearners 1.5.0
 

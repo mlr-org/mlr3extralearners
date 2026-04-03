@@ -191,17 +191,20 @@ ids = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
+#> Warning: glm.fit: algorithm did not converge
+#> Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred
+#> Warning: the glm algorithm did not converge for response "y"
 
 print(learner$model)
-#> GLM (family binomial, link logit):
-#>  nulldev  df       dev  df   devratio     AIC iters converged
-#>  191.823 138   33.2259 125      0.827   61.23     9         1
+#> GLM (family binomial, link logit, maxit=25):
+#>  nulldev  df         dev  df   devratio     AIC iters converged
+#>   192.63 138 2.24059e-09 108          1      62    25         0
 #> 
-#> Earth selected 14 of 21 terms, and 9 of 60 predictors
-#> Termination condition: RSq changed by less than 0.001 at 21 terms
-#> Importance: V12, V45, V40, V23, V27, V49, V39, V37, V43, V11-unused, ...
-#> Number of terms at each degree of interaction: 1 13 (additive model)
-#> Earth GCV 0.1042767    RSS 9.410414    GRSq 0.586282    RSq 0.7274901
+#> Earth selected 31 of 46 terms, and 20 of 60 predictors
+#> Termination condition: RSq changed by less than 0.001 at 46 terms
+#> Importance: V45, V22, V12, V27, V49, V25, V36, V24, V42, V43, V31, V20, ...
+#> Number of terms at each degree of interaction: 1 30 (additive model)
+#> Earth GCV 0.09667401    RSS 4.231401    GRSq 0.6186703    RSq 0.8781763
 
 
 # Make predictions for the test rows
@@ -210,5 +213,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1449275 
+#>  0.2898551 
 ```
