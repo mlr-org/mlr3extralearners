@@ -40,7 +40,7 @@
 #'
 #' @export
 #' @template seealso_learner
-#' @template example
+#' @template example_catboost
 LearnerClassifCatboost = R6Class("LearnerClassifCatboost",
   inherit = LearnerClassif,
   public = list(
