@@ -1,3 +1,10 @@
+# mlr3extralearners 1.5.0-9000
+
+## Bug Fixes
+
+* Skip `fastai` and `botorch` tests on Windows and macOS where the Python
+  backends crash or time out.
+
 # mlr3extralearners 1.5.0
 
 ## New Features
