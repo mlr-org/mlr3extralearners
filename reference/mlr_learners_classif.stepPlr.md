@@ -52,7 +52,7 @@ detecting gene interactions.” *Biostatistics*, **9**(1), 30-50. ISSN
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -160,28 +160,26 @@ print(learner$model)
 #> stepPlr::plr(x = data, y = y)
 #> 
 #> Coefficients:
-#>  Intercept         V1        V10        V11        V12        V13        V14 
-#>   20.56993  -50.93676  -19.82838  -30.28376   -8.03710   -4.98958   16.99883 
-#>        V15        V16        V17        V18        V19         V2        V20 
-#>  -23.93740   37.85907  -24.84355   13.92792    4.69421  -21.96237  -25.93080 
-#>        V21        V22        V23        V24        V25        V26        V27 
-#>   22.26881  -23.86956   23.24853  -36.61162    3.44471   43.62013  -46.31429 
-#>        V28        V29         V3        V30        V31        V32        V33 
-#>   21.48159    2.69036   78.12651  -29.58387   31.33583    0.72666  -24.95776 
-#>        V34        V35        V36        V37        V38        V39         V4 
-#>   19.32729   -7.68914    1.82869   26.64250    3.07538  -37.48150  -62.63457 
-#>        V40        V41        V42        V43        V44        V45        V46 
-#>   24.02394   -6.75404    0.16838   -1.65832  -14.41677   21.62146  -45.75610 
-#>        V47        V48        V49         V5        V50        V51        V52 
-#>   25.50071  -28.31180 -100.19177  -15.12461   76.41884  -57.26025  -38.93254 
-#>        V53        V54        V55        V56        V57        V58        V59 
-#>  -29.64887   -0.96806   17.51806    6.15766   24.82539   -0.44464  -15.25657 
-#>         V6        V60         V7         V8         V9 
-#>  -12.46814  -11.87557   24.93082   40.75622   -9.12610 
+#> Intercept        V1       V10       V11       V12       V13       V14       V15 
+#>  52.05904 -44.32811 -22.12005 -20.62225  -7.49166 -13.75156  -0.55371 -11.43575 
+#>       V16       V17       V18       V19        V2       V20       V21       V22 
+#>   6.38398  18.57795   4.46136 -12.27021 -32.34942 -19.11770   6.64627   3.80757 
+#>       V23       V24       V25       V26       V27       V28       V29        V3 
+#>   7.18658 -26.99445 -10.45761  21.47514 -37.91651  14.70398   3.52121  38.18587 
+#>       V30       V31       V32       V33       V34       V35       V36       V37 
+#> -16.24199  20.82533 -20.12185  20.22939   9.38297 -36.10293  18.89280  15.97956 
+#>       V38       V39        V4       V40       V41       V42       V43       V44 
+#> -23.48321  -0.90031 -63.80221  12.58067  -8.02878  11.19577 -37.86955  19.09487 
+#>       V45       V46       V47       V48       V49        V5       V50       V51 
+#>  -6.61945  14.01682 -31.40182 -52.64659 -38.62323 -10.93459   1.16781 -28.75905 
+#>       V52       V53       V54       V55       V56       V57       V58       V59 
+#> -17.45534 -24.45379  -9.24113  10.02571   0.00808  10.44453   5.83741 -19.42091 
+#>        V6       V60        V7        V8        V9 
+#>   2.95524 -15.36486  24.69652  35.69631 -15.80144 
 #> 
-#>     Null deviance: 190.09 on 138 degrees of freedom
-#> Residual deviance: 16.77 on 92.7 degrees of freedom
-#>             Score: deviance + 4.9 * df = 245.22 
+#>     Null deviance: 192.63 on 138 degrees of freedom
+#> Residual deviance: 4.36 on 99.27 degrees of freedom
+#>             Score: deviance + 4.9 * df = 200.4 
 
 
 # Make predictions for the test rows
@@ -190,5 +188,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.173913 
+#>  0.3188406 
 ```

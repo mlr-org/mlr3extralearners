@@ -84,7 +84,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -208,19 +208,11 @@ The objects of this class are cloneable with this method.
 ## Examples
 
 ``` r
+if (FALSE) { # learner_is_runnable("surv.survdnn") && torch::torch_is_installed()
+
 # Define the Learner
 learner = lrn("surv.survdnn", epochs = 42L, loss = "cox")
 print(learner)
-#> 
-#> ── <LearnerSurvDNN> (surv.survdnn): SurvDNN (torch-based deep survival models) ─
-#> • Model: -
-#> • Parameters: epochs=42, loss=cox
-#> • Packages: mlr3, mlr3proba, mlr3extralearners, survdnn, and torch
-#> • Predict Types: [crank], distr, and lp
-#> • Feature Types: integer, numeric, factor, and ordered
-#> • Encapsulation: none (fallback: -)
-#> • Properties: marshal
-#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define the task, split to train/test set
 task = tsk("lung")
@@ -229,20 +221,13 @@ part = partition(task)
 
 # Train the learner on the training ids
 learner$train(task, row_ids = part$train)
-#> Error: The Torch backend is not installed.
-#> Please run: torch::install_torch().
 print(learner$model)
-#> NULL
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = part$test)
-#> Error: 
-#> ✖ Cannot predict, Learner 'surv.survdnn' has not been trained yet
-#> → Class: Mlr3ErrorInput
 print(predictions)
-#> Error: object 'predictions' not found
 
 # Score the predictions
 predictions$score()
-#> Error: object 'predictions' not found
+}
 ```

@@ -122,7 +122,7 @@ In <em>8th European Conference on Machine Learning</em>, 174–189.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -259,16 +259,16 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> Decision Table:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of training instances: 139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 15</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of Rules : 8</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Non matches covered by Majority class.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Best first.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Start set: no attributes</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Search direction: forward</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 	Stale search after 5 node expansions</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 510</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:   83.453</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Total number of subsets evaluated: 458</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 	Merit of best subset found:   84.173</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Evaluation (for feature selection): CV (leave one out) </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 5,31,41,49,1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Feature set: 2,5,61,1</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -277,7 +277,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2463768 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.3623188 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

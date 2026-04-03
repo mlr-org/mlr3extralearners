@@ -109,7 +109,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -219,21 +219,27 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] age <= 66
-#> |   |   [3] revascdays <= 150
-#> |   |   |   [4] revasc <= 0: 22.000 (n = 53)
-#> |   |   |   [5] revasc > 0: Inf (n = 179)
-#> |   |   [6] revascdays > 150: Inf (n = 63)
-#> |   [7] age > 66
-#> |   |   [8] revascdays <= 171
-#> |   |   |   [9] revasc <= 0
-#> |   |   |   |   [10] stchange <= 0: 85.000 (n = 47)
-#> |   |   |   |   [11] stchange > 0: 11.000 (n = 85)
-#> |   |   |   [12] revasc > 0: Inf (n = 171)
-#> |   |   [13] revascdays > 171: Inf (n = 72)
+#> |   [2] age <= 70
+#> |   |   [3] revascdays <= 170
+#> |   |   |   [4] revasc <= 0
+#> |   |   |   |   [5] los <= 3: 3.000 (n = 26)
+#> |   |   |   |   [6] los > 3: 77.000 (n = 44)
+#> |   |   |   [7] revasc > 0: Inf (n = 217)
+#> |   |   [8] revascdays > 170: Inf (n = 81)
+#> |   [9] age > 70
+#> |   |   [10] revascdays <= 177
+#> |   |   |   [11] revasc <= 0
+#> |   |   |   |   [12] revascdays <= 3: 1.500 (n = 26)
+#> |   |   |   |   [13] revascdays > 3
+#> |   |   |   |   |   [14] stchange <= 0: 103.000 (n = 33)
+#> |   |   |   |   |   [15] stchange > 0
+#> |   |   |   |   |   |   [16] revascdays <= 90: 23.000 (n = 47)
+#> |   |   |   |   |   |   [17] revascdays > 90: 128.000 (n = 7)
+#> |   |   |   [18] revasc > 0: Inf (n = 138)
+#> |   |   [19] revascdays > 177: Inf (n = 51)
 #> 
-#> Number of inner nodes:    6
-#> Number of terminal nodes: 7
+#> Number of inner nodes:     9
+#> Number of terminal nodes: 10
 
 
 # Make predictions for the test rows
@@ -242,5 +248,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.7998156 
+#>   0.7941674 
 ```

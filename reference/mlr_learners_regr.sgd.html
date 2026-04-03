@@ -110,7 +110,7 @@ since their ids contain irregular pattern</p></li>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -248,17 +248,17 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mpg = </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          4.4075 (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -6.1526 (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       7.2738 (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.3285 (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       6.1946 (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.1363 (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -2.6019 (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       8.6314 (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.9113 (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -6.8513 (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +      11.2873</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          4.6037 (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -6.9008 (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.6984 (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       1.4022 (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       8.0524 (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       3.8978 (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -0.0733 (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       6.7359 (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.4338 (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      -5.1232 (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +      12.8106</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -267,7 +267,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15.09886 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.18191 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

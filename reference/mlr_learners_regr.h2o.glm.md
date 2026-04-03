@@ -107,7 +107,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -214,43 +214,43 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: glm
-#> Model ID:  GLM_model_R_1775197309275_111 
+#> Model ID:  GLM_model_R_1775197882504_111 
 #> GLM Model: summary
-#>     family     link                             regularization
-#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.166 )
+#>     family     link                              regularization
+#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0318 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
-#> 1                         10                          10                    1
+#> 1                         10                           9                    1
 #>     training_frame
-#> 1 data_sid_b9c4_31
+#> 1 data_sid_99e3_31
 #> 
 #> Coefficients: glm coefficients
 #>        names coefficients standardized_coefficients
-#> 1  Intercept    24.768500                 21.147619
-#> 2         am     1.290025                  0.660191
-#> 3       carb    -0.201597                 -0.372507
-#> 4        cyl    -0.452565                 -0.854127
-#> 5       disp    -0.007650                 -0.919313
-#> 6       drat     0.762687                  0.412123
-#> 7       gear     0.135526                  0.107448
-#> 8         hp    -0.010052                 -0.790315
-#> 9       qsec     0.123741                  0.219276
-#> 10        vs     0.972804                  0.497849
-#> 11        wt    -1.420152                 -1.323763
+#> 1  Intercept    26.692826                 20.600000
+#> 2         am     0.648308                  0.331782
+#> 3       carb    -0.237064                 -0.401045
+#> 4        cyl    -0.571595                 -1.022501
+#> 5       disp    -0.007303                 -0.889034
+#> 6       drat     0.852789                  0.500491
+#> 7       gear     0.126493                  0.094820
+#> 8         hp    -0.008540                 -0.648094
+#> 9       qsec     0.000000                  0.000000
+#> 10        vs     0.681481                  0.348759
+#> 11        wt    -1.105888                 -1.111816
 #> 
 #> H2ORegressionMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  7.072802
-#> RMSE:  2.659474
-#> MAE:  2.103639
-#> RMSLE:  0.104599
-#> Mean Residual Deviance :  7.072802
-#> R^2 :  0.8422813
-#> Null Deviance :941.7324
+#> MSE:  6.002348
+#> RMSE:  2.449969
+#> MAE:  1.983679
+#> RMSLE:  0.1062683
+#> Mean Residual Deviance :  6.002348
+#> R^2 :  0.829511
+#> Null Deviance :739.34
 #> Null D.o.F. :20
-#> Residual Deviance :148.5289
-#> Residual D.o.F. :10
-#> AIC :124.6768
+#> Residual Deviance :126.0493
+#> Residual D.o.F. :11
+#> AIC :119.2306
 #> 
 #> 
 #> 
@@ -263,5 +263,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  3.65515 
+#> 8.710745 
 ```

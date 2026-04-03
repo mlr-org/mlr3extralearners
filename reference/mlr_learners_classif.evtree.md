@@ -20,7 +20,7 @@ are scaled internally to sum to 100.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -135,13 +135,17 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 < 0.1734: R (n = 43, err = 7.0%)
-#> |   [3] V11 >= 0.1734
-#> |   |   [4] V6 < 0.228: M (n = 88, err = 18.2%)
-#> |   |   [5] V6 >= 0.228: R (n = 8, err = 25.0%)
+#> |   [2] V37 < 0.4577
+#> |   |   [3] V4 < 0.0547
+#> |   |   |   [4] V11 < 0.1989: R (n = 28, err = 14.3%)
+#> |   |   |   [5] V11 >= 0.1989: M (n = 32, err = 9.4%)
+#> |   |   [6] V4 >= 0.0547: M (n = 34, err = 2.9%)
+#> |   [7] V37 >= 0.4577
+#> |   |   [8] V45 < 0.2846: R (n = 33, err = 9.1%)
+#> |   |   [9] V45 >= 0.2846: M (n = 12, err = 8.3%)
 #> 
-#> Number of inner nodes:    2
-#> Number of terminal nodes: 3
+#> Number of inner nodes:    4
+#> Number of terminal nodes: 5
 
 
 # Make predictions for the test rows
@@ -150,5 +154,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.3333333 
 ```

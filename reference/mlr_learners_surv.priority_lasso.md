@@ -7,7 +7,7 @@ from [prioritylasso](https://CRAN.R-project.org/package=prioritylasso).
 Many parameters for this survival learner are the same as
 [mlr_learners_surv.cv_glmnet](https://mlr3extralearners.mlr-org.com/reference/mlr_learners_surv.cv_glmnet.md)
 as `prioritylasso()` calls
-[`glmnet::cv.glmnet()`](https://rdrr.io/pkg/glmnet/man/cv.glmnet.html)
+[`glmnet::cv.glmnet()`](https://glmnet.stanford.edu/reference/cv.glmnet.html)
 during training phase. Note that `prioritylasso()` has ways to deal with
 block-wise missing data, but this feature is not supported currently.
 
@@ -128,7 +128,7 @@ clinical outcome using multi-omics data.” *BMC Bioinformatics*, **19**.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.

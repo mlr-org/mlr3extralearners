@@ -97,7 +97,7 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -198,15 +198,21 @@ splits. Calls <code><a href="https://rdrr.io/pkg/partykit/man/ctree.html" class=
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.197</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V21 &lt;= 0.8017</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V48 &lt;= 0.1133: R (n = 37, err = 2.7%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V48 &gt; 0.1133: M (n = 7, err = 42.9%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V21 &gt; 0.8017: M (n = 11, err = 18.2%)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] V11 &gt; 0.197: M (n = 84, err = 21.4%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] V11 &lt;= 0.1934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] V49 &lt;= 0.0592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] V1 &lt;= 0.0311: R (n = 41, err = 2.4%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] V1 &gt; 0.0311: R (n = 7, err = 42.9%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [6] V49 &gt; 0.0592: M (n = 9, err = 33.3%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [7] V11 &gt; 0.1934</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] V17 &lt;= 0.5386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] V6 &lt;= 0.1791: M (n = 43, err = 4.7%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] V6 &gt; 0.1791: R (n = 7, err = 42.9%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [11] V17 &gt; 0.5386</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] V54 &lt;= 0.0199: R (n = 25, err = 28.0%)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [13] V54 &gt; 0.0199: M (n = 7, err = 0.0%)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>

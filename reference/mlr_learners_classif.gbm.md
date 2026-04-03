@@ -65,7 +65,7 @@ statistics & data analysis*, **38**(4), 367–378.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -190,25 +190,25 @@ print(learner$model)
 #> gbm::gbm(formula = f, data = data, keep.data = FALSE, n.cores = 1L)
 #> A gradient boosted model with bernoulli loss function.
 #> 100 iterations were performed.
-#> There were 60 predictors of which 37 had non-zero influence.
+#> There were 60 predictors of which 32 had non-zero influence.
 print(learner$importance())
-#>        V11        V49        V16        V52        V12        V55        V46 
-#> 18.8291328  9.9908707  8.6453440  8.6098105  8.4053325  6.2084554  5.8437165 
-#>        V37        V44        V54        V28        V10        V31        V23 
-#>  5.7940010  4.8753537  4.5475229  4.2808221  4.0843793  3.9524932  3.9498969 
-#>        V36        V48         V5        V51        V39        V21         V9 
-#>  3.5205974  3.1191519  3.0258625  2.9441981  2.7968720  2.4590486  2.3222000 
-#>        V59        V19        V25        V17        V27         V1        V30 
-#>  2.0638788  1.8304523  1.6435459  1.5924447  1.5860952  1.4206821  1.3969094 
-#>        V29        V57         V3        V26        V32         V4        V56 
-#>  1.3476993  1.2444184  1.0100191  0.7106380  0.7056509  0.6892397  0.5899432 
-#>        V45        V34        V13        V14        V15        V18         V2 
-#>  0.4377983  0.4015020  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V20        V22        V24        V33        V35        V38        V40 
+#>        V11        V12        V51        V21         V9        V36        V45 
+#> 13.1736547 12.5636106 10.3289847  9.1572994  8.6889902  8.4100544  8.0498349 
+#>        V48        V52        V43        V28        V49        V39        V10 
+#>  7.1380252  6.6154639  5.0319533  4.8634788  4.6605504  4.4323916  4.1193916 
+#>        V16        V31        V23        V30        V60        V46        V40 
+#>  3.8794416  3.5943169  3.5687937  2.0393636  1.8964369  1.8777035  1.7942625 
+#>        V29        V54        V55         V5        V17        V44        V59 
+#>  1.7154541  1.6862249  1.3917436  1.2314295  1.1861355  0.8049258  0.7250747 
+#>        V15        V50        V37        V27         V1        V13        V14 
+#>  0.5141735  0.4446608  0.3995742  0.3494938  0.0000000  0.0000000  0.0000000 
+#>        V18        V19         V2        V20        V22        V24        V25 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>        V41        V42        V43        V47        V50        V53        V58 
+#>        V26         V3        V32        V33        V34        V35        V38 
 #>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
-#>         V6        V60         V7         V8 
+#>         V4        V41        V42        V47        V53        V56        V57 
+#>  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000  0.0000000 
+#>        V58         V6         V7         V8 
 #>  0.0000000  0.0000000  0.0000000  0.0000000 
 
 # Make predictions for the test rows
@@ -217,5 +217,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>   0.115942 
+#>  0.2028986 
 ```

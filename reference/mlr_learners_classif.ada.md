@@ -66,7 +66,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -193,17 +193,17 @@ print(learner$model)
 #> Final Confusion Matrix for Data:
 #>           Final Prediction
 #> True value  M  R
-#>          M 70  1
-#>          R  0 68
+#>          M 66  3
+#>          R  0 70
 #> 
-#> Train Error: 0.007 
+#> Train Error: 0.022 
 #> 
-#> Out-Of-Bag Error:  0.058  iteration= 43 
+#> Out-Of-Bag Error:  0.043  iteration= 46 
 #> 
 #> Additional Estimates of number of iterations:
 #> 
 #> train.err1 train.kap1 
-#>         48         48 
+#>         34         34 
 #> 
 
 

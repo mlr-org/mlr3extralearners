@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -230,16 +230,20 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V12 < 0.2 : R (35/5) [17/5]
-#> V12 >= 0.2
-#> |   V23 < 0.78
-#> |   |   V42 < 0.25 : R (19/5) [4/2]
-#> |   |   V42 >= 0.25
-#> |   |   |   V13 < 0.16 : R (2/0) [2/0]
-#> |   |   |   V13 >= 0.16 : M (14/0) [14/6]
-#> |   V23 >= 0.78 : M (22/0) [10/2]
+#> V11 < 0.15
+#> |   V4 < 0.05 : R (25/0) [10/2]
+#> |   V4 >= 0.05 : M (5/1) [2/0]
+#> V11 >= 0.15
+#> |   V12 < 0.1 : R (6/1) [1/0]
+#> |   V12 >= 0.1
+#> |   |   V52 < 0.01 : R (10/4) [8/4]
+#> |   |   V52 >= 0.01
+#> |   |   |   V49 < 0.02
+#> |   |   |   |   V17 < 0.4 : R (3/0) [1/0]
+#> |   |   |   |   V17 >= 0.4 : M (4/0) [3/1]
+#> |   |   |   V49 >= 0.02 : M (39/0) [22/5]
 #> 
-#> Size of the tree : 9
+#> Size of the tree : 13
 
 
 # Make predictions for the test rows
@@ -248,5 +252,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.2898551 
 ```

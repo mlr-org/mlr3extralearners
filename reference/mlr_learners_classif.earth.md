@@ -90,7 +90,7 @@ annals of statistics*, **19**(1), 1–67.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -195,13 +195,13 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> GLM (family binomial, link logit):
 #>  nulldev  df       dev  df   devratio     AIC iters converged
-#>  192.342 138   37.5981 124      0.805    67.6     8         1
+#>  191.823 138   39.9682 124      0.792   69.97     8         1
 #> 
 #> Earth selected 15 of 21 terms, and 10 of 60 predictors
 #> Termination condition: RSq changed by less than 0.001 at 21 terms
-#> Importance: V11, V36, V17, V44, V23, V38, V43, V5, V26, V32, V1-unused, ...
+#> Importance: V11, V36, V38, V17, V22, V47, V41, V12, V39, V37, V1-unused, ...
 #> Number of terms at each degree of interaction: 1 14 (additive model)
-#> Earth GCV 0.1157692    RSS 10.07775    GRSq 0.5424018    RSq 0.7092555
+#> Earth GCV 0.1159122    RSS 10.0902    GRSq 0.5401183    RSq 0.7078046
 
 
 # Make predictions for the test rows
@@ -210,5 +210,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.2608696 
 ```

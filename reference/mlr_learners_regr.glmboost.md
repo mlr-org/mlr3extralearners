@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -184,15 +184,15 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  19.7381 
+#> Offset:  20.84762 
 #> 
 #> Coefficients: 
-#> (Intercept)          am        carb         cyl          hp        qsec 
-#> 17.38067669  0.37628481 -0.51453211 -0.87030148 -0.00896798  0.13332365 
-#>          vs          wt 
-#> -0.13100841 -3.61798064 
+#>  (Intercept)           am          cyl         disp         drat           hp 
+#>  5.717179830  0.445554604 -0.274616952 -0.002799113  0.668404942 -0.013681544 
+#>         qsec           wt 
+#>  0.448734605 -4.099137016 
 #> attr(,"offset")
-#> [1] 19.7381
+#> [1] 20.84762
 #> 
 
 
@@ -202,5 +202,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.55226 
+#> 8.079913 
 ```

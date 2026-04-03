@@ -100,7 +100,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -285,26 +285,26 @@ print(learner$model)
 #> V34(1): Class 
 #> V35(1): Class 
 #> V36(1): Class 
-#> V37(1): Class 
+#> V37(2): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(2): Class 
+#> V4(1): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
 #> V44(1): Class 
 #> V45(1): Class 
-#> V46(1): Class 
+#> V46(2): Class 
 #> V47(2): Class 
 #> V48(2): Class 
 #> V49(2): Class 
-#> V5(2): Class 
+#> V5(1): Class 
 #> V50(1): Class 
-#> V51(2): Class 
-#> V52(1): Class 
+#> V51(1): Class 
+#> V52(2): Class 
 #> V53(1): Class 
-#> V54(2): Class 
+#> V54(1): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
@@ -315,11 +315,11 @@ print(learner$model)
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1086.8734067063438
-#> LogScore BDeu: -1109.2061124425175
-#> LogScore MDL: -1115.607767259939
-#> LogScore ENTROPY: -1048.9923691626748
-#> LogScore AIC: -1075.9923691626748
+#> LogScore Bayes: -988.7093189025051
+#> LogScore BDeu: -1009.3241241974348
+#> LogScore MDL: -1014.7795244149089
+#> LogScore ENTROPY: -953.0986002507756
+#> LogScore AIC: -978.0986002507756
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2028986 
 ```

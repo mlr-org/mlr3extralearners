@@ -126,7 +126,7 @@ For information on how to configure the validation set, see the <em>Validation</
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -255,22 +255,24 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-out co"><span class="r-pr">#&gt;</span> Loss function: Logloss</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fit to 60 feature(s)</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V12        V9       V48       V11       V52       V51       V49       V36 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.5940513 6.2093674 5.9883823 5.2797193 4.1646828 4.0185390 3.7424874 2.9389471 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V31       V13       V10       V16       V37       V17       V27       V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2.3115545 2.0548520 2.0540895 1.9774655 1.9745144 1.9675310 1.9239927 1.9071239 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V28       V20        V5       V45       V43       V55       V47        V4 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.8952219 1.6805914 1.5810698 1.5518494 1.5075883 1.5055670 1.4354862 1.4331979 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V26       V46       V44       V53       V54       V15        V1       V23 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.3741165 1.3621665 1.3366969 1.2622973 1.2406396 1.2340841 1.2018302 1.1746349 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V14       V32        V8       V18       V39        V6       V35       V30 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1.1417607 1.0765775 0.9698508 0.9470798 0.9294880 0.9267004 0.8880983 0.8857860 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V19       V60        V3       V38        V2       V29       V33       V25 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.8850170 0.8584681 0.8233497 0.8158549 0.8039167 0.7190679 0.7126682 0.6891259 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        V7       V24       V41       V42       V22       V58       V56       V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.6876530 0.6861078 0.6589652 0.6467240 0.6400686 0.6391007 0.5658146 0.5603368 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       V40       V50       V34       V57 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.5461490 0.5205019 0.4879630 0.4034675 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V11        V12         V9        V37        V10        V51        V21 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12.2530284  8.3924376  5.5672955  3.5846448  3.3089289  2.9853598  2.9322326 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V45        V48        V36        V49        V16        V15        V23 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  2.8898576  2.7499513  2.5121896  2.2438860  1.8562493  1.7404521  1.6158417 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V22        V27        V46        V52         V1        V13        V17 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.5061382  1.4688197  1.4611023  1.4265384  1.4101848  1.3554548  1.3511229 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V3        V39        V31        V26        V28         V7         V5 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.2395410  1.2281384  1.1813688  1.1718841  1.1654353  1.1604263  1.1207138 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         V4        V55        V50        V56        V59        V20        V42 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  1.0697140  1.0546045  1.0492608  1.0225860  1.0142532  1.0109376  0.9761630 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V47        V25        V54        V57        V38        V43        V33 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.9683922  0.9541919  0.9530271  0.9450366  0.9390254  0.9329390  0.8997733 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V30        V32         V6         V2        V35        V14        V41 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.8943524  0.8593973  0.8583300  0.8390512  0.8129063  0.8024044  0.7800302 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V60         V8        V34        V24        V58        V53        V19 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.7760023  0.7634653  0.7485145  0.7221467  0.7206877  0.7171176  0.7057667 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        V44        V29        V18        V40 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.6157186  0.6151861  0.5776801  0.5221140 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -278,7 +280,7 @@ setting <code>type = "FeatureImportance"</code>, returned for 'all'.</p><div cla
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.1594203 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

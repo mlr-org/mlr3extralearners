@@ -94,7 +94,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -209,15 +209,21 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.197
-#> |   |   [3] V21 <= 0.8017
-#> |   |   |   [4] V48 <= 0.1133: R (n = 37, err = 2.7%)
-#> |   |   |   [5] V48 > 0.1133: M (n = 7, err = 42.9%)
-#> |   |   [6] V21 > 0.8017: M (n = 11, err = 18.2%)
-#> |   [7] V11 > 0.197: M (n = 84, err = 21.4%)
+#> |   [2] V11 <= 0.1934
+#> |   |   [3] V49 <= 0.0592
+#> |   |   |   [4] V1 <= 0.0311: R (n = 41, err = 2.4%)
+#> |   |   |   [5] V1 > 0.0311: R (n = 7, err = 42.9%)
+#> |   |   [6] V49 > 0.0592: M (n = 9, err = 33.3%)
+#> |   [7] V11 > 0.1934
+#> |   |   [8] V17 <= 0.5386
+#> |   |   |   [9] V6 <= 0.1791: M (n = 43, err = 4.7%)
+#> |   |   |   [10] V6 > 0.1791: R (n = 7, err = 42.9%)
+#> |   |   [11] V17 > 0.5386
+#> |   |   |   [12] V54 <= 0.0199: R (n = 25, err = 28.0%)
+#> |   |   |   [13] V54 > 0.0199: M (n = 7, err = 0.0%)
 #> 
-#> Number of inner nodes:    3
-#> Number of terminal nodes: 4
+#> Number of inner nodes:    6
+#> Number of terminal nodes: 7
 
 
 # Make predictions for the test rows

@@ -114,7 +114,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -221,29 +221,29 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1775197309275_109 
+#> Model ID:  DeepLearning_model_R_1775197882504_109 
 #> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005545 0.004245 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.022839 0.050858 0.000000
-#> 4     4     1    Linear      NA 0.000000 0.000000  0.000416 0.000405 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005167 0.004708 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.016101 0.044788 0.000000
+#> 4     4     1    Linear      NA 0.000000 0.000000  0.000375 0.000507 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2   -0.002071   0.099133  0.494204 0.005650
-#> 3   -0.001545   0.069522  0.997259 0.003939
-#> 4   -0.005865   0.096172  0.000555 0.000000
+#> 2    0.002057   0.098084  0.497373 0.003177
+#> 3   -0.000560   0.069503  0.999078 0.002186
+#> 4    0.000645   0.098761 -0.000857 0.000000
 #> 
 #> 
 #> H2ORegressionMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  6.521943
-#> RMSE:  2.55381
-#> MAE:  2.161991
-#> RMSLE:  0.1378539
-#> Mean Residual Deviance :  6.521943
+#> MSE:  5.354502
+#> RMSE:  2.31398
+#> MAE:  1.843195
+#> RMSLE:  0.114608
+#> Mean Residual Deviance :  5.354502
 #> 
 #> 
 #> 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#>  12.3383 
+#> 13.39962 
 ```

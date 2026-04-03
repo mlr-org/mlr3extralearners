@@ -102,7 +102,7 @@ risks.” *Bioinformatics*, **25**(7), 890–896.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -241,15 +241,15 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> cause '1':
 #> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -52.91993 
+#> partial log-likelihood: -53.36358 
 #> 
 #> cause '2':
-#> 10 boosting steps resulting in 7 non-zero coefficients  
-#> partial log-likelihood: -280.7532 
+#> 10 boosting steps resulting in 6 non-zero coefficients  
+#> partial log-likelihood: -293.3606 
 print(learner$selected_features(cause = 1)) # for cause = 1
-#> [1] "age"  "chol"
+#> [1] "age"    "copper"
 print(learner$selected_features(cause = 2)) # for cause = 2
-#> [1] "age"      "copper"   "platelet" "albumin"  "ast"      "bili"     "protime" 
+#> [1] "age"     "copper"  "albumin" "ast"     "bili"    "protime"
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.8540356 
+#>   0.860008 
 ```

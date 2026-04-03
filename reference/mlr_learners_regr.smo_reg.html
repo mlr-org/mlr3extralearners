@@ -122,7 +122,7 @@ In <em>IEEE Transactions on Neural Networks</em>.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -259,21 +259,21 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> SMOreg</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> weights (not support vectors):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.024  * (normalized) am</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1488 * (normalized) carb</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.134  * (normalized) cyl</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0547 * (normalized) disp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.2726 * (normalized) drat</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.1651 * (normalized) gear</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0423 * (normalized) hp</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0038 * (normalized) qsec</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0338 * (normalized) vs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.5427 * (normalized) wt</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.738 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0378 * (normalized) am</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.2786 * (normalized) carb</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0231 * (normalized) cyl</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.0592 * (normalized) disp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0726 * (normalized) drat</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0546 * (normalized) gear</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.013  * (normalized) hp</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0806 * (normalized) qsec</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.0224 * (normalized) vs</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -       0.5046 * (normalized) wt</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  +       0.6116</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (95.855% cached)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of kernel evaluations: 231 (98.288% cached)</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -282,7 +282,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10.76506 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.914625 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -77,7 +77,7 @@ blocks of clinical and omics covariate data.” *BMC Bioinformatics*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -196,10 +196,10 @@ learner$train(task, row_ids = ids$train)
 
 # feature importance
 learner$importance()
-#>       cyl      disp        hp        wt        am      drat      gear      carb 
-#> 9.1525576 5.0713923 4.6622636 3.4913352 3.0564989 2.9258070 2.5843957 0.6491716 
-#>      qsec        vs 
-#> 0.6194228 0.2372748 
+#>        cyl         wt       disp         am       carb         hp       drat 
+#>  8.1662047  3.9195802  3.2392940  2.9110289  2.0523916  1.8350627  1.0833406 
+#>       gear         vs       qsec 
+#>  0.8007957  0.1817383 -0.1319897 
 
 # Make predictions for the test observations
 pred = learner$predict(task, row_ids = ids$test)
@@ -207,16 +207,16 @@ pred
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        3  22.8 25.87138
-#>        4  21.4 19.09646
-#>        9  22.8 23.62462
+#>        2  21.0 20.39343
+#>        3  22.8 25.79471
+#>        7  14.3 14.97345
 #>      ---   ---      ---
-#>       29  15.8 19.69723
-#>       30  19.7 21.29902
-#>       31  15.0 18.35704
+#>       21  21.5 22.72184
+#>       24  13.3 15.47452
+#>       29  15.8 18.43277
 
 # Score the predictions
 pred$score()
 #> regr.mse 
-#> 10.32969 
+#> 10.78339 
 ```

@@ -84,7 +84,7 @@ Knowledge Discovery in Databases*, 675-683.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -237,24 +237,66 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -1.62 + 
-#> [V11] * 3.1  +
-#> [V23] * 0.86 +
-#> [V31] * -0.89 +
-#> [V36] * -1.1 +
-#> [V44] * 1.9  +
-#> [V49] * 10.24 +
-#> [V52] * 29.88
+#> -2.3 + 
+#> [V1] * 6.12 +
+#> [V11] * 2.68 +
+#> [V15] * -0.46 +
+#> [V17] * -0.63 +
+#> [V2] * 12.61 +
+#> [V21] * 0.79 +
+#> [V23] * 0.77 +
+#> [V29] * 1.45 +
+#> [V31] * -1.07 +
+#> [V34] * -0.46 +
+#> [V35] * -0.4 +
+#> [V36] * -2.04 +
+#> [V38] * 0.53 +
+#> [V4] * 11.48 +
+#> [V44] * 0.86 +
+#> [V45] * 2.77 +
+#> [V48] * 1.97 +
+#> [V49] * 6.12 +
+#> [V50] * -7.52 +
+#> [V51] * 12.44 +
+#> [V52] * 39.64 +
+#> [V53] * -16.38 +
+#> [V54] * 15.77 +
+#> [V55] * -18.97 +
+#> [V57] * -20.61 +
+#> [V58] * -18.79 +
+#> [V7] * -4.66 +
+#> [V8] * -1.16
 #> 
 #> Class R :
-#> 1.62 + 
-#> [V11] * -3.1 +
-#> [V23] * -0.86 +
-#> [V31] * 0.89 +
-#> [V36] * 1.1  +
-#> [V44] * -1.9 +
-#> [V49] * -10.24 +
-#> [V52] * -29.88
+#> 2.3  + 
+#> [V1] * -6.12 +
+#> [V11] * -2.68 +
+#> [V15] * 0.46 +
+#> [V17] * 0.63 +
+#> [V2] * -12.61 +
+#> [V21] * -0.79 +
+#> [V23] * -0.77 +
+#> [V29] * -1.45 +
+#> [V31] * 1.07 +
+#> [V34] * 0.46 +
+#> [V35] * 0.4  +
+#> [V36] * 2.04 +
+#> [V38] * -0.53 +
+#> [V4] * -11.48 +
+#> [V44] * -0.86 +
+#> [V45] * -2.77 +
+#> [V48] * -1.97 +
+#> [V49] * -6.12 +
+#> [V50] * 7.52 +
+#> [V51] * -12.44 +
+#> [V52] * -39.64 +
+#> [V53] * 16.38 +
+#> [V54] * -15.77 +
+#> [V55] * 18.97 +
+#> [V57] * 20.61 +
+#> [V58] * 18.79 +
+#> [V7] * 4.66 +
+#> [V8] * 1.16
 #> 
 
 
@@ -264,5 +306,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2463768 
+#>  0.2753623 
 ```

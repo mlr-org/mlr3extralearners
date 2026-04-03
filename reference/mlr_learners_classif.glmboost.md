@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -189,21 +189,23 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  0.007194369 
+#> Offset:  -0.09379931 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#>  (Intercept)           V1          V11          V12          V15          V21 
-#>   1.82534810  -0.49442640  -1.85005612  -0.08690912   0.27123677  -0.61160573 
-#>          V29          V36          V37          V43          V44          V45 
-#>  -0.25965228   1.15059551   0.27589796  -1.21671657  -0.64953357  -0.61466154 
-#>          V47          V49           V5          V51          V52          V58 
-#>  -0.69587471  -4.96926646  -0.48752835 -17.74598683 -14.44424936  -5.69664493 
+#> (Intercept)          V1         V11         V12         V15         V17 
+#>  1.11530193 -2.18127222 -1.85318766 -1.11013895  0.27687076  0.85313528 
+#>         V21         V22         V23         V31         V36         V37 
+#> -0.19076841 -0.29376886 -0.08626332  0.09986273  0.74834148  0.34016626 
+#>          V4         V44         V45         V46         V48         V49 
+#> -0.85639253 -0.42032936 -0.87107150 -0.23028439 -0.55380820 -3.86984034 
+#>          V5         V51         V54 
+#> -0.84115436 -8.42814580 -4.49498815 
 #> attr(,"offset")
-#> [1] 0.007194369
+#> [1] -0.09379931
 #> 
 
 
@@ -213,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.2608696 
 ```

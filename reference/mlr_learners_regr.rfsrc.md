@@ -99,7 +99,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -256,7 +256,7 @@ print(learner$model)
 #>                          Sample size: 21
 #>                      Number of trees: 500
 #>            Forest terminal node size: 5
-#>        Average no. of terminal nodes: 2.176
+#>        Average no. of terminal nodes: 2.44
 #> No. of variables tried at each split: 4
 #>               Total no. of variables: 10
 #>        Resampling used to grow trees: swor
@@ -265,14 +265,14 @@ print(learner$model)
 #>                               Family: regr
 #>                       Splitting rule: mse *random*
 #>        Number of random split points: 10
-#>                      (OOB) R squared: 0.65571312
-#>    (OOB) Requested performance error: 12.27758148
+#>                      (OOB) R squared: 0.62138189
+#>    (OOB) Requested performance error: 12.33029361
 #> 
 print(learner$importance())
-#>          wt         cyl        disp          hp        carb          vs 
-#> 15.92143883 14.42046741 12.39276208  9.20400586  1.38055464  1.07549047 
-#>        drat        qsec          am        gear 
-#>  0.47805229  0.12535614  0.06800962  0.03219219 
+#>           hp         disp           wt          cyl         drat         qsec 
+#> 20.592287934 14.324609600 13.712277243  9.745500331  4.322060574  1.286502282 
+#>           vs         carb           am         gear 
+#>  0.734635037  0.132260246  0.015498076  0.003581665 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -280,5 +280,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 10.08116 
+#> 17.29126 
 ```

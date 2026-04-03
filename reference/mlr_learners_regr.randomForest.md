@@ -65,7 +65,7 @@ Breiman, Leo (2001). “Random Forests.” *Machine Learning*, **45**(1),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -207,13 +207,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 9.120267
-#>                     % Var explained: 74.93
+#>           Mean of squared residuals: 7.467868
+#>                     % Var explained: 83.39
 print(learner$importance())
-#>         wt       disp        cyl         hp         am       drat       carb 
-#> 10.9092185  9.0189782  6.6521587  4.3822256  2.5113156  2.2228733  0.5667219 
-#>       gear       qsec         vs 
-#>  0.4919382  0.4668022  0.1349600 
+#>         wt       disp         hp        cyl       drat         am       gear 
+#> 12.7362694 12.2814506  9.1692848  5.6341576  3.0986189  2.0802092  1.2059029 
+#>       carb         vs       qsec 
+#>  0.8381675  0.8163985  0.4144181 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -221,5 +221,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.161851 
+#> 3.114148 
 ```
