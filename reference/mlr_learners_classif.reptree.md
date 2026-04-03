@@ -230,20 +230,14 @@ print(learner$model)
 #> REPTree
 #> ============
 #> 
-#> V11 < 0.15
-#> |   V4 < 0.05 : R (25/0) [10/2]
-#> |   V4 >= 0.05 : M (5/1) [2/0]
-#> V11 >= 0.15
-#> |   V12 < 0.1 : R (6/1) [1/0]
-#> |   V12 >= 0.1
-#> |   |   V52 < 0.01 : R (10/4) [8/4]
-#> |   |   V52 >= 0.01
-#> |   |   |   V49 < 0.02
-#> |   |   |   |   V17 < 0.4 : R (3/0) [1/0]
-#> |   |   |   |   V17 >= 0.4 : M (4/0) [3/1]
-#> |   |   |   V49 >= 0.02 : M (39/0) [22/5]
+#> V12 < 0.2 : R (34/6) [18/4]
+#> V12 >= 0.2
+#> |   V51 < 0.01
+#> |   |   V43 < 0.18 : R (7/0) [4/1]
+#> |   |   V43 >= 0.18 : M (13/5) [6/1]
+#> |   V51 >= 0.01 : M (38/2) [19/4]
 #> 
-#> Size of the tree : 13
+#> Size of the tree : 7
 
 
 # Make predictions for the test rows
@@ -252,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.3188406 
 ```

@@ -56,7 +56,7 @@ the parameter na_action.'></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Oblique Random Forest Regressor</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_aorsf_regr_aorsf.R" class="external-link"><code>R/learner_aorsf_regr_aorsf.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_aorsf_regr_aorsf.R" class="external-link"><code>R/learner_aorsf_regr_aorsf.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.aorsf.Rd</code></div>
     </div>
 
@@ -224,18 +224,18 @@ the parameter <code>na_action</code>.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  N trees: 500</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       N predictors total: 10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    N predictors per node: 4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.268</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  Average leaves per tree: 3.27</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min observations in leaf: 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           OOB stat value: 0.61</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            OOB stat type: RSQ</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      Variable importance: anova</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> -----------------------------------------</span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl         wt       disp         hp       carb         am       gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.13249211 0.10773481 0.05730659 0.05389222 0.03264095 0.02735562 0.02325581 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       qsec         vs       drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.02110818 0.01315789 0.01123596 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          wt        disp          hp        drat          vs        carb </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.147757256 0.069053708 0.063775510 0.043596730 0.023437500 0.019886364 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         cyl        qsec          am        gear </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.011235955 0.010335917 0.009375000 0.003058104 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -243,7 +243,7 @@ the parameter <code>na_action</code>.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12.05955 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24.09239 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

@@ -52,7 +52,7 @@ For logistic regression please use mlr_learners_classif.log_reg."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Generalized Linear Regression</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.0/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_stats_regr_glm.R" class="external-link"><code>R/learner_stats_regr_glm.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.glm.Rd</code></div>
     </div>
 
@@ -228,13 +228,13 @@ John Wiley &amp; Sons.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)           am         carb          cyl         disp         drat  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    12.48753      5.13442     -0.06787      0.02372      0.02124     -1.39896  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   -7.550479     0.847558    -0.372288    -1.033861     0.006718     1.269093  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        gear           hp         qsec           vs           wt  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1.13799     -0.03810      0.94533      2.27669     -3.22549  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    0.514846     0.007532     2.166577    -3.968796    -3.512610  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Degrees of Freedom: 20 Total (i.e. Null);  10 Residual</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    893.2 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 105.1 	AIC: 117.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Null Deviance:	    501 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Residual Deviance: 77.17 	AIC: 110.9</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -243,7 +243,7 @@ John Wiley &amp; Sons.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7.743766 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15.03808 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
