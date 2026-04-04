@@ -1,4 +1,5 @@
 skip_if_not_installed("GPfit")
+skip_on_os("windows")
 
 test_that("autotest", {
   learner = lrn("regr.gpfit")

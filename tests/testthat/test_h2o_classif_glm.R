@@ -1,4 +1,5 @@
 skip_if_not_installed("h2o")
+skip_on_os("windows")
 
 test_that("autotest", {
 

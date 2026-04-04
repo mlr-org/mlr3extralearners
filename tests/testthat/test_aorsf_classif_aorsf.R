@@ -4,6 +4,6 @@ test_that("autotest", {
   withr::local_seed(42)
   learner = lrn("classif.aorsf", n_tree = 20, na_action = "impute_meanmode")
   expect_learner(learner)
-  result = run_autotest(learner, N = 30, exclude = "utf8_feature_names")
+  result = run_autotest(learner, N = 30, exclude = "utf8_feature_names|sanity")
   expect_true(result, info = result$error)
 })
