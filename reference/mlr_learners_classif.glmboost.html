@@ -50,7 +50,7 @@ Calls mboost::glmboost() from mboost."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Boosted Generalized Linear Classification Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_mboost_classif_glmboost.R" class="external-link"><code>R/learner_mboost_classif_glmboost.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.glmboost.Rd</code></div>
     </div>
 
@@ -207,21 +207,21 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of boosting iterations: mstop = 100 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Step size:  0.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.1229175 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Offset:  -0.02158609 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Coefficients: </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> NOTE: Coefficients from a Binomial model are half the size of coefficients</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>  from a model fitted via glm(... , family = 'binomial').</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> See Warning section in ?coef.mboost</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> (Intercept)         V11         V12         V16         V20         V21 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.8981915  -2.2945268  -0.3164582   0.6157980  -0.1611567  -0.2153809 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V24         V28         V36          V4         V45         V46 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.2500202  -0.5530951   0.7618080  -1.5734301  -0.9777923  -0.2576446 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         V48         V49         V52         V54         V58         V59 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  -1.1399354  -5.1203712  -9.7329013  -5.0229672  -4.7894669  -4.8779148 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  (Intercept)           V1          V11          V12          V17          V20 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.99123271  -6.88247638  -1.78322463  -0.49799995   0.48605486  -0.13874377 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V22          V23          V28          V31          V36          V37 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  -0.06932737  -0.33057697  -0.32286623   0.99187699   0.62860595   0.05477142 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          V40          V45          V49          V52          V57          V59 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.26772257  -1.64602011  -4.81994325 -13.91664741   6.55145512  -5.83945225 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> attr(,"offset")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.1229175</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.02158609</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
@@ -231,7 +231,7 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2028986 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2753623 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
