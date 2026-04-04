@@ -50,7 +50,7 @@ Calls partykit::ctree() from partykit."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Survival Conditional Inference Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_partykit_surv_ctree.R" class="external-link"><code>R/learner_partykit_surv_ctree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_partykit_surv_ctree.R" class="external-link"><code>R/learner_partykit_surv_ctree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.ctree.Rd</code></div>
     </div>
 
@@ -202,18 +202,18 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fitted party:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] root</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] age &lt;= 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revascdays &lt;= 171</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] revasc &lt;= 0: 28.000 (n = 85)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] revasc &gt; 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] age &lt;= 54: Inf (n = 75)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [7] age &gt; 54: Inf (n = 166)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revascdays &gt; 171: Inf (n = 109)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   [9] age &gt; 74</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [10] revascdays &lt;= 167</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [11] revasc &lt;= 0: 37.000 (n = 95)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [12] revasc &gt; 0: Inf (n = 93)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] revascdays &gt; 167: Inf (n = 47)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [2] revascdays &lt;= 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [3] revasc &lt;= 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [4] age &lt;= 62: 77.000 (n = 39)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [5] age &gt; 62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [6] sysbp &lt;= 101: 4.000 (n = 17)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   |   [7] sysbp &gt; 101: 36.000 (n = 115)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [8] revasc &gt; 0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [9] age &lt;= 72: Inf (n = 235)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   |   [10] age &gt; 72: Inf (n = 114)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   [11] revascdays &gt; 173</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [12] revascdays &lt;= 179: Inf (n = 7)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   [13] revascdays &gt; 179: Inf (n = 143)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of inner nodes:    6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of terminal nodes: 7</span>
@@ -225,7 +225,7 @@ Calculated using the internal <code><a href="https://rdrr.io/pkg/partykit/man/pa
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   0.7982594 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8086303 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

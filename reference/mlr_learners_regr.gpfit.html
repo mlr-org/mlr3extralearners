@@ -48,7 +48,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Gaussian Process Learner (GPfit)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_GPfit_regr_gpfit.R" class="external-link"><code>R/learner_GPfit_regr_gpfit.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_GPfit_regr_gpfit.R" class="external-link"><code>R/learner_GPfit_regr_gpfit.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.gpfit.Rd</code></div>
     </div>
 
@@ -193,12 +193,12 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation: Exponential (power = 1.95)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation Parameters: </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1] -0.3776649        -10  -7.773924  -2.421612  -5.341447  -5.659661</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.1 beta_hat.2 beta_hat.3   beta_hat.4 beta_hat.5 beta_hat.6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]  -8.952065  -8.581021   -7.30427 -0.004048185  -9.226046        -10</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1]   1.816762  0.4402035  -7.828896  -0.3961089</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1]        -10    1.37308  -7.539736   0.2665819</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 35.1096</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> sigma^2_hat: [1] 47.405</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> delta_lb(beta_hat): [1] 0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
@@ -214,11 +214,11 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$high</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  20.220   1.000   5.424 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   1.000   8.000   8.000 472.000   4.430   5.000 335.000  22.900   1.000   5.345 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $mlist$low</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.500  0.000  1.615 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  0.000  1.000  4.000 71.100  2.930  3.000 65.000 14.500  0.000  1.513 </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
@@ -229,7 +229,7 @@ ISSN 1548-7660, <a href="https://doi.org/10.18637/jss.v064.i12" class="external-
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22.83824 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40.66479 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

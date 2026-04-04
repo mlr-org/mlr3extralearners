@@ -222,9 +222,9 @@ print(learner$model)
 #> 
 #> Classifications
 #> 
-#> wt <= 2.26 : 31.066666666666663
-#> wt > 2.26 : 18.455555555555556
-#> wt is missing : 20.257142857142853
+#> wt <= 2.26 : 31.775
+#> wt > 2.26 : 18.182352941176475
+#> wt is missing : 20.771428571428572
 #> 
 
 
@@ -234,5 +234,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 14.42901 
+#> 15.15745 
 ```

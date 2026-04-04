@@ -14,6 +14,8 @@
 - Skip `GPfit` tests on Windows where they crash under R-devel.
 - Skip `classif.aorsf` sanity autotest due to inconsistent tie-breaking
   across predict types.
+- Skip `surv.flexreg` sanity autotest on Windows due to initial
+  parameter estimation failure.
 
 ## mlr3extralearners 1.5.0
 
