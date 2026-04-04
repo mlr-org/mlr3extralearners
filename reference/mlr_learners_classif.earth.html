@@ -56,7 +56,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Classification MARS (Multivariate Adaptive Regression Splines) Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_earth_classif_earth.R" class="external-link"><code>R/learner_earth_classif_earth.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_earth_classif_earth.R" class="external-link"><code>R/learner_earth_classif_earth.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_classif.earth.Rd</code></div>
     </div>
 
@@ -194,20 +194,17 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Train the learner on the training ids</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">train</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">train</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: algorithm did not converge</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>glm.fit: fitted probabilities numerically 0 or 1 occurred</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>the glm algorithm did not converge for response "y"</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">learner</span><span class="op">$</span><span class="va">model</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> GLM (family binomial, link logit, maxit=25):</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  nulldev  df         dev  df   devratio     AIC iters converged</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   192.63 138 2.75688e-08 125          1      28    25         0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> GLM (family binomial, link logit):</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  nulldev  df       dev  df   devratio     AIC iters converged</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  192.515 138   47.6307 128      0.753   69.63     8         1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 14 of 22 terms, and 11 of 60 predictors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth selected 11 of 22 terms, and 9 of 60 predictors</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Termination condition: RSq changed by less than 0.001 at 22 terms</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V12, V23, V45, V37, V27, V49, V60, V31, V29, V42, V33, ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 13 (additive model)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.09211378    RSS 8.312772    GRSq 0.6366581    RSq 0.7606721</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Importance: V11, V23, V45, V36, V27, V28, V42, V54, V17-unused, V39, ...</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Number of terms at each degree of interaction: 1 10 (additive model)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Earth GCV 0.1204077    RSS 12.06156    GRSq 0.5246591    RSq 0.652455</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -216,7 +213,7 @@ MARS is trademarked and thus not used as the name. The name "earth" stands for
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> classif.ce </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.2173913 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.115942 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

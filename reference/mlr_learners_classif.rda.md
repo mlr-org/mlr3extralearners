@@ -169,16 +169,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>      gamma     lambda 
-#> 0.08321574 0.77724222 
+#>     gamma    lambda 
+#> 0.1217546 0.3290416 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5467626 0.4532374 
+#> 0.5251799 0.4748201 
 #> 
 #> Misclassification rate: 
-#>        apparent: 2.878 %
-#> cross-validated: 11.043 %
+#>        apparent: 0.719 %
+#> cross-validated: 15.024 %
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.1594203 
 ```
