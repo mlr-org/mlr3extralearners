@@ -48,7 +48,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
     <div class="section level2">
@@ -57,6 +57,9 @@
 <h3 id="other-1-5-1">Other<a class="anchor" aria-label="anchor" href="#other-1-5-1"></a></h3>
 <ul><li>Skip <code>fastai</code> and <code>botorch</code> tests on Windows and macOS where the Python backends crash or time out.</li>
 <li>Skip <code>tabpfn</code> tests until token work reliable again.</li>
+<li>Skip <code>blockForest</code> tests on macOS where SE predictions fail sanity checks.</li>
+<li>Skip <code>h2o.glm</code> classification tests on Windows due to Java NullPointerException.</li>
+<li>Skip <code>GPfit</code> tests on Windows where they crash under R-devel.</li>
 </ul></div>
 </div>
     <div class="section level2">

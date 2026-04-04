@@ -50,7 +50,7 @@ Calls RWeka::make_Weka_classifier() from RWeka."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Regression Decision Tree Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_RWeka_regr_reptree.R" class="external-link"><code>R/learner_RWeka_regr_reptree.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_RWeka_regr_reptree.R" class="external-link"><code>R/learner_RWeka_regr_reptree.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_regr.reptree.Rd</code></div>
     </div>
 
@@ -238,16 +238,14 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-out co"><span class="r-pr">#&gt;</span> REPTree</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ============</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &lt; 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &lt; 1.89 : 31.57 (3/2.72) [0/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   wt &gt;= 1.89 : 26.3 (3/1.41) [2/31.25]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> cyl &gt;= 5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &lt; 163.8 : 20.57 (3/0.38) [0/0]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   disp &gt;= 163.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &lt; 177.5 : 19.04 (3/0.14) [2/5.62]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> |   |   hp &gt;= 177.5 : 14.26 (2/0.49) [3/10.1]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &lt; 192.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &lt; 3 : 26.2 (2/0.42) [5/21.25]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &gt;= 3 : 21 (2/0) [0/0]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> disp &gt;= 192.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &lt; 3.5 : 17.33 (4/1.82) [2/3.39]</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> |   carb &gt;= 3.5 : 13.92 (6/3.04) [0/0]</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Size of the tree : 7</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test rows</span></span></span>
@@ -256,7 +254,7 @@ Additional arguments passed to <code><a href="https://mlr3.mlr-org.com/reference
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">predictions</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9.315527 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13.59518 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

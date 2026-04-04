@@ -208,29 +208,29 @@ print(learner$model)
 #> Number of obs: 1000, groups:  credit_history, 5
 #> Fixed Effects:
 #>                                         (Intercept)  
-#>                                            -0.49718  
+#>                                            -0.49717  
 #>                             jobunskilled - resident  
-#>                                            -0.19139  
+#>                                            -0.19140  
 #>                        jobskilled employee/official  
-#>                                            -0.13544  
+#>                                            -0.13545  
 #>        jobmanager/self-empl/highly qualif. employee  
 #>                                            -0.02365  
 #>                                propertycar or other  
-#>                                             0.56577  
+#>                                             0.56578  
 #> propertybuilding soc. savings agr. / life insurance  
-#>                                             0.50720  
+#>                                             0.50721  
 #>                                 propertyreal estate  
-#>                                             1.11104  
+#>                                             1.11105  
 #>                  telephoneyes (under customer name)  
-#>                                            -0.26805  
+#>                                            -0.26806  
 #>                                 savings... < 100 DM  
 #>                                            -0.33521  
 #>                          savings100 <= ... < 500 DM  
 #>                                            -1.08991  
 #>                         savings500 <= ... < 1000 DM  
-#>                                            -1.24679  
+#>                                            -1.24678  
 #>                               savings... >= 1000 DM  
-#>                                            -1.04639  
+#>                                            -1.04640  
 #> 
 #> $target_levels
 #> [1] "good" "bad" 
