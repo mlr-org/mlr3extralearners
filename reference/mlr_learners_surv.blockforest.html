@@ -58,7 +58,7 @@ not needed for downstream use or not reliable for performance estimation."></hea
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>BlockForest Survival Learner</h1>
-      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/v1.5.1/R/learner_blockForest_surv_blockforest.R" class="external-link"><code>R/learner_blockForest_surv_blockforest.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/mlr-org/mlr3extralearners/blob/main/R/learner_blockForest_surv_blockforest.R" class="external-link"><code>R/learner_blockForest_surv_blockforest.R</code></a></small>
       <div class="d-none name"><code>mlr_learners_surv.blockforest.Rd</code></div>
     </div>
 
@@ -221,27 +221,27 @@ Calculated using the internal <code>blockForest:::predict.blockForest()</code> f
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  revascdays      revasc         age         los    stchange       sysbp </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 0.148381687 0.075507738 0.022792797 0.011971240 0.007623198 0.003768486 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> revascdays     revasc        age   stchange        los      sysbp </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.12729694 0.05030671 0.02707853 0.02472323 0.01513117 0.01294373 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pred</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionSurv&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">330</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">──────────────────────────────────────</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids  time status     crank     distr</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        1 180.0  FALSE  12.37845 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        3   2.0  FALSE  67.35576 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        5 180.0  FALSE  18.91837 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---    ---       ---       ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      994   7.0  FALSE 103.41161 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      995   0.5   TRUE  84.69216 &lt;list[1]&gt;</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     1000  15.0  FALSE  90.52216 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids time status     crank     distr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        3  2.0  FALSE 39.000725 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        4  5.0  FALSE  8.635714 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        6  5.0  FALSE 43.255668 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      ---  ---    ---       ---       ---</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      990 12.0   TRUE 85.286891 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      995  0.5   TRUE 67.732921 &lt;list[1]&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      996 69.0   TRUE 70.792668 &lt;list[1]&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> surv.cindex </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    0.845593 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   0.8364509 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

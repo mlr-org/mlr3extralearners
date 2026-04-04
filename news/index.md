@@ -12,6 +12,8 @@
 - Skip `h2o.glm` classification tests on Windows due to Java
   NullPointerException.
 - Skip `GPfit` tests on Windows where they crash under R-devel.
+- Skip `classif.aorsf` sanity autotest due to inconsistent tie-breaking
+  across predict types.
 
 ## mlr3extralearners 1.5.0
 
