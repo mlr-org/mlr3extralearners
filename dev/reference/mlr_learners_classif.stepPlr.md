@@ -52,7 +52,7 @@ detecting gene interactions.” *Biostatistics*, **9**(1), 30-50. ISSN
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -143,7 +143,7 @@ print(learner)
 #> • Feature Types: logical, integer, and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: twoclass and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -161,25 +161,25 @@ print(learner$model)
 #> 
 #> Coefficients:
 #> Intercept        V1       V10       V11       V12       V13       V14       V15 
-#>  15.77235 -21.67084  10.69411 -30.00936 -37.86797  29.01295   5.58713  -8.29144 
+#>   6.23200  -7.64815  34.79367 -23.84330   2.52733 -34.59199   2.49861  13.58597 
 #>       V16       V17       V18       V19        V2       V20       V21       V22 
-#> -15.16477  49.14904 -37.76168  22.11250 -38.27902 -27.72825  37.04949 -41.37272 
+#> -29.01162  59.17141 -28.56278  -6.77544  -6.93287  14.29237   9.58271 -30.08583 
 #>       V23       V24       V25       V26       V27       V28       V29        V3 
-#>  23.64440 -27.82345   6.32980  -0.10490   1.39077   3.77921   2.97432  38.11167 
+#>  24.35793 -40.78661  28.52852  -6.42888   3.38086   2.92953   2.89932  43.17427 
 #>       V30       V31       V32       V33       V34       V35       V36       V37 
-#> -28.88653  40.99564 -14.63464 -12.09182  22.18423 -10.39047   3.62260  13.91657 
+#> -27.98773  51.52767 -37.06284  26.10856  -8.68958  -7.19163  23.35524  -1.12800 
 #>       V38       V39        V4       V40       V41       V42       V43       V44 
-#>   3.05793 -23.48529 -45.73329  19.19866  -2.34377 -10.34235  24.06823 -27.89589 
+#>  -0.62214 -12.79598 -61.51890  22.18137   6.27307 -32.08251  37.54983 -37.83740 
 #>       V45       V46       V47       V48       V49        V5       V50       V51 
-#>   3.62364 -12.85689  23.50238 -55.53116 -76.50315 -11.12689  78.57554 -57.63305 
+#>   5.58805   2.76830  -2.09640 -33.23737 -96.03197 -14.17736  55.17818 -58.85625 
 #>       V52       V53       V54       V55       V56       V57       V58       V59 
-#> -61.00207 -48.01616 -17.90052  44.21231   7.77759  17.86708 -38.20607 -40.10520 
+#> -54.02603 -24.49288  -0.21551  15.33148  -7.16052  21.21519 -25.35731  -8.35784 
 #>        V6       V60        V7        V8        V9 
-#>  -2.06957  -3.01072  33.46256  31.37863 -12.79789 
+#> -24.72290  -7.89438  40.84515  26.71117 -37.98310 
 #> 
 #>     Null deviance: 192.34 on 138 degrees of freedom
-#> Residual deviance: 19.64 on 92.86 degrees of freedom
-#>             Score: deviance + 4.9 * df = 247.31 
+#> Residual deviance: 13.94 on 94.63 degrees of freedom
+#>             Score: deviance + 4.9 * df = 232.88 
 
 
 # Make predictions for the test rows
@@ -188,5 +188,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2463768 
 ```

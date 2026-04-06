@@ -83,7 +83,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -174,7 +174,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: missings and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -190,23 +190,23 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: drf
-#> Model ID:  DRF_model_R_1775122939896_112 
+#> Model ID:  DRF_model_R_1775462194710_112 
 #> Model Summary: 
 #>   number_of_trees number_of_internal_trees model_size_in_bytes min_depth
-#> 1              50                       50               10739         3
+#> 1              50                       50               10389         3
 #>   max_depth mean_depth min_leaves max_leaves mean_leaves
-#> 1         9    5.76000          6         17    12.48000
+#> 1         8    5.54000          6         18    11.92000
 #> 
 #> 
 #> H2ORegressionMetrics: drf
 #> ** Reported on training data. **
 #> ** Metrics reported on Out-Of-Bag training samples **
 #> 
-#> MSE:  5.951255
-#> RMSE:  2.439519
-#> MAE:  1.954788
-#> RMSLE:  0.1233926
-#> Mean Residual Deviance :  5.951255
+#> MSE:  6.619527
+#> RMSE:  2.572844
+#> MAE:  2.229225
+#> RMSLE:  0.1269886
+#> Mean Residual Deviance :  6.619527
 #> 
 #> 
 #> 
@@ -219,5 +219,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 2.660361 
+#> 5.939854 
 ```

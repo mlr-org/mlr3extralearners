@@ -76,7 +76,7 @@ regularized random forest.” *Pattern Recognition*, **46**(12),
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -199,7 +199,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance and oob_error
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -218,13 +218,13 @@ print(learner$model)
 #>                      Number of trees: 500
 #> No. of variables tried at each split: 3
 #> 
-#>           Mean of squared residuals: 6.482825
-#>                     % Var explained: 82.63
+#>           Mean of squared residuals: 7.824719
+#>                     % Var explained: 82.25
 print(learner$importance())
-#>         hp         wt       disp        cyl       drat       carb       qsec 
-#> 166.499850 148.317474 146.280833 114.916871  49.894913  29.509826  27.013187 
-#>         vs       gear         am 
-#>  14.763114   9.886104   7.187500 
+#>      disp        wt       cyl        hp      drat        am      gear        vs 
+#> 215.11018 180.43287 126.25181 119.69573  62.06513  40.63589  30.58995  22.66642 
+#>      qsec      carb 
+#>  21.80962  19.33499 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -232,5 +232,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.888505 
+#> 4.087491 
 ```

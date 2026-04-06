@@ -76,7 +76,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -214,7 +214,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, missings, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -230,50 +230,44 @@ print(learner$model)
 #> RandomTree
 #> ==========
 #> 
-#> V45 < 0.24
-#> |   V48 < 0.08
-#> |   |   V13 < 0.22 : R (26/0)
-#> |   |   V13 >= 0.22
-#> |   |   |   V30 < 0.74
-#> |   |   |   |   V19 < 0.83
-#> |   |   |   |   |   V57 < 0.01
-#> |   |   |   |   |   |   V47 < 0.06 : R (4/0)
-#> |   |   |   |   |   |   V47 >= 0.06
-#> |   |   |   |   |   |   |   V14 < 0.39 : M (5/0)
-#> |   |   |   |   |   |   |   V14 >= 0.39
-#> |   |   |   |   |   |   |   |   V17 < 0.5 : M (1/0)
-#> |   |   |   |   |   |   |   |   V17 >= 0.5 : R (3/0)
-#> |   |   |   |   |   V57 >= 0.01 : R (6/0)
-#> |   |   |   |   V19 >= 0.83 : M (6/0)
-#> |   |   |   V30 >= 0.74 : R (7/0)
-#> |   V48 >= 0.08
-#> |   |   V36 < 0.52
-#> |   |   |   V44 < 0.19
-#> |   |   |   |   V33 < 0.41
-#> |   |   |   |   |   V53 < 0 : R (4/0)
-#> |   |   |   |   |   V53 >= 0
-#> |   |   |   |   |   |   V37 < 0.2 : M (6/0)
-#> |   |   |   |   |   |   V37 >= 0.2
-#> |   |   |   |   |   |   |   V27 < 0.64 : R (3/0)
-#> |   |   |   |   |   |   |   V27 >= 0.64
-#> |   |   |   |   |   |   |   |   V13 < 0.22 : R (1/0)
-#> |   |   |   |   |   |   |   |   V13 >= 0.22 : M (3/0)
-#> |   |   |   |   V33 >= 0.41 : M (8/0)
-#> |   |   |   V44 >= 0.19 : M (10/0)
-#> |   |   V36 >= 0.52
-#> |   |   |   V51 < 0.03 : R (9/0)
-#> |   |   |   V51 >= 0.03
-#> |   |   |   |   V14 < 0.38 : M (1/0)
-#> |   |   |   |   V14 >= 0.38 : R (1/0)
-#> V45 >= 0.24
-#> |   V9 < 0.11
-#> |   |   V28 < 0.85
-#> |   |   |   V33 < 0.46 : M (1/0)
-#> |   |   |   V33 >= 0.46 : R (5/0)
-#> |   |   V28 >= 0.85 : M (2/0)
-#> |   V9 >= 0.11 : M (27/0)
+#> V54 < 0.02
+#> |   V49 < 0.05
+#> |   |   V34 < 0.63
+#> |   |   |   V22 < 0.73
+#> |   |   |   |   V42 < 0.31 : R (24/0)
+#> |   |   |   |   V42 >= 0.31
+#> |   |   |   |   |   V16 < 0.1 : R (1/0)
+#> |   |   |   |   |   V16 >= 0.1 : M (4/0)
+#> |   |   |   V22 >= 0.73
+#> |   |   |   |   V43 < 0.18
+#> |   |   |   |   |   V58 < 0 : R (6/0)
+#> |   |   |   |   |   V58 >= 0
+#> |   |   |   |   |   |   V44 < 0.16 : R (4/0)
+#> |   |   |   |   |   |   V44 >= 0.16 : M (3/0)
+#> |   |   |   |   V43 >= 0.18 : M (9/0)
+#> |   |   V34 >= 0.63 : R (10/0)
+#> |   V49 >= 0.05
+#> |   |   V37 < 0.46
+#> |   |   |   V17 < 0.93
+#> |   |   |   |   V27 < 0.3
+#> |   |   |   |   |   V13 < 0.36 : R (1/0)
+#> |   |   |   |   |   V13 >= 0.36 : M (1/0)
+#> |   |   |   |   V27 >= 0.3
+#> |   |   |   |   |   V58 < 0
+#> |   |   |   |   |   |   V58 < 0 : M (6/0)
+#> |   |   |   |   |   |   V58 >= 0 : R (1/0)
+#> |   |   |   |   |   V58 >= 0 : M (32/0)
+#> |   |   |   V17 >= 0.93
+#> |   |   |   |   V15 < 0.76 : R (2/0)
+#> |   |   |   |   V15 >= 0.76 : M (1/0)
+#> |   |   V37 >= 0.46
+#> |   |   |   V46 < 0.22 : R (10/0)
+#> |   |   |   V46 >= 0.22
+#> |   |   |   |   V39 < 0.93 : M (8/0)
+#> |   |   |   |   V39 >= 0.93 : R (2/0)
+#> V54 >= 0.02 : M (14/0)
 #> 
-#> Size of the tree : 43
+#> Size of the tree : 37
 
 
 # Make predictions for the test rows
@@ -282,5 +276,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.2318841 
 ```

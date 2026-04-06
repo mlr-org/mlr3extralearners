@@ -62,7 +62,7 @@ American Statistical Association*, **84**(405), 165–175. ISSN 01621459,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -153,7 +153,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: multiclass and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -169,16 +169,16 @@ print(learner$model)
 #> rda(formula = formula, data = data)
 #> 
 #> Regularization parameters: 
-#>     gamma    lambda 
-#> 0.2214074 0.6570550 
+#>      gamma     lambda 
+#> 0.01200384 0.17806521 
 #> 
 #> Prior probabilities of groups: 
 #>         M         R 
-#> 0.5827338 0.4172662 
+#> 0.5107914 0.4892086 
 #> 
 #> Misclassification rate: 
 #>        apparent: 0 %
-#> cross-validated: 12.046 %
+#> cross-validated: 16.817 %
 
 
 # Make predictions for the test rows
@@ -187,5 +187,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2028986 
+#>  0.1884058 
 ```

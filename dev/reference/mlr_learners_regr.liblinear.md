@@ -78,7 +78,7 @@ Chih-Jen (2008). “LIBLINEAR: A library for large linear classification.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -169,7 +169,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -188,10 +188,10 @@ print(learner$model)
 #> [1] 11
 #> 
 #> $W
-#>              am       carb       cyl        disp      drat      gear        hp
-#> [1,] 0.04669754 0.01818663 0.1211268 -0.02099601 0.2118884 0.2095627 0.0325519
-#>           qsec         vs         wt       Bias
-#> [1,] 0.9611507 0.05754379 0.06942882 0.04821225
+#>              am       carb       cyl        disp      drat      gear
+#> [1,] 0.05672592 0.02807098 0.1616536 -0.03275804 0.2750668 0.2657547
+#>               hp     qsec         vs         wt       Bias
+#> [1,] 0.008144421 1.282174 0.08342683 0.09071176 0.06311132
 #> 
 #> $Bias
 #> [1] 1
@@ -209,5 +209,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 26.66386 
+#> 14.29674 
 ```

@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -158,7 +158,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: offset, twoclass, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -189,7 +189,7 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.02158609 
+#> Offset:  -0.05040235 
 #> Number of baselearners:  60 
 #> 
 
@@ -206,11 +206,9 @@ predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 #> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
-#> Warning: Some ‘x’ values are beyond ‘boundary.knots’; Linear extrapolation used.
 
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>  0.2173913 
 ```

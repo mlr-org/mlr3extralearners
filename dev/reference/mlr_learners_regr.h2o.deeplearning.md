@@ -114,7 +114,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -205,7 +205,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: missings and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -221,29 +221,29 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: deeplearning
-#> Model ID:  DeepLearning_model_R_1775122939896_109 
+#> Model ID:  DeepLearning_model_R_1775462194710_109 
 #> Status of Neuron Layers: predicting mpg, regression, gaussian distribution, Quadratic loss, 42,601 weights/biases, 508.1 KB, 210 training samples, mini-batch size 1
 #>   layer units      type dropout       l1       l2 mean_rate rate_rms momentum
 #> 1     1    10     Input  0.00 %       NA       NA        NA       NA       NA
-#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.008739 0.006562 0.000000
-#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.018549 0.041361 0.000000
-#> 4     4     1    Linear      NA 0.000000 0.000000  0.000524 0.000646 0.000000
+#> 2     2   200 Rectifier  0.00 % 0.000000 0.000000  0.005125 0.004070 0.000000
+#> 3     3   200 Rectifier  0.00 % 0.000000 0.000000  0.015083 0.041217 0.000000
+#> 4     4     1    Linear      NA 0.000000 0.000000  0.000308 0.000386 0.000000
 #>   mean_weight weight_rms mean_bias bias_rms
 #> 1          NA         NA        NA       NA
-#> 2   -0.004106   0.098537  0.498594 0.001948
-#> 3   -0.000233   0.069431  0.999795 0.001054
-#> 4    0.001300   0.098669 -0.000230 0.000000
+#> 2   -0.002082   0.097909  0.496440 0.004156
+#> 3    0.000234   0.069274  0.999009 0.003272
+#> 4   -0.009397   0.097795  0.001394 0.000000
 #> 
 #> 
 #> H2ORegressionMetrics: deeplearning
 #> ** Reported on training data. **
 #> ** Metrics reported on full training frame **
 #> 
-#> MSE:  16.9086
-#> RMSE:  4.112007
-#> MAE:  3.513054
-#> RMSLE:  0.2218372
-#> Mean Residual Deviance :  16.9086
+#> MSE:  29.8053
+#> RMSE:  5.459423
+#> MAE:  4.294344
+#> RMSLE:  0.2490651
+#> Mean Residual Deviance :  29.8053
 #> 
 #> 
 #> 
@@ -256,5 +256,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 11.59518 
+#> 22.19668 
 ```

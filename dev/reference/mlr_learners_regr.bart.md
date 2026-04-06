@@ -97,7 +97,7 @@ additive regression trees.” *The Annals of Applied Statistics*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -188,7 +188,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -208,7 +208,7 @@ learner$train(task, row_ids = ids$train)
 #>  k prior fixed to 2.000000
 #>  degrees of freedom in sigma prior: 3.000000
 #>  quantile in sigma prior: 0.900000
-#>  scale in sigma prior: 0.002501
+#>  scale in sigma prior: 0.001632
 #>  power and base for tree prior: 2.000000 0.950000
 #>  use quantiles for rule cut points: false
 #>  proposal probabilities: birth/death 0.50, swap 0.10, change 0.40; birth 0.50
@@ -216,7 +216,7 @@ learner$train(task, row_ids = ids$train)
 #>  number of training observations: 21
 #>  number of test observations: 0
 #>  number of explanatory variables: 10
-#>  init sigma: 2.662598, curr sigma: 2.662598
+#>  init sigma: 2.150793, curr sigma: 2.150793
 #> 
 #> Cutoff rules c in x<=c vs x>c
 #> Number of cutoffs: (var: number of possible c):
@@ -234,24 +234,24 @@ learner$train(task, row_ids = ids$train)
 #> iteration: 800 (of 1000)
 #> iteration: 900 (of 1000)
 #> iteration: 1000 (of 1000)
-#> total seconds in loop: 0.270101
+#> total seconds in loop: 0.314766
 #> 
 #> Tree sizes, last iteration:
-#> [1] 3 2 3 2 2 2 2 2 2 2 3 3 2 1 3 2 1 3 
-#> 1 3 2 3 2 1 1 2 2 3 3 2 2 2 2 2 2 3 3 2 
-#> 3 2 1 2 3 2 3 2 2 2 3 2 4 1 1 1 2 2 2 3 
-#> 2 2 2 2 3 3 2 2 1 3 2 2 2 1 2 2 2 2 2 4 
-#> 3 2 2 2 2 2 1 2 3 2 2 2 2 3 2 2 2 3 2 2 
-#> 3 4 2 2 2 2 3 2 2 2 3 3 2 2 2 2 2 2 2 2 
-#> 2 3 2 2 2 3 2 3 3 2 2 3 3 2 2 2 4 1 2 2 
-#> 2 2 2 3 2 2 3 3 3 2 2 2 3 3 2 3 2 3 2 2 
-#> 2 2 3 2 3 2 2 2 2 2 2 2 3 3 2 2 2 3 2 2 
-#> 2 2 2 2 2 2 2 2 3 2 4 3 2 2 2 2 3 2 2 2 
+#> [1] 2 2 2 2 2 2 5 2 2 2 2 2 2 3 2 2 2 2 
+#> 2 2 2 4 2 1 2 2 2 2 2 2 2 2 4 3 2 3 1 2 
+#> 2 2 2 2 5 3 2 2 2 2 2 2 3 3 2 3 2 2 4 2 
+#> 3 2 2 2 2 2 2 2 2 2 2 2 2 2 1 4 2 3 3 2 
+#> 3 2 3 2 2 3 2 2 2 2 2 2 2 3 3 2 2 2 3 2 
+#> 2 2 2 2 2 3 2 1 4 2 2 2 2 1 2 2 2 2 2 2 
+#> 3 2 1 4 2 2 1 3 3 2 4 2 2 4 2 2 2 2 2 3 
+#> 2 2 4 3 2 2 3 2 3 3 2 2 2 3 2 2 3 2 2 1 
+#> 2 2 2 3 2 3 2 2 2 2 2 3 2 2 2 2 1 2 2 2 
+#> 2 2 2 2 2 4 3 2 2 2 2 4 3 3 1 5 2 3 2 2 
 #> 2 2 
 #> 
 #> Variable Usage, last iteration (var:count):
-#> (1: 19) (2: 30) (3: 18) (4: 25) (5: 26) 
-#> (6: 23) (7: 31) (8: 27) (9: 21) (10: 27) 
+#> (1: 22) (2: 27) (3: 31) (4: 30) (5: 27) 
+#> (6: 14) (7: 30) (8: 29) (9: 25) (10: 20) 
 #> 
 #> DONE BART
 #> 
@@ -269,5 +269,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 2.855989 
+#> 3.008702 
 ```

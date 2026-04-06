@@ -105,7 +105,7 @@ Chao C, Leo B (2004). “Using Random Forest to Learn Imbalanced Data.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -249,7 +249,7 @@ print(learner)
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, selected_features, twoclass, and
 #> weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -261,10 +261,10 @@ learner$train(task, row_ids = ids$train)
 
 print(learner$model)
 #>                          Sample size: 139
-#>            Frequency of class labels: M=70, R=69
+#>            Frequency of class labels: M=77, R=62
 #>                      Number of trees: 3000
 #>            Forest terminal node size: 1
-#>        Average no. of terminal nodes: 16.7637
+#>        Average no. of terminal nodes: 16.5983
 #> No. of variables tried at each split: 8
 #>               Total no. of variables: 60
 #>        Resampling used to grow trees: swor
@@ -273,47 +273,47 @@ print(learner$model)
 #>                               Family: class
 #>                       Splitting rule: auc *random*
 #>        Number of random split points: 10
-#>                     Imbalanced ratio: 1.0145
-#>                    (OOB) Brier score: 0.13537735
-#>         (OOB) Normalized Brier score: 0.5415094
-#>                            (OOB) AUC: 0.91055901
-#>                       (OOB) Log-loss: 0.42909651
-#>                         (OOB) PR-AUC: 0.91572235
-#>                         (OOB) G-mean: 0.80910962
-#>    (OOB) Requested performance error: 0.19089038
+#>                     Imbalanced ratio: 1.2419
+#>                    (OOB) Brier score: 0.13307611
+#>         (OOB) Normalized Brier score: 0.53230445
+#>                            (OOB) AUC: 0.91998324
+#>                       (OOB) Log-loss: 0.42167266
+#>                         (OOB) PR-AUC: 0.90135933
+#>                         (OOB) G-mean: 0.82076119
+#>    (OOB) Requested performance error: 0.17923881
 #> 
 #> Confusion matrix:
 #> 
 #>           predicted
 #>   observed  M  R class.error
-#>          M 62  8      0.1143
-#>          R 18 51      0.2609
+#>          M 67 10      0.1299
+#>          R 14 48      0.2258
 #> 
-#>       (OOB) Misclassification rate: 0.1870504
+#>       (OOB) Misclassification rate: 0.1726619
 #> 
 #> Random-classifier baselines (uniform):
 #>    Brier: 0.25   Normalized Brier: 1   Log-loss: 0.69314718
 print(learner$importance())
-#>           V1          V11          V12          V13          V14          V15 
+#>          V12          V32          V31           V4           V1          V11 
+#>  0.023299780  0.023299780  0.020808322  0.020808322  0.017281118  0.017281118 
+#>          V27           V3          V35          V37          V41          V42 
+#>  0.017281118  0.017281118  0.017281118  0.017281118  0.017281118  0.017281118 
+#>          V15          V46           V9          V16          V24          V25 
+#>  0.014678325  0.014678325  0.014678325  0.011307207  0.011307207  0.011307207 
+#>          V14          V17          V18           V2          V26          V30 
+#>  0.008594595  0.008594595  0.008594595  0.008594595  0.008594595  0.008594595 
+#>          V34          V36          V40          V53          V54          V56 
+#>  0.008594595  0.008594595  0.008594595  0.008594595  0.008594595  0.008594595 
+#>           V6          V60          V20          V22          V23          V29 
+#>  0.008594595  0.008594595  0.006148110  0.006148110  0.006148110  0.006148110 
+#>           V5          V59          V21          V28          V19          V33 
+#>  0.006148110  0.006148110  0.003965362  0.002556098  0.000000000  0.000000000 
+#>          V38          V39          V43          V47          V52          V55 
 #>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V16          V17          V18          V19           V2          V20 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V27          V28          V29           V3          V30          V31 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V32          V33          V34          V35          V36          V38 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V40          V41          V42          V44          V47          V50 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V52          V53          V54          V55          V56          V57 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 
-#>          V58          V59           V7           V8           V9          V21 
-#>  0.000000000  0.000000000  0.000000000  0.000000000  0.000000000 -0.001278417 
-#>          V45          V22          V23          V24          V25          V26 
-#> -0.001278417 -0.006498977 -0.006498977 -0.006498977 -0.006498977 -0.006498977 
-#>          V37          V39          V49           V5          V51           V6 
-#> -0.006498977 -0.006498977 -0.006498977 -0.006498977 -0.006498977 -0.006498977 
-#>          V60          V10           V4          V43          V46          V48 
-#> -0.006498977 -0.007893939 -0.007893939 -0.012946576 -0.012946576 -0.022337516 
+#>          V57           V7          V45          V48          V49          V10 
+#>  0.000000000  0.000000000 -0.002293701 -0.002293701 -0.002293701 -0.006102398 
+#>          V13          V44          V50          V51          V58           V8 
+#> -0.006102398 -0.008505524 -0.008505524 -0.008505524 -0.008505524 -0.008505524 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -321,5 +321,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>   0.115942 
 ```

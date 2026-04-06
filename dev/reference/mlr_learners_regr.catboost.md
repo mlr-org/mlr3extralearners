@@ -160,7 +160,7 @@ arXiv:1810.11363*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -287,7 +287,7 @@ print(learner)
 #> • Feature Types: numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, internal_tuning, missings, validation, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -303,10 +303,10 @@ print(learner$model)
 #> Loss function: RMSE
 #> Fit to 10 feature(s)
 print(learner$importance())
-#>        wt       cyl      disp      carb        hp      qsec      drat        vs 
-#> 20.873917 20.260199 16.927811  9.707184  7.548455  6.147134  5.264557  5.056049 
-#>      gear        am 
-#>  4.481554  3.733140 
+#>        wt      disp        hp       cyl      qsec      carb        vs      gear 
+#> 21.858828 21.121531 16.190510 12.294153  6.890051  5.231758  5.149686  4.081372 
+#>      drat        am 
+#>  3.868878  3.313234 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -314,5 +314,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 4.667756 
+#> 21.87086 
 ```

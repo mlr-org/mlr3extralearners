@@ -69,7 +69,7 @@ fitting a Gaussian process model to deterministic simulator outputs.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -161,7 +161,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -181,11 +181,11 @@ print(learner$model)
 #> Correlation: Exponential (power = 1.95)
 #> Correlation Parameters: 
 #>     beta_hat.1 beta_hat.2 beta_hat.3 beta_hat.4 beta_hat.5 beta_hat.6
-#> [1]  -4.840936  0.2045327  -7.923025  -6.881126  0.7768923         10
+#> [1]  -7.363171        -10  -7.236937 -0.8228574        -10        -10
 #>     beta_hat.7 beta_hat.8 beta_hat.9 beta_hat.10
-#> [1]  -6.310178   1.246333  -7.078607   -0.266479
+#> [1]   1.268873  0.8470572 -0.1863536   0.3551775
 #> 
-#> sigma^2_hat: [1] 40.60906
+#> sigma^2_hat: [1] 32.41319
 #> 
 #> delta_lb(beta_hat): [1] 0
 #> 
@@ -201,11 +201,11 @@ print(learner$model)
 #> 
 #> $mlist$high
 #>      am    carb     cyl    disp    drat    gear      hp    qsec      vs      wt 
-#>   1.000   8.000   8.000 472.000   4.930   5.000 335.000  22.900   1.000   5.424 
+#>   1.000   6.000   8.000 460.000   4.220   5.000 264.000  22.900   1.000   5.424 
 #> 
 #> $mlist$low
 #>     am   carb    cyl   disp   drat   gear     hp   qsec     vs     wt 
-#>  0.000  1.000  4.000 71.100  2.760  3.000 52.000 14.600  0.000  1.513 
+#>  0.000  1.000  4.000 79.000  2.760  3.000 62.000 14.500  0.000  1.513 
 #> 
 #> 
 
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 15.71378 
+#> 11.99199 
 ```

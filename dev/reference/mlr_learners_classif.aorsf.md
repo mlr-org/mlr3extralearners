@@ -82,7 +82,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -207,7 +207,7 @@ print(learner)
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, multiclass, oob_error, twoclass, and
 #> weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -227,32 +227,32 @@ print(learner$model)
 #>                  N trees: 500
 #>       N predictors total: 60
 #>    N predictors per node: 8
-#>  Average leaves per tree: 5.004
+#>  Average leaves per tree: 5.27
 #> Min observations in leaf: 5
-#>           OOB stat value: 0.87
+#>           OOB stat value: 0.89
 #>            OOB stat type: AUC-ROC
 #>      Variable importance: anova
 #> 
 #> -----------------------------------------
 print(learner$importance())
-#>        V12        V11        V13        V36         V9        V37        V10 
-#> 0.38709677 0.33830846 0.32882883 0.29279279 0.29184549 0.29166667 0.27441860 
-#>        V52        V47        V21         V1        V22        V43        V45 
-#> 0.22317597 0.20258621 0.19806763 0.17592593 0.17535545 0.16964286 0.15450644 
-#>        V20        V44        V49        V35        V48         V5        V46 
-#> 0.15311005 0.15000000 0.14220183 0.13777778 0.13656388 0.12987013 0.12217195 
-#>        V16        V34        V17        V28        V51        V19         V4 
-#> 0.12060302 0.10360360 0.10194175 0.09952607 0.09677419 0.09166667 0.09132420 
-#>        V42        V18        V15        V59        V24        V23        V30 
-#> 0.09009009 0.08163265 0.07511737 0.07500000 0.07488987 0.07171315 0.06607930 
-#>         V2         V8        V29        V54         V6        V58        V27 
-#> 0.06437768 0.06086957 0.06072874 0.05957447 0.05909091 0.05853659 0.05752212 
-#>        V41        V39        V38        V57        V40        V33        V50 
-#> 0.05627706 0.05529954 0.04932735 0.04918033 0.04608295 0.04166667 0.03960396 
-#>         V3        V14         V7        V26        V55        V25        V53 
-#> 0.03619910 0.03587444 0.03347280 0.03286385 0.03167421 0.02857143 0.02702703 
-#>        V56        V32        V31        V60 
-#> 0.02597403 0.02487562 0.02415459 0.00877193 
+#>        V11        V12        V52        V49        V48         V9        V46 
+#> 0.49783550 0.49115044 0.32394366 0.25592417 0.25311203 0.23195876 0.22685185 
+#>        V45        V13        V10        V20        V36         V1        V47 
+#> 0.21495327 0.20779221 0.20000000 0.19545455 0.18433180 0.17801047 0.17748918 
+#>         V4        V58        V19        V43        V31         V5        V18 
+#> 0.17452830 0.16908213 0.16228070 0.15909091 0.14736842 0.12916667 0.12871287 
+#>        V44        V21        V37        V35        V15        V17        V53 
+#> 0.12844037 0.12500000 0.12442396 0.12345679 0.12315271 0.11707317 0.11607143 
+#>        V23        V51        V24        V16         V8        V14        V42 
+#> 0.11538462 0.10989011 0.10852713 0.10714286 0.09900990 0.09803922 0.08407080 
+#>        V57         V7        V54        V34        V39        V38        V28 
+#> 0.08000000 0.07692308 0.05909091 0.05859375 0.05797101 0.05687204 0.05581395 
+#>        V30        V50        V41        V32         V3         V6        V59 
+#> 0.05504587 0.05445545 0.04867257 0.04807692 0.04784689 0.04782609 0.04602510 
+#>         V2        V56        V22        V26        V29        V40        V27 
+#> 0.04504505 0.04060914 0.03791469 0.03652968 0.03500000 0.03433476 0.03125000 
+#>        V55        V33        V60        V25 
+#> 0.02985075 0.02941176 0.02100840 0.02083333 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2173913 
+#>  0.2028986 
 ```

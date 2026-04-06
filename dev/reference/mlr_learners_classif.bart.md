@@ -103,7 +103,7 @@ additive regression trees.” *The Annals of Applied Statistics*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -194,7 +194,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: twoclass and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -248,34 +248,34 @@ learner$train(task, row_ids = ids$train)
 #> iteration: 800 (of 1000)
 #> iteration: 900 (of 1000)
 #> iteration: 1000 (of 1000)
-#> total seconds in loop: 0.487594
+#> total seconds in loop: 0.465390
 #> 
 #> Tree sizes, last iteration:
-#> [1] 2 3 2 3 1 3 4 2 2 2 2 2 2 2 2 2 2 3 
-#> 2 2 2 2 3 2 3 2 2 2 2 3 2 2 3 3 2 2 4 2 
-#> 1 2 2 2 2 2 2 2 2 3 2 3 4 2 2 4 2 2 4 4 
-#> 4 3 2 2 3 2 2 2 2 3 2 3 2 3 2 3 2 1 2 2 
-#> 2 3 2 3 4 2 2 2 2 2 2 2 3 2 3 2 2 1 5 2 
-#> 3 2 2 2 2 2 2 2 2 2 2 2 2 4 2 2 3 2 1 2 
-#> 2 2 1 2 2 2 4 2 2 2 2 2 3 2 2 2 2 2 3 3 
-#> 3 3 3 3 2 3 2 2 2 2 2 2 2 4 3 2 2 1 3 3 
-#> 2 3 3 3 2 4 2 3 2 3 2 2 2 2 3 2 2 2 2 3 
-#> 2 2 3 2 2 1 3 2 2 2 2 2 2 3 2 2 2 4 2 2 
-#> 2 2 
+#> [1] 2 2 2 3 2 2 4 4 2 1 2 2 2 2 1 2 2 2 
+#> 2 2 2 2 3 2 2 2 3 2 3 2 3 3 2 4 2 2 3 4 
+#> 2 2 2 4 3 3 3 2 2 2 2 2 2 3 2 2 4 1 3 2 
+#> 2 4 2 2 2 3 2 2 3 3 2 2 3 3 2 2 2 2 2 2 
+#> 2 3 2 3 2 2 3 2 2 5 2 2 2 2 2 2 2 2 3 2 
+#> 2 2 2 2 2 2 3 2 1 2 2 2 2 2 2 2 3 3 2 2 
+#> 1 2 2 2 3 2 4 2 3 2 3 2 2 1 2 5 2 2 3 1 
+#> 2 5 3 2 3 2 2 3 2 3 2 3 2 3 2 2 1 2 2 2 
+#> 3 2 3 3 2 3 2 3 3 2 2 3 2 3 3 2 2 3 2 3 
+#> 3 2 4 3 2 3 3 3 2 2 2 3 4 2 3 3 2 2 3 2 
+#> 2 3 
 #> 
 #> Variable Usage, last iteration (var:count):
-#> (1: 1) (2: 5) (3: 2) (4: 6) (5: 2) 
-#> (6: 6) (7: 8) (8: 1) (9: 4) (10: 4) 
-#> (11: 5) (12: 4) (13: 6) (14: 2) (15: 8) 
-#> (16: 2) (17: 5) (18: 6) (19: 5) (20: 4) 
-#> (21: 4) (22: 8) (23: 1) (24: 6) (25: 3) 
-#> (26: 1) (27: 4) (28: 9) (29: 6) (30: 9) 
-#> (31: 4) (32: 3) (33: 7) (34: 4) (35: 8) 
-#> (36: 1) (37: 4) (38: 4) (39: 3) (40: 1) 
-#> (41: 4) (42: 7) (43: 8) (44: 4) (45: 3) 
-#> (46: 5) (47: 2) (48: 6) (49: 2) (50: 9) 
-#> (51: 2) (52: 4) (53: 4) (54: 3) (55: 5) 
-#> (56: 2) (57: 5) (58: 5) (59: 2) (60: 7) 
+#> (1: 6) (2: 3) (3: 3) (4: 6) (5: 3) 
+#> (6: 4) (7: 6) (8: 0) (9: 3) (10: 10) 
+#> (11: 3) (12: 3) (13: 6) (14: 4) (15: 4) 
+#> (16: 7) (17: 6) (18: 4) (19: 3) (20: 6) 
+#> (21: 7) (22: 2) (23: 3) (24: 8) (25: 7) 
+#> (26: 5) (27: 7) (28: 2) (29: 2) (30: 6) 
+#> (31: 4) (32: 2) (33: 5) (34: 10) (35: 4) 
+#> (36: 5) (37: 3) (38: 2) (39: 3) (40: 6) 
+#> (41: 4) (42: 5) (43: 2) (44: 4) (45: 6) 
+#> (46: 6) (47: 5) (48: 1) (49: 6) (50: 4) 
+#> (51: 6) (52: 4) (53: 7) (54: 6) (55: 5) 
+#> (56: 3) (57: 3) (58: 3) (59: 6) (60: 7) 
 #> 
 #> DONE BART
 #> 
@@ -293,5 +293,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2318841 
+#>   0.115942 
 ```

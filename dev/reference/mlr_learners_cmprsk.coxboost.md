@@ -102,7 +102,7 @@ risks.” *Bioinformatics*, **25**(7), 890–896.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -222,7 +222,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: selected_features and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("pbc")
@@ -241,15 +241,15 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> cause '1':
 #> 10 boosting steps resulting in 2 non-zero coefficients  
-#> partial log-likelihood: -52.25491 
+#> partial log-likelihood: -51.26348 
 #> 
 #> cause '2':
-#> 10 boosting steps resulting in 6 non-zero coefficients  
-#> partial log-likelihood: -296.9656 
+#> 10 boosting steps resulting in 7 non-zero coefficients  
+#> partial log-likelihood: -279.1984 
 print(learner$selected_features(cause = 1)) # for cause = 1
 #> [1] "age"    "copper"
 print(learner$selected_features(cause = 2)) # for cause = 2
-#> [1] "age"     "copper"  "albumin" "ast"     "bili"    "protime"
+#> [1] "age"      "copper"   "platelet" "albumin"  "ast"      "bili"     "protime" 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -257,5 +257,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.9361784 
+#>  0.8232133 
 ```

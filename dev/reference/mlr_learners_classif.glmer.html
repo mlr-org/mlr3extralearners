@@ -15,7 +15,7 @@ Calls lme4::glmer() from lme4."><meta name="robots" content="noindex"></head><bo
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -115,7 +115,7 @@ No offset is applied during prediction for this learner.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -207,29 +207,29 @@ No offset is applied during prediction for this learner.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Number of obs: 1000, groups:  credit_history, 5</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Fixed Effects:</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                         (Intercept)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.49718  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.49717  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                             jobunskilled - resident  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.19139  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.19140  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                        jobskilled employee/official  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.13544  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.13545  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>        jobmanager/self-empl/highly qualif. employee  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.02365  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                propertycar or other  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.56577  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.56578  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> propertybuilding soc. savings agr. / life insurance  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.50720  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             0.50721  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 propertyreal estate  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                             1.11104  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                             1.11105  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                  telephoneyes (under customer name)  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.26805  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.26806  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                 savings... &lt; 100 DM  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -0.33521  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                          savings100 &lt;= ... &lt; 500 DM  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.08991  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         savings500 &lt;= ... &lt; 1000 DM  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.24679  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.24678  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                               savings... &gt;= 1000 DM  </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.04639  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                            -1.04640  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $target_levels</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "good" "bad" </span>

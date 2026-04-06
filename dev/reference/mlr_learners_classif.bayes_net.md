@@ -100,7 +100,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -238,7 +238,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, missings, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -260,15 +260,15 @@ print(learner$model)
 #> V11(2): Class 
 #> V12(2): Class 
 #> V13(2): Class 
-#> V14(2): Class 
+#> V14(1): Class 
 #> V15(1): Class 
 #> V16(1): Class 
 #> V17(1): Class 
 #> V18(1): Class 
 #> V19(1): Class 
-#> V2(2): Class 
+#> V2(1): Class 
 #> V20(1): Class 
-#> V21(2): Class 
+#> V21(1): Class 
 #> V22(1): Class 
 #> V23(1): Class 
 #> V24(1): Class 
@@ -284,16 +284,16 @@ print(learner$model)
 #> V33(1): Class 
 #> V34(1): Class 
 #> V35(1): Class 
-#> V36(1): Class 
+#> V36(2): Class 
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(2): Class 
+#> V4(1): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
 #> V43(1): Class 
-#> V44(1): Class 
+#> V44(2): Class 
 #> V45(2): Class 
 #> V46(2): Class 
 #> V47(2): Class 
@@ -302,7 +302,7 @@ print(learner$model)
 #> V5(1): Class 
 #> V50(1): Class 
 #> V51(2): Class 
-#> V52(2): Class 
+#> V52(1): Class 
 #> V53(1): Class 
 #> V54(1): Class 
 #> V55(1): Class 
@@ -313,13 +313,13 @@ print(learner$model)
 #> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(1): Class 
+#> V8(2): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1466.2957195036524
-#> LogScore BDeu: -1497.2179274460473
-#> LogScore MDL: -1505.4915226609933
-#> LogScore ENTROPY: -1414.2037548980754
-#> LogScore AIC: -1451.2037548980754
+#> LogScore Bayes: -1294.5586851209712
+#> LogScore BDeu: -1322.0450921808774
+#> LogScore MDL: -1329.8702989321746
+#> LogScore ENTROPY: -1248.4514790355183
+#> LogScore AIC: -1281.4514790355183
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2898551 
+#>  0.3768116 
 ```

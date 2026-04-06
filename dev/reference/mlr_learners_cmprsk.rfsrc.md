@@ -112,7 +112,7 @@ M. B (2014). “Random survival forests for competing risks.”
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -274,7 +274,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: importance, missings, oob_error, selected_features, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("pbc")
@@ -293,7 +293,7 @@ print(learner$model)
 #>                     Number of events: 1=12, 2=74
 #>                      Number of trees: 500
 #>            Forest terminal node size: 15
-#>        Average no. of terminal nodes: 8.666
+#>        Average no. of terminal nodes: 8.76
 #> No. of variables tried at each split: 5
 #>               Total no. of variables: 17
 #>        Resampling used to grow trees: swor
@@ -302,28 +302,28 @@ print(learner$model)
 #>                               Family: surv-CR
 #>                       Splitting rule: logrankCR *random*
 #>        Number of random split points: 10
-#>    (OOB) Requested performance error: 0.27269861, 0.16461361
+#>    (OOB) Requested performance error: 0.37941202, 0.26914533
 #> 
 print(learner$importance(cause = 1)) # VIMP for cause = 1
-#>          bili           age       protime         edema       ascites 
-#>  0.1979681433  0.1024252805  0.0700998502  0.0472966793  0.0467267420 
-#>           ast           sex         stage        hepato          chol 
-#>  0.0370548226  0.0344949138  0.0319475343  0.0304147075  0.0289555405 
-#>       albumin          trig        copper      platelet      alk.phos 
-#>  0.0166831135  0.0095200709  0.0088619922  0.0068510537  0.0013951443 
-#>           trt       spiders 
-#> -0.0004082908 -0.0061223341 
+#>          bili           age       ascites          chol       protime 
+#>  0.0874759889  0.0836412801  0.0560460222  0.0385126995  0.0307673596 
+#>        copper        hepato      alk.phos           ast         stage 
+#>  0.0292809735  0.0286453688  0.0240079013  0.0151062181  0.0116343272 
+#>      platelet           trt       albumin          trig           sex 
+#>  0.0107996599 -0.0004491661 -0.0012157375 -0.0012447159 -0.0020969910 
+#>       spiders         edema 
+#> -0.0064958394 -0.0121643377 
 print(learner$importance(cause = 2)) # VIMP for cause = 2
-#>          bili         edema       ascites        copper       protime 
-#>  0.1822638687  0.1425440280  0.1093075845  0.0444794875  0.0444705359 
-#>           age       albumin       spiders      alk.phos      platelet 
-#>  0.0333929418  0.0289456865  0.0235403067  0.0160694123  0.0129661014 
-#>          trig          chol        hepato           ast           sex 
-#>  0.0107076403  0.0073170974  0.0049142858  0.0031665373  0.0021965293 
-#>         stage           trt 
-#>  0.0017998503 -0.0006095349 
+#>          bili         edema       ascites       albumin        copper 
+#>  0.1652444116  0.0873640058  0.0832192626  0.0442079522  0.0355829211 
+#>       protime           age          chol      alk.phos        hepato 
+#>  0.0349142960  0.0308219394  0.0187673114  0.0116318326  0.0113235161 
+#>          trig           ast         stage       spiders           sex 
+#>  0.0099602926  0.0051061307  0.0037531906  0.0009350739  0.0002598982 
+#>           trt      platelet 
+#> -0.0003149981 -0.0025848282 
 print(learner$oob_error()) # weighted-mean across causes
-#> [1] 0.1796952
+#> [1] 0.2845314
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -331,5 +331,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> cmprsk.auc 
-#>  0.8602316 
+#>  0.9402274 
 ```

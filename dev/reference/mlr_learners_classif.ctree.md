@@ -94,7 +94,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -185,7 +185,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: multiclass, twoclass, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -209,17 +209,19 @@ print(learner$model)
 #> 
 #> Fitted party:
 #> [1] root
-#> |   [2] V11 <= 0.168
-#> |   |   [3] V5 <= 0.082: R (n = 36, err = 5.6%)
-#> |   |   [4] V5 > 0.082: M (n = 8, err = 25.0%)
-#> |   [5] V11 > 0.168
-#> |   |   [6] V17 <= 0.5486: M (n = 60, err = 15.0%)
-#> |   |   [7] V17 > 0.5486
-#> |   |   |   [8] V19 <= 0.8215: R (n = 17, err = 11.8%)
-#> |   |   |   [9] V19 > 0.8215: M (n = 18, err = 22.2%)
+#> |   [2] V49 <= 0.0285
+#> |   |   [3] V11 <= 0.3015
+#> |   |   |   [4] V27 <= 0.504: R (n = 7, err = 28.6%)
+#> |   |   |   [5] V27 > 0.504: R (n = 29, err = 0.0%)
+#> |   |   [6] V11 > 0.3015: M (n = 8, err = 25.0%)
+#> |   [7] V49 > 0.0285
+#> |   |   [8] V52 <= 0.0065: R (n = 16, err = 18.8%)
+#> |   |   [9] V52 > 0.0065
+#> |   |   |   [10] V12 <= 0.1601: R (n = 19, err = 36.8%)
+#> |   |   |   [11] V12 > 0.1601: M (n = 60, err = 10.0%)
 #> 
-#> Number of inner nodes:    4
-#> Number of terminal nodes: 5
+#> Number of inner nodes:    5
+#> Number of terminal nodes: 6
 
 
 # Make predictions for the test rows
@@ -228,5 +230,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.3623188 
 ```

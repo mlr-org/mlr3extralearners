@@ -99,7 +99,7 @@ on data mining (ICDM 2007)*, 655–660. IEEE.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -190,7 +190,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, character, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties:
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("rats")
@@ -213,7 +213,7 @@ print(learner$model)
 #> Survival svm approach              : regression 
 #> Type of Kernel                     : lin_kernel 
 #> Optimization solver used           : quadprog 
-#> Number of support vectors retained : 11 
+#> Number of support vectors retained : 7 
 #> survivalsvm version                : 0.0.6 
 
 # Make predictions for the test rows

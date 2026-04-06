@@ -90,7 +90,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -190,11 +190,11 @@ learner$predict(task, row_ids = ids$test)
 #> 
 #> ── <PredictionRegr> for 11 observations: ───────────────────────────────────────
 #>  row_ids truth response
-#>        2  21.0 20.22857
-#>        3  22.8 20.22857
-#>        7  14.3 20.22857
+#>        6  18.1 20.02381
+#>       10  19.2 20.02381
+#>       11  17.8 20.02381
 #>      ---   ---      ---
-#>       24  13.3 20.22857
-#>       25  19.2 20.22857
-#>       28  30.4 20.22857
+#>       20  33.9 20.02381
+#>       25  19.2 20.02381
+#>       26  27.3 20.02381
 ```

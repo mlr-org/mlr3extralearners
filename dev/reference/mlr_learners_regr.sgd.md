@@ -87,7 +87,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -225,7 +225,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -241,17 +241,17 @@ print(learner$model)
 #> 
 #> mpg = 
 #> 
-#>          4.1427 (normalized) am
-#>  +      -3.7845 (normalized) carb
-#>  +       2.6023 (normalized) cyl
-#>  +       0.641  (normalized) disp
-#>  +       5.4748 (normalized) drat
-#>  +       0.7572 (normalized) gear
-#>  +      -3.5241 (normalized) hp
-#>  +       4.6538 (normalized) qsec
-#>  +       1.7211 (normalized) vs
-#>  +      -6.9324 (normalized) wt
-#>  +      18.2717
+#>          2.9483 (normalized) am
+#>  +      -8.6448 (normalized) carb
+#>  +       5.2135 (normalized) cyl
+#>  +      -0.0139 (normalized) disp
+#>  +       6.3215 (normalized) drat
+#>  +       6.6829 (normalized) gear
+#>  +       1.0937 (normalized) hp
+#>  +       5.0869 (normalized) qsec
+#>  +       0.5257 (normalized) vs
+#>  +      -8.0326 (normalized) wt
+#>  +      15.4213
 
 
 # Make predictions for the test rows
@@ -260,5 +260,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.361376 
+#> 15.80728 
 ```

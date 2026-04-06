@@ -27,7 +27,7 @@ not needed for downstream use or not reliable for performance estimation."><meta
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -117,7 +117,7 @@ not needed for downstream use or not reliable for performance estimation.</p>
     <div class="dont-index">
 <ul><li><p><a href="https://mlr3misc.mlr-org.com/reference/Dictionary.html" class="external-link">Dictionary</a> of <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a>: <a href="https://mlr3.mlr-org.com/reference/mlr_learners.html" class="external-link">mlr3::mlr_learners</a>.</p></li>
 <li><p><code>as.data.table(mlr_learners)</code> for a table of available <a href="https://mlr3.mlr-org.com/reference/Learner.html" class="external-link">Learners</a> in the running session (depending on the loaded packages).</p></li>
-<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/basics.html#learners" class="external-link">https://mlr3book.mlr-org.com/basics.html#learners</a></p></li>
+<li><p>Chapter in the <a href="https://mlr3book.mlr-org.com/" class="external-link">mlr3book</a>: <a href="https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners" class="external-link">https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners</a></p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3learners" class="external-link"><span class="pkg">mlr3learners</span></a> for a selection of recommended learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3cluster" class="external-link"><span class="pkg">mlr3cluster</span></a> for unsupervised clustering learners.</p></li>
 <li><p><a href="https://CRAN.R-project.org/package=mlr3pipelines" class="external-link"><span class="pkg">mlr3pipelines</span></a> to combine learners with pre- and postprocessing steps.</p></li>
@@ -218,10 +218,10 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># feature importance</span></span></span>
 <span class="r-in"><span><span class="va">learner</span><span class="op">$</span><span class="fu">importance</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        cyl         wt         hp       disp       qsec         vs       drat </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  6.5845827  5.4694485  3.7751208  3.2088132  2.2001660  1.6901918  1.4706659 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       carb         am       gear </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  0.7705346  0.3888197 -0.2882423 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      disp        hp      drat       cyl        wt      gear        am      qsec </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9.9779806 7.6881243 7.1400337 6.7802091 5.8524012 1.8708362 1.5209622 0.7410317 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      carb        vs </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 0.3487281 0.2882456 </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Make predictions for the test observations</span></span></span>
 <span class="r-in"><span><span class="va">pred</span> <span class="op">=</span> <span class="va">learner</span><span class="op">$</span><span class="fu">predict</span><span class="op">(</span><span class="va">task</span>, row_ids <span class="op">=</span> <span class="va">ids</span><span class="op">$</span><span class="va">test</span><span class="op">)</span></span></span>
@@ -229,18 +229,18 @@ not needed for downstream use or not reliable for performance estimation.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="color: #0000BB; font-weight: bold;">&lt;PredictionRegr&gt;</span><span style="font-weight: bold;"> for </span><span style="color: #0000BB; font-weight: bold;">11</span><span style="font-weight: bold;"> observations:</span> <span style="color: #00BBBB;">───────────────────────────────────────</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>  row_ids truth response</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        6  18.1 21.07750</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        7  14.3 16.20050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       11  17.8 20.24957</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        3  22.8 27.26886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        5  18.7 16.88634</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        7  14.3 15.01416</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      ---   ---      ---</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       24  13.3 16.63893</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       25  19.2 17.43913</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       26  27.3 29.16439</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       28  30.4 25.31499</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       29  15.8 18.63267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       32  21.4 24.70480</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Score the predictions</span></span></span>
 <span class="r-in"><span><span class="va">pred</span><span class="op">$</span><span class="fu">score</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> regr.mse </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6.501566 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8.476335 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

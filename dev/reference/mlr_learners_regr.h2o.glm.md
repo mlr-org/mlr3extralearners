@@ -107,7 +107,7 @@ package version 3.46.0.9, <https://github.com/h2oai/h2o-3>.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -198,7 +198,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: missings and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -214,43 +214,43 @@ print(learner$model)
 #> ==============
 #> 
 #> H2ORegressionModel: glm
-#> Model ID:  GLM_model_R_1775122939896_111 
+#> Model ID:  GLM_model_R_1775462194710_111 
 #> GLM Model: summary
 #>     family     link                              regularization
-#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.1814 )
+#> 1 gaussian identity Elastic Net (alpha = 0.5, lambda = 1.0546 )
 #>   number_of_predictors_total number_of_active_predictors number_of_iterations
 #> 1                         10                           9                    1
 #>     training_frame
-#> 1 data_sid_b666_31
+#> 1 data_sid_8538_31
 #> 
 #> Coefficients: glm coefficients
 #>        names coefficients standardized_coefficients
-#> 1  Intercept    22.897668                 20.261905
-#> 2         am     1.214061                  0.615641
-#> 3       carb    -0.331947                 -0.588925
-#> 4        cyl    -0.398810                 -0.734338
-#> 5       disp    -0.006599                 -0.873799
-#> 6       drat     1.132653                  0.600887
-#> 7       gear     0.441845                  0.322678
-#> 8         hp    -0.010223                 -0.770651
+#> 1  Intercept    27.409932                 20.142857
+#> 2         am     1.098736                  0.562296
+#> 3       carb    -0.266325                 -0.483104
+#> 4        cyl    -0.583980                 -1.009875
+#> 5       disp    -0.006683                 -0.822704
+#> 6       drat     0.682802                  0.376561
+#> 7       gear     0.028304                  0.022440
+#> 8         hp    -0.009300                 -0.711478
 #> 9       qsec     0.000000                  0.000000
-#> 10        vs     1.642285                  0.832791
-#> 11        wt    -0.936300                 -1.048983
+#> 10        vs     0.549617                  0.281275
+#> 11        wt    -1.096890                 -1.130769
 #> 
 #> H2ORegressionMetrics: glm
 #> ** Reported on training data. **
 #> 
-#> MSE:  6.543582
-#> RMSE:  2.558043
-#> MAE:  1.986676
-#> RMSLE:  0.1112111
-#> Mean Residual Deviance :  6.543582
-#> R^2 :  0.8580934
-#> Null Deviance :968.3496
+#> MSE:  6.05894
+#> RMSE:  2.461491
+#> MAE:  1.958777
+#> RMSLE:  0.1067983
+#> Mean Residual Deviance :  6.05894
+#> R^2 :  0.8319521
+#> Null Deviance :757.1514
 #> Null D.o.F. :20
-#> Residual Deviance :137.4152
+#> Residual Deviance :127.2377
 #> Residual D.o.F. :11
-#> AIC :121.0436
+#> AIC :119.4276
 #> 
 #> 
 #> 
@@ -263,5 +263,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.816241 
+#>  8.35147 
 ```

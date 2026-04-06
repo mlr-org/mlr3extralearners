@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">mlr3extralearners</a>
 
-    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.4.0.9000</small>
+    <small class="nav-text text-default me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="In-development version">1.5.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,8 +53,24 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="development version" id="mlr3extralearners-development-version">mlr3extralearners (development version)<a class="anchor" aria-label="anchor" href="#mlr3extralearners-development-version"></a></h2>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.1" id="mlr3extralearners-151">mlr3extralearners 1.5.1<a class="anchor" aria-label="anchor" href="#mlr3extralearners-151"></a></h2>
 <div class="section level3">
-<h3 id="new-features-development-version">New Features<a class="anchor" aria-label="anchor" href="#new-features-development-version"></a></h3>
+<h3 id="other-1-5-1">Other<a class="anchor" aria-label="anchor" href="#other-1-5-1"></a></h3>
+<ul><li>Skip <code>fastai</code> and <code>botorch</code> tests on Windows and macOS where the Python backends crash or time out.</li>
+<li>Skip <code>tabpfn</code> tests until token work reliable again.</li>
+<li>Skip <code>blockForest</code> tests on macOS where SE predictions fail sanity checks.</li>
+<li>Skip <code>h2o.glm</code> classification tests on Windows due to Java NullPointerException.</li>
+<li>Skip <code>GPfit</code> tests on Windows where they crash under R-devel.</li>
+<li>Skip <code>classif.aorsf</code> sanity autotest due to inconsistent tie-breaking across predict types.</li>
+<li>Skip <code>surv.flexreg</code> sanity autotest on Windows due to initial parameter estimation failure.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.5.0" id="mlr3extralearners-150">mlr3extralearners 1.5.0<a class="anchor" aria-label="anchor" href="#mlr3extralearners-150"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-5-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-5-0"></a></h3>
 <ul><li>New Learners:
 <ul><li><code>LearnerCompRisksCoxboost</code></li>
 <li><code>LearnerRegrGPfit</code></li>
@@ -71,14 +87,16 @@
 <li><code>LearnerRegrH2OGBM</code></li>
 <li><code>LearnerRegrH2ODeeplearning</code></li>
 <li><code>LearnerClassifLvq1</code></li>
+<li><code>LearnerRegrBotorchFullyBayesian</code></li>
 </ul></li>
+<li>Added kernel and input/output transformations for <code>LearnerRegrBotorchSingleTaskGP</code> and <code>LearnerRegrBotorchMixedSingleTaskGP</code>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="breaking-changes-development-version">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-development-version"></a></h3>
+<h3 id="breaking-changes-1-5-0">Breaking Changes<a class="anchor" aria-label="anchor" href="#breaking-changes-1-5-0"></a></h3>
 <ul><li>Moved <code>LearnerSurvAkritas</code> and <code>LearnerSurvParametric</code> to the attic. See <a href="https://github.com/mlr-org/mlr3extralearners/issues/549" class="external-link uri">https://github.com/mlr-org/mlr3extralearners/issues/549</a>.</li>
 </ul></div>
 <div class="section level3">
-<h3 id="other-development-version">Other<a class="anchor" aria-label="anchor" href="#other-development-version"></a></h3>
+<h3 id="other-1-5-0">Other<a class="anchor" aria-label="anchor" href="#other-1-5-0"></a></h3>
 <ul><li>Updated <code>Extending</code> vignette to incorporate information about skipping tests and considerations for testing <code>Python</code> learners</li>
 <li>
 <code>survdistr</code> is now on Suggests (used for constant interpolation of the Kaplan-Meier predictions of the <code>partykit</code> survival learners)</li>

@@ -84,7 +84,7 @@ Knowledge Discovery in Databases*, 675-683.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -222,7 +222,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, missings, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -237,24 +237,86 @@ print(learner$model)
 #> SimpleLogistic:
 #> 
 #> Class M :
-#> -1.54 + 
-#> [V11] * 3.45 +
-#> [V16] * -0.98 +
-#> [V23] * 0.99 +
-#> [V36] * -1.32 +
-#> [V45] * 1.57 +
-#> [V46] * 2.42 +
-#> [V54] * 33.24
+#> -3.87 + 
+#> [V1] * 3.98 +
+#> [V11] * 4.1  +
+#> [V12] * 3.49 +
+#> [V14] * -1.46 +
+#> [V16] * -0.41 +
+#> [V21] * 1.07 +
+#> [V23] * 1.15 +
+#> [V27] * -0.81 +
+#> [V28] * 0.29 +
+#> [V29] * 0.62 +
+#> [V3] * -7.06 +
+#> [V30] * 0.48 +
+#> [V31] * -1.52 +
+#> [V35] * -0.76 +
+#> [V36] * -1.39 +
+#> [V39] * 2.06 +
+#> [V4] * 2.46 +
+#> [V40] * -4.66 +
+#> [V42] * 0.89 +
+#> [V43] * 1.86 +
+#> [V44] * 2.3  +
+#> [V45] * 3.66 +
+#> [V47] * 4.1  +
+#> [V49] * 12.11 +
+#> [V50] * -26.43 +
+#> [V51] * 26.46 +
+#> [V52] * 59.86 +
+#> [V53] * -13.07 +
+#> [V54] * 15.03 +
+#> [V55] * -13.7 +
+#> [V56] * 16.2 +
+#> [V57] * -47.97 +
+#> [V58] * 56.65 +
+#> [V59] * 27.19 +
+#> [V60] * 14.91 +
+#> [V7] * -1.48 +
+#> [V8] * -2.05 +
+#> [V9] * 0.86
 #> 
 #> Class R :
-#> 1.54 + 
-#> [V11] * -3.45 +
-#> [V16] * 0.98 +
-#> [V23] * -0.99 +
-#> [V36] * 1.32 +
-#> [V45] * -1.57 +
-#> [V46] * -2.42 +
-#> [V54] * -33.24
+#> 3.87 + 
+#> [V1] * -3.98 +
+#> [V11] * -4.1 +
+#> [V12] * -3.49 +
+#> [V14] * 1.46 +
+#> [V16] * 0.41 +
+#> [V21] * -1.07 +
+#> [V23] * -1.15 +
+#> [V27] * 0.81 +
+#> [V28] * -0.29 +
+#> [V29] * -0.62 +
+#> [V3] * 7.06 +
+#> [V30] * -0.48 +
+#> [V31] * 1.52 +
+#> [V35] * 0.76 +
+#> [V36] * 1.39 +
+#> [V39] * -2.06 +
+#> [V4] * -2.46 +
+#> [V40] * 4.66 +
+#> [V42] * -0.89 +
+#> [V43] * -1.86 +
+#> [V44] * -2.3 +
+#> [V45] * -3.66 +
+#> [V47] * -4.1 +
+#> [V49] * -12.11 +
+#> [V50] * 26.43 +
+#> [V51] * -26.46 +
+#> [V52] * -59.86 +
+#> [V53] * 13.07 +
+#> [V54] * -15.03 +
+#> [V55] * 13.7 +
+#> [V56] * -16.2 +
+#> [V57] * 47.97 +
+#> [V58] * -56.65 +
+#> [V59] * -27.19 +
+#> [V60] * -14.91 +
+#> [V7] * 1.48 +
+#> [V8] * 2.05 +
+#> [V9] * -0.86
 #> 
 
 
@@ -264,5 +326,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3333333 
+#>  0.2898551 
 ```

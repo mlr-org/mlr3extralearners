@@ -205,7 +205,7 @@ processing systems*, **30**.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -331,7 +331,7 @@ print(learner)
 #> • Encapsulation: none (fallback: -)
 #> • Properties: hotstart_forward, importance, internal_tuning, missings,
 #> multiclass, twoclass, validation, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -347,24 +347,26 @@ print(learner$model)
 #> Objective: binary
 #> Fitted to dataset with 60 columns
 print(learner$importance())
-#>          V11          V12          V27          V51          V23          V31 
-#> 0.1219143348 0.0806230301 0.0723594700 0.0689306131 0.0679528475 0.0534364453 
-#>           V4          V10          V36          V45          V25          V28 
-#> 0.0503369450 0.0462878024 0.0401989252 0.0340025876 0.0315593638 0.0237468126 
-#>          V52          V21          V55          V60          V13          V18 
-#> 0.0222628728 0.0201762753 0.0188859354 0.0182681765 0.0179385235 0.0179082667 
-#>          V47          V29          V43           V5          V33          V48 
-#> 0.0160177932 0.0159776227 0.0157863163 0.0153547070 0.0124110512 0.0122604170 
-#>          V37          V46          V26          V24          V34          V39 
-#> 0.0120807249 0.0115108511 0.0114608999 0.0075894782 0.0073813017 0.0067644670 
-#>          V50           V1           V2           V6          V44          V57 
-#> 0.0066473028 0.0059145932 0.0055824463 0.0050164231 0.0047715767 0.0041988988 
-#>          V49          V20           V9          V38          V35           V3 
-#> 0.0037223768 0.0030734721 0.0025334849 0.0021512253 0.0013923881 0.0010523025 
-#>          V32          V14          V54          V30          V17          V19 
-#> 0.0006219639 0.0005422081 0.0002600677 0.0002233912 0.0002127026 0.0002124252 
-#>          V58          V40          V41 
-#> 0.0002002547 0.0001535502 0.0001320882 
+#>          V11          V45          V36          V51          V52          V21 
+#> 1.771772e-01 6.654954e-02 6.407841e-02 5.368755e-02 4.294045e-02 4.035749e-02 
+#>          V37          V12          V43          V48          V23          V20 
+#> 3.846994e-02 3.627359e-02 3.545750e-02 3.525999e-02 3.267967e-02 3.243718e-02 
+#>          V49          V27          V31          V17          V46          V29 
+#> 3.179408e-02 2.856739e-02 2.581047e-02 2.194922e-02 2.098866e-02 2.084656e-02 
+#>          V18          V28          V40           V9          V26          V55 
+#> 2.049963e-02 1.909918e-02 1.485393e-02 1.445687e-02 1.363704e-02 1.069240e-02 
+#>          V34          V39          V22          V15          V54          V59 
+#> 8.274337e-03 8.234911e-03 7.855849e-03 7.780364e-03 6.472612e-03 5.996887e-03 
+#>          V57          V50          V24          V33           V5          V30 
+#> 5.245416e-03 5.037181e-03 4.870441e-03 4.624861e-03 4.569918e-03 4.275362e-03 
+#>          V47          V35          V38          V44          V60           V1 
+#> 4.038859e-03 3.580575e-03 3.448853e-03 2.976803e-03 2.329448e-03 2.294871e-03 
+#>          V32          V10           V4           V7          V58           V6 
+#> 1.746987e-03 1.635632e-03 1.167214e-03 1.105219e-03 1.042954e-03 6.538285e-04 
+#>          V19          V56          V42           V8          V13           V2 
+#> 4.761471e-04 4.584762e-04 3.984483e-04 3.642852e-04 3.482064e-04 7.720349e-05 
+#>          V53 
+#> 5.391339e-05 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -372,5 +374,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.1884058 
+#>   0.115942 
 ```

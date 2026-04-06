@@ -81,7 +81,7 @@ intelligence*, 1–12. Springer.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -219,7 +219,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -233,26 +233,16 @@ learner$train(task, row_ids = ids$train)
 print(learner$model)
 #> M5 pruned model rules 
 #> (using smoothed linear models) :
-#> Number of Rules : 2
+#> Number of Rules : 1
 #> 
 #> Rule: 1
-#> IF
-#>  disp > 163.8
-#>  hp > 177.5
-#> THEN
 #> 
 #> mpg = 
-#>  -0.0156 * hp 
-#>  + 0.2772 * qsec 
-#>  - 2.5547 * wt 
-#>  + 24.2205 [7/16.902%]
-#> 
-#> Rule: 2
-#> 
-#> mpg = 
-#>  0.6052 * qsec 
-#>  - 6.4022 * wt 
-#>  + 29.5022 [14/43.167%]
+#>  -2.22 * am 
+#>  + 2.3092 * drat 
+#>  - 0.0304 * hp 
+#>  - 3.3395 * wt 
+#>  + 27.5406 [21/22.96%]
 #> 
 #> 
 
@@ -263,5 +253,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 5.989455 
+#> 18.33485 
 ```

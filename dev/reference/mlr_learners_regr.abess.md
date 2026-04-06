@@ -75,7 +75,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -182,7 +182,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: selected_features and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -199,15 +199,15 @@ print(learner$model)
 #>     num.threads = 1L)
 #> 
 #>   support.size       dev      GIC
-#> 1            0 16.805374 59.25567
-#> 2            1  4.305107 33.21941
-#> 3            2  2.762298 26.46446
-#> 4            3  2.226155 24.49651
-#> 5            4  1.969034 24.48268
-#> 6            5  1.797183 25.12847
-#> 7            6  1.752657 27.16521
-#> 8            7  1.729184 29.44562
-#> 9            8  1.707483 31.74398
+#> 1            0 18.939002 61.76569
+#> 2            1  3.444490 28.53586
+#> 3            2  1.878082 18.36241
+#> 4            3  1.786737 19.87892
+#> 5            4  1.699951 21.39686
+#> 6            5  1.636648 23.16350
+#> 7            6  1.477858 23.58388
+#> 8            7  1.462569 25.92907
+#> 9            8  1.433443 28.07021
 
 
 # Make predictions for the test rows
@@ -216,5 +216,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 8.317744 
+#> 10.94621 
 ```

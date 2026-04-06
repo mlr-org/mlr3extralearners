@@ -71,7 +71,7 @@ Categorization'*.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -209,7 +209,7 @@ print(learner)
 #> • Feature Types: integer and numeric
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal, multiclass, and twoclass
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -237,7 +237,7 @@ print(learner$model)
 #> V14  0.02    0.02    
 #> V15  0.02    0.02    
 #> V16  0.02    0.02    
-#> V17  0.03    0.02    
+#> V17  0.02    0.03    
 #> V18  0.03    0.03    
 #> V19  0.03    0.03    
 #> V2   0   0   
@@ -252,7 +252,7 @@ print(learner$model)
 #> V28  0.04    0.04    
 #> V29  0.04    0.04    
 #> V3   0   0   
-#> V30  0.03    0.03    
+#> V30  0.03    0.04    
 #> V31  0.03    0.03    
 #> V32  0.02    0.03    
 #> V33  0.02    0.03    
@@ -271,7 +271,7 @@ print(learner$model)
 #> V45  0.01    0.01    
 #> V46  0.01    0.01    
 #> V47  0.01    0.01    
-#> V48  0.01    0.01    
+#> V48  0.01    0   
 #> V49  0   0   
 #> V5   0.01    0   
 #> V50  0   0   
@@ -298,5 +298,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.4057971 
+#>  0.3768116 
 ```

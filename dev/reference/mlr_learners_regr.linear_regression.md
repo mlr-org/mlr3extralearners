@@ -83,7 +83,7 @@ instantiated via
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -221,7 +221,7 @@ print(learner)
 #> • Feature Types: logical, integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: marshal and missings
-#> • Other settings: use_weights = 'error'
+#> • Other settings: use_weights = 'error', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -238,12 +238,11 @@ print(learner$model)
 #> 
 #> mpg =
 #> 
-#>       3.8707 * am +
-#>       0.0266 * disp +
-#>       2.8042 * drat +
-#>       1.4748 * qsec +
-#>      -4.8963 * wt +
-#>      -8.4336
+#>       2.7872 * am +
+#>      -0.7497 * carb +
+#>      -1.2301 * cyl +
+#>      -0.0171 * disp +
+#>      32.2653
 
 
 # Make predictions for the test rows
@@ -252,5 +251,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 12.95687 
+#> 11.60916 
 ```

@@ -2,6 +2,25 @@
 
 ## mlr3extralearners (development version)
 
+## mlr3extralearners 1.5.1
+
+### Other
+
+- Skip `fastai` and `botorch` tests on Windows and macOS where the
+  Python backends crash or time out.
+- Skip `tabpfn` tests until token work reliable again.
+- Skip `blockForest` tests on macOS where SE predictions fail sanity
+  checks.
+- Skip `h2o.glm` classification tests on Windows due to Java
+  NullPointerException.
+- Skip `GPfit` tests on Windows where they crash under R-devel.
+- Skip `classif.aorsf` sanity autotest due to inconsistent tie-breaking
+  across predict types.
+- Skip `surv.flexreg` sanity autotest on Windows due to initial
+  parameter estimation failure.
+
+## mlr3extralearners 1.5.0
+
 ### New Features
 
 - New Learners:
@@ -20,6 +39,10 @@
   - `LearnerRegrH2OGBM`
   - `LearnerRegrH2ODeeplearning`
   - `LearnerClassifLvq1`
+  - `LearnerRegrBotorchFullyBayesian`
+- Added kernel and input/output transformations for
+  `LearnerRegrBotorchSingleTaskGP` and
+  `LearnerRegrBotorchMixedSingleTaskGP`.
 
 ### Breaking Changes
 

@@ -91,7 +91,7 @@ annals of statistics*, **19**(1), 1–67.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -182,7 +182,7 @@ print(learner)
 #> • Feature Types: integer, numeric, and factor
 #> • Encapsulation: none (fallback: -)
 #> • Properties: weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("mtcars")
@@ -194,11 +194,11 @@ ids = partition(task)
 learner$train(task, row_ids = ids$train)
 
 print(learner$model)
-#> Selected 3 of 10 terms, and 1 of 10 predictors
-#> Termination condition: GRSq -Inf at 10 terms
-#> Importance: wt-unused, disp, am-unused, carb-unused, cyl-unused, ...
+#> Selected 3 of 9 terms, and 1 of 10 predictors
+#> Termination condition: GRSq -Inf at 9 terms
+#> Importance: disp, am-unused, carb-unused, cyl-unused, drat-unused, ...
 #> Number of terms at each degree of interaction: 1 2 (additive model)
-#> GCV 7.970959    RSS 97.16979    GRSq 0.7143568    RSq 0.8171884
+#> GCV 8.986409    RSS 109.5486    GRSq 0.7668823    RSq 0.8508046
 
 
 # Make predictions for the test rows
@@ -207,5 +207,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 6.094685 
+#> 4.770547 
 ```

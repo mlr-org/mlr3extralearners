@@ -109,7 +109,7 @@ Graphical Statistics*, **15**(3), 651–674.
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -200,7 +200,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("grace")
@@ -222,20 +222,22 @@ print(learner$model)
 #> |   [2] age <= 72
 #> |   |   [3] revascdays <= 170
 #> |   |   |   [4] revasc <= 0
-#> |   |   |   |   [5] age <= 62: 45.000 (n = 44)
-#> |   |   |   |   [6] age > 62: 18.000 (n = 37)
-#> |   |   |   [7] revasc > 0: Inf (n = 239)
-#> |   |   [8] revascdays > 170
-#> |   |   |   [9] revascdays <= 179: Inf (n = 7)
-#> |   |   |   [10] revascdays > 179: Inf (n = 86)
+#> |   |   |   |   [5] los <= 2: 2.000 (n = 24)
+#> |   |   |   |   [6] los > 2: 76.000 (n = 52)
+#> |   |   |   [7] revasc > 0
+#> |   |   |   |   [8] age <= 54: Inf (n = 68)
+#> |   |   |   |   [9] age > 54: Inf (n = 176)
+#> |   |   [10] revascdays > 170: Inf (n = 91)
 #> |   [11] age > 72
-#> |   |   [12] revascdays <= 173
-#> |   |   |   [13] revasc <= 0: 29.000 (n = 105)
-#> |   |   |   [14] revasc > 0: Inf (n = 105)
-#> |   |   [15] revascdays > 173: Inf (n = 47)
+#> |   |   [12] revascdays <= 177
+#> |   |   |   [13] revasc <= 0
+#> |   |   |   |   [14] sysbp <= 112: 8.000 (n = 30)
+#> |   |   |   |   [15] sysbp > 112: 43.000 (n = 74)
+#> |   |   |   [16] revasc > 0: Inf (n = 106)
+#> |   |   [17] revascdays > 177: Inf (n = 49)
 #> 
-#> Number of inner nodes:    7
-#> Number of terminal nodes: 8
+#> Number of inner nodes:    8
+#> Number of terminal nodes: 9
 
 
 # Make predictions for the test rows
@@ -244,5 +246,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.7920157 
+#>   0.8303336 
 ```

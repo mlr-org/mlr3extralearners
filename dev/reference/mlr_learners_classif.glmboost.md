@@ -68,7 +68,7 @@ and classification.” *Journal of the American Statistical Association*,
   running session (depending on the loaded packages).
 
 - Chapter in the [mlr3book](https://mlr3book.mlr-org.com/):
-  <https://mlr3book.mlr-org.com/basics.html#learners>
+  <https://mlr3book.mlr-org.com/chapters/chapter2/data_and_basic_modeling.html#sec-learners>
 
 - [mlr3learners](https://CRAN.R-project.org/package=mlr3learners) for a
   selection of recommended learners.
@@ -158,7 +158,7 @@ print(learner)
 #> • Feature Types: integer, numeric, factor, and ordered
 #> • Encapsulation: none (fallback: -)
 #> • Properties: offset, twoclass, and weights
-#> • Other settings: use_weights = 'use'
+#> • Other settings: use_weights = 'use', predict_raw = 'FALSE'
 
 # Define a Task
 task = tsk("sonar")
@@ -189,23 +189,23 @@ print(learner$model)
 #> 
 #> Number of boosting iterations: mstop = 100 
 #> Step size:  0.1 
-#> Offset:  -0.06483891 
+#> Offset:  -0.1083355 
 #> 
 #> Coefficients: 
 #> 
 #> NOTE: Coefficients from a Binomial model are half the size of coefficients
 #>  from a model fitted via glm(... , family = 'binomial').
 #> See Warning section in ?coef.mboost
-#>  (Intercept)           V1          V11          V12          V16          V20 
-#>   1.35439292  -3.36917413  -0.45452033  -1.08339826   0.31083506  -0.03871066 
-#>          V21          V22          V36           V4          V40          V44 
-#>  -0.08698230  -0.57196813   1.25922203  -3.19496545   0.18343243  -0.47957297 
-#>          V45          V49          V51          V52          V55          V57 
-#>  -1.96852845  -2.54315112 -10.18825300 -19.85626424   4.83148960   7.71833739 
-#>          V60 
-#>  -6.19389215 
+#> (Intercept)          V1         V11         V12         V16         V21 
+#>  1.01691730 -1.04397957 -1.07557927 -1.23220411  0.54476789 -0.04160389 
+#>         V24         V31         V36          V4         V43         V44 
+#> -0.39502614  0.52782452  1.08267392 -2.82012423 -0.10846835 -1.37485253 
+#>         V45         V49         V51         V52         V57         V59 
+#> -1.28185253 -3.73705492 -2.14067326 -2.36174514 12.10616660 -9.61014311 
+#>          V9 
+#> -0.08898407 
 #> attr(,"offset")
-#> [1] -0.06483891
+#> [1] -0.1083355
 #> 
 
 
@@ -215,5 +215,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.2753623 
+#>  0.2608696 
 ```
