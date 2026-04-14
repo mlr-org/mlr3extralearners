@@ -284,11 +284,11 @@ print(learner$model)
 #> V33(1): Class 
 #> V34(1): Class 
 #> V35(1): Class 
-#> V36(1): Class 
+#> V36(2): Class 
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
-#> V4(1): Class 
+#> V4(2): Class 
 #> V40(1): Class 
 #> V41(1): Class 
 #> V42(1): Class 
@@ -296,15 +296,15 @@ print(learner$model)
 #> V44(2): Class 
 #> V45(2): Class 
 #> V46(1): Class 
-#> V47(1): Class 
+#> V47(2): Class 
 #> V48(2): Class 
 #> V49(2): Class 
-#> V5(2): Class 
+#> V5(1): Class 
 #> V50(1): Class 
 #> V51(2): Class 
 #> V52(2): Class 
 #> V53(1): Class 
-#> V54(2): Class 
+#> V54(1): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
@@ -315,11 +315,11 @@ print(learner$model)
 #> V7(1): Class 
 #> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1128.8010615343899
-#> LogScore BDeu: -1152.8516677118073
-#> LogScore MDL: -1160.6339514042666
-#> LogScore ENTROPY: -1089.0840793738716
-#> LogScore AIC: -1118.0840793738716
+#> LogScore Bayes: -1195.74169952765
+#> LogScore BDeu: -1221.5102061463117
+#> LogScore MDL: -1230.5216640780964
+#> LogScore ENTROPY: -1154.0373181145708
+#> LogScore AIC: -1185.0373181145708
 #> 
 
 

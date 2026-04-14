@@ -261,7 +261,7 @@ print(learner$model)
 #> 
 #>      Linear combinations: Accelerated Cox regression
 #>           N observations: 670
-#>                 N events: 219
+#>                 N events: 213
 #>                  N trees: 500
 #>       N predictors total: 6
 #>    N predictors per node: 3
@@ -275,7 +275,7 @@ print(learner$model)
 #> -----------------------------------------
 print(learner$importance())
 #> revascdays     revasc        los        age   stchange      sysbp 
-#>  0.5702656  0.5472691  0.2107972  0.1879668  0.1334862  0.1145194 
+#>  0.5717814  0.5319699  0.2183190  0.1827476  0.1275831  0.1039636 
 
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
@@ -283,5 +283,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> surv.cindex 
-#>   0.8582233 
+#>   0.8542507 
 ```

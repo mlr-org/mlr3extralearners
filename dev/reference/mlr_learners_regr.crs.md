@@ -177,7 +177,7 @@ ids = partition(task)
 # Train the learner on the training ids
 learner$train(task, row_ids = ids$train)
 #> Warning:  Predictor 1 B-spline basis is ill-conditioned beyond degree 1.
-#> Warning:  Predictor 2 B-spline basis is ill-conditioned beyond degree 5.
+#> Warning:  Predictor 2 B-spline basis is ill-conditioned beyond degree 4.
 #> Warning:  Predictor 3 B-spline basis is ill-conditioned beyond degree 2.
 #> Warning:  Predictor 6 B-spline basis is ill-conditioned beyond degree 2.
 #> Warning:  Predictor 9 B-spline basis is ill-conditioned beyond degree 1.
@@ -190,11 +190,9 @@ print(learner$model)
 # Make predictions for the test rows
 predictions = learner$predict(task, row_ids = ids$test)
 #> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
-#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
-#> Warning: some 'x' values beyond boundary knots may cause ill-conditioned bases
 
 # Score the predictions
 predictions$score()
 #> regr.mse 
-#> 23973.31 
+#> 8.940942 
 ```
