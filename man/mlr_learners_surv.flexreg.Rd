@@ -33,7 +33,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    anc \tab untyped \tab - \tab  \tab - \cr
    bhazard \tab untyped \tab - \tab  \tab - \cr
    rtrunc \tab untyped \tab - \tab  \tab - \cr
-   dist \tab character \tab - \tab gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, \link{...} \tab - \cr
+   dist \tab character \tab - \tab gengamma, gengamma.orig, genf, genf.orig, weibull, weibullph, gamma, exp, exponential, llogis, [...] \tab - \cr
    inits \tab untyped \tab - \tab  \tab - \cr
    fixedpars \tab untyped \tab - \tab  \tab - \cr
    cl \tab numeric \tab 0.95 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr

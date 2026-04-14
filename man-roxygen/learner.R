@@ -9,5 +9,5 @@
 #' @md
 #'
 #' @section Parameters:
-#' `r paste(mlr3misc::rd_info(lrn("<%= id %>")$param_set), collapse = "\n")`
+#' `r paste(gsub("\\[\\.\\.\\.\\]", "\\\\[...\\\\]", mlr3misc::rd_info(lrn("<%= id %>")$param_set)), collapse = "\n")`
 #' @md

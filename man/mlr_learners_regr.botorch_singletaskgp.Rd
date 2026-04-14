@@ -31,7 +31,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
 \tabular{llll}{
    Id \tab Type \tab Default \tab Levels \cr
    device \tab character \tab cpu \tab cpu, cuda \cr
-   kernel \tab character \tab - \tab matern_2.5, matern_1.5, matern_0.5, rbf, linear, polynomial, periodic, cosine, rq, piecewise_polynomial, \link{...} \cr
+   kernel \tab character \tab - \tab matern_2.5, matern_1.5, matern_0.5, rbf, linear, polynomial, periodic, cosine, rq, piecewise_polynomial, [...] \cr
    input_transform \tab character \tab - \tab normalize, standardize, log10, warp, none \cr
    outcome_transform \tab character \tab - \tab standardize, log, none \cr
 }

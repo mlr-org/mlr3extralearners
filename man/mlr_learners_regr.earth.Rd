@@ -55,7 +55,7 @@ This \link[mlr3:Learner]{Learner} can be instantiated via \link[mlr3:mlr_sugar]{
    nfold \tab integer \tab 0 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    ncross \tab integer \tab 1 \tab  \tab \eqn{[0, \infty)}{[0, Inf)} \cr
    stratify \tab logical \tab TRUE \tab TRUE, FALSE \tab - \cr
-   varmod.method \tab character \tab none \tab none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, \link{...} \tab - \cr
+   varmod.method \tab character \tab none \tab none, const, lm, rlm, earth, gam, power, power0, x.lm, x.rlm, [...] \tab - \cr
    varmod.exponent \tab numeric \tab 1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
    varmod.conv \tab numeric \tab 1 \tab  \tab \eqn{[0, 1]}{[0, 1]} \cr
    varmod.clamp \tab numeric \tab 0.1 \tab  \tab \eqn{(-\infty, \infty)}{(-Inf, Inf)} \cr
