@@ -43,7 +43,7 @@ Imports:
     checkmate,
     data.table,
     methods,
-    mlr3cmprsk (>= 0.0.3),
+    mlr3cmprsk (>= 0.0.5),
     mlr3misc (>= 0.19.0),
     mlr3proba (>= 0.8.8),
     paradox (>= 1.0.1),
@@ -136,7 +136,7 @@ Suggests:
     sparseLDA (>= 0.1-9),
     stats,
     stepPlr,
-    survdistr (>= 0.0.2),
+    survdistr (>= 0.0.3),
     survdnn (>= 0.7.5),
     survival,
     survivalsvm (>= 0.0.5),
@@ -151,8 +151,7 @@ VignetteBuilder:
 Remotes:
     catboost/catboost/catboost/R-package,
     mlr-org/mlr3cmprsk,
-    mlr-org/mlr3proba,
-    mlr-org/survdistr
+    mlr-org/mlr3proba
 Config/Needs/website: rmarkdown
 Config/testthat/edition: 3
 Config/testthat/parallel: false

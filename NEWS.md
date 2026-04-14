@@ -1,5 +1,10 @@
 # mlr3extralearners (development version)
 
+## Other
+
+* Use CRAN version of `survdistr`
+* Use `mlr3cmprsk` version `0.0.5`
+
 # mlr3extralearners 1.5.1
 
 ## Other
