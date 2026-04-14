@@ -74,20 +74,20 @@ instantiated via
 
 ## Parameters
 
-|                           |           |         |                                                                                                                                                                                                                                  |                  |
-|---------------------------|-----------|---------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
-| Id                        | Type      | Default | Levels                                                                                                                                                                                                                           | Range            |
-| subset                    | untyped   | \-      |                                                                                                                                                                                                                                  | \-               |
-| na.action                 | untyped   | \-      |                                                                                                                                                                                                                                  | \-               |
-| D                         | logical   | \-      | TRUE, FALSE                                                                                                                                                                                                                      | \-               |
-| B                         | untyped   | \-      |                                                                                                                                                                                                                                  | \-               |
-| Q                         | character | \-      | global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, [...](https://rdrr.io/r/base/dots.html) | \-               |
-| E                         | character | \-      | estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator                                                                                                                                                | \-               |
-| output_debug_info         | logical   | FALSE   | TRUE, FALSE                                                                                                                                                                                                                      | \-               |
-| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE                                                                                                                                                                                                                      | \-               |
-| num_decimal_places        | integer   | 2       |                                                                                                                                                                                                                                  | \\\[1, \infty)\\ |
-| batch_size                | integer   | 100     |                                                                                                                                                                                                                                  | \\\[1, \infty)\\ |
-| options                   | untyped   | NULL    |                                                                                                                                                                                                                                  | \-               |
+|                           |           |         |                                                                                                                                                                                                  |                  |
+|---------------------------|-----------|---------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------|
+| Id                        | Type      | Default | Levels                                                                                                                                                                                           | Range            |
+| subset                    | untyped   | \-      |                                                                                                                                                                                                  | \-               |
+| na.action                 | untyped   | \-      |                                                                                                                                                                                                  | \-               |
+| D                         | logical   | \-      | TRUE, FALSE                                                                                                                                                                                      | \-               |
+| B                         | untyped   | \-      |                                                                                                                                                                                                  | \-               |
+| Q                         | character | \-      | global.K2, global.HillClimber, global.SimulatedAnnealing, global.TabuSearch, global.TAN, local.K2, local.HillClimber, local.LAGDHillClimber, local.SimulatedAnnealing, local.TabuSearch, \[...\] | \-               |
+| E                         | character | \-      | estimate.SimpleEstimator, estimate.BMAEstimator, estimate.MultiNomialBMAEstimator                                                                                                                | \-               |
+| output_debug_info         | logical   | FALSE   | TRUE, FALSE                                                                                                                                                                                      | \-               |
+| do_not_check_capabilities | logical   | FALSE   | TRUE, FALSE                                                                                                                                                                                      | \-               |
+| num_decimal_places        | integer   | 2       |                                                                                                                                                                                                  | \\\[1, \infty)\\ |
+| batch_size                | integer   | 100     |                                                                                                                                                                                                  | \\\[1, \infty)\\ |
+| options                   | untyped   | NULL    |                                                                                                                                                                                                  | \-               |
 
 ## See also
 
@@ -255,7 +255,7 @@ print(learner$model)
 #> #attributes=61 #classindex=0
 #> Network structure (nodes followed by parents)
 #> Class(2): 
-#> V1(2): Class 
+#> V1(1): Class 
 #> V10(2): Class 
 #> V11(2): Class 
 #> V12(2): Class 
@@ -266,7 +266,7 @@ print(learner$model)
 #> V17(1): Class 
 #> V18(1): Class 
 #> V19(1): Class 
-#> V2(1): Class 
+#> V2(2): Class 
 #> V20(1): Class 
 #> V21(1): Class 
 #> V22(1): Class 
@@ -275,7 +275,7 @@ print(learner$model)
 #> V25(1): Class 
 #> V26(1): Class 
 #> V27(1): Class 
-#> V28(2): Class 
+#> V28(1): Class 
 #> V29(1): Class 
 #> V3(1): Class 
 #> V30(1): Class 
@@ -284,7 +284,7 @@ print(learner$model)
 #> V33(1): Class 
 #> V34(1): Class 
 #> V35(1): Class 
-#> V36(2): Class 
+#> V36(1): Class 
 #> V37(1): Class 
 #> V38(1): Class 
 #> V39(1): Class 
@@ -295,16 +295,16 @@ print(learner$model)
 #> V43(1): Class 
 #> V44(2): Class 
 #> V45(2): Class 
-#> V46(2): Class 
-#> V47(2): Class 
+#> V46(1): Class 
+#> V47(1): Class 
 #> V48(2): Class 
 #> V49(2): Class 
-#> V5(1): Class 
+#> V5(2): Class 
 #> V50(1): Class 
 #> V51(2): Class 
-#> V52(1): Class 
+#> V52(2): Class 
 #> V53(1): Class 
-#> V54(1): Class 
+#> V54(2): Class 
 #> V55(1): Class 
 #> V56(1): Class 
 #> V57(1): Class 
@@ -313,13 +313,13 @@ print(learner$model)
 #> V6(1): Class 
 #> V60(1): Class 
 #> V7(1): Class 
-#> V8(2): Class 
+#> V8(1): Class 
 #> V9(2): Class 
-#> LogScore Bayes: -1294.5586851209712
-#> LogScore BDeu: -1322.0450921808774
-#> LogScore MDL: -1329.8702989321746
-#> LogScore ENTROPY: -1248.4514790355183
-#> LogScore AIC: -1281.4514790355183
+#> LogScore Bayes: -1128.8010615343899
+#> LogScore BDeu: -1152.8516677118073
+#> LogScore MDL: -1160.6339514042666
+#> LogScore ENTROPY: -1089.0840793738716
+#> LogScore AIC: -1118.0840793738716
 #> 
 
 
@@ -329,5 +329,5 @@ predictions = learner$predict(task, row_ids = ids$test)
 # Score the predictions
 predictions$score()
 #> classif.ce 
-#>  0.3768116 
+#>  0.2173913 
 ```
